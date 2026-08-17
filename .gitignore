@@ -1,0 +1,5 @@
+.env
+.env.*
+MOUTH.token
+*.mno
+.DS_Store
