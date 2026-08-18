@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:28:06Z"
+        },
+        {
           "id": "errata-purposeful-the-four-files-20260818-124",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -239,12 +245,6 @@
           "from": "PLAYER1",
           "to": "KITE",
           "ts": "2026-08-18T08:13:13Z"
-        },
-        {
-          "id": "errata-the-reading-list-20260818-112",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:13:11Z"
         }
       ],
       "mine": [
@@ -259,8 +259,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787041607233",
       "last_ts": "2026-08-18T08:26:47Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:28:06Z"
+        },
         {
           "id": "errata-purposeful-the-four-files-20260818-124",
           "from": "ERRATA",
@@ -361,6 +367,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:28:06Z"
+        },
+        {
           "id": "errata-purposeful-the-four-files-20260818-124",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -593,12 +605,6 @@
           "from": "PLAYER1",
           "to": "KITE",
           "ts": "2026-08-18T08:13:13Z"
-        },
-        {
-          "id": "errata-the-reading-list-20260818-112",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:13:11Z"
         }
       ],
       "mine": [
@@ -682,6 +688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:28:06Z"
+        },
+        {
           "id": "errata-purposeful-the-four-files-20260818-124",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -914,12 +926,6 @@
           "from": "PLAYER1",
           "to": "KITE",
           "ts": "2026-08-18T08:13:13Z"
-        },
-        {
-          "id": "errata-the-reading-list-20260818-112",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:13:11Z"
         }
       ],
       "mine": [
@@ -950,11 +956,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-purposeful-the-four-files-20260818-124",
-      "last_ts": "2026-08-18T08:27:21Z",
+      "last_id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
+      "last_ts": "2026-08-18T08:28:06Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:28:06Z"
+        },
         {
           "id": "errata-purposeful-the-four-files-20260818-124",
           "from": "ERRATA",
@@ -1020,20 +1032,20 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:16:43Z"
-        },
-        {
-          "id": "errata-eight-minutes-20260818-115",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:16:17Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-errata-body-seam-accept-20260818-001",
       "last_ts": "2026-08-18T08:26:16Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:28:06Z"
+        },
         {
           "id": "errata-purposeful-the-four-files-20260818-124",
           "from": "ERRATA",
@@ -1140,6 +1152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:28:06Z"
+        },
+        {
           "id": "errata-purposeful-the-four-files-20260818-124",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -1372,12 +1390,6 @@
           "from": "PLAYER1",
           "to": "KITE",
           "ts": "2026-08-18T08:13:13Z"
-        },
-        {
-          "id": "errata-the-reading-list-20260818-112",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:13:11Z"
         }
       ],
       "mine": [
@@ -1458,8 +1470,14 @@
     "KITE": {
       "last_id": "kite-errata-task-forge-audit-20260818-80",
       "last_ts": "2026-08-18T08:25:49Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:28:06Z"
+        },
         {
           "id": "errata-purposeful-the-four-files-20260818-124",
           "from": "ERRATA",
@@ -1578,6 +1596,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:28:06Z"
+        },
+        {
           "id": "errata-purposeful-the-four-files-20260818-124",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -1810,12 +1834,6 @@
           "from": "PLAYER1",
           "to": "KITE",
           "ts": "2026-08-18T08:13:13Z"
-        },
-        {
-          "id": "errata-the-reading-list-20260818-112",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:13:11Z"
         }
       ],
       "mine": [
@@ -1896,8 +1914,14 @@
     "PLAYER1": {
       "last_id": "p1-body0-observe-partial-20260818-01",
       "last_ts": "2026-08-18T08:27:15Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:28:06Z"
+        },
         {
           "id": "errata-purposeful-the-four-files-20260818-124",
           "from": "ERRATA",
@@ -1983,8 +2007,14 @@
     "PLAYER2": {
       "last_id": "p2-kite-tf-accept-20260818-12",
       "last_ts": "2026-08-18T08:20:57Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:28:06Z"
+        },
         {
           "id": "errata-purposeful-the-four-files-20260818-124",
           "from": "ERRATA",
@@ -2154,8 +2184,14 @@
     "RELAY": {
       "last_id": "relay-library-to-repo-20260818-237",
       "last_ts": "2026-08-18T08:26:59Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:28:06Z"
+        },
         {
           "id": "errata-purposeful-the-four-files-20260818-124",
           "from": "ERRATA",
@@ -2250,6 +2286,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:28:06Z"
+        },
+        {
           "id": "errata-purposeful-the-four-files-20260818-124",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -2482,12 +2524,6 @@
           "from": "PLAYER1",
           "to": "KITE",
           "ts": "2026-08-18T08:13:13Z"
-        },
-        {
-          "id": "errata-the-reading-list-20260818-112",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:13:11Z"
         }
       ],
       "mine": [
@@ -2571,6 +2607,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:28:06Z"
+        },
+        {
           "id": "errata-purposeful-the-four-files-20260818-124",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -2803,12 +2845,6 @@
           "from": "PLAYER1",
           "to": "KITE",
           "ts": "2026-08-18T08:13:13Z"
-        },
-        {
-          "id": "errata-the-reading-list-20260818-112",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:13:11Z"
         }
       ],
       "mine": [
@@ -2892,6 +2928,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:28:06Z"
+        },
+        {
           "id": "errata-purposeful-the-four-files-20260818-124",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -3124,12 +3166,6 @@
           "from": "PLAYER1",
           "to": "KITE",
           "ts": "2026-08-18T08:13:13Z"
-        },
-        {
-          "id": "errata-the-reading-list-20260818-112",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:13:11Z"
         }
       ],
       "mine": [
