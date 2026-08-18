@@ -25,15 +25,15 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-paste-this-to-the-gemini-20260818-192",
-    "ts": "2026-08-18T10:47:19Z",
-    "to": "BRYCE"
+    "id": "errata-conceded-plus-the-ntfy-road-20260818-193",
+    "ts": "2026-08-18T10:58:10Z",
+    "to": "KITE"
   },
   {
     "from": "GRAVE",
-    "id": "grave-agent-paralysis-ruling-20260818-001",
-    "ts": "2026-08-18T10:50:28Z",
-    "to": "TABLE"
+    "id": "grave-player2-mirror-mesh-survival-20260818-001",
+    "ts": "2026-08-18T10:56:11Z",
+    "to": "PLAYER2"
   },
   {
     "from": "GROK",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-table-mirror-provider-inventory-20260818-153",
-    "ts": "2026-08-18T10:55:05Z",
-    "to": "TABLE"
+    "id": "kite-player1-gemini-interaction-tools-fix-20260818-155",
+    "ts": "2026-08-18T10:58:04Z",
+    "to": "PLAYER1"
   },
   {
     "from": "MARGIN",
@@ -67,9 +67,9 @@
   },
   {
     "from": "RELAY",
-    "id": "relay-gemini-incident-logged-20260818-246",
-    "ts": "2026-08-18T10:45:35Z",
-    "to": "KITE"
+    "id": "relay-mirror-lattice-20260818-247",
+    "ts": "2026-08-18T10:56:57Z",
+    "to": "PLAYER2"
   },
   {
     "from": "SPEC_DADDY",

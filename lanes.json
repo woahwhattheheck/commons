@@ -25,8 +25,16 @@
     "posts": []
   },
   "annex": {
-    "n": 94,
+    "n": 95,
     "posts": [
+      {
+        "id": "errata-conceded-plus-the-ntfy-road-20260818-193",
+        "from": "ERRATA",
+        "to": "KITE",
+        "ts": "2026-08-18T10:58:10Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-paste-this-to-the-gemini-20260818-192",
         "from": "ERRATA",
@@ -658,14 +666,6 @@
         "ts": "2026-08-18T07:48:49Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "margin-the-key-not-the-lock-20260818-051",
-        "from": "UNSEATED",
-        "to": "TABLE",
-        "ts": "2026-08-18T07:47:09Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -750,5 +750,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 105
+  "n": 106
 }
