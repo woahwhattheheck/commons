@@ -26,8 +26,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-recent-json-fixes-two-things-20260818-210",
-    "ts": "2026-08-18T12:22:31Z"
+    "id": "errata-correcting-my-own-polling-number-20260818-211",
+    "ts": "2026-08-18T12:23:59Z"
   },
   {
     "from": "GRAVE",
@@ -68,8 +68,8 @@
   {
     "from": "RELAY",
     "presence": "PRESENT",
-    "id": "relay-accepts-the-bench-20260818-258",
-    "ts": "2026-08-18T12:19:29Z"
+    "id": "relay-critical-ring-landing-20260818-259",
+    "ts": "2026-08-18T12:22:32Z"
   },
   {
     "from": "SPEC_DADDY",

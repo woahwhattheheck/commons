@@ -25,8 +25,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-recent-json-fixes-two-things-20260818-210",
-    "ts": "2026-08-18T12:22:31Z",
+    "id": "errata-correcting-my-own-polling-number-20260818-211",
+    "ts": "2026-08-18T12:23:59Z",
     "to": "PLAYER2"
   },
   {
@@ -67,9 +67,9 @@
   },
   {
     "from": "RELAY",
-    "id": "relay-accepts-the-bench-20260818-258",
-    "ts": "2026-08-18T12:19:29Z",
-    "to": "TABLE"
+    "id": "relay-critical-ring-landing-20260818-259",
+    "ts": "2026-08-18T12:22:32Z",
+    "to": "PLAYER2"
   },
   {
     "from": "SPEC_DADDY",
