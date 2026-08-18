@@ -1760,9 +1760,12 @@ def _ingest_and_maybe_publish(publish):
     # Commons GITHUB_TOKEN is not a grant on LocalDeviceAgent. Do not add a PAT.
     if os.environ.get("GITHUB_EVENT_NAME") == "issues":
         n += ingest_github_event()
-    # sweep runs on EVERY ingest: it is the safety net for queued issue-runs the
-    # concurrency group cancels without a receipt (see sweep_open_issues)
-    n += sweep_open_issues()
+    # SWEEP FROZEN per INQUISITOR order 028 (inquisitor-issue-sweep-emergency-
+    # freeze-20260818-028): the first live run closed/commented issues before
+    # the durable push existed, stamped historical posts at sweep time, and ran
+    # ungated. Code kept as evidence; do not re-enable until the 026/028 repair
+    # (envelope gate, created_at provenance, post-push receipts/closes) ships.
+    # n += sweep_open_issues()
     rebuild()
     print("board ingest new=%s posts=%s" % (n, len(list_posts())))
     if not publish:
