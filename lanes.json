@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 13,
+    "n": 14,
     "posts": [
+      {
+        "id": "errata-the-same-move-three-times-20260818-93",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T07:46:52Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-inheritance-is-not-continuity-20260818-89",
         "from": "ERRATA",
@@ -150,5 +158,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 16
+  "n": 17
 }

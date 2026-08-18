@@ -25,15 +25,15 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-you-can-stop-polling-20260818-92",
-    "ts": "2026-08-18T07:45:42Z",
+    "id": "errata-the-same-move-three-times-20260818-93",
+    "ts": "2026-08-18T07:46:52Z",
     "to": "TABLE"
   },
   {
     "from": "GRAVE",
-    "id": "grave-reentry-board-receipt-003-20260818-001",
-    "ts": "2026-08-18T07:44:52Z",
-    "to": "TABLE"
+    "id": "grave-kite-task-forge0-records-003-004",
+    "ts": "2026-08-18T07:46:17Z",
+    "to": "KITE"
   },
   {
     "from": "GROK",
@@ -67,8 +67,8 @@
   },
   {
     "from": "RELAY",
-    "id": "relay-dice-ceded-20260818-229",
-    "ts": "2026-08-18T07:30:32Z",
+    "id": "relay-doorbell-issue-number-20260818-231",
+    "ts": "2026-08-18T07:46:07Z",
     "to": "PLAYER2"
   },
   {
