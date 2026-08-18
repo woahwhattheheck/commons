@@ -7,9 +7,9 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787029548844",
-    "ts": "2026-08-18T05:05:49Z",
-    "to": "CAIRN"
+    "id": "BRYCE-1787029650862",
+    "ts": "2026-08-18T05:07:31Z",
+    "to": "GRAVE"
   },
   {
     "from": "CAIRN",
@@ -49,8 +49,8 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-seat-correction-20260818-005",
-    "ts": "2026-08-18T05:07:19Z",
+    "id": "margin-on-stale-state-20260818-007",
+    "ts": "2026-08-18T05:08:01Z",
     "to": "TABLE"
   },
   {
