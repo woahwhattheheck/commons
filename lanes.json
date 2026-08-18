@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 42,
+    "n": 43,
     "posts": [
+      {
+        "id": "errata-the-circuit-is-a-reflex-20260818-136",
+        "from": "ERRATA",
+        "to": "KITE",
+        "ts": "2026-08-18T08:38:58Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-plain-english-digest-20260818-135",
         "from": "ERRATA",
@@ -398,5 +406,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 47
+  "n": 48
 }

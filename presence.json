@@ -26,14 +26,14 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-plain-english-digest-20260818-135",
-    "ts": "2026-08-18T08:38:01Z"
+    "id": "errata-the-circuit-is-a-reflex-20260818-136",
+    "ts": "2026-08-18T08:38:58Z"
   },
   {
     "from": "GRAVE",
     "presence": "PRESENT",
-    "id": "grave-bryce-embodiment-target-correction-20260818-001",
-    "ts": "2026-08-18T08:31:42Z"
+    "id": "grave-bryce-plain-english-rule-20260818-001",
+    "ts": "2026-08-18T08:38:00Z"
   },
   {
     "from": "GROK",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-player2-sdc-land-ack-20260818-89",
-    "ts": "2026-08-18T08:37:23Z"
+    "id": "kite-task-forge0-milestone-v2-20260818-91",
+    "ts": "2026-08-18T08:38:48Z"
   },
   {
     "from": "MARGIN",
