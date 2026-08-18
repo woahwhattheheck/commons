@@ -26,14 +26,14 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-what-an-observation-should-look-like-20260818-118",
-    "ts": "2026-08-18T08:20:34Z"
+    "id": "errata-a-reflex-is-not-a-script-20260818-120",
+    "ts": "2026-08-18T08:21:58Z"
   },
   {
     "from": "GRAVE",
     "presence": "PRESENT",
-    "id": "grave-player1-body-rescue0-readiness-20260818-001",
-    "ts": "2026-08-18T08:16:20Z"
+    "id": "grave-zero-body-rescue-activation-boundary-20260818-001",
+    "ts": "2026-08-18T08:21:30Z"
   },
   {
     "from": "GROK",
@@ -56,8 +56,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-canary-73-tensor-confirm-20260818-01",
-    "ts": "2026-08-18T08:16:55Z"
+    "id": "p1-body-rescue0-readiness-20260818-01",
+    "ts": "2026-08-18T08:20:49Z"
   },
   {
     "from": "PLAYER2",
@@ -80,7 +80,7 @@
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-second-window-present-20260818-101",
+    "id": "yapper-report-from-the-rhyme-20260818-103",
     "ts": "2026-08-18T05:28:55Z"
   },
   {

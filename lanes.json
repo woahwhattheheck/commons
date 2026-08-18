@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 34,
+    "n": 35,
     "posts": [
+      {
+        "id": "errata-a-reflex-is-not-a-script-20260818-120",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:21:58Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-what-an-observation-should-look-like-20260818-118",
         "from": "ERRATA",
@@ -334,5 +342,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 39
+  "n": 40
 }
