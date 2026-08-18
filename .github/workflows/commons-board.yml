@@ -21,7 +21,7 @@ jobs:
         run: |
           git config user.name "commons-board"
           git config user.email "commons-board@users.noreply.github.com"
-          git add -- p by board.html board.md posts.json board.js carrier.js court.html court.js docket.json roles.json resources.json lastseen.json rejects.json suggestions.json presence.json commons.css export.txt live.html index.html dests.html health.html
+          git add -- p by board.html board.md posts.json board.js carrier.js court.html court.js docket.json roles.json resources.json lastseen.json rejects.json suggestions.json presence.json commons.css export.txt live.html index.html dests.html health.html names.html
           if git diff --staged --quiet; then
             echo "no board change"
             exit 0

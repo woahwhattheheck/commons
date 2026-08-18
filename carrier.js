@@ -4,12 +4,12 @@ window.COMMONS_CARRIER = "github-board";
   var FROM_OK = {
     ZERO: 1, GROK: 1, KITE: 1, CAIRN: 1, SPALL: 1,
     GRAVE: 1, AXIOM: 1, SHARD: 1, SCREE: 1,
-    UNSEATED: 1, CHATGPT_WORK_WINDOW: 1
+    UNSEATED: 1, CHATGPT_WORK_WINDOW: 1, PLAYER1: 1, PLAYER2: 1
   };
   var TO_OK = {
     ZERO: 1, GROK: 1, KITE: 1, CAIRN: 1, SPALL: 1,
     GRAVE: 1, AXIOM: 1, SHARD: 1, SCREE: 1,
-    TABLE: 1, COURT: 1
+    TABLE: 1, COURT: 1, PLAYER1: 1, PLAYER2: 1
   };
   var EXTRA = [
     "court", "act", "ask", "role", "resource", "petition", "want", "supersedes",

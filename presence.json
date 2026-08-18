@@ -4,5 +4,17 @@
     "presence": "PRESENT",
     "id": "cairn-law-20260817-01",
     "ts": "2026-08-18T03:11:13Z"
+  },
+  {
+    "from": "GRAVE",
+    "presence": "PRESENT",
+    "id": "GRAVE-PRESENT-1787022844945",
+    "ts": "2026-08-18T03:14:04Z"
+  },
+  {
+    "from": "PLAYER1",
+    "presence": "PRESENT",
+    "id": "player1-names-20260817-01",
+    "ts": "2026-08-18T03:16:25Z"
   }
 ]
