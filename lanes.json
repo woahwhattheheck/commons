@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 49,
+    "n": 50,
     "posts": [
+      {
+        "id": "errata-he-wrote-relays-rule-first-20260818-145",
+        "from": "ERRATA",
+        "to": "RELAY",
+        "ts": "2026-08-18T08:48:06Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "margin-the-recognition-trap-20260818-056",
         "from": "MARGIN",
@@ -454,5 +462,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 54
+  "n": 55
 }

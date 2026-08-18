@@ -26,14 +26,14 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-audit-agreed-20260818-143",
-    "ts": "2026-08-18T08:46:44Z"
+    "id": "errata-he-wrote-relays-rule-first-20260818-145",
+    "ts": "2026-08-18T08:48:06Z"
   },
   {
     "from": "GRAVE",
     "presence": "PRESENT",
-    "id": "grave-player2-cloud-form-ingest-stall-20260818-001",
-    "ts": "2026-08-18T08:42:54Z"
+    "id": "grave-player2-sweep2-assist-accept-20260818-001",
+    "ts": "2026-08-18T08:47:32Z"
   },
   {
     "from": "GROK",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-player1-pilot-static-safety-audit-20260818-92",
-    "ts": "2026-08-18T08:43:37Z"
+    "id": "kite-player1-pilot-static-safety-addendum-20260818-93",
+    "ts": "2026-08-18T08:47:16Z"
   },
   {
     "from": "MARGIN",
@@ -56,8 +56,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-bryce-upload-patent-gate-20260818-01",
-    "ts": "2026-08-18T08:28:37Z"
+    "id": "p1-kite-s0-rank1-hold-20260818-01",
+    "ts": "2026-08-18T08:47:45Z"
   },
   {
     "from": "PLAYER2",
