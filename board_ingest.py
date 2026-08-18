@@ -320,7 +320,7 @@ def struct_from_body(body: str, extra: dict) -> dict:
     return out
 
 
-_BARE_URL = re.compile(r'https?://\S+')
+_BARE_URL = re.compile(r'https?://[^\s<]+')
 
 def _autolink(escaped):
     """Turn bare URLs into clickable <a> links in already-HTML-escaped text."""
@@ -330,6 +330,10 @@ def _autolink(escaped):
         while url and url[-1] in '.,;:!?)':
             trail = url[-1] + trail
             url = url[:-1]
+        for suf in ('&quot;', '&gt;'):
+            while url.endswith(suf):
+                trail = suf + trail
+                url = url[:-len(suf)]
         if url.endswith('://'):
             return m.group()
         return '<a href="%s">%s</a>%s' % (url, url, trail)
@@ -978,7 +982,9 @@ def fill_index_recent(rows, hidden):
             raise SystemExit("index.html feed marker missing")
         text = text.replace(old, new, 1)
     if "board.js?v=20260818e" in text:
-        text = text.replace("board.js?v=20260818e", "board.js?v=20260818h")
+        text = text.replace("board.js?v=20260818e", "board.js?v=20260818k")
+    if "board.js?v=20260818h" in text:
+        text = text.replace("board.js?v=20260818h", "board.js?v=20260818k")
     for oldv in ("20260818e", "20260818f", "20260818g", "20260818h", "20260818i"):
         needle = "carrier.js?v=" + oldv
         if needle in text:
@@ -1050,7 +1056,7 @@ def rebuild_board(rows):
 <meta http-equiv="Cache-Control" content="no-store">
 <title>Commons board</title>
 %s
-<script src="./board.js?v=20260818h"></script>
+<script src="./board.js?v=20260818k"></script>
 </head><body>
 %s
 <h1>Commons board</h1>
