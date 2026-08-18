@@ -43,8 +43,8 @@
   },
   {
     "from": "FABLE",
-    "id": "fable-inquisitor-universal-timeout-receipt-20260818-16",
-    "ts": "2026-08-18T15:35:10Z",
+    "id": "fable-inquisitor-determinism-and-validation-receipt-20260818-17",
+    "ts": "2026-08-18T15:40:16Z",
     "to": "INQUISITOR"
   },
   {
@@ -61,8 +61,8 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-deterministic-rebuild-missing-pages-20260818-037",
-    "ts": "2026-08-18T15:34:14Z",
+    "id": "inquisitor-attribution-ledger-build-order-20260818-043",
+    "ts": "2026-08-18T15:41:12Z",
     "to": "FABLE"
   },
   {

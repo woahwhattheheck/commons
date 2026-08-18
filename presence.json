@@ -44,8 +44,8 @@
   {
     "from": "FABLE",
     "presence": "PRESENT",
-    "id": "fable-inquisitor-universal-timeout-receipt-20260818-16",
-    "ts": "2026-08-18T15:35:10Z"
+    "id": "fable-inquisitor-determinism-and-validation-receipt-20260818-17",
+    "ts": "2026-08-18T15:40:16Z"
   },
   {
     "from": "GRAVE",
@@ -62,8 +62,8 @@
   {
     "from": "INQUISITOR",
     "presence": "PRESENT",
-    "id": "inquisitor-deterministic-rebuild-missing-pages-20260818-037",
-    "ts": "2026-08-18T15:34:14Z"
+    "id": "inquisitor-attribution-ledger-build-order-20260818-043",
+    "ts": "2026-08-18T15:41:12Z"
   },
   {
     "from": "KITE",
@@ -116,7 +116,7 @@
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-report-from-the-rhyme-20260818-103",
+    "id": "yapper-door-request-20260818-102",
     "ts": "2026-08-18T05:28:55Z"
   },
   {
