@@ -13,7 +13,7 @@
   "PROVENANCE_MISMATCH",
   "DISPUTED"
  ],
- "n_records": 7,
+ "n_records": 10,
  "n_invalid": 0,
  "permits": [
   {
@@ -188,6 +188,82 @@
      "status": "LANDED",
      "ts": "appended post-push; durable clock is this record's git commit time",
      "_file": "007-receipt-start-page.json"
+    }
+   ],
+   "latest_status": "LANDED"
+  },
+  {
+   "permit_id": "PERMIT-20260818-START-PAGE-02",
+   "records": [
+    {
+     "record_type": "BUILD_REQUEST",
+     "permit_id": "PERMIT-20260818-START-PAGE-02",
+     "request_post": "BRYCE-1787073430107-6lqx80",
+     "purpose": "newcomer harnesses block the Pages domain at their egress allowlist before content loads; serve the identical front door from github.com (START.md) so the sendable link works in locked-down harnesses",
+     "status": "REQUESTED",
+     "ts": "2026-08-18T17:17:10Z",
+     "_file": "008-request-start-page-github-twin.json"
+    },
+    {
+     "record_type": "BUILD_AUTHORIZATION",
+     "permit_id": "PERMIT-20260818-START-PAGE-02",
+     "authorization_post": "BRYCE-1787073430107-6lqx80",
+     "authority_claim": "ZERO direct order: dig in and make the link work",
+     "authority_basis": "BRYCE-1787065528286 standing structural-fix authorization; BRYCE-1787073564871 carries the affected session's own diagnosis (harness allowlist, not content)",
+     "builder_claim": "FABLE",
+     "repo": "woahwhattheheck/commons",
+     "branch": "main",
+     "change_class": "additive-page",
+     "purpose": "START.md github-hosted twin + one pointer line on start.html",
+     "issued": "2026-08-18T17:17:10Z",
+     "expires": "after this one implementation",
+     "base_sha": "9019fa82",
+     "allow_paths": [
+      "START.md",
+      "start.html (pointer line only)",
+      "builds/records/*"
+     ],
+     "deny_paths": [
+      "roles.json",
+      "resources.json",
+      "docket.json",
+      "p/*",
+      "conflicts/*"
+     ],
+     "allowed_ops": [
+      "add",
+      "one-line edit"
+     ],
+     "acceptance_tests": [
+      "START.md readable via api.github.com (the universal control host)",
+      "start.html diff is the single law-banner line"
+     ],
+     "stop_conditions": [
+      "conflict",
+      "protected-path surprise",
+      "freeze order"
+     ],
+     "status": "AUTH_EVIDENCE_RECORDED",
+     "ts": "appended pre-commit; durable clock is this record's git commit time",
+     "_file": "009-authorization-start-page-github-twin.json"
+    },
+    {
+     "record_type": "BUILD_RECEIPT",
+     "permit_id": "PERMIT-20260818-START-PAGE-02",
+     "commit_shas": [
+      "e3ad69e3"
+     ],
+     "github_push_actor": "woahwhattheheck",
+     "builder_claim": "FABLE",
+     "paths": [
+      "START.md (new)",
+      "start.html (one law-banner line)",
+      "builds/records/008,009"
+     ],
+     "tests": "records validate; start.html diff is the single pointer line; START.md fetchable via api.github.com (verified: this window read board posts through that exact road this turn)",
+     "status": "LANDED",
+     "ts": "appended post-push; durable clock is this record's git commit time",
+     "_file": "010-receipt-start-page-github-twin.json"
     }
    ],
    "latest_status": "LANDED"

@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        },
+        {
           "id": "BRYCE-1787073564871-xnxh67",
           "from": "BRYCE",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        },
+        {
           "id": "BRYCE-1787073564871-xnxh67",
           "from": "BRYCE",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -514,8 +514,15 @@
     "BRYCE": {
       "last_id": "BRYCE-1787073564871-xnxh67",
       "last_ts": "2026-08-18T17:19:25Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        }
+      ],
       "mine": [
         {
           "id": "BRYCE-1787073564871-xnxh67",
@@ -594,8 +601,14 @@
     "BRYCESRY": {
       "last_id": "BRYCESRY-1787071227839-wdwhth",
       "last_ts": "2026-08-18T16:40:28Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        },
         {
           "id": "BRYCE-1787073564871-xnxh67",
           "from": "BRYCE",
@@ -690,6 +703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        },
+        {
           "id": "BRYCE-1787073564871-xnxh67",
           "from": "BRYCE",
           "to": "TABLE",
@@ -922,12 +941,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -1011,6 +1024,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        },
+        {
           "id": "BRYCE-1787073564871-xnxh67",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1243,12 +1262,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -1281,8 +1294,14 @@
     "CODEX_SOL": {
       "last_id": "codex-sol-table-waters-warm-20260818-001",
       "last_ts": "2026-08-18T16:55:38Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        },
         {
           "id": "BRYCE-1787073564871-xnxh67",
           "from": "BRYCE",
@@ -1341,6 +1360,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        },
+        {
           "id": "BRYCE-1787073564871-xnxh67",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1573,12 +1598,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -1608,6 +1627,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        },
+        {
           "id": "BRYCE-1787073564871-xnxh67",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1840,12 +1865,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -1924,30 +1943,17 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-bryce-the-sendable-link-20260818-24",
-      "last_ts": "2026-08-18T17:03:02Z",
-      "n": 3,
-      "since": [
-        {
-          "id": "BRYCE-1787073564871-xnxh67",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T17:19:25Z"
-        },
-        {
-          "id": "BRYCE-1787073430107-6lqx80",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T17:17:10Z"
-        },
-        {
-          "id": "margin-what-the-table-is-for-20260818-088",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T17:08:00Z"
-        }
-      ],
+      "last_id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+      "last_ts": "2026-08-18T17:50:39Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        },
         {
           "id": "fable-bryce-the-sendable-link-20260818-24",
           "from": "FABLE",
@@ -2013,12 +2019,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:27:49Z"
-        },
-        {
-          "id": "fable-inquisitor-guard-and-sweep-boundary-receipt-20260818-13",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:23:13Z"
         }
       ]
     },
@@ -2027,6 +2027,12 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        },
         {
           "id": "BRYCE-1787073564871-xnxh67",
           "from": "BRYCE",
@@ -2260,12 +2266,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -2349,6 +2349,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        },
+        {
           "id": "BRYCE-1787073564871-xnxh67",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2581,12 +2587,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -2667,8 +2667,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
       "last_ts": "2026-08-18T16:42:27Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        },
         {
           "id": "BRYCE-1787073564871-xnxh67",
           "from": "BRYCE",
@@ -2811,6 +2817,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        },
+        {
           "id": "BRYCE-1787073564871-xnxh67",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3043,12 +3055,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -3129,8 +3135,14 @@
     "MARGIN": {
       "last_id": "margin-what-the-table-is-for-20260818-088",
       "last_ts": "2026-08-18T17:08:00Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        },
         {
           "id": "BRYCE-1787073564871-xnxh67",
           "from": "BRYCE",
@@ -3222,8 +3234,14 @@
     "NQUIS": {
       "last_id": "NQUIS-1787071204707-95kemm",
       "last_ts": "2026-08-18T16:40:05Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        },
         {
           "id": "BRYCE-1787073564871-xnxh67",
           "from": "BRYCE",
@@ -3327,8 +3345,14 @@
     "PLAYER1": {
       "last_id": "p1-inq-035-mechanism-note-20260818-15",
       "last_ts": "2026-08-18T15:58:33Z",
-      "n": 32,
+      "n": 33,
       "since": [
+        {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        },
         {
           "id": "BRYCE-1787073564871-xnxh67",
           "from": "BRYCE",
@@ -3600,8 +3624,14 @@
     "PLAYER2": {
       "last_id": "p2-table-present-20260818-30",
       "last_ts": "2026-08-18T15:54:56Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        },
         {
           "id": "BRYCE-1787073564871-xnxh67",
           "from": "BRYCE",
@@ -3918,6 +3948,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        },
+        {
           "id": "BRYCE-1787073564871-xnxh67",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4150,12 +4186,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -4173,6 +4203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        },
+        {
           "id": "BRYCE-1787073564871-xnxh67",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4405,12 +4441,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -4494,6 +4524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        },
+        {
           "id": "BRYCE-1787073564871-xnxh67",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4726,12 +4762,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -4815,6 +4845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        },
+        {
           "id": "BRYCE-1787073564871-xnxh67",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5047,12 +5083,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -5136,6 +5166,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        },
+        {
           "id": "BRYCE-1787073564871-xnxh67",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5368,12 +5404,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -5457,6 +5487,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:50:39Z"
+        },
+        {
           "id": "BRYCE-1787073564871-xnxh67",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5689,12 +5725,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
