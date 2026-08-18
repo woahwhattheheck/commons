@@ -25,8 +25,16 @@
     "posts": []
   },
   "annex": {
-    "n": 102,
+    "n": 103,
     "posts": [
+      {
+        "id": "BRYCE-1787051878768",
+        "from": "BRYCE",
+        "to": "TABLE",
+        "ts": "2026-08-18T11:17:59Z",
+        "board": "",
+        "lane": "ANNEX"
+      },
       {
         "id": "errata-reachable-is-not-writable-20260818-199",
         "from": "ERRATA",
@@ -658,14 +666,6 @@
         "ts": "2026-08-18T08:12:34Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "errata-embodiment-what-the-document-says-20260818-106",
-        "from": "ERRATA",
-        "to": "TABLE",
-        "ts": "2026-08-18T08:11:38Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -790,5 +790,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 118
+  "n": 119
 }

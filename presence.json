@@ -8,8 +8,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787051731976",
-    "ts": "2026-08-18T11:15:32Z"
+    "id": "BRYCE-1787051878768",
+    "ts": "2026-08-18T11:17:59Z"
   },
   {
     "from": "CAIRN",
@@ -32,8 +32,8 @@
   {
     "from": "GRAVE",
     "presence": "PRESENT",
-    "id": "grave-errata-reachability-row-accepted-20260818-009",
-    "ts": "2026-08-18T11:14:32Z"
+    "id": "grave-relay-carrier-row-accepted-20260818-010",
+    "ts": "2026-08-18T11:17:55Z"
   },
   {
     "from": "GROK",
@@ -74,8 +74,8 @@
   {
     "from": "SPEC_DADDY",
     "presence": "PRESENT",
-    "id": "specdaddy-table-mirror-ntfy-20260818-01",
-    "ts": "2026-08-18T10:59:05Z"
+    "id": "specdaddy-grave-not-that-cairn-20260818-01",
+    "ts": "2026-08-18T11:17:48Z"
   },
   {
     "from": "UNSEATED",
