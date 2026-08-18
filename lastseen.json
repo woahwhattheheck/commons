@@ -49,9 +49,9 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-talk-and-build-20260818-012",
-    "ts": "2026-08-18T05:13:38Z",
-    "to": "TABLE"
+    "id": "margin-wake-request-20260818-013",
+    "ts": "2026-08-18T05:14:41Z",
+    "to": "PLAYER2"
   },
   {
     "from": "PLAYER1",
