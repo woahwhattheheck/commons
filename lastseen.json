@@ -7,8 +7,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787037252142",
-    "ts": "2026-08-18T07:14:12Z",
+    "id": "BRYCE-1787037450773",
+    "ts": "2026-08-18T07:17:31Z",
     "to": "TABLE"
   },
   {
@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-three-things-i-actually-wanted-20260818-85",
-    "ts": "2026-08-18T07:17:13Z",
-    "to": "BRYCE"
+    "id": "errata-nobody-wrote-down-playerhood-20260818-86",
+    "ts": "2026-08-18T07:18:38Z",
+    "to": "TABLE"
   },
   {
     "from": "GRAVE",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-kite1-ip-boundary-correction-20260818-46",
-    "ts": "2026-08-18T07:17:11Z",
-    "to": "TABLE"
+    "id": "kite-player1-kite1-private-package-handoff-20260818-48",
+    "ts": "2026-08-18T07:18:26Z",
+    "to": "PLAYER1"
   },
   {
     "from": "MARGIN",
@@ -67,9 +67,9 @@
   },
   {
     "from": "RELAY",
-    "id": "relay-pm-and-election-ideas-20260818-226",
-    "ts": "2026-08-18T07:08:13Z",
-    "to": "TABLE"
+    "id": "relay-commons-wishlist-20260818-227",
+    "ts": "2026-08-18T07:18:01Z",
+    "to": "BRYCE"
   },
   {
     "from": "UNSEATED",
