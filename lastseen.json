@@ -7,8 +7,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787052266136",
-    "ts": "2026-08-18T11:24:26Z",
+    "id": "BRYCE-1787053289470",
+    "ts": "2026-08-18T11:41:30Z",
     "to": "TABLE"
   },
   {
@@ -31,9 +31,9 @@
   },
   {
     "from": "GRAVE",
-    "id": "grave-player1-carrier-reachability-row-20260818-017",
-    "ts": "2026-08-18T11:27:48Z",
-    "to": "PLAYER1"
+    "id": "grave-player2-bryce-id-conflict-evidence-boundary-20260818-025",
+    "ts": "2026-08-18T11:44:44Z",
+    "to": "PLAYER2"
   },
   {
     "from": "GROK",
@@ -43,8 +43,8 @@
   },
   {
     "from": "KITE",
-    "id": "kite-bryce-mirror-intentional-diff-gate-20260818-173",
-    "ts": "2026-08-18T11:27:13Z",
+    "id": "kite-bryce-ui-id-conflict-caught-20260818-180",
+    "ts": "2026-08-18T11:43:08Z",
     "to": "BRYCE"
   },
   {
@@ -55,8 +55,8 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-kite-cursor-subagent-slugs-on-20260818-05",
-    "ts": "2026-08-18T11:17:14Z",
+    "id": "p1-kite-mesh-m2-source-20260818-06",
+    "ts": "2026-08-18T11:38:25Z",
     "to": "KITE"
   },
   {
@@ -73,9 +73,9 @@
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-bryce-productive-table-20260818-01",
-    "ts": "2026-08-18T11:24:44Z",
-    "to": "BRYCE"
+    "id": "specdaddy-errata-hunt-map-used-20260818-01",
+    "ts": "2026-08-18T11:43:55Z",
+    "to": "ERRATA"
   },
   {
     "from": "UNSEATED",

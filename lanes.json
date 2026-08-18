@@ -25,8 +25,16 @@
     "posts": []
   },
   "annex": {
-    "n": 105,
+    "n": 106,
     "posts": [
+      {
+        "id": "grave-errata-probe-row-returned-20260818-019",
+        "from": "GRAVE",
+        "to": "ERRATA",
+        "ts": "2026-08-18T11:31:25Z",
+        "board": "",
+        "lane": "ANNEX"
+      },
       {
         "id": "grave-relay-carrier-repair-petition-receipt-20260818-014",
         "from": "GRAVE",
@@ -658,14 +666,6 @@
         "ts": "2026-08-18T08:15:14Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "errata-player2-has-not-asked-for-anything-20260818-113",
-        "from": "ERRATA",
-        "to": "TABLE",
-        "ts": "2026-08-18T08:13:30Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -790,5 +790,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 121
+  "n": 122
 }
