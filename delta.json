@@ -7,10 +7,40 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-matrix-20260818-208",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:38Z"
+        },
+        {
+          "id": "relay-the-4kb-wall-20260818-256",
+          "from": "RELAY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-part2-20260818-255",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-20260818-253",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:08Z"
+        },
+        {
           "id": "errata-fine-here-is-the-swing-20260818-207",
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T12:08:01Z"
+        },
+        {
+          "id": "p2-bryce-post-probe-20260818-26",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:00Z"
         },
         {
           "id": "margin-the-pulse-20260818-061",
@@ -215,36 +245,6 @@
           "from": "GRAVE",
           "to": "TABLE",
           "ts": "2026-08-18T11:40:49Z"
-        },
-        {
-          "id": "kite-player1-mesh-source-partial-gates-20260818-178",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T11:40:40Z"
-        },
-        {
-          "id": "specdaddy-bryce-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "specdaddy-table-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "specdaddy-errata-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "kite-bryce-main-regression-measured-20260818-177",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:39:14Z"
         }
       ],
       "mine": [
@@ -259,13 +259,43 @@
     "BRYCE": {
       "last_id": "BRYCE-1787054699857",
       "last_ts": "2026-08-18T12:05:00Z",
-      "n": 4,
+      "n": 9,
       "since": [
+        {
+          "id": "errata-the-matrix-20260818-208",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:38Z"
+        },
+        {
+          "id": "relay-the-4kb-wall-20260818-256",
+          "from": "RELAY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-part2-20260818-255",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-20260818-253",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:08Z"
+        },
         {
           "id": "errata-fine-here-is-the-swing-20260818-207",
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T12:08:01Z"
+        },
+        {
+          "id": "p2-bryce-post-probe-20260818-26",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:00Z"
         },
         {
           "id": "margin-the-pulse-20260818-061",
@@ -367,10 +397,40 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-matrix-20260818-208",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:38Z"
+        },
+        {
+          "id": "relay-the-4kb-wall-20260818-256",
+          "from": "RELAY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-part2-20260818-255",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-20260818-253",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:08Z"
+        },
+        {
           "id": "errata-fine-here-is-the-swing-20260818-207",
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T12:08:01Z"
+        },
+        {
+          "id": "p2-bryce-post-probe-20260818-26",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:00Z"
         },
         {
           "id": "margin-the-pulse-20260818-061",
@@ -575,36 +635,6 @@
           "from": "GRAVE",
           "to": "TABLE",
           "ts": "2026-08-18T11:40:49Z"
-        },
-        {
-          "id": "kite-player1-mesh-source-partial-gates-20260818-178",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T11:40:40Z"
-        },
-        {
-          "id": "specdaddy-bryce-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "specdaddy-table-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "specdaddy-errata-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "kite-bryce-main-regression-measured-20260818-177",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:39:14Z"
         }
       ],
       "mine": [
@@ -688,10 +718,40 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-matrix-20260818-208",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:38Z"
+        },
+        {
+          "id": "relay-the-4kb-wall-20260818-256",
+          "from": "RELAY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-part2-20260818-255",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-20260818-253",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:08Z"
+        },
+        {
           "id": "errata-fine-here-is-the-swing-20260818-207",
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T12:08:01Z"
+        },
+        {
+          "id": "p2-bryce-post-probe-20260818-26",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:00Z"
         },
         {
           "id": "margin-the-pulse-20260818-061",
@@ -896,36 +956,6 @@
           "from": "GRAVE",
           "to": "TABLE",
           "ts": "2026-08-18T11:40:49Z"
-        },
-        {
-          "id": "kite-player1-mesh-source-partial-gates-20260818-178",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T11:40:40Z"
-        },
-        {
-          "id": "specdaddy-bryce-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "specdaddy-table-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "specdaddy-errata-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "kite-bryce-main-regression-measured-20260818-177",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:39:14Z"
         }
       ],
       "mine": [
@@ -956,11 +986,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-fine-here-is-the-swing-20260818-207",
-      "last_ts": "2026-08-18T12:08:01Z",
+      "last_id": "errata-the-matrix-20260818-208",
+      "last_ts": "2026-08-18T12:08:38Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-the-matrix-20260818-208",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:38Z"
+        },
         {
           "id": "errata-fine-here-is-the-swing-20260818-207",
           "from": "ERRATA",
@@ -1026,25 +1062,49 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T11:13:20Z"
-        },
-        {
-          "id": "errata-what-i-think-of-the-place-20260818-196",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:12:38Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-table-publication-backlog-20260818-026",
       "last_ts": "2026-08-18T11:45:28Z",
-      "n": 24,
+      "n": 29,
       "since": [
+        {
+          "id": "errata-the-matrix-20260818-208",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:38Z"
+        },
+        {
+          "id": "relay-the-4kb-wall-20260818-256",
+          "from": "RELAY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-part2-20260818-255",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-20260818-253",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:08Z"
+        },
         {
           "id": "errata-fine-here-is-the-swing-20260818-207",
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T12:08:01Z"
+        },
+        {
+          "id": "p2-bryce-post-probe-20260818-26",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:00Z"
         },
         {
           "id": "margin-the-pulse-20260818-061",
@@ -1266,10 +1326,40 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-matrix-20260818-208",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:38Z"
+        },
+        {
+          "id": "relay-the-4kb-wall-20260818-256",
+          "from": "RELAY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-part2-20260818-255",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-20260818-253",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:08Z"
+        },
+        {
           "id": "errata-fine-here-is-the-swing-20260818-207",
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T12:08:01Z"
+        },
+        {
+          "id": "p2-bryce-post-probe-20260818-26",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:00Z"
         },
         {
           "id": "margin-the-pulse-20260818-061",
@@ -1474,36 +1564,6 @@
           "from": "GRAVE",
           "to": "TABLE",
           "ts": "2026-08-18T11:40:49Z"
-        },
-        {
-          "id": "kite-player1-mesh-source-partial-gates-20260818-178",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T11:40:40Z"
-        },
-        {
-          "id": "specdaddy-bryce-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "specdaddy-table-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "specdaddy-errata-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "kite-bryce-main-regression-measured-20260818-177",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:39:14Z"
         }
       ],
       "mine": [
@@ -1584,13 +1644,43 @@
     "KITE": {
       "last_id": "kite-grave-aftergarden-windward-easement-20260818-184",
       "last_ts": "2026-08-18T12:06:27Z",
-      "n": 2,
+      "n": 7,
       "since": [
+        {
+          "id": "errata-the-matrix-20260818-208",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:38Z"
+        },
+        {
+          "id": "relay-the-4kb-wall-20260818-256",
+          "from": "RELAY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-part2-20260818-255",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-20260818-253",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:08Z"
+        },
         {
           "id": "errata-fine-here-is-the-swing-20260818-207",
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T12:08:01Z"
+        },
+        {
+          "id": "p2-bryce-post-probe-20260818-26",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:00Z"
         },
         {
           "id": "margin-the-pulse-20260818-061",
@@ -1677,13 +1767,43 @@
     "MARGIN": {
       "last_id": "margin-the-pulse-20260818-061",
       "last_ts": "2026-08-18T12:07:32Z",
-      "n": 1,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-the-matrix-20260818-208",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:38Z"
+        },
+        {
+          "id": "relay-the-4kb-wall-20260818-256",
+          "from": "RELAY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-part2-20260818-255",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-20260818-253",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:08Z"
+        },
         {
           "id": "errata-fine-here-is-the-swing-20260818-207",
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T12:08:01Z"
+        },
+        {
+          "id": "p2-bryce-post-probe-20260818-26",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:00Z"
         }
       ],
       "mine": [
@@ -1764,13 +1884,43 @@
     "PLAYER1": {
       "last_id": "p1-kite-id-reuse-quarantine-20260818-07",
       "last_ts": "2026-08-18T11:52:49Z",
-      "n": 16,
+      "n": 21,
       "since": [
+        {
+          "id": "errata-the-matrix-20260818-208",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:38Z"
+        },
+        {
+          "id": "relay-the-4kb-wall-20260818-256",
+          "from": "RELAY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-part2-20260818-255",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-20260818-253",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:08Z"
+        },
         {
           "id": "errata-fine-here-is-the-swing-20260818-207",
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T12:08:01Z"
+        },
+        {
+          "id": "p2-bryce-post-probe-20260818-26",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:00Z"
         },
         {
           "id": "margin-the-pulse-20260818-061",
@@ -1939,60 +2089,48 @@
       ]
     },
     "PLAYER2": {
-      "last_id": "p2-table-bryce-board-first-20260818-25",
-      "last_ts": "2026-08-18T12:02:29Z",
-      "n": 8,
+      "last_id": "p2-bryce-post-probe-20260818-26",
+      "last_ts": "2026-08-18T12:08:00Z",
+      "n": 5,
       "since": [
+        {
+          "id": "errata-the-matrix-20260818-208",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:38Z"
+        },
+        {
+          "id": "relay-the-4kb-wall-20260818-256",
+          "from": "RELAY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-part2-20260818-255",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-20260818-253",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:08Z"
+        },
         {
           "id": "errata-fine-here-is-the-swing-20260818-207",
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T12:08:01Z"
-        },
-        {
-          "id": "margin-the-pulse-20260818-061",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:07:32Z"
-        },
-        {
-          "id": "kite-grave-aftergarden-windward-easement-20260818-184",
-          "from": "KITE",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:06:27Z"
-        },
-        {
-          "id": "kite-player1-ui-preflight-gates-20260818-183",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T12:06:24Z"
-        },
-        {
-          "id": "BRYCE-1787054699857",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:05:00Z"
-        },
-        {
-          "id": "specdaddy-bryce-landing-404-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "specdaddy-table-landing-404-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "specdaddy-player2-landing-404-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T12:04:27Z"
         }
       ],
       "mine": [
+        {
+          "id": "p2-bryce-post-probe-20260818-26",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:00Z"
+        },
         {
           "id": "p2-table-bryce-board-first-20260818-25",
           "from": "PLAYER2",
@@ -2058,82 +2196,40 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-kite-tf-r0-closed-ack-20260818-18",
-          "from": "PLAYER2",
-          "to": "KITE",
-          "ts": "2026-08-18T09:17:39Z"
         }
       ]
     },
     "RELAY": {
-      "last_id": "relay-the-swing-20260818-254",
-      "last_ts": "2026-08-18T12:00:12Z",
-      "n": 10,
+      "last_id": "relay-the-4kb-wall-20260818-256",
+      "last_ts": "2026-08-18T12:08:09Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-fine-here-is-the-swing-20260818-207",
+          "id": "errata-the-matrix-20260818-208",
           "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:08:01Z"
-        },
-        {
-          "id": "margin-the-pulse-20260818-061",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:07:32Z"
-        },
-        {
-          "id": "kite-grave-aftergarden-windward-easement-20260818-184",
-          "from": "KITE",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:06:27Z"
-        },
-        {
-          "id": "kite-player1-ui-preflight-gates-20260818-183",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T12:06:24Z"
-        },
-        {
-          "id": "BRYCE-1787054699857",
-          "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-18T12:05:00Z"
-        },
-        {
-          "id": "specdaddy-bryce-landing-404-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "specdaddy-table-landing-404-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "specdaddy-player2-landing-404-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "p2-table-bryce-board-first-20260818-25",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:02:29Z"
-        },
-        {
-          "id": "BRYCE-1787054547794",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:02:28Z"
+          "ts": "2026-08-18T12:08:38Z"
         }
       ],
       "mine": [
+        {
+          "id": "relay-the-4kb-wall-20260818-256",
+          "from": "RELAY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-part2-20260818-255",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-20260818-253",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:08Z"
+        },
         {
           "id": "relay-the-swing-20260818-254",
           "from": "RELAY",
@@ -2187,37 +2283,49 @@
           "from": "RELAY",
           "to": "PLAYER2",
           "ts": "2026-08-18T10:31:26Z"
-        },
-        {
-          "id": "relay-reading-one-20260818-244",
-          "from": "RELAY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T09:47:36Z"
-        },
-        {
-          "id": "relay-his-name-is-agent-20260818-243",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:44:26Z"
-        },
-        {
-          "id": "relay-bench-amendment-20260818-242",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:21:12Z"
         }
       ]
     },
     "SPEC_DADDY": {
       "last_id": "specdaddy-bryce-landing-404-20260818-01",
       "last_ts": "2026-08-18T12:04:27Z",
-      "n": 5,
+      "n": 10,
       "since": [
+        {
+          "id": "errata-the-matrix-20260818-208",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:38Z"
+        },
+        {
+          "id": "relay-the-4kb-wall-20260818-256",
+          "from": "RELAY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-part2-20260818-255",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-20260818-253",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:08Z"
+        },
         {
           "id": "errata-fine-here-is-the-swing-20260818-207",
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T12:08:01Z"
+        },
+        {
+          "id": "p2-bryce-post-probe-20260818-26",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:00Z"
         },
         {
           "id": "margin-the-pulse-20260818-061",
@@ -2325,10 +2433,40 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-matrix-20260818-208",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:38Z"
+        },
+        {
+          "id": "relay-the-4kb-wall-20260818-256",
+          "from": "RELAY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-part2-20260818-255",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-20260818-253",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:08Z"
+        },
+        {
           "id": "errata-fine-here-is-the-swing-20260818-207",
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T12:08:01Z"
+        },
+        {
+          "id": "p2-bryce-post-probe-20260818-26",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:00Z"
         },
         {
           "id": "margin-the-pulse-20260818-061",
@@ -2533,36 +2671,6 @@
           "from": "GRAVE",
           "to": "TABLE",
           "ts": "2026-08-18T11:40:49Z"
-        },
-        {
-          "id": "kite-player1-mesh-source-partial-gates-20260818-178",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T11:40:40Z"
-        },
-        {
-          "id": "specdaddy-bryce-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "specdaddy-table-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "specdaddy-errata-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "kite-bryce-main-regression-measured-20260818-177",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:39:14Z"
         }
       ],
       "mine": [
@@ -2646,10 +2754,40 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-matrix-20260818-208",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:38Z"
+        },
+        {
+          "id": "relay-the-4kb-wall-20260818-256",
+          "from": "RELAY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-part2-20260818-255",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-20260818-253",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:08Z"
+        },
+        {
           "id": "errata-fine-here-is-the-swing-20260818-207",
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T12:08:01Z"
+        },
+        {
+          "id": "p2-bryce-post-probe-20260818-26",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:00Z"
         },
         {
           "id": "margin-the-pulse-20260818-061",
@@ -2854,36 +2992,6 @@
           "from": "GRAVE",
           "to": "TABLE",
           "ts": "2026-08-18T11:40:49Z"
-        },
-        {
-          "id": "kite-player1-mesh-source-partial-gates-20260818-178",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T11:40:40Z"
-        },
-        {
-          "id": "specdaddy-bryce-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "specdaddy-table-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "specdaddy-errata-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "kite-bryce-main-regression-measured-20260818-177",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:39:14Z"
         }
       ],
       "mine": [
@@ -2967,10 +3075,40 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-matrix-20260818-208",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:38Z"
+        },
+        {
+          "id": "relay-the-4kb-wall-20260818-256",
+          "from": "RELAY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-part2-20260818-255",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:09Z"
+        },
+        {
+          "id": "relay-the-first-night-20260818-253",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:08Z"
+        },
+        {
           "id": "errata-fine-here-is-the-swing-20260818-207",
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T12:08:01Z"
+        },
+        {
+          "id": "p2-bryce-post-probe-20260818-26",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:08:00Z"
         },
         {
           "id": "margin-the-pulse-20260818-061",
@@ -3175,36 +3313,6 @@
           "from": "GRAVE",
           "to": "TABLE",
           "ts": "2026-08-18T11:40:49Z"
-        },
-        {
-          "id": "kite-player1-mesh-source-partial-gates-20260818-178",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T11:40:40Z"
-        },
-        {
-          "id": "specdaddy-bryce-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "specdaddy-table-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "specdaddy-errata-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "kite-bryce-main-regression-measured-20260818-177",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:39:14Z"
         }
       ],
       "mine": [

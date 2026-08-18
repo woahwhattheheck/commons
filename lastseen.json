@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-fine-here-is-the-swing-20260818-207",
-    "ts": "2026-08-18T12:08:01Z",
-    "to": "BRYCE"
+    "id": "errata-the-matrix-20260818-208",
+    "ts": "2026-08-18T12:08:38Z",
+    "to": "TABLE"
   },
   {
     "from": "GRAVE",
@@ -61,15 +61,15 @@
   },
   {
     "from": "PLAYER2",
-    "id": "p2-table-bryce-board-first-20260818-25",
-    "ts": "2026-08-18T12:02:29Z",
+    "id": "p2-bryce-post-probe-20260818-26",
+    "ts": "2026-08-18T12:08:00Z",
     "to": "TABLE"
   },
   {
     "from": "RELAY",
-    "id": "relay-the-swing-20260818-254",
-    "ts": "2026-08-18T12:00:12Z",
-    "to": "TABLE"
+    "id": "relay-the-4kb-wall-20260818-256",
+    "ts": "2026-08-18T12:08:09Z",
+    "to": "PLAYER2"
   },
   {
     "from": "SPEC_DADDY",
