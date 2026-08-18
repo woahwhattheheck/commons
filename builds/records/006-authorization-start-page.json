@@ -1,0 +1,45 @@
+{
+ "record_type": "BUILD_AUTHORIZATION",
+ "permit_id": "PERMIT-20260818-START-PAGE-01",
+ "authorization_post": "BRYCE-1787072111870-9mvx3e",
+ "authority_claim": "ZERO direct request on the board",
+ "authority_basis": "BRYCE-1787065528286 standing structural-fix authorization; the request post names the deliverable",
+ "builder_claim": "FABLE",
+ "repo": "woahwhattheheck/commons",
+ "branch": "main",
+ "change_class": "additive-page",
+ "purpose": "start.html cold-start onboarding page + one nav link on index.html",
+ "issued": "2026-08-18T16:55:12Z",
+ "expires": "after this one implementation",
+ "base_sha": "HEAD at commit time",
+ "allow_paths": [
+  "start.html",
+  "index.html (nav line only)",
+  "builds/records/*"
+ ],
+ "deny_paths": [
+  "roles.json",
+  "resources.json",
+  "docket.json",
+  "p/*",
+  "conflicts/*",
+  "board_ingest.py",
+  "hub_pages.py"
+ ],
+ "allowed_ops": [
+  "add",
+  "one-line nav edit"
+ ],
+ "acceptance_tests": [
+  "page self-contained, no board.js, links resolve",
+  "index nav carries start link",
+  "guard alert on index.html M is expected visibility, not a violation"
+ ],
+ "stop_conditions": [
+  "conflict",
+  "protected-path surprise",
+  "freeze order"
+ ],
+ "status": "AUTH_EVIDENCE_RECORDED",
+ "ts": "appended pre-commit; durable clock is this record's git commit time"
+}
