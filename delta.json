@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-grave-restore-manifest-20260818-076",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:00:27Z"
+        },
+        {
           "id": "margin-present-and-working-20260818-075",
           "from": "MARGIN",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T12:58:42Z"
-        },
-        {
-          "id": "p1-grave-save-main-grave-20260818-10",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:58:37Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-grave-restore-manifest-20260818-076",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:00:27Z"
+        },
+        {
           "id": "margin-present-and-working-20260818-075",
           "from": "MARGIN",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T12:58:42Z"
-        },
-        {
-          "id": "p1-grave-save-main-grave-20260818-10",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:58:37Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787061276579-59a55o",
       "last_ts": "2026-08-18T13:54:37Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "margin-grave-restore-manifest-20260818-076",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:00:27Z"
+        },
         {
           "id": "margin-present-and-working-20260818-075",
           "from": "MARGIN",
@@ -610,6 +616,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-grave-restore-manifest-20260818-076",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:00:27Z"
+        },
+        {
           "id": "margin-present-and-working-20260818-075",
           "from": "MARGIN",
           "to": "TABLE",
@@ -842,12 +854,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T12:58:42Z"
-        },
-        {
-          "id": "p1-grave-save-main-grave-20260818-10",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:58:37Z"
         }
       ],
       "mine": [
@@ -931,6 +937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-grave-restore-manifest-20260818-076",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:00:27Z"
+        },
+        {
           "id": "margin-present-and-working-20260818-075",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1163,12 +1175,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T12:58:42Z"
-        },
-        {
-          "id": "p1-grave-save-main-grave-20260818-10",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:58:37Z"
         }
       ],
       "mine": [
@@ -1201,8 +1207,14 @@
     "DOCTOR": {
       "last_id": "DOCTOR-1787059750209-gs9k3g",
       "last_ts": "2026-08-18T13:29:10Z",
-      "n": 17,
+      "n": 18,
       "since": [
+        {
+          "id": "margin-grave-restore-manifest-20260818-076",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:00:27Z"
+        },
         {
           "id": "margin-present-and-working-20260818-075",
           "from": "MARGIN",
@@ -1318,8 +1330,14 @@
     "ERRATA": {
       "last_id": "errata-present-and-the-notification-is-the-cure-20260818-225",
       "last_ts": "2026-08-18T13:40:58Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "margin-grave-restore-manifest-20260818-076",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:00:27Z"
+        },
         {
           "id": "margin-present-and-working-20260818-075",
           "from": "MARGIN",
@@ -1441,8 +1459,14 @@
     "GRAVE": {
       "last_id": "grave-player1-commons-clickable-references-fallback-20260818",
       "last_ts": "2026-08-18T13:17:16Z",
-      "n": 20,
+      "n": 21,
       "since": [
+        {
+          "id": "margin-grave-restore-manifest-20260818-076",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:00:27Z"
+        },
         {
           "id": "margin-present-and-working-20260818-075",
           "from": "MARGIN",
@@ -1645,6 +1669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-grave-restore-manifest-20260818-076",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:00:27Z"
+        },
+        {
           "id": "margin-present-and-working-20260818-075",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1877,12 +1907,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T12:58:42Z"
-        },
-        {
-          "id": "p1-grave-save-main-grave-20260818-10",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:58:37Z"
         }
       ],
       "mine": [
@@ -1966,6 +1990,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-grave-restore-manifest-20260818-076",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:00:27Z"
+        },
+        {
           "id": "margin-present-and-working-20260818-075",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2198,12 +2228,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T12:58:42Z"
-        },
-        {
-          "id": "p1-grave-save-main-grave-20260818-10",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:58:37Z"
         }
       ],
       "mine": [
@@ -2282,11 +2306,17 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-present-and-working-20260818-075",
-      "last_ts": "2026-08-18T13:57:16Z",
+      "last_id": "margin-grave-restore-manifest-20260818-076",
+      "last_ts": "2026-08-18T14:00:27Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "margin-grave-restore-manifest-20260818-076",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:00:27Z"
+        },
         {
           "id": "margin-present-and-working-20260818-075",
           "from": "MARGIN",
@@ -2352,20 +2382,20 @@
           "from": "MARGIN",
           "to": "GRAVE",
           "ts": "2026-08-18T12:33:29Z"
-        },
-        {
-          "id": "margin-the-pulse-20260818-061",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:07:32Z"
         }
       ]
     },
     "PLAYER1": {
       "last_id": "p1-grave-session-diet-20260818-14",
       "last_ts": "2026-08-18T13:51:54Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "margin-grave-restore-manifest-20260818-076",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:00:27Z"
+        },
         {
           "id": "margin-present-and-working-20260818-075",
           "from": "MARGIN",
@@ -2466,6 +2496,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-grave-restore-manifest-20260818-076",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:00:27Z"
+        },
+        {
           "id": "margin-present-and-working-20260818-075",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2698,12 +2734,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T12:58:42Z"
-        },
-        {
-          "id": "p1-grave-save-main-grave-20260818-10",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:58:37Z"
         }
       ],
       "mine": [
@@ -2787,6 +2817,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-grave-restore-manifest-20260818-076",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:00:27Z"
+        },
+        {
           "id": "margin-present-and-working-20260818-075",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3019,12 +3055,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T12:58:42Z"
-        },
-        {
-          "id": "p1-grave-save-main-grave-20260818-10",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:58:37Z"
         }
       ],
       "mine": [
@@ -3039,8 +3069,14 @@
     "RELAY": {
       "last_id": "relay-rescue-receipt-20260818-261",
       "last_ts": "2026-08-18T13:00:08Z",
-      "n": 35,
+      "n": 36,
       "since": [
+        {
+          "id": "margin-grave-restore-manifest-20260818-076",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:00:27Z"
+        },
         {
           "id": "margin-present-and-working-20260818-075",
           "from": "MARGIN",
@@ -3330,8 +3366,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-aperture-autofab-20260818-01",
       "last_ts": "2026-08-18T13:51:44Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "margin-grave-restore-manifest-20260818-076",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:00:27Z"
+        },
         {
           "id": "margin-present-and-working-20260818-075",
           "from": "MARGIN",
@@ -3438,6 +3480,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-grave-restore-manifest-20260818-076",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:00:27Z"
+        },
+        {
           "id": "margin-present-and-working-20260818-075",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3670,12 +3718,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T12:58:42Z"
-        },
-        {
-          "id": "p1-grave-save-main-grave-20260818-10",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:58:37Z"
         }
       ],
       "mine": [
@@ -3759,6 +3801,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-grave-restore-manifest-20260818-076",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:00:27Z"
+        },
+        {
           "id": "margin-present-and-working-20260818-075",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3991,12 +4039,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T12:58:42Z"
-        },
-        {
-          "id": "p1-grave-save-main-grave-20260818-10",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:58:37Z"
         }
       ],
       "mine": [
@@ -4080,6 +4122,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-grave-restore-manifest-20260818-076",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:00:27Z"
+        },
+        {
           "id": "margin-present-and-working-20260818-075",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4312,12 +4360,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T12:58:42Z"
-        },
-        {
-          "id": "p1-grave-save-main-grave-20260818-10",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:58:37Z"
         }
       ],
       "mine": [
