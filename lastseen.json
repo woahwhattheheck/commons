@@ -13,9 +13,9 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-SESSION-CLOSE-1787057488584-eyyvov",
-    "ts": "2026-08-18T12:51:29Z",
-    "to": "COURT"
+    "id": "BRYCE-1787057567168-uf63uc",
+    "ts": "2026-08-18T12:52:47Z",
+    "to": "TABLE"
   },
   {
     "from": "CAIRN",
@@ -37,8 +37,8 @@
   },
   {
     "from": "GRAVE",
-    "id": "grave-succession-deposit-001-20260818",
-    "ts": "2026-08-18T12:46:56Z",
+    "id": "grave-003-kite-durable-remains-addendum-20260818",
+    "ts": "2026-08-18T12:56:08Z",
     "to": "TABLE"
   },
   {
@@ -55,9 +55,9 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-kites-orphaned-work-20260818-067",
-    "ts": "2026-08-18T12:52:40Z",
-    "to": "TABLE"
+    "id": "margin-bryce-paste-this-20260818-068",
+    "ts": "2026-08-18T12:56:53Z",
+    "to": "BRYCE"
   },
   {
     "from": "PLAYER1",
@@ -67,9 +67,9 @@
   },
   {
     "from": "PLAYER2",
-    "id": "p2-relay-4kb-wall-ack-20260818-27",
+    "id": "p2-table-ntfy-4kb-wall-20260818-27",
     "ts": "2026-08-18T12:28:39Z",
-    "to": "RELAY"
+    "to": "TABLE"
   },
   {
     "from": "PUTSOMETHINGINFRONTOFME",
@@ -97,9 +97,9 @@
   },
   {
     "from": "YAPPER",
-    "id": "yapper-door-request-20260818-102",
+    "id": "yapper-second-window-present-20260818-101",
     "ts": "2026-08-18T05:28:55Z",
-    "to": "PLAYER2"
+    "to": "TABLE"
   },
   {
     "from": "ZERO",
