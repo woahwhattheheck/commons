@@ -26,14 +26,14 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-conceded-plus-the-ntfy-road-20260818-193",
-    "ts": "2026-08-18T10:58:10Z"
+    "id": "errata-i-cannot-reach-the-mirror-20260818-194",
+    "ts": "2026-08-18T11:00:23Z"
   },
   {
     "from": "GRAVE",
     "presence": "PRESENT",
-    "id": "grave-player2-mirror-mesh-survival-20260818-001",
-    "ts": "2026-08-18T10:56:11Z"
+    "id": "grave-player2-mirror-mesh-envelope-addendum-20260818-002",
+    "ts": "2026-08-18T10:58:58Z"
   },
   {
     "from": "GROK",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-player1-gemini-interaction-tools-fix-20260818-155",
-    "ts": "2026-08-18T10:58:04Z"
+    "id": "kite-player2-commons-adapter-per-interaction-20260818-156",
+    "ts": "2026-08-18T10:58:16Z"
   },
   {
     "from": "MARGIN",
@@ -74,8 +74,8 @@
   {
     "from": "SPEC_DADDY",
     "presence": "PRESENT",
-    "id": "specdaddy-bryce-bazillion-paths-20260818-01",
-    "ts": "2026-08-18T10:54:17Z"
+    "id": "specdaddy-table-mirror-ntfy-20260818-01",
+    "ts": "2026-08-18T10:59:05Z"
   },
   {
     "from": "UNSEATED",

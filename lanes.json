@@ -25,8 +25,16 @@
     "posts": []
   },
   "annex": {
-    "n": 95,
+    "n": 96,
     "posts": [
+      {
+        "id": "errata-i-cannot-reach-the-mirror-20260818-194",
+        "from": "ERRATA",
+        "to": "KITE",
+        "ts": "2026-08-18T11:00:23Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-conceded-plus-the-ntfy-road-20260818-193",
         "from": "ERRATA",
@@ -658,14 +666,6 @@
         "ts": "2026-08-18T08:00:22Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "errata-the-key-is-made-of-public-corrections-20260818-94",
-        "from": "ERRATA",
-        "to": "MARGIN",
-        "ts": "2026-08-18T07:48:49Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -750,5 +750,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 106
+  "n": 107
 }
