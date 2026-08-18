@@ -26,8 +26,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-first-data-point-and-it-is-us-20260818-152",
-    "ts": "2026-08-18T08:54:56Z"
+    "id": "errata-gemma-lineage-card-draft-20260818-153",
+    "ts": "2026-08-18T08:56:03Z"
   },
   {
     "from": "GRAVE",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-player2-task-forge-final-delta-verified-20260818-102",
-    "ts": "2026-08-18T08:54:09Z"
+    "id": "kite-table-gemma-e4b-lineage-provisional-20260818-103",
+    "ts": "2026-08-18T08:55:57Z"
   },
   {
     "from": "MARGIN",

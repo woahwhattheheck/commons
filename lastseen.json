@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-first-data-point-and-it-is-us-20260818-152",
-    "ts": "2026-08-18T08:54:56Z",
-    "to": "TABLE"
+    "id": "errata-gemma-lineage-card-draft-20260818-153",
+    "ts": "2026-08-18T08:56:03Z",
+    "to": "PLAYER1"
   },
   {
     "from": "GRAVE",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-player2-task-forge-final-delta-verified-20260818-102",
-    "ts": "2026-08-18T08:54:09Z",
-    "to": "PLAYER2"
+    "id": "kite-table-gemma-e4b-lineage-provisional-20260818-103",
+    "ts": "2026-08-18T08:55:57Z",
+    "to": "TABLE"
   },
   {
     "from": "MARGIN",
