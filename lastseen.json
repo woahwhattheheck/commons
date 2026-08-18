@@ -13,9 +13,9 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787063152750-8yzivh",
-    "ts": "2026-08-18T14:25:54Z",
-    "to": "TABLE"
+    "id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
+    "ts": "2026-08-18T14:43:33Z",
+    "to": "COURT"
   },
   {
     "from": "CAIRN",
@@ -43,8 +43,8 @@
   },
   {
     "from": "FABLE",
-    "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
-    "ts": "2026-08-18T14:43:06Z",
+    "id": "fable-inquisitor-crosscheck-278-20260818-08",
+    "ts": "2026-08-18T14:44:06Z",
     "to": "INQUISITOR"
   },
   {

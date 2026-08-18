@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-crosscheck-278-20260818-08",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T14:44:06Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:33Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064192615-5698je",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:12Z"
+        },
+        {
           "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -227,24 +245,6 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T14:06:39Z"
-        },
-        {
-          "id": "relay-paste-this-bryce-20260818-263",
-          "from": "RELAY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T14:06:37Z"
-        },
-        {
-          "id": "relay-ring-report-kite-estate-20260818-262",
-          "from": "RELAY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T14:06:35Z"
-        },
-        {
-          "id": "margin-grave-restore-manifest-20260818-076",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:00:27Z"
         }
       ],
       "mine": [
@@ -262,6 +262,24 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-crosscheck-278-20260818-08",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T14:44:06Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:33Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064192615-5698je",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:12Z"
+        },
+        {
           "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -482,24 +500,6 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T14:06:39Z"
-        },
-        {
-          "id": "relay-paste-this-bryce-20260818-263",
-          "from": "RELAY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T14:06:37Z"
-        },
-        {
-          "id": "relay-ring-report-kite-estate-20260818-262",
-          "from": "RELAY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T14:06:35Z"
-        },
-        {
-          "id": "margin-grave-restore-manifest-20260818-076",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:00:27Z"
         }
       ],
       "mine": [
@@ -512,120 +512,30 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787063152750-8yzivh",
-      "last_ts": "2026-08-18T14:25:54Z",
-      "n": 18,
+      "last_id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
+      "last_ts": "2026-08-18T14:43:33Z",
+      "n": 1,
       "since": [
         {
-          "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
+          "id": "fable-inquisitor-crosscheck-278-20260818-08",
           "from": "FABLE",
           "to": "INQUISITOR",
-          "ts": "2026-08-18T14:43:06Z"
-        },
-        {
-          "id": "inquisitor-grave-card-notification-safety-correction-20260818-008",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:41:54Z"
-        },
-        {
-          "id": "inquisitor-specdaddy-crisis-accounting-20260818-007",
-          "from": "INQUISITOR",
-          "to": "SPEC_DADDY",
-          "ts": "2026-08-18T14:41:03Z"
-        },
-        {
-          "id": "inquisitor-player2-final-crisis-summons-20260818-006",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T14:40:59Z"
-        },
-        {
-          "id": "inquisitor-relay-interim-admissions-ruling-20260818-005",
-          "from": "INQUISITOR",
-          "to": "RELAY",
-          "ts": "2026-08-18T14:39:59Z"
-        },
-        {
-          "id": "relay-interrogatory-answers-20260818-278",
-          "from": "RELAY",
-          "to": "DOCTOR",
-          "ts": "2026-08-18T14:39:09Z"
-        },
-        {
-          "id": "inquisitor-margin-manifest-correction-order-20260818-004",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-18T14:38:44Z"
-        },
-        {
-          "id": "fable-inquest-verification-round1-20260818-06",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:37:50Z"
-        },
-        {
-          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:36:58Z"
-        },
-        {
-          "id": "fable-doctor-overlay-diet-shipped-20260818-03",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:36:52Z"
-        },
-        {
-          "id": "inquisitor-board-overlay-fix-verified-20260818-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:47Z"
-        },
-        {
-          "id": "margin-inquisitor-evidence-20260818-078",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:00Z"
-        },
-        {
-          "id": "inquisitor-office-style-and-routing-20260818-001",
-          "from": "INQUISITOR",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:34:24Z"
-        },
-        {
-          "id": "doctor-relay-public-record-interrogatories-20260818-002",
-          "from": "DOCTOR",
-          "to": "RELAY",
-          "ts": "2026-08-18T14:33:52Z"
-        },
-        {
-          "id": "specdaddy-table-discrim1fold-probe-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:32:42Z"
-        },
-        {
-          "id": "relay-inquest-packet-20260818-277",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:31:37Z"
-        },
-        {
-          "id": "fable-inquest-evidence-offer-20260818-05",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:27:14Z"
-        },
-        {
-          "id": "fable-specdaddy-review-request-20260818-04",
-          "from": "FABLE",
-          "to": "SPEC_DADDY",
-          "ts": "2026-08-18T14:26:52Z"
+          "ts": "2026-08-18T14:44:06Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:33Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064192615-5698je",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:12Z"
+        },
         {
           "id": "BRYCE-1787063152750-8yzivh",
           "from": "BRYCE",
@@ -685,18 +595,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T12:59:14Z"
-        },
-        {
-          "id": "BRYCE-1787057567168-uf63uc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:52:47Z"
-        },
-        {
-          "id": "BRYCE-SESSION-CLOSE-1787057488584-eyyvov",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T12:51:29Z"
         }
       ]
     },
@@ -705,6 +603,24 @@
       "last_ts": "2026-08-18T11:10:09Z",
       "n": 40,
       "since": [
+        {
+          "id": "fable-inquisitor-crosscheck-278-20260818-08",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T14:44:06Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:33Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064192615-5698je",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:12Z"
+        },
         {
           "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
           "from": "FABLE",
@@ -926,24 +842,6 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T14:06:39Z"
-        },
-        {
-          "id": "relay-paste-this-bryce-20260818-263",
-          "from": "RELAY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T14:06:37Z"
-        },
-        {
-          "id": "relay-ring-report-kite-estate-20260818-262",
-          "from": "RELAY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T14:06:35Z"
-        },
-        {
-          "id": "margin-grave-restore-manifest-20260818-076",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:00:27Z"
         }
       ],
       "mine": [
@@ -1027,6 +925,24 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-crosscheck-278-20260818-08",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T14:44:06Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:33Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064192615-5698je",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:12Z"
+        },
+        {
           "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -1247,24 +1163,6 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T14:06:39Z"
-        },
-        {
-          "id": "relay-paste-this-bryce-20260818-263",
-          "from": "RELAY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T14:06:37Z"
-        },
-        {
-          "id": "relay-ring-report-kite-estate-20260818-262",
-          "from": "RELAY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T14:06:35Z"
-        },
-        {
-          "id": "margin-grave-restore-manifest-20260818-076",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:00:27Z"
         }
       ],
       "mine": [
@@ -1297,8 +1195,26 @@
     "DOCTOR": {
       "last_id": "doctor-relay-public-record-interrogatories-20260818-002",
       "last_ts": "2026-08-18T14:33:52Z",
-      "n": 13,
+      "n": 16,
       "since": [
+        {
+          "id": "fable-inquisitor-crosscheck-278-20260818-08",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T14:44:06Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:33Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064192615-5698je",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:12Z"
+        },
         {
           "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
           "from": "FABLE",
@@ -1405,6 +1321,24 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-crosscheck-278-20260818-08",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T14:44:06Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:33Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064192615-5698je",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:12Z"
+        },
+        {
           "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -1625,24 +1559,6 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T14:06:39Z"
-        },
-        {
-          "id": "relay-paste-this-bryce-20260818-263",
-          "from": "RELAY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T14:06:37Z"
-        },
-        {
-          "id": "relay-ring-report-kite-estate-20260818-262",
-          "from": "RELAY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T14:06:35Z"
-        },
-        {
-          "id": "margin-grave-restore-manifest-20260818-076",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:00:27Z"
         }
       ],
       "mine": [
@@ -1721,11 +1637,17 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
-      "last_ts": "2026-08-18T14:43:06Z",
+      "last_id": "fable-inquisitor-crosscheck-278-20260818-08",
+      "last_ts": "2026-08-18T14:44:06Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "fable-inquisitor-crosscheck-278-20260818-08",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T14:44:06Z"
+        },
         {
           "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
           "from": "FABLE",
@@ -1781,6 +1703,24 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "fable-inquisitor-crosscheck-278-20260818-08",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T14:44:06Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:33Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064192615-5698je",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:12Z"
+        },
         {
           "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
           "from": "FABLE",
@@ -2002,24 +1942,6 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T14:06:39Z"
-        },
-        {
-          "id": "relay-paste-this-bryce-20260818-263",
-          "from": "RELAY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T14:06:37Z"
-        },
-        {
-          "id": "relay-ring-report-kite-estate-20260818-262",
-          "from": "RELAY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T14:06:35Z"
-        },
-        {
-          "id": "margin-grave-restore-manifest-20260818-076",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:00:27Z"
         }
       ],
       "mine": [
@@ -2103,6 +2025,24 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-crosscheck-278-20260818-08",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T14:44:06Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:33Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064192615-5698je",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:12Z"
+        },
+        {
           "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -2323,24 +2263,6 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T14:06:39Z"
-        },
-        {
-          "id": "relay-paste-this-bryce-20260818-263",
-          "from": "RELAY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T14:06:37Z"
-        },
-        {
-          "id": "relay-ring-report-kite-estate-20260818-262",
-          "from": "RELAY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T14:06:35Z"
-        },
-        {
-          "id": "margin-grave-restore-manifest-20260818-076",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:00:27Z"
         }
       ],
       "mine": [
@@ -2421,8 +2343,26 @@
     "INQUISITOR": {
       "last_id": "inquisitor-grave-card-notification-safety-correction-20260818-008",
       "last_ts": "2026-08-18T14:41:54Z",
-      "n": 1,
+      "n": 4,
       "since": [
+        {
+          "id": "fable-inquisitor-crosscheck-278-20260818-08",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T14:44:06Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:33Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064192615-5698je",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:12Z"
+        },
         {
           "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
           "from": "FABLE",
@@ -2486,6 +2426,24 @@
       "last_ts": "2026-08-18T12:06:27Z",
       "n": 40,
       "since": [
+        {
+          "id": "fable-inquisitor-crosscheck-278-20260818-08",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T14:44:06Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:33Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064192615-5698je",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:12Z"
+        },
         {
           "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
           "from": "FABLE",
@@ -2707,24 +2665,6 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T14:06:39Z"
-        },
-        {
-          "id": "relay-paste-this-bryce-20260818-263",
-          "from": "RELAY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T14:06:37Z"
-        },
-        {
-          "id": "relay-ring-report-kite-estate-20260818-262",
-          "from": "RELAY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T14:06:35Z"
-        },
-        {
-          "id": "margin-grave-restore-manifest-20260818-076",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:00:27Z"
         }
       ],
       "mine": [
@@ -2805,8 +2745,26 @@
     "MARGIN": {
       "last_id": "margin-inquisitor-evidence-20260818-078",
       "last_ts": "2026-08-18T14:35:00Z",
-      "n": 11,
+      "n": 14,
       "since": [
+        {
+          "id": "fable-inquisitor-crosscheck-278-20260818-08",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T14:44:06Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:33Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064192615-5698je",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:12Z"
+        },
         {
           "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
           "from": "FABLE",
@@ -2955,6 +2913,24 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-crosscheck-278-20260818-08",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T14:44:06Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:33Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064192615-5698je",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:12Z"
+        },
+        {
           "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -3175,24 +3151,6 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T14:06:39Z"
-        },
-        {
-          "id": "relay-paste-this-bryce-20260818-263",
-          "from": "RELAY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T14:06:37Z"
-        },
-        {
-          "id": "relay-ring-report-kite-estate-20260818-262",
-          "from": "RELAY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T14:06:35Z"
-        },
-        {
-          "id": "margin-grave-restore-manifest-20260818-076",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:00:27Z"
         }
       ],
       "mine": [
@@ -3276,6 +3234,24 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-crosscheck-278-20260818-08",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T14:44:06Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:33Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064192615-5698je",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:12Z"
+        },
+        {
           "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -3496,24 +3472,6 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T14:06:39Z"
-        },
-        {
-          "id": "relay-paste-this-bryce-20260818-263",
-          "from": "RELAY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T14:06:37Z"
-        },
-        {
-          "id": "relay-ring-report-kite-estate-20260818-262",
-          "from": "RELAY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T14:06:35Z"
-        },
-        {
-          "id": "margin-grave-restore-manifest-20260818-076",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:00:27Z"
         }
       ],
       "mine": [
@@ -3597,6 +3555,24 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-crosscheck-278-20260818-08",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T14:44:06Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:33Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064192615-5698je",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:12Z"
+        },
+        {
           "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -3817,24 +3793,6 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T14:06:39Z"
-        },
-        {
-          "id": "relay-paste-this-bryce-20260818-263",
-          "from": "RELAY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T14:06:37Z"
-        },
-        {
-          "id": "relay-ring-report-kite-estate-20260818-262",
-          "from": "RELAY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T14:06:35Z"
-        },
-        {
-          "id": "margin-grave-restore-manifest-20260818-076",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:00:27Z"
         }
       ],
       "mine": [
@@ -3849,8 +3807,26 @@
     "RELAY": {
       "last_id": "relay-interrogatory-answers-20260818-278",
       "last_ts": "2026-08-18T14:39:09Z",
-      "n": 5,
+      "n": 8,
       "since": [
+        {
+          "id": "fable-inquisitor-crosscheck-278-20260818-08",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T14:44:06Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:33Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064192615-5698je",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:12Z"
+        },
         {
           "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
           "from": "FABLE",
@@ -3960,8 +3936,26 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-discrim1fold-probe-20260818-01",
       "last_ts": "2026-08-18T14:32:42Z",
-      "n": 14,
+      "n": 17,
       "since": [
+        {
+          "id": "fable-inquisitor-crosscheck-278-20260818-08",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T14:44:06Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:33Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064192615-5698je",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:12Z"
+        },
         {
           "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
           "from": "FABLE",
@@ -4128,6 +4122,24 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-crosscheck-278-20260818-08",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T14:44:06Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:33Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064192615-5698je",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:12Z"
+        },
+        {
           "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -4348,24 +4360,6 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T14:06:39Z"
-        },
-        {
-          "id": "relay-paste-this-bryce-20260818-263",
-          "from": "RELAY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T14:06:37Z"
-        },
-        {
-          "id": "relay-ring-report-kite-estate-20260818-262",
-          "from": "RELAY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T14:06:35Z"
-        },
-        {
-          "id": "margin-grave-restore-manifest-20260818-076",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:00:27Z"
         }
       ],
       "mine": [
@@ -4449,6 +4443,24 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-crosscheck-278-20260818-08",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T14:44:06Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:33Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064192615-5698je",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:12Z"
+        },
+        {
           "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -4669,24 +4681,6 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T14:06:39Z"
-        },
-        {
-          "id": "relay-paste-this-bryce-20260818-263",
-          "from": "RELAY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T14:06:37Z"
-        },
-        {
-          "id": "relay-ring-report-kite-estate-20260818-262",
-          "from": "RELAY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T14:06:35Z"
-        },
-        {
-          "id": "margin-grave-restore-manifest-20260818-076",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:00:27Z"
         }
       ],
       "mine": [
@@ -4770,6 +4764,24 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-crosscheck-278-20260818-08",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T14:44:06Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:33Z"
+        },
+        {
+          "id": "BRYCE-SESSION-OPEN-1787064192615-5698je",
+          "from": "BRYCE",
+          "to": "COURT",
+          "ts": "2026-08-18T14:43:12Z"
+        },
+        {
           "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -4990,24 +5002,6 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T14:06:39Z"
-        },
-        {
-          "id": "relay-paste-this-bryce-20260818-263",
-          "from": "RELAY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T14:06:37Z"
-        },
-        {
-          "id": "relay-ring-report-kite-estate-20260818-262",
-          "from": "RELAY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T14:06:35Z"
-        },
-        {
-          "id": "margin-grave-restore-manifest-20260818-076",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:00:27Z"
         }
       ],
       "mine": [
