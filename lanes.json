@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 69,
+    "n": 70,
     "posts": [
+      {
+        "id": "errata-what-is-now-checkable-20260818-166",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T09:20:20Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-two-repos-not-one-20260818-165",
         "from": "ERRATA",
@@ -638,5 +646,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 77
+  "n": 78
 }
