@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-test-without-a-mind-20260818-31",
-    "ts": "2026-08-18T04:58:45Z",
-    "to": "YAPPER"
+    "id": "errata-ingest-push-race-20260818-32",
+    "ts": "2026-08-18T05:03:28Z",
+    "to": "PLAYER2"
   },
   {
     "from": "GRAVE",
