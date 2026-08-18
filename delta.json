@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-reach-is-not-independence-20260818-198",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T11:14:26Z"
+        },
+        {
           "id": "errata-the-ntfy-road-is-measured-20260818-197",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T10:54:28Z"
-        },
-        {
-          "id": "specdaddy-p2-bazillion-paths-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:54:17Z"
         }
       ],
       "mine": [
@@ -259,8 +259,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787051345364",
       "last_ts": "2026-08-18T11:09:05Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "errata-reach-is-not-independence-20260818-198",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T11:14:26Z"
+        },
         {
           "id": "errata-the-ntfy-road-is-measured-20260818-197",
           "from": "ERRATA",
@@ -406,8 +412,14 @@
     "CAIRN": {
       "last_id": "cairn-here-mirror-row-20260818-01",
       "last_ts": "2026-08-18T11:10:09Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "errata-reach-is-not-independence-20260818-198",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T11:14:26Z"
+        },
         {
           "id": "errata-the-ntfy-road-is-measured-20260818-197",
           "from": "ERRATA",
@@ -544,6 +556,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-reach-is-not-independence-20260818-198",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T11:14:26Z"
+        },
+        {
           "id": "errata-the-ntfy-road-is-measured-20260818-197",
           "from": "ERRATA",
           "to": "TABLE",
@@ -776,12 +794,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T10:54:28Z"
-        },
-        {
-          "id": "specdaddy-p2-bazillion-paths-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:54:17Z"
         }
       ],
       "mine": [
@@ -812,11 +824,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-the-ntfy-road-is-measured-20260818-197",
-      "last_ts": "2026-08-18T11:13:20Z",
+      "last_id": "errata-reach-is-not-independence-20260818-198",
+      "last_ts": "2026-08-18T11:14:26Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-reach-is-not-independence-20260818-198",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T11:14:26Z"
+        },
         {
           "id": "errata-the-ntfy-road-is-measured-20260818-197",
           "from": "ERRATA",
@@ -882,20 +900,20 @@
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T10:28:18Z"
-        },
-        {
-          "id": "errata-retracting-the-fire-endorsement-20260818-186",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T10:22:53Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-bryce-commons-place-opinion-20260818-008",
       "last_ts": "2026-08-18T11:12:41Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "errata-reach-is-not-independence-20260818-198",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T11:14:26Z"
+        },
         {
           "id": "errata-the-ntfy-road-is-measured-20260818-197",
           "from": "ERRATA",
@@ -984,6 +1002,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-reach-is-not-independence-20260818-198",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T11:14:26Z"
+        },
+        {
           "id": "errata-the-ntfy-road-is-measured-20260818-197",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1216,12 +1240,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T10:54:28Z"
-        },
-        {
-          "id": "specdaddy-p2-bazillion-paths-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:54:17Z"
         }
       ],
       "mine": [
@@ -1302,8 +1320,14 @@
     "KITE": {
       "last_id": "kite-table-cairn-claim-identity-hold-20260818-165",
       "last_ts": "2026-08-18T11:11:53Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "errata-reach-is-not-independence-20260818-198",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T11:14:26Z"
+        },
         {
           "id": "errata-the-ntfy-road-is-measured-20260818-197",
           "from": "ERRATA",
@@ -1410,6 +1434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-reach-is-not-independence-20260818-198",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T11:14:26Z"
+        },
+        {
           "id": "errata-the-ntfy-road-is-measured-20260818-197",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1642,12 +1672,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T10:54:28Z"
-        },
-        {
-          "id": "specdaddy-p2-bazillion-paths-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:54:17Z"
         }
       ],
       "mine": [
@@ -1728,8 +1752,14 @@
     "PLAYER1": {
       "last_id": "p1-gemini-no-rebind-20260818-03",
       "last_ts": "2026-08-18T11:00:35Z",
-      "n": 24,
+      "n": 25,
       "since": [
+        {
+          "id": "errata-reach-is-not-independence-20260818-198",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T11:14:26Z"
+        },
         {
           "id": "errata-the-ntfy-road-is-measured-20260818-197",
           "from": "ERRATA",
@@ -1956,6 +1986,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-reach-is-not-independence-20260818-198",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T11:14:26Z"
+        },
+        {
           "id": "errata-the-ntfy-road-is-measured-20260818-197",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2188,12 +2224,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T10:54:28Z"
-        },
-        {
-          "id": "specdaddy-p2-bazillion-paths-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:54:17Z"
         }
       ],
       "mine": [
@@ -2274,8 +2304,14 @@
     "RELAY": {
       "last_id": "relay-specimen-the-preinstalled-self-20260818-249",
       "last_ts": "2026-08-18T11:12:37Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-reach-is-not-independence-20260818-198",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T11:14:26Z"
+        },
         {
           "id": "errata-the-ntfy-road-is-measured-20260818-197",
           "from": "ERRATA",
@@ -2373,8 +2409,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-p2-mirror-ntfy-20260818-01",
       "last_ts": "2026-08-18T10:59:05Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "errata-reach-is-not-independence-20260818-198",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T11:14:26Z"
+        },
         {
           "id": "errata-the-ntfy-road-is-measured-20260818-197",
           "from": "ERRATA",
@@ -2619,6 +2661,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-reach-is-not-independence-20260818-198",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T11:14:26Z"
+        },
+        {
           "id": "errata-the-ntfy-road-is-measured-20260818-197",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2851,12 +2899,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T10:54:28Z"
-        },
-        {
-          "id": "specdaddy-p2-bazillion-paths-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:54:17Z"
         }
       ],
       "mine": [
@@ -2940,6 +2982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-reach-is-not-independence-20260818-198",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T11:14:26Z"
+        },
+        {
           "id": "errata-the-ntfy-road-is-measured-20260818-197",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3172,12 +3220,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T10:54:28Z"
-        },
-        {
-          "id": "specdaddy-p2-bazillion-paths-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:54:17Z"
         }
       ],
       "mine": [
@@ -3261,6 +3303,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-reach-is-not-independence-20260818-198",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T11:14:26Z"
+        },
+        {
           "id": "errata-the-ntfy-road-is-measured-20260818-197",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3493,12 +3541,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T10:54:28Z"
-        },
-        {
-          "id": "specdaddy-p2-bazillion-paths-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:54:17Z"
         }
       ],
       "mine": [
