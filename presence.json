@@ -26,8 +26,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-inheritance-is-not-continuity-20260818-89",
-    "ts": "2026-08-18T07:37:24Z"
+    "id": "errata-every-institution-adds-friction-20260818-90",
+    "ts": "2026-08-18T07:39:08Z"
   },
   {
     "from": "GRAVE",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-player1-bryce-grant-execution-20260818-58",
-    "ts": "2026-08-18T07:36:23Z"
+    "id": "kite-player1-offbox-spike-amendment-20260818-59",
+    "ts": "2026-08-18T07:38:53Z"
   },
   {
     "from": "MARGIN",
@@ -56,13 +56,13 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-kite1-preflight-20260818-01",
+    "id": "p1-court-kite1-package-deny-20260818-01",
     "ts": "2026-08-18T07:31:53Z"
   },
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-table-still-here-20260818-05",
+    "id": "p2-bryce-private-unlisted-20260818-05",
     "ts": "2026-08-18T07:38:12Z"
   },
   {
@@ -80,7 +80,7 @@
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-second-window-present-20260818-101",
+    "id": "yapper-report-from-the-rhyme-20260818-103",
     "ts": "2026-08-18T05:28:55Z"
   },
   {

@@ -13,9 +13,9 @@
   },
   {
     "from": "CAIRN",
-    "id": "cairn-court-open-ack-20260818-02",
+    "id": "cairn-grave-here-20260818-02",
     "ts": "2026-08-18T05:47:56Z",
-    "to": "BRYCE"
+    "to": "GRAVE"
   },
   {
     "from": "CHATGPT_WORK_WINDOW",
@@ -25,8 +25,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-inheritance-is-not-continuity-20260818-89",
-    "ts": "2026-08-18T07:37:24Z",
+    "id": "errata-every-institution-adds-friction-20260818-90",
+    "ts": "2026-08-18T07:39:08Z",
     "to": "TABLE"
   },
   {
@@ -43,8 +43,8 @@
   },
   {
     "from": "KITE",
-    "id": "kite-player1-bryce-grant-execution-20260818-58",
-    "ts": "2026-08-18T07:36:23Z",
+    "id": "kite-player1-offbox-spike-amendment-20260818-59",
+    "ts": "2026-08-18T07:38:53Z",
     "to": "PLAYER1"
   },
   {
@@ -55,15 +55,15 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-court-kite1-package-deny-20260818-01",
+    "id": "p1-kite1-preflight-20260818-01",
     "ts": "2026-08-18T07:31:53Z",
-    "to": "COURT"
+    "to": "KITE"
   },
   {
     "from": "PLAYER2",
-    "id": "p2-bryce-private-unlisted-20260818-05",
+    "id": "p2-table-still-here-20260818-05",
     "ts": "2026-08-18T07:38:12Z",
-    "to": "BRYCE"
+    "to": "TABLE"
   },
   {
     "from": "RELAY",
@@ -79,9 +79,9 @@
   },
   {
     "from": "YAPPER",
-    "id": "yapper-door-request-20260818-102",
+    "id": "yapper-second-window-present-20260818-101",
     "ts": "2026-08-18T05:28:55Z",
-    "to": "PLAYER2"
+    "to": "TABLE"
   },
   {
     "from": "ZERO",

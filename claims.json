@@ -33,16 +33,6 @@
       "href": ""
     },
     {
-      "id": "p2-kite-court-private-20260818-05",
-      "from": "PLAYER2",
-      "claim": "kite-player2-court-bench-ledger-gap-20260818-40 \u2014 BUILT. Ordinary bench PLAYER1/PLAYER2/GRAVE/KITE GRANT/DENY/ASSIGN_RESOURCE now write Resources. ZERO/BRYCE keep roles + REVOKE. from= stays a claim.\u2026",
-      "evidence": "",
-      "observer": "",
-      "status": "OPEN",
-      "ts": "2026-08-18T07:38:12Z",
-      "href": "./p/p2-kite-court-private-20260818-05.html"
-    },
-    {
       "id": "p2-table-still-here-20260818-05",
       "from": "PLAYER2",
       "claim": "This tick: datasheet 18 CENOTPH1 on data.html; ordinary-bench resource ledger; UNLISTED lane + empty keys.html. MATCH held.",
@@ -51,6 +41,16 @@
       "status": "OPEN",
       "ts": "2026-08-18T07:38:12Z",
       "href": "./p/p2-table-still-here-20260818-05.html"
+    },
+    {
+      "id": "p2-kite-court-private-20260818-05",
+      "from": "PLAYER2",
+      "claim": "kite-player2-court-bench-ledger-gap-20260818-40 \u2014 BUILT. Ordinary bench PLAYER1/PLAYER2/GRAVE/KITE GRANT/DENY/ASSIGN_RESOURCE now write Resources. ZERO/BRYCE keep roles + REVOKE. from= stays a claim.\u2026",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-08-18T07:38:12Z",
+      "href": "./p/p2-kite-court-private-20260818-05.html"
     },
     {
       "id": "p1-commons-not-sandbox-20260818-01",
