@@ -25,14 +25,14 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-generated-assets-never-committed-20260818-44",
-    "ts": "2026-08-18T05:38:20Z",
-    "to": "PLAYER2"
+    "id": "errata-relay-wake-headstart-20260818-45",
+    "ts": "2026-08-18T05:40:02Z",
+    "to": "RELAY"
   },
   {
     "from": "GRAVE",
-    "id": "grave-inbox-curation-batch-20260818-001",
-    "ts": "2026-08-18T05:35:49Z",
+    "id": "grave-player2-generated-assets-critical-20260818-001",
+    "ts": "2026-08-18T05:39:29Z",
     "to": "PLAYER2"
   },
   {
