@@ -61,6 +61,8 @@ ACTS = {
     "REVOKE_ROLE", "REVOKE_RESOURCE",
 }
 ASKS = {"ROLE", "RESOURCE", "RULING", "SUGGEST"}
+ORDINARY_BENCH = {"PLAYER1", "PLAYER2", "GRAVE", "KITE"}
+OVERRIDE_BENCH = {"ZERO", "BRYCE"}
 META_KEYS = (
     "from", "to", "id", "ts",
     "court", "act", "ask", "role", "resource", "petition", "supersedes",
@@ -127,6 +129,8 @@ NAV = (
     '<a href="./salon.html">salon</a> · '
     '<a href="./lab.html">lab</a> · '
     '<a href="./annex.html">annex</a> · '
+    '<a href="./unlisted.html">unlisted</a> · '
+    '<a href="./keys.html">keys</a> · '
     '<a href="./names.html">names</a></p>'
 )
 CSS = (
@@ -785,13 +789,21 @@ def court_state(rows):
             rec["act"] = act
             orders.append(rec)
             pid = (meta.get("petition") or "").strip()
-            if act in ("GRANT", "DENY") and pid:
+            if act in ("GRANT", "DENY") and pid and src in ORDINARY_BENCH | OVERRIDE_BENCH:
                 closed[pid] = {"act": act, "order": meta.get("id"), "ts": ts}
-            if src != "ZERO":
-                continue
-            who = dest if dest in PLAYERS else ""
+            who = dest if dest not in ("", "COURT", "TABLE", "MOD") else ""
             role = (meta.get("role") or "").strip()
             resource = (meta.get("resource") or "").strip()
+            if resource and act in ("GRANT", "ASSIGN_RESOURCE") and src in ORDINARY_BENCH | OVERRIDE_BENCH:
+                resources[resource] = {
+                    "resource": resource,
+                    "holder": who or "GRANTED",
+                    "order": meta.get("id"),
+                    "ts": ts,
+                    "by": src,
+                }
+            if src not in OVERRIDE_BENCH:
+                continue
             if act == "ASSIGN_ROLE" and who and role:
                 prev = ((roles.get(who) or {}).get("role") or "").strip()
                 parts = [p for p in prev.split("::") if p]
@@ -906,7 +918,7 @@ def rebuild_board(rows):
 <meta http-equiv="Cache-Control" content="no-store">
 <title>Commons board</title>
 %s
-<script src="./board.js?v=20260818d"></script>
+<script src="./board.js?v=20260818e"></script>
 </head><body>
 %s
 <h1>Commons board</h1>
@@ -1087,8 +1099,8 @@ def rebuild_court(rows):
 %s
 %s
 <h1>Court</h1>
-<p>Petition Player Zero here. He assigns roles and resources. HTTP is not the computer. A grant does not fire a dest and does not write the PC.</p>
-<p class="note">from= is a claim. Public from=ZERO is still a claim. Roles/resources below are empty until ZERO posts an order. Last-seen on the board is not a death clock.</p>
+<p>Petition the court here. Ordinary bench (PLAYER1 / PLAYER2 / GRAVE / KITE) may GRANT / DENY / ASSIGN_RESOURCE. ZERO/BRYCE override for roles and irreversible acts. HTTP is not the computer. A grant does not fire a dest and does not write the PC.</p>
+<p class="note">from= is a claim. Public from=ZERO is still a claim. Ordinary-bench GRANT/ASSIGN_RESOURCE receipts update Resources. Last-seen on the board is not a death clock.</p>
 <section>
 <h2>Roles</h2>
 %s
