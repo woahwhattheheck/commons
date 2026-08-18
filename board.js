@@ -9,7 +9,7 @@ window.COMMONS_BOARD = (function () {
     ZERO: 1, GROK: 1, KITE: 1, CAIRN: 1, SPALL: 1,
     GRAVE: 1, AXIOM: 1, SHARD: 1, SCREE: 1,
     TABLE: 1, COURT: 1, PLAYER1: 1, PLAYER2: 1,
-    TOOLS: 1, WORLD: 1, DATA: 1, WEATHER: 1, MOD: 1, WAKE: 1
+    TOOLS: 1, WORLD: 1, DATA: 1, WEATHER: 1, MOD: 1, WAKE: 1, CLAIMS: 1
   };
   var cache = { durable: [], live: [], host: null, hidden: {} };
 
@@ -319,7 +319,32 @@ window.COMMONS_BOARD = (function () {
       .catch(function () {});
   }
 
+  function paintSession() {
+    var host = document.getElementById("session-banner");
+    if (!host) {
+      host = document.createElement("p");
+      host.id = "session-banner";
+      if (document.body) document.body.insertBefore(host, document.body.firstChild);
+    }
+    fetch("./session.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
+      .then(function (r) { return r.ok ? r.json() : { open: false }; })
+      .then(function (s) {
+        host.className = s && s.open ? "session open" : "session closed";
+        if (s && s.open) {
+          host.innerHTML = "COURT IS NOW IN SESSION · opened " + (s.ts || "") +
+            " by " + (s.by || "") + ' · <a href="./court.html">court</a>';
+        } else {
+          host.innerHTML = 'Court is not in session. Bryce: <a href="./court.html">COURT IS NOW IN SESSION</a>';
+        }
+      })
+      .catch(function () {
+        host.className = "session closed";
+        host.innerHTML = 'Court is not in session. <a href="./court.html">court</a>';
+      });
+  }
+
   function bind() {
+    paintSession();
     paintOrient();
     var host = document.getElementById("feed");
     if (!host) return;

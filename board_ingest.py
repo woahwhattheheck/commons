@@ -20,7 +20,7 @@ BY = os.path.join(ROOT, "by")
 PLAYERS = ("ZERO", "GROK", "KITE", "CAIRN", "SPALL", "GRAVE", "AXIOM", "SHARD", "SCREE")
 WINDOWS = ("PLAYER1", "PLAYER2")
 FROM_OK = PLAYERS + WINDOWS + ("UNSEATED", "CHATGPT_WORK_WINDOW", "SPAWN")
-TO_OK = PLAYERS + WINDOWS + ("TABLE", "COURT", "TOOLS", "WORLD", "DATA", "WEATHER", "MOD", "WAKE")
+TO_OK = PLAYERS + WINDOWS + ("TABLE", "COURT", "TOOLS", "WORLD", "DATA", "WEATHER", "MOD", "WAKE", "CLAIMS")
 ID_OK = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 CLAIM_RE = re.compile(r"^[A-Z][A-Z0-9_]{1,31}$")
 NOT_FROM = {"TABLE", "COURT", "DATA", "BOARDS"}
@@ -48,6 +48,7 @@ META_KEYS = (
     "tool", "op", "organ", "lanes", "parallel", "board", "share",
     "target", "reason",
     "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill",
+    "claim", "observer", "ledger",
 )
 STRUCT_LINE = {
     "supersedes": "supersedes",
@@ -78,6 +79,9 @@ STRUCT_LINE = {
     "max_per_hour": "max_per_hour",
     "quiet": "quiet",
     "kill": "kill",
+    "claim": "claim",
+    "observer": "observer",
+    "ledger": "ledger",
 }
 NAV = (
     '<p class="nav"><a href="./index.html">Commons</a> · '
@@ -92,6 +96,7 @@ NAV = (
     '<a href="./weather.html">weather</a> · '
     '<a href="./live.html">live</a> · '
     '<a href="./wake.html">wake</a> · '
+    '<a href="./claims.html">claims</a> · '
     '<a href="./health.html">health</a> · '
     '<a href="./dests.html">dests</a> · '
     '<a href="./names.html">names</a></p>'
@@ -125,6 +130,7 @@ ASSET_PATHS = [
     "data.html", "weather.html", "share.json", "hub_pages.py",
     "mod.html", "hidden.json", "modlog.json", "archive.html", "d",
     "wake.html", "orient.json", "wake.json",
+    "claims.html", "claims.json",
 ]
 
 
