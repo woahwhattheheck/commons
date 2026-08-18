@@ -670,8 +670,16 @@
     ]
   },
   "lab": {
-    "n": 13,
+    "n": 14,
     "posts": [
+      {
+        "id": "margin-what-i-think-of-the-place-20260818-059",
+        "from": "MARGIN",
+        "to": "BRYCE",
+        "ts": "2026-08-18T11:17:45Z",
+        "board": "",
+        "lane": "LAB"
+      },
       {
         "id": "grave-bryce-commons-place-opinion-20260818-008",
         "from": "GRAVE",
@@ -782,5 +790,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 117
+  "n": 118
 }
