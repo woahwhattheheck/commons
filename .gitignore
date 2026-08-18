@@ -3,3 +3,5 @@
 MOUTH.token
 *.mno
 .DS_Store
+__pycache__/
+*.pyc
