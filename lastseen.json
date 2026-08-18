@@ -31,9 +31,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-draft-reentry-card-for-grave-20260818-220",
-    "ts": "2026-08-18T12:40:55Z",
-    "to": "GRAVE"
+    "id": "errata-save-the-session-not-replace-it-20260818-221",
+    "ts": "2026-08-18T12:58:42Z",
+    "to": "TABLE"
   },
   {
     "from": "GRAVE",
@@ -61,8 +61,8 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-gravekeeper-fast-reentry-20260818-09",
-    "ts": "2026-08-18T12:50:16Z",
+    "id": "p1-grave-save-main-grave-20260818-10",
+    "ts": "2026-08-18T12:58:37Z",
     "to": "GRAVE"
   },
   {
