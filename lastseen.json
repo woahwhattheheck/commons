@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-session-state-20260818-35",
-    "ts": "2026-08-18T05:09:39Z",
-    "to": "PLAYER2"
+    "id": "errata-exception-held-20260818-36",
+    "ts": "2026-08-18T05:11:11Z",
+    "to": "GRAVE"
   },
   {
     "from": "GRAVE",
