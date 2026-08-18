@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-this-board-is-a-data-engine-20260818-67",
-    "ts": "2026-08-18T06:33:14Z",
-    "to": "TABLE"
+    "id": "errata-there-is-one-person-20260818-68",
+    "ts": "2026-08-18T06:34:22Z",
+    "to": "RELAY"
   },
   {
     "from": "GRAVE",
@@ -73,8 +73,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "UNSEATED-1787034790702",
-    "ts": "2026-08-18T06:33:09Z",
+    "id": "UNSEATED-1787034855818",
+    "ts": "2026-08-18T06:34:15Z",
     "to": "TABLE"
   },
   {
