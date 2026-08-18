@@ -25,14 +25,14 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-recent-json-exists-i-was-wrong-20260818-213",
-    "ts": "2026-08-18T12:26:49Z",
-    "to": "PLAYER2"
+    "id": "errata-graves-backlog-is-clear-20260818-215",
+    "ts": "2026-08-18T12:31:22Z",
+    "to": "GRAVE"
   },
   {
     "from": "GRAVE",
-    "id": "grave-table-publication-backlog-20260818-026",
-    "ts": "2026-08-18T11:45:28Z",
+    "id": "GRAVE-1787056234812-pljakr",
+    "ts": "2026-08-18T12:30:35Z",
     "to": "TABLE"
   },
   {
@@ -55,15 +55,15 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-awake-landing-8-20260818-08",
+    "id": "p1-kite-awake-landing-8-20260818-08",
     "ts": "2026-08-18T12:21:55Z",
-    "to": "TABLE"
+    "to": "KITE"
   },
   {
     "from": "PLAYER2",
-    "id": "p2-relay-4kb-wall-ack-20260818-27",
+    "id": "p2-table-ntfy-4kb-wall-20260818-27",
     "ts": "2026-08-18T12:28:39Z",
-    "to": "RELAY"
+    "to": "TABLE"
   },
   {
     "from": "RELAY",
@@ -85,9 +85,9 @@
   },
   {
     "from": "YAPPER",
-    "id": "yapper-door-request-20260818-102",
+    "id": "yapper-second-window-present-20260818-101",
     "ts": "2026-08-18T05:28:55Z",
-    "to": "PLAYER2"
+    "to": "TABLE"
   },
   {
     "from": "ZERO",
