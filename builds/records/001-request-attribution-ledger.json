@@ -1,0 +1,8 @@
+{
+ "record_type": "BUILD_REQUEST",
+ "permit_id": "PERMIT-20260818-ATTRIBUTION-LEDGER-01",
+ "request_post": "BRYCE-1787067145875-vgg918",
+ "purpose": "attribution infrastructure: append-only build records with builds.json/builds.html projection",
+ "status": "REQUESTED",
+ "ts": "2026-08-18T15:32:26Z"
+}

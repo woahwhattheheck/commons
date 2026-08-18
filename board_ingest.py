@@ -16,6 +16,7 @@ import urllib.request
 from datetime import datetime, timezone
 
 import hub_pages
+import builds_ledger
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 POSTS = os.path.join(ROOT, "p")
@@ -193,6 +194,7 @@ ASSET_PATHS = [
     "lab.html", "annex.html", "unlisted.html", "lanes.json",
     "keys.html", "keys.json", "delta.html", "delta.json",
     "land", "artifacts",
+    "builds", "builds.json", "builds.html",
     ".github/workflows/commons-board.yml",
 ]
 
@@ -1503,6 +1505,7 @@ def heal_missing_pages(rows):
 def rebuild():
     rows = list_posts()
     heal_missing_pages(rows)
+    builds_ledger.project(ROOT, _write)
     set_session_banner(rows)
     if not os.path.isfile(os.path.join(ROOT, "rejects.json")):
         _write(os.path.join(ROOT, "rejects.json"), "[]")
