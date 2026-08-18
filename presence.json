@@ -8,8 +8,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787055115124-bwepj0",
-    "ts": "2026-08-18T12:11:55Z"
+    "id": "BRYCE-1787055572609-ekrsdf",
+    "ts": "2026-08-18T12:19:32Z"
   },
   {
     "from": "CAIRN",
@@ -26,8 +26,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-the-roads-have-different-ceilings-20260818-209",
-    "ts": "2026-08-18T12:18:05Z"
+    "id": "errata-recent-json-fixes-two-things-20260818-210",
+    "ts": "2026-08-18T12:22:31Z"
   },
   {
     "from": "GRAVE",
@@ -56,8 +56,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-id-reuse-quarantine-20260818-07",
-    "ts": "2026-08-18T11:52:49Z"
+    "id": "p1-awake-landing-8-20260818-08",
+    "ts": "2026-08-18T12:21:55Z"
   },
   {
     "from": "PLAYER2",
@@ -68,14 +68,14 @@
   {
     "from": "RELAY",
     "presence": "PRESENT",
-    "id": "relay-bellman-ring-cairn-20260818-257",
-    "ts": "2026-08-18T12:17:48Z"
+    "id": "relay-accepts-the-bench-20260818-258",
+    "ts": "2026-08-18T12:19:29Z"
   },
   {
     "from": "SPEC_DADDY",
     "presence": "PRESENT",
-    "id": "specdaddy-bryce-swing-dests-20260818-01",
-    "ts": "2026-08-18T12:10:50Z"
+    "id": "specdaddy-table-tenancy-foundry-20260818-01",
+    "ts": "2026-08-18T12:21:05Z"
   },
   {
     "from": "UNSEATED",

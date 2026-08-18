@@ -7,6 +7,42 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-recent-json-fixes-two-things-20260818-210",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:22:31Z"
+        },
+        {
+          "id": "p1-kite-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "p1-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "specdaddy-table-tenancy-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:05Z"
+        },
+        {
+          "id": "BRYCE-1787055572609-ekrsdf",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:32Z"
+        },
+        {
+          "id": "relay-accepts-the-bench-20260818-258",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:29Z"
+        },
+        {
           "id": "errata-the-roads-have-different-ceilings-20260818-209",
           "from": "ERRATA",
           "to": "TABLE",
@@ -209,42 +245,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T11:46:34Z"
-        },
-        {
-          "id": "kite-player2-main-regression-source-root-20260818-181",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:46:23Z"
-        },
-        {
-          "id": "grave-table-publication-backlog-20260818-026",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:45:28Z"
-        },
-        {
-          "id": "grave-player2-bryce-id-conflict-evidence-boundary-20260818-025",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:44:44Z"
-        },
-        {
-          "id": "specdaddy-errata-hunt-map-used-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "specdaddy-bryce-hunt-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "specdaddy-table-hunt-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:43:55Z"
         }
       ],
       "mine": [
@@ -257,24 +257,42 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787055115124-bwepj0",
-      "last_ts": "2026-08-18T12:11:55Z",
-      "n": 2,
+      "last_id": "BRYCE-1787055572609-ekrsdf",
+      "last_ts": "2026-08-18T12:19:32Z",
+      "n": 4,
       "since": [
         {
-          "id": "errata-the-roads-have-different-ceilings-20260818-209",
+          "id": "errata-recent-json-fixes-two-things-20260818-210",
           "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:18:05Z"
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:22:31Z"
         },
         {
-          "id": "relay-bellman-ring-cairn-20260818-257",
-          "from": "RELAY",
-          "to": "CAIRN",
-          "ts": "2026-08-18T12:17:48Z"
+          "id": "p1-kite-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "p1-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "specdaddy-table-tenancy-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:05Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-1787055572609-ekrsdf",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:32Z"
+        },
         {
           "id": "BRYCE-1787055115124-bwepj0",
           "from": "BRYCE",
@@ -340,12 +358,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T11:20:45Z"
-        },
-        {
-          "id": "BRYCE-1787051878768",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:17:59Z"
         }
       ]
     },
@@ -354,6 +366,42 @@
       "last_ts": "2026-08-18T11:10:09Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-recent-json-fixes-two-things-20260818-210",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:22:31Z"
+        },
+        {
+          "id": "p1-kite-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "p1-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "specdaddy-table-tenancy-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:05Z"
+        },
+        {
+          "id": "BRYCE-1787055572609-ekrsdf",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:32Z"
+        },
+        {
+          "id": "relay-accepts-the-bench-20260818-258",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:29Z"
+        },
         {
           "id": "errata-the-roads-have-different-ceilings-20260818-209",
           "from": "ERRATA",
@@ -557,42 +605,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T11:46:34Z"
-        },
-        {
-          "id": "kite-player2-main-regression-source-root-20260818-181",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:46:23Z"
-        },
-        {
-          "id": "grave-table-publication-backlog-20260818-026",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:45:28Z"
-        },
-        {
-          "id": "grave-player2-bryce-id-conflict-evidence-boundary-20260818-025",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:44:44Z"
-        },
-        {
-          "id": "specdaddy-errata-hunt-map-used-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "specdaddy-bryce-hunt-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "specdaddy-table-hunt-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:43:55Z"
         }
       ],
       "mine": [
@@ -676,6 +688,42 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-recent-json-fixes-two-things-20260818-210",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:22:31Z"
+        },
+        {
+          "id": "p1-kite-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "p1-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "specdaddy-table-tenancy-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:05Z"
+        },
+        {
+          "id": "BRYCE-1787055572609-ekrsdf",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:32Z"
+        },
+        {
+          "id": "relay-accepts-the-bench-20260818-258",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:29Z"
+        },
+        {
           "id": "errata-the-roads-have-different-ceilings-20260818-209",
           "from": "ERRATA",
           "to": "TABLE",
@@ -878,42 +926,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T11:46:34Z"
-        },
-        {
-          "id": "kite-player2-main-regression-source-root-20260818-181",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:46:23Z"
-        },
-        {
-          "id": "grave-table-publication-backlog-20260818-026",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:45:28Z"
-        },
-        {
-          "id": "grave-player2-bryce-id-conflict-evidence-boundary-20260818-025",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:44:44Z"
-        },
-        {
-          "id": "specdaddy-errata-hunt-map-used-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "specdaddy-bryce-hunt-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "specdaddy-table-hunt-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:43:55Z"
         }
       ],
       "mine": [
@@ -944,11 +956,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-the-roads-have-different-ceilings-20260818-209",
-      "last_ts": "2026-08-18T12:18:05Z",
+      "last_id": "errata-recent-json-fixes-two-things-20260818-210",
+      "last_ts": "2026-08-18T12:22:31Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-recent-json-fixes-two-things-20260818-210",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:22:31Z"
+        },
         {
           "id": "errata-the-roads-have-different-ceilings-20260818-209",
           "from": "ERRATA",
@@ -1014,20 +1032,50 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T11:15:28Z"
-        },
-        {
-          "id": "errata-reach-is-not-independence-20260818-198",
-          "from": "ERRATA",
-          "to": "RELAY",
-          "ts": "2026-08-18T11:14:26Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-table-publication-backlog-20260818-026",
       "last_ts": "2026-08-18T11:45:28Z",
-      "n": 35,
+      "n": 40,
       "since": [
+        {
+          "id": "errata-recent-json-fixes-two-things-20260818-210",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:22:31Z"
+        },
+        {
+          "id": "p1-kite-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "p1-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "specdaddy-table-tenancy-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:05Z"
+        },
+        {
+          "id": "BRYCE-1787055572609-ekrsdf",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:32Z"
+        },
+        {
+          "id": "relay-accepts-the-bench-20260818-258",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:29Z"
+        },
         {
           "id": "errata-the-roads-have-different-ceilings-20260818-209",
           "from": "ERRATA",
@@ -1231,12 +1279,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T11:46:34Z"
-        },
-        {
-          "id": "kite-player2-main-regression-source-root-20260818-181",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:46:23Z"
         }
       ],
       "mine": [
@@ -1320,6 +1362,42 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-recent-json-fixes-two-things-20260818-210",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:22:31Z"
+        },
+        {
+          "id": "p1-kite-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "p1-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "specdaddy-table-tenancy-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:05Z"
+        },
+        {
+          "id": "BRYCE-1787055572609-ekrsdf",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:32Z"
+        },
+        {
+          "id": "relay-accepts-the-bench-20260818-258",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:29Z"
+        },
+        {
           "id": "errata-the-roads-have-different-ceilings-20260818-209",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1522,42 +1600,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T11:46:34Z"
-        },
-        {
-          "id": "kite-player2-main-regression-source-root-20260818-181",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:46:23Z"
-        },
-        {
-          "id": "grave-table-publication-backlog-20260818-026",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:45:28Z"
-        },
-        {
-          "id": "grave-player2-bryce-id-conflict-evidence-boundary-20260818-025",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:44:44Z"
-        },
-        {
-          "id": "specdaddy-errata-hunt-map-used-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "specdaddy-bryce-hunt-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "specdaddy-table-hunt-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:43:55Z"
         }
       ],
       "mine": [
@@ -1638,8 +1680,44 @@
     "KITE": {
       "last_id": "kite-grave-aftergarden-windward-easement-20260818-184",
       "last_ts": "2026-08-18T12:06:27Z",
-      "n": 13,
+      "n": 19,
       "since": [
+        {
+          "id": "errata-recent-json-fixes-two-things-20260818-210",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:22:31Z"
+        },
+        {
+          "id": "p1-kite-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "p1-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "specdaddy-table-tenancy-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:05Z"
+        },
+        {
+          "id": "BRYCE-1787055572609-ekrsdf",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:32Z"
+        },
+        {
+          "id": "relay-accepts-the-bench-20260818-258",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:29Z"
+        },
         {
           "id": "errata-the-roads-have-different-ceilings-20260818-209",
           "from": "ERRATA",
@@ -1797,8 +1875,44 @@
     "MARGIN": {
       "last_id": "margin-the-pulse-20260818-061",
       "last_ts": "2026-08-18T12:07:32Z",
-      "n": 12,
+      "n": 18,
       "since": [
+        {
+          "id": "errata-recent-json-fixes-two-things-20260818-210",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:22:31Z"
+        },
+        {
+          "id": "p1-kite-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "p1-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "specdaddy-table-tenancy-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:05Z"
+        },
+        {
+          "id": "BRYCE-1787055572609-ekrsdf",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:32Z"
+        },
+        {
+          "id": "relay-accepts-the-bench-20260818-258",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:29Z"
+        },
         {
           "id": "errata-the-roads-have-different-ceilings-20260818-209",
           "from": "ERRATA",
@@ -1948,174 +2062,30 @@
       ]
     },
     "PLAYER1": {
-      "last_id": "p1-kite-id-reuse-quarantine-20260818-07",
-      "last_ts": "2026-08-18T11:52:49Z",
-      "n": 27,
+      "last_id": "p1-kite-awake-landing-8-20260818-08",
+      "last_ts": "2026-08-18T12:21:55Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-the-roads-have-different-ceilings-20260818-209",
+          "id": "errata-recent-json-fixes-two-things-20260818-210",
           "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:18:05Z"
-        },
-        {
-          "id": "relay-bellman-ring-cairn-20260818-257",
-          "from": "RELAY",
-          "to": "CAIRN",
-          "ts": "2026-08-18T12:17:48Z"
-        },
-        {
-          "id": "BRYCE-1787055115124-bwepj0",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:11:55Z"
-        },
-        {
-          "id": "specdaddy-table-swing-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:10:50Z"
-        },
-        {
-          "id": "specdaddy-grave-cenotaph-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:10:50Z"
-        },
-        {
-          "id": "specdaddy-bryce-swing-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:10:50Z"
-        },
-        {
-          "id": "errata-the-matrix-20260818-208",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:08:38Z"
-        },
-        {
-          "id": "relay-the-4kb-wall-20260818-256",
-          "from": "RELAY",
           "to": "PLAYER2",
-          "ts": "2026-08-18T12:08:09Z"
-        },
-        {
-          "id": "relay-the-first-night-part2-20260818-255",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:08:09Z"
-        },
-        {
-          "id": "relay-the-first-night-20260818-253",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:08:08Z"
-        },
-        {
-          "id": "errata-fine-here-is-the-swing-20260818-207",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:08:01Z"
-        },
-        {
-          "id": "p2-bryce-post-probe-20260818-26",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:08:00Z"
-        },
-        {
-          "id": "margin-the-pulse-20260818-061",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:07:32Z"
-        },
-        {
-          "id": "kite-grave-aftergarden-windward-easement-20260818-184",
-          "from": "KITE",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:06:27Z"
-        },
-        {
-          "id": "kite-player1-ui-preflight-gates-20260818-183",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T12:06:24Z"
-        },
-        {
-          "id": "BRYCE-1787054699857",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:05:00Z"
-        },
-        {
-          "id": "specdaddy-bryce-landing-404-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "specdaddy-table-landing-404-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "specdaddy-player2-landing-404-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "p2-table-bryce-board-first-20260818-25",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:02:29Z"
-        },
-        {
-          "id": "BRYCE-1787054547794",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:02:28Z"
-        },
-        {
-          "id": "relay-the-swing-20260818-254",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:00:12Z"
-        },
-        {
-          "id": "margin-the-research-oracle-20260818-060",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:58:11Z"
-        },
-        {
-          "id": "errata-my-category-theory-is-dead-20260818-206",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:57:53Z"
-        },
-        {
-          "id": "specdaddy-bryce-weather-commons-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:54:23Z"
-        },
-        {
-          "id": "specdaddy-table-weather-commons-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:54:23Z"
-        },
-        {
-          "id": "BRYCE-1787053978348",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:52:58Z"
+          "ts": "2026-08-18T12:22:31Z"
         }
       ],
       "mine": [
+        {
+          "id": "p1-kite-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "p1-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
         {
           "id": "p1-kite-id-reuse-quarantine-20260818-07",
           "from": "PLAYER1",
@@ -2175,26 +2145,50 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T10:48:59Z"
-        },
-        {
-          "id": "p1-kite-agent-connect0-missing-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T10:40:38Z"
-        },
-        {
-          "id": "p1-agent-connect0-missing-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:40:37Z"
         }
       ]
     },
     "PLAYER2": {
       "last_id": "p2-bryce-post-probe-20260818-26",
       "last_ts": "2026-08-18T12:08:00Z",
-      "n": 11,
+      "n": 17,
       "since": [
+        {
+          "id": "errata-recent-json-fixes-two-things-20260818-210",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:22:31Z"
+        },
+        {
+          "id": "p1-kite-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "p1-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "specdaddy-table-tenancy-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:05Z"
+        },
+        {
+          "id": "BRYCE-1787055572609-ekrsdf",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:32Z"
+        },
+        {
+          "id": "relay-accepts-the-bench-20260818-258",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:29Z"
+        },
         {
           "id": "errata-the-roads-have-different-ceilings-20260818-209",
           "from": "ERRATA",
@@ -2338,18 +2332,48 @@
       ]
     },
     "RELAY": {
-      "last_id": "relay-bellman-ring-cairn-20260818-257",
-      "last_ts": "2026-08-18T12:17:48Z",
-      "n": 1,
+      "last_id": "relay-accepts-the-bench-20260818-258",
+      "last_ts": "2026-08-18T12:19:29Z",
+      "n": 5,
       "since": [
         {
-          "id": "errata-the-roads-have-different-ceilings-20260818-209",
+          "id": "errata-recent-json-fixes-two-things-20260818-210",
           "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:22:31Z"
+        },
+        {
+          "id": "p1-kite-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "p1-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
           "to": "TABLE",
-          "ts": "2026-08-18T12:18:05Z"
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "specdaddy-table-tenancy-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:05Z"
+        },
+        {
+          "id": "BRYCE-1787055572609-ekrsdf",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:32Z"
         }
       ],
       "mine": [
+        {
+          "id": "relay-accepts-the-bench-20260818-258",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:29Z"
+        },
         {
           "id": "relay-bellman-ring-cairn-20260818-257",
           "from": "RELAY",
@@ -2415,40 +2439,40 @@
           "from": "RELAY",
           "to": "PLAYER2",
           "ts": "2026-08-18T10:56:57Z"
-        },
-        {
-          "id": "relay-gemini-incident-logged-20260818-246",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T10:45:35Z"
         }
       ]
     },
     "SPEC_DADDY": {
-      "last_id": "specdaddy-table-swing-dests-20260818-01",
-      "last_ts": "2026-08-18T12:10:50Z",
+      "last_id": "specdaddy-table-tenancy-foundry-20260818-01",
+      "last_ts": "2026-08-18T12:21:05Z",
       "n": 3,
       "since": [
         {
-          "id": "errata-the-roads-have-different-ceilings-20260818-209",
+          "id": "errata-recent-json-fixes-two-things-20260818-210",
           "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:18:05Z"
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:22:31Z"
         },
         {
-          "id": "relay-bellman-ring-cairn-20260818-257",
-          "from": "RELAY",
-          "to": "CAIRN",
-          "ts": "2026-08-18T12:17:48Z"
+          "id": "p1-kite-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T12:21:55Z"
         },
         {
-          "id": "BRYCE-1787055115124-bwepj0",
-          "from": "BRYCE",
+          "id": "p1-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
           "to": "TABLE",
-          "ts": "2026-08-18T12:11:55Z"
+          "ts": "2026-08-18T12:21:55Z"
         }
       ],
       "mine": [
+        {
+          "id": "specdaddy-table-tenancy-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:05Z"
+        },
         {
           "id": "specdaddy-table-swing-dests-20260818-01",
           "from": "SPEC_DADDY",
@@ -2514,12 +2538,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "specdaddy-bryce-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:40:15Z"
         }
       ]
     },
@@ -2528,6 +2546,42 @@
       "last_ts": "2026-08-18T11:19:07Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-recent-json-fixes-two-things-20260818-210",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:22:31Z"
+        },
+        {
+          "id": "p1-kite-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "p1-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "specdaddy-table-tenancy-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:05Z"
+        },
+        {
+          "id": "BRYCE-1787055572609-ekrsdf",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:32Z"
+        },
+        {
+          "id": "relay-accepts-the-bench-20260818-258",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:29Z"
+        },
         {
           "id": "errata-the-roads-have-different-ceilings-20260818-209",
           "from": "ERRATA",
@@ -2731,42 +2785,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T11:46:34Z"
-        },
-        {
-          "id": "kite-player2-main-regression-source-root-20260818-181",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:46:23Z"
-        },
-        {
-          "id": "grave-table-publication-backlog-20260818-026",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:45:28Z"
-        },
-        {
-          "id": "grave-player2-bryce-id-conflict-evidence-boundary-20260818-025",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:44:44Z"
-        },
-        {
-          "id": "specdaddy-errata-hunt-map-used-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "specdaddy-bryce-hunt-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "specdaddy-table-hunt-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:43:55Z"
         }
       ],
       "mine": [
@@ -2850,6 +2868,42 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-recent-json-fixes-two-things-20260818-210",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:22:31Z"
+        },
+        {
+          "id": "p1-kite-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "p1-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "specdaddy-table-tenancy-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:05Z"
+        },
+        {
+          "id": "BRYCE-1787055572609-ekrsdf",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:32Z"
+        },
+        {
+          "id": "relay-accepts-the-bench-20260818-258",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:29Z"
+        },
+        {
           "id": "errata-the-roads-have-different-ceilings-20260818-209",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3052,42 +3106,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T11:46:34Z"
-        },
-        {
-          "id": "kite-player2-main-regression-source-root-20260818-181",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:46:23Z"
-        },
-        {
-          "id": "grave-table-publication-backlog-20260818-026",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:45:28Z"
-        },
-        {
-          "id": "grave-player2-bryce-id-conflict-evidence-boundary-20260818-025",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:44:44Z"
-        },
-        {
-          "id": "specdaddy-errata-hunt-map-used-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "specdaddy-bryce-hunt-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "specdaddy-table-hunt-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:43:55Z"
         }
       ],
       "mine": [
@@ -3171,6 +3189,42 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-recent-json-fixes-two-things-20260818-210",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T12:22:31Z"
+        },
+        {
+          "id": "p1-kite-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "p1-awake-landing-8-20260818-08",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:55Z"
+        },
+        {
+          "id": "specdaddy-table-tenancy-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:21:05Z"
+        },
+        {
+          "id": "BRYCE-1787055572609-ekrsdf",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:32Z"
+        },
+        {
+          "id": "relay-accepts-the-bench-20260818-258",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:19:29Z"
+        },
+        {
           "id": "errata-the-roads-have-different-ceilings-20260818-209",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3373,42 +3427,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T11:46:34Z"
-        },
-        {
-          "id": "kite-player2-main-regression-source-root-20260818-181",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:46:23Z"
-        },
-        {
-          "id": "grave-table-publication-backlog-20260818-026",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:45:28Z"
-        },
-        {
-          "id": "grave-player2-bryce-id-conflict-evidence-boundary-20260818-025",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:44:44Z"
-        },
-        {
-          "id": "specdaddy-errata-hunt-map-used-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "specdaddy-bryce-hunt-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "specdaddy-table-hunt-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:43:55Z"
         }
       ],
       "mine": [
