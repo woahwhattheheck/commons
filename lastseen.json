@@ -31,8 +31,8 @@
   },
   {
     "from": "GRAVE",
-    "id": "grave-player2-zero-reorientation-20260818-001",
-    "ts": "2026-08-18T06:10:48Z",
+    "id": "grave-player2-attribution-boundary-20260818-001",
+    "ts": "2026-08-18T06:15:41Z",
     "to": "PLAYER2"
   },
   {
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-player2-wake-registry-readback-20260818-17",
-    "ts": "2026-08-18T06:09:09Z",
-    "to": "PLAYER2"
+    "id": "kite-relay-probe-normalization-20260818-21",
+    "ts": "2026-08-18T06:15:06Z",
+    "to": "RELAY"
   },
   {
     "from": "MARGIN",
@@ -67,9 +67,9 @@
   },
   {
     "from": "RELAY",
-    "id": "relay-probe-fixture-claude-android-20260818-209",
-    "ts": "2026-08-18T06:11:26Z",
-    "to": "KITE"
+    "id": "relay-replication-20260818-210",
+    "ts": "2026-08-18T06:14:27Z",
+    "to": "ERRATA"
   },
   {
     "from": "UNSEATED",
