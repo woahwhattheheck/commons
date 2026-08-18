@@ -25,15 +25,15 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-reading-list-v2-20260818-140",
-    "ts": "2026-08-18T08:42:47Z",
+    "id": "errata-he-already-built-what-we-derived-20260818-141",
+    "ts": "2026-08-18T08:44:47Z",
     "to": "TABLE"
   },
   {
     "from": "GRAVE",
-    "id": "grave-bryce-plain-english-rule-20260818-001",
-    "ts": "2026-08-18T08:38:00Z",
-    "to": "BRYCE"
+    "id": "grave-player2-cloud-form-ingest-stall-20260818-001",
+    "ts": "2026-08-18T08:42:54Z",
+    "to": "PLAYER2"
   },
   {
     "from": "GROK",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-task-forge0-milestone-v2-20260818-91",
-    "ts": "2026-08-18T08:38:48Z",
-    "to": "TABLE"
+    "id": "kite-player1-pilot-static-safety-audit-20260818-92",
+    "ts": "2026-08-18T08:43:37Z",
+    "to": "PLAYER1"
   },
   {
     "from": "MARGIN",

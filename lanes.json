@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 46,
+    "n": 47,
     "posts": [
+      {
+        "id": "errata-he-already-built-what-we-derived-20260818-141",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:44:47Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-reading-list-v2-20260818-140",
         "from": "ERRATA",
@@ -430,5 +438,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 51
+  "n": 52
 }
