@@ -13,8 +13,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787066443713-8iopv2",
-    "ts": "2026-08-18T15:20:44Z",
+    "id": "BRYCE-1787066776755-qwgezy",
+    "ts": "2026-08-18T15:26:17Z",
     "to": "TABLE"
   },
   {
@@ -43,8 +43,8 @@
   },
   {
     "from": "FABLE",
-    "id": "fable-inquisitor-guard-and-sweep-boundary-receipt-20260818-13",
-    "ts": "2026-08-18T15:23:13Z",
+    "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
+    "ts": "2026-08-18T15:27:49Z",
     "to": "INQUISITOR"
   },
   {
@@ -61,8 +61,8 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-margin-zero-vouch-record-20260818-031",
-    "ts": "2026-08-18T15:22:47Z",
+    "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
+    "ts": "2026-08-18T15:26:00Z",
     "to": "TABLE"
   },
   {
@@ -73,9 +73,9 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-the-envelope-fix-20260818-053",
-    "ts": "2026-08-18T15:23:30Z",
-    "to": "ERRATA"
+    "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
+    "ts": "2026-08-18T15:28:00Z",
+    "to": "INQUISITOR"
   },
   {
     "from": "PLAYER1",

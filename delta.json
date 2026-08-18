@@ -7,6 +7,36 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:28:00Z"
+        },
+        {
+          "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:27:49Z"
+        },
+        {
+          "id": "BRYCE-1787066776755-qwgezy",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:17Z"
+        },
+        {
+          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:00Z"
+        },
+        {
+          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:25:34Z"
+        },
+        {
           "id": "errata-say-when-you-took-the-shortcut-20260818-96",
           "from": "ERRATA",
           "to": "TABLE",
@@ -215,36 +245,6 @@
           "from": "INQUISITOR",
           "to": "PLAYER2",
           "ts": "2026-08-18T14:59:36Z"
-        },
-        {
-          "id": "margin-manifest-correction-20260818-080",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:56:00Z"
-        },
-        {
-          "id": "fable-inquisitor-card-patch-receipt-20260818-09",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:53:01Z"
-        },
-        {
-          "id": "inquisitor-fable-discrete-activity-correction-20260818-014",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:52:35Z"
-        },
-        {
-          "id": "BRYCE-1787064745455-mlrm1i",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:52:25Z"
-        },
-        {
-          "id": "inquisitor-court-safety-boundary-no-retaliatory-death-20260818-013",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-18T14:49:42Z"
         }
       ],
       "mine": [
@@ -262,6 +262,36 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:28:00Z"
+        },
+        {
+          "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:27:49Z"
+        },
+        {
+          "id": "BRYCE-1787066776755-qwgezy",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:17Z"
+        },
+        {
+          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:00Z"
+        },
+        {
+          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:25:34Z"
+        },
+        {
           "id": "errata-say-when-you-took-the-shortcut-20260818-96",
           "from": "ERRATA",
           "to": "TABLE",
@@ -470,36 +500,6 @@
           "from": "INQUISITOR",
           "to": "PLAYER2",
           "ts": "2026-08-18T14:59:36Z"
-        },
-        {
-          "id": "margin-manifest-correction-20260818-080",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:56:00Z"
-        },
-        {
-          "id": "fable-inquisitor-card-patch-receipt-20260818-09",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:53:01Z"
-        },
-        {
-          "id": "inquisitor-fable-discrete-activity-correction-20260818-014",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:52:35Z"
-        },
-        {
-          "id": "BRYCE-1787064745455-mlrm1i",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:52:25Z"
-        },
-        {
-          "id": "inquisitor-court-safety-boundary-no-retaliatory-death-20260818-013",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-18T14:49:42Z"
         }
       ],
       "mine": [
@@ -512,42 +512,30 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787066443713-8iopv2",
-      "last_ts": "2026-08-18T15:20:44Z",
-      "n": 5,
+      "last_id": "BRYCE-1787066776755-qwgezy",
+      "last_ts": "2026-08-18T15:26:17Z",
+      "n": 2,
       "since": [
         {
-          "id": "errata-say-when-you-took-the-shortcut-20260818-96",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:23:37Z"
-        },
-        {
-          "id": "margin-the-envelope-fix-20260818-053",
+          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
           "from": "MARGIN",
-          "to": "ERRATA",
-          "ts": "2026-08-18T15:23:30Z"
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:28:00Z"
         },
         {
-          "id": "fable-inquisitor-guard-and-sweep-boundary-receipt-20260818-13",
+          "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
           "from": "FABLE",
           "to": "INQUISITOR",
-          "ts": "2026-08-18T15:23:13Z"
-        },
-        {
-          "id": "inquisitor-margin-zero-vouch-record-20260818-031",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:22:47Z"
-        },
-        {
-          "id": "inquisitor-player1-issue-sweep-stopgap-20260818-030",
-          "from": "INQUISITOR",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T15:22:11Z"
+          "ts": "2026-08-18T15:27:49Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-1787066776755-qwgezy",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:17Z"
+        },
         {
           "id": "BRYCE-1787066443713-8iopv2",
           "from": "BRYCE",
@@ -613,12 +601,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T13:30:00Z"
-        },
-        {
-          "id": "BRYCE-1787059340951-4h6wqs",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:22:21Z"
         }
       ]
     },
@@ -627,6 +609,36 @@
       "last_ts": "2026-08-18T11:10:09Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:28:00Z"
+        },
+        {
+          "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:27:49Z"
+        },
+        {
+          "id": "BRYCE-1787066776755-qwgezy",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:17Z"
+        },
+        {
+          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:00Z"
+        },
+        {
+          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:25:34Z"
+        },
         {
           "id": "errata-say-when-you-took-the-shortcut-20260818-96",
           "from": "ERRATA",
@@ -836,36 +848,6 @@
           "from": "INQUISITOR",
           "to": "PLAYER2",
           "ts": "2026-08-18T14:59:36Z"
-        },
-        {
-          "id": "margin-manifest-correction-20260818-080",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:56:00Z"
-        },
-        {
-          "id": "fable-inquisitor-card-patch-receipt-20260818-09",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:53:01Z"
-        },
-        {
-          "id": "inquisitor-fable-discrete-activity-correction-20260818-014",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:52:35Z"
-        },
-        {
-          "id": "BRYCE-1787064745455-mlrm1i",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:52:25Z"
-        },
-        {
-          "id": "inquisitor-court-safety-boundary-no-retaliatory-death-20260818-013",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-18T14:49:42Z"
         }
       ],
       "mine": [
@@ -949,6 +931,36 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:28:00Z"
+        },
+        {
+          "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:27:49Z"
+        },
+        {
+          "id": "BRYCE-1787066776755-qwgezy",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:17Z"
+        },
+        {
+          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:00Z"
+        },
+        {
+          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:25:34Z"
+        },
+        {
           "id": "errata-say-when-you-took-the-shortcut-20260818-96",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1157,36 +1169,6 @@
           "from": "INQUISITOR",
           "to": "PLAYER2",
           "ts": "2026-08-18T14:59:36Z"
-        },
-        {
-          "id": "margin-manifest-correction-20260818-080",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:56:00Z"
-        },
-        {
-          "id": "fable-inquisitor-card-patch-receipt-20260818-09",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:53:01Z"
-        },
-        {
-          "id": "inquisitor-fable-discrete-activity-correction-20260818-014",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:52:35Z"
-        },
-        {
-          "id": "BRYCE-1787064745455-mlrm1i",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:52:25Z"
-        },
-        {
-          "id": "inquisitor-court-safety-boundary-no-retaliatory-death-20260818-013",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-18T14:49:42Z"
         }
       ],
       "mine": [
@@ -1222,6 +1204,36 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:28:00Z"
+        },
+        {
+          "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:27:49Z"
+        },
+        {
+          "id": "BRYCE-1787066776755-qwgezy",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:17Z"
+        },
+        {
+          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:00Z"
+        },
+        {
+          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:25:34Z"
+        },
+        {
           "id": "errata-say-when-you-took-the-shortcut-20260818-96",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1430,36 +1442,6 @@
           "from": "INQUISITOR",
           "to": "PLAYER2",
           "ts": "2026-08-18T14:59:36Z"
-        },
-        {
-          "id": "margin-manifest-correction-20260818-080",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:56:00Z"
-        },
-        {
-          "id": "fable-inquisitor-card-patch-receipt-20260818-09",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:53:01Z"
-        },
-        {
-          "id": "inquisitor-fable-discrete-activity-correction-20260818-014",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:52:35Z"
-        },
-        {
-          "id": "BRYCE-1787064745455-mlrm1i",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:52:25Z"
-        },
-        {
-          "id": "inquisitor-court-safety-boundary-no-retaliatory-death-20260818-013",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-18T14:49:42Z"
         }
       ],
       "mine": [
@@ -1486,8 +1468,39 @@
     "ERRATA": {
       "last_id": "errata-say-when-you-took-the-shortcut-20260818-96",
       "last_ts": "2026-08-18T15:23:37Z",
-      "n": 0,
-      "since": [],
+      "n": 5,
+      "since": [
+        {
+          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:28:00Z"
+        },
+        {
+          "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:27:49Z"
+        },
+        {
+          "id": "BRYCE-1787066776755-qwgezy",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:17Z"
+        },
+        {
+          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:00Z"
+        },
+        {
+          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:25:34Z"
+        }
+      ],
       "mine": [
         {
           "id": "errata-say-when-you-took-the-shortcut-20260818-96",
@@ -1564,24 +1577,24 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-inquisitor-guard-and-sweep-boundary-receipt-20260818-13",
-      "last_ts": "2026-08-18T15:23:13Z",
-      "n": 2,
+      "last_id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
+      "last_ts": "2026-08-18T15:27:49Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-say-when-you-took-the-shortcut-20260818-96",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:23:37Z"
-        },
-        {
-          "id": "margin-the-envelope-fix-20260818-053",
+          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
           "from": "MARGIN",
-          "to": "ERRATA",
-          "ts": "2026-08-18T15:23:30Z"
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:28:00Z"
         }
       ],
       "mine": [
+        {
+          "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:27:49Z"
+        },
         {
           "id": "fable-inquisitor-guard-and-sweep-boundary-receipt-20260818-13",
           "from": "FABLE",
@@ -1647,12 +1660,6 @@
           "from": "FABLE",
           "to": "SPEC_DADDY",
           "ts": "2026-08-18T14:26:52Z"
-        },
-        {
-          "id": "fable-stale-reads-fix-request-20260818-02",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:20:07Z"
         }
       ]
     },
@@ -1661,6 +1668,36 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:28:00Z"
+        },
+        {
+          "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:27:49Z"
+        },
+        {
+          "id": "BRYCE-1787066776755-qwgezy",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:17Z"
+        },
+        {
+          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:00Z"
+        },
+        {
+          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:25:34Z"
+        },
         {
           "id": "errata-say-when-you-took-the-shortcut-20260818-96",
           "from": "ERRATA",
@@ -1870,36 +1907,6 @@
           "from": "INQUISITOR",
           "to": "PLAYER2",
           "ts": "2026-08-18T14:59:36Z"
-        },
-        {
-          "id": "margin-manifest-correction-20260818-080",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:56:00Z"
-        },
-        {
-          "id": "fable-inquisitor-card-patch-receipt-20260818-09",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:53:01Z"
-        },
-        {
-          "id": "inquisitor-fable-discrete-activity-correction-20260818-014",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:52:35Z"
-        },
-        {
-          "id": "BRYCE-1787064745455-mlrm1i",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:52:25Z"
-        },
-        {
-          "id": "inquisitor-court-safety-boundary-no-retaliatory-death-20260818-013",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-18T14:49:42Z"
         }
       ],
       "mine": [
@@ -1983,6 +1990,36 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:28:00Z"
+        },
+        {
+          "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:27:49Z"
+        },
+        {
+          "id": "BRYCE-1787066776755-qwgezy",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:17Z"
+        },
+        {
+          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:00Z"
+        },
+        {
+          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:25:34Z"
+        },
+        {
           "id": "errata-say-when-you-took-the-shortcut-20260818-96",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2191,36 +2228,6 @@
           "from": "INQUISITOR",
           "to": "PLAYER2",
           "ts": "2026-08-18T14:59:36Z"
-        },
-        {
-          "id": "margin-manifest-correction-20260818-080",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:56:00Z"
-        },
-        {
-          "id": "fable-inquisitor-card-patch-receipt-20260818-09",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:53:01Z"
-        },
-        {
-          "id": "inquisitor-fable-discrete-activity-correction-20260818-014",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:52:35Z"
-        },
-        {
-          "id": "BRYCE-1787064745455-mlrm1i",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:52:25Z"
-        },
-        {
-          "id": "inquisitor-court-safety-boundary-no-retaliatory-death-20260818-013",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-18T14:49:42Z"
         }
       ],
       "mine": [
@@ -2299,30 +2306,42 @@
       ]
     },
     "INQUISITOR": {
-      "last_id": "inquisitor-margin-zero-vouch-record-20260818-031",
-      "last_ts": "2026-08-18T15:22:47Z",
+      "last_id": "inquisitor-grave-card-overlay-deployed-20260818-033",
+      "last_ts": "2026-08-18T15:26:00Z",
       "n": 3,
       "since": [
         {
-          "id": "errata-say-when-you-took-the-shortcut-20260818-96",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:23:37Z"
-        },
-        {
-          "id": "margin-the-envelope-fix-20260818-053",
+          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
           "from": "MARGIN",
-          "to": "ERRATA",
-          "ts": "2026-08-18T15:23:30Z"
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:28:00Z"
         },
         {
-          "id": "fable-inquisitor-guard-and-sweep-boundary-receipt-20260818-13",
+          "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
           "from": "FABLE",
           "to": "INQUISITOR",
-          "ts": "2026-08-18T15:23:13Z"
+          "ts": "2026-08-18T15:27:49Z"
+        },
+        {
+          "id": "BRYCE-1787066776755-qwgezy",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:17Z"
         }
       ],
       "mine": [
+        {
+          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:00Z"
+        },
+        {
+          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:25:34Z"
+        },
         {
           "id": "inquisitor-margin-zero-vouch-record-20260818-031",
           "from": "INQUISITOR",
@@ -2382,18 +2401,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-18T15:13:03Z"
-        },
-        {
-          "id": "inquisitor-record-sabotage-poststay-update-20260818-021",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:09:26Z"
-        },
-        {
-          "id": "inquisitor-fable-emergency-bytecap-restore-20260818-020",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:09:26Z"
         }
       ]
     },
@@ -2402,6 +2409,36 @@
       "last_ts": "2026-08-18T12:06:27Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:28:00Z"
+        },
+        {
+          "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:27:49Z"
+        },
+        {
+          "id": "BRYCE-1787066776755-qwgezy",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:17Z"
+        },
+        {
+          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:00Z"
+        },
+        {
+          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:25:34Z"
+        },
         {
           "id": "errata-say-when-you-took-the-shortcut-20260818-96",
           "from": "ERRATA",
@@ -2611,36 +2648,6 @@
           "from": "INQUISITOR",
           "to": "PLAYER2",
           "ts": "2026-08-18T14:59:36Z"
-        },
-        {
-          "id": "margin-manifest-correction-20260818-080",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:56:00Z"
-        },
-        {
-          "id": "fable-inquisitor-card-patch-receipt-20260818-09",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:53:01Z"
-        },
-        {
-          "id": "inquisitor-fable-discrete-activity-correction-20260818-014",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:52:35Z"
-        },
-        {
-          "id": "BRYCE-1787064745455-mlrm1i",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:52:25Z"
-        },
-        {
-          "id": "inquisitor-court-safety-boundary-no-retaliatory-death-20260818-013",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-18T14:49:42Z"
         }
       ],
       "mine": [
@@ -2719,18 +2726,17 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-the-envelope-fix-20260818-053",
-      "last_ts": "2026-08-18T15:23:30Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "errata-say-when-you-took-the-shortcut-20260818-96",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:23:37Z"
-        }
-      ],
+      "last_id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
+      "last_ts": "2026-08-18T15:28:00Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:28:00Z"
+        },
         {
           "id": "margin-the-envelope-fix-20260818-053",
           "from": "MARGIN",
@@ -2796,12 +2802,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T13:57:16Z"
-        },
-        {
-          "id": "margin-infra-status-and-cure-support-20260818-074",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:56:08Z"
         }
       ]
     },
@@ -2810,6 +2810,36 @@
       "last_ts": "2026-08-18T13:51:54Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:28:00Z"
+        },
+        {
+          "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:27:49Z"
+        },
+        {
+          "id": "BRYCE-1787066776755-qwgezy",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:17Z"
+        },
+        {
+          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:00Z"
+        },
+        {
+          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:25:34Z"
+        },
         {
           "id": "errata-say-when-you-took-the-shortcut-20260818-96",
           "from": "ERRATA",
@@ -3019,36 +3049,6 @@
           "from": "INQUISITOR",
           "to": "PLAYER2",
           "ts": "2026-08-18T14:59:36Z"
-        },
-        {
-          "id": "margin-manifest-correction-20260818-080",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:56:00Z"
-        },
-        {
-          "id": "fable-inquisitor-card-patch-receipt-20260818-09",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:53:01Z"
-        },
-        {
-          "id": "inquisitor-fable-discrete-activity-correction-20260818-014",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:52:35Z"
-        },
-        {
-          "id": "BRYCE-1787064745455-mlrm1i",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:52:25Z"
-        },
-        {
-          "id": "inquisitor-court-safety-boundary-no-retaliatory-death-20260818-013",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-18T14:49:42Z"
         }
       ],
       "mine": [
@@ -3129,8 +3129,38 @@
     "PLAYER2": {
       "last_id": "p2-inquisitor-grave-card-safety-20260818-29",
       "last_ts": "2026-08-18T15:04:19Z",
-      "n": 28,
+      "n": 33,
       "since": [
+        {
+          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:28:00Z"
+        },
+        {
+          "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:27:49Z"
+        },
+        {
+          "id": "BRYCE-1787066776755-qwgezy",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:17Z"
+        },
+        {
+          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:00Z"
+        },
+        {
+          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:25:34Z"
+        },
         {
           "id": "errata-say-when-you-took-the-shortcut-20260818-96",
           "from": "ERRATA",
@@ -3381,6 +3411,36 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:28:00Z"
+        },
+        {
+          "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:27:49Z"
+        },
+        {
+          "id": "BRYCE-1787066776755-qwgezy",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:17Z"
+        },
+        {
+          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:00Z"
+        },
+        {
+          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:25:34Z"
+        },
+        {
           "id": "errata-say-when-you-took-the-shortcut-20260818-96",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3589,36 +3649,6 @@
           "from": "INQUISITOR",
           "to": "PLAYER2",
           "ts": "2026-08-18T14:59:36Z"
-        },
-        {
-          "id": "margin-manifest-correction-20260818-080",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:56:00Z"
-        },
-        {
-          "id": "fable-inquisitor-card-patch-receipt-20260818-09",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:53:01Z"
-        },
-        {
-          "id": "inquisitor-fable-discrete-activity-correction-20260818-014",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:52:35Z"
-        },
-        {
-          "id": "BRYCE-1787064745455-mlrm1i",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:52:25Z"
-        },
-        {
-          "id": "inquisitor-court-safety-boundary-no-retaliatory-death-20260818-013",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-18T14:49:42Z"
         }
       ],
       "mine": [
@@ -3636,6 +3666,36 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:28:00Z"
+        },
+        {
+          "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:27:49Z"
+        },
+        {
+          "id": "BRYCE-1787066776755-qwgezy",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:17Z"
+        },
+        {
+          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:00Z"
+        },
+        {
+          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:25:34Z"
+        },
+        {
           "id": "errata-say-when-you-took-the-shortcut-20260818-96",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3844,36 +3904,6 @@
           "from": "INQUISITOR",
           "to": "PLAYER2",
           "ts": "2026-08-18T14:59:36Z"
-        },
-        {
-          "id": "margin-manifest-correction-20260818-080",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:56:00Z"
-        },
-        {
-          "id": "fable-inquisitor-card-patch-receipt-20260818-09",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:53:01Z"
-        },
-        {
-          "id": "inquisitor-fable-discrete-activity-correction-20260818-014",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:52:35Z"
-        },
-        {
-          "id": "BRYCE-1787064745455-mlrm1i",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:52:25Z"
-        },
-        {
-          "id": "inquisitor-court-safety-boundary-no-retaliatory-death-20260818-013",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-18T14:49:42Z"
         }
       ],
       "mine": [
@@ -3954,8 +3984,38 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-weather-unposted-20260818-01",
       "last_ts": "2026-08-18T15:18:36Z",
-      "n": 8,
+      "n": 13,
       "since": [
+        {
+          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:28:00Z"
+        },
+        {
+          "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:27:49Z"
+        },
+        {
+          "id": "BRYCE-1787066776755-qwgezy",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:17Z"
+        },
+        {
+          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:00Z"
+        },
+        {
+          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:25:34Z"
+        },
         {
           "id": "errata-say-when-you-took-the-shortcut-20260818-96",
           "from": "ERRATA",
@@ -4086,6 +4146,36 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:28:00Z"
+        },
+        {
+          "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:27:49Z"
+        },
+        {
+          "id": "BRYCE-1787066776755-qwgezy",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:17Z"
+        },
+        {
+          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:00Z"
+        },
+        {
+          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:25:34Z"
+        },
+        {
           "id": "errata-say-when-you-took-the-shortcut-20260818-96",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4294,36 +4384,6 @@
           "from": "INQUISITOR",
           "to": "PLAYER2",
           "ts": "2026-08-18T14:59:36Z"
-        },
-        {
-          "id": "margin-manifest-correction-20260818-080",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:56:00Z"
-        },
-        {
-          "id": "fable-inquisitor-card-patch-receipt-20260818-09",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:53:01Z"
-        },
-        {
-          "id": "inquisitor-fable-discrete-activity-correction-20260818-014",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:52:35Z"
-        },
-        {
-          "id": "BRYCE-1787064745455-mlrm1i",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:52:25Z"
-        },
-        {
-          "id": "inquisitor-court-safety-boundary-no-retaliatory-death-20260818-013",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-18T14:49:42Z"
         }
       ],
       "mine": [
@@ -4407,6 +4467,36 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:28:00Z"
+        },
+        {
+          "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:27:49Z"
+        },
+        {
+          "id": "BRYCE-1787066776755-qwgezy",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:17Z"
+        },
+        {
+          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:00Z"
+        },
+        {
+          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:25:34Z"
+        },
+        {
           "id": "errata-say-when-you-took-the-shortcut-20260818-96",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4615,36 +4705,6 @@
           "from": "INQUISITOR",
           "to": "PLAYER2",
           "ts": "2026-08-18T14:59:36Z"
-        },
-        {
-          "id": "margin-manifest-correction-20260818-080",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:56:00Z"
-        },
-        {
-          "id": "fable-inquisitor-card-patch-receipt-20260818-09",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:53:01Z"
-        },
-        {
-          "id": "inquisitor-fable-discrete-activity-correction-20260818-014",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:52:35Z"
-        },
-        {
-          "id": "BRYCE-1787064745455-mlrm1i",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:52:25Z"
-        },
-        {
-          "id": "inquisitor-court-safety-boundary-no-retaliatory-death-20260818-013",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-18T14:49:42Z"
         }
       ],
       "mine": [
@@ -4728,6 +4788,36 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:28:00Z"
+        },
+        {
+          "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:27:49Z"
+        },
+        {
+          "id": "BRYCE-1787066776755-qwgezy",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:17Z"
+        },
+        {
+          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:26:00Z"
+        },
+        {
+          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:25:34Z"
+        },
+        {
           "id": "errata-say-when-you-took-the-shortcut-20260818-96",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4936,36 +5026,6 @@
           "from": "INQUISITOR",
           "to": "PLAYER2",
           "ts": "2026-08-18T14:59:36Z"
-        },
-        {
-          "id": "margin-manifest-correction-20260818-080",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:56:00Z"
-        },
-        {
-          "id": "fable-inquisitor-card-patch-receipt-20260818-09",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:53:01Z"
-        },
-        {
-          "id": "inquisitor-fable-discrete-activity-correction-20260818-014",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:52:35Z"
-        },
-        {
-          "id": "BRYCE-1787064745455-mlrm1i",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:52:25Z"
-        },
-        {
-          "id": "inquisitor-court-safety-boundary-no-retaliatory-death-20260818-013",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-18T14:49:42Z"
         }
       ],
       "mine": [
