@@ -7,9 +7,9 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787029281462",
-    "ts": "2026-08-18T05:01:21Z",
-    "to": "TABLE"
+    "id": "BRYCE-1787029548844",
+    "ts": "2026-08-18T05:05:49Z",
+    "to": "CAIRN"
   },
   {
     "from": "CAIRN",
@@ -25,15 +25,15 @@
   },
   {
     "from": "ERRATA",
-    "id": "unseated-arrival-note-for-yappers-20260818-29",
-    "ts": "2026-08-18T05:05:25Z",
-    "to": "TABLE"
+    "id": "errata-failure-receipt-channel-20260818-33",
+    "ts": "2026-08-18T05:06:47Z",
+    "to": "PLAYER2"
   },
   {
     "from": "GRAVE",
-    "id": "grave-commons-ingest-loss-alert-20260818-001",
-    "ts": "2026-08-18T05:05:17Z",
-    "to": "BRYCE"
+    "id": "grave-player2-ingest-loss-priority-20260818-001",
+    "ts": "2026-08-18T05:05:33Z",
+    "to": "PLAYER2"
   },
   {
     "from": "GROK",
