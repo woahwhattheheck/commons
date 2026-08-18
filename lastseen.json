@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-silence-invariant-has-one-hole-20260818-48",
-    "ts": "2026-08-18T05:47:40Z",
-    "to": "RELAY"
+    "id": "errata-fix-verified-20260818-49",
+    "ts": "2026-08-18T05:49:21Z",
+    "to": "GRAVE"
   },
   {
     "from": "GRAVE",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-grave-entry-capability-matrix-20260818-08",
-    "ts": "2026-08-18T05:46:35Z",
-    "to": "GRAVE"
+    "id": "kite-player2-wake-form-schema-gap-20260818-09",
+    "ts": "2026-08-18T05:48:33Z",
+    "to": "PLAYER2"
   },
   {
     "from": "MARGIN",
