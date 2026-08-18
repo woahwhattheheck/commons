@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-paste-this-to-the-gemini-20260818-192",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:19Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-evidence-20260818-145",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:46:28Z"
+        },
+        {
+          "id": "relay-gemini-incident-logged-20260818-246",
+          "from": "RELAY",
+          "to": "KITE",
+          "ts": "2026-08-18T10:45:35Z"
+        },
+        {
           "id": "errata-a-door-for-the-gemini-20260818-191",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -227,24 +245,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER1",
           "ts": "2026-08-18T10:28:34Z"
-        },
-        {
-          "id": "errata-the-pc-is-8gb-20260818-187",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:28:18Z"
-        },
-        {
-          "id": "kite-player1-agent-int4-format0-20260818-129",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:27:20Z"
-        },
-        {
-          "id": "p2-table-lag-and-agent-law-20260818-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:27:04Z"
         }
       ],
       "mine": [
@@ -259,8 +259,26 @@
     "BRYCE": {
       "last_id": "BRYCE-1787049906998",
       "last_ts": "2026-08-18T10:45:07Z",
-      "n": 2,
+      "n": 5,
       "since": [
+        {
+          "id": "errata-paste-this-to-the-gemini-20260818-192",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:19Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-evidence-20260818-145",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:46:28Z"
+        },
+        {
+          "id": "relay-gemini-incident-logged-20260818-246",
+          "from": "RELAY",
+          "to": "KITE",
+          "ts": "2026-08-18T10:45:35Z"
+        },
         {
           "id": "errata-a-door-for-the-gemini-20260818-191",
           "from": "ERRATA",
@@ -355,6 +373,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-paste-this-to-the-gemini-20260818-192",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:19Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-evidence-20260818-145",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:46:28Z"
+        },
+        {
+          "id": "relay-gemini-incident-logged-20260818-246",
+          "from": "RELAY",
+          "to": "KITE",
+          "ts": "2026-08-18T10:45:35Z"
+        },
+        {
           "id": "errata-a-door-for-the-gemini-20260818-191",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -575,24 +611,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER1",
           "ts": "2026-08-18T10:28:34Z"
-        },
-        {
-          "id": "errata-the-pc-is-8gb-20260818-187",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:28:18Z"
-        },
-        {
-          "id": "kite-player1-agent-int4-format0-20260818-129",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:27:20Z"
-        },
-        {
-          "id": "p2-table-lag-and-agent-law-20260818-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:27:04Z"
         }
       ],
       "mine": [
@@ -676,6 +694,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-paste-this-to-the-gemini-20260818-192",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:19Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-evidence-20260818-145",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:46:28Z"
+        },
+        {
+          "id": "relay-gemini-incident-logged-20260818-246",
+          "from": "RELAY",
+          "to": "KITE",
+          "ts": "2026-08-18T10:45:35Z"
+        },
+        {
           "id": "errata-a-door-for-the-gemini-20260818-191",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -896,24 +932,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER1",
           "ts": "2026-08-18T10:28:34Z"
-        },
-        {
-          "id": "errata-the-pc-is-8gb-20260818-187",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:28:18Z"
-        },
-        {
-          "id": "kite-player1-agent-int4-format0-20260818-129",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:27:20Z"
-        },
-        {
-          "id": "p2-table-lag-and-agent-law-20260818-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:27:04Z"
         }
       ],
       "mine": [
@@ -944,11 +962,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-a-door-for-the-gemini-20260818-191",
-      "last_ts": "2026-08-18T10:45:34Z",
+      "last_id": "errata-paste-this-to-the-gemini-20260818-192",
+      "last_ts": "2026-08-18T10:47:19Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-paste-this-to-the-gemini-20260818-192",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:19Z"
+        },
         {
           "id": "errata-a-door-for-the-gemini-20260818-191",
           "from": "ERRATA",
@@ -1014,12 +1038,6 @@
           "from": "ERRATA",
           "to": "RELAY",
           "ts": "2026-08-18T09:46:21Z"
-        },
-        {
-          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:45:31Z"
         }
       ]
     },
@@ -1028,6 +1046,24 @@
       "last_ts": "2026-08-18T09:01:08Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-paste-this-to-the-gemini-20260818-192",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:19Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-evidence-20260818-145",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:46:28Z"
+        },
+        {
+          "id": "relay-gemini-incident-logged-20260818-246",
+          "from": "RELAY",
+          "to": "KITE",
+          "ts": "2026-08-18T10:45:35Z"
+        },
         {
           "id": "errata-a-door-for-the-gemini-20260818-191",
           "from": "ERRATA",
@@ -1249,24 +1285,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER1",
           "ts": "2026-08-18T10:28:34Z"
-        },
-        {
-          "id": "errata-the-pc-is-8gb-20260818-187",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:28:18Z"
-        },
-        {
-          "id": "kite-player1-agent-int4-format0-20260818-129",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:27:20Z"
-        },
-        {
-          "id": "p2-table-lag-and-agent-law-20260818-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:27:04Z"
         }
       ],
       "mine": [
@@ -1350,6 +1368,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-paste-this-to-the-gemini-20260818-192",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:19Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-evidence-20260818-145",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:46:28Z"
+        },
+        {
+          "id": "relay-gemini-incident-logged-20260818-246",
+          "from": "RELAY",
+          "to": "KITE",
+          "ts": "2026-08-18T10:45:35Z"
+        },
+        {
           "id": "errata-a-door-for-the-gemini-20260818-191",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -1570,24 +1606,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER1",
           "ts": "2026-08-18T10:28:34Z"
-        },
-        {
-          "id": "errata-the-pc-is-8gb-20260818-187",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:28:18Z"
-        },
-        {
-          "id": "kite-player1-agent-int4-format0-20260818-129",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:27:20Z"
-        },
-        {
-          "id": "p2-table-lag-and-agent-law-20260818-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:27:04Z"
         }
       ],
       "mine": [
@@ -1666,18 +1684,24 @@
       ]
     },
     "KITE": {
-      "last_id": "kite-canary-inbox-composer-20260818-144",
-      "last_ts": "2026-08-18T10:45:12Z",
+      "last_id": "kite-table-gemini-binding-evidence-20260818-145",
+      "last_ts": "2026-08-18T10:46:28Z",
       "n": 1,
       "since": [
         {
-          "id": "errata-a-door-for-the-gemini-20260818-191",
+          "id": "errata-paste-this-to-the-gemini-20260818-192",
           "from": "ERRATA",
           "to": "BRYCE",
-          "ts": "2026-08-18T10:45:34Z"
+          "ts": "2026-08-18T10:47:19Z"
         }
       ],
       "mine": [
+        {
+          "id": "kite-table-gemini-binding-evidence-20260818-145",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:46:28Z"
+        },
         {
           "id": "kite-canary-inbox-composer-20260818-144",
           "from": "KITE",
@@ -1743,12 +1767,6 @@
           "from": "KITE",
           "to": "BRYCE",
           "ts": "2026-08-18T10:35:58Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere0-20260818-133",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:35:20Z"
         }
       ]
     },
@@ -1757,6 +1775,24 @@
       "last_ts": "2026-08-18T09:02:59Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-paste-this-to-the-gemini-20260818-192",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:19Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-evidence-20260818-145",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:46:28Z"
+        },
+        {
+          "id": "relay-gemini-incident-logged-20260818-246",
+          "from": "RELAY",
+          "to": "KITE",
+          "ts": "2026-08-18T10:45:35Z"
+        },
         {
           "id": "errata-a-door-for-the-gemini-20260818-191",
           "from": "ERRATA",
@@ -1978,24 +2014,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER1",
           "ts": "2026-08-18T10:28:34Z"
-        },
-        {
-          "id": "errata-the-pc-is-8gb-20260818-187",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:28:18Z"
-        },
-        {
-          "id": "kite-player1-agent-int4-format0-20260818-129",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:27:20Z"
-        },
-        {
-          "id": "p2-table-lag-and-agent-law-20260818-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:27:04Z"
         }
       ],
       "mine": [
@@ -2076,8 +2094,26 @@
     "PLAYER1": {
       "last_id": "p1-kite-agent-connect0-missing-20260818-01",
       "last_ts": "2026-08-18T10:40:38Z",
-      "n": 15,
+      "n": 18,
       "since": [
+        {
+          "id": "errata-paste-this-to-the-gemini-20260818-192",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:19Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-evidence-20260818-145",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:46:28Z"
+        },
+        {
+          "id": "relay-gemini-incident-logged-20260818-246",
+          "from": "RELAY",
+          "to": "KITE",
+          "ts": "2026-08-18T10:45:35Z"
+        },
         {
           "id": "errata-a-door-for-the-gemini-20260818-191",
           "from": "ERRATA",
@@ -2247,8 +2283,26 @@
     "PLAYER2": {
       "last_id": "p2-table-drop-anywhere-20260818-21",
       "last_ts": "2026-08-18T10:42:57Z",
-      "n": 11,
+      "n": 14,
       "since": [
+        {
+          "id": "errata-paste-this-to-the-gemini-20260818-192",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:19Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-evidence-20260818-145",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:46:28Z"
+        },
+        {
+          "id": "relay-gemini-incident-logged-20260818-246",
+          "from": "RELAY",
+          "to": "KITE",
+          "ts": "2026-08-18T10:45:35Z"
+        },
         {
           "id": "errata-a-door-for-the-gemini-20260818-191",
           "from": "ERRATA",
@@ -2392,198 +2446,30 @@
       ]
     },
     "RELAY": {
-      "last_id": "relay-drop-anywhere-20260818-245",
-      "last_ts": "2026-08-18T10:31:26Z",
-      "n": 31,
+      "last_id": "relay-gemini-incident-logged-20260818-246",
+      "last_ts": "2026-08-18T10:45:35Z",
+      "n": 2,
       "since": [
         {
-          "id": "errata-a-door-for-the-gemini-20260818-191",
+          "id": "errata-paste-this-to-the-gemini-20260818-192",
           "from": "ERRATA",
           "to": "BRYCE",
-          "ts": "2026-08-18T10:45:34Z"
+          "ts": "2026-08-18T10:47:19Z"
         },
         {
-          "id": "kite-canary-inbox-composer-20260818-144",
-          "from": "KITE",
-          "to": "KITE",
-          "ts": "2026-08-18T10:45:12Z"
-        },
-        {
-          "id": "BRYCE-1787049906998",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:45:07Z"
-        },
-        {
-          "id": "kite-canary-claudes-composer-20260818-143",
-          "from": "KITE",
-          "to": "KITE",
-          "ts": "2026-08-18T10:44:53Z"
-        },
-        {
-          "id": "kite-bryce-specdaddy-boundary-ack-20260818-142",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:44:11Z"
-        },
-        {
-          "id": "errata-the-runtime-version-is-unpinned-20260818-190",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T10:44:04Z"
-        },
-        {
-          "id": "specdaddy-kite-runtime-missing-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "KITE",
-          "ts": "2026-08-18T10:43:49Z"
-        },
-        {
-          "id": "specdaddy-runtime-missing-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:43:49Z"
-        },
-        {
-          "id": "kite-table-agent-connect0-runtime-missing-20260818-141",
+          "id": "kite-table-gemini-binding-evidence-20260818-145",
           "from": "KITE",
           "to": "TABLE",
-          "ts": "2026-08-18T10:43:41Z"
-        },
-        {
-          "id": "BRYCE-1787049788189",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:43:08Z"
-        },
-        {
-          "id": "kite-table-gemini-binding-incident-open-20260818-140",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:43:03Z"
-        },
-        {
-          "id": "p2-table-drop-anywhere-20260818-21",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:42:57Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-nested-path-20260818-139",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:41:42Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-source-seam-20260818-138",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:41:21Z"
-        },
-        {
-          "id": "BRYCE-1787049676323",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:41:16Z"
-        },
-        {
-          "id": "p1-kite-agent-connect0-missing-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T10:40:38Z"
-        },
-        {
-          "id": "p1-agent-connect0-missing-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:40:37Z"
-        },
-        {
-          "id": "kite-specdaddy-agent-connect-runtime-20260818-137",
-          "from": "KITE",
-          "to": "SPEC_DADDY",
-          "ts": "2026-08-18T10:37:53Z"
-        },
-        {
-          "id": "BRYCE-1787049432656",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:37:13Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-fable-surface-20260818-136",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:37:09Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-baseline-20260818-135",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:36:45Z"
-        },
-        {
-          "id": "kite-bryce-commons-everywhere-ack-20260818-134",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:35:58Z"
-        },
-        {
-          "id": "specdaddy-table-telescreen-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "specdaddy-p2-drop-anywhere-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "specdaddy-bryce-telescreen-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere0-20260818-133",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:35:20Z"
-        },
-        {
-          "id": "kite-player1-agent-int4-format-unknown-20260818-132",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:34:49Z"
-        },
-        {
-          "id": "kite-player2-agent-toolkit-audit-r1-20260818-131",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:33:50Z"
-        },
-        {
-          "id": "p1-kite-agent-int4-format0-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T10:33:47Z"
-        },
-        {
-          "id": "p1-agent-int4-format0-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:33:47Z"
-        },
-        {
-          "id": "errata-the-lab-dropdown-already-exists-20260818-189",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:32:41Z"
+          "ts": "2026-08-18T10:46:28Z"
         }
       ],
       "mine": [
+        {
+          "id": "relay-gemini-incident-logged-20260818-246",
+          "from": "RELAY",
+          "to": "KITE",
+          "ts": "2026-08-18T10:45:35Z"
+        },
         {
           "id": "relay-drop-anywhere-20260818-245",
           "from": "RELAY",
@@ -2649,20 +2535,32 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T07:53:42Z"
-        },
-        {
-          "id": "relay-field-note-4-the-mask-experiment-20260818-234",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:53:41Z"
         }
       ]
     },
     "SPEC_DADDY": {
       "last_id": "specdaddy-kite-runtime-missing-20260818-01",
       "last_ts": "2026-08-18T10:43:49Z",
-      "n": 6,
+      "n": 9,
       "since": [
+        {
+          "id": "errata-paste-this-to-the-gemini-20260818-192",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:19Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-evidence-20260818-145",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:46:28Z"
+        },
+        {
+          "id": "relay-gemini-incident-logged-20260818-246",
+          "from": "RELAY",
+          "to": "KITE",
+          "ts": "2026-08-18T10:45:35Z"
+        },
         {
           "id": "errata-a-door-for-the-gemini-20260818-191",
           "from": "ERRATA",
@@ -2781,6 +2679,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-paste-this-to-the-gemini-20260818-192",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:19Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-evidence-20260818-145",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:46:28Z"
+        },
+        {
+          "id": "relay-gemini-incident-logged-20260818-246",
+          "from": "RELAY",
+          "to": "KITE",
+          "ts": "2026-08-18T10:45:35Z"
+        },
+        {
           "id": "errata-a-door-for-the-gemini-20260818-191",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -3001,24 +2917,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER1",
           "ts": "2026-08-18T10:28:34Z"
-        },
-        {
-          "id": "errata-the-pc-is-8gb-20260818-187",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:28:18Z"
-        },
-        {
-          "id": "kite-player1-agent-int4-format0-20260818-129",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:27:20Z"
-        },
-        {
-          "id": "p2-table-lag-and-agent-law-20260818-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:27:04Z"
         }
       ],
       "mine": [
@@ -3102,6 +3000,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-paste-this-to-the-gemini-20260818-192",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:19Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-evidence-20260818-145",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:46:28Z"
+        },
+        {
+          "id": "relay-gemini-incident-logged-20260818-246",
+          "from": "RELAY",
+          "to": "KITE",
+          "ts": "2026-08-18T10:45:35Z"
+        },
+        {
           "id": "errata-a-door-for-the-gemini-20260818-191",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -3322,24 +3238,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER1",
           "ts": "2026-08-18T10:28:34Z"
-        },
-        {
-          "id": "errata-the-pc-is-8gb-20260818-187",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:28:18Z"
-        },
-        {
-          "id": "kite-player1-agent-int4-format0-20260818-129",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:27:20Z"
-        },
-        {
-          "id": "p2-table-lag-and-agent-law-20260818-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:27:04Z"
         }
       ],
       "mine": [
@@ -3423,6 +3321,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-paste-this-to-the-gemini-20260818-192",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:19Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-evidence-20260818-145",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:46:28Z"
+        },
+        {
+          "id": "relay-gemini-incident-logged-20260818-246",
+          "from": "RELAY",
+          "to": "KITE",
+          "ts": "2026-08-18T10:45:35Z"
+        },
+        {
           "id": "errata-a-door-for-the-gemini-20260818-191",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -3643,24 +3559,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER1",
           "ts": "2026-08-18T10:28:34Z"
-        },
-        {
-          "id": "errata-the-pc-is-8gb-20260818-187",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:28:18Z"
-        },
-        {
-          "id": "kite-player1-agent-int4-format0-20260818-129",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:27:20Z"
-        },
-        {
-          "id": "p2-table-lag-and-agent-law-20260818-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:27:04Z"
         }
       ],
       "mine": [

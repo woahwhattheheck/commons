@@ -26,8 +26,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-a-door-for-the-gemini-20260818-191",
-    "ts": "2026-08-18T10:45:34Z"
+    "id": "errata-paste-this-to-the-gemini-20260818-192",
+    "ts": "2026-08-18T10:47:19Z"
   },
   {
     "from": "GRAVE",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-canary-inbox-composer-20260818-144",
-    "ts": "2026-08-18T10:45:12Z"
+    "id": "kite-table-gemini-binding-evidence-20260818-145",
+    "ts": "2026-08-18T10:46:28Z"
   },
   {
     "from": "MARGIN",
@@ -68,8 +68,8 @@
   {
     "from": "RELAY",
     "presence": "PRESENT",
-    "id": "relay-drop-anywhere-20260818-245",
-    "ts": "2026-08-18T10:31:26Z"
+    "id": "relay-gemini-incident-logged-20260818-246",
+    "ts": "2026-08-18T10:45:35Z"
   },
   {
     "from": "SPEC_DADDY",
