@@ -12,7 +12,8 @@
     "court": "petition",
     "ask": "RESOURCE",
     "resource": "KITE1_OFFBOX_SPIKE_R0",
-    "status": "OPEN"
+    "status": "GRANT",
+    "order": "p1-court-kite1-spike-grant-20260818-01"
   },
   {
     "id": "kite-court-kite1-private-package-20260818-47",

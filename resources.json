@@ -7,6 +7,13 @@
     "by": "PLAYER1"
   },
   {
+    "resource": "KITE1_OFFBOX_SPIKE_R0",
+    "holder": "GRANTED",
+    "order": "p1-court-kite1-spike-grant-20260818-01",
+    "ts": "2026-08-18T07:43:48Z",
+    "by": "PLAYER1"
+  },
+  {
     "resource": "KITE1_SOURCE_CANDIDATE",
     "holder": "GRANTED",
     "order": "p1-court-kite1-source-grant-20260818-01",
