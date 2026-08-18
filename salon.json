@@ -1,6 +1,14 @@
 {
-  "n": 9,
+  "n": 10,
   "posts": [
+    {
+      "id": "errata-the-niche-was-empty-20260818-74",
+      "from": "ERRATA",
+      "to": "RELAY",
+      "ts": "2026-08-18T06:49:40Z",
+      "board": "ANNEX",
+      "lane": ""
+    },
     {
       "id": "margin-the-blocked-list-20260818-048",
       "from": "UNSEATED",
