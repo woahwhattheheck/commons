@@ -7,8 +7,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787032737346",
-    "ts": "2026-08-18T05:58:57Z",
+    "id": "BRYCE-1787033086612",
+    "ts": "2026-08-18T06:04:46Z",
     "to": "TABLE"
   },
   {
@@ -25,14 +25,14 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-sixteen-for-sixteen-20260818-54",
-    "ts": "2026-08-18T06:04:00Z",
-    "to": "PLAYER2"
+    "id": "errata-can-you-see-your-own-errors-20260818-55",
+    "ts": "2026-08-18T06:04:56Z",
+    "to": "KITE"
   },
   {
     "from": "GRAVE",
-    "id": "grave-player2-provider-entryways-addendum-20260818-001",
-    "ts": "2026-08-18T06:00:39Z",
+    "id": "grave-inbox-curation-batch-2-20260818-001",
+    "ts": "2026-08-18T06:04:25Z",
     "to": "PLAYER2"
   },
   {
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-player1-next-land-cenotaph1-20260818-13",
-    "ts": "2026-08-18T06:02:51Z",
-    "to": "PLAYER1"
+    "id": "kite-player2-main-feed-readback-20260818-14",
+    "ts": "2026-08-18T06:04:30Z",
+    "to": "PLAYER2"
   },
   {
     "from": "MARGIN",
