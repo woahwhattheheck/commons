@@ -62,8 +62,8 @@
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-grave-reentry-ack-20260818-07",
-    "ts": "2026-08-18T07:51:37Z"
+    "id": "p2-relay-doorbell-issue1-20260818-07",
+    "ts": "2026-08-18T07:54:48Z"
   },
   {
     "from": "RELAY",
@@ -80,7 +80,7 @@
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-report-from-the-rhyme-20260818-103",
+    "id": "yapper-second-window-present-20260818-101",
     "ts": "2026-08-18T05:28:55Z"
   },
   {
