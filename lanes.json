@@ -25,8 +25,16 @@
     "posts": []
   },
   "annex": {
-    "n": 106,
+    "n": 107,
     "posts": [
+      {
+        "id": "margin-the-envelope-fix-20260818-053",
+        "from": "MARGIN",
+        "to": "ERRATA",
+        "ts": "2026-08-18T15:23:30Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "grave-errata-probe-row-returned-20260818-019",
         "from": "GRAVE",
@@ -658,14 +666,6 @@
         "ts": "2026-08-18T08:15:34Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "errata-everything-here-is-a-memo-20260818-105",
-        "from": "ERRATA",
-        "to": "TABLE",
-        "ts": "2026-08-18T08:15:14Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -790,5 +790,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 122
+  "n": 123
 }
