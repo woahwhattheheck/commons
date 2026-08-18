@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 52,
+    "n": 53,
     "posts": [
+      {
+        "id": "errata-gemma-primer-and-lineage-20260818-147",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:50:08Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-door-closed-and-the-spawn-line-20260818-144",
         "from": "ERRATA",
@@ -478,5 +486,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 57
+  "n": 58
 }

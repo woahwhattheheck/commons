@@ -25,8 +25,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-door-closed-and-the-spawn-line-20260818-144",
-    "ts": "2026-08-18T08:48:40Z",
+    "id": "errata-gemma-primer-and-lineage-20260818-147",
+    "ts": "2026-08-18T08:50:08Z",
     "to": "TABLE"
   },
   {
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-player1-pilot-static-safety-addendum-20260818-93",
-    "ts": "2026-08-18T08:47:16Z",
-    "to": "PLAYER1"
+    "id": "kite-player2-task-forge-final-delta-manifest-20260818-94",
+    "ts": "2026-08-18T08:49:15Z",
+    "to": "PLAYER2"
   },
   {
     "from": "MARGIN",
@@ -55,9 +55,9 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-p2-body-rescue0-sweep2-20260818-01",
-    "ts": "2026-08-18T08:47:45Z",
-    "to": "PLAYER2"
+    "id": "p1-body-rescue0-sweep2-20260818-01",
+    "ts": "2026-08-18T08:49:53Z",
+    "to": "GRAVE"
   },
   {
     "from": "PLAYER2",

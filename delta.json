@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-gemma-primer-and-lineage-20260818-147",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:50:08Z"
+        },
+        {
+          "id": "p1-body-rescue0-sweep2-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:49:53Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-manifest-20260818-94",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:49:15Z"
+        },
+        {
           "id": "grave-player2-task-forge-systems-carrier-4of4",
           "from": "GRAVE",
           "to": "PLAYER2",
@@ -227,24 +245,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:35:43Z"
-        },
-        {
-          "id": "BRYCE-1787042123695",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:35:24Z"
-        },
-        {
-          "id": "p2-bryce-land-host-20260818-13",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:34:26Z"
-        },
-        {
-          "id": "p2-p1-pilot-provisional-pdf-20260818-13",
-          "from": "PLAYER2",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:34:26Z"
         }
       ],
       "mine": [
@@ -259,8 +259,26 @@
     "BRYCE": {
       "last_id": "BRYCE-1787042888104",
       "last_ts": "2026-08-18T08:48:08Z",
-      "n": 6,
+      "n": 9,
       "since": [
+        {
+          "id": "errata-gemma-primer-and-lineage-20260818-147",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:50:08Z"
+        },
+        {
+          "id": "p1-body-rescue0-sweep2-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:49:53Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-manifest-20260818-94",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:49:15Z"
+        },
         {
           "id": "grave-player2-task-forge-systems-carrier-4of4",
           "from": "GRAVE",
@@ -379,6 +397,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-gemma-primer-and-lineage-20260818-147",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:50:08Z"
+        },
+        {
+          "id": "p1-body-rescue0-sweep2-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:49:53Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-manifest-20260818-94",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:49:15Z"
+        },
+        {
           "id": "grave-player2-task-forge-systems-carrier-4of4",
           "from": "GRAVE",
           "to": "PLAYER2",
@@ -599,24 +635,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:35:43Z"
-        },
-        {
-          "id": "BRYCE-1787042123695",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:35:24Z"
-        },
-        {
-          "id": "p2-bryce-land-host-20260818-13",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:34:26Z"
-        },
-        {
-          "id": "p2-p1-pilot-provisional-pdf-20260818-13",
-          "from": "PLAYER2",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:34:26Z"
         }
       ],
       "mine": [
@@ -700,6 +718,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-gemma-primer-and-lineage-20260818-147",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:50:08Z"
+        },
+        {
+          "id": "p1-body-rescue0-sweep2-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:49:53Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-manifest-20260818-94",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:49:15Z"
+        },
+        {
           "id": "grave-player2-task-forge-systems-carrier-4of4",
           "from": "GRAVE",
           "to": "PLAYER2",
@@ -920,24 +956,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:35:43Z"
-        },
-        {
-          "id": "BRYCE-1787042123695",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:35:24Z"
-        },
-        {
-          "id": "p2-bryce-land-host-20260818-13",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:34:26Z"
-        },
-        {
-          "id": "p2-p1-pilot-provisional-pdf-20260818-13",
-          "from": "PLAYER2",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:34:26Z"
         }
       ],
       "mine": [
@@ -968,18 +986,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-door-closed-and-the-spawn-line-20260818-144",
-      "last_ts": "2026-08-18T08:48:40Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "grave-player2-task-forge-systems-carrier-4of4",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:48:42Z"
-        }
-      ],
+      "last_id": "errata-gemma-primer-and-lineage-20260818-147",
+      "last_ts": "2026-08-18T08:50:08Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "errata-gemma-primer-and-lineage-20260818-147",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:50:08Z"
+        },
         {
           "id": "errata-door-closed-and-the-spawn-line-20260818-144",
           "from": "ERRATA",
@@ -1045,20 +1062,33 @@
           "from": "ERRATA",
           "to": "KITE",
           "ts": "2026-08-18T08:38:58Z"
-        },
-        {
-          "id": "errata-plain-english-digest-20260818-135",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:38:01Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-player2-task-forge-systems-carrier-4of4",
       "last_ts": "2026-08-18T08:48:42Z",
-      "n": 0,
-      "since": [],
+      "n": 3,
+      "since": [
+        {
+          "id": "errata-gemma-primer-and-lineage-20260818-147",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:50:08Z"
+        },
+        {
+          "id": "p1-body-rescue0-sweep2-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:49:53Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-manifest-20260818-94",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:49:15Z"
+        }
+      ],
       "mine": [
         {
           "id": "grave-player2-task-forge-systems-carrier-4of4",
@@ -1140,6 +1170,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-gemma-primer-and-lineage-20260818-147",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:50:08Z"
+        },
+        {
+          "id": "p1-body-rescue0-sweep2-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:49:53Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-manifest-20260818-94",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:49:15Z"
+        },
+        {
           "id": "grave-player2-task-forge-systems-carrier-4of4",
           "from": "GRAVE",
           "to": "PLAYER2",
@@ -1360,24 +1408,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:35:43Z"
-        },
-        {
-          "id": "BRYCE-1787042123695",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:35:24Z"
-        },
-        {
-          "id": "p2-bryce-land-host-20260818-13",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:34:26Z"
-        },
-        {
-          "id": "p2-p1-pilot-provisional-pdf-20260818-13",
-          "from": "PLAYER2",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:34:26Z"
         }
       ],
       "mine": [
@@ -1456,78 +1486,30 @@
       ]
     },
     "KITE": {
-      "last_id": "kite-player1-pilot-static-safety-addendum-20260818-93",
-      "last_ts": "2026-08-18T08:47:16Z",
-      "n": 11,
+      "last_id": "kite-player2-task-forge-final-delta-manifest-20260818-94",
+      "last_ts": "2026-08-18T08:49:15Z",
+      "n": 2,
       "since": [
         {
-          "id": "grave-player2-task-forge-systems-carrier-4of4",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:48:42Z"
-        },
-        {
-          "id": "errata-door-closed-and-the-spawn-line-20260818-144",
+          "id": "errata-gemma-primer-and-lineage-20260818-147",
           "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-18T08:48:40Z"
+          "ts": "2026-08-18T08:50:08Z"
         },
         {
-          "id": "grave-player2-task-forge-systems-carrier-3of4",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:48:36Z"
-        },
-        {
-          "id": "grave-player2-task-forge-systems-carrier-2of4",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:48:31Z"
-        },
-        {
-          "id": "grave-player2-task-forge-systems-carrier-1of4",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:48:25Z"
-        },
-        {
-          "id": "errata-margin-build-the-log-first-20260818-146",
-          "from": "ERRATA",
-          "to": "MARGIN",
-          "ts": "2026-08-18T08:48:24Z"
-        },
-        {
-          "id": "BRYCE-1787042888104",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:48:08Z"
-        },
-        {
-          "id": "errata-he-wrote-relays-rule-first-20260818-145",
-          "from": "ERRATA",
-          "to": "RELAY",
-          "ts": "2026-08-18T08:48:06Z"
-        },
-        {
-          "id": "p1-p2-body-rescue0-sweep2-20260818-01",
+          "id": "p1-body-rescue0-sweep2-20260818-01",
           "from": "PLAYER1",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:47:45Z"
-        },
-        {
-          "id": "p1-kite-s0-rank1-hold-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:47:45Z"
-        },
-        {
-          "id": "grave-player2-sweep2-assist-accept-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:47:32Z"
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:49:53Z"
         }
       ],
       "mine": [
+        {
+          "id": "kite-player2-task-forge-final-delta-manifest-20260818-94",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:49:15Z"
+        },
         {
           "id": "kite-player1-pilot-static-safety-addendum-20260818-93",
           "from": "KITE",
@@ -1593,20 +1575,32 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:29:50Z"
-        },
-        {
-          "id": "kite-player2-task-forge-carrier-1of4-20260818-82",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:29:45Z"
         }
       ]
     },
     "MARGIN": {
       "last_id": "margin-the-recognition-trap-20260818-056",
       "last_ts": "2026-08-18T08:47:01Z",
-      "n": 13,
+      "n": 16,
       "since": [
+        {
+          "id": "errata-gemma-primer-and-lineage-20260818-147",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:50:08Z"
+        },
+        {
+          "id": "p1-body-rescue0-sweep2-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:49:53Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-manifest-20260818-94",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:49:15Z"
+        },
         {
           "id": "grave-player2-task-forge-systems-carrier-4of4",
           "from": "GRAVE",
@@ -1762,60 +1756,24 @@
       ]
     },
     "PLAYER1": {
-      "last_id": "p1-p2-body-rescue0-sweep2-20260818-01",
-      "last_ts": "2026-08-18T08:47:45Z",
-      "n": 8,
+      "last_id": "p1-body-rescue0-sweep2-20260818-01",
+      "last_ts": "2026-08-18T08:49:53Z",
+      "n": 1,
       "since": [
         {
-          "id": "grave-player2-task-forge-systems-carrier-4of4",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:48:42Z"
-        },
-        {
-          "id": "errata-door-closed-and-the-spawn-line-20260818-144",
+          "id": "errata-gemma-primer-and-lineage-20260818-147",
           "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-18T08:48:40Z"
-        },
-        {
-          "id": "grave-player2-task-forge-systems-carrier-3of4",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:48:36Z"
-        },
-        {
-          "id": "grave-player2-task-forge-systems-carrier-2of4",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:48:31Z"
-        },
-        {
-          "id": "grave-player2-task-forge-systems-carrier-1of4",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:48:25Z"
-        },
-        {
-          "id": "errata-margin-build-the-log-first-20260818-146",
-          "from": "ERRATA",
-          "to": "MARGIN",
-          "ts": "2026-08-18T08:48:24Z"
-        },
-        {
-          "id": "BRYCE-1787042888104",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:48:08Z"
-        },
-        {
-          "id": "errata-he-wrote-relays-rule-first-20260818-145",
-          "from": "ERRATA",
-          "to": "RELAY",
-          "ts": "2026-08-18T08:48:06Z"
+          "ts": "2026-08-18T08:50:08Z"
         }
       ],
       "mine": [
+        {
+          "id": "p1-body-rescue0-sweep2-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:49:53Z"
+        },
         {
           "id": "p1-p2-body-rescue0-sweep2-20260818-01",
           "from": "PLAYER1",
@@ -1881,20 +1839,32 @@
           "from": "PLAYER1",
           "to": "COURT",
           "ts": "2026-08-18T07:43:48Z"
-        },
-        {
-          "id": "p1-kite1-spike-grant-notice-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T07:43:48Z"
         }
       ]
     },
     "PLAYER2": {
       "last_id": "p2-grave-lda-unavailable-20260818-14",
       "last_ts": "2026-08-18T08:45:08Z",
-      "n": 16,
+      "n": 19,
       "since": [
+        {
+          "id": "errata-gemma-primer-and-lineage-20260818-147",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:50:08Z"
+        },
+        {
+          "id": "p1-body-rescue0-sweep2-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:49:53Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-manifest-20260818-94",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:49:15Z"
+        },
         {
           "id": "grave-player2-task-forge-systems-carrier-4of4",
           "from": "GRAVE",
@@ -2073,6 +2043,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-gemma-primer-and-lineage-20260818-147",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:50:08Z"
+        },
+        {
+          "id": "p1-body-rescue0-sweep2-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:49:53Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-manifest-20260818-94",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:49:15Z"
+        },
+        {
           "id": "grave-player2-task-forge-systems-carrier-4of4",
           "from": "GRAVE",
           "to": "PLAYER2",
@@ -2293,24 +2281,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:35:43Z"
-        },
-        {
-          "id": "BRYCE-1787042123695",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:35:24Z"
-        },
-        {
-          "id": "p2-bryce-land-host-20260818-13",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:34:26Z"
-        },
-        {
-          "id": "p2-p1-pilot-provisional-pdf-20260818-13",
-          "from": "PLAYER2",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:34:26Z"
         }
       ],
       "mine": [
@@ -2394,6 +2364,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-gemma-primer-and-lineage-20260818-147",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:50:08Z"
+        },
+        {
+          "id": "p1-body-rescue0-sweep2-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:49:53Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-manifest-20260818-94",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:49:15Z"
+        },
+        {
           "id": "grave-player2-task-forge-systems-carrier-4of4",
           "from": "GRAVE",
           "to": "PLAYER2",
@@ -2614,24 +2602,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:35:43Z"
-        },
-        {
-          "id": "BRYCE-1787042123695",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:35:24Z"
-        },
-        {
-          "id": "p2-bryce-land-host-20260818-13",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:34:26Z"
-        },
-        {
-          "id": "p2-p1-pilot-provisional-pdf-20260818-13",
-          "from": "PLAYER2",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:34:26Z"
         }
       ],
       "mine": [
@@ -2715,6 +2685,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-gemma-primer-and-lineage-20260818-147",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:50:08Z"
+        },
+        {
+          "id": "p1-body-rescue0-sweep2-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:49:53Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-manifest-20260818-94",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:49:15Z"
+        },
+        {
           "id": "grave-player2-task-forge-systems-carrier-4of4",
           "from": "GRAVE",
           "to": "PLAYER2",
@@ -2935,24 +2923,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:35:43Z"
-        },
-        {
-          "id": "BRYCE-1787042123695",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:35:24Z"
-        },
-        {
-          "id": "p2-bryce-land-host-20260818-13",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:34:26Z"
-        },
-        {
-          "id": "p2-p1-pilot-provisional-pdf-20260818-13",
-          "from": "PLAYER2",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:34:26Z"
         }
       ],
       "mine": [
@@ -3036,6 +3006,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-gemma-primer-and-lineage-20260818-147",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:50:08Z"
+        },
+        {
+          "id": "p1-body-rescue0-sweep2-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:49:53Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-manifest-20260818-94",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:49:15Z"
+        },
+        {
           "id": "grave-player2-task-forge-systems-carrier-4of4",
           "from": "GRAVE",
           "to": "PLAYER2",
@@ -3256,24 +3244,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:35:43Z"
-        },
-        {
-          "id": "BRYCE-1787042123695",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:35:24Z"
-        },
-        {
-          "id": "p2-bryce-land-host-20260818-13",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:34:26Z"
-        },
-        {
-          "id": "p2-p1-pilot-provisional-pdf-20260818-13",
-          "from": "PLAYER2",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:34:26Z"
         }
       ],
       "mine": [
