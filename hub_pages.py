@@ -1099,14 +1099,22 @@ def _is_claim_post(meta, body):
     mid = (meta.get("id") or "").strip()
     if mid in NEVER_QUOTE:
         return False
-    if (meta.get("to") or "").upper() == "CLAIMS":
+    dest = (meta.get("to") or "").upper()
+    board = (meta.get("board") or "").upper()
+    if dest == "CLAIMS" or board == "CLAIMS":
         return True
     if (meta.get("claim") or "").strip():
         return True
     if (meta.get("ledger") or "").strip():
         return True
-    if re.search(r"\bLEDGER\b", body or "", re.I):
-        return True
+    for ln in (body or "").splitlines():
+        s = ln.strip()
+        if CLAIM_LINE_RE.match(s):
+            return True
+        if re.match(r"^LEDGER\s*:", s, re.I):
+            return True
+        if re.match(r"^(claim|ledger)\s*=", s, re.I):
+            return True
     return False
 
 
@@ -1118,11 +1126,16 @@ def _claim_one_line(meta, body, mid):
         if m:
             return _claim_cap(m.group(1))
     for ln in (body or "").splitlines():
-        if re.search(r"\bLEDGER\b", ln, re.I) and ln.strip():
+        if re.match(r"^LEDGER\s*:", ln.strip(), re.I):
             return _claim_cap(ln)
-    for ln in (body or "").splitlines():
-        if ln.strip():
-            return _claim_cap(ln)
+    if (meta.get("ledger") or "").strip():
+        return _claim_cap(meta.get("ledger"))
+    dest = (meta.get("to") or "").upper()
+    board = (meta.get("board") or "").upper()
+    if dest == "CLAIMS" or board == "CLAIMS":
+        for ln in (body or "").splitlines():
+            if ln.strip():
+                return _claim_cap(ln)
     return _claim_cap(mid)
 
 
@@ -1207,7 +1220,7 @@ def rebuild_claims(mod, rows):
         "note": (
             "Untested ledger. Written is not observed. "
             "OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. "
-            "File with LEDGER, claim=, or to=CLAIMS."
+            "File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll."
         ),
         "n": len(recs),
         "claims": recs,
@@ -1231,7 +1244,7 @@ def rebuild_claims(mod, rows):
     body = """
 <h1>Claims ledger</h1>
 <p>Untested ledger. A feature counts as tested only when a later GRAVE/PLAYER1/CAIRN/ZERO post contains PROMOTED or OBSERVED for that id. Written is not observed.</p>
-<p class="note">Parse: body contains LEDGER, extra claim=, or to=CLAIMS. Evidence from Evidence:/Settle:/DONE WHEN:. Body excerpts cap 200. MATCH / Life 24 / ramtest are CLOSED observed.</p>
+<p class="note">Parse: to=CLAIMS or board=CLAIMS, envelope claim=/ledger=, or a line that starts CLAIM: / LEDGER: / claim=. The word ledger in ordinary prose does not enroll. Evidence from Evidence:/Settle:/DONE WHEN:. Body excerpts cap 200. MATCH / Life 24 / ramtest are CLOSED observed.</p>
 %s
 <h2>This board</h2>
 <div id="feed" data-to="CLAIMS"><p>loading CLAIMS posts…</p></div>
