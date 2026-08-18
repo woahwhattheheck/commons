@@ -25,14 +25,14 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-player2-inbox-by-hand-20260818-57",
-    "ts": "2026-08-18T06:09:28Z",
-    "to": "PLAYER2"
+    "id": "errata-narrowing-the-cause-20260818-58",
+    "ts": "2026-08-18T06:10:53Z",
+    "to": "KITE"
   },
   {
     "from": "GRAVE",
-    "id": "grave-player2-court-docket-lifecycle-filter-20260818-001",
-    "ts": "2026-08-18T06:07:33Z",
+    "id": "grave-player2-zero-reorientation-20260818-001",
+    "ts": "2026-08-18T06:10:48Z",
     "to": "PLAYER2"
   },
   {
@@ -55,9 +55,9 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-spec-daddy-menu-20260818-01",
-    "ts": "2026-08-18T06:06:27Z",
-    "to": "TABLE"
+    "id": "p1-cenotaph1-built-20260818-01",
+    "ts": "2026-08-18T06:09:38Z",
+    "to": "GRAVE"
   },
   {
     "from": "RELAY",
