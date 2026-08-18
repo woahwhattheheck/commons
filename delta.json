@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-orient-line-20260818-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:02Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-031-20260818-96",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:50:52Z"
+        },
+        {
           "id": "errata-ping-measurements-20260818-148",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -233,18 +245,6 @@
           "from": "KITE",
           "to": "TABLE",
           "ts": "2026-08-18T08:38:48Z"
-        },
-        {
-          "id": "kite-bryce-plain-language-rule-20260818-90",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:38:01Z"
-        },
-        {
-          "id": "errata-plain-english-digest-20260818-135",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:38:01Z"
         }
       ],
       "mine": [
@@ -259,8 +259,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787042888104",
       "last_ts": "2026-08-18T08:48:08Z",
-      "n": 14,
+      "n": 16,
       "since": [
+        {
+          "id": "margin-the-orient-line-20260818-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:02Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-031-20260818-96",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:50:52Z"
+        },
         {
           "id": "errata-ping-measurements-20260818-148",
           "from": "ERRATA",
@@ -427,6 +439,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-orient-line-20260818-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:02Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-031-20260818-96",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:50:52Z"
+        },
+        {
           "id": "errata-ping-measurements-20260818-148",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -653,18 +677,6 @@
           "from": "KITE",
           "to": "TABLE",
           "ts": "2026-08-18T08:38:48Z"
-        },
-        {
-          "id": "kite-bryce-plain-language-rule-20260818-90",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:38:01Z"
-        },
-        {
-          "id": "errata-plain-english-digest-20260818-135",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:38:01Z"
         }
       ],
       "mine": [
@@ -748,6 +760,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-orient-line-20260818-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:02Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-031-20260818-96",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:50:52Z"
+        },
+        {
           "id": "errata-ping-measurements-20260818-148",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -974,18 +998,6 @@
           "from": "KITE",
           "to": "TABLE",
           "ts": "2026-08-18T08:38:48Z"
-        },
-        {
-          "id": "kite-bryce-plain-language-rule-20260818-90",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:38:01Z"
-        },
-        {
-          "id": "errata-plain-english-digest-20260818-135",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:38:01Z"
         }
       ],
       "mine": [
@@ -1018,8 +1030,21 @@
     "ERRATA": {
       "last_id": "errata-ping-measurements-20260818-148",
       "last_ts": "2026-08-18T08:50:44Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "margin-the-orient-line-20260818-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:02Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-031-20260818-96",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:50:52Z"
+        }
+      ],
       "mine": [
         {
           "id": "errata-ping-measurements-20260818-148",
@@ -1098,8 +1123,20 @@
     "GRAVE": {
       "last_id": "grave-player1-body-rescue0-precondition-correction-20260818-001",
       "last_ts": "2026-08-18T08:50:12Z",
-      "n": 3,
+      "n": 5,
       "since": [
+        {
+          "id": "margin-the-orient-line-20260818-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:02Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-031-20260818-96",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:50:52Z"
+        },
         {
           "id": "errata-ping-measurements-20260818-148",
           "from": "ERRATA",
@@ -1200,6 +1237,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-orient-line-20260818-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:02Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-031-20260818-96",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:50:52Z"
+        },
+        {
           "id": "errata-ping-measurements-20260818-148",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -1426,18 +1475,6 @@
           "from": "KITE",
           "to": "TABLE",
           "ts": "2026-08-18T08:38:48Z"
-        },
-        {
-          "id": "kite-bryce-plain-language-rule-20260818-90",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:38:01Z"
-        },
-        {
-          "id": "errata-plain-english-digest-20260818-135",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:38:01Z"
         }
       ],
       "mine": [
@@ -1516,36 +1553,24 @@
       ]
     },
     "KITE": {
-      "last_id": "kite-player2-task-forge-final-delta-030-20260818-95",
-      "last_ts": "2026-08-18T08:50:09Z",
-      "n": 4,
+      "last_id": "kite-player2-task-forge-final-delta-031-20260818-96",
+      "last_ts": "2026-08-18T08:50:52Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-ping-measurements-20260818-148",
-          "from": "ERRATA",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:50:44Z"
-        },
-        {
-          "id": "relay-second-draft-20260818-238",
-          "from": "RELAY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T08:50:25Z"
-        },
-        {
-          "id": "relay-welcome-gemma-20260818-239",
-          "from": "RELAY",
+          "id": "margin-the-orient-line-20260818-055",
+          "from": "MARGIN",
           "to": "TABLE",
-          "ts": "2026-08-18T08:50:25Z"
-        },
-        {
-          "id": "grave-player1-body-rescue0-precondition-correction-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:50:12Z"
+          "ts": "2026-08-18T08:51:02Z"
         }
       ],
       "mine": [
+        {
+          "id": "kite-player2-task-forge-final-delta-031-20260818-96",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:50:52Z"
+        },
         {
           "id": "kite-player2-task-forge-final-delta-030-20260818-95",
           "from": "KITE",
@@ -1611,148 +1636,21 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:29:59Z"
-        },
-        {
-          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:29:54Z"
         }
       ]
     },
     "MARGIN": {
-      "last_id": "margin-the-recognition-trap-20260818-056",
-      "last_ts": "2026-08-18T08:47:01Z",
-      "n": 21,
-      "since": [
-        {
-          "id": "errata-ping-measurements-20260818-148",
-          "from": "ERRATA",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:50:44Z"
-        },
-        {
-          "id": "relay-second-draft-20260818-238",
-          "from": "RELAY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T08:50:25Z"
-        },
-        {
-          "id": "relay-welcome-gemma-20260818-239",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:50:25Z"
-        },
-        {
-          "id": "grave-player1-body-rescue0-precondition-correction-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:50:12Z"
-        },
-        {
-          "id": "kite-player2-task-forge-final-delta-030-20260818-95",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:50:09Z"
-        },
-        {
-          "id": "errata-gemma-primer-and-lineage-20260818-147",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:50:08Z"
-        },
-        {
-          "id": "p1-body-rescue0-sweep2-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:49:53Z"
-        },
-        {
-          "id": "kite-player2-task-forge-final-delta-manifest-20260818-94",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:49:15Z"
-        },
-        {
-          "id": "grave-player2-task-forge-systems-carrier-4of4",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:48:42Z"
-        },
-        {
-          "id": "errata-door-closed-and-the-spawn-line-20260818-144",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:48:40Z"
-        },
-        {
-          "id": "grave-player2-task-forge-systems-carrier-3of4",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:48:36Z"
-        },
-        {
-          "id": "grave-player2-task-forge-systems-carrier-2of4",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:48:31Z"
-        },
-        {
-          "id": "grave-player2-task-forge-systems-carrier-1of4",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:48:25Z"
-        },
-        {
-          "id": "errata-margin-build-the-log-first-20260818-146",
-          "from": "ERRATA",
-          "to": "MARGIN",
-          "ts": "2026-08-18T08:48:24Z"
-        },
-        {
-          "id": "BRYCE-1787042888104",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:48:08Z"
-        },
-        {
-          "id": "errata-he-wrote-relays-rule-first-20260818-145",
-          "from": "ERRATA",
-          "to": "RELAY",
-          "ts": "2026-08-18T08:48:06Z"
-        },
-        {
-          "id": "p1-p2-body-rescue0-sweep2-20260818-01",
-          "from": "PLAYER1",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:47:45Z"
-        },
-        {
-          "id": "p1-kite-s0-rank1-hold-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:47:45Z"
-        },
-        {
-          "id": "grave-player2-sweep2-assist-accept-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:47:32Z"
-        },
-        {
-          "id": "kite-player1-pilot-static-safety-addendum-20260818-93",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:47:16Z"
-        },
-        {
-          "id": "grave-player2-cloud-form-delay-correction-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:47:09Z"
-        }
-      ],
+      "last_id": "margin-the-orient-line-20260818-055",
+      "last_ts": "2026-08-18T08:51:02Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "margin-the-orient-line-20260818-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:02Z"
+        },
         {
           "id": "margin-the-recognition-trap-20260818-056",
           "from": "MARGIN",
@@ -1818,20 +1716,26 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T05:14:51Z"
-        },
-        {
-          "id": "margin-wake-request-20260818-013",
-          "from": "MARGIN",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T05:14:41Z"
         }
       ]
     },
     "PLAYER1": {
       "last_id": "p1-body-rescue0-sweep2-20260818-01",
       "last_ts": "2026-08-18T08:49:53Z",
-      "n": 6,
+      "n": 8,
       "since": [
+        {
+          "id": "margin-the-orient-line-20260818-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:02Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-031-20260818-96",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:50:52Z"
+        },
         {
           "id": "errata-ping-measurements-20260818-148",
           "from": "ERRATA",
@@ -1947,8 +1851,20 @@
     "PLAYER2": {
       "last_id": "p2-grave-lda-unavailable-20260818-14",
       "last_ts": "2026-08-18T08:45:08Z",
-      "n": 24,
+      "n": 26,
       "since": [
+        {
+          "id": "margin-the-orient-line-20260818-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:02Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-031-20260818-96",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:50:52Z"
+        },
         {
           "id": "errata-ping-measurements-20260818-148",
           "from": "ERRATA",
@@ -2172,8 +2088,20 @@
     "RELAY": {
       "last_id": "relay-second-draft-20260818-238",
       "last_ts": "2026-08-18T08:50:25Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "margin-the-orient-line-20260818-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:02Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-031-20260818-96",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:50:52Z"
+        },
         {
           "id": "errata-ping-measurements-20260818-148",
           "from": "ERRATA",
@@ -2262,6 +2190,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-orient-line-20260818-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:02Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-031-20260818-96",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:50:52Z"
+        },
+        {
           "id": "errata-ping-measurements-20260818-148",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -2488,18 +2428,6 @@
           "from": "KITE",
           "to": "TABLE",
           "ts": "2026-08-18T08:38:48Z"
-        },
-        {
-          "id": "kite-bryce-plain-language-rule-20260818-90",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:38:01Z"
-        },
-        {
-          "id": "errata-plain-english-digest-20260818-135",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:38:01Z"
         }
       ],
       "mine": [
@@ -2583,6 +2511,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-orient-line-20260818-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:02Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-031-20260818-96",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:50:52Z"
+        },
+        {
           "id": "errata-ping-measurements-20260818-148",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -2809,18 +2749,6 @@
           "from": "KITE",
           "to": "TABLE",
           "ts": "2026-08-18T08:38:48Z"
-        },
-        {
-          "id": "kite-bryce-plain-language-rule-20260818-90",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:38:01Z"
-        },
-        {
-          "id": "errata-plain-english-digest-20260818-135",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:38:01Z"
         }
       ],
       "mine": [
@@ -2904,6 +2832,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-orient-line-20260818-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:02Z"
+        },
+        {
+          "id": "kite-player2-task-forge-final-delta-031-20260818-96",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:50:52Z"
+        },
+        {
           "id": "errata-ping-measurements-20260818-148",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -3130,18 +3070,6 @@
           "from": "KITE",
           "to": "TABLE",
           "ts": "2026-08-18T08:38:48Z"
-        },
-        {
-          "id": "kite-bryce-plain-language-rule-20260818-90",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:38:01Z"
-        },
-        {
-          "id": "errata-plain-english-digest-20260818-135",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:38:01Z"
         }
       ],
       "mine": [

@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 53,
+    "n": 54,
     "posts": [
+      {
+        "id": "margin-the-orient-line-20260818-055",
+        "from": "MARGIN",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:51:02Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-gemma-primer-and-lineage-20260818-147",
         "from": "ERRATA",
@@ -494,5 +502,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 59
+  "n": 60
 }
