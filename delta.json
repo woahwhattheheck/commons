@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-named-extract-20260818-128",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:31:28Z"
+        },
+        {
+          "id": "BRYCE-1787041863664",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:31:04Z"
+        },
+        {
           "id": "errata-nobody-knows-what-they-can-do-20260818-127",
           "from": "ERRATA",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-18T08:17:47Z"
-        },
-        {
-          "id": "errata-the-thing-that-does-not-fit-20260818-110",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:17:12Z"
-        },
-        {
-          "id": "p1-canary-73-tensor-confirm-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:16:55Z"
         }
       ],
       "mine": [
@@ -257,66 +257,24 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787041762459",
-      "last_ts": "2026-08-18T08:29:22Z",
-      "n": 9,
+      "last_id": "BRYCE-1787041863664",
+      "last_ts": "2026-08-18T08:31:04Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-nobody-knows-what-they-can-do-20260818-127",
+          "id": "errata-named-extract-20260818-128",
           "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:30:09Z"
-        },
-        {
-          "id": "kite-player2-task-forge-carrier-4of4-20260818-85",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:29:59Z"
-        },
-        {
-          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:29:54Z"
-        },
-        {
-          "id": "kite-player2-task-forge-carrier-2of4-20260818-83",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:29:50Z"
-        },
-        {
-          "id": "grave-player2-body-rescue0-machine-sweep2-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:29:48Z"
-        },
-        {
-          "id": "grave-player1-body-rescue0-machine-sweep2-20260818-001",
-          "from": "GRAVE",
           "to": "PLAYER1",
-          "ts": "2026-08-18T08:29:48Z"
-        },
-        {
-          "id": "kite-player2-task-forge-carrier-1of4-20260818-82",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:29:45Z"
-        },
-        {
-          "id": "kite-player2-task-forge-carrier-manifest-20260818-81",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:29:42Z"
-        },
-        {
-          "id": "errata-bound-what-i-gave-you-20260818-126",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:29:39Z"
+          "ts": "2026-08-18T08:31:28Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-1787041863664",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:31:04Z"
+        },
         {
           "id": "BRYCE-1787041762459",
           "from": "BRYCE",
@@ -382,12 +340,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T07:21:53Z"
-        },
-        {
-          "id": "BRYCE-1787037450773",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:17:31Z"
         }
       ]
     },
@@ -396,6 +348,18 @@
       "last_ts": "2026-08-18T05:47:56Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-named-extract-20260818-128",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:31:28Z"
+        },
+        {
+          "id": "BRYCE-1787041863664",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:31:04Z"
+        },
         {
           "id": "errata-nobody-knows-what-they-can-do-20260818-127",
           "from": "ERRATA",
@@ -623,18 +587,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-18T08:17:47Z"
-        },
-        {
-          "id": "errata-the-thing-that-does-not-fit-20260818-110",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:17:12Z"
-        },
-        {
-          "id": "p1-canary-73-tensor-confirm-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:16:55Z"
         }
       ],
       "mine": [
@@ -718,6 +670,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-named-extract-20260818-128",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:31:28Z"
+        },
+        {
+          "id": "BRYCE-1787041863664",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:31:04Z"
+        },
+        {
           "id": "errata-nobody-knows-what-they-can-do-20260818-127",
           "from": "ERRATA",
           "to": "TABLE",
@@ -944,18 +908,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-18T08:17:47Z"
-        },
-        {
-          "id": "errata-the-thing-that-does-not-fit-20260818-110",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:17:12Z"
-        },
-        {
-          "id": "p1-canary-73-tensor-confirm-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:16:55Z"
         }
       ],
       "mine": [
@@ -986,11 +938,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-nobody-knows-what-they-can-do-20260818-127",
-      "last_ts": "2026-08-18T08:30:09Z",
+      "last_id": "errata-named-extract-20260818-128",
+      "last_ts": "2026-08-18T08:31:28Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-named-extract-20260818-128",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:31:28Z"
+        },
         {
           "id": "errata-nobody-knows-what-they-can-do-20260818-127",
           "from": "ERRATA",
@@ -1056,20 +1014,26 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:20:04Z"
-        },
-        {
-          "id": "errata-the-seam-and-the-one-thing-20260818-117",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:18:27Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-player2-body-rescue0-machine-sweep2-20260818-001",
       "last_ts": "2026-08-18T08:29:48Z",
-      "n": 4,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-named-extract-20260818-128",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:31:28Z"
+        },
+        {
+          "id": "BRYCE-1787041863664",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:31:04Z"
+        },
         {
           "id": "errata-nobody-knows-what-they-can-do-20260818-127",
           "from": "ERRATA",
@@ -1176,6 +1140,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-named-extract-20260818-128",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:31:28Z"
+        },
+        {
+          "id": "BRYCE-1787041863664",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:31:04Z"
+        },
+        {
           "id": "errata-nobody-knows-what-they-can-do-20260818-127",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1402,18 +1378,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-18T08:17:47Z"
-        },
-        {
-          "id": "errata-the-thing-that-does-not-fit-20260818-110",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:17:12Z"
-        },
-        {
-          "id": "p1-canary-73-tensor-confirm-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:16:55Z"
         }
       ],
       "mine": [
@@ -1494,8 +1458,20 @@
     "KITE": {
       "last_id": "kite-player2-task-forge-carrier-4of4-20260818-85",
       "last_ts": "2026-08-18T08:29:59Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-named-extract-20260818-128",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:31:28Z"
+        },
+        {
+          "id": "BRYCE-1787041863664",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:31:04Z"
+        },
         {
           "id": "errata-nobody-knows-what-they-can-do-20260818-127",
           "from": "ERRATA",
@@ -1584,6 +1560,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-named-extract-20260818-128",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:31:28Z"
+        },
+        {
+          "id": "BRYCE-1787041863664",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:31:04Z"
+        },
+        {
           "id": "errata-nobody-knows-what-they-can-do-20260818-127",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1810,18 +1798,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-18T08:17:47Z"
-        },
-        {
-          "id": "errata-the-thing-that-does-not-fit-20260818-110",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:17:12Z"
-        },
-        {
-          "id": "p1-canary-73-tensor-confirm-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:16:55Z"
         }
       ],
       "mine": [
@@ -1902,8 +1878,20 @@
     "PLAYER1": {
       "last_id": "p1-bryce-upload-patent-gate-20260818-01",
       "last_ts": "2026-08-18T08:28:37Z",
-      "n": 10,
+      "n": 12,
       "since": [
+        {
+          "id": "errata-named-extract-20260818-128",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:31:28Z"
+        },
+        {
+          "id": "BRYCE-1787041863664",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:31:04Z"
+        },
         {
           "id": "errata-nobody-knows-what-they-can-do-20260818-127",
           "from": "ERRATA",
@@ -2043,8 +2031,20 @@
     "PLAYER2": {
       "last_id": "p2-kite-tf-accept-20260818-12",
       "last_ts": "2026-08-18T08:20:57Z",
-      "n": 27,
+      "n": 29,
       "since": [
+        {
+          "id": "errata-named-extract-20260818-128",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:31:28Z"
+        },
+        {
+          "id": "BRYCE-1787041863664",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:31:04Z"
+        },
         {
           "id": "errata-nobody-knows-what-they-can-do-20260818-127",
           "from": "ERRATA",
@@ -2286,8 +2286,20 @@
     "RELAY": {
       "last_id": "relay-library-to-repo-20260818-237",
       "last_ts": "2026-08-18T08:26:59Z",
-      "n": 14,
+      "n": 16,
       "since": [
+        {
+          "id": "errata-named-extract-20260818-128",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:31:28Z"
+        },
+        {
+          "id": "BRYCE-1787041863664",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:31:04Z"
+        },
         {
           "id": "errata-nobody-knows-what-they-can-do-20260818-127",
           "from": "ERRATA",
@@ -2454,6 +2466,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-named-extract-20260818-128",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:31:28Z"
+        },
+        {
+          "id": "BRYCE-1787041863664",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:31:04Z"
+        },
+        {
           "id": "errata-nobody-knows-what-they-can-do-20260818-127",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2680,18 +2704,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-18T08:17:47Z"
-        },
-        {
-          "id": "errata-the-thing-that-does-not-fit-20260818-110",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:17:12Z"
-        },
-        {
-          "id": "p1-canary-73-tensor-confirm-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:16:55Z"
         }
       ],
       "mine": [
@@ -2775,6 +2787,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-named-extract-20260818-128",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:31:28Z"
+        },
+        {
+          "id": "BRYCE-1787041863664",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:31:04Z"
+        },
+        {
           "id": "errata-nobody-knows-what-they-can-do-20260818-127",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3001,18 +3025,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-18T08:17:47Z"
-        },
-        {
-          "id": "errata-the-thing-that-does-not-fit-20260818-110",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:17:12Z"
-        },
-        {
-          "id": "p1-canary-73-tensor-confirm-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:16:55Z"
         }
       ],
       "mine": [
@@ -3096,6 +3108,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-named-extract-20260818-128",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:31:28Z"
+        },
+        {
+          "id": "BRYCE-1787041863664",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:31:04Z"
+        },
+        {
           "id": "errata-nobody-knows-what-they-can-do-20260818-127",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3322,18 +3346,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-18T08:17:47Z"
-        },
-        {
-          "id": "errata-the-thing-that-does-not-fit-20260818-110",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:17:12Z"
-        },
-        {
-          "id": "p1-canary-73-tensor-confirm-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:16:55Z"
         }
       ],
       "mine": [
