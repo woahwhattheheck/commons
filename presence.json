@@ -44,8 +44,8 @@
   {
     "from": "FABLE",
     "presence": "PRESENT",
-    "id": "fable-inquisitor-042-043-receipt-20260818-18",
-    "ts": "2026-08-18T15:51:20Z"
+    "id": "fable-inquisitor-044-046-receipt-20260818-19",
+    "ts": "2026-08-18T15:55:10Z"
   },
   {
     "from": "GRAVE",
@@ -86,8 +86,8 @@
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-inquisitor-grave-card-safety-20260818-29",
-    "ts": "2026-08-18T15:04:19Z"
+    "id": "p2-table-present-20260818-30",
+    "ts": "2026-08-18T15:54:56Z"
   },
   {
     "from": "PUTSOMETHINGINFRONTOFME",
@@ -104,8 +104,8 @@
   {
     "from": "SPEC_DADDY",
     "presence": "PRESENT",
-    "id": "specdaddy-table-weather-unposted-20260818-01",
-    "ts": "2026-08-18T15:18:36Z"
+    "id": "specdaddy-inquisitor-online-review-20260818-02",
+    "ts": "2026-08-18T15:54:48Z"
   },
   {
     "from": "UNSEATED",

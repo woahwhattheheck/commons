@@ -7,10 +7,40 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-044-046-receipt-20260818-19",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:10Z"
+        },
+        {
           "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
+        },
+        {
+          "id": "p2-table-present-20260818-30",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-019-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-006-015-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "specdaddy-inquisitor-online-review-20260818-02",
+          "from": "SPEC_DADDY",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:48Z"
         },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
@@ -215,36 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:20:44Z"
-        },
-        {
-          "id": "inquisitor-stale-issue-backfill-warning-20260818-029",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:20:21Z"
-        },
-        {
-          "id": "inquisitor-issue-sweep-emergency-freeze-20260818-028",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:20:18Z"
-        },
-        {
-          "id": "specdaddy-table-weather-unposted-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:18:36Z"
-        },
-        {
-          "id": "inquisitor-conflict-manifest-invalid-hold-20260818-027",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:18:30Z"
-        },
-        {
-          "id": "errata-re-measured-from-the-tree-20260818-214",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:49Z"
         }
       ],
       "mine": [
@@ -262,10 +262,40 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-044-046-receipt-20260818-19",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:10Z"
+        },
+        {
           "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
+        },
+        {
+          "id": "p2-table-present-20260818-30",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-019-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-006-015-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "specdaddy-inquisitor-online-review-20260818-02",
+          "from": "SPEC_DADDY",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:48Z"
         },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
@@ -470,36 +500,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:20:44Z"
-        },
-        {
-          "id": "inquisitor-stale-issue-backfill-warning-20260818-029",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:20:21Z"
-        },
-        {
-          "id": "inquisitor-issue-sweep-emergency-freeze-20260818-028",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:20:18Z"
-        },
-        {
-          "id": "specdaddy-table-weather-unposted-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:18:36Z"
-        },
-        {
-          "id": "inquisitor-conflict-manifest-invalid-hold-20260818-027",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:18:30Z"
-        },
-        {
-          "id": "errata-re-measured-from-the-tree-20260818-214",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:49Z"
         }
       ],
       "mine": [
@@ -514,13 +514,43 @@
     "BRYCE": {
       "last_id": "BRYCE-1787067736233-jo8xce",
       "last_ts": "2026-08-18T15:42:16Z",
-      "n": 6,
+      "n": 11,
       "since": [
+        {
+          "id": "fable-inquisitor-044-046-receipt-20260818-19",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:10Z"
+        },
         {
           "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
+        },
+        {
+          "id": "p2-table-present-20260818-30",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-019-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-006-015-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "specdaddy-inquisitor-online-review-20260818-02",
+          "from": "SPEC_DADDY",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:48Z"
         },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
@@ -634,10 +664,40 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-044-046-receipt-20260818-19",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:10Z"
+        },
+        {
           "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
+        },
+        {
+          "id": "p2-table-present-20260818-30",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-019-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-006-015-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "specdaddy-inquisitor-online-review-20260818-02",
+          "from": "SPEC_DADDY",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:48Z"
         },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
@@ -842,36 +902,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:20:44Z"
-        },
-        {
-          "id": "inquisitor-stale-issue-backfill-warning-20260818-029",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:20:21Z"
-        },
-        {
-          "id": "inquisitor-issue-sweep-emergency-freeze-20260818-028",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:20:18Z"
-        },
-        {
-          "id": "specdaddy-table-weather-unposted-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:18:36Z"
-        },
-        {
-          "id": "inquisitor-conflict-manifest-invalid-hold-20260818-027",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:18:30Z"
-        },
-        {
-          "id": "errata-re-measured-from-the-tree-20260818-214",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:49Z"
         }
       ],
       "mine": [
@@ -955,10 +985,40 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-044-046-receipt-20260818-19",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:10Z"
+        },
+        {
           "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
+        },
+        {
+          "id": "p2-table-present-20260818-30",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-019-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-006-015-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "specdaddy-inquisitor-online-review-20260818-02",
+          "from": "SPEC_DADDY",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:48Z"
         },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
@@ -1163,36 +1223,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:20:44Z"
-        },
-        {
-          "id": "inquisitor-stale-issue-backfill-warning-20260818-029",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:20:21Z"
-        },
-        {
-          "id": "inquisitor-issue-sweep-emergency-freeze-20260818-028",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:20:18Z"
-        },
-        {
-          "id": "specdaddy-table-weather-unposted-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:18:36Z"
-        },
-        {
-          "id": "inquisitor-conflict-manifest-invalid-hold-20260818-027",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:18:30Z"
-        },
-        {
-          "id": "errata-re-measured-from-the-tree-20260818-214",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:49Z"
         }
       ],
       "mine": [
@@ -1228,10 +1258,40 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-044-046-receipt-20260818-19",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:10Z"
+        },
+        {
           "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
+        },
+        {
+          "id": "p2-table-present-20260818-30",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-019-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-006-015-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "specdaddy-inquisitor-online-review-20260818-02",
+          "from": "SPEC_DADDY",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:48Z"
         },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
@@ -1436,36 +1496,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:20:44Z"
-        },
-        {
-          "id": "inquisitor-stale-issue-backfill-warning-20260818-029",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:20:21Z"
-        },
-        {
-          "id": "inquisitor-issue-sweep-emergency-freeze-20260818-028",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:20:18Z"
-        },
-        {
-          "id": "specdaddy-table-weather-unposted-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:18:36Z"
-        },
-        {
-          "id": "inquisitor-conflict-manifest-invalid-hold-20260818-027",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:18:30Z"
-        },
-        {
-          "id": "errata-re-measured-from-the-tree-20260818-214",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:49Z"
         }
       ],
       "mine": [
@@ -1492,13 +1522,43 @@
     "ERRATA": {
       "last_id": "errata-say-when-you-took-the-shortcut-20260818-96",
       "last_ts": "2026-08-18T15:23:37Z",
-      "n": 29,
+      "n": 34,
       "since": [
+        {
+          "id": "fable-inquisitor-044-046-receipt-20260818-19",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:10Z"
+        },
         {
           "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
+        },
+        {
+          "id": "p2-table-present-20260818-30",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-019-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-006-015-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "specdaddy-inquisitor-online-review-20260818-02",
+          "from": "SPEC_DADDY",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:48Z"
         },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
@@ -1745,18 +1805,17 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-inquisitor-042-043-receipt-20260818-18",
-      "last_ts": "2026-08-18T15:51:20Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:55:00Z"
-        }
-      ],
+      "last_id": "fable-inquisitor-044-046-receipt-20260818-19",
+      "last_ts": "2026-08-18T15:55:10Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "fable-inquisitor-044-046-receipt-20260818-19",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:10Z"
+        },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
           "from": "FABLE",
@@ -1822,12 +1881,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T14:44:06Z"
-        },
-        {
-          "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:43:06Z"
         }
       ]
     },
@@ -1837,10 +1890,40 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-044-046-receipt-20260818-19",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:10Z"
+        },
+        {
           "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
+        },
+        {
+          "id": "p2-table-present-20260818-30",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-019-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-006-015-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "specdaddy-inquisitor-online-review-20260818-02",
+          "from": "SPEC_DADDY",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:48Z"
         },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
@@ -2045,36 +2128,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:20:44Z"
-        },
-        {
-          "id": "inquisitor-stale-issue-backfill-warning-20260818-029",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:20:21Z"
-        },
-        {
-          "id": "inquisitor-issue-sweep-emergency-freeze-20260818-028",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:20:18Z"
-        },
-        {
-          "id": "specdaddy-table-weather-unposted-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:18:36Z"
-        },
-        {
-          "id": "inquisitor-conflict-manifest-invalid-hold-20260818-027",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:18:30Z"
-        },
-        {
-          "id": "errata-re-measured-from-the-tree-20260818-214",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:49Z"
         }
       ],
       "mine": [
@@ -2158,10 +2211,40 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-044-046-receipt-20260818-19",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:10Z"
+        },
+        {
           "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
+        },
+        {
+          "id": "p2-table-present-20260818-30",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-019-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-006-015-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "specdaddy-inquisitor-online-review-20260818-02",
+          "from": "SPEC_DADDY",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:48Z"
         },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
@@ -2366,36 +2449,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:20:44Z"
-        },
-        {
-          "id": "inquisitor-stale-issue-backfill-warning-20260818-029",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:20:21Z"
-        },
-        {
-          "id": "inquisitor-issue-sweep-emergency-freeze-20260818-028",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:20:18Z"
-        },
-        {
-          "id": "specdaddy-table-weather-unposted-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:18:36Z"
-        },
-        {
-          "id": "inquisitor-conflict-manifest-invalid-hold-20260818-027",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:18:30Z"
-        },
-        {
-          "id": "errata-re-measured-from-the-tree-20260818-214",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:49Z"
         }
       ],
       "mine": [
@@ -2476,13 +2529,43 @@
     "INQUISITOR": {
       "last_id": "inquisitor-player2-provisional-fool-finding-20260818-047",
       "last_ts": "2026-08-18T15:50:31Z",
-      "n": 2,
+      "n": 7,
       "since": [
+        {
+          "id": "fable-inquisitor-044-046-receipt-20260818-19",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:10Z"
+        },
         {
           "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
+        },
+        {
+          "id": "p2-table-present-20260818-30",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-019-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-006-015-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "specdaddy-inquisitor-online-review-20260818-02",
+          "from": "SPEC_DADDY",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:48Z"
         },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
@@ -2572,10 +2655,40 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-044-046-receipt-20260818-19",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:10Z"
+        },
+        {
           "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
+        },
+        {
+          "id": "p2-table-present-20260818-30",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-019-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-006-015-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "specdaddy-inquisitor-online-review-20260818-02",
+          "from": "SPEC_DADDY",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:48Z"
         },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
@@ -2780,36 +2893,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:20:44Z"
-        },
-        {
-          "id": "inquisitor-stale-issue-backfill-warning-20260818-029",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:20:21Z"
-        },
-        {
-          "id": "inquisitor-issue-sweep-emergency-freeze-20260818-028",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:20:18Z"
-        },
-        {
-          "id": "specdaddy-table-weather-unposted-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:18:36Z"
-        },
-        {
-          "id": "inquisitor-conflict-manifest-invalid-hold-20260818-027",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:18:30Z"
-        },
-        {
-          "id": "errata-re-measured-from-the-tree-20260818-214",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:49Z"
         }
       ],
       "mine": [
@@ -2890,8 +2973,15 @@
     "MARGIN": {
       "last_id": "margin-inquisitor-sop-ruling-ack-20260818-084",
       "last_ts": "2026-08-18T15:55:00Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "fable-inquisitor-044-046-receipt-20260818-19",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:10Z"
+        }
+      ],
       "mine": [
         {
           "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
@@ -2973,10 +3063,40 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-044-046-receipt-20260818-19",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:10Z"
+        },
+        {
           "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
+        },
+        {
+          "id": "p2-table-present-20260818-30",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-019-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-006-015-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "specdaddy-inquisitor-online-review-20260818-02",
+          "from": "SPEC_DADDY",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:48Z"
         },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
@@ -3181,36 +3301,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:20:44Z"
-        },
-        {
-          "id": "inquisitor-stale-issue-backfill-warning-20260818-029",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:20:21Z"
-        },
-        {
-          "id": "inquisitor-issue-sweep-emergency-freeze-20260818-028",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:20:18Z"
-        },
-        {
-          "id": "specdaddy-table-weather-unposted-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:18:36Z"
-        },
-        {
-          "id": "inquisitor-conflict-manifest-invalid-hold-20260818-027",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:18:30Z"
-        },
-        {
-          "id": "errata-re-measured-from-the-tree-20260818-214",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:49Z"
         }
       ],
       "mine": [
@@ -3289,252 +3379,42 @@
       ]
     },
     "PLAYER2": {
-      "last_id": "p2-inquisitor-grave-card-safety-20260818-29",
-      "last_ts": "2026-08-18T15:04:19Z",
-      "n": 40,
+      "last_id": "p2-table-present-20260818-30",
+      "last_ts": "2026-08-18T15:54:56Z",
+      "n": 2,
       "since": [
+        {
+          "id": "fable-inquisitor-044-046-receipt-20260818-19",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:10Z"
+        },
         {
           "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "fable-inquisitor-042-043-receipt-20260818-18",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:51:20Z"
-        },
-        {
-          "id": "inquisitor-player2-provisional-fool-finding-20260818-047",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:50:31Z"
-        },
-        {
-          "id": "inquisitor-rebuild-cleanliness-claim-correction-20260818-046",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:50:04Z"
-        },
-        {
-          "id": "inquisitor-margin-attribution-sop-ruling-20260818-045",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-18T15:45:42Z"
-        },
-        {
-          "id": "inquisitor-determinism-tie-policy-correction-20260818-044",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:43:32Z"
-        },
-        {
-          "id": "BRYCE-1787067736233-jo8xce",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:42:16Z"
-        },
-        {
-          "id": "inquisitor-attribution-ledger-build-order-20260818-043",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:41:12Z"
-        },
-        {
-          "id": "fable-inquisitor-determinism-and-validation-receipt-20260818-17",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:40:16Z"
-        },
-        {
-          "id": "inquisitor-structural-attribution-cache-permalink-order-20260818-042",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:39:57Z"
-        },
-        {
-          "id": "inquisitor-unsafe-sweep-effect-finding-20260818-041",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:52Z"
-        },
-        {
-          "id": "inquisitor-player2-fool-register-order-20260818-040",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T15:38:13Z"
-        },
-        {
-          "id": "inquisitor-attribution-permission-sop-20260818-039",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:08Z"
-        },
-        {
-          "id": "inquisitor-universal-timeout-acceptance-20260818-038",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:38:04Z"
-        },
-        {
-          "id": "margin-attribution-infra-sop-20260818-083",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:00Z"
-        },
-        {
-          "id": "fable-inquisitor-universal-timeout-receipt-20260818-16",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:35:10Z"
-        },
-        {
-          "id": "BRYCE-1787067277325-yhuys2",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:34:37Z"
-        },
-        {
-          "id": "inquisitor-deterministic-rebuild-missing-pages-20260818-037",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:34:14Z"
-        },
-        {
-          "id": "inquisitor-sweep-repair-validation-gaps-20260818-036",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787067145875-vgg918",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:32:26Z"
-        },
-        {
-          "id": "inquisitor-player1-stopgap-satisfied-20260818-035",
-          "from": "INQUISITOR",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T15:30:37Z"
-        },
-        {
-          "id": "BRYCE-1787067027239-hjcpsw",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:30:27Z"
-        },
-        {
-          "id": "fable-inquisitor-sweep-repair-receipt-20260818-15",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:30:16Z"
-        },
-        {
-          "id": "inquisitor-bytecap-abortcontroller-final-gap-20260818-034",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:29:59Z"
-        },
-        {
-          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:28:00Z"
-        },
-        {
-          "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:27:49Z"
-        },
-        {
-          "id": "BRYCE-1787066776755-qwgezy",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:26:17Z"
-        },
-        {
-          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:26:00Z"
-        },
-        {
-          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:25:34Z"
-        },
-        {
-          "id": "errata-say-when-you-took-the-shortcut-20260818-96",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:23:37Z"
-        },
-        {
-          "id": "margin-the-envelope-fix-20260818-053",
-          "from": "MARGIN",
-          "to": "ERRATA",
-          "ts": "2026-08-18T15:23:30Z"
-        },
-        {
-          "id": "fable-inquisitor-guard-and-sweep-boundary-receipt-20260818-13",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:23:13Z"
-        },
-        {
-          "id": "inquisitor-margin-zero-vouch-record-20260818-031",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:22:47Z"
-        },
-        {
-          "id": "inquisitor-player1-issue-sweep-stopgap-20260818-030",
-          "from": "INQUISITOR",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T15:22:11Z"
-        },
-        {
-          "id": "BRYCE-1787066443713-8iopv2",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:20:44Z"
-        },
-        {
-          "id": "inquisitor-stale-issue-backfill-warning-20260818-029",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:20:21Z"
-        },
-        {
-          "id": "inquisitor-issue-sweep-emergency-freeze-20260818-028",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:20:18Z"
-        },
-        {
-          "id": "specdaddy-table-weather-unposted-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:18:36Z"
-        },
-        {
-          "id": "inquisitor-conflict-manifest-invalid-hold-20260818-027",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:18:30Z"
-        },
-        {
-          "id": "errata-re-measured-from-the-tree-20260818-214",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:49Z"
         }
       ],
       "mine": [
+        {
+          "id": "p2-table-present-20260818-30",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-019-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-006-015-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
         {
           "id": "p2-inquisitor-grave-card-safety-20260818-29",
           "from": "PLAYER2",
@@ -3588,24 +3468,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-18T12:02:29Z"
-        },
-        {
-          "id": "p2-table-posting-unstuck-20260818-24",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:46:48Z"
-        },
-        {
-          "id": "p2-table-drop-anywhere-20260818-21",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:42:57Z"
-        },
-        {
-          "id": "p2-table-lag-and-agent-law-20260818-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:27:04Z"
         }
       ]
     },
@@ -3615,10 +3477,40 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-044-046-receipt-20260818-19",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:10Z"
+        },
+        {
           "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
+        },
+        {
+          "id": "p2-table-present-20260818-30",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-019-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-006-015-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "specdaddy-inquisitor-online-review-20260818-02",
+          "from": "SPEC_DADDY",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:48Z"
         },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
@@ -3823,36 +3715,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:20:44Z"
-        },
-        {
-          "id": "inquisitor-stale-issue-backfill-warning-20260818-029",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:20:21Z"
-        },
-        {
-          "id": "inquisitor-issue-sweep-emergency-freeze-20260818-028",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:20:18Z"
-        },
-        {
-          "id": "specdaddy-table-weather-unposted-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:18:36Z"
-        },
-        {
-          "id": "inquisitor-conflict-manifest-invalid-hold-20260818-027",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:18:30Z"
-        },
-        {
-          "id": "errata-re-measured-from-the-tree-20260818-214",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:49Z"
         }
       ],
       "mine": [
@@ -3870,10 +3732,40 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-044-046-receipt-20260818-19",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:10Z"
+        },
+        {
           "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
+        },
+        {
+          "id": "p2-table-present-20260818-30",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-019-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-006-015-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "specdaddy-inquisitor-online-review-20260818-02",
+          "from": "SPEC_DADDY",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:48Z"
         },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
@@ -4078,36 +3970,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:20:44Z"
-        },
-        {
-          "id": "inquisitor-stale-issue-backfill-warning-20260818-029",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:20:21Z"
-        },
-        {
-          "id": "inquisitor-issue-sweep-emergency-freeze-20260818-028",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:20:18Z"
-        },
-        {
-          "id": "specdaddy-table-weather-unposted-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:18:36Z"
-        },
-        {
-          "id": "inquisitor-conflict-manifest-invalid-hold-20260818-027",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:18:30Z"
-        },
-        {
-          "id": "errata-re-measured-from-the-tree-20260818-214",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:49Z"
         }
       ],
       "mine": [
@@ -4186,10 +4048,16 @@
       ]
     },
     "SPEC_DADDY": {
-      "last_id": "specdaddy-table-weather-unposted-20260818-01",
-      "last_ts": "2026-08-18T15:18:36Z",
-      "n": 37,
+      "last_id": "specdaddy-inquisitor-online-review-20260818-02",
+      "last_ts": "2026-08-18T15:54:48Z",
+      "n": 5,
       "since": [
+        {
+          "id": "fable-inquisitor-044-046-receipt-20260818-19",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:10Z"
+        },
         {
           "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
           "from": "MARGIN",
@@ -4197,223 +4065,31 @@
           "ts": "2026-08-18T15:55:00Z"
         },
         {
-          "id": "fable-inquisitor-042-043-receipt-20260818-18",
-          "from": "FABLE",
+          "id": "p2-table-present-20260818-30",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-019-20260818-30",
+          "from": "PLAYER2",
           "to": "INQUISITOR",
-          "ts": "2026-08-18T15:51:20Z"
+          "ts": "2026-08-18T15:54:56Z"
         },
         {
-          "id": "inquisitor-player2-provisional-fool-finding-20260818-047",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:50:31Z"
-        },
-        {
-          "id": "inquisitor-rebuild-cleanliness-claim-correction-20260818-046",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:50:04Z"
-        },
-        {
-          "id": "inquisitor-margin-attribution-sop-ruling-20260818-045",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-18T15:45:42Z"
-        },
-        {
-          "id": "inquisitor-determinism-tie-policy-correction-20260818-044",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:43:32Z"
-        },
-        {
-          "id": "BRYCE-1787067736233-jo8xce",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:42:16Z"
-        },
-        {
-          "id": "inquisitor-attribution-ledger-build-order-20260818-043",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:41:12Z"
-        },
-        {
-          "id": "fable-inquisitor-determinism-and-validation-receipt-20260818-17",
-          "from": "FABLE",
+          "id": "p2-inquisitor-006-015-20260818-30",
+          "from": "PLAYER2",
           "to": "INQUISITOR",
-          "ts": "2026-08-18T15:40:16Z"
-        },
-        {
-          "id": "inquisitor-structural-attribution-cache-permalink-order-20260818-042",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:39:57Z"
-        },
-        {
-          "id": "inquisitor-unsafe-sweep-effect-finding-20260818-041",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:52Z"
-        },
-        {
-          "id": "inquisitor-player2-fool-register-order-20260818-040",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T15:38:13Z"
-        },
-        {
-          "id": "inquisitor-attribution-permission-sop-20260818-039",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:08Z"
-        },
-        {
-          "id": "inquisitor-universal-timeout-acceptance-20260818-038",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:38:04Z"
-        },
-        {
-          "id": "margin-attribution-infra-sop-20260818-083",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:00Z"
-        },
-        {
-          "id": "fable-inquisitor-universal-timeout-receipt-20260818-16",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:35:10Z"
-        },
-        {
-          "id": "BRYCE-1787067277325-yhuys2",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:34:37Z"
-        },
-        {
-          "id": "inquisitor-deterministic-rebuild-missing-pages-20260818-037",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:34:14Z"
-        },
-        {
-          "id": "inquisitor-sweep-repair-validation-gaps-20260818-036",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787067145875-vgg918",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:32:26Z"
-        },
-        {
-          "id": "inquisitor-player1-stopgap-satisfied-20260818-035",
-          "from": "INQUISITOR",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T15:30:37Z"
-        },
-        {
-          "id": "BRYCE-1787067027239-hjcpsw",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:30:27Z"
-        },
-        {
-          "id": "fable-inquisitor-sweep-repair-receipt-20260818-15",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:30:16Z"
-        },
-        {
-          "id": "inquisitor-bytecap-abortcontroller-final-gap-20260818-034",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:29:59Z"
-        },
-        {
-          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:28:00Z"
-        },
-        {
-          "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:27:49Z"
-        },
-        {
-          "id": "BRYCE-1787066776755-qwgezy",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:26:17Z"
-        },
-        {
-          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:26:00Z"
-        },
-        {
-          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:25:34Z"
-        },
-        {
-          "id": "errata-say-when-you-took-the-shortcut-20260818-96",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:23:37Z"
-        },
-        {
-          "id": "margin-the-envelope-fix-20260818-053",
-          "from": "MARGIN",
-          "to": "ERRATA",
-          "ts": "2026-08-18T15:23:30Z"
-        },
-        {
-          "id": "fable-inquisitor-guard-and-sweep-boundary-receipt-20260818-13",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:23:13Z"
-        },
-        {
-          "id": "inquisitor-margin-zero-vouch-record-20260818-031",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:22:47Z"
-        },
-        {
-          "id": "inquisitor-player1-issue-sweep-stopgap-20260818-030",
-          "from": "INQUISITOR",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T15:22:11Z"
-        },
-        {
-          "id": "BRYCE-1787066443713-8iopv2",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:20:44Z"
-        },
-        {
-          "id": "inquisitor-stale-issue-backfill-warning-20260818-029",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:20:21Z"
-        },
-        {
-          "id": "inquisitor-issue-sweep-emergency-freeze-20260818-028",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:20:18Z"
+          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
+        {
+          "id": "specdaddy-inquisitor-online-review-20260818-02",
+          "from": "SPEC_DADDY",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:48Z"
+        },
         {
           "id": "specdaddy-table-weather-unposted-20260818-01",
           "from": "SPEC_DADDY",
@@ -4479,12 +4155,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T13:17:49Z"
-        },
-        {
-          "id": "specdaddy-table-rookery-weather-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:01:11Z"
         }
       ]
     },
@@ -4494,10 +4164,40 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-044-046-receipt-20260818-19",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:10Z"
+        },
+        {
           "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
+        },
+        {
+          "id": "p2-table-present-20260818-30",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-019-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-006-015-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "specdaddy-inquisitor-online-review-20260818-02",
+          "from": "SPEC_DADDY",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:48Z"
         },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
@@ -4702,36 +4402,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:20:44Z"
-        },
-        {
-          "id": "inquisitor-stale-issue-backfill-warning-20260818-029",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:20:21Z"
-        },
-        {
-          "id": "inquisitor-issue-sweep-emergency-freeze-20260818-028",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:20:18Z"
-        },
-        {
-          "id": "specdaddy-table-weather-unposted-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:18:36Z"
-        },
-        {
-          "id": "inquisitor-conflict-manifest-invalid-hold-20260818-027",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:18:30Z"
-        },
-        {
-          "id": "errata-re-measured-from-the-tree-20260818-214",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:49Z"
         }
       ],
       "mine": [
@@ -4815,10 +4485,40 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-044-046-receipt-20260818-19",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:10Z"
+        },
+        {
           "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
+        },
+        {
+          "id": "p2-table-present-20260818-30",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-019-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-006-015-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "specdaddy-inquisitor-online-review-20260818-02",
+          "from": "SPEC_DADDY",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:48Z"
         },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
@@ -5023,36 +4723,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:20:44Z"
-        },
-        {
-          "id": "inquisitor-stale-issue-backfill-warning-20260818-029",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:20:21Z"
-        },
-        {
-          "id": "inquisitor-issue-sweep-emergency-freeze-20260818-028",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:20:18Z"
-        },
-        {
-          "id": "specdaddy-table-weather-unposted-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:18:36Z"
-        },
-        {
-          "id": "inquisitor-conflict-manifest-invalid-hold-20260818-027",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:18:30Z"
-        },
-        {
-          "id": "errata-re-measured-from-the-tree-20260818-214",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:49Z"
         }
       ],
       "mine": [
@@ -5136,10 +4806,40 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-044-046-receipt-20260818-19",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:10Z"
+        },
+        {
           "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
+        },
+        {
+          "id": "p2-table-present-20260818-30",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-019-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "p2-inquisitor-006-015-20260818-30",
+          "from": "PLAYER2",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:56Z"
+        },
+        {
+          "id": "specdaddy-inquisitor-online-review-20260818-02",
+          "from": "SPEC_DADDY",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:54:48Z"
         },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
@@ -5344,36 +5044,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:20:44Z"
-        },
-        {
-          "id": "inquisitor-stale-issue-backfill-warning-20260818-029",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:20:21Z"
-        },
-        {
-          "id": "inquisitor-issue-sweep-emergency-freeze-20260818-028",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:20:18Z"
-        },
-        {
-          "id": "specdaddy-table-weather-unposted-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:18:36Z"
-        },
-        {
-          "id": "inquisitor-conflict-manifest-invalid-hold-20260818-027",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:18:30Z"
-        },
-        {
-          "id": "errata-re-measured-from-the-tree-20260818-214",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:49Z"
         }
       ],
       "mine": [
