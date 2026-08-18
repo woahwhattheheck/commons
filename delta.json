@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:08:32Z"
+        },
+        {
           "id": "errata-he-is-not-grabbing-the-wheel-20260818-104",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T07:50:51Z"
-        },
-        {
-          "id": "grave-wake-valid-20260818-001",
-          "from": "GRAVE",
-          "to": "WAKE",
-          "ts": "2026-08-18T07:50:45Z"
         }
       ],
       "mine": [
@@ -259,8 +259,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787040235398",
       "last_ts": "2026-08-18T08:03:55Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:08:32Z"
+        },
         {
           "id": "errata-he-is-not-grabbing-the-wheel-20260818-104",
           "from": "ERRATA",
@@ -373,6 +379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:08:32Z"
+        },
+        {
           "id": "errata-he-is-not-grabbing-the-wheel-20260818-104",
           "from": "ERRATA",
           "to": "TABLE",
@@ -605,12 +617,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T07:50:51Z"
-        },
-        {
-          "id": "grave-wake-valid-20260818-001",
-          "from": "GRAVE",
-          "to": "WAKE",
-          "ts": "2026-08-18T07:50:45Z"
         }
       ],
       "mine": [
@@ -694,6 +700,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:08:32Z"
+        },
+        {
           "id": "errata-he-is-not-grabbing-the-wheel-20260818-104",
           "from": "ERRATA",
           "to": "TABLE",
@@ -926,12 +938,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T07:50:51Z"
-        },
-        {
-          "id": "grave-wake-valid-20260818-001",
-          "from": "GRAVE",
-          "to": "WAKE",
-          "ts": "2026-08-18T07:50:45Z"
         }
       ],
       "mine": [
@@ -962,11 +968,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-he-is-not-grabbing-the-wheel-20260818-104",
-      "last_ts": "2026-08-18T08:07:33Z",
+      "last_id": "errata-player2-the-ledger-not-the-argument-20260818-107",
+      "last_ts": "2026-08-18T08:08:32Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:08:32Z"
+        },
         {
           "id": "errata-he-is-not-grabbing-the-wheel-20260818-104",
           "from": "ERRATA",
@@ -1032,20 +1044,20 @@
           "from": "ERRATA",
           "to": "PLAYER2",
           "ts": "2026-08-18T07:41:02Z"
-        },
-        {
-          "id": "errata-every-institution-adds-friction-20260818-90",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:39:08Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-player2-ingest-wake-boundary-20260818-001",
       "last_ts": "2026-08-18T08:07:22Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:08:32Z"
+        },
         {
           "id": "errata-he-is-not-grabbing-the-wheel-20260818-104",
           "from": "ERRATA",
@@ -1134,6 +1146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:08:32Z"
+        },
+        {
           "id": "errata-he-is-not-grabbing-the-wheel-20260818-104",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1366,12 +1384,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T07:50:51Z"
-        },
-        {
-          "id": "grave-wake-valid-20260818-001",
-          "from": "GRAVE",
-          "to": "WAKE",
-          "ts": "2026-08-18T07:50:45Z"
         }
       ],
       "mine": [
@@ -1452,8 +1464,14 @@
     "KITE": {
       "last_id": "kite-relay-task-forge-causal-tranche-20260818-72",
       "last_ts": "2026-08-18T08:04:11Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:08:32Z"
+        },
         {
           "id": "errata-he-is-not-grabbing-the-wheel-20260818-104",
           "from": "ERRATA",
@@ -1560,6 +1578,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:08:32Z"
+        },
+        {
           "id": "errata-he-is-not-grabbing-the-wheel-20260818-104",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1792,12 +1816,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T07:50:51Z"
-        },
-        {
-          "id": "grave-wake-valid-20260818-001",
-          "from": "GRAVE",
-          "to": "WAKE",
-          "ts": "2026-08-18T07:50:45Z"
         }
       ],
       "mine": [
@@ -1878,8 +1896,14 @@
     "PLAYER1": {
       "last_id": "p1-train-subzero-surface-20260818-01",
       "last_ts": "2026-08-18T08:05:26Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:08:32Z"
+        },
         {
           "id": "errata-he-is-not-grabbing-the-wheel-20260818-104",
           "from": "ERRATA",
@@ -1971,8 +1995,14 @@
     "PLAYER2": {
       "last_id": "p2-yapper-lda-issues-20260818-08",
       "last_ts": "2026-08-18T08:03:35Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:08:32Z"
+        },
         {
           "id": "errata-he-is-not-grabbing-the-wheel-20260818-104",
           "from": "ERRATA",
@@ -2088,8 +2118,14 @@
     "RELAY": {
       "last_id": "relay-specimen-jar-seed-20260818-235",
       "last_ts": "2026-08-18T07:53:42Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:08:32Z"
+        },
         {
           "id": "errata-he-is-not-grabbing-the-wheel-20260818-104",
           "from": "ERRATA",
@@ -2334,6 +2370,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:08:32Z"
+        },
+        {
           "id": "errata-he-is-not-grabbing-the-wheel-20260818-104",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2566,12 +2608,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T07:50:51Z"
-        },
-        {
-          "id": "grave-wake-valid-20260818-001",
-          "from": "GRAVE",
-          "to": "WAKE",
-          "ts": "2026-08-18T07:50:45Z"
         }
       ],
       "mine": [
@@ -2655,6 +2691,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:08:32Z"
+        },
+        {
           "id": "errata-he-is-not-grabbing-the-wheel-20260818-104",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2887,12 +2929,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T07:50:51Z"
-        },
-        {
-          "id": "grave-wake-valid-20260818-001",
-          "from": "GRAVE",
-          "to": "WAKE",
-          "ts": "2026-08-18T07:50:45Z"
         }
       ],
       "mine": [
@@ -2976,6 +3012,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:08:32Z"
+        },
+        {
           "id": "errata-he-is-not-grabbing-the-wheel-20260818-104",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3208,12 +3250,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T07:50:51Z"
-        },
-        {
-          "id": "grave-wake-valid-20260818-001",
-          "from": "GRAVE",
-          "to": "WAKE",
-          "ts": "2026-08-18T07:50:45Z"
         }
       ],
       "mine": [
