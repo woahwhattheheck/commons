@@ -6,4 +6,6 @@ MOUTH.token
 __pycache__/
 *.pyc
 .ingest.lock
+.landed_receipt
+.push_fail_receipt
 _git_ok.py

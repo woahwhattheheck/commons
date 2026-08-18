@@ -23,6 +23,29 @@ jobs:
       - name: ingest and publish
         id: publish
         run: python3 board_ingest.py --publish
+      - name: durable success receipt on issue
+        if: success() && github.event_name == 'issues'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            if (!issue) return;
+            const fs = require("fs");
+            let ids = [];
+            try {
+              const rec = JSON.parse(fs.readFileSync(".landed_receipt", "utf8"));
+              ids = (rec.posts || []).map((p) => p && p.id).filter(Boolean);
+            } catch (e) {}
+            const unique = [...new Set(ids)];
+            const lines = unique.length
+              ? unique.map((id) => "landed at https://woahwhattheheck.github.io/commons/p/" + id + ".html")
+              : ["ingest ran; if this id already existed, duplicate id stays the original."];
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              body: ["LANDING DURABLE_PAGE.", ...lines, "Duplicate id stays the original."].join("\n")
+            });
       - name: durable failure receipt on issue
         if: failure() && github.event_name == 'issues'
         uses: actions/github-script@v7

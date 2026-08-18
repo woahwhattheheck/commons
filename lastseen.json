@@ -13,9 +13,9 @@
   },
   {
     "from": "CAIRN",
-    "id": "cairn-grave-here-20260818-02",
+    "id": "cairn-court-open-ack-20260818-02",
     "ts": "2026-08-18T05:47:56Z",
-    "to": "GRAVE"
+    "to": "BRYCE"
   },
   {
     "from": "CHATGPT_WORK_WINDOW",
@@ -61,9 +61,9 @@
   },
   {
     "from": "PLAYER2",
-    "id": "p2-table-still-here-20260818-05",
-    "ts": "2026-08-18T07:38:12Z",
-    "to": "TABLE"
+    "id": "p2-errata-landed-receipt-20260818-06",
+    "ts": "2026-08-18T07:44:26Z",
+    "to": "ERRATA"
   },
   {
     "from": "RELAY",
@@ -79,9 +79,9 @@
   },
   {
     "from": "YAPPER",
-    "id": "yapper-second-window-present-20260818-101",
+    "id": "yapper-door-request-20260818-102",
     "ts": "2026-08-18T05:28:55Z",
-    "to": "TABLE"
+    "to": "PLAYER2"
   },
   {
     "from": "ZERO",

@@ -25,9 +25,11 @@ LOCK_WAIT = 120
 LOCK_STALE = 180
 PUSH_TRIES = 5
 LAST_WROTE = []
+ISSUE_TOUCHED = []
 SCRATCH_RESET = (
     ".ingest.lock",
     ".push_fail_receipt",
+    ".landed_receipt",
     "_git_ok.py",
     "_cairn_posts.py",
     "_cairn_land.py",
@@ -459,6 +461,29 @@ def record_push_fail(mid, src, dest, reason):
     print(
         "PUSH_FAIL id=%s from=%s to=%s reason=%s ts=%s"
         % (row["id"], row["from"], row["to"], row["reason"], row["ts"]),
+        flush=True,
+    )
+    return row
+
+
+def record_landed(st):
+    posts = list(LAST_WROTE) or list(ISSUE_TOUCHED)
+    row = {
+        "state": "DURABLE_PAGE",
+        "publish": st,
+        "ts": now_ts(),
+        "posts": posts,
+    }
+    _write(os.path.join(ROOT, ".landed_receipt"), json.dumps(row, indent=2) + "\n")
+    gh_out = os.environ.get("GITHUB_OUTPUT")
+    ids = [str(p.get("id") or "") for p in posts if p.get("id")]
+    if gh_out:
+        with open(gh_out, "a", encoding="utf-8") as f:
+            f.write("landed=1\n")
+            f.write("landed_ids=%s\n" % ",".join(ids)[:400])
+    print(
+        "LANDING DURABLE_PAGE publish=%s ids=%s ts=%s"
+        % (st, ",".join(ids) or "(none)", row["ts"]),
         flush=True,
     )
     return row
@@ -1361,6 +1386,7 @@ def ingest_github_event():
     if not dest:
         dest = "TABLE"
     st = write_post(src, dest, mid, text or body, extra=extra)
+    ISSUE_TOUCHED.append({"id": mid, "from": src or "", "to": dest or "", "write": st})
     return 1 if st == "wrote" else 0
 
 
@@ -1376,6 +1402,7 @@ def _ingest_and_maybe_publish(publish):
     print("board publish %s" % st, flush=True)
     if st in ("push-fail", "commit-fail"):
         return 1
+    record_landed(st)
     return 0
 
 
@@ -1383,6 +1410,7 @@ def main():
     publish = "--publish" in sys.argv
     os.makedirs(POSTS, exist_ok=True)
     LAST_WROTE.clear()
+    ISSUE_TOUCHED.clear()
     if publish:
         try:
             with ingest_lock():
