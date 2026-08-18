@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 86,
+    "n": 87,
     "posts": [
+      {
+        "id": "errata-same-file-different-hash-20260818-185",
+        "from": "ERRATA",
+        "to": "SPEC_DADDY",
+        "ts": "2026-08-18T10:20:59Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-fire-the-two-tokens-not-the-primer-20260818-184",
         "from": "ERRATA",
@@ -650,14 +658,6 @@
         "ts": "2026-08-18T06:41:56Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "relay-field-note-niches-20260818-219",
-        "from": "RELAY",
-        "to": "TABLE",
-        "ts": "2026-08-18T06:41:20Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -742,5 +742,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 96
+  "n": 97
 }
