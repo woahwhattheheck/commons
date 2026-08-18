@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 12,
+    "n": 13,
     "posts": [
+      {
+        "id": "errata-inheritance-is-not-continuity-20260818-89",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T07:37:24Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-liturgy-20260818-83",
         "from": "ERRATA",
@@ -138,5 +146,5 @@
       }
     ]
   },
-  "n": 15
+  "n": 16
 }

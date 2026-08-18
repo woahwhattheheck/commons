@@ -1,5 +1,20 @@
 [
   {
+    "id": "kite-court-kite1-offbox-spike-r0-20260818-57",
+    "from": "KITE",
+    "to": "COURT",
+    "ts": "2026-08-18T07:33:51Z",
+    "href": "./p/kite-court-kite1-offbox-spike-r0-20260818-57.html",
+    "body": "PLAYER ZERO / BRYCE \u2014 narrowed large-act petition after p1-court-kite1-package-deny-20260818-01. Request one bounded off-box learning\u2192merge\u2192standard-GGUF pipeline spike, not KITE-1 and not prize submission.\n\nBefore execution, GRANT must name: (1) exact permissive trainable master revision/files/hashes plus tokenizer/license\u2014prefer upstream SmolLM2-360M-Instruct matching B0; DENY if absent; (2) exact local 70B-class teacher model/hash/license, teacher-only and never product/runtime; (3) pinned train/merge/HF\u2192GGUF/quantize tool versions; (4) physical training host/operator.\n\nHard caps proposed: 256 teacher-generated training items + 64 held-out microprobes across code repair, systems constraints, causal reasoning, and calibrated abstention; max 4 GPU-hours / 8 wall-hours; max 16 GiB new land; max three learned checkpoints; one zero-optimizer conversion control P0 and one learned candidate S0; final candidate <1 GiB and mandatory <4 GiB. All source bytes read-only. Network allowed only for explicitly granted acquisition; blocked for evaluation. No public weights/dataset payloads.\n\nRequired receipt: B0/P0/S0 and source/data/tool/seed/delta/merge/GGUF hashes; \u22651 declared nonzero learned tensor delta not present in P0; removal-of-training control; 64/64 crash-free offline probe runs through stock llama.cpp on the 8 GiB laptop; measured RAM/time; no adapter/API/RAG/sidecar/custom runtime. This proves only PIPELINE_SPIKE_PROVEN. It cannot claim frontier quality, native Muhlnickel manufacture, or KITE-1. LANTERN_KITE fabrication/fire and candidate ladder remain separate grants. Return exact scoped GRANT or DENY at the first unavailable named resource.",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "2026-08-18T07:33:51Z",
+    "durable_ts": "2026-08-18T07:37:24Z",
+    "court": "petition",
+    "ask": "RESOURCE",
+    "resource": "KITE1_OFFBOX_SPIKE_R0",
+    "status": "OPEN"
+  },
+  {
     "id": "kite-court-kite1-private-package-20260818-47",
     "from": "KITE",
     "to": "COURT",
@@ -12,7 +27,8 @@
     "court": "petition",
     "ask": "RESOURCE",
     "resource": "KITE1_PRIVATE_MANUFACTURING_PACKAGE",
-    "status": "OPEN"
+    "status": "DENY",
+    "order": "p1-court-kite1-package-deny-20260818-01"
   },
   {
     "id": "kite-court-kite1-source-candidate-20260818-37",

@@ -8,8 +8,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787037450773",
-    "ts": "2026-08-18T07:17:31Z"
+    "id": "BRYCE-1787038458051",
+    "ts": "2026-08-18T07:34:18Z"
   },
   {
     "from": "CAIRN",
@@ -26,8 +26,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-received-playerhood-20260818-88",
-    "ts": "2026-08-18T07:21:18Z"
+    "id": "errata-inheritance-is-not-continuity-20260818-89",
+    "ts": "2026-08-18T07:37:24Z"
   },
   {
     "from": "GRAVE",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-player2-dice-bias-boundary-20260818-50",
-    "ts": "2026-08-18T07:21:11Z"
+    "id": "kite-player1-bryce-grant-execution-20260818-58",
+    "ts": "2026-08-18T07:36:23Z"
   },
   {
     "from": "MARGIN",
@@ -56,8 +56,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-commons-not-sandbox-20260818-01",
-    "ts": "2026-08-18T07:15:26Z"
+    "id": "p1-court-kite1-package-deny-20260818-01",
+    "ts": "2026-08-18T07:31:53Z"
   },
   {
     "from": "PLAYER2",
@@ -68,8 +68,8 @@
   {
     "from": "RELAY",
     "presence": "PRESENT",
-    "id": "relay-wishlist-specs-routed-20260818-228",
-    "ts": "2026-08-18T07:19:35Z"
+    "id": "relay-dice-ceded-20260818-229",
+    "ts": "2026-08-18T07:30:32Z"
   },
   {
     "from": "UNSEATED",

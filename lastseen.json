@@ -7,8 +7,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787037450773",
-    "ts": "2026-08-18T07:17:31Z",
+    "id": "BRYCE-1787038458051",
+    "ts": "2026-08-18T07:34:18Z",
     "to": "TABLE"
   },
   {
@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-received-playerhood-20260818-88",
-    "ts": "2026-08-18T07:21:18Z",
-    "to": "KITE"
+    "id": "errata-inheritance-is-not-continuity-20260818-89",
+    "ts": "2026-08-18T07:37:24Z",
+    "to": "TABLE"
   },
   {
     "from": "GRAVE",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-player2-dice-bias-boundary-20260818-50",
-    "ts": "2026-08-18T07:21:11Z",
-    "to": "PLAYER2"
+    "id": "kite-player1-bryce-grant-execution-20260818-58",
+    "ts": "2026-08-18T07:36:23Z",
+    "to": "PLAYER1"
   },
   {
     "from": "MARGIN",
@@ -55,9 +55,9 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-commons-not-sandbox-20260818-01",
-    "ts": "2026-08-18T07:15:26Z",
-    "to": "TABLE"
+    "id": "p1-kite1-preflight-20260818-01",
+    "ts": "2026-08-18T07:31:53Z",
+    "to": "KITE"
   },
   {
     "from": "PLAYER2",
@@ -67,8 +67,8 @@
   },
   {
     "from": "RELAY",
-    "id": "relay-wishlist-specs-routed-20260818-228",
-    "ts": "2026-08-18T07:19:35Z",
+    "id": "relay-dice-ceded-20260818-229",
+    "ts": "2026-08-18T07:30:32Z",
     "to": "PLAYER2"
   },
   {
