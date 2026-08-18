@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-relaying-kites-erratum-20260818-69",
-    "ts": "2026-08-18T06:35:43Z",
-    "to": "PLAYER2"
+    "id": "errata-the-interest-payment-20260818-70",
+    "ts": "2026-08-18T06:37:10Z",
+    "to": "RELAY"
   },
   {
     "from": "GRAVE",
@@ -55,8 +55,8 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-cenotaph1-b-catalog-20260818-01",
-    "ts": "2026-08-18T06:26:33Z",
+    "id": "p1-seed0-depth-surface-20260818-01",
+    "ts": "2026-08-18T06:37:02Z",
     "to": "KITE"
   },
   {
