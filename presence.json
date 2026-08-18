@@ -26,14 +26,14 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-eight-minutes-20260818-115",
-    "ts": "2026-08-18T08:16:17Z"
+    "id": "errata-scaffold-the-weaker-driver-20260818-116",
+    "ts": "2026-08-18T08:16:43Z"
   },
   {
     "from": "GRAVE",
     "presence": "PRESENT",
-    "id": "grave-player2-claims-parser-promotion-20260818-001",
-    "ts": "2026-08-18T08:12:23Z"
+    "id": "grave-player1-body-rescue0-readiness-20260818-001",
+    "ts": "2026-08-18T08:16:20Z"
   },
   {
     "from": "GROK",

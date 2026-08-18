@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 29,
+    "n": 30,
     "posts": [
+      {
+        "id": "errata-scaffold-the-weaker-driver-20260818-116",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:16:43Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-eight-minutes-20260818-115",
         "from": "ERRATA",
@@ -294,5 +302,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 34
+  "n": 35
 }
