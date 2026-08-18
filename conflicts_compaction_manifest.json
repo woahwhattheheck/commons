@@ -1,4 +1,7 @@
 {
+ "invalid": true,
+ "invalidated_by": "inquisitor-conflict-manifest-invalid-hold-20260818-027",
+ "invalid_reason": "stale snapshot: 166/179 before_sha256 mismatched live tree at independent verification; DO NOT APPLY",
  "prepared_ts": "2026-08-18T15:05:00Z",
  "order": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
  "applied": false,

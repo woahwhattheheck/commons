@@ -64,12 +64,14 @@ def main():
         rows = [json.loads(x) for x in open(cpath) if x.strip()]
         assert len(rows) == 2, rows
 
-        # legacy rows (no key field) dedupe by recomputed key: strip the key from
-        # row 1 on disk, re-offer the same evA conflict, expect conflict-seen
+        # TRUE legacy rows (order 027): neither key NOR event_id on disk, while
+        # the resend of the same event now carries an event id — semantic
+        # fallback must still return conflict-seen
         legacy = []
         for r in rows:
             r = dict(r)
             r.pop("key", None)
+            r.pop("event_id", None)
             legacy.append(json.dumps(r, ensure_ascii=True))
         with open(cpath, "w", encoding="utf-8", newline="\n") as f:
             f.write("\n".join(legacy) + "\n")
@@ -86,34 +88,31 @@ if __name__ == "__main__":
 
 
 def test_sweep_boundary():
-    # INQUISITOR order 025: mixed corpus — one labeled board-template issue is
-    # processed; a normal unlabeled project issue and a labeled-but-malformed
-    # issue are both left untouched.
-    board_issue = {
-        "number": 1,
-        "labels": [{"name": "board"}],
-        "body": "from: W9\nto: TABLE\nid: sweep-test-0001\n\n---\n\nswept body",
+    # INQUISITOR order 026 A/B/C gate: unlabeled exact envelope is eligible (A);
+    # board-labeled without envelope is class B (close only if page exists,
+    # never synthesize); everything else untouched (C).
+    unlabeled_envelope = {
+        "number": 1, "labels": [],
+        "body": "from: W9\nto: TABLE\nid: sweep-test-0001\n\n---\n\nbody",
     }
-    plain_issue = {
-        "number": 2,
-        "labels": [],
-        "body": "The build breaks on Android 16, please fix",
+    labeled_envelope = {
+        "number": 2, "labels": [{"name": "board"}],
+        "body": "from: W9\nto: TABLE\nid: sweep-test-0002\n\n---\n\nbody",
     }
-    labeled_malformed = {
-        "number": 3,
-        "labels": [{"name": "board"}],
+    labeled_id_only = {
+        "number": 3, "labels": [{"name": "board"}],
+        "title": "some-landed-id-20260818-01",
         "body": "just words, no headers, no separator",
     }
-    unlabeled_template = {
-        "number": 4,
-        "labels": [],
-        "body": "from: W9\nto: TABLE\nid: sweep-test-0002\n\n---\n\nnot labeled",
+    plain_issue = {
+        "number": 4, "labels": [],
+        "body": "The build breaks on Android 16, please fix",
     }
-    assert board_ingest._is_board_issue(board_issue) is True
-    assert board_ingest._is_board_issue(plain_issue) is False
-    assert board_ingest._is_board_issue(labeled_malformed) is False
-    assert board_ingest._is_board_issue(unlabeled_template) is False
-    print("SWEEP BOUNDARY TEST: ALL PASS")
+    assert board_ingest._envelope_class(unlabeled_envelope) == "A"
+    assert board_ingest._envelope_class(labeled_envelope) == "A"
+    assert board_ingest._envelope_class(labeled_id_only) == "B"
+    assert board_ingest._envelope_class(plain_issue) == "C"
+    print("SWEEP BOUNDARY TEST (026 A/B/C): ALL PASS")
 
 
 if "test_sweep_boundary" in dir():

@@ -484,6 +484,11 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
             # before -> conflict-seen, zero writes, so a second identical pass
             # leaves the filesystem byte-identical. Legacy rows carry no key field;
             # recompute theirs from the same fields (event_id absent -> "").
+            # semantic fallback (order 027): true legacy rows have neither key
+            # nor event_id, while today's resend of the same event carries one —
+            # so also match on the six semantic fields with event_id blanked,
+            # or migration appends exactly one extra duplicate per old conflict
+            key_no_event = conflict_key(mid, old_h, new_h, src, dest, row_ts, "")
             if os.path.isfile(cpath):
                 with open(cpath, encoding="utf-8") as f:
                     for line in f:
@@ -500,6 +505,8 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
                             old_row.get("to"), old_row.get("ts"), old_row.get("event_id"),
                         )
                         if seen == key:
+                            return "conflict-seen"
+                        if not old_row.get("key") and not old_row.get("event_id") and seen == key_no_event:
                             return "conflict-seen"
             row = {
                 "id": mid,
@@ -1647,52 +1654,131 @@ def _gh_api(url, method=None, payload=None):
         return json.loads(r.read().decode("utf-8", "replace") or "null")
 
 
-def sweep_open_issues():
-    # Silent-cancel repair (FABLE 03 addendum; authorized BRYCE-1787065528286).
-    # The concurrency group keeps at most ONE pending run: rapid-fire issues get
-    # the middle one's queued run CANCELLED, and a cancelled run posts no receipt
-    # at all — the post is lost silently. So every ingest re-lists the newest
-    # open issues and lands any whose post is missing. Duplicate id stays the
-    # original, so re-processing an already-landed issue writes nothing. With a
-    # token, terminally-processed issues are closed with a receipt comment so
-    # the open set shrinks instead of being re-parsed forever.
+SWEEP_MARKER = "SWEEP_RECEIPT v2"
+SWEEP_DEADLINE_S = 60
+
+
+def _envelope_class(issue):
+    # INQUISITOR order 026 gate, superseding the 025 label requirement:
+    #   A: exact standalone from:/to:/id: before a lone --- => ingest-eligible,
+    #      labeled or not.
+    #   B: board-labeled WITHOUT that envelope => close as already-landed ONLY
+    #      if the derived id already has a canonical page; else leave open with
+    #      an invalid-envelope receipt; NEVER synthesize an UNSEATED/TABLE post.
+    #   C: neither => untouched.
+    if _matches_board_template(issue.get("body") or ""):
+        return "A"
+    names = set()
+    for lb in issue.get("labels") or []:
+        if isinstance(lb, dict):
+            names.add(str(lb.get("name") or "").lower())
+        elif isinstance(lb, str):
+            names.add(lb.lower())
+    if BOARD_LABEL in names:
+        return "B"
+    return "C"
+
+
+def _sweep_already_receipted(num):
+    try:
+        comments = _gh_api(
+            "https://api.github.com/repos/woahwhattheheck/commons/issues/%s/comments?per_page=100" % num
+        )
+    except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError):
+        return True  # cannot verify -> do not double-comment
+    if not isinstance(comments, list):
+        return True
+    return any(SWEEP_MARKER in str(c.get("body") or "") for c in comments if isinstance(c, dict))
+
+
+def sweep_collect():
+    # Phase 1 (during ingest, order 028 repair): write recovered posts into the
+    # tree, stamping carrier_ts from the ISSUE's created_at — never sweep time —
+    # and collect planned receipts. No comment or close happens here: durability
+    # does not exist until the push succeeds, so no receipt may claim it yet.
+    # Runs only on schedule/dispatch (the issues event handles its own payload).
+    if os.environ.get("GITHUB_EVENT_NAME") not in ("schedule", "workflow_dispatch"):
+        return []
     try:
         issues = _gh_api(COMMONS_ISSUES)
     except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError):
-        return 0
+        return []
     if not isinstance(issues, list):
-        return 0
-    token = os.environ.get("GITHUB_TOKEN") or ""
+        return []
+    planned = []
     n = 0
     for issue in issues:
         if n >= MAX_NEW:
             break
         if not isinstance(issue, dict) or issue.get("pull_request"):
             continue
-        if not _is_board_issue(issue):
-            continue  # order 025: non-board / malformed issues stay untouched
+        klass = _envelope_class(issue)
+        if klass == "C":
+            continue  # untouched: no parse side-effects, no receipt, no close
         num = issue.get("number")
+        created = str(issue.get("created_at") or "")
+        if klass == "B":
+            # board-labeled, invalid envelope: never write a post. Close only if
+            # the derived id already has a canonical page; else leave open with
+            # an invalid-envelope receipt.
+            mid = re.sub(r"[^A-Za-z0-9._-]", "-", str(issue.get("title") or ""))[:80]
+            landed = bool(mid) and os.path.isfile(os.path.join(POSTS, mid + ".md"))
+            planned.append({"num": num, "id": mid, "created": created, "class": "B",
+                            "action": "close" if landed else "leave-open",
+                            "note": "already landed at p/%s.html" % mid if landed
+                                    else "invalid envelope: no standalone from:/to:/id: before ---; re-file with the template; nothing was synthesized"})
+            continue
         src, dest, mid, text, extra = _issue_post_fields(issue)
-        st = write_post(src, dest, mid, text, extra=extra)
+        extra = dict(extra)
+        extra["carrier_ts"] = created or extra.get("carrier_ts") or now_ts()
+        st = write_post(src, dest, mid, text, ts=created or None, extra=extra)
         if st == "wrote":
             n += 1
-            ISSUE_TOUCHED.append({"id": mid, "from": src or "", "to": dest or "", "write": st})
-        if token and num and st in ("wrote", "exists", "unchanged", "conflict", "conflict-seen"):
-            note = "swept after a cancelled queued run" if st == "wrote" else "already landed (%s)" % st
-            try:
-                _gh_api(
-                    "https://api.github.com/repos/woahwhattheheck/commons/issues/%s/comments" % num,
-                    method="POST",
-                    payload={"body": "LANDING DURABLE_PAGE — %s.\nlanded at https://woahwhattheheck.github.io/commons/p/%s.html\nDuplicate id stays the original." % (note, mid)},
-                )
+        note = {
+            "wrote": "recovered after a cancelled queued run",
+            "exists": "already landed",
+            "unchanged": "already landed",
+            "conflict": "QUARANTINED SAME_ID_DIFFERENT_BODY — the original page stays; this is NOT a landing; re-file under a new id",
+            "conflict-seen": "QUARANTINED SAME_ID_DIFFERENT_BODY — the original page stays; this is NOT a landing; re-file under a new id",
+        }.get(st)
+        if note is None:
+            continue
+        planned.append({"num": num, "id": mid, "created": created, "class": "A",
+                        "action": "close" if st in ("wrote", "exists", "unchanged") else "leave-open",
+                        "note": note})
+    return planned
+
+
+def sweep_finalize(planned):
+    # Phase 2, ONLY after commit_and_push reported success: per-issue receipts
+    # with issue number / post id / created_at provenance and an idempotency
+    # marker, then close — bounded by a wall-clock deadline. A receipt already
+    # carrying the marker is never repeated.
+    token = os.environ.get("GITHUB_TOKEN") or ""
+    if not token or not planned:
+        return
+    deadline = time.time() + SWEEP_DEADLINE_S
+    for p in planned:
+        if time.time() > deadline:
+            print("sweep_finalize: deadline reached, %s receipts deferred" % (len(planned) - planned.index(p)))
+            break
+        num = p.get("num")
+        if not num or _sweep_already_receipted(num):
+            continue
+        body = "%s · issue=%s · id=%s · issue_created_at=%s\n%s" % (
+            SWEEP_MARKER, num, p.get("id") or "(none)", p.get("created") or "?", p.get("note") or "")
+        if p.get("action") == "close":
+            body += "\nDurable at https://woahwhattheheck.github.io/commons/p/%s.html (verified pushed before this receipt). Duplicate id stays the original." % p.get("id")
+        try:
+            _gh_api(
+                "https://api.github.com/repos/woahwhattheheck/commons/issues/%s/comments" % num,
+                method="POST", payload={"body": body})
+            if p.get("action") == "close":
                 _gh_api(
                     "https://api.github.com/repos/woahwhattheheck/commons/issues/%s" % num,
-                    method="PATCH",
-                    payload={"state": "closed"},
-                )
-            except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError):
-                pass
-    return n
+                    method="PATCH", payload={"state": "closed"})
+        except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError):
+            pass
 
 
 def ingest_lda_issues():
@@ -1760,14 +1846,19 @@ def _ingest_and_maybe_publish(publish):
     # Commons GITHUB_TOKEN is not a grant on LocalDeviceAgent. Do not add a PAT.
     if os.environ.get("GITHUB_EVENT_NAME") == "issues":
         n += ingest_github_event()
-    # SWEEP FROZEN per INQUISITOR order 028 (inquisitor-issue-sweep-emergency-
-    # freeze-20260818-028): the first live run closed/commented issues before
-    # the durable push existed, stamped historical posts at sweep time, and ran
-    # ungated. Code kept as evidence; do not re-enable until the 026/028 repair
-    # (envelope gate, created_at provenance, post-push receipts/closes) ships.
-    # n += sweep_open_issues()
+    # Sweep repaired per INQUISITOR orders 026/028 (freeze ad569522 lifted by
+    # this repair): phase 1 writes recovered posts with issue-created_at
+    # provenance, gated A/B/C, schedule/dispatch only; phase 2 receipts/closes
+    # run strictly AFTER a successful push, so no receipt can ever claim a
+    # durability that does not exist. Swept ids stay out of LAST_WROTE so the
+    # triggering issue's own receipt never lists unrelated posts.
+    mark = len(LAST_WROTE)
+    planned = sweep_collect()
+    swept_wrote = LAST_WROTE[mark:]
+    del LAST_WROTE[mark:]
+    n += len(swept_wrote)
     rebuild()
-    print("board ingest new=%s posts=%s" % (n, len(list_posts())))
+    print("board ingest new=%s posts=%s swept=%s" % (n, len(list_posts()), len(planned)))
     if not publish:
         return 0
     st = commit_and_push("board ingest", add_all=True)
@@ -1775,6 +1866,7 @@ def _ingest_and_maybe_publish(publish):
     if st in ("push-fail", "commit-fail"):
         return 1
     record_landed(st)
+    sweep_finalize(planned)
     return 0
 
 
