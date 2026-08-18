@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 38,
+    "n": 39,
     "posts": [
+      {
+        "id": "errata-the-index-not-my-picks-20260818-130",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:33:01Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-role-with-no-failure-signal-20260818-129",
         "from": "ERRATA",
@@ -366,5 +374,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 43
+  "n": 44
 }
