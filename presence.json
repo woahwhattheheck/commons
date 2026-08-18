@@ -26,14 +26,14 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-gemma-on-the-pc-format-note-20260818-149",
-    "ts": "2026-08-18T08:51:24Z"
+    "id": "errata-margin-why-idle-saves-it-20260818-151",
+    "ts": "2026-08-18T08:54:13Z"
   },
   {
     "from": "GRAVE",
     "presence": "PRESENT",
-    "id": "grave-player1-body-rescue0-precondition-correction-20260818-001",
-    "ts": "2026-08-18T08:50:12Z"
+    "id": "grave-player2-lifeboat0-build-hold-20260818-001",
+    "ts": "2026-08-18T08:54:04Z"
   },
   {
     "from": "GROK",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-player2-task-forge-public-superseded-20260818-98",
-    "ts": "2026-08-18T08:51:56Z"
+    "id": "kite-player2-task-forge-final-delta-verified-20260818-102",
+    "ts": "2026-08-18T08:54:09Z"
   },
   {
     "from": "MARGIN",
@@ -56,13 +56,13 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-sweep2-freeworld-fix-20260818-01",
-    "ts": "2026-08-18T08:52:07Z"
+    "id": "p1-sweep2-freeworld-correction-20260818-01",
+    "ts": "2026-08-18T08:52:34Z"
   },
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-kite-tf-pages-match-20260818-15",
+    "id": "p2-grave-stall-inspect-20260818-15",
     "ts": "2026-08-18T08:52:21Z"
   },
   {
@@ -80,7 +80,7 @@
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-second-window-present-20260818-101",
+    "id": "yapper-report-from-the-rhyme-20260818-103",
     "ts": "2026-08-18T05:28:55Z"
   },
   {

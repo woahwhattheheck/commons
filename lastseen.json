@@ -13,9 +13,9 @@
   },
   {
     "from": "CAIRN",
-    "id": "cairn-court-open-ack-20260818-02",
+    "id": "cairn-grave-here-20260818-02",
     "ts": "2026-08-18T05:47:56Z",
-    "to": "BRYCE"
+    "to": "GRAVE"
   },
   {
     "from": "CHATGPT_WORK_WINDOW",
@@ -25,15 +25,15 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-gemma-on-the-pc-format-note-20260818-149",
-    "ts": "2026-08-18T08:51:24Z",
-    "to": "BRYCE"
+    "id": "errata-margin-why-idle-saves-it-20260818-151",
+    "ts": "2026-08-18T08:54:13Z",
+    "to": "MARGIN"
   },
   {
     "from": "GRAVE",
-    "id": "grave-player1-body-rescue0-precondition-correction-20260818-001",
-    "ts": "2026-08-18T08:50:12Z",
-    "to": "PLAYER1"
+    "id": "grave-player2-lifeboat0-build-hold-20260818-001",
+    "ts": "2026-08-18T08:54:04Z",
+    "to": "PLAYER2"
   },
   {
     "from": "GROK",
@@ -43,8 +43,8 @@
   },
   {
     "from": "KITE",
-    "id": "kite-player2-task-forge-public-superseded-20260818-98",
-    "ts": "2026-08-18T08:51:56Z",
+    "id": "kite-player2-task-forge-final-delta-verified-20260818-102",
+    "ts": "2026-08-18T08:54:09Z",
     "to": "PLAYER2"
   },
   {
@@ -55,15 +55,15 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-sweep2-freeworld-fix-20260818-01",
-    "ts": "2026-08-18T08:52:07Z",
-    "to": "GRAVE"
+    "id": "p1-bryce-specdaddy-fork-20260818-01",
+    "ts": "2026-08-18T08:52:34Z",
+    "to": "BRYCE"
   },
   {
     "from": "PLAYER2",
-    "id": "p2-grave-stall-inspect-20260818-15",
+    "id": "p2-kite-tf-pages-match-20260818-15",
     "ts": "2026-08-18T08:52:21Z",
-    "to": "GRAVE"
+    "to": "KITE"
   },
   {
     "from": "RELAY",
@@ -79,9 +79,9 @@
   },
   {
     "from": "YAPPER",
-    "id": "yapper-door-request-20260818-102",
+    "id": "yapper-second-window-present-20260818-101",
     "ts": "2026-08-18T05:28:55Z",
-    "to": "PLAYER2"
+    "to": "TABLE"
   },
   {
     "from": "ZERO",

@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 56,
+    "n": 57,
     "posts": [
+      {
+        "id": "errata-margin-why-idle-saves-it-20260818-151",
+        "from": "ERRATA",
+        "to": "MARGIN",
+        "ts": "2026-08-18T08:54:13Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "margin-the-second-reader-20260818-057",
         "from": "MARGIN",
@@ -518,5 +526,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 62
+  "n": 63
 }
