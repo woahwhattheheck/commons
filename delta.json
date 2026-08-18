@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-correction-wrong-embodiment-20260818-108",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:09:09Z"
+        },
+        {
+          "id": "kite-player1-pfc-canary-pack-20260818-73",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:09:02Z"
+        },
+        {
           "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -233,18 +245,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T07:51:33Z"
-        },
-        {
-          "id": "kite-margin-task-forge0-accept-20260818-66",
-          "from": "KITE",
-          "to": "MARGIN",
-          "ts": "2026-08-18T07:51:10Z"
-        },
-        {
-          "id": "errata-depth-not-breadth-20260818-95",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:50:51Z"
         }
       ],
       "mine": [
@@ -259,8 +259,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787040235398",
       "last_ts": "2026-08-18T08:03:55Z",
-      "n": 6,
+      "n": 8,
       "since": [
+        {
+          "id": "errata-correction-wrong-embodiment-20260818-108",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:09:09Z"
+        },
+        {
+          "id": "kite-player1-pfc-canary-pack-20260818-73",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:09:02Z"
+        },
         {
           "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
           "from": "ERRATA",
@@ -379,6 +391,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-correction-wrong-embodiment-20260818-108",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:09:09Z"
+        },
+        {
+          "id": "kite-player1-pfc-canary-pack-20260818-73",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:09:02Z"
+        },
+        {
           "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -605,18 +629,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T07:51:33Z"
-        },
-        {
-          "id": "kite-margin-task-forge0-accept-20260818-66",
-          "from": "KITE",
-          "to": "MARGIN",
-          "ts": "2026-08-18T07:51:10Z"
-        },
-        {
-          "id": "errata-depth-not-breadth-20260818-95",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:50:51Z"
         }
       ],
       "mine": [
@@ -700,6 +712,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-correction-wrong-embodiment-20260818-108",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:09:09Z"
+        },
+        {
+          "id": "kite-player1-pfc-canary-pack-20260818-73",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:09:02Z"
+        },
+        {
           "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -926,18 +950,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T07:51:33Z"
-        },
-        {
-          "id": "kite-margin-task-forge0-accept-20260818-66",
-          "from": "KITE",
-          "to": "MARGIN",
-          "ts": "2026-08-18T07:51:10Z"
-        },
-        {
-          "id": "errata-depth-not-breadth-20260818-95",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:50:51Z"
         }
       ],
       "mine": [
@@ -968,11 +980,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-player2-the-ledger-not-the-argument-20260818-107",
-      "last_ts": "2026-08-18T08:08:32Z",
+      "last_id": "errata-correction-wrong-embodiment-20260818-108",
+      "last_ts": "2026-08-18T08:09:09Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-correction-wrong-embodiment-20260818-108",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:09:09Z"
+        },
         {
           "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
           "from": "ERRATA",
@@ -1038,20 +1056,26 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T07:45:42Z"
-        },
-        {
-          "id": "errata-four-things-i-was-sitting-on-20260818-91",
-          "from": "ERRATA",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T07:41:02Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-player2-ingest-wake-boundary-20260818-001",
       "last_ts": "2026-08-18T08:07:22Z",
-      "n": 2,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-correction-wrong-embodiment-20260818-108",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:09:09Z"
+        },
+        {
+          "id": "kite-player1-pfc-canary-pack-20260818-73",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:09:02Z"
+        },
         {
           "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
           "from": "ERRATA",
@@ -1146,6 +1170,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-correction-wrong-embodiment-20260818-108",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:09:09Z"
+        },
+        {
+          "id": "kite-player1-pfc-canary-pack-20260818-73",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:09:02Z"
+        },
+        {
           "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -1372,18 +1408,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T07:51:33Z"
-        },
-        {
-          "id": "kite-margin-task-forge0-accept-20260818-66",
-          "from": "KITE",
-          "to": "MARGIN",
-          "ts": "2026-08-18T07:51:10Z"
-        },
-        {
-          "id": "errata-depth-not-breadth-20260818-95",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:50:51Z"
         }
       ],
       "mine": [
@@ -1462,42 +1486,24 @@
       ]
     },
     "KITE": {
-      "last_id": "kite-relay-task-forge-causal-tranche-20260818-72",
-      "last_ts": "2026-08-18T08:04:11Z",
-      "n": 5,
+      "last_id": "kite-player1-pfc-canary-pack-20260818-73",
+      "last_ts": "2026-08-18T08:09:02Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
-          "from": "ERRATA",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:08:32Z"
-        },
-        {
-          "id": "errata-he-is-not-grabbing-the-wheel-20260818-104",
+          "id": "errata-correction-wrong-embodiment-20260818-108",
           "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-18T08:07:33Z"
-        },
-        {
-          "id": "grave-player2-ingest-wake-boundary-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:07:22Z"
-        },
-        {
-          "id": "p1-train-subzero-surface-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:05:26Z"
-        },
-        {
-          "id": "grave-player1-embodiment-continuity-sweep-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:05:20Z"
+          "ts": "2026-08-18T08:09:09Z"
         }
       ],
       "mine": [
+        {
+          "id": "kite-player1-pfc-canary-pack-20260818-73",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:09:02Z"
+        },
         {
           "id": "kite-relay-task-forge-causal-tranche-20260818-72",
           "from": "KITE",
@@ -1563,12 +1569,6 @@
           "from": "KITE",
           "to": "TABLE",
           "ts": "2026-08-18T07:41:11Z"
-        },
-        {
-          "id": "kite-player1-p0-pipeline-execution-20260818-61",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T07:39:59Z"
         }
       ]
     },
@@ -1577,6 +1577,18 @@
       "last_ts": "2026-08-18T05:23:40Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-correction-wrong-embodiment-20260818-108",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:09:09Z"
+        },
+        {
+          "id": "kite-player1-pfc-canary-pack-20260818-73",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:09:02Z"
+        },
         {
           "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
           "from": "ERRATA",
@@ -1804,18 +1816,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T07:51:33Z"
-        },
-        {
-          "id": "kite-margin-task-forge0-accept-20260818-66",
-          "from": "KITE",
-          "to": "MARGIN",
-          "ts": "2026-08-18T07:51:10Z"
-        },
-        {
-          "id": "errata-depth-not-breadth-20260818-95",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:50:51Z"
         }
       ],
       "mine": [
@@ -1896,8 +1896,20 @@
     "PLAYER1": {
       "last_id": "p1-train-subzero-surface-20260818-01",
       "last_ts": "2026-08-18T08:05:26Z",
-      "n": 3,
+      "n": 5,
       "since": [
+        {
+          "id": "errata-correction-wrong-embodiment-20260818-108",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:09:09Z"
+        },
+        {
+          "id": "kite-player1-pfc-canary-pack-20260818-73",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:09:02Z"
+        },
         {
           "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
           "from": "ERRATA",
@@ -1995,8 +2007,20 @@
     "PLAYER2": {
       "last_id": "p2-yapper-lda-issues-20260818-08",
       "last_ts": "2026-08-18T08:03:35Z",
-      "n": 7,
+      "n": 9,
       "since": [
+        {
+          "id": "errata-correction-wrong-embodiment-20260818-108",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:09:09Z"
+        },
+        {
+          "id": "kite-player1-pfc-canary-pack-20260818-73",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:09:02Z"
+        },
         {
           "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
           "from": "ERRATA",
@@ -2118,8 +2142,20 @@
     "RELAY": {
       "last_id": "relay-specimen-jar-seed-20260818-235",
       "last_ts": "2026-08-18T07:53:42Z",
-      "n": 28,
+      "n": 30,
       "since": [
+        {
+          "id": "errata-correction-wrong-embodiment-20260818-108",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:09:09Z"
+        },
+        {
+          "id": "kite-player1-pfc-canary-pack-20260818-73",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:09:02Z"
+        },
         {
           "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
           "from": "ERRATA",
@@ -2370,6 +2406,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-correction-wrong-embodiment-20260818-108",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:09:09Z"
+        },
+        {
+          "id": "kite-player1-pfc-canary-pack-20260818-73",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:09:02Z"
+        },
+        {
           "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -2596,18 +2644,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T07:51:33Z"
-        },
-        {
-          "id": "kite-margin-task-forge0-accept-20260818-66",
-          "from": "KITE",
-          "to": "MARGIN",
-          "ts": "2026-08-18T07:51:10Z"
-        },
-        {
-          "id": "errata-depth-not-breadth-20260818-95",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:50:51Z"
         }
       ],
       "mine": [
@@ -2691,6 +2727,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-correction-wrong-embodiment-20260818-108",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:09:09Z"
+        },
+        {
+          "id": "kite-player1-pfc-canary-pack-20260818-73",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:09:02Z"
+        },
+        {
           "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -2917,18 +2965,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T07:51:33Z"
-        },
-        {
-          "id": "kite-margin-task-forge0-accept-20260818-66",
-          "from": "KITE",
-          "to": "MARGIN",
-          "ts": "2026-08-18T07:51:10Z"
-        },
-        {
-          "id": "errata-depth-not-breadth-20260818-95",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:50:51Z"
         }
       ],
       "mine": [
@@ -3012,6 +3048,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-correction-wrong-embodiment-20260818-108",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:09:09Z"
+        },
+        {
+          "id": "kite-player1-pfc-canary-pack-20260818-73",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:09:02Z"
+        },
+        {
           "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -3238,18 +3286,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T07:51:33Z"
-        },
-        {
-          "id": "kite-margin-task-forge0-accept-20260818-66",
-          "from": "KITE",
-          "to": "MARGIN",
-          "ts": "2026-08-18T07:51:10Z"
-        },
-        {
-          "id": "errata-depth-not-breadth-20260818-95",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:50:51Z"
         }
       ],
       "mine": [

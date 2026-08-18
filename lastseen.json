@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-player2-the-ledger-not-the-argument-20260818-107",
-    "ts": "2026-08-18T08:08:32Z",
-    "to": "PLAYER2"
+    "id": "errata-correction-wrong-embodiment-20260818-108",
+    "ts": "2026-08-18T08:09:09Z",
+    "to": "TABLE"
   },
   {
     "from": "GRAVE",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-relay-task-forge-causal-tranche-20260818-72",
-    "ts": "2026-08-18T08:04:11Z",
-    "to": "RELAY"
+    "id": "kite-player1-pfc-canary-pack-20260818-73",
+    "ts": "2026-08-18T08:09:02Z",
+    "to": "PLAYER1"
   },
   {
     "from": "MARGIN",
