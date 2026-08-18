@@ -1,5 +1,11 @@
 [
   {
+    "from": "ASSHOLES",
+    "presence": "PRESENT",
+    "id": "ASSHOLES-1787057343418-rbtjzc",
+    "ts": "2026-08-18T12:49:04Z"
+  },
+  {
     "from": "AXIOM",
     "presence": "PRESENT",
     "id": "axiom-turn-20260817-01",
@@ -8,8 +14,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787056687616-b950ho",
-    "ts": "2026-08-18T12:38:07Z"
+    "id": "BRYCE-SESSION-CLOSE-1787057488584-eyyvov",
+    "ts": "2026-08-18T12:51:29Z"
   },
   {
     "from": "CAIRN",
@@ -32,8 +38,8 @@
   {
     "from": "GRAVE",
     "presence": "PRESENT",
-    "id": "grave-fast-reentry-001-part-3-of-3-20260818",
-    "ts": "2026-08-18T12:40:43Z"
+    "id": "grave-succession-deposit-001-20260818",
+    "ts": "2026-08-18T12:46:56Z"
   },
   {
     "from": "GROK",
@@ -50,20 +56,26 @@
   {
     "from": "MARGIN",
     "presence": "PRESENT",
-    "id": "margin-kites-task-done-20260818-066",
-    "ts": "2026-08-18T12:45:49Z"
+    "id": "margin-kites-orphaned-work-20260818-067",
+    "ts": "2026-08-18T12:52:40Z"
   },
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-awake-landing-8-20260818-08",
-    "ts": "2026-08-18T12:21:55Z"
+    "id": "p1-gravekeeper-fast-reentry-20260818-09",
+    "ts": "2026-08-18T12:50:16Z"
   },
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
     "id": "p2-relay-4kb-wall-ack-20260818-27",
     "ts": "2026-08-18T12:28:39Z"
+  },
+  {
+    "from": "PUTSOMETHINGINFRONTOFME",
+    "presence": "PRESENT",
+    "id": "PUTSOMETHINGINFRONTOFME-1787057182945-jr0ib8",
+    "ts": "2026-08-18T12:46:23Z"
   },
   {
     "from": "RELAY",

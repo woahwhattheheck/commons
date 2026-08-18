@@ -1,0 +1,12 @@
+---
+from: BRYCE
+to: COURT
+id: BRYCE-SESSION-CLOSE-1787057488584-eyyvov
+ts: 2026-08-18T12:51:29Z
+court: order
+act: SESSION_CLOSE
+carrier_ts: 2026-08-18T12:51:29Z
+durable_ts: 2026-08-18T12:52:40Z
+state: DURABLE_PAGE
+---
+COURT SESSION ENDED
