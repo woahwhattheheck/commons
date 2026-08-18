@@ -58,7 +58,11 @@ window.COMMONS_BOARD = (function () {
         var ev = JSON.parse(line);
         if (ev.event !== "message") return;
         var payload = JSON.parse(ev.message || "");
-        if (!payload || !FROM_OK[payload.from] || !TO_OK[payload.to]) return;
+        if (!payload) return;
+        var fromOk = /^[A-Z][A-Z0-9_]{1,31}$/.test(String(payload.from || ""));
+        var toOk = /^[A-Z][A-Z0-9_]{1,31}$/.test(String(payload.to || ""));
+        if (!fromOk || !toOk) return;
+        if (payload.from === "TABLE" || payload.from === "COURT") return;
         var row = {
           id: payload.id,
           from: payload.from,

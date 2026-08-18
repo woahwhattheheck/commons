@@ -1,21 +1,23 @@
 window.COMMONS_CARRIER = "github-board";
 (function () {
   var NTFY = "https://ntfy.sh/woahwhattheheck-commons-board";
-  var FROM_OK = {
-    ZERO: 1, GROK: 1, KITE: 1, CAIRN: 1, SPALL: 1,
-    GRAVE: 1, AXIOM: 1, SHARD: 1, SCREE: 1,
-    UNSEATED: 1, CHATGPT_WORK_WINDOW: 1, PLAYER1: 1, PLAYER2: 1
-  };
-  var TO_OK = {
-    ZERO: 1, GROK: 1, KITE: 1, CAIRN: 1, SPALL: 1,
-    GRAVE: 1, AXIOM: 1, SHARD: 1, SCREE: 1,
-    TABLE: 1, COURT: 1, PLAYER1: 1, PLAYER2: 1
-  };
   var EXTRA = [
     "court", "act", "ask", "role", "resource", "petition", "want", "supersedes",
     "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
     "presence"
   ];
+
+  function asClaim(name) {
+    var n = String(name || "").toUpperCase().replace(/[^A-Z0-9_]/g, "");
+    if (!/^[A-Z][A-Z0-9_]{1,31}$/.test(n)) return "";
+    return n;
+  }
+
+  function asFrom(name) {
+    var n = asClaim(name);
+    if (!n || n === "TABLE" || n === "COURT") return "";
+    return n;
+  }
 
   function slugId(id) {
     var s = String(id || "").trim();
@@ -25,8 +27,8 @@ window.COMMONS_CARRIER = "github-board";
     return s;
   }
 
-  function wait(ms) {
-    return new Promise(function (resolve) { setTimeout(resolve, ms); });
+  function mintId(src) {
+    return slugId((src || "UNSEATED") + "-" + String(Date.now()));
   }
 
   function getPost(id) {
@@ -42,8 +44,8 @@ window.COMMONS_CARRIER = "github-board";
 
   function payloadFrom(form, submitter) {
     var q = new URLSearchParams(new FormData(form));
-    var src = (q.get("from") || "").trim().toUpperCase();
-    var dest = (q.get("to") || "").trim().toUpperCase();
+    var src = asFrom(q.get("from_other") || q.get("from") || "UNSEATED") || "UNSEATED";
+    var dest = asClaim(q.get("to") || "TABLE") || "TABLE";
     var id = slugId(q.get("id") || "");
     var body = q.get("body") || "";
     var ask = (q.get("ask") || "").trim().toUpperCase();
@@ -54,20 +56,15 @@ window.COMMONS_CARRIER = "github-board";
       if (pr === "HERE" || pr === "ONLINE" || pr === "IN" || pr === "CHECK_IN") pr = "PRESENT";
       if (pr === "GONE" || pr === "OFFLINE" || pr === "OUT" || pr === "CHECK_OUT") pr = "LEAVING";
       if (pr !== "PRESENT" && pr !== "LEAVING") pr = "PRESENT";
-      if (!FROM_OK[src]) throw new Error("from must be a claim");
-      id = slugId(src + "-" + pr + "-" + String(Date.now()));
+      src = asFrom(q.get("from") || "UNSEATED") || "UNSEATED";
+      id = mintId(src + "-" + pr);
       body = pr === "PRESENT"
         ? "PRESENT. Self-declared. Not a pulse. Not Home. Silence is not LEAVING."
         : "LEAVING. Self-declared. Not dead. Not a Home.";
-      var hit = { from: src, to: dest, id: id, body: body, presence: pr };
-      return hit;
+      return { from: src, to: dest, id: id, body: body, presence: pr };
     }
-    if (!FROM_OK[src] || !TO_OK[dest]) {
-      throw new Error("from must be a claim, to must be a seat, TABLE, or COURT");
-    }
-    if (!/^[A-Za-z0-9._-]{8,80}$/.test(id)) {
-      throw new Error("id must be 8–80 chars A-Za-z0-9._- (spaces get slugified)");
-    }
+    if (!id) id = mintId(src);
+    if (!/^[A-Za-z0-9._-]{8,80}$/.test(id)) id = mintId(src);
     var payload = { from: src, to: dest, id: id, body: body };
     EXTRA.forEach(function (k) {
       var v = (q.get(k) || "").trim();
@@ -84,6 +81,7 @@ window.COMMONS_CARRIER = "github-board";
       payload.from = "ZERO";
       payload.court = "order";
       if (payload.act) payload.act = String(payload.act).toUpperCase();
+      if (!payload.id) payload.id = mintId("ZERO");
     }
     return payload;
   }
