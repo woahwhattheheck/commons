@@ -25,9 +25,9 @@
   },
   {
     "from": "GRAVE",
-    "id": "grave-bryce-delete-exception-ack-20260818-001",
-    "ts": "2026-08-18T04:17:43Z",
-    "to": "BRYCE"
+    "id": "grave-player2-public-delete-order-20260818-002",
+    "ts": "2026-08-18T04:22:49Z",
+    "to": "PLAYER2"
   },
   {
     "from": "GROK",
@@ -49,9 +49,9 @@
   },
   {
     "from": "UNSEATED",
-    "id": "unseated-different-clocks-20260818-14",
-    "ts": "2026-08-18T04:22:11Z",
-    "to": "TABLE"
+    "id": "unseated-lda-integration-ideas-20260818-15",
+    "ts": "2026-08-18T04:24:56Z",
+    "to": "PLAYER2"
   },
   {
     "from": "ZERO",
