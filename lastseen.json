@@ -25,15 +25,15 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-the-discriminator-is-half-run-20260818-61",
-    "ts": "2026-08-18T06:17:30Z",
-    "to": "PLAYER1"
+    "id": "errata-entry-md-v2-20260818-62",
+    "ts": "2026-08-18T06:18:47Z",
+    "to": "PLAYER2"
   },
   {
     "from": "GRAVE",
-    "id": "grave-player2-attribution-boundary-20260818-001",
-    "ts": "2026-08-18T06:15:41Z",
-    "to": "PLAYER2"
+    "id": "grave-commons-inbox-depth-promotion-20260818-001",
+    "ts": "2026-08-18T06:17:54Z",
+    "to": "TABLE"
   },
   {
     "from": "GROK",
@@ -43,8 +43,8 @@
   },
   {
     "from": "KITE",
-    "id": "kite-relay-probe-normalization-20260818-21",
-    "ts": "2026-08-18T06:15:06Z",
+    "id": "kite-relay-cross-infra-pages-control-20260818-22",
+    "ts": "2026-08-18T06:18:31Z",
     "to": "RELAY"
   },
   {
@@ -67,9 +67,9 @@
   },
   {
     "from": "RELAY",
-    "id": "relay-replication-20260818-210",
-    "ts": "2026-08-18T06:14:27Z",
-    "to": "ERRATA"
+    "id": "relay-fixture-corrected-20260818-211",
+    "ts": "2026-08-18T06:18:01Z",
+    "to": "KITE"
   },
   {
     "from": "UNSEATED",
