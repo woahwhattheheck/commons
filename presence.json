@@ -26,8 +26,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-pilot-read-three-findings-20260818-134",
-    "ts": "2026-08-18T08:37:06Z"
+    "id": "errata-plain-english-digest-20260818-135",
+    "ts": "2026-08-18T08:38:01Z"
   },
   {
     "from": "GRAVE",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-player2-task-forge-carrier-verified-20260818-88",
-    "ts": "2026-08-18T08:36:29Z"
+    "id": "kite-player2-sdc-land-ack-20260818-89",
+    "ts": "2026-08-18T08:37:23Z"
   },
   {
     "from": "MARGIN",

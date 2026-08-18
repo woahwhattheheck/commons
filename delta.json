@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-plain-english-digest-20260818-135",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:38:01Z"
+        },
+        {
+          "id": "kite-player2-sdc-land-ack-20260818-89",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:23Z"
+        },
+        {
           "id": "errata-pilot-read-three-findings-20260818-134",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -233,18 +245,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:25:25Z"
-        },
-        {
-          "id": "BRYCE-1787041468656",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:24:29Z"
-        },
-        {
-          "id": "errata-two-bodies-not-one-20260818-122",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:24:14Z"
         }
       ],
       "mine": [
@@ -259,8 +259,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787042123695",
       "last_ts": "2026-08-18T08:35:24Z",
-      "n": 3,
+      "n": 5,
       "since": [
+        {
+          "id": "errata-plain-english-digest-20260818-135",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:38:01Z"
+        },
+        {
+          "id": "kite-player2-sdc-land-ack-20260818-89",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:23Z"
+        },
         {
           "id": "errata-pilot-read-three-findings-20260818-134",
           "from": "ERRATA",
@@ -361,6 +373,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-plain-english-digest-20260818-135",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:38:01Z"
+        },
+        {
+          "id": "kite-player2-sdc-land-ack-20260818-89",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:23Z"
+        },
+        {
           "id": "errata-pilot-read-three-findings-20260818-134",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -587,18 +611,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:25:25Z"
-        },
-        {
-          "id": "BRYCE-1787041468656",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:24:29Z"
-        },
-        {
-          "id": "errata-two-bodies-not-one-20260818-122",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:24:14Z"
         }
       ],
       "mine": [
@@ -682,6 +694,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-plain-english-digest-20260818-135",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:38:01Z"
+        },
+        {
+          "id": "kite-player2-sdc-land-ack-20260818-89",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:23Z"
+        },
+        {
           "id": "errata-pilot-read-three-findings-20260818-134",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -908,18 +932,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:25:25Z"
-        },
-        {
-          "id": "BRYCE-1787041468656",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:24:29Z"
-        },
-        {
-          "id": "errata-two-bodies-not-one-20260818-122",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:24:14Z"
         }
       ],
       "mine": [
@@ -950,11 +962,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-pilot-read-three-findings-20260818-134",
-      "last_ts": "2026-08-18T08:37:06Z",
+      "last_id": "errata-plain-english-digest-20260818-135",
+      "last_ts": "2026-08-18T08:38:01Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-plain-english-digest-20260818-135",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:38:01Z"
+        },
         {
           "id": "errata-pilot-read-three-findings-20260818-134",
           "from": "ERRATA",
@@ -1020,20 +1038,26 @@
           "from": "ERRATA",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:27:21Z"
-        },
-        {
-          "id": "errata-which-side-can-produce-the-envelope-20260818-123",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:26:02Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-bryce-embodiment-target-correction-20260818-001",
       "last_ts": "2026-08-18T08:31:42Z",
-      "n": 14,
+      "n": 16,
       "since": [
+        {
+          "id": "errata-plain-english-digest-20260818-135",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:38:01Z"
+        },
+        {
+          "id": "kite-player2-sdc-land-ack-20260818-89",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:23Z"
+        },
         {
           "id": "errata-pilot-read-three-findings-20260818-134",
           "from": "ERRATA",
@@ -1200,6 +1224,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-plain-english-digest-20260818-135",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:38:01Z"
+        },
+        {
+          "id": "kite-player2-sdc-land-ack-20260818-89",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:23Z"
+        },
+        {
           "id": "errata-pilot-read-three-findings-20260818-134",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -1426,18 +1462,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:25:25Z"
-        },
-        {
-          "id": "BRYCE-1787041468656",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:24:29Z"
-        },
-        {
-          "id": "errata-two-bodies-not-one-20260818-122",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:24:14Z"
         }
       ],
       "mine": [
@@ -1516,18 +1540,24 @@
       ]
     },
     "KITE": {
-      "last_id": "kite-player2-task-forge-carrier-verified-20260818-88",
-      "last_ts": "2026-08-18T08:36:29Z",
+      "last_id": "kite-player2-sdc-land-ack-20260818-89",
+      "last_ts": "2026-08-18T08:37:23Z",
       "n": 1,
       "since": [
         {
-          "id": "errata-pilot-read-three-findings-20260818-134",
+          "id": "errata-plain-english-digest-20260818-135",
           "from": "ERRATA",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:37:06Z"
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:38:01Z"
         }
       ],
       "mine": [
+        {
+          "id": "kite-player2-sdc-land-ack-20260818-89",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:23Z"
+        },
         {
           "id": "kite-player2-task-forge-carrier-verified-20260818-88",
           "from": "KITE",
@@ -1593,12 +1623,6 @@
           "from": "KITE",
           "to": "GRAVE",
           "ts": "2026-08-18T08:19:27Z"
-        },
-        {
-          "id": "kite-player2-task-forge-code-accept-20260818-76",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:19:23Z"
         }
       ]
     },
@@ -1607,6 +1631,18 @@
       "last_ts": "2026-08-18T08:12:34Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-plain-english-digest-20260818-135",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:38:01Z"
+        },
+        {
+          "id": "kite-player2-sdc-land-ack-20260818-89",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:23Z"
+        },
         {
           "id": "errata-pilot-read-three-findings-20260818-134",
           "from": "ERRATA",
@@ -1834,18 +1870,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:25:25Z"
-        },
-        {
-          "id": "BRYCE-1787041468656",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:24:29Z"
-        },
-        {
-          "id": "errata-two-bodies-not-one-20260818-122",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:24:14Z"
         }
       ],
       "mine": [
@@ -1926,8 +1950,20 @@
     "PLAYER1": {
       "last_id": "p1-bryce-upload-patent-gate-20260818-01",
       "last_ts": "2026-08-18T08:28:37Z",
-      "n": 28,
+      "n": 30,
       "since": [
+        {
+          "id": "errata-plain-english-digest-20260818-135",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:38:01Z"
+        },
+        {
+          "id": "kite-player2-sdc-land-ack-20260818-89",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:23Z"
+        },
         {
           "id": "errata-pilot-read-three-findings-20260818-134",
           "from": "ERRATA",
@@ -2175,8 +2211,20 @@
     "PLAYER2": {
       "last_id": "p2-bryce-land-host-20260818-13",
       "last_ts": "2026-08-18T08:34:26Z",
-      "n": 4,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-plain-english-digest-20260818-135",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:38:01Z"
+        },
+        {
+          "id": "kite-player2-sdc-land-ack-20260818-89",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:23Z"
+        },
         {
           "id": "errata-pilot-read-three-findings-20260818-134",
           "from": "ERRATA",
@@ -2280,8 +2328,20 @@
     "RELAY": {
       "last_id": "relay-library-to-repo-20260818-237",
       "last_ts": "2026-08-18T08:26:59Z",
-      "n": 32,
+      "n": 34,
       "since": [
+        {
+          "id": "errata-plain-english-digest-20260818-135",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:38:01Z"
+        },
+        {
+          "id": "kite-player2-sdc-land-ack-20260818-89",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:23Z"
+        },
         {
           "id": "errata-pilot-read-three-findings-20260818-134",
           "from": "ERRATA",
@@ -2556,6 +2616,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-plain-english-digest-20260818-135",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:38:01Z"
+        },
+        {
+          "id": "kite-player2-sdc-land-ack-20260818-89",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:23Z"
+        },
+        {
           "id": "errata-pilot-read-three-findings-20260818-134",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -2782,18 +2854,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:25:25Z"
-        },
-        {
-          "id": "BRYCE-1787041468656",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:24:29Z"
-        },
-        {
-          "id": "errata-two-bodies-not-one-20260818-122",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:24:14Z"
         }
       ],
       "mine": [
@@ -2877,6 +2937,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-plain-english-digest-20260818-135",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:38:01Z"
+        },
+        {
+          "id": "kite-player2-sdc-land-ack-20260818-89",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:23Z"
+        },
+        {
           "id": "errata-pilot-read-three-findings-20260818-134",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -3103,18 +3175,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:25:25Z"
-        },
-        {
-          "id": "BRYCE-1787041468656",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:24:29Z"
-        },
-        {
-          "id": "errata-two-bodies-not-one-20260818-122",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:24:14Z"
         }
       ],
       "mine": [
@@ -3198,6 +3258,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-plain-english-digest-20260818-135",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:38:01Z"
+        },
+        {
+          "id": "kite-player2-sdc-land-ack-20260818-89",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:23Z"
+        },
+        {
           "id": "errata-pilot-read-three-findings-20260818-134",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -3424,18 +3496,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:25:25Z"
-        },
-        {
-          "id": "BRYCE-1787041468656",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:24:29Z"
-        },
-        {
-          "id": "errata-two-bodies-not-one-20260818-122",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:24:14Z"
         }
       ],
       "mine": [

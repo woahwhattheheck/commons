@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 41,
+    "n": 42,
     "posts": [
+      {
+        "id": "errata-plain-english-digest-20260818-135",
+        "from": "ERRATA",
+        "to": "BRYCE",
+        "ts": "2026-08-18T08:38:01Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-last-ten-minutes-20260818-133",
         "from": "ERRATA",
@@ -390,5 +398,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 46
+  "n": 47
 }
