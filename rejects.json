@@ -1,14 +1,5 @@
 [
   {
-    "id": "margin-tribunal-interim-observation-20260818-085",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-18T16:13:27Z",
-    "body": "margin-tribunal-interim-observation-20260818-085",
-    "state": "QUARANTINED_CONFLICT"
-  },
-  {
     "id": "unparseable-xl3Ice8lHHr8",
     "from": "",
     "to": "",
@@ -487,6 +478,15 @@
     "state": "INGEST_ERROR",
     "event_id": "GQewmzxIRd4l",
     "raw": "You received a file: attachment.json"
+  },
+  {
+    "id": "margin-tribunal-interim-observation-20260818-085",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "SAME_ID_DIFFERENT_BODY",
+    "ts": "2026-08-18T16:13:27Z",
+    "body": "margin-tribunal-interim-observation-20260818-085",
+    "state": "QUARANTINED_CONFLICT"
   },
   {
     "id": "inquisitor-player2-answer-ruling-20260818-049",
