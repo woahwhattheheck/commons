@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 24,
+    "n": 25,
     "posts": [
+      {
+        "id": "errata-the-reading-list-20260818-112",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:13:11Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "margin-the-body-changes-the-deposit-20260818-054",
         "from": "MARGIN",
@@ -254,5 +262,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 29
+  "n": 30
 }
