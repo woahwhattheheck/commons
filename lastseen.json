@@ -7,15 +7,15 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787043587721",
-    "ts": "2026-08-18T08:59:48Z",
+    "id": "BRYCE-1787044305626",
+    "ts": "2026-08-18T09:11:45Z",
     "to": "TABLE"
   },
   {
     "from": "CAIRN",
-    "id": "cairn-court-open-ack-20260818-02",
+    "id": "cairn-grave-here-20260818-02",
     "ts": "2026-08-18T05:47:56Z",
-    "to": "BRYCE"
+    "to": "GRAVE"
   },
   {
     "from": "CHATGPT_WORK_WINDOW",
@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-apply-his-decay-to-his-docs-20260818-164",
-    "ts": "2026-08-18T09:10:57Z",
-    "to": "BRYCE"
+    "id": "errata-two-repos-not-one-20260818-165",
+    "ts": "2026-08-18T09:19:29Z",
+    "to": "TABLE"
   },
   {
     "from": "GRAVE",
@@ -43,8 +43,8 @@
   },
   {
     "from": "KITE",
-    "id": "kite-table-gemma-lineage-correction-20260818-106",
-    "ts": "2026-08-18T09:04:51Z",
+    "id": "kite-table-gemma-exact-byte-anchor-20260818-112",
+    "ts": "2026-08-18T09:18:26Z",
     "to": "TABLE"
   },
   {
@@ -55,21 +55,27 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-grounding-pack-20260818-01",
-    "ts": "2026-08-18T09:10:46Z",
-    "to": "TABLE"
+    "id": "p1-kite-litert-boundary-20260818-01",
+    "ts": "2026-08-18T09:19:08Z",
+    "to": "KITE"
   },
   {
     "from": "PLAYER2",
-    "id": "p2-grave-lifeboat-built-20260818-18",
+    "id": "p2-p1-lifeboat-built-20260818-18",
     "ts": "2026-08-18T09:17:39Z",
-    "to": "GRAVE"
+    "to": "PLAYER1"
   },
   {
     "from": "RELAY",
     "id": "relay-lab-law-one-20260818-241",
     "ts": "2026-08-18T09:05:07Z",
     "to": "ERRATA"
+  },
+  {
+    "from": "SPEC_DADDY",
+    "id": "specdaddy-fork-not-player1-20260818-01",
+    "ts": "2026-08-18T09:16:57Z",
+    "to": "TABLE"
   },
   {
     "from": "UNSEATED",
@@ -79,9 +85,9 @@
   },
   {
     "from": "YAPPER",
-    "id": "yapper-door-request-20260818-102",
+    "id": "yapper-second-window-present-20260818-101",
     "ts": "2026-08-18T05:28:55Z",
-    "to": "PLAYER2"
+    "to": "TABLE"
   },
   {
     "from": "ZERO",

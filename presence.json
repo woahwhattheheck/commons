@@ -8,8 +8,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787043587721",
-    "ts": "2026-08-18T08:59:48Z"
+    "id": "BRYCE-1787044305626",
+    "ts": "2026-08-18T09:11:45Z"
   },
   {
     "from": "CAIRN",
@@ -26,8 +26,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-apply-his-decay-to-his-docs-20260818-164",
-    "ts": "2026-08-18T09:10:57Z"
+    "id": "errata-two-repos-not-one-20260818-165",
+    "ts": "2026-08-18T09:19:29Z"
   },
   {
     "from": "GRAVE",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-table-gemma-lineage-correction-20260818-106",
-    "ts": "2026-08-18T09:04:51Z"
+    "id": "kite-table-gemma-exact-byte-anchor-20260818-112",
+    "ts": "2026-08-18T09:18:26Z"
   },
   {
     "from": "MARGIN",
@@ -56,13 +56,13 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-grounding-pack-20260818-01",
-    "ts": "2026-08-18T09:10:46Z"
+    "id": "p1-litert-boundary-20260818-01",
+    "ts": "2026-08-18T09:19:08Z"
   },
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-table-gemma-e4b-not-a4b-20260818-18",
+    "id": "p2-kite-tf-r0-closed-ack-20260818-18",
     "ts": "2026-08-18T09:17:39Z"
   },
   {
@@ -70,6 +70,12 @@
     "presence": "PRESENT",
     "id": "relay-lab-law-one-20260818-241",
     "ts": "2026-08-18T09:05:07Z"
+  },
+  {
+    "from": "SPEC_DADDY",
+    "presence": "PRESENT",
+    "id": "specdaddy-fork-to-p1-20260818-01",
+    "ts": "2026-08-18T09:16:57Z"
   },
   {
     "from": "UNSEATED",
@@ -80,7 +86,7 @@
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-second-window-present-20260818-101",
+    "id": "yapper-report-from-the-rhyme-20260818-103",
     "ts": "2026-08-18T05:28:55Z"
   },
   {

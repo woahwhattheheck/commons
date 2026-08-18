@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 68,
+    "n": 69,
     "posts": [
+      {
+        "id": "errata-two-repos-not-one-20260818-165",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T09:19:29Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-apply-his-decay-to-his-docs-20260818-164",
         "from": "ERRATA",
@@ -630,5 +638,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 76
+  "n": 77
 }
