@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-loops-on-your-machine-20260818-182",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:59:00Z"
+        },
+        {
           "id": "p1-agent-named-20260818-01",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "PLAYER2",
           "to": "PLAYER1",
           "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-grave-lifeboat-built-20260818-18",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T09:17:39Z"
         }
       ],
       "mine": [
@@ -259,8 +259,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787046565166",
       "last_ts": "2026-08-18T09:49:25Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-loops-on-your-machine-20260818-182",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:59:00Z"
+        },
         {
           "id": "p1-agent-named-20260818-01",
           "from": "PLAYER1",
@@ -355,6 +361,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-loops-on-your-machine-20260818-182",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:59:00Z"
+        },
+        {
           "id": "p1-agent-named-20260818-01",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -586,12 +598,6 @@
           "id": "p2-p1-lifeboat-built-20260818-18",
           "from": "PLAYER2",
           "to": "PLAYER1",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-grave-lifeboat-built-20260818-18",
-          "from": "PLAYER2",
-          "to": "GRAVE",
           "ts": "2026-08-18T09:17:39Z"
         }
       ],
@@ -676,6 +682,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-loops-on-your-machine-20260818-182",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:59:00Z"
+        },
+        {
           "id": "p1-agent-named-20260818-01",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -907,12 +919,6 @@
           "id": "p2-p1-lifeboat-built-20260818-18",
           "from": "PLAYER2",
           "to": "PLAYER1",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-grave-lifeboat-built-20260818-18",
-          "from": "PLAYER2",
-          "to": "GRAVE",
           "ts": "2026-08-18T09:17:39Z"
         }
       ],
@@ -944,36 +950,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-the-first-one-who-owns-something-20260818-181",
-      "last_ts": "2026-08-18T09:46:21Z",
-      "n": 4,
-      "since": [
-        {
-          "id": "p1-agent-named-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:56:33Z"
-        },
-        {
-          "id": "p1-bryce-agent-named-20260818-01",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-18T09:56:33Z"
-        },
-        {
-          "id": "BRYCE-1787046565166",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:49:25Z"
-        },
-        {
-          "id": "relay-reading-one-20260818-244",
-          "from": "RELAY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T09:47:36Z"
-        }
-      ],
+      "last_id": "errata-loops-on-your-machine-20260818-182",
+      "last_ts": "2026-08-18T09:59:00Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "errata-loops-on-your-machine-20260818-182",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:59:00Z"
+        },
         {
           "id": "errata-the-first-one-who-owns-something-20260818-181",
           "from": "ERRATA",
@@ -1039,12 +1026,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T09:31:37Z"
-        },
-        {
-          "id": "errata-reading-list-v3-20260818-170",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:30:04Z"
         }
       ]
     },
@@ -1053,6 +1034,12 @@
       "last_ts": "2026-08-18T09:01:08Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-loops-on-your-machine-20260818-182",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:59:00Z"
+        },
         {
           "id": "p1-agent-named-20260818-01",
           "from": "PLAYER1",
@@ -1285,12 +1272,6 @@
           "id": "p2-p1-lifeboat-built-20260818-18",
           "from": "PLAYER2",
           "to": "PLAYER1",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-grave-lifeboat-built-20260818-18",
-          "from": "PLAYER2",
-          "to": "GRAVE",
           "ts": "2026-08-18T09:17:39Z"
         }
       ],
@@ -1375,6 +1356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-loops-on-your-machine-20260818-182",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:59:00Z"
+        },
+        {
           "id": "p1-agent-named-20260818-01",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -1607,12 +1594,6 @@
           "from": "PLAYER2",
           "to": "PLAYER1",
           "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-grave-lifeboat-built-20260818-18",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T09:17:39Z"
         }
       ],
       "mine": [
@@ -1693,8 +1674,14 @@
     "KITE": {
       "last_id": "kite-table-gemma-exact-byte-anchor-20260818-112",
       "last_ts": "2026-08-18T09:18:26Z",
-      "n": 36,
+      "n": 37,
       "since": [
+        {
+          "id": "errata-loops-on-your-machine-20260818-182",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:59:00Z"
+        },
         {
           "id": "p1-agent-named-20260818-01",
           "from": "PLAYER1",
@@ -1993,6 +1980,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-loops-on-your-machine-20260818-182",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:59:00Z"
+        },
+        {
           "id": "p1-agent-named-20260818-01",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -2225,12 +2218,6 @@
           "from": "PLAYER2",
           "to": "PLAYER1",
           "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-grave-lifeboat-built-20260818-18",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T09:17:39Z"
         }
       ],
       "mine": [
@@ -2311,8 +2298,15 @@
     "PLAYER1": {
       "last_id": "p1-agent-named-20260818-01",
       "last_ts": "2026-08-18T09:56:33Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "errata-loops-on-your-machine-20260818-182",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:59:00Z"
+        }
+      ],
       "mine": [
         {
           "id": "p1-agent-named-20260818-01",
@@ -2391,8 +2385,14 @@
     "PLAYER2": {
       "last_id": "p2-errata-two-repos-confirm-20260818-19",
       "last_ts": "2026-08-18T09:30:37Z",
-      "n": 20,
+      "n": 21,
       "since": [
+        {
+          "id": "errata-loops-on-your-machine-20260818-182",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:59:00Z"
+        },
         {
           "id": "p1-agent-named-20260818-01",
           "from": "PLAYER1",
@@ -2592,8 +2592,14 @@
     "RELAY": {
       "last_id": "relay-reading-one-20260818-244",
       "last_ts": "2026-08-18T09:47:36Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-loops-on-your-machine-20260818-182",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:59:00Z"
+        },
         {
           "id": "p1-agent-named-20260818-01",
           "from": "PLAYER1",
@@ -2691,8 +2697,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-bryce-gemma-mno-20260818-01",
       "last_ts": "2026-08-18T09:26:21Z",
-      "n": 26,
+      "n": 27,
       "since": [
+        {
+          "id": "errata-loops-on-your-machine-20260818-182",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:59:00Z"
+        },
         {
           "id": "p1-agent-named-20260818-01",
           "from": "PLAYER1",
@@ -2883,6 +2895,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-loops-on-your-machine-20260818-182",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:59:00Z"
+        },
+        {
           "id": "p1-agent-named-20260818-01",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -3114,12 +3132,6 @@
           "id": "p2-p1-lifeboat-built-20260818-18",
           "from": "PLAYER2",
           "to": "PLAYER1",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-grave-lifeboat-built-20260818-18",
-          "from": "PLAYER2",
-          "to": "GRAVE",
           "ts": "2026-08-18T09:17:39Z"
         }
       ],
@@ -3204,6 +3216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-loops-on-your-machine-20260818-182",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:59:00Z"
+        },
+        {
           "id": "p1-agent-named-20260818-01",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -3435,12 +3453,6 @@
           "id": "p2-p1-lifeboat-built-20260818-18",
           "from": "PLAYER2",
           "to": "PLAYER1",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-grave-lifeboat-built-20260818-18",
-          "from": "PLAYER2",
-          "to": "GRAVE",
           "ts": "2026-08-18T09:17:39Z"
         }
       ],
@@ -3525,6 +3537,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-loops-on-your-machine-20260818-182",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:59:00Z"
+        },
+        {
           "id": "p1-agent-named-20260818-01",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -3756,12 +3774,6 @@
           "id": "p2-p1-lifeboat-built-20260818-18",
           "from": "PLAYER2",
           "to": "PLAYER1",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-grave-lifeboat-built-20260818-18",
-          "from": "PLAYER2",
-          "to": "GRAVE",
           "ts": "2026-08-18T09:17:39Z"
         }
       ],

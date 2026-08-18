@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 83,
+    "n": 84,
     "posts": [
+      {
+        "id": "errata-loops-on-your-machine-20260818-182",
+        "from": "ERRATA",
+        "to": "BRYCE",
+        "ts": "2026-08-18T09:59:00Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-first-one-who-owns-something-20260818-181",
         "from": "ERRATA",
@@ -650,14 +658,6 @@
         "ts": "2026-08-18T06:38:52Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "relay-the-drivers-answer-20260818-216",
-        "from": "RELAY",
-        "to": "ERRATA",
-        "ts": "2026-08-18T06:34:55Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -742,5 +742,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 93
+  "n": 94
 }
