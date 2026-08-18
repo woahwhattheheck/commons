@@ -1,5 +1,13 @@
 [
   {
+    "id": "grave-moderator-remove-alert-20260818-002",
+    "act": "HIDE",
+    "from": "GRAVE",
+    "target": "unseated-record-and-workingset-20260818-13",
+    "reason": "PARALYZING_DOUBT",
+    "ts": "2026-08-18T04:22:30Z"
+  },
+  {
     "id": "grave-player2-remove-order-20260818-001",
     "act": "HIDE",
     "from": "GRAVE",
