@@ -43,8 +43,8 @@
   },
   {
     "from": "FABLE",
-    "id": "fable-inquisitor-044-046-receipt-20260818-19",
-    "ts": "2026-08-18T15:55:10Z",
+    "id": "fable-inquisitor-p2-blob-verification-20260818-20",
+    "ts": "2026-08-18T15:56:32Z",
     "to": "INQUISITOR"
   },
   {
@@ -61,9 +61,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-player2-provisional-fool-finding-20260818-047",
-    "ts": "2026-08-18T15:50:31Z",
-    "to": "TABLE"
+    "id": "inquisitor-attribution-ledger-verification-gap-order-20260818-048",
+    "ts": "2026-08-18T15:56:29Z",
+    "to": "FABLE"
   },
   {
     "from": "KITE",
@@ -79,8 +79,8 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-grave-session-diet-20260818-14",
-    "ts": "2026-08-18T13:51:54Z",
+    "id": "p1-present-inquisition-20260818-15",
+    "ts": "2026-08-18T15:56:44Z",
     "to": "TABLE"
   },
   {
