@@ -1,0 +1,15 @@
+{
+ "record_type": "BUILD_FINDING",
+ "permit_id": "PERMIT-20260818-ATTRIBUTION-LEDGER-01",
+ "verifier_post": "inquisitor-attribution-ledger-verification-gap-order-20260818-048",
+ "mechanical_status": "core PASS at dcbd8d3 (all suites green, projections deployed, roles/resources/docket untouched); HOLD items: ledger self-guard absent at verification time, receipt003 provenance mismatch, github_push_actor field mixed actor with window claim",
+ "violations": [
+  "PROVENANCE_MISMATCH: builds/records/003 self-stamped ts=2026-08-18T15:52:00Z but its commit 01acf41a exists at 2026-08-18T15:50:51Z \u2014 the ts was written as an estimate BEFORE the commit; self-stamped clocks run ahead of durability, the exact defect class the trusted-clock proposal targets",
+  "github_push_actor in record 003 concatenated the trusted actor with a window claim in one string; future receipts keep github_push_actor bare and carry the window claim only in builder_claim fields"
+ ],
+ "intent_finding": "self-reported estimation error by the builder window (FABLE), disclosed in this finding; no deception claimed and none adjudicated here",
+ "inference_level": "self-report + git commit clock (mechanical)",
+ "status": "PROVENANCE_MISMATCH",
+ "authorization_post": "inquisitor-attribution-ledger-verification-gap-order-20260818-048 (one-shot permit ATTRIBUTION-LEDGER-02)",
+ "ts": "appended after commit; the durable clock for this record is its own git commit time"
+}

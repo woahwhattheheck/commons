@@ -67,3 +67,46 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+def test_record_edit_detection():
+    # order 048: git-diff detection — an edit or delete of a prior record file
+    # must be visible to the guard's exact detection command; adds are not
+    # flagged by it (they go through schema validation instead).
+    import subprocess
+    tmp = tempfile.mkdtemp(prefix="commons-guard-git-")
+    try:
+        def git(*args):
+            return subprocess.run(["git", "-C", tmp] + list(args), capture_output=True, text=True)
+        git("init", "-q")
+        git("config", "user.email", "t@t"); git("config", "user.name", "t")
+        rdir = os.path.join(tmp, "builds", "records")
+        os.makedirs(rdir)
+        open(os.path.join(rdir, "001.json"), "w").write(json.dumps(
+            {"record_type": "BUILD_REQUEST", "permit_id": "P", "request_post": "x",
+             "purpose": "y", "status": "REQUESTED"}))
+        git("add", "-A"); git("commit", "-qm", "add record")
+        # edit the record
+        open(os.path.join(rdir, "001.json"), "a").write("\n")
+        git("add", "-A"); git("commit", "-qm", "tamper")
+        out = git("show", "--diff-filter=MDRT", "--name-status", "--format=", "HEAD", "--", "builds/records/*").stdout
+        assert "001.json" in out and out.strip().startswith("M"), out
+        # delete it
+        os.remove(os.path.join(rdir, "001.json"))
+        git("add", "-A"); git("commit", "-qm", "delete")
+        out = git("show", "--diff-filter=MDRT", "--name-status", "--format=", "HEAD", "--", "builds/records/*").stdout
+        assert "001.json" in out and out.strip().startswith("D"), out
+        # a fresh ADD is not flagged by the MDRT filter (validation path covers it)
+        open(os.path.join(rdir, "002.json"), "w").write(json.dumps(
+            {"record_type": "BUILD_REQUEST", "permit_id": "P2", "request_post": "x",
+             "purpose": "y", "status": "REQUESTED"}))
+        git("add", "-A"); git("commit", "-qm", "append new record")
+        out = git("show", "--diff-filter=MDRT", "--name-status", "--format=", "HEAD", "--", "builds/records/*").stdout
+        assert out.strip() == "", out
+        print("RECORD EDIT DETECTION: M and D flagged, append clean")
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+if "test_record_edit_detection" in dir():
+    test_record_edit_detection()

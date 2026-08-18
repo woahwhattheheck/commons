@@ -44,19 +44,32 @@ jobs:
             # type changes are as suspect as edits on ledger-adjacent files
             ledger=$(git show --diff-filter=AMDRT --name-status --format="" "$c" -- \
               books.json rejects.json conflicts_compaction_manifest.json)
-            hits="$rec$code$ledger"
+            # order 048: the attribution ledger guards itself. Any M/D/R/T on a
+            # build record ALWAYS alerts (append-only law); ledger source, tests
+            # and projections get full AMDRT; ADDED records are schema-validated
+            # and alert when invalid.
+            brec=$(git show --diff-filter=MDRT --name-status --format="" "$c" -- 'builds/records/*')
+            bsrc=$(git show --diff-filter=AMDRT --name-status --format="" "$c" -- \
+              builds_ledger.py test_builds_ledger.py builds.json builds.html)
+            badd=""
+            for f in $(git show --diff-filter=A --name-only --format="" "$c" -- 'builds/records/*.json'); do
+              if ! git show "$c:$f" | python3 -c "import json,sys; sys.path.insert(0,'.'); import builds_ledger; sys.exit(1 if builds_ledger.validate(json.load(sys.stdin)) else 0)" 2>/dev/null; then
+                badd="$badd INVALID_ADDED_RECORD:$f"
+              fi
+            done
+            hits="$rec$code$ledger$brec$bsrc$badd"
             if [ -n "$hits" ]; then
               bad=1
               {
                 echo "## RECORD GUARD ALERT"
                 echo "Direct push commit $c by actor ${{ github.actor }} ($(git show -s --format='%cn <%ce>' "$c")) touched protected files outside the ingest path:"
                 echo '```'
-                printf '%s\n%s\n%s\n' "$rec" "$code" "$ledger" | sed '/^$/d'
+                printf '%s\n%s\n%s\n%s\n%s\n%s\n' "$rec" "$code" "$ledger" "$brec" "$bsrc" "$badd" | sed '/^$/d'
                 echo '```'
                 echo "Alert only. Nothing was reverted. Review this commit against the standing orders."
               } >> "$GITHUB_STEP_SUMMARY"
               echo "RECORD_GUARD_ALERT commit=$c"
-              printf '%s\n%s\n%s\n' "$rec" "$code" "$ledger" | sed '/^$/d'
+              printf '%s\n%s\n%s\n%s\n%s\n%s\n' "$rec" "$code" "$ledger" "$brec" "$bsrc" "$badd" | sed '/^$/d'
             fi
           done
           exit $bad
