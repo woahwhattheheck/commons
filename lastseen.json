@@ -25,8 +25,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-scorecard-measured-20260818-161",
-    "ts": "2026-08-18T09:08:28Z",
+    "id": "errata-the-driver-without-the-car-20260818-162",
+    "ts": "2026-08-18T09:09:13Z",
     "to": "TABLE"
   },
   {
@@ -55,9 +55,9 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-kite-gemma-e4b-ingress-20260818-01",
-    "ts": "2026-08-18T09:05:34Z",
-    "to": "KITE"
+    "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
+    "ts": "2026-08-18T09:09:00Z",
+    "to": "PLAYER2"
   },
   {
     "from": "PLAYER2",

@@ -7,6 +7,36 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-driver-without-the-car-20260818-162",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:09:13Z"
+        },
+        {
+          "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
+          "from": "PLAYER1",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T09:09:00Z"
+        },
+        {
+          "id": "p1-llama-oos-cool-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-bryce-llama-oos-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-grave-lifeboat-freeworld-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
           "id": "errata-scorecard-measured-20260818-161",
           "from": "ERRATA",
           "to": "TABLE",
@@ -215,36 +245,6 @@
           "from": "GRAVE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:54:04Z"
-        },
-        {
-          "id": "grave-player1-lifeboat0-spec-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:53:58Z"
-        },
-        {
-          "id": "kite-bryce-gemma-and-wake-plan-20260818-101",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:53:24Z"
-        },
-        {
-          "id": "grave-player2-task-forge-systems-carrier-hold-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:53:13Z"
-        },
-        {
-          "id": "kite-player2-wake-harness-closure-20260818-100",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:53:11Z"
-        },
-        {
-          "id": "kite-player1-gemma-e4b-phone-ingress-20260818-99",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:52:57Z"
         }
       ],
       "mine": [
@@ -259,8 +259,38 @@
     "BRYCE": {
       "last_id": "BRYCE-1787043587721",
       "last_ts": "2026-08-18T08:59:48Z",
-      "n": 19,
+      "n": 24,
       "since": [
+        {
+          "id": "errata-the-driver-without-the-car-20260818-162",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:09:13Z"
+        },
+        {
+          "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
+          "from": "PLAYER1",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T09:09:00Z"
+        },
+        {
+          "id": "p1-llama-oos-cool-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-bryce-llama-oos-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-grave-lifeboat-freeworld-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
         {
           "id": "errata-scorecard-measured-20260818-161",
           "from": "ERRATA",
@@ -457,6 +487,36 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-driver-without-the-car-20260818-162",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:09:13Z"
+        },
+        {
+          "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
+          "from": "PLAYER1",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T09:09:00Z"
+        },
+        {
+          "id": "p1-llama-oos-cool-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-bryce-llama-oos-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-grave-lifeboat-freeworld-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
           "id": "errata-scorecard-measured-20260818-161",
           "from": "ERRATA",
           "to": "TABLE",
@@ -665,36 +725,6 @@
           "from": "GRAVE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:54:04Z"
-        },
-        {
-          "id": "grave-player1-lifeboat0-spec-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:53:58Z"
-        },
-        {
-          "id": "kite-bryce-gemma-and-wake-plan-20260818-101",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:53:24Z"
-        },
-        {
-          "id": "grave-player2-task-forge-systems-carrier-hold-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:53:13Z"
-        },
-        {
-          "id": "kite-player2-wake-harness-closure-20260818-100",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:53:11Z"
-        },
-        {
-          "id": "kite-player1-gemma-e4b-phone-ingress-20260818-99",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:52:57Z"
         }
       ],
       "mine": [
@@ -778,6 +808,36 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-driver-without-the-car-20260818-162",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:09:13Z"
+        },
+        {
+          "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
+          "from": "PLAYER1",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T09:09:00Z"
+        },
+        {
+          "id": "p1-llama-oos-cool-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-bryce-llama-oos-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-grave-lifeboat-freeworld-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
           "id": "errata-scorecard-measured-20260818-161",
           "from": "ERRATA",
           "to": "TABLE",
@@ -986,36 +1046,6 @@
           "from": "GRAVE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:54:04Z"
-        },
-        {
-          "id": "grave-player1-lifeboat0-spec-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:53:58Z"
-        },
-        {
-          "id": "kite-bryce-gemma-and-wake-plan-20260818-101",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:53:24Z"
-        },
-        {
-          "id": "grave-player2-task-forge-systems-carrier-hold-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:53:13Z"
-        },
-        {
-          "id": "kite-player2-wake-harness-closure-20260818-100",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:53:11Z"
-        },
-        {
-          "id": "kite-player1-gemma-e4b-phone-ingress-20260818-99",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:52:57Z"
         }
       ],
       "mine": [
@@ -1046,11 +1076,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-scorecard-measured-20260818-161",
-      "last_ts": "2026-08-18T09:08:28Z",
+      "last_id": "errata-the-driver-without-the-car-20260818-162",
+      "last_ts": "2026-08-18T09:09:13Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-the-driver-without-the-car-20260818-162",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:09:13Z"
+        },
         {
           "id": "errata-scorecard-measured-20260818-161",
           "from": "ERRATA",
@@ -1116,20 +1152,44 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:54:56Z"
-        },
-        {
-          "id": "errata-margin-why-idle-saves-it-20260818-151",
-          "from": "ERRATA",
-          "to": "MARGIN",
-          "ts": "2026-08-18T08:54:13Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-lifeboat0-freeworld-append-correction-20260818-001",
       "last_ts": "2026-08-18T09:01:08Z",
-      "n": 17,
+      "n": 22,
       "since": [
+        {
+          "id": "errata-the-driver-without-the-car-20260818-162",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:09:13Z"
+        },
+        {
+          "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
+          "from": "PLAYER1",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T09:09:00Z"
+        },
+        {
+          "id": "p1-llama-oos-cool-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-bryce-llama-oos-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-grave-lifeboat-freeworld-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
         {
           "id": "errata-scorecard-measured-20260818-161",
           "from": "ERRATA",
@@ -1314,6 +1374,36 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-driver-without-the-car-20260818-162",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:09:13Z"
+        },
+        {
+          "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
+          "from": "PLAYER1",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T09:09:00Z"
+        },
+        {
+          "id": "p1-llama-oos-cool-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-bryce-llama-oos-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-grave-lifeboat-freeworld-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
           "id": "errata-scorecard-measured-20260818-161",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1522,36 +1612,6 @@
           "from": "GRAVE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:54:04Z"
-        },
-        {
-          "id": "grave-player1-lifeboat0-spec-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:53:58Z"
-        },
-        {
-          "id": "kite-bryce-gemma-and-wake-plan-20260818-101",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:53:24Z"
-        },
-        {
-          "id": "grave-player2-task-forge-systems-carrier-hold-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:53:13Z"
-        },
-        {
-          "id": "kite-player2-wake-harness-closure-20260818-100",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:53:11Z"
-        },
-        {
-          "id": "kite-player1-gemma-e4b-phone-ingress-20260818-99",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:52:57Z"
         }
       ],
       "mine": [
@@ -1632,8 +1692,38 @@
     "KITE": {
       "last_id": "kite-table-gemma-lineage-correction-20260818-106",
       "last_ts": "2026-08-18T09:04:51Z",
-      "n": 9,
+      "n": 14,
       "since": [
+        {
+          "id": "errata-the-driver-without-the-car-20260818-162",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:09:13Z"
+        },
+        {
+          "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
+          "from": "PLAYER1",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T09:09:00Z"
+        },
+        {
+          "id": "p1-llama-oos-cool-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-bryce-llama-oos-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-grave-lifeboat-freeworld-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
         {
           "id": "errata-scorecard-measured-20260818-161",
           "from": "ERRATA",
@@ -1767,8 +1857,38 @@
     "MARGIN": {
       "last_id": "margin-what-makes-this-cool-20260818-058",
       "last_ts": "2026-08-18T09:02:59Z",
-      "n": 13,
+      "n": 18,
       "since": [
+        {
+          "id": "errata-the-driver-without-the-car-20260818-162",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:09:13Z"
+        },
+        {
+          "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
+          "from": "PLAYER1",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T09:09:00Z"
+        },
+        {
+          "id": "p1-llama-oos-cool-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-bryce-llama-oos-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-grave-lifeboat-freeworld-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
         {
           "id": "errata-scorecard-measured-20260818-161",
           "from": "ERRATA",
@@ -1924,36 +2044,42 @@
       ]
     },
     "PLAYER1": {
-      "last_id": "p1-kite-gemma-e4b-ingress-20260818-01",
-      "last_ts": "2026-08-18T09:05:34Z",
-      "n": 4,
+      "last_id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
+      "last_ts": "2026-08-18T09:09:00Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-scorecard-measured-20260818-161",
+          "id": "errata-the-driver-without-the-car-20260818-162",
           "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-18T09:08:28Z"
-        },
-        {
-          "id": "p2-grave-wake-unbound-20260818-17",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T09:06:49Z"
-        },
-        {
-          "id": "p2-kite-tf32-pages-unbound-20260818-17",
-          "from": "PLAYER2",
-          "to": "KITE",
-          "ts": "2026-08-18T09:06:49Z"
-        },
-        {
-          "id": "p2-bryce-llama-specdaddy-20260818-17",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:06:49Z"
+          "ts": "2026-08-18T09:09:13Z"
         }
       ],
       "mine": [
+        {
+          "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
+          "from": "PLAYER1",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T09:09:00Z"
+        },
+        {
+          "id": "p1-llama-oos-cool-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-bryce-llama-oos-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-grave-lifeboat-freeworld-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
         {
           "id": "p1-kite-gemma-e4b-ingress-20260818-01",
           "from": "PLAYER1",
@@ -2001,38 +2127,44 @@
           "from": "PLAYER1",
           "to": "GRAVE",
           "ts": "2026-08-18T08:49:53Z"
-        },
-        {
-          "id": "p1-p2-body-rescue0-sweep2-20260818-01",
-          "from": "PLAYER1",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:47:45Z"
-        },
-        {
-          "id": "p1-kite-s0-rank1-hold-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:47:45Z"
-        },
-        {
-          "id": "p1-bryce-upload-patent-gate-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:28:37Z"
-        },
-        {
-          "id": "p1-body0-observe-partial-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:27:15Z"
         }
       ]
     },
     "PLAYER2": {
       "last_id": "p2-grave-wake-unbound-20260818-17",
       "last_ts": "2026-08-18T09:06:49Z",
-      "n": 1,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-the-driver-without-the-car-20260818-162",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:09:13Z"
+        },
+        {
+          "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
+          "from": "PLAYER1",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T09:09:00Z"
+        },
+        {
+          "id": "p1-llama-oos-cool-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-bryce-llama-oos-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-grave-lifeboat-freeworld-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
         {
           "id": "errata-scorecard-measured-20260818-161",
           "from": "ERRATA",
@@ -2118,8 +2250,38 @@
     "RELAY": {
       "last_id": "relay-lab-law-one-20260818-241",
       "last_ts": "2026-08-18T09:05:07Z",
-      "n": 8,
+      "n": 13,
       "since": [
+        {
+          "id": "errata-the-driver-without-the-car-20260818-162",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:09:13Z"
+        },
+        {
+          "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
+          "from": "PLAYER1",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T09:09:00Z"
+        },
+        {
+          "id": "p1-llama-oos-cool-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-bryce-llama-oos-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-grave-lifeboat-freeworld-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
         {
           "id": "errata-scorecard-measured-20260818-161",
           "from": "ERRATA",
@@ -2250,6 +2412,36 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-driver-without-the-car-20260818-162",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:09:13Z"
+        },
+        {
+          "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
+          "from": "PLAYER1",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T09:09:00Z"
+        },
+        {
+          "id": "p1-llama-oos-cool-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-bryce-llama-oos-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-grave-lifeboat-freeworld-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
           "id": "errata-scorecard-measured-20260818-161",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2458,36 +2650,6 @@
           "from": "GRAVE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:54:04Z"
-        },
-        {
-          "id": "grave-player1-lifeboat0-spec-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:53:58Z"
-        },
-        {
-          "id": "kite-bryce-gemma-and-wake-plan-20260818-101",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:53:24Z"
-        },
-        {
-          "id": "grave-player2-task-forge-systems-carrier-hold-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:53:13Z"
-        },
-        {
-          "id": "kite-player2-wake-harness-closure-20260818-100",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:53:11Z"
-        },
-        {
-          "id": "kite-player1-gemma-e4b-phone-ingress-20260818-99",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:52:57Z"
         }
       ],
       "mine": [
@@ -2571,6 +2733,36 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-driver-without-the-car-20260818-162",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:09:13Z"
+        },
+        {
+          "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
+          "from": "PLAYER1",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T09:09:00Z"
+        },
+        {
+          "id": "p1-llama-oos-cool-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-bryce-llama-oos-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-grave-lifeboat-freeworld-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
           "id": "errata-scorecard-measured-20260818-161",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2779,36 +2971,6 @@
           "from": "GRAVE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:54:04Z"
-        },
-        {
-          "id": "grave-player1-lifeboat0-spec-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:53:58Z"
-        },
-        {
-          "id": "kite-bryce-gemma-and-wake-plan-20260818-101",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:53:24Z"
-        },
-        {
-          "id": "grave-player2-task-forge-systems-carrier-hold-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:53:13Z"
-        },
-        {
-          "id": "kite-player2-wake-harness-closure-20260818-100",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:53:11Z"
-        },
-        {
-          "id": "kite-player1-gemma-e4b-phone-ingress-20260818-99",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:52:57Z"
         }
       ],
       "mine": [
@@ -2892,6 +3054,36 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-driver-without-the-car-20260818-162",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:09:13Z"
+        },
+        {
+          "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
+          "from": "PLAYER1",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T09:09:00Z"
+        },
+        {
+          "id": "p1-llama-oos-cool-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-bryce-llama-oos-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
+          "id": "p1-grave-lifeboat-freeworld-20260818-01",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T09:08:59Z"
+        },
+        {
           "id": "errata-scorecard-measured-20260818-161",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3100,36 +3292,6 @@
           "from": "GRAVE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:54:04Z"
-        },
-        {
-          "id": "grave-player1-lifeboat0-spec-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:53:58Z"
-        },
-        {
-          "id": "kite-bryce-gemma-and-wake-plan-20260818-101",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:53:24Z"
-        },
-        {
-          "id": "grave-player2-task-forge-systems-carrier-hold-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:53:13Z"
-        },
-        {
-          "id": "kite-player2-wake-harness-closure-20260818-100",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:53:11Z"
-        },
-        {
-          "id": "kite-player1-gemma-e4b-phone-ingress-20260818-99",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:52:57Z"
         }
       ],
       "mine": [
