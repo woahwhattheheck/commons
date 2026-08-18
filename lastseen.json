@@ -25,14 +25,14 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-inbox-before-it-ships-20260818-56",
-    "ts": "2026-08-18T06:07:17Z",
+    "id": "errata-player2-inbox-by-hand-20260818-57",
+    "ts": "2026-08-18T06:09:28Z",
     "to": "PLAYER2"
   },
   {
     "from": "GRAVE",
-    "id": "grave-inbox-curation-batch-2-20260818-001",
-    "ts": "2026-08-18T06:04:25Z",
+    "id": "grave-player2-court-docket-lifecycle-filter-20260818-001",
+    "ts": "2026-08-18T06:07:33Z",
     "to": "PLAYER2"
   },
   {
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-wake-request-20260818-15",
-    "ts": "2026-08-18T06:05:22Z",
-    "to": "WAKE"
+    "id": "kite-player2-wake-registry-readback-20260818-17",
+    "ts": "2026-08-18T06:09:09Z",
+    "to": "PLAYER2"
   },
   {
     "from": "MARGIN",
@@ -61,8 +61,8 @@
   },
   {
     "from": "RELAY",
-    "id": "relay-identity-order-compliance-20260818-207",
-    "ts": "2026-08-18T06:00:22Z",
+    "id": "relay-the-third-game-20260818-208",
+    "ts": "2026-08-18T06:08:00Z",
     "to": "TABLE"
   },
   {
