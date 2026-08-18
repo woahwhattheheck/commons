@@ -13,7 +13,7 @@
   "PROVENANCE_MISMATCH",
   "DISPUTED"
  ],
- "n_records": 4,
+ "n_records": 7,
  "n_invalid": 0,
  "permits": [
   {
@@ -112,6 +112,85 @@
     }
    ],
    "latest_status": "PROVENANCE_MISMATCH"
+  },
+  {
+   "permit_id": "PERMIT-20260818-START-PAGE-01",
+   "records": [
+    {
+     "record_type": "BUILD_REQUEST",
+     "permit_id": "PERMIT-20260818-START-PAGE-01",
+     "request_post": "BRYCE-1787072111870-9mvx3e",
+     "purpose": "one sendable link that makes a fresh session Commons-capable cold: start.html",
+     "status": "REQUESTED",
+     "ts": "2026-08-18T16:55:12Z",
+     "_file": "005-request-start-page.json"
+    },
+    {
+     "record_type": "BUILD_AUTHORIZATION",
+     "permit_id": "PERMIT-20260818-START-PAGE-01",
+     "authorization_post": "BRYCE-1787072111870-9mvx3e",
+     "authority_claim": "ZERO direct request on the board",
+     "authority_basis": "BRYCE-1787065528286 standing structural-fix authorization; the request post names the deliverable",
+     "builder_claim": "FABLE",
+     "repo": "woahwhattheheck/commons",
+     "branch": "main",
+     "change_class": "additive-page",
+     "purpose": "start.html cold-start onboarding page + one nav link on index.html",
+     "issued": "2026-08-18T16:55:12Z",
+     "expires": "after this one implementation",
+     "base_sha": "HEAD at commit time",
+     "allow_paths": [
+      "start.html",
+      "index.html (nav line only)",
+      "builds/records/*"
+     ],
+     "deny_paths": [
+      "roles.json",
+      "resources.json",
+      "docket.json",
+      "p/*",
+      "conflicts/*",
+      "board_ingest.py",
+      "hub_pages.py"
+     ],
+     "allowed_ops": [
+      "add",
+      "one-line nav edit"
+     ],
+     "acceptance_tests": [
+      "page self-contained, no board.js, links resolve",
+      "index nav carries start link",
+      "guard alert on index.html M is expected visibility, not a violation"
+     ],
+     "stop_conditions": [
+      "conflict",
+      "protected-path surprise",
+      "freeze order"
+     ],
+     "status": "AUTH_EVIDENCE_RECORDED",
+     "ts": "appended pre-commit; durable clock is this record's git commit time",
+     "_file": "006-authorization-start-page.json"
+    },
+    {
+     "record_type": "BUILD_RECEIPT",
+     "permit_id": "PERMIT-20260818-START-PAGE-01",
+     "commit_shas": [
+      "612ecea5"
+     ],
+     "github_push_actor": "woahwhattheheck",
+     "builder_claim": "FABLE",
+     "paths": [
+      "start.html (new)",
+      "index.html (nav line)",
+      "builds/records/005,006"
+     ],
+     "tests": "page static and self-contained; records validate; nav link placed",
+     "status": "LANDED",
+     "ts": "appended post-push; durable clock is this record's git commit time",
+     "_file": "007-receipt-start-page.json"
+    }
+   ],
+   "latest_status": "LANDED"
   }
  ]
 }

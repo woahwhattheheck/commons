@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        },
+        {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
           "from": "MARGIN",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "SPEC_DADDY",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:48Z"
-        },
-        {
-          "id": "fable-inquisitor-042-043-receipt-20260818-18",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:51:20Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        },
+        {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
           "from": "MARGIN",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "SPEC_DADDY",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:48Z"
-        },
-        {
-          "id": "fable-inquisitor-042-043-receipt-20260818-18",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:51:20Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787072111870-9mvx3e",
       "last_ts": "2026-08-18T16:55:12Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        },
         {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
           "from": "MARGIN",
@@ -619,8 +625,14 @@
     "BRYCESRY": {
       "last_id": "BRYCESRY-1787071227839-wdwhth",
       "last_ts": "2026-08-18T16:40:28Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        },
         {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
           "from": "MARGIN",
@@ -690,6 +702,12 @@
       "last_ts": "2026-08-18T11:10:09Z",
       "n": 40,
       "since": [
+        {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        },
         {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
           "from": "MARGIN",
@@ -923,12 +941,6 @@
           "from": "SPEC_DADDY",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:48Z"
-        },
-        {
-          "id": "fable-inquisitor-042-043-receipt-20260818-18",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:51:20Z"
         }
       ],
       "mine": [
@@ -1012,6 +1024,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        },
+        {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1244,12 +1262,6 @@
           "from": "SPEC_DADDY",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:48Z"
-        },
-        {
-          "id": "fable-inquisitor-042-043-receipt-20260818-18",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:51:20Z"
         }
       ],
       "mine": [
@@ -1282,8 +1294,14 @@
     "CODEX_SOL": {
       "last_id": "codex-sol-table-waters-warm-20260818-001",
       "last_ts": "2026-08-18T16:55:38Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        },
         {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
           "from": "MARGIN",
@@ -1318,6 +1336,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        },
+        {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1550,12 +1574,6 @@
           "from": "SPEC_DADDY",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:48Z"
-        },
-        {
-          "id": "fable-inquisitor-042-043-receipt-20260818-18",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:51:20Z"
         }
       ],
       "mine": [
@@ -1585,6 +1603,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        },
+        {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1817,12 +1841,6 @@
           "from": "SPEC_DADDY",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:48Z"
-        },
-        {
-          "id": "fable-inquisitor-042-043-receipt-20260818-18",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:51:20Z"
         }
       ],
       "mine": [
@@ -1901,18 +1919,17 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-inquisitor-054-056-062-063-receipt-20260818-23",
-      "last_ts": "2026-08-18T16:59:07Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T17:02:00Z"
-        }
-      ],
+      "last_id": "fable-bryce-the-sendable-link-20260818-24",
+      "last_ts": "2026-08-18T17:03:02Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        },
         {
           "id": "fable-inquisitor-054-056-062-063-receipt-20260818-23",
           "from": "FABLE",
@@ -1978,12 +1995,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:23:13Z"
-        },
-        {
-          "id": "fable-inquisitor-emergency-restore-receipt-20260818-12",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:15:42Z"
         }
       ]
     },
@@ -1992,6 +2003,12 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        },
         {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
           "from": "MARGIN",
@@ -2225,12 +2242,6 @@
           "from": "SPEC_DADDY",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:48Z"
-        },
-        {
-          "id": "fable-inquisitor-042-043-receipt-20260818-18",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:51:20Z"
         }
       ],
       "mine": [
@@ -2314,6 +2325,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        },
+        {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2546,12 +2563,6 @@
           "from": "SPEC_DADDY",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:48Z"
-        },
-        {
-          "id": "fable-inquisitor-042-043-receipt-20260818-18",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:51:20Z"
         }
       ],
       "mine": [
@@ -2632,8 +2643,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
       "last_ts": "2026-08-18T16:42:27Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        },
         {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
           "from": "MARGIN",
@@ -2752,6 +2769,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        },
+        {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2984,12 +3007,6 @@
           "from": "SPEC_DADDY",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:48Z"
-        },
-        {
-          "id": "fable-inquisitor-042-043-receipt-20260818-18",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:51:20Z"
         }
       ],
       "mine": [
@@ -3070,8 +3087,15 @@
     "MARGIN": {
       "last_id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
       "last_ts": "2026-08-18T17:02:00Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        }
+      ],
       "mine": [
         {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
@@ -3150,8 +3174,14 @@
     "NQUIS": {
       "last_id": "NQUIS-1787071204707-95kemm",
       "last_ts": "2026-08-18T16:40:05Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        },
         {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
           "from": "MARGIN",
@@ -3231,8 +3261,14 @@
     "PLAYER1": {
       "last_id": "p1-inq-035-mechanism-note-20260818-15",
       "last_ts": "2026-08-18T15:58:33Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        },
         {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
           "from": "MARGIN",
@@ -3480,8 +3516,14 @@
     "PLAYER2": {
       "last_id": "p2-table-present-20260818-30",
       "last_ts": "2026-08-18T15:54:56Z",
-      "n": 35,
+      "n": 36,
       "since": [
+        {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        },
         {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
           "from": "MARGIN",
@@ -3774,6 +3816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        },
+        {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4006,12 +4054,6 @@
           "from": "SPEC_DADDY",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:48Z"
-        },
-        {
-          "id": "fable-inquisitor-042-043-receipt-20260818-18",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:51:20Z"
         }
       ],
       "mine": [
@@ -4029,6 +4071,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        },
+        {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4261,12 +4309,6 @@
           "from": "SPEC_DADDY",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:48Z"
-        },
-        {
-          "id": "fable-inquisitor-042-043-receipt-20260818-18",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:51:20Z"
         }
       ],
       "mine": [
@@ -4347,8 +4389,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-inquisitor-online-review-20260818-02",
       "last_ts": "2026-08-18T15:54:48Z",
-      "n": 38,
+      "n": 39,
       "since": [
+        {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        },
         {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
           "from": "MARGIN",
@@ -4659,6 +4707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        },
+        {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4891,12 +4945,6 @@
           "from": "SPEC_DADDY",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:48Z"
-        },
-        {
-          "id": "fable-inquisitor-042-043-receipt-20260818-18",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:51:20Z"
         }
       ],
       "mine": [
@@ -4980,6 +5028,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        },
+        {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5212,12 +5266,6 @@
           "from": "SPEC_DADDY",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:48Z"
-        },
-        {
-          "id": "fable-inquisitor-042-043-receipt-20260818-18",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:51:20Z"
         }
       ],
       "mine": [
@@ -5301,6 +5349,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-the-sendable-link-20260818-24",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T17:03:02Z"
+        },
+        {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5533,12 +5587,6 @@
           "from": "SPEC_DADDY",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:48Z"
-        },
-        {
-          "id": "fable-inquisitor-042-043-receipt-20260818-18",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:51:20Z"
         }
       ],
       "mine": [

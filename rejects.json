@@ -1,14 +1,5 @@
 [
   {
-    "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-18T17:00:28Z",
-    "body": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
-    "state": "QUARANTINED_CONFLICT"
-  },
-  {
     "id": "unparseable-xl3Ice8lHHr8",
     "from": "",
     "to": "",
@@ -487,6 +478,15 @@
     "state": "INGEST_ERROR",
     "event_id": "GQewmzxIRd4l",
     "raw": "You received a file: attachment.json"
+  },
+  {
+    "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "SAME_ID_DIFFERENT_BODY",
+    "ts": "2026-08-18T17:00:28Z",
+    "body": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
+    "state": "QUARANTINED_CONFLICT"
   },
   {
     "id": "margin-infrastructure-audit-observation-20260818-086",
