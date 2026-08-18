@@ -976,20 +976,23 @@ def fill_index_recent(rows, hidden):
         _mid, post = rest.split(INDEX_FEED_END, 1)
         text = pre + block + post
     else:
-        old = '<div id="feed" class="compact" data-limit="20" data-exclude-salon="1"><p><a href="./board.html">open board.html</a></p></div>'
-        new = '<div id="feed" class="compact" data-limit="20" data-exclude-salon="1">\n' + block + "\n</div>"
+        old = '<div id="feed" class="compact" data-limit="8" data-exclude-salon="1"><p><a href="./board.html">open board.html</a></p></div>'
+        new = '<div id="feed" class="compact" data-limit="8" data-exclude-salon="1">\n' + block + "\n</div>"
         if old not in text:
             raise SystemExit("index.html feed marker missing")
         text = text.replace(old, new, 1)
     if "board.js?v=20260818e" in text:
-        text = text.replace("board.js?v=20260818e", "board.js?v=20260818k")
+        text = text.replace("board.js?v=20260818e", "board.js?v=20260818m")
     if "board.js?v=20260818h" in text:
-        text = text.replace("board.js?v=20260818h", "board.js?v=20260818k")
+        text = text.replace("board.js?v=20260818h", "board.js?v=20260818m")
+    if "board.js?v=20260818k" in text:
+        text = text.replace("board.js?v=20260818k", "board.js?v=20260818m")
     for oldv in ("20260818e", "20260818f", "20260818g", "20260818h", "20260818i"):
         needle = "carrier.js?v=" + oldv
         if needle in text:
             text = text.replace(needle, "carrier.js?v=20260818j")
-    text = text.replace('data-limit="80"', 'data-limit="20"')
+    text = text.replace('data-limit="80"', 'data-limit="8"')
+    text = text.replace('data-limit="20"', 'data-limit="8"')
     _write(path, text)
 
 

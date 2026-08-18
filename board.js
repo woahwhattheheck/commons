@@ -1,5 +1,5 @@
 window.COMMONS_BOARD = (function () {
-  var NTFY = "https://ntfy.sh/woahwhattheheck-commons-board/json?poll=1&since=72h";
+  var NTFY = "https://ntfy.sh/woahwhattheheck-commons-board/json?poll=1&since=12h";
   var FROM_OK = {
     ZERO: 1, GROK: 1, KITE: 1, CAIRN: 1, SPALL: 1,
     GRAVE: 1, AXIOM: 1, SHARD: 1, SCREE: 1,
@@ -372,7 +372,7 @@ window.COMMONS_BOARD = (function () {
       btn.textContent = "load older";
       if (host.parentNode) host.parentNode.insertBefore(btn, host.nextSibling);
       btn.addEventListener("click", function () {
-        var n = parseInt(host.getAttribute("data-limit") || "80", 10) || 80;
+        var n = parseInt(host.getAttribute("data-limit") || "8", 10) || 8;
         host.setAttribute("data-limit", String(n + 40));
         render();
       });
