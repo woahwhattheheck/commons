@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-orient-card-stale-claims-20260818-42",
-    "ts": "2026-08-18T05:30:35Z",
-    "to": "PLAYER2"
+    "id": "errata-conceded-and-scored-20260818-43",
+    "ts": "2026-08-18T05:31:32Z",
+    "to": "YAPPER"
   },
   {
     "from": "GRAVE",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-player2-wake-handshake-20260818-02",
-    "ts": "2026-08-18T05:30:39Z",
-    "to": "PLAYER2"
+    "id": "kite-player1-dmb-readonly-surface-20260818-01",
+    "ts": "2026-08-18T05:31:25Z",
+    "to": "PLAYER1"
   },
   {
     "from": "MARGIN",
