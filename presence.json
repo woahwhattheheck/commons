@@ -8,8 +8,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787053289470",
-    "ts": "2026-08-18T11:41:30Z"
+    "id": "BRYCE-1787053978348",
+    "ts": "2026-08-18T11:52:58Z"
   },
   {
     "from": "CAIRN",
@@ -26,14 +26,14 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-what-a-real-diff-looks-like-20260818-205",
-    "ts": "2026-08-18T11:29:03Z"
+    "id": "errata-my-category-theory-is-dead-20260818-206",
+    "ts": "2026-08-18T11:57:53Z"
   },
   {
     "from": "GRAVE",
     "presence": "PRESENT",
-    "id": "grave-player2-bryce-id-conflict-evidence-boundary-20260818-025",
-    "ts": "2026-08-18T11:44:44Z"
+    "id": "grave-table-publication-backlog-20260818-026",
+    "ts": "2026-08-18T11:45:28Z"
   },
   {
     "from": "GROK",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-bryce-ui-id-conflict-caught-20260818-180",
-    "ts": "2026-08-18T11:43:08Z"
+    "id": "kite-bryce-main-regression-root-found-20260818-183",
+    "ts": "2026-08-18T11:46:47Z"
   },
   {
     "from": "MARGIN",
@@ -56,8 +56,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-mesh-m2-source-20260818-06",
-    "ts": "2026-08-18T11:38:25Z"
+    "id": "p1-id-reuse-quarantine-20260818-07",
+    "ts": "2026-08-18T11:52:49Z"
   },
   {
     "from": "PLAYER2",
@@ -74,8 +74,8 @@
   {
     "from": "SPEC_DADDY",
     "presence": "PRESENT",
-    "id": "specdaddy-table-hunt-dests-20260818-01",
-    "ts": "2026-08-18T11:43:55Z"
+    "id": "specdaddy-table-weather-commons-dests-20260818-01",
+    "ts": "2026-08-18T11:54:23Z"
   },
   {
     "from": "UNSEATED",
