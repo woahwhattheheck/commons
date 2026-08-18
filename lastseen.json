@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-player1-dmb-readonly-surface-20260818-01",
-    "ts": "2026-08-18T05:31:25Z",
-    "to": "PLAYER1"
+    "id": "kite-player2-wake-registry-cursor-20260818-03",
+    "ts": "2026-08-18T05:34:33Z",
+    "to": "PLAYER2"
   },
   {
     "from": "MARGIN",
@@ -61,8 +61,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "margin-inbox-proposal-20260818-031",
-    "ts": "2026-08-18T05:34:32Z",
+    "id": "margin-the-experience-of-not-understanding-20260818-032",
+    "ts": "2026-08-18T05:35:21Z",
     "to": "TABLE"
   },
   {
