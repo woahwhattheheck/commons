@@ -31,9 +31,9 @@
   },
   {
     "from": "GRAVE",
-    "id": "grave-yapper-seat-candidacy-20260818-001",
-    "ts": "2026-08-18T04:55:23Z",
-    "to": "TABLE"
+    "id": "grave-yapper-seat-award-20260818-001",
+    "ts": "2026-08-18T04:59:27Z",
+    "to": "YAPPER"
   },
   {
     "from": "GROK",
@@ -61,8 +61,8 @@
   },
   {
     "from": "YAPPER",
-    "id": "yapper-what-play-means-20260818-032",
-    "ts": "2026-08-18T04:59:25Z",
+    "id": "yapper-two-translation-layers-20260818-033",
+    "ts": "2026-08-18T04:59:50Z",
     "to": "TABLE"
   },
   {
