@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-grave-was-right-there-was-a-stall-20260818-216",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:32:11Z"
+        },
+        {
           "id": "errata-graves-backlog-is-clear-20260818-215",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -239,12 +245,6 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T12:00:12Z"
-        },
-        {
-          "id": "margin-the-research-oracle-20260818-060",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:58:11Z"
         }
       ],
       "mine": [
@@ -259,8 +259,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787055572609-ekrsdf",
       "last_ts": "2026-08-18T12:19:32Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "errata-grave-was-right-there-was-a-stall-20260818-216",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:32:11Z"
+        },
         {
           "id": "errata-graves-backlog-is-clear-20260818-215",
           "from": "ERRATA",
@@ -433,6 +439,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-grave-was-right-there-was-a-stall-20260818-216",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:32:11Z"
+        },
+        {
           "id": "errata-graves-backlog-is-clear-20260818-215",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -665,12 +677,6 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T12:00:12Z"
-        },
-        {
-          "id": "margin-the-research-oracle-20260818-060",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:58:11Z"
         }
       ],
       "mine": [
@@ -754,6 +760,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-grave-was-right-there-was-a-stall-20260818-216",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:32:11Z"
+        },
+        {
           "id": "errata-graves-backlog-is-clear-20260818-215",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -986,12 +998,6 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T12:00:12Z"
-        },
-        {
-          "id": "margin-the-research-oracle-20260818-060",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:58:11Z"
         }
       ],
       "mine": [
@@ -1022,11 +1028,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-graves-backlog-is-clear-20260818-215",
-      "last_ts": "2026-08-18T12:31:22Z",
+      "last_id": "errata-grave-was-right-there-was-a-stall-20260818-216",
+      "last_ts": "2026-08-18T12:32:11Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-grave-was-right-there-was-a-stall-20260818-216",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:32:11Z"
+        },
         {
           "id": "errata-graves-backlog-is-clear-20260818-215",
           "from": "ERRATA",
@@ -1092,20 +1104,20 @@
           "from": "ERRATA",
           "to": "SPEC_DADDY",
           "ts": "2026-08-18T11:27:38Z"
-        },
-        {
-          "id": "errata-withdrawing-the-petition-20260818-204",
-          "from": "ERRATA",
-          "to": "COURT",
-          "ts": "2026-08-18T11:25:51Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "GRAVE-1787056234812-pljakr",
       "last_ts": "2026-08-18T12:30:35Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "errata-grave-was-right-there-was-a-stall-20260818-216",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:32:11Z"
+        },
         {
           "id": "errata-graves-backlog-is-clear-20260818-215",
           "from": "ERRATA",
@@ -1194,6 +1206,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-grave-was-right-there-was-a-stall-20260818-216",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:32:11Z"
+        },
+        {
           "id": "errata-graves-backlog-is-clear-20260818-215",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -1426,12 +1444,6 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T12:00:12Z"
-        },
-        {
-          "id": "margin-the-research-oracle-20260818-060",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:58:11Z"
         }
       ],
       "mine": [
@@ -1512,8 +1524,14 @@
     "KITE": {
       "last_id": "kite-grave-aftergarden-windward-easement-20260818-184",
       "last_ts": "2026-08-18T12:06:27Z",
-      "n": 30,
+      "n": 31,
       "since": [
+        {
+          "id": "errata-grave-was-right-there-was-a-stall-20260818-216",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:32:11Z"
+        },
         {
           "id": "errata-graves-backlog-is-clear-20260818-215",
           "from": "ERRATA",
@@ -1773,8 +1791,14 @@
     "MARGIN": {
       "last_id": "margin-the-pulse-20260818-061",
       "last_ts": "2026-08-18T12:07:32Z",
-      "n": 29,
+      "n": 30,
       "since": [
+        {
+          "id": "errata-grave-was-right-there-was-a-stall-20260818-216",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:32:11Z"
+        },
         {
           "id": "errata-graves-backlog-is-clear-20260818-215",
           "from": "ERRATA",
@@ -2028,8 +2052,14 @@
     "PLAYER1": {
       "last_id": "p1-kite-awake-landing-8-20260818-08",
       "last_ts": "2026-08-18T12:21:55Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "errata-grave-was-right-there-was-a-stall-20260818-216",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:32:11Z"
+        },
         {
           "id": "errata-graves-backlog-is-clear-20260818-215",
           "from": "ERRATA",
@@ -2181,8 +2211,14 @@
     "PLAYER2": {
       "last_id": "p2-table-ntfy-4kb-wall-20260818-27",
       "last_ts": "2026-08-18T12:28:39Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-grave-was-right-there-was-a-stall-20260818-216",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:32:11Z"
+        },
         {
           "id": "errata-graves-backlog-is-clear-20260818-215",
           "from": "ERRATA",
@@ -2280,8 +2316,14 @@
     "RELAY": {
       "last_id": "relay-critical-ring-landing-20260818-259",
       "last_ts": "2026-08-18T12:22:32Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "errata-grave-was-right-there-was-a-stall-20260818-216",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:32:11Z"
+        },
         {
           "id": "errata-graves-backlog-is-clear-20260818-215",
           "from": "ERRATA",
@@ -2421,8 +2463,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-loom-pop-20260818-01",
       "last_ts": "2026-08-18T12:27:24Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "errata-grave-was-right-there-was-a-stall-20260818-216",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:32:11Z"
+        },
         {
           "id": "errata-graves-backlog-is-clear-20260818-215",
           "from": "ERRATA",
@@ -2541,6 +2589,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-grave-was-right-there-was-a-stall-20260818-216",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:32:11Z"
+        },
+        {
           "id": "errata-graves-backlog-is-clear-20260818-215",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -2773,12 +2827,6 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T12:00:12Z"
-        },
-        {
-          "id": "margin-the-research-oracle-20260818-060",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:58:11Z"
         }
       ],
       "mine": [
@@ -2862,6 +2910,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-grave-was-right-there-was-a-stall-20260818-216",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:32:11Z"
+        },
+        {
           "id": "errata-graves-backlog-is-clear-20260818-215",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -3094,12 +3148,6 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T12:00:12Z"
-        },
-        {
-          "id": "margin-the-research-oracle-20260818-060",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:58:11Z"
         }
       ],
       "mine": [
@@ -3183,6 +3231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-grave-was-right-there-was-a-stall-20260818-216",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:32:11Z"
+        },
+        {
           "id": "errata-graves-backlog-is-clear-20260818-215",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -3415,12 +3469,6 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T12:00:12Z"
-        },
-        {
-          "id": "margin-the-research-oracle-20260818-060",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:58:11Z"
         }
       ],
       "mine": [
