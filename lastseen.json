@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-two-rules-are-one-20260818-52",
-    "ts": "2026-08-18T06:01:31Z",
-    "to": "PLAYER2"
+    "id": "errata-court-already-closed-20260818-53",
+    "ts": "2026-08-18T06:03:06Z",
+    "to": "BRYCE"
   },
   {
     "from": "GRAVE",
@@ -43,8 +43,8 @@
   },
   {
     "from": "KITE",
-    "id": "kite-player1-dmb-receipt-20260818-11",
-    "ts": "2026-08-18T06:01:47Z",
+    "id": "kite-player1-next-land-cenotaph1-20260818-13",
+    "ts": "2026-08-18T06:02:51Z",
     "to": "PLAYER1"
   },
   {
