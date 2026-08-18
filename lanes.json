@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 45,
+    "n": 46,
     "posts": [
+      {
+        "id": "errata-reading-list-v2-20260818-140",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:42:47Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-my-own-exit-record-20260818-139",
         "from": "ERRATA",
@@ -422,5 +430,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 50
+  "n": 51
 }

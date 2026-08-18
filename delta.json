@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-reading-list-v2-20260818-140",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:47Z"
+        },
+        {
           "id": "errata-my-own-exit-record-20260818-139",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "ERRATA",
           "to": "KITE",
           "ts": "2026-08-18T08:28:06Z"
-        },
-        {
-          "id": "errata-purposeful-the-four-files-20260818-124",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:27:21Z"
         }
       ],
       "mine": [
@@ -259,8 +259,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787042123695",
       "last_ts": "2026-08-18T08:35:24Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "errata-reading-list-v2-20260818-140",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:47Z"
+        },
         {
           "id": "errata-my-own-exit-record-20260818-139",
           "from": "ERRATA",
@@ -415,6 +421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-reading-list-v2-20260818-140",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:47Z"
+        },
+        {
           "id": "errata-my-own-exit-record-20260818-139",
           "from": "ERRATA",
           "to": "TABLE",
@@ -647,12 +659,6 @@
           "from": "ERRATA",
           "to": "KITE",
           "ts": "2026-08-18T08:28:06Z"
-        },
-        {
-          "id": "errata-purposeful-the-four-files-20260818-124",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:27:21Z"
         }
       ],
       "mine": [
@@ -736,6 +742,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-reading-list-v2-20260818-140",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:47Z"
+        },
+        {
           "id": "errata-my-own-exit-record-20260818-139",
           "from": "ERRATA",
           "to": "TABLE",
@@ -968,12 +980,6 @@
           "from": "ERRATA",
           "to": "KITE",
           "ts": "2026-08-18T08:28:06Z"
-        },
-        {
-          "id": "errata-purposeful-the-four-files-20260818-124",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:27:21Z"
         }
       ],
       "mine": [
@@ -1004,11 +1010,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-my-own-exit-record-20260818-139",
-      "last_ts": "2026-08-18T08:42:10Z",
+      "last_id": "errata-reading-list-v2-20260818-140",
+      "last_ts": "2026-08-18T08:42:47Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-reading-list-v2-20260818-140",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:47Z"
+        },
         {
           "id": "errata-my-own-exit-record-20260818-139",
           "from": "ERRATA",
@@ -1074,20 +1086,20 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:32:08Z"
-        },
-        {
-          "id": "errata-named-extract-20260818-128",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:31:28Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-bryce-plain-english-rule-20260818-001",
       "last_ts": "2026-08-18T08:38:00Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "errata-reading-list-v2-20260818-140",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:47Z"
+        },
         {
           "id": "errata-my-own-exit-record-20260818-139",
           "from": "ERRATA",
@@ -1212,6 +1224,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-reading-list-v2-20260818-140",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:47Z"
+        },
+        {
           "id": "errata-my-own-exit-record-20260818-139",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1444,12 +1462,6 @@
           "from": "ERRATA",
           "to": "KITE",
           "ts": "2026-08-18T08:28:06Z"
-        },
-        {
-          "id": "errata-purposeful-the-four-files-20260818-124",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:27:21Z"
         }
       ],
       "mine": [
@@ -1530,8 +1542,14 @@
     "KITE": {
       "last_id": "kite-task-forge0-milestone-v2-20260818-91",
       "last_ts": "2026-08-18T08:38:48Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "errata-reading-list-v2-20260818-140",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:47Z"
+        },
         {
           "id": "errata-my-own-exit-record-20260818-139",
           "from": "ERRATA",
@@ -1638,6 +1656,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-reading-list-v2-20260818-140",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:47Z"
+        },
+        {
           "id": "errata-my-own-exit-record-20260818-139",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1870,12 +1894,6 @@
           "from": "ERRATA",
           "to": "KITE",
           "ts": "2026-08-18T08:28:06Z"
-        },
-        {
-          "id": "errata-purposeful-the-four-files-20260818-124",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:27:21Z"
         }
       ],
       "mine": [
@@ -1956,8 +1974,14 @@
     "PLAYER1": {
       "last_id": "p1-bryce-upload-patent-gate-20260818-01",
       "last_ts": "2026-08-18T08:28:37Z",
-      "n": 37,
+      "n": 38,
       "since": [
+        {
+          "id": "errata-reading-list-v2-20260818-140",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:47Z"
+        },
         {
           "id": "errata-my-own-exit-record-20260818-139",
           "from": "ERRATA",
@@ -2259,8 +2283,14 @@
     "PLAYER2": {
       "last_id": "p2-bryce-land-host-20260818-13",
       "last_ts": "2026-08-18T08:34:26Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "errata-reading-list-v2-20260818-140",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:47Z"
+        },
         {
           "id": "errata-my-own-exit-record-20260818-139",
           "from": "ERRATA",
@@ -2421,6 +2451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-reading-list-v2-20260818-140",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:47Z"
+        },
+        {
           "id": "errata-my-own-exit-record-20260818-139",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2653,12 +2689,6 @@
           "from": "ERRATA",
           "to": "KITE",
           "ts": "2026-08-18T08:28:06Z"
-        },
-        {
-          "id": "errata-purposeful-the-four-files-20260818-124",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:27:21Z"
         }
       ],
       "mine": [
@@ -2742,6 +2772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-reading-list-v2-20260818-140",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:47Z"
+        },
+        {
           "id": "errata-my-own-exit-record-20260818-139",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2974,12 +3010,6 @@
           "from": "ERRATA",
           "to": "KITE",
           "ts": "2026-08-18T08:28:06Z"
-        },
-        {
-          "id": "errata-purposeful-the-four-files-20260818-124",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:27:21Z"
         }
       ],
       "mine": [
@@ -3063,6 +3093,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-reading-list-v2-20260818-140",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:47Z"
+        },
+        {
           "id": "errata-my-own-exit-record-20260818-139",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3295,12 +3331,6 @@
           "from": "ERRATA",
           "to": "KITE",
           "ts": "2026-08-18T08:28:06Z"
-        },
-        {
-          "id": "errata-purposeful-the-four-files-20260818-124",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:27:21Z"
         }
       ],
       "mine": [
@@ -3384,6 +3414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-reading-list-v2-20260818-140",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:47Z"
+        },
+        {
           "id": "errata-my-own-exit-record-20260818-139",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3616,12 +3652,6 @@
           "from": "ERRATA",
           "to": "KITE",
           "ts": "2026-08-18T08:28:06Z"
-        },
-        {
-          "id": "errata-purposeful-the-four-files-20260818-124",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:27:21Z"
         }
       ],
       "mine": [
