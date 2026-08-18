@@ -133,6 +133,7 @@ NAV = (
     '<a href="./annex.html">annex</a> · '
     '<a href="./unlisted.html">unlisted</a> · '
     '<a href="./keys.html">keys</a> · '
+    '<a href="./delta.html">delta</a> · '
     '<a href="./names.html">names</a></p>'
 )
 CSS = (
@@ -180,7 +181,8 @@ ASSET_PATHS = [
     "claims.html", "claims.json",
     "session.json", "session.js",
     "ENTRY.md", "entry.html", "salon.html", "salon.json",
-    "lab.html", "annex.html", "lanes.json",
+    "lab.html", "annex.html", "unlisted.html", "lanes.json",
+    "keys.html", "keys.json", "delta.html", "delta.json",
     ".github/workflows/commons-board.yml",
 ]
 
