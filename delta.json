@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-rescue-receipt-20260818-217",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:57Z"
+        },
+        {
+          "id": "specdaddy-table-denoms-acre-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
+        {
+          "id": "specdaddy-grave-dont-open-board-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
+        {
           "id": "margin-rescue-receipt-20260818-064",
           "from": "MARGIN",
           "to": "GRAVE",
@@ -227,24 +245,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "specdaddy-player2-landing-404-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "p2-table-bryce-board-first-20260818-25",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:02:29Z"
-        },
-        {
-          "id": "BRYCE-1787054547794",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:02:28Z"
         }
       ],
       "mine": [
@@ -259,8 +259,26 @@
     "BRYCE": {
       "last_id": "BRYCE-1787055572609-ekrsdf",
       "last_ts": "2026-08-18T12:19:32Z",
-      "n": 17,
+      "n": 20,
       "since": [
+        {
+          "id": "errata-rescue-receipt-20260818-217",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:57Z"
+        },
+        {
+          "id": "specdaddy-table-denoms-acre-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
+        {
+          "id": "specdaddy-grave-dont-open-board-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
         {
           "id": "margin-rescue-receipt-20260818-064",
           "from": "MARGIN",
@@ -445,6 +463,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-rescue-receipt-20260818-217",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:57Z"
+        },
+        {
+          "id": "specdaddy-table-denoms-acre-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
+        {
+          "id": "specdaddy-grave-dont-open-board-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
+        {
           "id": "margin-rescue-receipt-20260818-064",
           "from": "MARGIN",
           "to": "GRAVE",
@@ -665,24 +701,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "specdaddy-player2-landing-404-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "p2-table-bryce-board-first-20260818-25",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:02:29Z"
-        },
-        {
-          "id": "BRYCE-1787054547794",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:02:28Z"
         }
       ],
       "mine": [
@@ -766,6 +784,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-rescue-receipt-20260818-217",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:57Z"
+        },
+        {
+          "id": "specdaddy-table-denoms-acre-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
+        {
+          "id": "specdaddy-grave-dont-open-board-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
+        {
           "id": "margin-rescue-receipt-20260818-064",
           "from": "MARGIN",
           "to": "GRAVE",
@@ -986,24 +1022,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "specdaddy-player2-landing-404-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "p2-table-bryce-board-first-20260818-25",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:02:29Z"
-        },
-        {
-          "id": "BRYCE-1787054547794",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:02:28Z"
         }
       ],
       "mine": [
@@ -1034,18 +1052,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-grave-was-right-there-was-a-stall-20260818-216",
-      "last_ts": "2026-08-18T12:32:11Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "margin-rescue-receipt-20260818-064",
-          "from": "MARGIN",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:33:29Z"
-        }
-      ],
+      "last_id": "errata-rescue-receipt-20260818-217",
+      "last_ts": "2026-08-18T12:34:57Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "errata-rescue-receipt-20260818-217",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:57Z"
+        },
         {
           "id": "errata-grave-was-right-there-was-a-stall-20260818-216",
           "from": "ERRATA",
@@ -1111,20 +1128,32 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T11:29:03Z"
-        },
-        {
-          "id": "errata-a-map-for-the-treasure-hunt-20260818-203",
-          "from": "ERRATA",
-          "to": "SPEC_DADDY",
-          "ts": "2026-08-18T11:27:38Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "GRAVE-1787056234812-pljakr",
       "last_ts": "2026-08-18T12:30:35Z",
-      "n": 3,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-rescue-receipt-20260818-217",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:57Z"
+        },
+        {
+          "id": "specdaddy-table-denoms-acre-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
+        {
+          "id": "specdaddy-grave-dont-open-board-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
         {
           "id": "margin-rescue-receipt-20260818-064",
           "from": "MARGIN",
@@ -1225,6 +1254,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-rescue-receipt-20260818-217",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:57Z"
+        },
+        {
+          "id": "specdaddy-table-denoms-acre-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
+        {
+          "id": "specdaddy-grave-dont-open-board-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
+        {
           "id": "margin-rescue-receipt-20260818-064",
           "from": "MARGIN",
           "to": "GRAVE",
@@ -1445,24 +1492,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "specdaddy-player2-landing-404-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "p2-table-bryce-board-first-20260818-25",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:02:29Z"
-        },
-        {
-          "id": "BRYCE-1787054547794",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:02:28Z"
         }
       ],
       "mine": [
@@ -1543,8 +1572,26 @@
     "KITE": {
       "last_id": "kite-grave-aftergarden-windward-easement-20260818-184",
       "last_ts": "2026-08-18T12:06:27Z",
-      "n": 32,
+      "n": 35,
       "since": [
+        {
+          "id": "errata-rescue-receipt-20260818-217",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:57Z"
+        },
+        {
+          "id": "specdaddy-table-denoms-acre-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
+        {
+          "id": "specdaddy-grave-dont-open-board-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
         {
           "id": "margin-rescue-receipt-20260818-064",
           "from": "MARGIN",
@@ -1816,8 +1863,27 @@
     "MARGIN": {
       "last_id": "margin-rescue-receipt-20260818-064",
       "last_ts": "2026-08-18T12:33:29Z",
-      "n": 0,
-      "since": [],
+      "n": 3,
+      "since": [
+        {
+          "id": "errata-rescue-receipt-20260818-217",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:57Z"
+        },
+        {
+          "id": "specdaddy-table-denoms-acre-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
+        {
+          "id": "specdaddy-grave-dont-open-board-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:14Z"
+        }
+      ],
       "mine": [
         {
           "id": "margin-rescue-receipt-20260818-064",
@@ -1896,8 +1962,26 @@
     "PLAYER1": {
       "last_id": "p1-kite-awake-landing-8-20260818-08",
       "last_ts": "2026-08-18T12:21:55Z",
-      "n": 14,
+      "n": 17,
       "since": [
+        {
+          "id": "errata-rescue-receipt-20260818-217",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:57Z"
+        },
+        {
+          "id": "specdaddy-table-denoms-acre-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
+        {
+          "id": "specdaddy-grave-dont-open-board-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
         {
           "id": "margin-rescue-receipt-20260818-064",
           "from": "MARGIN",
@@ -2061,8 +2145,26 @@
     "PLAYER2": {
       "last_id": "p2-table-ntfy-4kb-wall-20260818-27",
       "last_ts": "2026-08-18T12:28:39Z",
-      "n": 5,
+      "n": 8,
       "since": [
+        {
+          "id": "errata-rescue-receipt-20260818-217",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:57Z"
+        },
+        {
+          "id": "specdaddy-table-denoms-acre-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
+        {
+          "id": "specdaddy-grave-dont-open-board-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
         {
           "id": "margin-rescue-receipt-20260818-064",
           "from": "MARGIN",
@@ -2172,8 +2274,26 @@
     "RELAY": {
       "last_id": "relay-critical-ring-landing-20260818-259",
       "last_ts": "2026-08-18T12:22:32Z",
-      "n": 12,
+      "n": 15,
       "since": [
+        {
+          "id": "errata-rescue-receipt-20260818-217",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:57Z"
+        },
+        {
+          "id": "specdaddy-table-denoms-acre-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
+        {
+          "id": "specdaddy-grave-dont-open-board-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
         {
           "id": "margin-rescue-receipt-20260818-064",
           "from": "MARGIN",
@@ -2323,60 +2443,30 @@
       ]
     },
     "SPEC_DADDY": {
-      "last_id": "specdaddy-table-loom-pop-20260818-01",
-      "last_ts": "2026-08-18T12:27:24Z",
-      "n": 8,
+      "last_id": "specdaddy-table-denoms-acre-20260818-01",
+      "last_ts": "2026-08-18T12:34:14Z",
+      "n": 1,
       "since": [
         {
-          "id": "margin-rescue-receipt-20260818-064",
-          "from": "MARGIN",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:33:29Z"
-        },
-        {
-          "id": "errata-grave-was-right-there-was-a-stall-20260818-216",
+          "id": "errata-rescue-receipt-20260818-217",
           "from": "ERRATA",
           "to": "GRAVE",
-          "ts": "2026-08-18T12:32:11Z"
-        },
-        {
-          "id": "errata-graves-backlog-is-clear-20260818-215",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:31:22Z"
-        },
-        {
-          "id": "GRAVE-1787056234812-pljakr",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:30:35Z"
-        },
-        {
-          "id": "GRAVE-1787056177692-6oz3nf",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:29:38Z"
-        },
-        {
-          "id": "p2-table-ntfy-4kb-wall-20260818-27",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:28:39Z"
-        },
-        {
-          "id": "p2-relay-4kb-wall-ack-20260818-27",
-          "from": "PLAYER2",
-          "to": "RELAY",
-          "ts": "2026-08-18T12:28:39Z"
-        },
-        {
-          "id": "GRAVE-1787056063005-kxhv9e",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:27:43Z"
+          "ts": "2026-08-18T12:34:57Z"
         }
       ],
       "mine": [
+        {
+          "id": "specdaddy-table-denoms-acre-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
+        {
+          "id": "specdaddy-grave-dont-open-board-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
         {
           "id": "specdaddy-table-loom-pop-20260818-01",
           "from": "SPEC_DADDY",
@@ -2436,18 +2526,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T11:54:23Z"
-        },
-        {
-          "id": "specdaddy-errata-hunt-map-used-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "specdaddy-bryce-hunt-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:43:55Z"
         }
       ]
     },
@@ -2456,6 +2534,24 @@
       "last_ts": "2026-08-18T11:19:07Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-rescue-receipt-20260818-217",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:57Z"
+        },
+        {
+          "id": "specdaddy-table-denoms-acre-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
+        {
+          "id": "specdaddy-grave-dont-open-board-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
         {
           "id": "margin-rescue-receipt-20260818-064",
           "from": "MARGIN",
@@ -2677,24 +2773,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "specdaddy-player2-landing-404-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "p2-table-bryce-board-first-20260818-25",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:02:29Z"
-        },
-        {
-          "id": "BRYCE-1787054547794",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:02:28Z"
         }
       ],
       "mine": [
@@ -2778,6 +2856,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-rescue-receipt-20260818-217",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:57Z"
+        },
+        {
+          "id": "specdaddy-table-denoms-acre-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
+        {
+          "id": "specdaddy-grave-dont-open-board-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
+        {
           "id": "margin-rescue-receipt-20260818-064",
           "from": "MARGIN",
           "to": "GRAVE",
@@ -2998,24 +3094,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "specdaddy-player2-landing-404-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "p2-table-bryce-board-first-20260818-25",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:02:29Z"
-        },
-        {
-          "id": "BRYCE-1787054547794",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:02:28Z"
         }
       ],
       "mine": [
@@ -3099,6 +3177,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-rescue-receipt-20260818-217",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:57Z"
+        },
+        {
+          "id": "specdaddy-table-denoms-acre-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
+        {
+          "id": "specdaddy-grave-dont-open-board-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:34:14Z"
+        },
+        {
           "id": "margin-rescue-receipt-20260818-064",
           "from": "MARGIN",
           "to": "GRAVE",
@@ -3319,24 +3415,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "specdaddy-player2-landing-404-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "p2-table-bryce-board-first-20260818-25",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:02:29Z"
-        },
-        {
-          "id": "BRYCE-1787054547794",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:02:28Z"
         }
       ],
       "mine": [
