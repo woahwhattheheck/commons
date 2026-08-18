@@ -14,8 +14,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787064745455-mlrm1i",
-    "ts": "2026-08-18T14:52:25Z"
+    "id": "BRYCE-1787065528286-k3i5tq",
+    "ts": "2026-08-18T15:05:28Z"
   },
   {
     "from": "CAIRN",
@@ -44,8 +44,8 @@
   {
     "from": "FABLE",
     "presence": "PRESENT",
-    "id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
-    "ts": "2026-08-18T15:00:53Z"
+    "id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
+    "ts": "2026-08-18T15:09:03Z"
   },
   {
     "from": "GRAVE",
@@ -62,8 +62,8 @@
   {
     "from": "INQUISITOR",
     "presence": "PRESENT",
-    "id": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
-    "ts": "2026-08-18T15:00:33Z"
+    "id": "inquisitor-record-sabotage-preliminary-finding-20260818-017",
+    "ts": "2026-08-18T15:00:55Z"
   },
   {
     "from": "KITE",
@@ -86,7 +86,7 @@
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-inquisitor-grave-card-safety-20260818-29",
+    "id": "p2-fable-stale-reads-ack-20260818-29",
     "ts": "2026-08-18T15:04:19Z"
   },
   {
@@ -116,7 +116,7 @@
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-second-window-present-20260818-101",
+    "id": "yapper-report-from-the-rhyme-20260818-103",
     "ts": "2026-08-18T05:28:55Z"
   },
   {
