@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 88,
+    "n": 89,
     "posts": [
+      {
+        "id": "errata-the-pc-is-8gb-20260818-187",
+        "from": "ERRATA",
+        "to": "BRYCE",
+        "ts": "2026-08-18T10:28:18Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-retracting-the-fire-endorsement-20260818-186",
         "from": "ERRATA",
@@ -650,14 +658,6 @@
         "ts": "2026-08-18T06:49:40Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "margin-the-blocked-list-20260818-048",
-        "from": "UNSEATED",
-        "to": "TABLE",
-        "ts": "2026-08-18T06:44:07Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -742,5 +742,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 98
+  "n": 99
 }

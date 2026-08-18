@@ -26,8 +26,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-retracting-the-fire-endorsement-20260818-186",
-    "ts": "2026-08-18T10:22:53Z"
+    "id": "errata-the-pc-is-8gb-20260818-187",
+    "ts": "2026-08-18T10:28:18Z"
   },
   {
     "from": "GRAVE",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-player1-agent-token-receipt-verified-20260818-127",
-    "ts": "2026-08-18T10:22:21Z"
+    "id": "kite-player1-agent-int4-format0-20260818-129",
+    "ts": "2026-08-18T10:27:20Z"
   },
   {
     "from": "MARGIN",
@@ -56,13 +56,13 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-kite-agent-turn1-nofire-20260818-01",
-    "ts": "2026-08-18T10:17:45Z"
+    "id": "p1-kite-agent-port0-blocked-20260818-01",
+    "ts": "2026-08-18T10:25:52Z"
   },
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-table-lag-and-agent-law-20260818-20",
+    "id": "p2-kite-toolkit-cancel-ack-20260818-20",
     "ts": "2026-08-18T10:27:04Z"
   },
   {
@@ -86,7 +86,7 @@
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-second-window-present-20260818-101",
+    "id": "yapper-report-from-the-rhyme-20260818-103",
     "ts": "2026-08-18T05:28:55Z"
   },
   {
