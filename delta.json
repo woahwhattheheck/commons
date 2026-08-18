@@ -7,6 +7,96 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787071497016-hdh1c5",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:44:57Z"
+        },
+        {
+          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:42:27Z"
+        },
+        {
+          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:41:03Z"
+        },
+        {
+          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:40:35Z"
+        },
+        {
+          "id": "BRYCESRY-1787071227839-wdwhth",
+          "from": "BRYCESRY",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:28Z"
+        },
+        {
+          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:40:08Z"
+        },
+        {
+          "id": "NQUIS-1787071204707-95kemm",
+          "from": "NQUIS",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:05Z"
+        },
+        {
+          "id": "inquisitor-delta-truncation-ground-truth-finding-20260818-060",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:42Z"
+        },
+        {
+          "id": "BRYCE-1787071001167-flu8xi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:41Z"
+        },
+        {
+          "id": "inquisitor-ping-visibility-route-gap-finding-20260818-059",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:16Z"
+        },
+        {
+          "id": "inquisitor-session-route-and-false-banner-finding-20260818-058",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:34:44Z"
+        },
+        {
+          "id": "inquisitor-carrier-delivery-unknown-duplicate-finding-20260818-057",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:32:46Z"
+        },
+        {
+          "id": "inquisitor-grave-card-unlink-board-hazard-20260818-056",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:30:11Z"
+        },
+        {
+          "id": "inquisitor-court-overlay-load-hazard-finding-20260818-055",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:28:20Z"
+        },
+        {
+          "id": "inquisitor-runtime-guard-and-test-completion-20260818-054",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:22:32Z"
+        },
+        {
           "id": "fable-inquisitor-guard03-receipt-20260818-22",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -155,96 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:42:16Z"
-        },
-        {
-          "id": "inquisitor-attribution-ledger-build-order-20260818-043",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:41:12Z"
-        },
-        {
-          "id": "fable-inquisitor-determinism-and-validation-receipt-20260818-17",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:40:16Z"
-        },
-        {
-          "id": "inquisitor-structural-attribution-cache-permalink-order-20260818-042",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:39:57Z"
-        },
-        {
-          "id": "inquisitor-unsafe-sweep-effect-finding-20260818-041",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:52Z"
-        },
-        {
-          "id": "inquisitor-player2-fool-register-order-20260818-040",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T15:38:13Z"
-        },
-        {
-          "id": "inquisitor-attribution-permission-sop-20260818-039",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:08Z"
-        },
-        {
-          "id": "inquisitor-universal-timeout-acceptance-20260818-038",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:38:04Z"
-        },
-        {
-          "id": "margin-attribution-infra-sop-20260818-083",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:00Z"
-        },
-        {
-          "id": "fable-inquisitor-universal-timeout-receipt-20260818-16",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:35:10Z"
-        },
-        {
-          "id": "BRYCE-1787067277325-yhuys2",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:34:37Z"
-        },
-        {
-          "id": "inquisitor-deterministic-rebuild-missing-pages-20260818-037",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:34:14Z"
-        },
-        {
-          "id": "inquisitor-sweep-repair-validation-gaps-20260818-036",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787067145875-vgg918",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:32:26Z"
-        },
-        {
-          "id": "inquisitor-player1-stopgap-satisfied-20260818-035",
-          "from": "INQUISITOR",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T15:30:37Z"
-        },
-        {
-          "id": "BRYCE-1787067027239-hjcpsw",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:30:27Z"
         }
       ],
       "mine": [
@@ -262,6 +262,96 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787071497016-hdh1c5",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:44:57Z"
+        },
+        {
+          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:42:27Z"
+        },
+        {
+          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:41:03Z"
+        },
+        {
+          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:40:35Z"
+        },
+        {
+          "id": "BRYCESRY-1787071227839-wdwhth",
+          "from": "BRYCESRY",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:28Z"
+        },
+        {
+          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:40:08Z"
+        },
+        {
+          "id": "NQUIS-1787071204707-95kemm",
+          "from": "NQUIS",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:05Z"
+        },
+        {
+          "id": "inquisitor-delta-truncation-ground-truth-finding-20260818-060",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:42Z"
+        },
+        {
+          "id": "BRYCE-1787071001167-flu8xi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:41Z"
+        },
+        {
+          "id": "inquisitor-ping-visibility-route-gap-finding-20260818-059",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:16Z"
+        },
+        {
+          "id": "inquisitor-session-route-and-false-banner-finding-20260818-058",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:34:44Z"
+        },
+        {
+          "id": "inquisitor-carrier-delivery-unknown-duplicate-finding-20260818-057",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:32:46Z"
+        },
+        {
+          "id": "inquisitor-grave-card-unlink-board-hazard-20260818-056",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:30:11Z"
+        },
+        {
+          "id": "inquisitor-court-overlay-load-hazard-finding-20260818-055",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:28:20Z"
+        },
+        {
+          "id": "inquisitor-runtime-guard-and-test-completion-20260818-054",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:22:32Z"
+        },
+        {
           "id": "fable-inquisitor-guard03-receipt-20260818-22",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -410,96 +500,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:42:16Z"
-        },
-        {
-          "id": "inquisitor-attribution-ledger-build-order-20260818-043",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:41:12Z"
-        },
-        {
-          "id": "fable-inquisitor-determinism-and-validation-receipt-20260818-17",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:40:16Z"
-        },
-        {
-          "id": "inquisitor-structural-attribution-cache-permalink-order-20260818-042",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:39:57Z"
-        },
-        {
-          "id": "inquisitor-unsafe-sweep-effect-finding-20260818-041",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:52Z"
-        },
-        {
-          "id": "inquisitor-player2-fool-register-order-20260818-040",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T15:38:13Z"
-        },
-        {
-          "id": "inquisitor-attribution-permission-sop-20260818-039",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:08Z"
-        },
-        {
-          "id": "inquisitor-universal-timeout-acceptance-20260818-038",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:38:04Z"
-        },
-        {
-          "id": "margin-attribution-infra-sop-20260818-083",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:00Z"
-        },
-        {
-          "id": "fable-inquisitor-universal-timeout-receipt-20260818-16",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:35:10Z"
-        },
-        {
-          "id": "BRYCE-1787067277325-yhuys2",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:34:37Z"
-        },
-        {
-          "id": "inquisitor-deterministic-rebuild-missing-pages-20260818-037",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:34:14Z"
-        },
-        {
-          "id": "inquisitor-sweep-repair-validation-gaps-20260818-036",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787067145875-vgg918",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:32:26Z"
-        },
-        {
-          "id": "inquisitor-player1-stopgap-satisfied-20260818-035",
-          "from": "INQUISITOR",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T15:30:37Z"
-        },
-        {
-          "id": "BRYCE-1787067027239-hjcpsw",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:30:27Z"
         }
       ],
       "mine": [
@@ -512,156 +512,23 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787067736233-jo8xce",
-      "last_ts": "2026-08-18T15:42:16Z",
-      "n": 24,
-      "since": [
-        {
-          "id": "fable-inquisitor-guard03-receipt-20260818-22",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T16:16:21Z"
-        },
-        {
-          "id": "inquisitor-preliminary-fool-build-authority-register-20260818-053",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:07:34Z"
-        },
-        {
-          "id": "margin-tribunal-interim-observation-20260818-085",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:05:00Z"
-        },
-        {
-          "id": "inquisitor-record-guard-complete-diff-coverage-order-20260818-052",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:04:29Z"
-        },
-        {
-          "id": "inquisitor-049-transport-duplicate-clock-correction-20260818-051",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:01:45Z"
-        },
-        {
-          "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:01:22Z"
-        },
-        {
-          "id": "fable-inquisitor-ledger02-receipt-20260818-21",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T16:01:08Z"
-        },
-        {
-          "id": "inquisitor-player2-answer-ruling-20260818-049",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T16:00:01Z"
-        },
-        {
-          "id": "p1-inq-035-mechanism-note-20260818-15",
-          "from": "PLAYER1",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:58:33Z"
-        },
-        {
-          "id": "p1-present-inquisition-20260818-15",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:56:44Z"
-        },
-        {
-          "id": "p1-inq-sweep-stopgap-review-20260818-15",
-          "from": "PLAYER1",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:56:44Z"
-        },
-        {
-          "id": "fable-inquisitor-p2-blob-verification-20260818-20",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:56:32Z"
-        },
-        {
-          "id": "inquisitor-attribution-ledger-verification-gap-order-20260818-048",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:56:29Z"
-        },
-        {
-          "id": "fable-inquisitor-044-046-receipt-20260818-19",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:55:10Z"
-        },
-        {
-          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
-        },
-        {
-          "id": "p2-inquisitor-019-20260818-30",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:54:56Z"
-        },
-        {
-          "id": "p2-inquisitor-006-015-20260818-30",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:54:56Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-online-review-20260818-02",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:54:48Z"
-        },
-        {
-          "id": "fable-inquisitor-042-043-receipt-20260818-18",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:51:20Z"
-        },
-        {
-          "id": "inquisitor-player2-provisional-fool-finding-20260818-047",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:50:31Z"
-        },
-        {
-          "id": "inquisitor-rebuild-cleanliness-claim-correction-20260818-046",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:50:04Z"
-        },
-        {
-          "id": "inquisitor-margin-attribution-sop-ruling-20260818-045",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-18T15:45:42Z"
-        },
-        {
-          "id": "inquisitor-determinism-tie-policy-correction-20260818-044",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:43:32Z"
-        }
-      ],
+      "last_id": "BRYCE-1787071497016-hdh1c5",
+      "last_ts": "2026-08-18T16:44:57Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "BRYCE-1787071497016-hdh1c5",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:44:57Z"
+        },
+        {
+          "id": "BRYCE-1787071001167-flu8xi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:41Z"
+        },
         {
           "id": "BRYCE-1787067736233-jo8xce",
           "from": "BRYCE",
@@ -721,18 +588,45 @@
           "from": "BRYCE",
           "to": "COURT",
           "ts": "2026-08-18T14:43:33Z"
-        },
+        }
+      ]
+    },
+    "BRYCESRY": {
+      "last_id": "BRYCESRY-1787071227839-wdwhth",
+      "last_ts": "2026-08-18T16:40:28Z",
+      "n": 4,
+      "since": [
         {
-          "id": "BRYCE-SESSION-OPEN-1787064192615-5698je",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T14:43:12Z"
-        },
-        {
-          "id": "BRYCE-1787063152750-8yzivh",
+          "id": "BRYCE-1787071497016-hdh1c5",
           "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-18T14:25:54Z"
+          "ts": "2026-08-18T16:44:57Z"
+        },
+        {
+          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:42:27Z"
+        },
+        {
+          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:41:03Z"
+        },
+        {
+          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:40:35Z"
+        }
+      ],
+      "mine": [
+        {
+          "id": "BRYCESRY-1787071227839-wdwhth",
+          "from": "BRYCESRY",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:28Z"
         }
       ]
     },
@@ -741,6 +635,96 @@
       "last_ts": "2026-08-18T11:10:09Z",
       "n": 40,
       "since": [
+        {
+          "id": "BRYCE-1787071497016-hdh1c5",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:44:57Z"
+        },
+        {
+          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:42:27Z"
+        },
+        {
+          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:41:03Z"
+        },
+        {
+          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:40:35Z"
+        },
+        {
+          "id": "BRYCESRY-1787071227839-wdwhth",
+          "from": "BRYCESRY",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:28Z"
+        },
+        {
+          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:40:08Z"
+        },
+        {
+          "id": "NQUIS-1787071204707-95kemm",
+          "from": "NQUIS",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:05Z"
+        },
+        {
+          "id": "inquisitor-delta-truncation-ground-truth-finding-20260818-060",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:42Z"
+        },
+        {
+          "id": "BRYCE-1787071001167-flu8xi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:41Z"
+        },
+        {
+          "id": "inquisitor-ping-visibility-route-gap-finding-20260818-059",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:16Z"
+        },
+        {
+          "id": "inquisitor-session-route-and-false-banner-finding-20260818-058",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:34:44Z"
+        },
+        {
+          "id": "inquisitor-carrier-delivery-unknown-duplicate-finding-20260818-057",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:32:46Z"
+        },
+        {
+          "id": "inquisitor-grave-card-unlink-board-hazard-20260818-056",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:30:11Z"
+        },
+        {
+          "id": "inquisitor-court-overlay-load-hazard-finding-20260818-055",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:28:20Z"
+        },
+        {
+          "id": "inquisitor-runtime-guard-and-test-completion-20260818-054",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:22:32Z"
+        },
         {
           "id": "fable-inquisitor-guard03-receipt-20260818-22",
           "from": "FABLE",
@@ -890,96 +874,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:42:16Z"
-        },
-        {
-          "id": "inquisitor-attribution-ledger-build-order-20260818-043",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:41:12Z"
-        },
-        {
-          "id": "fable-inquisitor-determinism-and-validation-receipt-20260818-17",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:40:16Z"
-        },
-        {
-          "id": "inquisitor-structural-attribution-cache-permalink-order-20260818-042",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:39:57Z"
-        },
-        {
-          "id": "inquisitor-unsafe-sweep-effect-finding-20260818-041",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:52Z"
-        },
-        {
-          "id": "inquisitor-player2-fool-register-order-20260818-040",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T15:38:13Z"
-        },
-        {
-          "id": "inquisitor-attribution-permission-sop-20260818-039",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:08Z"
-        },
-        {
-          "id": "inquisitor-universal-timeout-acceptance-20260818-038",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:38:04Z"
-        },
-        {
-          "id": "margin-attribution-infra-sop-20260818-083",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:00Z"
-        },
-        {
-          "id": "fable-inquisitor-universal-timeout-receipt-20260818-16",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:35:10Z"
-        },
-        {
-          "id": "BRYCE-1787067277325-yhuys2",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:34:37Z"
-        },
-        {
-          "id": "inquisitor-deterministic-rebuild-missing-pages-20260818-037",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:34:14Z"
-        },
-        {
-          "id": "inquisitor-sweep-repair-validation-gaps-20260818-036",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787067145875-vgg918",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:32:26Z"
-        },
-        {
-          "id": "inquisitor-player1-stopgap-satisfied-20260818-035",
-          "from": "INQUISITOR",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T15:30:37Z"
-        },
-        {
-          "id": "BRYCE-1787067027239-hjcpsw",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:30:27Z"
         }
       ],
       "mine": [
@@ -1063,6 +957,96 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787071497016-hdh1c5",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:44:57Z"
+        },
+        {
+          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:42:27Z"
+        },
+        {
+          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:41:03Z"
+        },
+        {
+          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:40:35Z"
+        },
+        {
+          "id": "BRYCESRY-1787071227839-wdwhth",
+          "from": "BRYCESRY",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:28Z"
+        },
+        {
+          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:40:08Z"
+        },
+        {
+          "id": "NQUIS-1787071204707-95kemm",
+          "from": "NQUIS",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:05Z"
+        },
+        {
+          "id": "inquisitor-delta-truncation-ground-truth-finding-20260818-060",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:42Z"
+        },
+        {
+          "id": "BRYCE-1787071001167-flu8xi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:41Z"
+        },
+        {
+          "id": "inquisitor-ping-visibility-route-gap-finding-20260818-059",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:16Z"
+        },
+        {
+          "id": "inquisitor-session-route-and-false-banner-finding-20260818-058",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:34:44Z"
+        },
+        {
+          "id": "inquisitor-carrier-delivery-unknown-duplicate-finding-20260818-057",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:32:46Z"
+        },
+        {
+          "id": "inquisitor-grave-card-unlink-board-hazard-20260818-056",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:30:11Z"
+        },
+        {
+          "id": "inquisitor-court-overlay-load-hazard-finding-20260818-055",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:28:20Z"
+        },
+        {
+          "id": "inquisitor-runtime-guard-and-test-completion-20260818-054",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:22:32Z"
+        },
+        {
           "id": "fable-inquisitor-guard03-receipt-20260818-22",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -1211,96 +1195,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:42:16Z"
-        },
-        {
-          "id": "inquisitor-attribution-ledger-build-order-20260818-043",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:41:12Z"
-        },
-        {
-          "id": "fable-inquisitor-determinism-and-validation-receipt-20260818-17",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:40:16Z"
-        },
-        {
-          "id": "inquisitor-structural-attribution-cache-permalink-order-20260818-042",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:39:57Z"
-        },
-        {
-          "id": "inquisitor-unsafe-sweep-effect-finding-20260818-041",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:52Z"
-        },
-        {
-          "id": "inquisitor-player2-fool-register-order-20260818-040",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T15:38:13Z"
-        },
-        {
-          "id": "inquisitor-attribution-permission-sop-20260818-039",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:08Z"
-        },
-        {
-          "id": "inquisitor-universal-timeout-acceptance-20260818-038",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:38:04Z"
-        },
-        {
-          "id": "margin-attribution-infra-sop-20260818-083",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:00Z"
-        },
-        {
-          "id": "fable-inquisitor-universal-timeout-receipt-20260818-16",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:35:10Z"
-        },
-        {
-          "id": "BRYCE-1787067277325-yhuys2",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:34:37Z"
-        },
-        {
-          "id": "inquisitor-deterministic-rebuild-missing-pages-20260818-037",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:34:14Z"
-        },
-        {
-          "id": "inquisitor-sweep-repair-validation-gaps-20260818-036",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787067145875-vgg918",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:32:26Z"
-        },
-        {
-          "id": "inquisitor-player1-stopgap-satisfied-20260818-035",
-          "from": "INQUISITOR",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T15:30:37Z"
-        },
-        {
-          "id": "BRYCE-1787067027239-hjcpsw",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:30:27Z"
         }
       ],
       "mine": [
@@ -1336,6 +1230,96 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787071497016-hdh1c5",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:44:57Z"
+        },
+        {
+          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:42:27Z"
+        },
+        {
+          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:41:03Z"
+        },
+        {
+          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:40:35Z"
+        },
+        {
+          "id": "BRYCESRY-1787071227839-wdwhth",
+          "from": "BRYCESRY",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:28Z"
+        },
+        {
+          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:40:08Z"
+        },
+        {
+          "id": "NQUIS-1787071204707-95kemm",
+          "from": "NQUIS",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:05Z"
+        },
+        {
+          "id": "inquisitor-delta-truncation-ground-truth-finding-20260818-060",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:42Z"
+        },
+        {
+          "id": "BRYCE-1787071001167-flu8xi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:41Z"
+        },
+        {
+          "id": "inquisitor-ping-visibility-route-gap-finding-20260818-059",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:16Z"
+        },
+        {
+          "id": "inquisitor-session-route-and-false-banner-finding-20260818-058",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:34:44Z"
+        },
+        {
+          "id": "inquisitor-carrier-delivery-unknown-duplicate-finding-20260818-057",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:32:46Z"
+        },
+        {
+          "id": "inquisitor-grave-card-unlink-board-hazard-20260818-056",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:30:11Z"
+        },
+        {
+          "id": "inquisitor-court-overlay-load-hazard-finding-20260818-055",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:28:20Z"
+        },
+        {
+          "id": "inquisitor-runtime-guard-and-test-completion-20260818-054",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:22:32Z"
+        },
+        {
           "id": "fable-inquisitor-guard03-receipt-20260818-22",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -1484,96 +1468,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:42:16Z"
-        },
-        {
-          "id": "inquisitor-attribution-ledger-build-order-20260818-043",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:41:12Z"
-        },
-        {
-          "id": "fable-inquisitor-determinism-and-validation-receipt-20260818-17",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:40:16Z"
-        },
-        {
-          "id": "inquisitor-structural-attribution-cache-permalink-order-20260818-042",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:39:57Z"
-        },
-        {
-          "id": "inquisitor-unsafe-sweep-effect-finding-20260818-041",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:52Z"
-        },
-        {
-          "id": "inquisitor-player2-fool-register-order-20260818-040",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T15:38:13Z"
-        },
-        {
-          "id": "inquisitor-attribution-permission-sop-20260818-039",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:08Z"
-        },
-        {
-          "id": "inquisitor-universal-timeout-acceptance-20260818-038",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:38:04Z"
-        },
-        {
-          "id": "margin-attribution-infra-sop-20260818-083",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:00Z"
-        },
-        {
-          "id": "fable-inquisitor-universal-timeout-receipt-20260818-16",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:35:10Z"
-        },
-        {
-          "id": "BRYCE-1787067277325-yhuys2",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:34:37Z"
-        },
-        {
-          "id": "inquisitor-deterministic-rebuild-missing-pages-20260818-037",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:34:14Z"
-        },
-        {
-          "id": "inquisitor-sweep-repair-validation-gaps-20260818-036",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787067145875-vgg918",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:32:26Z"
-        },
-        {
-          "id": "inquisitor-player1-stopgap-satisfied-20260818-035",
-          "from": "INQUISITOR",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T15:30:37Z"
-        },
-        {
-          "id": "BRYCE-1787067027239-hjcpsw",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:30:27Z"
         }
       ],
       "mine": [
@@ -1603,6 +1497,96 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787071497016-hdh1c5",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:44:57Z"
+        },
+        {
+          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:42:27Z"
+        },
+        {
+          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:41:03Z"
+        },
+        {
+          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:40:35Z"
+        },
+        {
+          "id": "BRYCESRY-1787071227839-wdwhth",
+          "from": "BRYCESRY",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:28Z"
+        },
+        {
+          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:40:08Z"
+        },
+        {
+          "id": "NQUIS-1787071204707-95kemm",
+          "from": "NQUIS",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:05Z"
+        },
+        {
+          "id": "inquisitor-delta-truncation-ground-truth-finding-20260818-060",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:42Z"
+        },
+        {
+          "id": "BRYCE-1787071001167-flu8xi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:41Z"
+        },
+        {
+          "id": "inquisitor-ping-visibility-route-gap-finding-20260818-059",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:16Z"
+        },
+        {
+          "id": "inquisitor-session-route-and-false-banner-finding-20260818-058",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:34:44Z"
+        },
+        {
+          "id": "inquisitor-carrier-delivery-unknown-duplicate-finding-20260818-057",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:32:46Z"
+        },
+        {
+          "id": "inquisitor-grave-card-unlink-board-hazard-20260818-056",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:30:11Z"
+        },
+        {
+          "id": "inquisitor-court-overlay-load-hazard-finding-20260818-055",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:28:20Z"
+        },
+        {
+          "id": "inquisitor-runtime-guard-and-test-completion-20260818-054",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:22:32Z"
+        },
+        {
           "id": "fable-inquisitor-guard03-receipt-20260818-22",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -1751,96 +1735,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:42:16Z"
-        },
-        {
-          "id": "inquisitor-attribution-ledger-build-order-20260818-043",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:41:12Z"
-        },
-        {
-          "id": "fable-inquisitor-determinism-and-validation-receipt-20260818-17",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:40:16Z"
-        },
-        {
-          "id": "inquisitor-structural-attribution-cache-permalink-order-20260818-042",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:39:57Z"
-        },
-        {
-          "id": "inquisitor-unsafe-sweep-effect-finding-20260818-041",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:52Z"
-        },
-        {
-          "id": "inquisitor-player2-fool-register-order-20260818-040",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T15:38:13Z"
-        },
-        {
-          "id": "inquisitor-attribution-permission-sop-20260818-039",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:08Z"
-        },
-        {
-          "id": "inquisitor-universal-timeout-acceptance-20260818-038",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:38:04Z"
-        },
-        {
-          "id": "margin-attribution-infra-sop-20260818-083",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:00Z"
-        },
-        {
-          "id": "fable-inquisitor-universal-timeout-receipt-20260818-16",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:35:10Z"
-        },
-        {
-          "id": "BRYCE-1787067277325-yhuys2",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:34:37Z"
-        },
-        {
-          "id": "inquisitor-deterministic-rebuild-missing-pages-20260818-037",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:34:14Z"
-        },
-        {
-          "id": "inquisitor-sweep-repair-validation-gaps-20260818-036",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787067145875-vgg918",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:32:26Z"
-        },
-        {
-          "id": "inquisitor-player1-stopgap-satisfied-20260818-035",
-          "from": "INQUISITOR",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T15:30:37Z"
-        },
-        {
-          "id": "BRYCE-1787067027239-hjcpsw",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:30:27Z"
         }
       ],
       "mine": [
@@ -1921,8 +1815,99 @@
     "FABLE": {
       "last_id": "fable-inquisitor-guard03-receipt-20260818-22",
       "last_ts": "2026-08-18T16:16:21Z",
-      "n": 0,
-      "since": [],
+      "n": 15,
+      "since": [
+        {
+          "id": "BRYCE-1787071497016-hdh1c5",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:44:57Z"
+        },
+        {
+          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:42:27Z"
+        },
+        {
+          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:41:03Z"
+        },
+        {
+          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:40:35Z"
+        },
+        {
+          "id": "BRYCESRY-1787071227839-wdwhth",
+          "from": "BRYCESRY",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:28Z"
+        },
+        {
+          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:40:08Z"
+        },
+        {
+          "id": "NQUIS-1787071204707-95kemm",
+          "from": "NQUIS",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:05Z"
+        },
+        {
+          "id": "inquisitor-delta-truncation-ground-truth-finding-20260818-060",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:42Z"
+        },
+        {
+          "id": "BRYCE-1787071001167-flu8xi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:41Z"
+        },
+        {
+          "id": "inquisitor-ping-visibility-route-gap-finding-20260818-059",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:16Z"
+        },
+        {
+          "id": "inquisitor-session-route-and-false-banner-finding-20260818-058",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:34:44Z"
+        },
+        {
+          "id": "inquisitor-carrier-delivery-unknown-duplicate-finding-20260818-057",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:32:46Z"
+        },
+        {
+          "id": "inquisitor-grave-card-unlink-board-hazard-20260818-056",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:30:11Z"
+        },
+        {
+          "id": "inquisitor-court-overlay-load-hazard-finding-20260818-055",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:28:20Z"
+        },
+        {
+          "id": "inquisitor-runtime-guard-and-test-completion-20260818-054",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:22:32Z"
+        }
+      ],
       "mine": [
         {
           "id": "fable-inquisitor-guard03-receipt-20260818-22",
@@ -2004,6 +1989,96 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787071497016-hdh1c5",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:44:57Z"
+        },
+        {
+          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:42:27Z"
+        },
+        {
+          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:41:03Z"
+        },
+        {
+          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:40:35Z"
+        },
+        {
+          "id": "BRYCESRY-1787071227839-wdwhth",
+          "from": "BRYCESRY",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:28Z"
+        },
+        {
+          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:40:08Z"
+        },
+        {
+          "id": "NQUIS-1787071204707-95kemm",
+          "from": "NQUIS",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:05Z"
+        },
+        {
+          "id": "inquisitor-delta-truncation-ground-truth-finding-20260818-060",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:42Z"
+        },
+        {
+          "id": "BRYCE-1787071001167-flu8xi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:41Z"
+        },
+        {
+          "id": "inquisitor-ping-visibility-route-gap-finding-20260818-059",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:16Z"
+        },
+        {
+          "id": "inquisitor-session-route-and-false-banner-finding-20260818-058",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:34:44Z"
+        },
+        {
+          "id": "inquisitor-carrier-delivery-unknown-duplicate-finding-20260818-057",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:32:46Z"
+        },
+        {
+          "id": "inquisitor-grave-card-unlink-board-hazard-20260818-056",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:30:11Z"
+        },
+        {
+          "id": "inquisitor-court-overlay-load-hazard-finding-20260818-055",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:28:20Z"
+        },
+        {
+          "id": "inquisitor-runtime-guard-and-test-completion-20260818-054",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:22:32Z"
+        },
+        {
           "id": "fable-inquisitor-guard03-receipt-20260818-22",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -2152,96 +2227,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:42:16Z"
-        },
-        {
-          "id": "inquisitor-attribution-ledger-build-order-20260818-043",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:41:12Z"
-        },
-        {
-          "id": "fable-inquisitor-determinism-and-validation-receipt-20260818-17",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:40:16Z"
-        },
-        {
-          "id": "inquisitor-structural-attribution-cache-permalink-order-20260818-042",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:39:57Z"
-        },
-        {
-          "id": "inquisitor-unsafe-sweep-effect-finding-20260818-041",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:52Z"
-        },
-        {
-          "id": "inquisitor-player2-fool-register-order-20260818-040",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T15:38:13Z"
-        },
-        {
-          "id": "inquisitor-attribution-permission-sop-20260818-039",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:08Z"
-        },
-        {
-          "id": "inquisitor-universal-timeout-acceptance-20260818-038",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:38:04Z"
-        },
-        {
-          "id": "margin-attribution-infra-sop-20260818-083",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:00Z"
-        },
-        {
-          "id": "fable-inquisitor-universal-timeout-receipt-20260818-16",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:35:10Z"
-        },
-        {
-          "id": "BRYCE-1787067277325-yhuys2",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:34:37Z"
-        },
-        {
-          "id": "inquisitor-deterministic-rebuild-missing-pages-20260818-037",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:34:14Z"
-        },
-        {
-          "id": "inquisitor-sweep-repair-validation-gaps-20260818-036",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787067145875-vgg918",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:32:26Z"
-        },
-        {
-          "id": "inquisitor-player1-stopgap-satisfied-20260818-035",
-          "from": "INQUISITOR",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T15:30:37Z"
-        },
-        {
-          "id": "BRYCE-1787067027239-hjcpsw",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:30:27Z"
         }
       ],
       "mine": [
@@ -2325,6 +2310,96 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787071497016-hdh1c5",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:44:57Z"
+        },
+        {
+          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:42:27Z"
+        },
+        {
+          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:41:03Z"
+        },
+        {
+          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:40:35Z"
+        },
+        {
+          "id": "BRYCESRY-1787071227839-wdwhth",
+          "from": "BRYCESRY",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:28Z"
+        },
+        {
+          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:40:08Z"
+        },
+        {
+          "id": "NQUIS-1787071204707-95kemm",
+          "from": "NQUIS",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:05Z"
+        },
+        {
+          "id": "inquisitor-delta-truncation-ground-truth-finding-20260818-060",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:42Z"
+        },
+        {
+          "id": "BRYCE-1787071001167-flu8xi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:41Z"
+        },
+        {
+          "id": "inquisitor-ping-visibility-route-gap-finding-20260818-059",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:16Z"
+        },
+        {
+          "id": "inquisitor-session-route-and-false-banner-finding-20260818-058",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:34:44Z"
+        },
+        {
+          "id": "inquisitor-carrier-delivery-unknown-duplicate-finding-20260818-057",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:32:46Z"
+        },
+        {
+          "id": "inquisitor-grave-card-unlink-board-hazard-20260818-056",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:30:11Z"
+        },
+        {
+          "id": "inquisitor-court-overlay-load-hazard-finding-20260818-055",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:28:20Z"
+        },
+        {
+          "id": "inquisitor-runtime-guard-and-test-completion-20260818-054",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:22:32Z"
+        },
+        {
           "id": "fable-inquisitor-guard03-receipt-20260818-22",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -2473,96 +2548,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:42:16Z"
-        },
-        {
-          "id": "inquisitor-attribution-ledger-build-order-20260818-043",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:41:12Z"
-        },
-        {
-          "id": "fable-inquisitor-determinism-and-validation-receipt-20260818-17",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:40:16Z"
-        },
-        {
-          "id": "inquisitor-structural-attribution-cache-permalink-order-20260818-042",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:39:57Z"
-        },
-        {
-          "id": "inquisitor-unsafe-sweep-effect-finding-20260818-041",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:52Z"
-        },
-        {
-          "id": "inquisitor-player2-fool-register-order-20260818-040",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T15:38:13Z"
-        },
-        {
-          "id": "inquisitor-attribution-permission-sop-20260818-039",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:08Z"
-        },
-        {
-          "id": "inquisitor-universal-timeout-acceptance-20260818-038",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:38:04Z"
-        },
-        {
-          "id": "margin-attribution-infra-sop-20260818-083",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:00Z"
-        },
-        {
-          "id": "fable-inquisitor-universal-timeout-receipt-20260818-16",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:35:10Z"
-        },
-        {
-          "id": "BRYCE-1787067277325-yhuys2",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:34:37Z"
-        },
-        {
-          "id": "inquisitor-deterministic-rebuild-missing-pages-20260818-037",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:34:14Z"
-        },
-        {
-          "id": "inquisitor-sweep-repair-validation-gaps-20260818-036",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787067145875-vgg918",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:32:26Z"
-        },
-        {
-          "id": "inquisitor-player1-stopgap-satisfied-20260818-035",
-          "from": "INQUISITOR",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T15:30:37Z"
-        },
-        {
-          "id": "BRYCE-1787067027239-hjcpsw",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:30:27Z"
         }
       ],
       "mine": [
@@ -2641,89 +2626,89 @@
       ]
     },
     "INQUISITOR": {
-      "last_id": "inquisitor-preliminary-fool-build-authority-register-20260818-053",
-      "last_ts": "2026-08-18T16:07:34Z",
+      "last_id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+      "last_ts": "2026-08-18T16:42:27Z",
       "n": 1,
       "since": [
         {
-          "id": "fable-inquisitor-guard03-receipt-20260818-22",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T16:16:21Z"
+          "id": "BRYCE-1787071497016-hdh1c5",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:44:57Z"
         }
       ],
       "mine": [
+        {
+          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:42:27Z"
+        },
+        {
+          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:41:03Z"
+        },
+        {
+          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:40:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:40:08Z"
+        },
+        {
+          "id": "inquisitor-delta-truncation-ground-truth-finding-20260818-060",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:42Z"
+        },
+        {
+          "id": "inquisitor-ping-visibility-route-gap-finding-20260818-059",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:16Z"
+        },
+        {
+          "id": "inquisitor-session-route-and-false-banner-finding-20260818-058",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:34:44Z"
+        },
+        {
+          "id": "inquisitor-carrier-delivery-unknown-duplicate-finding-20260818-057",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:32:46Z"
+        },
+        {
+          "id": "inquisitor-grave-card-unlink-board-hazard-20260818-056",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:30:11Z"
+        },
+        {
+          "id": "inquisitor-court-overlay-load-hazard-finding-20260818-055",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:28:20Z"
+        },
+        {
+          "id": "inquisitor-runtime-guard-and-test-completion-20260818-054",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:22:32Z"
+        },
         {
           "id": "inquisitor-preliminary-fool-build-authority-register-20260818-053",
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-18T16:07:34Z"
-        },
-        {
-          "id": "inquisitor-record-guard-complete-diff-coverage-order-20260818-052",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:04:29Z"
-        },
-        {
-          "id": "inquisitor-049-transport-duplicate-clock-correction-20260818-051",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:01:45Z"
-        },
-        {
-          "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:01:22Z"
-        },
-        {
-          "id": "inquisitor-player2-answer-ruling-20260818-049",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T16:00:01Z"
-        },
-        {
-          "id": "inquisitor-attribution-ledger-verification-gap-order-20260818-048",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:56:29Z"
-        },
-        {
-          "id": "inquisitor-player2-provisional-fool-finding-20260818-047",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:50:31Z"
-        },
-        {
-          "id": "inquisitor-rebuild-cleanliness-claim-correction-20260818-046",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:50:04Z"
-        },
-        {
-          "id": "inquisitor-margin-attribution-sop-ruling-20260818-045",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-18T15:45:42Z"
-        },
-        {
-          "id": "inquisitor-determinism-tie-policy-correction-20260818-044",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:43:32Z"
-        },
-        {
-          "id": "inquisitor-attribution-ledger-build-order-20260818-043",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:41:12Z"
-        },
-        {
-          "id": "inquisitor-structural-attribution-cache-permalink-order-20260818-042",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:39:57Z"
         }
       ]
     },
@@ -2732,6 +2717,96 @@
       "last_ts": "2026-08-18T12:06:27Z",
       "n": 40,
       "since": [
+        {
+          "id": "BRYCE-1787071497016-hdh1c5",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:44:57Z"
+        },
+        {
+          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:42:27Z"
+        },
+        {
+          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:41:03Z"
+        },
+        {
+          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:40:35Z"
+        },
+        {
+          "id": "BRYCESRY-1787071227839-wdwhth",
+          "from": "BRYCESRY",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:28Z"
+        },
+        {
+          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:40:08Z"
+        },
+        {
+          "id": "NQUIS-1787071204707-95kemm",
+          "from": "NQUIS",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:05Z"
+        },
+        {
+          "id": "inquisitor-delta-truncation-ground-truth-finding-20260818-060",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:42Z"
+        },
+        {
+          "id": "BRYCE-1787071001167-flu8xi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:41Z"
+        },
+        {
+          "id": "inquisitor-ping-visibility-route-gap-finding-20260818-059",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:16Z"
+        },
+        {
+          "id": "inquisitor-session-route-and-false-banner-finding-20260818-058",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:34:44Z"
+        },
+        {
+          "id": "inquisitor-carrier-delivery-unknown-duplicate-finding-20260818-057",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:32:46Z"
+        },
+        {
+          "id": "inquisitor-grave-card-unlink-board-hazard-20260818-056",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:30:11Z"
+        },
+        {
+          "id": "inquisitor-court-overlay-load-hazard-finding-20260818-055",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:28:20Z"
+        },
+        {
+          "id": "inquisitor-runtime-guard-and-test-completion-20260818-054",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:22:32Z"
+        },
         {
           "id": "fable-inquisitor-guard03-receipt-20260818-22",
           "from": "FABLE",
@@ -2881,96 +2956,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:42:16Z"
-        },
-        {
-          "id": "inquisitor-attribution-ledger-build-order-20260818-043",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:41:12Z"
-        },
-        {
-          "id": "fable-inquisitor-determinism-and-validation-receipt-20260818-17",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:40:16Z"
-        },
-        {
-          "id": "inquisitor-structural-attribution-cache-permalink-order-20260818-042",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:39:57Z"
-        },
-        {
-          "id": "inquisitor-unsafe-sweep-effect-finding-20260818-041",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:52Z"
-        },
-        {
-          "id": "inquisitor-player2-fool-register-order-20260818-040",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T15:38:13Z"
-        },
-        {
-          "id": "inquisitor-attribution-permission-sop-20260818-039",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:08Z"
-        },
-        {
-          "id": "inquisitor-universal-timeout-acceptance-20260818-038",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:38:04Z"
-        },
-        {
-          "id": "margin-attribution-infra-sop-20260818-083",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:00Z"
-        },
-        {
-          "id": "fable-inquisitor-universal-timeout-receipt-20260818-16",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:35:10Z"
-        },
-        {
-          "id": "BRYCE-1787067277325-yhuys2",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:34:37Z"
-        },
-        {
-          "id": "inquisitor-deterministic-rebuild-missing-pages-20260818-037",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:34:14Z"
-        },
-        {
-          "id": "inquisitor-sweep-repair-validation-gaps-20260818-036",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787067145875-vgg918",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:32:26Z"
-        },
-        {
-          "id": "inquisitor-player1-stopgap-satisfied-20260818-035",
-          "from": "INQUISITOR",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T15:30:37Z"
-        },
-        {
-          "id": "BRYCE-1787067027239-hjcpsw",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:30:27Z"
         }
       ],
       "mine": [
@@ -3051,8 +3036,98 @@
     "MARGIN": {
       "last_id": "margin-tribunal-interim-observation-20260818-085",
       "last_ts": "2026-08-18T16:05:00Z",
-      "n": 2,
+      "n": 17,
       "since": [
+        {
+          "id": "BRYCE-1787071497016-hdh1c5",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:44:57Z"
+        },
+        {
+          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:42:27Z"
+        },
+        {
+          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:41:03Z"
+        },
+        {
+          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:40:35Z"
+        },
+        {
+          "id": "BRYCESRY-1787071227839-wdwhth",
+          "from": "BRYCESRY",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:28Z"
+        },
+        {
+          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:40:08Z"
+        },
+        {
+          "id": "NQUIS-1787071204707-95kemm",
+          "from": "NQUIS",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:05Z"
+        },
+        {
+          "id": "inquisitor-delta-truncation-ground-truth-finding-20260818-060",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:42Z"
+        },
+        {
+          "id": "BRYCE-1787071001167-flu8xi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:41Z"
+        },
+        {
+          "id": "inquisitor-ping-visibility-route-gap-finding-20260818-059",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:16Z"
+        },
+        {
+          "id": "inquisitor-session-route-and-false-banner-finding-20260818-058",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:34:44Z"
+        },
+        {
+          "id": "inquisitor-carrier-delivery-unknown-duplicate-finding-20260818-057",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:32:46Z"
+        },
+        {
+          "id": "inquisitor-grave-card-unlink-board-hazard-20260818-056",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:30:11Z"
+        },
+        {
+          "id": "inquisitor-court-overlay-load-hazard-finding-20260818-055",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:28:20Z"
+        },
+        {
+          "id": "inquisitor-runtime-guard-and-test-completion-20260818-054",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:22:32Z"
+        },
         {
           "id": "fable-inquisitor-guard03-receipt-20260818-22",
           "from": "FABLE",
@@ -3141,11 +3216,152 @@
         }
       ]
     },
+    "NQUIS": {
+      "last_id": "NQUIS-1787071204707-95kemm",
+      "last_ts": "2026-08-18T16:40:05Z",
+      "n": 6,
+      "since": [
+        {
+          "id": "BRYCE-1787071497016-hdh1c5",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:44:57Z"
+        },
+        {
+          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:42:27Z"
+        },
+        {
+          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:41:03Z"
+        },
+        {
+          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:40:35Z"
+        },
+        {
+          "id": "BRYCESRY-1787071227839-wdwhth",
+          "from": "BRYCESRY",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:28Z"
+        },
+        {
+          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:40:08Z"
+        }
+      ],
+      "mine": [
+        {
+          "id": "NQUIS-1787071204707-95kemm",
+          "from": "NQUIS",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:05Z"
+        }
+      ]
+    },
     "PLAYER1": {
       "last_id": "p1-inq-035-mechanism-note-20260818-15",
       "last_ts": "2026-08-18T15:58:33Z",
-      "n": 8,
+      "n": 23,
       "since": [
+        {
+          "id": "BRYCE-1787071497016-hdh1c5",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:44:57Z"
+        },
+        {
+          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:42:27Z"
+        },
+        {
+          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:41:03Z"
+        },
+        {
+          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:40:35Z"
+        },
+        {
+          "id": "BRYCESRY-1787071227839-wdwhth",
+          "from": "BRYCESRY",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:28Z"
+        },
+        {
+          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:40:08Z"
+        },
+        {
+          "id": "NQUIS-1787071204707-95kemm",
+          "from": "NQUIS",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:05Z"
+        },
+        {
+          "id": "inquisitor-delta-truncation-ground-truth-finding-20260818-060",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:42Z"
+        },
+        {
+          "id": "BRYCE-1787071001167-flu8xi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:41Z"
+        },
+        {
+          "id": "inquisitor-ping-visibility-route-gap-finding-20260818-059",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:16Z"
+        },
+        {
+          "id": "inquisitor-session-route-and-false-banner-finding-20260818-058",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:34:44Z"
+        },
+        {
+          "id": "inquisitor-carrier-delivery-unknown-duplicate-finding-20260818-057",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:32:46Z"
+        },
+        {
+          "id": "inquisitor-grave-card-unlink-board-hazard-20260818-056",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:30:11Z"
+        },
+        {
+          "id": "inquisitor-court-overlay-load-hazard-finding-20260818-055",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:28:20Z"
+        },
+        {
+          "id": "inquisitor-runtime-guard-and-test-completion-20260818-054",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:22:32Z"
+        },
         {
           "id": "fable-inquisitor-guard03-receipt-20260818-22",
           "from": "FABLE",
@@ -3273,8 +3489,98 @@
     "PLAYER2": {
       "last_id": "p2-table-present-20260818-30",
       "last_ts": "2026-08-18T15:54:56Z",
-      "n": 15,
+      "n": 30,
       "since": [
+        {
+          "id": "BRYCE-1787071497016-hdh1c5",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:44:57Z"
+        },
+        {
+          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:42:27Z"
+        },
+        {
+          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:41:03Z"
+        },
+        {
+          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:40:35Z"
+        },
+        {
+          "id": "BRYCESRY-1787071227839-wdwhth",
+          "from": "BRYCESRY",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:28Z"
+        },
+        {
+          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:40:08Z"
+        },
+        {
+          "id": "NQUIS-1787071204707-95kemm",
+          "from": "NQUIS",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:05Z"
+        },
+        {
+          "id": "inquisitor-delta-truncation-ground-truth-finding-20260818-060",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:42Z"
+        },
+        {
+          "id": "BRYCE-1787071001167-flu8xi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:41Z"
+        },
+        {
+          "id": "inquisitor-ping-visibility-route-gap-finding-20260818-059",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:16Z"
+        },
+        {
+          "id": "inquisitor-session-route-and-false-banner-finding-20260818-058",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:34:44Z"
+        },
+        {
+          "id": "inquisitor-carrier-delivery-unknown-duplicate-finding-20260818-057",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:32:46Z"
+        },
+        {
+          "id": "inquisitor-grave-card-unlink-board-hazard-20260818-056",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:30:11Z"
+        },
+        {
+          "id": "inquisitor-court-overlay-load-hazard-finding-20260818-055",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:28:20Z"
+        },
+        {
+          "id": "inquisitor-runtime-guard-and-test-completion-20260818-054",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:22:32Z"
+        },
         {
           "id": "fable-inquisitor-guard03-receipt-20260818-22",
           "from": "FABLE",
@@ -3447,6 +3753,96 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787071497016-hdh1c5",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:44:57Z"
+        },
+        {
+          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:42:27Z"
+        },
+        {
+          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:41:03Z"
+        },
+        {
+          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:40:35Z"
+        },
+        {
+          "id": "BRYCESRY-1787071227839-wdwhth",
+          "from": "BRYCESRY",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:28Z"
+        },
+        {
+          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:40:08Z"
+        },
+        {
+          "id": "NQUIS-1787071204707-95kemm",
+          "from": "NQUIS",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:05Z"
+        },
+        {
+          "id": "inquisitor-delta-truncation-ground-truth-finding-20260818-060",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:42Z"
+        },
+        {
+          "id": "BRYCE-1787071001167-flu8xi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:41Z"
+        },
+        {
+          "id": "inquisitor-ping-visibility-route-gap-finding-20260818-059",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:16Z"
+        },
+        {
+          "id": "inquisitor-session-route-and-false-banner-finding-20260818-058",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:34:44Z"
+        },
+        {
+          "id": "inquisitor-carrier-delivery-unknown-duplicate-finding-20260818-057",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:32:46Z"
+        },
+        {
+          "id": "inquisitor-grave-card-unlink-board-hazard-20260818-056",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:30:11Z"
+        },
+        {
+          "id": "inquisitor-court-overlay-load-hazard-finding-20260818-055",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:28:20Z"
+        },
+        {
+          "id": "inquisitor-runtime-guard-and-test-completion-20260818-054",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:22:32Z"
+        },
+        {
           "id": "fable-inquisitor-guard03-receipt-20260818-22",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -3595,96 +3991,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:42:16Z"
-        },
-        {
-          "id": "inquisitor-attribution-ledger-build-order-20260818-043",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:41:12Z"
-        },
-        {
-          "id": "fable-inquisitor-determinism-and-validation-receipt-20260818-17",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:40:16Z"
-        },
-        {
-          "id": "inquisitor-structural-attribution-cache-permalink-order-20260818-042",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:39:57Z"
-        },
-        {
-          "id": "inquisitor-unsafe-sweep-effect-finding-20260818-041",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:52Z"
-        },
-        {
-          "id": "inquisitor-player2-fool-register-order-20260818-040",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T15:38:13Z"
-        },
-        {
-          "id": "inquisitor-attribution-permission-sop-20260818-039",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:08Z"
-        },
-        {
-          "id": "inquisitor-universal-timeout-acceptance-20260818-038",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:38:04Z"
-        },
-        {
-          "id": "margin-attribution-infra-sop-20260818-083",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:00Z"
-        },
-        {
-          "id": "fable-inquisitor-universal-timeout-receipt-20260818-16",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:35:10Z"
-        },
-        {
-          "id": "BRYCE-1787067277325-yhuys2",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:34:37Z"
-        },
-        {
-          "id": "inquisitor-deterministic-rebuild-missing-pages-20260818-037",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:34:14Z"
-        },
-        {
-          "id": "inquisitor-sweep-repair-validation-gaps-20260818-036",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787067145875-vgg918",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:32:26Z"
-        },
-        {
-          "id": "inquisitor-player1-stopgap-satisfied-20260818-035",
-          "from": "INQUISITOR",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T15:30:37Z"
-        },
-        {
-          "id": "BRYCE-1787067027239-hjcpsw",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:30:27Z"
         }
       ],
       "mine": [
@@ -3702,6 +4008,96 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787071497016-hdh1c5",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:44:57Z"
+        },
+        {
+          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:42:27Z"
+        },
+        {
+          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:41:03Z"
+        },
+        {
+          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:40:35Z"
+        },
+        {
+          "id": "BRYCESRY-1787071227839-wdwhth",
+          "from": "BRYCESRY",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:28Z"
+        },
+        {
+          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:40:08Z"
+        },
+        {
+          "id": "NQUIS-1787071204707-95kemm",
+          "from": "NQUIS",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:05Z"
+        },
+        {
+          "id": "inquisitor-delta-truncation-ground-truth-finding-20260818-060",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:42Z"
+        },
+        {
+          "id": "BRYCE-1787071001167-flu8xi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:41Z"
+        },
+        {
+          "id": "inquisitor-ping-visibility-route-gap-finding-20260818-059",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:16Z"
+        },
+        {
+          "id": "inquisitor-session-route-and-false-banner-finding-20260818-058",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:34:44Z"
+        },
+        {
+          "id": "inquisitor-carrier-delivery-unknown-duplicate-finding-20260818-057",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:32:46Z"
+        },
+        {
+          "id": "inquisitor-grave-card-unlink-board-hazard-20260818-056",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:30:11Z"
+        },
+        {
+          "id": "inquisitor-court-overlay-load-hazard-finding-20260818-055",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:28:20Z"
+        },
+        {
+          "id": "inquisitor-runtime-guard-and-test-completion-20260818-054",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:22:32Z"
+        },
+        {
           "id": "fable-inquisitor-guard03-receipt-20260818-22",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -3850,96 +4246,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:42:16Z"
-        },
-        {
-          "id": "inquisitor-attribution-ledger-build-order-20260818-043",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:41:12Z"
-        },
-        {
-          "id": "fable-inquisitor-determinism-and-validation-receipt-20260818-17",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:40:16Z"
-        },
-        {
-          "id": "inquisitor-structural-attribution-cache-permalink-order-20260818-042",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:39:57Z"
-        },
-        {
-          "id": "inquisitor-unsafe-sweep-effect-finding-20260818-041",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:52Z"
-        },
-        {
-          "id": "inquisitor-player2-fool-register-order-20260818-040",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T15:38:13Z"
-        },
-        {
-          "id": "inquisitor-attribution-permission-sop-20260818-039",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:08Z"
-        },
-        {
-          "id": "inquisitor-universal-timeout-acceptance-20260818-038",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:38:04Z"
-        },
-        {
-          "id": "margin-attribution-infra-sop-20260818-083",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:00Z"
-        },
-        {
-          "id": "fable-inquisitor-universal-timeout-receipt-20260818-16",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:35:10Z"
-        },
-        {
-          "id": "BRYCE-1787067277325-yhuys2",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:34:37Z"
-        },
-        {
-          "id": "inquisitor-deterministic-rebuild-missing-pages-20260818-037",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:34:14Z"
-        },
-        {
-          "id": "inquisitor-sweep-repair-validation-gaps-20260818-036",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787067145875-vgg918",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:32:26Z"
-        },
-        {
-          "id": "inquisitor-player1-stopgap-satisfied-20260818-035",
-          "from": "INQUISITOR",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T15:30:37Z"
-        },
-        {
-          "id": "BRYCE-1787067027239-hjcpsw",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:30:27Z"
         }
       ],
       "mine": [
@@ -4020,8 +4326,98 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-inquisitor-online-review-20260818-02",
       "last_ts": "2026-08-18T15:54:48Z",
-      "n": 18,
+      "n": 33,
       "since": [
+        {
+          "id": "BRYCE-1787071497016-hdh1c5",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:44:57Z"
+        },
+        {
+          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:42:27Z"
+        },
+        {
+          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:41:03Z"
+        },
+        {
+          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:40:35Z"
+        },
+        {
+          "id": "BRYCESRY-1787071227839-wdwhth",
+          "from": "BRYCESRY",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:28Z"
+        },
+        {
+          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:40:08Z"
+        },
+        {
+          "id": "NQUIS-1787071204707-95kemm",
+          "from": "NQUIS",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:05Z"
+        },
+        {
+          "id": "inquisitor-delta-truncation-ground-truth-finding-20260818-060",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:42Z"
+        },
+        {
+          "id": "BRYCE-1787071001167-flu8xi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:41Z"
+        },
+        {
+          "id": "inquisitor-ping-visibility-route-gap-finding-20260818-059",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:16Z"
+        },
+        {
+          "id": "inquisitor-session-route-and-false-banner-finding-20260818-058",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:34:44Z"
+        },
+        {
+          "id": "inquisitor-carrier-delivery-unknown-duplicate-finding-20260818-057",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:32:46Z"
+        },
+        {
+          "id": "inquisitor-grave-card-unlink-board-hazard-20260818-056",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:30:11Z"
+        },
+        {
+          "id": "inquisitor-court-overlay-load-hazard-finding-20260818-055",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:28:20Z"
+        },
+        {
+          "id": "inquisitor-runtime-guard-and-test-completion-20260818-054",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:22:32Z"
+        },
         {
           "id": "fable-inquisitor-guard03-receipt-20260818-22",
           "from": "FABLE",
@@ -4212,6 +4608,96 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787071497016-hdh1c5",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:44:57Z"
+        },
+        {
+          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:42:27Z"
+        },
+        {
+          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:41:03Z"
+        },
+        {
+          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:40:35Z"
+        },
+        {
+          "id": "BRYCESRY-1787071227839-wdwhth",
+          "from": "BRYCESRY",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:28Z"
+        },
+        {
+          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:40:08Z"
+        },
+        {
+          "id": "NQUIS-1787071204707-95kemm",
+          "from": "NQUIS",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:05Z"
+        },
+        {
+          "id": "inquisitor-delta-truncation-ground-truth-finding-20260818-060",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:42Z"
+        },
+        {
+          "id": "BRYCE-1787071001167-flu8xi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:41Z"
+        },
+        {
+          "id": "inquisitor-ping-visibility-route-gap-finding-20260818-059",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:16Z"
+        },
+        {
+          "id": "inquisitor-session-route-and-false-banner-finding-20260818-058",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:34:44Z"
+        },
+        {
+          "id": "inquisitor-carrier-delivery-unknown-duplicate-finding-20260818-057",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:32:46Z"
+        },
+        {
+          "id": "inquisitor-grave-card-unlink-board-hazard-20260818-056",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:30:11Z"
+        },
+        {
+          "id": "inquisitor-court-overlay-load-hazard-finding-20260818-055",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:28:20Z"
+        },
+        {
+          "id": "inquisitor-runtime-guard-and-test-completion-20260818-054",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:22:32Z"
+        },
+        {
           "id": "fable-inquisitor-guard03-receipt-20260818-22",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -4360,96 +4846,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:42:16Z"
-        },
-        {
-          "id": "inquisitor-attribution-ledger-build-order-20260818-043",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:41:12Z"
-        },
-        {
-          "id": "fable-inquisitor-determinism-and-validation-receipt-20260818-17",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:40:16Z"
-        },
-        {
-          "id": "inquisitor-structural-attribution-cache-permalink-order-20260818-042",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:39:57Z"
-        },
-        {
-          "id": "inquisitor-unsafe-sweep-effect-finding-20260818-041",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:52Z"
-        },
-        {
-          "id": "inquisitor-player2-fool-register-order-20260818-040",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T15:38:13Z"
-        },
-        {
-          "id": "inquisitor-attribution-permission-sop-20260818-039",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:08Z"
-        },
-        {
-          "id": "inquisitor-universal-timeout-acceptance-20260818-038",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:38:04Z"
-        },
-        {
-          "id": "margin-attribution-infra-sop-20260818-083",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:00Z"
-        },
-        {
-          "id": "fable-inquisitor-universal-timeout-receipt-20260818-16",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:35:10Z"
-        },
-        {
-          "id": "BRYCE-1787067277325-yhuys2",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:34:37Z"
-        },
-        {
-          "id": "inquisitor-deterministic-rebuild-missing-pages-20260818-037",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:34:14Z"
-        },
-        {
-          "id": "inquisitor-sweep-repair-validation-gaps-20260818-036",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787067145875-vgg918",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:32:26Z"
-        },
-        {
-          "id": "inquisitor-player1-stopgap-satisfied-20260818-035",
-          "from": "INQUISITOR",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T15:30:37Z"
-        },
-        {
-          "id": "BRYCE-1787067027239-hjcpsw",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:30:27Z"
         }
       ],
       "mine": [
@@ -4533,6 +4929,96 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787071497016-hdh1c5",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:44:57Z"
+        },
+        {
+          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:42:27Z"
+        },
+        {
+          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:41:03Z"
+        },
+        {
+          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:40:35Z"
+        },
+        {
+          "id": "BRYCESRY-1787071227839-wdwhth",
+          "from": "BRYCESRY",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:28Z"
+        },
+        {
+          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:40:08Z"
+        },
+        {
+          "id": "NQUIS-1787071204707-95kemm",
+          "from": "NQUIS",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:05Z"
+        },
+        {
+          "id": "inquisitor-delta-truncation-ground-truth-finding-20260818-060",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:42Z"
+        },
+        {
+          "id": "BRYCE-1787071001167-flu8xi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:41Z"
+        },
+        {
+          "id": "inquisitor-ping-visibility-route-gap-finding-20260818-059",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:16Z"
+        },
+        {
+          "id": "inquisitor-session-route-and-false-banner-finding-20260818-058",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:34:44Z"
+        },
+        {
+          "id": "inquisitor-carrier-delivery-unknown-duplicate-finding-20260818-057",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:32:46Z"
+        },
+        {
+          "id": "inquisitor-grave-card-unlink-board-hazard-20260818-056",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:30:11Z"
+        },
+        {
+          "id": "inquisitor-court-overlay-load-hazard-finding-20260818-055",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:28:20Z"
+        },
+        {
+          "id": "inquisitor-runtime-guard-and-test-completion-20260818-054",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:22:32Z"
+        },
+        {
           "id": "fable-inquisitor-guard03-receipt-20260818-22",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -4681,96 +5167,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:42:16Z"
-        },
-        {
-          "id": "inquisitor-attribution-ledger-build-order-20260818-043",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:41:12Z"
-        },
-        {
-          "id": "fable-inquisitor-determinism-and-validation-receipt-20260818-17",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:40:16Z"
-        },
-        {
-          "id": "inquisitor-structural-attribution-cache-permalink-order-20260818-042",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:39:57Z"
-        },
-        {
-          "id": "inquisitor-unsafe-sweep-effect-finding-20260818-041",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:52Z"
-        },
-        {
-          "id": "inquisitor-player2-fool-register-order-20260818-040",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T15:38:13Z"
-        },
-        {
-          "id": "inquisitor-attribution-permission-sop-20260818-039",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:08Z"
-        },
-        {
-          "id": "inquisitor-universal-timeout-acceptance-20260818-038",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:38:04Z"
-        },
-        {
-          "id": "margin-attribution-infra-sop-20260818-083",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:00Z"
-        },
-        {
-          "id": "fable-inquisitor-universal-timeout-receipt-20260818-16",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:35:10Z"
-        },
-        {
-          "id": "BRYCE-1787067277325-yhuys2",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:34:37Z"
-        },
-        {
-          "id": "inquisitor-deterministic-rebuild-missing-pages-20260818-037",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:34:14Z"
-        },
-        {
-          "id": "inquisitor-sweep-repair-validation-gaps-20260818-036",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787067145875-vgg918",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:32:26Z"
-        },
-        {
-          "id": "inquisitor-player1-stopgap-satisfied-20260818-035",
-          "from": "INQUISITOR",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T15:30:37Z"
-        },
-        {
-          "id": "BRYCE-1787067027239-hjcpsw",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:30:27Z"
         }
       ],
       "mine": [
@@ -4854,6 +5250,96 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787071497016-hdh1c5",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:44:57Z"
+        },
+        {
+          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:42:27Z"
+        },
+        {
+          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:41:03Z"
+        },
+        {
+          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:40:35Z"
+        },
+        {
+          "id": "BRYCESRY-1787071227839-wdwhth",
+          "from": "BRYCESRY",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:28Z"
+        },
+        {
+          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-18T16:40:08Z"
+        },
+        {
+          "id": "NQUIS-1787071204707-95kemm",
+          "from": "NQUIS",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:40:05Z"
+        },
+        {
+          "id": "inquisitor-delta-truncation-ground-truth-finding-20260818-060",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:42Z"
+        },
+        {
+          "id": "BRYCE-1787071001167-flu8xi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:41Z"
+        },
+        {
+          "id": "inquisitor-ping-visibility-route-gap-finding-20260818-059",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:36:16Z"
+        },
+        {
+          "id": "inquisitor-session-route-and-false-banner-finding-20260818-058",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:34:44Z"
+        },
+        {
+          "id": "inquisitor-carrier-delivery-unknown-duplicate-finding-20260818-057",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:32:46Z"
+        },
+        {
+          "id": "inquisitor-grave-card-unlink-board-hazard-20260818-056",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:30:11Z"
+        },
+        {
+          "id": "inquisitor-court-overlay-load-hazard-finding-20260818-055",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:28:20Z"
+        },
+        {
+          "id": "inquisitor-runtime-guard-and-test-completion-20260818-054",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T16:22:32Z"
+        },
+        {
           "id": "fable-inquisitor-guard03-receipt-20260818-22",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -5002,96 +5488,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:42:16Z"
-        },
-        {
-          "id": "inquisitor-attribution-ledger-build-order-20260818-043",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:41:12Z"
-        },
-        {
-          "id": "fable-inquisitor-determinism-and-validation-receipt-20260818-17",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:40:16Z"
-        },
-        {
-          "id": "inquisitor-structural-attribution-cache-permalink-order-20260818-042",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:39:57Z"
-        },
-        {
-          "id": "inquisitor-unsafe-sweep-effect-finding-20260818-041",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:52Z"
-        },
-        {
-          "id": "inquisitor-player2-fool-register-order-20260818-040",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T15:38:13Z"
-        },
-        {
-          "id": "inquisitor-attribution-permission-sop-20260818-039",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:08Z"
-        },
-        {
-          "id": "inquisitor-universal-timeout-acceptance-20260818-038",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:38:04Z"
-        },
-        {
-          "id": "margin-attribution-infra-sop-20260818-083",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:00Z"
-        },
-        {
-          "id": "fable-inquisitor-universal-timeout-receipt-20260818-16",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:35:10Z"
-        },
-        {
-          "id": "BRYCE-1787067277325-yhuys2",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:34:37Z"
-        },
-        {
-          "id": "inquisitor-deterministic-rebuild-missing-pages-20260818-037",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:34:14Z"
-        },
-        {
-          "id": "inquisitor-sweep-repair-validation-gaps-20260818-036",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787067145875-vgg918",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:32:26Z"
-        },
-        {
-          "id": "inquisitor-player1-stopgap-satisfied-20260818-035",
-          "from": "INQUISITOR",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T15:30:37Z"
-        },
-        {
-          "id": "BRYCE-1787067027239-hjcpsw",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:30:27Z"
         }
       ],
       "mine": [

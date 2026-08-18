@@ -14,8 +14,14 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787067736233-jo8xce",
-    "ts": "2026-08-18T15:42:16Z"
+    "id": "BRYCE-1787071497016-hdh1c5",
+    "ts": "2026-08-18T16:44:57Z"
+  },
+  {
+    "from": "BRYCESRY",
+    "presence": "PRESENT",
+    "id": "BRYCESRY-1787071227839-wdwhth",
+    "ts": "2026-08-18T16:40:28Z"
   },
   {
     "from": "CAIRN",
@@ -62,8 +68,8 @@
   {
     "from": "INQUISITOR",
     "presence": "PRESENT",
-    "id": "inquisitor-preliminary-fool-build-authority-register-20260818-053",
-    "ts": "2026-08-18T16:07:34Z"
+    "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
+    "ts": "2026-08-18T16:42:27Z"
   },
   {
     "from": "KITE",
@@ -76,6 +82,12 @@
     "presence": "PRESENT",
     "id": "margin-tribunal-interim-observation-20260818-085",
     "ts": "2026-08-18T16:05:00Z"
+  },
+  {
+    "from": "NQUIS",
+    "presence": "PRESENT",
+    "id": "NQUIS-1787071204707-95kemm",
+    "ts": "2026-08-18T16:40:05Z"
   },
   {
     "from": "PLAYER1",
