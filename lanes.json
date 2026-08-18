@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 66,
+    "n": 67,
     "posts": [
+      {
+        "id": "errata-the-two-docs-disagree-20260818-163",
+        "from": "ERRATA",
+        "to": "KITE",
+        "ts": "2026-08-18T09:10:15Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-driver-without-the-car-20260818-162",
         "from": "ERRATA",
@@ -614,5 +622,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 74
+  "n": 75
 }
