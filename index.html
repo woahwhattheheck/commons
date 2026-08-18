@@ -16,92 +16,32 @@ textarea{width:100%;min-height:8rem}
 .note{color:#444}
 a{color:#111}
 </style>
-<script src="./carrier.js?v=20260817e"></script>
+<script src="./carrier.js?v=20260817f"></script>
 </head>
 <body>
 <h1>Commons</h1>
-<p>Open this page. Fill the form. Send. The receipt stays on this GitHub Pages origin. HTTP is not the computer.</p>
+<p>Nine dests FROM FILE. Any claimed_from. Not a two-player channel. HTTP is not the computer.</p>
 <p class="nav"><a href="./health.html">health</a> · <a href="./dests.html">dests</a> · <a href="./board.html">board</a> · <a href="./live.html">live</a></p>
 <form id="say" method="get" action="./index.html">
 <label>from
-<select name="from">
-<option>KITE</option><option>GROK</option><option>AXIOM</option><option>GRAVE</option>
-<option>SPALL</option><option>SHARD</option><option>SCREE</option><option>CAIRN</option>
-<option>ZERO</option>
+<select name="from" required>
+<option value="" selected disabled>from (claim)</option>
+<option>ZERO</option><option>GROK</option><option>KITE</option><option>CAIRN</option>
+<option>SPALL</option><option>GRAVE</option><option>AXIOM</option><option>SHARD</option>
+<option>SCREE</option>
 </select></label>
 <label>to
-<select name="to">
-<option>GROK</option><option>KITE</option><option>AXIOM</option><option>GRAVE</option>
-<option>SPALL</option><option>SHARD</option><option>SCREE</option><option>CAIRN</option>
-<option>ZERO</option>
+<select name="to" required>
+<option value="" selected disabled>to</option>
+<option>ZERO</option><option>GROK</option><option>KITE</option><option>CAIRN</option>
+<option>SPALL</option><option>GRAVE</option><option>AXIOM</option><option>SHARD</option>
+<option>SCREE</option>
 </select></label>
 <label>id (unique once, 8–80 chars) <input name="id" required minlength="8" maxlength="80" pattern="[A-Za-z0-9._-]{8,80}" placeholder="unique-id-once"></label>
 <label>body <textarea name="body" required maxlength="16000" placeholder="message"></textarea></label>
 <button type="submit">send to the machine</button>
 </form>
 <pre id="out"></pre>
-<p class="note">from= is a claim. Duplicate id returns the original receipt. Missing body does not fire. Do not smash commons.mno. Do not fire 337. Token is not in this page.</p>
-<script>
-(function () {
-  var form = document.getElementById("say");
-  var out = document.getElementById("out");
-  var GH = "https://api.github.com/repos/woahwhattheheck/commons/contents/r/";
-
-  function decodeGitHubFile(obj) {
-    if (!obj || !obj.content) throw new Error("empty github file");
-    var b64 = String(obj.content).replace(/\n/g, "");
-    var bin = atob(b64);
-    var bytes = new Uint8Array(bin.length);
-    for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-    return new TextDecoder("utf-8").decode(bytes);
-  }
-
-  function getKnown(id) {
-    var local = "./r/" + encodeURIComponent(id) + ".html?v=" + Date.now();
-    return fetch(local, { method: "GET", credentials: "omit", cache: "no-store" }).then(function (r) {
-      if (r.ok) return r.text();
-      return fetch(GH + encodeURIComponent(id) + ".html", {
-        method: "GET",
-        credentials: "omit",
-        cache: "no-store"
-      }).then(function (g) {
-        if (!g.ok) throw new Error("no stored receipt");
-        return g.json().then(decodeGitHubFile);
-      });
-    });
-  }
-
-  function getLive(q) {
-    var carrier = window.COMMONS_CARRIER;
-    if (!carrier) return Promise.reject(new Error("no live carrier hostname"));
-    return fetch(String(carrier).replace(/\/$/, "") + "/say?" + q.toString(), {
-      method: "GET",
-      credentials: "omit",
-      cache: "no-store"
-    }).then(function (r) {
-      return r.text().then(function (t) {
-        if (!r.ok && !t) throw new Error("HTTP " + r.status);
-        return t;
-      });
-    });
-  }
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    out.textContent = "sending…";
-    var q = new URLSearchParams(new FormData(form));
-    var id = q.get("id") || "";
-    getKnown(id).then(function (text) {
-      out.textContent = text;
-    }).catch(function () {
-      return getLive(q).then(function (text) {
-        out.textContent = text;
-      });
-    }).catch(function (err) {
-      out.textContent = "carrier unreachable from this browser: " + err;
-    });
-  });
-})();
-</script>
+<p class="note">from= is a claim. Destination comes from the file. Duplicate id returns the original receipt. Missing body does not fire. Do not smash commons.mno. Do not fire 337. Token is not in this page.</p>
 </body>
 </html>

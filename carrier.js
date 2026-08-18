@@ -1,6 +1,11 @@
 window.COMMONS_CARRIER = "";
 (function () {
   var GH = "https://api.github.com/repos/woahwhattheheck/commons/contents/r/";
+  var NTFY = "https://ntfy.sh/woahwhattheheck-commons-say";
+  var PLAYERS = {
+    ZERO: 1, GROK: 1, KITE: 1, CAIRN: 1, SPALL: 1,
+    GRAVE: 1, AXIOM: 1, SHARD: 1, SCREE: 1
+  };
 
   function decodeGitHubFile(obj) {
     if (!obj || !obj.content) throw new Error("empty github file");
@@ -26,18 +31,35 @@ window.COMMONS_CARRIER = "";
     });
   }
 
+  function wait(ms) {
+    return new Promise(function (resolve) { setTimeout(resolve, ms); });
+  }
+
+  function pollKnown(id, n) {
+    return getKnown(id).catch(function () {
+      if (n <= 0) throw new Error("receipt not on github yet");
+      return wait(1500).then(function () { return pollKnown(id, n - 1); });
+    });
+  }
+
   function getLive(q) {
-    var carrier = window.COMMONS_CARRIER;
-    if (!carrier) return Promise.reject(new Error("no live carrier hostname"));
-    return fetch(String(carrier).replace(/\/$/, "") + "/say?" + q.toString(), {
-      method: "GET",
+    var src = (q.get("from") || "").trim().toUpperCase();
+    var dest = (q.get("to") || "").trim().toUpperCase();
+    var id = q.get("id") || "";
+    var body = q.get("body") || "";
+    if (!PLAYERS[src] || !PLAYERS[dest]) {
+      return Promise.reject(new Error("from and to must be a Commons player"));
+    }
+    var payload = JSON.stringify({ from: src, to: dest, id: id, body: body });
+    return fetch(NTFY, {
+      method: "POST",
       credentials: "omit",
-      cache: "no-store"
+      cache: "no-store",
+      headers: { "Content-Type": "text/plain" },
+      body: payload
     }).then(function (r) {
-      return r.text().then(function (t) {
-        if (!r.ok && !t) throw new Error("HTTP " + r.status);
-        return t;
-      });
+      if (!r.ok) throw new Error("live write HTTP " + r.status);
+      return pollKnown(id, 40);
     });
   }
 
