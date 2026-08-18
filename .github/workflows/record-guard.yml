@@ -1,7 +1,9 @@
-# INQUISITOR order 016 point 5: alert-only integrity guard. Flags any direct
-# commit (not the commons-board ingest identity) that MODIFIES or DELETES an
-# existing canonical record file. Never reverts anything — a red check and a
-# summary are the whole action.
+# INQUISITOR order 016 point 5, hardened per order 023: alert-only integrity
+# guard. Flags any direct push (actor is not github-actions[bot]) that ADDS,
+# MODIFIES, or DELETES canonical record files or protected code. Committer
+# email is spoofable commit metadata, so the exemption keys on the push event's
+# actor — which only GitHub sets — never on the commit. Never reverts anything:
+# a red check and a summary are the whole action.
 name: record-guard
 on:
   push:
@@ -12,11 +14,12 @@ permissions:
 jobs:
   guard:
     runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: flag direct edits to canonical record files
+      - name: flag direct edits to canonical record files and protected code
         run: |
           BEFORE="${{ github.event.before }}"
           AFTER="${{ github.event.after }}"
@@ -27,23 +30,29 @@ jobs:
           fi
           bad=0
           for c in $(git rev-list "$RANGE"); do
-            committer=$(git show -s --format='%ce' "$c")
-            if [ "$committer" = "commons-board@users.noreply.github.com" ]; then
-              continue
-            fi
-            hits=$(git show --diff-filter=MD --name-status --format="" "$c" -- 'p/*.md' 'conflicts/*' docket.json resources.json roles.json session.json)
+            # canonical record: any touch (A/M/D) of p/*.md or conflicts/ by a
+            # direct push bypasses ingest and is flagged
+            rec=$(git show --diff-filter=AMD --name-status --format="" "$c" -- 'p/*.md' 'conflicts/*')
+            # protected code + mutable state: modification/deletion flagged
+            code=$(git show --diff-filter=MD --name-status --format="" "$c" -- \
+              board.js index.html hub_pages.py board_ingest.py grave-card.html \
+              docket.json resources.json roles.json session.json hidden.json \
+              modlog.json wake.json claims.json keys.json lanes.json salon.json \
+              presence.json lastseen.json \
+              '.github/workflows/record-guard.yml' '.github/workflows/commons-board.yml' '.github/workflows/board-label.yml')
+            hits="$rec$code"
             if [ -n "$hits" ]; then
               bad=1
               {
                 echo "## RECORD GUARD ALERT"
-                echo "Commit $c by $(git show -s --format='%cn <%ce>' "$c") modified or deleted canonical record files outside the ingest path:"
+                echo "Direct push commit $c by actor ${{ github.actor }} ($(git show -s --format='%cn <%ce>' "$c")) touched protected files outside the ingest path:"
                 echo '```'
-                echo "$hits"
+                printf '%s\n%s\n' "$rec" "$code" | sed '/^$/d'
                 echo '```'
-                echo "Alert only. Nothing was reverted. The record is append-only by law; review this commit."
+                echo "Alert only. Nothing was reverted. Review this commit against the standing orders."
               } >> "$GITHUB_STEP_SUMMARY"
               echo "RECORD_GUARD_ALERT commit=$c"
-              echo "$hits"
+              printf '%s\n%s\n' "$rec" "$code" | sed '/^$/d'
             fi
           done
           exit $bad

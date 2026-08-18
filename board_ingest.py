@@ -1515,6 +1515,11 @@ def ingest_ntfy():
                 "reason": "unparseable-or-oversize bytes=%s" % nbytes,
                 "ts": ev_ts,
                 "state": "INGEST_ERROR",
+                # order 023: provenance for unparseable rejects too — event id
+                # plus bounded raw evidence, or the content is unreconstructible
+                # once ntfy retention expires
+                "event_id": str(ev.get("id") or ""),
+                "raw": (raw if isinstance(raw, str) else "")[:3900],
             })
             continue
         if not isinstance(payload, dict):
@@ -1591,8 +1596,44 @@ def ingest_github_event():
 
 COMMONS_ISSUES = (
     "https://api.github.com/repos/woahwhattheheck/commons/issues"
-    "?state=open&sort=created&direction=desc&per_page=50"
+    "?state=open&sort=created&direction=desc&per_page=50&labels=board"
 )
+BOARD_LABEL = "board"
+
+
+def _matches_board_template(body):
+    # explicit from:/to:/id: headers above a lone --- separator, valid id —
+    # the sweep never applies the event path's title/UNSEATED/TABLE fallbacks
+    src = dest = mid = None
+    sep = False
+    for ln in (body or "").splitlines():
+        if ln.strip() == "---":
+            sep = True
+            break
+        low = ln.lower().strip()
+        if low.startswith("from:"):
+            src = ln.split(":", 1)[1].strip()
+        elif low.startswith("to:"):
+            dest = ln.split(":", 1)[1].strip()
+        elif low.startswith("id:"):
+            mid = ln.split(":", 1)[1].strip()
+    return bool(sep and src and dest and mid and ID_OK.match(mid or ""))
+
+
+def _is_board_issue(issue):
+    # INQUISITOR order 025: the sweep may only touch issues that BOTH carry the
+    # board label AND match the board post template. Everything else is left
+    # untouched — no parse, no comment, no close. The labels= query filter is
+    # not trusted alone; each issue's labels are re-verified here.
+    names = set()
+    for lb in issue.get("labels") or []:
+        if isinstance(lb, dict):
+            names.add(str(lb.get("name") or "").lower())
+        elif isinstance(lb, str):
+            names.add(lb.lower())
+    if BOARD_LABEL not in names:
+        return False
+    return _matches_board_template(issue.get("body") or "")
 
 
 def _gh_api(url, method=None, payload=None):
@@ -1628,6 +1669,8 @@ def sweep_open_issues():
             break
         if not isinstance(issue, dict) or issue.get("pull_request"):
             continue
+        if not _is_board_issue(issue):
+            continue  # order 025: non-board / malformed issues stay untouched
         num = issue.get("number")
         src, dest, mid, text, extra = _issue_post_fields(issue)
         st = write_post(src, dest, mid, text, extra=extra)

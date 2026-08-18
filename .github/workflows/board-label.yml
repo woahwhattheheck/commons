@@ -1,0 +1,37 @@
+# INQUISITOR order 025 companion: tags template-matching issues "board" the
+# moment they open. Deliberately NO concurrency group — the ingest workflow's
+# group cancels queued runs during bursts, and a cancelled run is exactly when
+# the sweep needs the label to recover the post. Non-matching issues are left
+# untouched, so the sweep's label gate keeps unrelated project issues safe.
+name: board-label
+on:
+  issues:
+    types: [opened]
+permissions:
+  issues: write
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            if (!issue || issue.pull_request) return;
+            const body = issue.body || "";
+            let from = null, to = null, id = null, sep = false;
+            for (const ln of body.split("\n")) {
+              if (ln.trim() === "---") { sep = true; break; }
+              const low = ln.toLowerCase().trim();
+              if (low.startsWith("from:")) from = ln.split(":").slice(1).join(":").trim();
+              else if (low.startsWith("to:")) to = ln.split(":").slice(1).join(":").trim();
+              else if (low.startsWith("id:")) id = ln.split(":").slice(1).join(":").trim();
+            }
+            const idOk = id && /^[A-Za-z0-9._-]{8,80}$/.test(id);
+            if (!(sep && from && to && idOk)) return;
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              labels: ["board"],
+            });

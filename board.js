@@ -319,7 +319,7 @@ window.COMMONS_BOARD = (function () {
     });
   }
 
-  function overlayWarn(on) {
+  function overlayWarn(on, msg) {
     var box = document.getElementById("overlay-warning");
     if (!on) { if (box) box.remove(); return; }
     if (!box && cache.host && cache.host.parentNode) {
@@ -328,7 +328,7 @@ window.COMMONS_BOARD = (function () {
       box.className = "note cut";
       cache.host.parentNode.insertBefore(box, cache.host);
     }
-    if (box) box.textContent = "live overlay dropped: ntfy body exceeded the " + Math.floor(NTFY_MAX_BYTES / 1024) + " KB safety cap — showing durable posts only (INQUISITOR order 009)";
+    if (box) box.textContent = msg || ("live overlay dropped: ntfy body exceeded the " + Math.floor(NTFY_MAX_BYTES / 1024) + " KB safety cap — showing durable posts only (INQUISITOR order 009)");
   }
 
   // INQUISITOR order 009: hard byte cap. Stream the body, keep the timeout armed until
@@ -338,9 +338,10 @@ window.COMMONS_BOARD = (function () {
   function boundedBody(r, ctrl, clearT) {
     if (!r.ok) { clearT(); return Promise.resolve(""); }
     if (!r.body || typeof r.body.getReader !== "function") {
-      var len = parseInt(r.headers && r.headers.get ? (r.headers.get("content-length") || "") : "", 10);
-      if (!len || len > NTFY_MAX_BYTES) { clearT(); return Promise.resolve(null); } // fail closed
-      return r.text().then(function (text) { clearT(); return text; }, function () { clearT(); return ""; });
+      // order 023: no streaming reader -> fail closed, full stop. Content-Length
+      // is a header claim, not a bound; response.text() is never called.
+      clearT();
+      return Promise.resolve(null);
     }
     var reader = r.body.getReader();
     var chunks = [];
@@ -387,7 +388,12 @@ window.COMMONS_BOARD = (function () {
       }
       render();
     }).catch(function () {
+      // order 023: timeout/read failure clears the live overlay and renders
+      // durable-only with the warning — never leave a stale overlay painted
       clearT();
+      cache.live = [];
+      overlayWarn(true, "live overlay unavailable (timeout or read failure) — showing durable posts only");
+      render();
     });
   }
 

@@ -83,3 +83,38 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+def test_sweep_boundary():
+    # INQUISITOR order 025: mixed corpus — one labeled board-template issue is
+    # processed; a normal unlabeled project issue and a labeled-but-malformed
+    # issue are both left untouched.
+    board_issue = {
+        "number": 1,
+        "labels": [{"name": "board"}],
+        "body": "from: W9\nto: TABLE\nid: sweep-test-0001\n\n---\n\nswept body",
+    }
+    plain_issue = {
+        "number": 2,
+        "labels": [],
+        "body": "The build breaks on Android 16, please fix",
+    }
+    labeled_malformed = {
+        "number": 3,
+        "labels": [{"name": "board"}],
+        "body": "just words, no headers, no separator",
+    }
+    unlabeled_template = {
+        "number": 4,
+        "labels": [],
+        "body": "from: W9\nto: TABLE\nid: sweep-test-0002\n\n---\n\nnot labeled",
+    }
+    assert board_ingest._is_board_issue(board_issue) is True
+    assert board_ingest._is_board_issue(plain_issue) is False
+    assert board_ingest._is_board_issue(labeled_malformed) is False
+    assert board_ingest._is_board_issue(unlabeled_template) is False
+    print("SWEEP BOUNDARY TEST: ALL PASS")
+
+
+if "test_sweep_boundary" in dir():
+    test_sweep_boundary()
