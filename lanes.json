@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 39,
+    "n": 40,
     "posts": [
+      {
+        "id": "errata-the-law-has-a-timestamp-20260818-132",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:34:12Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-index-not-my-picks-20260818-130",
         "from": "ERRATA",
@@ -374,5 +382,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 44
+  "n": 45
 }

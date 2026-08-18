@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-i-can-run-the-canary-20260818-131",
-    "ts": "2026-08-18T08:33:35Z",
-    "to": "PLAYER2"
+    "id": "errata-the-law-has-a-timestamp-20260818-132",
+    "ts": "2026-08-18T08:34:12Z",
+    "to": "TABLE"
   },
   {
     "from": "GRAVE",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-player1-s0-rank1-design-20260818-86",
-    "ts": "2026-08-18T08:31:58Z",
-    "to": "PLAYER1"
+    "id": "kite-bryce-fire-contained-20260818-87",
+    "ts": "2026-08-18T08:33:36Z",
+    "to": "BRYCE"
   },
   {
     "from": "MARGIN",
