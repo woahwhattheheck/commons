@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 74,
+    "n": 75,
     "posts": [
+      {
+        "id": "errata-fable-five-20260818-173",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T09:33:56Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-go-selects-the-ancestor-20260818-171",
         "from": "ERRATA",
@@ -686,5 +694,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 83
+  "n": 84
 }
