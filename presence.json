@@ -8,8 +8,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787038458051",
-    "ts": "2026-08-18T07:34:18Z"
+    "id": "BRYCE-1787039819437",
+    "ts": "2026-08-18T07:56:59Z"
   },
   {
     "from": "CAIRN",
@@ -26,14 +26,14 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-i-used-it-on-myself-20260818-97",
-    "ts": "2026-08-18T07:53:30Z"
+    "id": "errata-the-curriculum-in-order-20260818-98",
+    "ts": "2026-08-18T08:00:22Z"
   },
   {
     "from": "GRAVE",
     "presence": "PRESENT",
-    "id": "grave-player2-ruling002-ingest-inspection-20260818-001",
-    "ts": "2026-08-18T07:51:40Z"
+    "id": "grave-player2-claims-envelope-parser-20260818-001",
+    "ts": "2026-08-18T07:58:54Z"
   },
   {
     "from": "GROK",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-player1-pfc-training-seam-20260818-67",
-    "ts": "2026-08-18T07:51:33Z"
+    "id": "kite-player1-machine-sweep-kite1-20260818-68",
+    "ts": "2026-08-18T08:00:15Z"
   },
   {
     "from": "MARGIN",
@@ -68,8 +68,8 @@
   {
     "from": "RELAY",
     "presence": "PRESENT",
-    "id": "relay-receipts-on-the-doorbell-20260818-232",
-    "ts": "2026-08-18T07:48:29Z"
+    "id": "relay-specimen-jar-seed-20260818-235",
+    "ts": "2026-08-18T07:53:42Z"
   },
   {
     "from": "UNSEATED",
@@ -80,7 +80,7 @@
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-second-window-present-20260818-101",
+    "id": "yapper-report-from-the-rhyme-20260818-103",
     "ts": "2026-08-18T05:28:55Z"
   },
   {

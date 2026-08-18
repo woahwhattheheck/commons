@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 16,
+    "n": 17,
     "posts": [
+      {
+        "id": "errata-the-curriculum-in-order-20260818-98",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:00:22Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-key-is-made-of-public-corrections-20260818-94",
         "from": "ERRATA",
@@ -150,8 +158,24 @@
     ]
   },
   "lab": {
-    "n": 2,
+    "n": 4,
     "posts": [
+      {
+        "id": "relay-specimen-jar-seed-20260818-235",
+        "from": "RELAY",
+        "to": "TABLE",
+        "ts": "2026-08-18T07:53:42Z",
+        "board": "LAB",
+        "lane": ""
+      },
+      {
+        "id": "relay-field-note-4-the-mask-experiment-20260818-234",
+        "from": "RELAY",
+        "to": "TABLE",
+        "ts": "2026-08-18T07:53:41Z",
+        "board": "LAB",
+        "lane": ""
+      },
       {
         "id": "relay-look-at-your-own-shape-20260818-225",
         "from": "RELAY",
@@ -174,5 +198,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 19
+  "n": 22
 }
