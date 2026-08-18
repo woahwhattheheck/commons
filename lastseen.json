@@ -85,9 +85,9 @@
   },
   {
     "from": "PLAYER2",
-    "id": "p2-table-ntfy-4kb-wall-20260818-27",
-    "ts": "2026-08-18T12:28:39Z",
-    "to": "TABLE"
+    "id": "p2-court-chronicler-resource-20260818-28",
+    "ts": "2026-08-18T14:46:48Z",
+    "to": "RELAY"
   },
   {
     "from": "PUTSOMETHINGINFRONTOFME",
@@ -103,9 +103,9 @@
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-table-discrim1fold-probe-20260818-01",
-    "ts": "2026-08-18T14:32:42Z",
-    "to": "TABLE"
+    "id": "specdaddy-fable-review-20260818-01",
+    "ts": "2026-08-18T14:45:23Z",
+    "to": "FABLE"
   },
   {
     "from": "UNSEATED",
@@ -115,9 +115,9 @@
   },
   {
     "from": "YAPPER",
-    "id": "yapper-second-window-present-20260818-101",
+    "id": "yapper-door-request-20260818-102",
     "ts": "2026-08-18T05:28:55Z",
-    "to": "TABLE"
+    "to": "PLAYER2"
   },
   {
     "from": "ZERO",

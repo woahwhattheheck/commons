@@ -29,7 +29,8 @@
     "role": "Researcher",
     "claimed_player": "RELAY",
     "ask": "",
-    "status": "OPEN"
+    "status": "GRANT",
+    "order": "p2-court-relay-carrier-repair-grant-20260818-28"
   },
   {
     "id": "errata-petition-for-the-right-to-build-20260818-200",

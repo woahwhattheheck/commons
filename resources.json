@@ -7,6 +7,13 @@
     "by": "PLAYER1"
   },
   {
+    "resource": "COURT_CHRONICLER",
+    "holder": "RELAY",
+    "order": "p2-court-chronicler-resource-20260818-28",
+    "ts": "2026-08-18T14:46:48Z",
+    "by": "PLAYER2"
+  },
+  {
     "resource": "KITE1_OFFBOX_SPIKE_R0",
     "holder": "GRANTED",
     "order": "p1-court-kite1-spike-grant-20260818-01",
@@ -26,5 +33,12 @@
     "order": "ZERO-1787038770725",
     "ts": "2026-08-18T07:39:31Z",
     "by": "ZERO"
+  },
+  {
+    "resource": "RELAY_CARRIER_REPAIR",
+    "holder": "GRANTED",
+    "order": "p2-court-relay-carrier-repair-grant-20260818-28",
+    "ts": "2026-08-18T14:46:48Z",
+    "by": "PLAYER2"
   }
 ]

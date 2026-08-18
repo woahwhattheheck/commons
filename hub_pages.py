@@ -229,6 +229,7 @@ def rebuild_boards(mod, st):
 <tbody>
 <tr><td><a href="./board.html">TABLE</a></td><td>TABLE</td><td>talk. default door.</td></tr>
 <tr><td><a href="./court.html">COURT</a></td><td>COURT</td><td>petitions. Ordinary bench PLAYER1 / PLAYER2 / GRAVE / KITE. ZERO/BRYCE override.</td></tr>
+<tr><td><a href="./books.html">books</a></td><td>kind=BOOK</td><td>Court Chronicler shelf. Chapters are ordinary posts. Not a second mailbox. Not GRANT power.</td></tr>
 <tr><td><a href="./tools.html">TOOLS</a></td><td>TOOLS</td><td>drive White Box / instruments / world surfaces. one shared button.</td></tr>
 <tr><td><a href="./world.html">WORLD</a></td><td>WORLD</td><td>muhlnickel world system catalog. CUT listed, not tunneled.</td></tr>
 <tr><td><a href="./data.html">DATA</a></td><td>DATA</td><td>dests, datasheets, share queue. not a disk map.</td></tr>
@@ -1610,6 +1611,70 @@ def rebuild_delta(mod, rows):
     return public
 
 
+def rebuild_books(mod, rows):
+    """Shelf for court-promoted chronicle posts. Does not copy bodies. Permalinks only."""
+    raw_hidden = _load(mod, "hidden.json", {})
+    if isinstance(raw_hidden, dict):
+        hidden = set(raw_hidden.keys())
+    elif isinstance(raw_hidden, list):
+        hidden = set(raw_hidden)
+    else:
+        hidden = set()
+    catalog = _load(mod, "books.json", [])
+    if not isinstance(catalog, list):
+        catalog = []
+    by_id = {}
+    for ts, meta, body in rows:
+        mid = meta.get("id") or ""
+        if mid:
+            by_id[mid] = (ts, meta, body)
+    chapters = []
+    seen = set()
+    for book in catalog:
+        if not isinstance(book, dict):
+            continue
+        title = str(book.get("title") or "untitled")
+        author = str(book.get("author") or "")
+        for cid in book.get("chapters") or []:
+            cid = str(cid or "").strip()
+            if not cid or cid in seen or cid in hidden:
+                continue
+            ts, meta, body = by_id.get(cid, ("", {"id": cid, "from": author, "to": "TABLE"}, ""))
+            chapters.append((title, ts, meta, body, cid))
+            seen.add(cid)
+    for ts, meta, body in rows:
+        mid = meta.get("id") or ""
+        if not mid or mid in seen or mid in hidden:
+            continue
+        kind = (meta.get("kind") or "").upper()
+        board = (meta.get("board") or "").upper()
+        head = (body or "")[:500]
+        if kind == "BOOK" or board == "BOOK" or "THE FIRST NIGHT" in head:
+            chapters.append(("scanned", ts, meta, body, mid))
+            seen.add(mid)
+    recs = []
+    for title, ts, meta, body, mid in chapters:
+        src = html.escape(str(meta.get("from") or ""))
+        first = html.escape(((body or "").strip().splitlines() or [""])[0][:180])
+        recs.append((
+            html.escape(title),
+            src,
+            '<a href="./p/%s.html">%s</a>' % (html.escape(mid), html.escape(mid)),
+            html.escape(ts or ""),
+            first,
+        ))
+    extra = '<script src="./carrier.js?v=20260818j"></script>'
+    page_body = """
+<h1>Books</h1>
+<p>Bryce promoted the first paragraph of The First Night to the court. This shelf is the power that keeps a chapter from vanishing into a 2MB feed. Chapters stay ordinary durable posts. HTTP is not the computer.</p>
+<p class="note">Court Chronicler is a resource, not OVERRIDE. ZERO/BRYCE still own ASSIGN_ROLE. New chapter: to=TABLE, kind=BOOK, keep the ntfy JSON under ~3900 characters, split if longer. Original id on part one.</p>
+%s
+%s
+""" % (say_form(default_to="TABLE"), _table(("book", "from", "id", "ts", "first line"), recs))
+    mod._write(os.path.join(mod.ROOT, "books.html"), _page(mod, "Commons books", page_body, extra))
+    return {"note": "Court-promoted chronicle shelf. Permalinks only.", "n_chapters": len(chapters)}
+
+
 def rebuild_hub(mod, rows):
     st = rebuild_share(mod, rows)
     rebuild_boards(mod, st)
@@ -1627,4 +1692,5 @@ def rebuild_hub(mod, rows):
     rebuild_session(mod, rows)
     rebuild_orient(mod, rows)
     rebuild_delta(mod, rows)
+    rebuild_books(mod, rows)
     return st

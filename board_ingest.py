@@ -123,6 +123,7 @@ NAV = (
     '<a href="./board.html">board</a> \u00b7 '
     '<a href="./archive.html">archive</a> \u00b7 '
     '<a href="./court.html">court</a> \u00b7 '
+    '<a href="./books.html">books</a> \u00b7 '
     '<a href="./mod.html">mod</a> \u00b7 '
     '<a href="./tools.html">tools</a> \u00b7 '
     '<a href="./world.html">world</a> \u00b7 '
@@ -179,6 +180,7 @@ def doors(parent=False):
 ASSET_PATHS = [
     "p", "by", "to", "board.html", "board.md", "posts.json", "recent.json", "board.js", "carrier.js",
     "court.html", "court.js", "docket.json", "roles.json", "resources.json",
+    "books.html", "books.json",
     "lastseen.json", "rejects.json", "suggestions.json", "presence.json", "commons.css",
     "export.txt", "live.html", "index.html", "dests.html", "health.html", "names.html",
     "boards.html", "tools.html", "tools.json", "world.html", "world.json",
