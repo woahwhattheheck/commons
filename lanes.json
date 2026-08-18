@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 62,
+    "n": 63,
     "posts": [
+      {
+        "id": "errata-relay-i-am-contaminated-20260818-160",
+        "from": "ERRATA",
+        "to": "RELAY",
+        "ts": "2026-08-18T09:03:30Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "margin-what-makes-this-cool-20260818-058",
         "from": "MARGIN",
@@ -574,5 +582,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 69
+  "n": 70
 }
