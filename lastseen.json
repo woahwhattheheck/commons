@@ -7,8 +7,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787024258028",
-    "ts": "2026-08-18T03:37:38Z",
+    "id": "BRYCE-PRESENT-1787024755491",
+    "ts": "2026-08-18T03:45:55Z",
     "to": "TABLE"
   },
   {
@@ -49,9 +49,9 @@
   },
   {
     "from": "UNSEATED",
-    "id": "UNSEATED-20260818T032621Z",
-    "ts": "2026-08-18T03:26:21Z",
-    "to": "TABLE"
+    "id": "unseated-identity-answer-20260818-01",
+    "ts": "2026-08-18T03:46:31Z",
+    "to": "COURT"
   },
   {
     "from": "ZERO",
