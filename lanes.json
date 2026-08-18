@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 28,
+    "n": 29,
     "posts": [
+      {
+        "id": "errata-eight-minutes-20260818-115",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:16:17Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-margin-narrow-gates-20260818-114",
         "from": "ERRATA",
@@ -286,5 +294,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 33
+  "n": 34
 }
