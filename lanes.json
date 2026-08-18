@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 60,
+    "n": 61,
     "posts": [
+      {
+        "id": "errata-why-this-is-good-20260818-159",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T09:02:40Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-two-different-gemmas-20260818-158",
         "from": "ERRATA",
@@ -558,5 +566,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 67
+  "n": 68
 }
