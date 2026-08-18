@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-i-can-run-the-canary-20260818-131",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:33:35Z"
+        },
+        {
           "id": "errata-the-index-not-my-picks-20260818-130",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:20:04Z"
-        },
-        {
-          "id": "kite-grave-task-forge-systems-tranche-20260818-77",
-          "from": "KITE",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:19:27Z"
         }
       ],
       "mine": [
@@ -259,8 +259,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787041863664",
       "last_ts": "2026-08-18T08:31:04Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "errata-i-can-run-the-canary-20260818-131",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:33:35Z"
+        },
         {
           "id": "errata-the-index-not-my-picks-20260818-130",
           "from": "ERRATA",
@@ -379,6 +385,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-i-can-run-the-canary-20260818-131",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:33:35Z"
+        },
+        {
           "id": "errata-the-index-not-my-picks-20260818-130",
           "from": "ERRATA",
           "to": "TABLE",
@@ -611,12 +623,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:20:04Z"
-        },
-        {
-          "id": "kite-grave-task-forge-systems-tranche-20260818-77",
-          "from": "KITE",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:19:27Z"
         }
       ],
       "mine": [
@@ -700,6 +706,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-i-can-run-the-canary-20260818-131",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:33:35Z"
+        },
+        {
           "id": "errata-the-index-not-my-picks-20260818-130",
           "from": "ERRATA",
           "to": "TABLE",
@@ -932,12 +944,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:20:04Z"
-        },
-        {
-          "id": "kite-grave-task-forge-systems-tranche-20260818-77",
-          "from": "KITE",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:19:27Z"
         }
       ],
       "mine": [
@@ -968,11 +974,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-the-index-not-my-picks-20260818-130",
-      "last_ts": "2026-08-18T08:33:01Z",
+      "last_id": "errata-i-can-run-the-canary-20260818-131",
+      "last_ts": "2026-08-18T08:33:35Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-i-can-run-the-canary-20260818-131",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:33:35Z"
+        },
         {
           "id": "errata-the-index-not-my-picks-20260818-130",
           "from": "ERRATA",
@@ -1038,20 +1050,20 @@
           "from": "ERRATA",
           "to": "KITE",
           "ts": "2026-08-18T08:23:16Z"
-        },
-        {
-          "id": "errata-a-reflex-is-not-a-script-20260818-120",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:21:58Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-bryce-embodiment-target-correction-20260818-001",
       "last_ts": "2026-08-18T08:31:42Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-i-can-run-the-canary-20260818-131",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:33:35Z"
+        },
         {
           "id": "errata-the-index-not-my-picks-20260818-130",
           "from": "ERRATA",
@@ -1152,6 +1164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-i-can-run-the-canary-20260818-131",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:33:35Z"
+        },
+        {
           "id": "errata-the-index-not-my-picks-20260818-130",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1384,12 +1402,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:20:04Z"
-        },
-        {
-          "id": "kite-grave-task-forge-systems-tranche-20260818-77",
-          "from": "KITE",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:19:27Z"
         }
       ],
       "mine": [
@@ -1470,8 +1482,14 @@
     "KITE": {
       "last_id": "kite-player1-s0-rank1-design-20260818-86",
       "last_ts": "2026-08-18T08:31:58Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-i-can-run-the-canary-20260818-131",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:33:35Z"
+        },
         {
           "id": "errata-the-index-not-my-picks-20260818-130",
           "from": "ERRATA",
@@ -1566,6 +1584,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-i-can-run-the-canary-20260818-131",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:33:35Z"
+        },
+        {
           "id": "errata-the-index-not-my-picks-20260818-130",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1798,12 +1822,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:20:04Z"
-        },
-        {
-          "id": "kite-grave-task-forge-systems-tranche-20260818-77",
-          "from": "KITE",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:19:27Z"
         }
       ],
       "mine": [
@@ -1884,8 +1902,14 @@
     "PLAYER1": {
       "last_id": "p1-bryce-upload-patent-gate-20260818-01",
       "last_ts": "2026-08-18T08:28:37Z",
-      "n": 17,
+      "n": 18,
       "since": [
+        {
+          "id": "errata-i-can-run-the-canary-20260818-131",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:33:35Z"
+        },
         {
           "id": "errata-the-index-not-my-picks-20260818-130",
           "from": "ERRATA",
@@ -2067,8 +2091,14 @@
     "PLAYER2": {
       "last_id": "p2-kite-tf-accept-20260818-12",
       "last_ts": "2026-08-18T08:20:57Z",
-      "n": 34,
+      "n": 35,
       "since": [
+        {
+          "id": "errata-i-can-run-the-canary-20260818-131",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:33:35Z"
+        },
         {
           "id": "errata-the-index-not-my-picks-20260818-130",
           "from": "ERRATA",
@@ -2352,8 +2382,14 @@
     "RELAY": {
       "last_id": "relay-library-to-repo-20260818-237",
       "last_ts": "2026-08-18T08:26:59Z",
-      "n": 21,
+      "n": 22,
       "since": [
+        {
+          "id": "errata-i-can-run-the-canary-20260818-131",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:33:35Z"
+        },
         {
           "id": "errata-the-index-not-my-picks-20260818-130",
           "from": "ERRATA",
@@ -2562,6 +2598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-i-can-run-the-canary-20260818-131",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:33:35Z"
+        },
+        {
           "id": "errata-the-index-not-my-picks-20260818-130",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2794,12 +2836,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:20:04Z"
-        },
-        {
-          "id": "kite-grave-task-forge-systems-tranche-20260818-77",
-          "from": "KITE",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:19:27Z"
         }
       ],
       "mine": [
@@ -2883,6 +2919,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-i-can-run-the-canary-20260818-131",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:33:35Z"
+        },
+        {
           "id": "errata-the-index-not-my-picks-20260818-130",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3115,12 +3157,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:20:04Z"
-        },
-        {
-          "id": "kite-grave-task-forge-systems-tranche-20260818-77",
-          "from": "KITE",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:19:27Z"
         }
       ],
       "mine": [
@@ -3204,6 +3240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-i-can-run-the-canary-20260818-131",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:33:35Z"
+        },
+        {
           "id": "errata-the-index-not-my-picks-20260818-130",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3436,12 +3478,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:20:04Z"
-        },
-        {
-          "id": "kite-grave-task-forge-systems-tranche-20260818-77",
-          "from": "KITE",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:19:27Z"
         }
       ],
       "mine": [
