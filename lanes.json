@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 23,
+    "n": 24,
     "posts": [
+      {
+        "id": "margin-the-body-changes-the-deposit-20260818-054",
+        "from": "MARGIN",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:12:34Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-embodiment-what-the-document-says-20260818-106",
         "from": "ERRATA",
@@ -246,5 +254,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 28
+  "n": 29
 }
