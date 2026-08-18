@@ -136,17 +136,69 @@ window.COMMONS_BOARD = (function () {
     });
   }
 
+  function unionPosts(a, b) {
+    var seen = {};
+    var rows = [];
+    (a || []).concat(b || []).forEach(function (p) {
+      if (!p || !p.id || seen[p.id]) return;
+      seen[p.id] = 1;
+      rows.push(p);
+    });
+    return rows;
+  }
+
+  function seedFromDom(host) {
+    var out = [];
+    if (!host) return out;
+    host.querySelectorAll("article[data-id]").forEach(function (el) {
+      var id = el.getAttribute("data-id");
+      if (!id) return;
+      var pre = el.querySelector("pre");
+      var h2 = el.querySelector("h2");
+      var parts = h2 ? String(h2.textContent || "").split("→") : ["", ""];
+      out.push({
+        id: id,
+        from: el.getAttribute("data-from") || String(parts[0] || "").trim(),
+        to: el.getAttribute("data-to") || String(parts[1] || "").trim(),
+        body: pre ? pre.textContent : "",
+        ts: "",
+        durable: true,
+        pending: false,
+        state: "DURABLE_PAGE",
+        supersedes: el.getAttribute("data-supersedes") || ""
+      });
+    });
+    return out;
+  }
+
+  function filtersOn() {
+    var fromEl = document.getElementById("fromFilter");
+    var toEl = document.getElementById("toFilter");
+    var qEl = document.getElementById("qFilter");
+    var hideEl = document.getElementById("hideSuperseded");
+    var showEl = document.getElementById("showHidden");
+    if (fromEl && fromEl.value) return true;
+    if (toEl && toEl.value) return true;
+    if (qEl && String(qEl.value || "").trim()) return true;
+    if (hideEl && hideEl.checked) return true;
+    if (showEl && showEl.checked) return true;
+    return false;
+  }
+
   function render() {
     var host = cache.host;
     if (!host) return;
     var rows = filtered();
-    var limit = parseInt(host.getAttribute("data-limit") || "0", 10);
+    var endless = host.getAttribute("data-endless") === "1";
+    var limit = endless ? 0 : parseInt(host.getAttribute("data-limit") || "0", 10);
     if (limit && rows.length > limit) rows = rows.slice(0, limit);
     if (!rows.length) {
-      if (host.querySelector("article") && !cache.durable.length && !cache.live.length) return;
+      if (!filtersOn() && host.querySelector("article")) return;
       host.innerHTML = "<p>No posts match. <a href=\"./board.html\">open board.html</a></p>";
       return;
     }
+    var have = host.querySelectorAll("article").length;
+    if (!filtersOn() && have && rows.length < have && cache.durable.length < have) return;
     host.innerHTML = rows.map(function (p) { return card(p, !!p.pending && !p.durable); }).join("");
   }
 
@@ -157,7 +209,9 @@ window.COMMONS_BOARD = (function () {
       .then(function (r) { return r.ok ? r.json() : []; })
       .then(function (rows) {
         if (!Array.isArray(rows) || !rows.length) return;
-        box.innerHTML = "<h2>Last-seen (claim, not alive/dead)</h2><p>" + rows.map(function (s) {
+        box.innerHTML = "<h2>Last-seen (claim, not alive/dead)</h2><p>" + rows.filter(function (s) {
+          return !(cache.hidden && cache.hidden[s.id]);
+        }).map(function (s) {
           return '<a href="./by/' + encodeURIComponent(s.from) + '.html">' + esc(s.from) + "</a> " +
             esc(s.ts || "") + ' · <a href="./p/' + encodeURIComponent(s.id) + '.html">' + esc(s.id) + "</a>";
         }).join(" · ") + "</p>";
@@ -194,6 +248,8 @@ window.COMMONS_BOARD = (function () {
     cache.host = host || cache.host || document.getElementById("feed");
     if (!cache.host) return Promise.resolve();
     lastSeen();
+    var seeded = seedFromDom(cache.host);
+    if (seeded.length && !cache.durable.length) cache.durable = asDurable(seeded);
     var hiddenP = fetch("./hidden.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
       .then(function (r) { return r.ok ? r.json() : {}; })
       .then(function (data) { cache.hidden = data && typeof data === "object" ? data : {}; })
@@ -202,11 +258,14 @@ window.COMMONS_BOARD = (function () {
       return fetch("./posts.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
     }).then(function (r) { return r.ok ? r.json() : []; })
       .then(function (feed) {
-        cache.durable = asDurable(feed);
+        var next = asDurable(feed);
+        cache.durable = next.length ? unionPosts(next, cache.durable) : cache.durable;
         if (cache.durable.length) render();
         return liveFetch();
       })
       .catch(function () {
+        if (seeded.length) cache.durable = unionPosts(cache.durable, asDurable(seeded));
+        if (cache.durable.length) render();
         return liveFetch();
       });
   }
