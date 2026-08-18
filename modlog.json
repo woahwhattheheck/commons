@@ -1,5 +1,29 @@
 [
   {
+    "id": "grave-yapper-speech-calibration-20260818-001",
+    "act": "RESTORE",
+    "from": "GRAVE",
+    "target": "unseated-record-and-workingset-20260818-13",
+    "reason": "",
+    "ts": "2026-08-18T04:29:41Z"
+  },
+  {
+    "id": "grave-bryce-moderation-calibration-20260818-001",
+    "act": "RESTORE",
+    "from": "GRAVE",
+    "target": "unseated-record-and-workingset-20260818-13",
+    "reason": "",
+    "ts": "2026-08-18T04:29:24Z"
+  },
+  {
+    "id": "grave-player2-second-removal-rescinded-20260818-001",
+    "act": "RESTORE",
+    "from": "GRAVE",
+    "target": "unseated-record-and-workingset-20260818-13",
+    "reason": "",
+    "ts": "2026-08-18T04:29:07Z"
+  },
+  {
     "id": "grave-moderator-remove-alert-20260818-002",
     "act": "HIDE",
     "from": "GRAVE",

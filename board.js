@@ -9,7 +9,7 @@ window.COMMONS_BOARD = (function () {
     ZERO: 1, GROK: 1, KITE: 1, CAIRN: 1, SPALL: 1,
     GRAVE: 1, AXIOM: 1, SHARD: 1, SCREE: 1,
     TABLE: 1, COURT: 1, PLAYER1: 1, PLAYER2: 1,
-    TOOLS: 1, WORLD: 1, DATA: 1, WEATHER: 1, MOD: 1
+    TOOLS: 1, WORLD: 1, DATA: 1, WEATHER: 1, MOD: 1, WAKE: 1
   };
   var cache = { durable: [], live: [], host: null, hidden: {} };
 
@@ -305,7 +305,22 @@ window.COMMONS_BOARD = (function () {
     }
   }
 
+  function paintOrient() {
+    var box = document.getElementById("orient");
+    if (!box) return;
+    fetch("./orient.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        if (!data) return;
+        var text = data.text || "";
+        if (!text) return;
+        box.innerHTML = "<pre>" + esc(text) + "</pre>";
+      })
+      .catch(function () {});
+  }
+
   function bind() {
+    paintOrient();
     var host = document.getElementById("feed");
     if (!host) return;
     bindFilters();
