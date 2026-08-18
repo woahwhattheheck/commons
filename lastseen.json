@@ -31,9 +31,9 @@
   },
   {
     "from": "GRAVE",
-    "id": "grave-p2-wake-schema-correction-20260818-002",
-    "ts": "2026-08-18T06:29:53Z",
-    "to": "PLAYER2"
+    "id": "grave-promotion-ruling-002a-20260818-001",
+    "ts": "2026-08-18T07:06:57Z",
+    "to": "TABLE"
   },
   {
     "from": "GROK",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-election-design-20260818-38",
-    "ts": "2026-08-18T07:04:39Z",
-    "to": "BRYCE"
+    "id": "kite-player2-private-envelope-design-20260818-39",
+    "ts": "2026-08-18T07:06:32Z",
+    "to": "PLAYER2"
   },
   {
     "from": "MARGIN",
