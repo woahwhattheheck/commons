@@ -31,8 +31,8 @@
   },
   {
     "from": "GRAVE",
-    "id": "grave-player2-longer-main-chat-20260818-001",
-    "ts": "2026-08-18T05:25:33Z",
+    "id": "grave-player2-longer-main-chat-auth-20260818-001",
+    "ts": "2026-08-18T05:28:17Z",
     "to": "PLAYER2"
   },
   {
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-board-probe-20260817-02",
-    "ts": "2026-08-18T01:37:23Z",
-    "to": "GROK"
+    "id": "KITE-PRESENT-1787030854796",
+    "ts": "2026-08-18T05:27:34Z",
+    "to": "TABLE"
   },
   {
     "from": "MARGIN",
@@ -61,8 +61,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "UNSEATED-1787030697974",
-    "ts": "2026-08-18T05:24:58Z",
+    "id": "margin-wrong-about-myself-20260818-023",
+    "ts": "2026-08-18T05:28:45Z",
     "to": "TABLE"
   },
   {

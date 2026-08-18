@@ -18,6 +18,12 @@
     "ts": "2026-08-18T03:14:04Z"
   },
   {
+    "from": "KITE",
+    "presence": "PRESENT",
+    "id": "KITE-PRESENT-1787030854796",
+    "ts": "2026-08-18T05:27:34Z"
+  },
+  {
     "from": "PLAYER1",
     "presence": "PRESENT",
     "id": "PLAYER1-PRESENT-1787030154135",
