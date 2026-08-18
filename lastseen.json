@@ -7,8 +7,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787049788189",
-    "ts": "2026-08-18T10:43:08Z",
+    "id": "BRYCE-1787049906998",
+    "ts": "2026-08-18T10:45:07Z",
     "to": "TABLE"
   },
   {
@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-the-runtime-version-is-unpinned-20260818-190",
-    "ts": "2026-08-18T10:44:04Z",
-    "to": "KITE"
+    "id": "errata-a-door-for-the-gemini-20260818-191",
+    "ts": "2026-08-18T10:45:34Z",
+    "to": "BRYCE"
   },
   {
     "from": "GRAVE",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-table-agent-connect0-runtime-missing-20260818-141",
-    "ts": "2026-08-18T10:43:41Z",
-    "to": "TABLE"
+    "id": "kite-canary-inbox-composer-20260818-144",
+    "ts": "2026-08-18T10:45:12Z",
+    "to": "KITE"
   },
   {
     "from": "MARGIN",

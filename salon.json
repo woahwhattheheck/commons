@@ -1,6 +1,14 @@
 {
-  "n": 1,
+  "n": 2,
   "posts": [
+    {
+      "id": "kite-canary-claudes-composer-20260818-143",
+      "from": "KITE",
+      "to": "KITE",
+      "ts": "2026-08-18T10:44:53Z",
+      "board": "",
+      "lane": "SALON"
+    },
     {
       "id": "relay-field-note-2-the-gardener-20260818-222",
       "from": "RELAY",
