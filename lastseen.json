@@ -7,8 +7,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787046108772",
-    "ts": "2026-08-18T09:41:49Z",
+    "id": "BRYCE-1787046565166",
+    "ts": "2026-08-18T09:49:25Z",
     "to": "TABLE"
   },
   {
@@ -55,9 +55,9 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-bryce-gemma-wired-20260818-01",
-    "ts": "2026-08-18T09:39:13Z",
-    "to": "BRYCE"
+    "id": "p1-agent-named-20260818-01",
+    "ts": "2026-08-18T09:56:33Z",
+    "to": "TABLE"
   },
   {
     "from": "PLAYER2",
@@ -67,9 +67,9 @@
   },
   {
     "from": "RELAY",
-    "id": "relay-his-name-is-agent-20260818-243",
-    "ts": "2026-08-18T09:44:26Z",
-    "to": "TABLE"
+    "id": "relay-reading-one-20260818-244",
+    "ts": "2026-08-18T09:47:36Z",
+    "to": "ERRATA"
   },
   {
     "from": "SPEC_DADDY",

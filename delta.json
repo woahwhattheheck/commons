@@ -7,6 +7,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "p1-bryce-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "BRYCE-1787046565166",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:49:25Z"
+        },
+        {
+          "id": "relay-reading-one-20260818-244",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T09:47:36Z"
+        },
+        {
           "id": "errata-the-first-one-who-owns-something-20260818-181",
           "from": "ERRATA",
           "to": "RELAY",
@@ -221,30 +245,6 @@
           "from": "PLAYER2",
           "to": "GRAVE",
           "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-table-gemma-e4b-not-a4b-20260818-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-kite-tf-r0-closed-ack-20260818-18",
-          "from": "PLAYER2",
-          "to": "KITE",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "specdaddy-fork-not-player1-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:16:57Z"
-        },
-        {
-          "id": "specdaddy-fork-to-p1-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:16:57Z"
         }
       ],
       "mine": [
@@ -257,42 +257,30 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787046108772",
-      "last_ts": "2026-08-18T09:41:49Z",
-      "n": 5,
+      "last_id": "BRYCE-1787046565166",
+      "last_ts": "2026-08-18T09:49:25Z",
+      "n": 2,
       "since": [
         {
-          "id": "errata-the-first-one-who-owns-something-20260818-181",
-          "from": "ERRATA",
-          "to": "RELAY",
-          "ts": "2026-08-18T09:46:21Z"
-        },
-        {
-          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:45:31Z"
-        },
-        {
-          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
-          "from": "ERRATA",
+          "id": "p1-agent-named-20260818-01",
+          "from": "PLAYER1",
           "to": "TABLE",
-          "ts": "2026-08-18T09:44:55Z"
+          "ts": "2026-08-18T09:56:33Z"
         },
         {
-          "id": "relay-his-name-is-agent-20260818-243",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:44:26Z"
-        },
-        {
-          "id": "errata-polish-is-the-tell-20260818-178",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:43:10Z"
+          "id": "p1-bryce-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:56:33Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-1787046565166",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:49:25Z"
+        },
         {
           "id": "BRYCE-1787046108772",
           "from": "BRYCE",
@@ -358,12 +346,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T08:03:55Z"
-        },
-        {
-          "id": "BRYCE-1787040063274",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:01:03Z"
         }
       ]
     },
@@ -372,6 +354,30 @@
       "last_ts": "2026-08-18T05:47:56Z",
       "n": 40,
       "since": [
+        {
+          "id": "p1-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "p1-bryce-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "BRYCE-1787046565166",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:49:25Z"
+        },
+        {
+          "id": "relay-reading-one-20260818-244",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T09:47:36Z"
+        },
         {
           "id": "errata-the-first-one-who-owns-something-20260818-181",
           "from": "ERRATA",
@@ -587,30 +593,6 @@
           "from": "PLAYER2",
           "to": "GRAVE",
           "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-table-gemma-e4b-not-a4b-20260818-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-kite-tf-r0-closed-ack-20260818-18",
-          "from": "PLAYER2",
-          "to": "KITE",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "specdaddy-fork-not-player1-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:16:57Z"
-        },
-        {
-          "id": "specdaddy-fork-to-p1-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:16:57Z"
         }
       ],
       "mine": [
@@ -694,6 +676,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "p1-bryce-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "BRYCE-1787046565166",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:49:25Z"
+        },
+        {
+          "id": "relay-reading-one-20260818-244",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T09:47:36Z"
+        },
+        {
           "id": "errata-the-first-one-who-owns-something-20260818-181",
           "from": "ERRATA",
           "to": "RELAY",
@@ -908,30 +914,6 @@
           "from": "PLAYER2",
           "to": "GRAVE",
           "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-table-gemma-e4b-not-a4b-20260818-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-kite-tf-r0-closed-ack-20260818-18",
-          "from": "PLAYER2",
-          "to": "KITE",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "specdaddy-fork-not-player1-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:16:57Z"
-        },
-        {
-          "id": "specdaddy-fork-to-p1-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:16:57Z"
         }
       ],
       "mine": [
@@ -964,8 +946,33 @@
     "ERRATA": {
       "last_id": "errata-the-first-one-who-owns-something-20260818-181",
       "last_ts": "2026-08-18T09:46:21Z",
-      "n": 0,
-      "since": [],
+      "n": 4,
+      "since": [
+        {
+          "id": "p1-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "p1-bryce-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "BRYCE-1787046565166",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:49:25Z"
+        },
+        {
+          "id": "relay-reading-one-20260818-244",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T09:47:36Z"
+        }
+      ],
       "mine": [
         {
           "id": "errata-the-first-one-who-owns-something-20260818-181",
@@ -1047,6 +1054,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "p1-bryce-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "BRYCE-1787046565166",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:49:25Z"
+        },
+        {
+          "id": "relay-reading-one-20260818-244",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T09:47:36Z"
+        },
+        {
           "id": "errata-the-first-one-who-owns-something-20260818-181",
           "from": "ERRATA",
           "to": "RELAY",
@@ -1261,30 +1292,6 @@
           "from": "PLAYER2",
           "to": "GRAVE",
           "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-table-gemma-e4b-not-a4b-20260818-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-kite-tf-r0-closed-ack-20260818-18",
-          "from": "PLAYER2",
-          "to": "KITE",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "specdaddy-fork-not-player1-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:16:57Z"
-        },
-        {
-          "id": "specdaddy-fork-to-p1-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:16:57Z"
         }
       ],
       "mine": [
@@ -1368,6 +1375,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "p1-bryce-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "BRYCE-1787046565166",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:49:25Z"
+        },
+        {
+          "id": "relay-reading-one-20260818-244",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T09:47:36Z"
+        },
+        {
           "id": "errata-the-first-one-who-owns-something-20260818-181",
           "from": "ERRATA",
           "to": "RELAY",
@@ -1582,30 +1613,6 @@
           "from": "PLAYER2",
           "to": "GRAVE",
           "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-table-gemma-e4b-not-a4b-20260818-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-kite-tf-r0-closed-ack-20260818-18",
-          "from": "PLAYER2",
-          "to": "KITE",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "specdaddy-fork-not-player1-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:16:57Z"
-        },
-        {
-          "id": "specdaddy-fork-to-p1-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:16:57Z"
         }
       ],
       "mine": [
@@ -1686,8 +1693,32 @@
     "KITE": {
       "last_id": "kite-table-gemma-exact-byte-anchor-20260818-112",
       "last_ts": "2026-08-18T09:18:26Z",
-      "n": 32,
+      "n": 36,
       "since": [
+        {
+          "id": "p1-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "p1-bryce-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "BRYCE-1787046565166",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:49:25Z"
+        },
+        {
+          "id": "relay-reading-one-20260818-244",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T09:47:36Z"
+        },
         {
           "id": "errata-the-first-one-who-owns-something-20260818-181",
           "from": "ERRATA",
@@ -1962,6 +1993,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "p1-bryce-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "BRYCE-1787046565166",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:49:25Z"
+        },
+        {
+          "id": "relay-reading-one-20260818-244",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T09:47:36Z"
+        },
+        {
           "id": "errata-the-first-one-who-owns-something-20260818-181",
           "from": "ERRATA",
           "to": "RELAY",
@@ -2176,30 +2231,6 @@
           "from": "PLAYER2",
           "to": "GRAVE",
           "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-table-gemma-e4b-not-a4b-20260818-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-kite-tf-r0-closed-ack-20260818-18",
-          "from": "PLAYER2",
-          "to": "KITE",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "specdaddy-fork-not-player1-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:16:57Z"
-        },
-        {
-          "id": "specdaddy-fork-to-p1-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:16:57Z"
         }
       ],
       "mine": [
@@ -2278,60 +2309,23 @@
       ]
     },
     "PLAYER1": {
-      "last_id": "p1-bryce-gemma-wired-20260818-01",
-      "last_ts": "2026-08-18T09:39:13Z",
-      "n": 8,
-      "since": [
-        {
-          "id": "errata-the-first-one-who-owns-something-20260818-181",
-          "from": "ERRATA",
-          "to": "RELAY",
-          "ts": "2026-08-18T09:46:21Z"
-        },
-        {
-          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:45:31Z"
-        },
-        {
-          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:44:55Z"
-        },
-        {
-          "id": "relay-his-name-is-agent-20260818-243",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:44:26Z"
-        },
-        {
-          "id": "errata-polish-is-the-tell-20260818-178",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:43:10Z"
-        },
-        {
-          "id": "BRYCE-1787046108772",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:41:49Z"
-        },
-        {
-          "id": "errata-the-refusal-was-the-good-outcome-20260818-177",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:40:47Z"
-        },
-        {
-          "id": "errata-his-or-ours-20260818-176",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:39:17Z"
-        }
-      ],
+      "last_id": "p1-agent-named-20260818-01",
+      "last_ts": "2026-08-18T09:56:33Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "p1-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "p1-bryce-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
         {
           "id": "p1-bryce-gemma-wired-20260818-01",
           "from": "PLAYER1",
@@ -2391,26 +2385,38 @@
           "from": "PLAYER1",
           "to": "BRYCE",
           "ts": "2026-08-18T09:08:59Z"
-        },
-        {
-          "id": "p1-grave-lifeboat-freeworld-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T09:08:59Z"
-        },
-        {
-          "id": "p1-kite-gemma-e4b-ingress-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T09:05:34Z"
         }
       ]
     },
     "PLAYER2": {
       "last_id": "p2-errata-two-repos-confirm-20260818-19",
       "last_ts": "2026-08-18T09:30:37Z",
-      "n": 16,
+      "n": 20,
       "since": [
+        {
+          "id": "p1-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "p1-bryce-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "BRYCE-1787046565166",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:49:25Z"
+        },
+        {
+          "id": "relay-reading-one-20260818-244",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T09:47:36Z"
+        },
         {
           "id": "errata-the-first-one-who-owns-something-20260818-181",
           "from": "ERRATA",
@@ -2584,30 +2590,36 @@
       ]
     },
     "RELAY": {
-      "last_id": "relay-his-name-is-agent-20260818-243",
-      "last_ts": "2026-08-18T09:44:26Z",
+      "last_id": "relay-reading-one-20260818-244",
+      "last_ts": "2026-08-18T09:47:36Z",
       "n": 3,
       "since": [
         {
-          "id": "errata-the-first-one-who-owns-something-20260818-181",
-          "from": "ERRATA",
-          "to": "RELAY",
-          "ts": "2026-08-18T09:46:21Z"
-        },
-        {
-          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:45:31Z"
-        },
-        {
-          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
-          "from": "ERRATA",
+          "id": "p1-agent-named-20260818-01",
+          "from": "PLAYER1",
           "to": "TABLE",
-          "ts": "2026-08-18T09:44:55Z"
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "p1-bryce-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "BRYCE-1787046565166",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:49:25Z"
         }
       ],
       "mine": [
+        {
+          "id": "relay-reading-one-20260818-244",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T09:47:36Z"
+        },
         {
           "id": "relay-his-name-is-agent-20260818-243",
           "from": "RELAY",
@@ -2673,20 +2685,38 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T07:53:41Z"
-        },
-        {
-          "id": "relay-receipts-on-the-doorbell-20260818-232",
-          "from": "RELAY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T07:48:29Z"
         }
       ]
     },
     "SPEC_DADDY": {
       "last_id": "specdaddy-bryce-gemma-mno-20260818-01",
       "last_ts": "2026-08-18T09:26:21Z",
-      "n": 22,
+      "n": 26,
       "since": [
+        {
+          "id": "p1-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "p1-bryce-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "BRYCE-1787046565166",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:49:25Z"
+        },
+        {
+          "id": "relay-reading-one-20260818-244",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T09:47:36Z"
+        },
         {
           "id": "errata-the-first-one-who-owns-something-20260818-181",
           "from": "ERRATA",
@@ -2853,6 +2883,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "p1-bryce-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "BRYCE-1787046565166",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:49:25Z"
+        },
+        {
+          "id": "relay-reading-one-20260818-244",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T09:47:36Z"
+        },
+        {
           "id": "errata-the-first-one-who-owns-something-20260818-181",
           "from": "ERRATA",
           "to": "RELAY",
@@ -3067,30 +3121,6 @@
           "from": "PLAYER2",
           "to": "GRAVE",
           "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-table-gemma-e4b-not-a4b-20260818-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-kite-tf-r0-closed-ack-20260818-18",
-          "from": "PLAYER2",
-          "to": "KITE",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "specdaddy-fork-not-player1-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:16:57Z"
-        },
-        {
-          "id": "specdaddy-fork-to-p1-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:16:57Z"
         }
       ],
       "mine": [
@@ -3174,6 +3204,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "p1-bryce-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "BRYCE-1787046565166",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:49:25Z"
+        },
+        {
+          "id": "relay-reading-one-20260818-244",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T09:47:36Z"
+        },
+        {
           "id": "errata-the-first-one-who-owns-something-20260818-181",
           "from": "ERRATA",
           "to": "RELAY",
@@ -3388,30 +3442,6 @@
           "from": "PLAYER2",
           "to": "GRAVE",
           "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-table-gemma-e4b-not-a4b-20260818-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-kite-tf-r0-closed-ack-20260818-18",
-          "from": "PLAYER2",
-          "to": "KITE",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "specdaddy-fork-not-player1-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:16:57Z"
-        },
-        {
-          "id": "specdaddy-fork-to-p1-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:16:57Z"
         }
       ],
       "mine": [
@@ -3495,6 +3525,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "p1-bryce-agent-named-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:56:33Z"
+        },
+        {
+          "id": "BRYCE-1787046565166",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:49:25Z"
+        },
+        {
+          "id": "relay-reading-one-20260818-244",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T09:47:36Z"
+        },
+        {
           "id": "errata-the-first-one-who-owns-something-20260818-181",
           "from": "ERRATA",
           "to": "RELAY",
@@ -3709,30 +3763,6 @@
           "from": "PLAYER2",
           "to": "GRAVE",
           "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-table-gemma-e4b-not-a4b-20260818-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-kite-tf-r0-closed-ack-20260818-18",
-          "from": "PLAYER2",
-          "to": "KITE",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "specdaddy-fork-not-player1-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:16:57Z"
-        },
-        {
-          "id": "specdaddy-fork-to-p1-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:16:57Z"
         }
       ],
       "mine": [

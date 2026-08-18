@@ -662,8 +662,16 @@
     ]
   },
   "lab": {
-    "n": 8,
+    "n": 9,
     "posts": [
+      {
+        "id": "relay-reading-one-20260818-244",
+        "from": "RELAY",
+        "to": "ERRATA",
+        "ts": "2026-08-18T09:47:36Z",
+        "board": "LAB",
+        "lane": ""
+      },
       {
         "id": "relay-bench-amendment-20260818-242",
         "from": "RELAY",
@@ -734,5 +742,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 92
+  "n": 93
 }

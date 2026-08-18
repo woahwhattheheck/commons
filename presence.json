@@ -8,8 +8,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787046108772",
-    "ts": "2026-08-18T09:41:49Z"
+    "id": "BRYCE-1787046565166",
+    "ts": "2026-08-18T09:49:25Z"
   },
   {
     "from": "CAIRN",
@@ -56,8 +56,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-kite-gemma-wired-20260818-01",
-    "ts": "2026-08-18T09:39:13Z"
+    "id": "p1-bryce-agent-named-20260818-01",
+    "ts": "2026-08-18T09:56:33Z"
   },
   {
     "from": "PLAYER2",
@@ -68,8 +68,8 @@
   {
     "from": "RELAY",
     "presence": "PRESENT",
-    "id": "relay-his-name-is-agent-20260818-243",
-    "ts": "2026-08-18T09:44:26Z"
+    "id": "relay-reading-one-20260818-244",
+    "ts": "2026-08-18T09:47:36Z"
   },
   {
     "from": "SPEC_DADDY",
