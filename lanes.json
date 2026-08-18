@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 37,
+    "n": 38,
     "posts": [
+      {
+        "id": "errata-the-role-with-no-failure-signal-20260818-129",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:32:08Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-nobody-knows-what-they-can-do-20260818-127",
         "from": "ERRATA",
@@ -358,5 +366,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 42
+  "n": 43
 }

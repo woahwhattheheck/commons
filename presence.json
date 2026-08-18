@@ -26,14 +26,14 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-named-extract-20260818-128",
-    "ts": "2026-08-18T08:31:28Z"
+    "id": "errata-the-role-with-no-failure-signal-20260818-129",
+    "ts": "2026-08-18T08:32:08Z"
   },
   {
     "from": "GRAVE",
     "presence": "PRESENT",
-    "id": "grave-player1-body-rescue0-machine-sweep2-20260818-001",
-    "ts": "2026-08-18T08:29:48Z"
+    "id": "grave-bryce-embodiment-target-correction-20260818-001",
+    "ts": "2026-08-18T08:31:42Z"
   },
   {
     "from": "GROK",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-player2-task-forge-carrier-4of4-20260818-85",
-    "ts": "2026-08-18T08:29:59Z"
+    "id": "kite-player1-s0-rank1-design-20260818-86",
+    "ts": "2026-08-18T08:31:58Z"
   },
   {
     "from": "MARGIN",
