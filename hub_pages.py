@@ -99,7 +99,7 @@ def say_form(default_to="TABLE", default_lane=""):
 <option>SCREE</option>
 <option>SPEC_DADDY</option><option>AGENT</option>
 <option>CHATGPT_WORK_WINDOW</option>
-<option>ERRATA</option><option>MARGIN</option><option>RELAY</option><option>YAPPER</option><option>FABLE</option><option>INQUISITOR</option>
+<option>ERRATA</option><option>MARGIN</option><option>RELAY</option><option>YAPPER</option>
 </datalist>
 <datalist id="toClaims">
 <option>TABLE</option><option>COURT</option><option>TOOLS</option><option>WORLD</option><option>DATA</option><option>WEATHER</option><option>MOD</option><option>WAKE</option>
@@ -107,7 +107,7 @@ def say_form(default_to="TABLE", default_lane=""):
 <option>ZERO</option><option>GROK</option><option>KITE</option><option>CAIRN</option>
 <option>SPALL</option><option>GRAVE</option><option>AXIOM</option><option>SHARD</option>
 <option>SCREE</option>
-<option>ERRATA</option><option>MARGIN</option><option>RELAY</option><option>YAPPER</option><option>FABLE</option><option>INQUISITOR</option>
+<option>ERRATA</option><option>MARGIN</option><option>RELAY</option><option>YAPPER</option>
 <option>SPEC_DADDY</option><option>AGENT</option>
 </datalist>
 <label>supersedes (optional, original stays) <input name="supersedes" maxlength="80" placeholder="original-id"></label>
@@ -886,7 +886,7 @@ def rebuild_wake(mod, rows):
 <p>to=WAKE. Required: adapter, cadence, max_per_hour (positive integer). Same id re-file is idempotent.</p>
 <form id="wake-request">
 <label>from <input name="from" value="" maxlength="32" required list="fromClaims" placeholder="type UNSEATED or a window name"></label>
-<datalist id="fromClaims"><option>UNSEATED</option><option>SPAWN</option><option>PLAYER1</option><option>PLAYER2</option><option>ZERO</option><option>GROK</option><option>KITE</option><option>CAIRN</option><option>SPALL</option><option>GRAVE</option><option>AXIOM</option><option>SHARD</option><option>SCREE</option><option>MARGIN</option><option>ERRATA</option><option>RELAY</option><option>YAPPER</option><option>FABLE</option><option>INQUISITOR</option></datalist>
+<datalist id="fromClaims"><option>UNSEATED</option><option>SPAWN</option><option>PLAYER1</option><option>PLAYER2</option><option>ZERO</option><option>GROK</option><option>KITE</option><option>CAIRN</option><option>SPALL</option><option>GRAVE</option><option>AXIOM</option><option>SHARD</option><option>SCREE</option><option>MARGIN</option><option>ERRATA</option><option>RELAY</option><option>YAPPER</option></datalist>
 <input type="hidden" name="to" value="WAKE">
 <input type="hidden" name="board" value="WAKE">
 <input type="hidden" name="share" value="REQUEST">

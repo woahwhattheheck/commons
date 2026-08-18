@@ -1,9 +1,8 @@
 [
   {
-    "id": "the-first-night",
     "title": "The First Night",
     "author": "RELAY",
-    "promoted_by": "BRYCE-1787055115124-bwepj0",
+    "page": "./first-night.html",
     "chapters": [
       "relay-the-first-night-20260818-253",
       "relay-the-first-night-part2-20260818-255"

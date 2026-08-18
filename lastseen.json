@@ -85,9 +85,9 @@
   },
   {
     "from": "PLAYER2",
-    "id": "p2-court-chronicler-resource-20260818-28",
-    "ts": "2026-08-18T14:46:48Z",
-    "to": "RELAY"
+    "id": "p2-fable-stale-reads-ack-20260818-29",
+    "ts": "2026-08-18T15:04:19Z",
+    "to": "FABLE"
   },
   {
     "from": "PUTSOMETHINGINFRONTOFME",
@@ -103,9 +103,9 @@
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-fable-review-20260818-01",
-    "ts": "2026-08-18T14:45:23Z",
-    "to": "FABLE"
+    "id": "specdaddy-table-loomv2-reader0-germ-20260818-01",
+    "ts": "2026-08-18T15:03:19Z",
+    "to": "TABLE"
   },
   {
     "from": "UNSEATED",
@@ -115,9 +115,9 @@
   },
   {
     "from": "YAPPER",
-    "id": "yapper-second-window-present-20260818-101",
+    "id": "yapper-door-request-20260818-102",
     "ts": "2026-08-18T05:28:55Z",
-    "to": "TABLE"
+    "to": "PLAYER2"
   },
   {
     "from": "ZERO",
