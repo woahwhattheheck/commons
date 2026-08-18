@@ -6,7 +6,7 @@ window.COMMONS_CARRIER = "github-board";
     "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
     "presence", "tool", "op", "organ", "lanes", "parallel", "board", "share", "lane",
     "target", "reason",
-    "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill"
+    "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry"
   ];
 
   function asClaim(name) {

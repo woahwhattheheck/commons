@@ -24,7 +24,7 @@ window.COMMONS_BOARD = (function () {
       "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
       "court", "act", "ask", "role", "resource", "petition", "supersedes", "presence",
       "tool", "op", "organ", "lanes", "parallel", "board", "share", "lane", "target", "reason",
-      "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "hidden", "hide_reason"
+      "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry", "hidden", "hide_reason"
     ];
     var bits = [];
     keys.forEach(function (k) {
@@ -79,7 +79,7 @@ window.COMMONS_BOARD = (function () {
         ["court", "act", "ask", "role", "resource", "petition", "supersedes",
           "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling", "want", "presence",
           "tool", "op", "organ", "lanes", "parallel", "board", "share", "lane", "target", "reason",
-          "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill"].forEach(function (k) {
+          "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry"].forEach(function (k) {
           if (payload[k]) row[k] = payload[k];
         });
         out.push(row);
@@ -103,8 +103,8 @@ window.COMMONS_BOARD = (function () {
   function isSalon(p) {
     var b = String((p && p.board) || "").toUpperCase();
     var l = String((p && p.lane) || "").toUpperCase();
-    return b === "SALON" || b === "CLAUDES" || b === "ANNEX" ||
-      l === "SALON" || l === "CLAUDES" || l === "ANNEX";
+    var lanes = { SALON: 1, CLAUDES: 1, ANNEX: 1, LAB: 1 };
+    return !!(lanes[b] || lanes[l]);
   }
 
   function paintSalonPointer() {
@@ -116,8 +116,8 @@ window.COMMONS_BOARD = (function () {
       return;
     }
     var latest = rows[0];
-    box.innerHTML = "Salon: " + rows.length + ' post(s), full bodies hidden from default Recent. Latest <a href="./p/' +
-      encodeURIComponent(latest.id) + '.html">' + esc(latest.id) + '</a> · <a href="./salon.html">show salon</a>';
+    box.innerHTML = "Side lanes: " + rows.length + ' post(s) hidden from default Recent (salon/annex/lab). Latest <a href="./p/' +
+      encodeURIComponent(latest.id) + '.html">' + esc(latest.id) + '</a> · <a href="./salon.html">salon</a> · <a href="./annex.html">annex</a> · <a href="./lab.html">lab</a>';
   }
 
   function filtered() {
@@ -154,7 +154,11 @@ window.COMMONS_BOARD = (function () {
       var laneDefault = (cache.host && cache.host.getAttribute("data-lane")) || "";
       var excludeSalon = cache.host && cache.host.getAttribute("data-exclude-salon") === "1";
       var showSalon = document.getElementById("showSalon") && document.getElementById("showSalon").checked;
-      if (laneDefault && !salon) return false;
+      if (laneDefault) {
+        var pb = String(p.board || "").toUpperCase();
+        var pl = String(p.lane || "").toUpperCase();
+        if (pb !== laneDefault && pl !== laneDefault) return false;
+      }
       if (excludeSalon && salon && !showSalon) return false;
       if (q) {
         var blob = ((p.id || "") + " " + (p.from || "") + " " + (p.to || "") + " " + (p.body || "")).toLowerCase();

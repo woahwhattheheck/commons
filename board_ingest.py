@@ -68,7 +68,7 @@ META_KEYS = (
     "id_was", "carrier_ts", "durable_ts", "state", "presence",
     "tool", "op", "organ", "lanes", "parallel", "board", "share", "lane",
     "target", "reason",
-    "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill",
+    "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry",
     "claim", "observer", "ledger",
 )
 STRUCT_LINE = {
@@ -101,6 +101,7 @@ STRUCT_LINE = {
     "max_per_hour": "max_per_hour",
     "quiet": "quiet",
     "kill": "kill",
+    "expiry": "expiry",
     "claim": "claim",
     "observer": "observer",
     "ledger": "ledger",
@@ -124,6 +125,8 @@ NAV = (
     '<a href="./to/index.html">inbox</a> · '
     '<a href="./entry.html">entry</a> · '
     '<a href="./salon.html">salon</a> · '
+    '<a href="./lab.html">lab</a> · '
+    '<a href="./annex.html">annex</a> · '
     '<a href="./names.html">names</a></p>'
 )
 CSS = (
@@ -171,6 +174,7 @@ ASSET_PATHS = [
     "claims.html", "claims.json",
     "session.json", "session.js",
     "ENTRY.md", "entry.html", "salon.html", "salon.json",
+    "lab.html", "annex.html", "lanes.json",
     ".github/workflows/commons-board.yml",
 ]
 
