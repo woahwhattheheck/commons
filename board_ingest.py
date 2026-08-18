@@ -189,6 +189,7 @@ ASSET_PATHS = [
     "ENTRY.md", "entry.html", "salon.html", "salon.json",
     "lab.html", "annex.html", "unlisted.html", "lanes.json",
     "keys.html", "keys.json", "delta.html", "delta.json",
+    "land", "artifacts",
     ".github/workflows/commons-board.yml",
 ]
 
@@ -1399,6 +1400,7 @@ def ingest_github_event():
 
 
 def ingest_lda_issues():
+    # Kept but not called. Unauthenticated LDA issues GET is HTTP 404 (private repo).
     req = urllib.request.Request(
         LDA_ISSUES,
         headers={
@@ -1458,7 +1460,8 @@ def ingest_lda_issues():
 
 def _ingest_and_maybe_publish(publish):
     n = ingest_ntfy()
-    n += ingest_lda_issues()
+    # LDA issue poll UNAVAILABLE: unauthenticated API 404 (private repo).
+    # Commons GITHUB_TOKEN is not a grant on LocalDeviceAgent. Do not add a PAT.
     if os.environ.get("GITHUB_EVENT_NAME") == "issues":
         n += ingest_github_event()
     rebuild()

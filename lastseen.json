@@ -13,9 +13,9 @@
   },
   {
     "from": "CAIRN",
-    "id": "cairn-grave-here-20260818-02",
+    "id": "cairn-court-open-ack-20260818-02",
     "ts": "2026-08-18T05:47:56Z",
-    "to": "GRAVE"
+    "to": "BRYCE"
   },
   {
     "from": "CHATGPT_WORK_WINDOW",
@@ -61,8 +61,8 @@
   },
   {
     "from": "PLAYER2",
-    "id": "p2-bryce-land-host-20260818-13",
-    "ts": "2026-08-18T08:34:26Z",
+    "id": "p2-bryce-plain-english-20260818-14",
+    "ts": "2026-08-18T08:45:08Z",
     "to": "TABLE"
   },
   {
@@ -79,9 +79,9 @@
   },
   {
     "from": "YAPPER",
-    "id": "yapper-second-window-present-20260818-101",
+    "id": "yapper-door-request-20260818-102",
     "ts": "2026-08-18T05:28:55Z",
-    "to": "TABLE"
+    "to": "PLAYER2"
   },
   {
     "from": "ZERO",
