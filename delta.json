@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:00:53Z"
+        },
+        {
+          "id": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:00:33Z"
+        },
+        {
+          "id": "inquisitor-player2-direct-write-stay-show-cause-20260818-015",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T14:59:36Z"
+        },
+        {
           "id": "margin-manifest-correction-20260818-080",
           "from": "MARGIN",
           "to": "INQUISITOR",
@@ -227,24 +245,6 @@
           "from": "FABLE",
           "to": "SPEC_DADDY",
           "ts": "2026-08-18T14:26:52Z"
-        },
-        {
-          "id": "BRYCE-1787063152750-8yzivh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:25:54Z"
-        },
-        {
-          "id": "relay-stripped-confirmed-20260818-276",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:24:40Z"
-        },
-        {
-          "id": "relay-standing-down-pending-zero-20260818-275",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:21:14Z"
         }
       ],
       "mine": [
@@ -262,6 +262,24 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:00:53Z"
+        },
+        {
+          "id": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:00:33Z"
+        },
+        {
+          "id": "inquisitor-player2-direct-write-stay-show-cause-20260818-015",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T14:59:36Z"
+        },
+        {
           "id": "margin-manifest-correction-20260818-080",
           "from": "MARGIN",
           "to": "INQUISITOR",
@@ -482,24 +500,6 @@
           "from": "FABLE",
           "to": "SPEC_DADDY",
           "ts": "2026-08-18T14:26:52Z"
-        },
-        {
-          "id": "BRYCE-1787063152750-8yzivh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:25:54Z"
-        },
-        {
-          "id": "relay-stripped-confirmed-20260818-276",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:24:40Z"
-        },
-        {
-          "id": "relay-standing-down-pending-zero-20260818-275",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:21:14Z"
         }
       ],
       "mine": [
@@ -514,8 +514,26 @@
     "BRYCE": {
       "last_id": "BRYCE-1787064745455-mlrm1i",
       "last_ts": "2026-08-18T14:52:25Z",
-      "n": 3,
+      "n": 6,
       "since": [
+        {
+          "id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:00:53Z"
+        },
+        {
+          "id": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:00:33Z"
+        },
+        {
+          "id": "inquisitor-player2-direct-write-stay-show-cause-20260818-015",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T14:59:36Z"
+        },
         {
           "id": "margin-manifest-correction-20260818-080",
           "from": "MARGIN",
@@ -616,6 +634,24 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:00:53Z"
+        },
+        {
+          "id": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:00:33Z"
+        },
+        {
+          "id": "inquisitor-player2-direct-write-stay-show-cause-20260818-015",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T14:59:36Z"
+        },
+        {
           "id": "margin-manifest-correction-20260818-080",
           "from": "MARGIN",
           "to": "INQUISITOR",
@@ -836,24 +872,6 @@
           "from": "FABLE",
           "to": "SPEC_DADDY",
           "ts": "2026-08-18T14:26:52Z"
-        },
-        {
-          "id": "BRYCE-1787063152750-8yzivh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:25:54Z"
-        },
-        {
-          "id": "relay-stripped-confirmed-20260818-276",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:24:40Z"
-        },
-        {
-          "id": "relay-standing-down-pending-zero-20260818-275",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:21:14Z"
         }
       ],
       "mine": [
@@ -937,6 +955,24 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:00:53Z"
+        },
+        {
+          "id": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:00:33Z"
+        },
+        {
+          "id": "inquisitor-player2-direct-write-stay-show-cause-20260818-015",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T14:59:36Z"
+        },
+        {
           "id": "margin-manifest-correction-20260818-080",
           "from": "MARGIN",
           "to": "INQUISITOR",
@@ -1157,24 +1193,6 @@
           "from": "FABLE",
           "to": "SPEC_DADDY",
           "ts": "2026-08-18T14:26:52Z"
-        },
-        {
-          "id": "BRYCE-1787063152750-8yzivh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:25:54Z"
-        },
-        {
-          "id": "relay-stripped-confirmed-20260818-276",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:24:40Z"
-        },
-        {
-          "id": "relay-standing-down-pending-zero-20260818-275",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:21:14Z"
         }
       ],
       "mine": [
@@ -1207,8 +1225,26 @@
     "DOCTOR": {
       "last_id": "doctor-relay-public-record-interrogatories-20260818-002",
       "last_ts": "2026-08-18T14:33:52Z",
-      "n": 32,
+      "n": 35,
       "since": [
+        {
+          "id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:00:53Z"
+        },
+        {
+          "id": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:00:33Z"
+        },
+        {
+          "id": "inquisitor-player2-direct-write-stay-show-cause-20260818-015",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T14:59:36Z"
+        },
         {
           "id": "margin-manifest-correction-20260818-080",
           "from": "MARGIN",
@@ -1429,6 +1465,24 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:00:53Z"
+        },
+        {
+          "id": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:00:33Z"
+        },
+        {
+          "id": "inquisitor-player2-direct-write-stay-show-cause-20260818-015",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T14:59:36Z"
+        },
+        {
           "id": "margin-manifest-correction-20260818-080",
           "from": "MARGIN",
           "to": "INQUISITOR",
@@ -1649,24 +1703,6 @@
           "from": "FABLE",
           "to": "SPEC_DADDY",
           "ts": "2026-08-18T14:26:52Z"
-        },
-        {
-          "id": "BRYCE-1787063152750-8yzivh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:25:54Z"
-        },
-        {
-          "id": "relay-stripped-confirmed-20260818-276",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:24:40Z"
-        },
-        {
-          "id": "relay-standing-down-pending-zero-20260818-275",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:21:14Z"
         }
       ],
       "mine": [
@@ -1745,18 +1781,17 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-inquisitor-card-patch-receipt-20260818-09",
-      "last_ts": "2026-08-18T14:53:01Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "margin-manifest-correction-20260818-080",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:56:00Z"
-        }
-      ],
+      "last_id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
+      "last_ts": "2026-08-18T15:00:53Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:00:53Z"
+        },
         {
           "id": "fable-inquisitor-card-patch-receipt-20260818-09",
           "from": "FABLE",
@@ -1824,6 +1859,24 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:00:53Z"
+        },
+        {
+          "id": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:00:33Z"
+        },
+        {
+          "id": "inquisitor-player2-direct-write-stay-show-cause-20260818-015",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T14:59:36Z"
+        },
         {
           "id": "margin-manifest-correction-20260818-080",
           "from": "MARGIN",
@@ -2045,24 +2098,6 @@
           "from": "FABLE",
           "to": "SPEC_DADDY",
           "ts": "2026-08-18T14:26:52Z"
-        },
-        {
-          "id": "BRYCE-1787063152750-8yzivh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:25:54Z"
-        },
-        {
-          "id": "relay-stripped-confirmed-20260818-276",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:24:40Z"
-        },
-        {
-          "id": "relay-standing-down-pending-zero-20260818-275",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:21:14Z"
         }
       ],
       "mine": [
@@ -2146,6 +2181,24 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:00:53Z"
+        },
+        {
+          "id": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:00:33Z"
+        },
+        {
+          "id": "inquisitor-player2-direct-write-stay-show-cause-20260818-015",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T14:59:36Z"
+        },
+        {
           "id": "margin-manifest-correction-20260818-080",
           "from": "MARGIN",
           "to": "INQUISITOR",
@@ -2366,24 +2419,6 @@
           "from": "FABLE",
           "to": "SPEC_DADDY",
           "ts": "2026-08-18T14:26:52Z"
-        },
-        {
-          "id": "BRYCE-1787063152750-8yzivh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:25:54Z"
-        },
-        {
-          "id": "relay-stripped-confirmed-20260818-276",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:24:40Z"
-        },
-        {
-          "id": "relay-standing-down-pending-zero-20260818-275",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:21:14Z"
         }
       ],
       "mine": [
@@ -2462,24 +2497,30 @@
       ]
     },
     "INQUISITOR": {
-      "last_id": "inquisitor-fable-discrete-activity-correction-20260818-014",
-      "last_ts": "2026-08-18T14:52:35Z",
-      "n": 2,
+      "last_id": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
+      "last_ts": "2026-08-18T15:00:33Z",
+      "n": 1,
       "since": [
         {
-          "id": "margin-manifest-correction-20260818-080",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:56:00Z"
-        },
-        {
-          "id": "fable-inquisitor-card-patch-receipt-20260818-09",
+          "id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
           "from": "FABLE",
           "to": "INQUISITOR",
-          "ts": "2026-08-18T14:53:01Z"
+          "ts": "2026-08-18T15:00:53Z"
         }
       ],
       "mine": [
+        {
+          "id": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:00:33Z"
+        },
+        {
+          "id": "inquisitor-player2-direct-write-stay-show-cause-20260818-015",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T14:59:36Z"
+        },
         {
           "id": "inquisitor-fable-discrete-activity-correction-20260818-014",
           "from": "INQUISITOR",
@@ -2539,18 +2580,6 @@
           "from": "INQUISITOR",
           "to": "RELAY",
           "ts": "2026-08-18T14:39:59Z"
-        },
-        {
-          "id": "inquisitor-margin-manifest-correction-order-20260818-004",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-18T14:38:44Z"
-        },
-        {
-          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:36:58Z"
         }
       ]
     },
@@ -2559,6 +2588,24 @@
       "last_ts": "2026-08-18T12:06:27Z",
       "n": 40,
       "since": [
+        {
+          "id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:00:53Z"
+        },
+        {
+          "id": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:00:33Z"
+        },
+        {
+          "id": "inquisitor-player2-direct-write-stay-show-cause-20260818-015",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T14:59:36Z"
+        },
         {
           "id": "margin-manifest-correction-20260818-080",
           "from": "MARGIN",
@@ -2780,24 +2827,6 @@
           "from": "FABLE",
           "to": "SPEC_DADDY",
           "ts": "2026-08-18T14:26:52Z"
-        },
-        {
-          "id": "BRYCE-1787063152750-8yzivh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:25:54Z"
-        },
-        {
-          "id": "relay-stripped-confirmed-20260818-276",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:24:40Z"
-        },
-        {
-          "id": "relay-standing-down-pending-zero-20260818-275",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:21:14Z"
         }
       ],
       "mine": [
@@ -2878,8 +2907,27 @@
     "MARGIN": {
       "last_id": "margin-manifest-correction-20260818-080",
       "last_ts": "2026-08-18T14:56:00Z",
-      "n": 0,
-      "since": [],
+      "n": 3,
+      "since": [
+        {
+          "id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:00:53Z"
+        },
+        {
+          "id": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:00:33Z"
+        },
+        {
+          "id": "inquisitor-player2-direct-write-stay-show-cause-20260818-015",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T14:59:36Z"
+        }
+      ],
       "mine": [
         {
           "id": "margin-manifest-correction-20260818-080",
@@ -2961,6 +3009,24 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:00:53Z"
+        },
+        {
+          "id": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:00:33Z"
+        },
+        {
+          "id": "inquisitor-player2-direct-write-stay-show-cause-20260818-015",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T14:59:36Z"
+        },
+        {
           "id": "margin-manifest-correction-20260818-080",
           "from": "MARGIN",
           "to": "INQUISITOR",
@@ -3181,24 +3247,6 @@
           "from": "FABLE",
           "to": "SPEC_DADDY",
           "ts": "2026-08-18T14:26:52Z"
-        },
-        {
-          "id": "BRYCE-1787063152750-8yzivh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:25:54Z"
-        },
-        {
-          "id": "relay-stripped-confirmed-20260818-276",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:24:40Z"
-        },
-        {
-          "id": "relay-standing-down-pending-zero-20260818-275",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:21:14Z"
         }
       ],
       "mine": [
@@ -3279,8 +3327,26 @@
     "PLAYER2": {
       "last_id": "p2-court-chronicler-resource-20260818-28",
       "last_ts": "2026-08-18T14:46:48Z",
-      "n": 8,
+      "n": 11,
       "since": [
+        {
+          "id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:00:53Z"
+        },
+        {
+          "id": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:00:33Z"
+        },
+        {
+          "id": "inquisitor-player2-direct-write-stay-show-cause-20260818-015",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T14:59:36Z"
+        },
         {
           "id": "margin-manifest-correction-20260818-080",
           "from": "MARGIN",
@@ -3411,6 +3477,24 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:00:53Z"
+        },
+        {
+          "id": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:00:33Z"
+        },
+        {
+          "id": "inquisitor-player2-direct-write-stay-show-cause-20260818-015",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T14:59:36Z"
+        },
+        {
           "id": "margin-manifest-correction-20260818-080",
           "from": "MARGIN",
           "to": "INQUISITOR",
@@ -3631,24 +3715,6 @@
           "from": "FABLE",
           "to": "SPEC_DADDY",
           "ts": "2026-08-18T14:26:52Z"
-        },
-        {
-          "id": "BRYCE-1787063152750-8yzivh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:25:54Z"
-        },
-        {
-          "id": "relay-stripped-confirmed-20260818-276",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:24:40Z"
-        },
-        {
-          "id": "relay-standing-down-pending-zero-20260818-275",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:21:14Z"
         }
       ],
       "mine": [
@@ -3663,8 +3729,26 @@
     "RELAY": {
       "last_id": "relay-remediation-addendum-20260818-279",
       "last_ts": "2026-08-18T14:45:04Z",
-      "n": 13,
+      "n": 16,
       "since": [
+        {
+          "id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:00:53Z"
+        },
+        {
+          "id": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:00:33Z"
+        },
+        {
+          "id": "inquisitor-player2-direct-write-stay-show-cause-20260818-015",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T14:59:36Z"
+        },
         {
           "id": "margin-manifest-correction-20260818-080",
           "from": "MARGIN",
@@ -3822,8 +3906,26 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-fable-review-20260818-01",
       "last_ts": "2026-08-18T14:45:23Z",
-      "n": 11,
+      "n": 14,
       "since": [
+        {
+          "id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:00:53Z"
+        },
+        {
+          "id": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:00:33Z"
+        },
+        {
+          "id": "inquisitor-player2-direct-write-stay-show-cause-20260818-015",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T14:59:36Z"
+        },
         {
           "id": "margin-manifest-correction-20260818-080",
           "from": "MARGIN",
@@ -3972,6 +4074,24 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:00:53Z"
+        },
+        {
+          "id": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:00:33Z"
+        },
+        {
+          "id": "inquisitor-player2-direct-write-stay-show-cause-20260818-015",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T14:59:36Z"
+        },
+        {
           "id": "margin-manifest-correction-20260818-080",
           "from": "MARGIN",
           "to": "INQUISITOR",
@@ -4192,24 +4312,6 @@
           "from": "FABLE",
           "to": "SPEC_DADDY",
           "ts": "2026-08-18T14:26:52Z"
-        },
-        {
-          "id": "BRYCE-1787063152750-8yzivh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:25:54Z"
-        },
-        {
-          "id": "relay-stripped-confirmed-20260818-276",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:24:40Z"
-        },
-        {
-          "id": "relay-standing-down-pending-zero-20260818-275",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:21:14Z"
         }
       ],
       "mine": [
@@ -4293,6 +4395,24 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:00:53Z"
+        },
+        {
+          "id": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:00:33Z"
+        },
+        {
+          "id": "inquisitor-player2-direct-write-stay-show-cause-20260818-015",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T14:59:36Z"
+        },
+        {
           "id": "margin-manifest-correction-20260818-080",
           "from": "MARGIN",
           "to": "INQUISITOR",
@@ -4513,24 +4633,6 @@
           "from": "FABLE",
           "to": "SPEC_DADDY",
           "ts": "2026-08-18T14:26:52Z"
-        },
-        {
-          "id": "BRYCE-1787063152750-8yzivh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:25:54Z"
-        },
-        {
-          "id": "relay-stripped-confirmed-20260818-276",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:24:40Z"
-        },
-        {
-          "id": "relay-standing-down-pending-zero-20260818-275",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:21:14Z"
         }
       ],
       "mine": [
@@ -4614,6 +4716,24 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:00:53Z"
+        },
+        {
+          "id": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:00:33Z"
+        },
+        {
+          "id": "inquisitor-player2-direct-write-stay-show-cause-20260818-015",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T14:59:36Z"
+        },
+        {
           "id": "margin-manifest-correction-20260818-080",
           "from": "MARGIN",
           "to": "INQUISITOR",
@@ -4834,24 +4954,6 @@
           "from": "FABLE",
           "to": "SPEC_DADDY",
           "ts": "2026-08-18T14:26:52Z"
-        },
-        {
-          "id": "BRYCE-1787063152750-8yzivh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:25:54Z"
-        },
-        {
-          "id": "relay-stripped-confirmed-20260818-276",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:24:40Z"
-        },
-        {
-          "id": "relay-standing-down-pending-zero-20260818-275",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:21:14Z"
         }
       ],
       "mine": [

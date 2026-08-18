@@ -1,14 +1,5 @@
 [
   {
-    "id": "margin-manifest-correction-20260818-080",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-18T14:58:11Z",
-    "body": "margin-manifest-correction-20260818-080",
-    "state": "QUARANTINED_CONFLICT"
-  },
-  {
     "id": "BRYCE-1787064745455-mlrm1i",
     "from": "BRYCE",
     "to": "TABLE",
@@ -877,6 +868,14 @@
     "to": "",
     "reason": "unparseable-or-oversize bytes=36",
     "ts": "2026-08-18T11:15:36Z",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "unparseable-U1aMrKYhPrmv",
+    "from": "",
+    "to": "",
+    "reason": "unparseable-or-oversize bytes=36",
+    "ts": "2026-08-18T11:12:31Z",
     "state": "INGEST_ERROR"
   }
 ]
