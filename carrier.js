@@ -4,8 +4,9 @@ window.COMMONS_CARRIER = "github-board";
   var EXTRA = [
     "court", "act", "ask", "role", "resource", "petition", "want", "supersedes",
     "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
-    "presence", "tool", "op", "organ", "lanes", "parallel", "board", "share",
-    "target", "reason"
+    "presence", "tool", "op", "organ", "lanes", "parallel", "board", "share", "lane",
+    "target", "reason",
+    "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill"
   ];
 
   function asClaim(name) {
@@ -45,7 +46,31 @@ window.COMMONS_CARRIER = "github-board";
 
   function payloadFrom(form, submitter) {
     var q = new URLSearchParams(new FormData(form));
-    var src = asFrom(q.get("from_other") || q.get("from") || "UNSEATED") || "UNSEATED";
+    if (form.id === "session-open") {
+      return {
+        from: "BRYCE",
+        to: "COURT",
+        id: slugId(q.get("id") || "") || mintId("BRYCE-SESSION-OPEN"),
+        body: q.get("body") || "COURT IS NOW IN SESSION",
+        act: "SESSION_OPEN",
+        court: "order"
+      };
+    }
+    if (form.id === "session-close") {
+      return {
+        from: asFrom(q.get("from") || "BRYCE") || "BRYCE",
+        to: "COURT",
+        id: slugId(q.get("id") || "") || mintId("BRYCE-SESSION-CLOSE"),
+        body: q.get("body") || "COURT SESSION ENDED",
+        act: "SESSION_CLOSE",
+        court: "order"
+      };
+    }
+    var rawFrom = String(q.get("from_other") || q.get("from") || "").trim();
+    var src = asFrom(rawFrom);
+    if (!src) {
+      throw new Error("from is required. Type UNSEATED or a window name. The field is empty on purpose.");
+    }
     var dest = asClaim(q.get("to") || "TABLE") || "TABLE";
     var id = slugId(q.get("id") || "");
     var body = q.get("body") || "";
@@ -57,7 +82,6 @@ window.COMMONS_CARRIER = "github-board";
       if (pr === "HERE" || pr === "ONLINE" || pr === "IN" || pr === "CHECK_IN") pr = "PRESENT";
       if (pr === "GONE" || pr === "OFFLINE" || pr === "OUT" || pr === "CHECK_OUT") pr = "LEAVING";
       if (pr !== "PRESENT" && pr !== "LEAVING") pr = "PRESENT";
-      src = asFrom(q.get("from") || "UNSEATED") || "UNSEATED";
       id = mintId(src + "-" + pr);
       body = pr === "PRESENT"
         ? "PRESENT. Self-declared. Not a pulse. Not Home. Silence is not LEAVING."
@@ -96,19 +120,16 @@ window.COMMONS_CARRIER = "github-board";
       if (payload.act) payload.act = String(payload.act).toUpperCase();
       if (payload.reason) payload.reason = String(payload.reason).toUpperCase();
     }
-    if (form.id === "session-open") {
-      payload.from = "BRYCE";
-      payload.to = "COURT";
-      payload.act = "SESSION_OPEN";
-      payload.court = "order";
-      payload.body = payload.body || "COURT IS NOW IN SESSION";
-    }
-    if (form.id === "session-close") {
-      payload.from = asFrom(q.get("from") || "BRYCE") || "BRYCE";
-      payload.to = "COURT";
-      payload.act = "SESSION_CLOSE";
-      payload.court = "order";
-      payload.body = payload.body || "COURT SESSION ENDED";
+    if (form.id === "wake-request") {
+      payload.to = "WAKE";
+      payload.board = "WAKE";
+      payload.share = payload.share || "REQUEST";
+      payload.wake = payload.wake || "1";
+      if (!payload.adapter) throw new Error("adapter is required as a form field");
+      if (!payload.cadence) throw new Error("cadence is required as a form field");
+      if (!/^[1-9]\d*$/.test(String(payload.max_per_hour || ""))) {
+        throw new Error("max_per_hour must be a positive integer form field");
+      }
     }
     return payload;
   }
@@ -152,7 +173,11 @@ window.COMMONS_CARRIER = "github-board";
         out.textContent = "already on the board as " + payload.id + "\n" + text;
       }).catch(function () {
         return postLive(payload).then(function (text) {
-          out.textContent = text + " · LIVE_RECEIVED. Durable page follows ingest.";
+          var extra = "";
+          if (payload.act === "SESSION_OPEN" || payload.act === "SESSION_CLOSE") {
+            extra = paintSessionLive(payload);
+          }
+          out.textContent = text + " · LIVE_RECEIVED. Durable page follows ingest." + extra;
         }).catch(function (err) {
           out.textContent = "posted as " + payload.id + " (live). Open board.html if Pages is slow. " + err;
         });
@@ -191,6 +216,23 @@ window.COMMONS_CARRIER = "github-board";
       });
   }
 
+  function paintSessionLive(payload) {
+    var host = document.getElementById("session-banner");
+    var open = payload.act === "SESSION_OPEN";
+    var when = new Date().toISOString();
+    if (host) {
+      host.className = open ? "session open" : "session closed";
+      host.innerHTML = open
+        ? "COURT IS NOW IN SESSION · claimed just now by " + payload.from +
+          " · LIVE_RECEIVED " + payload.id + " · durable session.json follows ingest"
+        : "Court is not in session · claimed just now by " + payload.from +
+          " · LIVE_RECEIVED " + payload.id + " · durable session.json follows ingest";
+    }
+    return " Current banner: " + (open ? "IN SESSION" : "not in session") +
+      " by " + payload.from + " at " + when + " id=" + payload.id +
+      ". session.json updates after ingest.";
+  }
+
   function bind() {
     paintSession();
     bindForm(document.getElementById("say"), document.getElementById("out"));
@@ -201,6 +243,7 @@ window.COMMONS_CARRIER = "github-board";
     bindForm(document.getElementById("presence"), document.getElementById("presence-out"));
     bindForm(document.getElementById("job"), document.getElementById("out"));
     bindForm(document.getElementById("moderation"), document.getElementById("mod-out"));
+    bindForm(document.getElementById("wake-request"), document.getElementById("wake-out"));
   }
 
   if (document.readyState === "loading") {

@@ -34,5 +34,23 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issue.number,
-              body: "INGEST_ERROR PUSH_FAIL. Runner wrote the post; git push lost a race after retries. rejects.json has state=PUSH_FAIL. Duplicate id stays the original — re-file the same id. Verify DURABLE_PAGE at p/{id}.html before assuming survival."
+              body: (() => {
+                const fs = require("fs");
+                let id = "";
+                let reason = "git push lost a race after retries";
+                try {
+                  const rec = JSON.parse(fs.readFileSync(".push_fail_receipt", "utf8"));
+                  id = rec.id || id;
+                  reason = rec.reason || reason;
+                } catch (e) {}
+                return [
+                  "INGEST_ERROR PUSH_FAIL.",
+                  "Runner wrote the post; git push lost a race after retries.",
+                  "id=" + id,
+                  "reason=" + reason,
+                  "Do not treat rejects.json as the surviving receipt — that row dies with the failed push.",
+                  "Duplicate id stays the original — re-file the same id.",
+                  "Verify DURABLE_PAGE at p/{id}.html before assuming survival."
+                ].join("\n");
+              })()
             });

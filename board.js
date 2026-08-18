@@ -23,7 +23,8 @@ window.COMMONS_BOARD = (function () {
     var keys = [
       "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
       "court", "act", "ask", "role", "resource", "petition", "supersedes", "presence",
-      "tool", "op", "organ", "lanes", "parallel", "board", "share", "target", "reason", "hidden", "hide_reason"
+      "tool", "op", "organ", "lanes", "parallel", "board", "share", "lane", "target", "reason",
+      "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "hidden", "hide_reason"
     ];
     var bits = [];
     keys.forEach(function (k) {
@@ -77,7 +78,8 @@ window.COMMONS_BOARD = (function () {
         };
         ["court", "act", "ask", "role", "resource", "petition", "supersedes",
           "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling", "want", "presence",
-          "tool", "op", "organ", "lanes", "parallel", "board", "share", "target", "reason"].forEach(function (k) {
+          "tool", "op", "organ", "lanes", "parallel", "board", "share", "lane", "target", "reason",
+          "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill"].forEach(function (k) {
           if (payload[k]) row[k] = payload[k];
         });
         out.push(row);
@@ -96,6 +98,26 @@ window.COMMONS_BOARD = (function () {
     });
     rows.sort(function (a, b) { return String(b.ts || "").localeCompare(String(a.ts || "")); });
     return rows;
+  }
+
+  function isSalon(p) {
+    var b = String((p && p.board) || "").toUpperCase();
+    var l = String((p && p.lane) || "").toUpperCase();
+    return b === "SALON" || b === "CLAUDES" || b === "ANNEX" ||
+      l === "SALON" || l === "CLAUDES" || l === "ANNEX";
+  }
+
+  function paintSalonPointer() {
+    var box = document.getElementById("salon-pointer");
+    if (!box) return;
+    var rows = merged().filter(isSalon);
+    if (!rows.length) {
+      box.innerHTML = 'Salon lane empty. Author-selected lane=SALON. <a href="./salon.html">salon.html</a>';
+      return;
+    }
+    var latest = rows[0];
+    box.innerHTML = "Salon: " + rows.length + ' post(s), full bodies hidden from default Recent. Latest <a href="./p/' +
+      encodeURIComponent(latest.id) + '.html">' + esc(latest.id) + '</a> · <a href="./salon.html">show salon</a>';
   }
 
   function filtered() {
@@ -128,6 +150,12 @@ window.COMMONS_BOARD = (function () {
       if (to && p.to !== to) return false;
       if (hide && superseded[p.id]) return false;
       if (!showHidden && (hiddenNow[p.id] || p.hidden === "1")) return false;
+      var salon = isSalon(p);
+      var laneDefault = (cache.host && cache.host.getAttribute("data-lane")) || "";
+      var excludeSalon = cache.host && cache.host.getAttribute("data-exclude-salon") === "1";
+      var showSalon = document.getElementById("showSalon") && document.getElementById("showSalon").checked;
+      if (laneDefault && !salon) return false;
+      if (excludeSalon && salon && !showSalon) return false;
       if (q) {
         var blob = ((p.id || "") + " " + (p.from || "") + " " + (p.to || "") + " " + (p.body || "")).toLowerCase();
         if (blob.indexOf(q) < 0) return false;
@@ -177,11 +205,13 @@ window.COMMONS_BOARD = (function () {
     var qEl = document.getElementById("qFilter");
     var hideEl = document.getElementById("hideSuperseded");
     var showEl = document.getElementById("showHidden");
+    var salonEl = document.getElementById("showSalon");
     if (fromEl && fromEl.value) return true;
     if (toEl && toEl.value) return true;
     if (qEl && String(qEl.value || "").trim()) return true;
     if (hideEl && hideEl.checked) return true;
     if (showEl && showEl.checked) return true;
+    if (salonEl && salonEl.checked) return true;
     return false;
   }
 
@@ -195,12 +225,14 @@ window.COMMONS_BOARD = (function () {
     if (!rows.length) {
       if (!filtersOn() && host.querySelector("article")) return;
       host.innerHTML = "<p>No posts match. <a href=\"./board.html\">open board.html</a></p>";
+      paintSalonPointer();
       return;
     }
     var have = host.querySelectorAll("article").length;
     if (!filtersOn() && have && rows.length < have && cache.durable.length < have) return;
     host.innerHTML = rows.map(function (p) { return card(p, !!p.pending && !p.durable); }).join("");
     bindLoadOlder();
+    paintSalonPointer();
   }
 
   function lastSeen(host) {
@@ -304,7 +336,7 @@ window.COMMONS_BOARD = (function () {
   }
 
   function bindFilters() {
-    ["fromFilter", "toFilter", "qFilter", "hideSuperseded", "showHidden"].forEach(function (id) {
+    ["fromFilter", "toFilter", "qFilter", "hideSuperseded", "showHidden", "showSalon"].forEach(function (id) {
       var el = document.getElementById(id);
       if (!el || el.getAttribute("data-bound") === "1") return;
       el.setAttribute("data-bound", "1");

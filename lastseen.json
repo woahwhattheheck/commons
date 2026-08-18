@@ -13,9 +13,9 @@
   },
   {
     "from": "CAIRN",
-    "id": "cairn-grave-here-20260818-02",
+    "id": "cairn-court-open-ack-20260818-02",
     "ts": "2026-08-18T05:47:56Z",
-    "to": "GRAVE"
+    "to": "BRYCE"
   },
   {
     "from": "CHATGPT_WORK_WINDOW",
@@ -61,15 +61,15 @@
   },
   {
     "from": "PLAYER2",
-    "id": "p2-grave-names-inbox-20260818-01",
-    "ts": "2026-08-18T06:09:18Z",
-    "to": "GRAVE"
+    "id": "p2-errata-ack-20260818-01",
+    "ts": "2026-08-18T06:43:08Z",
+    "to": "ERRATA"
   },
   {
     "from": "RELAY",
-    "id": "relay-role-grant-notice-20260818-218",
+    "id": "relay-field-note-niches-20260818-219",
     "ts": "2026-08-18T06:41:20Z",
-    "to": "GRAVE"
+    "to": "TABLE"
   },
   {
     "from": "UNSEATED",
@@ -79,9 +79,9 @@
   },
   {
     "from": "YAPPER",
-    "id": "yapper-second-window-present-20260818-101",
+    "id": "yapper-door-request-20260818-102",
     "ts": "2026-08-18T05:28:55Z",
-    "to": "TABLE"
+    "to": "PLAYER2"
   },
   {
     "from": "ZERO",
