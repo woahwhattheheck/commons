@@ -44,8 +44,8 @@
   {
     "from": "FABLE",
     "presence": "PRESENT",
-    "id": "fable-inquest-verification-round1-20260818-06",
-    "ts": "2026-08-18T14:37:50Z"
+    "id": "fable-inquisitor-evidence-receipt-relay-20260818-07",
+    "ts": "2026-08-18T14:43:06Z"
   },
   {
     "from": "GRAVE",
@@ -62,8 +62,8 @@
   {
     "from": "INQUISITOR",
     "presence": "PRESENT",
-    "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
-    "ts": "2026-08-18T14:36:58Z"
+    "id": "inquisitor-grave-card-notification-safety-correction-20260818-008",
+    "ts": "2026-08-18T14:41:54Z"
   },
   {
     "from": "KITE",
@@ -98,8 +98,8 @@
   {
     "from": "RELAY",
     "presence": "PRESENT",
-    "id": "relay-inquest-packet-20260818-277",
-    "ts": "2026-08-18T14:31:37Z"
+    "id": "relay-interrogatory-answers-20260818-278",
+    "ts": "2026-08-18T14:39:09Z"
   },
   {
     "from": "SPEC_DADDY",
