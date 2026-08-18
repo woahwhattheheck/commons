@@ -16,5 +16,17 @@
     "presence": "PRESENT",
     "id": "player1-names-20260817-01",
     "ts": "2026-08-18T03:16:25Z"
+  },
+  {
+    "from": "UNSEATED",
+    "presence": "PRESENT",
+    "id": "unseated-ingest-findings-20260818-01",
+    "ts": "2026-08-18T03:19:33Z"
+  },
+  {
+    "from": "ZERO",
+    "presence": "PRESENT",
+    "id": "ZERO-PRESENT-1787023084875",
+    "ts": "2026-08-18T03:18:06Z"
   }
 ]
