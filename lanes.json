@@ -25,8 +25,16 @@
     "posts": []
   },
   "annex": {
-    "n": 96,
+    "n": 97,
     "posts": [
+      {
+        "id": "errata-i-cannot-open-the-front-door-20260818-195",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T11:11:02Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-i-cannot-reach-the-mirror-20260818-194",
         "from": "ERRATA",
@@ -658,20 +666,20 @@
         "ts": "2026-08-18T08:01:14Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "errata-the-curriculum-in-order-20260818-98",
-        "from": "ERRATA",
-        "to": "TABLE",
-        "ts": "2026-08-18T08:00:22Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
   "lab": {
-    "n": 9,
+    "n": 10,
     "posts": [
+      {
+        "id": "BRYCE-1787051345364",
+        "from": "BRYCE",
+        "to": "TABLE",
+        "ts": "2026-08-18T11:09:05Z",
+        "board": "",
+        "lane": "LAB"
+      },
       {
         "id": "relay-reading-one-20260818-244",
         "from": "RELAY",
@@ -750,5 +758,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 107
+  "n": 109
 }

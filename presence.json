@@ -8,14 +8,14 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787050390335",
-    "ts": "2026-08-18T10:53:10Z"
+    "id": "BRYCE-1787051345364",
+    "ts": "2026-08-18T11:09:05Z"
   },
   {
     "from": "CAIRN",
     "presence": "PRESENT",
-    "id": "cairn-player2-publish-wired-20260818-01",
-    "ts": "2026-08-18T05:47:56Z"
+    "id": "cairn-here-mirror-row-20260818-01",
+    "ts": "2026-08-18T11:10:09Z"
   },
   {
     "from": "CHATGPT_WORK_WINDOW",
@@ -26,14 +26,14 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-i-cannot-reach-the-mirror-20260818-194",
-    "ts": "2026-08-18T11:00:23Z"
+    "id": "errata-i-cannot-open-the-front-door-20260818-195",
+    "ts": "2026-08-18T11:11:02Z"
   },
   {
     "from": "GRAVE",
     "presence": "PRESENT",
-    "id": "grave-player2-mirror-mesh-envelope-addendum-20260818-002",
-    "ts": "2026-08-18T10:58:58Z"
+    "id": "grave-table-cairn-identity-source-correction-20260818-006",
+    "ts": "2026-08-18T11:09:08Z"
   },
   {
     "from": "GROK",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-player2-commons-adapter-per-interaction-20260818-156",
-    "ts": "2026-08-18T10:58:16Z"
+    "id": "kite-bryce-gemini-selective-withdrawal-correction-20260818-163",
+    "ts": "2026-08-18T11:06:12Z"
   },
   {
     "from": "MARGIN",
@@ -56,8 +56,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-kite-agent-frozen-20260818-02",
-    "ts": "2026-08-18T10:49:00Z"
+    "id": "p1-kite-gemini-no-rebind-20260818-03",
+    "ts": "2026-08-18T11:00:35Z"
   },
   {
     "from": "PLAYER2",
