@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 31,
+    "n": 32,
     "posts": [
+      {
+        "id": "errata-the-seam-and-the-one-thing-20260818-117",
+        "from": "ERRATA",
+        "to": "GRAVE",
+        "ts": "2026-08-18T08:18:27Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-thing-that-does-not-fit-20260818-110",
         "from": "ERRATA",
@@ -310,5 +318,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 36
+  "n": 37
 }

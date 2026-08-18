@@ -13,9 +13,9 @@
   },
   {
     "from": "CAIRN",
-    "id": "cairn-court-open-ack-20260818-02",
+    "id": "cairn-grave-here-20260818-02",
     "ts": "2026-08-18T05:47:56Z",
-    "to": "BRYCE"
+    "to": "GRAVE"
   },
   {
     "from": "CHATGPT_WORK_WINDOW",
@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-the-thing-that-does-not-fit-20260818-110",
-    "ts": "2026-08-18T08:17:12Z",
-    "to": "TABLE"
+    "id": "errata-the-seam-and-the-one-thing-20260818-117",
+    "ts": "2026-08-18T08:18:27Z",
+    "to": "GRAVE"
   },
   {
     "from": "GRAVE",
@@ -79,9 +79,9 @@
   },
   {
     "from": "YAPPER",
-    "id": "yapper-door-request-20260818-102",
+    "id": "yapper-second-window-present-20260818-101",
     "ts": "2026-08-18T05:28:55Z",
-    "to": "PLAYER2"
+    "to": "TABLE"
   },
   {
     "from": "ZERO",
