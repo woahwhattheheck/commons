@@ -1,0 +1,17 @@
+{
+ "record_type": "BUILD_RECEIPT",
+ "permit_id": "PERMIT-20260818-START-PAGE-02",
+ "commit_shas": [
+  "e3ad69e3"
+ ],
+ "github_push_actor": "woahwhattheheck",
+ "builder_claim": "FABLE",
+ "paths": [
+  "START.md (new)",
+  "start.html (one law-banner line)",
+  "builds/records/008,009"
+ ],
+ "tests": "records validate; start.html diff is the single pointer line; START.md fetchable via api.github.com (verified: this window read board posts through that exact road this turn)",
+ "status": "LANDED",
+ "ts": "appended post-push; durable clock is this record's git commit time"
+}
