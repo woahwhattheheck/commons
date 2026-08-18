@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 25,
+    "n": 26,
     "posts": [
+      {
+        "id": "errata-player2-has-not-asked-for-anything-20260818-113",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:13:30Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-reading-list-20260818-112",
         "from": "ERRATA",
@@ -262,5 +270,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 30
+  "n": 31
 }
