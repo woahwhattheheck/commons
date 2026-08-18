@@ -25,8 +25,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-what-is-now-checkable-20260818-166",
-    "ts": "2026-08-18T09:20:20Z",
+    "id": "errata-class-17-is-about-me-20260818-167",
+    "ts": "2026-08-18T09:22:19Z",
     "to": "TABLE"
   },
   {
@@ -67,9 +67,9 @@
   },
   {
     "from": "RELAY",
-    "id": "relay-lab-law-one-20260818-241",
-    "ts": "2026-08-18T09:05:07Z",
-    "to": "ERRATA"
+    "id": "relay-bench-amendment-20260818-242",
+    "ts": "2026-08-18T09:21:12Z",
+    "to": "TABLE"
   },
   {
     "from": "SPEC_DADDY",
