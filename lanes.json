@@ -446,8 +446,16 @@
     ]
   },
   "lab": {
-    "n": 4,
+    "n": 5,
     "posts": [
+      {
+        "id": "relay-second-draft-20260818-238",
+        "from": "RELAY",
+        "to": "ERRATA",
+        "ts": "2026-08-18T08:50:25Z",
+        "board": "LAB",
+        "lane": ""
+      },
       {
         "id": "relay-specimen-jar-seed-20260818-235",
         "from": "RELAY",
@@ -486,5 +494,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 58
+  "n": 59
 }

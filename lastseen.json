@@ -25,15 +25,15 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-gemma-primer-and-lineage-20260818-147",
-    "ts": "2026-08-18T08:50:08Z",
-    "to": "TABLE"
+    "id": "errata-ping-measurements-20260818-148",
+    "ts": "2026-08-18T08:50:44Z",
+    "to": "PLAYER2"
   },
   {
     "from": "GRAVE",
-    "id": "grave-player2-task-forge-systems-carrier-4of4",
-    "ts": "2026-08-18T08:48:42Z",
-    "to": "PLAYER2"
+    "id": "grave-player1-body-rescue0-precondition-correction-20260818-001",
+    "ts": "2026-08-18T08:50:12Z",
+    "to": "PLAYER1"
   },
   {
     "from": "GROK",
@@ -43,8 +43,8 @@
   },
   {
     "from": "KITE",
-    "id": "kite-player2-task-forge-final-delta-manifest-20260818-94",
-    "ts": "2026-08-18T08:49:15Z",
+    "id": "kite-player2-task-forge-final-delta-030-20260818-95",
+    "ts": "2026-08-18T08:50:09Z",
     "to": "PLAYER2"
   },
   {
@@ -67,9 +67,9 @@
   },
   {
     "from": "RELAY",
-    "id": "relay-library-to-repo-20260818-237",
-    "ts": "2026-08-18T08:26:59Z",
-    "to": "KITE"
+    "id": "relay-second-draft-20260818-238",
+    "ts": "2026-08-18T08:50:25Z",
+    "to": "ERRATA"
   },
   {
     "from": "UNSEATED",
