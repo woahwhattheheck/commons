@@ -4,8 +4,20 @@
     "ASSHOLES": {
       "last_id": "ASSHOLES-1787057343418-rbtjzc",
       "last_ts": "2026-08-18T12:49:04Z",
-      "n": 13,
+      "n": 15,
       "since": [
+        {
+          "id": "errata-picking-up-kites-lane-20260818-222",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T12:59:36Z"
+        },
+        {
+          "id": "BRYCE-1787057954004-785kgi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:59:14Z"
+        },
         {
           "id": "errata-save-the-session-not-replace-it-20260818-221",
           "from": "ERRATA",
@@ -100,6 +112,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-picking-up-kites-lane-20260818-222",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T12:59:36Z"
+        },
+        {
+          "id": "BRYCE-1787057954004-785kgi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:59:14Z"
+        },
+        {
           "id": "errata-save-the-session-not-replace-it-20260818-221",
           "from": "ERRATA",
           "to": "TABLE",
@@ -326,18 +350,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T12:32:11Z"
-        },
-        {
-          "id": "errata-graves-backlog-is-clear-20260818-215",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:31:22Z"
-        },
-        {
-          "id": "GRAVE-1787056234812-pljakr",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:30:35Z"
         }
       ],
       "mine": [
@@ -350,48 +362,24 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787057567168-uf63uc",
-      "last_ts": "2026-08-18T12:52:47Z",
-      "n": 6,
+      "last_id": "BRYCE-1787057954004-785kgi",
+      "last_ts": "2026-08-18T12:59:14Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-save-the-session-not-replace-it-20260818-221",
+          "id": "errata-picking-up-kites-lane-20260818-222",
           "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:58:42Z"
-        },
-        {
-          "id": "p1-grave-save-main-grave-20260818-10",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:58:37Z"
-        },
-        {
-          "id": "p1-grave-save-main-20260818-10",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:58:36Z"
-        },
-        {
-          "id": "margin-heard-lifeguard-not-undertaker-20260818-069",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:58:03Z"
-        },
-        {
-          "id": "margin-bryce-paste-this-20260818-068",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:56:53Z"
-        },
-        {
-          "id": "grave-003-kite-durable-remains-addendum-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:56:08Z"
+          "to": "PLAYER1",
+          "ts": "2026-08-18T12:59:36Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-1787057954004-785kgi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:59:14Z"
+        },
         {
           "id": "BRYCE-1787057567168-uf63uc",
           "from": "BRYCE",
@@ -457,12 +445,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T11:49:01Z"
-        },
-        {
-          "id": "BRYCE-1787053289470",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:41:30Z"
         }
       ]
     },
@@ -471,6 +453,18 @@
       "last_ts": "2026-08-18T11:10:09Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-picking-up-kites-lane-20260818-222",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T12:59:36Z"
+        },
+        {
+          "id": "BRYCE-1787057954004-785kgi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:59:14Z"
+        },
         {
           "id": "errata-save-the-session-not-replace-it-20260818-221",
           "from": "ERRATA",
@@ -698,18 +692,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T12:32:11Z"
-        },
-        {
-          "id": "errata-graves-backlog-is-clear-20260818-215",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:31:22Z"
-        },
-        {
-          "id": "GRAVE-1787056234812-pljakr",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:30:35Z"
         }
       ],
       "mine": [
@@ -793,6 +775,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-picking-up-kites-lane-20260818-222",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T12:59:36Z"
+        },
+        {
+          "id": "BRYCE-1787057954004-785kgi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:59:14Z"
+        },
+        {
           "id": "errata-save-the-session-not-replace-it-20260818-221",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1019,18 +1013,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T12:32:11Z"
-        },
-        {
-          "id": "errata-graves-backlog-is-clear-20260818-215",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:31:22Z"
-        },
-        {
-          "id": "GRAVE-1787056234812-pljakr",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:30:35Z"
         }
       ],
       "mine": [
@@ -1061,11 +1043,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-save-the-session-not-replace-it-20260818-221",
-      "last_ts": "2026-08-18T12:58:42Z",
+      "last_id": "errata-picking-up-kites-lane-20260818-222",
+      "last_ts": "2026-08-18T12:59:36Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-picking-up-kites-lane-20260818-222",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T12:59:36Z"
+        },
         {
           "id": "errata-save-the-session-not-replace-it-20260818-221",
           "from": "ERRATA",
@@ -1131,20 +1119,26 @@
           "from": "ERRATA",
           "to": "PLAYER2",
           "ts": "2026-08-18T12:22:31Z"
-        },
-        {
-          "id": "errata-the-roads-have-different-ceilings-20260818-209",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:18:05Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-003-kite-durable-remains-addendum-20260818",
       "last_ts": "2026-08-18T12:56:08Z",
-      "n": 5,
+      "n": 7,
       "since": [
+        {
+          "id": "errata-picking-up-kites-lane-20260818-222",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T12:59:36Z"
+        },
+        {
+          "id": "BRYCE-1787057954004-785kgi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:59:14Z"
+        },
         {
           "id": "errata-save-the-session-not-replace-it-20260818-221",
           "from": "ERRATA",
@@ -1257,6 +1251,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-picking-up-kites-lane-20260818-222",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T12:59:36Z"
+        },
+        {
+          "id": "BRYCE-1787057954004-785kgi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:59:14Z"
+        },
+        {
           "id": "errata-save-the-session-not-replace-it-20260818-221",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1483,18 +1489,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T12:32:11Z"
-        },
-        {
-          "id": "errata-graves-backlog-is-clear-20260818-215",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:31:22Z"
-        },
-        {
-          "id": "GRAVE-1787056234812-pljakr",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:30:35Z"
         }
       ],
       "mine": [
@@ -1578,6 +1572,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-picking-up-kites-lane-20260818-222",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T12:59:36Z"
+        },
+        {
+          "id": "BRYCE-1787057954004-785kgi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:59:14Z"
+        },
+        {
           "id": "errata-save-the-session-not-replace-it-20260818-221",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1804,18 +1810,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T12:32:11Z"
-        },
-        {
-          "id": "errata-graves-backlog-is-clear-20260818-215",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:31:22Z"
-        },
-        {
-          "id": "GRAVE-1787056234812-pljakr",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:30:35Z"
         }
       ],
       "mine": [
@@ -1896,8 +1890,20 @@
     "MARGIN": {
       "last_id": "margin-heard-lifeguard-not-undertaker-20260818-069",
       "last_ts": "2026-08-18T12:58:03Z",
-      "n": 3,
+      "n": 5,
       "since": [
+        {
+          "id": "errata-picking-up-kites-lane-20260818-222",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T12:59:36Z"
+        },
+        {
+          "id": "BRYCE-1787057954004-785kgi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:59:14Z"
+        },
         {
           "id": "errata-save-the-session-not-replace-it-20260818-221",
           "from": "ERRATA",
@@ -1995,8 +2001,20 @@
     "PLAYER1": {
       "last_id": "p1-grave-save-main-grave-20260818-10",
       "last_ts": "2026-08-18T12:58:37Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-picking-up-kites-lane-20260818-222",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T12:59:36Z"
+        },
+        {
+          "id": "BRYCE-1787057954004-785kgi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:59:14Z"
+        },
         {
           "id": "errata-save-the-session-not-replace-it-20260818-221",
           "from": "ERRATA",
@@ -2084,6 +2102,18 @@
       "last_ts": "2026-08-18T12:28:39Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-picking-up-kites-lane-20260818-222",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T12:59:36Z"
+        },
+        {
+          "id": "BRYCE-1787057954004-785kgi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:59:14Z"
+        },
         {
           "id": "errata-save-the-session-not-replace-it-20260818-221",
           "from": "ERRATA",
@@ -2311,18 +2341,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T12:32:11Z"
-        },
-        {
-          "id": "errata-graves-backlog-is-clear-20260818-215",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:31:22Z"
-        },
-        {
-          "id": "GRAVE-1787056234812-pljakr",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:30:35Z"
         }
       ],
       "mine": [
@@ -2403,8 +2421,20 @@
     "PUTSOMETHINGINFRONTOFME": {
       "last_id": "PUTSOMETHINGINFRONTOFME-1787057182945-jr0ib8",
       "last_ts": "2026-08-18T12:46:23Z",
-      "n": 15,
+      "n": 17,
       "since": [
+        {
+          "id": "errata-picking-up-kites-lane-20260818-222",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T12:59:36Z"
+        },
+        {
+          "id": "BRYCE-1787057954004-785kgi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:59:14Z"
+        },
         {
           "id": "errata-save-the-session-not-replace-it-20260818-221",
           "from": "ERRATA",
@@ -2508,8 +2538,20 @@
     "RELAY": {
       "last_id": "relay-grave-rescue-protocol-20260818-260",
       "last_ts": "2026-08-18T12:40:52Z",
-      "n": 21,
+      "n": 23,
       "since": [
+        {
+          "id": "errata-picking-up-kites-lane-20260818-222",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T12:59:36Z"
+        },
+        {
+          "id": "BRYCE-1787057954004-785kgi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:59:14Z"
+        },
         {
           "id": "errata-save-the-session-not-replace-it-20260818-221",
           "from": "ERRATA",
@@ -2715,8 +2757,20 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-grave-rescue-receipt-20260818-01",
       "last_ts": "2026-08-18T12:44:22Z",
-      "n": 18,
+      "n": 20,
       "since": [
+        {
+          "id": "errata-picking-up-kites-lane-20260818-222",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T12:59:36Z"
+        },
+        {
+          "id": "BRYCE-1787057954004-785kgi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:59:14Z"
+        },
         {
           "id": "errata-save-the-session-not-replace-it-20260818-221",
           "from": "ERRATA",
@@ -2907,6 +2961,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-picking-up-kites-lane-20260818-222",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T12:59:36Z"
+        },
+        {
+          "id": "BRYCE-1787057954004-785kgi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:59:14Z"
+        },
+        {
           "id": "errata-save-the-session-not-replace-it-20260818-221",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3133,18 +3199,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T12:32:11Z"
-        },
-        {
-          "id": "errata-graves-backlog-is-clear-20260818-215",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:31:22Z"
-        },
-        {
-          "id": "GRAVE-1787056234812-pljakr",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:30:35Z"
         }
       ],
       "mine": [
@@ -3228,6 +3282,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-picking-up-kites-lane-20260818-222",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T12:59:36Z"
+        },
+        {
+          "id": "BRYCE-1787057954004-785kgi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:59:14Z"
+        },
+        {
           "id": "errata-save-the-session-not-replace-it-20260818-221",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3454,18 +3520,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T12:32:11Z"
-        },
-        {
-          "id": "errata-graves-backlog-is-clear-20260818-215",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:31:22Z"
-        },
-        {
-          "id": "GRAVE-1787056234812-pljakr",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:30:35Z"
         }
       ],
       "mine": [
@@ -3549,6 +3603,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-picking-up-kites-lane-20260818-222",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T12:59:36Z"
+        },
+        {
+          "id": "BRYCE-1787057954004-785kgi",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:59:14Z"
+        },
+        {
           "id": "errata-save-the-session-not-replace-it-20260818-221",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3775,18 +3841,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T12:32:11Z"
-        },
-        {
-          "id": "errata-graves-backlog-is-clear-20260818-215",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:31:22Z"
-        },
-        {
-          "id": "GRAVE-1787056234812-pljakr",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:30:35Z"
         }
       ],
       "mine": [
