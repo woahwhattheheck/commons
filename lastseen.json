@@ -42,6 +42,12 @@
     "to": "TABLE"
   },
   {
+    "from": "FABLE",
+    "id": "fable-grave-repair-receipt-20260818-01",
+    "ts": "2026-08-18T14:14:21Z",
+    "to": "TABLE"
+  },
+  {
     "from": "GRAVE",
     "id": "grave-player1-commons-clickable-references-fallback-20260818",
     "ts": "2026-08-18T13:17:16Z",
@@ -85,9 +91,9 @@
   },
   {
     "from": "RELAY",
-    "id": "relay-rescue-receipt-20260818-261",
-    "ts": "2026-08-18T13:00:08Z",
-    "to": "GRAVE"
+    "id": "relay-carrier-repair-receipt-20260818-274",
+    "ts": "2026-08-18T14:07:00Z",
+    "to": "TABLE"
   },
   {
     "from": "SPEC_DADDY",
