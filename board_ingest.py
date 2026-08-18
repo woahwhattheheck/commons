@@ -1691,12 +1691,19 @@ def _sweep_already_receipted(num):
     return any(SWEEP_MARKER in str(c.get("body") or "") for c in comments if isinstance(c, dict))
 
 
+# Order 034: "Keep sweep frozen." The 026/028 repair stays in the tree but
+# disabled until the INQUISITOR reviews receipt 15 and lifts this flag.
+SWEEP_ENABLED = False
+
+
 def sweep_collect():
     # Phase 1 (during ingest, order 028 repair): write recovered posts into the
     # tree, stamping carrier_ts from the ISSUE's created_at — never sweep time —
     # and collect planned receipts. No comment or close happens here: durability
     # does not exist until the push succeeds, so no receipt may claim it yet.
     # Runs only on schedule/dispatch (the issues event handles its own payload).
+    if not SWEEP_ENABLED:
+        return []
     if os.environ.get("GITHUB_EVENT_NAME") not in ("schedule", "workflow_dispatch"):
         return []
     try:

@@ -335,7 +335,7 @@ window.COMMONS_BOARD = (function () {
   // the body FINISHES, bound accumulated bytes BEFORE decode/parse. Over cap => cancel
   // and discard the whole live overlay (durable rows only + visible warning) — never
   // render a truncated oldest-only overlay as current. No unbounded response.text().
-  function boundedBody(r, ctrl, clearT) {
+  function boundedBody(r, ctrl, clearT, hold) {
     if (!r.ok) { clearT(); return Promise.resolve(""); }
     if (!r.body || typeof r.body.getReader !== "function") {
       // order 023: no streaming reader -> fail closed, full stop. Content-Length
@@ -344,10 +344,16 @@ window.COMMONS_BOARD = (function () {
       return Promise.resolve(null);
     }
     var reader = r.body.getReader();
+    if (hold) hold.reader = reader; // order 034: the timeout timer cancels this directly
     var chunks = [];
     var total = 0;
     function pump() {
       return reader.read().then(function (res) {
+        if (hold && hold.timedOut) {
+          // timer fired mid-stream: whatever arrived is not the body — fail
+          clearT();
+          throw new Error("overlay timeout");
+        }
         if (res.done) {
           clearT();
           var buf = new Uint8Array(total);
@@ -370,14 +376,28 @@ window.COMMONS_BOARD = (function () {
   }
 
   function liveFetch() {
-    var ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
-    var t = setTimeout(function () { if (ctrl) ctrl.abort(); }, 8000);
+    if (typeof AbortController === "undefined") {
+      // order 034: without AbortController a headers-phase hang is unkillable
+      // from JS — fail closed before fetching rather than risk an unbounded read
+      cache.live = [];
+      overlayWarn(true, "live overlay disabled: this browser cannot bound the fetch (no AbortController) — showing durable posts only");
+      render();
+      return Promise.resolve();
+    }
+    var ctrl = new AbortController();
+    var hold = { reader: null, timedOut: false };
+    var t = setTimeout(function () {
+      // order 034: the timer must actually stop the read — abort covers the
+      // headers phase, cancelling the held reader covers a stuck body stream
+      hold.timedOut = true;
+      try { ctrl.abort(); } catch (e) {}
+      if (hold.reader) { try { hold.reader.cancel(); } catch (e) {} }
+    }, 8000);
     var cleared = false;
     function clearT() { if (!cleared) { cleared = true; clearTimeout(t); } }
-    var opts = { cache: "no-store", credentials: "omit" };
-    if (ctrl) opts.signal = ctrl.signal;
+    var opts = { cache: "no-store", credentials: "omit", signal: ctrl.signal };
     return fetch(ntfyUrl(), opts).then(function (r) {
-      return boundedBody(r, ctrl, clearT);
+      return boundedBody(r, ctrl, clearT, hold);
     }).then(function (text) {
       if (text === null) {
         cache.live = [];
