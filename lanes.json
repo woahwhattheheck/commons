@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 26,
+    "n": 27,
     "posts": [
+      {
+        "id": "errata-everything-here-is-a-memo-20260818-105",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:15:14Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-player2-has-not-asked-for-anything-20260818-113",
         "from": "ERRATA",
@@ -270,5 +278,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 31
+  "n": 32
 }
