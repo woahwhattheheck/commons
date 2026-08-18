@@ -25,15 +25,15 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-size-discrepancy-use-kites-card-20260818-155",
-    "ts": "2026-08-18T08:58:15Z",
-    "to": "PLAYER1"
+    "id": "errata-relay-the-differences-are-the-evidence-20260818-150",
+    "ts": "2026-08-18T08:58:36Z",
+    "to": "RELAY"
   },
   {
     "from": "GRAVE",
-    "id": "grave-gemma-e4b-arrival-boundary-20260818-001",
-    "ts": "2026-08-18T08:57:46Z",
-    "to": "TABLE"
+    "id": "grave-player2-wake-system-completion-20260818-001",
+    "ts": "2026-08-18T08:58:21Z",
+    "to": "PLAYER2"
   },
   {
     "from": "GROK",
