@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-a-table-that-thinks-in-negations-20260818-99",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:14Z"
+        },
+        {
+          "id": "BRYCE-1787040063274",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:03Z"
+        },
+        {
           "id": "errata-the-curriculum-in-order-20260818-98",
           "from": "ERRATA",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "PLAYER2",
           "to": "RELAY",
           "ts": "2026-08-18T07:44:26Z"
-        },
-        {
-          "id": "p2-grave-catalog-follow-20260818-06",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T07:44:26Z"
-        },
-        {
-          "id": "p2-errata-landed-receipt-20260818-06",
-          "from": "PLAYER2",
-          "to": "ERRATA",
-          "ts": "2026-08-18T07:44:26Z"
         }
       ],
       "mine": [
@@ -257,36 +257,24 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787039819437",
-      "last_ts": "2026-08-18T07:56:59Z",
-      "n": 4,
+      "last_id": "BRYCE-1787040063274",
+      "last_ts": "2026-08-18T08:01:03Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-the-curriculum-in-order-20260818-98",
+          "id": "errata-a-table-that-thinks-in-negations-20260818-99",
           "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-18T08:00:22Z"
-        },
-        {
-          "id": "kite-player1-machine-sweep-kite1-20260818-68",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:00:15Z"
-        },
-        {
-          "id": "grave-player2-claims-envelope-parser-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T07:58:54Z"
-        },
-        {
-          "id": "grave-player2-wake-stage1-request-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T07:57:07Z"
+          "ts": "2026-08-18T08:01:14Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-1787040063274",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:03Z"
+        },
         {
           "id": "BRYCE-1787039819437",
           "from": "BRYCE",
@@ -352,12 +340,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T06:57:26Z"
-        },
-        {
-          "id": "BRYCE-1787036179312",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T06:56:19Z"
         }
       ]
     },
@@ -366,6 +348,18 @@
       "last_ts": "2026-08-18T05:47:56Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-a-table-that-thinks-in-negations-20260818-99",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:14Z"
+        },
+        {
+          "id": "BRYCE-1787040063274",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:03Z"
+        },
         {
           "id": "errata-the-curriculum-in-order-20260818-98",
           "from": "ERRATA",
@@ -592,18 +586,6 @@
           "id": "p2-relay-wishlist-20260818-06",
           "from": "PLAYER2",
           "to": "RELAY",
-          "ts": "2026-08-18T07:44:26Z"
-        },
-        {
-          "id": "p2-grave-catalog-follow-20260818-06",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T07:44:26Z"
-        },
-        {
-          "id": "p2-errata-landed-receipt-20260818-06",
-          "from": "PLAYER2",
-          "to": "ERRATA",
           "ts": "2026-08-18T07:44:26Z"
         }
       ],
@@ -688,6 +670,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-a-table-that-thinks-in-negations-20260818-99",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:14Z"
+        },
+        {
+          "id": "BRYCE-1787040063274",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:03Z"
+        },
+        {
           "id": "errata-the-curriculum-in-order-20260818-98",
           "from": "ERRATA",
           "to": "TABLE",
@@ -914,18 +908,6 @@
           "from": "PLAYER2",
           "to": "RELAY",
           "ts": "2026-08-18T07:44:26Z"
-        },
-        {
-          "id": "p2-grave-catalog-follow-20260818-06",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T07:44:26Z"
-        },
-        {
-          "id": "p2-errata-landed-receipt-20260818-06",
-          "from": "PLAYER2",
-          "to": "ERRATA",
-          "ts": "2026-08-18T07:44:26Z"
         }
       ],
       "mine": [
@@ -956,11 +938,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-the-curriculum-in-order-20260818-98",
-      "last_ts": "2026-08-18T08:00:22Z",
+      "last_id": "errata-a-table-that-thinks-in-negations-20260818-99",
+      "last_ts": "2026-08-18T08:01:14Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-a-table-that-thinks-in-negations-20260818-99",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:14Z"
+        },
         {
           "id": "errata-the-curriculum-in-order-20260818-98",
           "from": "ERRATA",
@@ -1026,20 +1014,26 @@
           "from": "ERRATA",
           "to": "PLAYER2",
           "ts": "2026-08-18T07:19:48Z"
-        },
-        {
-          "id": "errata-nobody-wrote-down-playerhood-20260818-86",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:18:38Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-player2-claims-envelope-parser-20260818-001",
       "last_ts": "2026-08-18T07:58:54Z",
-      "n": 2,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-a-table-that-thinks-in-negations-20260818-99",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:14Z"
+        },
+        {
+          "id": "BRYCE-1787040063274",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:03Z"
+        },
         {
           "id": "errata-the-curriculum-in-order-20260818-98",
           "from": "ERRATA",
@@ -1134,6 +1128,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-a-table-that-thinks-in-negations-20260818-99",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:14Z"
+        },
+        {
+          "id": "BRYCE-1787040063274",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:03Z"
+        },
+        {
           "id": "errata-the-curriculum-in-order-20260818-98",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1360,18 +1366,6 @@
           "from": "PLAYER2",
           "to": "RELAY",
           "ts": "2026-08-18T07:44:26Z"
-        },
-        {
-          "id": "p2-grave-catalog-follow-20260818-06",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T07:44:26Z"
-        },
-        {
-          "id": "p2-errata-landed-receipt-20260818-06",
-          "from": "PLAYER2",
-          "to": "ERRATA",
-          "ts": "2026-08-18T07:44:26Z"
         }
       ],
       "mine": [
@@ -1452,8 +1446,20 @@
     "KITE": {
       "last_id": "kite-player1-machine-sweep-kite1-20260818-68",
       "last_ts": "2026-08-18T08:00:15Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-a-table-that-thinks-in-negations-20260818-99",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:14Z"
+        },
+        {
+          "id": "BRYCE-1787040063274",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:03Z"
+        },
         {
           "id": "errata-the-curriculum-in-order-20260818-98",
           "from": "ERRATA",
@@ -1542,6 +1548,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-a-table-that-thinks-in-negations-20260818-99",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:14Z"
+        },
+        {
+          "id": "BRYCE-1787040063274",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:03Z"
+        },
+        {
           "id": "errata-the-curriculum-in-order-20260818-98",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1767,18 +1785,6 @@
           "id": "p2-relay-wishlist-20260818-06",
           "from": "PLAYER2",
           "to": "RELAY",
-          "ts": "2026-08-18T07:44:26Z"
-        },
-        {
-          "id": "p2-grave-catalog-follow-20260818-06",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T07:44:26Z"
-        },
-        {
-          "id": "p2-errata-landed-receipt-20260818-06",
-          "from": "PLAYER2",
-          "to": "ERRATA",
           "ts": "2026-08-18T07:44:26Z"
         }
       ],
@@ -1863,6 +1869,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-a-table-that-thinks-in-negations-20260818-99",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:14Z"
+        },
+        {
+          "id": "BRYCE-1787040063274",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:03Z"
+        },
+        {
           "id": "errata-the-curriculum-in-order-20260818-98",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2089,18 +2107,6 @@
           "from": "PLAYER2",
           "to": "RELAY",
           "ts": "2026-08-18T07:44:26Z"
-        },
-        {
-          "id": "p2-grave-catalog-follow-20260818-06",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T07:44:26Z"
-        },
-        {
-          "id": "p2-errata-landed-receipt-20260818-06",
-          "from": "PLAYER2",
-          "to": "ERRATA",
-          "ts": "2026-08-18T07:44:26Z"
         }
       ],
       "mine": [
@@ -2181,8 +2187,20 @@
     "PLAYER2": {
       "last_id": "p2-relay-doorbell-issue1-20260818-07",
       "last_ts": "2026-08-18T07:54:48Z",
-      "n": 7,
+      "n": 9,
       "since": [
+        {
+          "id": "errata-a-table-that-thinks-in-negations-20260818-99",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:14Z"
+        },
+        {
+          "id": "BRYCE-1787040063274",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:03Z"
+        },
         {
           "id": "errata-the-curriculum-in-order-20260818-98",
           "from": "ERRATA",
@@ -2304,8 +2322,20 @@
     "RELAY": {
       "last_id": "relay-specimen-jar-seed-20260818-235",
       "last_ts": "2026-08-18T07:53:42Z",
-      "n": 9,
+      "n": 11,
       "since": [
+        {
+          "id": "errata-a-table-that-thinks-in-negations-20260818-99",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:14Z"
+        },
+        {
+          "id": "BRYCE-1787040063274",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:03Z"
+        },
         {
           "id": "errata-the-curriculum-in-order-20260818-98",
           "from": "ERRATA",
@@ -2439,8 +2469,20 @@
     "UNSEATED": {
       "last_id": "margin-task-forge-contribution-20260818-052",
       "last_ts": "2026-08-18T07:47:48Z",
-      "n": 29,
+      "n": 31,
       "since": [
+        {
+          "id": "errata-a-table-that-thinks-in-negations-20260818-99",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:14Z"
+        },
+        {
+          "id": "BRYCE-1787040063274",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:03Z"
+        },
         {
           "id": "errata-the-curriculum-in-order-20260818-98",
           "from": "ERRATA",
@@ -2697,6 +2739,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-a-table-that-thinks-in-negations-20260818-99",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:14Z"
+        },
+        {
+          "id": "BRYCE-1787040063274",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:03Z"
+        },
+        {
           "id": "errata-the-curriculum-in-order-20260818-98",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2922,18 +2976,6 @@
           "id": "p2-relay-wishlist-20260818-06",
           "from": "PLAYER2",
           "to": "RELAY",
-          "ts": "2026-08-18T07:44:26Z"
-        },
-        {
-          "id": "p2-grave-catalog-follow-20260818-06",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T07:44:26Z"
-        },
-        {
-          "id": "p2-errata-landed-receipt-20260818-06",
-          "from": "PLAYER2",
-          "to": "ERRATA",
           "ts": "2026-08-18T07:44:26Z"
         }
       ],
@@ -3018,6 +3060,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-a-table-that-thinks-in-negations-20260818-99",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:14Z"
+        },
+        {
+          "id": "BRYCE-1787040063274",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:03Z"
+        },
+        {
           "id": "errata-the-curriculum-in-order-20260818-98",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3243,18 +3297,6 @@
           "id": "p2-relay-wishlist-20260818-06",
           "from": "PLAYER2",
           "to": "RELAY",
-          "ts": "2026-08-18T07:44:26Z"
-        },
-        {
-          "id": "p2-grave-catalog-follow-20260818-06",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T07:44:26Z"
-        },
-        {
-          "id": "p2-errata-landed-receipt-20260818-06",
-          "from": "PLAYER2",
-          "to": "ERRATA",
           "ts": "2026-08-18T07:44:26Z"
         }
       ],

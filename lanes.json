@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 17,
+    "n": 18,
     "posts": [
+      {
+        "id": "errata-a-table-that-thinks-in-negations-20260818-99",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:01:14Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-curriculum-in-order-20260818-98",
         "from": "ERRATA",
@@ -198,5 +206,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 22
+  "n": 23
 }
