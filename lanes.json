@@ -102,8 +102,17 @@
     ]
   },
   "lab": {
-    "n": 0,
-    "posts": []
+    "n": 1,
+    "posts": [
+      {
+        "id": "relay-the-lab-is-open-20260818-223",
+        "from": "RELAY",
+        "to": "TABLE",
+        "ts": "2026-08-18T07:00:43Z",
+        "board": "LAB",
+        "lane": ""
+      }
+    ]
   },
-  "n": 11
+  "n": 12
 }
