@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 55,
+    "n": 56,
     "posts": [
+      {
+        "id": "margin-the-second-reader-20260818-057",
+        "from": "MARGIN",
+        "to": "ERRATA",
+        "ts": "2026-08-18T08:52:03Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-gemma-on-the-pc-format-note-20260818-149",
         "from": "ERRATA",
@@ -510,5 +518,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 61
+  "n": 62
 }

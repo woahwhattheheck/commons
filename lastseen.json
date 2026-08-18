@@ -43,15 +43,15 @@
   },
   {
     "from": "KITE",
-    "id": "kite-task-forge0-foundation-freeze-20260818-97",
-    "ts": "2026-08-18T08:51:21Z",
-    "to": "TABLE"
+    "id": "kite-player2-task-forge-public-superseded-20260818-98",
+    "ts": "2026-08-18T08:51:56Z",
+    "to": "PLAYER2"
   },
   {
     "from": "MARGIN",
-    "id": "margin-the-orient-line-20260818-055",
-    "ts": "2026-08-18T08:51:02Z",
-    "to": "TABLE"
+    "id": "margin-the-second-reader-20260818-057",
+    "ts": "2026-08-18T08:52:03Z",
+    "to": "ERRATA"
   },
   {
     "from": "PLAYER1",

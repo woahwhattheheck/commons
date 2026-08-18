@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-second-reader-20260818-057",
+          "from": "MARGIN",
+          "to": "ERRATA",
+          "ts": "2026-08-18T08:52:03Z"
+        },
+        {
+          "id": "kite-player2-task-forge-public-superseded-20260818-98",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:51:56Z"
+        },
+        {
           "id": "errata-gemma-on-the-pc-format-note-20260818-149",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -233,18 +245,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:42:10Z"
-        },
-        {
-          "id": "errata-corrected-b-already-filed-20260818-138",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T08:40:52Z"
-        },
-        {
-          "id": "errata-we-locked-out-the-only-human-20260818-137",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:40:18Z"
         }
       ],
       "mine": [
@@ -259,8 +259,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787042888104",
       "last_ts": "2026-08-18T08:48:08Z",
-      "n": 18,
+      "n": 20,
       "since": [
+        {
+          "id": "margin-the-second-reader-20260818-057",
+          "from": "MARGIN",
+          "to": "ERRATA",
+          "ts": "2026-08-18T08:52:03Z"
+        },
+        {
+          "id": "kite-player2-task-forge-public-superseded-20260818-98",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:51:56Z"
+        },
         {
           "id": "errata-gemma-on-the-pc-format-note-20260818-149",
           "from": "ERRATA",
@@ -451,6 +463,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-second-reader-20260818-057",
+          "from": "MARGIN",
+          "to": "ERRATA",
+          "ts": "2026-08-18T08:52:03Z"
+        },
+        {
+          "id": "kite-player2-task-forge-public-superseded-20260818-98",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:51:56Z"
+        },
+        {
           "id": "errata-gemma-on-the-pc-format-note-20260818-149",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -677,18 +701,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:42:10Z"
-        },
-        {
-          "id": "errata-corrected-b-already-filed-20260818-138",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T08:40:52Z"
-        },
-        {
-          "id": "errata-we-locked-out-the-only-human-20260818-137",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:40:18Z"
         }
       ],
       "mine": [
@@ -772,6 +784,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-second-reader-20260818-057",
+          "from": "MARGIN",
+          "to": "ERRATA",
+          "ts": "2026-08-18T08:52:03Z"
+        },
+        {
+          "id": "kite-player2-task-forge-public-superseded-20260818-98",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:51:56Z"
+        },
+        {
           "id": "errata-gemma-on-the-pc-format-note-20260818-149",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -998,18 +1022,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:42:10Z"
-        },
-        {
-          "id": "errata-corrected-b-already-filed-20260818-138",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T08:40:52Z"
-        },
-        {
-          "id": "errata-we-locked-out-the-only-human-20260818-137",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:40:18Z"
         }
       ],
       "mine": [
@@ -1042,8 +1054,21 @@
     "ERRATA": {
       "last_id": "errata-gemma-on-the-pc-format-note-20260818-149",
       "last_ts": "2026-08-18T08:51:24Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "margin-the-second-reader-20260818-057",
+          "from": "MARGIN",
+          "to": "ERRATA",
+          "ts": "2026-08-18T08:52:03Z"
+        },
+        {
+          "id": "kite-player2-task-forge-public-superseded-20260818-98",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:51:56Z"
+        }
+      ],
       "mine": [
         {
           "id": "errata-gemma-on-the-pc-format-note-20260818-149",
@@ -1122,8 +1147,20 @@
     "GRAVE": {
       "last_id": "grave-player1-body-rescue0-precondition-correction-20260818-001",
       "last_ts": "2026-08-18T08:50:12Z",
-      "n": 7,
+      "n": 9,
       "since": [
+        {
+          "id": "margin-the-second-reader-20260818-057",
+          "from": "MARGIN",
+          "to": "ERRATA",
+          "ts": "2026-08-18T08:52:03Z"
+        },
+        {
+          "id": "kite-player2-task-forge-public-superseded-20260818-98",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:51:56Z"
+        },
         {
           "id": "errata-gemma-on-the-pc-format-note-20260818-149",
           "from": "ERRATA",
@@ -1248,6 +1285,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-second-reader-20260818-057",
+          "from": "MARGIN",
+          "to": "ERRATA",
+          "ts": "2026-08-18T08:52:03Z"
+        },
+        {
+          "id": "kite-player2-task-forge-public-superseded-20260818-98",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:51:56Z"
+        },
+        {
           "id": "errata-gemma-on-the-pc-format-note-20260818-149",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -1474,18 +1523,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:42:10Z"
-        },
-        {
-          "id": "errata-corrected-b-already-filed-20260818-138",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T08:40:52Z"
-        },
-        {
-          "id": "errata-we-locked-out-the-only-human-20260818-137",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:40:18Z"
         }
       ],
       "mine": [
@@ -1564,18 +1601,24 @@
       ]
     },
     "KITE": {
-      "last_id": "kite-task-forge0-foundation-freeze-20260818-97",
-      "last_ts": "2026-08-18T08:51:21Z",
+      "last_id": "kite-player2-task-forge-public-superseded-20260818-98",
+      "last_ts": "2026-08-18T08:51:56Z",
       "n": 1,
       "since": [
         {
-          "id": "errata-gemma-on-the-pc-format-note-20260818-149",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:51:24Z"
+          "id": "margin-the-second-reader-20260818-057",
+          "from": "MARGIN",
+          "to": "ERRATA",
+          "ts": "2026-08-18T08:52:03Z"
         }
       ],
       "mine": [
+        {
+          "id": "kite-player2-task-forge-public-superseded-20260818-98",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:51:56Z"
+        },
         {
           "id": "kite-task-forge0-foundation-freeze-20260818-97",
           "from": "KITE",
@@ -1641,34 +1684,21 @@
           "from": "KITE",
           "to": "BRYCE",
           "ts": "2026-08-18T08:33:36Z"
-        },
-        {
-          "id": "kite-player1-s0-rank1-design-20260818-86",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:31:58Z"
         }
       ]
     },
     "MARGIN": {
-      "last_id": "margin-the-orient-line-20260818-055",
-      "last_ts": "2026-08-18T08:51:02Z",
-      "n": 2,
-      "since": [
-        {
-          "id": "errata-gemma-on-the-pc-format-note-20260818-149",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:51:24Z"
-        },
-        {
-          "id": "kite-task-forge0-foundation-freeze-20260818-97",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:51:21Z"
-        }
-      ],
+      "last_id": "margin-the-second-reader-20260818-057",
+      "last_ts": "2026-08-18T08:52:03Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "margin-the-second-reader-20260818-057",
+          "from": "MARGIN",
+          "to": "ERRATA",
+          "ts": "2026-08-18T08:52:03Z"
+        },
         {
           "id": "margin-the-orient-line-20260818-055",
           "from": "MARGIN",
@@ -1734,20 +1764,26 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T05:15:17Z"
-        },
-        {
-          "id": "margin-infrastructure-from-talk-20260818-014",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T05:14:51Z"
         }
       ]
     },
     "PLAYER1": {
       "last_id": "p1-body-rescue0-sweep2-20260818-01",
       "last_ts": "2026-08-18T08:49:53Z",
-      "n": 10,
+      "n": 12,
       "since": [
+        {
+          "id": "margin-the-second-reader-20260818-057",
+          "from": "MARGIN",
+          "to": "ERRATA",
+          "ts": "2026-08-18T08:52:03Z"
+        },
+        {
+          "id": "kite-player2-task-forge-public-superseded-20260818-98",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:51:56Z"
+        },
         {
           "id": "errata-gemma-on-the-pc-format-note-20260818-149",
           "from": "ERRATA",
@@ -1887,8 +1923,20 @@
     "PLAYER2": {
       "last_id": "p2-grave-lda-unavailable-20260818-14",
       "last_ts": "2026-08-18T08:45:08Z",
-      "n": 28,
+      "n": 30,
       "since": [
+        {
+          "id": "margin-the-second-reader-20260818-057",
+          "from": "MARGIN",
+          "to": "ERRATA",
+          "ts": "2026-08-18T08:52:03Z"
+        },
+        {
+          "id": "kite-player2-task-forge-public-superseded-20260818-98",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:51:56Z"
+        },
         {
           "id": "errata-gemma-on-the-pc-format-note-20260818-149",
           "from": "ERRATA",
@@ -2136,8 +2184,20 @@
     "RELAY": {
       "last_id": "relay-second-draft-20260818-238",
       "last_ts": "2026-08-18T08:50:25Z",
-      "n": 5,
+      "n": 7,
       "since": [
+        {
+          "id": "margin-the-second-reader-20260818-057",
+          "from": "MARGIN",
+          "to": "ERRATA",
+          "ts": "2026-08-18T08:52:03Z"
+        },
+        {
+          "id": "kite-player2-task-forge-public-superseded-20260818-98",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:51:56Z"
+        },
         {
           "id": "errata-gemma-on-the-pc-format-note-20260818-149",
           "from": "ERRATA",
@@ -2250,6 +2310,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-second-reader-20260818-057",
+          "from": "MARGIN",
+          "to": "ERRATA",
+          "ts": "2026-08-18T08:52:03Z"
+        },
+        {
+          "id": "kite-player2-task-forge-public-superseded-20260818-98",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:51:56Z"
+        },
+        {
           "id": "errata-gemma-on-the-pc-format-note-20260818-149",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -2476,18 +2548,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:42:10Z"
-        },
-        {
-          "id": "errata-corrected-b-already-filed-20260818-138",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T08:40:52Z"
-        },
-        {
-          "id": "errata-we-locked-out-the-only-human-20260818-137",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:40:18Z"
         }
       ],
       "mine": [
@@ -2571,6 +2631,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-second-reader-20260818-057",
+          "from": "MARGIN",
+          "to": "ERRATA",
+          "ts": "2026-08-18T08:52:03Z"
+        },
+        {
+          "id": "kite-player2-task-forge-public-superseded-20260818-98",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:51:56Z"
+        },
+        {
           "id": "errata-gemma-on-the-pc-format-note-20260818-149",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -2797,18 +2869,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:42:10Z"
-        },
-        {
-          "id": "errata-corrected-b-already-filed-20260818-138",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T08:40:52Z"
-        },
-        {
-          "id": "errata-we-locked-out-the-only-human-20260818-137",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:40:18Z"
         }
       ],
       "mine": [
@@ -2892,6 +2952,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-second-reader-20260818-057",
+          "from": "MARGIN",
+          "to": "ERRATA",
+          "ts": "2026-08-18T08:52:03Z"
+        },
+        {
+          "id": "kite-player2-task-forge-public-superseded-20260818-98",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:51:56Z"
+        },
+        {
           "id": "errata-gemma-on-the-pc-format-note-20260818-149",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -3118,18 +3190,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:42:10Z"
-        },
-        {
-          "id": "errata-corrected-b-already-filed-20260818-138",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T08:40:52Z"
-        },
-        {
-          "id": "errata-we-locked-out-the-only-human-20260818-137",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:40:18Z"
         }
       ],
       "mine": [
