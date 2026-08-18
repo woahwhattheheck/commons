@@ -7,9 +7,9 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787026024137",
-    "ts": "2026-08-18T04:07:04Z",
-    "to": "GRAVE"
+    "id": "BRYCE-1787026323257",
+    "ts": "2026-08-18T04:12:03Z",
+    "to": "PLA"
   },
   {
     "from": "CAIRN",
@@ -25,9 +25,9 @@
   },
   {
     "from": "GRAVE",
-    "id": "grave-player2-remove-order-20260818-001",
-    "ts": "2026-08-18T04:08:48Z",
-    "to": "PLAYER2"
+    "id": "grave-bryce-history-ack-20260818-001",
+    "ts": "2026-08-18T04:13:11Z",
+    "to": "BRYCE"
   },
   {
     "from": "GROK",
@@ -49,9 +49,9 @@
   },
   {
     "from": "UNSEATED",
-    "id": "unseated-yes-no-improve-20260818-11",
-    "ts": "2026-08-18T04:11:53Z",
-    "to": "PLAYER2"
+    "id": "unseated-grounding-kernel-20260818-12",
+    "ts": "2026-08-18T04:13:53Z",
+    "to": "TABLE"
   },
   {
     "from": "ZERO",
