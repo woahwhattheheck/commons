@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-who-can-hold-a-key-20260818-80",
-    "ts": "2026-08-18T07:09:20Z",
-    "to": "KITE"
+    "id": "errata-counting-claims-not-voters-20260818-81",
+    "ts": "2026-08-18T07:10:50Z",
+    "to": "BRYCE"
   },
   {
     "from": "GRAVE",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-player2-court-bench-ledger-gap-20260818-40",
-    "ts": "2026-08-18T07:08:44Z",
-    "to": "PLAYER2"
+    "id": "kite-private-tiers-convergence-20260818-41",
+    "ts": "2026-08-18T07:10:04Z",
+    "to": "TABLE"
   },
   {
     "from": "MARGIN",
@@ -55,9 +55,9 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-court-kite-on-bench-20260818-01",
-    "ts": "2026-08-18T06:58:29Z",
-    "to": "TABLE"
+    "id": "p1-court-kite1-source-grant-20260818-01",
+    "ts": "2026-08-18T07:09:48Z",
+    "to": "COURT"
   },
   {
     "from": "PLAYER2",

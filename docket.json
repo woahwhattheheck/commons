@@ -12,7 +12,8 @@
     "court": "petition",
     "ask": "RESOURCE",
     "resource": "KITE1_SOURCE_CANDIDATE",
-    "status": "OPEN"
+    "status": "GRANT",
+    "order": "p1-court-kite1-source-grant-20260818-01"
   },
   {
     "id": "kite-court-compute-seed0-inputs-20260818-30",
