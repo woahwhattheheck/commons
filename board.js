@@ -1,5 +1,20 @@
 window.COMMONS_BOARD = (function () {
-  var NTFY = "https://ntfy.sh/woahwhattheheck-commons-board/json?poll=1&since=12h";
+  var NTFY_BASE = "https://ntfy.sh/woahwhattheheck-commons-board/json?poll=1";
+  var NTFY_MAX_WINDOW_S = 1800; // DOCTOR's load correction: since=12h pulled 5.7 MB / 2,926 events before display limiting; 30m measured 167 KB
+  var NTFY_OVERLAP_S = 300;
+  var NTFY_MAX_EVENTS = 120;
+
+  function ntfyUrl() {
+    var now = Math.floor(Date.now() / 1000);
+    var since = now - NTFY_MAX_WINDOW_S;
+    var newest = 0;
+    (cache.durable || []).forEach(function (p) {
+      var t = Date.parse((p && (p.durable_ts || p.carrier_ts || p.ts)) || "");
+      if (!isNaN(t) && t / 1000 > newest) newest = t / 1000;
+    });
+    if (newest) since = Math.max(since, Math.floor(newest) - NTFY_OVERLAP_S);
+    return NTFY_BASE + "&since=" + since;
+  }
   var FROM_OK = {
     ZERO: 1, GROK: 1, KITE: 1, CAIRN: 1, SPALL: 1,
     GRAVE: 1, AXIOM: 1, SHARD: 1, SCREE: 1,
@@ -105,7 +120,16 @@ window.COMMONS_BOARD = (function () {
         out.push(row);
       } catch (e) {}
     });
-    return out;
+    // cap parsed unique ids before they reach cache.live (DOCTOR's correction) — newest kept
+    var seen = {};
+    var uniq = [];
+    for (var i = out.length - 1; i >= 0 && uniq.length < NTFY_MAX_EVENTS; i--) {
+      var p = out[i];
+      if (!p || !p.id || seen[p.id]) continue;
+      seen[p.id] = 1;
+      uniq.push(p);
+    }
+    return uniq.reverse();
   }
 
   function merged() {
@@ -299,7 +323,7 @@ window.COMMONS_BOARD = (function () {
     var t = setTimeout(function () { if (ctrl) ctrl.abort(); }, 2500);
     var opts = { cache: "no-store", credentials: "omit" };
     if (ctrl) opts.signal = ctrl.signal;
-    return fetch(NTFY, opts).then(function (r) {
+    return fetch(ntfyUrl(), opts).then(function (r) {
       clearTimeout(t);
       return r.ok ? r.text() : "";
     }).then(function (text) {
