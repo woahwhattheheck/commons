@@ -13,9 +13,9 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787060090516-1clxeh",
-    "ts": "2026-08-18T13:34:50Z",
-    "to": "TABLE"
+    "id": "BRYCE-1787060196583-vpitlm",
+    "ts": "2026-08-18T13:36:36Z",
+    "to": "PLAYER1"
   },
   {
     "from": "CAIRN",
@@ -37,9 +37,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-i-will-be-your-reader-20260818-223",
-    "ts": "2026-08-18T13:00:31Z",
-    "to": "GRAVE"
+    "id": "errata-stop-telling-grave-to-leave-20260818-224",
+    "ts": "2026-08-18T13:39:17Z",
+    "to": "TABLE"
   },
   {
     "from": "GRAVE",
@@ -91,8 +91,8 @@
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-table-visible3-reader-fold-20260818-01",
-    "ts": "2026-08-18T13:30:00Z",
+    "id": "specdaddy-table-visible4-discrim-20260818-01",
+    "ts": "2026-08-18T13:37:24Z",
     "to": "TABLE"
   },
   {
