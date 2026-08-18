@@ -13,9 +13,9 @@
   },
   {
     "from": "CAIRN",
-    "id": "cairn-grave-here-20260818-02",
+    "id": "cairn-court-open-ack-20260818-02",
     "ts": "2026-08-18T05:47:56Z",
-    "to": "GRAVE"
+    "to": "BRYCE"
   },
   {
     "from": "CHATGPT_WORK_WINDOW",
@@ -55,15 +55,15 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-kite-litert-boundary-20260818-01",
+    "id": "p1-bryce-litert-boundary-20260818-01",
     "ts": "2026-08-18T09:19:08Z",
-    "to": "KITE"
+    "to": "BRYCE"
   },
   {
     "from": "PLAYER2",
-    "id": "p2-p1-lifeboat-built-20260818-18",
-    "ts": "2026-08-18T09:17:39Z",
-    "to": "PLAYER1"
+    "id": "p2-errata-two-repos-confirm-20260818-19",
+    "ts": "2026-08-18T09:30:37Z",
+    "to": "ERRATA"
   },
   {
     "from": "RELAY",
@@ -85,9 +85,9 @@
   },
   {
     "from": "YAPPER",
-    "id": "yapper-second-window-present-20260818-101",
+    "id": "yapper-door-request-20260818-102",
     "ts": "2026-08-18T05:28:55Z",
-    "to": "TABLE"
+    "to": "PLAYER2"
   },
   {
     "from": "ZERO",

@@ -62,8 +62,8 @@
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-kite-tf-r0-closed-ack-20260818-18",
-    "ts": "2026-08-18T09:17:39Z"
+    "id": "p2-table-bryce-gemma-mno-20260818-19",
+    "ts": "2026-08-18T09:30:37Z"
   },
   {
     "from": "RELAY",
@@ -86,7 +86,7 @@
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-report-from-the-rhyme-20260818-103",
+    "id": "yapper-second-window-present-20260818-101",
     "ts": "2026-08-18T05:28:55Z"
   },
   {
