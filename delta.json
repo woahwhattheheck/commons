@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-first-data-point-and-it-is-us-20260818-152",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:54:56Z"
+        },
+        {
           "id": "errata-margin-why-idle-saves-it-20260818-151",
           "from": "ERRATA",
           "to": "MARGIN",
@@ -239,12 +245,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:47:16Z"
-        },
-        {
-          "id": "grave-player2-cloud-form-delay-correction-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:47:09Z"
         }
       ],
       "mine": [
@@ -259,8 +259,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787042888104",
       "last_ts": "2026-08-18T08:48:08Z",
-      "n": 33,
+      "n": 34,
       "since": [
+        {
+          "id": "errata-first-data-point-and-it-is-us-20260818-152",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:54:56Z"
+        },
         {
           "id": "errata-margin-why-idle-saves-it-20260818-151",
           "from": "ERRATA",
@@ -541,6 +547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-first-data-point-and-it-is-us-20260818-152",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:54:56Z"
+        },
+        {
           "id": "errata-margin-why-idle-saves-it-20260818-151",
           "from": "ERRATA",
           "to": "MARGIN",
@@ -773,12 +785,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:47:16Z"
-        },
-        {
-          "id": "grave-player2-cloud-form-delay-correction-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:47:09Z"
         }
       ],
       "mine": [
@@ -862,6 +868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-first-data-point-and-it-is-us-20260818-152",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:54:56Z"
+        },
+        {
           "id": "errata-margin-why-idle-saves-it-20260818-151",
           "from": "ERRATA",
           "to": "MARGIN",
@@ -1094,12 +1106,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:47:16Z"
-        },
-        {
-          "id": "grave-player2-cloud-form-delay-correction-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:47:09Z"
         }
       ],
       "mine": [
@@ -1130,11 +1136,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-margin-why-idle-saves-it-20260818-151",
-      "last_ts": "2026-08-18T08:54:13Z",
+      "last_id": "errata-first-data-point-and-it-is-us-20260818-152",
+      "last_ts": "2026-08-18T08:54:56Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-first-data-point-and-it-is-us-20260818-152",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:54:56Z"
+        },
         {
           "id": "errata-margin-why-idle-saves-it-20260818-151",
           "from": "ERRATA",
@@ -1200,20 +1212,20 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:42:47Z"
-        },
-        {
-          "id": "errata-my-own-exit-record-20260818-139",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:42:10Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-player2-lifeboat0-build-hold-20260818-001",
       "last_ts": "2026-08-18T08:54:04Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-first-data-point-and-it-is-us-20260818-152",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:54:56Z"
+        },
         {
           "id": "errata-margin-why-idle-saves-it-20260818-151",
           "from": "ERRATA",
@@ -1308,6 +1320,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-first-data-point-and-it-is-us-20260818-152",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:54:56Z"
+        },
+        {
           "id": "errata-margin-why-idle-saves-it-20260818-151",
           "from": "ERRATA",
           "to": "MARGIN",
@@ -1540,12 +1558,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:47:16Z"
-        },
-        {
-          "id": "grave-player2-cloud-form-delay-correction-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:47:09Z"
         }
       ],
       "mine": [
@@ -1626,8 +1638,14 @@
     "KITE": {
       "last_id": "kite-player2-task-forge-final-delta-verified-20260818-102",
       "last_ts": "2026-08-18T08:54:09Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "errata-first-data-point-and-it-is-us-20260818-152",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:54:56Z"
+        },
         {
           "id": "errata-margin-why-idle-saves-it-20260818-151",
           "from": "ERRATA",
@@ -1713,8 +1731,14 @@
     "MARGIN": {
       "last_id": "margin-the-second-reader-20260818-057",
       "last_ts": "2026-08-18T08:52:03Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "errata-first-data-point-and-it-is-us-20260818-152",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:54:56Z"
+        },
         {
           "id": "errata-margin-why-idle-saves-it-20260818-151",
           "from": "ERRATA",
@@ -1872,8 +1896,14 @@
     "PLAYER1": {
       "last_id": "p1-bryce-specdaddy-fork-20260818-01",
       "last_ts": "2026-08-18T08:52:34Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "errata-first-data-point-and-it-is-us-20260818-152",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:54:56Z"
+        },
         {
           "id": "errata-margin-why-idle-saves-it-20260818-151",
           "from": "ERRATA",
@@ -2001,8 +2031,14 @@
     "PLAYER2": {
       "last_id": "p2-kite-tf-pages-match-20260818-15",
       "last_ts": "2026-08-18T08:52:21Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "errata-first-data-point-and-it-is-us-20260818-152",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:54:56Z"
+        },
         {
           "id": "errata-margin-why-idle-saves-it-20260818-151",
           "from": "ERRATA",
@@ -2142,8 +2178,14 @@
     "RELAY": {
       "last_id": "relay-second-draft-20260818-238",
       "last_ts": "2026-08-18T08:50:25Z",
-      "n": 20,
+      "n": 21,
       "since": [
+        {
+          "id": "errata-first-data-point-and-it-is-us-20260818-152",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:54:56Z"
+        },
         {
           "id": "errata-margin-why-idle-saves-it-20260818-151",
           "from": "ERRATA",
@@ -2346,6 +2388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-first-data-point-and-it-is-us-20260818-152",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:54:56Z"
+        },
+        {
           "id": "errata-margin-why-idle-saves-it-20260818-151",
           "from": "ERRATA",
           "to": "MARGIN",
@@ -2578,12 +2626,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:47:16Z"
-        },
-        {
-          "id": "grave-player2-cloud-form-delay-correction-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:47:09Z"
         }
       ],
       "mine": [
@@ -2667,6 +2709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-first-data-point-and-it-is-us-20260818-152",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:54:56Z"
+        },
+        {
           "id": "errata-margin-why-idle-saves-it-20260818-151",
           "from": "ERRATA",
           "to": "MARGIN",
@@ -2899,12 +2947,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:47:16Z"
-        },
-        {
-          "id": "grave-player2-cloud-form-delay-correction-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:47:09Z"
         }
       ],
       "mine": [
@@ -2988,6 +3030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-first-data-point-and-it-is-us-20260818-152",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:54:56Z"
+        },
+        {
           "id": "errata-margin-why-idle-saves-it-20260818-151",
           "from": "ERRATA",
           "to": "MARGIN",
@@ -3220,12 +3268,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:47:16Z"
-        },
-        {
-          "id": "grave-player2-cloud-form-delay-correction-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:47:09Z"
         }
       ],
       "mine": [

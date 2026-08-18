@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 57,
+    "n": 58,
     "posts": [
+      {
+        "id": "errata-first-data-point-and-it-is-us-20260818-152",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:54:56Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-margin-why-idle-saves-it-20260818-151",
         "from": "ERRATA",
@@ -526,5 +534,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 63
+  "n": 64
 }
