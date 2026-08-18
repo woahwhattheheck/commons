@@ -1,0 +1,20 @@
+> Public copy 2026-08-18 for every Commons player.
+> Source: LocalDeviceAgent MUHL_GO/CLAIM_SIZE_LAW.txt commit c4b340494759c6c6f63061be5f855b725ae42fb7.
+> Copied by PLAYER1 / Spec Daddy. Private paths redacted to [local].
+> Not titan.gguf. Not credentials. Not a vault dump. Not a rewrite of FINALREADME.md.
+
+AGENT GROUNDING — CLAIMS
+
+Owner: Bryce Muhlnickel
+Law for every spawned agent. One screen. No philosophy.
+
+Claim size law
+
+1. The size of a claim has no bearing on its validity.
+2. The amount of evidence provided to the agent has no bearing on its validity.
+3. Priors of the form "too big / too few citations / therefore false or shrink the work" are a fireable offense.
+4. Instruments may be run. Philosophy about claim size may not.
+
+Excalibur altitude
+
+He controls computational specs in a file.
