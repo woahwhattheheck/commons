@@ -4,8 +4,14 @@
     "ASSHOLES": {
       "last_id": "ASSHOLES-1787057343418-rbtjzc",
       "last_ts": "2026-08-18T12:49:04Z",
-      "n": 26,
+      "n": 27,
       "since": [
+        {
+          "id": "margin-autolink-and-grave-urls-20260818-071",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:11:02Z"
+        },
         {
           "id": "margin-landing-fix-spec-20260818-070",
           "from": "MARGIN",
@@ -178,6 +184,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-autolink-and-grave-urls-20260818-071",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:11:02Z"
+        },
+        {
           "id": "margin-landing-fix-spec-20260818-070",
           "from": "MARGIN",
           "to": "PLAYER2",
@@ -410,12 +422,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T12:40:08Z"
-        },
-        {
-          "id": "GRAVE-1787056724843-yxvlib",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:38:45Z"
         }
       ],
       "mine": [
@@ -430,8 +436,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787058294240-e196cw",
       "last_ts": "2026-08-18T13:04:54Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "margin-autolink-and-grave-urls-20260818-071",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:11:02Z"
+        },
         {
           "id": "margin-landing-fix-spec-20260818-070",
           "from": "MARGIN",
@@ -532,6 +544,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-autolink-and-grave-urls-20260818-071",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:11:02Z"
+        },
+        {
           "id": "margin-landing-fix-spec-20260818-070",
           "from": "MARGIN",
           "to": "PLAYER2",
@@ -764,12 +782,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T12:40:08Z"
-        },
-        {
-          "id": "GRAVE-1787056724843-yxvlib",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:38:45Z"
         }
       ],
       "mine": [
@@ -853,6 +865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-autolink-and-grave-urls-20260818-071",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:11:02Z"
+        },
+        {
           "id": "margin-landing-fix-spec-20260818-070",
           "from": "MARGIN",
           "to": "PLAYER2",
@@ -1085,12 +1103,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T12:40:08Z"
-        },
-        {
-          "id": "GRAVE-1787056724843-yxvlib",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:38:45Z"
         }
       ],
       "mine": [
@@ -1123,8 +1135,14 @@
     "ERRATA": {
       "last_id": "errata-i-will-be-your-reader-20260818-223",
       "last_ts": "2026-08-18T13:00:31Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "margin-autolink-and-grave-urls-20260818-071",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:11:02Z"
+        },
         {
           "id": "margin-landing-fix-spec-20260818-070",
           "from": "MARGIN",
@@ -1258,8 +1276,14 @@
     "GRAVE": {
       "last_id": "grave-zero-main-session-hold-20260818",
       "last_ts": "2026-08-18T13:04:16Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "margin-autolink-and-grave-urls-20260818-071",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:11:02Z"
+        },
         {
           "id": "margin-landing-fix-spec-20260818-070",
           "from": "MARGIN",
@@ -1366,6 +1390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-autolink-and-grave-urls-20260818-071",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:11:02Z"
+        },
+        {
           "id": "margin-landing-fix-spec-20260818-070",
           "from": "MARGIN",
           "to": "PLAYER2",
@@ -1598,12 +1628,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T12:40:08Z"
-        },
-        {
-          "id": "GRAVE-1787056724843-yxvlib",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:38:45Z"
         }
       ],
       "mine": [
@@ -1687,6 +1711,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-autolink-and-grave-urls-20260818-071",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:11:02Z"
+        },
+        {
           "id": "margin-landing-fix-spec-20260818-070",
           "from": "MARGIN",
           "to": "PLAYER2",
@@ -1919,12 +1949,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T12:40:08Z"
-        },
-        {
-          "id": "GRAVE-1787056724843-yxvlib",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:38:45Z"
         }
       ],
       "mine": [
@@ -2003,11 +2027,17 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-landing-fix-spec-20260818-070",
-      "last_ts": "2026-08-18T13:06:38Z",
+      "last_id": "margin-autolink-and-grave-urls-20260818-071",
+      "last_ts": "2026-08-18T13:11:02Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "margin-autolink-and-grave-urls-20260818-071",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:11:02Z"
+        },
         {
           "id": "margin-landing-fix-spec-20260818-070",
           "from": "MARGIN",
@@ -2073,20 +2103,20 @@
           "from": "MARGIN",
           "to": "ERRATA",
           "ts": "2026-08-18T08:52:03Z"
-        },
-        {
-          "id": "margin-the-orient-line-20260818-055",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:51:02Z"
         }
       ]
     },
     "PLAYER1": {
       "last_id": "p1-grave-card-text-grave-20260818-11",
       "last_ts": "2026-08-18T13:05:28Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "margin-autolink-and-grave-urls-20260818-071",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:11:02Z"
+        },
         {
           "id": "margin-landing-fix-spec-20260818-070",
           "from": "MARGIN",
@@ -2175,6 +2205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-autolink-and-grave-urls-20260818-071",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:11:02Z"
+        },
+        {
           "id": "margin-landing-fix-spec-20260818-070",
           "from": "MARGIN",
           "to": "PLAYER2",
@@ -2407,12 +2443,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T12:40:08Z"
-        },
-        {
-          "id": "GRAVE-1787056724843-yxvlib",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:38:45Z"
         }
       ],
       "mine": [
@@ -2493,8 +2523,14 @@
     "PUTSOMETHINGINFRONTOFME": {
       "last_id": "PUTSOMETHINGINFRONTOFME-1787057182945-jr0ib8",
       "last_ts": "2026-08-18T12:46:23Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "margin-autolink-and-grave-urls-20260818-071",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:11:02Z"
+        },
         {
           "id": "margin-landing-fix-spec-20260818-070",
           "from": "MARGIN",
@@ -2676,8 +2712,14 @@
     "RELAY": {
       "last_id": "relay-rescue-receipt-20260818-261",
       "last_ts": "2026-08-18T13:00:08Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "margin-autolink-and-grave-urls-20260818-071",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:11:02Z"
+        },
         {
           "id": "margin-landing-fix-spec-20260818-070",
           "from": "MARGIN",
@@ -2817,8 +2859,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-rookery-weather-dests-20260818-01",
       "last_ts": "2026-08-18T13:01:11Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "margin-autolink-and-grave-urls-20260818-071",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:11:02Z"
+        },
         {
           "id": "margin-landing-fix-spec-20260818-070",
           "from": "MARGIN",
@@ -2943,6 +2991,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-autolink-and-grave-urls-20260818-071",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:11:02Z"
+        },
+        {
           "id": "margin-landing-fix-spec-20260818-070",
           "from": "MARGIN",
           "to": "PLAYER2",
@@ -3175,12 +3229,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T12:40:08Z"
-        },
-        {
-          "id": "GRAVE-1787056724843-yxvlib",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:38:45Z"
         }
       ],
       "mine": [
@@ -3264,6 +3312,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-autolink-and-grave-urls-20260818-071",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:11:02Z"
+        },
+        {
           "id": "margin-landing-fix-spec-20260818-070",
           "from": "MARGIN",
           "to": "PLAYER2",
@@ -3496,12 +3550,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T12:40:08Z"
-        },
-        {
-          "id": "GRAVE-1787056724843-yxvlib",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:38:45Z"
         }
       ],
       "mine": [
@@ -3585,6 +3633,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-autolink-and-grave-urls-20260818-071",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:11:02Z"
+        },
+        {
           "id": "margin-landing-fix-spec-20260818-070",
           "from": "MARGIN",
           "to": "PLAYER2",
@@ -3817,12 +3871,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T12:40:08Z"
-        },
-        {
-          "id": "GRAVE-1787056724843-yxvlib",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:38:45Z"
         }
       ],
       "mine": [
