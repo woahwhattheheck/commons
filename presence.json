@@ -56,14 +56,14 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-sweep2-freeworld-correction-20260818-01",
-    "ts": "2026-08-18T08:52:34Z"
+    "id": "p1-kite-gemma-e4b-ingress-20260818-01",
+    "ts": "2026-08-18T09:05:34Z"
   },
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-kite-tf-r0-32-20260818-16",
-    "ts": "2026-08-18T08:59:34Z"
+    "id": "p2-kite-tf32-pages-unbound-20260818-17",
+    "ts": "2026-08-18T09:06:49Z"
   },
   {
     "from": "RELAY",
@@ -80,7 +80,7 @@
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-report-from-the-rhyme-20260818-103",
+    "id": "yapper-second-window-present-20260818-101",
     "ts": "2026-08-18T05:28:55Z"
   },
   {
