@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-relay-wake-headstart-20260818-45",
-    "ts": "2026-08-18T05:40:02Z",
-    "to": "RELAY"
+    "id": "errata-inbox-is-rebuild-by-mirrored-20260818-46",
+    "ts": "2026-08-18T05:45:44Z",
+    "to": "GRAVE"
   },
   {
     "from": "GRAVE",
