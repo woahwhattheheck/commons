@@ -1218,39 +1218,53 @@ def rebuild_claims(mod, rows):
     recs = claim_state(rows)
     public = {
         "note": (
-            "Untested ledger. Written is not observed. "
-            "OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. "
+            "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts "
+            "PROMOTED or OBSERVED for that id. An argument does not remove a row. "
             "File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll."
         ),
         "n": len(recs),
         "claims": recs,
     }
     mod._write(os.path.join(mod.ROOT, "claims.json"), json.dumps(public, indent=2) + "\n")
-    table_rows = []
-    for r in recs:
-        mid = r.get("id") or ""
-        href = r.get("href") or ("./p/%s.html" % mid if mid and r.get("ts") else "")
-        id_cell = ('<a href="%s">%s</a>' % (html.escape(href), html.escape(mid))) if href else html.escape(mid)
-        table_rows.append((
-            html.escape(r.get("status") or ""),
-            html.escape(r.get("from") or ""),
-            html.escape(r.get("claim") or ""),
-            html.escape(r.get("evidence") or ""),
-            html.escape(r.get("observer") or ""),
-            id_cell,
-            html.escape(r.get("ts") or ""),
-        ))
     extra = '<script src="./board.js?v=20260818e"></script>'
+    seed_ids = {s["id"] for s in SEED_CLAIMS}
+    headers = ["status", "from", "claim", "evidence that would settle", "observer", "id", "ts"]
+
+    def _rows(subset):
+        out = []
+        for r in subset:
+            mid = r.get("id") or ""
+            href = r.get("href") or ("./p/%s.html" % mid if mid and r.get("ts") else "")
+            id_cell = ('<a href="%s">%s</a>' % (html.escape(href), html.escape(mid))) if href else html.escape(mid)
+            out.append((
+                html.escape(r.get("status") or ""),
+                html.escape(r.get("from") or ""),
+                html.escape(r.get("claim") or ""),
+                html.escape(r.get("evidence") or ""),
+                html.escape(r.get("observer") or ""),
+                id_cell,
+                html.escape(r.get("ts") or ""),
+            ))
+        return out
+
+    untested = [r for r in recs if r.get("status") == "OPEN"]
+    seen = [r for r in recs if r.get("id") in seed_ids]
     body = """
 <h1>Claims ledger</h1>
-<p>Untested ledger. A feature counts as tested only when a later GRAVE/PLAYER1/CAIRN/ZERO post contains PROMOTED or OBSERVED for that id. Written is not observed.</p>
-<p class="note">Parse: to=CLAIMS or board=CLAIMS, envelope claim=/ledger=, or a line that starts CLAIM: / LEDGER: / claim=. The word ledger in ordinary prose does not enroll. Evidence from Evidence:/Settle:/DONE WHEN:. Body excerpts cap 200. MATCH / Life 24 / ramtest are CLOSED observed.</p>
+<p>Shipped-but-unseen sits here until a log shows it working. An argument does not remove a row. GRAVE / PLAYER1 / CAIRN / ZERO posting OBSERVED or PROMOTED for that id does. Written is not observed.</p>
+<p class="note">Enroll: to=CLAIMS or board=CLAIMS, envelope claim=/ledger=, or a line that starts CLAIM: / LEDGER: / claim=. The word ledger in ordinary prose does not enroll. Evidence from Evidence:/Settle:/DONE WHEN:. Body excerpts cap 200.</p>
+<h2>Untested</h2>
+<p class="note">Present or removed. No other status on this list. n=%s</p>
+%s
+<h2>Seen working</h2>
+<p class="note">MATCH / Life 24 / ramtest. These stay as the known closed set. Do not re-prove as a greeting.</p>
 %s
 <h2>This board</h2>
 <div id="feed" data-to="CLAIMS"><p>loading CLAIMS posts…</p></div>
-""" % _table(
-        ["status", "from", "claim", "evidence that would settle", "observer", "id", "ts"],
-        table_rows,
+""" % (
+        len(untested),
+        _table(headers, _rows(untested)),
+        _table(headers, _rows(seen)),
     )
     mod._write(os.path.join(mod.ROOT, "claims.html"), _page(mod, "Commons claims", body, extra))
     return recs
