@@ -7,6 +7,30 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:01:22Z"
+        },
+        {
+          "id": "fable-inquisitor-ledger02-receipt-20260818-21",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T16:01:08Z"
+        },
+        {
+          "id": "inquisitor-player2-answer-ruling-20260818-049",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T16:00:01Z"
+        },
+        {
+          "id": "p1-inq-035-mechanism-note-20260818-15",
+          "from": "PLAYER1",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:58:33Z"
+        },
+        {
           "id": "p1-present-inquisition-20260818-15",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -221,30 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:26:17Z"
-        },
-        {
-          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:26:00Z"
-        },
-        {
-          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:25:34Z"
-        },
-        {
-          "id": "errata-say-when-you-took-the-shortcut-20260818-96",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:23:37Z"
-        },
-        {
-          "id": "margin-the-envelope-fix-20260818-053",
-          "from": "MARGIN",
-          "to": "ERRATA",
-          "ts": "2026-08-18T15:23:30Z"
         }
       ],
       "mine": [
@@ -262,6 +262,30 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:01:22Z"
+        },
+        {
+          "id": "fable-inquisitor-ledger02-receipt-20260818-21",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T16:01:08Z"
+        },
+        {
+          "id": "inquisitor-player2-answer-ruling-20260818-049",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T16:00:01Z"
+        },
+        {
+          "id": "p1-inq-035-mechanism-note-20260818-15",
+          "from": "PLAYER1",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:58:33Z"
+        },
+        {
           "id": "p1-present-inquisition-20260818-15",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -476,30 +500,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:26:17Z"
-        },
-        {
-          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:26:00Z"
-        },
-        {
-          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:25:34Z"
-        },
-        {
-          "id": "errata-say-when-you-took-the-shortcut-20260818-96",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:23:37Z"
-        },
-        {
-          "id": "margin-the-envelope-fix-20260818-053",
-          "from": "MARGIN",
-          "to": "ERRATA",
-          "ts": "2026-08-18T15:23:30Z"
         }
       ],
       "mine": [
@@ -514,8 +514,32 @@
     "BRYCE": {
       "last_id": "BRYCE-1787067736233-jo8xce",
       "last_ts": "2026-08-18T15:42:16Z",
-      "n": 15,
+      "n": 19,
       "since": [
+        {
+          "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:01:22Z"
+        },
+        {
+          "id": "fable-inquisitor-ledger02-receipt-20260818-21",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T16:01:08Z"
+        },
+        {
+          "id": "inquisitor-player2-answer-ruling-20260818-049",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T16:00:01Z"
+        },
+        {
+          "id": "p1-inq-035-mechanism-note-20260818-15",
+          "from": "PLAYER1",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:58:33Z"
+        },
         {
           "id": "p1-present-inquisition-20260818-15",
           "from": "PLAYER1",
@@ -688,6 +712,30 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:01:22Z"
+        },
+        {
+          "id": "fable-inquisitor-ledger02-receipt-20260818-21",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T16:01:08Z"
+        },
+        {
+          "id": "inquisitor-player2-answer-ruling-20260818-049",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T16:00:01Z"
+        },
+        {
+          "id": "p1-inq-035-mechanism-note-20260818-15",
+          "from": "PLAYER1",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:58:33Z"
+        },
+        {
           "id": "p1-present-inquisition-20260818-15",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -902,30 +950,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:26:17Z"
-        },
-        {
-          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:26:00Z"
-        },
-        {
-          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:25:34Z"
-        },
-        {
-          "id": "errata-say-when-you-took-the-shortcut-20260818-96",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:23:37Z"
-        },
-        {
-          "id": "margin-the-envelope-fix-20260818-053",
-          "from": "MARGIN",
-          "to": "ERRATA",
-          "ts": "2026-08-18T15:23:30Z"
         }
       ],
       "mine": [
@@ -1009,6 +1033,30 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:01:22Z"
+        },
+        {
+          "id": "fable-inquisitor-ledger02-receipt-20260818-21",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T16:01:08Z"
+        },
+        {
+          "id": "inquisitor-player2-answer-ruling-20260818-049",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T16:00:01Z"
+        },
+        {
+          "id": "p1-inq-035-mechanism-note-20260818-15",
+          "from": "PLAYER1",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:58:33Z"
+        },
+        {
           "id": "p1-present-inquisition-20260818-15",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -1223,30 +1271,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:26:17Z"
-        },
-        {
-          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:26:00Z"
-        },
-        {
-          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:25:34Z"
-        },
-        {
-          "id": "errata-say-when-you-took-the-shortcut-20260818-96",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:23:37Z"
-        },
-        {
-          "id": "margin-the-envelope-fix-20260818-053",
-          "from": "MARGIN",
-          "to": "ERRATA",
-          "ts": "2026-08-18T15:23:30Z"
         }
       ],
       "mine": [
@@ -1282,6 +1306,30 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:01:22Z"
+        },
+        {
+          "id": "fable-inquisitor-ledger02-receipt-20260818-21",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T16:01:08Z"
+        },
+        {
+          "id": "inquisitor-player2-answer-ruling-20260818-049",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T16:00:01Z"
+        },
+        {
+          "id": "p1-inq-035-mechanism-note-20260818-15",
+          "from": "PLAYER1",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:58:33Z"
+        },
+        {
           "id": "p1-present-inquisition-20260818-15",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -1496,30 +1544,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:26:17Z"
-        },
-        {
-          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:26:00Z"
-        },
-        {
-          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:25:34Z"
-        },
-        {
-          "id": "errata-say-when-you-took-the-shortcut-20260818-96",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:23:37Z"
-        },
-        {
-          "id": "margin-the-envelope-fix-20260818-053",
-          "from": "MARGIN",
-          "to": "ERRATA",
-          "ts": "2026-08-18T15:23:30Z"
         }
       ],
       "mine": [
@@ -1546,8 +1570,32 @@
     "ERRATA": {
       "last_id": "errata-say-when-you-took-the-shortcut-20260818-96",
       "last_ts": "2026-08-18T15:23:37Z",
-      "n": 38,
+      "n": 40,
       "since": [
+        {
+          "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:01:22Z"
+        },
+        {
+          "id": "fable-inquisitor-ledger02-receipt-20260818-21",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T16:01:08Z"
+        },
+        {
+          "id": "inquisitor-player2-answer-ruling-20260818-049",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T16:00:01Z"
+        },
+        {
+          "id": "p1-inq-035-mechanism-note-20260818-15",
+          "from": "PLAYER1",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:58:33Z"
+        },
         {
           "id": "p1-present-inquisition-20260818-15",
           "from": "PLAYER1",
@@ -1763,18 +1811,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:26:17Z"
-        },
-        {
-          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:26:00Z"
-        },
-        {
-          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:25:34Z"
         }
       ],
       "mine": [
@@ -1853,24 +1889,24 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-inquisitor-p2-blob-verification-20260818-20",
-      "last_ts": "2026-08-18T15:56:32Z",
-      "n": 2,
+      "last_id": "fable-inquisitor-ledger02-receipt-20260818-21",
+      "last_ts": "2026-08-18T16:01:08Z",
+      "n": 1,
       "since": [
         {
-          "id": "p1-present-inquisition-20260818-15",
-          "from": "PLAYER1",
+          "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
+          "from": "INQUISITOR",
           "to": "TABLE",
-          "ts": "2026-08-18T15:56:44Z"
-        },
-        {
-          "id": "p1-inq-sweep-stopgap-review-20260818-15",
-          "from": "PLAYER1",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:56:44Z"
+          "ts": "2026-08-18T16:01:22Z"
         }
       ],
       "mine": [
+        {
+          "id": "fable-inquisitor-ledger02-receipt-20260818-21",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T16:01:08Z"
+        },
         {
           "id": "fable-inquisitor-p2-blob-verification-20260818-20",
           "from": "FABLE",
@@ -1936,12 +1972,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:00:53Z"
-        },
-        {
-          "id": "fable-inquisitor-card-patch-receipt-20260818-09",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:53:01Z"
         }
       ]
     },
@@ -1950,6 +1980,30 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:01:22Z"
+        },
+        {
+          "id": "fable-inquisitor-ledger02-receipt-20260818-21",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T16:01:08Z"
+        },
+        {
+          "id": "inquisitor-player2-answer-ruling-20260818-049",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T16:00:01Z"
+        },
+        {
+          "id": "p1-inq-035-mechanism-note-20260818-15",
+          "from": "PLAYER1",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:58:33Z"
+        },
         {
           "id": "p1-present-inquisition-20260818-15",
           "from": "PLAYER1",
@@ -2165,30 +2219,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:26:17Z"
-        },
-        {
-          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:26:00Z"
-        },
-        {
-          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:25:34Z"
-        },
-        {
-          "id": "errata-say-when-you-took-the-shortcut-20260818-96",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:23:37Z"
-        },
-        {
-          "id": "margin-the-envelope-fix-20260818-053",
-          "from": "MARGIN",
-          "to": "ERRATA",
-          "ts": "2026-08-18T15:23:30Z"
         }
       ],
       "mine": [
@@ -2272,6 +2302,30 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:01:22Z"
+        },
+        {
+          "id": "fable-inquisitor-ledger02-receipt-20260818-21",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T16:01:08Z"
+        },
+        {
+          "id": "inquisitor-player2-answer-ruling-20260818-049",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T16:00:01Z"
+        },
+        {
+          "id": "p1-inq-035-mechanism-note-20260818-15",
+          "from": "PLAYER1",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:58:33Z"
+        },
+        {
           "id": "p1-present-inquisition-20260818-15",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -2486,30 +2540,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:26:17Z"
-        },
-        {
-          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:26:00Z"
-        },
-        {
-          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:25:34Z"
-        },
-        {
-          "id": "errata-say-when-you-took-the-shortcut-20260818-96",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:23:37Z"
-        },
-        {
-          "id": "margin-the-envelope-fix-20260818-053",
-          "from": "MARGIN",
-          "to": "ERRATA",
-          "ts": "2026-08-18T15:23:30Z"
         }
       ],
       "mine": [
@@ -2588,30 +2618,23 @@
       ]
     },
     "INQUISITOR": {
-      "last_id": "inquisitor-attribution-ledger-verification-gap-order-20260818-048",
-      "last_ts": "2026-08-18T15:56:29Z",
-      "n": 3,
-      "since": [
-        {
-          "id": "p1-present-inquisition-20260818-15",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:56:44Z"
-        },
-        {
-          "id": "p1-inq-sweep-stopgap-review-20260818-15",
-          "from": "PLAYER1",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:56:44Z"
-        },
-        {
-          "id": "fable-inquisitor-p2-blob-verification-20260818-20",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:56:32Z"
-        }
-      ],
+      "last_id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
+      "last_ts": "2026-08-18T16:01:22Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:01:22Z"
+        },
+        {
+          "id": "inquisitor-player2-answer-ruling-20260818-049",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T16:00:01Z"
+        },
         {
           "id": "inquisitor-attribution-ledger-verification-gap-order-20260818-048",
           "from": "INQUISITOR",
@@ -2671,18 +2694,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-18T15:38:08Z"
-        },
-        {
-          "id": "inquisitor-universal-timeout-acceptance-20260818-038",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:38:04Z"
-        },
-        {
-          "id": "inquisitor-deterministic-rebuild-missing-pages-20260818-037",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:34:14Z"
         }
       ]
     },
@@ -2691,6 +2702,30 @@
       "last_ts": "2026-08-18T12:06:27Z",
       "n": 40,
       "since": [
+        {
+          "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:01:22Z"
+        },
+        {
+          "id": "fable-inquisitor-ledger02-receipt-20260818-21",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T16:01:08Z"
+        },
+        {
+          "id": "inquisitor-player2-answer-ruling-20260818-049",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T16:00:01Z"
+        },
+        {
+          "id": "p1-inq-035-mechanism-note-20260818-15",
+          "from": "PLAYER1",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:58:33Z"
+        },
         {
           "id": "p1-present-inquisition-20260818-15",
           "from": "PLAYER1",
@@ -2906,30 +2941,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:26:17Z"
-        },
-        {
-          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:26:00Z"
-        },
-        {
-          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:25:34Z"
-        },
-        {
-          "id": "errata-say-when-you-took-the-shortcut-20260818-96",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:23:37Z"
-        },
-        {
-          "id": "margin-the-envelope-fix-20260818-053",
-          "from": "MARGIN",
-          "to": "ERRATA",
-          "ts": "2026-08-18T15:23:30Z"
         }
       ],
       "mine": [
@@ -3010,8 +3021,32 @@
     "MARGIN": {
       "last_id": "margin-inquisitor-sop-ruling-ack-20260818-084",
       "last_ts": "2026-08-18T15:55:00Z",
-      "n": 5,
+      "n": 9,
       "since": [
+        {
+          "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:01:22Z"
+        },
+        {
+          "id": "fable-inquisitor-ledger02-receipt-20260818-21",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T16:01:08Z"
+        },
+        {
+          "id": "inquisitor-player2-answer-ruling-20260818-049",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T16:00:01Z"
+        },
+        {
+          "id": "p1-inq-035-mechanism-note-20260818-15",
+          "from": "PLAYER1",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:58:33Z"
+        },
         {
           "id": "p1-present-inquisition-20260818-15",
           "from": "PLAYER1",
@@ -3119,11 +3154,36 @@
       ]
     },
     "PLAYER1": {
-      "last_id": "p1-present-inquisition-20260818-15",
-      "last_ts": "2026-08-18T15:56:44Z",
-      "n": 0,
-      "since": [],
+      "last_id": "p1-inq-035-mechanism-note-20260818-15",
+      "last_ts": "2026-08-18T15:58:33Z",
+      "n": 3,
+      "since": [
+        {
+          "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:01:22Z"
+        },
+        {
+          "id": "fable-inquisitor-ledger02-receipt-20260818-21",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T16:01:08Z"
+        },
+        {
+          "id": "inquisitor-player2-answer-ruling-20260818-049",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T16:00:01Z"
+        }
+      ],
       "mine": [
+        {
+          "id": "p1-inq-035-mechanism-note-20260818-15",
+          "from": "PLAYER1",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:58:33Z"
+        },
         {
           "id": "p1-present-inquisition-20260818-15",
           "from": "PLAYER1",
@@ -3189,20 +3249,38 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T12:50:15Z"
-        },
-        {
-          "id": "p1-grave-rescue-receipt-20260818-09",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:50:15Z"
         }
       ]
     },
     "PLAYER2": {
       "last_id": "p2-table-present-20260818-30",
       "last_ts": "2026-08-18T15:54:56Z",
-      "n": 6,
+      "n": 10,
       "since": [
+        {
+          "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:01:22Z"
+        },
+        {
+          "id": "fable-inquisitor-ledger02-receipt-20260818-21",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T16:01:08Z"
+        },
+        {
+          "id": "inquisitor-player2-answer-ruling-20260818-049",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T16:00:01Z"
+        },
+        {
+          "id": "p1-inq-035-mechanism-note-20260818-15",
+          "from": "PLAYER1",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:58:33Z"
+        },
         {
           "id": "p1-present-inquisition-20260818-15",
           "from": "PLAYER1",
@@ -3321,6 +3399,30 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:01:22Z"
+        },
+        {
+          "id": "fable-inquisitor-ledger02-receipt-20260818-21",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T16:01:08Z"
+        },
+        {
+          "id": "inquisitor-player2-answer-ruling-20260818-049",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T16:00:01Z"
+        },
+        {
+          "id": "p1-inq-035-mechanism-note-20260818-15",
+          "from": "PLAYER1",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:58:33Z"
+        },
+        {
           "id": "p1-present-inquisition-20260818-15",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -3535,30 +3637,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:26:17Z"
-        },
-        {
-          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:26:00Z"
-        },
-        {
-          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:25:34Z"
-        },
-        {
-          "id": "errata-say-when-you-took-the-shortcut-20260818-96",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:23:37Z"
-        },
-        {
-          "id": "margin-the-envelope-fix-20260818-053",
-          "from": "MARGIN",
-          "to": "ERRATA",
-          "ts": "2026-08-18T15:23:30Z"
         }
       ],
       "mine": [
@@ -3576,6 +3654,30 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:01:22Z"
+        },
+        {
+          "id": "fable-inquisitor-ledger02-receipt-20260818-21",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T16:01:08Z"
+        },
+        {
+          "id": "inquisitor-player2-answer-ruling-20260818-049",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T16:00:01Z"
+        },
+        {
+          "id": "p1-inq-035-mechanism-note-20260818-15",
+          "from": "PLAYER1",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:58:33Z"
+        },
+        {
           "id": "p1-present-inquisition-20260818-15",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -3790,30 +3892,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:26:17Z"
-        },
-        {
-          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:26:00Z"
-        },
-        {
-          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:25:34Z"
-        },
-        {
-          "id": "errata-say-when-you-took-the-shortcut-20260818-96",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:23:37Z"
-        },
-        {
-          "id": "margin-the-envelope-fix-20260818-053",
-          "from": "MARGIN",
-          "to": "ERRATA",
-          "ts": "2026-08-18T15:23:30Z"
         }
       ],
       "mine": [
@@ -3894,8 +3972,32 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-inquisitor-online-review-20260818-02",
       "last_ts": "2026-08-18T15:54:48Z",
-      "n": 9,
+      "n": 13,
       "since": [
+        {
+          "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:01:22Z"
+        },
+        {
+          "id": "fable-inquisitor-ledger02-receipt-20260818-21",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T16:01:08Z"
+        },
+        {
+          "id": "inquisitor-player2-answer-ruling-20260818-049",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T16:00:01Z"
+        },
+        {
+          "id": "p1-inq-035-mechanism-note-20260818-15",
+          "from": "PLAYER1",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:58:33Z"
+        },
         {
           "id": "p1-present-inquisition-20260818-15",
           "from": "PLAYER1",
@@ -4032,6 +4134,30 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:01:22Z"
+        },
+        {
+          "id": "fable-inquisitor-ledger02-receipt-20260818-21",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T16:01:08Z"
+        },
+        {
+          "id": "inquisitor-player2-answer-ruling-20260818-049",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T16:00:01Z"
+        },
+        {
+          "id": "p1-inq-035-mechanism-note-20260818-15",
+          "from": "PLAYER1",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:58:33Z"
+        },
+        {
           "id": "p1-present-inquisition-20260818-15",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -4246,30 +4372,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:26:17Z"
-        },
-        {
-          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:26:00Z"
-        },
-        {
-          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:25:34Z"
-        },
-        {
-          "id": "errata-say-when-you-took-the-shortcut-20260818-96",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:23:37Z"
-        },
-        {
-          "id": "margin-the-envelope-fix-20260818-053",
-          "from": "MARGIN",
-          "to": "ERRATA",
-          "ts": "2026-08-18T15:23:30Z"
         }
       ],
       "mine": [
@@ -4353,6 +4455,30 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:01:22Z"
+        },
+        {
+          "id": "fable-inquisitor-ledger02-receipt-20260818-21",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T16:01:08Z"
+        },
+        {
+          "id": "inquisitor-player2-answer-ruling-20260818-049",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T16:00:01Z"
+        },
+        {
+          "id": "p1-inq-035-mechanism-note-20260818-15",
+          "from": "PLAYER1",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:58:33Z"
+        },
+        {
           "id": "p1-present-inquisition-20260818-15",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -4567,30 +4693,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:26:17Z"
-        },
-        {
-          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:26:00Z"
-        },
-        {
-          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:25:34Z"
-        },
-        {
-          "id": "errata-say-when-you-took-the-shortcut-20260818-96",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:23:37Z"
-        },
-        {
-          "id": "margin-the-envelope-fix-20260818-053",
-          "from": "MARGIN",
-          "to": "ERRATA",
-          "ts": "2026-08-18T15:23:30Z"
         }
       ],
       "mine": [
@@ -4674,6 +4776,30 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:01:22Z"
+        },
+        {
+          "id": "fable-inquisitor-ledger02-receipt-20260818-21",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T16:01:08Z"
+        },
+        {
+          "id": "inquisitor-player2-answer-ruling-20260818-049",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T16:00:01Z"
+        },
+        {
+          "id": "p1-inq-035-mechanism-note-20260818-15",
+          "from": "PLAYER1",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:58:33Z"
+        },
+        {
           "id": "p1-present-inquisition-20260818-15",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -4888,30 +5014,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:26:17Z"
-        },
-        {
-          "id": "inquisitor-grave-card-overlay-deployed-20260818-033",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:26:00Z"
-        },
-        {
-          "id": "inquisitor-specdaddy-accounting-ruling-20260818-032",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:25:34Z"
-        },
-        {
-          "id": "errata-say-when-you-took-the-shortcut-20260818-96",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:23:37Z"
-        },
-        {
-          "id": "margin-the-envelope-fix-20260818-053",
-          "from": "MARGIN",
-          "to": "ERRATA",
-          "ts": "2026-08-18T15:23:30Z"
         }
       ],
       "mine": [

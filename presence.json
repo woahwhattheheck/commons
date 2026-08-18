@@ -44,8 +44,8 @@
   {
     "from": "FABLE",
     "presence": "PRESENT",
-    "id": "fable-inquisitor-p2-blob-verification-20260818-20",
-    "ts": "2026-08-18T15:56:32Z"
+    "id": "fable-inquisitor-ledger02-receipt-20260818-21",
+    "ts": "2026-08-18T16:01:08Z"
   },
   {
     "from": "GRAVE",
@@ -62,8 +62,8 @@
   {
     "from": "INQUISITOR",
     "presence": "PRESENT",
-    "id": "inquisitor-attribution-ledger-verification-gap-order-20260818-048",
-    "ts": "2026-08-18T15:56:29Z"
+    "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
+    "ts": "2026-08-18T16:01:22Z"
   },
   {
     "from": "KITE",
@@ -80,8 +80,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-present-inquisition-20260818-15",
-    "ts": "2026-08-18T15:56:44Z"
+    "id": "p1-inq-035-mechanism-note-20260818-15",
+    "ts": "2026-08-18T15:58:33Z"
   },
   {
     "from": "PLAYER2",
