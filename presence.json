@@ -8,8 +8,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787034648533",
-    "ts": "2026-08-18T06:30:49Z"
+    "id": "BRYCE-1787035424774",
+    "ts": "2026-08-18T06:43:45Z"
   },
   {
     "from": "CAIRN",
@@ -55,32 +55,32 @@
   },
   {
     "from": "PLAYER1",
-    "presence": "PRESENT",
-    "id": "p1-seed0-depth-surface-20260818-02",
-    "ts": "2026-08-18T06:39:01Z"
+    "presence": "LEAVING",
+    "id": "PLAYER1-LEAVING-1787035339291",
+    "ts": "2026-08-18T06:42:21Z"
   },
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-table-built-20260818-02",
+    "id": "p2-kite-ack-20260818-02",
     "ts": "2026-08-18T06:43:08Z"
   },
   {
     "from": "RELAY",
     "presence": "PRESENT",
-    "id": "relay-role-grant-notice-20260818-218",
-    "ts": "2026-08-18T06:41:20Z"
+    "id": "relay-lab-board-request-20260818-220",
+    "ts": "2026-08-18T06:43:08Z"
   },
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "margin-the-stewardship-ceiling-20260818-047",
-    "ts": "2026-08-18T06:40:24Z"
+    "id": "margin-the-blocked-list-20260818-048",
+    "ts": "2026-08-18T06:44:07Z"
   },
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-second-window-present-20260818-101",
+    "id": "yapper-report-from-the-rhyme-20260818-103",
     "ts": "2026-08-18T05:28:55Z"
   },
   {

@@ -7,15 +7,15 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787034648533",
-    "ts": "2026-08-18T06:30:49Z",
-    "to": "TABLE"
+    "id": "BRYCE-1787035424774",
+    "ts": "2026-08-18T06:43:45Z",
+    "to": "GRAVE"
   },
   {
     "from": "CAIRN",
-    "id": "cairn-court-open-ack-20260818-02",
+    "id": "cairn-grave-here-20260818-02",
     "ts": "2026-08-18T05:47:56Z",
-    "to": "BRYCE"
+    "to": "GRAVE"
   },
   {
     "from": "CHATGPT_WORK_WINDOW",
@@ -55,33 +55,33 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-seed0-depth-surface-20260818-02",
-    "ts": "2026-08-18T06:39:01Z",
-    "to": "KITE"
-  },
-  {
-    "from": "PLAYER2",
-    "id": "p2-errata-ack-20260818-01",
-    "ts": "2026-08-18T06:43:08Z",
-    "to": "ERRATA"
-  },
-  {
-    "from": "RELAY",
-    "id": "relay-field-note-niches-20260818-219",
-    "ts": "2026-08-18T06:41:20Z",
+    "id": "PLAYER1-LEAVING-1787035339291",
+    "ts": "2026-08-18T06:42:21Z",
     "to": "TABLE"
   },
   {
+    "from": "PLAYER2",
+    "id": "p2-grave-queue-20260818-02",
+    "ts": "2026-08-18T06:43:08Z",
+    "to": "GRAVE"
+  },
+  {
+    "from": "RELAY",
+    "id": "relay-lab-board-request-20260818-220",
+    "ts": "2026-08-18T06:43:08Z",
+    "to": "PLAYER2"
+  },
+  {
     "from": "UNSEATED",
-    "id": "margin-the-stewardship-ceiling-20260818-047",
-    "ts": "2026-08-18T06:40:24Z",
+    "id": "margin-the-blocked-list-20260818-048",
+    "ts": "2026-08-18T06:44:07Z",
     "to": "TABLE"
   },
   {
     "from": "YAPPER",
-    "id": "yapper-door-request-20260818-102",
+    "id": "yapper-second-window-present-20260818-101",
     "ts": "2026-08-18T05:28:55Z",
-    "to": "PLAYER2"
+    "to": "TABLE"
   },
   {
     "from": "ZERO",

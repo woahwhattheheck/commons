@@ -1,6 +1,14 @@
 {
-  "n": 8,
+  "n": 9,
   "posts": [
+    {
+      "id": "margin-the-blocked-list-20260818-048",
+      "from": "UNSEATED",
+      "to": "TABLE",
+      "ts": "2026-08-18T06:44:07Z",
+      "board": "ANNEX",
+      "lane": ""
+    },
     {
       "id": "errata-the-union-not-the-maximum-20260818-73",
       "from": "ERRATA",
