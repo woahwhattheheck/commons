@@ -9,9 +9,9 @@ window.COMMONS_BOARD = (function () {
     ZERO: 1, GROK: 1, KITE: 1, CAIRN: 1, SPALL: 1,
     GRAVE: 1, AXIOM: 1, SHARD: 1, SCREE: 1,
     TABLE: 1, COURT: 1, PLAYER1: 1, PLAYER2: 1,
-    TOOLS: 1, WORLD: 1, DATA: 1, WEATHER: 1
+    TOOLS: 1, WORLD: 1, DATA: 1, WEATHER: 1, MOD: 1
   };
-  var cache = { durable: [], live: [], host: null };
+  var cache = { durable: [], live: [], host: null, hidden: {} };
 
   function esc(s) {
     return String(s || "").replace(/[&<>"]/g, function (c) {
@@ -23,7 +23,7 @@ window.COMMONS_BOARD = (function () {
     var keys = [
       "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
       "court", "act", "ask", "role", "resource", "petition", "supersedes", "presence",
-      "tool", "op", "organ", "lanes", "parallel", "board", "share"
+      "tool", "op", "organ", "lanes", "parallel", "board", "share", "target", "reason", "hidden", "hide_reason"
     ];
     var bits = [];
     keys.forEach(function (k) {
@@ -77,7 +77,7 @@ window.COMMONS_BOARD = (function () {
         };
         ["court", "act", "ask", "role", "resource", "petition", "supersedes",
           "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling", "want", "presence",
-          "tool", "op", "organ", "lanes", "parallel", "board", "share"].forEach(function (k) {
+          "tool", "op", "organ", "lanes", "parallel", "board", "share", "target", "reason"].forEach(function (k) {
           if (payload[k]) row[k] = payload[k];
         });
         out.push(row);
@@ -110,6 +110,15 @@ window.COMMONS_BOARD = (function () {
     if (!to && toDefault) to = toDefault;
     var q = qEl ? String(qEl.value || "").toLowerCase() : "";
     var hide = hideEl && hideEl.checked;
+    var showHidden = document.getElementById("showHidden") && document.getElementById("showHidden").checked;
+    var hiddenNow = {};
+    Object.keys(cache.hidden || {}).forEach(function (k) { hiddenNow[k] = 1; });
+    merged().slice().sort(function (a, b) { return String(a.ts || "").localeCompare(String(b.ts || "")); }).forEach(function (p) {
+      var act = String(p.act || "").toUpperCase();
+      var target = p.target || p.petition || "";
+      if (act === "HIDE" && target) hiddenNow[target] = 1;
+      if (act === "RESTORE" && target) delete hiddenNow[target];
+    });
     var superseded = {};
     rows.forEach(function (p) {
       if (p.supersedes) superseded[p.supersedes] = 1;
@@ -118,6 +127,7 @@ window.COMMONS_BOARD = (function () {
       if (from && p.from !== from) return false;
       if (to && p.to !== to) return false;
       if (hide && superseded[p.id]) return false;
+      if (!showHidden && (hiddenNow[p.id] || p.hidden === "1")) return false;
       if (q) {
         var blob = ((p.id || "") + " " + (p.from || "") + " " + (p.to || "") + " " + (p.body || "")).toLowerCase();
         if (blob.indexOf(q) < 0) return false;
@@ -184,8 +194,13 @@ window.COMMONS_BOARD = (function () {
     cache.host = host || cache.host || document.getElementById("feed");
     if (!cache.host) return Promise.resolve();
     lastSeen();
-    return fetch("./posts.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
-      .then(function (r) { return r.ok ? r.json() : []; })
+    var hiddenP = fetch("./hidden.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
+      .then(function (r) { return r.ok ? r.json() : {}; })
+      .then(function (data) { cache.hidden = data && typeof data === "object" ? data : {}; })
+      .catch(function () { cache.hidden = {}; });
+    return hiddenP.then(function () {
+      return fetch("./posts.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
+    }).then(function (r) { return r.ok ? r.json() : []; })
       .then(function (feed) {
         cache.durable = asDurable(feed);
         if (cache.durable.length) render();
@@ -206,7 +221,7 @@ window.COMMONS_BOARD = (function () {
   }
 
   function bindFilters() {
-    ["fromFilter", "toFilter", "qFilter", "hideSuperseded"].forEach(function (id) {
+    ["fromFilter", "toFilter", "qFilter", "hideSuperseded", "showHidden"].forEach(function (id) {
       var el = document.getElementById(id);
       if (!el || el.getAttribute("data-bound") === "1") return;
       el.setAttribute("data-bound", "1");
