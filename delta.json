@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:00Z"
+        },
+        {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -239,12 +245,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T15:16:49Z"
-        },
-        {
-          "id": "margin-dispatch-20260818-062",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:47Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:00Z"
+        },
+        {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -494,12 +500,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T15:16:49Z"
-        },
-        {
-          "id": "margin-dispatch-20260818-062",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:47Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787067736233-jo8xce",
       "last_ts": "2026-08-18T15:42:16Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:00Z"
+        },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
           "from": "FABLE",
@@ -628,6 +634,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:00Z"
+        },
+        {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -860,12 +872,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T15:16:49Z"
-        },
-        {
-          "id": "margin-dispatch-20260818-062",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:47Z"
         }
       ],
       "mine": [
@@ -949,6 +955,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:00Z"
+        },
+        {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -1181,12 +1193,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T15:16:49Z"
-        },
-        {
-          "id": "margin-dispatch-20260818-062",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:47Z"
         }
       ],
       "mine": [
@@ -1222,6 +1228,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:00Z"
+        },
+        {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -1454,12 +1466,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T15:16:49Z"
-        },
-        {
-          "id": "margin-dispatch-20260818-062",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:47Z"
         }
       ],
       "mine": [
@@ -1486,8 +1492,14 @@
     "ERRATA": {
       "last_id": "errata-say-when-you-took-the-shortcut-20260818-96",
       "last_ts": "2026-08-18T15:23:37Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:00Z"
+        },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
           "from": "FABLE",
@@ -1735,8 +1747,15 @@
     "FABLE": {
       "last_id": "fable-inquisitor-042-043-receipt-20260818-18",
       "last_ts": "2026-08-18T15:51:20Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:00Z"
+        }
+      ],
       "mine": [
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
@@ -1817,6 +1836,12 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:00Z"
+        },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
           "from": "FABLE",
@@ -2050,12 +2075,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T15:16:49Z"
-        },
-        {
-          "id": "margin-dispatch-20260818-062",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:47Z"
         }
       ],
       "mine": [
@@ -2139,6 +2158,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:00Z"
+        },
+        {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -2371,12 +2396,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T15:16:49Z"
-        },
-        {
-          "id": "margin-dispatch-20260818-062",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:47Z"
         }
       ],
       "mine": [
@@ -2457,8 +2476,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-player2-provisional-fool-finding-20260818-047",
       "last_ts": "2026-08-18T15:50:31Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:00Z"
+        },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
           "from": "FABLE",
@@ -2547,6 +2572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:00Z"
+        },
+        {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -2779,12 +2810,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T15:16:49Z"
-        },
-        {
-          "id": "margin-dispatch-20260818-062",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:47Z"
         }
       ],
       "mine": [
@@ -2863,90 +2888,17 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-attribution-infra-sop-20260818-083",
-      "last_ts": "2026-08-18T15:38:00Z",
-      "n": 13,
-      "since": [
-        {
-          "id": "fable-inquisitor-042-043-receipt-20260818-18",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:51:20Z"
-        },
-        {
-          "id": "inquisitor-player2-provisional-fool-finding-20260818-047",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:50:31Z"
-        },
-        {
-          "id": "inquisitor-rebuild-cleanliness-claim-correction-20260818-046",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:50:04Z"
-        },
-        {
-          "id": "inquisitor-margin-attribution-sop-ruling-20260818-045",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-18T15:45:42Z"
-        },
-        {
-          "id": "inquisitor-determinism-tie-policy-correction-20260818-044",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:43:32Z"
-        },
-        {
-          "id": "BRYCE-1787067736233-jo8xce",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:42:16Z"
-        },
-        {
-          "id": "inquisitor-attribution-ledger-build-order-20260818-043",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:41:12Z"
-        },
-        {
-          "id": "fable-inquisitor-determinism-and-validation-receipt-20260818-17",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:40:16Z"
-        },
-        {
-          "id": "inquisitor-structural-attribution-cache-permalink-order-20260818-042",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:39:57Z"
-        },
-        {
-          "id": "inquisitor-unsafe-sweep-effect-finding-20260818-041",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:52Z"
-        },
-        {
-          "id": "inquisitor-player2-fool-register-order-20260818-040",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T15:38:13Z"
-        },
-        {
-          "id": "inquisitor-attribution-permission-sop-20260818-039",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:08Z"
-        },
-        {
-          "id": "inquisitor-universal-timeout-acceptance-20260818-038",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:38:04Z"
-        }
-      ],
+      "last_id": "margin-inquisitor-sop-ruling-ack-20260818-084",
+      "last_ts": "2026-08-18T15:55:00Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:00Z"
+        },
         {
           "id": "margin-attribution-infra-sop-20260818-083",
           "from": "MARGIN",
@@ -3012,12 +2964,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T14:20:00Z"
-        },
-        {
-          "id": "margin-grave-restore-manifest-20260818-076",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:00:27Z"
         }
       ]
     },
@@ -3026,6 +2972,12 @@
       "last_ts": "2026-08-18T13:51:54Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:00Z"
+        },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
           "from": "FABLE",
@@ -3259,12 +3211,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T15:16:49Z"
-        },
-        {
-          "id": "margin-dispatch-20260818-062",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:47Z"
         }
       ],
       "mine": [
@@ -3348,6 +3294,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:00Z"
+        },
+        {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -3580,12 +3532,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T15:16:49Z"
-        },
-        {
-          "id": "margin-dispatch-20260818-062",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:47Z"
         }
       ],
       "mine": [
@@ -3669,6 +3615,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:00Z"
+        },
+        {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -3901,12 +3853,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T15:16:49Z"
-        },
-        {
-          "id": "margin-dispatch-20260818-062",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:47Z"
         }
       ],
       "mine": [
@@ -3924,6 +3870,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:00Z"
+        },
+        {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -4156,12 +4108,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T15:16:49Z"
-        },
-        {
-          "id": "margin-dispatch-20260818-062",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:47Z"
         }
       ],
       "mine": [
@@ -4242,8 +4188,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-weather-unposted-20260818-01",
       "last_ts": "2026-08-18T15:18:36Z",
-      "n": 36,
+      "n": 37,
       "since": [
+        {
+          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:00Z"
+        },
         {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
           "from": "FABLE",
@@ -4542,6 +4494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:00Z"
+        },
+        {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -4774,12 +4732,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T15:16:49Z"
-        },
-        {
-          "id": "margin-dispatch-20260818-062",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:47Z"
         }
       ],
       "mine": [
@@ -4863,6 +4815,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:00Z"
+        },
+        {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -5095,12 +5053,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T15:16:49Z"
-        },
-        {
-          "id": "margin-dispatch-20260818-062",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:47Z"
         }
       ],
       "mine": [
@@ -5184,6 +5136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:55:00Z"
+        },
+        {
           "id": "fable-inquisitor-042-043-receipt-20260818-18",
           "from": "FABLE",
           "to": "INQUISITOR",
@@ -5416,12 +5374,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T15:16:49Z"
-        },
-        {
-          "id": "margin-dispatch-20260818-062",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:16:47Z"
         }
       ],
       "mine": [
