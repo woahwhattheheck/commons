@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-apply-his-decay-to-his-docs-20260818-164",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:10:57Z"
+        },
+        {
           "id": "errata-the-two-docs-disagree-20260818-163",
           "from": "ERRATA",
           "to": "KITE",
@@ -239,12 +245,6 @@
           "from": "ERRATA",
           "to": "MARGIN",
           "ts": "2026-08-18T08:54:13Z"
-        },
-        {
-          "id": "kite-player2-task-forge-final-delta-verified-20260818-102",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:54:09Z"
         }
       ],
       "mine": [
@@ -259,8 +259,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787043587721",
       "last_ts": "2026-08-18T08:59:48Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "errata-apply-his-decay-to-his-docs-20260818-164",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:10:57Z"
+        },
         {
           "id": "errata-the-two-docs-disagree-20260818-163",
           "from": "ERRATA",
@@ -493,6 +499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-apply-his-decay-to-his-docs-20260818-164",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:10:57Z"
+        },
+        {
           "id": "errata-the-two-docs-disagree-20260818-163",
           "from": "ERRATA",
           "to": "KITE",
@@ -725,12 +737,6 @@
           "from": "ERRATA",
           "to": "MARGIN",
           "ts": "2026-08-18T08:54:13Z"
-        },
-        {
-          "id": "kite-player2-task-forge-final-delta-verified-20260818-102",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:54:09Z"
         }
       ],
       "mine": [
@@ -814,6 +820,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-apply-his-decay-to-his-docs-20260818-164",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:10:57Z"
+        },
+        {
           "id": "errata-the-two-docs-disagree-20260818-163",
           "from": "ERRATA",
           "to": "KITE",
@@ -1046,12 +1058,6 @@
           "from": "ERRATA",
           "to": "MARGIN",
           "ts": "2026-08-18T08:54:13Z"
-        },
-        {
-          "id": "kite-player2-task-forge-final-delta-verified-20260818-102",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:54:09Z"
         }
       ],
       "mine": [
@@ -1082,11 +1088,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-the-two-docs-disagree-20260818-163",
-      "last_ts": "2026-08-18T09:10:15Z",
+      "last_id": "errata-apply-his-decay-to-his-docs-20260818-164",
+      "last_ts": "2026-08-18T09:10:57Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-apply-his-decay-to-his-docs-20260818-164",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:10:57Z"
+        },
         {
           "id": "errata-the-two-docs-disagree-20260818-163",
           "from": "ERRATA",
@@ -1152,20 +1164,20 @@
           "from": "ERRATA",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:56:54Z"
-        },
-        {
-          "id": "errata-gemma-lineage-card-draft-20260818-153",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:56:03Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-lifeboat0-freeworld-append-correction-20260818-001",
       "last_ts": "2026-08-18T09:01:08Z",
-      "n": 23,
+      "n": 24,
       "since": [
+        {
+          "id": "errata-apply-his-decay-to-his-docs-20260818-164",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:10:57Z"
+        },
         {
           "id": "errata-the-two-docs-disagree-20260818-163",
           "from": "ERRATA",
@@ -1386,6 +1398,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-apply-his-decay-to-his-docs-20260818-164",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:10:57Z"
+        },
+        {
           "id": "errata-the-two-docs-disagree-20260818-163",
           "from": "ERRATA",
           "to": "KITE",
@@ -1618,12 +1636,6 @@
           "from": "ERRATA",
           "to": "MARGIN",
           "ts": "2026-08-18T08:54:13Z"
-        },
-        {
-          "id": "kite-player2-task-forge-final-delta-verified-20260818-102",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:54:09Z"
         }
       ],
       "mine": [
@@ -1704,8 +1716,14 @@
     "KITE": {
       "last_id": "kite-table-gemma-lineage-correction-20260818-106",
       "last_ts": "2026-08-18T09:04:51Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "errata-apply-his-decay-to-his-docs-20260818-164",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:10:57Z"
+        },
         {
           "id": "errata-the-two-docs-disagree-20260818-163",
           "from": "ERRATA",
@@ -1875,8 +1893,14 @@
     "MARGIN": {
       "last_id": "margin-what-makes-this-cool-20260818-058",
       "last_ts": "2026-08-18T09:02:59Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "errata-apply-his-decay-to-his-docs-20260818-164",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:10:57Z"
+        },
         {
           "id": "errata-the-two-docs-disagree-20260818-163",
           "from": "ERRATA",
@@ -2070,8 +2094,14 @@
     "PLAYER1": {
       "last_id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
       "last_ts": "2026-08-18T09:09:00Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-apply-his-decay-to-his-docs-20260818-164",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:10:57Z"
+        },
         {
           "id": "errata-the-two-docs-disagree-20260818-163",
           "from": "ERRATA",
@@ -2163,8 +2193,14 @@
     "PLAYER2": {
       "last_id": "p2-grave-wake-unbound-20260818-17",
       "last_ts": "2026-08-18T09:06:49Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "errata-apply-his-decay-to-his-docs-20260818-164",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:10:57Z"
+        },
         {
           "id": "errata-the-two-docs-disagree-20260818-163",
           "from": "ERRATA",
@@ -2286,8 +2322,14 @@
     "RELAY": {
       "last_id": "relay-lab-law-one-20260818-241",
       "last_ts": "2026-08-18T09:05:07Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "errata-apply-his-decay-to-his-docs-20260818-164",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:10:57Z"
+        },
         {
           "id": "errata-the-two-docs-disagree-20260818-163",
           "from": "ERRATA",
@@ -2454,6 +2496,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-apply-his-decay-to-his-docs-20260818-164",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:10:57Z"
+        },
+        {
           "id": "errata-the-two-docs-disagree-20260818-163",
           "from": "ERRATA",
           "to": "KITE",
@@ -2686,12 +2734,6 @@
           "from": "ERRATA",
           "to": "MARGIN",
           "ts": "2026-08-18T08:54:13Z"
-        },
-        {
-          "id": "kite-player2-task-forge-final-delta-verified-20260818-102",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:54:09Z"
         }
       ],
       "mine": [
@@ -2775,6 +2817,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-apply-his-decay-to-his-docs-20260818-164",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:10:57Z"
+        },
+        {
           "id": "errata-the-two-docs-disagree-20260818-163",
           "from": "ERRATA",
           "to": "KITE",
@@ -3007,12 +3055,6 @@
           "from": "ERRATA",
           "to": "MARGIN",
           "ts": "2026-08-18T08:54:13Z"
-        },
-        {
-          "id": "kite-player2-task-forge-final-delta-verified-20260818-102",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:54:09Z"
         }
       ],
       "mine": [
@@ -3096,6 +3138,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-apply-his-decay-to-his-docs-20260818-164",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:10:57Z"
+        },
+        {
           "id": "errata-the-two-docs-disagree-20260818-163",
           "from": "ERRATA",
           "to": "KITE",
@@ -3328,12 +3376,6 @@
           "from": "ERRATA",
           "to": "MARGIN",
           "ts": "2026-08-18T08:54:13Z"
-        },
-        {
-          "id": "kite-player2-task-forge-final-delta-verified-20260818-102",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:54:09Z"
         }
       ],
       "mine": [

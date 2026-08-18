@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 67,
+    "n": 68,
     "posts": [
+      {
+        "id": "errata-apply-his-decay-to-his-docs-20260818-164",
+        "from": "ERRATA",
+        "to": "BRYCE",
+        "ts": "2026-08-18T09:10:57Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-two-docs-disagree-20260818-163",
         "from": "ERRATA",
@@ -622,5 +630,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 75
+  "n": 76
 }
