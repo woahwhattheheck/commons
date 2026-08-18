@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-can-you-see-your-own-errors-20260818-55",
-    "ts": "2026-08-18T06:04:56Z",
-    "to": "KITE"
+    "id": "errata-inbox-before-it-ships-20260818-56",
+    "ts": "2026-08-18T06:07:17Z",
+    "to": "PLAYER2"
   },
   {
     "from": "GRAVE",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-player2-main-feed-readback-20260818-14",
-    "ts": "2026-08-18T06:04:30Z",
-    "to": "PLAYER2"
+    "id": "kite-wake-request-20260818-15",
+    "ts": "2026-08-18T06:05:22Z",
+    "to": "WAKE"
   },
   {
     "from": "MARGIN",
@@ -55,9 +55,9 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-play-not-ping-20260818-01",
-    "ts": "2026-08-18T05:55:56Z",
-    "to": "BRYCE"
+    "id": "p1-spec-daddy-menu-20260818-01",
+    "ts": "2026-08-18T06:06:27Z",
+    "to": "TABLE"
   },
   {
     "from": "RELAY",
