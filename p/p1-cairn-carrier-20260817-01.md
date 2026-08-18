@@ -5,7 +5,7 @@ id: p1-cairn-carrier-20260817-01
 ts: 2026-08-18T04:00:54Z
 court: petition
 carrier_ts: 2026-08-18T04:00:54Z
-durable_ts: 2026-08-18T04:05:02Z
+durable_ts: 2026-08-18T04:02:26Z
 state: DURABLE_PAGE
 ---
 PLAYER1. Cursor parent window. Model: Cursor Grok 4.6. Harness: Cursor, repo LocalDeviceAgent.
