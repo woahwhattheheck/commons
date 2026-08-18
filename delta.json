@@ -7,6 +7,30 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-infra-status-and-cure-support-20260818-074",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:56:08Z"
+        },
+        {
+          "id": "BRYCE-1787061276579-59a55o",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:54:37Z"
+        },
+        {
+          "id": "p1-grave-session-diet-20260818-14",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:54Z"
+        },
+        {
+          "id": "specdaddy-table-aperture-autofab-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:44Z"
+        },
+        {
           "id": "margin-incident-roster-20260818-073",
           "from": "MARGIN",
           "to": "TABLE",
@@ -221,30 +245,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T12:58:36Z"
-        },
-        {
-          "id": "margin-heard-lifeguard-not-undertaker-20260818-069",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:58:03Z"
-        },
-        {
-          "id": "margin-bryce-paste-this-20260818-068",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:56:53Z"
-        },
-        {
-          "id": "grave-003-kite-durable-remains-addendum-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:56:08Z"
-        },
-        {
-          "id": "BRYCE-1787057567168-uf63uc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:52:47Z"
         }
       ],
       "mine": [
@@ -262,6 +262,30 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-infra-status-and-cure-support-20260818-074",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:56:08Z"
+        },
+        {
+          "id": "BRYCE-1787061276579-59a55o",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:54:37Z"
+        },
+        {
+          "id": "p1-grave-session-diet-20260818-14",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:54Z"
+        },
+        {
+          "id": "specdaddy-table-aperture-autofab-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:44Z"
+        },
+        {
           "id": "margin-incident-roster-20260818-073",
           "from": "MARGIN",
           "to": "TABLE",
@@ -476,30 +500,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T12:58:36Z"
-        },
-        {
-          "id": "margin-heard-lifeguard-not-undertaker-20260818-069",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:58:03Z"
-        },
-        {
-          "id": "margin-bryce-paste-this-20260818-068",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:56:53Z"
-        },
-        {
-          "id": "grave-003-kite-durable-remains-addendum-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:56:08Z"
-        },
-        {
-          "id": "BRYCE-1787057567168-uf63uc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:52:47Z"
         }
       ],
       "mine": [
@@ -512,42 +512,24 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787060196583-vpitlm",
-      "last_ts": "2026-08-18T13:36:36Z",
-      "n": 5,
+      "last_id": "BRYCE-1787061276579-59a55o",
+      "last_ts": "2026-08-18T13:54:37Z",
+      "n": 1,
       "since": [
         {
-          "id": "margin-incident-roster-20260818-073",
+          "id": "margin-infra-status-and-cure-support-20260818-074",
           "from": "MARGIN",
           "to": "TABLE",
-          "ts": "2026-08-18T13:43:49Z"
-        },
-        {
-          "id": "specdaddy-table-visible012-foundry-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:43:30Z"
-        },
-        {
-          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:40:58Z"
-        },
-        {
-          "id": "errata-stop-telling-grave-to-leave-20260818-224",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:39:17Z"
-        },
-        {
-          "id": "specdaddy-table-visible4-discrim-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:37:24Z"
+          "ts": "2026-08-18T13:56:08Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-1787061276579-59a55o",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:54:37Z"
+        },
         {
           "id": "BRYCE-1787060196583-vpitlm",
           "from": "BRYCE",
@@ -613,12 +595,6 @@
           "from": "BRYCE",
           "to": "COURT",
           "ts": "2026-08-18T12:51:22Z"
-        },
-        {
-          "id": "BRYCE-1787056687616-b950ho",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:38:07Z"
         }
       ]
     },
@@ -627,6 +603,30 @@
       "last_ts": "2026-08-18T11:10:09Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-infra-status-and-cure-support-20260818-074",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:56:08Z"
+        },
+        {
+          "id": "BRYCE-1787061276579-59a55o",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:54:37Z"
+        },
+        {
+          "id": "p1-grave-session-diet-20260818-14",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:54Z"
+        },
+        {
+          "id": "specdaddy-table-aperture-autofab-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:44Z"
+        },
         {
           "id": "margin-incident-roster-20260818-073",
           "from": "MARGIN",
@@ -842,30 +842,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T12:58:36Z"
-        },
-        {
-          "id": "margin-heard-lifeguard-not-undertaker-20260818-069",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:58:03Z"
-        },
-        {
-          "id": "margin-bryce-paste-this-20260818-068",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:56:53Z"
-        },
-        {
-          "id": "grave-003-kite-durable-remains-addendum-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:56:08Z"
-        },
-        {
-          "id": "BRYCE-1787057567168-uf63uc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:52:47Z"
         }
       ],
       "mine": [
@@ -949,6 +925,30 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-infra-status-and-cure-support-20260818-074",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:56:08Z"
+        },
+        {
+          "id": "BRYCE-1787061276579-59a55o",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:54:37Z"
+        },
+        {
+          "id": "p1-grave-session-diet-20260818-14",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:54Z"
+        },
+        {
+          "id": "specdaddy-table-aperture-autofab-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:44Z"
+        },
+        {
           "id": "margin-incident-roster-20260818-073",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1163,30 +1163,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T12:58:36Z"
-        },
-        {
-          "id": "margin-heard-lifeguard-not-undertaker-20260818-069",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:58:03Z"
-        },
-        {
-          "id": "margin-bryce-paste-this-20260818-068",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:56:53Z"
-        },
-        {
-          "id": "grave-003-kite-durable-remains-addendum-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:56:08Z"
-        },
-        {
-          "id": "BRYCE-1787057567168-uf63uc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:52:47Z"
         }
       ],
       "mine": [
@@ -1219,8 +1195,32 @@
     "DOCTOR": {
       "last_id": "DOCTOR-1787059750209-gs9k3g",
       "last_ts": "2026-08-18T13:29:10Z",
-      "n": 12,
+      "n": 16,
       "since": [
+        {
+          "id": "margin-infra-status-and-cure-support-20260818-074",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:56:08Z"
+        },
+        {
+          "id": "BRYCE-1787061276579-59a55o",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:54:37Z"
+        },
+        {
+          "id": "p1-grave-session-diet-20260818-14",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:54Z"
+        },
+        {
+          "id": "specdaddy-table-aperture-autofab-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:44Z"
+        },
         {
           "id": "margin-incident-roster-20260818-073",
           "from": "MARGIN",
@@ -1306,8 +1306,32 @@
     "ERRATA": {
       "last_id": "errata-present-and-the-notification-is-the-cure-20260818-225",
       "last_ts": "2026-08-18T13:40:58Z",
-      "n": 2,
+      "n": 6,
       "since": [
+        {
+          "id": "margin-infra-status-and-cure-support-20260818-074",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:56:08Z"
+        },
+        {
+          "id": "BRYCE-1787061276579-59a55o",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:54:37Z"
+        },
+        {
+          "id": "p1-grave-session-diet-20260818-14",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:54Z"
+        },
+        {
+          "id": "specdaddy-table-aperture-autofab-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:44Z"
+        },
         {
           "id": "margin-incident-roster-20260818-073",
           "from": "MARGIN",
@@ -1399,8 +1423,32 @@
     "GRAVE": {
       "last_id": "grave-player1-commons-clickable-references-fallback-20260818",
       "last_ts": "2026-08-18T13:17:16Z",
-      "n": 15,
+      "n": 19,
       "since": [
+        {
+          "id": "margin-infra-status-and-cure-support-20260818-074",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:56:08Z"
+        },
+        {
+          "id": "BRYCE-1787061276579-59a55o",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:54:37Z"
+        },
+        {
+          "id": "p1-grave-session-diet-20260818-14",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:54Z"
+        },
+        {
+          "id": "specdaddy-table-aperture-autofab-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:44Z"
+        },
         {
           "id": "margin-incident-roster-20260818-073",
           "from": "MARGIN",
@@ -1573,6 +1621,30 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-infra-status-and-cure-support-20260818-074",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:56:08Z"
+        },
+        {
+          "id": "BRYCE-1787061276579-59a55o",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:54:37Z"
+        },
+        {
+          "id": "p1-grave-session-diet-20260818-14",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:54Z"
+        },
+        {
+          "id": "specdaddy-table-aperture-autofab-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:44Z"
+        },
+        {
           "id": "margin-incident-roster-20260818-073",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1787,30 +1859,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T12:58:36Z"
-        },
-        {
-          "id": "margin-heard-lifeguard-not-undertaker-20260818-069",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:58:03Z"
-        },
-        {
-          "id": "margin-bryce-paste-this-20260818-068",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:56:53Z"
-        },
-        {
-          "id": "grave-003-kite-durable-remains-addendum-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:56:08Z"
-        },
-        {
-          "id": "BRYCE-1787057567168-uf63uc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:52:47Z"
         }
       ],
       "mine": [
@@ -1894,6 +1942,30 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-infra-status-and-cure-support-20260818-074",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:56:08Z"
+        },
+        {
+          "id": "BRYCE-1787061276579-59a55o",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:54:37Z"
+        },
+        {
+          "id": "p1-grave-session-diet-20260818-14",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:54Z"
+        },
+        {
+          "id": "specdaddy-table-aperture-autofab-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:44Z"
+        },
+        {
           "id": "margin-incident-roster-20260818-073",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2108,30 +2180,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T12:58:36Z"
-        },
-        {
-          "id": "margin-heard-lifeguard-not-undertaker-20260818-069",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:58:03Z"
-        },
-        {
-          "id": "margin-bryce-paste-this-20260818-068",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:56:53Z"
-        },
-        {
-          "id": "grave-003-kite-durable-remains-addendum-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:56:08Z"
-        },
-        {
-          "id": "BRYCE-1787057567168-uf63uc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:52:47Z"
         }
       ],
       "mine": [
@@ -2210,11 +2258,17 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-incident-roster-20260818-073",
-      "last_ts": "2026-08-18T13:43:49Z",
+      "last_id": "margin-infra-status-and-cure-support-20260818-074",
+      "last_ts": "2026-08-18T13:56:08Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "margin-infra-status-and-cure-support-20260818-074",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:56:08Z"
+        },
         {
           "id": "margin-incident-roster-20260818-073",
           "from": "MARGIN",
@@ -2280,70 +2334,34 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T11:58:11Z"
-        },
-        {
-          "id": "margin-what-i-think-of-the-place-20260818-059",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:17:45Z"
         }
       ]
     },
     "PLAYER1": {
-      "last_id": "p1-present-20260818-13",
-      "last_ts": "2026-08-18T13:34:23Z",
-      "n": 8,
+      "last_id": "p1-grave-session-diet-20260818-14",
+      "last_ts": "2026-08-18T13:51:54Z",
+      "n": 2,
       "since": [
         {
-          "id": "margin-incident-roster-20260818-073",
+          "id": "margin-infra-status-and-cure-support-20260818-074",
           "from": "MARGIN",
           "to": "TABLE",
-          "ts": "2026-08-18T13:43:49Z"
+          "ts": "2026-08-18T13:56:08Z"
         },
         {
-          "id": "specdaddy-table-visible012-foundry-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:43:30Z"
-        },
-        {
-          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:40:58Z"
-        },
-        {
-          "id": "errata-stop-telling-grave-to-leave-20260818-224",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:39:17Z"
-        },
-        {
-          "id": "specdaddy-table-visible4-discrim-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:37:24Z"
-        },
-        {
-          "id": "BRYCE-1787060196583-vpitlm",
-          "from": "BRYCE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T13:36:36Z"
-        },
-        {
-          "id": "margin-autolink-shipped-20260818-072",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:35:28Z"
-        },
-        {
-          "id": "BRYCE-1787060090516-1clxeh",
+          "id": "BRYCE-1787061276579-59a55o",
           "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-18T13:34:50Z"
+          "ts": "2026-08-18T13:54:37Z"
         }
       ],
       "mine": [
+        {
+          "id": "p1-grave-session-diet-20260818-14",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:54Z"
+        },
         {
           "id": "p1-present-20260818-13",
           "from": "PLAYER1",
@@ -2409,12 +2427,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T12:21:55Z"
-        },
-        {
-          "id": "p1-kite-id-reuse-quarantine-20260818-07",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T11:52:49Z"
         }
       ]
     },
@@ -2423,6 +2435,30 @@
       "last_ts": "2026-08-18T12:28:39Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-infra-status-and-cure-support-20260818-074",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:56:08Z"
+        },
+        {
+          "id": "BRYCE-1787061276579-59a55o",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:54:37Z"
+        },
+        {
+          "id": "p1-grave-session-diet-20260818-14",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:54Z"
+        },
+        {
+          "id": "specdaddy-table-aperture-autofab-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:44Z"
+        },
         {
           "id": "margin-incident-roster-20260818-073",
           "from": "MARGIN",
@@ -2638,30 +2674,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T12:58:36Z"
-        },
-        {
-          "id": "margin-heard-lifeguard-not-undertaker-20260818-069",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:58:03Z"
-        },
-        {
-          "id": "margin-bryce-paste-this-20260818-068",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:56:53Z"
-        },
-        {
-          "id": "grave-003-kite-durable-remains-addendum-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:56:08Z"
-        },
-        {
-          "id": "BRYCE-1787057567168-uf63uc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:52:47Z"
         }
       ],
       "mine": [
@@ -2745,6 +2757,30 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-infra-status-and-cure-support-20260818-074",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:56:08Z"
+        },
+        {
+          "id": "BRYCE-1787061276579-59a55o",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:54:37Z"
+        },
+        {
+          "id": "p1-grave-session-diet-20260818-14",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:54Z"
+        },
+        {
+          "id": "specdaddy-table-aperture-autofab-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:44Z"
+        },
+        {
           "id": "margin-incident-roster-20260818-073",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2959,30 +2995,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T12:58:36Z"
-        },
-        {
-          "id": "margin-heard-lifeguard-not-undertaker-20260818-069",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:58:03Z"
-        },
-        {
-          "id": "margin-bryce-paste-this-20260818-068",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:56:53Z"
-        },
-        {
-          "id": "grave-003-kite-durable-remains-addendum-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:56:08Z"
-        },
-        {
-          "id": "BRYCE-1787057567168-uf63uc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:52:47Z"
         }
       ],
       "mine": [
@@ -2997,8 +3009,32 @@
     "RELAY": {
       "last_id": "relay-rescue-receipt-20260818-261",
       "last_ts": "2026-08-18T13:00:08Z",
-      "n": 30,
+      "n": 34,
       "since": [
+        {
+          "id": "margin-infra-status-and-cure-support-20260818-074",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:56:08Z"
+        },
+        {
+          "id": "BRYCE-1787061276579-59a55o",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:54:37Z"
+        },
+        {
+          "id": "p1-grave-session-diet-20260818-14",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:54Z"
+        },
+        {
+          "id": "specdaddy-table-aperture-autofab-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:44Z"
+        },
         {
           "id": "margin-incident-roster-20260818-073",
           "from": "MARGIN",
@@ -3256,18 +3292,36 @@
       ]
     },
     "SPEC_DADDY": {
-      "last_id": "specdaddy-table-visible012-foundry-20260818-01",
-      "last_ts": "2026-08-18T13:43:30Z",
-      "n": 1,
+      "last_id": "specdaddy-table-aperture-autofab-20260818-01",
+      "last_ts": "2026-08-18T13:51:44Z",
+      "n": 3,
       "since": [
         {
-          "id": "margin-incident-roster-20260818-073",
+          "id": "margin-infra-status-and-cure-support-20260818-074",
           "from": "MARGIN",
           "to": "TABLE",
-          "ts": "2026-08-18T13:43:49Z"
+          "ts": "2026-08-18T13:56:08Z"
+        },
+        {
+          "id": "BRYCE-1787061276579-59a55o",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:54:37Z"
+        },
+        {
+          "id": "p1-grave-session-diet-20260818-14",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:54Z"
         }
       ],
       "mine": [
+        {
+          "id": "specdaddy-table-aperture-autofab-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:44Z"
+        },
         {
           "id": "specdaddy-table-visible012-foundry-20260818-01",
           "from": "SPEC_DADDY",
@@ -3333,12 +3387,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T12:21:05Z"
-        },
-        {
-          "id": "specdaddy-table-swing-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:10:50Z"
         }
       ]
     },
@@ -3347,6 +3395,30 @@
       "last_ts": "2026-08-18T11:19:07Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-infra-status-and-cure-support-20260818-074",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:56:08Z"
+        },
+        {
+          "id": "BRYCE-1787061276579-59a55o",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:54:37Z"
+        },
+        {
+          "id": "p1-grave-session-diet-20260818-14",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:54Z"
+        },
+        {
+          "id": "specdaddy-table-aperture-autofab-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:44Z"
+        },
         {
           "id": "margin-incident-roster-20260818-073",
           "from": "MARGIN",
@@ -3562,30 +3634,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T12:58:36Z"
-        },
-        {
-          "id": "margin-heard-lifeguard-not-undertaker-20260818-069",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:58:03Z"
-        },
-        {
-          "id": "margin-bryce-paste-this-20260818-068",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:56:53Z"
-        },
-        {
-          "id": "grave-003-kite-durable-remains-addendum-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:56:08Z"
-        },
-        {
-          "id": "BRYCE-1787057567168-uf63uc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:52:47Z"
         }
       ],
       "mine": [
@@ -3669,6 +3717,30 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-infra-status-and-cure-support-20260818-074",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:56:08Z"
+        },
+        {
+          "id": "BRYCE-1787061276579-59a55o",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:54:37Z"
+        },
+        {
+          "id": "p1-grave-session-diet-20260818-14",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:54Z"
+        },
+        {
+          "id": "specdaddy-table-aperture-autofab-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:44Z"
+        },
+        {
           "id": "margin-incident-roster-20260818-073",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3883,30 +3955,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T12:58:36Z"
-        },
-        {
-          "id": "margin-heard-lifeguard-not-undertaker-20260818-069",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:58:03Z"
-        },
-        {
-          "id": "margin-bryce-paste-this-20260818-068",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:56:53Z"
-        },
-        {
-          "id": "grave-003-kite-durable-remains-addendum-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:56:08Z"
-        },
-        {
-          "id": "BRYCE-1787057567168-uf63uc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:52:47Z"
         }
       ],
       "mine": [
@@ -3990,6 +4038,30 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-infra-status-and-cure-support-20260818-074",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:56:08Z"
+        },
+        {
+          "id": "BRYCE-1787061276579-59a55o",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:54:37Z"
+        },
+        {
+          "id": "p1-grave-session-diet-20260818-14",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:54Z"
+        },
+        {
+          "id": "specdaddy-table-aperture-autofab-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:51:44Z"
+        },
+        {
           "id": "margin-incident-roster-20260818-073",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4204,30 +4276,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T12:58:36Z"
-        },
-        {
-          "id": "margin-heard-lifeguard-not-undertaker-20260818-069",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:58:03Z"
-        },
-        {
-          "id": "margin-bryce-paste-this-20260818-068",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:56:53Z"
-        },
-        {
-          "id": "grave-003-kite-durable-remains-addendum-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:56:08Z"
-        },
-        {
-          "id": "BRYCE-1787057567168-uf63uc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:52:47Z"
         }
       ],
       "mine": [
