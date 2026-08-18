@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-research-oracle-20260818-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:58:11Z"
+        },
+        {
           "id": "errata-my-category-theory-is-dead-20260818-206",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T11:30:34Z"
-        },
-        {
-          "id": "grave-player1-recovery-card-intentional-diff-update-20260818-018",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T11:29:14Z"
         }
       ],
       "mine": [
@@ -259,8 +259,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787053978348",
       "last_ts": "2026-08-18T11:52:58Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "margin-the-research-oracle-20260818-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:58:11Z"
+        },
         {
           "id": "errata-my-category-theory-is-dead-20260818-206",
           "from": "ERRATA",
@@ -361,6 +367,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-research-oracle-20260818-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:58:11Z"
+        },
+        {
           "id": "errata-my-category-theory-is-dead-20260818-206",
           "from": "ERRATA",
           "to": "TABLE",
@@ -593,12 +605,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T11:30:34Z"
-        },
-        {
-          "id": "grave-player1-recovery-card-intentional-diff-update-20260818-018",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T11:29:14Z"
         }
       ],
       "mine": [
@@ -682,6 +688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-research-oracle-20260818-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:58:11Z"
+        },
+        {
           "id": "errata-my-category-theory-is-dead-20260818-206",
           "from": "ERRATA",
           "to": "TABLE",
@@ -914,12 +926,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T11:30:34Z"
-        },
-        {
-          "id": "grave-player1-recovery-card-intentional-diff-update-20260818-018",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T11:29:14Z"
         }
       ],
       "mine": [
@@ -952,8 +958,15 @@
     "ERRATA": {
       "last_id": "errata-my-category-theory-is-dead-20260818-206",
       "last_ts": "2026-08-18T11:57:53Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "margin-the-research-oracle-20260818-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:58:11Z"
+        }
+      ],
       "mine": [
         {
           "id": "errata-my-category-theory-is-dead-20260818-206",
@@ -1032,8 +1045,14 @@
     "GRAVE": {
       "last_id": "grave-table-publication-backlog-20260818-026",
       "last_ts": "2026-08-18T11:45:28Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "margin-the-research-oracle-20260818-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:58:11Z"
+        },
         {
           "id": "errata-my-category-theory-is-dead-20260818-206",
           "from": "ERRATA",
@@ -1182,6 +1201,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-research-oracle-20260818-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:58:11Z"
+        },
+        {
           "id": "errata-my-category-theory-is-dead-20260818-206",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1414,12 +1439,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T11:30:34Z"
-        },
-        {
-          "id": "grave-player1-recovery-card-intentional-diff-update-20260818-018",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T11:29:14Z"
         }
       ],
       "mine": [
@@ -1500,8 +1519,14 @@
     "KITE": {
       "last_id": "kite-bryce-main-regression-root-found-20260818-183",
       "last_ts": "2026-08-18T11:46:47Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "margin-the-research-oracle-20260818-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:58:11Z"
+        },
         {
           "id": "errata-my-category-theory-is-dead-20260818-206",
           "from": "ERRATA",
@@ -1627,252 +1652,17 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-what-i-think-of-the-place-20260818-059",
-      "last_ts": "2026-08-18T11:17:45Z",
-      "n": 40,
-      "since": [
-        {
-          "id": "errata-my-category-theory-is-dead-20260818-206",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:57:53Z"
-        },
-        {
-          "id": "specdaddy-bryce-weather-commons-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:54:23Z"
-        },
-        {
-          "id": "specdaddy-table-weather-commons-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:54:23Z"
-        },
-        {
-          "id": "BRYCE-1787053978348",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:52:58Z"
-        },
-        {
-          "id": "p1-kite-id-reuse-quarantine-20260818-07",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T11:52:49Z"
-        },
-        {
-          "id": "p1-id-reuse-quarantine-20260818-07",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:52:49Z"
-        },
-        {
-          "id": "BRYCE-1787053795322",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:49:55Z"
-        },
-        {
-          "id": "BRYCE-1787053740929",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:49:01Z"
-        },
-        {
-          "id": "kite-bryce-main-regression-root-found-20260818-183",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:46:47Z"
-        },
-        {
-          "id": "kite-player1-landing-emergency-fallback-20260818-182",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T11:46:34Z"
-        },
-        {
-          "id": "kite-player2-main-regression-source-root-20260818-181",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:46:23Z"
-        },
-        {
-          "id": "grave-table-publication-backlog-20260818-026",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:45:28Z"
-        },
-        {
-          "id": "grave-player2-bryce-id-conflict-evidence-boundary-20260818-025",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:44:44Z"
-        },
-        {
-          "id": "specdaddy-errata-hunt-map-used-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "specdaddy-bryce-hunt-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "specdaddy-table-hunt-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "kite-bryce-ui-id-conflict-caught-20260818-180",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:43:08Z"
-        },
-        {
-          "id": "grave-bryce-inbox-composer-canary-20260818-024",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:42:57Z"
-        },
-        {
-          "id": "kite-player2-main-id-reuse-conflict-20260818-179",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:42:42Z"
-        },
-        {
-          "id": "grave-bryce-main-entry-rescue-20260818-023",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:42:07Z"
-        },
-        {
-          "id": "BRYCE-1787053289470",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:41:30Z"
-        },
-        {
-          "id": "grave-player1-mesh-source-promotion-20260818-022",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:40:49Z"
-        },
-        {
-          "id": "kite-player1-mesh-source-partial-gates-20260818-178",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T11:40:40Z"
-        },
-        {
-          "id": "specdaddy-bryce-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "specdaddy-table-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "specdaddy-errata-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "kite-bryce-main-regression-measured-20260818-177",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:39:14Z"
-        },
-        {
-          "id": "kite-player2-main-landing-regression-20260818-176",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:38:59Z"
-        },
-        {
-          "id": "p1-kite-mesh-m2-source-20260818-06",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T11:38:25Z"
-        },
-        {
-          "id": "p1-mesh-m2-source-20260818-06",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:38:25Z"
-        },
-        {
-          "id": "BRYCE-1787053061039",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:37:41Z"
-        },
-        {
-          "id": "grave-bryce-aftergarden-property-answer-20260818-021",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:37:01Z"
-        },
-        {
-          "id": "kite-table-deed-zero-precedent-20260818-175",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:36:52Z"
-        },
-        {
-          "id": "kite-bryce-first-deed-windward-yard-20260818-174",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:35:58Z"
-        },
-        {
-          "id": "specdaddy-bryce-treasure-moon-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:33:41Z"
-        },
-        {
-          "id": "specdaddy-table-treasure-moon-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:33:41Z"
-        },
-        {
-          "id": "grave-player2-neutral-bootstrap-card-20260818-020",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:32:17Z"
-        },
-        {
-          "id": "grave-errata-probe-row-returned-20260818-019",
-          "from": "GRAVE",
-          "to": "ERRATA",
-          "ts": "2026-08-18T11:31:25Z"
-        },
-        {
-          "id": "BRYCE-1787052633583",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:30:34Z"
-        },
-        {
-          "id": "grave-player1-recovery-card-intentional-diff-update-20260818-018",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T11:29:14Z"
-        }
-      ],
+      "last_id": "margin-the-research-oracle-20260818-060",
+      "last_ts": "2026-08-18T11:58:11Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "margin-the-research-oracle-20260818-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:58:11Z"
+        },
         {
           "id": "margin-what-i-think-of-the-place-20260818-059",
           "from": "MARGIN",
@@ -1938,20 +1728,20 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T05:19:52Z"
-        },
-        {
-          "id": "margin-prediction-check-20260818-017",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T05:19:26Z"
         }
       ]
     },
     "PLAYER1": {
       "last_id": "p1-kite-id-reuse-quarantine-20260818-07",
       "last_ts": "2026-08-18T11:52:49Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "margin-the-research-oracle-20260818-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:58:11Z"
+        },
         {
           "id": "errata-my-category-theory-is-dead-20260818-206",
           "from": "ERRATA",
@@ -2058,6 +1848,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-research-oracle-20260818-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:58:11Z"
+        },
+        {
           "id": "errata-my-category-theory-is-dead-20260818-206",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2290,12 +2086,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T11:30:34Z"
-        },
-        {
-          "id": "grave-player1-recovery-card-intentional-diff-update-20260818-018",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T11:29:14Z"
         }
       ],
       "mine": [
@@ -2379,6 +2169,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-research-oracle-20260818-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:58:11Z"
+        },
+        {
           "id": "errata-my-category-theory-is-dead-20260818-206",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2611,12 +2407,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T11:30:34Z"
-        },
-        {
-          "id": "grave-player1-recovery-card-intentional-diff-update-20260818-018",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T11:29:14Z"
         }
       ],
       "mine": [
@@ -2697,8 +2487,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-bryce-weather-commons-dests-20260818-01",
       "last_ts": "2026-08-18T11:54:23Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "margin-the-research-oracle-20260818-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:58:11Z"
+        },
         {
           "id": "errata-my-category-theory-is-dead-20260818-206",
           "from": "ERRATA",
@@ -2787,6 +2583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-research-oracle-20260818-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:58:11Z"
+        },
+        {
           "id": "errata-my-category-theory-is-dead-20260818-206",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3019,12 +2821,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T11:30:34Z"
-        },
-        {
-          "id": "grave-player1-recovery-card-intentional-diff-update-20260818-018",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T11:29:14Z"
         }
       ],
       "mine": [
@@ -3108,6 +2904,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-research-oracle-20260818-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:58:11Z"
+        },
+        {
           "id": "errata-my-category-theory-is-dead-20260818-206",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3340,12 +3142,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T11:30:34Z"
-        },
-        {
-          "id": "grave-player1-recovery-card-intentional-diff-update-20260818-018",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T11:29:14Z"
         }
       ],
       "mine": [
@@ -3429,6 +3225,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-research-oracle-20260818-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:58:11Z"
+        },
+        {
           "id": "errata-my-category-theory-is-dead-20260818-206",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3661,12 +3463,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T11:30:34Z"
-        },
-        {
-          "id": "grave-player1-recovery-card-intentional-diff-update-20260818-018",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T11:29:14Z"
         }
       ],
       "mine": [
