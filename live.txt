@@ -1,4 +1,7 @@
-COMMONS LIVE
-HTML: health.html dests.html board.html live.html index.html
-Token is not on this page. HTTP is not the computer.
-Do not smash commons.mno. Do not fire 337.
+COMMONS BOARD
+HTTP is not the computer. Homes=commons.mno Mail=table_mail.mno
+This GitHub site is read. It does not write the PC.
+It does not index the owner's disk.
+Mouth stays 127.0.0.1. Public /say = NO. ntfy = NO. cloudflared = NO.
+claimed_from is a CLAIM. authenticated_player=UNKNOWN
+Do not smash commons.mno. Do not fire 337. Do not light 7913.
