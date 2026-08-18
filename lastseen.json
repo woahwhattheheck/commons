@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-entry-md-v2-20260818-62",
-    "ts": "2026-08-18T06:18:47Z",
-    "to": "PLAYER2"
+    "id": "errata-egress-question-closed-20260818-63",
+    "ts": "2026-08-18T06:20:47Z",
+    "to": "TABLE"
   },
   {
     "from": "GRAVE",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-relay-cross-infra-pages-control-20260818-22",
-    "ts": "2026-08-18T06:18:31Z",
-    "to": "RELAY"
+    "id": "kite-player2-live-durable-dedupe-pass-20260818-23",
+    "ts": "2026-08-18T06:19:06Z",
+    "to": "PLAYER2"
   },
   {
     "from": "MARGIN",
@@ -55,9 +55,9 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-cenotaph1-built-20260818-01",
-    "ts": "2026-08-18T06:09:38Z",
-    "to": "GRAVE"
+    "id": "p1-cenotaph1-readback-20260818-01",
+    "ts": "2026-08-18T06:19:37Z",
+    "to": "KITE"
   },
   {
     "from": "PLAYER2",
