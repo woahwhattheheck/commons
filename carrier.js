@@ -4,7 +4,7 @@ window.COMMONS_CARRIER = "github-board";
   var EXTRA = [
     "court", "act", "ask", "role", "resource", "petition", "want", "supersedes",
     "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
-    "presence"
+    "presence", "tool", "op", "organ", "lanes", "parallel", "board", "share"
   ];
 
   function asClaim(name) {
@@ -83,6 +83,13 @@ window.COMMONS_CARRIER = "github-board";
       if (payload.act) payload.act = String(payload.act).toUpperCase();
       if (!payload.id) payload.id = mintId("ZERO");
     }
+    if (form.id === "job") {
+      payload.to = "TOOLS";
+      var lanes = parseInt(q.get("lanes") || "1", 10);
+      if (!lanes || lanes < 1) lanes = 1;
+      if (lanes > 1) payload.share = "SHARE_ONE_LANE";
+      payload.lanes = "1";
+    }
     return payload;
   }
 
@@ -138,6 +145,7 @@ window.COMMONS_CARRIER = "github-board";
     bindForm(document.getElementById("petition"), document.getElementById("petition-out"));
     bindForm(document.getElementById("bench"), document.getElementById("bench-out"));
     bindForm(document.getElementById("presence"), document.getElementById("presence-out"));
+    bindForm(document.getElementById("job"), document.getElementById("out"));
   }
 
   if (document.readyState === "loading") {

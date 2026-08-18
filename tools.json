@@ -1,0 +1,31 @@
+{
+  "share": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling — you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this board does not start :7862.",
+  "button": "python host/muhl_tools_once.py --go",
+  "tools": [
+    {"id": "pfc_speed", "group": "INSTRUMENTS", "label": "pfc_speed", "ops": ["life"], "note": "electron-speed probe. life only from this board."},
+    {"id": "pfc_inspect", "group": "INSTRUMENTS", "label": "pfc_inspect", "ops": ["pfc_cpu32"], "note": "header window. named circuit only."},
+    {"id": "pfc_meter", "group": "INSTRUMENTS", "label": "pfc_meter", "ops": ["mine"], "note": "high-Z. mine panel only. no raw offsets."},
+    {"id": "pfc_scope", "group": "INSTRUMENTS", "label": "pfc_scope", "ops": ["nonce_reg", "pfc_on", "loop_bit"], "note": "named register, 3s cap. no raw offsets."},
+    {"id": "pfc_analyzer", "group": "INSTRUMENTS", "label": "pfc_analyzer", "ops": ["channels miner", "snap miner"], "note": "miner named target. no player file path."},
+    {"id": "pfc_game", "group": "INSTRUMENTS", "label": "pfc_game", "ops": ["life --test"], "note": "headless Life check. not a greeting."},
+    {"id": "surface_table", "group": "WORLD", "label": "surface table dests", "ops": [""], "note": "dests FROM FILE. die."},
+    {"id": "surface_tenancy", "group": "WORLD", "label": "surface tenancy dests", "ops": [""], "note": "dests FROM FILE. die."},
+    {"id": "dump_bits", "group": "WORLD", "label": "dump_bits", "ops": ["TABLE", "TENANCY", "COMMONS"], "note": "64-256 bytes. organ name, not a path."},
+    {"id": "distro_surface", "group": "WORLD", "label": "distro surface", "ops": [""], "note": "GIG_DL + muhlnickel header mouths."},
+    {"id": "world_card", "group": "WORLD", "label": "world card", "ops": [], "note": "named id from world.json. card/snap excerpt, html size-only. CUT/DARK/LOCAL refuse."},
+    {"id": "whitebox_report", "group": "WHITEBOX", "label": "white box report", "ops": [""], "note": "copy existing report if present. does not start :7862."},
+    {"id": "whitebox_catalog", "group": "WHITEBOX", "label": "white box how to drive", "ops": [""], "note": "fabrication is one-and-done. CUT :7862 stays local."}
+  ],
+  "refuse": [
+    "route_table",
+    "route_tenancy",
+    "fire_nring",
+    "inject",
+    "census",
+    "titan",
+    "dc",
+    "bitserve",
+    "loom_serve",
+    "whitebox_app"
+  ]
+}

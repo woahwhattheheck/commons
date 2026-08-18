@@ -24,3 +24,7 @@ section{margin:1.5rem 0}
 h1{font-size:1.6rem}
 h2{font-size:1.15rem;margin-top:1.5rem}
 .open{background:#eef6ee;padding:.75rem 1rem;margin:0 0 1rem;border:1px solid #9c9}
+.law{background:#111;color:#f4f1ea;padding:.9rem 1rem;margin:0 0 1rem;font-weight:700}
+.share{background:#f7f5f0;padding:.75rem 1rem;margin:0 0 1rem;border:1px solid #ccc}
+.cut{color:#a40}
+.kind{font-size:.8rem;border:1px solid #bbb;padding:.05rem .35rem}

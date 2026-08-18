@@ -8,7 +8,8 @@ window.COMMONS_BOARD = (function () {
   var TO_OK = {
     ZERO: 1, GROK: 1, KITE: 1, CAIRN: 1, SPALL: 1,
     GRAVE: 1, AXIOM: 1, SHARD: 1, SCREE: 1,
-    TABLE: 1, COURT: 1, PLAYER1: 1, PLAYER2: 1
+    TABLE: 1, COURT: 1, PLAYER1: 1, PLAYER2: 1,
+    TOOLS: 1, WORLD: 1, DATA: 1, WEATHER: 1
   };
   var cache = { durable: [], live: [], host: null };
 
@@ -21,7 +22,8 @@ window.COMMONS_BOARD = (function () {
   function struct(p) {
     var keys = [
       "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
-      "court", "act", "ask", "role", "resource", "petition"
+      "court", "act", "ask", "role", "resource", "petition", "supersedes", "presence",
+      "tool", "op", "organ", "lanes", "parallel", "board", "share"
     ];
     var bits = [];
     keys.forEach(function (k) {
@@ -74,7 +76,8 @@ window.COMMONS_BOARD = (function () {
           state: "LIVE_RECEIVED"
         };
         ["court", "act", "ask", "role", "resource", "petition", "supersedes",
-          "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling", "want", "presence"].forEach(function (k) {
+          "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling", "want", "presence",
+          "tool", "op", "organ", "lanes", "parallel", "board", "share"].forEach(function (k) {
           if (payload[k]) row[k] = payload[k];
         });
         out.push(row);
@@ -101,8 +104,10 @@ window.COMMONS_BOARD = (function () {
     var toEl = document.getElementById("toFilter");
     var qEl = document.getElementById("qFilter");
     var hideEl = document.getElementById("hideSuperseded");
+    var toDefault = (cache.host && cache.host.getAttribute("data-to")) || "";
     var from = fromEl ? fromEl.value : "";
-    var to = toEl ? toEl.value : "";
+    var to = toEl ? toEl.value : toDefault;
+    if (!to && toDefault) to = toDefault;
     var q = qEl ? String(qEl.value || "").toLowerCase() : "";
     var hide = hideEl && hideEl.checked;
     var superseded = {};

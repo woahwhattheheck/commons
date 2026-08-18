@@ -1,0 +1,1358 @@
+{
+  "carrier": "commons pages. HTTP is not the computer. CUT ports stay 127.0.0.1.",
+  "n": 169,
+  "items": [
+    {
+      "id": "commons-board",
+      "group": "COMMONS",
+      "label": "Commons board",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "table-board",
+      "group": "COMMONS",
+      "label": "TABLE BOARD",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "help",
+      "group": "COMMONS",
+      "label": "mouth help.txt",
+      "kind": "act",
+      "drive": true,
+      "how": "named act"
+    },
+    {
+      "id": "say",
+      "group": "COMMONS",
+      "label": "table mail say",
+      "kind": "act",
+      "drive": false,
+      "how": "listed"
+    },
+    {
+      "id": "instant-dl-test",
+      "group": "BRYCE TAB",
+      "label": "INSTANT_DL_TEST",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "instant-download",
+      "group": "BRYCE TAB",
+      "label": "INSTANT DOWNLOAD",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "film-organ",
+      "group": "BRYCE TAB",
+      "label": "FILM ORGAN",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "film-do",
+      "group": "BRYCE TAB",
+      "label": "FILM DO",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "dc-drive",
+      "group": "BRYCE TAB",
+      "label": "DC DRIVE",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "dc-surface-md",
+      "group": "BRYCE TAB",
+      "label": "DC SURFACE",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "live-mouths",
+      "group": "BRYCE TAB",
+      "label": "LIVE MOUTHS",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "socket-go",
+      "group": "BRYCE TAB",
+      "label": "SOCKET GO",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "film-go",
+      "group": "BRYCE TAB",
+      "label": "FILM GO",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "compress-go",
+      "group": "BRYCE TAB",
+      "label": "COMPRESS GO",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "mouths-go",
+      "group": "BRYCE TAB",
+      "label": "MOUTHS GO",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "letter-go",
+      "group": "BRYCE TAB",
+      "label": "LETTER GO",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "dry-walls",
+      "group": "BRYCE TAB",
+      "label": "DRY WALLS",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "unfinished",
+      "group": "BRYCE TAB",
+      "label": "UNFINISHED",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "grok-play",
+      "group": "BRYCE TAB",
+      "label": "GROK PLAY",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "council",
+      "group": "BRYCE TAB",
+      "label": "COUNCIL",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "path-to-profit",
+      "group": "BRYCE TAB",
+      "label": "PATH TO PROFIT",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "words",
+      "group": "BRYCE TAB",
+      "label": "WORDS",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "surface-dc-md",
+      "group": "BRYCE TAB",
+      "label": "SURFACE DC card",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "lda-on-muhl",
+      "group": "BRYCE TAB",
+      "label": "LDA ON MUHL",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "surface-dc-mouths",
+      "group": "BRYCE TAB",
+      "label": "SURFACE DC mouths",
+      "kind": "act",
+      "drive": false,
+      "how": "listed"
+    },
+    {
+      "id": "playtime-letter",
+      "group": "BRYCE TAB",
+      "label": "Playtime / letter",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "muhl-post",
+      "group": "BRYCE TAB",
+      "label": "MUHL_POST",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "phase0",
+      "group": "BRYCE TAB",
+      "label": "Phase 0",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "proven",
+      "group": "BRYCE TAB",
+      "label": "PROVEN",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "session-todo",
+      "group": "BRYCE TAB",
+      "label": "SESSION TODO",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "mail-surface",
+      "group": "BRYCE TAB",
+      "label": "Mail surface",
+      "kind": "act",
+      "drive": false,
+      "how": "listed"
+    },
+    {
+      "id": "grok-mail",
+      "group": "BRYCE TAB",
+      "label": "Grok mail",
+      "kind": "act",
+      "drive": false,
+      "how": "listed"
+    },
+    {
+      "id": "catch-score",
+      "group": "BRYCE TAB",
+      "label": "CATCH_SCORE",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "reservoirs",
+      "group": "BRYCE TAB",
+      "label": "reservoirs",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "burn",
+      "group": "BRYCE TAB",
+      "label": "burn",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "compress-expand",
+      "group": "BRYCE TAB",
+      "label": "compress-expand",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "germ",
+      "group": "BRYCE TAB",
+      "label": "Instant Download / germ",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "mirror",
+      "group": "BRYCE TAB",
+      "label": "Mirror Organ",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "engine",
+      "group": "BRYCE TAB",
+      "label": "The Engine",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "live-size",
+      "group": "BRYCE TAB",
+      "label": "live computer size",
+      "kind": "act",
+      "drive": false,
+      "how": "listed"
+    },
+    {
+      "id": "factory-packed",
+      "group": "BRYCE TAB",
+      "label": "factory packed except 7913",
+      "kind": "act",
+      "drive": false,
+      "how": "listed"
+    },
+    {
+      "id": "grep",
+      "group": "BRYCE TAB",
+      "label": "grep 1s/0s",
+      "kind": "act",
+      "drive": false,
+      "how": "listed"
+    },
+    {
+      "id": "containers",
+      "group": "BRYCE TAB",
+      "label": "containers / muhl_cli",
+      "kind": "act",
+      "drive": false,
+      "how": "listed"
+    },
+    {
+      "id": "bully",
+      "group": "BRYCE TAB",
+      "label": "bully",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "spatent",
+      "group": "BRYCE TAB",
+      "label": "spatent",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "grounding",
+      "group": "BRYCE TAB",
+      "label": "grounding",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "mailbox",
+      "group": "BRYCE TAB",
+      "label": "mailbox 1s and 0s",
+      "kind": "act",
+      "drive": false,
+      "how": "listed"
+    },
+    {
+      "id": "size",
+      "group": "BRYCE TAB",
+      "label": "size (it moves)",
+      "kind": "act",
+      "drive": false,
+      "how": "listed"
+    },
+    {
+      "id": "factory",
+      "group": "BRYCE TAB",
+      "label": "factory",
+      "kind": "act",
+      "drive": false,
+      "how": "listed"
+    },
+    {
+      "id": "witness",
+      "group": "BRYCE TAB",
+      "label": "witness NEED_BRYCE",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "fable-ideas",
+      "group": "BRYCE TAB",
+      "label": "fable ideas",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "grow-dead",
+      "group": "BRYCE TAB",
+      "label": "grow is dead",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "grow",
+      "group": "BRYCE TAB",
+      "label": "grow surface",
+      "kind": "act",
+      "drive": false,
+      "how": "listed"
+    },
+    {
+      "id": "size-must-move",
+      "group": "BRYCE TAB",
+      "label": "SIZE MUST MOVE",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "fold-surface",
+      "group": "BRYCE TAB",
+      "label": "FOLD SURFACE",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "live-computer",
+      "group": "BRYCE TAB",
+      "label": "open the live computer",
+      "kind": "act",
+      "drive": false,
+      "how": "listed"
+    },
+    {
+      "id": "titan-surface",
+      "group": "BRYCE TAB",
+      "label": "titan surface (text, no mmap)",
+      "kind": "act",
+      "drive": false,
+      "how": "listed"
+    },
+    {
+      "id": "distro-surface",
+      "group": "BRYCE TAB",
+      "label": "distro surface (text, no mmap)",
+      "kind": "act",
+      "drive": false,
+      "how": "listed"
+    },
+    {
+      "id": "on-pc-inventory",
+      "group": "BRYCE TAB",
+      "label": "on this pc inventory",
+      "kind": "act",
+      "drive": false,
+      "how": "listed"
+    },
+    {
+      "id": "github",
+      "group": "BRYCE TAB",
+      "label": "github",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "drool",
+      "group": "BRYCE TAB",
+      "label": "drool",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "dc-use",
+      "group": "BRYCE TAB",
+      "label": "dc use",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "operator",
+      "group": "BRYCE TAB",
+      "label": "operator for parent",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "subagent",
+      "group": "BRYCE TAB",
+      "label": "subagent card",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "distro",
+      "group": "BRYCE TAB",
+      "label": "distro",
+      "kind": "local",
+      "drive": false,
+      "how": "LOCAL"
+    },
+    {
+      "id": "titan",
+      "group": "BRYCE TAB",
+      "label": "titan",
+      "kind": "dark",
+      "drive": false,
+      "how": "DARK"
+    },
+    {
+      "id": "electrons",
+      "group": "BRYCE TAB",
+      "label": "electrons NEED_BRYCE",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "on-this-pc",
+      "group": "BRYCE TAB",
+      "label": "on this pc",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "now",
+      "group": "BRYCE TAB",
+      "label": "now",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "datacenter-mno",
+      "group": "BRYCE TAB",
+      "label": "datacenter mno",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "all-bits",
+      "group": "BRYCE TAB",
+      "label": "all bits",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "loom",
+      "group": "BRYCE TAB",
+      "label": "loom",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "copy-the-file",
+      "group": "BRYCE TAB",
+      "label": "copy-the-file",
+      "kind": "card",
+      "drive": true,
+      "how": "card excerpt"
+    },
+    {
+      "id": "surface-visor",
+      "group": "BRYCE TAB",
+      "label": "surface (stat only)",
+      "kind": "act",
+      "drive": false,
+      "how": "listed"
+    },
+    {
+      "id": "json-door",
+      "group": "BRYCE TAB",
+      "label": "the json",
+      "kind": "local",
+      "drive": false,
+      "how": "LOCAL"
+    },
+    {
+      "id": "maze",
+      "group": "VISORS",
+      "label": "maze",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "maze-app",
+      "group": "VISORS",
+      "label": "APP MUHLNICKEL.html",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "world-visor",
+      "group": "VISORS",
+      "label": "WORLD_VISOR",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "binary-viewer",
+      "group": "VISORS",
+      "label": "binary viewer",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "atlas",
+      "group": "VISORS",
+      "label": "atlas",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "habitat",
+      "group": "VISORS",
+      "label": "habitat",
+      "kind": "local",
+      "drive": false,
+      "how": "LOCAL"
+    },
+    {
+      "id": "foundry-forever",
+      "group": "VISORS",
+      "label": "foundry forever",
+      "kind": "local",
+      "drive": false,
+      "how": "LOCAL"
+    },
+    {
+      "id": "deepworld",
+      "group": "VISORS",
+      "label": "deepworld",
+      "kind": "local",
+      "drive": false,
+      "how": "LOCAL"
+    },
+    {
+      "id": "demos",
+      "group": "VISORS",
+      "label": "demos",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "archetypes",
+      "group": "VISORS",
+      "label": "archetypes",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "answer-watcher",
+      "group": "VISORS",
+      "label": "answer watcher",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "genome-viewer",
+      "group": "VISORS",
+      "label": "genome viewer",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "selfclock-viewer",
+      "group": "VISORS",
+      "label": "selfclock viewer",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "control-surface",
+      "group": "VISORS",
+      "label": "control surface",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "silicon-atlas",
+      "group": "VISORS",
+      "label": "silicon atlas",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "sdc-studio",
+      "group": "VISORS",
+      "label": "SDC Game Studio",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "doom-play",
+      "group": "VISORS",
+      "label": "DOOM play",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "pfc-demos",
+      "group": "VISORS",
+      "label": "PFC demos",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "titan-html",
+      "group": "VISORS",
+      "label": "titan.html",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "desktop-map",
+      "group": "VISORS",
+      "label": "desktop map",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "hrdst",
+      "group": "VISORS",
+      "label": "HRDST showcase",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "pfc-gallery",
+      "group": "VISORS",
+      "label": "pfc gallery",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "insights",
+      "group": "VISORS",
+      "label": "insights",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "whitebox-report",
+      "group": "VISORS",
+      "label": "white box report",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "circuit-browser",
+      "group": "APP FACES",
+      "label": "circuit browser",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "gate-decoder",
+      "group": "APP FACES",
+      "label": "gate decoder",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "wire-inspector",
+      "group": "APP FACES",
+      "label": "wire inspector",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "ring-inspector",
+      "group": "APP FACES",
+      "label": "ring inspector",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "junction-tracer",
+      "group": "APP FACES",
+      "label": "junction tracer",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "electron-tracker",
+      "group": "APP FACES",
+      "label": "electron tracker",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "clock-domains",
+      "group": "APP FACES",
+      "label": "clock domains",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "density-heatmap",
+      "group": "APP FACES",
+      "label": "density heatmap",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "depth-profiler",
+      "group": "APP FACES",
+      "label": "depth profiler",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "substrate-dash",
+      "group": "APP FACES",
+      "label": "substrate dashboard",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "registry-dash",
+      "group": "APP FACES",
+      "label": "registry dashboard",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "inventory",
+      "group": "APP FACES",
+      "label": "inventory",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "reservoir-status",
+      "group": "APP FACES",
+      "label": "reservoir status",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "fab-planner",
+      "group": "APP FACES",
+      "label": "fab planner",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "fab-history",
+      "group": "APP FACES",
+      "label": "fab history",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "genome-revert",
+      "group": "APP FACES",
+      "label": "genome revert",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "injection-console",
+      "group": "APP FACES",
+      "label": "injection console",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "ring-run-console",
+      "group": "APP FACES",
+      "label": "ring run console",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "output-surface",
+      "group": "APP FACES",
+      "label": "output surface",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "address-map",
+      "group": "APP FACES",
+      "label": "address map",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "dead-gate",
+      "group": "APP FACES",
+      "label": "dead gate detector",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "lever-analyzer",
+      "group": "APP FACES",
+      "label": "lever analyzer",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "string-search",
+      "group": "APP FACES",
+      "label": "string search",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "spec-authority",
+      "group": "APP FACES",
+      "label": "SPEC AUTHORITY",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "muhl-live-view",
+      "group": "APPS",
+      "label": "muhl live view",
+      "kind": "local",
+      "drive": false,
+      "how": "LOCAL"
+    },
+    {
+      "id": "pfc-arcade",
+      "group": "APPS",
+      "label": "pfc arcade",
+      "kind": "local",
+      "drive": false,
+      "how": "LOCAL"
+    },
+    {
+      "id": "pfc-desktop",
+      "group": "APPS",
+      "label": "pfc desktop",
+      "kind": "local",
+      "drive": false,
+      "how": "LOCAL"
+    },
+    {
+      "id": "lda-edge",
+      "group": "APPS",
+      "label": "LDA edge",
+      "kind": "act",
+      "drive": false,
+      "how": "listed"
+    },
+    {
+      "id": "working-txt",
+      "group": "SNAPSHOTS",
+      "label": "working.txt",
+      "kind": "snap",
+      "drive": true,
+      "how": "snap excerpt"
+    },
+    {
+      "id": "answer-json",
+      "group": "SNAPSHOTS",
+      "label": "answer.json",
+      "kind": "snap",
+      "drive": true,
+      "how": "snap excerpt"
+    },
+    {
+      "id": "ones-not-hex",
+      "group": "SNAPSHOTS",
+      "label": "ONES_NOT_HEX",
+      "kind": "snap",
+      "drive": true,
+      "how": "snap excerpt"
+    },
+    {
+      "id": "titan-best-0",
+      "group": "SNAPSHOTS",
+      "label": "titan_best_0",
+      "kind": "snap",
+      "drive": true,
+      "how": "snap excerpt"
+    },
+    {
+      "id": "post-ledger",
+      "group": "SNAPSHOTS",
+      "label": "post ledger",
+      "kind": "snap",
+      "drive": true,
+      "how": "snap excerpt"
+    },
+    {
+      "id": "dc-fab-journal",
+      "group": "SNAPSHOTS",
+      "label": "dc fab journal",
+      "kind": "snap",
+      "drive": true,
+      "how": "snap excerpt"
+    },
+    {
+      "id": "live-viewers-folder",
+      "group": "FOLDER",
+      "label": "LIVE_VIEWERS folder",
+      "kind": "act",
+      "drive": false,
+      "how": "listed"
+    },
+    {
+      "id": "demos-doom",
+      "group": "DEMOS",
+      "label": "doom.html",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "demos-life",
+      "group": "DEMOS",
+      "label": "life.html",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "demos-tetris",
+      "group": "DEMOS",
+      "label": "tetris.html",
+      "kind": "html",
+      "drive": true,
+      "how": "size only"
+    },
+    {
+      "id": "all-bits-html",
+      "group": "CUT FEEDS",
+      "label": "all_bits.html (CUT feed)",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "binary-rain",
+      "group": "CUT FEEDS",
+      "label": "binary_rain.html (CUT feed)",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "binary-rain2",
+      "group": "CUT FEEDS",
+      "label": "binary_rain2.html (CUT feed)",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "live-viewer-html",
+      "group": "CUT FEEDS",
+      "label": "live_viewer.html (CUT feed)",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "loom-html",
+      "group": "CUT FEEDS",
+      "label": "loom_surface.html (CUT feed)",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "spectator",
+      "group": "CUT FEEDS",
+      "label": "spectator Distro (CUT :7880)",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "spectator-lab",
+      "group": "CUT FEEDS",
+      "label": "spectator BUILD_LAB (CUT :7880)",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "titan-terminal",
+      "group": "CUT FEEDS",
+      "label": "titan terminal (CUT :7880)",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "ring-orchestra",
+      "group": "CUT FEEDS",
+      "label": "ring orchestra (CUT :7880)",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "cut-7883",
+      "group": "CUT PORTS",
+      "label": "ALL BITS :7883 bitserve",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "cut-7884",
+      "group": "CUT PORTS",
+      "label": "ALL BITS :7884 bitserve alt",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "cut-7914",
+      "group": "CUT PORTS",
+      "label": "Foundry HTTP :7914",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "cut-8787",
+      "group": "CUT PORTS",
+      "label": "Foundry Forever :8787 (exe if running)",
+      "kind": "local",
+      "drive": false,
+      "how": "LOCAL"
+    },
+    {
+      "id": "cut-42515",
+      "group": "CUT PORTS",
+      "label": "Habitat :42515 (exe if running)",
+      "kind": "local",
+      "drive": false,
+      "how": "LOCAL"
+    },
+    {
+      "id": "cut-41415",
+      "group": "CUT PORTS",
+      "label": "Deepworld :41415 (exe if running)",
+      "kind": "local",
+      "drive": false,
+      "how": "LOCAL"
+    },
+    {
+      "id": "cut-7860",
+      "group": "CUT PORTS",
+      "label": "lab_ui :7860",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "cut-8110",
+      "group": "CUT PORTS",
+      "label": "Game Studio server :8110",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "cut-7862",
+      "group": "CUT PORTS",
+      "label": "White Box :7862",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "cut-7864",
+      "group": "CUT PORTS",
+      "label": "White Box V2 :7864",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "cut-7902",
+      "group": "CUT PORTS",
+      "label": "SDC Chat :7902",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "cut-7866",
+      "group": "CUT PORTS",
+      "label": "Titan Test Bench :7866",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "cut-7871",
+      "group": "CUT PORTS",
+      "label": "32-bit CPU :7871",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "cut-7870",
+      "group": "CUT PORTS",
+      "label": "Bitcoin Miner :7870",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "cut-8733",
+      "group": "CUT PORTS",
+      "label": "control surface :8733",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "cut-7908",
+      "group": "CUT PORTS",
+      "label": "pfc monitor :7908",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "cut-7904",
+      "group": "CUT PORTS",
+      "label": "SDC OS :7904",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "cut-7903",
+      "group": "CUT PORTS",
+      "label": "SDC output :7903",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "cut-7901",
+      "group": "CUT PORTS",
+      "label": "SDC Playground :7901",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "cut-7900",
+      "group": "CUT PORTS",
+      "label": "SDC Program Rack :7900",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "cut-8120",
+      "group": "CUT PORTS",
+      "label": "DOOM on SDC :8120",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "cut-7863",
+      "group": "CUT PORTS",
+      "label": "DOOM on Titan :7863",
+      "kind": "cut",
+      "drive": false,
+      "how": "CUT"
+    },
+    {
+      "id": "world-system-lnk",
+      "group": "LOCAL EXES",
+      "label": "World System .lnk",
+      "kind": "local",
+      "drive": false,
+      "how": "LOCAL"
+    }
+  ]
+}
