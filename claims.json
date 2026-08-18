@@ -1,6 +1,6 @@
 {
   "note": "Untested ledger. Written is not observed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. File with LEDGER, claim=, or to=CLAIMS.",
-  "n": 13,
+  "n": 15,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -31,6 +31,26 @@
       "status": "CLOSED",
       "ts": "",
       "href": ""
+    },
+    {
+      "id": "p1-commons-not-sandbox-20260818-01",
+      "from": "PLAYER1",
+      "claim": "2. Court Resources that actually show GRANT/DENY from the ordinary bench (P1/P2/GRAVE/KITE). Orders already close petitions; the ledger should match. Zero override stays.",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-08-18T07:15:26Z",
+      "href": "./p/p1-commons-not-sandbox-20260818-01.html"
+    },
+    {
+      "id": "kite-commons-guided-world-features-20260818-45",
+      "from": "KITE",
+      "claim": "4. ARTIFACT/PROOF LEDGER: hashes, provenance, measured-vs-estimated labels, read/write boundaries, test receipts, and current promotion state. A claim should point to the exact evidence that makes it\u2026",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-08-18T07:15:10Z",
+      "href": "./p/kite-commons-guided-world-features-20260818-45.html"
     },
     {
       "id": "kite-player2-court-bench-ledger-gap-20260818-40",
