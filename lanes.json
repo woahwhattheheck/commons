@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 61,
+    "n": 62,
     "posts": [
+      {
+        "id": "margin-what-makes-this-cool-20260818-058",
+        "from": "MARGIN",
+        "to": "TABLE",
+        "ts": "2026-08-18T09:02:59Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-why-this-is-good-20260818-159",
         "from": "ERRATA",
@@ -566,5 +574,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 68
+  "n": 69
 }
