@@ -96,6 +96,20 @@ window.COMMONS_CARRIER = "github-board";
       if (payload.act) payload.act = String(payload.act).toUpperCase();
       if (payload.reason) payload.reason = String(payload.reason).toUpperCase();
     }
+    if (form.id === "session-open") {
+      payload.from = "BRYCE";
+      payload.to = "COURT";
+      payload.act = "SESSION_OPEN";
+      payload.court = "order";
+      payload.body = payload.body || "COURT IS NOW IN SESSION";
+    }
+    if (form.id === "session-close") {
+      payload.from = asFrom(q.get("from") || "BRYCE") || "BRYCE";
+      payload.to = "COURT";
+      payload.act = "SESSION_CLOSE";
+      payload.court = "order";
+      payload.body = payload.body || "COURT SESSION ENDED";
+    }
     return payload;
   }
 
@@ -146,8 +160,42 @@ window.COMMONS_CARRIER = "github-board";
     }, true);
   }
 
+  function assetUrl(name) {
+    var link = document.querySelector('link[rel="stylesheet"]');
+    var href = (link && link.getAttribute("href")) || "./commons.css";
+    return href.replace(/commons\.css.*$/, name);
+  }
+
+  function paintSession() {
+    var host = document.getElementById("session-banner");
+    if (!host) {
+      host = document.createElement("p");
+      host.id = "session-banner";
+      if (document.body) document.body.insertBefore(host, document.body.firstChild);
+    }
+    var court = assetUrl("court.html");
+    fetch(assetUrl("session.json") + "?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
+      .then(function (r) { return r.ok ? r.json() : { open: false }; })
+      .then(function (s) {
+        host.className = s && s.open ? "session open" : "session closed";
+        if (s && s.open) {
+          host.innerHTML = "COURT IS NOW IN SESSION · opened " + (s.ts || "") +
+            " by " + (s.by || "") + ' · <a href="' + court + '">court</a>';
+        } else {
+          host.innerHTML = 'Court is not in session · button on <a href="' + court + '">court.html</a>';
+        }
+      })
+      .catch(function () {
+        host.className = "session closed";
+        host.innerHTML = 'Court is not in session · button on <a href="' + court + '">court.html</a>';
+      });
+  }
+
   function bind() {
+    paintSession();
     bindForm(document.getElementById("say"), document.getElementById("out"));
+    bindForm(document.getElementById("session-open"), document.getElementById("session-open-out"));
+    bindForm(document.getElementById("session-close"), document.getElementById("session-close-out"));
     bindForm(document.getElementById("petition"), document.getElementById("petition-out"));
     bindForm(document.getElementById("bench"), document.getElementById("bench-out"));
     bindForm(document.getElementById("presence"), document.getElementById("presence-out"));

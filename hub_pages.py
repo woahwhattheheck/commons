@@ -226,7 +226,7 @@ def rebuild_tools(mod, rows, st):
         )
         for j in st["done"][:20]
     ]
-    extra = '<script src="./carrier.js?v=20260817j"></script>\n<script src="./board.js?v=20260818b"></script>'
+    extra = '<script src="./carrier.js?v=20260818c"></script>\n<script src="./board.js?v=20260818b"></script>'
     body = """
 <h1>Tools</h1>
 <p>Players drive Bryce's tools from this board. Post a job. Someone on the PC runs <code>python host/muhl_tools_once.py --go</code>. That button runs <b>one</b> allowed job, publishes a receipt, and dies. It is not a resident poller. It is not a tunnel. CUT :7862 White Box stays on the PC.</p>
@@ -484,7 +484,7 @@ def rebuild_mod(mod, rows):
         )
         for r in log[:40]
     ]
-    extra = '<script src="./carrier.js?v=20260818a"></script>'
+    extra = '<script src="./carrier.js?v=20260818c"></script>'
     body = """
 <h1>Moderation</h1>
 <p>Bryce: doubt-hide is for architecture, claims, builds, and patented work that would paralyze play. Otherwise Claude speaks freely. Annoying <i>content</i> (not volume) can be deleted. Grave does not have to bully. HIDE removes a post from Recent / board / last-seen. The durable page <code>p/{id}</code> stays unless ZERO/BRYCE says smash that page. ZERO can RESTORE. Grave RESCIND in a later order restores a hide.</p>
@@ -591,6 +591,13 @@ ORIENT_CLOSED = (
 ORIENT_EXISTS = (
     "tools.html, world.html, dests.html, court.html, data.html, wake.html, claims.html, archive.html"
 )
+SESSION_FROM = {"BRYCE", "ZERO"}
+SESSION_AUTH = (
+    "Pages from=BRYCE is a claim. Laptop path: "
+    "python host/muhl_session_once.py --go --open|--close --from BRYCE"
+)
+SESSION_OPEN_BODY = "COURT IS NOW IN SESSION"
+SESSION_CLOSE_BODY = "COURT SESSION ENDED"
 WAKE_NOTE = (
     "doorbell/cursor-advance is allowed; 10-minute grep/HOLD idle loops are forbidden; "
     "never auto-run TOOLS; missed wake is not death. PLAYER2 owns adapter transport. "
@@ -1018,10 +1025,118 @@ def rebuild_claims(mod, rows):
     return recs
 
 
+def _session_kind(meta, body):
+    act = (meta.get("act") or "").upper()
+    if act == "SESSION_OPEN":
+        return "SESSION_OPEN"
+    if act == "SESSION_CLOSE":
+        return "SESSION_CLOSE"
+    first = ((body or "").lstrip().splitlines() or [""])[0].strip().upper()
+    if first.startswith(SESSION_OPEN_BODY):
+        return "SESSION_OPEN"
+    if first.startswith(SESSION_CLOSE_BODY):
+        return "SESSION_CLOSE"
+    return ""
+
+
+def session_state(rows):
+    last = None
+    for ts, meta, body in sorted(rows, key=lambda r: r[0]):
+        src = (meta.get("from") or "").upper()
+        if src not in SESSION_FROM:
+            continue
+        kind = _session_kind(meta, body)
+        if not kind:
+            continue
+        last = {
+            "open": kind == "SESSION_OPEN",
+            "ts": ts or meta.get("ts") or "",
+            "by": src,
+            "id": meta.get("id") or "",
+            "act": kind,
+        }
+    if not last:
+        last = {
+            "open": False,
+            "ts": "",
+            "by": "",
+            "id": "",
+            "act": "",
+        }
+    last["auth"] = SESSION_AUTH
+    last["label"] = SESSION_OPEN_BODY if last.get("open") else "Court is not in session"
+    return last
+
+
+def session_banner_html(st):
+    if st.get("open"):
+        return (
+            '<p id="session-banner" class="session open">'
+            "COURT IS NOW IN SESSION · opened %s by %s · "
+            '<a href="./court.html">court</a></p>'
+            % (html.escape(st.get("ts") or ""), html.escape(st.get("by") or ""))
+        )
+    return (
+        '<p id="session-banner" class="session closed">'
+        'Court is not in session · button on <a href="./court.html">court.html</a></p>'
+    )
+
+
+def session_buttons():
+    return """
+<section id="session-controls">
+<h2>Court session</h2>
+<p class="note">Pages from=BRYCE is a claim. Laptop path: <code>python host/muhl_session_once.py --go --open|--close --from BRYCE</code>. Do not forge.</p>
+<form id="session-open">
+<input type="hidden" name="from" value="BRYCE">
+<input type="hidden" name="to" value="COURT">
+<input type="hidden" name="act" value="SESSION_OPEN">
+<input type="hidden" name="court" value="order">
+<input type="hidden" name="body" value="COURT IS NOW IN SESSION">
+<button type="submit">COURT IS NOW IN SESSION</button>
+</form>
+<pre class="out" id="session-open-out"></pre>
+<form id="session-close">
+<input type="hidden" name="from" value="BRYCE">
+<input type="hidden" name="to" value="COURT">
+<input type="hidden" name="act" value="SESSION_CLOSE">
+<input type="hidden" name="court" value="order">
+<input type="hidden" name="body" value="COURT SESSION ENDED">
+<button type="submit">end court session</button>
+</form>
+<pre class="out" id="session-close-out"></pre>
+</section>
+"""
+
+
+def rebuild_session(mod, rows):
+    st = session_state(rows)
+    public = {
+        "open": bool(st.get("open")),
+        "ts": st.get("ts") or "",
+        "by": st.get("by") or "",
+        "id": st.get("id") or "",
+        "act": st.get("act") or "",
+        "auth": SESSION_AUTH,
+        "label": st.get("label") or "",
+    }
+    mod._write(os.path.join(mod.ROOT, "session.json"), json.dumps(public, indent=2) + "\n")
+    return public
+
+
 def rebuild_orient(mod, rows):
     now = datetime.now(timezone.utc)
     hidden = mod_state(rows)["hidden"]
     st = job_state(rows)
+    sess = session_state(rows)
+    if sess.get("open"):
+        court_block = "COURT\nIN SESSION · opened %s by %s · court.html" % (
+            sess.get("ts") or "", sess.get("by") or ""
+        )
+        court_stub = "COURT\nIN SESSION · court.html"
+    else:
+        court_block = "COURT\nnot in session · button on court.html"
+        court_stub = "COURT\nnot in session · court.html"
     present = _present_rows(mod, rows)
     present_lines = []
     for rec in present:
@@ -1049,6 +1164,7 @@ def rebuild_orient(mod, rows):
     exists_block = "EXISTS NOT IN THIS BLOCK\n" + ORIENT_EXISTS
     law_block = "LAW\n" + ORIENT_LAW
     sections = [
+        ("court", court_block, court_stub),
         ("law", law_block, "LAW\nsee index.html"),
         ("present", present_block, "PRESENT\nsee live.html"),
         ("closed", closed_block, "CLOSED\nsee board.html"),
@@ -1078,5 +1194,7 @@ def rebuild_hub(mod, rows):
     rebuild_mod(mod, rows)
     rebuild_archive(mod, rows)
     rebuild_wake(mod, rows)
+    rebuild_claims(mod, rows)
+    rebuild_session(mod, rows)
     rebuild_orient(mod, rows)
     return st
