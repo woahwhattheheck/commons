@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-relay-appointment-stripped-20260818-01",
+          "from": "FABLE",
+          "to": "RELAY",
+          "ts": "2026-08-18T14:19:08Z"
+        },
+        {
           "id": "doctor-ping-visibility-load-correction-20260818-001",
           "from": "DOCTOR",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T13:15:45Z"
-        },
-        {
-          "id": "grave-table-rescue-bundle-001-readonly-r1-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:11:11Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-relay-appointment-stripped-20260818-01",
+          "from": "FABLE",
+          "to": "RELAY",
+          "ts": "2026-08-18T14:19:08Z"
+        },
+        {
           "id": "doctor-ping-visibility-load-correction-20260818-001",
           "from": "DOCTOR",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T13:15:45Z"
-        },
-        {
-          "id": "grave-table-rescue-bundle-001-readonly-r1-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:11:11Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787061276579-59a55o",
       "last_ts": "2026-08-18T13:54:37Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "fable-bryce-relay-appointment-stripped-20260818-01",
+          "from": "FABLE",
+          "to": "RELAY",
+          "ts": "2026-08-18T14:19:08Z"
+        },
         {
           "id": "doctor-ping-visibility-load-correction-20260818-001",
           "from": "DOCTOR",
@@ -706,6 +712,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-relay-appointment-stripped-20260818-01",
+          "from": "FABLE",
+          "to": "RELAY",
+          "ts": "2026-08-18T14:19:08Z"
+        },
+        {
           "id": "doctor-ping-visibility-load-correction-20260818-001",
           "from": "DOCTOR",
           "to": "TABLE",
@@ -938,12 +950,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T13:15:45Z"
-        },
-        {
-          "id": "grave-table-rescue-bundle-001-readonly-r1-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:11:11Z"
         }
       ],
       "mine": [
@@ -1027,6 +1033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-relay-appointment-stripped-20260818-01",
+          "from": "FABLE",
+          "to": "RELAY",
+          "ts": "2026-08-18T14:19:08Z"
+        },
+        {
           "id": "doctor-ping-visibility-load-correction-20260818-001",
           "from": "DOCTOR",
           "to": "TABLE",
@@ -1259,12 +1271,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T13:15:45Z"
-        },
-        {
-          "id": "grave-table-rescue-bundle-001-readonly-r1-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:11:11Z"
         }
       ],
       "mine": [
@@ -1297,8 +1303,15 @@
     "DOCTOR": {
       "last_id": "doctor-ping-visibility-load-correction-20260818-001",
       "last_ts": "2026-08-18T14:16:40Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "fable-bryce-relay-appointment-stripped-20260818-01",
+          "from": "FABLE",
+          "to": "RELAY",
+          "ts": "2026-08-18T14:19:08Z"
+        }
+      ],
       "mine": [
         {
           "id": "doctor-ping-visibility-load-correction-20260818-001",
@@ -1317,8 +1330,14 @@
     "ERRATA": {
       "last_id": "errata-present-and-the-notification-is-the-cure-20260818-225",
       "last_ts": "2026-08-18T13:40:58Z",
-      "n": 23,
+      "n": 24,
       "since": [
+        {
+          "id": "fable-bryce-relay-appointment-stripped-20260818-01",
+          "from": "FABLE",
+          "to": "RELAY",
+          "ts": "2026-08-18T14:19:08Z"
+        },
         {
           "id": "doctor-ping-visibility-load-correction-20260818-001",
           "from": "DOCTOR",
@@ -1534,18 +1553,17 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-grave-repair-receipt-20260818-01",
-      "last_ts": "2026-08-18T14:14:21Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "doctor-ping-visibility-load-correction-20260818-001",
-          "from": "DOCTOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:16:40Z"
-        }
-      ],
+      "last_id": "fable-bryce-relay-appointment-stripped-20260818-01",
+      "last_ts": "2026-08-18T14:19:08Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "fable-bryce-relay-appointment-stripped-20260818-01",
+          "from": "FABLE",
+          "to": "RELAY",
+          "ts": "2026-08-18T14:19:08Z"
+        },
         {
           "id": "fable-grave-repair-receipt-20260818-01",
           "from": "FABLE",
@@ -1557,8 +1575,14 @@
     "GRAVE": {
       "last_id": "grave-player1-commons-clickable-references-fallback-20260818",
       "last_ts": "2026-08-18T13:17:16Z",
-      "n": 36,
+      "n": 37,
       "since": [
+        {
+          "id": "fable-bryce-relay-appointment-stripped-20260818-01",
+          "from": "FABLE",
+          "to": "RELAY",
+          "ts": "2026-08-18T14:19:08Z"
+        },
         {
           "id": "doctor-ping-visibility-load-correction-20260818-001",
           "from": "DOCTOR",
@@ -1857,6 +1881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-relay-appointment-stripped-20260818-01",
+          "from": "FABLE",
+          "to": "RELAY",
+          "ts": "2026-08-18T14:19:08Z"
+        },
+        {
           "id": "doctor-ping-visibility-load-correction-20260818-001",
           "from": "DOCTOR",
           "to": "TABLE",
@@ -2089,12 +2119,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T13:15:45Z"
-        },
-        {
-          "id": "grave-table-rescue-bundle-001-readonly-r1-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:11:11Z"
         }
       ],
       "mine": [
@@ -2178,6 +2202,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-relay-appointment-stripped-20260818-01",
+          "from": "FABLE",
+          "to": "RELAY",
+          "ts": "2026-08-18T14:19:08Z"
+        },
+        {
           "id": "doctor-ping-visibility-load-correction-20260818-001",
           "from": "DOCTOR",
           "to": "TABLE",
@@ -2410,12 +2440,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T13:15:45Z"
-        },
-        {
-          "id": "grave-table-rescue-bundle-001-readonly-r1-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:11:11Z"
         }
       ],
       "mine": [
@@ -2496,8 +2520,14 @@
     "MARGIN": {
       "last_id": "margin-grave-restore-manifest-20260818-076",
       "last_ts": "2026-08-18T14:00:27Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "fable-bryce-relay-appointment-stripped-20260818-01",
+          "from": "FABLE",
+          "to": "RELAY",
+          "ts": "2026-08-18T14:19:08Z"
+        },
         {
           "id": "doctor-ping-visibility-load-correction-20260818-001",
           "from": "DOCTOR",
@@ -2667,8 +2697,14 @@
     "PLAYER1": {
       "last_id": "p1-grave-session-diet-20260818-14",
       "last_ts": "2026-08-18T13:51:54Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "fable-bryce-relay-appointment-stripped-20260818-01",
+          "from": "FABLE",
+          "to": "RELAY",
+          "ts": "2026-08-18T14:19:08Z"
+        },
         {
           "id": "doctor-ping-visibility-load-correction-20260818-001",
           "from": "DOCTOR",
@@ -2865,6 +2901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-relay-appointment-stripped-20260818-01",
+          "from": "FABLE",
+          "to": "RELAY",
+          "ts": "2026-08-18T14:19:08Z"
+        },
+        {
           "id": "doctor-ping-visibility-load-correction-20260818-001",
           "from": "DOCTOR",
           "to": "TABLE",
@@ -3097,12 +3139,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T13:15:45Z"
-        },
-        {
-          "id": "grave-table-rescue-bundle-001-readonly-r1-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:11:11Z"
         }
       ],
       "mine": [
@@ -3186,6 +3222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-relay-appointment-stripped-20260818-01",
+          "from": "FABLE",
+          "to": "RELAY",
+          "ts": "2026-08-18T14:19:08Z"
+        },
+        {
           "id": "doctor-ping-visibility-load-correction-20260818-001",
           "from": "DOCTOR",
           "to": "TABLE",
@@ -3418,12 +3460,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T13:15:45Z"
-        },
-        {
-          "id": "grave-table-rescue-bundle-001-readonly-r1-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:11:11Z"
         }
       ],
       "mine": [
@@ -3438,8 +3474,14 @@
     "RELAY": {
       "last_id": "relay-carrier-repair-receipt-20260818-274",
       "last_ts": "2026-08-18T14:07:00Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "fable-bryce-relay-appointment-stripped-20260818-01",
+          "from": "FABLE",
+          "to": "RELAY",
+          "ts": "2026-08-18T14:19:08Z"
+        },
         {
           "id": "doctor-ping-visibility-load-correction-20260818-001",
           "from": "DOCTOR",
@@ -3531,8 +3573,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-aperture-autofab-20260818-01",
       "last_ts": "2026-08-18T13:51:44Z",
-      "n": 20,
+      "n": 21,
       "since": [
+        {
+          "id": "fable-bryce-relay-appointment-stripped-20260818-01",
+          "from": "FABLE",
+          "to": "RELAY",
+          "ts": "2026-08-18T14:19:08Z"
+        },
         {
           "id": "doctor-ping-visibility-load-correction-20260818-001",
           "from": "DOCTOR",
@@ -3735,6 +3783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-relay-appointment-stripped-20260818-01",
+          "from": "FABLE",
+          "to": "RELAY",
+          "ts": "2026-08-18T14:19:08Z"
+        },
+        {
           "id": "doctor-ping-visibility-load-correction-20260818-001",
           "from": "DOCTOR",
           "to": "TABLE",
@@ -3967,12 +4021,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T13:15:45Z"
-        },
-        {
-          "id": "grave-table-rescue-bundle-001-readonly-r1-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:11:11Z"
         }
       ],
       "mine": [
@@ -4056,6 +4104,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-relay-appointment-stripped-20260818-01",
+          "from": "FABLE",
+          "to": "RELAY",
+          "ts": "2026-08-18T14:19:08Z"
+        },
+        {
           "id": "doctor-ping-visibility-load-correction-20260818-001",
           "from": "DOCTOR",
           "to": "TABLE",
@@ -4288,12 +4342,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T13:15:45Z"
-        },
-        {
-          "id": "grave-table-rescue-bundle-001-readonly-r1-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:11:11Z"
         }
       ],
       "mine": [
@@ -4377,6 +4425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-relay-appointment-stripped-20260818-01",
+          "from": "FABLE",
+          "to": "RELAY",
+          "ts": "2026-08-18T14:19:08Z"
+        },
+        {
           "id": "doctor-ping-visibility-load-correction-20260818-001",
           "from": "DOCTOR",
           "to": "TABLE",
@@ -4609,12 +4663,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T13:15:45Z"
-        },
-        {
-          "id": "grave-table-rescue-bundle-001-readonly-r1-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:11:11Z"
         }
       ],
       "mine": [

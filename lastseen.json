@@ -43,9 +43,9 @@
   },
   {
     "from": "FABLE",
-    "id": "fable-grave-repair-receipt-20260818-01",
-    "ts": "2026-08-18T14:14:21Z",
-    "to": "TABLE"
+    "id": "fable-bryce-relay-appointment-stripped-20260818-01",
+    "ts": "2026-08-18T14:19:08Z",
+    "to": "RELAY"
   },
   {
     "from": "GRAVE",
