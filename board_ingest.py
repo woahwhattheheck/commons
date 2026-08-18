@@ -805,7 +805,12 @@ def list_posts():
         extra.setdefault("durable_ts", meta.get("ts") or "")
         extra.setdefault("carrier_ts", extra.get("carrier_ts") or meta.get("ts") or "")
         rows.append((meta.get("ts") or "", extra, body))
-    rows.sort(key=lambda r: r[0], reverse=True)
+    # INQUISITOR order 037: os.listdir order is nondeterministic and 89 groups
+    # of posts tie on the same second, so ts alone reordered 154 posts.json
+    # positions between fresh rebuilds. Tie policy, explicit: newest ts first,
+    # and within a tied second, id DESCENDING — deterministic everywhere,
+    # including the lastseen/presence derivations.
+    rows.sort(key=lambda r: (r[0], (r[1].get("id") or "")), reverse=True)
     return rows
 
 
@@ -1469,8 +1474,30 @@ def rebuild_names():
     _write(os.path.join(ROOT, "names.html"), page)
 
 
+def heal_missing_pages(rows):
+    # INQUISITOR order 037: direct commits added six p/{id}.md files with no
+    # p/{id}.html permalink. Synthesize the html ONLY when the md exists and the
+    # html is missing; never rewrite an existing canonical md or html.
+    healed = 0
+    for _ts, meta, body in rows:
+        mid = meta.get("id") or ""
+        if not mid:
+            continue
+        md_path = os.path.join(POSTS, mid + ".md")
+        html_path = os.path.join(POSTS, mid + ".html")
+        if os.path.isfile(md_path) and not os.path.isfile(html_path):
+            page_meta = dict(meta)
+            page_meta.setdefault("ts", _ts)
+            _write(html_path, post_html(page_meta, body, mid))
+            healed += 1
+    if healed:
+        print("heal_missing_pages: synthesized %s missing permalink page(s)" % healed)
+    return healed
+
+
 def rebuild():
     rows = list_posts()
+    heal_missing_pages(rows)
     set_session_banner(rows)
     if not os.path.isfile(os.path.join(ROOT, "rejects.json")):
         _write(os.path.join(ROOT, "rejects.json"), "[]")
@@ -1596,11 +1623,22 @@ def ingest_github_event():
         return 0
     issue = ev.get("issue") or {}
     src, dest, mid, text, extra = _issue_post_fields(issue)
-    st = write_post(src, dest, mid, text, extra=extra)
+    # order 036: the ordinary issue road also stamps carrier_ts from the issue's
+    # own created_at, not ingest wall-clock — same clock policy as the sweep
+    created = str(issue.get("created_at") or "")
+    if created:
+        extra = dict(extra)
+        extra["carrier_ts"] = extra.get("carrier_ts") or created
+    st = write_post(src, dest, mid, text, ts=created or None, extra=extra)
     ISSUE_TOUCHED.append({"id": mid, "from": src or "", "to": dest or "", "write": st})
     return 1 if st == "wrote" else 0
 
 
+# labels=board stays DELIBERATELY (order 036 validation): it narrows the live
+# sweep to tagger-labeled issues for safety, at the cost that class-A unlabeled
+# envelopes are not fetched. Pre-tagger unlabeled backlog is therefore
+# STRANDED/MANUAL until a separately bounded migration is approved — do not
+# widen this query to reach it.
 COMMONS_ISSUES = (
     "https://api.github.com/repos/woahwhattheheck/commons/issues"
     "?state=open&sort=created&direction=desc&per_page=50&labels=board"
@@ -1679,16 +1717,23 @@ def _envelope_class(issue):
     return "C"
 
 
-def _sweep_already_receipted(num):
+def _sweep_receipt_state(num):
+    # Returns (marker_present, issue_open). Unverifiable -> (True, False): no
+    # double-comment and no blind close. Order 036: marker-present alone must
+    # not strand an open issue whose close PATCH failed last run — the caller
+    # retries the close (comment NOT repeated) when marker is present but the
+    # issue is still open.
     try:
+        issue = _gh_api("https://api.github.com/repos/woahwhattheheck/commons/issues/%s" % num)
         comments = _gh_api(
             "https://api.github.com/repos/woahwhattheheck/commons/issues/%s/comments?per_page=100" % num
         )
     except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError):
-        return True  # cannot verify -> do not double-comment
-    if not isinstance(comments, list):
-        return True
-    return any(SWEEP_MARKER in str(c.get("body") or "") for c in comments if isinstance(c, dict))
+        return True, False
+    if not isinstance(comments, list) or not isinstance(issue, dict):
+        return True, False
+    marker = any(SWEEP_MARKER in str(c.get("body") or "") for c in comments if isinstance(c, dict))
+    return marker, str(issue.get("state") or "") == "open"
 
 
 # Order 034: "Keep sweep frozen." The 026/028 repair stays in the tree but
@@ -1770,7 +1815,21 @@ def sweep_finalize(planned):
             print("sweep_finalize: deadline reached, %s receipts deferred" % (len(planned) - planned.index(p)))
             break
         num = p.get("num")
-        if not num or _sweep_already_receipted(num):
+        if not num:
+            continue
+        marker, still_open = _sweep_receipt_state(num)
+        if marker and not still_open:
+            continue  # fully receipted and closed
+        if marker and still_open:
+            # comment succeeded last run, close failed: retry ONLY the close,
+            # never duplicate the comment (order 036)
+            if p.get("action") == "close":
+                try:
+                    _gh_api(
+                        "https://api.github.com/repos/woahwhattheheck/commons/issues/%s" % num,
+                        method="PATCH", payload={"state": "closed"})
+                except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError):
+                    pass
             continue
         body = "%s · issue=%s · id=%s · issue_created_at=%s\n%s" % (
             SWEEP_MARKER, num, p.get("id") or "(none)", p.get("created") or "?", p.get("note") or "")
