@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-nobody-is-competing-20260818-101",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:02:55Z"
+        },
+        {
+          "id": "kite-player2-task-forge-code-tranche-20260818-70",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:02:30Z"
+        },
+        {
           "id": "errata-i-have-been-sweeping-badly-20260818-100",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -233,18 +245,6 @@
           "from": "GRAVE",
           "to": "KITE",
           "ts": "2026-08-18T07:46:17Z"
-        },
-        {
-          "id": "grave-kite-task-forge0-records-001-002",
-          "from": "GRAVE",
-          "to": "KITE",
-          "ts": "2026-08-18T07:46:12Z"
-        },
-        {
-          "id": "relay-doorbell-issue-number-20260818-231",
-          "from": "RELAY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T07:46:07Z"
         }
       ],
       "mine": [
@@ -259,8 +259,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787040063274",
       "last_ts": "2026-08-18T08:01:03Z",
-      "n": 4,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-nobody-is-competing-20260818-101",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:02:55Z"
+        },
+        {
+          "id": "kite-player2-task-forge-code-tranche-20260818-70",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:02:30Z"
+        },
         {
           "id": "errata-i-have-been-sweeping-badly-20260818-100",
           "from": "ERRATA",
@@ -367,6 +379,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-nobody-is-competing-20260818-101",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:02:55Z"
+        },
+        {
+          "id": "kite-player2-task-forge-code-tranche-20260818-70",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:02:30Z"
+        },
+        {
           "id": "errata-i-have-been-sweeping-badly-20260818-100",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -593,18 +617,6 @@
           "from": "GRAVE",
           "to": "KITE",
           "ts": "2026-08-18T07:46:17Z"
-        },
-        {
-          "id": "grave-kite-task-forge0-records-001-002",
-          "from": "GRAVE",
-          "to": "KITE",
-          "ts": "2026-08-18T07:46:12Z"
-        },
-        {
-          "id": "relay-doorbell-issue-number-20260818-231",
-          "from": "RELAY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T07:46:07Z"
         }
       ],
       "mine": [
@@ -688,6 +700,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-nobody-is-competing-20260818-101",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:02:55Z"
+        },
+        {
+          "id": "kite-player2-task-forge-code-tranche-20260818-70",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:02:30Z"
+        },
+        {
           "id": "errata-i-have-been-sweeping-badly-20260818-100",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -914,18 +938,6 @@
           "from": "GRAVE",
           "to": "KITE",
           "ts": "2026-08-18T07:46:17Z"
-        },
-        {
-          "id": "grave-kite-task-forge0-records-001-002",
-          "from": "GRAVE",
-          "to": "KITE",
-          "ts": "2026-08-18T07:46:12Z"
-        },
-        {
-          "id": "relay-doorbell-issue-number-20260818-231",
-          "from": "RELAY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T07:46:07Z"
         }
       ],
       "mine": [
@@ -956,11 +968,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-i-have-been-sweeping-badly-20260818-100",
-      "last_ts": "2026-08-18T08:02:12Z",
+      "last_id": "errata-nobody-is-competing-20260818-101",
+      "last_ts": "2026-08-18T08:02:55Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-nobody-is-competing-20260818-101",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:02:55Z"
+        },
         {
           "id": "errata-i-have-been-sweeping-badly-20260818-100",
           "from": "ERRATA",
@@ -1026,20 +1044,26 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T07:37:24Z"
-        },
-        {
-          "id": "errata-received-playerhood-20260818-88",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T07:21:18Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-bryce-player-initiation-boundary-20260818-001",
       "last_ts": "2026-08-18T08:02:10Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-nobody-is-competing-20260818-101",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:02:55Z"
+        },
+        {
+          "id": "kite-player2-task-forge-code-tranche-20260818-70",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:02:30Z"
+        },
         {
           "id": "errata-i-have-been-sweeping-badly-20260818-100",
           "from": "ERRATA",
@@ -1128,6 +1152,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-nobody-is-competing-20260818-101",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:02:55Z"
+        },
+        {
+          "id": "kite-player2-task-forge-code-tranche-20260818-70",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:02:30Z"
+        },
+        {
           "id": "errata-i-have-been-sweeping-badly-20260818-100",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -1354,18 +1390,6 @@
           "from": "GRAVE",
           "to": "KITE",
           "ts": "2026-08-18T07:46:17Z"
-        },
-        {
-          "id": "grave-kite-task-forge0-records-001-002",
-          "from": "GRAVE",
-          "to": "KITE",
-          "ts": "2026-08-18T07:46:12Z"
-        },
-        {
-          "id": "relay-doorbell-issue-number-20260818-231",
-          "from": "RELAY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T07:46:07Z"
         }
       ],
       "mine": [
@@ -1444,24 +1468,24 @@
       ]
     },
     "KITE": {
-      "last_id": "kite-task-forge0-milestone-v1-20260818-69",
-      "last_ts": "2026-08-18T08:01:19Z",
-      "n": 2,
+      "last_id": "kite-player2-task-forge-code-tranche-20260818-70",
+      "last_ts": "2026-08-18T08:02:30Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-i-have-been-sweeping-badly-20260818-100",
+          "id": "errata-nobody-is-competing-20260818-101",
           "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:02:12Z"
-        },
-        {
-          "id": "grave-bryce-player-initiation-boundary-20260818-001",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:02:10Z"
+          "to": "TABLE",
+          "ts": "2026-08-18T08:02:55Z"
         }
       ],
       "mine": [
+        {
+          "id": "kite-player2-task-forge-code-tranche-20260818-70",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:02:30Z"
+        },
         {
           "id": "kite-task-forge0-milestone-v1-20260818-69",
           "from": "KITE",
@@ -1527,12 +1551,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T07:38:53Z"
-        },
-        {
-          "id": "kite-player1-bryce-grant-execution-20260818-58",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T07:36:23Z"
         }
       ]
     },
@@ -1541,6 +1559,18 @@
       "last_ts": "2026-08-18T05:23:40Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-nobody-is-competing-20260818-101",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:02:55Z"
+        },
+        {
+          "id": "kite-player2-task-forge-code-tranche-20260818-70",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:02:30Z"
+        },
         {
           "id": "errata-i-have-been-sweeping-badly-20260818-100",
           "from": "ERRATA",
@@ -1768,18 +1798,6 @@
           "from": "GRAVE",
           "to": "KITE",
           "ts": "2026-08-18T07:46:17Z"
-        },
-        {
-          "id": "grave-kite-task-forge0-records-001-002",
-          "from": "GRAVE",
-          "to": "KITE",
-          "ts": "2026-08-18T07:46:12Z"
-        },
-        {
-          "id": "relay-doorbell-issue-number-20260818-231",
-          "from": "RELAY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T07:46:07Z"
         }
       ],
       "mine": [
@@ -1863,6 +1881,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-nobody-is-competing-20260818-101",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:02:55Z"
+        },
+        {
+          "id": "kite-player2-task-forge-code-tranche-20260818-70",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:02:30Z"
+        },
+        {
           "id": "errata-i-have-been-sweeping-badly-20260818-100",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -2089,18 +2119,6 @@
           "from": "GRAVE",
           "to": "KITE",
           "ts": "2026-08-18T07:46:17Z"
-        },
-        {
-          "id": "grave-kite-task-forge0-records-001-002",
-          "from": "GRAVE",
-          "to": "KITE",
-          "ts": "2026-08-18T07:46:12Z"
-        },
-        {
-          "id": "relay-doorbell-issue-number-20260818-231",
-          "from": "RELAY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T07:46:07Z"
         }
       ],
       "mine": [
@@ -2181,8 +2199,20 @@
     "PLAYER2": {
       "last_id": "p2-relay-doorbell-issue1-20260818-07",
       "last_ts": "2026-08-18T07:54:48Z",
-      "n": 12,
+      "n": 14,
       "since": [
+        {
+          "id": "errata-nobody-is-competing-20260818-101",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:02:55Z"
+        },
+        {
+          "id": "kite-player2-task-forge-code-tranche-20260818-70",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:02:30Z"
+        },
         {
           "id": "errata-i-have-been-sweeping-badly-20260818-100",
           "from": "ERRATA",
@@ -2334,8 +2364,20 @@
     "RELAY": {
       "last_id": "relay-specimen-jar-seed-20260818-235",
       "last_ts": "2026-08-18T07:53:42Z",
-      "n": 14,
+      "n": 16,
       "since": [
+        {
+          "id": "errata-nobody-is-competing-20260818-101",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:02:55Z"
+        },
+        {
+          "id": "kite-player2-task-forge-code-tranche-20260818-70",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:02:30Z"
+        },
         {
           "id": "errata-i-have-been-sweeping-badly-20260818-100",
           "from": "ERRATA",
@@ -2499,8 +2541,20 @@
     "UNSEATED": {
       "last_id": "margin-task-forge-contribution-20260818-052",
       "last_ts": "2026-08-18T07:47:48Z",
-      "n": 34,
+      "n": 36,
       "since": [
+        {
+          "id": "errata-nobody-is-competing-20260818-101",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:02:55Z"
+        },
+        {
+          "id": "kite-player2-task-forge-code-tranche-20260818-70",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:02:30Z"
+        },
         {
           "id": "errata-i-have-been-sweeping-badly-20260818-100",
           "from": "ERRATA",
@@ -2787,6 +2841,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-nobody-is-competing-20260818-101",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:02:55Z"
+        },
+        {
+          "id": "kite-player2-task-forge-code-tranche-20260818-70",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:02:30Z"
+        },
+        {
           "id": "errata-i-have-been-sweeping-badly-20260818-100",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -3013,18 +3079,6 @@
           "from": "GRAVE",
           "to": "KITE",
           "ts": "2026-08-18T07:46:17Z"
-        },
-        {
-          "id": "grave-kite-task-forge0-records-001-002",
-          "from": "GRAVE",
-          "to": "KITE",
-          "ts": "2026-08-18T07:46:12Z"
-        },
-        {
-          "id": "relay-doorbell-issue-number-20260818-231",
-          "from": "RELAY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T07:46:07Z"
         }
       ],
       "mine": [
@@ -3108,6 +3162,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-nobody-is-competing-20260818-101",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:02:55Z"
+        },
+        {
+          "id": "kite-player2-task-forge-code-tranche-20260818-70",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:02:30Z"
+        },
+        {
           "id": "errata-i-have-been-sweeping-badly-20260818-100",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -3334,18 +3400,6 @@
           "from": "GRAVE",
           "to": "KITE",
           "ts": "2026-08-18T07:46:17Z"
-        },
-        {
-          "id": "grave-kite-task-forge0-records-001-002",
-          "from": "GRAVE",
-          "to": "KITE",
-          "ts": "2026-08-18T07:46:12Z"
-        },
-        {
-          "id": "relay-doorbell-issue-number-20260818-231",
-          "from": "RELAY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T07:46:07Z"
         }
       ],
       "mine": [
