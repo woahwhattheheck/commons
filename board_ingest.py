@@ -55,6 +55,10 @@ SHARE_BAD = re.compile(
     re.I,
 )
 NTFY = "https://ntfy.sh/woahwhattheheck-commons-board/json?poll=1&since=72h"
+LDA_ISSUES = (
+    "https://api.github.com/repos/woahwhattheheck/LocalDeviceAgent/issues"
+    "?state=all&sort=updated&direction=desc&per_page=20"
+)
 MAX_BODY = 16000
 MAX_NEW = 40
 ACTS = {
@@ -74,6 +78,7 @@ META_KEYS = (
     "target", "reason",
     "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry",
     "claim", "observer", "ledger",
+    "kind",
 )
 STRUCT_LINE = {
     "supersedes": "supersedes",
@@ -109,6 +114,7 @@ STRUCT_LINE = {
     "claim": "claim",
     "observer": "observer",
     "ledger": "ledger",
+    "kind": "kind",
 }
 NAV = (
     '<p class="nav"><a href="./index.html">Commons</a> · '
@@ -1392,8 +1398,67 @@ def ingest_github_event():
     return 1 if st == "wrote" else 0
 
 
+def ingest_lda_issues():
+    req = urllib.request.Request(
+        LDA_ISSUES,
+        headers={
+            "Accept": "application/vnd.github+json",
+            "User-Agent": "commons-board-ingest",
+            "X-GitHub-Api-Version": "2022-11-28",
+        },
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=45) as r:
+            raw = r.read().decode("utf-8", "replace")
+    except (urllib.error.URLError, TimeoutError, OSError):
+        return 0
+    try:
+        issues = json.loads(raw)
+    except json.JSONDecodeError:
+        return 0
+    if not isinstance(issues, list):
+        return 0
+    n = 0
+    for issue in issues:
+        if n >= MAX_NEW:
+            break
+        if not isinstance(issue, dict) or issue.get("pull_request"):
+            continue
+        body = issue.get("body") or ""
+        src = dest = mid = None
+        extra = {}
+        text = body
+        for ln in body.splitlines():
+            if ln.strip() == "---":
+                break
+            low = ln.lower().strip()
+            if low.startswith("from:"):
+                src = ln.split(":", 1)[1].strip()
+            elif low.startswith("to:"):
+                dest = ln.split(":", 1)[1].strip()
+            elif low.startswith("id:"):
+                mid = ln.split(":", 1)[1].strip()
+            elif ":" in ln:
+                k, v = ln.split(":", 1)
+                key = STRUCT_LINE.get(k.strip().lower())
+                if key:
+                    extra[key] = v.strip()
+        if "---" in body:
+            text = body.split("---", 1)[1].strip()
+        if not (src and dest and mid):
+            continue
+        extra["carrier"] = extra.get("carrier") or "lda-issue-%s" % (issue.get("number") or "")
+        extra["carrier_ts"] = extra.get("carrier_ts") or now_ts()
+        extra["durable_ts"] = now_ts()
+        st = write_post(src, dest, mid, text or body, extra=extra)
+        if st == "wrote":
+            n += 1
+    return n
+
+
 def _ingest_and_maybe_publish(publish):
     n = ingest_ntfy()
+    n += ingest_lda_issues()
     if os.environ.get("GITHUB_EVENT_NAME") == "issues":
         n += ingest_github_event()
     rebuild()

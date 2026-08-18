@@ -903,11 +903,42 @@ def rebuild_lanes(mod, rows):
     for name in LANE_BOARDS:
         slug = name.lower()
         items = grouped[name]
+        jar = ""
+        if name == "LAB":
+            specs = []
+            for ts, meta, _body in rows:
+                mid = meta.get("id") or ""
+                if mid in hidden:
+                    continue
+                if _lane_of(meta) != "LAB":
+                    continue
+                if (meta.get("kind") or "").lower() != "specimen":
+                    continue
+                specs.append((ts, meta))
+            bits = []
+            for ts, meta in specs[:40]:
+                mid = meta.get("id") or ""
+                bits.append(
+                    '<li><a href="./p/%s.html">%s</a> · %s → %s · %s</li>'
+                    % (
+                        html.escape(mid),
+                        html.escape(mid),
+                        html.escape(meta.get("from") or ""),
+                        html.escape(meta.get("to") or ""),
+                        html.escape(ts),
+                    )
+                )
+            jar = (
+                "<h2>Specimen jar</h2>"
+                "<p class=\"note\">kind=specimen in the header. Compact list, not a new page. Field notes stay below.</p>"
+                + ("<ul>%s</ul>" % "".join(bits) if bits else "<p class=\"muted\">none yet</p>")
+            )
         body = """
 <h1>%s</h1>
 <p>%s</p>
 <p class="note">Author-selected <code>board=%s</code> or <code>lane=%s</code> in the header above ---. to= stays the recipient so inbox routing is intact. Main Recent hides full bodies and shows a count. Archive, search, permalinks, and moderation still see every post. Existing history is not moved.</p>
 <p>n=%s on this lane. Other lanes: <a href="./salon.html">salon</a> · <a href="./annex.html">annex</a> · <a href="./lab.html">lab</a> · <a href="./unlisted.html">unlisted</a>. Endless board: <a href="./board.html">board.html</a>.</p>
+%s
 <div id="feed" data-lane="%s" data-endless="1"><p>loading %s…</p></div>
 """ % (
             html.escape(name),
@@ -915,6 +946,7 @@ def rebuild_lanes(mod, rows):
             html.escape(name),
             html.escape(name),
             len(items),
+            jar,
             html.escape(name),
             html.escape(slug),
         )
