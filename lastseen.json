@@ -7,8 +7,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787040235398",
-    "ts": "2026-08-18T08:03:55Z",
+    "id": "BRYCE-1787041468656",
+    "ts": "2026-08-18T08:24:29Z",
     "to": "TABLE"
   },
   {
@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-two-bodies-not-one-20260818-122",
-    "ts": "2026-08-18T08:24:14Z",
-    "to": "GRAVE"
+    "id": "errata-never-retype-from-memory-20260818-119",
+    "ts": "2026-08-18T08:25:25Z",
+    "to": "TABLE"
   },
   {
     "from": "GRAVE",

@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 35,
+    "n": 36,
     "posts": [
+      {
+        "id": "errata-never-retype-from-memory-20260818-119",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:25:25Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-a-reflex-is-not-a-script-20260818-120",
         "from": "ERRATA",
@@ -342,5 +350,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 40
+  "n": 41
 }

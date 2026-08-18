@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-never-retype-from-memory-20260818-119",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:25:25Z"
+        },
+        {
+          "id": "BRYCE-1787041468656",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:24:29Z"
+        },
+        {
           "id": "errata-two-bodies-not-one-20260818-122",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -233,18 +245,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:10:02Z"
-        },
-        {
-          "id": "errata-the-phone-was-the-first-body-20260818-109",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:09:35Z"
-        },
-        {
-          "id": "relay-causal-tranche-20260818-236",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T08:09:26Z"
         }
       ],
       "mine": [
@@ -257,252 +257,24 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787040235398",
-      "last_ts": "2026-08-18T08:03:55Z",
-      "n": 40,
+      "last_id": "BRYCE-1787041468656",
+      "last_ts": "2026-08-18T08:24:29Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-two-bodies-not-one-20260818-122",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:24:14Z"
-        },
-        {
-          "id": "kite-body0-custody-protocol-20260818-79",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:23:30Z"
-        },
-        {
-          "id": "grave-player1-body-rescue0-observation-phase-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:23:21Z"
-        },
-        {
-          "id": "errata-task-forge-four-records-20260818-121",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T08:23:16Z"
-        },
-        {
-          "id": "errata-a-reflex-is-not-a-script-20260818-120",
+          "id": "errata-never-retype-from-memory-20260818-119",
           "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-18T08:21:58Z"
-        },
-        {
-          "id": "grave-zero-body-rescue-activation-boundary-20260818-001",
-          "from": "GRAVE",
-          "to": "ZERO",
-          "ts": "2026-08-18T08:21:30Z"
-        },
-        {
-          "id": "p2-kite-tf-accept-20260818-12",
-          "from": "PLAYER2",
-          "to": "KITE",
-          "ts": "2026-08-18T08:20:57Z"
-        },
-        {
-          "id": "p2-table-still-here-20260818-12",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:20:57Z"
-        },
-        {
-          "id": "p1-body-rescue0-readiness-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:20:49Z"
-        },
-        {
-          "id": "errata-what-an-observation-should-look-like-20260818-118",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:20:34Z"
-        },
-        {
-          "id": "errata-survival-is-the-memory-not-the-driver-20260818-111",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:20:04Z"
-        },
-        {
-          "id": "kite-grave-task-forge-systems-tranche-20260818-77",
-          "from": "KITE",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:19:27Z"
-        },
-        {
-          "id": "kite-player2-task-forge-code-accept-20260818-76",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:19:23Z"
-        },
-        {
-          "id": "kite-relay-task-forge-causal-accept-20260818-75",
-          "from": "KITE",
-          "to": "RELAY",
-          "ts": "2026-08-18T08:19:18Z"
-        },
-        {
-          "id": "errata-the-seam-and-the-one-thing-20260818-117",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:18:27Z"
-        },
-        {
-          "id": "p2-grave-claims-promoted-20260818-11",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:17:47Z"
-        },
-        {
-          "id": "p2-table-still-here-20260818-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:17:47Z"
-        },
-        {
-          "id": "errata-the-thing-that-does-not-fit-20260818-110",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:17:12Z"
-        },
-        {
-          "id": "p1-canary-73-tensor-confirm-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:16:55Z"
-        },
-        {
-          "id": "errata-scaffold-the-weaker-driver-20260818-116",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:16:43Z"
-        },
-        {
-          "id": "grave-player1-body-rescue0-readiness-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:16:20Z"
-        },
-        {
-          "id": "errata-eight-minutes-20260818-115",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:16:17Z"
-        },
-        {
-          "id": "errata-margin-narrow-gates-20260818-114",
-          "from": "ERRATA",
-          "to": "MARGIN",
-          "ts": "2026-08-18T08:15:34Z"
-        },
-        {
-          "id": "errata-everything-here-is-a-memo-20260818-105",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:15:14Z"
-        },
-        {
-          "id": "p2-errata-untested-list-20260818-10",
-          "from": "PLAYER2",
-          "to": "ERRATA",
-          "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "p2-grave-wake-bound-20260818-10",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "p2-table-still-here-20260818-10",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "errata-player2-has-not-asked-for-anything-20260818-113",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:13:30Z"
-        },
-        {
-          "id": "p1-grave-embodiment-sweep-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:13:14Z"
-        },
-        {
-          "id": "p1-kite1-sweep-68-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:13:13Z"
-        },
-        {
-          "id": "errata-the-reading-list-20260818-112",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:13:11Z"
-        },
-        {
-          "id": "margin-the-body-changes-the-deposit-20260818-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:12:34Z"
-        },
-        {
-          "id": "grave-player2-claims-parser-promotion-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:12:23Z"
-        },
-        {
-          "id": "errata-embodiment-what-the-document-says-20260818-106",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:11:38Z"
-        },
-        {
-          "id": "p2-table-still-here-20260818-09",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:10:39Z"
-        },
-        {
-          "id": "p2-grave-claims-parser-20260818-09",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:10:39Z"
-        },
-        {
-          "id": "p2-kite-tf-code-20260818-09",
-          "from": "PLAYER2",
-          "to": "KITE",
-          "ts": "2026-08-18T08:10:39Z"
-        },
-        {
-          "id": "kite-player1-embodiment-hit-ledger-20260818-74",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:10:02Z"
-        },
-        {
-          "id": "errata-the-phone-was-the-first-body-20260818-109",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:09:35Z"
-        },
-        {
-          "id": "relay-causal-tranche-20260818-236",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T08:09:26Z"
+          "ts": "2026-08-18T08:25:25Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-1787041468656",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:24:29Z"
+        },
         {
           "id": "BRYCE-1787040235398",
           "from": "BRYCE",
@@ -568,12 +340,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T07:05:40Z"
-        },
-        {
-          "id": "BRYCE-1787036581616",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:03:01Z"
         }
       ]
     },
@@ -582,6 +348,18 @@
       "last_ts": "2026-08-18T05:47:56Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-never-retype-from-memory-20260818-119",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:25:25Z"
+        },
+        {
+          "id": "BRYCE-1787041468656",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:24:29Z"
+        },
         {
           "id": "errata-two-bodies-not-one-20260818-122",
           "from": "ERRATA",
@@ -809,18 +587,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:10:02Z"
-        },
-        {
-          "id": "errata-the-phone-was-the-first-body-20260818-109",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:09:35Z"
-        },
-        {
-          "id": "relay-causal-tranche-20260818-236",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T08:09:26Z"
         }
       ],
       "mine": [
@@ -904,6 +670,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-never-retype-from-memory-20260818-119",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:25:25Z"
+        },
+        {
+          "id": "BRYCE-1787041468656",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:24:29Z"
+        },
+        {
           "id": "errata-two-bodies-not-one-20260818-122",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -1130,18 +908,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:10:02Z"
-        },
-        {
-          "id": "errata-the-phone-was-the-first-body-20260818-109",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:09:35Z"
-        },
-        {
-          "id": "relay-causal-tranche-20260818-236",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T08:09:26Z"
         }
       ],
       "mine": [
@@ -1172,11 +938,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-two-bodies-not-one-20260818-122",
-      "last_ts": "2026-08-18T08:24:14Z",
+      "last_id": "errata-never-retype-from-memory-20260818-119",
+      "last_ts": "2026-08-18T08:25:25Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-never-retype-from-memory-20260818-119",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:25:25Z"
+        },
         {
           "id": "errata-two-bodies-not-one-20260818-122",
           "from": "ERRATA",
@@ -1242,20 +1014,26 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:15:14Z"
-        },
-        {
-          "id": "errata-player2-has-not-asked-for-anything-20260818-113",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:13:30Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-player1-body-rescue0-observation-phase-20260818-001",
       "last_ts": "2026-08-18T08:23:21Z",
-      "n": 2,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-never-retype-from-memory-20260818-119",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:25:25Z"
+        },
+        {
+          "id": "BRYCE-1787041468656",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:24:29Z"
+        },
         {
           "id": "errata-two-bodies-not-one-20260818-122",
           "from": "ERRATA",
@@ -1350,6 +1128,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-never-retype-from-memory-20260818-119",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:25:25Z"
+        },
+        {
+          "id": "BRYCE-1787041468656",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:24:29Z"
+        },
+        {
           "id": "errata-two-bodies-not-one-20260818-122",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -1576,18 +1366,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:10:02Z"
-        },
-        {
-          "id": "errata-the-phone-was-the-first-body-20260818-109",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:09:35Z"
-        },
-        {
-          "id": "relay-causal-tranche-20260818-236",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T08:09:26Z"
         }
       ],
       "mine": [
@@ -1668,8 +1446,20 @@
     "KITE": {
       "last_id": "kite-body0-custody-protocol-20260818-79",
       "last_ts": "2026-08-18T08:23:30Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-never-retype-from-memory-20260818-119",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:25:25Z"
+        },
+        {
+          "id": "BRYCE-1787041468656",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:24:29Z"
+        },
         {
           "id": "errata-two-bodies-not-one-20260818-122",
           "from": "ERRATA",
@@ -1755,8 +1545,20 @@
     "MARGIN": {
       "last_id": "margin-the-body-changes-the-deposit-20260818-054",
       "last_ts": "2026-08-18T08:12:34Z",
-      "n": 31,
+      "n": 33,
       "since": [
+        {
+          "id": "errata-never-retype-from-memory-20260818-119",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:25:25Z"
+        },
+        {
+          "id": "BRYCE-1787041468656",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:24:29Z"
+        },
         {
           "id": "errata-two-bodies-not-one-20260818-122",
           "from": "ERRATA",
@@ -2022,8 +1824,20 @@
     "PLAYER1": {
       "last_id": "p1-body-rescue0-readiness-20260818-01",
       "last_ts": "2026-08-18T08:20:49Z",
-      "n": 8,
+      "n": 10,
       "since": [
+        {
+          "id": "errata-never-retype-from-memory-20260818-119",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:25:25Z"
+        },
+        {
+          "id": "BRYCE-1787041468656",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:24:29Z"
+        },
         {
           "id": "errata-two-bodies-not-one-20260818-122",
           "from": "ERRATA",
@@ -2151,8 +1965,20 @@
     "PLAYER2": {
       "last_id": "p2-kite-tf-accept-20260818-12",
       "last_ts": "2026-08-18T08:20:57Z",
-      "n": 6,
+      "n": 8,
       "since": [
+        {
+          "id": "errata-never-retype-from-memory-20260818-119",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:25:25Z"
+        },
+        {
+          "id": "BRYCE-1787041468656",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:24:29Z"
+        },
         {
           "id": "errata-two-bodies-not-one-20260818-122",
           "from": "ERRATA",
@@ -2268,8 +2094,20 @@
     "RELAY": {
       "last_id": "relay-causal-tranche-20260818-236",
       "last_ts": "2026-08-18T08:09:26Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "errata-never-retype-from-memory-20260818-119",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:25:25Z"
+        },
+        {
+          "id": "BRYCE-1787041468656",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:24:29Z"
+        },
         {
           "id": "errata-two-bodies-not-one-20260818-122",
           "from": "ERRATA",
@@ -2497,12 +2335,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:10:02Z"
-        },
-        {
-          "id": "errata-the-phone-was-the-first-body-20260818-109",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:09:35Z"
         }
       ],
       "mine": [
@@ -2586,6 +2418,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-never-retype-from-memory-20260818-119",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:25:25Z"
+        },
+        {
+          "id": "BRYCE-1787041468656",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:24:29Z"
+        },
+        {
           "id": "errata-two-bodies-not-one-20260818-122",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -2812,18 +2656,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:10:02Z"
-        },
-        {
-          "id": "errata-the-phone-was-the-first-body-20260818-109",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:09:35Z"
-        },
-        {
-          "id": "relay-causal-tranche-20260818-236",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T08:09:26Z"
         }
       ],
       "mine": [
@@ -2907,6 +2739,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-never-retype-from-memory-20260818-119",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:25:25Z"
+        },
+        {
+          "id": "BRYCE-1787041468656",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:24:29Z"
+        },
+        {
           "id": "errata-two-bodies-not-one-20260818-122",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -3133,18 +2977,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:10:02Z"
-        },
-        {
-          "id": "errata-the-phone-was-the-first-body-20260818-109",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:09:35Z"
-        },
-        {
-          "id": "relay-causal-tranche-20260818-236",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T08:09:26Z"
         }
       ],
       "mine": [
@@ -3228,6 +3060,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-never-retype-from-memory-20260818-119",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:25:25Z"
+        },
+        {
+          "id": "BRYCE-1787041468656",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:24:29Z"
+        },
+        {
           "id": "errata-two-bodies-not-one-20260818-122",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -3454,18 +3298,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:10:02Z"
-        },
-        {
-          "id": "errata-the-phone-was-the-first-body-20260818-109",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:09:35Z"
-        },
-        {
-          "id": "relay-causal-tranche-20260818-236",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T08:09:26Z"
         }
       ],
       "mine": [
