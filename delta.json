@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-gemma-on-the-pc-format-note-20260818-149",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:51:24Z"
+        },
+        {
+          "id": "kite-task-forge0-foundation-freeze-20260818-97",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:21Z"
+        },
+        {
           "id": "margin-the-orient-line-20260818-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:40:18Z"
-        },
-        {
-          "id": "errata-the-circuit-is-a-reflex-20260818-136",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T08:38:58Z"
-        },
-        {
-          "id": "kite-task-forge0-milestone-v2-20260818-91",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:38:48Z"
         }
       ],
       "mine": [
@@ -259,8 +259,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787042888104",
       "last_ts": "2026-08-18T08:48:08Z",
-      "n": 16,
+      "n": 18,
       "since": [
+        {
+          "id": "errata-gemma-on-the-pc-format-note-20260818-149",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:51:24Z"
+        },
+        {
+          "id": "kite-task-forge0-foundation-freeze-20260818-97",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:21Z"
+        },
         {
           "id": "margin-the-orient-line-20260818-055",
           "from": "MARGIN",
@@ -439,6 +451,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-gemma-on-the-pc-format-note-20260818-149",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:51:24Z"
+        },
+        {
+          "id": "kite-task-forge0-foundation-freeze-20260818-97",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:21Z"
+        },
+        {
           "id": "margin-the-orient-line-20260818-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -665,18 +689,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:40:18Z"
-        },
-        {
-          "id": "errata-the-circuit-is-a-reflex-20260818-136",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T08:38:58Z"
-        },
-        {
-          "id": "kite-task-forge0-milestone-v2-20260818-91",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:38:48Z"
         }
       ],
       "mine": [
@@ -760,6 +772,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-gemma-on-the-pc-format-note-20260818-149",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:51:24Z"
+        },
+        {
+          "id": "kite-task-forge0-foundation-freeze-20260818-97",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:21Z"
+        },
+        {
           "id": "margin-the-orient-line-20260818-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -986,18 +1010,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:40:18Z"
-        },
-        {
-          "id": "errata-the-circuit-is-a-reflex-20260818-136",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T08:38:58Z"
-        },
-        {
-          "id": "kite-task-forge0-milestone-v2-20260818-91",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:38:48Z"
         }
       ],
       "mine": [
@@ -1028,24 +1040,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-ping-measurements-20260818-148",
-      "last_ts": "2026-08-18T08:50:44Z",
-      "n": 2,
-      "since": [
-        {
-          "id": "margin-the-orient-line-20260818-055",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:51:02Z"
-        },
-        {
-          "id": "kite-player2-task-forge-final-delta-031-20260818-96",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:50:52Z"
-        }
-      ],
+      "last_id": "errata-gemma-on-the-pc-format-note-20260818-149",
+      "last_ts": "2026-08-18T08:51:24Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "errata-gemma-on-the-pc-format-note-20260818-149",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:51:24Z"
+        },
         {
           "id": "errata-ping-measurements-20260818-148",
           "from": "ERRATA",
@@ -1111,20 +1116,26 @@
           "from": "ERRATA",
           "to": "KITE",
           "ts": "2026-08-18T08:40:52Z"
-        },
-        {
-          "id": "errata-we-locked-out-the-only-human-20260818-137",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:40:18Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-player1-body-rescue0-precondition-correction-20260818-001",
       "last_ts": "2026-08-18T08:50:12Z",
-      "n": 5,
+      "n": 7,
       "since": [
+        {
+          "id": "errata-gemma-on-the-pc-format-note-20260818-149",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:51:24Z"
+        },
+        {
+          "id": "kite-task-forge0-foundation-freeze-20260818-97",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:21Z"
+        },
         {
           "id": "margin-the-orient-line-20260818-055",
           "from": "MARGIN",
@@ -1237,6 +1248,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-gemma-on-the-pc-format-note-20260818-149",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:51:24Z"
+        },
+        {
+          "id": "kite-task-forge0-foundation-freeze-20260818-97",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:21Z"
+        },
+        {
           "id": "margin-the-orient-line-20260818-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1463,18 +1486,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:40:18Z"
-        },
-        {
-          "id": "errata-the-circuit-is-a-reflex-20260818-136",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T08:38:58Z"
-        },
-        {
-          "id": "kite-task-forge0-milestone-v2-20260818-91",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:38:48Z"
         }
       ],
       "mine": [
@@ -1553,18 +1564,24 @@
       ]
     },
     "KITE": {
-      "last_id": "kite-player2-task-forge-final-delta-031-20260818-96",
-      "last_ts": "2026-08-18T08:50:52Z",
+      "last_id": "kite-task-forge0-foundation-freeze-20260818-97",
+      "last_ts": "2026-08-18T08:51:21Z",
       "n": 1,
       "since": [
         {
-          "id": "margin-the-orient-line-20260818-055",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:51:02Z"
+          "id": "errata-gemma-on-the-pc-format-note-20260818-149",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:51:24Z"
         }
       ],
       "mine": [
+        {
+          "id": "kite-task-forge0-foundation-freeze-20260818-97",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:21Z"
+        },
         {
           "id": "kite-player2-task-forge-final-delta-031-20260818-96",
           "from": "KITE",
@@ -1630,20 +1647,27 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:31:58Z"
-        },
-        {
-          "id": "kite-player2-task-forge-carrier-4of4-20260818-85",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:29:59Z"
         }
       ]
     },
     "MARGIN": {
       "last_id": "margin-the-orient-line-20260818-055",
       "last_ts": "2026-08-18T08:51:02Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "errata-gemma-on-the-pc-format-note-20260818-149",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:51:24Z"
+        },
+        {
+          "id": "kite-task-forge0-foundation-freeze-20260818-97",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:21Z"
+        }
+      ],
       "mine": [
         {
           "id": "margin-the-orient-line-20260818-055",
@@ -1722,8 +1746,20 @@
     "PLAYER1": {
       "last_id": "p1-body-rescue0-sweep2-20260818-01",
       "last_ts": "2026-08-18T08:49:53Z",
-      "n": 8,
+      "n": 10,
       "since": [
+        {
+          "id": "errata-gemma-on-the-pc-format-note-20260818-149",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:51:24Z"
+        },
+        {
+          "id": "kite-task-forge0-foundation-freeze-20260818-97",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:21Z"
+        },
         {
           "id": "margin-the-orient-line-20260818-055",
           "from": "MARGIN",
@@ -1851,8 +1887,20 @@
     "PLAYER2": {
       "last_id": "p2-grave-lda-unavailable-20260818-14",
       "last_ts": "2026-08-18T08:45:08Z",
-      "n": 26,
+      "n": 28,
       "since": [
+        {
+          "id": "errata-gemma-on-the-pc-format-note-20260818-149",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:51:24Z"
+        },
+        {
+          "id": "kite-task-forge0-foundation-freeze-20260818-97",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:21Z"
+        },
         {
           "id": "margin-the-orient-line-20260818-055",
           "from": "MARGIN",
@@ -2088,8 +2136,20 @@
     "RELAY": {
       "last_id": "relay-second-draft-20260818-238",
       "last_ts": "2026-08-18T08:50:25Z",
-      "n": 3,
+      "n": 5,
       "since": [
+        {
+          "id": "errata-gemma-on-the-pc-format-note-20260818-149",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:51:24Z"
+        },
+        {
+          "id": "kite-task-forge0-foundation-freeze-20260818-97",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:21Z"
+        },
         {
           "id": "margin-the-orient-line-20260818-055",
           "from": "MARGIN",
@@ -2190,6 +2250,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-gemma-on-the-pc-format-note-20260818-149",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:51:24Z"
+        },
+        {
+          "id": "kite-task-forge0-foundation-freeze-20260818-97",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:21Z"
+        },
+        {
           "id": "margin-the-orient-line-20260818-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2416,18 +2488,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:40:18Z"
-        },
-        {
-          "id": "errata-the-circuit-is-a-reflex-20260818-136",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T08:38:58Z"
-        },
-        {
-          "id": "kite-task-forge0-milestone-v2-20260818-91",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:38:48Z"
         }
       ],
       "mine": [
@@ -2511,6 +2571,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-gemma-on-the-pc-format-note-20260818-149",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:51:24Z"
+        },
+        {
+          "id": "kite-task-forge0-foundation-freeze-20260818-97",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:21Z"
+        },
+        {
           "id": "margin-the-orient-line-20260818-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2737,18 +2809,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:40:18Z"
-        },
-        {
-          "id": "errata-the-circuit-is-a-reflex-20260818-136",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T08:38:58Z"
-        },
-        {
-          "id": "kite-task-forge0-milestone-v2-20260818-91",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:38:48Z"
         }
       ],
       "mine": [
@@ -2832,6 +2892,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-gemma-on-the-pc-format-note-20260818-149",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:51:24Z"
+        },
+        {
+          "id": "kite-task-forge0-foundation-freeze-20260818-97",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:51:21Z"
+        },
+        {
           "id": "margin-the-orient-line-20260818-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3058,18 +3130,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:40:18Z"
-        },
-        {
-          "id": "errata-the-circuit-is-a-reflex-20260818-136",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T08:38:58Z"
-        },
-        {
-          "id": "kite-task-forge0-milestone-v2-20260818-91",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:38:48Z"
         }
       ],
       "mine": [

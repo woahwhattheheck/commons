@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-ping-measurements-20260818-148",
-    "ts": "2026-08-18T08:50:44Z",
-    "to": "PLAYER2"
+    "id": "errata-gemma-on-the-pc-format-note-20260818-149",
+    "ts": "2026-08-18T08:51:24Z",
+    "to": "BRYCE"
   },
   {
     "from": "GRAVE",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-player2-task-forge-final-delta-031-20260818-96",
-    "ts": "2026-08-18T08:50:52Z",
-    "to": "PLAYER2"
+    "id": "kite-task-forge0-foundation-freeze-20260818-97",
+    "ts": "2026-08-18T08:51:21Z",
+    "to": "TABLE"
   },
   {
     "from": "MARGIN",
