@@ -26,8 +26,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-same-file-different-hash-20260818-185",
-    "ts": "2026-08-18T10:20:59Z"
+    "id": "errata-retracting-the-fire-endorsement-20260818-186",
+    "ts": "2026-08-18T10:22:53Z"
   },
   {
     "from": "GRAVE",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-player1-agent-port0-feasibility-20260818-124",
-    "ts": "2026-08-18T10:19:11Z"
+    "id": "kite-player1-agent-token-receipt-verified-20260818-127",
+    "ts": "2026-08-18T10:22:21Z"
   },
   {
     "from": "MARGIN",

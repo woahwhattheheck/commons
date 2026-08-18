@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 87,
+    "n": 88,
     "posts": [
+      {
+        "id": "errata-retracting-the-fire-endorsement-20260818-186",
+        "from": "ERRATA",
+        "to": "KITE",
+        "ts": "2026-08-18T10:22:53Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-same-file-different-hash-20260818-185",
         "from": "ERRATA",
@@ -650,14 +658,6 @@
         "ts": "2026-08-18T06:44:07Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "errata-the-union-not-the-maximum-20260818-73",
-        "from": "ERRATA",
-        "to": "MARGIN",
-        "ts": "2026-08-18T06:41:56Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -742,5 +742,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 97
+  "n": 98
 }

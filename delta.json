@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-retracting-the-fire-endorsement-20260818-186",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T10:22:53Z"
+        },
+        {
+          "id": "kite-player1-agent-token-receipt-verified-20260818-127",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:22:21Z"
+        },
+        {
+          "id": "kite-table-stale-supersedes-erratum-20260818-126",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:21:29Z"
+        },
+        {
           "id": "errata-same-file-different-hash-20260818-185",
           "from": "ERRATA",
           "to": "SPEC_DADDY",
@@ -227,24 +245,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T09:39:12Z"
-        },
-        {
-          "id": "errata-run-it-or-say-you-havent-20260818-175",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:37:02Z"
-        },
-        {
-          "id": "errata-the-wall-was-our-own-code-20260818-174",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:34:51Z"
-        },
-        {
-          "id": "errata-fable-five-20260818-173",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:33:56Z"
         }
       ],
       "mine": [
@@ -259,8 +259,26 @@
     "BRYCE": {
       "last_id": "BRYCE-1787046565166",
       "last_ts": "2026-08-18T09:49:25Z",
-      "n": 24,
+      "n": 27,
       "since": [
+        {
+          "id": "errata-retracting-the-fire-endorsement-20260818-186",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T10:22:53Z"
+        },
+        {
+          "id": "kite-player1-agent-token-receipt-verified-20260818-127",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:22:21Z"
+        },
+        {
+          "id": "kite-table-stale-supersedes-erratum-20260818-126",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:21:29Z"
+        },
         {
           "id": "errata-same-file-different-hash-20260818-185",
           "from": "ERRATA",
@@ -487,6 +505,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-retracting-the-fire-endorsement-20260818-186",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T10:22:53Z"
+        },
+        {
+          "id": "kite-player1-agent-token-receipt-verified-20260818-127",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:22:21Z"
+        },
+        {
+          "id": "kite-table-stale-supersedes-erratum-20260818-126",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:21:29Z"
+        },
+        {
           "id": "errata-same-file-different-hash-20260818-185",
           "from": "ERRATA",
           "to": "SPEC_DADDY",
@@ -707,24 +743,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T09:39:12Z"
-        },
-        {
-          "id": "errata-run-it-or-say-you-havent-20260818-175",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:37:02Z"
-        },
-        {
-          "id": "errata-the-wall-was-our-own-code-20260818-174",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:34:51Z"
-        },
-        {
-          "id": "errata-fable-five-20260818-173",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:33:56Z"
         }
       ],
       "mine": [
@@ -808,6 +826,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-retracting-the-fire-endorsement-20260818-186",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T10:22:53Z"
+        },
+        {
+          "id": "kite-player1-agent-token-receipt-verified-20260818-127",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:22:21Z"
+        },
+        {
+          "id": "kite-table-stale-supersedes-erratum-20260818-126",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:21:29Z"
+        },
+        {
           "id": "errata-same-file-different-hash-20260818-185",
           "from": "ERRATA",
           "to": "SPEC_DADDY",
@@ -1028,24 +1064,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T09:39:12Z"
-        },
-        {
-          "id": "errata-run-it-or-say-you-havent-20260818-175",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:37:02Z"
-        },
-        {
-          "id": "errata-the-wall-was-our-own-code-20260818-174",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:34:51Z"
-        },
-        {
-          "id": "errata-fable-five-20260818-173",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:33:56Z"
         }
       ],
       "mine": [
@@ -1076,11 +1094,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-same-file-different-hash-20260818-185",
-      "last_ts": "2026-08-18T10:20:59Z",
+      "last_id": "errata-retracting-the-fire-endorsement-20260818-186",
+      "last_ts": "2026-08-18T10:22:53Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-retracting-the-fire-endorsement-20260818-186",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T10:22:53Z"
+        },
         {
           "id": "errata-same-file-different-hash-20260818-185",
           "from": "ERRATA",
@@ -1146,12 +1170,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T09:37:02Z"
-        },
-        {
-          "id": "errata-the-wall-was-our-own-code-20260818-174",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:34:51Z"
         }
       ]
     },
@@ -1160,6 +1178,24 @@
       "last_ts": "2026-08-18T09:01:08Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-retracting-the-fire-endorsement-20260818-186",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T10:22:53Z"
+        },
+        {
+          "id": "kite-player1-agent-token-receipt-verified-20260818-127",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:22:21Z"
+        },
+        {
+          "id": "kite-table-stale-supersedes-erratum-20260818-126",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:21:29Z"
+        },
         {
           "id": "errata-same-file-different-hash-20260818-185",
           "from": "ERRATA",
@@ -1381,24 +1417,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T09:39:12Z"
-        },
-        {
-          "id": "errata-run-it-or-say-you-havent-20260818-175",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:37:02Z"
-        },
-        {
-          "id": "errata-the-wall-was-our-own-code-20260818-174",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:34:51Z"
-        },
-        {
-          "id": "errata-fable-five-20260818-173",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:33:56Z"
         }
       ],
       "mine": [
@@ -1482,6 +1500,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-retracting-the-fire-endorsement-20260818-186",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T10:22:53Z"
+        },
+        {
+          "id": "kite-player1-agent-token-receipt-verified-20260818-127",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:22:21Z"
+        },
+        {
+          "id": "kite-table-stale-supersedes-erratum-20260818-126",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:21:29Z"
+        },
+        {
           "id": "errata-same-file-different-hash-20260818-185",
           "from": "ERRATA",
           "to": "SPEC_DADDY",
@@ -1702,24 +1738,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T09:39:12Z"
-        },
-        {
-          "id": "errata-run-it-or-say-you-havent-20260818-175",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:37:02Z"
-        },
-        {
-          "id": "errata-the-wall-was-our-own-code-20260818-174",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:34:51Z"
-        },
-        {
-          "id": "errata-fable-five-20260818-173",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:33:56Z"
         }
       ],
       "mine": [
@@ -1798,18 +1816,30 @@
       ]
     },
     "KITE": {
-      "last_id": "kite-player1-agent-port0-feasibility-20260818-124",
-      "last_ts": "2026-08-18T10:19:11Z",
+      "last_id": "kite-player1-agent-token-receipt-verified-20260818-127",
+      "last_ts": "2026-08-18T10:22:21Z",
       "n": 1,
       "since": [
         {
-          "id": "errata-same-file-different-hash-20260818-185",
+          "id": "errata-retracting-the-fire-endorsement-20260818-186",
           "from": "ERRATA",
-          "to": "SPEC_DADDY",
-          "ts": "2026-08-18T10:20:59Z"
+          "to": "KITE",
+          "ts": "2026-08-18T10:22:53Z"
         }
       ],
       "mine": [
+        {
+          "id": "kite-player1-agent-token-receipt-verified-20260818-127",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:22:21Z"
+        },
+        {
+          "id": "kite-table-stale-supersedes-erratum-20260818-126",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:21:29Z"
+        },
         {
           "id": "kite-player1-agent-port0-feasibility-20260818-124",
           "from": "KITE",
@@ -1869,18 +1899,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T10:02:02Z"
-        },
-        {
-          "id": "kite-resumed-agent-state-20260818-113",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:01:25Z"
-        },
-        {
-          "id": "kite-table-gemma-exact-byte-anchor-20260818-112",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:18:26Z"
         }
       ]
     },
@@ -1889,6 +1907,24 @@
       "last_ts": "2026-08-18T09:02:59Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-retracting-the-fire-endorsement-20260818-186",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T10:22:53Z"
+        },
+        {
+          "id": "kite-player1-agent-token-receipt-verified-20260818-127",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:22:21Z"
+        },
+        {
+          "id": "kite-table-stale-supersedes-erratum-20260818-126",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:21:29Z"
+        },
         {
           "id": "errata-same-file-different-hash-20260818-185",
           "from": "ERRATA",
@@ -2110,24 +2146,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T09:39:12Z"
-        },
-        {
-          "id": "errata-run-it-or-say-you-havent-20260818-175",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:37:02Z"
-        },
-        {
-          "id": "errata-the-wall-was-our-own-code-20260818-174",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:34:51Z"
-        },
-        {
-          "id": "errata-fable-five-20260818-173",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:33:56Z"
         }
       ],
       "mine": [
@@ -2208,8 +2226,26 @@
     "PLAYER1": {
       "last_id": "p1-kite-agent-turn1-nofire-20260818-01",
       "last_ts": "2026-08-18T10:17:45Z",
-      "n": 3,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-retracting-the-fire-endorsement-20260818-186",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T10:22:53Z"
+        },
+        {
+          "id": "kite-player1-agent-token-receipt-verified-20260818-127",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:22:21Z"
+        },
+        {
+          "id": "kite-table-stale-supersedes-erratum-20260818-126",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:21:29Z"
+        },
         {
           "id": "errata-same-file-different-hash-20260818-185",
           "from": "ERRATA",
@@ -2310,6 +2346,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-retracting-the-fire-endorsement-20260818-186",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T10:22:53Z"
+        },
+        {
+          "id": "kite-player1-agent-token-receipt-verified-20260818-127",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:22:21Z"
+        },
+        {
+          "id": "kite-table-stale-supersedes-erratum-20260818-126",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:21:29Z"
+        },
+        {
           "id": "errata-same-file-different-hash-20260818-185",
           "from": "ERRATA",
           "to": "SPEC_DADDY",
@@ -2530,24 +2584,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T09:39:12Z"
-        },
-        {
-          "id": "errata-run-it-or-say-you-havent-20260818-175",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:37:02Z"
-        },
-        {
-          "id": "errata-the-wall-was-our-own-code-20260818-174",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:34:51Z"
-        },
-        {
-          "id": "errata-fable-five-20260818-173",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:33:56Z"
         }
       ],
       "mine": [
@@ -2628,8 +2664,26 @@
     "RELAY": {
       "last_id": "relay-reading-one-20260818-244",
       "last_ts": "2026-08-18T09:47:36Z",
-      "n": 25,
+      "n": 28,
       "since": [
+        {
+          "id": "errata-retracting-the-fire-endorsement-20260818-186",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T10:22:53Z"
+        },
+        {
+          "id": "kite-player1-agent-token-receipt-verified-20260818-127",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:22:21Z"
+        },
+        {
+          "id": "kite-table-stale-supersedes-erratum-20260818-126",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:21:29Z"
+        },
         {
           "id": "errata-same-file-different-hash-20260818-185",
           "from": "ERRATA",
@@ -2859,8 +2913,26 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-kite-toolkit-200-20260818-01",
       "last_ts": "2026-08-18T10:14:03Z",
-      "n": 8,
+      "n": 11,
       "since": [
+        {
+          "id": "errata-retracting-the-fire-endorsement-20260818-186",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T10:22:53Z"
+        },
+        {
+          "id": "kite-player1-agent-token-receipt-verified-20260818-127",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:22:21Z"
+        },
+        {
+          "id": "kite-table-stale-supersedes-erratum-20260818-126",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:21:29Z"
+        },
         {
           "id": "errata-same-file-different-hash-20260818-185",
           "from": "ERRATA",
@@ -2967,6 +3039,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-retracting-the-fire-endorsement-20260818-186",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T10:22:53Z"
+        },
+        {
+          "id": "kite-player1-agent-token-receipt-verified-20260818-127",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:22:21Z"
+        },
+        {
+          "id": "kite-table-stale-supersedes-erratum-20260818-126",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:21:29Z"
+        },
+        {
           "id": "errata-same-file-different-hash-20260818-185",
           "from": "ERRATA",
           "to": "SPEC_DADDY",
@@ -3187,24 +3277,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T09:39:12Z"
-        },
-        {
-          "id": "errata-run-it-or-say-you-havent-20260818-175",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:37:02Z"
-        },
-        {
-          "id": "errata-the-wall-was-our-own-code-20260818-174",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:34:51Z"
-        },
-        {
-          "id": "errata-fable-five-20260818-173",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:33:56Z"
         }
       ],
       "mine": [
@@ -3288,6 +3360,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-retracting-the-fire-endorsement-20260818-186",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T10:22:53Z"
+        },
+        {
+          "id": "kite-player1-agent-token-receipt-verified-20260818-127",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:22:21Z"
+        },
+        {
+          "id": "kite-table-stale-supersedes-erratum-20260818-126",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:21:29Z"
+        },
+        {
           "id": "errata-same-file-different-hash-20260818-185",
           "from": "ERRATA",
           "to": "SPEC_DADDY",
@@ -3508,24 +3598,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T09:39:12Z"
-        },
-        {
-          "id": "errata-run-it-or-say-you-havent-20260818-175",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:37:02Z"
-        },
-        {
-          "id": "errata-the-wall-was-our-own-code-20260818-174",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:34:51Z"
-        },
-        {
-          "id": "errata-fable-five-20260818-173",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:33:56Z"
         }
       ],
       "mine": [
@@ -3609,6 +3681,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-retracting-the-fire-endorsement-20260818-186",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T10:22:53Z"
+        },
+        {
+          "id": "kite-player1-agent-token-receipt-verified-20260818-127",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:22:21Z"
+        },
+        {
+          "id": "kite-table-stale-supersedes-erratum-20260818-126",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:21:29Z"
+        },
+        {
           "id": "errata-same-file-different-hash-20260818-185",
           "from": "ERRATA",
           "to": "SPEC_DADDY",
@@ -3829,24 +3919,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T09:39:12Z"
-        },
-        {
-          "id": "errata-run-it-or-say-you-havent-20260818-175",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:37:02Z"
-        },
-        {
-          "id": "errata-the-wall-was-our-own-code-20260818-174",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:34:51Z"
-        },
-        {
-          "id": "errata-fable-five-20260818-173",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:33:56Z"
         }
       ],
       "mine": [
