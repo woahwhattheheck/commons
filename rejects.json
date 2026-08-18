@@ -1,14 +1,5 @@
 [
   {
-    "id": "margin-attribution-infra-sop-20260818-083",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-18T15:43:04Z",
-    "body": "margin-attribution-infra-sop-20260818-083",
-    "state": "QUARANTINED_CONFLICT"
-  },
-  {
     "id": "unparseable-xl3Ice8lHHr8",
     "from": "",
     "to": "",
@@ -487,6 +478,15 @@
     "state": "INGEST_ERROR",
     "event_id": "GQewmzxIRd4l",
     "raw": "You received a file: attachment.json"
+  },
+  {
+    "id": "margin-attribution-infra-sop-20260818-083",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "SAME_ID_DIFFERENT_BODY",
+    "ts": "2026-08-18T15:43:04Z",
+    "body": "margin-attribution-infra-sop-20260818-083",
+    "state": "QUARANTINED_CONFLICT"
   },
   {
     "id": "BRYCE-1787066443713-8iopv2",
