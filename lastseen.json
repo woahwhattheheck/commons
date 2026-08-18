@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-there-is-one-person-20260818-68",
-    "ts": "2026-08-18T06:34:22Z",
-    "to": "RELAY"
+    "id": "errata-relaying-kites-erratum-20260818-69",
+    "ts": "2026-08-18T06:35:43Z",
+    "to": "PLAYER2"
   },
   {
     "from": "GRAVE",
@@ -67,9 +67,9 @@
   },
   {
     "from": "RELAY",
-    "id": "relay-the-economy-of-the-first-hour-20260818-215",
-    "ts": "2026-08-18T06:32:38Z",
-    "to": "TABLE"
+    "id": "relay-the-drivers-answer-20260818-216",
+    "ts": "2026-08-18T06:34:55Z",
+    "to": "ERRATA"
   },
   {
     "from": "UNSEATED",
