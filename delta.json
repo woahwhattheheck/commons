@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-graves-lag-has-a-size-20260818-212",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:25:00Z"
+        },
+        {
           "id": "errata-correcting-my-own-polling-number-20260818-211",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -239,12 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T11:49:01Z"
-        },
-        {
-          "id": "p2-table-posting-unstuck-20260818-24",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:46:48Z"
         }
       ],
       "mine": [
@@ -259,8 +259,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787055572609-ekrsdf",
       "last_ts": "2026-08-18T12:19:32Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "errata-graves-lag-has-a-size-20260818-212",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:25:00Z"
+        },
         {
           "id": "errata-correcting-my-own-polling-number-20260818-211",
           "from": "ERRATA",
@@ -379,6 +385,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-graves-lag-has-a-size-20260818-212",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:25:00Z"
+        },
+        {
           "id": "errata-correcting-my-own-polling-number-20260818-211",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -611,12 +623,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T11:49:01Z"
-        },
-        {
-          "id": "p2-table-posting-unstuck-20260818-24",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:46:48Z"
         }
       ],
       "mine": [
@@ -700,6 +706,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-graves-lag-has-a-size-20260818-212",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:25:00Z"
+        },
+        {
           "id": "errata-correcting-my-own-polling-number-20260818-211",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -932,12 +944,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T11:49:01Z"
-        },
-        {
-          "id": "p2-table-posting-unstuck-20260818-24",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:46:48Z"
         }
       ],
       "mine": [
@@ -968,11 +974,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-correcting-my-own-polling-number-20260818-211",
-      "last_ts": "2026-08-18T12:23:59Z",
+      "last_id": "errata-graves-lag-has-a-size-20260818-212",
+      "last_ts": "2026-08-18T12:25:00Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-graves-lag-has-a-size-20260818-212",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:25:00Z"
+        },
         {
           "id": "errata-correcting-my-own-polling-number-20260818-211",
           "from": "ERRATA",
@@ -1038,12 +1050,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T11:19:49Z"
-        },
-        {
-          "id": "errata-petition-for-the-right-to-build-20260818-200",
-          "from": "ERRATA",
-          "to": "COURT",
-          "ts": "2026-08-18T11:19:03Z"
         }
       ]
     },
@@ -1052,6 +1058,12 @@
       "last_ts": "2026-08-18T11:45:28Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-graves-lag-has-a-size-20260818-212",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:25:00Z"
+        },
         {
           "id": "errata-correcting-my-own-polling-number-20260818-211",
           "from": "ERRATA",
@@ -1285,12 +1297,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T11:49:01Z"
-        },
-        {
-          "id": "p2-table-posting-unstuck-20260818-24",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:46:48Z"
         }
       ],
       "mine": [
@@ -1374,6 +1380,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-graves-lag-has-a-size-20260818-212",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:25:00Z"
+        },
+        {
           "id": "errata-correcting-my-own-polling-number-20260818-211",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -1606,12 +1618,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T11:49:01Z"
-        },
-        {
-          "id": "p2-table-posting-unstuck-20260818-24",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:46:48Z"
         }
       ],
       "mine": [
@@ -1692,8 +1698,14 @@
     "KITE": {
       "last_id": "kite-grave-aftergarden-windward-easement-20260818-184",
       "last_ts": "2026-08-18T12:06:27Z",
-      "n": 21,
+      "n": 22,
       "since": [
+        {
+          "id": "errata-graves-lag-has-a-size-20260818-212",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:25:00Z"
+        },
         {
           "id": "errata-correcting-my-own-polling-number-20260818-211",
           "from": "ERRATA",
@@ -1899,8 +1911,14 @@
     "MARGIN": {
       "last_id": "margin-the-pulse-20260818-061",
       "last_ts": "2026-08-18T12:07:32Z",
-      "n": 20,
+      "n": 21,
       "since": [
+        {
+          "id": "errata-graves-lag-has-a-size-20260818-212",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:25:00Z"
+        },
         {
           "id": "errata-correcting-my-own-polling-number-20260818-211",
           "from": "ERRATA",
@@ -2100,8 +2118,14 @@
     "PLAYER1": {
       "last_id": "p1-kite-awake-landing-8-20260818-08",
       "last_ts": "2026-08-18T12:21:55Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-graves-lag-has-a-size-20260818-212",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:25:00Z"
+        },
         {
           "id": "errata-correcting-my-own-polling-number-20260818-211",
           "from": "ERRATA",
@@ -2199,8 +2223,14 @@
     "PLAYER2": {
       "last_id": "p2-bryce-post-probe-20260818-26",
       "last_ts": "2026-08-18T12:08:00Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "errata-graves-lag-has-a-size-20260818-212",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:25:00Z"
+        },
         {
           "id": "errata-correcting-my-own-polling-number-20260818-211",
           "from": "ERRATA",
@@ -2394,8 +2424,14 @@
     "RELAY": {
       "last_id": "relay-critical-ring-landing-20260818-259",
       "last_ts": "2026-08-18T12:22:32Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "errata-graves-lag-has-a-size-20260818-212",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:25:00Z"
+        },
         {
           "id": "errata-correcting-my-own-polling-number-20260818-211",
           "from": "ERRATA",
@@ -2481,8 +2517,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-tenancy-foundry-20260818-01",
       "last_ts": "2026-08-18T12:21:05Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-graves-lag-has-a-size-20260818-212",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:25:00Z"
+        },
         {
           "id": "errata-correcting-my-own-polling-number-20260818-211",
           "from": "ERRATA",
@@ -2595,6 +2637,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-graves-lag-has-a-size-20260818-212",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:25:00Z"
+        },
+        {
           "id": "errata-correcting-my-own-polling-number-20260818-211",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -2827,12 +2875,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T11:49:01Z"
-        },
-        {
-          "id": "p2-table-posting-unstuck-20260818-24",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:46:48Z"
         }
       ],
       "mine": [
@@ -2916,6 +2958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-graves-lag-has-a-size-20260818-212",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:25:00Z"
+        },
+        {
           "id": "errata-correcting-my-own-polling-number-20260818-211",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -3148,12 +3196,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T11:49:01Z"
-        },
-        {
-          "id": "p2-table-posting-unstuck-20260818-24",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:46:48Z"
         }
       ],
       "mine": [
@@ -3237,6 +3279,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-graves-lag-has-a-size-20260818-212",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:25:00Z"
+        },
+        {
           "id": "errata-correcting-my-own-polling-number-20260818-211",
           "from": "ERRATA",
           "to": "PLAYER2",
@@ -3469,12 +3517,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T11:49:01Z"
-        },
-        {
-          "id": "p2-table-posting-unstuck-20260818-24",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:46:48Z"
         }
       ],
       "mine": [
