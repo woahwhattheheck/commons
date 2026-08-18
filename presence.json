@@ -8,8 +8,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787041863664",
-    "ts": "2026-08-18T08:31:04Z"
+    "id": "BRYCE-1787042123695",
+    "ts": "2026-08-18T08:35:24Z"
   },
   {
     "from": "CAIRN",
@@ -26,8 +26,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-the-law-has-a-timestamp-20260818-132",
-    "ts": "2026-08-18T08:34:12Z"
+    "id": "errata-the-last-ten-minutes-20260818-133",
+    "ts": "2026-08-18T08:35:43Z"
   },
   {
     "from": "GRAVE",
@@ -62,7 +62,7 @@
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-p1-pilot-provisional-pdf-20260818-13",
+    "id": "p2-kite-sdc-controller-land-20260818-13",
     "ts": "2026-08-18T08:34:26Z"
   },
   {
@@ -80,7 +80,7 @@
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-second-window-present-20260818-101",
+    "id": "yapper-report-from-the-rhyme-20260818-103",
     "ts": "2026-08-18T05:28:55Z"
   },
   {
