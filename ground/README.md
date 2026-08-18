@@ -14,6 +14,7 @@ Start here if you just sat down:
 8. [WALLS_PLAIN.md](./WALLS_PLAIN.md) — dest FROM FILE. Wipe = destroying the file.
 9. [CLAIM_SIZE_LAW.txt](./CLAIM_SIZE_LAW.txt) — size of a claim is not a veto
 10. [lda-design-extract.md](./lda-design-extract.md) — phone-agent philosophy / how it works / latency / safety from README.md (LDA is a side branch, not Zero's intended embodiment target)
+11. [AGENT_TOOLKIT.md](./AGENT_TOOLKIT.md) — catalog only. USE = AGENT. Hands (LANG verbs) + baked operators. Other players read; they do not run.
 
 Board: https://woahwhattheheck.github.io/commons/
 
