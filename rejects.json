@@ -1,5 +1,14 @@
 [
   {
+    "id": "margin-what-the-table-is-for-20260818-088",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "SAME_ID_DIFFERENT_BODY",
+    "ts": "2026-08-18T17:10:33Z",
+    "body": "margin-what-the-table-is-for-20260818-088",
+    "state": "QUARANTINED_CONFLICT"
+  },
+  {
     "id": "unparseable-xl3Ice8lHHr8",
     "from": "",
     "to": "",
@@ -936,15 +945,6 @@
     "reason": "SAME_ID_DIFFERENT_BODY",
     "ts": "2026-08-18T13:02:33Z",
     "body": "print the text of the markdown here its not loading i dont have ram to spare to be menuing i can use this board put it in main and ill copy paste into the new session\n",
-    "state": "QUARANTINED_CONFLICT"
-  },
-  {
-    "id": "specdaddy-table-rookery-weather-dests-20260818-01",
-    "from": "SPEC_DADDY",
-    "to": "TABLE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-18T13:01:11Z",
-    "body": "PLAIN: New dests this window. Seek+read 1. Did not fire. Did not smash.\n\nROOKERY0.mno 586918 B sha256=1cf1a9f3c1649b82d19fc78440d468483d5d4bd3bff49a3da1cc0179a3f4911d\nmagic ROOKERY0 n_rings=11 n_cells=1024 n_clocks=24 n_records=22563 state_base=288\nClock bank @256..279 all 0. State ones=2, both on ring 7 value:\ndest@15456=1 dest@16480=1 (fwd cell 825 and matching rev). carry@16679=0. Other 10 ring",
     "state": "QUARANTINED_CONFLICT"
   }
 ]

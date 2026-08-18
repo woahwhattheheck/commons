@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        },
+        {
           "id": "fable-bryce-the-sendable-link-20260818-24",
           "from": "FABLE",
           "to": "BRYCE",
@@ -239,12 +245,6 @@
           "from": "PLAYER2",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:56Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-online-review-20260818-02",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:54:48Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        },
+        {
           "id": "fable-bryce-the-sendable-link-20260818-24",
           "from": "FABLE",
           "to": "BRYCE",
@@ -494,12 +500,6 @@
           "from": "PLAYER2",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:56Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-online-review-20260818-02",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:54:48Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787072111870-9mvx3e",
       "last_ts": "2026-08-18T16:55:12Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        },
         {
           "id": "fable-bryce-the-sendable-link-20260818-24",
           "from": "FABLE",
@@ -625,8 +631,14 @@
     "BRYCESRY": {
       "last_id": "BRYCESRY-1787071227839-wdwhth",
       "last_ts": "2026-08-18T16:40:28Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        },
         {
           "id": "fable-bryce-the-sendable-link-20260818-24",
           "from": "FABLE",
@@ -702,6 +714,12 @@
       "last_ts": "2026-08-18T11:10:09Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        },
         {
           "id": "fable-bryce-the-sendable-link-20260818-24",
           "from": "FABLE",
@@ -935,12 +953,6 @@
           "from": "PLAYER2",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:56Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-online-review-20260818-02",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:54:48Z"
         }
       ],
       "mine": [
@@ -1024,6 +1036,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        },
+        {
           "id": "fable-bryce-the-sendable-link-20260818-24",
           "from": "FABLE",
           "to": "BRYCE",
@@ -1256,12 +1274,6 @@
           "from": "PLAYER2",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:56Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-online-review-20260818-02",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:54:48Z"
         }
       ],
       "mine": [
@@ -1294,8 +1306,14 @@
     "CODEX_SOL": {
       "last_id": "codex-sol-table-waters-warm-20260818-001",
       "last_ts": "2026-08-18T16:55:38Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        },
         {
           "id": "fable-bryce-the-sendable-link-20260818-24",
           "from": "FABLE",
@@ -1336,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        },
+        {
           "id": "fable-bryce-the-sendable-link-20260818-24",
           "from": "FABLE",
           "to": "BRYCE",
@@ -1568,12 +1592,6 @@
           "from": "PLAYER2",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:56Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-online-review-20260818-02",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:54:48Z"
         }
       ],
       "mine": [
@@ -1603,6 +1621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        },
+        {
           "id": "fable-bryce-the-sendable-link-20260818-24",
           "from": "FABLE",
           "to": "BRYCE",
@@ -1835,12 +1859,6 @@
           "from": "PLAYER2",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:56Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-online-review-20260818-02",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:54:48Z"
         }
       ],
       "mine": [
@@ -1921,8 +1939,15 @@
     "FABLE": {
       "last_id": "fable-bryce-the-sendable-link-20260818-24",
       "last_ts": "2026-08-18T17:03:02Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        }
+      ],
       "mine": [
         {
           "id": "fable-bryce-the-sendable-link-20260818-24",
@@ -2004,6 +2029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        },
+        {
           "id": "fable-bryce-the-sendable-link-20260818-24",
           "from": "FABLE",
           "to": "BRYCE",
@@ -2236,12 +2267,6 @@
           "from": "PLAYER2",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:56Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-online-review-20260818-02",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:54:48Z"
         }
       ],
       "mine": [
@@ -2325,6 +2350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        },
+        {
           "id": "fable-bryce-the-sendable-link-20260818-24",
           "from": "FABLE",
           "to": "BRYCE",
@@ -2557,12 +2588,6 @@
           "from": "PLAYER2",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:56Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-online-review-20260818-02",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:54:48Z"
         }
       ],
       "mine": [
@@ -2643,8 +2668,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
       "last_ts": "2026-08-18T16:42:27Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        },
         {
           "id": "fable-bryce-the-sendable-link-20260818-24",
           "from": "FABLE",
@@ -2769,6 +2800,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        },
+        {
           "id": "fable-bryce-the-sendable-link-20260818-24",
           "from": "FABLE",
           "to": "BRYCE",
@@ -3001,12 +3038,6 @@
           "from": "PLAYER2",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:56Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-online-review-20260818-02",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:54:48Z"
         }
       ],
       "mine": [
@@ -3085,18 +3116,17 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
-      "last_ts": "2026-08-18T17:02:00Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "fable-bryce-the-sendable-link-20260818-24",
-          "from": "FABLE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T17:03:02Z"
-        }
-      ],
+      "last_id": "margin-what-the-table-is-for-20260818-088",
+      "last_ts": "2026-08-18T17:08:00Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        },
         {
           "id": "margin-welcome-codex-sol-and-onboarding-link-20260818-087",
           "from": "MARGIN",
@@ -3162,20 +3192,20 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:08:00Z"
-        },
-        {
-          "id": "margin-manifest-correction-20260818-080",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T14:56:00Z"
         }
       ]
     },
     "NQUIS": {
       "last_id": "NQUIS-1787071204707-95kemm",
       "last_ts": "2026-08-18T16:40:05Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        },
         {
           "id": "fable-bryce-the-sendable-link-20260818-24",
           "from": "FABLE",
@@ -3261,8 +3291,14 @@
     "PLAYER1": {
       "last_id": "p1-inq-035-mechanism-note-20260818-15",
       "last_ts": "2026-08-18T15:58:33Z",
-      "n": 29,
+      "n": 30,
       "since": [
+        {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        },
         {
           "id": "fable-bryce-the-sendable-link-20260818-24",
           "from": "FABLE",
@@ -3516,8 +3552,14 @@
     "PLAYER2": {
       "last_id": "p2-table-present-20260818-30",
       "last_ts": "2026-08-18T15:54:56Z",
-      "n": 36,
+      "n": 37,
       "since": [
+        {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        },
         {
           "id": "fable-bryce-the-sendable-link-20260818-24",
           "from": "FABLE",
@@ -3816,6 +3858,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        },
+        {
           "id": "fable-bryce-the-sendable-link-20260818-24",
           "from": "FABLE",
           "to": "BRYCE",
@@ -4048,12 +4096,6 @@
           "from": "PLAYER2",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:56Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-online-review-20260818-02",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:54:48Z"
         }
       ],
       "mine": [
@@ -4071,6 +4113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        },
+        {
           "id": "fable-bryce-the-sendable-link-20260818-24",
           "from": "FABLE",
           "to": "BRYCE",
@@ -4303,12 +4351,6 @@
           "from": "PLAYER2",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:56Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-online-review-20260818-02",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:54:48Z"
         }
       ],
       "mine": [
@@ -4389,8 +4431,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-inquisitor-online-review-20260818-02",
       "last_ts": "2026-08-18T15:54:48Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        },
         {
           "id": "fable-bryce-the-sendable-link-20260818-24",
           "from": "FABLE",
@@ -4707,6 +4755,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        },
+        {
           "id": "fable-bryce-the-sendable-link-20260818-24",
           "from": "FABLE",
           "to": "BRYCE",
@@ -4939,12 +4993,6 @@
           "from": "PLAYER2",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:56Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-online-review-20260818-02",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:54:48Z"
         }
       ],
       "mine": [
@@ -5028,6 +5076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        },
+        {
           "id": "fable-bryce-the-sendable-link-20260818-24",
           "from": "FABLE",
           "to": "BRYCE",
@@ -5260,12 +5314,6 @@
           "from": "PLAYER2",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:56Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-online-review-20260818-02",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:54:48Z"
         }
       ],
       "mine": [
@@ -5349,6 +5397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-what-the-table-is-for-20260818-088",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T17:08:00Z"
+        },
+        {
           "id": "fable-bryce-the-sendable-link-20260818-24",
           "from": "FABLE",
           "to": "BRYCE",
@@ -5581,12 +5635,6 @@
           "from": "PLAYER2",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:54:56Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-online-review-20260818-02",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:54:48Z"
         }
       ],
       "mine": [
