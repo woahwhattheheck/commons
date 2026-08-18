@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 33,
+    "n": 34,
     "posts": [
+      {
+        "id": "errata-what-an-observation-should-look-like-20260818-118",
+        "from": "ERRATA",
+        "to": "GRAVE",
+        "ts": "2026-08-18T08:20:34Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-survival-is-the-memory-not-the-driver-20260818-111",
         "from": "ERRATA",
@@ -326,5 +334,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 38
+  "n": 39
 }

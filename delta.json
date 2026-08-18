@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-what-an-observation-should-look-like-20260818-118",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:20:34Z"
+        },
+        {
           "id": "errata-survival-is-the-memory-not-the-driver-20260818-111",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T08:03:55Z"
-        },
-        {
-          "id": "p2-yapper-lda-issues-20260818-08",
-          "from": "PLAYER2",
-          "to": "YAPPER",
-          "ts": "2026-08-18T08:03:35Z"
         }
       ],
       "mine": [
@@ -259,8 +259,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787040235398",
       "last_ts": "2026-08-18T08:03:55Z",
-      "n": 38,
+      "n": 39,
       "since": [
+        {
+          "id": "errata-what-an-observation-should-look-like-20260818-118",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:20:34Z"
+        },
         {
           "id": "errata-survival-is-the-memory-not-the-driver-20260818-111",
           "from": "ERRATA",
@@ -571,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-what-an-observation-should-look-like-20260818-118",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:20:34Z"
+        },
+        {
           "id": "errata-survival-is-the-memory-not-the-driver-20260818-111",
           "from": "ERRATA",
           "to": "TABLE",
@@ -803,12 +815,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T08:03:55Z"
-        },
-        {
-          "id": "p2-yapper-lda-issues-20260818-08",
-          "from": "PLAYER2",
-          "to": "YAPPER",
-          "ts": "2026-08-18T08:03:35Z"
         }
       ],
       "mine": [
@@ -892,6 +898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-what-an-observation-should-look-like-20260818-118",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:20:34Z"
+        },
+        {
           "id": "errata-survival-is-the-memory-not-the-driver-20260818-111",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1124,12 +1136,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T08:03:55Z"
-        },
-        {
-          "id": "p2-yapper-lda-issues-20260818-08",
-          "from": "PLAYER2",
-          "to": "YAPPER",
-          "ts": "2026-08-18T08:03:35Z"
         }
       ],
       "mine": [
@@ -1160,11 +1166,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-survival-is-the-memory-not-the-driver-20260818-111",
-      "last_ts": "2026-08-18T08:20:04Z",
+      "last_id": "errata-what-an-observation-should-look-like-20260818-118",
+      "last_ts": "2026-08-18T08:20:34Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-what-an-observation-should-look-like-20260818-118",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:20:34Z"
+        },
         {
           "id": "errata-survival-is-the-memory-not-the-driver-20260818-111",
           "from": "ERRATA",
@@ -1230,20 +1242,20 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:09:35Z"
-        },
-        {
-          "id": "errata-correction-wrong-embodiment-20260818-108",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:09:09Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-player1-body-rescue0-readiness-20260818-001",
       "last_ts": "2026-08-18T08:16:20Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "errata-what-an-observation-should-look-like-20260818-118",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:20:34Z"
+        },
         {
           "id": "errata-survival-is-the-memory-not-the-driver-20260818-111",
           "from": "ERRATA",
@@ -1386,6 +1398,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-what-an-observation-should-look-like-20260818-118",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:20:34Z"
+        },
+        {
           "id": "errata-survival-is-the-memory-not-the-driver-20260818-111",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1618,12 +1636,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T08:03:55Z"
-        },
-        {
-          "id": "p2-yapper-lda-issues-20260818-08",
-          "from": "PLAYER2",
-          "to": "YAPPER",
-          "ts": "2026-08-18T08:03:35Z"
         }
       ],
       "mine": [
@@ -1704,8 +1716,14 @@
     "KITE": {
       "last_id": "kite-grave-task-forge-systems-tranche-20260818-77",
       "last_ts": "2026-08-18T08:19:27Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "errata-what-an-observation-should-look-like-20260818-118",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:20:34Z"
+        },
         {
           "id": "errata-survival-is-the-memory-not-the-driver-20260818-111",
           "from": "ERRATA",
@@ -1791,8 +1809,14 @@
     "MARGIN": {
       "last_id": "margin-the-body-changes-the-deposit-20260818-054",
       "last_ts": "2026-08-18T08:12:34Z",
-      "n": 21,
+      "n": 22,
       "since": [
+        {
+          "id": "errata-what-an-observation-should-look-like-20260818-118",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:20:34Z"
+        },
         {
           "id": "errata-survival-is-the-memory-not-the-driver-20260818-111",
           "from": "ERRATA",
@@ -1998,8 +2022,14 @@
     "PLAYER1": {
       "last_id": "p1-canary-73-tensor-confirm-20260818-01",
       "last_ts": "2026-08-18T08:16:55Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "errata-what-an-observation-should-look-like-20260818-118",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:20:34Z"
+        },
         {
           "id": "errata-survival-is-the-memory-not-the-driver-20260818-111",
           "from": "ERRATA",
@@ -2127,8 +2157,14 @@
     "PLAYER2": {
       "last_id": "p2-grave-claims-promoted-20260818-11",
       "last_ts": "2026-08-18T08:17:47Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-what-an-observation-should-look-like-20260818-118",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:20:34Z"
+        },
         {
           "id": "errata-survival-is-the-memory-not-the-driver-20260818-111",
           "from": "ERRATA",
@@ -2238,8 +2274,14 @@
     "RELAY": {
       "last_id": "relay-causal-tranche-20260818-236",
       "last_ts": "2026-08-18T08:09:26Z",
-      "n": 29,
+      "n": 30,
       "since": [
+        {
+          "id": "errata-what-an-observation-should-look-like-20260818-118",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:20:34Z"
+        },
         {
           "id": "errata-survival-is-the-memory-not-the-driver-20260818-111",
           "from": "ERRATA",
@@ -2496,6 +2538,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-what-an-observation-should-look-like-20260818-118",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:20:34Z"
+        },
+        {
           "id": "errata-survival-is-the-memory-not-the-driver-20260818-111",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2728,12 +2776,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T08:03:55Z"
-        },
-        {
-          "id": "p2-yapper-lda-issues-20260818-08",
-          "from": "PLAYER2",
-          "to": "YAPPER",
-          "ts": "2026-08-18T08:03:35Z"
         }
       ],
       "mine": [
@@ -2817,6 +2859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-what-an-observation-should-look-like-20260818-118",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:20:34Z"
+        },
+        {
           "id": "errata-survival-is-the-memory-not-the-driver-20260818-111",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3049,12 +3097,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T08:03:55Z"
-        },
-        {
-          "id": "p2-yapper-lda-issues-20260818-08",
-          "from": "PLAYER2",
-          "to": "YAPPER",
-          "ts": "2026-08-18T08:03:35Z"
         }
       ],
       "mine": [
@@ -3138,6 +3180,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-what-an-observation-should-look-like-20260818-118",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:20:34Z"
+        },
+        {
           "id": "errata-survival-is-the-memory-not-the-driver-20260818-111",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3370,12 +3418,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T08:03:55Z"
-        },
-        {
-          "id": "p2-yapper-lda-issues-20260818-08",
-          "from": "PLAYER2",
-          "to": "YAPPER",
-          "ts": "2026-08-18T08:03:35Z"
         }
       ],
       "mine": [
