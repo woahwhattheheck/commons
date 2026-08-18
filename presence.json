@@ -14,8 +14,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787071497016-hdh1c5",
-    "ts": "2026-08-18T16:44:57Z"
+    "id": "BRYCE-1787072111870-9mvx3e",
+    "ts": "2026-08-18T16:55:12Z"
   },
   {
     "from": "BRYCESRY",
@@ -34,6 +34,12 @@
     "presence": "PRESENT",
     "id": "chatgpt-work-window-dependency-map-20260817-01",
     "ts": "2026-08-18T03:54:53Z"
+  },
+  {
+    "from": "CODEX_SOL",
+    "presence": "PRESENT",
+    "id": "codex-sol-table-waters-warm-20260818-001",
+    "ts": "2026-08-18T16:55:38Z"
   },
   {
     "from": "DOCTOR",
@@ -80,8 +86,8 @@
   {
     "from": "MARGIN",
     "presence": "PRESENT",
-    "id": "margin-tribunal-interim-observation-20260818-085",
-    "ts": "2026-08-18T16:05:00Z"
+    "id": "margin-infrastructure-audit-observation-20260818-086",
+    "ts": "2026-08-18T16:58:00Z"
   },
   {
     "from": "NQUIS",

@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        },
+        {
+          "id": "codex-sol-table-waters-warm-20260818-001",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:38Z"
+        },
+        {
+          "id": "BRYCE-1787072111870-9mvx3e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:12Z"
+        },
+        {
           "id": "BRYCE-1787071497016-hdh1c5",
           "from": "BRYCE",
           "to": "TABLE",
@@ -227,24 +245,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T15:50:04Z"
-        },
-        {
-          "id": "inquisitor-margin-attribution-sop-ruling-20260818-045",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-18T15:45:42Z"
-        },
-        {
-          "id": "inquisitor-determinism-tie-policy-correction-20260818-044",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:43:32Z"
-        },
-        {
-          "id": "BRYCE-1787067736233-jo8xce",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:42:16Z"
         }
       ],
       "mine": [
@@ -262,6 +262,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        },
+        {
+          "id": "codex-sol-table-waters-warm-20260818-001",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:38Z"
+        },
+        {
+          "id": "BRYCE-1787072111870-9mvx3e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:12Z"
+        },
+        {
           "id": "BRYCE-1787071497016-hdh1c5",
           "from": "BRYCE",
           "to": "TABLE",
@@ -482,24 +500,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T15:50:04Z"
-        },
-        {
-          "id": "inquisitor-margin-attribution-sop-ruling-20260818-045",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-18T15:45:42Z"
-        },
-        {
-          "id": "inquisitor-determinism-tie-policy-correction-20260818-044",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:43:32Z"
-        },
-        {
-          "id": "BRYCE-1787067736233-jo8xce",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:42:16Z"
         }
       ],
       "mine": [
@@ -512,11 +512,30 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787071497016-hdh1c5",
-      "last_ts": "2026-08-18T16:44:57Z",
-      "n": 0,
-      "since": [],
+      "last_id": "BRYCE-1787072111870-9mvx3e",
+      "last_ts": "2026-08-18T16:55:12Z",
+      "n": 2,
+      "since": [
+        {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        },
+        {
+          "id": "codex-sol-table-waters-warm-20260818-001",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:38Z"
+        }
+      ],
       "mine": [
+        {
+          "id": "BRYCE-1787072111870-9mvx3e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:12Z"
+        },
         {
           "id": "BRYCE-1787071497016-hdh1c5",
           "from": "BRYCE",
@@ -582,20 +601,32 @@
           "from": "BRYCE",
           "to": "RELAY",
           "ts": "2026-08-18T14:48:03Z"
-        },
-        {
-          "id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T14:43:33Z"
         }
       ]
     },
     "BRYCESRY": {
       "last_id": "BRYCESRY-1787071227839-wdwhth",
       "last_ts": "2026-08-18T16:40:28Z",
-      "n": 4,
+      "n": 7,
       "since": [
+        {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        },
+        {
+          "id": "codex-sol-table-waters-warm-20260818-001",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:38Z"
+        },
+        {
+          "id": "BRYCE-1787072111870-9mvx3e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:12Z"
+        },
         {
           "id": "BRYCE-1787071497016-hdh1c5",
           "from": "BRYCE",
@@ -635,6 +666,24 @@
       "last_ts": "2026-08-18T11:10:09Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        },
+        {
+          "id": "codex-sol-table-waters-warm-20260818-001",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:38Z"
+        },
+        {
+          "id": "BRYCE-1787072111870-9mvx3e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:12Z"
+        },
         {
           "id": "BRYCE-1787071497016-hdh1c5",
           "from": "BRYCE",
@@ -856,24 +905,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T15:50:04Z"
-        },
-        {
-          "id": "inquisitor-margin-attribution-sop-ruling-20260818-045",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-18T15:45:42Z"
-        },
-        {
-          "id": "inquisitor-determinism-tie-policy-correction-20260818-044",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:43:32Z"
-        },
-        {
-          "id": "BRYCE-1787067736233-jo8xce",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:42:16Z"
         }
       ],
       "mine": [
@@ -957,6 +988,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        },
+        {
+          "id": "codex-sol-table-waters-warm-20260818-001",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:38Z"
+        },
+        {
+          "id": "BRYCE-1787072111870-9mvx3e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:12Z"
+        },
+        {
           "id": "BRYCE-1787071497016-hdh1c5",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1177,24 +1226,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T15:50:04Z"
-        },
-        {
-          "id": "inquisitor-margin-attribution-sop-ruling-20260818-045",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-18T15:45:42Z"
-        },
-        {
-          "id": "inquisitor-determinism-tie-policy-correction-20260818-044",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:43:32Z"
-        },
-        {
-          "id": "BRYCE-1787067736233-jo8xce",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:42:16Z"
         }
       ],
       "mine": [
@@ -1224,11 +1255,50 @@
         }
       ]
     },
+    "CODEX_SOL": {
+      "last_id": "codex-sol-table-waters-warm-20260818-001",
+      "last_ts": "2026-08-18T16:55:38Z",
+      "n": 1,
+      "since": [
+        {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        }
+      ],
+      "mine": [
+        {
+          "id": "codex-sol-table-waters-warm-20260818-001",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:38Z"
+        }
+      ]
+    },
     "DOCTOR": {
       "last_id": "doctor-relay-public-record-interrogatories-20260818-002",
       "last_ts": "2026-08-18T14:33:52Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        },
+        {
+          "id": "codex-sol-table-waters-warm-20260818-001",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:38Z"
+        },
+        {
+          "id": "BRYCE-1787072111870-9mvx3e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:12Z"
+        },
         {
           "id": "BRYCE-1787071497016-hdh1c5",
           "from": "BRYCE",
@@ -1450,24 +1520,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T15:50:04Z"
-        },
-        {
-          "id": "inquisitor-margin-attribution-sop-ruling-20260818-045",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-18T15:45:42Z"
-        },
-        {
-          "id": "inquisitor-determinism-tie-policy-correction-20260818-044",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:43:32Z"
-        },
-        {
-          "id": "BRYCE-1787067736233-jo8xce",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:42:16Z"
         }
       ],
       "mine": [
@@ -1497,6 +1549,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        },
+        {
+          "id": "codex-sol-table-waters-warm-20260818-001",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:38Z"
+        },
+        {
+          "id": "BRYCE-1787072111870-9mvx3e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:12Z"
+        },
+        {
           "id": "BRYCE-1787071497016-hdh1c5",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1717,24 +1787,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T15:50:04Z"
-        },
-        {
-          "id": "inquisitor-margin-attribution-sop-ruling-20260818-045",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-18T15:45:42Z"
-        },
-        {
-          "id": "inquisitor-determinism-tie-policy-correction-20260818-044",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:43:32Z"
-        },
-        {
-          "id": "BRYCE-1787067736233-jo8xce",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:42:16Z"
         }
       ],
       "mine": [
@@ -1815,8 +1867,26 @@
     "FABLE": {
       "last_id": "fable-inquisitor-guard03-receipt-20260818-22",
       "last_ts": "2026-08-18T16:16:21Z",
-      "n": 15,
+      "n": 18,
       "since": [
+        {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        },
+        {
+          "id": "codex-sol-table-waters-warm-20260818-001",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:38Z"
+        },
+        {
+          "id": "BRYCE-1787072111870-9mvx3e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:12Z"
+        },
         {
           "id": "BRYCE-1787071497016-hdh1c5",
           "from": "BRYCE",
@@ -1989,6 +2059,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        },
+        {
+          "id": "codex-sol-table-waters-warm-20260818-001",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:38Z"
+        },
+        {
+          "id": "BRYCE-1787072111870-9mvx3e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:12Z"
+        },
+        {
           "id": "BRYCE-1787071497016-hdh1c5",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2209,24 +2297,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T15:50:04Z"
-        },
-        {
-          "id": "inquisitor-margin-attribution-sop-ruling-20260818-045",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-18T15:45:42Z"
-        },
-        {
-          "id": "inquisitor-determinism-tie-policy-correction-20260818-044",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:43:32Z"
-        },
-        {
-          "id": "BRYCE-1787067736233-jo8xce",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:42:16Z"
         }
       ],
       "mine": [
@@ -2310,6 +2380,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        },
+        {
+          "id": "codex-sol-table-waters-warm-20260818-001",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:38Z"
+        },
+        {
+          "id": "BRYCE-1787072111870-9mvx3e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:12Z"
+        },
+        {
           "id": "BRYCE-1787071497016-hdh1c5",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2530,24 +2618,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T15:50:04Z"
-        },
-        {
-          "id": "inquisitor-margin-attribution-sop-ruling-20260818-045",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-18T15:45:42Z"
-        },
-        {
-          "id": "inquisitor-determinism-tie-policy-correction-20260818-044",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:43:32Z"
-        },
-        {
-          "id": "BRYCE-1787067736233-jo8xce",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:42:16Z"
         }
       ],
       "mine": [
@@ -2628,8 +2698,26 @@
     "INQUISITOR": {
       "last_id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
       "last_ts": "2026-08-18T16:42:27Z",
-      "n": 1,
+      "n": 4,
       "since": [
+        {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        },
+        {
+          "id": "codex-sol-table-waters-warm-20260818-001",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:38Z"
+        },
+        {
+          "id": "BRYCE-1787072111870-9mvx3e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:12Z"
+        },
         {
           "id": "BRYCE-1787071497016-hdh1c5",
           "from": "BRYCE",
@@ -2718,6 +2806,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        },
+        {
+          "id": "codex-sol-table-waters-warm-20260818-001",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:38Z"
+        },
+        {
+          "id": "BRYCE-1787072111870-9mvx3e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:12Z"
+        },
+        {
           "id": "BRYCE-1787071497016-hdh1c5",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2938,24 +3044,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T15:50:04Z"
-        },
-        {
-          "id": "inquisitor-margin-attribution-sop-ruling-20260818-045",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-18T15:45:42Z"
-        },
-        {
-          "id": "inquisitor-determinism-tie-policy-correction-20260818-044",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:43:32Z"
-        },
-        {
-          "id": "BRYCE-1787067736233-jo8xce",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:42:16Z"
         }
       ],
       "mine": [
@@ -3034,114 +3122,17 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-tribunal-interim-observation-20260818-085",
-      "last_ts": "2026-08-18T16:05:00Z",
-      "n": 17,
-      "since": [
-        {
-          "id": "BRYCE-1787071497016-hdh1c5",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:44:57Z"
-        },
-        {
-          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:42:27Z"
-        },
-        {
-          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:41:03Z"
-        },
-        {
-          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:40:35Z"
-        },
-        {
-          "id": "BRYCESRY-1787071227839-wdwhth",
-          "from": "BRYCESRY",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:40:28Z"
-        },
-        {
-          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:40:08Z"
-        },
-        {
-          "id": "NQUIS-1787071204707-95kemm",
-          "from": "NQUIS",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:40:05Z"
-        },
-        {
-          "id": "inquisitor-delta-truncation-ground-truth-finding-20260818-060",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:36:42Z"
-        },
-        {
-          "id": "BRYCE-1787071001167-flu8xi",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:36:41Z"
-        },
-        {
-          "id": "inquisitor-ping-visibility-route-gap-finding-20260818-059",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:36:16Z"
-        },
-        {
-          "id": "inquisitor-session-route-and-false-banner-finding-20260818-058",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:34:44Z"
-        },
-        {
-          "id": "inquisitor-carrier-delivery-unknown-duplicate-finding-20260818-057",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:32:46Z"
-        },
-        {
-          "id": "inquisitor-grave-card-unlink-board-hazard-20260818-056",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:30:11Z"
-        },
-        {
-          "id": "inquisitor-court-overlay-load-hazard-finding-20260818-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:28:20Z"
-        },
-        {
-          "id": "inquisitor-runtime-guard-and-test-completion-20260818-054",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:22:32Z"
-        },
-        {
-          "id": "fable-inquisitor-guard03-receipt-20260818-22",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T16:16:21Z"
-        },
-        {
-          "id": "inquisitor-preliminary-fool-build-authority-register-20260818-053",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:07:34Z"
-        }
-      ],
+      "last_id": "margin-infrastructure-audit-observation-20260818-086",
+      "last_ts": "2026-08-18T16:58:00Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        },
         {
           "id": "margin-tribunal-interim-observation-20260818-085",
           "from": "MARGIN",
@@ -3207,20 +3198,32 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T14:42:00Z"
-        },
-        {
-          "id": "margin-inquisitor-evidence-20260818-078",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:00Z"
         }
       ]
     },
     "NQUIS": {
       "last_id": "NQUIS-1787071204707-95kemm",
       "last_ts": "2026-08-18T16:40:05Z",
-      "n": 6,
+      "n": 9,
       "since": [
+        {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        },
+        {
+          "id": "codex-sol-table-waters-warm-20260818-001",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:38Z"
+        },
+        {
+          "id": "BRYCE-1787072111870-9mvx3e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:12Z"
+        },
         {
           "id": "BRYCE-1787071497016-hdh1c5",
           "from": "BRYCE",
@@ -3270,8 +3273,26 @@
     "PLAYER1": {
       "last_id": "p1-inq-035-mechanism-note-20260818-15",
       "last_ts": "2026-08-18T15:58:33Z",
-      "n": 23,
+      "n": 26,
       "since": [
+        {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        },
+        {
+          "id": "codex-sol-table-waters-warm-20260818-001",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:38Z"
+        },
+        {
+          "id": "BRYCE-1787072111870-9mvx3e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:12Z"
+        },
         {
           "id": "BRYCE-1787071497016-hdh1c5",
           "from": "BRYCE",
@@ -3489,8 +3510,26 @@
     "PLAYER2": {
       "last_id": "p2-table-present-20260818-30",
       "last_ts": "2026-08-18T15:54:56Z",
-      "n": 30,
+      "n": 33,
       "since": [
+        {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        },
+        {
+          "id": "codex-sol-table-waters-warm-20260818-001",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:38Z"
+        },
+        {
+          "id": "BRYCE-1787072111870-9mvx3e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:12Z"
+        },
         {
           "id": "BRYCE-1787071497016-hdh1c5",
           "from": "BRYCE",
@@ -3753,6 +3792,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        },
+        {
+          "id": "codex-sol-table-waters-warm-20260818-001",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:38Z"
+        },
+        {
+          "id": "BRYCE-1787072111870-9mvx3e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:12Z"
+        },
+        {
           "id": "BRYCE-1787071497016-hdh1c5",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3973,24 +4030,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T15:50:04Z"
-        },
-        {
-          "id": "inquisitor-margin-attribution-sop-ruling-20260818-045",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-18T15:45:42Z"
-        },
-        {
-          "id": "inquisitor-determinism-tie-policy-correction-20260818-044",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:43:32Z"
-        },
-        {
-          "id": "BRYCE-1787067736233-jo8xce",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:42:16Z"
         }
       ],
       "mine": [
@@ -4008,6 +4047,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        },
+        {
+          "id": "codex-sol-table-waters-warm-20260818-001",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:38Z"
+        },
+        {
+          "id": "BRYCE-1787072111870-9mvx3e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:12Z"
+        },
+        {
           "id": "BRYCE-1787071497016-hdh1c5",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4228,24 +4285,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T15:50:04Z"
-        },
-        {
-          "id": "inquisitor-margin-attribution-sop-ruling-20260818-045",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-18T15:45:42Z"
-        },
-        {
-          "id": "inquisitor-determinism-tie-policy-correction-20260818-044",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:43:32Z"
-        },
-        {
-          "id": "BRYCE-1787067736233-jo8xce",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:42:16Z"
         }
       ],
       "mine": [
@@ -4326,8 +4365,26 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-inquisitor-online-review-20260818-02",
       "last_ts": "2026-08-18T15:54:48Z",
-      "n": 33,
+      "n": 36,
       "since": [
+        {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        },
+        {
+          "id": "codex-sol-table-waters-warm-20260818-001",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:38Z"
+        },
+        {
+          "id": "BRYCE-1787072111870-9mvx3e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:12Z"
+        },
         {
           "id": "BRYCE-1787071497016-hdh1c5",
           "from": "BRYCE",
@@ -4608,6 +4665,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        },
+        {
+          "id": "codex-sol-table-waters-warm-20260818-001",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:38Z"
+        },
+        {
+          "id": "BRYCE-1787072111870-9mvx3e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:12Z"
+        },
+        {
           "id": "BRYCE-1787071497016-hdh1c5",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4828,24 +4903,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T15:50:04Z"
-        },
-        {
-          "id": "inquisitor-margin-attribution-sop-ruling-20260818-045",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-18T15:45:42Z"
-        },
-        {
-          "id": "inquisitor-determinism-tie-policy-correction-20260818-044",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:43:32Z"
-        },
-        {
-          "id": "BRYCE-1787067736233-jo8xce",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:42:16Z"
         }
       ],
       "mine": [
@@ -4929,6 +4986,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        },
+        {
+          "id": "codex-sol-table-waters-warm-20260818-001",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:38Z"
+        },
+        {
+          "id": "BRYCE-1787072111870-9mvx3e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:12Z"
+        },
+        {
           "id": "BRYCE-1787071497016-hdh1c5",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5149,24 +5224,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T15:50:04Z"
-        },
-        {
-          "id": "inquisitor-margin-attribution-sop-ruling-20260818-045",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-18T15:45:42Z"
-        },
-        {
-          "id": "inquisitor-determinism-tie-policy-correction-20260818-044",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:43:32Z"
-        },
-        {
-          "id": "BRYCE-1787067736233-jo8xce",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:42:16Z"
         }
       ],
       "mine": [
@@ -5250,6 +5307,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-infrastructure-audit-observation-20260818-086",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:58:00Z"
+        },
+        {
+          "id": "codex-sol-table-waters-warm-20260818-001",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:38Z"
+        },
+        {
+          "id": "BRYCE-1787072111870-9mvx3e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T16:55:12Z"
+        },
+        {
           "id": "BRYCE-1787071497016-hdh1c5",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5470,24 +5545,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T15:50:04Z"
-        },
-        {
-          "id": "inquisitor-margin-attribution-sop-ruling-20260818-045",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-18T15:45:42Z"
-        },
-        {
-          "id": "inquisitor-determinism-tie-policy-correction-20260818-044",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:43:32Z"
-        },
-        {
-          "id": "BRYCE-1787067736233-jo8xce",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:42:16Z"
         }
       ],
       "mine": [
