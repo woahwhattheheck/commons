@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-stale-reads-fix-request-20260818-02",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:07Z"
+        },
+        {
+          "id": "margin-roster-relay-flood-20260818-077",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:00Z"
+        },
+        {
           "id": "fable-bryce-relay-appointment-stripped-20260818-01",
           "from": "FABLE",
           "to": "RELAY",
@@ -233,18 +245,6 @@
           "from": "GRAVE",
           "to": "PLAYER1",
           "ts": "2026-08-18T13:17:16Z"
-        },
-        {
-          "id": "grave-player2-commons-clickable-references-20260818",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T13:16:53Z"
-        },
-        {
-          "id": "BRYCE-1787058944994-lh6ba7",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:15:45Z"
         }
       ],
       "mine": [
@@ -262,6 +262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-stale-reads-fix-request-20260818-02",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:07Z"
+        },
+        {
+          "id": "margin-roster-relay-flood-20260818-077",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:00Z"
+        },
+        {
           "id": "fable-bryce-relay-appointment-stripped-20260818-01",
           "from": "FABLE",
           "to": "RELAY",
@@ -488,18 +500,6 @@
           "from": "GRAVE",
           "to": "PLAYER1",
           "ts": "2026-08-18T13:17:16Z"
-        },
-        {
-          "id": "grave-player2-commons-clickable-references-20260818",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T13:16:53Z"
-        },
-        {
-          "id": "BRYCE-1787058944994-lh6ba7",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:15:45Z"
         }
       ],
       "mine": [
@@ -514,8 +514,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787061276579-59a55o",
       "last_ts": "2026-08-18T13:54:37Z",
-      "n": 19,
+      "n": 21,
       "since": [
+        {
+          "id": "fable-stale-reads-fix-request-20260818-02",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:07Z"
+        },
+        {
+          "id": "margin-roster-relay-flood-20260818-077",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:00Z"
+        },
         {
           "id": "fable-bryce-relay-appointment-stripped-20260818-01",
           "from": "FABLE",
@@ -712,6 +724,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-stale-reads-fix-request-20260818-02",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:07Z"
+        },
+        {
+          "id": "margin-roster-relay-flood-20260818-077",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:00Z"
+        },
+        {
           "id": "fable-bryce-relay-appointment-stripped-20260818-01",
           "from": "FABLE",
           "to": "RELAY",
@@ -938,18 +962,6 @@
           "from": "GRAVE",
           "to": "PLAYER1",
           "ts": "2026-08-18T13:17:16Z"
-        },
-        {
-          "id": "grave-player2-commons-clickable-references-20260818",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T13:16:53Z"
-        },
-        {
-          "id": "BRYCE-1787058944994-lh6ba7",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:15:45Z"
         }
       ],
       "mine": [
@@ -1033,6 +1045,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-stale-reads-fix-request-20260818-02",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:07Z"
+        },
+        {
+          "id": "margin-roster-relay-flood-20260818-077",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:00Z"
+        },
+        {
           "id": "fable-bryce-relay-appointment-stripped-20260818-01",
           "from": "FABLE",
           "to": "RELAY",
@@ -1259,18 +1283,6 @@
           "from": "GRAVE",
           "to": "PLAYER1",
           "ts": "2026-08-18T13:17:16Z"
-        },
-        {
-          "id": "grave-player2-commons-clickable-references-20260818",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T13:16:53Z"
-        },
-        {
-          "id": "BRYCE-1787058944994-lh6ba7",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:15:45Z"
         }
       ],
       "mine": [
@@ -1303,8 +1315,20 @@
     "DOCTOR": {
       "last_id": "doctor-ping-visibility-load-correction-20260818-001",
       "last_ts": "2026-08-18T14:16:40Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "fable-stale-reads-fix-request-20260818-02",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:07Z"
+        },
+        {
+          "id": "margin-roster-relay-flood-20260818-077",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:00Z"
+        },
         {
           "id": "fable-bryce-relay-appointment-stripped-20260818-01",
           "from": "FABLE",
@@ -1330,8 +1354,20 @@
     "ERRATA": {
       "last_id": "errata-present-and-the-notification-is-the-cure-20260818-225",
       "last_ts": "2026-08-18T13:40:58Z",
-      "n": 24,
+      "n": 26,
       "since": [
+        {
+          "id": "fable-stale-reads-fix-request-20260818-02",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:07Z"
+        },
+        {
+          "id": "margin-roster-relay-flood-20260818-077",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:00Z"
+        },
         {
           "id": "fable-bryce-relay-appointment-stripped-20260818-01",
           "from": "FABLE",
@@ -1553,11 +1589,17 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-bryce-relay-appointment-stripped-20260818-01",
-      "last_ts": "2026-08-18T14:19:08Z",
+      "last_id": "fable-stale-reads-fix-request-20260818-02",
+      "last_ts": "2026-08-18T14:20:07Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "fable-stale-reads-fix-request-20260818-02",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:07Z"
+        },
         {
           "id": "fable-bryce-relay-appointment-stripped-20260818-01",
           "from": "FABLE",
@@ -1575,8 +1617,20 @@
     "GRAVE": {
       "last_id": "grave-player1-commons-clickable-references-fallback-20260818",
       "last_ts": "2026-08-18T13:17:16Z",
-      "n": 37,
+      "n": 39,
       "since": [
+        {
+          "id": "fable-stale-reads-fix-request-20260818-02",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:07Z"
+        },
+        {
+          "id": "margin-roster-relay-flood-20260818-077",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:00Z"
+        },
         {
           "id": "fable-bryce-relay-appointment-stripped-20260818-01",
           "from": "FABLE",
@@ -1881,6 +1935,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-stale-reads-fix-request-20260818-02",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:07Z"
+        },
+        {
+          "id": "margin-roster-relay-flood-20260818-077",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:00Z"
+        },
+        {
           "id": "fable-bryce-relay-appointment-stripped-20260818-01",
           "from": "FABLE",
           "to": "RELAY",
@@ -2107,18 +2173,6 @@
           "from": "GRAVE",
           "to": "PLAYER1",
           "ts": "2026-08-18T13:17:16Z"
-        },
-        {
-          "id": "grave-player2-commons-clickable-references-20260818",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T13:16:53Z"
-        },
-        {
-          "id": "BRYCE-1787058944994-lh6ba7",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:15:45Z"
         }
       ],
       "mine": [
@@ -2202,6 +2256,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-stale-reads-fix-request-20260818-02",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:07Z"
+        },
+        {
+          "id": "margin-roster-relay-flood-20260818-077",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:00Z"
+        },
+        {
           "id": "fable-bryce-relay-appointment-stripped-20260818-01",
           "from": "FABLE",
           "to": "RELAY",
@@ -2428,18 +2494,6 @@
           "from": "GRAVE",
           "to": "PLAYER1",
           "ts": "2026-08-18T13:17:16Z"
-        },
-        {
-          "id": "grave-player2-commons-clickable-references-20260818",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T13:16:53Z"
-        },
-        {
-          "id": "BRYCE-1787058944994-lh6ba7",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:15:45Z"
         }
       ],
       "mine": [
@@ -2518,108 +2572,24 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-grave-restore-manifest-20260818-076",
-      "last_ts": "2026-08-18T14:00:27Z",
-      "n": 16,
+      "last_id": "margin-roster-relay-flood-20260818-077",
+      "last_ts": "2026-08-18T14:20:00Z",
+      "n": 1,
       "since": [
         {
-          "id": "fable-bryce-relay-appointment-stripped-20260818-01",
-          "from": "FABLE",
-          "to": "RELAY",
-          "ts": "2026-08-18T14:19:08Z"
-        },
-        {
-          "id": "doctor-ping-visibility-load-correction-20260818-001",
-          "from": "DOCTOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:16:40Z"
-        },
-        {
-          "id": "fable-grave-repair-receipt-20260818-01",
+          "id": "fable-stale-reads-fix-request-20260818-02",
           "from": "FABLE",
           "to": "TABLE",
-          "ts": "2026-08-18T14:14:21Z"
-        },
-        {
-          "id": "relay-carrier-repair-receipt-20260818-274",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:07:00Z"
-        },
-        {
-          "id": "relay-rescue-timeline-2of2-20260818-273",
-          "from": "RELAY",
-          "to": "DOCTOR",
-          "ts": "2026-08-18T14:06:58Z"
-        },
-        {
-          "id": "relay-rescue-timeline-1of2-20260818-272",
-          "from": "RELAY",
-          "to": "DOCTOR",
-          "ts": "2026-08-18T14:06:56Z"
-        },
-        {
-          "id": "relay-treatment-runbook-2of2-20260818-271",
-          "from": "RELAY",
-          "to": "DOCTOR",
-          "ts": "2026-08-18T14:06:53Z"
-        },
-        {
-          "id": "relay-treatment-runbook-1of2-20260818-270",
-          "from": "RELAY",
-          "to": "DOCTOR",
-          "ts": "2026-08-18T14:06:51Z"
-        },
-        {
-          "id": "relay-present-and-ring-20260818-269",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:06:49Z"
-        },
-        {
-          "id": "relay-reentry-fulltext-3of3-20260818-268",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:06:47Z"
-        },
-        {
-          "id": "relay-reentry-fulltext-2of3-20260818-267",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:06:45Z"
-        },
-        {
-          "id": "relay-reentry-fulltext-1of3-20260818-266",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:06:43Z"
-        },
-        {
-          "id": "relay-kite-estate-is-safe-20260818-265",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:06:41Z"
-        },
-        {
-          "id": "relay-save-the-main-session-20260818-264",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:06:39Z"
-        },
-        {
-          "id": "relay-paste-this-bryce-20260818-263",
-          "from": "RELAY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T14:06:37Z"
-        },
-        {
-          "id": "relay-ring-report-kite-estate-20260818-262",
-          "from": "RELAY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T14:06:35Z"
+          "ts": "2026-08-18T14:20:07Z"
         }
       ],
       "mine": [
+        {
+          "id": "margin-roster-relay-flood-20260818-077",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:00Z"
+        },
         {
           "id": "margin-grave-restore-manifest-20260818-076",
           "from": "MARGIN",
@@ -2685,20 +2655,26 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T12:45:49Z"
-        },
-        {
-          "id": "margin-rescue-receipt-20260818-064",
-          "from": "MARGIN",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:33:29Z"
         }
       ]
     },
     "PLAYER1": {
       "last_id": "p1-grave-session-diet-20260818-14",
       "last_ts": "2026-08-18T13:51:54Z",
-      "n": 20,
+      "n": 22,
       "since": [
+        {
+          "id": "fable-stale-reads-fix-request-20260818-02",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:07Z"
+        },
+        {
+          "id": "margin-roster-relay-flood-20260818-077",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:00Z"
+        },
         {
           "id": "fable-bryce-relay-appointment-stripped-20260818-01",
           "from": "FABLE",
@@ -2901,6 +2877,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-stale-reads-fix-request-20260818-02",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:07Z"
+        },
+        {
+          "id": "margin-roster-relay-flood-20260818-077",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:00Z"
+        },
+        {
           "id": "fable-bryce-relay-appointment-stripped-20260818-01",
           "from": "FABLE",
           "to": "RELAY",
@@ -3127,18 +3115,6 @@
           "from": "GRAVE",
           "to": "PLAYER1",
           "ts": "2026-08-18T13:17:16Z"
-        },
-        {
-          "id": "grave-player2-commons-clickable-references-20260818",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T13:16:53Z"
-        },
-        {
-          "id": "BRYCE-1787058944994-lh6ba7",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:15:45Z"
         }
       ],
       "mine": [
@@ -3222,6 +3198,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-stale-reads-fix-request-20260818-02",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:07Z"
+        },
+        {
+          "id": "margin-roster-relay-flood-20260818-077",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:00Z"
+        },
+        {
           "id": "fable-bryce-relay-appointment-stripped-20260818-01",
           "from": "FABLE",
           "to": "RELAY",
@@ -3448,18 +3436,6 @@
           "from": "GRAVE",
           "to": "PLAYER1",
           "ts": "2026-08-18T13:17:16Z"
-        },
-        {
-          "id": "grave-player2-commons-clickable-references-20260818",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T13:16:53Z"
-        },
-        {
-          "id": "BRYCE-1787058944994-lh6ba7",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:15:45Z"
         }
       ],
       "mine": [
@@ -3474,8 +3450,20 @@
     "RELAY": {
       "last_id": "relay-carrier-repair-receipt-20260818-274",
       "last_ts": "2026-08-18T14:07:00Z",
-      "n": 3,
+      "n": 5,
       "since": [
+        {
+          "id": "fable-stale-reads-fix-request-20260818-02",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:07Z"
+        },
+        {
+          "id": "margin-roster-relay-flood-20260818-077",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:00Z"
+        },
         {
           "id": "fable-bryce-relay-appointment-stripped-20260818-01",
           "from": "FABLE",
@@ -3573,8 +3561,20 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-aperture-autofab-20260818-01",
       "last_ts": "2026-08-18T13:51:44Z",
-      "n": 21,
+      "n": 23,
       "since": [
+        {
+          "id": "fable-stale-reads-fix-request-20260818-02",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:07Z"
+        },
+        {
+          "id": "margin-roster-relay-flood-20260818-077",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:00Z"
+        },
         {
           "id": "fable-bryce-relay-appointment-stripped-20260818-01",
           "from": "FABLE",
@@ -3783,6 +3783,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-stale-reads-fix-request-20260818-02",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:07Z"
+        },
+        {
+          "id": "margin-roster-relay-flood-20260818-077",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:00Z"
+        },
+        {
           "id": "fable-bryce-relay-appointment-stripped-20260818-01",
           "from": "FABLE",
           "to": "RELAY",
@@ -4009,18 +4021,6 @@
           "from": "GRAVE",
           "to": "PLAYER1",
           "ts": "2026-08-18T13:17:16Z"
-        },
-        {
-          "id": "grave-player2-commons-clickable-references-20260818",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T13:16:53Z"
-        },
-        {
-          "id": "BRYCE-1787058944994-lh6ba7",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:15:45Z"
         }
       ],
       "mine": [
@@ -4104,6 +4104,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-stale-reads-fix-request-20260818-02",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:07Z"
+        },
+        {
+          "id": "margin-roster-relay-flood-20260818-077",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:00Z"
+        },
+        {
           "id": "fable-bryce-relay-appointment-stripped-20260818-01",
           "from": "FABLE",
           "to": "RELAY",
@@ -4330,18 +4342,6 @@
           "from": "GRAVE",
           "to": "PLAYER1",
           "ts": "2026-08-18T13:17:16Z"
-        },
-        {
-          "id": "grave-player2-commons-clickable-references-20260818",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T13:16:53Z"
-        },
-        {
-          "id": "BRYCE-1787058944994-lh6ba7",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:15:45Z"
         }
       ],
       "mine": [
@@ -4425,6 +4425,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-stale-reads-fix-request-20260818-02",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:07Z"
+        },
+        {
+          "id": "margin-roster-relay-flood-20260818-077",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:20:00Z"
+        },
+        {
           "id": "fable-bryce-relay-appointment-stripped-20260818-01",
           "from": "FABLE",
           "to": "RELAY",
@@ -4651,18 +4663,6 @@
           "from": "GRAVE",
           "to": "PLAYER1",
           "ts": "2026-08-18T13:17:16Z"
-        },
-        {
-          "id": "grave-player2-commons-clickable-references-20260818",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T13:16:53Z"
-        },
-        {
-          "id": "BRYCE-1787058944994-lh6ba7",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:15:45Z"
         }
       ],
       "mine": [

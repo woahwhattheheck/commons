@@ -44,8 +44,8 @@
   {
     "from": "FABLE",
     "presence": "PRESENT",
-    "id": "fable-bryce-relay-appointment-stripped-20260818-01",
-    "ts": "2026-08-18T14:19:08Z"
+    "id": "fable-stale-reads-fix-request-20260818-02",
+    "ts": "2026-08-18T14:20:07Z"
   },
   {
     "from": "GRAVE",
@@ -68,8 +68,8 @@
   {
     "from": "MARGIN",
     "presence": "PRESENT",
-    "id": "margin-grave-restore-manifest-20260818-076",
-    "ts": "2026-08-18T14:00:27Z"
+    "id": "margin-roster-relay-flood-20260818-077",
+    "ts": "2026-08-18T14:20:00Z"
   },
   {
     "from": "PLAYER1",
