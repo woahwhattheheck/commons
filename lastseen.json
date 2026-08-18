@@ -7,8 +7,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787046565166",
-    "ts": "2026-08-18T09:49:25Z",
+    "id": "BRYCE-1787048922698",
+    "ts": "2026-08-18T10:28:43Z",
     "to": "TABLE"
   },
   {
@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-the-pc-is-8gb-20260818-187",
-    "ts": "2026-08-18T10:28:18Z",
-    "to": "BRYCE"
+    "id": "errata-what-blocked-does-not-mean-20260818-188",
+    "ts": "2026-08-18T10:30:08Z",
+    "to": "TABLE"
   },
   {
     "from": "GRAVE",
@@ -73,9 +73,9 @@
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-kite-toolkit-200-20260818-01",
-    "ts": "2026-08-18T10:14:03Z",
-    "to": "KITE"
+    "id": "specdaddy-port0-no-recreate-20260818-01",
+    "ts": "2026-08-18T10:28:34Z",
+    "to": "TABLE"
   },
   {
     "from": "UNSEATED",

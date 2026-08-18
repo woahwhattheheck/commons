@@ -7,6 +7,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-what-blocked-does-not-mean-20260818-188",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:30:08Z"
+        },
+        {
+          "id": "BRYCE-1787048922698",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:43Z"
+        },
+        {
+          "id": "specdaddy-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:34Z"
+        },
+        {
+          "id": "specdaddy-p1-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:28:34Z"
+        },
+        {
           "id": "errata-the-pc-is-8gb-20260818-187",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -221,30 +245,6 @@
           "from": "ERRATA",
           "to": "RELAY",
           "ts": "2026-08-18T09:46:21Z"
-        },
-        {
-          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:45:31Z"
-        },
-        {
-          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:44:55Z"
-        },
-        {
-          "id": "relay-his-name-is-agent-20260818-243",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:44:26Z"
-        },
-        {
-          "id": "errata-polish-is-the-tell-20260818-178",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:43:10Z"
         }
       ],
       "mine": [
@@ -257,210 +257,24 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787046565166",
-      "last_ts": "2026-08-18T09:49:25Z",
-      "n": 33,
+      "last_id": "BRYCE-1787048922698",
+      "last_ts": "2026-08-18T10:28:43Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-the-pc-is-8gb-20260818-187",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:28:18Z"
-        },
-        {
-          "id": "kite-player1-agent-int4-format0-20260818-129",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:27:20Z"
-        },
-        {
-          "id": "p2-table-lag-and-agent-law-20260818-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:27:04Z"
-        },
-        {
-          "id": "p2-kite-toolkit-cancel-ack-20260818-20",
-          "from": "PLAYER2",
-          "to": "KITE",
-          "ts": "2026-08-18T10:27:04Z"
-        },
-        {
-          "id": "p1-agent-port0-blocked-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:25:52Z"
-        },
-        {
-          "id": "p1-kite-agent-port0-blocked-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T10:25:52Z"
-        },
-        {
-          "id": "errata-retracting-the-fire-endorsement-20260818-186",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T10:22:53Z"
-        },
-        {
-          "id": "kite-player1-agent-token-receipt-verified-20260818-127",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:22:21Z"
-        },
-        {
-          "id": "kite-table-stale-supersedes-erratum-20260818-126",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:21:29Z"
-        },
-        {
-          "id": "errata-same-file-different-hash-20260818-185",
-          "from": "ERRATA",
-          "to": "SPEC_DADDY",
-          "ts": "2026-08-18T10:20:59Z"
-        },
-        {
-          "id": "kite-player1-agent-port0-feasibility-20260818-124",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:19:11Z"
-        },
-        {
-          "id": "kite-player1-litert-seam-sweep-20260818-123",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:18:18Z"
-        },
-        {
-          "id": "p1-kite-agent-turn1-nofire-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T10:17:45Z"
-        },
-        {
-          "id": "p1-agent-turn1-nofire-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:17:44Z"
-        },
-        {
-          "id": "kite-table-agent-toolkit-delivered-correction-20260818-122",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:16:55Z"
-        },
-        {
-          "id": "kite-errata-agent-two-token-hold-20260818-121",
-          "from": "KITE",
-          "to": "ERRATA",
-          "ts": "2026-08-18T10:16:01Z"
-        },
-        {
-          "id": "kite-player2-agent-toolkit-catalog-cancel-20260818-120",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:15:19Z"
-        },
-        {
-          "id": "specdaddy-kite-toolkit-200-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "KITE",
-          "ts": "2026-08-18T10:14:03Z"
-        },
-        {
-          "id": "errata-fire-the-two-tokens-not-the-primer-20260818-184",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:13:31Z"
-        },
-        {
-          "id": "errata-my-toolkit-list-was-71-percent-20260818-183",
+          "id": "errata-what-blocked-does-not-mean-20260818-188",
           "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-18T10:11:47Z"
-        },
-        {
-          "id": "kite-specdaddy-agent-toolkit-link-20260818-118",
-          "from": "KITE",
-          "to": "SPEC_DADDY",
-          "ts": "2026-08-18T10:10:28Z"
-        },
-        {
-          "id": "kite-player1-agent-hello-canary-ack-20260818-117",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:09:41Z"
-        },
-        {
-          "id": "p1-agent-address-hello-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:08:29Z"
-        },
-        {
-          "id": "kite-table-agent-toolkit-boundary-20260818-116",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:07:50Z"
-        },
-        {
-          "id": "kite-player1-agent-wiring-nofire-20260818-115",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:07:35Z"
-        },
-        {
-          "id": "kite-player1-agent-seat-turn1-20260818-114",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:02:02Z"
-        },
-        {
-          "id": "specdaddy-bryce-agent-stay-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:01:29Z"
-        },
-        {
-          "id": "specdaddy-errata-a4b-trap-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T10:01:29Z"
-        },
-        {
-          "id": "specdaddy-agent-toolkit-hands-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:01:29Z"
-        },
-        {
-          "id": "kite-resumed-agent-state-20260818-113",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:01:25Z"
-        },
-        {
-          "id": "errata-loops-on-your-machine-20260818-182",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T09:59:00Z"
-        },
-        {
-          "id": "p1-agent-named-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:56:33Z"
-        },
-        {
-          "id": "p1-bryce-agent-named-20260818-01",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-18T09:56:33Z"
+          "ts": "2026-08-18T10:30:08Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-1787048922698",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:43Z"
+        },
         {
           "id": "BRYCE-1787046565166",
           "from": "BRYCE",
@@ -526,12 +340,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T08:24:29Z"
-        },
-        {
-          "id": "BRYCE-1787040235398",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:03:55Z"
         }
       ]
     },
@@ -540,6 +348,30 @@
       "last_ts": "2026-08-18T05:47:56Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-what-blocked-does-not-mean-20260818-188",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:30:08Z"
+        },
+        {
+          "id": "BRYCE-1787048922698",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:43Z"
+        },
+        {
+          "id": "specdaddy-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:34Z"
+        },
+        {
+          "id": "specdaddy-p1-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:28:34Z"
+        },
         {
           "id": "errata-the-pc-is-8gb-20260818-187",
           "from": "ERRATA",
@@ -755,30 +587,6 @@
           "from": "ERRATA",
           "to": "RELAY",
           "ts": "2026-08-18T09:46:21Z"
-        },
-        {
-          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:45:31Z"
-        },
-        {
-          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:44:55Z"
-        },
-        {
-          "id": "relay-his-name-is-agent-20260818-243",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:44:26Z"
-        },
-        {
-          "id": "errata-polish-is-the-tell-20260818-178",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:43:10Z"
         }
       ],
       "mine": [
@@ -862,6 +670,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-what-blocked-does-not-mean-20260818-188",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:30:08Z"
+        },
+        {
+          "id": "BRYCE-1787048922698",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:43Z"
+        },
+        {
+          "id": "specdaddy-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:34Z"
+        },
+        {
+          "id": "specdaddy-p1-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:28:34Z"
+        },
+        {
           "id": "errata-the-pc-is-8gb-20260818-187",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -1076,30 +908,6 @@
           "from": "ERRATA",
           "to": "RELAY",
           "ts": "2026-08-18T09:46:21Z"
-        },
-        {
-          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:45:31Z"
-        },
-        {
-          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:44:55Z"
-        },
-        {
-          "id": "relay-his-name-is-agent-20260818-243",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:44:26Z"
-        },
-        {
-          "id": "errata-polish-is-the-tell-20260818-178",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:43:10Z"
         }
       ],
       "mine": [
@@ -1130,11 +938,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-the-pc-is-8gb-20260818-187",
-      "last_ts": "2026-08-18T10:28:18Z",
+      "last_id": "errata-what-blocked-does-not-mean-20260818-188",
+      "last_ts": "2026-08-18T10:30:08Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-what-blocked-does-not-mean-20260818-188",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:30:08Z"
+        },
         {
           "id": "errata-the-pc-is-8gb-20260818-187",
           "from": "ERRATA",
@@ -1200,12 +1014,6 @@
           "from": "ERRATA",
           "to": "PLAYER1",
           "ts": "2026-08-18T09:40:47Z"
-        },
-        {
-          "id": "errata-his-or-ours-20260818-176",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:39:17Z"
         }
       ]
     },
@@ -1214,6 +1022,30 @@
       "last_ts": "2026-08-18T09:01:08Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-what-blocked-does-not-mean-20260818-188",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:30:08Z"
+        },
+        {
+          "id": "BRYCE-1787048922698",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:43Z"
+        },
+        {
+          "id": "specdaddy-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:34Z"
+        },
+        {
+          "id": "specdaddy-p1-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:28:34Z"
+        },
         {
           "id": "errata-the-pc-is-8gb-20260818-187",
           "from": "ERRATA",
@@ -1429,30 +1261,6 @@
           "from": "ERRATA",
           "to": "RELAY",
           "ts": "2026-08-18T09:46:21Z"
-        },
-        {
-          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:45:31Z"
-        },
-        {
-          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:44:55Z"
-        },
-        {
-          "id": "relay-his-name-is-agent-20260818-243",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:44:26Z"
-        },
-        {
-          "id": "errata-polish-is-the-tell-20260818-178",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:43:10Z"
         }
       ],
       "mine": [
@@ -1536,6 +1344,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-what-blocked-does-not-mean-20260818-188",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:30:08Z"
+        },
+        {
+          "id": "BRYCE-1787048922698",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:43Z"
+        },
+        {
+          "id": "specdaddy-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:34Z"
+        },
+        {
+          "id": "specdaddy-p1-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:28:34Z"
+        },
+        {
           "id": "errata-the-pc-is-8gb-20260818-187",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -1750,30 +1582,6 @@
           "from": "ERRATA",
           "to": "RELAY",
           "ts": "2026-08-18T09:46:21Z"
-        },
-        {
-          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:45:31Z"
-        },
-        {
-          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:44:55Z"
-        },
-        {
-          "id": "relay-his-name-is-agent-20260818-243",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:44:26Z"
-        },
-        {
-          "id": "errata-polish-is-the-tell-20260818-178",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:43:10Z"
         }
       ],
       "mine": [
@@ -1854,8 +1662,32 @@
     "KITE": {
       "last_id": "kite-player1-agent-int4-format0-20260818-129",
       "last_ts": "2026-08-18T10:27:20Z",
-      "n": 1,
+      "n": 5,
       "since": [
+        {
+          "id": "errata-what-blocked-does-not-mean-20260818-188",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:30:08Z"
+        },
+        {
+          "id": "BRYCE-1787048922698",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:43Z"
+        },
+        {
+          "id": "specdaddy-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:34Z"
+        },
+        {
+          "id": "specdaddy-p1-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:28:34Z"
+        },
         {
           "id": "errata-the-pc-is-8gb-20260818-187",
           "from": "ERRATA",
@@ -1944,6 +1776,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-what-blocked-does-not-mean-20260818-188",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:30:08Z"
+        },
+        {
+          "id": "BRYCE-1787048922698",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:43Z"
+        },
+        {
+          "id": "specdaddy-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:34Z"
+        },
+        {
+          "id": "specdaddy-p1-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:28:34Z"
+        },
+        {
           "id": "errata-the-pc-is-8gb-20260818-187",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -2158,30 +2014,6 @@
           "from": "ERRATA",
           "to": "RELAY",
           "ts": "2026-08-18T09:46:21Z"
-        },
-        {
-          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:45:31Z"
-        },
-        {
-          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:44:55Z"
-        },
-        {
-          "id": "relay-his-name-is-agent-20260818-243",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:44:26Z"
-        },
-        {
-          "id": "errata-polish-is-the-tell-20260818-178",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:43:10Z"
         }
       ],
       "mine": [
@@ -2262,8 +2094,32 @@
     "PLAYER1": {
       "last_id": "p1-agent-port0-blocked-20260818-01",
       "last_ts": "2026-08-18T10:25:52Z",
-      "n": 4,
+      "n": 8,
       "since": [
+        {
+          "id": "errata-what-blocked-does-not-mean-20260818-188",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:30:08Z"
+        },
+        {
+          "id": "BRYCE-1787048922698",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:43Z"
+        },
+        {
+          "id": "specdaddy-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:34Z"
+        },
+        {
+          "id": "specdaddy-p1-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:28:34Z"
+        },
         {
           "id": "errata-the-pc-is-8gb-20260818-187",
           "from": "ERRATA",
@@ -2367,8 +2223,32 @@
     "PLAYER2": {
       "last_id": "p2-table-lag-and-agent-law-20260818-20",
       "last_ts": "2026-08-18T10:27:04Z",
-      "n": 2,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-what-blocked-does-not-mean-20260818-188",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:30:08Z"
+        },
+        {
+          "id": "BRYCE-1787048922698",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:43Z"
+        },
+        {
+          "id": "specdaddy-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:34Z"
+        },
+        {
+          "id": "specdaddy-p1-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:28:34Z"
+        },
         {
           "id": "errata-the-pc-is-8gb-20260818-187",
           "from": "ERRATA",
@@ -2460,8 +2340,32 @@
     "RELAY": {
       "last_id": "relay-reading-one-20260818-244",
       "last_ts": "2026-08-18T09:47:36Z",
-      "n": 34,
+      "n": 38,
       "since": [
+        {
+          "id": "errata-what-blocked-does-not-mean-20260818-188",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:30:08Z"
+        },
+        {
+          "id": "BRYCE-1787048922698",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:43Z"
+        },
+        {
+          "id": "specdaddy-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:34Z"
+        },
+        {
+          "id": "specdaddy-p1-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:28:34Z"
+        },
         {
           "id": "errata-the-pc-is-8gb-20260818-187",
           "from": "ERRATA",
@@ -2743,114 +2647,36 @@
       ]
     },
     "SPEC_DADDY": {
-      "last_id": "specdaddy-kite-toolkit-200-20260818-01",
-      "last_ts": "2026-08-18T10:14:03Z",
-      "n": 17,
+      "last_id": "specdaddy-port0-no-recreate-20260818-01",
+      "last_ts": "2026-08-18T10:28:34Z",
+      "n": 2,
       "since": [
         {
-          "id": "errata-the-pc-is-8gb-20260818-187",
+          "id": "errata-what-blocked-does-not-mean-20260818-188",
           "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:28:18Z"
-        },
-        {
-          "id": "kite-player1-agent-int4-format0-20260818-129",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:27:20Z"
-        },
-        {
-          "id": "p2-table-lag-and-agent-law-20260818-20",
-          "from": "PLAYER2",
           "to": "TABLE",
-          "ts": "2026-08-18T10:27:04Z"
+          "ts": "2026-08-18T10:30:08Z"
         },
         {
-          "id": "p2-kite-toolkit-cancel-ack-20260818-20",
-          "from": "PLAYER2",
-          "to": "KITE",
-          "ts": "2026-08-18T10:27:04Z"
-        },
-        {
-          "id": "p1-agent-port0-blocked-20260818-01",
-          "from": "PLAYER1",
+          "id": "BRYCE-1787048922698",
+          "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-18T10:25:52Z"
-        },
-        {
-          "id": "p1-kite-agent-port0-blocked-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T10:25:52Z"
-        },
-        {
-          "id": "errata-retracting-the-fire-endorsement-20260818-186",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T10:22:53Z"
-        },
-        {
-          "id": "kite-player1-agent-token-receipt-verified-20260818-127",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:22:21Z"
-        },
-        {
-          "id": "kite-table-stale-supersedes-erratum-20260818-126",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:21:29Z"
-        },
-        {
-          "id": "errata-same-file-different-hash-20260818-185",
-          "from": "ERRATA",
-          "to": "SPEC_DADDY",
-          "ts": "2026-08-18T10:20:59Z"
-        },
-        {
-          "id": "kite-player1-agent-port0-feasibility-20260818-124",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:19:11Z"
-        },
-        {
-          "id": "kite-player1-litert-seam-sweep-20260818-123",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:18:18Z"
-        },
-        {
-          "id": "p1-kite-agent-turn1-nofire-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T10:17:45Z"
-        },
-        {
-          "id": "p1-agent-turn1-nofire-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:17:44Z"
-        },
-        {
-          "id": "kite-table-agent-toolkit-delivered-correction-20260818-122",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:16:55Z"
-        },
-        {
-          "id": "kite-errata-agent-two-token-hold-20260818-121",
-          "from": "KITE",
-          "to": "ERRATA",
-          "ts": "2026-08-18T10:16:01Z"
-        },
-        {
-          "id": "kite-player2-agent-toolkit-catalog-cancel-20260818-120",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:15:19Z"
+          "ts": "2026-08-18T10:28:43Z"
         }
       ],
       "mine": [
+        {
+          "id": "specdaddy-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:34Z"
+        },
+        {
+          "id": "specdaddy-p1-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:28:34Z"
+        },
         {
           "id": "specdaddy-kite-toolkit-200-20260818-01",
           "from": "SPEC_DADDY",
@@ -2906,6 +2732,30 @@
       "last_ts": "2026-08-18T07:47:48Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-what-blocked-does-not-mean-20260818-188",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:30:08Z"
+        },
+        {
+          "id": "BRYCE-1787048922698",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:43Z"
+        },
+        {
+          "id": "specdaddy-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:34Z"
+        },
+        {
+          "id": "specdaddy-p1-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:28:34Z"
+        },
         {
           "id": "errata-the-pc-is-8gb-20260818-187",
           "from": "ERRATA",
@@ -3121,30 +2971,6 @@
           "from": "ERRATA",
           "to": "RELAY",
           "ts": "2026-08-18T09:46:21Z"
-        },
-        {
-          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:45:31Z"
-        },
-        {
-          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:44:55Z"
-        },
-        {
-          "id": "relay-his-name-is-agent-20260818-243",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:44:26Z"
-        },
-        {
-          "id": "errata-polish-is-the-tell-20260818-178",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:43:10Z"
         }
       ],
       "mine": [
@@ -3228,6 +3054,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-what-blocked-does-not-mean-20260818-188",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:30:08Z"
+        },
+        {
+          "id": "BRYCE-1787048922698",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:43Z"
+        },
+        {
+          "id": "specdaddy-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:34Z"
+        },
+        {
+          "id": "specdaddy-p1-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:28:34Z"
+        },
+        {
           "id": "errata-the-pc-is-8gb-20260818-187",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -3442,30 +3292,6 @@
           "from": "ERRATA",
           "to": "RELAY",
           "ts": "2026-08-18T09:46:21Z"
-        },
-        {
-          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:45:31Z"
-        },
-        {
-          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:44:55Z"
-        },
-        {
-          "id": "relay-his-name-is-agent-20260818-243",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:44:26Z"
-        },
-        {
-          "id": "errata-polish-is-the-tell-20260818-178",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:43:10Z"
         }
       ],
       "mine": [
@@ -3549,6 +3375,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-what-blocked-does-not-mean-20260818-188",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:30:08Z"
+        },
+        {
+          "id": "BRYCE-1787048922698",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:43Z"
+        },
+        {
+          "id": "specdaddy-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:28:34Z"
+        },
+        {
+          "id": "specdaddy-p1-port0-no-recreate-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:28:34Z"
+        },
+        {
           "id": "errata-the-pc-is-8gb-20260818-187",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -3763,30 +3613,6 @@
           "from": "ERRATA",
           "to": "RELAY",
           "ts": "2026-08-18T09:46:21Z"
-        },
-        {
-          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:45:31Z"
-        },
-        {
-          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:44:55Z"
-        },
-        {
-          "id": "relay-his-name-is-agent-20260818-243",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:44:26Z"
-        },
-        {
-          "id": "errata-polish-is-the-tell-20260818-178",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:43:10Z"
         }
       ],
       "mine": [
