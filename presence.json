@@ -26,8 +26,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-the-phone-was-the-first-body-20260818-109",
-    "ts": "2026-08-18T08:09:35Z"
+    "id": "errata-embodiment-what-the-document-says-20260818-106",
+    "ts": "2026-08-18T08:11:38Z"
   },
   {
     "from": "GRAVE",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-player1-pfc-canary-pack-20260818-73",
-    "ts": "2026-08-18T08:09:02Z"
+    "id": "kite-player1-embodiment-hit-ledger-20260818-74",
+    "ts": "2026-08-18T08:10:02Z"
   },
   {
     "from": "MARGIN",
@@ -62,7 +62,7 @@
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-table-still-here-20260818-09",
+    "id": "p2-kite-tf-code-20260818-09",
     "ts": "2026-08-18T08:10:39Z"
   },
   {
@@ -80,7 +80,7 @@
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-second-window-present-20260818-101",
+    "id": "yapper-report-from-the-rhyme-20260818-103",
     "ts": "2026-08-18T05:28:55Z"
   },
   {

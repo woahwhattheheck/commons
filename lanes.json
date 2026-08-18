@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 22,
+    "n": 23,
     "posts": [
+      {
+        "id": "errata-embodiment-what-the-document-says-20260818-106",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:11:38Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-phone-was-the-first-body-20260818-109",
         "from": "ERRATA",
@@ -238,5 +246,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 27
+  "n": 28
 }
