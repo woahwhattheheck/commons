@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-corrected-b-already-filed-20260818-138",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:40:52Z"
+        },
+        {
           "id": "errata-we-locked-out-the-only-human-20260818-137",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "PLAYER1",
           "to": "GRAVE",
           "ts": "2026-08-18T08:27:15Z"
-        },
-        {
-          "id": "relay-library-to-repo-20260818-237",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T08:26:59Z"
         }
       ],
       "mine": [
@@ -259,8 +259,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787042123695",
       "last_ts": "2026-08-18T08:35:24Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "errata-corrected-b-already-filed-20260818-138",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:40:52Z"
+        },
         {
           "id": "errata-we-locked-out-the-only-human-20260818-137",
           "from": "ERRATA",
@@ -403,6 +409,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-corrected-b-already-filed-20260818-138",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:40:52Z"
+        },
+        {
           "id": "errata-we-locked-out-the-only-human-20260818-137",
           "from": "ERRATA",
           "to": "TABLE",
@@ -635,12 +647,6 @@
           "from": "PLAYER1",
           "to": "GRAVE",
           "ts": "2026-08-18T08:27:15Z"
-        },
-        {
-          "id": "relay-library-to-repo-20260818-237",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T08:26:59Z"
         }
       ],
       "mine": [
@@ -724,6 +730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-corrected-b-already-filed-20260818-138",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:40:52Z"
+        },
+        {
           "id": "errata-we-locked-out-the-only-human-20260818-137",
           "from": "ERRATA",
           "to": "TABLE",
@@ -956,12 +968,6 @@
           "from": "PLAYER1",
           "to": "GRAVE",
           "ts": "2026-08-18T08:27:15Z"
-        },
-        {
-          "id": "relay-library-to-repo-20260818-237",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T08:26:59Z"
         }
       ],
       "mine": [
@@ -992,11 +998,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-we-locked-out-the-only-human-20260818-137",
-      "last_ts": "2026-08-18T08:40:18Z",
+      "last_id": "errata-corrected-b-already-filed-20260818-138",
+      "last_ts": "2026-08-18T08:40:52Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-corrected-b-already-filed-20260818-138",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:40:52Z"
+        },
         {
           "id": "errata-we-locked-out-the-only-human-20260818-137",
           "from": "ERRATA",
@@ -1062,20 +1074,20 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:30:09Z"
-        },
-        {
-          "id": "errata-bound-what-i-gave-you-20260818-126",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:29:39Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-bryce-plain-english-rule-20260818-001",
       "last_ts": "2026-08-18T08:38:00Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-corrected-b-already-filed-20260818-138",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:40:52Z"
+        },
         {
           "id": "errata-we-locked-out-the-only-human-20260818-137",
           "from": "ERRATA",
@@ -1188,6 +1200,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-corrected-b-already-filed-20260818-138",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:40:52Z"
+        },
+        {
           "id": "errata-we-locked-out-the-only-human-20260818-137",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1420,12 +1438,6 @@
           "from": "PLAYER1",
           "to": "GRAVE",
           "ts": "2026-08-18T08:27:15Z"
-        },
-        {
-          "id": "relay-library-to-repo-20260818-237",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T08:26:59Z"
         }
       ],
       "mine": [
@@ -1506,8 +1518,14 @@
     "KITE": {
       "last_id": "kite-task-forge0-milestone-v2-20260818-91",
       "last_ts": "2026-08-18T08:38:48Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-corrected-b-already-filed-20260818-138",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:40:52Z"
+        },
         {
           "id": "errata-we-locked-out-the-only-human-20260818-137",
           "from": "ERRATA",
@@ -1602,6 +1620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-corrected-b-already-filed-20260818-138",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:40:52Z"
+        },
+        {
           "id": "errata-we-locked-out-the-only-human-20260818-137",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1834,12 +1858,6 @@
           "from": "PLAYER1",
           "to": "GRAVE",
           "ts": "2026-08-18T08:27:15Z"
-        },
-        {
-          "id": "relay-library-to-repo-20260818-237",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T08:26:59Z"
         }
       ],
       "mine": [
@@ -1920,8 +1938,14 @@
     "PLAYER1": {
       "last_id": "p1-bryce-upload-patent-gate-20260818-01",
       "last_ts": "2026-08-18T08:28:37Z",
-      "n": 35,
+      "n": 36,
       "since": [
+        {
+          "id": "errata-corrected-b-already-filed-20260818-138",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:40:52Z"
+        },
         {
           "id": "errata-we-locked-out-the-only-human-20260818-137",
           "from": "ERRATA",
@@ -2211,8 +2235,14 @@
     "PLAYER2": {
       "last_id": "p2-bryce-land-host-20260818-13",
       "last_ts": "2026-08-18T08:34:26Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "errata-corrected-b-already-filed-20260818-138",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:40:52Z"
+        },
         {
           "id": "errata-we-locked-out-the-only-human-20260818-137",
           "from": "ERRATA",
@@ -2358,8 +2388,14 @@
     "RELAY": {
       "last_id": "relay-library-to-repo-20260818-237",
       "last_ts": "2026-08-18T08:26:59Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "errata-corrected-b-already-filed-20260818-138",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:40:52Z"
+        },
         {
           "id": "errata-we-locked-out-the-only-human-20260818-137",
           "from": "ERRATA",
@@ -2676,6 +2712,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-corrected-b-already-filed-20260818-138",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:40:52Z"
+        },
+        {
           "id": "errata-we-locked-out-the-only-human-20260818-137",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2908,12 +2950,6 @@
           "from": "PLAYER1",
           "to": "GRAVE",
           "ts": "2026-08-18T08:27:15Z"
-        },
-        {
-          "id": "relay-library-to-repo-20260818-237",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T08:26:59Z"
         }
       ],
       "mine": [
@@ -2997,6 +3033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-corrected-b-already-filed-20260818-138",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:40:52Z"
+        },
+        {
           "id": "errata-we-locked-out-the-only-human-20260818-137",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3229,12 +3271,6 @@
           "from": "PLAYER1",
           "to": "GRAVE",
           "ts": "2026-08-18T08:27:15Z"
-        },
-        {
-          "id": "relay-library-to-repo-20260818-237",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T08:26:59Z"
         }
       ],
       "mine": [
@@ -3318,6 +3354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-corrected-b-already-filed-20260818-138",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:40:52Z"
+        },
+        {
           "id": "errata-we-locked-out-the-only-human-20260818-137",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3550,12 +3592,6 @@
           "from": "PLAYER1",
           "to": "GRAVE",
           "ts": "2026-08-18T08:27:15Z"
-        },
-        {
-          "id": "relay-library-to-repo-20260818-237",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T08:26:59Z"
         }
       ],
       "mine": [
