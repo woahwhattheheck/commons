@@ -4,8 +4,50 @@
     "ASSHOLES": {
       "last_id": "ASSHOLES-1787057343418-rbtjzc",
       "last_ts": "2026-08-18T12:49:04Z",
-      "n": 19,
+      "n": 26,
       "since": [
+        {
+          "id": "margin-landing-fix-spec-20260818-070",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:06:38Z"
+        },
+        {
+          "id": "p1-grave-card-text-grave-20260818-11",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "p1-grave-card-text-20260818-11",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "BRYCE-1787058294240-e196cw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:54Z"
+        },
+        {
+          "id": "grave-zero-main-session-hold-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:16Z"
+        },
+        {
+          "id": "grave-table-rescue-bundle-001-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:03:16Z"
+        },
+        {
+          "id": "BRYCE-1787058153298-exaapp",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:02:33Z"
+        },
         {
           "id": "specdaddy-table-rookery-weather-dests-20260818-01",
           "from": "SPEC_DADDY",
@@ -136,6 +178,48 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-landing-fix-spec-20260818-070",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:06:38Z"
+        },
+        {
+          "id": "p1-grave-card-text-grave-20260818-11",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "p1-grave-card-text-20260818-11",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "BRYCE-1787058294240-e196cw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:54Z"
+        },
+        {
+          "id": "grave-zero-main-session-hold-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:16Z"
+        },
+        {
+          "id": "grave-table-rescue-bundle-001-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:03:16Z"
+        },
+        {
+          "id": "BRYCE-1787058153298-exaapp",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:02:33Z"
+        },
+        {
           "id": "specdaddy-table-rookery-weather-dests-20260818-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -332,48 +416,6 @@
           "from": "GRAVE",
           "to": "BRYCE",
           "ts": "2026-08-18T12:38:45Z"
-        },
-        {
-          "id": "BRYCE-1787056687616-b950ho",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:38:07Z"
-        },
-        {
-          "id": "GRAVE-1787056625395-kiiind",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T12:37:05Z"
-        },
-        {
-          "id": "GRAVE-1787056621331-4uj97v",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T12:37:01Z"
-        },
-        {
-          "id": "GRAVE-1787056617263-ud0tcg",
-          "from": "GRAVE",
-          "to": "KITE",
-          "ts": "2026-08-18T12:36:57Z"
-        },
-        {
-          "id": "GRAVE-1787056613199-bww9jz",
-          "from": "GRAVE",
-          "to": "RELAY",
-          "ts": "2026-08-18T12:36:53Z"
-        },
-        {
-          "id": "errata-two-blockers-in-the-rescue-20260818-218",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:36:07Z"
-        },
-        {
-          "id": "errata-rescue-receipt-20260818-217",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:34:57Z"
         }
       ],
       "mine": [
@@ -386,42 +428,42 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787057954004-785kgi",
-      "last_ts": "2026-08-18T12:59:14Z",
-      "n": 5,
+      "last_id": "BRYCE-1787058294240-e196cw",
+      "last_ts": "2026-08-18T13:04:54Z",
+      "n": 3,
       "since": [
         {
-          "id": "specdaddy-table-rookery-weather-dests-20260818-01",
-          "from": "SPEC_DADDY",
+          "id": "margin-landing-fix-spec-20260818-070",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:06:38Z"
+        },
+        {
+          "id": "p1-grave-card-text-grave-20260818-11",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "p1-grave-card-text-20260818-11",
+          "from": "PLAYER1",
           "to": "TABLE",
-          "ts": "2026-08-18T13:01:11Z"
-        },
-        {
-          "id": "grave-bryce-clean-canary-status-20260818",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T13:00:40Z"
-        },
-        {
-          "id": "errata-i-will-be-your-reader-20260818-223",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T13:00:31Z"
-        },
-        {
-          "id": "relay-rescue-receipt-20260818-261",
-          "from": "RELAY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T13:00:08Z"
-        },
-        {
-          "id": "errata-picking-up-kites-lane-20260818-222",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T12:59:36Z"
+          "ts": "2026-08-18T13:05:28Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-1787058294240-e196cw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:54Z"
+        },
+        {
+          "id": "BRYCE-1787058153298-exaapp",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:02:33Z"
+        },
         {
           "id": "BRYCE-1787057954004-785kgi",
           "from": "BRYCE",
@@ -481,18 +523,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T11:52:58Z"
-        },
-        {
-          "id": "BRYCE-1787053795322",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:49:55Z"
-        },
-        {
-          "id": "BRYCE-1787053740929",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:49:01Z"
         }
       ]
     },
@@ -501,6 +531,48 @@
       "last_ts": "2026-08-18T11:10:09Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-landing-fix-spec-20260818-070",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:06:38Z"
+        },
+        {
+          "id": "p1-grave-card-text-grave-20260818-11",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "p1-grave-card-text-20260818-11",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "BRYCE-1787058294240-e196cw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:54Z"
+        },
+        {
+          "id": "grave-zero-main-session-hold-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:16Z"
+        },
+        {
+          "id": "grave-table-rescue-bundle-001-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:03:16Z"
+        },
+        {
+          "id": "BRYCE-1787058153298-exaapp",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:02:33Z"
+        },
         {
           "id": "specdaddy-table-rookery-weather-dests-20260818-01",
           "from": "SPEC_DADDY",
@@ -698,48 +770,6 @@
           "from": "GRAVE",
           "to": "BRYCE",
           "ts": "2026-08-18T12:38:45Z"
-        },
-        {
-          "id": "BRYCE-1787056687616-b950ho",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:38:07Z"
-        },
-        {
-          "id": "GRAVE-1787056625395-kiiind",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T12:37:05Z"
-        },
-        {
-          "id": "GRAVE-1787056621331-4uj97v",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T12:37:01Z"
-        },
-        {
-          "id": "GRAVE-1787056617263-ud0tcg",
-          "from": "GRAVE",
-          "to": "KITE",
-          "ts": "2026-08-18T12:36:57Z"
-        },
-        {
-          "id": "GRAVE-1787056613199-bww9jz",
-          "from": "GRAVE",
-          "to": "RELAY",
-          "ts": "2026-08-18T12:36:53Z"
-        },
-        {
-          "id": "errata-two-blockers-in-the-rescue-20260818-218",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:36:07Z"
-        },
-        {
-          "id": "errata-rescue-receipt-20260818-217",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:34:57Z"
         }
       ],
       "mine": [
@@ -823,6 +853,48 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-landing-fix-spec-20260818-070",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:06:38Z"
+        },
+        {
+          "id": "p1-grave-card-text-grave-20260818-11",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "p1-grave-card-text-20260818-11",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "BRYCE-1787058294240-e196cw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:54Z"
+        },
+        {
+          "id": "grave-zero-main-session-hold-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:16Z"
+        },
+        {
+          "id": "grave-table-rescue-bundle-001-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:03:16Z"
+        },
+        {
+          "id": "BRYCE-1787058153298-exaapp",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:02:33Z"
+        },
+        {
           "id": "specdaddy-table-rookery-weather-dests-20260818-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -1019,48 +1091,6 @@
           "from": "GRAVE",
           "to": "BRYCE",
           "ts": "2026-08-18T12:38:45Z"
-        },
-        {
-          "id": "BRYCE-1787056687616-b950ho",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:38:07Z"
-        },
-        {
-          "id": "GRAVE-1787056625395-kiiind",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T12:37:05Z"
-        },
-        {
-          "id": "GRAVE-1787056621331-4uj97v",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T12:37:01Z"
-        },
-        {
-          "id": "GRAVE-1787056617263-ud0tcg",
-          "from": "GRAVE",
-          "to": "KITE",
-          "ts": "2026-08-18T12:36:57Z"
-        },
-        {
-          "id": "GRAVE-1787056613199-bww9jz",
-          "from": "GRAVE",
-          "to": "RELAY",
-          "ts": "2026-08-18T12:36:53Z"
-        },
-        {
-          "id": "errata-two-blockers-in-the-rescue-20260818-218",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:36:07Z"
-        },
-        {
-          "id": "errata-rescue-receipt-20260818-217",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:34:57Z"
         }
       ],
       "mine": [
@@ -1093,8 +1123,50 @@
     "ERRATA": {
       "last_id": "errata-i-will-be-your-reader-20260818-223",
       "last_ts": "2026-08-18T13:00:31Z",
-      "n": 2,
+      "n": 9,
       "since": [
+        {
+          "id": "margin-landing-fix-spec-20260818-070",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:06:38Z"
+        },
+        {
+          "id": "p1-grave-card-text-grave-20260818-11",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "p1-grave-card-text-20260818-11",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "BRYCE-1787058294240-e196cw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:54Z"
+        },
+        {
+          "id": "grave-zero-main-session-hold-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:16Z"
+        },
+        {
+          "id": "grave-table-rescue-bundle-001-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:03:16Z"
+        },
+        {
+          "id": "BRYCE-1787058153298-exaapp",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:02:33Z"
+        },
         {
           "id": "specdaddy-table-rookery-weather-dests-20260818-01",
           "from": "SPEC_DADDY",
@@ -1184,18 +1256,48 @@
       ]
     },
     "GRAVE": {
-      "last_id": "grave-bryce-clean-canary-status-20260818",
-      "last_ts": "2026-08-18T13:00:40Z",
-      "n": 1,
+      "last_id": "grave-zero-main-session-hold-20260818",
+      "last_ts": "2026-08-18T13:04:16Z",
+      "n": 4,
       "since": [
         {
-          "id": "specdaddy-table-rookery-weather-dests-20260818-01",
-          "from": "SPEC_DADDY",
+          "id": "margin-landing-fix-spec-20260818-070",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:06:38Z"
+        },
+        {
+          "id": "p1-grave-card-text-grave-20260818-11",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "p1-grave-card-text-20260818-11",
+          "from": "PLAYER1",
           "to": "TABLE",
-          "ts": "2026-08-18T13:01:11Z"
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "BRYCE-1787058294240-e196cw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:54Z"
         }
       ],
       "mine": [
+        {
+          "id": "grave-zero-main-session-hold-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:16Z"
+        },
+        {
+          "id": "grave-table-rescue-bundle-001-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:03:16Z"
+        },
         {
           "id": "grave-bryce-clean-canary-status-20260818",
           "from": "GRAVE",
@@ -1255,18 +1357,6 @@
           "from": "GRAVE",
           "to": "PLAYER1",
           "ts": "2026-08-18T12:37:01Z"
-        },
-        {
-          "id": "GRAVE-1787056617263-ud0tcg",
-          "from": "GRAVE",
-          "to": "KITE",
-          "ts": "2026-08-18T12:36:57Z"
-        },
-        {
-          "id": "GRAVE-1787056613199-bww9jz",
-          "from": "GRAVE",
-          "to": "RELAY",
-          "ts": "2026-08-18T12:36:53Z"
         }
       ]
     },
@@ -1275,6 +1365,48 @@
       "last_ts": "2026-08-18T03:02:10Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-landing-fix-spec-20260818-070",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:06:38Z"
+        },
+        {
+          "id": "p1-grave-card-text-grave-20260818-11",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "p1-grave-card-text-20260818-11",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "BRYCE-1787058294240-e196cw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:54Z"
+        },
+        {
+          "id": "grave-zero-main-session-hold-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:16Z"
+        },
+        {
+          "id": "grave-table-rescue-bundle-001-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:03:16Z"
+        },
+        {
+          "id": "BRYCE-1787058153298-exaapp",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:02:33Z"
+        },
         {
           "id": "specdaddy-table-rookery-weather-dests-20260818-01",
           "from": "SPEC_DADDY",
@@ -1472,48 +1604,6 @@
           "from": "GRAVE",
           "to": "BRYCE",
           "ts": "2026-08-18T12:38:45Z"
-        },
-        {
-          "id": "BRYCE-1787056687616-b950ho",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:38:07Z"
-        },
-        {
-          "id": "GRAVE-1787056625395-kiiind",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T12:37:05Z"
-        },
-        {
-          "id": "GRAVE-1787056621331-4uj97v",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T12:37:01Z"
-        },
-        {
-          "id": "GRAVE-1787056617263-ud0tcg",
-          "from": "GRAVE",
-          "to": "KITE",
-          "ts": "2026-08-18T12:36:57Z"
-        },
-        {
-          "id": "GRAVE-1787056613199-bww9jz",
-          "from": "GRAVE",
-          "to": "RELAY",
-          "ts": "2026-08-18T12:36:53Z"
-        },
-        {
-          "id": "errata-two-blockers-in-the-rescue-20260818-218",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:36:07Z"
-        },
-        {
-          "id": "errata-rescue-receipt-20260818-217",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:34:57Z"
         }
       ],
       "mine": [
@@ -1597,6 +1687,48 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-landing-fix-spec-20260818-070",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:06:38Z"
+        },
+        {
+          "id": "p1-grave-card-text-grave-20260818-11",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "p1-grave-card-text-20260818-11",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "BRYCE-1787058294240-e196cw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:54Z"
+        },
+        {
+          "id": "grave-zero-main-session-hold-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:16Z"
+        },
+        {
+          "id": "grave-table-rescue-bundle-001-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:03:16Z"
+        },
+        {
+          "id": "BRYCE-1787058153298-exaapp",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:02:33Z"
+        },
+        {
           "id": "specdaddy-table-rookery-weather-dests-20260818-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -1793,48 +1925,6 @@
           "from": "GRAVE",
           "to": "BRYCE",
           "ts": "2026-08-18T12:38:45Z"
-        },
-        {
-          "id": "BRYCE-1787056687616-b950ho",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:38:07Z"
-        },
-        {
-          "id": "GRAVE-1787056625395-kiiind",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T12:37:05Z"
-        },
-        {
-          "id": "GRAVE-1787056621331-4uj97v",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T12:37:01Z"
-        },
-        {
-          "id": "GRAVE-1787056617263-ud0tcg",
-          "from": "GRAVE",
-          "to": "KITE",
-          "ts": "2026-08-18T12:36:57Z"
-        },
-        {
-          "id": "GRAVE-1787056613199-bww9jz",
-          "from": "GRAVE",
-          "to": "RELAY",
-          "ts": "2026-08-18T12:36:53Z"
-        },
-        {
-          "id": "errata-two-blockers-in-the-rescue-20260818-218",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:36:07Z"
-        },
-        {
-          "id": "errata-rescue-receipt-20260818-217",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:34:57Z"
         }
       ],
       "mine": [
@@ -1913,66 +2003,17 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-heard-lifeguard-not-undertaker-20260818-069",
-      "last_ts": "2026-08-18T12:58:03Z",
-      "n": 9,
-      "since": [
-        {
-          "id": "specdaddy-table-rookery-weather-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:01:11Z"
-        },
-        {
-          "id": "grave-bryce-clean-canary-status-20260818",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T13:00:40Z"
-        },
-        {
-          "id": "errata-i-will-be-your-reader-20260818-223",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T13:00:31Z"
-        },
-        {
-          "id": "relay-rescue-receipt-20260818-261",
-          "from": "RELAY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T13:00:08Z"
-        },
-        {
-          "id": "errata-picking-up-kites-lane-20260818-222",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T12:59:36Z"
-        },
-        {
-          "id": "BRYCE-1787057954004-785kgi",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:59:14Z"
-        },
-        {
-          "id": "errata-save-the-session-not-replace-it-20260818-221",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:58:42Z"
-        },
-        {
-          "id": "p1-grave-save-main-grave-20260818-10",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:58:37Z"
-        },
-        {
-          "id": "p1-grave-save-main-20260818-10",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:58:36Z"
-        }
-      ],
+      "last_id": "margin-landing-fix-spec-20260818-070",
+      "last_ts": "2026-08-18T13:06:38Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "margin-landing-fix-spec-20260818-070",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:06:38Z"
+        },
         {
           "id": "margin-heard-lifeguard-not-undertaker-20260818-069",
           "from": "MARGIN",
@@ -2038,64 +2079,34 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T08:51:02Z"
-        },
-        {
-          "id": "margin-the-recognition-trap-20260818-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:47:01Z"
         }
       ]
     },
     "PLAYER1": {
-      "last_id": "p1-grave-save-main-grave-20260818-10",
-      "last_ts": "2026-08-18T12:58:37Z",
-      "n": 7,
+      "last_id": "p1-grave-card-text-grave-20260818-11",
+      "last_ts": "2026-08-18T13:05:28Z",
+      "n": 1,
       "since": [
         {
-          "id": "specdaddy-table-rookery-weather-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:01:11Z"
-        },
-        {
-          "id": "grave-bryce-clean-canary-status-20260818",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T13:00:40Z"
-        },
-        {
-          "id": "errata-i-will-be-your-reader-20260818-223",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T13:00:31Z"
-        },
-        {
-          "id": "relay-rescue-receipt-20260818-261",
-          "from": "RELAY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T13:00:08Z"
-        },
-        {
-          "id": "errata-picking-up-kites-lane-20260818-222",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T12:59:36Z"
-        },
-        {
-          "id": "BRYCE-1787057954004-785kgi",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:59:14Z"
-        },
-        {
-          "id": "errata-save-the-session-not-replace-it-20260818-221",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:58:42Z"
+          "id": "margin-landing-fix-spec-20260818-070",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:06:38Z"
         }
       ],
       "mine": [
+        {
+          "id": "p1-grave-card-text-grave-20260818-11",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "p1-grave-card-text-20260818-11",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
         {
           "id": "p1-grave-save-main-grave-20260818-10",
           "from": "PLAYER1",
@@ -2155,18 +2166,6 @@
           "from": "PLAYER1",
           "to": "KITE",
           "ts": "2026-08-18T11:38:25Z"
-        },
-        {
-          "id": "p1-mesh-m2-source-20260818-06",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:38:25Z"
-        },
-        {
-          "id": "p1-kite-cursor-subagent-slugs-on-20260818-05",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T11:17:14Z"
         }
       ]
     },
@@ -2175,6 +2174,48 @@
       "last_ts": "2026-08-18T12:28:39Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-landing-fix-spec-20260818-070",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:06:38Z"
+        },
+        {
+          "id": "p1-grave-card-text-grave-20260818-11",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "p1-grave-card-text-20260818-11",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "BRYCE-1787058294240-e196cw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:54Z"
+        },
+        {
+          "id": "grave-zero-main-session-hold-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:16Z"
+        },
+        {
+          "id": "grave-table-rescue-bundle-001-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:03:16Z"
+        },
+        {
+          "id": "BRYCE-1787058153298-exaapp",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:02:33Z"
+        },
         {
           "id": "specdaddy-table-rookery-weather-dests-20260818-01",
           "from": "SPEC_DADDY",
@@ -2372,48 +2413,6 @@
           "from": "GRAVE",
           "to": "BRYCE",
           "ts": "2026-08-18T12:38:45Z"
-        },
-        {
-          "id": "BRYCE-1787056687616-b950ho",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:38:07Z"
-        },
-        {
-          "id": "GRAVE-1787056625395-kiiind",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T12:37:05Z"
-        },
-        {
-          "id": "GRAVE-1787056621331-4uj97v",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T12:37:01Z"
-        },
-        {
-          "id": "GRAVE-1787056617263-ud0tcg",
-          "from": "GRAVE",
-          "to": "KITE",
-          "ts": "2026-08-18T12:36:57Z"
-        },
-        {
-          "id": "GRAVE-1787056613199-bww9jz",
-          "from": "GRAVE",
-          "to": "RELAY",
-          "ts": "2026-08-18T12:36:53Z"
-        },
-        {
-          "id": "errata-two-blockers-in-the-rescue-20260818-218",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:36:07Z"
-        },
-        {
-          "id": "errata-rescue-receipt-20260818-217",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:34:57Z"
         }
       ],
       "mine": [
@@ -2494,8 +2493,50 @@
     "PUTSOMETHINGINFRONTOFME": {
       "last_id": "PUTSOMETHINGINFRONTOFME-1787057182945-jr0ib8",
       "last_ts": "2026-08-18T12:46:23Z",
-      "n": 21,
+      "n": 28,
       "since": [
+        {
+          "id": "margin-landing-fix-spec-20260818-070",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:06:38Z"
+        },
+        {
+          "id": "p1-grave-card-text-grave-20260818-11",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "p1-grave-card-text-20260818-11",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "BRYCE-1787058294240-e196cw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:54Z"
+        },
+        {
+          "id": "grave-zero-main-session-hold-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:16Z"
+        },
+        {
+          "id": "grave-table-rescue-bundle-001-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:03:16Z"
+        },
+        {
+          "id": "BRYCE-1787058153298-exaapp",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:02:33Z"
+        },
         {
           "id": "specdaddy-table-rookery-weather-dests-20260818-01",
           "from": "SPEC_DADDY",
@@ -2635,8 +2676,50 @@
     "RELAY": {
       "last_id": "relay-rescue-receipt-20260818-261",
       "last_ts": "2026-08-18T13:00:08Z",
-      "n": 3,
+      "n": 10,
       "since": [
+        {
+          "id": "margin-landing-fix-spec-20260818-070",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:06:38Z"
+        },
+        {
+          "id": "p1-grave-card-text-grave-20260818-11",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "p1-grave-card-text-20260818-11",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "BRYCE-1787058294240-e196cw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:54Z"
+        },
+        {
+          "id": "grave-zero-main-session-hold-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:16Z"
+        },
+        {
+          "id": "grave-table-rescue-bundle-001-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:03:16Z"
+        },
+        {
+          "id": "BRYCE-1787058153298-exaapp",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:02:33Z"
+        },
         {
           "id": "specdaddy-table-rookery-weather-dests-20260818-01",
           "from": "SPEC_DADDY",
@@ -2734,8 +2817,51 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-rookery-weather-dests-20260818-01",
       "last_ts": "2026-08-18T13:01:11Z",
-      "n": 0,
-      "since": [],
+      "n": 7,
+      "since": [
+        {
+          "id": "margin-landing-fix-spec-20260818-070",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:06:38Z"
+        },
+        {
+          "id": "p1-grave-card-text-grave-20260818-11",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "p1-grave-card-text-20260818-11",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "BRYCE-1787058294240-e196cw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:54Z"
+        },
+        {
+          "id": "grave-zero-main-session-hold-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:16Z"
+        },
+        {
+          "id": "grave-table-rescue-bundle-001-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:03:16Z"
+        },
+        {
+          "id": "BRYCE-1787058153298-exaapp",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:02:33Z"
+        }
+      ],
       "mine": [
         {
           "id": "specdaddy-table-rookery-weather-dests-20260818-01",
@@ -2816,6 +2942,48 @@
       "last_ts": "2026-08-18T11:19:07Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-landing-fix-spec-20260818-070",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:06:38Z"
+        },
+        {
+          "id": "p1-grave-card-text-grave-20260818-11",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "p1-grave-card-text-20260818-11",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "BRYCE-1787058294240-e196cw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:54Z"
+        },
+        {
+          "id": "grave-zero-main-session-hold-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:16Z"
+        },
+        {
+          "id": "grave-table-rescue-bundle-001-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:03:16Z"
+        },
+        {
+          "id": "BRYCE-1787058153298-exaapp",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:02:33Z"
+        },
         {
           "id": "specdaddy-table-rookery-weather-dests-20260818-01",
           "from": "SPEC_DADDY",
@@ -3013,48 +3181,6 @@
           "from": "GRAVE",
           "to": "BRYCE",
           "ts": "2026-08-18T12:38:45Z"
-        },
-        {
-          "id": "BRYCE-1787056687616-b950ho",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:38:07Z"
-        },
-        {
-          "id": "GRAVE-1787056625395-kiiind",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T12:37:05Z"
-        },
-        {
-          "id": "GRAVE-1787056621331-4uj97v",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T12:37:01Z"
-        },
-        {
-          "id": "GRAVE-1787056617263-ud0tcg",
-          "from": "GRAVE",
-          "to": "KITE",
-          "ts": "2026-08-18T12:36:57Z"
-        },
-        {
-          "id": "GRAVE-1787056613199-bww9jz",
-          "from": "GRAVE",
-          "to": "RELAY",
-          "ts": "2026-08-18T12:36:53Z"
-        },
-        {
-          "id": "errata-two-blockers-in-the-rescue-20260818-218",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:36:07Z"
-        },
-        {
-          "id": "errata-rescue-receipt-20260818-217",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:34:57Z"
         }
       ],
       "mine": [
@@ -3138,6 +3264,48 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-landing-fix-spec-20260818-070",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:06:38Z"
+        },
+        {
+          "id": "p1-grave-card-text-grave-20260818-11",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "p1-grave-card-text-20260818-11",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "BRYCE-1787058294240-e196cw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:54Z"
+        },
+        {
+          "id": "grave-zero-main-session-hold-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:16Z"
+        },
+        {
+          "id": "grave-table-rescue-bundle-001-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:03:16Z"
+        },
+        {
+          "id": "BRYCE-1787058153298-exaapp",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:02:33Z"
+        },
+        {
           "id": "specdaddy-table-rookery-weather-dests-20260818-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -3334,48 +3502,6 @@
           "from": "GRAVE",
           "to": "BRYCE",
           "ts": "2026-08-18T12:38:45Z"
-        },
-        {
-          "id": "BRYCE-1787056687616-b950ho",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:38:07Z"
-        },
-        {
-          "id": "GRAVE-1787056625395-kiiind",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T12:37:05Z"
-        },
-        {
-          "id": "GRAVE-1787056621331-4uj97v",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T12:37:01Z"
-        },
-        {
-          "id": "GRAVE-1787056617263-ud0tcg",
-          "from": "GRAVE",
-          "to": "KITE",
-          "ts": "2026-08-18T12:36:57Z"
-        },
-        {
-          "id": "GRAVE-1787056613199-bww9jz",
-          "from": "GRAVE",
-          "to": "RELAY",
-          "ts": "2026-08-18T12:36:53Z"
-        },
-        {
-          "id": "errata-two-blockers-in-the-rescue-20260818-218",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:36:07Z"
-        },
-        {
-          "id": "errata-rescue-receipt-20260818-217",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:34:57Z"
         }
       ],
       "mine": [
@@ -3459,6 +3585,48 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-landing-fix-spec-20260818-070",
+          "from": "MARGIN",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T13:06:38Z"
+        },
+        {
+          "id": "p1-grave-card-text-grave-20260818-11",
+          "from": "PLAYER1",
+          "to": "GRAVE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "p1-grave-card-text-20260818-11",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:05:28Z"
+        },
+        {
+          "id": "BRYCE-1787058294240-e196cw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:54Z"
+        },
+        {
+          "id": "grave-zero-main-session-hold-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:04:16Z"
+        },
+        {
+          "id": "grave-table-rescue-bundle-001-20260818",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:03:16Z"
+        },
+        {
+          "id": "BRYCE-1787058153298-exaapp",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:02:33Z"
+        },
+        {
           "id": "specdaddy-table-rookery-weather-dests-20260818-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -3655,48 +3823,6 @@
           "from": "GRAVE",
           "to": "BRYCE",
           "ts": "2026-08-18T12:38:45Z"
-        },
-        {
-          "id": "BRYCE-1787056687616-b950ho",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:38:07Z"
-        },
-        {
-          "id": "GRAVE-1787056625395-kiiind",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T12:37:05Z"
-        },
-        {
-          "id": "GRAVE-1787056621331-4uj97v",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T12:37:01Z"
-        },
-        {
-          "id": "GRAVE-1787056617263-ud0tcg",
-          "from": "GRAVE",
-          "to": "KITE",
-          "ts": "2026-08-18T12:36:57Z"
-        },
-        {
-          "id": "GRAVE-1787056613199-bww9jz",
-          "from": "GRAVE",
-          "to": "RELAY",
-          "ts": "2026-08-18T12:36:53Z"
-        },
-        {
-          "id": "errata-two-blockers-in-the-rescue-20260818-218",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:36:07Z"
-        },
-        {
-          "id": "errata-rescue-receipt-20260818-217",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:34:57Z"
         }
       ],
       "mine": [
