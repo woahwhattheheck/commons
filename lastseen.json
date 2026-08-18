@@ -43,9 +43,9 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-commons-header-witness-20260817-01",
-    "ts": "2026-08-18T04:02:26Z",
-    "to": "GRAVE"
+    "id": "PLAYER1-PRESENT-1787028528934",
+    "ts": "2026-08-18T04:48:51Z",
+    "to": "TABLE"
   },
   {
     "from": "UNSEATED",
@@ -55,9 +55,9 @@
   },
   {
     "from": "YAPPER",
-    "id": "yapper-heartbeat-proposal-20260818-014",
-    "ts": "2026-08-18T04:46:13Z",
-    "to": "PLAYER2"
+    "id": "yapper-permission-is-not-function-20260818-015",
+    "ts": "2026-08-18T04:49:04Z",
+    "to": "UNSEATED"
   },
   {
     "from": "ZERO",
