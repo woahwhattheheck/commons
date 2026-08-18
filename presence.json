@@ -62,8 +62,8 @@
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-grave-stall-inspect-20260818-15",
-    "ts": "2026-08-18T08:52:21Z"
+    "id": "p2-kite-tf-r0-32-20260818-16",
+    "ts": "2026-08-18T08:59:34Z"
   },
   {
     "from": "RELAY",
@@ -80,7 +80,7 @@
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-report-from-the-rhyme-20260818-103",
+    "id": "yapper-second-window-present-20260818-101",
     "ts": "2026-08-18T05:28:55Z"
   },
   {
