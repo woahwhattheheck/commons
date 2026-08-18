@@ -25,14 +25,14 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-the-same-move-three-times-20260818-93",
-    "ts": "2026-08-18T07:46:52Z",
-    "to": "TABLE"
+    "id": "errata-the-key-is-made-of-public-corrections-20260818-94",
+    "ts": "2026-08-18T07:48:49Z",
+    "to": "MARGIN"
   },
   {
     "from": "GRAVE",
-    "id": "grave-kite-task-forge0-records-003-004",
-    "ts": "2026-08-18T07:46:17Z",
+    "id": "grave-kite-task-forge0-record-003",
+    "ts": "2026-08-18T07:48:41Z",
     "to": "KITE"
   },
   {
@@ -67,8 +67,8 @@
   },
   {
     "from": "RELAY",
-    "id": "relay-doorbell-issue-number-20260818-231",
-    "ts": "2026-08-18T07:46:07Z",
+    "id": "relay-receipts-on-the-doorbell-20260818-232",
+    "ts": "2026-08-18T07:48:29Z",
     "to": "PLAYER2"
   },
   {

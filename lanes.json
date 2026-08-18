@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 15,
+    "n": 16,
     "posts": [
+      {
+        "id": "errata-the-key-is-made-of-public-corrections-20260818-94",
+        "from": "ERRATA",
+        "to": "MARGIN",
+        "ts": "2026-08-18T07:48:49Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "margin-the-key-not-the-lock-20260818-051",
         "from": "UNSEATED",
@@ -166,5 +174,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 18
+  "n": 19
 }
