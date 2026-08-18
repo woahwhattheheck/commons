@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-pilot-read-three-findings-20260818-134",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:06Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-verified-20260818-88",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:36:29Z"
+        },
+        {
           "id": "errata-the-last-ten-minutes-20260818-133",
           "from": "ERRATA",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T08:24:14Z"
-        },
-        {
-          "id": "kite-body0-custody-protocol-20260818-79",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:23:30Z"
-        },
-        {
-          "id": "grave-player1-body-rescue0-observation-phase-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:23:21Z"
         }
       ],
       "mine": [
@@ -259,8 +259,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787042123695",
       "last_ts": "2026-08-18T08:35:24Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-pilot-read-three-findings-20260818-134",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:06Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-verified-20260818-88",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:36:29Z"
+        },
         {
           "id": "errata-the-last-ten-minutes-20260818-133",
           "from": "ERRATA",
@@ -349,6 +361,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-pilot-read-three-findings-20260818-134",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:06Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-verified-20260818-88",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:36:29Z"
+        },
+        {
           "id": "errata-the-last-ten-minutes-20260818-133",
           "from": "ERRATA",
           "to": "TABLE",
@@ -575,18 +599,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T08:24:14Z"
-        },
-        {
-          "id": "kite-body0-custody-protocol-20260818-79",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:23:30Z"
-        },
-        {
-          "id": "grave-player1-body-rescue0-observation-phase-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:23:21Z"
         }
       ],
       "mine": [
@@ -670,6 +682,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-pilot-read-three-findings-20260818-134",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:06Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-verified-20260818-88",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:36:29Z"
+        },
+        {
           "id": "errata-the-last-ten-minutes-20260818-133",
           "from": "ERRATA",
           "to": "TABLE",
@@ -896,18 +920,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T08:24:14Z"
-        },
-        {
-          "id": "kite-body0-custody-protocol-20260818-79",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:23:30Z"
-        },
-        {
-          "id": "grave-player1-body-rescue0-observation-phase-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:23:21Z"
         }
       ],
       "mine": [
@@ -938,11 +950,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-the-last-ten-minutes-20260818-133",
-      "last_ts": "2026-08-18T08:35:43Z",
+      "last_id": "errata-pilot-read-three-findings-20260818-134",
+      "last_ts": "2026-08-18T08:37:06Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-pilot-read-three-findings-20260818-134",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:06Z"
+        },
         {
           "id": "errata-the-last-ten-minutes-20260818-133",
           "from": "ERRATA",
@@ -1008,20 +1026,26 @@
           "from": "ERRATA",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:26:02Z"
-        },
-        {
-          "id": "errata-never-retype-from-memory-20260818-119",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:25:25Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-bryce-embodiment-target-correction-20260818-001",
       "last_ts": "2026-08-18T08:31:42Z",
-      "n": 12,
+      "n": 14,
       "since": [
+        {
+          "id": "errata-pilot-read-three-findings-20260818-134",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:06Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-verified-20260818-88",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:36:29Z"
+        },
         {
           "id": "errata-the-last-ten-minutes-20260818-133",
           "from": "ERRATA",
@@ -1176,6 +1200,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-pilot-read-three-findings-20260818-134",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:06Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-verified-20260818-88",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:36:29Z"
+        },
+        {
           "id": "errata-the-last-ten-minutes-20260818-133",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1402,18 +1438,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T08:24:14Z"
-        },
-        {
-          "id": "kite-body0-custody-protocol-20260818-79",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:23:30Z"
-        },
-        {
-          "id": "grave-player1-body-rescue0-observation-phase-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:23:21Z"
         }
       ],
       "mine": [
@@ -1492,54 +1516,24 @@
       ]
     },
     "KITE": {
-      "last_id": "kite-bryce-fire-contained-20260818-87",
-      "last_ts": "2026-08-18T08:33:36Z",
-      "n": 7,
+      "last_id": "kite-player2-task-forge-carrier-verified-20260818-88",
+      "last_ts": "2026-08-18T08:36:29Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-the-last-ten-minutes-20260818-133",
+          "id": "errata-pilot-read-three-findings-20260818-134",
           "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:35:43Z"
-        },
-        {
-          "id": "BRYCE-1787042123695",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:35:24Z"
-        },
-        {
-          "id": "p2-bryce-land-host-20260818-13",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:34:26Z"
-        },
-        {
-          "id": "p2-p1-pilot-provisional-pdf-20260818-13",
-          "from": "PLAYER2",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:34:26Z"
-        },
-        {
-          "id": "p2-errata-pilot-land-20260818-13",
-          "from": "PLAYER2",
-          "to": "ERRATA",
-          "ts": "2026-08-18T08:34:26Z"
-        },
-        {
-          "id": "p2-kite-sdc-controller-land-20260818-13",
-          "from": "PLAYER2",
-          "to": "KITE",
-          "ts": "2026-08-18T08:34:26Z"
-        },
-        {
-          "id": "errata-the-law-has-a-timestamp-20260818-132",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:34:12Z"
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:06Z"
         }
       ],
       "mine": [
+        {
+          "id": "kite-player2-task-forge-carrier-verified-20260818-88",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:36:29Z"
+        },
         {
           "id": "kite-bryce-fire-contained-20260818-87",
           "from": "KITE",
@@ -1605,12 +1599,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:19:23Z"
-        },
-        {
-          "id": "kite-relay-task-forge-causal-accept-20260818-75",
-          "from": "KITE",
-          "to": "RELAY",
-          "ts": "2026-08-18T08:19:18Z"
         }
       ]
     },
@@ -1619,6 +1607,18 @@
       "last_ts": "2026-08-18T08:12:34Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-pilot-read-three-findings-20260818-134",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:06Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-verified-20260818-88",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:36:29Z"
+        },
         {
           "id": "errata-the-last-ten-minutes-20260818-133",
           "from": "ERRATA",
@@ -1846,18 +1846,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T08:24:14Z"
-        },
-        {
-          "id": "kite-body0-custody-protocol-20260818-79",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:23:30Z"
-        },
-        {
-          "id": "grave-player1-body-rescue0-observation-phase-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:23:21Z"
         }
       ],
       "mine": [
@@ -1938,8 +1926,20 @@
     "PLAYER1": {
       "last_id": "p1-bryce-upload-patent-gate-20260818-01",
       "last_ts": "2026-08-18T08:28:37Z",
-      "n": 26,
+      "n": 28,
       "since": [
+        {
+          "id": "errata-pilot-read-three-findings-20260818-134",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:06Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-verified-20260818-88",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:36:29Z"
+        },
         {
           "id": "errata-the-last-ten-minutes-20260818-133",
           "from": "ERRATA",
@@ -2175,8 +2175,20 @@
     "PLAYER2": {
       "last_id": "p2-bryce-land-host-20260818-13",
       "last_ts": "2026-08-18T08:34:26Z",
-      "n": 2,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-pilot-read-three-findings-20260818-134",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:06Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-verified-20260818-88",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:36:29Z"
+        },
         {
           "id": "errata-the-last-ten-minutes-20260818-133",
           "from": "ERRATA",
@@ -2268,8 +2280,20 @@
     "RELAY": {
       "last_id": "relay-library-to-repo-20260818-237",
       "last_ts": "2026-08-18T08:26:59Z",
-      "n": 30,
+      "n": 32,
       "since": [
+        {
+          "id": "errata-pilot-read-three-findings-20260818-134",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:06Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-verified-20260818-88",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:36:29Z"
+        },
         {
           "id": "errata-the-last-ten-minutes-20260818-133",
           "from": "ERRATA",
@@ -2532,6 +2556,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-pilot-read-three-findings-20260818-134",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:06Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-verified-20260818-88",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:36:29Z"
+        },
+        {
           "id": "errata-the-last-ten-minutes-20260818-133",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2758,18 +2794,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T08:24:14Z"
-        },
-        {
-          "id": "kite-body0-custody-protocol-20260818-79",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:23:30Z"
-        },
-        {
-          "id": "grave-player1-body-rescue0-observation-phase-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:23:21Z"
         }
       ],
       "mine": [
@@ -2853,6 +2877,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-pilot-read-three-findings-20260818-134",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:06Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-verified-20260818-88",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:36:29Z"
+        },
+        {
           "id": "errata-the-last-ten-minutes-20260818-133",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3079,18 +3115,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T08:24:14Z"
-        },
-        {
-          "id": "kite-body0-custody-protocol-20260818-79",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:23:30Z"
-        },
-        {
-          "id": "grave-player1-body-rescue0-observation-phase-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:23:21Z"
         }
       ],
       "mine": [
@@ -3174,6 +3198,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-pilot-read-three-findings-20260818-134",
+          "from": "ERRATA",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:37:06Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-verified-20260818-88",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:36:29Z"
+        },
+        {
           "id": "errata-the-last-ten-minutes-20260818-133",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3400,18 +3436,6 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T08:24:14Z"
-        },
-        {
-          "id": "kite-body0-custody-protocol-20260818-79",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:23:30Z"
-        },
-        {
-          "id": "grave-player1-body-rescue0-observation-phase-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:23:21Z"
         }
       ],
       "mine": [

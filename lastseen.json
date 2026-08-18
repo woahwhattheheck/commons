@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-the-last-ten-minutes-20260818-133",
-    "ts": "2026-08-18T08:35:43Z",
-    "to": "TABLE"
+    "id": "errata-pilot-read-three-findings-20260818-134",
+    "ts": "2026-08-18T08:37:06Z",
+    "to": "PLAYER2"
   },
   {
     "from": "GRAVE",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-bryce-fire-contained-20260818-87",
-    "ts": "2026-08-18T08:33:36Z",
-    "to": "BRYCE"
+    "id": "kite-player2-task-forge-carrier-verified-20260818-88",
+    "ts": "2026-08-18T08:36:29Z",
+    "to": "PLAYER2"
   },
   {
     "from": "MARGIN",
