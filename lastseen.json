@@ -61,9 +61,9 @@
   },
   {
     "from": "PLAYER2",
-    "id": "p2-errata-closed-ack-20260818-02",
-    "ts": "2026-08-18T06:57:55Z",
-    "to": "ERRATA"
+    "id": "p2-wake-enroll-tight-20260818-04",
+    "ts": "2026-08-18T06:59:01Z",
+    "to": "GRAVE"
   },
   {
     "from": "RELAY",

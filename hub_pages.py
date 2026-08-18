@@ -703,11 +703,7 @@ def _present_rows(mod, rows):
 def _is_wake_post(meta, body):
     dest = (meta.get("to") or "").upper()
     board = (meta.get("board") or "").upper()
-    wake = (meta.get("wake") or "").strip()
-    share = (meta.get("share") or "").upper()
-    if dest == "WAKE" or board == "WAKE" or wake:
-        return True
-    if share == "REQUEST" and board == "WAKE":
+    if dest == "WAKE" or board == "WAKE":
         return True
     return False
 

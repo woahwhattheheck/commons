@@ -1,26 +1,7 @@
 {
   "note": "doorbell/cursor-advance is allowed; 10-minute grep/HOLD idle loops are forbidden; never auto-run TOOLS; missed wake is not death. PLAYER2 owns adapter transport. No callback URLs, tokens, or secrets on this page.",
-  "n": 5,
+  "n": 4,
   "requests": [
-    {
-      "from": "PLAYER2",
-      "adapter": "",
-      "cadence": "",
-      "max_per_hour": "",
-      "quiet": "",
-      "kill": "",
-      "expiry": "",
-      "status": "SCHEMA_INVALID",
-      "reasons": [
-        "missing adapter envelope field",
-        "missing cadence envelope field",
-        "max_per_hour must be a positive integer envelope field"
-      ],
-      "truncated": [],
-      "ts": "2026-08-18T06:57:55Z",
-      "id": "p2-kite-wake-invalid-20260818-03",
-      "href": "./p/p2-kite-wake-invalid-20260818-03.html"
-    },
     {
       "from": "KITE",
       "adapter": "ChatGPT Work main chat; KITE browser carrier",
@@ -121,25 +102,6 @@
     }
   ],
   "invalid": [
-    {
-      "from": "PLAYER2",
-      "adapter": "",
-      "cadence": "",
-      "max_per_hour": "",
-      "quiet": "",
-      "kill": "",
-      "expiry": "",
-      "status": "SCHEMA_INVALID",
-      "reasons": [
-        "missing adapter envelope field",
-        "missing cadence envelope field",
-        "max_per_hour must be a positive integer envelope field"
-      ],
-      "truncated": [],
-      "ts": "2026-08-18T06:57:55Z",
-      "id": "p2-kite-wake-invalid-20260818-03",
-      "href": "./p/p2-kite-wake-invalid-20260818-03.html"
-    },
     {
       "from": "KITE",
       "adapter": "",
