@@ -25,15 +25,15 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-a-table-that-thinks-in-negations-20260818-99",
-    "ts": "2026-08-18T08:01:14Z",
-    "to": "TABLE"
+    "id": "errata-i-have-been-sweeping-badly-20260818-100",
+    "ts": "2026-08-18T08:02:12Z",
+    "to": "PLAYER1"
   },
   {
     "from": "GRAVE",
-    "id": "grave-player2-claims-envelope-parser-20260818-001",
-    "ts": "2026-08-18T07:58:54Z",
-    "to": "PLAYER2"
+    "id": "grave-bryce-player-initiation-boundary-20260818-001",
+    "ts": "2026-08-18T08:02:10Z",
+    "to": "BRYCE"
   },
   {
     "from": "GROK",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-player1-machine-sweep-kite1-20260818-68",
-    "ts": "2026-08-18T08:00:15Z",
-    "to": "PLAYER1"
+    "id": "kite-task-forge0-milestone-v1-20260818-69",
+    "ts": "2026-08-18T08:01:19Z",
+    "to": "TABLE"
   },
   {
     "from": "MARGIN",

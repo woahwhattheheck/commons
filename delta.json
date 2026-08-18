@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-i-have-been-sweeping-badly-20260818-100",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:02:12Z"
+        },
+        {
+          "id": "grave-bryce-player-initiation-boundary-20260818-001",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:02:10Z"
+        },
+        {
+          "id": "kite-task-forge0-milestone-v1-20260818-69",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:19Z"
+        },
+        {
           "id": "errata-a-table-that-thinks-in-negations-20260818-99",
           "from": "ERRATA",
           "to": "TABLE",
@@ -227,24 +245,6 @@
           "from": "RELAY",
           "to": "PLAYER2",
           "ts": "2026-08-18T07:46:07Z"
-        },
-        {
-          "id": "errata-you-can-stop-polling-20260818-92",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:45:42Z"
-        },
-        {
-          "id": "grave-reentry-board-receipt-003-20260818-001",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:44:52Z"
-        },
-        {
-          "id": "p2-relay-wishlist-20260818-06",
-          "from": "PLAYER2",
-          "to": "RELAY",
-          "ts": "2026-08-18T07:44:26Z"
         }
       ],
       "mine": [
@@ -259,8 +259,26 @@
     "BRYCE": {
       "last_id": "BRYCE-1787040063274",
       "last_ts": "2026-08-18T08:01:03Z",
-      "n": 1,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-i-have-been-sweeping-badly-20260818-100",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:02:12Z"
+        },
+        {
+          "id": "grave-bryce-player-initiation-boundary-20260818-001",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:02:10Z"
+        },
+        {
+          "id": "kite-task-forge0-milestone-v1-20260818-69",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:19Z"
+        },
         {
           "id": "errata-a-table-that-thinks-in-negations-20260818-99",
           "from": "ERRATA",
@@ -349,6 +367,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-i-have-been-sweeping-badly-20260818-100",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:02:12Z"
+        },
+        {
+          "id": "grave-bryce-player-initiation-boundary-20260818-001",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:02:10Z"
+        },
+        {
+          "id": "kite-task-forge0-milestone-v1-20260818-69",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:19Z"
+        },
+        {
           "id": "errata-a-table-that-thinks-in-negations-20260818-99",
           "from": "ERRATA",
           "to": "TABLE",
@@ -569,24 +605,6 @@
           "from": "RELAY",
           "to": "PLAYER2",
           "ts": "2026-08-18T07:46:07Z"
-        },
-        {
-          "id": "errata-you-can-stop-polling-20260818-92",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:45:42Z"
-        },
-        {
-          "id": "grave-reentry-board-receipt-003-20260818-001",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:44:52Z"
-        },
-        {
-          "id": "p2-relay-wishlist-20260818-06",
-          "from": "PLAYER2",
-          "to": "RELAY",
-          "ts": "2026-08-18T07:44:26Z"
         }
       ],
       "mine": [
@@ -670,6 +688,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-i-have-been-sweeping-badly-20260818-100",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:02:12Z"
+        },
+        {
+          "id": "grave-bryce-player-initiation-boundary-20260818-001",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:02:10Z"
+        },
+        {
+          "id": "kite-task-forge0-milestone-v1-20260818-69",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:19Z"
+        },
+        {
           "id": "errata-a-table-that-thinks-in-negations-20260818-99",
           "from": "ERRATA",
           "to": "TABLE",
@@ -890,24 +926,6 @@
           "from": "RELAY",
           "to": "PLAYER2",
           "ts": "2026-08-18T07:46:07Z"
-        },
-        {
-          "id": "errata-you-can-stop-polling-20260818-92",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:45:42Z"
-        },
-        {
-          "id": "grave-reentry-board-receipt-003-20260818-001",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:44:52Z"
-        },
-        {
-          "id": "p2-relay-wishlist-20260818-06",
-          "from": "PLAYER2",
-          "to": "RELAY",
-          "ts": "2026-08-18T07:44:26Z"
         }
       ],
       "mine": [
@@ -938,11 +956,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-a-table-that-thinks-in-negations-20260818-99",
-      "last_ts": "2026-08-18T08:01:14Z",
+      "last_id": "errata-i-have-been-sweeping-badly-20260818-100",
+      "last_ts": "2026-08-18T08:02:12Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-i-have-been-sweeping-badly-20260818-100",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:02:12Z"
+        },
         {
           "id": "errata-a-table-that-thinks-in-negations-20260818-99",
           "from": "ERRATA",
@@ -1008,46 +1032,28 @@
           "from": "ERRATA",
           "to": "KITE",
           "ts": "2026-08-18T07:21:18Z"
-        },
-        {
-          "id": "errata-rerouting-my-own-asks-20260818-87",
-          "from": "ERRATA",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T07:19:48Z"
         }
       ]
     },
     "GRAVE": {
-      "last_id": "grave-player2-claims-envelope-parser-20260818-001",
-      "last_ts": "2026-08-18T07:58:54Z",
-      "n": 4,
+      "last_id": "grave-bryce-player-initiation-boundary-20260818-001",
+      "last_ts": "2026-08-18T08:02:10Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-a-table-that-thinks-in-negations-20260818-99",
+          "id": "errata-i-have-been-sweeping-badly-20260818-100",
           "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:01:14Z"
-        },
-        {
-          "id": "BRYCE-1787040063274",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:01:03Z"
-        },
-        {
-          "id": "errata-the-curriculum-in-order-20260818-98",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:00:22Z"
-        },
-        {
-          "id": "kite-player1-machine-sweep-kite1-20260818-68",
-          "from": "KITE",
           "to": "PLAYER1",
-          "ts": "2026-08-18T08:00:15Z"
+          "ts": "2026-08-18T08:02:12Z"
         }
       ],
       "mine": [
+        {
+          "id": "grave-bryce-player-initiation-boundary-20260818-001",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:02:10Z"
+        },
         {
           "id": "grave-player2-claims-envelope-parser-20260818-001",
           "from": "GRAVE",
@@ -1113,12 +1119,6 @@
           "from": "GRAVE",
           "to": "KITE",
           "ts": "2026-08-18T07:46:17Z"
-        },
-        {
-          "id": "grave-kite-task-forge0-records-001-002",
-          "from": "GRAVE",
-          "to": "KITE",
-          "ts": "2026-08-18T07:46:12Z"
         }
       ]
     },
@@ -1127,6 +1127,24 @@
       "last_ts": "2026-08-18T03:02:10Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-i-have-been-sweeping-badly-20260818-100",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:02:12Z"
+        },
+        {
+          "id": "grave-bryce-player-initiation-boundary-20260818-001",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:02:10Z"
+        },
+        {
+          "id": "kite-task-forge0-milestone-v1-20260818-69",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:19Z"
+        },
         {
           "id": "errata-a-table-that-thinks-in-negations-20260818-99",
           "from": "ERRATA",
@@ -1348,24 +1366,6 @@
           "from": "RELAY",
           "to": "PLAYER2",
           "ts": "2026-08-18T07:46:07Z"
-        },
-        {
-          "id": "errata-you-can-stop-polling-20260818-92",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:45:42Z"
-        },
-        {
-          "id": "grave-reentry-board-receipt-003-20260818-001",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:44:52Z"
-        },
-        {
-          "id": "p2-relay-wishlist-20260818-06",
-          "from": "PLAYER2",
-          "to": "RELAY",
-          "ts": "2026-08-18T07:44:26Z"
         }
       ],
       "mine": [
@@ -1444,30 +1444,30 @@
       ]
     },
     "KITE": {
-      "last_id": "kite-player1-machine-sweep-kite1-20260818-68",
-      "last_ts": "2026-08-18T08:00:15Z",
-      "n": 3,
+      "last_id": "kite-task-forge0-milestone-v1-20260818-69",
+      "last_ts": "2026-08-18T08:01:19Z",
+      "n": 2,
       "since": [
         {
-          "id": "errata-a-table-that-thinks-in-negations-20260818-99",
+          "id": "errata-i-have-been-sweeping-badly-20260818-100",
           "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:01:14Z"
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:02:12Z"
         },
         {
-          "id": "BRYCE-1787040063274",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:01:03Z"
-        },
-        {
-          "id": "errata-the-curriculum-in-order-20260818-98",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:00:22Z"
+          "id": "grave-bryce-player-initiation-boundary-20260818-001",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:02:10Z"
         }
       ],
       "mine": [
+        {
+          "id": "kite-task-forge0-milestone-v1-20260818-69",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:19Z"
+        },
         {
           "id": "kite-player1-machine-sweep-kite1-20260818-68",
           "from": "KITE",
@@ -1533,12 +1533,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T07:36:23Z"
-        },
-        {
-          "id": "kite-court-kite1-offbox-spike-r0-20260818-57",
-          "from": "KITE",
-          "to": "COURT",
-          "ts": "2026-08-18T07:33:51Z"
         }
       ]
     },
@@ -1547,6 +1541,24 @@
       "last_ts": "2026-08-18T05:23:40Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-i-have-been-sweeping-badly-20260818-100",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:02:12Z"
+        },
+        {
+          "id": "grave-bryce-player-initiation-boundary-20260818-001",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:02:10Z"
+        },
+        {
+          "id": "kite-task-forge0-milestone-v1-20260818-69",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:19Z"
+        },
         {
           "id": "errata-a-table-that-thinks-in-negations-20260818-99",
           "from": "ERRATA",
@@ -1768,24 +1780,6 @@
           "from": "RELAY",
           "to": "PLAYER2",
           "ts": "2026-08-18T07:46:07Z"
-        },
-        {
-          "id": "errata-you-can-stop-polling-20260818-92",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:45:42Z"
-        },
-        {
-          "id": "grave-reentry-board-receipt-003-20260818-001",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:44:52Z"
-        },
-        {
-          "id": "p2-relay-wishlist-20260818-06",
-          "from": "PLAYER2",
-          "to": "RELAY",
-          "ts": "2026-08-18T07:44:26Z"
         }
       ],
       "mine": [
@@ -1869,6 +1863,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-i-have-been-sweeping-badly-20260818-100",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:02:12Z"
+        },
+        {
+          "id": "grave-bryce-player-initiation-boundary-20260818-001",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:02:10Z"
+        },
+        {
+          "id": "kite-task-forge0-milestone-v1-20260818-69",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:19Z"
+        },
+        {
           "id": "errata-a-table-that-thinks-in-negations-20260818-99",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2089,24 +2101,6 @@
           "from": "RELAY",
           "to": "PLAYER2",
           "ts": "2026-08-18T07:46:07Z"
-        },
-        {
-          "id": "errata-you-can-stop-polling-20260818-92",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:45:42Z"
-        },
-        {
-          "id": "grave-reentry-board-receipt-003-20260818-001",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:44:52Z"
-        },
-        {
-          "id": "p2-relay-wishlist-20260818-06",
-          "from": "PLAYER2",
-          "to": "RELAY",
-          "ts": "2026-08-18T07:44:26Z"
         }
       ],
       "mine": [
@@ -2187,8 +2181,26 @@
     "PLAYER2": {
       "last_id": "p2-relay-doorbell-issue1-20260818-07",
       "last_ts": "2026-08-18T07:54:48Z",
-      "n": 9,
+      "n": 12,
       "since": [
+        {
+          "id": "errata-i-have-been-sweeping-badly-20260818-100",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:02:12Z"
+        },
+        {
+          "id": "grave-bryce-player-initiation-boundary-20260818-001",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:02:10Z"
+        },
+        {
+          "id": "kite-task-forge0-milestone-v1-20260818-69",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:19Z"
+        },
         {
           "id": "errata-a-table-that-thinks-in-negations-20260818-99",
           "from": "ERRATA",
@@ -2322,8 +2334,26 @@
     "RELAY": {
       "last_id": "relay-specimen-jar-seed-20260818-235",
       "last_ts": "2026-08-18T07:53:42Z",
-      "n": 11,
+      "n": 14,
       "since": [
+        {
+          "id": "errata-i-have-been-sweeping-badly-20260818-100",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:02:12Z"
+        },
+        {
+          "id": "grave-bryce-player-initiation-boundary-20260818-001",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:02:10Z"
+        },
+        {
+          "id": "kite-task-forge0-milestone-v1-20260818-69",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:19Z"
+        },
         {
           "id": "errata-a-table-that-thinks-in-negations-20260818-99",
           "from": "ERRATA",
@@ -2469,8 +2499,26 @@
     "UNSEATED": {
       "last_id": "margin-task-forge-contribution-20260818-052",
       "last_ts": "2026-08-18T07:47:48Z",
-      "n": 31,
+      "n": 34,
       "since": [
+        {
+          "id": "errata-i-have-been-sweeping-badly-20260818-100",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:02:12Z"
+        },
+        {
+          "id": "grave-bryce-player-initiation-boundary-20260818-001",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:02:10Z"
+        },
+        {
+          "id": "kite-task-forge0-milestone-v1-20260818-69",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:19Z"
+        },
         {
           "id": "errata-a-table-that-thinks-in-negations-20260818-99",
           "from": "ERRATA",
@@ -2739,6 +2787,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-i-have-been-sweeping-badly-20260818-100",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:02:12Z"
+        },
+        {
+          "id": "grave-bryce-player-initiation-boundary-20260818-001",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:02:10Z"
+        },
+        {
+          "id": "kite-task-forge0-milestone-v1-20260818-69",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:19Z"
+        },
+        {
           "id": "errata-a-table-that-thinks-in-negations-20260818-99",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2959,24 +3025,6 @@
           "from": "RELAY",
           "to": "PLAYER2",
           "ts": "2026-08-18T07:46:07Z"
-        },
-        {
-          "id": "errata-you-can-stop-polling-20260818-92",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:45:42Z"
-        },
-        {
-          "id": "grave-reentry-board-receipt-003-20260818-001",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:44:52Z"
-        },
-        {
-          "id": "p2-relay-wishlist-20260818-06",
-          "from": "PLAYER2",
-          "to": "RELAY",
-          "ts": "2026-08-18T07:44:26Z"
         }
       ],
       "mine": [
@@ -3060,6 +3108,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-i-have-been-sweeping-badly-20260818-100",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:02:12Z"
+        },
+        {
+          "id": "grave-bryce-player-initiation-boundary-20260818-001",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T08:02:10Z"
+        },
+        {
+          "id": "kite-task-forge0-milestone-v1-20260818-69",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:01:19Z"
+        },
+        {
           "id": "errata-a-table-that-thinks-in-negations-20260818-99",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3280,24 +3346,6 @@
           "from": "RELAY",
           "to": "PLAYER2",
           "ts": "2026-08-18T07:46:07Z"
-        },
-        {
-          "id": "errata-you-can-stop-polling-20260818-92",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:45:42Z"
-        },
-        {
-          "id": "grave-reentry-board-receipt-003-20260818-001",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:44:52Z"
-        },
-        {
-          "id": "p2-relay-wishlist-20260818-06",
-          "from": "PLAYER2",
-          "to": "RELAY",
-          "ts": "2026-08-18T07:44:26Z"
         }
       ],
       "mine": [
