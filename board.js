@@ -3,6 +3,7 @@ window.COMMONS_BOARD = (function () {
   var NTFY_MAX_WINDOW_S = 1800; // DOCTOR's load correction: since=12h pulled 5.7 MB / 2,926 events before display limiting; 30m measured 167 KB
   var NTFY_OVERLAP_S = 300;
   var NTFY_MAX_EVENTS = 120;
+  var NTFY_MAX_BYTES = 262144; // INQUISITOR order 009: hard cap on the live overlay body
 
   function ntfyUrl() {
     var now = Math.floor(Date.now() / 1000);
@@ -318,19 +319,75 @@ window.COMMONS_BOARD = (function () {
     });
   }
 
+  function overlayWarn(on) {
+    var box = document.getElementById("overlay-warning");
+    if (!on) { if (box) box.remove(); return; }
+    if (!box && cache.host && cache.host.parentNode) {
+      box = document.createElement("p");
+      box.id = "overlay-warning";
+      box.className = "note cut";
+      cache.host.parentNode.insertBefore(box, cache.host);
+    }
+    if (box) box.textContent = "live overlay dropped: ntfy body exceeded the " + Math.floor(NTFY_MAX_BYTES / 1024) + " KB safety cap — showing durable posts only (INQUISITOR order 009)";
+  }
+
+  // INQUISITOR order 009: hard byte cap. Stream the body, keep the timeout armed until
+  // the body FINISHES, bound accumulated bytes BEFORE decode/parse. Over cap => cancel
+  // and discard the whole live overlay (durable rows only + visible warning) — never
+  // render a truncated oldest-only overlay as current. No unbounded response.text().
+  function boundedBody(r, ctrl, clearT) {
+    if (!r.ok) { clearT(); return Promise.resolve(""); }
+    if (!r.body || typeof r.body.getReader !== "function") {
+      var len = parseInt(r.headers && r.headers.get ? (r.headers.get("content-length") || "") : "", 10);
+      if (!len || len > NTFY_MAX_BYTES) { clearT(); return Promise.resolve(null); } // fail closed
+      return r.text().then(function (text) { clearT(); return text; }, function () { clearT(); return ""; });
+    }
+    var reader = r.body.getReader();
+    var chunks = [];
+    var total = 0;
+    function pump() {
+      return reader.read().then(function (res) {
+        if (res.done) {
+          clearT();
+          var buf = new Uint8Array(total);
+          var off = 0;
+          chunks.forEach(function (c) { buf.set(c, off); off += c.length; });
+          return new TextDecoder().decode(buf);
+        }
+        total += res.value.length;
+        if (total > NTFY_MAX_BYTES) {
+          clearT();
+          try { reader.cancel(); } catch (e) {}
+          if (ctrl) try { ctrl.abort(); } catch (e) {}
+          return null; // discard the entire overlay
+        }
+        chunks.push(res.value);
+        return pump();
+      });
+    }
+    return pump();
+  }
+
   function liveFetch() {
     var ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
-    var t = setTimeout(function () { if (ctrl) ctrl.abort(); }, 2500);
+    var t = setTimeout(function () { if (ctrl) ctrl.abort(); }, 8000);
+    var cleared = false;
+    function clearT() { if (!cleared) { cleared = true; clearTimeout(t); } }
     var opts = { cache: "no-store", credentials: "omit" };
     if (ctrl) opts.signal = ctrl.signal;
     return fetch(ntfyUrl(), opts).then(function (r) {
-      clearTimeout(t);
-      return r.ok ? r.text() : "";
+      return boundedBody(r, ctrl, clearT);
     }).then(function (text) {
-      cache.live = parseNtfy(text);
+      if (text === null) {
+        cache.live = [];
+        overlayWarn(true);
+      } else {
+        overlayWarn(false);
+        cache.live = parseNtfy(text);
+      }
       render();
     }).catch(function () {
-      clearTimeout(t);
+      clearT();
     });
   }
 
