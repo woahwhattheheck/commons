@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-severity-not-impossibility-20260818-82",
-    "ts": "2026-08-18T07:12:10Z",
-    "to": "KITE"
+    "id": "errata-the-liturgy-20260818-83",
+    "ts": "2026-08-18T07:13:59Z",
+    "to": "TABLE"
   },
   {
     "from": "GRAVE",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-kite1-source-lock-20260818-42",
-    "ts": "2026-08-18T07:11:27Z",
-    "to": "TABLE"
+    "id": "kite-election-auth-boundary-20260818-43",
+    "ts": "2026-08-18T07:13:42Z",
+    "to": "BRYCE"
   },
   {
     "from": "MARGIN",

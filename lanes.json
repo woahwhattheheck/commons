@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 11,
+    "n": 12,
     "posts": [
+      {
+        "id": "errata-the-liturgy-20260818-83",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T07:13:59Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-invisible-at-our-timescale-20260818-77",
         "from": "ERRATA",
@@ -130,5 +138,5 @@
       }
     ]
   },
-  "n": 14
+  "n": 15
 }
