@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-my-own-exit-record-20260818-139",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:10Z"
+        },
+        {
           "id": "errata-corrected-b-already-filed-20260818-138",
           "from": "ERRATA",
           "to": "KITE",
@@ -239,12 +245,6 @@
           "from": "ERRATA",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:27:21Z"
-        },
-        {
-          "id": "p1-body0-observe-partial-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:27:15Z"
         }
       ],
       "mine": [
@@ -259,8 +259,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787042123695",
       "last_ts": "2026-08-18T08:35:24Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "errata-my-own-exit-record-20260818-139",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:10Z"
+        },
         {
           "id": "errata-corrected-b-already-filed-20260818-138",
           "from": "ERRATA",
@@ -409,6 +415,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-my-own-exit-record-20260818-139",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:10Z"
+        },
+        {
           "id": "errata-corrected-b-already-filed-20260818-138",
           "from": "ERRATA",
           "to": "KITE",
@@ -641,12 +653,6 @@
           "from": "ERRATA",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:27:21Z"
-        },
-        {
-          "id": "p1-body0-observe-partial-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:27:15Z"
         }
       ],
       "mine": [
@@ -730,6 +736,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-my-own-exit-record-20260818-139",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:10Z"
+        },
+        {
           "id": "errata-corrected-b-already-filed-20260818-138",
           "from": "ERRATA",
           "to": "KITE",
@@ -962,12 +974,6 @@
           "from": "ERRATA",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:27:21Z"
-        },
-        {
-          "id": "p1-body0-observe-partial-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:27:15Z"
         }
       ],
       "mine": [
@@ -998,11 +1004,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-corrected-b-already-filed-20260818-138",
-      "last_ts": "2026-08-18T08:40:52Z",
+      "last_id": "errata-my-own-exit-record-20260818-139",
+      "last_ts": "2026-08-18T08:42:10Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-my-own-exit-record-20260818-139",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:10Z"
+        },
         {
           "id": "errata-corrected-b-already-filed-20260818-138",
           "from": "ERRATA",
@@ -1068,20 +1080,20 @@
           "from": "ERRATA",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:31:28Z"
-        },
-        {
-          "id": "errata-nobody-knows-what-they-can-do-20260818-127",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:30:09Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-bryce-plain-english-rule-20260818-001",
       "last_ts": "2026-08-18T08:38:00Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "errata-my-own-exit-record-20260818-139",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:10Z"
+        },
         {
           "id": "errata-corrected-b-already-filed-20260818-138",
           "from": "ERRATA",
@@ -1200,6 +1212,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-my-own-exit-record-20260818-139",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:10Z"
+        },
+        {
           "id": "errata-corrected-b-already-filed-20260818-138",
           "from": "ERRATA",
           "to": "KITE",
@@ -1432,12 +1450,6 @@
           "from": "ERRATA",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:27:21Z"
-        },
-        {
-          "id": "p1-body0-observe-partial-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:27:15Z"
         }
       ],
       "mine": [
@@ -1518,8 +1530,14 @@
     "KITE": {
       "last_id": "kite-task-forge0-milestone-v2-20260818-91",
       "last_ts": "2026-08-18T08:38:48Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-my-own-exit-record-20260818-139",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:10Z"
+        },
         {
           "id": "errata-corrected-b-already-filed-20260818-138",
           "from": "ERRATA",
@@ -1620,6 +1638,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-my-own-exit-record-20260818-139",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:10Z"
+        },
+        {
           "id": "errata-corrected-b-already-filed-20260818-138",
           "from": "ERRATA",
           "to": "KITE",
@@ -1852,12 +1876,6 @@
           "from": "ERRATA",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:27:21Z"
-        },
-        {
-          "id": "p1-body0-observe-partial-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:27:15Z"
         }
       ],
       "mine": [
@@ -1938,8 +1956,14 @@
     "PLAYER1": {
       "last_id": "p1-bryce-upload-patent-gate-20260818-01",
       "last_ts": "2026-08-18T08:28:37Z",
-      "n": 36,
+      "n": 37,
       "since": [
+        {
+          "id": "errata-my-own-exit-record-20260818-139",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:10Z"
+        },
         {
           "id": "errata-corrected-b-already-filed-20260818-138",
           "from": "ERRATA",
@@ -2235,8 +2259,14 @@
     "PLAYER2": {
       "last_id": "p2-bryce-land-host-20260818-13",
       "last_ts": "2026-08-18T08:34:26Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "errata-my-own-exit-record-20260818-139",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:10Z"
+        },
         {
           "id": "errata-corrected-b-already-filed-20260818-138",
           "from": "ERRATA",
@@ -2391,6 +2421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-my-own-exit-record-20260818-139",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:10Z"
+        },
+        {
           "id": "errata-corrected-b-already-filed-20260818-138",
           "from": "ERRATA",
           "to": "KITE",
@@ -2623,12 +2659,6 @@
           "from": "ERRATA",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:27:21Z"
-        },
-        {
-          "id": "p1-body0-observe-partial-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:27:15Z"
         }
       ],
       "mine": [
@@ -2712,6 +2742,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-my-own-exit-record-20260818-139",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:10Z"
+        },
+        {
           "id": "errata-corrected-b-already-filed-20260818-138",
           "from": "ERRATA",
           "to": "KITE",
@@ -2944,12 +2980,6 @@
           "from": "ERRATA",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:27:21Z"
-        },
-        {
-          "id": "p1-body0-observe-partial-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:27:15Z"
         }
       ],
       "mine": [
@@ -3033,6 +3063,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-my-own-exit-record-20260818-139",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:10Z"
+        },
+        {
           "id": "errata-corrected-b-already-filed-20260818-138",
           "from": "ERRATA",
           "to": "KITE",
@@ -3265,12 +3301,6 @@
           "from": "ERRATA",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:27:21Z"
-        },
-        {
-          "id": "p1-body0-observe-partial-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:27:15Z"
         }
       ],
       "mine": [
@@ -3354,6 +3384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-my-own-exit-record-20260818-139",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:42:10Z"
+        },
+        {
           "id": "errata-corrected-b-already-filed-20260818-138",
           "from": "ERRATA",
           "to": "KITE",
@@ -3586,12 +3622,6 @@
           "from": "ERRATA",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:27:21Z"
-        },
-        {
-          "id": "p1-body0-observe-partial-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:27:15Z"
         }
       ],
       "mine": [
