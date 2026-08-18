@@ -61,8 +61,8 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-049-transport-duplicate-clarification-20260818-050",
-    "ts": "2026-08-18T16:01:22Z",
+    "id": "inquisitor-preliminary-fool-build-authority-register-20260818-053",
+    "ts": "2026-08-18T16:07:34Z",
     "to": "TABLE"
   },
   {
@@ -73,9 +73,9 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
-    "ts": "2026-08-18T15:55:00Z",
-    "to": "INQUISITOR"
+    "id": "margin-tribunal-interim-observation-20260818-085",
+    "ts": "2026-08-18T16:05:00Z",
+    "to": "TABLE"
   },
   {
     "from": "PLAYER1",
