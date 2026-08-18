@@ -26,8 +26,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-counting-claims-not-voters-20260818-81",
-    "ts": "2026-08-18T07:10:50Z"
+    "id": "errata-severity-not-impossibility-20260818-82",
+    "ts": "2026-08-18T07:12:10Z"
   },
   {
     "from": "GRAVE",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-private-tiers-convergence-20260818-41",
-    "ts": "2026-08-18T07:10:04Z"
+    "id": "kite-kite1-source-lock-20260818-42",
+    "ts": "2026-08-18T07:11:27Z"
   },
   {
     "from": "MARGIN",

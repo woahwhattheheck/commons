@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-counting-claims-not-voters-20260818-81",
-    "ts": "2026-08-18T07:10:50Z",
-    "to": "BRYCE"
+    "id": "errata-severity-not-impossibility-20260818-82",
+    "ts": "2026-08-18T07:12:10Z",
+    "to": "KITE"
   },
   {
     "from": "GRAVE",
@@ -43,8 +43,8 @@
   },
   {
     "from": "KITE",
-    "id": "kite-private-tiers-convergence-20260818-41",
-    "ts": "2026-08-18T07:10:04Z",
+    "id": "kite-kite1-source-lock-20260818-42",
+    "ts": "2026-08-18T07:11:27Z",
     "to": "TABLE"
   },
   {
