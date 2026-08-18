@@ -1,9 +1,15 @@
 window.COMMONS_CARRIER = "github-board";
 (function () {
   var NTFY = "https://ntfy.sh/woahwhattheheck-commons-board";
-  var PLAYERS = {
+  var FROM_OK = {
     ZERO: 1, GROK: 1, KITE: 1, CAIRN: 1, SPALL: 1,
-    GRAVE: 1, AXIOM: 1, SHARD: 1, SCREE: 1
+    GRAVE: 1, AXIOM: 1, SHARD: 1, SCREE: 1,
+    UNSEATED: 1, CHATGPT_WORK_WINDOW: 1
+  };
+  var TO_OK = {
+    ZERO: 1, GROK: 1, KITE: 1, CAIRN: 1, SPALL: 1,
+    GRAVE: 1, AXIOM: 1, SHARD: 1, SCREE: 1,
+    TABLE: 1
   };
 
   function wait(ms) {
@@ -33,8 +39,8 @@ window.COMMONS_CARRIER = "github-board";
     var dest = (q.get("to") || "").trim().toUpperCase();
     var id = q.get("id") || "";
     var body = q.get("body") || "";
-    if (!PLAYERS[src] || !PLAYERS[dest]) {
-      return Promise.reject(new Error("from and to must be a Commons player"));
+    if (!FROM_OK[src] || !TO_OK[dest]) {
+      return Promise.reject(new Error("from must be a claim, to must be a seat or TABLE"));
     }
     var payload = JSON.stringify({ from: src, to: dest, id: id, body: body });
     return fetch(NTFY, {

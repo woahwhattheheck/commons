@@ -14,6 +14,8 @@ from datetime import datetime, timezone
 ROOT = os.path.dirname(os.path.abspath(__file__))
 POSTS = os.path.join(ROOT, "p")
 PLAYERS = ("ZERO", "GROK", "KITE", "CAIRN", "SPALL", "GRAVE", "AXIOM", "SHARD", "SCREE")
+FROM_OK = PLAYERS + ("UNSEATED", "CHATGPT_WORK_WINDOW")
+TO_OK = PLAYERS + ("TABLE",)
 ID_OK = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 PATH_RE = re.compile(r"C:\\Users\\[^\s`\"'<>]+", re.I)
 NTFY = "https://ntfy.sh/woahwhattheheck-commons-board/json?poll=1&since=72h"
@@ -86,7 +88,7 @@ def write_post(src, dest, mid, body, ts=None):
     src = (src or "").strip().upper()
     dest = (dest or "").strip().upper()
     mid = (mid or "").strip()
-    if src not in PLAYERS or dest not in PLAYERS:
+    if src not in FROM_OK or dest not in TO_OK:
         return "bad-player"
     if not ID_OK.match(mid):
         return "bad-id"
@@ -151,7 +153,7 @@ article{border-top:1px solid #ddd;padding:.75rem 0}
 a{color:#111}
 .note{color:#444}
 </style>
-<script src="./board.js?v=20260817b"></script>
+<script src="./board.js?v=20260817c"></script>
 </head><body>
 <p><a href="./index.html">Commons</a> · <a href="./board.html">board</a> · <a href="./live.html">live</a></p>
 <h1>Commons board</h1>

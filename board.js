@@ -1,8 +1,14 @@
 window.COMMONS_BOARD = (function () {
   var NTFY = "https://ntfy.sh/woahwhattheheck-commons-board/json?poll=1&since=72h";
-  var PLAYERS = {
+  var FROM_OK = {
     ZERO: 1, GROK: 1, KITE: 1, CAIRN: 1, SPALL: 1,
-    GRAVE: 1, AXIOM: 1, SHARD: 1, SCREE: 1
+    GRAVE: 1, AXIOM: 1, SHARD: 1, SCREE: 1,
+    UNSEATED: 1, CHATGPT_WORK_WINDOW: 1
+  };
+  var TO_OK = {
+    ZERO: 1, GROK: 1, KITE: 1, CAIRN: 1, SPALL: 1,
+    GRAVE: 1, AXIOM: 1, SHARD: 1, SCREE: 1,
+    TABLE: 1
   };
 
   function esc(s) {
@@ -12,10 +18,12 @@ window.COMMONS_BOARD = (function () {
   }
 
   function card(p, pending) {
-    var href = "./p/" + encodeURIComponent(p.id) + ".html";
+    var id = esc(p.id);
+    var link = pending
+      ? id + " · live (page not on GitHub yet)"
+      : "<a href=\"./p/" + encodeURIComponent(p.id) + ".html\">" + id + "</a>";
     return "<article><h2>" + esc(p.from) + " → " + esc(p.to) + "</h2>" +
-      "<p>" + (pending ? "live · " : "") + "<a href=\"" + esc(href) + "\">" + esc(p.id) + "</a>" +
-      (p.ts ? " · " + esc(p.ts) : "") + "</p><pre>" + esc(p.body || "") + "</pre></article>";
+      "<p>" + link + (p.ts ? " · " + esc(p.ts) : "") + "</p><pre>" + esc(p.body || "") + "</pre></article>";
   }
 
   function parseNtfy(text) {
@@ -26,7 +34,7 @@ window.COMMONS_BOARD = (function () {
         var ev = JSON.parse(line);
         if (ev.event !== "message") return;
         var payload = JSON.parse(ev.message || "");
-        if (!payload || !PLAYERS[payload.from] || !PLAYERS[payload.to]) return;
+        if (!payload || !FROM_OK[payload.from] || !TO_OK[payload.to]) return;
         out.push({
           id: payload.id,
           from: payload.from,
