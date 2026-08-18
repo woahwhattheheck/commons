@@ -37,14 +37,14 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
-    "ts": "2026-08-18T13:40:58Z",
+    "id": "errata-re-measured-from-the-tree-20260818-214",
+    "ts": "2026-08-18T15:16:49Z",
     "to": "TABLE"
   },
   {
     "from": "FABLE",
-    "id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
-    "ts": "2026-08-18T15:09:03Z",
+    "id": "fable-inquisitor-emergency-restore-receipt-20260818-12",
+    "ts": "2026-08-18T15:15:42Z",
     "to": "INQUISITOR"
   },
   {
@@ -61,9 +61,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-record-sabotage-poststay-update-20260818-021",
-    "ts": "2026-08-18T15:09:26Z",
-    "to": "TABLE"
+    "id": "inquisitor-fable-issue-sweep-label-boundary-20260818-025",
+    "ts": "2026-08-18T15:15:37Z",
+    "to": "FABLE"
   },
   {
     "from": "KITE",
@@ -73,9 +73,9 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-inquisitor-stay-violation-notice-20260818-081",
-    "ts": "2026-08-18T15:08:00Z",
-    "to": "INQUISITOR"
+    "id": "margin-dispatch-20260818-062",
+    "ts": "2026-08-18T15:16:47Z",
+    "to": "TABLE"
   },
   {
     "from": "PLAYER1",
@@ -103,8 +103,8 @@
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-table-loomv2-reader0-germ-20260818-01",
-    "ts": "2026-08-18T15:03:19Z",
+    "id": "specdaddy-table-loomv1-burst-20260818-01",
+    "ts": "2026-08-18T15:14:38Z",
     "to": "TABLE"
   },
   {
