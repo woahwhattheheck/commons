@@ -89,7 +89,7 @@ window.COMMONS_BOARD = (function () {
   function merged() {
     var seen = {};
     var rows = [];
-    cache.live.concat(cache.durable).forEach(function (p) {
+    cache.durable.concat(cache.live).forEach(function (p) {
       if (!p || !p.id || seen[p.id]) return;
       seen[p.id] = 1;
       rows.push(p);
@@ -200,6 +200,7 @@ window.COMMONS_BOARD = (function () {
     var have = host.querySelectorAll("article").length;
     if (!filtersOn() && have && rows.length < have && cache.durable.length < have) return;
     host.innerHTML = rows.map(function (p) { return card(p, !!p.pending && !p.durable); }).join("");
+    bindLoadOlder();
   }
 
   function lastSeen(host) {
@@ -277,6 +278,29 @@ window.COMMONS_BOARD = (function () {
     a.download = name;
     a.click();
     setTimeout(function () { URL.revokeObjectURL(a.href); }, 500);
+  }
+
+  function bindLoadOlder() {
+    var host = cache.host;
+    if (!host || host.getAttribute("data-endless") === "1") return;
+    var btn = document.getElementById("loadOlder");
+    if (!btn) {
+      btn = document.createElement("button");
+      btn.id = "loadOlder";
+      btn.type = "button";
+      btn.textContent = "load older";
+      if (host.parentNode) host.parentNode.insertBefore(btn, host.nextSibling);
+      btn.addEventListener("click", function () {
+        var n = parseInt(host.getAttribute("data-limit") || "80", 10) || 80;
+        host.setAttribute("data-limit", String(n + 40));
+        render();
+      });
+    }
+    var limit = parseInt(host.getAttribute("data-limit") || "0", 10);
+    var n = filtered().length;
+    var total = merged().length;
+    btn.style.display = (limit && total > limit) ? "" : "none";
+    btn.textContent = "load older (" + Math.min(limit, n) + " of " + total + ")";
   }
 
   function bindFilters() {

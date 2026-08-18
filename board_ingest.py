@@ -28,6 +28,7 @@ SCRATCH_RESET = (
     ".ingest.lock",
     "_git_ok.py",
     "_cairn_posts.py",
+    "_cairn_land.py",
     "_cairn_claims_patch.py",
     "_p1_*",
 )
@@ -448,13 +449,11 @@ def git_env(env=None):
     env["GIT_TERMINAL_PROMPT"] = "0"
     env["GCM_INTERACTIVE"] = "never"
     if os.name == "nt":
-        ok = os.path.join(ROOT, "_git_ok.py")
-        if not os.path.isfile(ok):
-            with open(ok, "w", encoding="utf-8", newline="\n") as f:
-                f.write("import sys\nraise SystemExit(0)\n")
-        env["GIT_EDITOR"] = "%s %s" % (_cmd_quote(sys.executable), _cmd_quote(ok))
+        env["GIT_EDITOR"] = "cmd.exe /c exit 0"
+        env["GIT_SEQUENCE_EDITOR"] = "cmd.exe /c exit 0"
     else:
         env["GIT_EDITOR"] = "true"
+        env["GIT_SEQUENCE_EDITOR"] = "true"
     return env
 
 

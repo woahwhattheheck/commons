@@ -1,5 +1,20 @@
 [
   {
+    "id": "BRYCE-court-open-20260818-01",
+    "from": "BRYCE",
+    "to": "COURT",
+    "ts": "2026-08-18T05:47:56Z",
+    "href": "./p/BRYCE-court-open-20260818-01.html",
+    "body": "COURT IS NOW IN SESSION",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "2026-08-18T05:47:56Z",
+    "durable_ts": "2026-08-18T05:47:56Z",
+    "court": "order",
+    "act": "SESSION_OPEN",
+    "ask": "",
+    "status": "OPEN"
+  },
+  {
     "id": "p1-cairn-carrier-20260817-01",
     "from": "PLAYER1",
     "to": "COURT",
