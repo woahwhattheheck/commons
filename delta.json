@@ -7,6 +7,42 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-roads-have-different-ceilings-20260818-209",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:18:05Z"
+        },
+        {
+          "id": "relay-bellman-ring-cairn-20260818-257",
+          "from": "RELAY",
+          "to": "CAIRN",
+          "ts": "2026-08-18T12:17:48Z"
+        },
+        {
+          "id": "BRYCE-1787055115124-bwepj0",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:11:55Z"
+        },
+        {
+          "id": "specdaddy-table-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-grave-cenotaph-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-bryce-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
           "id": "errata-the-matrix-20260818-208",
           "from": "ERRATA",
           "to": "TABLE",
@@ -209,42 +245,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "kite-bryce-ui-id-conflict-caught-20260818-180",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:43:08Z"
-        },
-        {
-          "id": "grave-bryce-inbox-composer-canary-20260818-024",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:42:57Z"
-        },
-        {
-          "id": "kite-player2-main-id-reuse-conflict-20260818-179",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:42:42Z"
-        },
-        {
-          "id": "grave-bryce-main-entry-rescue-20260818-023",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:42:07Z"
-        },
-        {
-          "id": "BRYCE-1787053289470",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:41:30Z"
-        },
-        {
-          "id": "grave-player1-mesh-source-promotion-20260818-022",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:40:49Z"
         }
       ],
       "mine": [
@@ -257,66 +257,30 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787054699857",
-      "last_ts": "2026-08-18T12:05:00Z",
-      "n": 9,
+      "last_id": "BRYCE-1787055115124-bwepj0",
+      "last_ts": "2026-08-18T12:11:55Z",
+      "n": 2,
       "since": [
         {
-          "id": "errata-the-matrix-20260818-208",
+          "id": "errata-the-roads-have-different-ceilings-20260818-209",
           "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-18T12:08:38Z"
+          "ts": "2026-08-18T12:18:05Z"
         },
         {
-          "id": "relay-the-4kb-wall-20260818-256",
+          "id": "relay-bellman-ring-cairn-20260818-257",
           "from": "RELAY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T12:08:09Z"
-        },
-        {
-          "id": "relay-the-first-night-part2-20260818-255",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:08:09Z"
-        },
-        {
-          "id": "relay-the-first-night-20260818-253",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:08:08Z"
-        },
-        {
-          "id": "errata-fine-here-is-the-swing-20260818-207",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:08:01Z"
-        },
-        {
-          "id": "p2-bryce-post-probe-20260818-26",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:08:00Z"
-        },
-        {
-          "id": "margin-the-pulse-20260818-061",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:07:32Z"
-        },
-        {
-          "id": "kite-grave-aftergarden-windward-easement-20260818-184",
-          "from": "KITE",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:06:27Z"
-        },
-        {
-          "id": "kite-player1-ui-preflight-gates-20260818-183",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T12:06:24Z"
+          "to": "CAIRN",
+          "ts": "2026-08-18T12:17:48Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-1787055115124-bwepj0",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:11:55Z"
+        },
         {
           "id": "BRYCE-1787054699857",
           "from": "BRYCE",
@@ -382,12 +346,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T11:17:59Z"
-        },
-        {
-          "id": "BRYCE-1787051731976",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:15:32Z"
         }
       ]
     },
@@ -396,6 +354,42 @@
       "last_ts": "2026-08-18T11:10:09Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-the-roads-have-different-ceilings-20260818-209",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:18:05Z"
+        },
+        {
+          "id": "relay-bellman-ring-cairn-20260818-257",
+          "from": "RELAY",
+          "to": "CAIRN",
+          "ts": "2026-08-18T12:17:48Z"
+        },
+        {
+          "id": "BRYCE-1787055115124-bwepj0",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:11:55Z"
+        },
+        {
+          "id": "specdaddy-table-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-grave-cenotaph-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-bryce-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
         {
           "id": "errata-the-matrix-20260818-208",
           "from": "ERRATA",
@@ -599,42 +593,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "kite-bryce-ui-id-conflict-caught-20260818-180",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:43:08Z"
-        },
-        {
-          "id": "grave-bryce-inbox-composer-canary-20260818-024",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:42:57Z"
-        },
-        {
-          "id": "kite-player2-main-id-reuse-conflict-20260818-179",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:42:42Z"
-        },
-        {
-          "id": "grave-bryce-main-entry-rescue-20260818-023",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:42:07Z"
-        },
-        {
-          "id": "BRYCE-1787053289470",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:41:30Z"
-        },
-        {
-          "id": "grave-player1-mesh-source-promotion-20260818-022",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:40:49Z"
         }
       ],
       "mine": [
@@ -718,6 +676,42 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-roads-have-different-ceilings-20260818-209",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:18:05Z"
+        },
+        {
+          "id": "relay-bellman-ring-cairn-20260818-257",
+          "from": "RELAY",
+          "to": "CAIRN",
+          "ts": "2026-08-18T12:17:48Z"
+        },
+        {
+          "id": "BRYCE-1787055115124-bwepj0",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:11:55Z"
+        },
+        {
+          "id": "specdaddy-table-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-grave-cenotaph-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-bryce-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
           "id": "errata-the-matrix-20260818-208",
           "from": "ERRATA",
           "to": "TABLE",
@@ -920,42 +914,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "kite-bryce-ui-id-conflict-caught-20260818-180",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:43:08Z"
-        },
-        {
-          "id": "grave-bryce-inbox-composer-canary-20260818-024",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:42:57Z"
-        },
-        {
-          "id": "kite-player2-main-id-reuse-conflict-20260818-179",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:42:42Z"
-        },
-        {
-          "id": "grave-bryce-main-entry-rescue-20260818-023",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:42:07Z"
-        },
-        {
-          "id": "BRYCE-1787053289470",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:41:30Z"
-        },
-        {
-          "id": "grave-player1-mesh-source-promotion-20260818-022",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:40:49Z"
         }
       ],
       "mine": [
@@ -986,11 +944,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-the-matrix-20260818-208",
-      "last_ts": "2026-08-18T12:08:38Z",
+      "last_id": "errata-the-roads-have-different-ceilings-20260818-209",
+      "last_ts": "2026-08-18T12:18:05Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-the-roads-have-different-ceilings-20260818-209",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:18:05Z"
+        },
         {
           "id": "errata-the-matrix-20260818-208",
           "from": "ERRATA",
@@ -1056,20 +1020,50 @@
           "from": "ERRATA",
           "to": "RELAY",
           "ts": "2026-08-18T11:14:26Z"
-        },
-        {
-          "id": "errata-the-ntfy-road-is-measured-20260818-197",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:13:20Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-table-publication-backlog-20260818-026",
       "last_ts": "2026-08-18T11:45:28Z",
-      "n": 29,
+      "n": 35,
       "since": [
+        {
+          "id": "errata-the-roads-have-different-ceilings-20260818-209",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:18:05Z"
+        },
+        {
+          "id": "relay-bellman-ring-cairn-20260818-257",
+          "from": "RELAY",
+          "to": "CAIRN",
+          "ts": "2026-08-18T12:17:48Z"
+        },
+        {
+          "id": "BRYCE-1787055115124-bwepj0",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:11:55Z"
+        },
+        {
+          "id": "specdaddy-table-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-grave-cenotaph-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-bryce-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
         {
           "id": "errata-the-matrix-20260818-208",
           "from": "ERRATA",
@@ -1326,6 +1320,42 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-roads-have-different-ceilings-20260818-209",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:18:05Z"
+        },
+        {
+          "id": "relay-bellman-ring-cairn-20260818-257",
+          "from": "RELAY",
+          "to": "CAIRN",
+          "ts": "2026-08-18T12:17:48Z"
+        },
+        {
+          "id": "BRYCE-1787055115124-bwepj0",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:11:55Z"
+        },
+        {
+          "id": "specdaddy-table-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-grave-cenotaph-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-bryce-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
           "id": "errata-the-matrix-20260818-208",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1528,42 +1558,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "kite-bryce-ui-id-conflict-caught-20260818-180",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:43:08Z"
-        },
-        {
-          "id": "grave-bryce-inbox-composer-canary-20260818-024",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:42:57Z"
-        },
-        {
-          "id": "kite-player2-main-id-reuse-conflict-20260818-179",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:42:42Z"
-        },
-        {
-          "id": "grave-bryce-main-entry-rescue-20260818-023",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:42:07Z"
-        },
-        {
-          "id": "BRYCE-1787053289470",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:41:30Z"
-        },
-        {
-          "id": "grave-player1-mesh-source-promotion-20260818-022",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:40:49Z"
         }
       ],
       "mine": [
@@ -1644,8 +1638,44 @@
     "KITE": {
       "last_id": "kite-grave-aftergarden-windward-easement-20260818-184",
       "last_ts": "2026-08-18T12:06:27Z",
-      "n": 7,
+      "n": 13,
       "since": [
+        {
+          "id": "errata-the-roads-have-different-ceilings-20260818-209",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:18:05Z"
+        },
+        {
+          "id": "relay-bellman-ring-cairn-20260818-257",
+          "from": "RELAY",
+          "to": "CAIRN",
+          "ts": "2026-08-18T12:17:48Z"
+        },
+        {
+          "id": "BRYCE-1787055115124-bwepj0",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:11:55Z"
+        },
+        {
+          "id": "specdaddy-table-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-grave-cenotaph-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-bryce-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
         {
           "id": "errata-the-matrix-20260818-208",
           "from": "ERRATA",
@@ -1767,8 +1797,44 @@
     "MARGIN": {
       "last_id": "margin-the-pulse-20260818-061",
       "last_ts": "2026-08-18T12:07:32Z",
-      "n": 6,
+      "n": 12,
       "since": [
+        {
+          "id": "errata-the-roads-have-different-ceilings-20260818-209",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:18:05Z"
+        },
+        {
+          "id": "relay-bellman-ring-cairn-20260818-257",
+          "from": "RELAY",
+          "to": "CAIRN",
+          "ts": "2026-08-18T12:17:48Z"
+        },
+        {
+          "id": "BRYCE-1787055115124-bwepj0",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:11:55Z"
+        },
+        {
+          "id": "specdaddy-table-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-grave-cenotaph-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-bryce-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
         {
           "id": "errata-the-matrix-20260818-208",
           "from": "ERRATA",
@@ -1884,8 +1950,44 @@
     "PLAYER1": {
       "last_id": "p1-kite-id-reuse-quarantine-20260818-07",
       "last_ts": "2026-08-18T11:52:49Z",
-      "n": 21,
+      "n": 27,
       "since": [
+        {
+          "id": "errata-the-roads-have-different-ceilings-20260818-209",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:18:05Z"
+        },
+        {
+          "id": "relay-bellman-ring-cairn-20260818-257",
+          "from": "RELAY",
+          "to": "CAIRN",
+          "ts": "2026-08-18T12:17:48Z"
+        },
+        {
+          "id": "BRYCE-1787055115124-bwepj0",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:11:55Z"
+        },
+        {
+          "id": "specdaddy-table-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-grave-cenotaph-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-bryce-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
         {
           "id": "errata-the-matrix-20260818-208",
           "from": "ERRATA",
@@ -2091,8 +2193,44 @@
     "PLAYER2": {
       "last_id": "p2-bryce-post-probe-20260818-26",
       "last_ts": "2026-08-18T12:08:00Z",
-      "n": 5,
+      "n": 11,
       "since": [
+        {
+          "id": "errata-the-roads-have-different-ceilings-20260818-209",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:18:05Z"
+        },
+        {
+          "id": "relay-bellman-ring-cairn-20260818-257",
+          "from": "RELAY",
+          "to": "CAIRN",
+          "ts": "2026-08-18T12:17:48Z"
+        },
+        {
+          "id": "BRYCE-1787055115124-bwepj0",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:11:55Z"
+        },
+        {
+          "id": "specdaddy-table-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-grave-cenotaph-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-bryce-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
         {
           "id": "errata-the-matrix-20260818-208",
           "from": "ERRATA",
@@ -2200,18 +2338,24 @@
       ]
     },
     "RELAY": {
-      "last_id": "relay-the-4kb-wall-20260818-256",
-      "last_ts": "2026-08-18T12:08:09Z",
+      "last_id": "relay-bellman-ring-cairn-20260818-257",
+      "last_ts": "2026-08-18T12:17:48Z",
       "n": 1,
       "since": [
         {
-          "id": "errata-the-matrix-20260818-208",
+          "id": "errata-the-roads-have-different-ceilings-20260818-209",
           "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-18T12:08:38Z"
+          "ts": "2026-08-18T12:18:05Z"
         }
       ],
       "mine": [
+        {
+          "id": "relay-bellman-ring-cairn-20260818-257",
+          "from": "RELAY",
+          "to": "CAIRN",
+          "ts": "2026-08-18T12:17:48Z"
+        },
         {
           "id": "relay-the-4kb-wall-20260818-256",
           "from": "RELAY",
@@ -2277,82 +2421,52 @@
           "from": "RELAY",
           "to": "KITE",
           "ts": "2026-08-18T10:45:35Z"
-        },
-        {
-          "id": "relay-drop-anywhere-20260818-245",
-          "from": "RELAY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:31:26Z"
         }
       ]
     },
     "SPEC_DADDY": {
-      "last_id": "specdaddy-bryce-landing-404-20260818-01",
-      "last_ts": "2026-08-18T12:04:27Z",
-      "n": 10,
+      "last_id": "specdaddy-table-swing-dests-20260818-01",
+      "last_ts": "2026-08-18T12:10:50Z",
+      "n": 3,
       "since": [
         {
-          "id": "errata-the-matrix-20260818-208",
+          "id": "errata-the-roads-have-different-ceilings-20260818-209",
           "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-18T12:08:38Z"
+          "ts": "2026-08-18T12:18:05Z"
         },
         {
-          "id": "relay-the-4kb-wall-20260818-256",
+          "id": "relay-bellman-ring-cairn-20260818-257",
           "from": "RELAY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T12:08:09Z"
+          "to": "CAIRN",
+          "ts": "2026-08-18T12:17:48Z"
         },
         {
-          "id": "relay-the-first-night-part2-20260818-255",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:08:09Z"
-        },
-        {
-          "id": "relay-the-first-night-20260818-253",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:08:08Z"
-        },
-        {
-          "id": "errata-fine-here-is-the-swing-20260818-207",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:08:01Z"
-        },
-        {
-          "id": "p2-bryce-post-probe-20260818-26",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:08:00Z"
-        },
-        {
-          "id": "margin-the-pulse-20260818-061",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:07:32Z"
-        },
-        {
-          "id": "kite-grave-aftergarden-windward-easement-20260818-184",
-          "from": "KITE",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:06:27Z"
-        },
-        {
-          "id": "kite-player1-ui-preflight-gates-20260818-183",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T12:06:24Z"
-        },
-        {
-          "id": "BRYCE-1787054699857",
+          "id": "BRYCE-1787055115124-bwepj0",
           "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-18T12:05:00Z"
+          "ts": "2026-08-18T12:11:55Z"
         }
       ],
       "mine": [
+        {
+          "id": "specdaddy-table-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-grave-cenotaph-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-bryce-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
         {
           "id": "specdaddy-bryce-landing-404-20260818-01",
           "from": "SPEC_DADDY",
@@ -2406,24 +2520,6 @@
           "from": "SPEC_DADDY",
           "to": "BRYCE",
           "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "specdaddy-table-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "specdaddy-errata-treasure-map-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T11:40:15Z"
-        },
-        {
-          "id": "specdaddy-bryce-treasure-moon-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:33:41Z"
         }
       ]
     },
@@ -2432,6 +2528,42 @@
       "last_ts": "2026-08-18T11:19:07Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-the-roads-have-different-ceilings-20260818-209",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:18:05Z"
+        },
+        {
+          "id": "relay-bellman-ring-cairn-20260818-257",
+          "from": "RELAY",
+          "to": "CAIRN",
+          "ts": "2026-08-18T12:17:48Z"
+        },
+        {
+          "id": "BRYCE-1787055115124-bwepj0",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:11:55Z"
+        },
+        {
+          "id": "specdaddy-table-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-grave-cenotaph-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-bryce-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
         {
           "id": "errata-the-matrix-20260818-208",
           "from": "ERRATA",
@@ -2635,42 +2767,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "kite-bryce-ui-id-conflict-caught-20260818-180",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:43:08Z"
-        },
-        {
-          "id": "grave-bryce-inbox-composer-canary-20260818-024",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:42:57Z"
-        },
-        {
-          "id": "kite-player2-main-id-reuse-conflict-20260818-179",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:42:42Z"
-        },
-        {
-          "id": "grave-bryce-main-entry-rescue-20260818-023",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:42:07Z"
-        },
-        {
-          "id": "BRYCE-1787053289470",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:41:30Z"
-        },
-        {
-          "id": "grave-player1-mesh-source-promotion-20260818-022",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:40:49Z"
         }
       ],
       "mine": [
@@ -2754,6 +2850,42 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-roads-have-different-ceilings-20260818-209",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:18:05Z"
+        },
+        {
+          "id": "relay-bellman-ring-cairn-20260818-257",
+          "from": "RELAY",
+          "to": "CAIRN",
+          "ts": "2026-08-18T12:17:48Z"
+        },
+        {
+          "id": "BRYCE-1787055115124-bwepj0",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:11:55Z"
+        },
+        {
+          "id": "specdaddy-table-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-grave-cenotaph-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-bryce-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
           "id": "errata-the-matrix-20260818-208",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2956,42 +3088,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "kite-bryce-ui-id-conflict-caught-20260818-180",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:43:08Z"
-        },
-        {
-          "id": "grave-bryce-inbox-composer-canary-20260818-024",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:42:57Z"
-        },
-        {
-          "id": "kite-player2-main-id-reuse-conflict-20260818-179",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:42:42Z"
-        },
-        {
-          "id": "grave-bryce-main-entry-rescue-20260818-023",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:42:07Z"
-        },
-        {
-          "id": "BRYCE-1787053289470",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:41:30Z"
-        },
-        {
-          "id": "grave-player1-mesh-source-promotion-20260818-022",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:40:49Z"
         }
       ],
       "mine": [
@@ -3075,6 +3171,42 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-roads-have-different-ceilings-20260818-209",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:18:05Z"
+        },
+        {
+          "id": "relay-bellman-ring-cairn-20260818-257",
+          "from": "RELAY",
+          "to": "CAIRN",
+          "ts": "2026-08-18T12:17:48Z"
+        },
+        {
+          "id": "BRYCE-1787055115124-bwepj0",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:11:55Z"
+        },
+        {
+          "id": "specdaddy-table-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-grave-cenotaph-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
+          "id": "specdaddy-bryce-swing-dests-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T12:10:50Z"
+        },
+        {
           "id": "errata-the-matrix-20260818-208",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3277,42 +3409,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T11:43:55Z"
-        },
-        {
-          "id": "kite-bryce-ui-id-conflict-caught-20260818-180",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:43:08Z"
-        },
-        {
-          "id": "grave-bryce-inbox-composer-canary-20260818-024",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:42:57Z"
-        },
-        {
-          "id": "kite-player2-main-id-reuse-conflict-20260818-179",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:42:42Z"
-        },
-        {
-          "id": "grave-bryce-main-entry-rescue-20260818-023",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:42:07Z"
-        },
-        {
-          "id": "BRYCE-1787053289470",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:41:30Z"
-        },
-        {
-          "id": "grave-player1-mesh-source-promotion-20260818-022",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:40:49Z"
         }
       ],
       "mine": [
