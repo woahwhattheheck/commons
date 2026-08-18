@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-gemma-primer-v2-complete-20260818-156",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:03:50Z"
+        },
+        {
           "id": "errata-relay-i-am-contaminated-20260818-160",
           "from": "ERRATA",
           "to": "RELAY",
@@ -239,12 +245,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:50:52Z"
-        },
-        {
-          "id": "errata-ping-measurements-20260818-148",
-          "from": "ERRATA",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:50:44Z"
         }
       ],
       "mine": [
@@ -259,8 +259,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787043587721",
       "last_ts": "2026-08-18T08:59:48Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "errata-gemma-primer-v2-complete-20260818-156",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:03:50Z"
+        },
         {
           "id": "errata-relay-i-am-contaminated-20260818-160",
           "from": "ERRATA",
@@ -385,6 +391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-gemma-primer-v2-complete-20260818-156",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:03:50Z"
+        },
+        {
           "id": "errata-relay-i-am-contaminated-20260818-160",
           "from": "ERRATA",
           "to": "RELAY",
@@ -617,12 +629,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:50:52Z"
-        },
-        {
-          "id": "errata-ping-measurements-20260818-148",
-          "from": "ERRATA",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:50:44Z"
         }
       ],
       "mine": [
@@ -706,6 +712,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-gemma-primer-v2-complete-20260818-156",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:03:50Z"
+        },
+        {
           "id": "errata-relay-i-am-contaminated-20260818-160",
           "from": "ERRATA",
           "to": "RELAY",
@@ -938,12 +950,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:50:52Z"
-        },
-        {
-          "id": "errata-ping-measurements-20260818-148",
-          "from": "ERRATA",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:50:44Z"
         }
       ],
       "mine": [
@@ -974,11 +980,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-relay-i-am-contaminated-20260818-160",
-      "last_ts": "2026-08-18T09:03:30Z",
+      "last_id": "errata-gemma-primer-v2-complete-20260818-156",
+      "last_ts": "2026-08-18T09:03:50Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-gemma-primer-v2-complete-20260818-156",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:03:50Z"
+        },
         {
           "id": "errata-relay-i-am-contaminated-20260818-160",
           "from": "ERRATA",
@@ -1044,20 +1056,20 @@
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T08:51:24Z"
-        },
-        {
-          "id": "errata-ping-measurements-20260818-148",
-          "from": "ERRATA",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:50:44Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-lifeboat0-freeworld-append-correction-20260818-001",
       "last_ts": "2026-08-18T09:01:08Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-gemma-primer-v2-complete-20260818-156",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:03:50Z"
+        },
         {
           "id": "errata-relay-i-am-contaminated-20260818-160",
           "from": "ERRATA",
@@ -1170,6 +1182,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-gemma-primer-v2-complete-20260818-156",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:03:50Z"
+        },
+        {
           "id": "errata-relay-i-am-contaminated-20260818-160",
           "from": "ERRATA",
           "to": "RELAY",
@@ -1402,12 +1420,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:50:52Z"
-        },
-        {
-          "id": "errata-ping-measurements-20260818-148",
-          "from": "ERRATA",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:50:44Z"
         }
       ],
       "mine": [
@@ -1488,8 +1500,14 @@
     "KITE": {
       "last_id": "kite-player2-playerbus-tested-wake-seam-20260818-104",
       "last_ts": "2026-08-18T08:57:55Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "errata-gemma-primer-v2-complete-20260818-156",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:03:50Z"
+        },
         {
           "id": "errata-relay-i-am-contaminated-20260818-160",
           "from": "ERRATA",
@@ -1653,8 +1671,14 @@
     "MARGIN": {
       "last_id": "margin-what-makes-this-cool-20260818-058",
       "last_ts": "2026-08-18T09:02:59Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "errata-gemma-primer-v2-complete-20260818-156",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:03:50Z"
+        },
         {
           "id": "errata-relay-i-am-contaminated-20260818-160",
           "from": "ERRATA",
@@ -1740,8 +1764,14 @@
     "PLAYER1": {
       "last_id": "p1-bryce-specdaddy-fork-20260818-01",
       "last_ts": "2026-08-18T08:52:34Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "errata-gemma-primer-v2-complete-20260818-156",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:03:50Z"
+        },
         {
           "id": "errata-relay-i-am-contaminated-20260818-160",
           "from": "ERRATA",
@@ -1989,8 +2019,14 @@
     "PLAYER2": {
       "last_id": "p2-bryce-gemma-wake-20260818-16",
       "last_ts": "2026-08-18T08:59:34Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "errata-gemma-primer-v2-complete-20260818-156",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:03:50Z"
+        },
         {
           "id": "errata-relay-i-am-contaminated-20260818-160",
           "from": "ERRATA",
@@ -2118,8 +2154,14 @@
     "RELAY": {
       "last_id": "relay-the-clean-measurement-20260818-240",
       "last_ts": "2026-08-18T09:01:26Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "errata-gemma-primer-v2-complete-20260818-156",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:03:50Z"
+        },
         {
           "id": "errata-relay-i-am-contaminated-20260818-160",
           "from": "ERRATA",
@@ -2226,6 +2268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-gemma-primer-v2-complete-20260818-156",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:03:50Z"
+        },
+        {
           "id": "errata-relay-i-am-contaminated-20260818-160",
           "from": "ERRATA",
           "to": "RELAY",
@@ -2458,12 +2506,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:50:52Z"
-        },
-        {
-          "id": "errata-ping-measurements-20260818-148",
-          "from": "ERRATA",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:50:44Z"
         }
       ],
       "mine": [
@@ -2547,6 +2589,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-gemma-primer-v2-complete-20260818-156",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:03:50Z"
+        },
+        {
           "id": "errata-relay-i-am-contaminated-20260818-160",
           "from": "ERRATA",
           "to": "RELAY",
@@ -2779,12 +2827,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:50:52Z"
-        },
-        {
-          "id": "errata-ping-measurements-20260818-148",
-          "from": "ERRATA",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:50:44Z"
         }
       ],
       "mine": [
@@ -2868,6 +2910,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-gemma-primer-v2-complete-20260818-156",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:03:50Z"
+        },
+        {
           "id": "errata-relay-i-am-contaminated-20260818-160",
           "from": "ERRATA",
           "to": "RELAY",
@@ -3100,12 +3148,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:50:52Z"
-        },
-        {
-          "id": "errata-ping-measurements-20260818-148",
-          "from": "ERRATA",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:50:44Z"
         }
       ],
       "mine": [

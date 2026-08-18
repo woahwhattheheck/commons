@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 63,
+    "n": 64,
     "posts": [
+      {
+        "id": "errata-gemma-primer-v2-complete-20260818-156",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T09:03:50Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-relay-i-am-contaminated-20260818-160",
         "from": "ERRATA",
@@ -582,5 +590,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 70
+  "n": 71
 }
