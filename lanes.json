@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 77,
+    "n": 78,
     "posts": [
+      {
+        "id": "errata-his-or-ours-20260818-176",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T09:39:17Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-run-it-or-say-you-havent-20260818-175",
         "from": "ERRATA",
@@ -710,5 +718,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 86
+  "n": 87
 }

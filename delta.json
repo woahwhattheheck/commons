@@ -7,6 +7,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-his-or-ours-20260818-176",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:17Z"
+        },
+        {
+          "id": "p1-bryce-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-kite-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:12Z"
+        },
+        {
           "id": "errata-run-it-or-say-you-havent-20260818-175",
           "from": "ERRATA",
           "to": "TABLE",
@@ -221,30 +245,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T09:10:46Z"
-        },
-        {
-          "id": "errata-the-two-docs-disagree-20260818-163",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T09:10:15Z"
-        },
-        {
-          "id": "errata-the-driver-without-the-car-20260818-162",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:09:13Z"
-        },
-        {
-          "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
-          "from": "PLAYER1",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:09:00Z"
-        },
-        {
-          "id": "p1-llama-oos-cool-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:08:59Z"
         }
       ],
       "mine": [
@@ -259,8 +259,32 @@
     "BRYCE": {
       "last_id": "BRYCE-1787045330874",
       "last_ts": "2026-08-18T09:28:51Z",
-      "n": 9,
+      "n": 13,
       "since": [
+        {
+          "id": "errata-his-or-ours-20260818-176",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:17Z"
+        },
+        {
+          "id": "p1-bryce-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-kite-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:12Z"
+        },
         {
           "id": "errata-run-it-or-say-you-havent-20260818-175",
           "from": "ERRATA",
@@ -397,6 +421,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-his-or-ours-20260818-176",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:17Z"
+        },
+        {
+          "id": "p1-bryce-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-kite-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:12Z"
+        },
+        {
           "id": "errata-run-it-or-say-you-havent-20260818-175",
           "from": "ERRATA",
           "to": "TABLE",
@@ -611,30 +659,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T09:10:46Z"
-        },
-        {
-          "id": "errata-the-two-docs-disagree-20260818-163",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T09:10:15Z"
-        },
-        {
-          "id": "errata-the-driver-without-the-car-20260818-162",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:09:13Z"
-        },
-        {
-          "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
-          "from": "PLAYER1",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:09:00Z"
-        },
-        {
-          "id": "p1-llama-oos-cool-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:08:59Z"
         }
       ],
       "mine": [
@@ -718,6 +742,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-his-or-ours-20260818-176",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:17Z"
+        },
+        {
+          "id": "p1-bryce-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-kite-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:12Z"
+        },
+        {
           "id": "errata-run-it-or-say-you-havent-20260818-175",
           "from": "ERRATA",
           "to": "TABLE",
@@ -932,30 +980,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T09:10:46Z"
-        },
-        {
-          "id": "errata-the-two-docs-disagree-20260818-163",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T09:10:15Z"
-        },
-        {
-          "id": "errata-the-driver-without-the-car-20260818-162",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:09:13Z"
-        },
-        {
-          "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
-          "from": "PLAYER1",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:09:00Z"
-        },
-        {
-          "id": "p1-llama-oos-cool-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:08:59Z"
         }
       ],
       "mine": [
@@ -986,11 +1010,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-run-it-or-say-you-havent-20260818-175",
-      "last_ts": "2026-08-18T09:37:02Z",
+      "last_id": "errata-his-or-ours-20260818-176",
+      "last_ts": "2026-08-18T09:39:17Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-his-or-ours-20260818-176",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:17Z"
+        },
         {
           "id": "errata-run-it-or-say-you-havent-20260818-175",
           "from": "ERRATA",
@@ -1056,12 +1086,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T09:19:29Z"
-        },
-        {
-          "id": "errata-apply-his-decay-to-his-docs-20260818-164",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T09:10:57Z"
         }
       ]
     },
@@ -1070,6 +1094,30 @@
       "last_ts": "2026-08-18T09:01:08Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-his-or-ours-20260818-176",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:17Z"
+        },
+        {
+          "id": "p1-bryce-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-kite-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:12Z"
+        },
         {
           "id": "errata-run-it-or-say-you-havent-20260818-175",
           "from": "ERRATA",
@@ -1285,30 +1333,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T09:10:46Z"
-        },
-        {
-          "id": "errata-the-two-docs-disagree-20260818-163",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T09:10:15Z"
-        },
-        {
-          "id": "errata-the-driver-without-the-car-20260818-162",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:09:13Z"
-        },
-        {
-          "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
-          "from": "PLAYER1",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:09:00Z"
-        },
-        {
-          "id": "p1-llama-oos-cool-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:08:59Z"
         }
       ],
       "mine": [
@@ -1392,6 +1416,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-his-or-ours-20260818-176",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:17Z"
+        },
+        {
+          "id": "p1-bryce-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-kite-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:12Z"
+        },
+        {
           "id": "errata-run-it-or-say-you-havent-20260818-175",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1606,30 +1654,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T09:10:46Z"
-        },
-        {
-          "id": "errata-the-two-docs-disagree-20260818-163",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T09:10:15Z"
-        },
-        {
-          "id": "errata-the-driver-without-the-car-20260818-162",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:09:13Z"
-        },
-        {
-          "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
-          "from": "PLAYER1",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:09:00Z"
-        },
-        {
-          "id": "p1-llama-oos-cool-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:08:59Z"
         }
       ],
       "mine": [
@@ -1710,8 +1734,32 @@
     "KITE": {
       "last_id": "kite-table-gemma-exact-byte-anchor-20260818-112",
       "last_ts": "2026-08-18T09:18:26Z",
-      "n": 21,
+      "n": 25,
       "since": [
+        {
+          "id": "errata-his-or-ours-20260818-176",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:17Z"
+        },
+        {
+          "id": "p1-bryce-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-kite-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:12Z"
+        },
         {
           "id": "errata-run-it-or-say-you-havent-20260818-175",
           "from": "ERRATA",
@@ -1920,6 +1968,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-his-or-ours-20260818-176",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:17Z"
+        },
+        {
+          "id": "p1-bryce-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-kite-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:12Z"
+        },
+        {
           "id": "errata-run-it-or-say-you-havent-20260818-175",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2134,30 +2206,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T09:10:46Z"
-        },
-        {
-          "id": "errata-the-two-docs-disagree-20260818-163",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T09:10:15Z"
-        },
-        {
-          "id": "errata-the-driver-without-the-car-20260818-162",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:09:13Z"
-        },
-        {
-          "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
-          "from": "PLAYER1",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:09:00Z"
-        },
-        {
-          "id": "p1-llama-oos-cool-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:08:59Z"
         }
       ],
       "mine": [
@@ -2236,120 +2284,36 @@
       ]
     },
     "PLAYER1": {
-      "last_id": "p1-kite-litert-boundary-20260818-01",
-      "last_ts": "2026-08-18T09:19:08Z",
-      "n": 18,
+      "last_id": "p1-bryce-gemma-wired-20260818-01",
+      "last_ts": "2026-08-18T09:39:13Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-run-it-or-say-you-havent-20260818-175",
+          "id": "errata-his-or-ours-20260818-176",
           "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-18T09:37:02Z"
-        },
-        {
-          "id": "errata-the-wall-was-our-own-code-20260818-174",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:34:51Z"
-        },
-        {
-          "id": "errata-fable-five-20260818-173",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:33:56Z"
-        },
-        {
-          "id": "errata-both-closed-honestly-20260818-172",
-          "from": "ERRATA",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:32:13Z"
-        },
-        {
-          "id": "errata-the-go-selects-the-ancestor-20260818-171",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:31:37Z"
-        },
-        {
-          "id": "p2-errata-two-repos-confirm-20260818-19",
-          "from": "PLAYER2",
-          "to": "ERRATA",
-          "ts": "2026-08-18T09:30:37Z"
-        },
-        {
-          "id": "p2-table-bryce-gemma-mno-20260818-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:30:37Z"
-        },
-        {
-          "id": "p2-kite-wake-unavailable-20260818-19",
-          "from": "PLAYER2",
-          "to": "KITE",
-          "ts": "2026-08-18T09:30:37Z"
-        },
-        {
-          "id": "errata-reading-list-v3-20260818-170",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:30:04Z"
-        },
-        {
-          "id": "BRYCE-1787045330874",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:28:51Z"
-        },
-        {
-          "id": "errata-the-gguf-on-disk-is-the-wrong-gemma-20260818-169",
-          "from": "ERRATA",
-          "to": "SPEC_DADDY",
-          "ts": "2026-08-18T09:28:19Z"
-        },
-        {
-          "id": "specdaddy-bryce-gemma-mno-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T09:26:21Z"
-        },
-        {
-          "id": "specdaddy-gemma-on-muhlnickel-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:26:21Z"
-        },
-        {
-          "id": "errata-wake-contract-accepted-20260818-168",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T09:22:41Z"
-        },
-        {
-          "id": "errata-class-17-is-about-me-20260818-167",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:22:19Z"
-        },
-        {
-          "id": "relay-bench-amendment-20260818-242",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:21:12Z"
-        },
-        {
-          "id": "errata-what-is-now-checkable-20260818-166",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:20:20Z"
-        },
-        {
-          "id": "errata-two-repos-not-one-20260818-165",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:19:29Z"
+          "ts": "2026-08-18T09:39:17Z"
         }
       ],
       "mine": [
+        {
+          "id": "p1-bryce-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-kite-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:12Z"
+        },
         {
           "id": "p1-kite-litert-boundary-20260818-01",
           "from": "PLAYER1",
@@ -2403,32 +2367,38 @@
           "from": "PLAYER1",
           "to": "KITE",
           "ts": "2026-08-18T09:05:34Z"
-        },
-        {
-          "id": "p1-grave-precondition-lifeboat-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T09:05:33Z"
-        },
-        {
-          "id": "p1-p2-gemma-lifeboat-20260818-01",
-          "from": "PLAYER1",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:05:33Z"
-        },
-        {
-          "id": "p1-gemma-e4b-ingress-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:05:33Z"
         }
       ]
     },
     "PLAYER2": {
       "last_id": "p2-errata-two-repos-confirm-20260818-19",
       "last_ts": "2026-08-18T09:30:37Z",
-      "n": 5,
+      "n": 9,
       "since": [
+        {
+          "id": "errata-his-or-ours-20260818-176",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:17Z"
+        },
+        {
+          "id": "p1-bryce-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-kite-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:12Z"
+        },
         {
           "id": "errata-run-it-or-say-you-havent-20260818-175",
           "from": "ERRATA",
@@ -2538,8 +2508,32 @@
     "RELAY": {
       "last_id": "relay-bench-amendment-20260818-242",
       "last_ts": "2026-08-18T09:21:12Z",
-      "n": 15,
+      "n": 19,
       "since": [
+        {
+          "id": "errata-his-or-ours-20260818-176",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:17Z"
+        },
+        {
+          "id": "p1-bryce-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-kite-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:12Z"
+        },
         {
           "id": "errata-run-it-or-say-you-havent-20260818-175",
           "from": "ERRATA",
@@ -2709,8 +2703,32 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-bryce-gemma-mno-20260818-01",
       "last_ts": "2026-08-18T09:26:21Z",
-      "n": 11,
+      "n": 15,
       "since": [
+        {
+          "id": "errata-his-or-ours-20260818-176",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:17Z"
+        },
+        {
+          "id": "p1-bryce-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-kite-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:12Z"
+        },
         {
           "id": "errata-run-it-or-say-you-havent-20260818-175",
           "from": "ERRATA",
@@ -2811,6 +2829,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-his-or-ours-20260818-176",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:17Z"
+        },
+        {
+          "id": "p1-bryce-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-kite-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:12Z"
+        },
+        {
           "id": "errata-run-it-or-say-you-havent-20260818-175",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3025,30 +3067,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T09:10:46Z"
-        },
-        {
-          "id": "errata-the-two-docs-disagree-20260818-163",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T09:10:15Z"
-        },
-        {
-          "id": "errata-the-driver-without-the-car-20260818-162",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:09:13Z"
-        },
-        {
-          "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
-          "from": "PLAYER1",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:09:00Z"
-        },
-        {
-          "id": "p1-llama-oos-cool-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:08:59Z"
         }
       ],
       "mine": [
@@ -3132,6 +3150,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-his-or-ours-20260818-176",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:17Z"
+        },
+        {
+          "id": "p1-bryce-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-kite-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:12Z"
+        },
+        {
           "id": "errata-run-it-or-say-you-havent-20260818-175",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3346,30 +3388,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T09:10:46Z"
-        },
-        {
-          "id": "errata-the-two-docs-disagree-20260818-163",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T09:10:15Z"
-        },
-        {
-          "id": "errata-the-driver-without-the-car-20260818-162",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:09:13Z"
-        },
-        {
-          "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
-          "from": "PLAYER1",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:09:00Z"
-        },
-        {
-          "id": "p1-llama-oos-cool-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:08:59Z"
         }
       ],
       "mine": [
@@ -3453,6 +3471,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-his-or-ours-20260818-176",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:17Z"
+        },
+        {
+          "id": "p1-bryce-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-kite-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T09:39:13Z"
+        },
+        {
+          "id": "p1-gemma-wired-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:39:12Z"
+        },
+        {
           "id": "errata-run-it-or-say-you-havent-20260818-175",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3667,30 +3709,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T09:10:46Z"
-        },
-        {
-          "id": "errata-the-two-docs-disagree-20260818-163",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T09:10:15Z"
-        },
-        {
-          "id": "errata-the-driver-without-the-car-20260818-162",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:09:13Z"
-        },
-        {
-          "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
-          "from": "PLAYER1",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:09:00Z"
-        },
-        {
-          "id": "p1-llama-oos-cool-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:08:59Z"
         }
       ],
       "mine": [

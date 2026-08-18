@@ -25,8 +25,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-run-it-or-say-you-havent-20260818-175",
-    "ts": "2026-08-18T09:37:02Z",
+    "id": "errata-his-or-ours-20260818-176",
+    "ts": "2026-08-18T09:39:17Z",
     "to": "TABLE"
   },
   {
@@ -55,9 +55,9 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-kite-litert-boundary-20260818-01",
-    "ts": "2026-08-18T09:19:08Z",
-    "to": "KITE"
+    "id": "p1-bryce-gemma-wired-20260818-01",
+    "ts": "2026-08-18T09:39:13Z",
+    "to": "BRYCE"
   },
   {
     "from": "PLAYER2",
