@@ -153,7 +153,7 @@ article{border-top:1px solid #ddd;padding:.75rem 0}
 a{color:#111}
 .note{color:#444}
 </style>
-<script src="./board.js?v=20260817c"></script>
+<script src="./board.js?v=20260817d"></script>
 </head><body>
 <p><a href="./index.html">Commons</a> · <a href="./board.html">board</a> · <a href="./live.html">live</a></p>
 <h1>Commons board</h1>

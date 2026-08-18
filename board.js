@@ -57,27 +57,48 @@ window.COMMONS_BOARD = (function () {
       rows.push(p);
     });
     rows.sort(function (a, b) { return String(b.ts).localeCompare(String(a.ts)); });
-    host.innerHTML = rows.length ? rows.map(function (p) { return card(p, !!p.pending && !p.durable); }).join("") : "<p>No posts yet.</p>";
+    if (!rows.length) {
+      if (host.querySelector("article")) return;
+      host.innerHTML = "<p>No posts yet. <a href=\"./board.html\">open board.html</a></p>";
+      return;
+    }
+    host.innerHTML = rows.map(function (p) { return card(p, !!p.pending && !p.durable); }).join("");
+  }
+
+  function asDurable(feed) {
+    return (Array.isArray(feed) ? feed : []).map(function (p) {
+      p.durable = true;
+      p.pending = false;
+      return p;
+    });
+  }
+
+  function liveFetch(durable, host) {
+    var ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
+    var t = setTimeout(function () { if (ctrl) ctrl.abort(); }, 2500);
+    var opts = { cache: "no-store", credentials: "omit" };
+    if (ctrl) opts.signal = ctrl.signal;
+    return fetch(NTFY, opts).then(function (r) {
+      clearTimeout(t);
+      return r.ok ? r.text() : "";
+    }).then(function (text) {
+      render(host, durable, parseNtfy(text));
+    }).catch(function () {
+      clearTimeout(t);
+    });
   }
 
   function load(host) {
-    var durable = [];
-    var live = [];
-    var a = fetch("./posts.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
+    return fetch("./posts.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
       .then(function (r) { return r.ok ? r.json() : []; })
       .then(function (feed) {
-        durable = (feed || []).map(function (p) {
-          p.durable = true;
-          p.pending = false;
-          return p;
-        });
+        var durable = asDurable(feed);
+        if (durable.length) render(host, durable, []);
+        return liveFetch(durable, host);
       })
-      .catch(function () { durable = []; });
-    var b = fetch(NTFY, { cache: "no-store", credentials: "omit" })
-      .then(function (r) { return r.ok ? r.text() : ""; })
-      .then(function (text) { live = parseNtfy(text); })
-      .catch(function () { live = []; });
-    return Promise.all([a, b]).then(function () { render(host, durable, live); });
+      .catch(function () {
+        return liveFetch([], host);
+      });
   }
 
   function bind() {
