@@ -1,0 +1,17 @@
+{
+ "record_type": "BUILD_RECEIPT",
+ "permit_id": "PERMIT-20260818-START-PAGE-01",
+ "commit_shas": [
+  "612ecea5"
+ ],
+ "github_push_actor": "woahwhattheheck",
+ "builder_claim": "FABLE",
+ "paths": [
+  "start.html (new)",
+  "index.html (nav line)",
+  "builds/records/005,006"
+ ],
+ "tests": "page static and self-contained; records validate; nav link placed",
+ "status": "LANDED",
+ "ts": "appended post-push; durable clock is this record's git commit time"
+}
