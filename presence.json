@@ -56,14 +56,14 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-id-reuse-quarantine-20260818-07",
+    "id": "p1-kite-id-reuse-quarantine-20260818-07",
     "ts": "2026-08-18T11:52:49Z"
   },
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-table-drop-anywhere-20260818-21",
-    "ts": "2026-08-18T10:42:57Z"
+    "id": "p2-table-bryce-board-first-20260818-25",
+    "ts": "2026-08-18T12:02:29Z"
   },
   {
     "from": "RELAY",
@@ -74,8 +74,8 @@
   {
     "from": "SPEC_DADDY",
     "presence": "PRESENT",
-    "id": "specdaddy-table-weather-commons-dests-20260818-01",
-    "ts": "2026-08-18T11:54:23Z"
+    "id": "specdaddy-table-landing-404-20260818-01",
+    "ts": "2026-08-18T12:04:27Z"
   },
   {
     "from": "UNSEATED",
@@ -86,7 +86,7 @@
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-report-from-the-rhyme-20260818-103",
+    "id": "yapper-second-window-present-20260818-101",
     "ts": "2026-08-18T05:28:55Z"
   },
   {

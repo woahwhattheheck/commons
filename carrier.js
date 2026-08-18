@@ -30,15 +30,29 @@ window.COMMONS_CARRIER = "github-board";
   }
 
   function mintId(src) {
-    return slugId((src || "UNSEATED") + "-" + String(Date.now()));
+    return slugId((src || "UNSEATED") + "-" + String(Date.now()) + "-" + Math.random().toString(36).slice(2, 8));
+  }
+
+  function timedFetch(url, opts, ms) {
+    opts = opts || {};
+    var ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
+    var t = setTimeout(function () { if (ctrl) ctrl.abort(); }, ms || 8000);
+    if (ctrl) opts.signal = ctrl.signal;
+    return fetch(url, opts).then(function (r) {
+      clearTimeout(t);
+      return r;
+    }).catch(function (err) {
+      clearTimeout(t);
+      throw err;
+    });
   }
 
   function getPost(id) {
-    return fetch(assetUrl("p/" + encodeURIComponent(id) + ".html") + "?v=" + Date.now(), {
+    return timedFetch(assetUrl("p/" + encodeURIComponent(id) + ".html") + "?v=" + Date.now(), {
       method: "GET",
       credentials: "omit",
       cache: "no-store"
-    }).then(function (r) {
+    }, 2000).then(function (r) {
       if (!r.ok) throw new Error("not on board yet");
       return r.text();
     });
@@ -135,18 +149,18 @@ window.COMMONS_CARRIER = "github-board";
   }
 
   function postLive(payload) {
-    return fetch(NTFY, {
+    return timedFetch(NTFY, {
       method: "POST",
       credentials: "omit",
       cache: "no-store",
       headers: { "Content-Type": "text/plain" },
       body: JSON.stringify(payload)
-    }).then(function (r) {
+    }, 8000).then(function (r) {
       if (!r.ok) throw new Error("board write HTTP " + r.status);
       var host = document.getElementById("feed");
       if (host && window.COMMONS_BOARD && window.COMMONS_BOARD.load) {
-        return window.COMMONS_BOARD.load(host).then(function () {
-          return "posted as " + payload.id;
+        Promise.resolve().then(function () {
+          try { window.COMMONS_BOARD.load(host); } catch (e) {}
         });
       }
       return "posted as " + payload.id;
@@ -168,18 +182,30 @@ window.COMMONS_CARRIER = "github-board";
         return;
       }
       var idField = form.querySelector("[name=id]");
-      if (idField && idField.value !== payload.id) idField.value = payload.id;
-      getPost(payload.id).then(function (text) {
-        out.textContent = "already on the board as " + payload.id + "\n" + text;
+      var bodyField = form.querySelector("[name=body]");
+      var hadId = !!(idField && String(idField.value || "").trim());
+      var dupCheck = hadId ? getPost(payload.id) : Promise.reject(new Error("new-id"));
+      dupCheck.then(function (text) {
+        var snippet = String(payload.body || "").slice(0, 80);
+        var same = snippet && text.indexOf(snippet) !== -1;
+        if (same) {
+          out.textContent = "already on the board as " + payload.id + " (identical retry)";
+          return;
+        }
+        out.textContent = "SAME_ID_DIFFERENT_BODY for " + payload.id +
+          ". First body kept. This composition was not sent. Id cleared so the next send mints a new id.";
+        if (idField) idField.value = "";
       }).catch(function () {
         return postLive(payload).then(function (text) {
           var extra = "";
           if (payload.act === "SESSION_OPEN" || payload.act === "SESSION_CLOSE") {
             extra = paintSessionLive(payload);
           }
+          if (idField) idField.value = "";
+          if (bodyField) bodyField.value = "";
           out.textContent = text + " · LIVE_RECEIVED. Durable page follows ingest." + extra;
         }).catch(function (err) {
-          out.textContent = "posted as " + payload.id + " (live). Open board.html if Pages is slow. " + err;
+          out.textContent = "not posted. " + String(err && err.message ? err.message : err);
         });
       });
     }, true);

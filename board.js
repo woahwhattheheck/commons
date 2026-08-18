@@ -233,6 +233,15 @@ window.COMMONS_BOARD = (function () {
       return;
     }
     var have = host.querySelectorAll("article").length;
+    if (endless && !filtersOn() && have) {
+      rows.forEach(function (p) {
+        if (!p || !p.id || !p.pending || p.durable) return;
+        if (host.querySelector('article[data-id="' + String(p.id).replace(/"/g, "") + '"]')) return;
+        host.insertAdjacentHTML("afterbegin", card(p, true));
+      });
+      paintSalonPointer();
+      return;
+    }
     if (!filtersOn() && have && rows.length < have && cache.durable.length < have) return;
     host.innerHTML = rows.map(function (p) { return card(p, !!p.pending && !p.durable); }).join("");
     bindLoadOlder();
@@ -292,8 +301,24 @@ window.COMMONS_BOARD = (function () {
       .then(function (data) { cache.hidden = data && typeof data === "object" ? data : {}; })
       .catch(function () { cache.hidden = {}; });
     return hiddenP.then(function () {
-      return fetch("./posts.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
-    }).then(function (r) { return r.ok ? r.json() : []; })
+      var endless = cache.host.getAttribute("data-endless") === "1";
+      var limit = parseInt(cache.host.getAttribute("data-limit") || "0", 10);
+      var url = (!endless && limit) ? "./recent.json?v=" : "./posts.json?v=";
+      var ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
+      var t = setTimeout(function () { if (ctrl) ctrl.abort(); }, 8000);
+      var opts = { cache: "no-store", credentials: "omit" };
+      if (ctrl) opts.signal = ctrl.signal;
+      return fetch(url + Date.now(), opts).then(function (r) {
+        clearTimeout(t);
+        return r;
+      }).catch(function (err) {
+        clearTimeout(t);
+        throw err;
+      });
+    }).then(function (r) {
+      if (r && r.ok) return r.json();
+      return [];
+    })
       .then(function (feed) {
         var next = asDurable(feed);
         cache.durable = next.length ? unionPosts(next, cache.durable) : cache.durable;

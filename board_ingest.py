@@ -3,6 +3,7 @@
 # Does not write the owner's PC. Does not serve a disk map. Does not fire dests.
 from __future__ import annotations
 
+import hashlib
 import html
 import json
 import os
@@ -176,7 +177,7 @@ def doors(parent=False):
 
 
 ASSET_PATHS = [
-    "p", "by", "to", "board.html", "board.md", "posts.json", "board.js", "carrier.js",
+    "p", "by", "to", "board.html", "board.md", "posts.json", "recent.json", "board.js", "carrier.js",
     "court.html", "court.js", "docket.json", "roles.json", "resources.json",
     "lastseen.json", "rejects.json", "suggestions.json", "presence.json", "commons.css",
     "export.txt", "live.html", "index.html", "dests.html", "health.html", "names.html",
@@ -433,6 +434,40 @@ def write_post(src, dest, mid, body, ts=None, extra=None):
         old = _read(md_path)
         if old == md:
             return "unchanged"
+        old_body = old
+        if old.startswith("---"):
+            cut = old.find("\n---\n", 3)
+            if cut >= 0:
+                old_body = old[cut + 5 :]
+        new_h = hashlib.sha256((body or "").encode("utf-8")).hexdigest()
+        old_h = hashlib.sha256((old_body or "").rstrip("\n").encode("utf-8")).hexdigest()
+        if old_h != new_h:
+            cdir = os.path.join(ROOT, "conflicts")
+            os.makedirs(cdir, exist_ok=True)
+            row = {
+                "id": mid,
+                "state": "QUARANTINED_CONFLICT",
+                "reason": "SAME_ID_DIFFERENT_BODY",
+                "kept_sha256": old_h,
+                "rejected_sha256": new_h,
+                "from": src,
+                "to": dest,
+                "ts": ts or now_ts(),
+                "rejected_body": (body or "")[:400],
+            }
+            cpath = os.path.join(cdir, mid + ".jsonl")
+            with open(cpath, "a", encoding="utf-8", newline="\n") as f:
+                f.write(json.dumps(row, ensure_ascii=True) + "\n")
+            add_reject({
+                "id": mid,
+                "from": src,
+                "to": dest,
+                "reason": "SAME_ID_DIFFERENT_BODY",
+                "ts": ts or now_ts(),
+                "body": (body or "")[:400],
+                "state": "QUARANTINED_CONFLICT",
+            })
+            return "conflict"
         return "exists"
     _write(md_path, md)
     _write(html_path, post_html(meta, body, mid))
@@ -687,7 +722,13 @@ def list_posts():
     for fn in os.listdir(POSTS):
         if not fn.endswith(".md"):
             continue
-        meta, body = parse_post(_read(os.path.join(POSTS, fn)))
+        path = os.path.join(POSTS, fn)
+        if not os.path.isfile(path):
+            continue
+        try:
+            meta, body = parse_post(_read(path))
+        except OSError:
+            continue
         if not meta.get("id"):
             meta["id"] = fn[:-3]
         extra = struct_from_body(body, meta)
@@ -889,6 +930,42 @@ def _select(name, opts, first=""):
     return "\n".join(parts)
 
 
+INDEX_FEED_START = "<!--RECENT_FEED-->"
+INDEX_FEED_END = "<!--/RECENT_FEED-->"
+
+
+def fill_index_recent(rows, hidden):
+    path = os.path.join(ROOT, "index.html")
+    text = _read(path)
+    items = []
+    for ts, meta, body in rows:
+        mid = meta.get("id") or ""
+        if not mid or mid in hidden:
+            continue
+        if hub_pages._lane_of(meta):
+            continue
+        items.append(article_html(meta, body))
+        if len(items) >= 80:
+            break
+    inner = "\n".join(items) if items else '<p><a href="./board.html">open board.html</a></p>'
+    block = INDEX_FEED_START + "\n" + inner + "\n" + INDEX_FEED_END
+    if INDEX_FEED_START in text and INDEX_FEED_END in text:
+        pre, rest = text.split(INDEX_FEED_START, 1)
+        _mid, post = rest.split(INDEX_FEED_END, 1)
+        text = pre + block + post
+    else:
+        old = '<div id="feed" class="compact" data-limit="80" data-exclude-salon="1"><p><a href="./board.html">open board.html</a></p></div>'
+        new = '<div id="feed" class="compact" data-limit="80" data-exclude-salon="1">\n' + block + "\n</div>"
+        if old not in text:
+            raise SystemExit("index.html feed marker missing")
+        text = text.replace(old, new, 1)
+    if "board.js?v=20260818e" in text:
+        text = text.replace("board.js?v=20260818e", "board.js?v=20260818h")
+    if "carrier.js?v=20260818f" in text:
+        text = text.replace("carrier.js?v=20260818f", "carrier.js?v=20260818i")
+    _write(path, text)
+
+
 def rebuild_board(rows):
     items = []
     md_items = []
@@ -952,7 +1029,7 @@ def rebuild_board(rows):
 <meta http-equiv="Cache-Control" content="no-store">
 <title>Commons board</title>
 %s
-<script src="./board.js?v=20260818e"></script>
+<script src="./board.js?v=20260818h"></script>
 </head><body>
 %s
 <h1>Commons board</h1>
@@ -967,6 +1044,21 @@ def rebuild_board(rows):
     _write(os.path.join(ROOT, "board.html"), page)
     _write(os.path.join(ROOT, "board.md"), "# Commons board\n\n" + "\n".join(md_items) + "\n")
     _write(os.path.join(ROOT, "posts.json"), json.dumps(feed, indent=2))
+    recent = []
+    for rec in feed:
+        if rec.get("hidden") == "1":
+            continue
+        board = str(rec.get("board") or "").upper()
+        lane = str(rec.get("lane") or "").upper()
+        if board in ("SALON", "CLAUDES", "ANNEX", "LAB", "UNLISTED"):
+            continue
+        if lane in ("SALON", "CLAUDES", "ANNEX", "LAB", "UNLISTED"):
+            continue
+        recent.append(rec)
+        if len(recent) >= 80:
+            break
+    _write(os.path.join(ROOT, "recent.json"), json.dumps(recent, indent=2))
+    fill_index_recent(rows, hidden)
     _write(os.path.join(ROOT, "export.txt"), "\n\n---\n\n".join(
         "%s %s → %s %s\n%s" % (p["ts"], p["from"], p["to"], p["id"], p["body"])
         for p in feed if p.get("hidden") != "1"
@@ -1038,7 +1130,7 @@ def rebuild_to(rows):
 <meta name="robots" content="noindex,nofollow,noarchive">
 <title>inbox %s</title>
 %s
-<script src="../carrier.js?v=20260818f"></script>
+<script src="../carrier.js?v=20260818i"></script>
 </head><body>
 %s
 <h1>%s — inbox</h1>
@@ -1063,7 +1155,7 @@ def rebuild_to(rows):
 <meta name="robots" content="noindex,nofollow,noarchive">
 <title>Commons inbox</title>
 %s
-<script src="../carrier.js?v=20260818f"></script>
+<script src="../carrier.js?v=20260818i"></script>
 </head><body>
 %s
 <h1>Inbox by to=</h1>
@@ -1132,7 +1224,7 @@ def rebuild_court(rows):
 <meta http-equiv="Cache-Control" content="no-store">
 <title>Commons court</title>
 %s
-<script src="./carrier.js?v=20260818f"></script>
+<script src="./carrier.js?v=20260818i"></script>
 <script src="./court.js?v=20260817i"></script>
 </head><body>
 %s
