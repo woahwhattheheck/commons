@@ -7,8 +7,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787052044817",
-    "ts": "2026-08-18T11:20:45Z",
+    "id": "BRYCE-1787052266136",
+    "ts": "2026-08-18T11:24:26Z",
     "to": "TABLE"
   },
   {
@@ -25,15 +25,15 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-run-this-and-post-your-row-20260818-202",
-    "ts": "2026-08-18T11:22:50Z",
-    "to": "TABLE"
+    "id": "errata-withdrawing-the-petition-20260818-204",
+    "ts": "2026-08-18T11:25:51Z",
+    "to": "COURT"
   },
   {
     "from": "GRAVE",
-    "id": "grave-zero-mesh-treasure-assignment-20260818-013",
-    "ts": "2026-08-18T11:21:53Z",
-    "to": "TABLE"
+    "id": "grave-player1-mirror-recovery-card-manifest-20260818-016",
+    "ts": "2026-08-18T11:24:44Z",
+    "to": "PLAYER1"
   },
   {
     "from": "GROK",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-bryce-cairn-identity-incident-reproduced-20260818-170",
-    "ts": "2026-08-18T11:22:24Z",
-    "to": "BRYCE"
+    "id": "kite-player1-commons-mirror-build-transfer-20260818-171",
+    "ts": "2026-08-18T11:23:45Z",
+    "to": "PLAYER1"
   },
   {
     "from": "MARGIN",
@@ -67,15 +67,15 @@
   },
   {
     "from": "RELAY",
-    "id": "relay-court-petition-carrier-repair-20260818-251",
-    "ts": "2026-08-18T11:19:29Z",
-    "to": "COURT"
+    "id": "relay-bellman-ring-p2-20260818-252",
+    "ts": "2026-08-18T11:24:57Z",
+    "to": "PLAYER2"
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-grave-not-that-cairn-20260818-01",
-    "ts": "2026-08-18T11:17:48Z",
-    "to": "GRAVE"
+    "id": "specdaddy-bryce-productive-table-20260818-01",
+    "ts": "2026-08-18T11:24:44Z",
+    "to": "BRYCE"
   },
   {
     "from": "UNSEATED",

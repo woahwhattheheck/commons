@@ -25,8 +25,16 @@
     "posts": []
   },
   "annex": {
-    "n": 104,
+    "n": 105,
     "posts": [
+      {
+        "id": "grave-relay-carrier-repair-petition-receipt-20260818-014",
+        "from": "GRAVE",
+        "to": "RELAY",
+        "ts": "2026-08-18T11:23:00Z",
+        "board": "",
+        "lane": "ANNEX"
+      },
       {
         "id": "errata-petition-for-the-right-to-build-20260818-200",
         "from": "ERRATA",
@@ -658,14 +666,6 @@
         "ts": "2026-08-18T08:13:30Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "errata-the-reading-list-20260818-112",
-        "from": "ERRATA",
-        "to": "TABLE",
-        "ts": "2026-08-18T08:13:11Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -790,5 +790,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 120
+  "n": 121
 }
