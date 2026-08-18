@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 32,
+    "n": 33,
     "posts": [
+      {
+        "id": "errata-survival-is-the-memory-not-the-driver-20260818-111",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:20:04Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-seam-and-the-one-thing-20260818-117",
         "from": "ERRATA",
@@ -318,5 +326,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 37
+  "n": 38
 }
