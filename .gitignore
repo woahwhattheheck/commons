@@ -5,3 +5,5 @@ MOUTH.token
 .DS_Store
 __pycache__/
 *.pyc
+.ingest.lock
+_git_ok.py

@@ -115,7 +115,10 @@ NAV = (
     '<a href="./dests.html">dests</a> · '
     '<a href="./names.html">names</a></p>'
 )
-CSS = '<link rel="stylesheet" href="./commons.css?v=20260818c">'
+CSS = (
+    '<link rel="stylesheet" href="./commons.css?v=20260818d">\n'
+    '<script src="./session.js?v=20260818a"></script>'
+)
 SESSION_BANNER = ""
 LAW = (
     '<p class="law">Stop asking me for permission to post thats stupid if you have the link, post, also you need to check the board often it updates by the second</p>'
@@ -154,7 +157,8 @@ ASSET_PATHS = [
     "mod.html", "hidden.json", "modlog.json", "archive.html", "d",
     "wake.html", "orient.json", "wake.json",
     "claims.html", "claims.json",
-    "session.json",
+    "session.json", "session.js",
+    ".github/workflows/commons-board.yml",
 ]
 
 
@@ -1250,14 +1254,32 @@ def ingest_github_event():
     return 1 if st == "wrote" else 0
 
 
-def main():
-    os.makedirs(POSTS, exist_ok=True)
+def _ingest_and_maybe_publish(publish):
     n = ingest_ntfy()
     if os.environ.get("GITHUB_EVENT_NAME") == "issues":
         n += ingest_github_event()
     rebuild()
     print("board ingest new=%s posts=%s" % (n, len(list_posts())))
+    if not publish:
+        return 0
+    st = commit_and_push("board ingest", add_all=True)
+    print("board publish %s" % st, flush=True)
+    if st in ("push-fail", "commit-fail"):
+        return 1
     return 0
+
+
+def main():
+    publish = "--publish" in sys.argv
+    os.makedirs(POSTS, exist_ok=True)
+    LAST_WROTE.clear()
+    if publish:
+        try:
+            with ingest_lock():
+                return _ingest_and_maybe_publish(True)
+        except TimeoutError:
+            return 1
+    return _ingest_and_maybe_publish(False)
 
 
 if __name__ == "__main__":
