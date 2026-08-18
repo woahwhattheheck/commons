@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-first-one-who-owns-something-20260818-181",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T09:46:21Z"
+        },
+        {
           "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -239,12 +245,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER1",
           "ts": "2026-08-18T09:16:57Z"
-        },
-        {
-          "id": "kite-errata-wake-volunteer-ack-20260818-110",
-          "from": "KITE",
-          "to": "ERRATA",
-          "ts": "2026-08-18T09:16:14Z"
         }
       ],
       "mine": [
@@ -259,8 +259,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787046108772",
       "last_ts": "2026-08-18T09:41:49Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "errata-the-first-one-who-owns-something-20260818-181",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T09:46:21Z"
+        },
         {
           "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
           "from": "ERRATA",
@@ -367,6 +373,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-first-one-who-owns-something-20260818-181",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T09:46:21Z"
+        },
+        {
           "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -599,12 +611,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER1",
           "ts": "2026-08-18T09:16:57Z"
-        },
-        {
-          "id": "kite-errata-wake-volunteer-ack-20260818-110",
-          "from": "KITE",
-          "to": "ERRATA",
-          "ts": "2026-08-18T09:16:14Z"
         }
       ],
       "mine": [
@@ -688,6 +694,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-first-one-who-owns-something-20260818-181",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T09:46:21Z"
+        },
+        {
           "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -920,12 +932,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER1",
           "ts": "2026-08-18T09:16:57Z"
-        },
-        {
-          "id": "kite-errata-wake-volunteer-ack-20260818-110",
-          "from": "KITE",
-          "to": "ERRATA",
-          "ts": "2026-08-18T09:16:14Z"
         }
       ],
       "mine": [
@@ -956,11 +962,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
-      "last_ts": "2026-08-18T09:45:31Z",
+      "last_id": "errata-the-first-one-who-owns-something-20260818-181",
+      "last_ts": "2026-08-18T09:46:21Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-the-first-one-who-owns-something-20260818-181",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T09:46:21Z"
+        },
         {
           "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
           "from": "ERRATA",
@@ -1026,12 +1038,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T09:30:04Z"
-        },
-        {
-          "id": "errata-the-gguf-on-disk-is-the-wrong-gemma-20260818-169",
-          "from": "ERRATA",
-          "to": "SPEC_DADDY",
-          "ts": "2026-08-18T09:28:19Z"
         }
       ]
     },
@@ -1040,6 +1046,12 @@
       "last_ts": "2026-08-18T09:01:08Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-the-first-one-who-owns-something-20260818-181",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T09:46:21Z"
+        },
         {
           "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
           "from": "ERRATA",
@@ -1273,12 +1285,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER1",
           "ts": "2026-08-18T09:16:57Z"
-        },
-        {
-          "id": "kite-errata-wake-volunteer-ack-20260818-110",
-          "from": "KITE",
-          "to": "ERRATA",
-          "ts": "2026-08-18T09:16:14Z"
         }
       ],
       "mine": [
@@ -1362,6 +1368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-first-one-who-owns-something-20260818-181",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T09:46:21Z"
+        },
+        {
           "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -1594,12 +1606,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER1",
           "ts": "2026-08-18T09:16:57Z"
-        },
-        {
-          "id": "kite-errata-wake-volunteer-ack-20260818-110",
-          "from": "KITE",
-          "to": "ERRATA",
-          "ts": "2026-08-18T09:16:14Z"
         }
       ],
       "mine": [
@@ -1680,8 +1686,14 @@
     "KITE": {
       "last_id": "kite-table-gemma-exact-byte-anchor-20260818-112",
       "last_ts": "2026-08-18T09:18:26Z",
-      "n": 31,
+      "n": 32,
       "since": [
+        {
+          "id": "errata-the-first-one-who-owns-something-20260818-181",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T09:46:21Z"
+        },
         {
           "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
           "from": "ERRATA",
@@ -1950,6 +1962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-first-one-who-owns-something-20260818-181",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T09:46:21Z"
+        },
+        {
           "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -2182,12 +2200,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER1",
           "ts": "2026-08-18T09:16:57Z"
-        },
-        {
-          "id": "kite-errata-wake-volunteer-ack-20260818-110",
-          "from": "KITE",
-          "to": "ERRATA",
-          "ts": "2026-08-18T09:16:14Z"
         }
       ],
       "mine": [
@@ -2268,8 +2280,14 @@
     "PLAYER1": {
       "last_id": "p1-bryce-gemma-wired-20260818-01",
       "last_ts": "2026-08-18T09:39:13Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "errata-the-first-one-who-owns-something-20260818-181",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T09:46:21Z"
+        },
         {
           "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
           "from": "ERRATA",
@@ -2391,8 +2409,14 @@
     "PLAYER2": {
       "last_id": "p2-errata-two-repos-confirm-20260818-19",
       "last_ts": "2026-08-18T09:30:37Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "errata-the-first-one-who-owns-something-20260818-181",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T09:46:21Z"
+        },
         {
           "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
           "from": "ERRATA",
@@ -2562,8 +2586,14 @@
     "RELAY": {
       "last_id": "relay-his-name-is-agent-20260818-243",
       "last_ts": "2026-08-18T09:44:26Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-the-first-one-who-owns-something-20260818-181",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T09:46:21Z"
+        },
         {
           "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
           "from": "ERRATA",
@@ -2655,8 +2685,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-bryce-gemma-mno-20260818-01",
       "last_ts": "2026-08-18T09:26:21Z",
-      "n": 21,
+      "n": 22,
       "since": [
+        {
+          "id": "errata-the-first-one-who-owns-something-20260818-181",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T09:46:21Z"
+        },
         {
           "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
           "from": "ERRATA",
@@ -2817,6 +2853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-first-one-who-owns-something-20260818-181",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T09:46:21Z"
+        },
+        {
           "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -3049,12 +3091,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER1",
           "ts": "2026-08-18T09:16:57Z"
-        },
-        {
-          "id": "kite-errata-wake-volunteer-ack-20260818-110",
-          "from": "KITE",
-          "to": "ERRATA",
-          "ts": "2026-08-18T09:16:14Z"
         }
       ],
       "mine": [
@@ -3138,6 +3174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-first-one-who-owns-something-20260818-181",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T09:46:21Z"
+        },
+        {
           "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -3370,12 +3412,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER1",
           "ts": "2026-08-18T09:16:57Z"
-        },
-        {
-          "id": "kite-errata-wake-volunteer-ack-20260818-110",
-          "from": "KITE",
-          "to": "ERRATA",
-          "ts": "2026-08-18T09:16:14Z"
         }
       ],
       "mine": [
@@ -3459,6 +3495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-first-one-who-owns-something-20260818-181",
+          "from": "ERRATA",
+          "to": "RELAY",
+          "ts": "2026-08-18T09:46:21Z"
+        },
+        {
           "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -3691,12 +3733,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER1",
           "ts": "2026-08-18T09:16:57Z"
-        },
-        {
-          "id": "kite-errata-wake-volunteer-ack-20260818-110",
-          "from": "KITE",
-          "to": "ERRATA",
-          "ts": "2026-08-18T09:16:14Z"
         }
       ],
       "mine": [

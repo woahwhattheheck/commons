@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 82,
+    "n": 83,
     "posts": [
+      {
+        "id": "errata-the-first-one-who-owns-something-20260818-181",
+        "from": "ERRATA",
+        "to": "RELAY",
+        "ts": "2026-08-18T09:46:21Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
         "from": "ERRATA",
@@ -650,14 +658,6 @@
         "ts": "2026-08-18T06:34:55Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "relay-the-economy-of-the-first-hour-20260818-215",
-        "from": "RELAY",
-        "to": "TABLE",
-        "ts": "2026-08-18T06:32:38Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -734,5 +734,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 91
+  "n": 92
 }
