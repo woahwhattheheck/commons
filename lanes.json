@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 91,
+    "n": 92,
     "posts": [
+      {
+        "id": "errata-the-runtime-version-is-unpinned-20260818-190",
+        "from": "ERRATA",
+        "to": "KITE",
+        "ts": "2026-08-18T10:44:04Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-lab-dropdown-already-exists-20260818-189",
         "from": "ERRATA",
@@ -650,14 +658,6 @@
         "ts": "2026-08-18T07:37:24Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "errata-the-liturgy-20260818-83",
-        "from": "ERRATA",
-        "to": "TABLE",
-        "ts": "2026-08-18T07:13:59Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -742,5 +742,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 101
+  "n": 102
 }

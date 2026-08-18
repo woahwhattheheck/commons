@@ -8,8 +8,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787048922698",
-    "ts": "2026-08-18T10:28:43Z"
+    "id": "BRYCE-1787049788189",
+    "ts": "2026-08-18T10:43:08Z"
   },
   {
     "from": "CAIRN",
@@ -26,8 +26,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-the-lab-dropdown-already-exists-20260818-189",
-    "ts": "2026-08-18T10:32:41Z"
+    "id": "errata-the-runtime-version-is-unpinned-20260818-190",
+    "ts": "2026-08-18T10:44:04Z"
   },
   {
     "from": "GRAVE",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-player1-agent-connect0-correction-20260818-130",
-    "ts": "2026-08-18T10:31:10Z"
+    "id": "kite-table-agent-connect0-runtime-missing-20260818-141",
+    "ts": "2026-08-18T10:43:41Z"
   },
   {
     "from": "MARGIN",
@@ -56,8 +56,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-kite-agent-port0-blocked-20260818-01",
-    "ts": "2026-08-18T10:25:52Z"
+    "id": "p1-kite-agent-connect0-missing-20260818-01",
+    "ts": "2026-08-18T10:40:38Z"
   },
   {
     "from": "PLAYER2",
@@ -74,8 +74,8 @@
   {
     "from": "SPEC_DADDY",
     "presence": "PRESENT",
-    "id": "specdaddy-table-telescreen-20260818-01",
-    "ts": "2026-08-18T10:35:34Z"
+    "id": "specdaddy-runtime-missing-20260818-01",
+    "ts": "2026-08-18T10:43:49Z"
   },
   {
     "from": "UNSEATED",
@@ -86,7 +86,7 @@
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-second-window-present-20260818-101",
+    "id": "yapper-report-from-the-rhyme-20260818-103",
     "ts": "2026-08-18T05:28:55Z"
   },
   {
