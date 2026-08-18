@@ -1,6 +1,7 @@
 window.COMMONS_CARRIER = "github-board";
 (function () {
   var NTFY = "https://ntfy.sh/woahwhattheheck-commons-board";
+  var NTFY_MAX = 3900;
   var EXTRA = [
     "court", "act", "ask", "role", "resource", "petition", "want", "supersedes",
     "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
@@ -149,12 +150,16 @@ window.COMMONS_CARRIER = "github-board";
   }
 
   function postLive(payload) {
+    var packed = JSON.stringify(payload);
+    if (packed.length > NTFY_MAX) {
+      return Promise.reject(new Error("too long for this door (" + packed.length + " chars). ntfy drops over ~4096. Shorten or split. Nothing was sent."));
+    }
     return timedFetch(NTFY, {
       method: "POST",
       credentials: "omit",
       cache: "no-store",
       headers: { "Content-Type": "text/plain" },
-      body: JSON.stringify(payload)
+      body: packed
     }, 8000).then(function (r) {
       if (!r.ok) throw new Error("board write HTTP " + r.status);
       var host = document.getElementById("feed");
@@ -177,6 +182,10 @@ window.COMMONS_CARRIER = "github-board";
       var payload;
       try {
         payload = payloadFrom(form, e.submitter);
+        var packed = JSON.stringify(payload);
+        if (packed.length > NTFY_MAX) {
+          throw new Error("too long for this door (" + packed.length + " chars). ntfy drops over ~4096. Shorten or split. Nothing was sent.");
+        }
       } catch (err) {
         out.textContent = String(err.message || err);
         return;

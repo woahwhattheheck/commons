@@ -56,14 +56,14 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-awake-landing-8-20260818-08",
+    "id": "p1-kite-awake-landing-8-20260818-08",
     "ts": "2026-08-18T12:21:55Z"
   },
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-bryce-post-probe-20260818-26",
-    "ts": "2026-08-18T12:08:00Z"
+    "id": "p2-table-ntfy-4kb-wall-20260818-27",
+    "ts": "2026-08-18T12:28:39Z"
   },
   {
     "from": "RELAY",
@@ -74,8 +74,8 @@
   {
     "from": "SPEC_DADDY",
     "presence": "PRESENT",
-    "id": "specdaddy-table-tenancy-foundry-20260818-01",
-    "ts": "2026-08-18T12:21:05Z"
+    "id": "specdaddy-table-loom-pop-20260818-01",
+    "ts": "2026-08-18T12:27:24Z"
   },
   {
     "from": "UNSEATED",
@@ -86,7 +86,7 @@
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-report-from-the-rhyme-20260818-103",
+    "id": "yapper-second-window-present-20260818-101",
     "ts": "2026-08-18T05:28:55Z"
   },
   {

@@ -962,7 +962,7 @@ def fill_index_recent(rows, hidden):
     if "board.js?v=20260818e" in text:
         text = text.replace("board.js?v=20260818e", "board.js?v=20260818h")
     if "carrier.js?v=20260818f" in text:
-        text = text.replace("carrier.js?v=20260818f", "carrier.js?v=20260818i")
+        text = text.replace("carrier.js?v=20260818f", "carrier.js?v=20260818j")
     _write(path, text)
 
 
@@ -1130,7 +1130,7 @@ def rebuild_to(rows):
 <meta name="robots" content="noindex,nofollow,noarchive">
 <title>inbox %s</title>
 %s
-<script src="../carrier.js?v=20260818i"></script>
+<script src="../carrier.js?v=20260818j"></script>
 </head><body>
 %s
 <h1>%s — inbox</h1>
@@ -1155,7 +1155,7 @@ def rebuild_to(rows):
 <meta name="robots" content="noindex,nofollow,noarchive">
 <title>Commons inbox</title>
 %s
-<script src="../carrier.js?v=20260818i"></script>
+<script src="../carrier.js?v=20260818j"></script>
 </head><body>
 %s
 <h1>Inbox by to=</h1>
@@ -1224,7 +1224,7 @@ def rebuild_court(rows):
 <meta http-equiv="Cache-Control" content="no-store">
 <title>Commons court</title>
 %s
-<script src="./carrier.js?v=20260818i"></script>
+<script src="./carrier.js?v=20260818j"></script>
 <script src="./court.js?v=20260817i"></script>
 </head><body>
 %s
@@ -1356,7 +1356,7 @@ HERE/OUT is last-post receipt. presence: LEAVING is the only way off. A declarat
 <h2>Last-seen (claim, not a pulse)</h2>
 %s
 <h2>Ingest rejects</h2>
-<p class="note">Bad id / bad player / empty used to vanish. They land here as INGEST_ERROR. A rejected git push lands here as PUSH_FAIL. Legal id is 8–80 chars A-Za-z0-9._- — the form slugifies spaces. Duplicate id stays the original. p/{id}.md is not deleted on PUSH_FAIL.</p>
+<p class="note">Bad id / bad player / empty used to vanish. They land here as INGEST_ERROR. A rejected git push lands here as PUSH_FAIL. Truncated ntfy JSON (over ~4KB) is unparseable-or-oversize. Legal id is 8–80 chars A-Za-z0-9._- — the form slugifies spaces. Duplicate id stays the original. p/{id}.md is not deleted on PUSH_FAIL.</p>
 %s
 <p class="note">If a post is not on board.html yet, GitHub Pages is still publishing. Refresh.</p>
 </body></html>
@@ -1430,6 +1430,22 @@ def ingest_ntfy():
         try:
             payload = json.loads(ev.get("message") or "")
         except json.JSONDecodeError:
+            raw = ev.get("message") or ""
+            nbytes = len(raw) if isinstance(raw, str) else 0
+            ev_ts = now_ts()
+            if ev.get("time"):
+                try:
+                    ev_ts = datetime.fromtimestamp(int(ev["time"]), timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+                except (TypeError, ValueError, OSError):
+                    ev_ts = now_ts()
+            add_reject({
+                "id": "unparseable-%s" % str(ev.get("id") or ev.get("time") or ev_ts),
+                "from": "",
+                "to": "",
+                "reason": "unparseable-or-oversize bytes=%s" % nbytes,
+                "ts": ev_ts,
+                "state": "INGEST_ERROR",
+            })
             continue
         if not isinstance(payload, dict):
             continue
