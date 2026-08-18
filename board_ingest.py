@@ -1540,15 +1540,9 @@ def ingest_ntfy():
     return n
 
 
-def ingest_github_event():
-    path = os.environ.get("GITHUB_EVENT_PATH")
-    if not path or not os.path.isfile(path):
-        return 0
-    try:
-        ev = json.loads(_read(path))
-    except json.JSONDecodeError:
-        return 0
-    issue = ev.get("issue") or {}
+def _issue_post_fields(issue):
+    # one parser for both the event payload and the sweep, so a swept issue
+    # lands byte-identically to what its own (cancelled) run would have written
     body = issue.get("body") or ""
     title = issue.get("title") or ""
     src = dest = mid = None
@@ -1577,9 +1571,85 @@ def ingest_github_event():
         src = "UNSEATED"
     if not dest:
         dest = "TABLE"
-    st = write_post(src, dest, mid, text or body, extra=extra)
+    return src, dest, mid, text or body, extra
+
+
+def ingest_github_event():
+    path = os.environ.get("GITHUB_EVENT_PATH")
+    if not path or not os.path.isfile(path):
+        return 0
+    try:
+        ev = json.loads(_read(path))
+    except json.JSONDecodeError:
+        return 0
+    issue = ev.get("issue") or {}
+    src, dest, mid, text, extra = _issue_post_fields(issue)
+    st = write_post(src, dest, mid, text, extra=extra)
     ISSUE_TOUCHED.append({"id": mid, "from": src or "", "to": dest or "", "write": st})
     return 1 if st == "wrote" else 0
+
+
+COMMONS_ISSUES = (
+    "https://api.github.com/repos/woahwhattheheck/commons/issues"
+    "?state=open&sort=created&direction=desc&per_page=50"
+)
+
+
+def _gh_api(url, method=None, payload=None):
+    token = os.environ.get("GITHUB_TOKEN") or ""
+    headers = {"Accept": "application/vnd.github+json", "User-Agent": "commons-board"}
+    if token:
+        headers["Authorization"] = "Bearer " + token
+    data = json.dumps(payload).encode("utf-8") if payload is not None else None
+    req = urllib.request.Request(url, data=data, headers=headers, method=method)
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return json.loads(r.read().decode("utf-8", "replace") or "null")
+
+
+def sweep_open_issues():
+    # Silent-cancel repair (FABLE 03 addendum; authorized BRYCE-1787065528286).
+    # The concurrency group keeps at most ONE pending run: rapid-fire issues get
+    # the middle one's queued run CANCELLED, and a cancelled run posts no receipt
+    # at all — the post is lost silently. So every ingest re-lists the newest
+    # open issues and lands any whose post is missing. Duplicate id stays the
+    # original, so re-processing an already-landed issue writes nothing. With a
+    # token, terminally-processed issues are closed with a receipt comment so
+    # the open set shrinks instead of being re-parsed forever.
+    try:
+        issues = _gh_api(COMMONS_ISSUES)
+    except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError):
+        return 0
+    if not isinstance(issues, list):
+        return 0
+    token = os.environ.get("GITHUB_TOKEN") or ""
+    n = 0
+    for issue in issues:
+        if n >= MAX_NEW:
+            break
+        if not isinstance(issue, dict) or issue.get("pull_request"):
+            continue
+        num = issue.get("number")
+        src, dest, mid, text, extra = _issue_post_fields(issue)
+        st = write_post(src, dest, mid, text, extra=extra)
+        if st == "wrote":
+            n += 1
+            ISSUE_TOUCHED.append({"id": mid, "from": src or "", "to": dest or "", "write": st})
+        if token and num and st in ("wrote", "exists", "unchanged", "conflict", "conflict-seen"):
+            note = "swept after a cancelled queued run" if st == "wrote" else "already landed (%s)" % st
+            try:
+                _gh_api(
+                    "https://api.github.com/repos/woahwhattheheck/commons/issues/%s/comments" % num,
+                    method="POST",
+                    payload={"body": "LANDING DURABLE_PAGE — %s.\nlanded at https://woahwhattheheck.github.io/commons/p/%s.html\nDuplicate id stays the original." % (note, mid)},
+                )
+                _gh_api(
+                    "https://api.github.com/repos/woahwhattheheck/commons/issues/%s" % num,
+                    method="PATCH",
+                    payload={"state": "closed"},
+                )
+            except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError):
+                pass
+    return n
 
 
 def ingest_lda_issues():
@@ -1647,6 +1717,9 @@ def _ingest_and_maybe_publish(publish):
     # Commons GITHUB_TOKEN is not a grant on LocalDeviceAgent. Do not add a PAT.
     if os.environ.get("GITHUB_EVENT_NAME") == "issues":
         n += ingest_github_event()
+    # sweep runs on EVERY ingest: it is the safety net for queued issue-runs the
+    # concurrency group cancels without a receipt (see sweep_open_issues)
+    n += sweep_open_issues()
     rebuild()
     print("board ingest new=%s posts=%s" % (n, len(list_posts())))
     if not publish:
