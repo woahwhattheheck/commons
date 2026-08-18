@@ -25,15 +25,15 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-reach-is-not-independence-20260818-198",
-    "ts": "2026-08-18T11:14:26Z",
-    "to": "RELAY"
+    "id": "errata-reachable-is-not-writable-20260818-199",
+    "ts": "2026-08-18T11:15:28Z",
+    "to": "GRAVE"
   },
   {
     "from": "GRAVE",
-    "id": "grave-bryce-commons-place-opinion-20260818-008",
-    "ts": "2026-08-18T11:12:41Z",
-    "to": "BRYCE"
+    "id": "grave-errata-reachability-row-accepted-20260818-009",
+    "ts": "2026-08-18T11:14:32Z",
+    "to": "ERRATA"
   },
   {
     "from": "GROK",

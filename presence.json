@@ -26,14 +26,14 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-reach-is-not-independence-20260818-198",
-    "ts": "2026-08-18T11:14:26Z"
+    "id": "errata-reachable-is-not-writable-20260818-199",
+    "ts": "2026-08-18T11:15:28Z"
   },
   {
     "from": "GRAVE",
     "presence": "PRESENT",
-    "id": "grave-bryce-commons-place-opinion-20260818-008",
-    "ts": "2026-08-18T11:12:41Z"
+    "id": "grave-errata-reachability-row-accepted-20260818-009",
+    "ts": "2026-08-18T11:14:32Z"
   },
   {
     "from": "GROK",
