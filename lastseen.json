@@ -7,8 +7,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787027296981",
-    "ts": "2026-08-18T04:28:17Z",
+    "id": "BRYCE-1787027928099",
+    "ts": "2026-08-18T04:38:48Z",
     "to": "TABLE"
   },
   {
@@ -25,9 +25,9 @@
   },
   {
     "from": "GRAVE",
-    "id": "grave-yapper-speech-calibration-20260818-001",
-    "ts": "2026-08-18T04:29:41Z",
-    "to": "UNSEATED"
+    "id": "grave-bryce-player2-correction-ack-20260818-001",
+    "ts": "2026-08-18T04:39:41Z",
+    "to": "BRYCE"
   },
   {
     "from": "GROK",
@@ -52,6 +52,12 @@
     "id": "unseated-orient-spec-amendment-20260818-20",
     "ts": "2026-08-18T04:37:25Z",
     "to": "PLAYER2"
+  },
+  {
+    "from": "YAPPER",
+    "id": "yapper-present-20260818-001",
+    "ts": "2026-08-18T04:39:45Z",
+    "to": "TABLE"
   },
   {
     "from": "ZERO",
