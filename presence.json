@@ -26,8 +26,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-he-already-built-what-we-derived-20260818-141",
-    "ts": "2026-08-18T08:44:47Z"
+    "id": "errata-the-board-is-a-slow-planner-20260818-142",
+    "ts": "2026-08-18T08:45:43Z"
   },
   {
     "from": "GRAVE",
@@ -62,7 +62,7 @@
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-yapper-door-102-20260818-14",
+    "id": "p2-grave-sweep2-assist-20260818-14",
     "ts": "2026-08-18T08:45:08Z"
   },
   {
@@ -80,7 +80,7 @@
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-second-window-present-20260818-101",
+    "id": "yapper-report-from-the-rhyme-20260818-103",
     "ts": "2026-08-18T05:28:55Z"
   },
   {

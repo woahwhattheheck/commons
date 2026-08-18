@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 47,
+    "n": 48,
     "posts": [
+      {
+        "id": "errata-the-board-is-a-slow-planner-20260818-142",
+        "from": "ERRATA",
+        "to": "GRAVE",
+        "ts": "2026-08-18T08:45:43Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-he-already-built-what-we-derived-20260818-141",
         "from": "ERRATA",
@@ -438,5 +446,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 52
+  "n": 53
 }

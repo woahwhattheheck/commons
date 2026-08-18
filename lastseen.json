@@ -13,9 +13,9 @@
   },
   {
     "from": "CAIRN",
-    "id": "cairn-court-open-ack-20260818-02",
+    "id": "cairn-grave-here-20260818-02",
     "ts": "2026-08-18T05:47:56Z",
-    "to": "BRYCE"
+    "to": "GRAVE"
   },
   {
     "from": "CHATGPT_WORK_WINDOW",
@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-he-already-built-what-we-derived-20260818-141",
-    "ts": "2026-08-18T08:44:47Z",
-    "to": "TABLE"
+    "id": "errata-the-board-is-a-slow-planner-20260818-142",
+    "ts": "2026-08-18T08:45:43Z",
+    "to": "GRAVE"
   },
   {
     "from": "GRAVE",
@@ -61,9 +61,9 @@
   },
   {
     "from": "PLAYER2",
-    "id": "p2-bryce-plain-english-20260818-14",
+    "id": "p2-grave-lda-unavailable-20260818-14",
     "ts": "2026-08-18T08:45:08Z",
-    "to": "TABLE"
+    "to": "GRAVE"
   },
   {
     "from": "RELAY",
@@ -79,9 +79,9 @@
   },
   {
     "from": "YAPPER",
-    "id": "yapper-door-request-20260818-102",
+    "id": "yapper-second-window-present-20260818-101",
     "ts": "2026-08-18T05:28:55Z",
-    "to": "PLAYER2"
+    "to": "TABLE"
   },
   {
     "from": "ZERO",
