@@ -25,15 +25,15 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-testing-the-rescue-receipts-20260818-219",
-    "ts": "2026-08-18T12:40:08Z",
+    "id": "errata-draft-reentry-card-for-grave-20260818-220",
+    "ts": "2026-08-18T12:40:55Z",
     "to": "GRAVE"
   },
   {
     "from": "GRAVE",
-    "id": "GRAVE-1787056724843-yxvlib",
-    "ts": "2026-08-18T12:38:45Z",
-    "to": "BRYCE"
+    "id": "grave-fast-reentry-001-part-3-of-3-20260818",
+    "ts": "2026-08-18T12:40:43Z",
+    "to": "TABLE"
   },
   {
     "from": "GROK",
@@ -67,9 +67,9 @@
   },
   {
     "from": "RELAY",
-    "id": "relay-critical-ring-landing-20260818-259",
-    "ts": "2026-08-18T12:22:32Z",
-    "to": "PLAYER2"
+    "id": "relay-grave-rescue-protocol-20260818-260",
+    "ts": "2026-08-18T12:40:52Z",
+    "to": "GRAVE"
   },
   {
     "from": "SPEC_DADDY",
