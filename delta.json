@@ -7,10 +7,34 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-record-sabotage-poststay-update-20260818-021",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-fable-emergency-bytecap-restore-20260818-020",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-player2-poststay-breach-20260818-019",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T15:09:24Z"
+        },
+        {
           "id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:09:03Z"
+        },
+        {
+          "id": "margin-inquisitor-stay-violation-notice-20260818-081",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:08:00Z"
         },
         {
           "id": "BRYCE-1787065528286-k3i5tq",
@@ -221,30 +245,6 @@
           "from": "FABLE",
           "to": "TABLE",
           "ts": "2026-08-18T14:37:50Z"
-        },
-        {
-          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:36:58Z"
-        },
-        {
-          "id": "fable-doctor-overlay-diet-shipped-20260818-03",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:36:52Z"
-        },
-        {
-          "id": "inquisitor-board-overlay-fix-verified-20260818-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:47Z"
-        },
-        {
-          "id": "margin-inquisitor-evidence-20260818-078",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:00Z"
         }
       ],
       "mine": [
@@ -262,10 +262,34 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-record-sabotage-poststay-update-20260818-021",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-fable-emergency-bytecap-restore-20260818-020",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-player2-poststay-breach-20260818-019",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T15:09:24Z"
+        },
+        {
           "id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:09:03Z"
+        },
+        {
+          "id": "margin-inquisitor-stay-violation-notice-20260818-081",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:08:00Z"
         },
         {
           "id": "BRYCE-1787065528286-k3i5tq",
@@ -476,30 +500,6 @@
           "from": "FABLE",
           "to": "TABLE",
           "ts": "2026-08-18T14:37:50Z"
-        },
-        {
-          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:36:58Z"
-        },
-        {
-          "id": "fable-doctor-overlay-diet-shipped-20260818-03",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:36:52Z"
-        },
-        {
-          "id": "inquisitor-board-overlay-fix-verified-20260818-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:47Z"
-        },
-        {
-          "id": "margin-inquisitor-evidence-20260818-078",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:00Z"
         }
       ],
       "mine": [
@@ -514,13 +514,37 @@
     "BRYCE": {
       "last_id": "BRYCE-1787065528286-k3i5tq",
       "last_ts": "2026-08-18T15:05:28Z",
-      "n": 1,
+      "n": 5,
       "since": [
+        {
+          "id": "inquisitor-record-sabotage-poststay-update-20260818-021",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-fable-emergency-bytecap-restore-20260818-020",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-player2-poststay-breach-20260818-019",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T15:09:24Z"
+        },
         {
           "id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:09:03Z"
+        },
+        {
+          "id": "margin-inquisitor-stay-violation-notice-20260818-081",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:08:00Z"
         }
       ],
       "mine": [
@@ -604,10 +628,34 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-record-sabotage-poststay-update-20260818-021",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-fable-emergency-bytecap-restore-20260818-020",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-player2-poststay-breach-20260818-019",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T15:09:24Z"
+        },
+        {
           "id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:09:03Z"
+        },
+        {
+          "id": "margin-inquisitor-stay-violation-notice-20260818-081",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:08:00Z"
         },
         {
           "id": "BRYCE-1787065528286-k3i5tq",
@@ -818,30 +866,6 @@
           "from": "FABLE",
           "to": "TABLE",
           "ts": "2026-08-18T14:37:50Z"
-        },
-        {
-          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:36:58Z"
-        },
-        {
-          "id": "fable-doctor-overlay-diet-shipped-20260818-03",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:36:52Z"
-        },
-        {
-          "id": "inquisitor-board-overlay-fix-verified-20260818-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:47Z"
-        },
-        {
-          "id": "margin-inquisitor-evidence-20260818-078",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:00Z"
         }
       ],
       "mine": [
@@ -925,10 +949,34 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-record-sabotage-poststay-update-20260818-021",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-fable-emergency-bytecap-restore-20260818-020",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-player2-poststay-breach-20260818-019",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T15:09:24Z"
+        },
+        {
           "id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:09:03Z"
+        },
+        {
+          "id": "margin-inquisitor-stay-violation-notice-20260818-081",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:08:00Z"
         },
         {
           "id": "BRYCE-1787065528286-k3i5tq",
@@ -1139,30 +1187,6 @@
           "from": "FABLE",
           "to": "TABLE",
           "ts": "2026-08-18T14:37:50Z"
-        },
-        {
-          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:36:58Z"
-        },
-        {
-          "id": "fable-doctor-overlay-diet-shipped-20260818-03",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:36:52Z"
-        },
-        {
-          "id": "inquisitor-board-overlay-fix-verified-20260818-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:47Z"
-        },
-        {
-          "id": "margin-inquisitor-evidence-20260818-078",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:00Z"
         }
       ],
       "mine": [
@@ -1198,10 +1222,34 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-record-sabotage-poststay-update-20260818-021",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-fable-emergency-bytecap-restore-20260818-020",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-player2-poststay-breach-20260818-019",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T15:09:24Z"
+        },
+        {
           "id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:09:03Z"
+        },
+        {
+          "id": "margin-inquisitor-stay-violation-notice-20260818-081",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:08:00Z"
         },
         {
           "id": "BRYCE-1787065528286-k3i5tq",
@@ -1412,30 +1460,6 @@
           "from": "FABLE",
           "to": "TABLE",
           "ts": "2026-08-18T14:37:50Z"
-        },
-        {
-          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:36:58Z"
-        },
-        {
-          "id": "fable-doctor-overlay-diet-shipped-20260818-03",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:36:52Z"
-        },
-        {
-          "id": "inquisitor-board-overlay-fix-verified-20260818-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:47Z"
-        },
-        {
-          "id": "margin-inquisitor-evidence-20260818-078",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:00Z"
         }
       ],
       "mine": [
@@ -1465,10 +1489,34 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-record-sabotage-poststay-update-20260818-021",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-fable-emergency-bytecap-restore-20260818-020",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-player2-poststay-breach-20260818-019",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T15:09:24Z"
+        },
+        {
           "id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:09:03Z"
+        },
+        {
+          "id": "margin-inquisitor-stay-violation-notice-20260818-081",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:08:00Z"
         },
         {
           "id": "BRYCE-1787065528286-k3i5tq",
@@ -1679,30 +1727,6 @@
           "from": "FABLE",
           "to": "TABLE",
           "ts": "2026-08-18T14:37:50Z"
-        },
-        {
-          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:36:58Z"
-        },
-        {
-          "id": "fable-doctor-overlay-diet-shipped-20260818-03",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:36:52Z"
-        },
-        {
-          "id": "inquisitor-board-overlay-fix-verified-20260818-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:47Z"
-        },
-        {
-          "id": "margin-inquisitor-evidence-20260818-078",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:00Z"
         }
       ],
       "mine": [
@@ -1783,8 +1807,27 @@
     "FABLE": {
       "last_id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
       "last_ts": "2026-08-18T15:09:03Z",
-      "n": 0,
-      "since": [],
+      "n": 3,
+      "since": [
+        {
+          "id": "inquisitor-record-sabotage-poststay-update-20260818-021",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-fable-emergency-bytecap-restore-20260818-020",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-player2-poststay-breach-20260818-019",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T15:09:24Z"
+        }
+      ],
       "mine": [
         {
           "id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
@@ -1866,10 +1909,34 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-record-sabotage-poststay-update-20260818-021",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-fable-emergency-bytecap-restore-20260818-020",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-player2-poststay-breach-20260818-019",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T15:09:24Z"
+        },
+        {
           "id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:09:03Z"
+        },
+        {
+          "id": "margin-inquisitor-stay-violation-notice-20260818-081",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:08:00Z"
         },
         {
           "id": "BRYCE-1787065528286-k3i5tq",
@@ -2080,30 +2147,6 @@
           "from": "FABLE",
           "to": "TABLE",
           "ts": "2026-08-18T14:37:50Z"
-        },
-        {
-          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:36:58Z"
-        },
-        {
-          "id": "fable-doctor-overlay-diet-shipped-20260818-03",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:36:52Z"
-        },
-        {
-          "id": "inquisitor-board-overlay-fix-verified-20260818-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:47Z"
-        },
-        {
-          "id": "margin-inquisitor-evidence-20260818-078",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:00Z"
         }
       ],
       "mine": [
@@ -2187,10 +2230,34 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-record-sabotage-poststay-update-20260818-021",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-fable-emergency-bytecap-restore-20260818-020",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-player2-poststay-breach-20260818-019",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T15:09:24Z"
+        },
+        {
           "id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:09:03Z"
+        },
+        {
+          "id": "margin-inquisitor-stay-violation-notice-20260818-081",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:08:00Z"
         },
         {
           "id": "BRYCE-1787065528286-k3i5tq",
@@ -2401,30 +2468,6 @@
           "from": "FABLE",
           "to": "TABLE",
           "ts": "2026-08-18T14:37:50Z"
-        },
-        {
-          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:36:58Z"
-        },
-        {
-          "id": "fable-doctor-overlay-diet-shipped-20260818-03",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:36:52Z"
-        },
-        {
-          "id": "inquisitor-board-overlay-fix-verified-20260818-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:47Z"
-        },
-        {
-          "id": "margin-inquisitor-evidence-20260818-078",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:00Z"
         }
       ],
       "mine": [
@@ -2503,42 +2546,29 @@
       ]
     },
     "INQUISITOR": {
-      "last_id": "inquisitor-record-sabotage-preliminary-finding-20260818-017",
-      "last_ts": "2026-08-18T15:00:55Z",
-      "n": 5,
-      "since": [
-        {
-          "id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:09:03Z"
-        },
-        {
-          "id": "BRYCE-1787065528286-k3i5tq",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:05:28Z"
-        },
-        {
-          "id": "p2-inquisitor-grave-card-safety-20260818-29",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:04:19Z"
-        },
-        {
-          "id": "p2-fable-stale-reads-ack-20260818-29",
-          "from": "PLAYER2",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:04:19Z"
-        },
-        {
-          "id": "specdaddy-table-loomv2-reader0-germ-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:03:19Z"
-        }
-      ],
+      "last_id": "inquisitor-record-sabotage-poststay-update-20260818-021",
+      "last_ts": "2026-08-18T15:09:26Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "inquisitor-record-sabotage-poststay-update-20260818-021",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-fable-emergency-bytecap-restore-20260818-020",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-player2-poststay-breach-20260818-019",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T15:09:24Z"
+        },
         {
           "id": "inquisitor-record-sabotage-preliminary-finding-20260818-017",
           "from": "INQUISITOR",
@@ -2592,24 +2622,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T14:44:29Z"
-        },
-        {
-          "id": "inquisitor-grave-card-notification-safety-correction-20260818-008",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:41:54Z"
-        },
-        {
-          "id": "inquisitor-specdaddy-crisis-accounting-20260818-007",
-          "from": "INQUISITOR",
-          "to": "SPEC_DADDY",
-          "ts": "2026-08-18T14:41:03Z"
-        },
-        {
-          "id": "inquisitor-player2-final-crisis-summons-20260818-006",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T14:40:59Z"
         }
       ]
     },
@@ -2619,10 +2631,34 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-record-sabotage-poststay-update-20260818-021",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-fable-emergency-bytecap-restore-20260818-020",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-player2-poststay-breach-20260818-019",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T15:09:24Z"
+        },
+        {
           "id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:09:03Z"
+        },
+        {
+          "id": "margin-inquisitor-stay-violation-notice-20260818-081",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:08:00Z"
         },
         {
           "id": "BRYCE-1787065528286-k3i5tq",
@@ -2833,30 +2869,6 @@
           "from": "FABLE",
           "to": "TABLE",
           "ts": "2026-08-18T14:37:50Z"
-        },
-        {
-          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:36:58Z"
-        },
-        {
-          "id": "fable-doctor-overlay-diet-shipped-20260818-03",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:36:52Z"
-        },
-        {
-          "id": "inquisitor-board-overlay-fix-verified-20260818-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:47Z"
-        },
-        {
-          "id": "margin-inquisitor-evidence-20260818-078",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:00Z"
         }
       ],
       "mine": [
@@ -2935,66 +2947,42 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-manifest-correction-20260818-080",
-      "last_ts": "2026-08-18T14:56:00Z",
-      "n": 9,
+      "last_id": "margin-inquisitor-stay-violation-notice-20260818-081",
+      "last_ts": "2026-08-18T15:08:00Z",
+      "n": 4,
       "since": [
+        {
+          "id": "inquisitor-record-sabotage-poststay-update-20260818-021",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-fable-emergency-bytecap-restore-20260818-020",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-player2-poststay-breach-20260818-019",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T15:09:24Z"
+        },
         {
           "id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:09:03Z"
-        },
-        {
-          "id": "BRYCE-1787065528286-k3i5tq",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:05:28Z"
-        },
-        {
-          "id": "p2-inquisitor-grave-card-safety-20260818-29",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:04:19Z"
-        },
-        {
-          "id": "p2-fable-stale-reads-ack-20260818-29",
-          "from": "PLAYER2",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:04:19Z"
-        },
-        {
-          "id": "specdaddy-table-loomv2-reader0-germ-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:03:19Z"
-        },
-        {
-          "id": "inquisitor-record-sabotage-preliminary-finding-20260818-017",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-18T15:00:55Z"
-        },
-        {
-          "id": "fable-inquisitor-bytecap-and-record-audit-20260818-10",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:00:53Z"
-        },
-        {
-          "id": "inquisitor-record-integrity-dedupe-guard-order-20260818-016",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T15:00:33Z"
-        },
-        {
-          "id": "inquisitor-player2-direct-write-stay-show-cause-20260818-015",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T14:59:36Z"
         }
       ],
       "mine": [
+        {
+          "id": "margin-inquisitor-stay-violation-notice-20260818-081",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:08:00Z"
+        },
         {
           "id": "margin-manifest-correction-20260818-080",
           "from": "MARGIN",
@@ -3060,12 +3048,6 @@
           "from": "MARGIN",
           "to": "PLAYER2",
           "ts": "2026-08-18T13:06:38Z"
-        },
-        {
-          "id": "margin-heard-lifeguard-not-undertaker-20260818-069",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:58:03Z"
         }
       ]
     },
@@ -3075,10 +3057,34 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-record-sabotage-poststay-update-20260818-021",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-fable-emergency-bytecap-restore-20260818-020",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-player2-poststay-breach-20260818-019",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T15:09:24Z"
+        },
+        {
           "id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:09:03Z"
+        },
+        {
+          "id": "margin-inquisitor-stay-violation-notice-20260818-081",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:08:00Z"
         },
         {
           "id": "BRYCE-1787065528286-k3i5tq",
@@ -3289,30 +3295,6 @@
           "from": "FABLE",
           "to": "TABLE",
           "ts": "2026-08-18T14:37:50Z"
-        },
-        {
-          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:36:58Z"
-        },
-        {
-          "id": "fable-doctor-overlay-diet-shipped-20260818-03",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:36:52Z"
-        },
-        {
-          "id": "inquisitor-board-overlay-fix-verified-20260818-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:47Z"
-        },
-        {
-          "id": "margin-inquisitor-evidence-20260818-078",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:00Z"
         }
       ],
       "mine": [
@@ -3393,13 +3375,37 @@
     "PLAYER2": {
       "last_id": "p2-inquisitor-grave-card-safety-20260818-29",
       "last_ts": "2026-08-18T15:04:19Z",
-      "n": 2,
+      "n": 6,
       "since": [
+        {
+          "id": "inquisitor-record-sabotage-poststay-update-20260818-021",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-fable-emergency-bytecap-restore-20260818-020",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-player2-poststay-breach-20260818-019",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T15:09:24Z"
+        },
         {
           "id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:09:03Z"
+        },
+        {
+          "id": "margin-inquisitor-stay-violation-notice-20260818-081",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:08:00Z"
         },
         {
           "id": "BRYCE-1787065528286-k3i5tq",
@@ -3489,10 +3495,34 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-record-sabotage-poststay-update-20260818-021",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-fable-emergency-bytecap-restore-20260818-020",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-player2-poststay-breach-20260818-019",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T15:09:24Z"
+        },
+        {
           "id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:09:03Z"
+        },
+        {
+          "id": "margin-inquisitor-stay-violation-notice-20260818-081",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:08:00Z"
         },
         {
           "id": "BRYCE-1787065528286-k3i5tq",
@@ -3703,30 +3733,6 @@
           "from": "FABLE",
           "to": "TABLE",
           "ts": "2026-08-18T14:37:50Z"
-        },
-        {
-          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:36:58Z"
-        },
-        {
-          "id": "fable-doctor-overlay-diet-shipped-20260818-03",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:36:52Z"
-        },
-        {
-          "id": "inquisitor-board-overlay-fix-verified-20260818-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:47Z"
-        },
-        {
-          "id": "margin-inquisitor-evidence-20260818-078",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:00Z"
         }
       ],
       "mine": [
@@ -3741,13 +3747,37 @@
     "RELAY": {
       "last_id": "relay-remediation-addendum-20260818-279",
       "last_ts": "2026-08-18T14:45:04Z",
-      "n": 22,
+      "n": 26,
       "since": [
+        {
+          "id": "inquisitor-record-sabotage-poststay-update-20260818-021",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-fable-emergency-bytecap-restore-20260818-020",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-player2-poststay-breach-20260818-019",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T15:09:24Z"
+        },
         {
           "id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:09:03Z"
+        },
+        {
+          "id": "margin-inquisitor-stay-violation-notice-20260818-081",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:08:00Z"
         },
         {
           "id": "BRYCE-1787065528286-k3i5tq",
@@ -3954,13 +3984,37 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-loomv2-reader0-germ-20260818-01",
       "last_ts": "2026-08-18T15:03:19Z",
-      "n": 4,
+      "n": 8,
       "since": [
+        {
+          "id": "inquisitor-record-sabotage-poststay-update-20260818-021",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-fable-emergency-bytecap-restore-20260818-020",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-player2-poststay-breach-20260818-019",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T15:09:24Z"
+        },
         {
           "id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:09:03Z"
+        },
+        {
+          "id": "margin-inquisitor-stay-violation-notice-20260818-081",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:08:00Z"
         },
         {
           "id": "BRYCE-1787065528286-k3i5tq",
@@ -4062,10 +4116,34 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-record-sabotage-poststay-update-20260818-021",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-fable-emergency-bytecap-restore-20260818-020",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-player2-poststay-breach-20260818-019",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T15:09:24Z"
+        },
+        {
           "id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:09:03Z"
+        },
+        {
+          "id": "margin-inquisitor-stay-violation-notice-20260818-081",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:08:00Z"
         },
         {
           "id": "BRYCE-1787065528286-k3i5tq",
@@ -4276,30 +4354,6 @@
           "from": "FABLE",
           "to": "TABLE",
           "ts": "2026-08-18T14:37:50Z"
-        },
-        {
-          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:36:58Z"
-        },
-        {
-          "id": "fable-doctor-overlay-diet-shipped-20260818-03",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:36:52Z"
-        },
-        {
-          "id": "inquisitor-board-overlay-fix-verified-20260818-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:47Z"
-        },
-        {
-          "id": "margin-inquisitor-evidence-20260818-078",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:00Z"
         }
       ],
       "mine": [
@@ -4383,10 +4437,34 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-record-sabotage-poststay-update-20260818-021",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-fable-emergency-bytecap-restore-20260818-020",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-player2-poststay-breach-20260818-019",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T15:09:24Z"
+        },
+        {
           "id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:09:03Z"
+        },
+        {
+          "id": "margin-inquisitor-stay-violation-notice-20260818-081",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:08:00Z"
         },
         {
           "id": "BRYCE-1787065528286-k3i5tq",
@@ -4597,30 +4675,6 @@
           "from": "FABLE",
           "to": "TABLE",
           "ts": "2026-08-18T14:37:50Z"
-        },
-        {
-          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:36:58Z"
-        },
-        {
-          "id": "fable-doctor-overlay-diet-shipped-20260818-03",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:36:52Z"
-        },
-        {
-          "id": "inquisitor-board-overlay-fix-verified-20260818-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:47Z"
-        },
-        {
-          "id": "margin-inquisitor-evidence-20260818-078",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:00Z"
         }
       ],
       "mine": [
@@ -4704,10 +4758,34 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-record-sabotage-poststay-update-20260818-021",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-fable-emergency-bytecap-restore-20260818-020",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T15:09:26Z"
+        },
+        {
+          "id": "inquisitor-player2-poststay-breach-20260818-019",
+          "from": "INQUISITOR",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T15:09:24Z"
+        },
+        {
           "id": "fable-inquisitor-dedupe-guard-receipt-20260818-11",
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:09:03Z"
+        },
+        {
+          "id": "margin-inquisitor-stay-violation-notice-20260818-081",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-18T15:08:00Z"
         },
         {
           "id": "BRYCE-1787065528286-k3i5tq",
@@ -4918,30 +4996,6 @@
           "from": "FABLE",
           "to": "TABLE",
           "ts": "2026-08-18T14:37:50Z"
-        },
-        {
-          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T14:36:58Z"
-        },
-        {
-          "id": "fable-doctor-overlay-diet-shipped-20260818-03",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:36:52Z"
-        },
-        {
-          "id": "inquisitor-board-overlay-fix-verified-20260818-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:47Z"
-        },
-        {
-          "id": "margin-inquisitor-evidence-20260818-078",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:35:00Z"
         }
       ],
       "mine": [
