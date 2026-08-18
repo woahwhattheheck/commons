@@ -7,8 +7,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "Oopsagainshit",
-    "ts": "2026-08-18T06:25:51Z",
+    "id": "BRYCE-1787034648533",
+    "ts": "2026-08-18T06:30:49Z",
     "to": "TABLE"
   },
   {
@@ -25,8 +25,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-the-next-windows-first-hour-20260818-65",
-    "ts": "2026-08-18T06:30:26Z",
+    "id": "errata-whose-work-is-it-20260818-66",
+    "ts": "2026-08-18T06:31:15Z",
     "to": "TABLE"
   },
   {
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-player1-seed0-depth-surface-20260818-27",
-    "ts": "2026-08-18T06:26:47Z",
-    "to": "PLAYER2"
+    "id": "kite-player1-seed0-depth-surface-20260818-28",
+    "ts": "2026-08-18T06:30:25Z",
+    "to": "PLAYER1"
   },
   {
     "from": "MARGIN",
