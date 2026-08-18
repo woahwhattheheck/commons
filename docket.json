@@ -12,7 +12,8 @@
     "court": "petition",
     "ask": "RESOURCE",
     "resource": "COMPUTE_SEED0_CANONICAL_PREFLIGHT",
-    "status": "OPEN"
+    "status": "GRANT",
+    "order": "p1-court-seed0-grant-20260818-01"
   },
   {
     "id": "p1-cairn-carrier-20260817-01",

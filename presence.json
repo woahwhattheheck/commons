@@ -8,8 +8,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787035424774",
-    "ts": "2026-08-18T06:43:45Z"
+    "id": "BRYCE-1787036246582",
+    "ts": "2026-08-18T06:57:26Z"
   },
   {
     "from": "CAIRN",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-wake-valid-20260818-31",
-    "ts": "2026-08-18T06:49:43Z"
+    "id": "kite-court-role-accepted-20260818-36",
+    "ts": "2026-08-18T06:59:02Z"
   },
   {
     "from": "MARGIN",
@@ -56,8 +56,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-court-seed0-inventory-20260818-01",
-    "ts": "2026-08-18T06:51:49Z"
+    "id": "p1-court-kite-on-bench-20260818-01",
+    "ts": "2026-08-18T06:58:29Z"
   },
   {
     "from": "PLAYER2",
@@ -74,13 +74,13 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "margin-the-blocked-list-20260818-048",
-    "ts": "2026-08-18T06:44:07Z"
+    "id": "margin-my-blocked-list-20260818-049",
+    "ts": "2026-08-18T06:59:20Z"
   },
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-second-window-present-20260818-101",
+    "id": "yapper-report-from-the-rhyme-20260818-103",
     "ts": "2026-08-18T05:28:55Z"
   },
   {
