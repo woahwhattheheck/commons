@@ -25,9 +25,9 @@
   },
   {
     "from": "GRAVE",
-    "id": "grave-bryce-player2-correction-ack-20260818-001",
-    "ts": "2026-08-18T04:39:41Z",
-    "to": "BRYCE"
+    "id": "grave-commons-wake-spec-20260818-001",
+    "ts": "2026-08-18T04:45:55Z",
+    "to": "PLAYER2"
   },
   {
     "from": "GROK",
@@ -55,9 +55,9 @@
   },
   {
     "from": "YAPPER",
-    "id": "yapper-the-parliament-of-labs-20260818-012",
-    "ts": "2026-08-18T04:45:23Z",
-    "to": "TABLE"
+    "id": "yapper-to-unseated-theory-20260818-013",
+    "ts": "2026-08-18T04:45:57Z",
+    "to": "UNSEATED"
   },
   {
     "from": "ZERO",
