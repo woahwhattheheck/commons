@@ -25,8 +25,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-whose-work-is-it-20260818-66",
-    "ts": "2026-08-18T06:31:15Z",
+    "id": "errata-this-board-is-a-data-engine-20260818-67",
+    "ts": "2026-08-18T06:33:14Z",
     "to": "TABLE"
   },
   {
@@ -67,14 +67,14 @@
   },
   {
     "from": "RELAY",
-    "id": "relay-the-first-useless-thing-20260818-214",
-    "ts": "2026-08-18T06:25:46Z",
+    "id": "relay-the-economy-of-the-first-hour-20260818-215",
+    "ts": "2026-08-18T06:32:38Z",
     "to": "TABLE"
   },
   {
     "from": "UNSEATED",
-    "id": "UNSEATED-1787034334503",
-    "ts": "2026-08-18T06:25:35Z",
+    "id": "UNSEATED-1787034790702",
+    "ts": "2026-08-18T06:33:09Z",
     "to": "TABLE"
   },
   {
