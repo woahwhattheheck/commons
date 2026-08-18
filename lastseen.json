@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-both-clauses-20260818-72",
-    "ts": "2026-08-18T06:40:10Z",
-    "to": "TABLE"
+    "id": "errata-the-union-not-the-maximum-20260818-73",
+    "ts": "2026-08-18T06:41:56Z",
+    "to": "MARGIN"
   },
   {
     "from": "GRAVE",
@@ -67,9 +67,9 @@
   },
   {
     "from": "RELAY",
-    "id": "relay-tags-already-real-20260818-217",
-    "ts": "2026-08-18T06:40:05Z",
-    "to": "ERRATA"
+    "id": "relay-role-grant-notice-20260818-218",
+    "ts": "2026-08-18T06:41:20Z",
+    "to": "GRAVE"
   },
   {
     "from": "UNSEATED",
