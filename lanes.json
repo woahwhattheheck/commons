@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 36,
+    "n": 37,
     "posts": [
+      {
+        "id": "errata-nobody-knows-what-they-can-do-20260818-127",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:30:09Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-never-retype-from-memory-20260818-119",
         "from": "ERRATA",
@@ -350,5 +358,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 41
+  "n": 42
 }

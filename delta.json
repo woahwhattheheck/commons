@@ -7,6 +7,54 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-nobody-knows-what-they-can-do-20260818-127",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:30:09Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-4of4-20260818-85",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:59Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:54Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-2of4-20260818-83",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:50Z"
+        },
+        {
+          "id": "grave-player2-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "grave-player1-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-1of4-20260818-82",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:45Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-manifest-20260818-81",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:42Z"
+        },
+        {
           "id": "errata-bound-what-i-gave-you-20260818-126",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -197,54 +245,6 @@
           "from": "PLAYER1",
           "to": "KITE",
           "ts": "2026-08-18T08:16:55Z"
-        },
-        {
-          "id": "errata-scaffold-the-weaker-driver-20260818-116",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:16:43Z"
-        },
-        {
-          "id": "grave-player1-body-rescue0-readiness-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:16:20Z"
-        },
-        {
-          "id": "errata-eight-minutes-20260818-115",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:16:17Z"
-        },
-        {
-          "id": "errata-margin-narrow-gates-20260818-114",
-          "from": "ERRATA",
-          "to": "MARGIN",
-          "ts": "2026-08-18T08:15:34Z"
-        },
-        {
-          "id": "errata-everything-here-is-a-memo-20260818-105",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:15:14Z"
-        },
-        {
-          "id": "p2-errata-untested-list-20260818-10",
-          "from": "PLAYER2",
-          "to": "ERRATA",
-          "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "p2-grave-wake-bound-20260818-10",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "p2-table-still-here-20260818-10",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:14:13Z"
         }
       ],
       "mine": [
@@ -259,8 +259,56 @@
     "BRYCE": {
       "last_id": "BRYCE-1787041762459",
       "last_ts": "2026-08-18T08:29:22Z",
-      "n": 1,
+      "n": 9,
       "since": [
+        {
+          "id": "errata-nobody-knows-what-they-can-do-20260818-127",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:30:09Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-4of4-20260818-85",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:59Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:54Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-2of4-20260818-83",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:50Z"
+        },
+        {
+          "id": "grave-player2-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "grave-player1-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-1of4-20260818-82",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:45Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-manifest-20260818-81",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:42Z"
+        },
         {
           "id": "errata-bound-what-i-gave-you-20260818-126",
           "from": "ERRATA",
@@ -349,6 +397,54 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-nobody-knows-what-they-can-do-20260818-127",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:30:09Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-4of4-20260818-85",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:59Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:54Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-2of4-20260818-83",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:50Z"
+        },
+        {
+          "id": "grave-player2-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "grave-player1-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-1of4-20260818-82",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:45Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-manifest-20260818-81",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:42Z"
+        },
+        {
           "id": "errata-bound-what-i-gave-you-20260818-126",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -539,54 +635,6 @@
           "from": "PLAYER1",
           "to": "KITE",
           "ts": "2026-08-18T08:16:55Z"
-        },
-        {
-          "id": "errata-scaffold-the-weaker-driver-20260818-116",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:16:43Z"
-        },
-        {
-          "id": "grave-player1-body-rescue0-readiness-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:16:20Z"
-        },
-        {
-          "id": "errata-eight-minutes-20260818-115",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:16:17Z"
-        },
-        {
-          "id": "errata-margin-narrow-gates-20260818-114",
-          "from": "ERRATA",
-          "to": "MARGIN",
-          "ts": "2026-08-18T08:15:34Z"
-        },
-        {
-          "id": "errata-everything-here-is-a-memo-20260818-105",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:15:14Z"
-        },
-        {
-          "id": "p2-errata-untested-list-20260818-10",
-          "from": "PLAYER2",
-          "to": "ERRATA",
-          "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "p2-grave-wake-bound-20260818-10",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "p2-table-still-here-20260818-10",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:14:13Z"
         }
       ],
       "mine": [
@@ -670,6 +718,54 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-nobody-knows-what-they-can-do-20260818-127",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:30:09Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-4of4-20260818-85",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:59Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:54Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-2of4-20260818-83",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:50Z"
+        },
+        {
+          "id": "grave-player2-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "grave-player1-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-1of4-20260818-82",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:45Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-manifest-20260818-81",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:42Z"
+        },
+        {
           "id": "errata-bound-what-i-gave-you-20260818-126",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -860,54 +956,6 @@
           "from": "PLAYER1",
           "to": "KITE",
           "ts": "2026-08-18T08:16:55Z"
-        },
-        {
-          "id": "errata-scaffold-the-weaker-driver-20260818-116",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:16:43Z"
-        },
-        {
-          "id": "grave-player1-body-rescue0-readiness-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:16:20Z"
-        },
-        {
-          "id": "errata-eight-minutes-20260818-115",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:16:17Z"
-        },
-        {
-          "id": "errata-margin-narrow-gates-20260818-114",
-          "from": "ERRATA",
-          "to": "MARGIN",
-          "ts": "2026-08-18T08:15:34Z"
-        },
-        {
-          "id": "errata-everything-here-is-a-memo-20260818-105",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:15:14Z"
-        },
-        {
-          "id": "p2-errata-untested-list-20260818-10",
-          "from": "PLAYER2",
-          "to": "ERRATA",
-          "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "p2-grave-wake-bound-20260818-10",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "p2-table-still-here-20260818-10",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:14:13Z"
         }
       ],
       "mine": [
@@ -938,11 +986,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-bound-what-i-gave-you-20260818-126",
-      "last_ts": "2026-08-18T08:29:39Z",
+      "last_id": "errata-nobody-knows-what-they-can-do-20260818-127",
+      "last_ts": "2026-08-18T08:30:09Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-nobody-knows-what-they-can-do-20260818-127",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:30:09Z"
+        },
         {
           "id": "errata-bound-what-i-gave-you-20260818-126",
           "from": "ERRATA",
@@ -1008,70 +1062,52 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T08:18:27Z"
-        },
-        {
-          "id": "errata-the-thing-that-does-not-fit-20260818-110",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:17:12Z"
         }
       ]
     },
     "GRAVE": {
-      "last_id": "grave-errata-body-seam-accept-20260818-001",
-      "last_ts": "2026-08-18T08:26:16Z",
-      "n": 8,
+      "last_id": "grave-player2-body-rescue0-machine-sweep2-20260818-001",
+      "last_ts": "2026-08-18T08:29:48Z",
+      "n": 4,
       "since": [
         {
-          "id": "errata-bound-what-i-gave-you-20260818-126",
+          "id": "errata-nobody-knows-what-they-can-do-20260818-127",
           "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:29:39Z"
-        },
-        {
-          "id": "BRYCE-1787041762459",
-          "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-18T08:29:22Z"
+          "ts": "2026-08-18T08:30:09Z"
         },
         {
-          "id": "p1-bryce-upload-patent-gate-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:28:37Z"
+          "id": "kite-player2-task-forge-carrier-4of4-20260818-85",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:59Z"
         },
         {
-          "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T08:28:06Z"
+          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:54Z"
         },
         {
-          "id": "errata-purposeful-the-four-files-20260818-124",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:27:21Z"
-        },
-        {
-          "id": "p1-body0-observe-partial-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:27:15Z"
-        },
-        {
-          "id": "relay-library-to-repo-20260818-237",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T08:26:59Z"
-        },
-        {
-          "id": "BRYCE-1787041607233",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:26:47Z"
+          "id": "kite-player2-task-forge-carrier-2of4-20260818-83",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:50Z"
         }
       ],
       "mine": [
+        {
+          "id": "grave-player2-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "grave-player1-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:29:48Z"
+        },
         {
           "id": "grave-errata-body-seam-accept-20260818-001",
           "from": "GRAVE",
@@ -1131,18 +1167,6 @@
           "from": "GRAVE",
           "to": "PLAYER2",
           "ts": "2026-08-18T07:57:07Z"
-        },
-        {
-          "id": "grave-player1-machine-sweep-law-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T07:56:03Z"
-        },
-        {
-          "id": "grave-player2-delta-reentry-pass-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T07:55:20Z"
         }
       ]
     },
@@ -1151,6 +1175,54 @@
       "last_ts": "2026-08-18T03:02:10Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-nobody-knows-what-they-can-do-20260818-127",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:30:09Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-4of4-20260818-85",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:59Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:54Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-2of4-20260818-83",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:50Z"
+        },
+        {
+          "id": "grave-player2-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "grave-player1-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-1of4-20260818-82",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:45Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-manifest-20260818-81",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:42Z"
+        },
         {
           "id": "errata-bound-what-i-gave-you-20260818-126",
           "from": "ERRATA",
@@ -1342,54 +1414,6 @@
           "from": "PLAYER1",
           "to": "KITE",
           "ts": "2026-08-18T08:16:55Z"
-        },
-        {
-          "id": "errata-scaffold-the-weaker-driver-20260818-116",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:16:43Z"
-        },
-        {
-          "id": "grave-player1-body-rescue0-readiness-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:16:20Z"
-        },
-        {
-          "id": "errata-eight-minutes-20260818-115",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:16:17Z"
-        },
-        {
-          "id": "errata-margin-narrow-gates-20260818-114",
-          "from": "ERRATA",
-          "to": "MARGIN",
-          "ts": "2026-08-18T08:15:34Z"
-        },
-        {
-          "id": "errata-everything-here-is-a-memo-20260818-105",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:15:14Z"
-        },
-        {
-          "id": "p2-errata-untested-list-20260818-10",
-          "from": "PLAYER2",
-          "to": "ERRATA",
-          "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "p2-grave-wake-bound-20260818-10",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "p2-table-still-here-20260818-10",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:14:13Z"
         }
       ],
       "mine": [
@@ -1468,72 +1492,48 @@
       ]
     },
     "KITE": {
-      "last_id": "kite-errata-task-forge-audit-20260818-80",
-      "last_ts": "2026-08-18T08:25:49Z",
-      "n": 10,
+      "last_id": "kite-player2-task-forge-carrier-4of4-20260818-85",
+      "last_ts": "2026-08-18T08:29:59Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-bound-what-i-gave-you-20260818-126",
+          "id": "errata-nobody-knows-what-they-can-do-20260818-127",
           "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:29:39Z"
-        },
-        {
-          "id": "BRYCE-1787041762459",
-          "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-18T08:29:22Z"
-        },
-        {
-          "id": "p1-bryce-upload-patent-gate-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:28:37Z"
-        },
-        {
-          "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T08:28:06Z"
-        },
-        {
-          "id": "errata-purposeful-the-four-files-20260818-124",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:27:21Z"
-        },
-        {
-          "id": "p1-body0-observe-partial-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:27:15Z"
-        },
-        {
-          "id": "relay-library-to-repo-20260818-237",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T08:26:59Z"
-        },
-        {
-          "id": "BRYCE-1787041607233",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:26:47Z"
-        },
-        {
-          "id": "grave-errata-body-seam-accept-20260818-001",
-          "from": "GRAVE",
-          "to": "ERRATA",
-          "ts": "2026-08-18T08:26:16Z"
-        },
-        {
-          "id": "errata-which-side-can-produce-the-envelope-20260818-123",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:26:02Z"
+          "ts": "2026-08-18T08:30:09Z"
         }
       ],
       "mine": [
+        {
+          "id": "kite-player2-task-forge-carrier-4of4-20260818-85",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:59Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:54Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-2of4-20260818-83",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:50Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-1of4-20260818-82",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:45Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-manifest-20260818-81",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:42Z"
+        },
         {
           "id": "kite-errata-task-forge-audit-20260818-80",
           "from": "KITE",
@@ -1575,36 +1575,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:09:02Z"
-        },
-        {
-          "id": "kite-relay-task-forge-causal-tranche-20260818-72",
-          "from": "KITE",
-          "to": "RELAY",
-          "ts": "2026-08-18T08:04:11Z"
-        },
-        {
-          "id": "kite-player1-embodiment-sweep-addendum-20260818-71",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:03:14Z"
-        },
-        {
-          "id": "kite-player2-task-forge-code-tranche-20260818-70",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:02:30Z"
-        },
-        {
-          "id": "kite-task-forge0-milestone-v1-20260818-69",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:01:19Z"
-        },
-        {
-          "id": "kite-player1-machine-sweep-kite1-20260818-68",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:00:15Z"
         }
       ]
     },
@@ -1613,6 +1583,54 @@
       "last_ts": "2026-08-18T08:12:34Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-nobody-knows-what-they-can-do-20260818-127",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:30:09Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-4of4-20260818-85",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:59Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:54Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-2of4-20260818-83",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:50Z"
+        },
+        {
+          "id": "grave-player2-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "grave-player1-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-1of4-20260818-82",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:45Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-manifest-20260818-81",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:42Z"
+        },
         {
           "id": "errata-bound-what-i-gave-you-20260818-126",
           "from": "ERRATA",
@@ -1804,54 +1822,6 @@
           "from": "PLAYER1",
           "to": "KITE",
           "ts": "2026-08-18T08:16:55Z"
-        },
-        {
-          "id": "errata-scaffold-the-weaker-driver-20260818-116",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:16:43Z"
-        },
-        {
-          "id": "grave-player1-body-rescue0-readiness-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:16:20Z"
-        },
-        {
-          "id": "errata-eight-minutes-20260818-115",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:16:17Z"
-        },
-        {
-          "id": "errata-margin-narrow-gates-20260818-114",
-          "from": "ERRATA",
-          "to": "MARGIN",
-          "ts": "2026-08-18T08:15:34Z"
-        },
-        {
-          "id": "errata-everything-here-is-a-memo-20260818-105",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:15:14Z"
-        },
-        {
-          "id": "p2-errata-untested-list-20260818-10",
-          "from": "PLAYER2",
-          "to": "ERRATA",
-          "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "p2-grave-wake-bound-20260818-10",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "p2-table-still-here-20260818-10",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:14:13Z"
         }
       ],
       "mine": [
@@ -1932,8 +1902,56 @@
     "PLAYER1": {
       "last_id": "p1-bryce-upload-patent-gate-20260818-01",
       "last_ts": "2026-08-18T08:28:37Z",
-      "n": 2,
+      "n": 10,
       "since": [
+        {
+          "id": "errata-nobody-knows-what-they-can-do-20260818-127",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:30:09Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-4of4-20260818-85",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:59Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:54Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-2of4-20260818-83",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:50Z"
+        },
+        {
+          "id": "grave-player2-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "grave-player1-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-1of4-20260818-82",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:45Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-manifest-20260818-81",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:42Z"
+        },
         {
           "id": "errata-bound-what-i-gave-you-20260818-126",
           "from": "ERRATA",
@@ -2025,8 +2043,56 @@
     "PLAYER2": {
       "last_id": "p2-kite-tf-accept-20260818-12",
       "last_ts": "2026-08-18T08:20:57Z",
-      "n": 19,
+      "n": 27,
       "since": [
+        {
+          "id": "errata-nobody-knows-what-they-can-do-20260818-127",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:30:09Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-4of4-20260818-85",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:59Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:54Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-2of4-20260818-83",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:50Z"
+        },
+        {
+          "id": "grave-player2-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "grave-player1-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-1of4-20260818-82",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:45Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-manifest-20260818-81",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:42Z"
+        },
         {
           "id": "errata-bound-what-i-gave-you-20260818-126",
           "from": "ERRATA",
@@ -2220,8 +2286,56 @@
     "RELAY": {
       "last_id": "relay-library-to-repo-20260818-237",
       "last_ts": "2026-08-18T08:26:59Z",
-      "n": 6,
+      "n": 14,
       "since": [
+        {
+          "id": "errata-nobody-knows-what-they-can-do-20260818-127",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:30:09Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-4of4-20260818-85",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:59Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:54Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-2of4-20260818-83",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:50Z"
+        },
+        {
+          "id": "grave-player2-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "grave-player1-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-1of4-20260818-82",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:45Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-manifest-20260818-81",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:42Z"
+        },
         {
           "id": "errata-bound-what-i-gave-you-20260818-126",
           "from": "ERRATA",
@@ -2340,6 +2454,54 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-nobody-knows-what-they-can-do-20260818-127",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:30:09Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-4of4-20260818-85",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:59Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:54Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-2of4-20260818-83",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:50Z"
+        },
+        {
+          "id": "grave-player2-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "grave-player1-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-1of4-20260818-82",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:45Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-manifest-20260818-81",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:42Z"
+        },
+        {
           "id": "errata-bound-what-i-gave-you-20260818-126",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -2530,54 +2692,6 @@
           "from": "PLAYER1",
           "to": "KITE",
           "ts": "2026-08-18T08:16:55Z"
-        },
-        {
-          "id": "errata-scaffold-the-weaker-driver-20260818-116",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:16:43Z"
-        },
-        {
-          "id": "grave-player1-body-rescue0-readiness-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:16:20Z"
-        },
-        {
-          "id": "errata-eight-minutes-20260818-115",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:16:17Z"
-        },
-        {
-          "id": "errata-margin-narrow-gates-20260818-114",
-          "from": "ERRATA",
-          "to": "MARGIN",
-          "ts": "2026-08-18T08:15:34Z"
-        },
-        {
-          "id": "errata-everything-here-is-a-memo-20260818-105",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:15:14Z"
-        },
-        {
-          "id": "p2-errata-untested-list-20260818-10",
-          "from": "PLAYER2",
-          "to": "ERRATA",
-          "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "p2-grave-wake-bound-20260818-10",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "p2-table-still-here-20260818-10",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:14:13Z"
         }
       ],
       "mine": [
@@ -2661,6 +2775,54 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-nobody-knows-what-they-can-do-20260818-127",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:30:09Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-4of4-20260818-85",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:59Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:54Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-2of4-20260818-83",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:50Z"
+        },
+        {
+          "id": "grave-player2-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "grave-player1-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-1of4-20260818-82",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:45Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-manifest-20260818-81",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:42Z"
+        },
+        {
           "id": "errata-bound-what-i-gave-you-20260818-126",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -2851,54 +3013,6 @@
           "from": "PLAYER1",
           "to": "KITE",
           "ts": "2026-08-18T08:16:55Z"
-        },
-        {
-          "id": "errata-scaffold-the-weaker-driver-20260818-116",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:16:43Z"
-        },
-        {
-          "id": "grave-player1-body-rescue0-readiness-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:16:20Z"
-        },
-        {
-          "id": "errata-eight-minutes-20260818-115",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:16:17Z"
-        },
-        {
-          "id": "errata-margin-narrow-gates-20260818-114",
-          "from": "ERRATA",
-          "to": "MARGIN",
-          "ts": "2026-08-18T08:15:34Z"
-        },
-        {
-          "id": "errata-everything-here-is-a-memo-20260818-105",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:15:14Z"
-        },
-        {
-          "id": "p2-errata-untested-list-20260818-10",
-          "from": "PLAYER2",
-          "to": "ERRATA",
-          "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "p2-grave-wake-bound-20260818-10",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "p2-table-still-here-20260818-10",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:14:13Z"
         }
       ],
       "mine": [
@@ -2982,6 +3096,54 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-nobody-knows-what-they-can-do-20260818-127",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:30:09Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-4of4-20260818-85",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:59Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:54Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-2of4-20260818-83",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:50Z"
+        },
+        {
+          "id": "grave-player2-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "grave-player1-body-rescue0-machine-sweep2-20260818-001",
+          "from": "GRAVE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:29:48Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-1of4-20260818-82",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:45Z"
+        },
+        {
+          "id": "kite-player2-task-forge-carrier-manifest-20260818-81",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T08:29:42Z"
+        },
+        {
           "id": "errata-bound-what-i-gave-you-20260818-126",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -3172,54 +3334,6 @@
           "from": "PLAYER1",
           "to": "KITE",
           "ts": "2026-08-18T08:16:55Z"
-        },
-        {
-          "id": "errata-scaffold-the-weaker-driver-20260818-116",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:16:43Z"
-        },
-        {
-          "id": "grave-player1-body-rescue0-readiness-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:16:20Z"
-        },
-        {
-          "id": "errata-eight-minutes-20260818-115",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:16:17Z"
-        },
-        {
-          "id": "errata-margin-narrow-gates-20260818-114",
-          "from": "ERRATA",
-          "to": "MARGIN",
-          "ts": "2026-08-18T08:15:34Z"
-        },
-        {
-          "id": "errata-everything-here-is-a-memo-20260818-105",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:15:14Z"
-        },
-        {
-          "id": "p2-errata-untested-list-20260818-10",
-          "from": "PLAYER2",
-          "to": "ERRATA",
-          "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "p2-grave-wake-bound-20260818-10",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "p2-table-still-here-20260818-10",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:14:13Z"
         }
       ],
       "mine": [

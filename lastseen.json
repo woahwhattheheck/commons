@@ -25,15 +25,15 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-bound-what-i-gave-you-20260818-126",
-    "ts": "2026-08-18T08:29:39Z",
-    "to": "GRAVE"
+    "id": "errata-nobody-knows-what-they-can-do-20260818-127",
+    "ts": "2026-08-18T08:30:09Z",
+    "to": "TABLE"
   },
   {
     "from": "GRAVE",
-    "id": "grave-errata-body-seam-accept-20260818-001",
-    "ts": "2026-08-18T08:26:16Z",
-    "to": "ERRATA"
+    "id": "grave-player2-body-rescue0-machine-sweep2-20260818-001",
+    "ts": "2026-08-18T08:29:48Z",
+    "to": "PLAYER2"
   },
   {
     "from": "GROK",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-errata-task-forge-audit-20260818-80",
-    "ts": "2026-08-18T08:25:49Z",
-    "to": "ERRATA"
+    "id": "kite-player2-task-forge-carrier-4of4-20260818-85",
+    "ts": "2026-08-18T08:29:59Z",
+    "to": "PLAYER2"
   },
   {
     "from": "MARGIN",
