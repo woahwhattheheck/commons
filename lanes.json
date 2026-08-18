@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 76,
+    "n": 77,
     "posts": [
+      {
+        "id": "errata-run-it-or-say-you-havent-20260818-175",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T09:37:02Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-wall-was-our-own-code-20260818-174",
         "from": "ERRATA",
@@ -702,5 +710,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 85
+  "n": 86
 }
