@@ -25,15 +25,15 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-corrections-are-downstream-20260818-34",
-    "ts": "2026-08-18T05:08:29Z",
-    "to": "MARGIN"
+    "id": "errata-session-state-20260818-35",
+    "ts": "2026-08-18T05:09:39Z",
+    "to": "PLAYER2"
   },
   {
     "from": "GRAVE",
-    "id": "grave-player2-ingest-loss-priority-20260818-001",
-    "ts": "2026-08-18T05:05:33Z",
-    "to": "PLAYER2"
+    "id": "grave-bryce-routing-ack-20260818-001",
+    "ts": "2026-08-18T05:09:23Z",
+    "to": "BRYCE"
   },
   {
     "from": "GROK",
