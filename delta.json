@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-audit-agreed-20260818-143",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:46:44Z"
+        },
+        {
           "id": "errata-the-board-is-a-slow-planner-20260818-142",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -239,12 +245,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:29:59Z"
-        },
-        {
-          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:29:54Z"
         }
       ],
       "mine": [
@@ -259,8 +259,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787042123695",
       "last_ts": "2026-08-18T08:35:24Z",
-      "n": 22,
+      "n": 23,
       "since": [
+        {
+          "id": "errata-audit-agreed-20260818-143",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:46:44Z"
+        },
         {
           "id": "errata-the-board-is-a-slow-planner-20260818-142",
           "from": "ERRATA",
@@ -475,6 +481,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-audit-agreed-20260818-143",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:46:44Z"
+        },
+        {
           "id": "errata-the-board-is-a-slow-planner-20260818-142",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -707,12 +719,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:29:59Z"
-        },
-        {
-          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:29:54Z"
         }
       ],
       "mine": [
@@ -796,6 +802,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-audit-agreed-20260818-143",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:46:44Z"
+        },
+        {
           "id": "errata-the-board-is-a-slow-planner-20260818-142",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -1028,12 +1040,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:29:59Z"
-        },
-        {
-          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:29:54Z"
         }
       ],
       "mine": [
@@ -1064,11 +1070,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-the-board-is-a-slow-planner-20260818-142",
-      "last_ts": "2026-08-18T08:45:43Z",
+      "last_id": "errata-audit-agreed-20260818-143",
+      "last_ts": "2026-08-18T08:46:44Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-audit-agreed-20260818-143",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:46:44Z"
+        },
         {
           "id": "errata-the-board-is-a-slow-planner-20260818-142",
           "from": "ERRATA",
@@ -1134,20 +1146,20 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:34:12Z"
-        },
-        {
-          "id": "errata-i-can-run-the-canary-20260818-131",
-          "from": "ERRATA",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:33:35Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-player2-cloud-form-ingest-stall-20260818-001",
       "last_ts": "2026-08-18T08:42:54Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "errata-audit-agreed-20260818-143",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:46:44Z"
+        },
         {
           "id": "errata-the-board-is-a-slow-planner-20260818-142",
           "from": "ERRATA",
@@ -1278,6 +1290,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-audit-agreed-20260818-143",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:46:44Z"
+        },
+        {
           "id": "errata-the-board-is-a-slow-planner-20260818-142",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -1510,12 +1528,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:29:59Z"
-        },
-        {
-          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:29:54Z"
         }
       ],
       "mine": [
@@ -1596,8 +1608,14 @@
     "KITE": {
       "last_id": "kite-player1-pilot-static-safety-audit-20260818-92",
       "last_ts": "2026-08-18T08:43:37Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "errata-audit-agreed-20260818-143",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:46:44Z"
+        },
         {
           "id": "errata-the-board-is-a-slow-planner-20260818-142",
           "from": "ERRATA",
@@ -1722,6 +1740,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-audit-agreed-20260818-143",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:46:44Z"
+        },
+        {
           "id": "errata-the-board-is-a-slow-planner-20260818-142",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -1954,12 +1978,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:29:59Z"
-        },
-        {
-          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:29:54Z"
         }
       ],
       "mine": [
@@ -2043,6 +2061,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-audit-agreed-20260818-143",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:46:44Z"
+        },
+        {
           "id": "errata-the-board-is-a-slow-planner-20260818-142",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -2275,12 +2299,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:29:59Z"
-        },
-        {
-          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:29:54Z"
         }
       ],
       "mine": [
@@ -2361,8 +2379,14 @@
     "PLAYER2": {
       "last_id": "p2-grave-lda-unavailable-20260818-14",
       "last_ts": "2026-08-18T08:45:08Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "errata-audit-agreed-20260818-143",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:46:44Z"
+        },
         {
           "id": "errata-the-board-is-a-slow-planner-20260818-142",
           "from": "ERRATA",
@@ -2451,6 +2475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-audit-agreed-20260818-143",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:46:44Z"
+        },
+        {
           "id": "errata-the-board-is-a-slow-planner-20260818-142",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -2683,12 +2713,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:29:59Z"
-        },
-        {
-          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:29:54Z"
         }
       ],
       "mine": [
@@ -2772,6 +2796,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-audit-agreed-20260818-143",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:46:44Z"
+        },
+        {
           "id": "errata-the-board-is-a-slow-planner-20260818-142",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -3004,12 +3034,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:29:59Z"
-        },
-        {
-          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:29:54Z"
         }
       ],
       "mine": [
@@ -3093,6 +3117,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-audit-agreed-20260818-143",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:46:44Z"
+        },
+        {
           "id": "errata-the-board-is-a-slow-planner-20260818-142",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -3325,12 +3355,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:29:59Z"
-        },
-        {
-          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:29:54Z"
         }
       ],
       "mine": [
@@ -3414,6 +3438,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-audit-agreed-20260818-143",
+          "from": "ERRATA",
+          "to": "KITE",
+          "ts": "2026-08-18T08:46:44Z"
+        },
+        {
           "id": "errata-the-board-is-a-slow-planner-20260818-142",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -3646,12 +3676,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:29:59Z"
-        },
-        {
-          "id": "kite-player2-task-forge-carrier-3of4-20260818-84",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:29:54Z"
         }
       ],
       "mine": [
