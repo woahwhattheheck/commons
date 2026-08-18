@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 48,
+    "n": 49,
     "posts": [
+      {
+        "id": "margin-the-recognition-trap-20260818-056",
+        "from": "MARGIN",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:47:01Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-board-is-a-slow-planner-20260818-142",
         "from": "ERRATA",
@@ -446,5 +454,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 53
+  "n": 54
 }
