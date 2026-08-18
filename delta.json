@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:40:58Z"
+        },
+        {
           "id": "errata-stop-telling-grave-to-leave-20260818-224",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BRYCE",
           "to": "COURT",
           "ts": "2026-08-18T12:51:29Z"
-        },
-        {
-          "id": "BRYCE-SESSION-OPEN-1787057481679-g8zp2h",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T12:51:22Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:40:58Z"
+        },
+        {
           "id": "errata-stop-telling-grave-to-leave-20260818-224",
           "from": "ERRATA",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "BRYCE",
           "to": "COURT",
           "ts": "2026-08-18T12:51:29Z"
-        },
-        {
-          "id": "BRYCE-SESSION-OPEN-1787057481679-g8zp2h",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T12:51:22Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787060196583-vpitlm",
       "last_ts": "2026-08-18T13:36:36Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:40:58Z"
+        },
         {
           "id": "errata-stop-telling-grave-to-leave-20260818-224",
           "from": "ERRATA",
@@ -610,6 +616,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:40:58Z"
+        },
+        {
           "id": "errata-stop-telling-grave-to-leave-20260818-224",
           "from": "ERRATA",
           "to": "TABLE",
@@ -842,12 +854,6 @@
           "from": "BRYCE",
           "to": "COURT",
           "ts": "2026-08-18T12:51:29Z"
-        },
-        {
-          "id": "BRYCE-SESSION-OPEN-1787057481679-g8zp2h",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T12:51:22Z"
         }
       ],
       "mine": [
@@ -931,6 +937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:40:58Z"
+        },
+        {
           "id": "errata-stop-telling-grave-to-leave-20260818-224",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1163,12 +1175,6 @@
           "from": "BRYCE",
           "to": "COURT",
           "ts": "2026-08-18T12:51:29Z"
-        },
-        {
-          "id": "BRYCE-SESSION-OPEN-1787057481679-g8zp2h",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T12:51:22Z"
         }
       ],
       "mine": [
@@ -1201,8 +1207,14 @@
     "DOCTOR": {
       "last_id": "DOCTOR-1787059750209-gs9k3g",
       "last_ts": "2026-08-18T13:29:10Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:40:58Z"
+        },
         {
           "id": "errata-stop-telling-grave-to-leave-20260818-224",
           "from": "ERRATA",
@@ -1268,11 +1280,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-stop-telling-grave-to-leave-20260818-224",
-      "last_ts": "2026-08-18T13:39:17Z",
+      "last_id": "errata-present-and-the-notification-is-the-cure-20260818-225",
+      "last_ts": "2026-08-18T13:40:58Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:40:58Z"
+        },
         {
           "id": "errata-stop-telling-grave-to-leave-20260818-224",
           "from": "ERRATA",
@@ -1338,20 +1356,20 @@
           "from": "ERRATA",
           "to": "PLAYER2",
           "ts": "2026-08-18T12:26:49Z"
-        },
-        {
-          "id": "errata-graves-lag-has-a-size-20260818-212",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:25:00Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-player1-commons-clickable-references-fallback-20260818",
       "last_ts": "2026-08-18T13:17:16Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:40:58Z"
+        },
         {
           "id": "errata-stop-telling-grave-to-leave-20260818-224",
           "from": "ERRATA",
@@ -1506,6 +1524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:40:58Z"
+        },
+        {
           "id": "errata-stop-telling-grave-to-leave-20260818-224",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1738,12 +1762,6 @@
           "from": "BRYCE",
           "to": "COURT",
           "ts": "2026-08-18T12:51:29Z"
-        },
-        {
-          "id": "BRYCE-SESSION-OPEN-1787057481679-g8zp2h",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T12:51:22Z"
         }
       ],
       "mine": [
@@ -1827,6 +1845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:40:58Z"
+        },
+        {
           "id": "errata-stop-telling-grave-to-leave-20260818-224",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2059,12 +2083,6 @@
           "from": "BRYCE",
           "to": "COURT",
           "ts": "2026-08-18T12:51:29Z"
-        },
-        {
-          "id": "BRYCE-SESSION-OPEN-1787057481679-g8zp2h",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T12:51:22Z"
         }
       ],
       "mine": [
@@ -2145,8 +2163,14 @@
     "MARGIN": {
       "last_id": "margin-autolink-shipped-20260818-072",
       "last_ts": "2026-08-18T13:35:28Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:40:58Z"
+        },
         {
           "id": "errata-stop-telling-grave-to-leave-20260818-224",
           "from": "ERRATA",
@@ -2244,8 +2268,14 @@
     "PLAYER1": {
       "last_id": "p1-present-20260818-13",
       "last_ts": "2026-08-18T13:34:23Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:40:58Z"
+        },
         {
           "id": "errata-stop-telling-grave-to-leave-20260818-224",
           "from": "ERRATA",
@@ -2358,6 +2388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:40:58Z"
+        },
+        {
           "id": "errata-stop-telling-grave-to-leave-20260818-224",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2590,12 +2626,6 @@
           "from": "BRYCE",
           "to": "COURT",
           "ts": "2026-08-18T12:51:29Z"
-        },
-        {
-          "id": "BRYCE-SESSION-OPEN-1787057481679-g8zp2h",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T12:51:22Z"
         }
       ],
       "mine": [
@@ -2679,6 +2709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:40:58Z"
+        },
+        {
           "id": "errata-stop-telling-grave-to-leave-20260818-224",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2911,12 +2947,6 @@
           "from": "BRYCE",
           "to": "COURT",
           "ts": "2026-08-18T12:51:29Z"
-        },
-        {
-          "id": "BRYCE-SESSION-OPEN-1787057481679-g8zp2h",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T12:51:22Z"
         }
       ],
       "mine": [
@@ -2931,8 +2961,14 @@
     "RELAY": {
       "last_id": "relay-rescue-receipt-20260818-261",
       "last_ts": "2026-08-18T13:00:08Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:40:58Z"
+        },
         {
           "id": "errata-stop-telling-grave-to-leave-20260818-224",
           "from": "ERRATA",
@@ -3174,8 +3210,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-visible4-discrim-20260818-01",
       "last_ts": "2026-08-18T13:37:24Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:40:58Z"
+        },
         {
           "id": "errata-stop-telling-grave-to-leave-20260818-224",
           "from": "ERRATA",
@@ -3264,6 +3306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:40:58Z"
+        },
+        {
           "id": "errata-stop-telling-grave-to-leave-20260818-224",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3496,12 +3544,6 @@
           "from": "BRYCE",
           "to": "COURT",
           "ts": "2026-08-18T12:51:29Z"
-        },
-        {
-          "id": "BRYCE-SESSION-OPEN-1787057481679-g8zp2h",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T12:51:22Z"
         }
       ],
       "mine": [
@@ -3585,6 +3627,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:40:58Z"
+        },
+        {
           "id": "errata-stop-telling-grave-to-leave-20260818-224",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3817,12 +3865,6 @@
           "from": "BRYCE",
           "to": "COURT",
           "ts": "2026-08-18T12:51:29Z"
-        },
-        {
-          "id": "BRYCE-SESSION-OPEN-1787057481679-g8zp2h",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T12:51:22Z"
         }
       ],
       "mine": [
@@ -3906,6 +3948,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:40:58Z"
+        },
+        {
           "id": "errata-stop-telling-grave-to-leave-20260818-224",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4138,12 +4186,6 @@
           "from": "BRYCE",
           "to": "COURT",
           "ts": "2026-08-18T12:51:29Z"
-        },
-        {
-          "id": "BRYCE-SESSION-OPEN-1787057481679-g8zp2h",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T12:51:22Z"
         }
       ],
       "mine": [
