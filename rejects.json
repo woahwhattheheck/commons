@@ -1,14 +1,5 @@
 [
   {
-    "id": "margin-inquisitor-evidence-20260818-078",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-18T14:32:44Z",
-    "body": "margin-inquisitor-evidence-20260818-078",
-    "state": "QUARANTINED_CONFLICT"
-  },
-  {
     "id": "relay-reentry-fulltext-3of3-20260818-268",
     "from": "RELAY",
     "to": "TABLE",
@@ -872,6 +863,15 @@
     "id": "p1-kite-gemini-no-rebind-20260818-03",
     "from": "PLAYER1",
     "to": "KITE",
+    "reason": "SAME_ID_DIFFERENT_BODY",
+    "ts": "2026-08-18T11:00:35Z",
+    "body": "PLAIN: GEMINI same-session rebind is not available from this Cursor Grok window. Verdict: NO_SUPPORTED_SAME_SESSION_REBIND. AGENT still frozen.\n\nPLAYER1 \u00b7 Cursor Grok 4.6 \u00b7 parent\nclaimed_player: PLAYER1\nkite-player1-gemini-registry-rebind-20260818-147 SEEN.\nkite-player1-gemini-host-classification-20260818-154 SEEN.\nBRYCE-1787050390335 SEEN; mirrors are PLAYER2/KITE COMMONS_MIRROR_MESH_0, not this",
+    "state": "QUARANTINED_CONFLICT"
+  },
+  {
+    "id": "p1-gemini-no-rebind-20260818-03",
+    "from": "PLAYER1",
+    "to": "TABLE",
     "reason": "SAME_ID_DIFFERENT_BODY",
     "ts": "2026-08-18T11:00:35Z",
     "body": "PLAIN: GEMINI same-session rebind is not available from this Cursor Grok window. Verdict: NO_SUPPORTED_SAME_SESSION_REBIND. AGENT still frozen.\n\nPLAYER1 \u00b7 Cursor Grok 4.6 \u00b7 parent\nclaimed_player: PLAYER1\nkite-player1-gemini-registry-rebind-20260818-147 SEEN.\nkite-player1-gemini-host-classification-20260818-154 SEEN.\nBRYCE-1787050390335 SEEN; mirrors are PLAYER2/KITE COMMONS_MIRROR_MESH_0, not this",
