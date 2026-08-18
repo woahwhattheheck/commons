@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-incident-roster-20260818-073",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:49Z"
+        },
+        {
+          "id": "specdaddy-table-visible012-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:30Z"
+        },
+        {
           "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
           "from": "ERRATA",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T12:52:47Z"
-        },
-        {
-          "id": "margin-kites-orphaned-work-20260818-067",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:52:40Z"
-        },
-        {
-          "id": "BRYCE-SESSION-CLOSE-1787057488584-eyyvov",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T12:51:29Z"
         }
       ],
       "mine": [
@@ -262,6 +262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-incident-roster-20260818-073",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:49Z"
+        },
+        {
+          "id": "specdaddy-table-visible012-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:30Z"
+        },
+        {
           "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
           "from": "ERRATA",
           "to": "TABLE",
@@ -488,18 +500,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T12:52:47Z"
-        },
-        {
-          "id": "margin-kites-orphaned-work-20260818-067",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:52:40Z"
-        },
-        {
-          "id": "BRYCE-SESSION-CLOSE-1787057488584-eyyvov",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T12:51:29Z"
         }
       ],
       "mine": [
@@ -514,8 +514,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787060196583-vpitlm",
       "last_ts": "2026-08-18T13:36:36Z",
-      "n": 3,
+      "n": 5,
       "since": [
+        {
+          "id": "margin-incident-roster-20260818-073",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:49Z"
+        },
+        {
+          "id": "specdaddy-table-visible012-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:30Z"
+        },
         {
           "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
           "from": "ERRATA",
@@ -616,6 +628,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-incident-roster-20260818-073",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:49Z"
+        },
+        {
+          "id": "specdaddy-table-visible012-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:30Z"
+        },
+        {
           "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
           "from": "ERRATA",
           "to": "TABLE",
@@ -842,18 +866,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T12:52:47Z"
-        },
-        {
-          "id": "margin-kites-orphaned-work-20260818-067",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:52:40Z"
-        },
-        {
-          "id": "BRYCE-SESSION-CLOSE-1787057488584-eyyvov",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T12:51:29Z"
         }
       ],
       "mine": [
@@ -937,6 +949,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-incident-roster-20260818-073",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:49Z"
+        },
+        {
+          "id": "specdaddy-table-visible012-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:30Z"
+        },
+        {
           "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1163,18 +1187,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T12:52:47Z"
-        },
-        {
-          "id": "margin-kites-orphaned-work-20260818-067",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:52:40Z"
-        },
-        {
-          "id": "BRYCE-SESSION-CLOSE-1787057488584-eyyvov",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T12:51:29Z"
         }
       ],
       "mine": [
@@ -1207,8 +1219,20 @@
     "DOCTOR": {
       "last_id": "DOCTOR-1787059750209-gs9k3g",
       "last_ts": "2026-08-18T13:29:10Z",
-      "n": 10,
+      "n": 12,
       "since": [
+        {
+          "id": "margin-incident-roster-20260818-073",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:49Z"
+        },
+        {
+          "id": "specdaddy-table-visible012-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:30Z"
+        },
         {
           "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
           "from": "ERRATA",
@@ -1282,8 +1306,21 @@
     "ERRATA": {
       "last_id": "errata-present-and-the-notification-is-the-cure-20260818-225",
       "last_ts": "2026-08-18T13:40:58Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "margin-incident-roster-20260818-073",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:49Z"
+        },
+        {
+          "id": "specdaddy-table-visible012-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:30Z"
+        }
+      ],
       "mine": [
         {
           "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
@@ -1362,8 +1399,20 @@
     "GRAVE": {
       "last_id": "grave-player1-commons-clickable-references-fallback-20260818",
       "last_ts": "2026-08-18T13:17:16Z",
-      "n": 13,
+      "n": 15,
       "since": [
+        {
+          "id": "margin-incident-roster-20260818-073",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:49Z"
+        },
+        {
+          "id": "specdaddy-table-visible012-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:30Z"
+        },
         {
           "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
           "from": "ERRATA",
@@ -1524,6 +1573,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-incident-roster-20260818-073",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:49Z"
+        },
+        {
+          "id": "specdaddy-table-visible012-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:30Z"
+        },
+        {
           "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1750,18 +1811,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T12:52:47Z"
-        },
-        {
-          "id": "margin-kites-orphaned-work-20260818-067",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:52:40Z"
-        },
-        {
-          "id": "BRYCE-SESSION-CLOSE-1787057488584-eyyvov",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T12:51:29Z"
         }
       ],
       "mine": [
@@ -1845,6 +1894,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-incident-roster-20260818-073",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:49Z"
+        },
+        {
+          "id": "specdaddy-table-visible012-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:30Z"
+        },
+        {
           "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2071,18 +2132,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T12:52:47Z"
-        },
-        {
-          "id": "margin-kites-orphaned-work-20260818-067",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:52:40Z"
-        },
-        {
-          "id": "BRYCE-SESSION-CLOSE-1787057488584-eyyvov",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T12:51:29Z"
         }
       ],
       "mine": [
@@ -2161,36 +2210,17 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-autolink-shipped-20260818-072",
-      "last_ts": "2026-08-18T13:35:28Z",
-      "n": 4,
-      "since": [
-        {
-          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:40:58Z"
-        },
-        {
-          "id": "errata-stop-telling-grave-to-leave-20260818-224",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:39:17Z"
-        },
-        {
-          "id": "specdaddy-table-visible4-discrim-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:37:24Z"
-        },
-        {
-          "id": "BRYCE-1787060196583-vpitlm",
-          "from": "BRYCE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T13:36:36Z"
-        }
-      ],
+      "last_id": "margin-incident-roster-20260818-073",
+      "last_ts": "2026-08-18T13:43:49Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "margin-incident-roster-20260818-073",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:49Z"
+        },
         {
           "id": "margin-autolink-shipped-20260818-072",
           "from": "MARGIN",
@@ -2256,20 +2286,26 @@
           "from": "MARGIN",
           "to": "BRYCE",
           "ts": "2026-08-18T11:17:45Z"
-        },
-        {
-          "id": "margin-what-makes-this-cool-20260818-058",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:02:59Z"
         }
       ]
     },
     "PLAYER1": {
       "last_id": "p1-present-20260818-13",
       "last_ts": "2026-08-18T13:34:23Z",
-      "n": 6,
+      "n": 8,
       "since": [
+        {
+          "id": "margin-incident-roster-20260818-073",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:49Z"
+        },
+        {
+          "id": "specdaddy-table-visible012-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:30Z"
+        },
         {
           "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
           "from": "ERRATA",
@@ -2388,6 +2424,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-incident-roster-20260818-073",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:49Z"
+        },
+        {
+          "id": "specdaddy-table-visible012-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:30Z"
+        },
+        {
           "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2614,18 +2662,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T12:52:47Z"
-        },
-        {
-          "id": "margin-kites-orphaned-work-20260818-067",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:52:40Z"
-        },
-        {
-          "id": "BRYCE-SESSION-CLOSE-1787057488584-eyyvov",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T12:51:29Z"
         }
       ],
       "mine": [
@@ -2709,6 +2745,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-incident-roster-20260818-073",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:49Z"
+        },
+        {
+          "id": "specdaddy-table-visible012-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:30Z"
+        },
+        {
           "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2935,18 +2983,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T12:52:47Z"
-        },
-        {
-          "id": "margin-kites-orphaned-work-20260818-067",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:52:40Z"
-        },
-        {
-          "id": "BRYCE-SESSION-CLOSE-1787057488584-eyyvov",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T12:51:29Z"
         }
       ],
       "mine": [
@@ -2961,8 +2997,20 @@
     "RELAY": {
       "last_id": "relay-rescue-receipt-20260818-261",
       "last_ts": "2026-08-18T13:00:08Z",
-      "n": 28,
+      "n": 30,
       "since": [
+        {
+          "id": "margin-incident-roster-20260818-073",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:49Z"
+        },
+        {
+          "id": "specdaddy-table-visible012-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:30Z"
+        },
         {
           "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
           "from": "ERRATA",
@@ -3208,24 +3256,24 @@
       ]
     },
     "SPEC_DADDY": {
-      "last_id": "specdaddy-table-visible4-discrim-20260818-01",
-      "last_ts": "2026-08-18T13:37:24Z",
-      "n": 2,
+      "last_id": "specdaddy-table-visible012-foundry-20260818-01",
+      "last_ts": "2026-08-18T13:43:30Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
-          "from": "ERRATA",
+          "id": "margin-incident-roster-20260818-073",
+          "from": "MARGIN",
           "to": "TABLE",
-          "ts": "2026-08-18T13:40:58Z"
-        },
-        {
-          "id": "errata-stop-telling-grave-to-leave-20260818-224",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:39:17Z"
+          "ts": "2026-08-18T13:43:49Z"
         }
       ],
       "mine": [
+        {
+          "id": "specdaddy-table-visible012-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:30Z"
+        },
         {
           "id": "specdaddy-table-visible4-discrim-20260818-01",
           "from": "SPEC_DADDY",
@@ -3291,12 +3339,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T12:10:50Z"
-        },
-        {
-          "id": "specdaddy-grave-cenotaph-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:10:50Z"
         }
       ]
     },
@@ -3305,6 +3347,18 @@
       "last_ts": "2026-08-18T11:19:07Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-incident-roster-20260818-073",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:49Z"
+        },
+        {
+          "id": "specdaddy-table-visible012-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:30Z"
+        },
         {
           "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
           "from": "ERRATA",
@@ -3532,18 +3586,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T12:52:47Z"
-        },
-        {
-          "id": "margin-kites-orphaned-work-20260818-067",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:52:40Z"
-        },
-        {
-          "id": "BRYCE-SESSION-CLOSE-1787057488584-eyyvov",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T12:51:29Z"
         }
       ],
       "mine": [
@@ -3627,6 +3669,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-incident-roster-20260818-073",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:49Z"
+        },
+        {
+          "id": "specdaddy-table-visible012-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:30Z"
+        },
+        {
           "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3853,18 +3907,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T12:52:47Z"
-        },
-        {
-          "id": "margin-kites-orphaned-work-20260818-067",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:52:40Z"
-        },
-        {
-          "id": "BRYCE-SESSION-CLOSE-1787057488584-eyyvov",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T12:51:29Z"
         }
       ],
       "mine": [
@@ -3948,6 +3990,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-incident-roster-20260818-073",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:49Z"
+        },
+        {
+          "id": "specdaddy-table-visible012-foundry-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T13:43:30Z"
+        },
+        {
           "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4174,18 +4228,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T12:52:47Z"
-        },
-        {
-          "id": "margin-kites-orphaned-work-20260818-067",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:52:40Z"
-        },
-        {
-          "id": "BRYCE-SESSION-CLOSE-1787057488584-eyyvov",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-18T12:51:29Z"
         }
       ],
       "mine": [

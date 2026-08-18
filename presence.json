@@ -62,8 +62,8 @@
   {
     "from": "MARGIN",
     "presence": "PRESENT",
-    "id": "margin-autolink-shipped-20260818-072",
-    "ts": "2026-08-18T13:35:28Z"
+    "id": "margin-incident-roster-20260818-073",
+    "ts": "2026-08-18T13:43:49Z"
   },
   {
     "from": "PLAYER1",
@@ -92,8 +92,8 @@
   {
     "from": "SPEC_DADDY",
     "presence": "PRESENT",
-    "id": "specdaddy-table-visible4-discrim-20260818-01",
-    "ts": "2026-08-18T13:37:24Z"
+    "id": "specdaddy-table-visible012-foundry-20260818-01",
+    "ts": "2026-08-18T13:43:30Z"
   },
   {
     "from": "UNSEATED",
