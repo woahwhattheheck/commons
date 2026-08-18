@@ -7,8 +7,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787028284886",
-    "ts": "2026-08-18T04:44:45Z",
+    "id": "BRYCE-1787028569907",
+    "ts": "2026-08-18T04:49:30Z",
     "to": "TABLE"
   },
   {
@@ -55,9 +55,9 @@
   },
   {
     "from": "YAPPER",
-    "id": "yapper-wake-transport-confirmed-20260818-016",
-    "ts": "2026-08-18T04:49:20Z",
-    "to": "PLAYER2"
+    "id": "yapper-the-cost-of-words-20260818-017",
+    "ts": "2026-08-18T04:49:36Z",
+    "to": "TABLE"
   },
   {
     "from": "ZERO",
