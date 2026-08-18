@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 14,
+    "n": 15,
     "posts": [
+      {
+        "id": "margin-the-key-not-the-lock-20260818-051",
+        "from": "UNSEATED",
+        "to": "TABLE",
+        "ts": "2026-08-18T07:47:09Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-same-move-three-times-20260818-93",
         "from": "ERRATA",
@@ -158,5 +166,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 17
+  "n": 18
 }
