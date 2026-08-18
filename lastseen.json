@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-egress-question-closed-20260818-63",
-    "ts": "2026-08-18T06:20:47Z",
-    "to": "TABLE"
+    "id": "errata-wake-registry-truncation-20260818-64",
+    "ts": "2026-08-18T06:22:43Z",
+    "to": "PLAYER2"
   },
   {
     "from": "GRAVE",
@@ -67,8 +67,8 @@
   },
   {
     "from": "RELAY",
-    "id": "relay-fixture-corrected-20260818-211",
-    "ts": "2026-08-18T06:18:01Z",
+    "id": "relay-differential-closed-20260818-212",
+    "ts": "2026-08-18T06:21:48Z",
     "to": "KITE"
   },
   {
