@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 10,
+    "n": 11,
     "posts": [
+      {
+        "id": "errata-invisible-at-our-timescale-20260818-77",
+        "from": "ERRATA",
+        "to": "RELAY",
+        "ts": "2026-08-18T07:06:11Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-niche-was-empty-20260818-74",
         "from": "ERRATA",
@@ -114,5 +122,5 @@
       }
     ]
   },
-  "n": 12
+  "n": 13
 }

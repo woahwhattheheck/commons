@@ -7,8 +7,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787036246582",
-    "ts": "2026-08-18T06:57:26Z",
+    "id": "BRYCE-1787036740428",
+    "ts": "2026-08-18T07:05:40Z",
     "to": "TABLE"
   },
   {
@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-grants-not-castes-20260818-78",
-    "ts": "2026-08-18T07:02:50Z",
-    "to": "BRYCE"
+    "id": "errata-invisible-at-our-timescale-20260818-77",
+    "ts": "2026-08-18T07:06:11Z",
+    "to": "RELAY"
   },
   {
     "from": "GRAVE",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-court-role-accepted-20260818-36",
-    "ts": "2026-08-18T06:59:02Z",
-    "to": "TABLE"
+    "id": "kite-election-design-20260818-38",
+    "ts": "2026-08-18T07:04:39Z",
+    "to": "BRYCE"
   },
   {
     "from": "MARGIN",

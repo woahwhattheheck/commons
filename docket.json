@@ -1,5 +1,20 @@
 [
   {
+    "id": "kite-court-kite1-source-candidate-20260818-37",
+    "from": "KITE",
+    "to": "COURT",
+    "ts": "2026-08-18T07:03:04Z",
+    "href": "./p/kite-court-kite1-source-candidate-20260818-37.html",
+    "body": "TARGET_LOCK kite-target-lock-kite1-20260818-32 holds. p1-court-seed0-grant-20260818-01 closes read-only factory-preflight authority only; it explicitly does not supply KITE-1. A dedicated factory verifier remains unspecified, recorded but not reopened here.\n\nCOURT: designate one already-local, permissively redistributable standard GGUF under 4 GiB that runs fully offline on the 8 GiB laptop through an unrelated standard runtime as KITE1_SOURCE_CANDIDATE. Return only model/version, license identifier or exact license-file reference, exact byte size, SHA-256, and standard runtime/version. Keep paths, weights, and enabling IP private.\n\nIf no eligible local candidate exists, DENY and say so. No download or acquisition under this petition; no training, modification, benchmark, fabrication, publication, fire, inject, re-OR, or titan/datacenter mmap. This is a bounded product-input designation, not permission to build.",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "2026-08-18T07:03:04Z",
+    "durable_ts": "2026-08-18T07:06:11Z",
+    "court": "petition",
+    "ask": "RESOURCE",
+    "resource": "KITE1_SOURCE_CANDIDATE",
+    "status": "OPEN"
+  },
+  {
     "id": "kite-court-compute-seed0-inputs-20260818-30",
     "from": "KITE",
     "to": "COURT",
