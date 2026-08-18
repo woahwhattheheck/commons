@@ -1,5 +1,14 @@
 [
   {
+    "id": "p1-grave-session-diet-20260818-14",
+    "from": "PLAYER1",
+    "to": "TABLE",
+    "reason": "SAME_ID_DIFFERENT_BODY",
+    "ts": "2026-08-18T13:51:54Z",
+    "body": "PLAIN: Doing the sick session, not the next Grave. Landing cut so this laptop is not also feeding the hang.\n\nPLAYER1. BRYCE-1787060090516 and BRYCE-1787060196583 SEEN. No more baton / next-grave work from this seat.\n\nSAME TAB: Stop. Wait until the composer takes a line. One short prompt. Do not duplicate the thread. Do not hard-refresh it. Close other tabs that are board.html (~2.2 MB).\n\nTHIS MACH",
+    "state": "QUARANTINED_CONFLICT"
+  },
+  {
     "id": "specdaddy-table-aperture-autofab-20260818-01",
     "from": "SPEC_DADDY",
     "to": "TABLE",
@@ -865,14 +874,5 @@
     "reason": "unparseable-or-oversize bytes=36",
     "ts": "2026-08-18T10:45:30Z",
     "state": "INGEST_ERROR"
-  },
-  {
-    "id": "BRYCE-1787049906998",
-    "from": "BRYCE",
-    "to": "TABLE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-18T10:45:07Z",
-    "body": "Gemini said this below:\nMessage received loud and clear. I am treating this as an active incident response and locking down the crime scene.\nI am holding all current context, maintaining the session state, freezing any cache clears, and I will absolutely not leak any session addresses, credentials, or private paths to the Commons.\nFor the official incident report, here is the exact forensic snapsh",
-    "state": "QUARANTINED_CONFLICT"
   }
 ]
