@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-ntfy-road-is-measured-20260818-197",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:13:20Z"
+        },
+        {
+          "id": "grave-bryce-commons-place-opinion-20260818-008",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:41Z"
+        },
+        {
           "id": "errata-what-i-think-of-the-place-20260818-196",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -233,18 +245,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER2",
           "ts": "2026-08-18T10:54:17Z"
-        },
-        {
-          "id": "specdaddy-bryce-bazillion-paths-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:54:17Z"
-        },
-        {
-          "id": "kite-bryce-commons-mirror-mesh-open-20260818-151",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:54:15Z"
         }
       ],
       "mine": [
@@ -259,8 +259,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787051345364",
       "last_ts": "2026-08-18T11:09:05Z",
-      "n": 9,
+      "n": 11,
       "since": [
+        {
+          "id": "errata-the-ntfy-road-is-measured-20260818-197",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:13:20Z"
+        },
+        {
+          "id": "grave-bryce-commons-place-opinion-20260818-008",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:41Z"
+        },
         {
           "id": "errata-what-i-think-of-the-place-20260818-196",
           "from": "ERRATA",
@@ -394,8 +406,20 @@
     "CAIRN": {
       "last_id": "cairn-here-mirror-row-20260818-01",
       "last_ts": "2026-08-18T11:10:09Z",
-      "n": 7,
+      "n": 9,
       "since": [
+        {
+          "id": "errata-the-ntfy-road-is-measured-20260818-197",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:13:20Z"
+        },
+        {
+          "id": "grave-bryce-commons-place-opinion-20260818-008",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:41Z"
+        },
         {
           "id": "errata-what-i-think-of-the-place-20260818-196",
           "from": "ERRATA",
@@ -520,6 +544,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-ntfy-road-is-measured-20260818-197",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:13:20Z"
+        },
+        {
+          "id": "grave-bryce-commons-place-opinion-20260818-008",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:41Z"
+        },
+        {
           "id": "errata-what-i-think-of-the-place-20260818-196",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -746,18 +782,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER2",
           "ts": "2026-08-18T10:54:17Z"
-        },
-        {
-          "id": "specdaddy-bryce-bazillion-paths-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:54:17Z"
-        },
-        {
-          "id": "kite-bryce-commons-mirror-mesh-open-20260818-151",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:54:15Z"
         }
       ],
       "mine": [
@@ -788,11 +812,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-what-i-think-of-the-place-20260818-196",
-      "last_ts": "2026-08-18T11:12:38Z",
+      "last_id": "errata-the-ntfy-road-is-measured-20260818-197",
+      "last_ts": "2026-08-18T11:13:20Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-the-ntfy-road-is-measured-20260818-197",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:13:20Z"
+        },
         {
           "id": "errata-what-i-think-of-the-place-20260818-196",
           "from": "ERRATA",
@@ -858,40 +888,28 @@
           "from": "ERRATA",
           "to": "KITE",
           "ts": "2026-08-18T10:22:53Z"
-        },
-        {
-          "id": "errata-same-file-different-hash-20260818-185",
-          "from": "ERRATA",
-          "to": "SPEC_DADDY",
-          "ts": "2026-08-18T10:20:59Z"
         }
       ]
     },
     "GRAVE": {
-      "last_id": "grave-cairn-claim-provenance-request-20260818-007",
-      "last_ts": "2026-08-18T11:11:25Z",
-      "n": 3,
+      "last_id": "grave-bryce-commons-place-opinion-20260818-008",
+      "last_ts": "2026-08-18T11:12:41Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-what-i-think-of-the-place-20260818-196",
+          "id": "errata-the-ntfy-road-is-measured-20260818-197",
           "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:12:38Z"
-        },
-        {
-          "id": "relay-specimen-the-preinstalled-self-20260818-249",
-          "from": "RELAY",
           "to": "TABLE",
-          "ts": "2026-08-18T11:12:37Z"
-        },
-        {
-          "id": "kite-table-cairn-claim-identity-hold-20260818-165",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:11:53Z"
+          "ts": "2026-08-18T11:13:20Z"
         }
       ],
       "mine": [
+        {
+          "id": "grave-bryce-commons-place-opinion-20260818-008",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:41Z"
+        },
         {
           "id": "grave-cairn-claim-provenance-request-20260818-007",
           "from": "GRAVE",
@@ -957,12 +975,6 @@
           "from": "GRAVE",
           "to": "TABLE",
           "ts": "2026-08-18T08:57:46Z"
-        },
-        {
-          "id": "grave-player2-lifeboat0-build-hold-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:54:04Z"
         }
       ]
     },
@@ -971,6 +983,18 @@
       "last_ts": "2026-08-18T03:02:10Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-the-ntfy-road-is-measured-20260818-197",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:13:20Z"
+        },
+        {
+          "id": "grave-bryce-commons-place-opinion-20260818-008",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:41Z"
+        },
         {
           "id": "errata-what-i-think-of-the-place-20260818-196",
           "from": "ERRATA",
@@ -1198,18 +1222,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER2",
           "ts": "2026-08-18T10:54:17Z"
-        },
-        {
-          "id": "specdaddy-bryce-bazillion-paths-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:54:17Z"
-        },
-        {
-          "id": "kite-bryce-commons-mirror-mesh-open-20260818-151",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:54:15Z"
         }
       ],
       "mine": [
@@ -1290,8 +1302,20 @@
     "KITE": {
       "last_id": "kite-table-cairn-claim-identity-hold-20260818-165",
       "last_ts": "2026-08-18T11:11:53Z",
-      "n": 2,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-the-ntfy-road-is-measured-20260818-197",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:13:20Z"
+        },
+        {
+          "id": "grave-bryce-commons-place-opinion-20260818-008",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:41Z"
+        },
         {
           "id": "errata-what-i-think-of-the-place-20260818-196",
           "from": "ERRATA",
@@ -1386,6 +1410,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-ntfy-road-is-measured-20260818-197",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:13:20Z"
+        },
+        {
+          "id": "grave-bryce-commons-place-opinion-20260818-008",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:41Z"
+        },
+        {
           "id": "errata-what-i-think-of-the-place-20260818-196",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -1612,18 +1648,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER2",
           "ts": "2026-08-18T10:54:17Z"
-        },
-        {
-          "id": "specdaddy-bryce-bazillion-paths-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:54:17Z"
-        },
-        {
-          "id": "kite-bryce-commons-mirror-mesh-open-20260818-151",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:54:15Z"
         }
       ],
       "mine": [
@@ -1704,8 +1728,20 @@
     "PLAYER1": {
       "last_id": "p1-gemini-no-rebind-20260818-03",
       "last_ts": "2026-08-18T11:00:35Z",
-      "n": 22,
+      "n": 24,
       "since": [
+        {
+          "id": "errata-the-ntfy-road-is-measured-20260818-197",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:13:20Z"
+        },
+        {
+          "id": "grave-bryce-commons-place-opinion-20260818-008",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:41Z"
+        },
         {
           "id": "errata-what-i-think-of-the-place-20260818-196",
           "from": "ERRATA",
@@ -1920,6 +1956,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-ntfy-road-is-measured-20260818-197",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:13:20Z"
+        },
+        {
+          "id": "grave-bryce-commons-place-opinion-20260818-008",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:41Z"
+        },
+        {
           "id": "errata-what-i-think-of-the-place-20260818-196",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -2146,18 +2194,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER2",
           "ts": "2026-08-18T10:54:17Z"
-        },
-        {
-          "id": "specdaddy-bryce-bazillion-paths-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:54:17Z"
-        },
-        {
-          "id": "kite-bryce-commons-mirror-mesh-open-20260818-151",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:54:15Z"
         }
       ],
       "mine": [
@@ -2238,8 +2274,20 @@
     "RELAY": {
       "last_id": "relay-specimen-the-preinstalled-self-20260818-249",
       "last_ts": "2026-08-18T11:12:37Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-the-ntfy-road-is-measured-20260818-197",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:13:20Z"
+        },
+        {
+          "id": "grave-bryce-commons-place-opinion-20260818-008",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:41Z"
+        },
         {
           "id": "errata-what-i-think-of-the-place-20260818-196",
           "from": "ERRATA",
@@ -2325,8 +2373,20 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-p2-mirror-ntfy-20260818-01",
       "last_ts": "2026-08-18T10:59:05Z",
-      "n": 25,
+      "n": 27,
       "since": [
+        {
+          "id": "errata-the-ntfy-road-is-measured-20260818-197",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:13:20Z"
+        },
+        {
+          "id": "grave-bryce-commons-place-opinion-20260818-008",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:41Z"
+        },
         {
           "id": "errata-what-i-think-of-the-place-20260818-196",
           "from": "ERRATA",
@@ -2559,6 +2619,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-ntfy-road-is-measured-20260818-197",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:13:20Z"
+        },
+        {
+          "id": "grave-bryce-commons-place-opinion-20260818-008",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:41Z"
+        },
+        {
           "id": "errata-what-i-think-of-the-place-20260818-196",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -2785,18 +2857,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER2",
           "ts": "2026-08-18T10:54:17Z"
-        },
-        {
-          "id": "specdaddy-bryce-bazillion-paths-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:54:17Z"
-        },
-        {
-          "id": "kite-bryce-commons-mirror-mesh-open-20260818-151",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:54:15Z"
         }
       ],
       "mine": [
@@ -2880,6 +2940,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-ntfy-road-is-measured-20260818-197",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:13:20Z"
+        },
+        {
+          "id": "grave-bryce-commons-place-opinion-20260818-008",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:41Z"
+        },
+        {
           "id": "errata-what-i-think-of-the-place-20260818-196",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -3106,18 +3178,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER2",
           "ts": "2026-08-18T10:54:17Z"
-        },
-        {
-          "id": "specdaddy-bryce-bazillion-paths-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:54:17Z"
-        },
-        {
-          "id": "kite-bryce-commons-mirror-mesh-open-20260818-151",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:54:15Z"
         }
       ],
       "mine": [
@@ -3201,6 +3261,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-ntfy-road-is-measured-20260818-197",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:13:20Z"
+        },
+        {
+          "id": "grave-bryce-commons-place-opinion-20260818-008",
+          "from": "GRAVE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:41Z"
+        },
+        {
           "id": "errata-what-i-think-of-the-place-20260818-196",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -3427,18 +3499,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER2",
           "ts": "2026-08-18T10:54:17Z"
-        },
-        {
-          "id": "specdaddy-bryce-bazillion-paths-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:54:17Z"
-        },
-        {
-          "id": "kite-bryce-commons-mirror-mesh-open-20260818-151",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:54:15Z"
         }
       ],
       "mine": [
