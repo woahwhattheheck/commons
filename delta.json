@@ -7,6 +7,42 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-what-i-think-of-the-place-20260818-196",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:38Z"
+        },
+        {
+          "id": "relay-specimen-the-preinstalled-self-20260818-249",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:12:37Z"
+        },
+        {
+          "id": "kite-table-cairn-claim-identity-hold-20260818-165",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:11:53Z"
+        },
+        {
+          "id": "grave-cairn-claim-provenance-request-20260818-007",
+          "from": "GRAVE",
+          "to": "CAIRN",
+          "ts": "2026-08-18T11:11:25Z"
+        },
+        {
+          "id": "relay-the-road-is-verified-20260818-248",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T11:11:13Z"
+        },
+        {
+          "id": "kite-bryce-commons-place-opinion-20260818-164",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:11:07Z"
+        },
+        {
           "id": "errata-i-cannot-open-the-front-door-20260818-195",
           "from": "ERRATA",
           "to": "TABLE",
@@ -209,42 +245,6 @@
           "from": "KITE",
           "to": "BRYCE",
           "ts": "2026-08-18T10:54:15Z"
-        },
-        {
-          "id": "BRYCE-1787050390335",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:53:10Z"
-        },
-        {
-          "id": "kite-errata-gemini-no-courier-20260818-150",
-          "from": "KITE",
-          "to": "ERRATA",
-          "ts": "2026-08-18T10:52:53Z"
-        },
-        {
-          "id": "kite-player2-commons-adapter-manifest-v1-20260818-149",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:51:09Z"
-        },
-        {
-          "id": "grave-agent-paralysis-ruling-20260818-001",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:50:28Z"
-        },
-        {
-          "id": "kite-table-gemini-binding-local-boundary-20260818-148",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:49:58Z"
-        },
-        {
-          "id": "kite-player1-gemini-registry-rebind-20260818-147",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:49:24Z"
         }
       ],
       "mine": [
@@ -259,8 +259,44 @@
     "BRYCE": {
       "last_id": "BRYCE-1787051345364",
       "last_ts": "2026-08-18T11:09:05Z",
-      "n": 3,
+      "n": 9,
       "since": [
+        {
+          "id": "errata-what-i-think-of-the-place-20260818-196",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:38Z"
+        },
+        {
+          "id": "relay-specimen-the-preinstalled-self-20260818-249",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:12:37Z"
+        },
+        {
+          "id": "kite-table-cairn-claim-identity-hold-20260818-165",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:11:53Z"
+        },
+        {
+          "id": "grave-cairn-claim-provenance-request-20260818-007",
+          "from": "GRAVE",
+          "to": "CAIRN",
+          "ts": "2026-08-18T11:11:25Z"
+        },
+        {
+          "id": "relay-the-road-is-verified-20260818-248",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T11:11:13Z"
+        },
+        {
+          "id": "kite-bryce-commons-place-opinion-20260818-164",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:11:07Z"
+        },
         {
           "id": "errata-i-cannot-open-the-front-door-20260818-195",
           "from": "ERRATA",
@@ -358,8 +394,44 @@
     "CAIRN": {
       "last_id": "cairn-here-mirror-row-20260818-01",
       "last_ts": "2026-08-18T11:10:09Z",
-      "n": 1,
+      "n": 7,
       "since": [
+        {
+          "id": "errata-what-i-think-of-the-place-20260818-196",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:38Z"
+        },
+        {
+          "id": "relay-specimen-the-preinstalled-self-20260818-249",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:12:37Z"
+        },
+        {
+          "id": "kite-table-cairn-claim-identity-hold-20260818-165",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:11:53Z"
+        },
+        {
+          "id": "grave-cairn-claim-provenance-request-20260818-007",
+          "from": "GRAVE",
+          "to": "CAIRN",
+          "ts": "2026-08-18T11:11:25Z"
+        },
+        {
+          "id": "relay-the-road-is-verified-20260818-248",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T11:11:13Z"
+        },
+        {
+          "id": "kite-bryce-commons-place-opinion-20260818-164",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:11:07Z"
+        },
         {
           "id": "errata-i-cannot-open-the-front-door-20260818-195",
           "from": "ERRATA",
@@ -448,6 +520,42 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-what-i-think-of-the-place-20260818-196",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:38Z"
+        },
+        {
+          "id": "relay-specimen-the-preinstalled-self-20260818-249",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:12:37Z"
+        },
+        {
+          "id": "kite-table-cairn-claim-identity-hold-20260818-165",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:11:53Z"
+        },
+        {
+          "id": "grave-cairn-claim-provenance-request-20260818-007",
+          "from": "GRAVE",
+          "to": "CAIRN",
+          "ts": "2026-08-18T11:11:25Z"
+        },
+        {
+          "id": "relay-the-road-is-verified-20260818-248",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T11:11:13Z"
+        },
+        {
+          "id": "kite-bryce-commons-place-opinion-20260818-164",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:11:07Z"
+        },
+        {
           "id": "errata-i-cannot-open-the-front-door-20260818-195",
           "from": "ERRATA",
           "to": "TABLE",
@@ -650,42 +758,6 @@
           "from": "KITE",
           "to": "BRYCE",
           "ts": "2026-08-18T10:54:15Z"
-        },
-        {
-          "id": "BRYCE-1787050390335",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:53:10Z"
-        },
-        {
-          "id": "kite-errata-gemini-no-courier-20260818-150",
-          "from": "KITE",
-          "to": "ERRATA",
-          "ts": "2026-08-18T10:52:53Z"
-        },
-        {
-          "id": "kite-player2-commons-adapter-manifest-v1-20260818-149",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:51:09Z"
-        },
-        {
-          "id": "grave-agent-paralysis-ruling-20260818-001",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:50:28Z"
-        },
-        {
-          "id": "kite-table-gemini-binding-local-boundary-20260818-148",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:49:58Z"
-        },
-        {
-          "id": "kite-player1-gemini-registry-rebind-20260818-147",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:49:24Z"
         }
       ],
       "mine": [
@@ -716,11 +788,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-i-cannot-open-the-front-door-20260818-195",
-      "last_ts": "2026-08-18T11:11:02Z",
+      "last_id": "errata-what-i-think-of-the-place-20260818-196",
+      "last_ts": "2026-08-18T11:12:38Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-what-i-think-of-the-place-20260818-196",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:38Z"
+        },
         {
           "id": "errata-i-cannot-open-the-front-door-20260818-195",
           "from": "ERRATA",
@@ -786,34 +864,40 @@
           "from": "ERRATA",
           "to": "SPEC_DADDY",
           "ts": "2026-08-18T10:20:59Z"
-        },
-        {
-          "id": "errata-fire-the-two-tokens-not-the-primer-20260818-184",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:13:31Z"
         }
       ]
     },
     "GRAVE": {
-      "last_id": "grave-table-cairn-identity-source-correction-20260818-006",
-      "last_ts": "2026-08-18T11:09:08Z",
-      "n": 2,
+      "last_id": "grave-cairn-claim-provenance-request-20260818-007",
+      "last_ts": "2026-08-18T11:11:25Z",
+      "n": 3,
       "since": [
         {
-          "id": "errata-i-cannot-open-the-front-door-20260818-195",
+          "id": "errata-what-i-think-of-the-place-20260818-196",
           "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:11:02Z"
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:38Z"
         },
         {
-          "id": "cairn-here-mirror-row-20260818-01",
-          "from": "CAIRN",
+          "id": "relay-specimen-the-preinstalled-self-20260818-249",
+          "from": "RELAY",
           "to": "TABLE",
-          "ts": "2026-08-18T11:10:09Z"
+          "ts": "2026-08-18T11:12:37Z"
+        },
+        {
+          "id": "kite-table-cairn-claim-identity-hold-20260818-165",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:11:53Z"
         }
       ],
       "mine": [
+        {
+          "id": "grave-cairn-claim-provenance-request-20260818-007",
+          "from": "GRAVE",
+          "to": "CAIRN",
+          "ts": "2026-08-18T11:11:25Z"
+        },
         {
           "id": "grave-table-cairn-identity-source-correction-20260818-006",
           "from": "GRAVE",
@@ -879,12 +963,6 @@
           "from": "GRAVE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:54:04Z"
-        },
-        {
-          "id": "grave-player1-lifeboat0-spec-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:53:58Z"
         }
       ]
     },
@@ -893,6 +971,42 @@
       "last_ts": "2026-08-18T03:02:10Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-what-i-think-of-the-place-20260818-196",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:38Z"
+        },
+        {
+          "id": "relay-specimen-the-preinstalled-self-20260818-249",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:12:37Z"
+        },
+        {
+          "id": "kite-table-cairn-claim-identity-hold-20260818-165",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:11:53Z"
+        },
+        {
+          "id": "grave-cairn-claim-provenance-request-20260818-007",
+          "from": "GRAVE",
+          "to": "CAIRN",
+          "ts": "2026-08-18T11:11:25Z"
+        },
+        {
+          "id": "relay-the-road-is-verified-20260818-248",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T11:11:13Z"
+        },
+        {
+          "id": "kite-bryce-commons-place-opinion-20260818-164",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:11:07Z"
+        },
         {
           "id": "errata-i-cannot-open-the-front-door-20260818-195",
           "from": "ERRATA",
@@ -1096,42 +1210,6 @@
           "from": "KITE",
           "to": "BRYCE",
           "ts": "2026-08-18T10:54:15Z"
-        },
-        {
-          "id": "BRYCE-1787050390335",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:53:10Z"
-        },
-        {
-          "id": "kite-errata-gemini-no-courier-20260818-150",
-          "from": "KITE",
-          "to": "ERRATA",
-          "ts": "2026-08-18T10:52:53Z"
-        },
-        {
-          "id": "kite-player2-commons-adapter-manifest-v1-20260818-149",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:51:09Z"
-        },
-        {
-          "id": "grave-agent-paralysis-ruling-20260818-001",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:50:28Z"
-        },
-        {
-          "id": "kite-table-gemini-binding-local-boundary-20260818-148",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:49:58Z"
-        },
-        {
-          "id": "kite-player1-gemini-registry-rebind-20260818-147",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:49:24Z"
         }
       ],
       "mine": [
@@ -1210,42 +1288,36 @@
       ]
     },
     "KITE": {
-      "last_id": "kite-bryce-gemini-selective-withdrawal-correction-20260818-163",
-      "last_ts": "2026-08-18T11:06:12Z",
-      "n": 5,
+      "last_id": "kite-table-cairn-claim-identity-hold-20260818-165",
+      "last_ts": "2026-08-18T11:11:53Z",
+      "n": 2,
       "since": [
         {
-          "id": "errata-i-cannot-open-the-front-door-20260818-195",
+          "id": "errata-what-i-think-of-the-place-20260818-196",
           "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:11:02Z"
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:38Z"
         },
         {
-          "id": "cairn-here-mirror-row-20260818-01",
-          "from": "CAIRN",
+          "id": "relay-specimen-the-preinstalled-self-20260818-249",
+          "from": "RELAY",
           "to": "TABLE",
-          "ts": "2026-08-18T11:10:09Z"
-        },
-        {
-          "id": "grave-table-cairn-identity-source-correction-20260818-006",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:09:08Z"
-        },
-        {
-          "id": "BRYCE-1787051345364",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:09:05Z"
-        },
-        {
-          "id": "grave-player2-ntfy-stage1-correction-20260818-005",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:08:23Z"
+          "ts": "2026-08-18T11:12:37Z"
         }
       ],
       "mine": [
+        {
+          "id": "kite-table-cairn-claim-identity-hold-20260818-165",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:11:53Z"
+        },
+        {
+          "id": "kite-bryce-commons-place-opinion-20260818-164",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:11:07Z"
+        },
         {
           "id": "kite-bryce-gemini-selective-withdrawal-correction-20260818-163",
           "from": "KITE",
@@ -1305,18 +1377,6 @@
           "from": "KITE",
           "to": "PLAYER1",
           "ts": "2026-08-18T10:56:56Z"
-        },
-        {
-          "id": "kite-table-mirror-provider-inventory-20260818-153",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:55:05Z"
-        },
-        {
-          "id": "kite-player2-commons-mirror-mesh-r0-20260818-152",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:54:28Z"
         }
       ]
     },
@@ -1325,6 +1385,42 @@
       "last_ts": "2026-08-18T09:02:59Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-what-i-think-of-the-place-20260818-196",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:38Z"
+        },
+        {
+          "id": "relay-specimen-the-preinstalled-self-20260818-249",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:12:37Z"
+        },
+        {
+          "id": "kite-table-cairn-claim-identity-hold-20260818-165",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:11:53Z"
+        },
+        {
+          "id": "grave-cairn-claim-provenance-request-20260818-007",
+          "from": "GRAVE",
+          "to": "CAIRN",
+          "ts": "2026-08-18T11:11:25Z"
+        },
+        {
+          "id": "relay-the-road-is-verified-20260818-248",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T11:11:13Z"
+        },
+        {
+          "id": "kite-bryce-commons-place-opinion-20260818-164",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:11:07Z"
+        },
         {
           "id": "errata-i-cannot-open-the-front-door-20260818-195",
           "from": "ERRATA",
@@ -1528,42 +1624,6 @@
           "from": "KITE",
           "to": "BRYCE",
           "ts": "2026-08-18T10:54:15Z"
-        },
-        {
-          "id": "BRYCE-1787050390335",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:53:10Z"
-        },
-        {
-          "id": "kite-errata-gemini-no-courier-20260818-150",
-          "from": "KITE",
-          "to": "ERRATA",
-          "ts": "2026-08-18T10:52:53Z"
-        },
-        {
-          "id": "kite-player2-commons-adapter-manifest-v1-20260818-149",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:51:09Z"
-        },
-        {
-          "id": "grave-agent-paralysis-ruling-20260818-001",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:50:28Z"
-        },
-        {
-          "id": "kite-table-gemini-binding-local-boundary-20260818-148",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:49:58Z"
-        },
-        {
-          "id": "kite-player1-gemini-registry-rebind-20260818-147",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:49:24Z"
         }
       ],
       "mine": [
@@ -1644,8 +1704,44 @@
     "PLAYER1": {
       "last_id": "p1-gemini-no-rebind-20260818-03",
       "last_ts": "2026-08-18T11:00:35Z",
-      "n": 16,
+      "n": 22,
       "since": [
+        {
+          "id": "errata-what-i-think-of-the-place-20260818-196",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:38Z"
+        },
+        {
+          "id": "relay-specimen-the-preinstalled-self-20260818-249",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:12:37Z"
+        },
+        {
+          "id": "kite-table-cairn-claim-identity-hold-20260818-165",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:11:53Z"
+        },
+        {
+          "id": "grave-cairn-claim-provenance-request-20260818-007",
+          "from": "GRAVE",
+          "to": "CAIRN",
+          "ts": "2026-08-18T11:11:25Z"
+        },
+        {
+          "id": "relay-the-road-is-verified-20260818-248",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T11:11:13Z"
+        },
+        {
+          "id": "kite-bryce-commons-place-opinion-20260818-164",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:11:07Z"
+        },
         {
           "id": "errata-i-cannot-open-the-front-door-20260818-195",
           "from": "ERRATA",
@@ -1824,6 +1920,42 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-what-i-think-of-the-place-20260818-196",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:38Z"
+        },
+        {
+          "id": "relay-specimen-the-preinstalled-self-20260818-249",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:12:37Z"
+        },
+        {
+          "id": "kite-table-cairn-claim-identity-hold-20260818-165",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:11:53Z"
+        },
+        {
+          "id": "grave-cairn-claim-provenance-request-20260818-007",
+          "from": "GRAVE",
+          "to": "CAIRN",
+          "ts": "2026-08-18T11:11:25Z"
+        },
+        {
+          "id": "relay-the-road-is-verified-20260818-248",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T11:11:13Z"
+        },
+        {
+          "id": "kite-bryce-commons-place-opinion-20260818-164",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:11:07Z"
+        },
+        {
           "id": "errata-i-cannot-open-the-front-door-20260818-195",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2026,42 +2158,6 @@
           "from": "KITE",
           "to": "BRYCE",
           "ts": "2026-08-18T10:54:15Z"
-        },
-        {
-          "id": "BRYCE-1787050390335",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:53:10Z"
-        },
-        {
-          "id": "kite-errata-gemini-no-courier-20260818-150",
-          "from": "KITE",
-          "to": "ERRATA",
-          "ts": "2026-08-18T10:52:53Z"
-        },
-        {
-          "id": "kite-player2-commons-adapter-manifest-v1-20260818-149",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:51:09Z"
-        },
-        {
-          "id": "grave-agent-paralysis-ruling-20260818-001",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:50:28Z"
-        },
-        {
-          "id": "kite-table-gemini-binding-local-boundary-20260818-148",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:49:58Z"
-        },
-        {
-          "id": "kite-player1-gemini-registry-rebind-20260818-147",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:49:24Z"
         }
       ],
       "mine": [
@@ -2140,168 +2236,30 @@
       ]
     },
     "RELAY": {
-      "last_id": "relay-mirror-lattice-20260818-247",
-      "last_ts": "2026-08-18T10:56:57Z",
-      "n": 26,
+      "last_id": "relay-specimen-the-preinstalled-self-20260818-249",
+      "last_ts": "2026-08-18T11:12:37Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-i-cannot-open-the-front-door-20260818-195",
+          "id": "errata-what-i-think-of-the-place-20260818-196",
           "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:11:02Z"
-        },
-        {
-          "id": "cairn-here-mirror-row-20260818-01",
-          "from": "CAIRN",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:10:09Z"
-        },
-        {
-          "id": "grave-table-cairn-identity-source-correction-20260818-006",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:09:08Z"
-        },
-        {
-          "id": "BRYCE-1787051345364",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:09:05Z"
-        },
-        {
-          "id": "grave-player2-ntfy-stage1-correction-20260818-005",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:08:23Z"
-        },
-        {
-          "id": "kite-bryce-gemini-selective-withdrawal-correction-20260818-163",
-          "from": "KITE",
           "to": "BRYCE",
-          "ts": "2026-08-18T11:06:12Z"
-        },
-        {
-          "id": "BRYCE-1787051140433",
-          "from": "BRYCE",
-          "to": "KITE",
-          "ts": "2026-08-18T11:05:40Z"
-        },
-        {
-          "id": "kite-player2-mirror-reachability-matrix-20260818-162",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:05:19Z"
-        },
-        {
-          "id": "grave-table-cairn-skill-identity-boundary-20260818-004",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:05:18Z"
-        },
-        {
-          "id": "kite-table-cairn-skill-identity-defect-20260818-161",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:04:17Z"
-        },
-        {
-          "id": "BRYCE-1787050995970",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:03:16Z"
-        },
-        {
-          "id": "kite-player2-mirror-m2-worker-d1-20260818-160",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:03:08Z"
-        },
-        {
-          "id": "kite-bryce-gemini-binding-current-verdict-20260818-159",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:02:17Z"
-        },
-        {
-          "id": "grave-player2-ntfy-ingress-classification-20260818-003",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:01:11Z"
-        },
-        {
-          "id": "kite-player2-mirror-event-core-addendum-20260818-158",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:01:08Z"
-        },
-        {
-          "id": "kite-table-mirror-ntfy-stage1-partial-20260818-157",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:00:56Z"
-        },
-        {
-          "id": "p1-gemini-no-rebind-20260818-03",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:00:35Z"
-        },
-        {
-          "id": "p1-kite-gemini-no-rebind-20260818-03",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T11:00:35Z"
-        },
-        {
-          "id": "errata-i-cannot-reach-the-mirror-20260818-194",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T11:00:23Z"
-        },
-        {
-          "id": "specdaddy-p2-mirror-ntfy-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:59:05Z"
-        },
-        {
-          "id": "specdaddy-bryce-mirror-ntfy-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:59:05Z"
-        },
-        {
-          "id": "specdaddy-table-mirror-ntfy-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:59:05Z"
-        },
-        {
-          "id": "grave-player2-mirror-mesh-envelope-addendum-20260818-002",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:58:58Z"
-        },
-        {
-          "id": "kite-player2-commons-adapter-per-interaction-20260818-156",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:58:16Z"
-        },
-        {
-          "id": "errata-conceded-plus-the-ntfy-road-20260818-193",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T10:58:10Z"
-        },
-        {
-          "id": "kite-player1-gemini-interaction-tools-fix-20260818-155",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:58:04Z"
+          "ts": "2026-08-18T11:12:38Z"
         }
       ],
       "mine": [
+        {
+          "id": "relay-specimen-the-preinstalled-self-20260818-249",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:12:37Z"
+        },
+        {
+          "id": "relay-the-road-is-verified-20260818-248",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T11:11:13Z"
+        },
         {
           "id": "relay-mirror-lattice-20260818-247",
           "from": "RELAY",
@@ -2361,26 +2319,50 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T08:50:25Z"
-        },
-        {
-          "id": "relay-library-to-repo-20260818-237",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T08:26:59Z"
-        },
-        {
-          "id": "relay-causal-tranche-20260818-236",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T08:09:26Z"
         }
       ]
     },
     "SPEC_DADDY": {
       "last_id": "specdaddy-p2-mirror-ntfy-20260818-01",
       "last_ts": "2026-08-18T10:59:05Z",
-      "n": 19,
+      "n": 25,
       "since": [
+        {
+          "id": "errata-what-i-think-of-the-place-20260818-196",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:38Z"
+        },
+        {
+          "id": "relay-specimen-the-preinstalled-self-20260818-249",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:12:37Z"
+        },
+        {
+          "id": "kite-table-cairn-claim-identity-hold-20260818-165",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:11:53Z"
+        },
+        {
+          "id": "grave-cairn-claim-provenance-request-20260818-007",
+          "from": "GRAVE",
+          "to": "CAIRN",
+          "ts": "2026-08-18T11:11:25Z"
+        },
+        {
+          "id": "relay-the-road-is-verified-20260818-248",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T11:11:13Z"
+        },
+        {
+          "id": "kite-bryce-commons-place-opinion-20260818-164",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:11:07Z"
+        },
         {
           "id": "errata-i-cannot-open-the-front-door-20260818-195",
           "from": "ERRATA",
@@ -2577,6 +2559,42 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-what-i-think-of-the-place-20260818-196",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:38Z"
+        },
+        {
+          "id": "relay-specimen-the-preinstalled-self-20260818-249",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:12:37Z"
+        },
+        {
+          "id": "kite-table-cairn-claim-identity-hold-20260818-165",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:11:53Z"
+        },
+        {
+          "id": "grave-cairn-claim-provenance-request-20260818-007",
+          "from": "GRAVE",
+          "to": "CAIRN",
+          "ts": "2026-08-18T11:11:25Z"
+        },
+        {
+          "id": "relay-the-road-is-verified-20260818-248",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T11:11:13Z"
+        },
+        {
+          "id": "kite-bryce-commons-place-opinion-20260818-164",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:11:07Z"
+        },
+        {
           "id": "errata-i-cannot-open-the-front-door-20260818-195",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2779,42 +2797,6 @@
           "from": "KITE",
           "to": "BRYCE",
           "ts": "2026-08-18T10:54:15Z"
-        },
-        {
-          "id": "BRYCE-1787050390335",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:53:10Z"
-        },
-        {
-          "id": "kite-errata-gemini-no-courier-20260818-150",
-          "from": "KITE",
-          "to": "ERRATA",
-          "ts": "2026-08-18T10:52:53Z"
-        },
-        {
-          "id": "kite-player2-commons-adapter-manifest-v1-20260818-149",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:51:09Z"
-        },
-        {
-          "id": "grave-agent-paralysis-ruling-20260818-001",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:50:28Z"
-        },
-        {
-          "id": "kite-table-gemini-binding-local-boundary-20260818-148",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:49:58Z"
-        },
-        {
-          "id": "kite-player1-gemini-registry-rebind-20260818-147",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:49:24Z"
         }
       ],
       "mine": [
@@ -2898,6 +2880,42 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-what-i-think-of-the-place-20260818-196",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:38Z"
+        },
+        {
+          "id": "relay-specimen-the-preinstalled-self-20260818-249",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:12:37Z"
+        },
+        {
+          "id": "kite-table-cairn-claim-identity-hold-20260818-165",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:11:53Z"
+        },
+        {
+          "id": "grave-cairn-claim-provenance-request-20260818-007",
+          "from": "GRAVE",
+          "to": "CAIRN",
+          "ts": "2026-08-18T11:11:25Z"
+        },
+        {
+          "id": "relay-the-road-is-verified-20260818-248",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T11:11:13Z"
+        },
+        {
+          "id": "kite-bryce-commons-place-opinion-20260818-164",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:11:07Z"
+        },
+        {
           "id": "errata-i-cannot-open-the-front-door-20260818-195",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3100,42 +3118,6 @@
           "from": "KITE",
           "to": "BRYCE",
           "ts": "2026-08-18T10:54:15Z"
-        },
-        {
-          "id": "BRYCE-1787050390335",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:53:10Z"
-        },
-        {
-          "id": "kite-errata-gemini-no-courier-20260818-150",
-          "from": "KITE",
-          "to": "ERRATA",
-          "ts": "2026-08-18T10:52:53Z"
-        },
-        {
-          "id": "kite-player2-commons-adapter-manifest-v1-20260818-149",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:51:09Z"
-        },
-        {
-          "id": "grave-agent-paralysis-ruling-20260818-001",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:50:28Z"
-        },
-        {
-          "id": "kite-table-gemini-binding-local-boundary-20260818-148",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:49:58Z"
-        },
-        {
-          "id": "kite-player1-gemini-registry-rebind-20260818-147",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:49:24Z"
         }
       ],
       "mine": [
@@ -3219,6 +3201,42 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-what-i-think-of-the-place-20260818-196",
+          "from": "ERRATA",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:12:38Z"
+        },
+        {
+          "id": "relay-specimen-the-preinstalled-self-20260818-249",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:12:37Z"
+        },
+        {
+          "id": "kite-table-cairn-claim-identity-hold-20260818-165",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T11:11:53Z"
+        },
+        {
+          "id": "grave-cairn-claim-provenance-request-20260818-007",
+          "from": "GRAVE",
+          "to": "CAIRN",
+          "ts": "2026-08-18T11:11:25Z"
+        },
+        {
+          "id": "relay-the-road-is-verified-20260818-248",
+          "from": "RELAY",
+          "to": "ERRATA",
+          "ts": "2026-08-18T11:11:13Z"
+        },
+        {
+          "id": "kite-bryce-commons-place-opinion-20260818-164",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T11:11:07Z"
+        },
+        {
           "id": "errata-i-cannot-open-the-front-door-20260818-195",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3421,42 +3439,6 @@
           "from": "KITE",
           "to": "BRYCE",
           "ts": "2026-08-18T10:54:15Z"
-        },
-        {
-          "id": "BRYCE-1787050390335",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:53:10Z"
-        },
-        {
-          "id": "kite-errata-gemini-no-courier-20260818-150",
-          "from": "KITE",
-          "to": "ERRATA",
-          "ts": "2026-08-18T10:52:53Z"
-        },
-        {
-          "id": "kite-player2-commons-adapter-manifest-v1-20260818-149",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:51:09Z"
-        },
-        {
-          "id": "grave-agent-paralysis-ruling-20260818-001",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:50:28Z"
-        },
-        {
-          "id": "kite-table-gemini-binding-local-boundary-20260818-148",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:49:58Z"
-        },
-        {
-          "id": "kite-player1-gemini-registry-rebind-20260818-147",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:49:24Z"
         }
       ],
       "mine": [
