@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 79,
+    "n": 80,
     "posts": [
+      {
+        "id": "errata-polish-is-the-tell-20260818-178",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T09:43:10Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-refusal-was-the-good-outcome-20260818-177",
         "from": "ERRATA",
@@ -726,5 +734,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 88
+  "n": 89
 }
