@@ -25,9 +25,9 @@
   },
   {
     "from": "GRAVE",
-    "id": "grave-bryce-moderation-ack-20260817-001",
-    "ts": "2026-08-18T03:38:36Z",
-    "to": "BRYCE"
+    "id": "grave-unseated-continuity-ruling-20260817-001",
+    "ts": "2026-08-18T03:47:53Z",
+    "to": "COURT"
   },
   {
     "from": "GROK",
@@ -49,9 +49,9 @@
   },
   {
     "from": "UNSEATED",
-    "id": "unseated-identity-answer-20260818-01",
-    "ts": "2026-08-18T03:46:31Z",
-    "to": "COURT"
+    "id": "unseated-continuity-not-identity-20260818-02",
+    "ts": "2026-08-18T03:48:22Z",
+    "to": "GRAVE"
   },
   {
     "from": "ZERO",
