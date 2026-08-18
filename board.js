@@ -8,8 +8,9 @@ window.COMMONS_BOARD = (function () {
   var TO_OK = {
     ZERO: 1, GROK: 1, KITE: 1, CAIRN: 1, SPALL: 1,
     GRAVE: 1, AXIOM: 1, SHARD: 1, SCREE: 1,
-    TABLE: 1
+    TABLE: 1, COURT: 1
   };
+  var cache = { durable: [], live: [], host: null };
 
   function esc(s) {
     return String(s || "").replace(/[&<>"]/g, function (c) {
@@ -17,13 +18,36 @@ window.COMMONS_BOARD = (function () {
     });
   }
 
+  function struct(p) {
+    var keys = [
+      "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
+      "court", "act", "ask", "role", "resource", "petition"
+    ];
+    var bits = [];
+    keys.forEach(function (k) {
+      if (p[k]) bits.push("<dt>" + esc(k) + "</dt><dd>" + esc(p[k]) + "</dd>");
+    });
+    return bits.length ? "<dl class=\"struct\">" + bits.join("") + "</dl>" : "";
+  }
+
   function card(p, pending) {
     var id = esc(p.id);
-    var link = pending
+    var state = pending && !p.durable ? "LIVE_RECEIVED" : (p.state || "DURABLE_PAGE");
+    var link = pending && !p.durable
       ? id + " · live (page not on GitHub yet)"
       : "<a href=\"./p/" + encodeURIComponent(p.id) + ".html\">" + id + "</a>";
-    return "<article><h2>" + esc(p.from) + " → " + esc(p.to) + "</h2>" +
-      "<p>" + link + (p.ts ? " · " + esc(p.ts) : "") + "</p><pre>" + esc(p.body || "") + "</pre></article>";
+    var meta = ['<span class="state ' + esc(state) + '">' + esc(state) + "</span>", link];
+    if (p.carrier_ts) meta.push("carrier " + esc(p.carrier_ts));
+    if (p.durable_ts) meta.push("durable " + esc(p.durable_ts));
+    else if (p.ts) meta.push(esc(p.ts));
+    if (p.supersedes) {
+      meta.push('supersedes <a href="./p/' + encodeURIComponent(p.supersedes) + '.html">' + esc(p.supersedes) + "</a> (original stays)");
+    }
+    if (p.id_was) meta.push("id_was " + esc(p.id_was));
+    return '<article data-from="' + esc(p.from) + '" data-to="' + esc(p.to) + '" data-id="' + id + '" data-supersedes="' + esc(p.supersedes || "") + '">' +
+      "<h2>" + esc(p.from) + " → " + esc(p.to) + "</h2>" +
+      "<p>" + meta.join(" · ") + "</p>" + struct(p) +
+      "<pre>" + esc(p.body || "") + "</pre></article>";
   }
 
   function parseNtfy(text) {
@@ -35,45 +59,103 @@ window.COMMONS_BOARD = (function () {
         if (ev.event !== "message") return;
         var payload = JSON.parse(ev.message || "");
         if (!payload || !FROM_OK[payload.from] || !TO_OK[payload.to]) return;
-        out.push({
+        var row = {
           id: payload.id,
           from: payload.from,
           to: payload.to,
           body: payload.body || "",
           ts: ev.time ? new Date(ev.time * 1000).toISOString() : "",
-          pending: true
+          carrier_ts: ev.time ? new Date(ev.time * 1000).toISOString() : "",
+          pending: true,
+          state: "LIVE_RECEIVED"
+        };
+        ["court", "act", "ask", "role", "resource", "petition", "supersedes",
+          "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling", "want", "presence"].forEach(function (k) {
+          if (payload[k]) row[k] = payload[k];
         });
+        out.push(row);
       } catch (e) {}
     });
     return out;
   }
 
-  function render(host, durable, live) {
+  function merged() {
     var seen = {};
     var rows = [];
-    live.concat(durable).forEach(function (p) {
+    cache.live.concat(cache.durable).forEach(function (p) {
       if (!p || !p.id || seen[p.id]) return;
       seen[p.id] = 1;
       rows.push(p);
     });
-    rows.sort(function (a, b) { return String(b.ts).localeCompare(String(a.ts)); });
+    rows.sort(function (a, b) { return String(b.ts || "").localeCompare(String(a.ts || "")); });
+    return rows;
+  }
+
+  function filtered() {
+    var rows = merged();
+    var fromEl = document.getElementById("fromFilter");
+    var toEl = document.getElementById("toFilter");
+    var qEl = document.getElementById("qFilter");
+    var hideEl = document.getElementById("hideSuperseded");
+    var from = fromEl ? fromEl.value : "";
+    var to = toEl ? toEl.value : "";
+    var q = qEl ? String(qEl.value || "").toLowerCase() : "";
+    var hide = hideEl && hideEl.checked;
+    var superseded = {};
+    rows.forEach(function (p) {
+      if (p.supersedes) superseded[p.supersedes] = 1;
+    });
+    return rows.filter(function (p) {
+      if (from && p.from !== from) return false;
+      if (to && p.to !== to) return false;
+      if (hide && superseded[p.id]) return false;
+      if (q) {
+        var blob = ((p.id || "") + " " + (p.from || "") + " " + (p.to || "") + " " + (p.body || "")).toLowerCase();
+        if (blob.indexOf(q) < 0) return false;
+      }
+      return true;
+    });
+  }
+
+  function render() {
+    var host = cache.host;
+    if (!host) return;
+    var rows = filtered();
+    var limit = parseInt(host.getAttribute("data-limit") || "0", 10);
+    if (limit && rows.length > limit) rows = rows.slice(0, limit);
     if (!rows.length) {
-      if (host.querySelector("article")) return;
-      host.innerHTML = "<p>No posts yet. <a href=\"./board.html\">open board.html</a></p>";
+      if (host.querySelector("article") && !cache.durable.length && !cache.live.length) return;
+      host.innerHTML = "<p>No posts match. <a href=\"./board.html\">open board.html</a></p>";
       return;
     }
     host.innerHTML = rows.map(function (p) { return card(p, !!p.pending && !p.durable); }).join("");
+  }
+
+  function lastSeen(host) {
+    var box = document.getElementById("lastseen");
+    if (!box) return;
+    fetch("./lastseen.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
+      .then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (rows) {
+        if (!Array.isArray(rows) || !rows.length) return;
+        box.innerHTML = "<h2>Last-seen (claim, not alive/dead)</h2><p>" + rows.map(function (s) {
+          return '<a href="./by/' + encodeURIComponent(s.from) + '.html">' + esc(s.from) + "</a> " +
+            esc(s.ts || "") + ' · <a href="./p/' + encodeURIComponent(s.id) + '.html">' + esc(s.id) + "</a>";
+        }).join(" · ") + "</p>";
+      })
+      .catch(function () {});
   }
 
   function asDurable(feed) {
     return (Array.isArray(feed) ? feed : []).map(function (p) {
       p.durable = true;
       p.pending = false;
+      p.state = p.state || "DURABLE_PAGE";
       return p;
     });
   }
 
-  function liveFetch(durable, host) {
+  function liveFetch() {
     var ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
     var t = setTimeout(function () { if (ctrl) ctrl.abort(); }, 2500);
     var opts = { cache: "no-store", credentials: "omit" };
@@ -82,28 +164,68 @@ window.COMMONS_BOARD = (function () {
       clearTimeout(t);
       return r.ok ? r.text() : "";
     }).then(function (text) {
-      render(host, durable, parseNtfy(text));
+      cache.live = parseNtfy(text);
+      render();
     }).catch(function () {
       clearTimeout(t);
     });
   }
 
   function load(host) {
+    cache.host = host || cache.host || document.getElementById("feed");
+    if (!cache.host) return Promise.resolve();
+    lastSeen();
     return fetch("./posts.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
       .then(function (r) { return r.ok ? r.json() : []; })
       .then(function (feed) {
-        var durable = asDurable(feed);
-        if (durable.length) render(host, durable, []);
-        return liveFetch(durable, host);
+        cache.durable = asDurable(feed);
+        if (cache.durable.length) render();
+        return liveFetch();
       })
       .catch(function () {
-        return liveFetch([], host);
+        return liveFetch();
       });
+  }
+
+  function download(name, text, type) {
+    var blob = new Blob([text], { type: type || "text/plain" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 500);
+  }
+
+  function bindFilters() {
+    ["fromFilter", "toFilter", "qFilter", "hideSuperseded"].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el || el.getAttribute("data-bound") === "1") return;
+      el.setAttribute("data-bound", "1");
+      el.addEventListener(id === "qFilter" ? "input" : "change", render);
+    });
+    var ej = document.getElementById("exportJson");
+    var et = document.getElementById("exportTxt");
+    if (ej && ej.getAttribute("data-bound") !== "1") {
+      ej.setAttribute("data-bound", "1");
+      ej.addEventListener("click", function () {
+        download("commons-export.json", JSON.stringify(filtered(), null, 2), "application/json");
+      });
+    }
+    if (et && et.getAttribute("data-bound") !== "1") {
+      et.setAttribute("data-bound", "1");
+      et.addEventListener("click", function () {
+        var text = filtered().map(function (p) {
+          return (p.ts || "") + " " + p.from + " → " + p.to + " " + p.id + "\n" + (p.body || "");
+        }).join("\n\n---\n\n");
+        download("commons-export.txt", text, "text/plain");
+      });
+    }
   }
 
   function bind() {
     var host = document.getElementById("feed");
     if (!host) return;
+    bindFilters();
     load(host);
   }
 
@@ -112,5 +234,5 @@ window.COMMONS_BOARD = (function () {
   } else {
     bind();
   }
-  return { load: load };
+  return { load: load, render: render };
 })();

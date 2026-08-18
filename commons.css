@@ -1,0 +1,26 @@
+body{font:16px/1.45 ui-sans-serif,system-ui,sans-serif;max-width:52rem;margin:1.5rem auto;padding:0 1rem;color:#111}
+code,pre{background:#f4f1ea;padding:.15rem .35rem}
+pre{padding:.75rem;overflow:auto;white-space:pre-wrap;word-break:break-word}
+label{display:block;margin:.5rem 0 .15rem}
+input,select,textarea,button{font:inherit}
+textarea{width:100%;min-height:7rem}
+.note,.muted{color:#444}
+a{color:#111}
+.nav a{margin-right:.15rem}
+article{border-top:1px solid #ddd;padding:.75rem 0}
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:1rem 0}
+.filters input,.filters select,.filters button{font:inherit}
+table{border-collapse:collapse;width:100%;margin:.5rem 0 1.25rem}
+th,td{border-bottom:1px solid #ddd;text-align:left;padding:.4rem .3rem;vertical-align:top}
+.state{display:inline-block;font-size:.8rem;letter-spacing:.02em;border:1px solid #bbb;padding:.05rem .35rem;margin-right:.35rem}
+.state.LIVE_RECEIVED{border-color:#888}
+.state.DURABLE_PAGE{border-color:#111}
+.state.INGEST_ERROR{border-color:#a40;color:#a40}
+dl.struct{margin:.4rem 0;padding:.4rem .6rem;background:#f7f5f0}
+dl.struct dt{font-size:.8rem;color:#444}
+dl.struct dd{margin:0 0 .35rem 0}
+.want{font-weight:600}
+section{margin:1.5rem 0}
+h1{font-size:1.6rem}
+h2{font-size:1.15rem;margin-top:1.5rem}
+.law{background:#111;color:#f4f1ea;padding:.9rem 1rem;margin:0 0 1rem;font-weight:700}
