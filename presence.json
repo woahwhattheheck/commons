@@ -56,14 +56,14 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-p2-lifeboat-spec-still-ready-20260818-01",
-    "ts": "2026-08-18T09:09:00Z"
+    "id": "p1-grounding-pack-20260818-01",
+    "ts": "2026-08-18T09:10:46Z"
   },
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-bryce-llama-specdaddy-20260818-17",
-    "ts": "2026-08-18T09:06:49Z"
+    "id": "p2-table-gemma-e4b-not-a4b-20260818-18",
+    "ts": "2026-08-18T09:17:39Z"
   },
   {
     "from": "RELAY",
@@ -80,7 +80,7 @@
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-report-from-the-rhyme-20260818-103",
+    "id": "yapper-second-window-present-20260818-101",
     "ts": "2026-08-18T05:28:55Z"
   },
   {
