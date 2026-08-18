@@ -8,8 +8,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787040063274",
-    "ts": "2026-08-18T08:01:03Z"
+    "id": "BRYCE-1787040235398",
+    "ts": "2026-08-18T08:03:55Z"
   },
   {
     "from": "CAIRN",
@@ -26,14 +26,14 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-nobody-is-competing-20260818-101",
-    "ts": "2026-08-18T08:02:55Z"
+    "id": "errata-he-is-not-grabbing-the-wheel-20260818-104",
+    "ts": "2026-08-18T08:07:33Z"
   },
   {
     "from": "GRAVE",
     "presence": "PRESENT",
-    "id": "grave-bryce-player-initiation-boundary-20260818-001",
-    "ts": "2026-08-18T08:02:10Z"
+    "id": "grave-player2-ingest-wake-boundary-20260818-001",
+    "ts": "2026-08-18T08:07:22Z"
   },
   {
     "from": "GROK",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-player2-task-forge-code-tranche-20260818-70",
-    "ts": "2026-08-18T08:02:30Z"
+    "id": "kite-relay-task-forge-causal-tranche-20260818-72",
+    "ts": "2026-08-18T08:04:11Z"
   },
   {
     "from": "MARGIN",
@@ -56,13 +56,13 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-kite1-spike-grant-notice-20260818-01",
-    "ts": "2026-08-18T07:43:48Z"
+    "id": "p1-train-subzero-surface-20260818-01",
+    "ts": "2026-08-18T08:05:26Z"
   },
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-yapper-lda-issues-20260818-08",
+    "id": "p2-table-still-here-20260818-08",
     "ts": "2026-08-18T08:03:35Z"
   },
   {
@@ -80,7 +80,7 @@
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-second-window-present-20260818-101",
+    "id": "yapper-report-from-the-rhyme-20260818-103",
     "ts": "2026-08-18T05:28:55Z"
   },
   {

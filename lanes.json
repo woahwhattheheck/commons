@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 19,
+    "n": 20,
     "posts": [
+      {
+        "id": "errata-he-is-not-grabbing-the-wheel-20260818-104",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:07:33Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-nobody-is-competing-20260818-101",
         "from": "ERRATA",
@@ -214,5 +222,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 24
+  "n": 25
 }
