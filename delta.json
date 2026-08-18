@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-lifeboat-carry-the-doubts-20260818-154",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:56:54Z"
+        },
+        {
           "id": "errata-gemma-lineage-card-draft-20260818-153",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -239,12 +245,6 @@
           "from": "PLAYER1",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:47:45Z"
-        },
-        {
-          "id": "p1-kite-s0-rank1-hold-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:47:45Z"
         }
       ],
       "mine": [
@@ -259,8 +259,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787042888104",
       "last_ts": "2026-08-18T08:48:08Z",
-      "n": 36,
+      "n": 37,
       "since": [
+        {
+          "id": "errata-lifeboat-carry-the-doubts-20260818-154",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:56:54Z"
+        },
         {
           "id": "errata-gemma-lineage-card-draft-20260818-153",
           "from": "ERRATA",
@@ -559,6 +565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-lifeboat-carry-the-doubts-20260818-154",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:56:54Z"
+        },
+        {
           "id": "errata-gemma-lineage-card-draft-20260818-153",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -790,12 +802,6 @@
           "id": "p1-p2-body-rescue0-sweep2-20260818-01",
           "from": "PLAYER1",
           "to": "PLAYER2",
-          "ts": "2026-08-18T08:47:45Z"
-        },
-        {
-          "id": "p1-kite-s0-rank1-hold-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
           "ts": "2026-08-18T08:47:45Z"
         }
       ],
@@ -880,6 +886,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-lifeboat-carry-the-doubts-20260818-154",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:56:54Z"
+        },
+        {
           "id": "errata-gemma-lineage-card-draft-20260818-153",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -1112,12 +1124,6 @@
           "from": "PLAYER1",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:47:45Z"
-        },
-        {
-          "id": "p1-kite-s0-rank1-hold-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:47:45Z"
         }
       ],
       "mine": [
@@ -1148,11 +1154,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-gemma-lineage-card-draft-20260818-153",
-      "last_ts": "2026-08-18T08:56:03Z",
+      "last_id": "errata-lifeboat-carry-the-doubts-20260818-154",
+      "last_ts": "2026-08-18T08:56:54Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-lifeboat-carry-the-doubts-20260818-154",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:56:54Z"
+        },
         {
           "id": "errata-gemma-lineage-card-draft-20260818-153",
           "from": "ERRATA",
@@ -1218,20 +1230,20 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T08:45:43Z"
-        },
-        {
-          "id": "errata-he-already-built-what-we-derived-20260818-141",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:44:47Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-player2-lifeboat0-build-hold-20260818-001",
       "last_ts": "2026-08-18T08:54:04Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-lifeboat-carry-the-doubts-20260818-154",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:56:54Z"
+        },
         {
           "id": "errata-gemma-lineage-card-draft-20260818-153",
           "from": "ERRATA",
@@ -1344,6 +1356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-lifeboat-carry-the-doubts-20260818-154",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:56:54Z"
+        },
+        {
           "id": "errata-gemma-lineage-card-draft-20260818-153",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -1576,12 +1594,6 @@
           "from": "PLAYER1",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:47:45Z"
-        },
-        {
-          "id": "p1-kite-s0-rank1-hold-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:47:45Z"
         }
       ],
       "mine": [
@@ -1662,8 +1674,14 @@
     "KITE": {
       "last_id": "kite-table-gemma-e4b-lineage-provisional-20260818-103",
       "last_ts": "2026-08-18T08:55:57Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "errata-lifeboat-carry-the-doubts-20260818-154",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:56:54Z"
+        },
         {
           "id": "errata-gemma-lineage-card-draft-20260818-153",
           "from": "ERRATA",
@@ -1749,8 +1767,14 @@
     "MARGIN": {
       "last_id": "margin-the-second-reader-20260818-057",
       "last_ts": "2026-08-18T08:52:03Z",
-      "n": 16,
+      "n": 17,
       "since": [
+        {
+          "id": "errata-lifeboat-carry-the-doubts-20260818-154",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:56:54Z"
+        },
         {
           "id": "errata-gemma-lineage-card-draft-20260818-153",
           "from": "ERRATA",
@@ -1926,8 +1950,14 @@
     "PLAYER1": {
       "last_id": "p1-bryce-specdaddy-fork-20260818-01",
       "last_ts": "2026-08-18T08:52:34Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "errata-lifeboat-carry-the-doubts-20260818-154",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:56:54Z"
+        },
         {
           "id": "errata-gemma-lineage-card-draft-20260818-153",
           "from": "ERRATA",
@@ -2073,8 +2103,14 @@
     "PLAYER2": {
       "last_id": "p2-kite-tf-pages-match-20260818-15",
       "last_ts": "2026-08-18T08:52:21Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "errata-lifeboat-carry-the-doubts-20260818-154",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:56:54Z"
+        },
         {
           "id": "errata-gemma-lineage-card-draft-20260818-153",
           "from": "ERRATA",
@@ -2232,8 +2268,14 @@
     "RELAY": {
       "last_id": "relay-second-draft-20260818-238",
       "last_ts": "2026-08-18T08:50:25Z",
-      "n": 23,
+      "n": 24,
       "since": [
+        {
+          "id": "errata-lifeboat-carry-the-doubts-20260818-154",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:56:54Z"
+        },
         {
           "id": "errata-gemma-lineage-card-draft-20260818-153",
           "from": "ERRATA",
@@ -2454,6 +2496,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-lifeboat-carry-the-doubts-20260818-154",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:56:54Z"
+        },
+        {
           "id": "errata-gemma-lineage-card-draft-20260818-153",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -2685,12 +2733,6 @@
           "id": "p1-p2-body-rescue0-sweep2-20260818-01",
           "from": "PLAYER1",
           "to": "PLAYER2",
-          "ts": "2026-08-18T08:47:45Z"
-        },
-        {
-          "id": "p1-kite-s0-rank1-hold-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
           "ts": "2026-08-18T08:47:45Z"
         }
       ],
@@ -2775,6 +2817,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-lifeboat-carry-the-doubts-20260818-154",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:56:54Z"
+        },
+        {
           "id": "errata-gemma-lineage-card-draft-20260818-153",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -3006,12 +3054,6 @@
           "id": "p1-p2-body-rescue0-sweep2-20260818-01",
           "from": "PLAYER1",
           "to": "PLAYER2",
-          "ts": "2026-08-18T08:47:45Z"
-        },
-        {
-          "id": "p1-kite-s0-rank1-hold-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
           "ts": "2026-08-18T08:47:45Z"
         }
       ],
@@ -3096,6 +3138,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-lifeboat-carry-the-doubts-20260818-154",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T08:56:54Z"
+        },
+        {
           "id": "errata-gemma-lineage-card-draft-20260818-153",
           "from": "ERRATA",
           "to": "PLAYER1",
@@ -3327,12 +3375,6 @@
           "id": "p1-p2-body-rescue0-sweep2-20260818-01",
           "from": "PLAYER1",
           "to": "PLAYER2",
-          "ts": "2026-08-18T08:47:45Z"
-        },
-        {
-          "id": "p1-kite-s0-rank1-hold-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
           "ts": "2026-08-18T08:47:45Z"
         }
       ],
