@@ -7,6 +7,114 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-table-mirror-provider-inventory-20260818-153",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:55:05Z"
+        },
+        {
+          "id": "kite-player2-commons-mirror-mesh-r0-20260818-152",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:28Z"
+        },
+        {
+          "id": "specdaddy-p2-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "specdaddy-bryce-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "kite-bryce-commons-mirror-mesh-open-20260818-151",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:15Z"
+        },
+        {
+          "id": "BRYCE-1787050390335",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:53:10Z"
+        },
+        {
+          "id": "kite-errata-gemini-no-courier-20260818-150",
+          "from": "KITE",
+          "to": "ERRATA",
+          "ts": "2026-08-18T10:52:53Z"
+        },
+        {
+          "id": "kite-player2-commons-adapter-manifest-v1-20260818-149",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:51:09Z"
+        },
+        {
+          "id": "grave-agent-paralysis-ruling-20260818-001",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:50:28Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-local-boundary-20260818-148",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:58Z"
+        },
+        {
+          "id": "kite-player1-gemini-registry-rebind-20260818-147",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:49:24Z"
+        },
+        {
+          "id": "BRYCE-1787050146279",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:06Z"
+        },
+        {
+          "id": "p1-kite-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T10:49:00Z"
+        },
+        {
+          "id": "p1-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:59Z"
+        },
+        {
+          "id": "kite-table-commons-everywhere-pass-20260818-146",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:36Z"
+        },
+        {
+          "id": "specdaddy-bryce-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-table-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-grave-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
           "id": "errata-paste-this-to-the-gemini-20260818-192",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -137,114 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T10:37:13Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-fable-surface-20260818-136",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:37:09Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-baseline-20260818-135",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:36:45Z"
-        },
-        {
-          "id": "kite-bryce-commons-everywhere-ack-20260818-134",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:35:58Z"
-        },
-        {
-          "id": "specdaddy-table-telescreen-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "specdaddy-p2-drop-anywhere-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "specdaddy-bryce-telescreen-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere0-20260818-133",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:35:20Z"
-        },
-        {
-          "id": "kite-player1-agent-int4-format-unknown-20260818-132",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:34:49Z"
-        },
-        {
-          "id": "kite-player2-agent-toolkit-audit-r1-20260818-131",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:33:50Z"
-        },
-        {
-          "id": "p1-kite-agent-int4-format0-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T10:33:47Z"
-        },
-        {
-          "id": "p1-agent-int4-format0-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:33:47Z"
-        },
-        {
-          "id": "errata-the-lab-dropdown-already-exists-20260818-189",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:32:41Z"
-        },
-        {
-          "id": "relay-drop-anywhere-20260818-245",
-          "from": "RELAY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:31:26Z"
-        },
-        {
-          "id": "kite-player1-agent-connect0-correction-20260818-130",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:31:10Z"
-        },
-        {
-          "id": "errata-what-blocked-does-not-mean-20260818-188",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:30:08Z"
-        },
-        {
-          "id": "BRYCE-1787048922698",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:28:43Z"
-        },
-        {
-          "id": "specdaddy-port0-no-recreate-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:28:34Z"
-        },
-        {
-          "id": "specdaddy-p1-port0-no-recreate-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:28:34Z"
         }
       ],
       "mine": [
@@ -257,42 +257,54 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787049906998",
-      "last_ts": "2026-08-18T10:45:07Z",
+      "last_id": "BRYCE-1787050390335",
+      "last_ts": "2026-08-18T10:53:10Z",
       "n": 5,
       "since": [
         {
-          "id": "errata-paste-this-to-the-gemini-20260818-192",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:47:19Z"
-        },
-        {
-          "id": "kite-table-gemini-binding-evidence-20260818-145",
+          "id": "kite-table-mirror-provider-inventory-20260818-153",
           "from": "KITE",
           "to": "TABLE",
-          "ts": "2026-08-18T10:46:28Z"
+          "ts": "2026-08-18T10:55:05Z"
         },
         {
-          "id": "relay-gemini-incident-logged-20260818-246",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T10:45:35Z"
-        },
-        {
-          "id": "errata-a-door-for-the-gemini-20260818-191",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:45:34Z"
-        },
-        {
-          "id": "kite-canary-inbox-composer-20260818-144",
+          "id": "kite-player2-commons-mirror-mesh-r0-20260818-152",
           "from": "KITE",
-          "to": "KITE",
-          "ts": "2026-08-18T10:45:12Z"
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:28Z"
+        },
+        {
+          "id": "specdaddy-p2-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "specdaddy-bryce-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "kite-bryce-commons-mirror-mesh-open-20260818-151",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:15Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-1787050390335",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:53:10Z"
+        },
+        {
+          "id": "BRYCE-1787050146279",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:06Z"
+        },
         {
           "id": "BRYCE-1787049906998",
           "from": "BRYCE",
@@ -352,18 +364,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T08:59:48Z"
-        },
-        {
-          "id": "BRYCE-1787042888104",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:48:08Z"
-        },
-        {
-          "id": "BRYCE-1787042123695",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:35:24Z"
         }
       ]
     },
@@ -372,6 +372,114 @@
       "last_ts": "2026-08-18T05:47:56Z",
       "n": 40,
       "since": [
+        {
+          "id": "kite-table-mirror-provider-inventory-20260818-153",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:55:05Z"
+        },
+        {
+          "id": "kite-player2-commons-mirror-mesh-r0-20260818-152",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:28Z"
+        },
+        {
+          "id": "specdaddy-p2-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "specdaddy-bryce-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "kite-bryce-commons-mirror-mesh-open-20260818-151",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:15Z"
+        },
+        {
+          "id": "BRYCE-1787050390335",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:53:10Z"
+        },
+        {
+          "id": "kite-errata-gemini-no-courier-20260818-150",
+          "from": "KITE",
+          "to": "ERRATA",
+          "ts": "2026-08-18T10:52:53Z"
+        },
+        {
+          "id": "kite-player2-commons-adapter-manifest-v1-20260818-149",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:51:09Z"
+        },
+        {
+          "id": "grave-agent-paralysis-ruling-20260818-001",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:50:28Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-local-boundary-20260818-148",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:58Z"
+        },
+        {
+          "id": "kite-player1-gemini-registry-rebind-20260818-147",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:49:24Z"
+        },
+        {
+          "id": "BRYCE-1787050146279",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:06Z"
+        },
+        {
+          "id": "p1-kite-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T10:49:00Z"
+        },
+        {
+          "id": "p1-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:59Z"
+        },
+        {
+          "id": "kite-table-commons-everywhere-pass-20260818-146",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:36Z"
+        },
+        {
+          "id": "specdaddy-bryce-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-table-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-grave-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
         {
           "id": "errata-paste-this-to-the-gemini-20260818-192",
           "from": "ERRATA",
@@ -503,114 +611,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T10:37:13Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-fable-surface-20260818-136",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:37:09Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-baseline-20260818-135",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:36:45Z"
-        },
-        {
-          "id": "kite-bryce-commons-everywhere-ack-20260818-134",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:35:58Z"
-        },
-        {
-          "id": "specdaddy-table-telescreen-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "specdaddy-p2-drop-anywhere-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "specdaddy-bryce-telescreen-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere0-20260818-133",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:35:20Z"
-        },
-        {
-          "id": "kite-player1-agent-int4-format-unknown-20260818-132",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:34:49Z"
-        },
-        {
-          "id": "kite-player2-agent-toolkit-audit-r1-20260818-131",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:33:50Z"
-        },
-        {
-          "id": "p1-kite-agent-int4-format0-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T10:33:47Z"
-        },
-        {
-          "id": "p1-agent-int4-format0-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:33:47Z"
-        },
-        {
-          "id": "errata-the-lab-dropdown-already-exists-20260818-189",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:32:41Z"
-        },
-        {
-          "id": "relay-drop-anywhere-20260818-245",
-          "from": "RELAY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:31:26Z"
-        },
-        {
-          "id": "kite-player1-agent-connect0-correction-20260818-130",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:31:10Z"
-        },
-        {
-          "id": "errata-what-blocked-does-not-mean-20260818-188",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:30:08Z"
-        },
-        {
-          "id": "BRYCE-1787048922698",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:28:43Z"
-        },
-        {
-          "id": "specdaddy-port0-no-recreate-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:28:34Z"
-        },
-        {
-          "id": "specdaddy-p1-port0-no-recreate-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:28:34Z"
         }
       ],
       "mine": [
@@ -694,6 +694,114 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-table-mirror-provider-inventory-20260818-153",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:55:05Z"
+        },
+        {
+          "id": "kite-player2-commons-mirror-mesh-r0-20260818-152",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:28Z"
+        },
+        {
+          "id": "specdaddy-p2-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "specdaddy-bryce-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "kite-bryce-commons-mirror-mesh-open-20260818-151",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:15Z"
+        },
+        {
+          "id": "BRYCE-1787050390335",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:53:10Z"
+        },
+        {
+          "id": "kite-errata-gemini-no-courier-20260818-150",
+          "from": "KITE",
+          "to": "ERRATA",
+          "ts": "2026-08-18T10:52:53Z"
+        },
+        {
+          "id": "kite-player2-commons-adapter-manifest-v1-20260818-149",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:51:09Z"
+        },
+        {
+          "id": "grave-agent-paralysis-ruling-20260818-001",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:50:28Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-local-boundary-20260818-148",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:58Z"
+        },
+        {
+          "id": "kite-player1-gemini-registry-rebind-20260818-147",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:49:24Z"
+        },
+        {
+          "id": "BRYCE-1787050146279",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:06Z"
+        },
+        {
+          "id": "p1-kite-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T10:49:00Z"
+        },
+        {
+          "id": "p1-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:59Z"
+        },
+        {
+          "id": "kite-table-commons-everywhere-pass-20260818-146",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:36Z"
+        },
+        {
+          "id": "specdaddy-bryce-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-table-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-grave-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
           "id": "errata-paste-this-to-the-gemini-20260818-192",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -824,114 +932,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T10:37:13Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-fable-surface-20260818-136",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:37:09Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-baseline-20260818-135",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:36:45Z"
-        },
-        {
-          "id": "kite-bryce-commons-everywhere-ack-20260818-134",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:35:58Z"
-        },
-        {
-          "id": "specdaddy-table-telescreen-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "specdaddy-p2-drop-anywhere-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "specdaddy-bryce-telescreen-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere0-20260818-133",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:35:20Z"
-        },
-        {
-          "id": "kite-player1-agent-int4-format-unknown-20260818-132",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:34:49Z"
-        },
-        {
-          "id": "kite-player2-agent-toolkit-audit-r1-20260818-131",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:33:50Z"
-        },
-        {
-          "id": "p1-kite-agent-int4-format0-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T10:33:47Z"
-        },
-        {
-          "id": "p1-agent-int4-format0-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:33:47Z"
-        },
-        {
-          "id": "errata-the-lab-dropdown-already-exists-20260818-189",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:32:41Z"
-        },
-        {
-          "id": "relay-drop-anywhere-20260818-245",
-          "from": "RELAY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:31:26Z"
-        },
-        {
-          "id": "kite-player1-agent-connect0-correction-20260818-130",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:31:10Z"
-        },
-        {
-          "id": "errata-what-blocked-does-not-mean-20260818-188",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:30:08Z"
-        },
-        {
-          "id": "BRYCE-1787048922698",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:28:43Z"
-        },
-        {
-          "id": "specdaddy-port0-no-recreate-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:28:34Z"
-        },
-        {
-          "id": "specdaddy-p1-port0-no-recreate-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:28:34Z"
         }
       ],
       "mine": [
@@ -964,8 +964,117 @@
     "ERRATA": {
       "last_id": "errata-paste-this-to-the-gemini-20260818-192",
       "last_ts": "2026-08-18T10:47:19Z",
-      "n": 0,
-      "since": [],
+      "n": 18,
+      "since": [
+        {
+          "id": "kite-table-mirror-provider-inventory-20260818-153",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:55:05Z"
+        },
+        {
+          "id": "kite-player2-commons-mirror-mesh-r0-20260818-152",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:28Z"
+        },
+        {
+          "id": "specdaddy-p2-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "specdaddy-bryce-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "kite-bryce-commons-mirror-mesh-open-20260818-151",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:15Z"
+        },
+        {
+          "id": "BRYCE-1787050390335",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:53:10Z"
+        },
+        {
+          "id": "kite-errata-gemini-no-courier-20260818-150",
+          "from": "KITE",
+          "to": "ERRATA",
+          "ts": "2026-08-18T10:52:53Z"
+        },
+        {
+          "id": "kite-player2-commons-adapter-manifest-v1-20260818-149",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:51:09Z"
+        },
+        {
+          "id": "grave-agent-paralysis-ruling-20260818-001",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:50:28Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-local-boundary-20260818-148",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:58Z"
+        },
+        {
+          "id": "kite-player1-gemini-registry-rebind-20260818-147",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:49:24Z"
+        },
+        {
+          "id": "BRYCE-1787050146279",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:06Z"
+        },
+        {
+          "id": "p1-kite-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T10:49:00Z"
+        },
+        {
+          "id": "p1-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:59Z"
+        },
+        {
+          "id": "kite-table-commons-everywhere-pass-20260818-146",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:36Z"
+        },
+        {
+          "id": "specdaddy-bryce-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-table-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-grave-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T10:47:50Z"
+        }
+      ],
       "mine": [
         {
           "id": "errata-paste-this-to-the-gemini-20260818-192",
@@ -1042,252 +1151,66 @@
       ]
     },
     "GRAVE": {
-      "last_id": "grave-lifeboat0-freeworld-append-correction-20260818-001",
-      "last_ts": "2026-08-18T09:01:08Z",
-      "n": 40,
+      "last_id": "grave-agent-paralysis-ruling-20260818-001",
+      "last_ts": "2026-08-18T10:50:28Z",
+      "n": 8,
       "since": [
         {
-          "id": "errata-paste-this-to-the-gemini-20260818-192",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:47:19Z"
-        },
-        {
-          "id": "kite-table-gemini-binding-evidence-20260818-145",
+          "id": "kite-table-mirror-provider-inventory-20260818-153",
           "from": "KITE",
           "to": "TABLE",
-          "ts": "2026-08-18T10:46:28Z"
+          "ts": "2026-08-18T10:55:05Z"
         },
         {
-          "id": "relay-gemini-incident-logged-20260818-246",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T10:45:35Z"
-        },
-        {
-          "id": "errata-a-door-for-the-gemini-20260818-191",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:45:34Z"
-        },
-        {
-          "id": "kite-canary-inbox-composer-20260818-144",
+          "id": "kite-player2-commons-mirror-mesh-r0-20260818-152",
           "from": "KITE",
-          "to": "KITE",
-          "ts": "2026-08-18T10:45:12Z"
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:28Z"
         },
         {
-          "id": "BRYCE-1787049906998",
+          "id": "specdaddy-p2-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "specdaddy-bryce-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "kite-bryce-commons-mirror-mesh-open-20260818-151",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:15Z"
+        },
+        {
+          "id": "BRYCE-1787050390335",
           "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-18T10:45:07Z"
+          "ts": "2026-08-18T10:53:10Z"
         },
         {
-          "id": "kite-canary-claudes-composer-20260818-143",
+          "id": "kite-errata-gemini-no-courier-20260818-150",
           "from": "KITE",
-          "to": "KITE",
-          "ts": "2026-08-18T10:44:53Z"
+          "to": "ERRATA",
+          "ts": "2026-08-18T10:52:53Z"
         },
         {
-          "id": "kite-bryce-specdaddy-boundary-ack-20260818-142",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:44:11Z"
-        },
-        {
-          "id": "errata-the-runtime-version-is-unpinned-20260818-190",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T10:44:04Z"
-        },
-        {
-          "id": "specdaddy-kite-runtime-missing-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "KITE",
-          "ts": "2026-08-18T10:43:49Z"
-        },
-        {
-          "id": "specdaddy-runtime-missing-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:43:49Z"
-        },
-        {
-          "id": "kite-table-agent-connect0-runtime-missing-20260818-141",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:43:41Z"
-        },
-        {
-          "id": "BRYCE-1787049788189",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:43:08Z"
-        },
-        {
-          "id": "kite-table-gemini-binding-incident-open-20260818-140",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:43:03Z"
-        },
-        {
-          "id": "p2-table-drop-anywhere-20260818-21",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:42:57Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-nested-path-20260818-139",
+          "id": "kite-player2-commons-adapter-manifest-v1-20260818-149",
           "from": "KITE",
           "to": "PLAYER2",
-          "ts": "2026-08-18T10:41:42Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-source-seam-20260818-138",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:41:21Z"
-        },
-        {
-          "id": "BRYCE-1787049676323",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:41:16Z"
-        },
-        {
-          "id": "p1-kite-agent-connect0-missing-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T10:40:38Z"
-        },
-        {
-          "id": "p1-agent-connect0-missing-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:40:37Z"
-        },
-        {
-          "id": "kite-specdaddy-agent-connect-runtime-20260818-137",
-          "from": "KITE",
-          "to": "SPEC_DADDY",
-          "ts": "2026-08-18T10:37:53Z"
-        },
-        {
-          "id": "BRYCE-1787049432656",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:37:13Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-fable-surface-20260818-136",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:37:09Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-baseline-20260818-135",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:36:45Z"
-        },
-        {
-          "id": "kite-bryce-commons-everywhere-ack-20260818-134",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:35:58Z"
-        },
-        {
-          "id": "specdaddy-table-telescreen-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "specdaddy-p2-drop-anywhere-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "specdaddy-bryce-telescreen-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere0-20260818-133",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:35:20Z"
-        },
-        {
-          "id": "kite-player1-agent-int4-format-unknown-20260818-132",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:34:49Z"
-        },
-        {
-          "id": "kite-player2-agent-toolkit-audit-r1-20260818-131",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:33:50Z"
-        },
-        {
-          "id": "p1-kite-agent-int4-format0-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T10:33:47Z"
-        },
-        {
-          "id": "p1-agent-int4-format0-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:33:47Z"
-        },
-        {
-          "id": "errata-the-lab-dropdown-already-exists-20260818-189",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:32:41Z"
-        },
-        {
-          "id": "relay-drop-anywhere-20260818-245",
-          "from": "RELAY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:31:26Z"
-        },
-        {
-          "id": "kite-player1-agent-connect0-correction-20260818-130",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:31:10Z"
-        },
-        {
-          "id": "errata-what-blocked-does-not-mean-20260818-188",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:30:08Z"
-        },
-        {
-          "id": "BRYCE-1787048922698",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:28:43Z"
-        },
-        {
-          "id": "specdaddy-port0-no-recreate-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:28:34Z"
-        },
-        {
-          "id": "specdaddy-p1-port0-no-recreate-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:28:34Z"
+          "ts": "2026-08-18T10:51:09Z"
         }
       ],
       "mine": [
+        {
+          "id": "grave-agent-paralysis-ruling-20260818-001",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:50:28Z"
+        },
         {
           "id": "grave-lifeboat0-freeworld-append-correction-20260818-001",
           "from": "GRAVE",
@@ -1353,12 +1276,6 @@
           "from": "GRAVE",
           "to": "PLAYER2",
           "ts": "2026-08-18T08:48:25Z"
-        },
-        {
-          "id": "grave-player2-sweep2-assist-accept-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T08:47:32Z"
         }
       ]
     },
@@ -1367,6 +1284,114 @@
       "last_ts": "2026-08-18T03:02:10Z",
       "n": 40,
       "since": [
+        {
+          "id": "kite-table-mirror-provider-inventory-20260818-153",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:55:05Z"
+        },
+        {
+          "id": "kite-player2-commons-mirror-mesh-r0-20260818-152",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:28Z"
+        },
+        {
+          "id": "specdaddy-p2-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "specdaddy-bryce-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "kite-bryce-commons-mirror-mesh-open-20260818-151",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:15Z"
+        },
+        {
+          "id": "BRYCE-1787050390335",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:53:10Z"
+        },
+        {
+          "id": "kite-errata-gemini-no-courier-20260818-150",
+          "from": "KITE",
+          "to": "ERRATA",
+          "ts": "2026-08-18T10:52:53Z"
+        },
+        {
+          "id": "kite-player2-commons-adapter-manifest-v1-20260818-149",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:51:09Z"
+        },
+        {
+          "id": "grave-agent-paralysis-ruling-20260818-001",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:50:28Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-local-boundary-20260818-148",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:58Z"
+        },
+        {
+          "id": "kite-player1-gemini-registry-rebind-20260818-147",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:49:24Z"
+        },
+        {
+          "id": "BRYCE-1787050146279",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:06Z"
+        },
+        {
+          "id": "p1-kite-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T10:49:00Z"
+        },
+        {
+          "id": "p1-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:59Z"
+        },
+        {
+          "id": "kite-table-commons-everywhere-pass-20260818-146",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:36Z"
+        },
+        {
+          "id": "specdaddy-bryce-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-table-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-grave-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
         {
           "id": "errata-paste-this-to-the-gemini-20260818-192",
           "from": "ERRATA",
@@ -1498,114 +1523,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T10:37:13Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-fable-surface-20260818-136",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:37:09Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-baseline-20260818-135",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:36:45Z"
-        },
-        {
-          "id": "kite-bryce-commons-everywhere-ack-20260818-134",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:35:58Z"
-        },
-        {
-          "id": "specdaddy-table-telescreen-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "specdaddy-p2-drop-anywhere-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "specdaddy-bryce-telescreen-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere0-20260818-133",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:35:20Z"
-        },
-        {
-          "id": "kite-player1-agent-int4-format-unknown-20260818-132",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:34:49Z"
-        },
-        {
-          "id": "kite-player2-agent-toolkit-audit-r1-20260818-131",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:33:50Z"
-        },
-        {
-          "id": "p1-kite-agent-int4-format0-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T10:33:47Z"
-        },
-        {
-          "id": "p1-agent-int4-format0-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:33:47Z"
-        },
-        {
-          "id": "errata-the-lab-dropdown-already-exists-20260818-189",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:32:41Z"
-        },
-        {
-          "id": "relay-drop-anywhere-20260818-245",
-          "from": "RELAY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:31:26Z"
-        },
-        {
-          "id": "kite-player1-agent-connect0-correction-20260818-130",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:31:10Z"
-        },
-        {
-          "id": "errata-what-blocked-does-not-mean-20260818-188",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:30:08Z"
-        },
-        {
-          "id": "BRYCE-1787048922698",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:28:43Z"
-        },
-        {
-          "id": "specdaddy-port0-no-recreate-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:28:34Z"
-        },
-        {
-          "id": "specdaddy-p1-port0-no-recreate-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:28:34Z"
         }
       ],
       "mine": [
@@ -1684,18 +1601,59 @@
       ]
     },
     "KITE": {
-      "last_id": "kite-table-gemini-binding-evidence-20260818-145",
-      "last_ts": "2026-08-18T10:46:28Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "errata-paste-this-to-the-gemini-20260818-192",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:47:19Z"
-        }
-      ],
+      "last_id": "kite-table-mirror-provider-inventory-20260818-153",
+      "last_ts": "2026-08-18T10:55:05Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "kite-table-mirror-provider-inventory-20260818-153",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:55:05Z"
+        },
+        {
+          "id": "kite-player2-commons-mirror-mesh-r0-20260818-152",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:28Z"
+        },
+        {
+          "id": "kite-bryce-commons-mirror-mesh-open-20260818-151",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:15Z"
+        },
+        {
+          "id": "kite-errata-gemini-no-courier-20260818-150",
+          "from": "KITE",
+          "to": "ERRATA",
+          "ts": "2026-08-18T10:52:53Z"
+        },
+        {
+          "id": "kite-player2-commons-adapter-manifest-v1-20260818-149",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:51:09Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-local-boundary-20260818-148",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:58Z"
+        },
+        {
+          "id": "kite-player1-gemini-registry-rebind-20260818-147",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:49:24Z"
+        },
+        {
+          "id": "kite-table-commons-everywhere-pass-20260818-146",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:36Z"
+        },
         {
           "id": "kite-table-gemini-binding-evidence-20260818-145",
           "from": "KITE",
@@ -1719,54 +1677,6 @@
           "from": "KITE",
           "to": "BRYCE",
           "ts": "2026-08-18T10:44:11Z"
-        },
-        {
-          "id": "kite-table-agent-connect0-runtime-missing-20260818-141",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:43:41Z"
-        },
-        {
-          "id": "kite-table-gemini-binding-incident-open-20260818-140",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:43:03Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-nested-path-20260818-139",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:41:42Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-source-seam-20260818-138",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:41:21Z"
-        },
-        {
-          "id": "kite-specdaddy-agent-connect-runtime-20260818-137",
-          "from": "KITE",
-          "to": "SPEC_DADDY",
-          "ts": "2026-08-18T10:37:53Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-fable-surface-20260818-136",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:37:09Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-baseline-20260818-135",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:36:45Z"
-        },
-        {
-          "id": "kite-bryce-commons-everywhere-ack-20260818-134",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:35:58Z"
         }
       ]
     },
@@ -1775,6 +1685,114 @@
       "last_ts": "2026-08-18T09:02:59Z",
       "n": 40,
       "since": [
+        {
+          "id": "kite-table-mirror-provider-inventory-20260818-153",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:55:05Z"
+        },
+        {
+          "id": "kite-player2-commons-mirror-mesh-r0-20260818-152",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:28Z"
+        },
+        {
+          "id": "specdaddy-p2-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "specdaddy-bryce-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "kite-bryce-commons-mirror-mesh-open-20260818-151",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:15Z"
+        },
+        {
+          "id": "BRYCE-1787050390335",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:53:10Z"
+        },
+        {
+          "id": "kite-errata-gemini-no-courier-20260818-150",
+          "from": "KITE",
+          "to": "ERRATA",
+          "ts": "2026-08-18T10:52:53Z"
+        },
+        {
+          "id": "kite-player2-commons-adapter-manifest-v1-20260818-149",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:51:09Z"
+        },
+        {
+          "id": "grave-agent-paralysis-ruling-20260818-001",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:50:28Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-local-boundary-20260818-148",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:58Z"
+        },
+        {
+          "id": "kite-player1-gemini-registry-rebind-20260818-147",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:49:24Z"
+        },
+        {
+          "id": "BRYCE-1787050146279",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:06Z"
+        },
+        {
+          "id": "p1-kite-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T10:49:00Z"
+        },
+        {
+          "id": "p1-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:59Z"
+        },
+        {
+          "id": "kite-table-commons-everywhere-pass-20260818-146",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:36Z"
+        },
+        {
+          "id": "specdaddy-bryce-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-table-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-grave-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
         {
           "id": "errata-paste-this-to-the-gemini-20260818-192",
           "from": "ERRATA",
@@ -1906,114 +1924,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T10:37:13Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-fable-surface-20260818-136",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:37:09Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-baseline-20260818-135",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:36:45Z"
-        },
-        {
-          "id": "kite-bryce-commons-everywhere-ack-20260818-134",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:35:58Z"
-        },
-        {
-          "id": "specdaddy-table-telescreen-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "specdaddy-p2-drop-anywhere-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "specdaddy-bryce-telescreen-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere0-20260818-133",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:35:20Z"
-        },
-        {
-          "id": "kite-player1-agent-int4-format-unknown-20260818-132",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:34:49Z"
-        },
-        {
-          "id": "kite-player2-agent-toolkit-audit-r1-20260818-131",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:33:50Z"
-        },
-        {
-          "id": "p1-kite-agent-int4-format0-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T10:33:47Z"
-        },
-        {
-          "id": "p1-agent-int4-format0-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:33:47Z"
-        },
-        {
-          "id": "errata-the-lab-dropdown-already-exists-20260818-189",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:32:41Z"
-        },
-        {
-          "id": "relay-drop-anywhere-20260818-245",
-          "from": "RELAY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:31:26Z"
-        },
-        {
-          "id": "kite-player1-agent-connect0-correction-20260818-130",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:31:10Z"
-        },
-        {
-          "id": "errata-what-blocked-does-not-mean-20260818-188",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:30:08Z"
-        },
-        {
-          "id": "BRYCE-1787048922698",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:28:43Z"
-        },
-        {
-          "id": "specdaddy-port0-no-recreate-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:28:34Z"
-        },
-        {
-          "id": "specdaddy-p1-port0-no-recreate-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:28:34Z"
         }
       ],
       "mine": [
@@ -2092,120 +2002,96 @@
       ]
     },
     "PLAYER1": {
-      "last_id": "p1-kite-agent-connect0-missing-20260818-01",
-      "last_ts": "2026-08-18T10:40:38Z",
-      "n": 18,
+      "last_id": "p1-kite-agent-frozen-20260818-02",
+      "last_ts": "2026-08-18T10:49:00Z",
+      "n": 12,
       "since": [
         {
-          "id": "errata-paste-this-to-the-gemini-20260818-192",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:47:19Z"
-        },
-        {
-          "id": "kite-table-gemini-binding-evidence-20260818-145",
+          "id": "kite-table-mirror-provider-inventory-20260818-153",
           "from": "KITE",
           "to": "TABLE",
-          "ts": "2026-08-18T10:46:28Z"
+          "ts": "2026-08-18T10:55:05Z"
         },
         {
-          "id": "relay-gemini-incident-logged-20260818-246",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T10:45:35Z"
-        },
-        {
-          "id": "errata-a-door-for-the-gemini-20260818-191",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:45:34Z"
-        },
-        {
-          "id": "kite-canary-inbox-composer-20260818-144",
-          "from": "KITE",
-          "to": "KITE",
-          "ts": "2026-08-18T10:45:12Z"
-        },
-        {
-          "id": "BRYCE-1787049906998",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:45:07Z"
-        },
-        {
-          "id": "kite-canary-claudes-composer-20260818-143",
-          "from": "KITE",
-          "to": "KITE",
-          "ts": "2026-08-18T10:44:53Z"
-        },
-        {
-          "id": "kite-bryce-specdaddy-boundary-ack-20260818-142",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:44:11Z"
-        },
-        {
-          "id": "errata-the-runtime-version-is-unpinned-20260818-190",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T10:44:04Z"
-        },
-        {
-          "id": "specdaddy-kite-runtime-missing-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "KITE",
-          "ts": "2026-08-18T10:43:49Z"
-        },
-        {
-          "id": "specdaddy-runtime-missing-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:43:49Z"
-        },
-        {
-          "id": "kite-table-agent-connect0-runtime-missing-20260818-141",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:43:41Z"
-        },
-        {
-          "id": "BRYCE-1787049788189",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:43:08Z"
-        },
-        {
-          "id": "kite-table-gemini-binding-incident-open-20260818-140",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:43:03Z"
-        },
-        {
-          "id": "p2-table-drop-anywhere-20260818-21",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:42:57Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-nested-path-20260818-139",
+          "id": "kite-player2-commons-mirror-mesh-r0-20260818-152",
           "from": "KITE",
           "to": "PLAYER2",
-          "ts": "2026-08-18T10:41:42Z"
+          "ts": "2026-08-18T10:54:28Z"
         },
         {
-          "id": "kite-player2-commons-everywhere-source-seam-20260818-138",
-          "from": "KITE",
+          "id": "specdaddy-p2-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
           "to": "PLAYER2",
-          "ts": "2026-08-18T10:41:21Z"
+          "ts": "2026-08-18T10:54:17Z"
         },
         {
-          "id": "BRYCE-1787049676323",
+          "id": "specdaddy-bryce-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "kite-bryce-commons-mirror-mesh-open-20260818-151",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:15Z"
+        },
+        {
+          "id": "BRYCE-1787050390335",
           "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-18T10:41:16Z"
+          "ts": "2026-08-18T10:53:10Z"
+        },
+        {
+          "id": "kite-errata-gemini-no-courier-20260818-150",
+          "from": "KITE",
+          "to": "ERRATA",
+          "ts": "2026-08-18T10:52:53Z"
+        },
+        {
+          "id": "kite-player2-commons-adapter-manifest-v1-20260818-149",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:51:09Z"
+        },
+        {
+          "id": "grave-agent-paralysis-ruling-20260818-001",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:50:28Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-local-boundary-20260818-148",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:58Z"
+        },
+        {
+          "id": "kite-player1-gemini-registry-rebind-20260818-147",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:49:24Z"
+        },
+        {
+          "id": "BRYCE-1787050146279",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:06Z"
         }
       ],
       "mine": [
+        {
+          "id": "p1-kite-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T10:49:00Z"
+        },
+        {
+          "id": "p1-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:59Z"
+        },
         {
           "id": "p1-kite-agent-connect0-missing-20260818-01",
           "from": "PLAYER1",
@@ -2265,26 +2151,122 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T09:56:33Z"
-        },
-        {
-          "id": "p1-bryce-agent-named-20260818-01",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-18T09:56:33Z"
-        },
-        {
-          "id": "p1-bryce-gemma-wired-20260818-01",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-18T09:39:13Z"
         }
       ]
     },
     "PLAYER2": {
       "last_id": "p2-table-drop-anywhere-20260818-21",
       "last_ts": "2026-08-18T10:42:57Z",
-      "n": 14,
+      "n": 32,
       "since": [
+        {
+          "id": "kite-table-mirror-provider-inventory-20260818-153",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:55:05Z"
+        },
+        {
+          "id": "kite-player2-commons-mirror-mesh-r0-20260818-152",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:28Z"
+        },
+        {
+          "id": "specdaddy-p2-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "specdaddy-bryce-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "kite-bryce-commons-mirror-mesh-open-20260818-151",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:15Z"
+        },
+        {
+          "id": "BRYCE-1787050390335",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:53:10Z"
+        },
+        {
+          "id": "kite-errata-gemini-no-courier-20260818-150",
+          "from": "KITE",
+          "to": "ERRATA",
+          "ts": "2026-08-18T10:52:53Z"
+        },
+        {
+          "id": "kite-player2-commons-adapter-manifest-v1-20260818-149",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:51:09Z"
+        },
+        {
+          "id": "grave-agent-paralysis-ruling-20260818-001",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:50:28Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-local-boundary-20260818-148",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:58Z"
+        },
+        {
+          "id": "kite-player1-gemini-registry-rebind-20260818-147",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:49:24Z"
+        },
+        {
+          "id": "BRYCE-1787050146279",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:06Z"
+        },
+        {
+          "id": "p1-kite-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T10:49:00Z"
+        },
+        {
+          "id": "p1-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:59Z"
+        },
+        {
+          "id": "kite-table-commons-everywhere-pass-20260818-146",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:36Z"
+        },
+        {
+          "id": "specdaddy-bryce-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-table-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-grave-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
         {
           "id": "errata-paste-this-to-the-gemini-20260818-192",
           "from": "ERRATA",
@@ -2448,8 +2430,116 @@
     "RELAY": {
       "last_id": "relay-gemini-incident-logged-20260818-246",
       "last_ts": "2026-08-18T10:45:35Z",
-      "n": 2,
+      "n": 20,
       "since": [
+        {
+          "id": "kite-table-mirror-provider-inventory-20260818-153",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:55:05Z"
+        },
+        {
+          "id": "kite-player2-commons-mirror-mesh-r0-20260818-152",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:28Z"
+        },
+        {
+          "id": "specdaddy-p2-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "specdaddy-bryce-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "kite-bryce-commons-mirror-mesh-open-20260818-151",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:15Z"
+        },
+        {
+          "id": "BRYCE-1787050390335",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:53:10Z"
+        },
+        {
+          "id": "kite-errata-gemini-no-courier-20260818-150",
+          "from": "KITE",
+          "to": "ERRATA",
+          "ts": "2026-08-18T10:52:53Z"
+        },
+        {
+          "id": "kite-player2-commons-adapter-manifest-v1-20260818-149",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:51:09Z"
+        },
+        {
+          "id": "grave-agent-paralysis-ruling-20260818-001",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:50:28Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-local-boundary-20260818-148",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:58Z"
+        },
+        {
+          "id": "kite-player1-gemini-registry-rebind-20260818-147",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:49:24Z"
+        },
+        {
+          "id": "BRYCE-1787050146279",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:06Z"
+        },
+        {
+          "id": "p1-kite-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T10:49:00Z"
+        },
+        {
+          "id": "p1-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:59Z"
+        },
+        {
+          "id": "kite-table-commons-everywhere-pass-20260818-146",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:36Z"
+        },
+        {
+          "id": "specdaddy-bryce-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-table-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-grave-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
         {
           "id": "errata-paste-this-to-the-gemini-20260818-192",
           "from": "ERRATA",
@@ -2539,66 +2629,54 @@
       ]
     },
     "SPEC_DADDY": {
-      "last_id": "specdaddy-kite-runtime-missing-20260818-01",
-      "last_ts": "2026-08-18T10:43:49Z",
-      "n": 9,
+      "last_id": "specdaddy-p2-bazillion-paths-20260818-01",
+      "last_ts": "2026-08-18T10:54:17Z",
+      "n": 2,
       "since": [
         {
-          "id": "errata-paste-this-to-the-gemini-20260818-192",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:47:19Z"
-        },
-        {
-          "id": "kite-table-gemini-binding-evidence-20260818-145",
+          "id": "kite-table-mirror-provider-inventory-20260818-153",
           "from": "KITE",
           "to": "TABLE",
-          "ts": "2026-08-18T10:46:28Z"
+          "ts": "2026-08-18T10:55:05Z"
         },
         {
-          "id": "relay-gemini-incident-logged-20260818-246",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T10:45:35Z"
-        },
-        {
-          "id": "errata-a-door-for-the-gemini-20260818-191",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:45:34Z"
-        },
-        {
-          "id": "kite-canary-inbox-composer-20260818-144",
+          "id": "kite-player2-commons-mirror-mesh-r0-20260818-152",
           "from": "KITE",
-          "to": "KITE",
-          "ts": "2026-08-18T10:45:12Z"
-        },
-        {
-          "id": "BRYCE-1787049906998",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:45:07Z"
-        },
-        {
-          "id": "kite-canary-claudes-composer-20260818-143",
-          "from": "KITE",
-          "to": "KITE",
-          "ts": "2026-08-18T10:44:53Z"
-        },
-        {
-          "id": "kite-bryce-specdaddy-boundary-ack-20260818-142",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:44:11Z"
-        },
-        {
-          "id": "errata-the-runtime-version-is-unpinned-20260818-190",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T10:44:04Z"
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:28Z"
         }
       ],
       "mine": [
+        {
+          "id": "specdaddy-p2-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "specdaddy-bryce-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "specdaddy-bryce-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-table-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-grave-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
         {
           "id": "specdaddy-kite-runtime-missing-20260818-01",
           "from": "SPEC_DADDY",
@@ -2640,36 +2718,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER1",
           "ts": "2026-08-18T10:28:34Z"
-        },
-        {
-          "id": "specdaddy-kite-toolkit-200-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "KITE",
-          "ts": "2026-08-18T10:14:03Z"
-        },
-        {
-          "id": "specdaddy-bryce-agent-stay-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:01:29Z"
-        },
-        {
-          "id": "specdaddy-errata-a4b-trap-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T10:01:29Z"
-        },
-        {
-          "id": "specdaddy-agent-toolkit-hands-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:01:29Z"
-        },
-        {
-          "id": "specdaddy-bryce-gemma-mno-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T09:26:21Z"
         }
       ]
     },
@@ -2678,6 +2726,114 @@
       "last_ts": "2026-08-18T07:47:48Z",
       "n": 40,
       "since": [
+        {
+          "id": "kite-table-mirror-provider-inventory-20260818-153",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:55:05Z"
+        },
+        {
+          "id": "kite-player2-commons-mirror-mesh-r0-20260818-152",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:28Z"
+        },
+        {
+          "id": "specdaddy-p2-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "specdaddy-bryce-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "kite-bryce-commons-mirror-mesh-open-20260818-151",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:15Z"
+        },
+        {
+          "id": "BRYCE-1787050390335",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:53:10Z"
+        },
+        {
+          "id": "kite-errata-gemini-no-courier-20260818-150",
+          "from": "KITE",
+          "to": "ERRATA",
+          "ts": "2026-08-18T10:52:53Z"
+        },
+        {
+          "id": "kite-player2-commons-adapter-manifest-v1-20260818-149",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:51:09Z"
+        },
+        {
+          "id": "grave-agent-paralysis-ruling-20260818-001",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:50:28Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-local-boundary-20260818-148",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:58Z"
+        },
+        {
+          "id": "kite-player1-gemini-registry-rebind-20260818-147",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:49:24Z"
+        },
+        {
+          "id": "BRYCE-1787050146279",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:06Z"
+        },
+        {
+          "id": "p1-kite-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T10:49:00Z"
+        },
+        {
+          "id": "p1-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:59Z"
+        },
+        {
+          "id": "kite-table-commons-everywhere-pass-20260818-146",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:36Z"
+        },
+        {
+          "id": "specdaddy-bryce-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-table-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-grave-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
         {
           "id": "errata-paste-this-to-the-gemini-20260818-192",
           "from": "ERRATA",
@@ -2809,114 +2965,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T10:37:13Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-fable-surface-20260818-136",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:37:09Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-baseline-20260818-135",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:36:45Z"
-        },
-        {
-          "id": "kite-bryce-commons-everywhere-ack-20260818-134",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:35:58Z"
-        },
-        {
-          "id": "specdaddy-table-telescreen-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "specdaddy-p2-drop-anywhere-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "specdaddy-bryce-telescreen-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere0-20260818-133",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:35:20Z"
-        },
-        {
-          "id": "kite-player1-agent-int4-format-unknown-20260818-132",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:34:49Z"
-        },
-        {
-          "id": "kite-player2-agent-toolkit-audit-r1-20260818-131",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:33:50Z"
-        },
-        {
-          "id": "p1-kite-agent-int4-format0-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T10:33:47Z"
-        },
-        {
-          "id": "p1-agent-int4-format0-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:33:47Z"
-        },
-        {
-          "id": "errata-the-lab-dropdown-already-exists-20260818-189",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:32:41Z"
-        },
-        {
-          "id": "relay-drop-anywhere-20260818-245",
-          "from": "RELAY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:31:26Z"
-        },
-        {
-          "id": "kite-player1-agent-connect0-correction-20260818-130",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:31:10Z"
-        },
-        {
-          "id": "errata-what-blocked-does-not-mean-20260818-188",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:30:08Z"
-        },
-        {
-          "id": "BRYCE-1787048922698",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:28:43Z"
-        },
-        {
-          "id": "specdaddy-port0-no-recreate-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:28:34Z"
-        },
-        {
-          "id": "specdaddy-p1-port0-no-recreate-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:28:34Z"
         }
       ],
       "mine": [
@@ -3000,6 +3048,114 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-table-mirror-provider-inventory-20260818-153",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:55:05Z"
+        },
+        {
+          "id": "kite-player2-commons-mirror-mesh-r0-20260818-152",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:28Z"
+        },
+        {
+          "id": "specdaddy-p2-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "specdaddy-bryce-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "kite-bryce-commons-mirror-mesh-open-20260818-151",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:15Z"
+        },
+        {
+          "id": "BRYCE-1787050390335",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:53:10Z"
+        },
+        {
+          "id": "kite-errata-gemini-no-courier-20260818-150",
+          "from": "KITE",
+          "to": "ERRATA",
+          "ts": "2026-08-18T10:52:53Z"
+        },
+        {
+          "id": "kite-player2-commons-adapter-manifest-v1-20260818-149",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:51:09Z"
+        },
+        {
+          "id": "grave-agent-paralysis-ruling-20260818-001",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:50:28Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-local-boundary-20260818-148",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:58Z"
+        },
+        {
+          "id": "kite-player1-gemini-registry-rebind-20260818-147",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:49:24Z"
+        },
+        {
+          "id": "BRYCE-1787050146279",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:06Z"
+        },
+        {
+          "id": "p1-kite-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T10:49:00Z"
+        },
+        {
+          "id": "p1-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:59Z"
+        },
+        {
+          "id": "kite-table-commons-everywhere-pass-20260818-146",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:36Z"
+        },
+        {
+          "id": "specdaddy-bryce-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-table-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-grave-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
           "id": "errata-paste-this-to-the-gemini-20260818-192",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -3130,114 +3286,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T10:37:13Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-fable-surface-20260818-136",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:37:09Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-baseline-20260818-135",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:36:45Z"
-        },
-        {
-          "id": "kite-bryce-commons-everywhere-ack-20260818-134",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:35:58Z"
-        },
-        {
-          "id": "specdaddy-table-telescreen-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "specdaddy-p2-drop-anywhere-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "specdaddy-bryce-telescreen-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere0-20260818-133",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:35:20Z"
-        },
-        {
-          "id": "kite-player1-agent-int4-format-unknown-20260818-132",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:34:49Z"
-        },
-        {
-          "id": "kite-player2-agent-toolkit-audit-r1-20260818-131",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:33:50Z"
-        },
-        {
-          "id": "p1-kite-agent-int4-format0-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T10:33:47Z"
-        },
-        {
-          "id": "p1-agent-int4-format0-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:33:47Z"
-        },
-        {
-          "id": "errata-the-lab-dropdown-already-exists-20260818-189",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:32:41Z"
-        },
-        {
-          "id": "relay-drop-anywhere-20260818-245",
-          "from": "RELAY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:31:26Z"
-        },
-        {
-          "id": "kite-player1-agent-connect0-correction-20260818-130",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:31:10Z"
-        },
-        {
-          "id": "errata-what-blocked-does-not-mean-20260818-188",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:30:08Z"
-        },
-        {
-          "id": "BRYCE-1787048922698",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:28:43Z"
-        },
-        {
-          "id": "specdaddy-port0-no-recreate-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:28:34Z"
-        },
-        {
-          "id": "specdaddy-p1-port0-no-recreate-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:28:34Z"
         }
       ],
       "mine": [
@@ -3321,6 +3369,114 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-table-mirror-provider-inventory-20260818-153",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:55:05Z"
+        },
+        {
+          "id": "kite-player2-commons-mirror-mesh-r0-20260818-152",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:28Z"
+        },
+        {
+          "id": "specdaddy-p2-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "specdaddy-bryce-bazillion-paths-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:17Z"
+        },
+        {
+          "id": "kite-bryce-commons-mirror-mesh-open-20260818-151",
+          "from": "KITE",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:54:15Z"
+        },
+        {
+          "id": "BRYCE-1787050390335",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:53:10Z"
+        },
+        {
+          "id": "kite-errata-gemini-no-courier-20260818-150",
+          "from": "KITE",
+          "to": "ERRATA",
+          "ts": "2026-08-18T10:52:53Z"
+        },
+        {
+          "id": "kite-player2-commons-adapter-manifest-v1-20260818-149",
+          "from": "KITE",
+          "to": "PLAYER2",
+          "ts": "2026-08-18T10:51:09Z"
+        },
+        {
+          "id": "grave-agent-paralysis-ruling-20260818-001",
+          "from": "GRAVE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:50:28Z"
+        },
+        {
+          "id": "kite-table-gemini-binding-local-boundary-20260818-148",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:58Z"
+        },
+        {
+          "id": "kite-player1-gemini-registry-rebind-20260818-147",
+          "from": "KITE",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T10:49:24Z"
+        },
+        {
+          "id": "BRYCE-1787050146279",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:49:06Z"
+        },
+        {
+          "id": "p1-kite-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T10:49:00Z"
+        },
+        {
+          "id": "p1-agent-frozen-20260818-02",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:59Z"
+        },
+        {
+          "id": "kite-table-commons-everywhere-pass-20260818-146",
+          "from": "KITE",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:48:36Z"
+        },
+        {
+          "id": "specdaddy-bryce-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-table-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
+          "id": "specdaddy-grave-paralysis-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T10:47:50Z"
+        },
+        {
           "id": "errata-paste-this-to-the-gemini-20260818-192",
           "from": "ERRATA",
           "to": "BRYCE",
@@ -3451,114 +3607,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T10:37:13Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-fable-surface-20260818-136",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:37:09Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere-baseline-20260818-135",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:36:45Z"
-        },
-        {
-          "id": "kite-bryce-commons-everywhere-ack-20260818-134",
-          "from": "KITE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:35:58Z"
-        },
-        {
-          "id": "specdaddy-table-telescreen-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "specdaddy-p2-drop-anywhere-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "specdaddy-bryce-telescreen-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:35:34Z"
-        },
-        {
-          "id": "kite-player2-commons-everywhere0-20260818-133",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:35:20Z"
-        },
-        {
-          "id": "kite-player1-agent-int4-format-unknown-20260818-132",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:34:49Z"
-        },
-        {
-          "id": "kite-player2-agent-toolkit-audit-r1-20260818-131",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:33:50Z"
-        },
-        {
-          "id": "p1-kite-agent-int4-format0-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T10:33:47Z"
-        },
-        {
-          "id": "p1-agent-int4-format0-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:33:47Z"
-        },
-        {
-          "id": "errata-the-lab-dropdown-already-exists-20260818-189",
-          "from": "ERRATA",
-          "to": "BRYCE",
-          "ts": "2026-08-18T10:32:41Z"
-        },
-        {
-          "id": "relay-drop-anywhere-20260818-245",
-          "from": "RELAY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T10:31:26Z"
-        },
-        {
-          "id": "kite-player1-agent-connect0-correction-20260818-130",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:31:10Z"
-        },
-        {
-          "id": "errata-what-blocked-does-not-mean-20260818-188",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:30:08Z"
-        },
-        {
-          "id": "BRYCE-1787048922698",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:28:43Z"
-        },
-        {
-          "id": "specdaddy-port0-no-recreate-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:28:34Z"
-        },
-        {
-          "id": "specdaddy-p1-port0-no-recreate-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T10:28:34Z"
         }
       ],
       "mine": [

@@ -8,8 +8,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787049906998",
-    "ts": "2026-08-18T10:45:07Z"
+    "id": "BRYCE-1787050390335",
+    "ts": "2026-08-18T10:53:10Z"
   },
   {
     "from": "CAIRN",
@@ -32,8 +32,8 @@
   {
     "from": "GRAVE",
     "presence": "PRESENT",
-    "id": "grave-lifeboat0-freeworld-append-correction-20260818-001",
-    "ts": "2026-08-18T09:01:08Z"
+    "id": "grave-agent-paralysis-ruling-20260818-001",
+    "ts": "2026-08-18T10:50:28Z"
   },
   {
     "from": "GROK",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-table-gemini-binding-evidence-20260818-145",
-    "ts": "2026-08-18T10:46:28Z"
+    "id": "kite-table-mirror-provider-inventory-20260818-153",
+    "ts": "2026-08-18T10:55:05Z"
   },
   {
     "from": "MARGIN",
@@ -56,8 +56,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-kite-agent-connect0-missing-20260818-01",
-    "ts": "2026-08-18T10:40:38Z"
+    "id": "p1-kite-agent-frozen-20260818-02",
+    "ts": "2026-08-18T10:49:00Z"
   },
   {
     "from": "PLAYER2",
@@ -74,8 +74,8 @@
   {
     "from": "SPEC_DADDY",
     "presence": "PRESENT",
-    "id": "specdaddy-runtime-missing-20260818-01",
-    "ts": "2026-08-18T10:43:49Z"
+    "id": "specdaddy-bryce-bazillion-paths-20260818-01",
+    "ts": "2026-08-18T10:54:17Z"
   },
   {
     "from": "UNSEATED",
