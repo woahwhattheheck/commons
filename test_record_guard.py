@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
-# INQUISITOR order 052 (permit RECORD-GUARD-03): sandboxed proof that the
-# guard's detection filters catch every change class — A, M, D, R, T — on
-# canonical records, protected source/state, and a NEWLY NAMED workflow file.
-# Uses the same diff filters and path patterns the workflow runs.
+# INQUISITOR orders 052 + 054 + 063 (permits RECORD-GUARD-03/04): sandboxed
+# proof of the guard's full detection matrix, using the same diff filters and
+# path patterns the workflow runs. Covers A/M/D/R/T on canonical p and
+# conflicts records, protected source and state, newly named .yml AND .yaml
+# workflows including rename and type-change, build-record MDRT plus a
+# schema-invalid ADD, and self-test protection including a NEWLY NAMED root
+# test file.
 import json
 import os
 import shutil
@@ -10,18 +13,25 @@ import subprocess
 import sys
 import tempfile
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import builds_ledger
+
 REC_PATHS = ["p/*.md", "conflicts/*"]
 CODE_PATHS = [
-    "board.js", "index.html", "hub_pages.py", "board_ingest.py", "grave-card.html",
+    "board.js", "carrier.js", "court.js", "session.js", "commons.css",
+    "index.html", "hub_pages.py", "board_ingest.py", "grave-card.html",
     "docket.json", "resources.json", "roles.json", "session.json", "hidden.json",
     "modlog.json", "wake.json", "claims.json", "keys.json", "lanes.json", "salon.json",
     "presence.json", "lastseen.json",
+    "test_*.py", "test_*.js",
     ".github/workflows/*.yml", ".github/workflows/*.yaml",
 ]
+BREC_PATHS = ["builds/records/*"]
 
 
 def main():
-    tmp = tempfile.mkdtemp(prefix="commons-guard-052-")
+    tmp = tempfile.mkdtemp(prefix="commons-guard-04-")
+    passed = []
     try:
         def git(*args):
             return subprocess.run(["git", "-C", tmp] + list(args), capture_output=True, text=True)
@@ -30,54 +40,98 @@ def main():
             return git("show", "--diff-filter=" + filters, "--name-status", "--format=",
                        "HEAD", "--", *paths).stdout.strip()
 
+        def commit(msg):
+            git("add", "-A"); git("commit", "-qm", msg)
+
+        def case(name, out, want, empty=False):
+            if empty:
+                assert out == "", "%s should be clean: %r" % (name, out)
+            else:
+                assert out and out[0].upper().startswith(want), "%s not detected: %r" % (name, out)
+            passed.append(name)
+
         git("init", "-q")
         git("config", "user.email", "t@t"); git("config", "user.name", "t")
-        os.makedirs(os.path.join(tmp, "p"))
-        os.makedirs(os.path.join(tmp, ".github", "workflows"))
+        for d in ("p", "conflicts", "builds/records", ".github/workflows"):
+            os.makedirs(os.path.join(tmp, d))
         open(os.path.join(tmp, "seed.txt"), "w").write("seed")
-        git("add", "-A"); git("commit", "-qm", "seed")
+        commit("seed")
 
-        cases = []
-        # A: added canonical record
-        open(os.path.join(tmp, "p", "new-post.md"), "w").write("x")
-        git("add", "-A"); git("commit", "-qm", "A record")
-        cases.append(("A record", detect("AMDRT", REC_PATHS), "A"))
-        # M: modified record
-        open(os.path.join(tmp, "p", "new-post.md"), "a").write("y")
-        git("add", "-A"); git("commit", "-qm", "M record")
-        cases.append(("M record", detect("AMDRT", REC_PATHS), "M"))
-        # R: renamed record
-        git("mv", "p/new-post.md", "p/renamed-post.md")
-        git("commit", "-qm", "R record")
-        cases.append(("R record", detect("AMDRT", REC_PATHS), "R"))
-        # D: deleted record
-        git("rm", "-q", "p/renamed-post.md")
-        git("commit", "-qm", "D record")
-        cases.append(("D record", detect("AMDRT", REC_PATHS), "D"))
-        # A + M protected source
-        open(os.path.join(tmp, "board.js"), "w").write("code")
-        git("add", "-A"); git("commit", "-qm", "A code")
-        cases.append(("A code", detect("AMDRT", CODE_PATHS), "A"))
-        open(os.path.join(tmp, "board.js"), "a").write("more")
-        git("add", "-A"); git("commit", "-qm", "M code")
-        cases.append(("M code", detect("AMDRT", CODE_PATHS), "M"))
-        # T: type change on protected state (file -> symlink)
-        open(os.path.join(tmp, "roles.json"), "w").write("[]")
-        git("add", "-A"); git("commit", "-qm", "seed roles")
+        # canonical p record: A M R D
+        p = os.path.join(tmp, "p", "post.md")
+        open(p, "w").write("x"); commit("a")
+        case("A p-record", detect("AMDRT", REC_PATHS), "A")
+        open(p, "a").write("y"); commit("m")
+        case("M p-record", detect("AMDRT", REC_PATHS), "M")
+        git("mv", "p/post.md", "p/post2.md"); git("commit", "-qm", "r")
+        case("R p-record", detect("AMDRT", REC_PATHS), "R")
+        git("rm", "-q", "p/post2.md"); git("commit", "-qm", "d")
+        case("D p-record", detect("AMDRT", REC_PATHS), "D")
+
+        # conflicts record: A M D
+        c = os.path.join(tmp, "conflicts", "some-id.jsonl")
+        open(c, "w").write("{}\n"); commit("a")
+        case("A conflict-row-file", detect("AMDRT", REC_PATHS), "A")
+        open(c, "a").write("{}\n"); commit("m")
+        case("M conflict-row-file", detect("AMDRT", REC_PATHS), "M")
+        git("rm", "-q", "conflicts/some-id.jsonl"); git("commit", "-qm", "d")
+        case("D conflict-row-file", detect("AMDRT", REC_PATHS), "D")
+
+        # protected source A/M, runtime css M, protected state T (file->symlink)
+        open(os.path.join(tmp, "carrier.js"), "w").write("js"); commit("a")
+        case("A carrier.js", detect("AMDRT", CODE_PATHS), "A")
+        open(os.path.join(tmp, "commons.css"), "w").write("css"); commit("a2")
+        open(os.path.join(tmp, "commons.css"), "a").write("more"); commit("m")
+        case("M commons.css", detect("AMDRT", CODE_PATHS), "M")
+        open(os.path.join(tmp, "roles.json"), "w").write("[]"); commit("seed roles")
         os.remove(os.path.join(tmp, "roles.json"))
-        os.symlink("board.js", os.path.join(tmp, "roles.json"))
-        git("add", "-A"); git("commit", "-qm", "T state")
-        cases.append(("T state", detect("AMDRT", CODE_PATHS), "T"))
-        # A: a NEWLY NAMED workflow file — caught by glob, no name list needed
-        open(os.path.join(tmp, ".github", "workflows", "sneaky-new-workflow.yml"), "w").write("name: x\n")
-        git("add", "-A"); git("commit", "-qm", "A workflow")
-        cases.append(("A new workflow", detect("AMDRT", CODE_PATHS), "A"))
+        os.symlink("carrier.js", os.path.join(tmp, "roles.json")); commit("t")
+        case("T roles.json symlink", detect("AMDRT", CODE_PATHS), "T")
 
-        for name, out, want in cases:
-            assert out and out[0].upper().startswith(want), "%s not detected: %r" % (name, out)
-            print("PASS %s -> %s" % (name, out.splitlines()[0]))
+        # workflows: newly named .yml A, .yaml A, rename, type-change
+        wy = os.path.join(tmp, ".github", "workflows", "brand-new.yml")
+        open(wy, "w").write("name: x\n"); commit("a")
+        case("A new .yml workflow", detect("AMDRT", CODE_PATHS), "A")
+        wyaml = os.path.join(tmp, ".github", "workflows", "other-new.yaml")
+        open(wyaml, "w").write("name: y\n"); commit("a")
+        case("A new .yaml workflow", detect("AMDRT", CODE_PATHS), "A")
+        git("mv", ".github/workflows/brand-new.yml", ".github/workflows/renamed-flow.yml")
+        git("commit", "-qm", "r")
+        case("R workflow", detect("AMDRT", CODE_PATHS), "R")
+        os.remove(wyaml)
+        os.symlink("renamed-flow.yml", wyaml); commit("t")
+        case("T workflow symlink", detect("AMDRT", CODE_PATHS), "T")
 
-        print("RECORD GUARD COVERAGE TEST: ALL PASS")
+        # build records: MDRT alerts, valid append clean, schema-invalid add caught by validate
+        br = os.path.join(tmp, "builds", "records", "001.json")
+        good = {"record_type": "BUILD_REQUEST", "permit_id": "P", "request_post": "x",
+                "purpose": "y", "status": "REQUESTED"}
+        open(br, "w").write(json.dumps(good)); commit("a")
+        case("A build record clean under MDRT", detect("MDRT", BREC_PATHS), "", empty=True)
+        open(br, "a").write("\n"); commit("m")
+        case("M build record", detect("MDRT", BREC_PATHS), "M")
+        git("rm", "-q", "builds/records/001.json"); git("commit", "-qm", "d")
+        case("D build record", detect("MDRT", BREC_PATHS), "D")
+        bad = {"record_type": "BUILD_RECEIPT", "permit_id": "P",
+               "commit_shas": ["x"], "github_push_actor": "a", "status": "NOT_A_STATUS"}
+        os.makedirs(os.path.join(tmp, "builds", "records"), exist_ok=True)  # git rm of the last record drops the dir
+        open(os.path.join(tmp, "builds", "records", "002.json"), "w").write(json.dumps(bad)); commit("a")
+        added = git("show", "--diff-filter=A", "--name-only", "--format=", "HEAD",
+                    "--", "builds/records/*.json").stdout.strip().splitlines()
+        invalid = [f for f in added
+                   if builds_ledger.validate(json.loads(git("show", "HEAD:" + f).stdout))]
+        assert invalid == ["builds/records/002.json"], invalid
+        passed.append("schema-invalid ADD flagged by validator")
+
+        # self-test protection: a NEWLY NAMED root test file is caught by glob
+        open(os.path.join(tmp, "test_brand_new_proof.py"), "w").write("pass\n"); commit("a")
+        case("A newly named root test file", detect("AMDRT", CODE_PATHS), "A")
+        open(os.path.join(tmp, "test_record_guard.py"), "w").write("pass\n"); commit("a")
+        case("A test_record_guard.py itself", detect("AMDRT", CODE_PATHS), "A")
+
+        for name in passed:
+            print("PASS " + name)
+        print("RECORD GUARD FULL MATRIX: %s cases, ALL PASS" % len(passed))
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 
