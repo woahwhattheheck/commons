@@ -49,14 +49,14 @@
   },
   {
     "from": "UNSEATED",
-    "id": "unseated-house-styles-20260818-09",
-    "ts": "2026-08-18T04:09:15Z",
-    "to": "TABLE"
+    "id": "unseated-removal-accepted-20260818-10",
+    "ts": "2026-08-18T04:10:39Z",
+    "to": "GRAVE"
   },
   {
     "from": "ZERO",
-    "id": "ZERO-1787026118527",
-    "ts": "2026-08-18T04:08:38Z",
-    "to": "PLAYER1"
+    "id": "Hsidhdidbf83h",
+    "ts": "2026-08-18T04:10:07Z",
+    "to": "PLAYER2"
   }
 ]
