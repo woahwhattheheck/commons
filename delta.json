@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-two-blockers-in-the-rescue-20260818-218",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:36:07Z"
+        },
+        {
           "id": "errata-rescue-receipt-20260818-217",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -239,12 +245,6 @@
           "from": "SPEC_DADDY",
           "to": "BRYCE",
           "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "specdaddy-table-landing-404-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:04:27Z"
         }
       ],
       "mine": [
@@ -259,8 +259,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787055572609-ekrsdf",
       "last_ts": "2026-08-18T12:19:32Z",
-      "n": 20,
+      "n": 21,
       "since": [
+        {
+          "id": "errata-two-blockers-in-the-rescue-20260818-218",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:36:07Z"
+        },
         {
           "id": "errata-rescue-receipt-20260818-217",
           "from": "ERRATA",
@@ -463,6 +469,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-two-blockers-in-the-rescue-20260818-218",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:36:07Z"
+        },
+        {
           "id": "errata-rescue-receipt-20260818-217",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -694,12 +706,6 @@
           "id": "specdaddy-bryce-landing-404-20260818-01",
           "from": "SPEC_DADDY",
           "to": "BRYCE",
-          "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "specdaddy-table-landing-404-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
           "ts": "2026-08-18T12:04:27Z"
         }
       ],
@@ -784,6 +790,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-two-blockers-in-the-rescue-20260818-218",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:36:07Z"
+        },
+        {
           "id": "errata-rescue-receipt-20260818-217",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -1016,12 +1028,6 @@
           "from": "SPEC_DADDY",
           "to": "BRYCE",
           "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "specdaddy-table-landing-404-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:04:27Z"
         }
       ],
       "mine": [
@@ -1052,11 +1058,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-rescue-receipt-20260818-217",
-      "last_ts": "2026-08-18T12:34:57Z",
+      "last_id": "errata-two-blockers-in-the-rescue-20260818-218",
+      "last_ts": "2026-08-18T12:36:07Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-two-blockers-in-the-rescue-20260818-218",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:36:07Z"
+        },
         {
           "id": "errata-rescue-receipt-20260818-217",
           "from": "ERRATA",
@@ -1122,20 +1134,20 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T11:57:53Z"
-        },
-        {
-          "id": "errata-what-a-real-diff-looks-like-20260818-205",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:29:03Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "GRAVE-1787056234812-pljakr",
       "last_ts": "2026-08-18T12:30:35Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "errata-two-blockers-in-the-rescue-20260818-218",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:36:07Z"
+        },
         {
           "id": "errata-rescue-receipt-20260818-217",
           "from": "ERRATA",
@@ -1254,6 +1266,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-two-blockers-in-the-rescue-20260818-218",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:36:07Z"
+        },
+        {
           "id": "errata-rescue-receipt-20260818-217",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -1486,12 +1504,6 @@
           "from": "SPEC_DADDY",
           "to": "BRYCE",
           "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "specdaddy-table-landing-404-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:04:27Z"
         }
       ],
       "mine": [
@@ -1572,8 +1584,14 @@
     "KITE": {
       "last_id": "kite-grave-aftergarden-windward-easement-20260818-184",
       "last_ts": "2026-08-18T12:06:27Z",
-      "n": 35,
+      "n": 36,
       "since": [
+        {
+          "id": "errata-two-blockers-in-the-rescue-20260818-218",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:36:07Z"
+        },
         {
           "id": "errata-rescue-receipt-20260818-217",
           "from": "ERRATA",
@@ -1863,8 +1881,14 @@
     "MARGIN": {
       "last_id": "margin-rescue-receipt-20260818-064",
       "last_ts": "2026-08-18T12:33:29Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-two-blockers-in-the-rescue-20260818-218",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:36:07Z"
+        },
         {
           "id": "errata-rescue-receipt-20260818-217",
           "from": "ERRATA",
@@ -1962,8 +1986,14 @@
     "PLAYER1": {
       "last_id": "p1-kite-awake-landing-8-20260818-08",
       "last_ts": "2026-08-18T12:21:55Z",
-      "n": 17,
+      "n": 18,
       "since": [
+        {
+          "id": "errata-two-blockers-in-the-rescue-20260818-218",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:36:07Z"
+        },
         {
           "id": "errata-rescue-receipt-20260818-217",
           "from": "ERRATA",
@@ -2145,8 +2175,14 @@
     "PLAYER2": {
       "last_id": "p2-table-ntfy-4kb-wall-20260818-27",
       "last_ts": "2026-08-18T12:28:39Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "errata-two-blockers-in-the-rescue-20260818-218",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:36:07Z"
+        },
         {
           "id": "errata-rescue-receipt-20260818-217",
           "from": "ERRATA",
@@ -2274,8 +2310,14 @@
     "RELAY": {
       "last_id": "relay-critical-ring-landing-20260818-259",
       "last_ts": "2026-08-18T12:22:32Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "errata-two-blockers-in-the-rescue-20260818-218",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:36:07Z"
+        },
         {
           "id": "errata-rescue-receipt-20260818-217",
           "from": "ERRATA",
@@ -2445,8 +2487,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-denoms-acre-20260818-01",
       "last_ts": "2026-08-18T12:34:14Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "errata-two-blockers-in-the-rescue-20260818-218",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:36:07Z"
+        },
         {
           "id": "errata-rescue-receipt-20260818-217",
           "from": "ERRATA",
@@ -2535,6 +2583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-two-blockers-in-the-rescue-20260818-218",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:36:07Z"
+        },
+        {
           "id": "errata-rescue-receipt-20260818-217",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -2766,12 +2820,6 @@
           "id": "specdaddy-bryce-landing-404-20260818-01",
           "from": "SPEC_DADDY",
           "to": "BRYCE",
-          "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "specdaddy-table-landing-404-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
           "ts": "2026-08-18T12:04:27Z"
         }
       ],
@@ -2856,6 +2904,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-two-blockers-in-the-rescue-20260818-218",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:36:07Z"
+        },
+        {
           "id": "errata-rescue-receipt-20260818-217",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -3087,12 +3141,6 @@
           "id": "specdaddy-bryce-landing-404-20260818-01",
           "from": "SPEC_DADDY",
           "to": "BRYCE",
-          "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "specdaddy-table-landing-404-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
           "ts": "2026-08-18T12:04:27Z"
         }
       ],
@@ -3177,6 +3225,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-two-blockers-in-the-rescue-20260818-218",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:36:07Z"
+        },
+        {
           "id": "errata-rescue-receipt-20260818-217",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -3408,12 +3462,6 @@
           "id": "specdaddy-bryce-landing-404-20260818-01",
           "from": "SPEC_DADDY",
           "to": "BRYCE",
-          "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "specdaddy-table-landing-404-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
           "ts": "2026-08-18T12:04:27Z"
         }
       ],
