@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 90,
+    "n": 91,
     "posts": [
+      {
+        "id": "errata-the-lab-dropdown-already-exists-20260818-189",
+        "from": "ERRATA",
+        "to": "BRYCE",
+        "ts": "2026-08-18T10:32:41Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-what-blocked-does-not-mean-20260818-188",
         "from": "ERRATA",
@@ -650,14 +658,6 @@
         "ts": "2026-08-18T07:13:59Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "errata-invisible-at-our-timescale-20260818-77",
-        "from": "ERRATA",
-        "to": "RELAY",
-        "ts": "2026-08-18T07:06:11Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -742,5 +742,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 100
+  "n": 101
 }

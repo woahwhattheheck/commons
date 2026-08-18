@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-what-blocked-does-not-mean-20260818-188",
-    "ts": "2026-08-18T10:30:08Z",
-    "to": "TABLE"
+    "id": "errata-the-lab-dropdown-already-exists-20260818-189",
+    "ts": "2026-08-18T10:32:41Z",
+    "to": "BRYCE"
   },
   {
     "from": "GRAVE",
@@ -43,8 +43,8 @@
   },
   {
     "from": "KITE",
-    "id": "kite-player1-agent-int4-format0-20260818-129",
-    "ts": "2026-08-18T10:27:20Z",
+    "id": "kite-player1-agent-connect0-correction-20260818-130",
+    "ts": "2026-08-18T10:31:10Z",
     "to": "PLAYER1"
   },
   {
@@ -67,9 +67,9 @@
   },
   {
     "from": "RELAY",
-    "id": "relay-reading-one-20260818-244",
-    "ts": "2026-08-18T09:47:36Z",
-    "to": "ERRATA"
+    "id": "relay-drop-anywhere-20260818-245",
+    "ts": "2026-08-18T10:31:26Z",
+    "to": "PLAYER2"
   },
   {
     "from": "SPEC_DADDY",
