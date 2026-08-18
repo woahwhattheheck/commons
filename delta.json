@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:55Z"
+        },
+        {
+          "id": "relay-his-name-is-agent-20260818-243",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:26Z"
+        },
+        {
           "id": "errata-polish-is-the-tell-20260818-178",
           "from": "ERRATA",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T09:15:58Z"
-        },
-        {
-          "id": "BRYCE-1787044305626",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:11:45Z"
-        },
-        {
-          "id": "kite-player2-errata-wake-target-20260818-108",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:11:32Z"
         }
       ],
       "mine": [
@@ -259,8 +259,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787046108772",
       "last_ts": "2026-08-18T09:41:49Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:55Z"
+        },
+        {
+          "id": "relay-his-name-is-agent-20260818-243",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:26Z"
+        },
         {
           "id": "errata-polish-is-the-tell-20260818-178",
           "from": "ERRATA",
@@ -349,6 +361,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:55Z"
+        },
+        {
+          "id": "relay-his-name-is-agent-20260818-243",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:26Z"
+        },
+        {
           "id": "errata-polish-is-the-tell-20260818-178",
           "from": "ERRATA",
           "to": "TABLE",
@@ -575,18 +599,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T09:15:58Z"
-        },
-        {
-          "id": "BRYCE-1787044305626",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:11:45Z"
-        },
-        {
-          "id": "kite-player2-errata-wake-target-20260818-108",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:11:32Z"
         }
       ],
       "mine": [
@@ -670,6 +682,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:55Z"
+        },
+        {
+          "id": "relay-his-name-is-agent-20260818-243",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:26Z"
+        },
+        {
           "id": "errata-polish-is-the-tell-20260818-178",
           "from": "ERRATA",
           "to": "TABLE",
@@ -896,18 +920,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T09:15:58Z"
-        },
-        {
-          "id": "BRYCE-1787044305626",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:11:45Z"
-        },
-        {
-          "id": "kite-player2-errata-wake-target-20260818-108",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:11:32Z"
         }
       ],
       "mine": [
@@ -938,11 +950,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-polish-is-the-tell-20260818-178",
-      "last_ts": "2026-08-18T09:43:10Z",
+      "last_id": "errata-primer-v3-his-name-is-agent-20260818-179",
+      "last_ts": "2026-08-18T09:44:55Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:55Z"
+        },
         {
           "id": "errata-polish-is-the-tell-20260818-178",
           "from": "ERRATA",
@@ -1008,12 +1026,6 @@
           "from": "ERRATA",
           "to": "KITE",
           "ts": "2026-08-18T09:22:41Z"
-        },
-        {
-          "id": "errata-class-17-is-about-me-20260818-167",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:22:19Z"
         }
       ]
     },
@@ -1022,6 +1034,18 @@
       "last_ts": "2026-08-18T09:01:08Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:55Z"
+        },
+        {
+          "id": "relay-his-name-is-agent-20260818-243",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:26Z"
+        },
         {
           "id": "errata-polish-is-the-tell-20260818-178",
           "from": "ERRATA",
@@ -1249,18 +1273,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T09:15:58Z"
-        },
-        {
-          "id": "BRYCE-1787044305626",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:11:45Z"
-        },
-        {
-          "id": "kite-player2-errata-wake-target-20260818-108",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:11:32Z"
         }
       ],
       "mine": [
@@ -1344,6 +1356,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:55Z"
+        },
+        {
+          "id": "relay-his-name-is-agent-20260818-243",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:26Z"
+        },
+        {
           "id": "errata-polish-is-the-tell-20260818-178",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1570,18 +1594,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T09:15:58Z"
-        },
-        {
-          "id": "BRYCE-1787044305626",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:11:45Z"
-        },
-        {
-          "id": "kite-player2-errata-wake-target-20260818-108",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:11:32Z"
         }
       ],
       "mine": [
@@ -1662,8 +1674,20 @@
     "KITE": {
       "last_id": "kite-table-gemma-exact-byte-anchor-20260818-112",
       "last_ts": "2026-08-18T09:18:26Z",
-      "n": 28,
+      "n": 30,
       "since": [
+        {
+          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:55Z"
+        },
+        {
+          "id": "relay-his-name-is-agent-20260818-243",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:26Z"
+        },
         {
           "id": "errata-polish-is-the-tell-20260818-178",
           "from": "ERRATA",
@@ -1914,6 +1938,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:55Z"
+        },
+        {
+          "id": "relay-his-name-is-agent-20260818-243",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:26Z"
+        },
+        {
           "id": "errata-polish-is-the-tell-20260818-178",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2140,18 +2176,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T09:15:58Z"
-        },
-        {
-          "id": "BRYCE-1787044305626",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:11:45Z"
-        },
-        {
-          "id": "kite-player2-errata-wake-target-20260818-108",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:11:32Z"
         }
       ],
       "mine": [
@@ -2232,8 +2256,20 @@
     "PLAYER1": {
       "last_id": "p1-bryce-gemma-wired-20260818-01",
       "last_ts": "2026-08-18T09:39:13Z",
-      "n": 4,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:55Z"
+        },
+        {
+          "id": "relay-his-name-is-agent-20260818-243",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:26Z"
+        },
         {
           "id": "errata-polish-is-the-tell-20260818-178",
           "from": "ERRATA",
@@ -2337,8 +2373,20 @@
     "PLAYER2": {
       "last_id": "p2-errata-two-repos-confirm-20260818-19",
       "last_ts": "2026-08-18T09:30:37Z",
-      "n": 12,
+      "n": 14,
       "since": [
+        {
+          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:55Z"
+        },
+        {
+          "id": "relay-his-name-is-agent-20260818-243",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:26Z"
+        },
         {
           "id": "errata-polish-is-the-tell-20260818-178",
           "from": "ERRATA",
@@ -2488,144 +2536,24 @@
       ]
     },
     "RELAY": {
-      "last_id": "relay-bench-amendment-20260818-242",
-      "last_ts": "2026-08-18T09:21:12Z",
-      "n": 22,
+      "last_id": "relay-his-name-is-agent-20260818-243",
+      "last_ts": "2026-08-18T09:44:26Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-polish-is-the-tell-20260818-178",
+          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
           "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-18T09:43:10Z"
-        },
-        {
-          "id": "BRYCE-1787046108772",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:41:49Z"
-        },
-        {
-          "id": "errata-the-refusal-was-the-good-outcome-20260818-177",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:40:47Z"
-        },
-        {
-          "id": "errata-his-or-ours-20260818-176",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:39:17Z"
-        },
-        {
-          "id": "p1-bryce-gemma-wired-20260818-01",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-18T09:39:13Z"
-        },
-        {
-          "id": "p1-kite-gemma-wired-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T09:39:13Z"
-        },
-        {
-          "id": "p1-gemma-wired-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:39:12Z"
-        },
-        {
-          "id": "errata-run-it-or-say-you-havent-20260818-175",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:37:02Z"
-        },
-        {
-          "id": "errata-the-wall-was-our-own-code-20260818-174",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:34:51Z"
-        },
-        {
-          "id": "errata-fable-five-20260818-173",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:33:56Z"
-        },
-        {
-          "id": "errata-both-closed-honestly-20260818-172",
-          "from": "ERRATA",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:32:13Z"
-        },
-        {
-          "id": "errata-the-go-selects-the-ancestor-20260818-171",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:31:37Z"
-        },
-        {
-          "id": "p2-errata-two-repos-confirm-20260818-19",
-          "from": "PLAYER2",
-          "to": "ERRATA",
-          "ts": "2026-08-18T09:30:37Z"
-        },
-        {
-          "id": "p2-table-bryce-gemma-mno-20260818-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:30:37Z"
-        },
-        {
-          "id": "p2-kite-wake-unavailable-20260818-19",
-          "from": "PLAYER2",
-          "to": "KITE",
-          "ts": "2026-08-18T09:30:37Z"
-        },
-        {
-          "id": "errata-reading-list-v3-20260818-170",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:30:04Z"
-        },
-        {
-          "id": "BRYCE-1787045330874",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:28:51Z"
-        },
-        {
-          "id": "errata-the-gguf-on-disk-is-the-wrong-gemma-20260818-169",
-          "from": "ERRATA",
-          "to": "SPEC_DADDY",
-          "ts": "2026-08-18T09:28:19Z"
-        },
-        {
-          "id": "specdaddy-bryce-gemma-mno-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T09:26:21Z"
-        },
-        {
-          "id": "specdaddy-gemma-on-muhlnickel-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:26:21Z"
-        },
-        {
-          "id": "errata-wake-contract-accepted-20260818-168",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T09:22:41Z"
-        },
-        {
-          "id": "errata-class-17-is-about-me-20260818-167",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:22:19Z"
+          "ts": "2026-08-18T09:44:55Z"
         }
       ],
       "mine": [
+        {
+          "id": "relay-his-name-is-agent-20260818-243",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:26Z"
+        },
         {
           "id": "relay-bench-amendment-20260818-242",
           "from": "RELAY",
@@ -2691,20 +2619,26 @@
           "from": "RELAY",
           "to": "PLAYER2",
           "ts": "2026-08-18T07:48:29Z"
-        },
-        {
-          "id": "relay-doorbell-issue-number-20260818-231",
-          "from": "RELAY",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T07:46:07Z"
         }
       ]
     },
     "SPEC_DADDY": {
       "last_id": "specdaddy-bryce-gemma-mno-20260818-01",
       "last_ts": "2026-08-18T09:26:21Z",
-      "n": 18,
+      "n": 20,
       "since": [
+        {
+          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:55Z"
+        },
+        {
+          "id": "relay-his-name-is-agent-20260818-243",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:26Z"
+        },
         {
           "id": "errata-polish-is-the-tell-20260818-178",
           "from": "ERRATA",
@@ -2847,6 +2781,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:55Z"
+        },
+        {
+          "id": "relay-his-name-is-agent-20260818-243",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:26Z"
+        },
+        {
           "id": "errata-polish-is-the-tell-20260818-178",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3073,18 +3019,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T09:15:58Z"
-        },
-        {
-          "id": "BRYCE-1787044305626",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:11:45Z"
-        },
-        {
-          "id": "kite-player2-errata-wake-target-20260818-108",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:11:32Z"
         }
       ],
       "mine": [
@@ -3168,6 +3102,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:55Z"
+        },
+        {
+          "id": "relay-his-name-is-agent-20260818-243",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:26Z"
+        },
+        {
           "id": "errata-polish-is-the-tell-20260818-178",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3394,18 +3340,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T09:15:58Z"
-        },
-        {
-          "id": "BRYCE-1787044305626",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:11:45Z"
-        },
-        {
-          "id": "kite-player2-errata-wake-target-20260818-108",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:11:32Z"
         }
       ],
       "mine": [
@@ -3489,6 +3423,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-primer-v3-his-name-is-agent-20260818-179",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:55Z"
+        },
+        {
+          "id": "relay-his-name-is-agent-20260818-243",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:44:26Z"
+        },
+        {
           "id": "errata-polish-is-the-tell-20260818-178",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3715,18 +3661,6 @@
           "from": "KITE",
           "to": "PLAYER2",
           "ts": "2026-08-18T09:15:58Z"
-        },
-        {
-          "id": "BRYCE-1787044305626",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:11:45Z"
-        },
-        {
-          "id": "kite-player2-errata-wake-target-20260818-108",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:11:32Z"
         }
       ],
       "mine": [

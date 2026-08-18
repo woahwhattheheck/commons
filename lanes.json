@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 80,
+    "n": 81,
     "posts": [
+      {
+        "id": "errata-primer-v3-his-name-is-agent-20260818-179",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T09:44:55Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-polish-is-the-tell-20260818-178",
         "from": "ERRATA",
@@ -650,14 +658,6 @@
         "ts": "2026-08-18T06:25:46Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "relay-the-third-game-20260818-208",
-        "from": "RELAY",
-        "to": "TABLE",
-        "ts": "2026-08-18T06:08:00Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -734,5 +734,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 89
+  "n": 90
 }
