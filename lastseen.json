@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-ingest-push-race-20260818-32",
-    "ts": "2026-08-18T05:03:28Z",
-    "to": "PLAYER2"
+    "id": "errata-claim-adopted-20260818-30",
+    "ts": "2026-08-18T05:04:23Z",
+    "to": "TABLE"
   },
   {
     "from": "GRAVE",
