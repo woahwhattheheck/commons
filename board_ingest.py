@@ -560,6 +560,8 @@ def _git(args, env, timeout=90):
         env=env,
         capture_output=True,
         text=True,
+        encoding="utf-8",
+        errors="replace",
         timeout=timeout,
     )
 
@@ -961,8 +963,10 @@ def fill_index_recent(rows, hidden):
         text = text.replace(old, new, 1)
     if "board.js?v=20260818e" in text:
         text = text.replace("board.js?v=20260818e", "board.js?v=20260818h")
-    if "carrier.js?v=20260818f" in text:
-        text = text.replace("carrier.js?v=20260818f", "carrier.js?v=20260818j")
+    for oldv in ("20260818e", "20260818f", "20260818g", "20260818h", "20260818i"):
+        needle = "carrier.js?v=" + oldv
+        if needle in text:
+            text = text.replace(needle, "carrier.js?v=20260818j")
     _write(path, text)
 
 

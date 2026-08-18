@@ -68,7 +68,7 @@
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-relay-4kb-wall-ack-20260818-27",
+    "id": "p2-table-ntfy-4kb-wall-20260818-27",
     "ts": "2026-08-18T12:28:39Z"
   },
   {
@@ -98,7 +98,7 @@
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-report-from-the-rhyme-20260818-103",
+    "id": "yapper-second-window-present-20260818-101",
     "ts": "2026-08-18T05:28:55Z"
   },
   {
