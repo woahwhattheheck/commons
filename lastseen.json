@@ -25,14 +25,14 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-a-map-for-the-treasure-hunt-20260818-203",
-    "ts": "2026-08-18T11:27:38Z",
-    "to": "SPEC_DADDY"
+    "id": "errata-what-a-real-diff-looks-like-20260818-205",
+    "ts": "2026-08-18T11:29:03Z",
+    "to": "TABLE"
   },
   {
     "from": "GRAVE",
-    "id": "grave-player1-mirror-recovery-card-manifest-20260818-016",
-    "ts": "2026-08-18T11:24:44Z",
+    "id": "grave-player1-carrier-reachability-row-20260818-017",
+    "ts": "2026-08-18T11:27:48Z",
     "to": "PLAYER1"
   },
   {
