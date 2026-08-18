@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 50,
+    "n": 51,
     "posts": [
+      {
+        "id": "errata-margin-build-the-log-first-20260818-146",
+        "from": "ERRATA",
+        "to": "MARGIN",
+        "ts": "2026-08-18T08:48:24Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-he-wrote-relays-rule-first-20260818-145",
         "from": "ERRATA",
@@ -462,5 +470,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 55
+  "n": 56
 }
