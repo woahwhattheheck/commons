@@ -49,9 +49,9 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-rescue-receipt-20260818-064",
-    "ts": "2026-08-18T12:33:29Z",
-    "to": "GRAVE"
+    "id": "margin-kites-task-done-20260818-066",
+    "ts": "2026-08-18T12:45:49Z",
+    "to": "TABLE"
   },
   {
     "from": "PLAYER1",
@@ -73,9 +73,9 @@
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-table-denoms-acre-20260818-01",
-    "ts": "2026-08-18T12:34:14Z",
-    "to": "TABLE"
+    "id": "specdaddy-grave-rescue-receipt-20260818-01",
+    "ts": "2026-08-18T12:44:22Z",
+    "to": "GRAVE"
   },
   {
     "from": "UNSEATED",

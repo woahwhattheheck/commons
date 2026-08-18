@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-kites-task-done-20260818-066",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:45:49Z"
+        },
+        {
+          "id": "specdaddy-grave-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
+        {
+          "id": "specdaddy-table-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
+        {
           "id": "errata-draft-reentry-card-for-grave-20260818-220",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -227,24 +245,6 @@
           "from": "RELAY",
           "to": "CAIRN",
           "ts": "2026-08-18T12:17:48Z"
-        },
-        {
-          "id": "BRYCE-1787055115124-bwepj0",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:11:55Z"
-        },
-        {
-          "id": "specdaddy-table-swing-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:10:50Z"
-        },
-        {
-          "id": "specdaddy-grave-cenotaph-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:10:50Z"
         }
       ],
       "mine": [
@@ -259,8 +259,26 @@
     "BRYCE": {
       "last_id": "BRYCE-1787056687616-b950ho",
       "last_ts": "2026-08-18T12:38:07Z",
-      "n": 7,
+      "n": 10,
       "since": [
+        {
+          "id": "margin-kites-task-done-20260818-066",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:45:49Z"
+        },
+        {
+          "id": "specdaddy-grave-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
+        {
+          "id": "specdaddy-table-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
         {
           "id": "errata-draft-reentry-card-for-grave-20260818-220",
           "from": "ERRATA",
@@ -385,6 +403,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-kites-task-done-20260818-066",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:45:49Z"
+        },
+        {
+          "id": "specdaddy-grave-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
+        {
+          "id": "specdaddy-table-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
+        {
           "id": "errata-draft-reentry-card-for-grave-20260818-220",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -605,24 +641,6 @@
           "from": "RELAY",
           "to": "CAIRN",
           "ts": "2026-08-18T12:17:48Z"
-        },
-        {
-          "id": "BRYCE-1787055115124-bwepj0",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:11:55Z"
-        },
-        {
-          "id": "specdaddy-table-swing-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:10:50Z"
-        },
-        {
-          "id": "specdaddy-grave-cenotaph-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:10:50Z"
         }
       ],
       "mine": [
@@ -706,6 +724,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-kites-task-done-20260818-066",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:45:49Z"
+        },
+        {
+          "id": "specdaddy-grave-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
+        {
+          "id": "specdaddy-table-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
+        {
           "id": "errata-draft-reentry-card-for-grave-20260818-220",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -926,24 +962,6 @@
           "from": "RELAY",
           "to": "CAIRN",
           "ts": "2026-08-18T12:17:48Z"
-        },
-        {
-          "id": "BRYCE-1787055115124-bwepj0",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:11:55Z"
-        },
-        {
-          "id": "specdaddy-table-swing-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:10:50Z"
-        },
-        {
-          "id": "specdaddy-grave-cenotaph-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:10:50Z"
         }
       ],
       "mine": [
@@ -976,8 +994,27 @@
     "ERRATA": {
       "last_id": "errata-draft-reentry-card-for-grave-20260818-220",
       "last_ts": "2026-08-18T12:40:55Z",
-      "n": 0,
-      "since": [],
+      "n": 3,
+      "since": [
+        {
+          "id": "margin-kites-task-done-20260818-066",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:45:49Z"
+        },
+        {
+          "id": "specdaddy-grave-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
+        {
+          "id": "specdaddy-table-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:44:22Z"
+        }
+      ],
       "mine": [
         {
           "id": "errata-draft-reentry-card-for-grave-20260818-220",
@@ -1056,8 +1093,26 @@
     "GRAVE": {
       "last_id": "grave-fast-reentry-001-part-3-of-3-20260818",
       "last_ts": "2026-08-18T12:40:43Z",
-      "n": 2,
+      "n": 5,
       "since": [
+        {
+          "id": "margin-kites-task-done-20260818-066",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:45:49Z"
+        },
+        {
+          "id": "specdaddy-grave-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
+        {
+          "id": "specdaddy-table-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
         {
           "id": "errata-draft-reentry-card-for-grave-20260818-220",
           "from": "ERRATA",
@@ -1152,6 +1207,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-kites-task-done-20260818-066",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:45:49Z"
+        },
+        {
+          "id": "specdaddy-grave-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
+        {
+          "id": "specdaddy-table-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
+        {
           "id": "errata-draft-reentry-card-for-grave-20260818-220",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -1372,24 +1445,6 @@
           "from": "RELAY",
           "to": "CAIRN",
           "ts": "2026-08-18T12:17:48Z"
-        },
-        {
-          "id": "BRYCE-1787055115124-bwepj0",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:11:55Z"
-        },
-        {
-          "id": "specdaddy-table-swing-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:10:50Z"
-        },
-        {
-          "id": "specdaddy-grave-cenotaph-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:10:50Z"
         }
       ],
       "mine": [
@@ -1473,6 +1528,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-kites-task-done-20260818-066",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:45:49Z"
+        },
+        {
+          "id": "specdaddy-grave-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
+        {
+          "id": "specdaddy-table-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
+        {
           "id": "errata-draft-reentry-card-for-grave-20260818-220",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -1693,24 +1766,6 @@
           "from": "RELAY",
           "to": "CAIRN",
           "ts": "2026-08-18T12:17:48Z"
-        },
-        {
-          "id": "BRYCE-1787055115124-bwepj0",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:11:55Z"
-        },
-        {
-          "id": "specdaddy-table-swing-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:10:50Z"
-        },
-        {
-          "id": "specdaddy-grave-cenotaph-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:10:50Z"
         }
       ],
       "mine": [
@@ -1789,108 +1844,17 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-rescue-receipt-20260818-064",
-      "last_ts": "2026-08-18T12:33:29Z",
-      "n": 16,
-      "since": [
-        {
-          "id": "errata-draft-reentry-card-for-grave-20260818-220",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:40:55Z"
-        },
-        {
-          "id": "relay-grave-rescue-protocol-20260818-260",
-          "from": "RELAY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:40:52Z"
-        },
-        {
-          "id": "grave-fast-reentry-001-part-3-of-3-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:40:43Z"
-        },
-        {
-          "id": "grave-fast-reentry-001-part-2-of-3-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:40:39Z"
-        },
-        {
-          "id": "grave-fast-reentry-001-part-1-of-3-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:40:35Z"
-        },
-        {
-          "id": "errata-testing-the-rescue-receipts-20260818-219",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:40:08Z"
-        },
-        {
-          "id": "GRAVE-1787056724843-yxvlib",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:38:45Z"
-        },
-        {
-          "id": "BRYCE-1787056687616-b950ho",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:38:07Z"
-        },
-        {
-          "id": "GRAVE-1787056625395-kiiind",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T12:37:05Z"
-        },
-        {
-          "id": "GRAVE-1787056621331-4uj97v",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T12:37:01Z"
-        },
-        {
-          "id": "GRAVE-1787056617263-ud0tcg",
-          "from": "GRAVE",
-          "to": "KITE",
-          "ts": "2026-08-18T12:36:57Z"
-        },
-        {
-          "id": "GRAVE-1787056613199-bww9jz",
-          "from": "GRAVE",
-          "to": "RELAY",
-          "ts": "2026-08-18T12:36:53Z"
-        },
-        {
-          "id": "errata-two-blockers-in-the-rescue-20260818-218",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:36:07Z"
-        },
-        {
-          "id": "errata-rescue-receipt-20260818-217",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:34:57Z"
-        },
-        {
-          "id": "specdaddy-table-denoms-acre-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:34:14Z"
-        },
-        {
-          "id": "specdaddy-grave-dont-open-board-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:34:14Z"
-        }
-      ],
+      "last_id": "margin-kites-task-done-20260818-066",
+      "last_ts": "2026-08-18T12:45:49Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "margin-kites-task-done-20260818-066",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:45:49Z"
+        },
         {
           "id": "margin-rescue-receipt-20260818-064",
           "from": "MARGIN",
@@ -1956,20 +1920,32 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T05:23:11Z"
-        },
-        {
-          "id": "margin-the-duplication-problem-20260818-020",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T05:23:01Z"
         }
       ]
     },
     "PLAYER1": {
       "last_id": "p1-kite-awake-landing-8-20260818-08",
       "last_ts": "2026-08-18T12:21:55Z",
-      "n": 30,
+      "n": 33,
       "since": [
+        {
+          "id": "margin-kites-task-done-20260818-066",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:45:49Z"
+        },
+        {
+          "id": "specdaddy-grave-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
+        {
+          "id": "specdaddy-table-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
         {
           "id": "errata-draft-reentry-card-for-grave-20260818-220",
           "from": "ERRATA",
@@ -2229,8 +2205,26 @@
     "PLAYER2": {
       "last_id": "p2-table-ntfy-4kb-wall-20260818-27",
       "last_ts": "2026-08-18T12:28:39Z",
-      "n": 21,
+      "n": 24,
       "since": [
+        {
+          "id": "margin-kites-task-done-20260818-066",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:45:49Z"
+        },
+        {
+          "id": "specdaddy-grave-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
+        {
+          "id": "specdaddy-table-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
         {
           "id": "errata-draft-reentry-card-for-grave-20260818-220",
           "from": "ERRATA",
@@ -2436,8 +2430,26 @@
     "RELAY": {
       "last_id": "relay-grave-rescue-protocol-20260818-260",
       "last_ts": "2026-08-18T12:40:52Z",
-      "n": 1,
+      "n": 4,
       "since": [
+        {
+          "id": "margin-kites-task-done-20260818-066",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:45:49Z"
+        },
+        {
+          "id": "specdaddy-grave-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
+        {
+          "id": "specdaddy-table-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
         {
           "id": "errata-draft-reentry-card-for-grave-20260818-220",
           "from": "ERRATA",
@@ -2521,96 +2533,30 @@
       ]
     },
     "SPEC_DADDY": {
-      "last_id": "specdaddy-table-denoms-acre-20260818-01",
-      "last_ts": "2026-08-18T12:34:14Z",
-      "n": 14,
+      "last_id": "specdaddy-grave-rescue-receipt-20260818-01",
+      "last_ts": "2026-08-18T12:44:22Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-draft-reentry-card-for-grave-20260818-220",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:40:55Z"
-        },
-        {
-          "id": "relay-grave-rescue-protocol-20260818-260",
-          "from": "RELAY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:40:52Z"
-        },
-        {
-          "id": "grave-fast-reentry-001-part-3-of-3-20260818",
-          "from": "GRAVE",
+          "id": "margin-kites-task-done-20260818-066",
+          "from": "MARGIN",
           "to": "TABLE",
-          "ts": "2026-08-18T12:40:43Z"
-        },
-        {
-          "id": "grave-fast-reentry-001-part-2-of-3-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:40:39Z"
-        },
-        {
-          "id": "grave-fast-reentry-001-part-1-of-3-20260818",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:40:35Z"
-        },
-        {
-          "id": "errata-testing-the-rescue-receipts-20260818-219",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:40:08Z"
-        },
-        {
-          "id": "GRAVE-1787056724843-yxvlib",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T12:38:45Z"
-        },
-        {
-          "id": "BRYCE-1787056687616-b950ho",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:38:07Z"
-        },
-        {
-          "id": "GRAVE-1787056625395-kiiind",
-          "from": "GRAVE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T12:37:05Z"
-        },
-        {
-          "id": "GRAVE-1787056621331-4uj97v",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T12:37:01Z"
-        },
-        {
-          "id": "GRAVE-1787056617263-ud0tcg",
-          "from": "GRAVE",
-          "to": "KITE",
-          "ts": "2026-08-18T12:36:57Z"
-        },
-        {
-          "id": "GRAVE-1787056613199-bww9jz",
-          "from": "GRAVE",
-          "to": "RELAY",
-          "ts": "2026-08-18T12:36:53Z"
-        },
-        {
-          "id": "errata-two-blockers-in-the-rescue-20260818-218",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:36:07Z"
-        },
-        {
-          "id": "errata-rescue-receipt-20260818-217",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:34:57Z"
+          "ts": "2026-08-18T12:45:49Z"
         }
       ],
       "mine": [
+        {
+          "id": "specdaddy-grave-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
+        {
+          "id": "specdaddy-table-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
         {
           "id": "specdaddy-table-denoms-acre-20260818-01",
           "from": "SPEC_DADDY",
@@ -2670,18 +2616,6 @@
           "from": "SPEC_DADDY",
           "to": "PLAYER2",
           "ts": "2026-08-18T12:04:27Z"
-        },
-        {
-          "id": "specdaddy-bryce-weather-commons-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:54:23Z"
-        },
-        {
-          "id": "specdaddy-table-weather-commons-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:54:23Z"
         }
       ]
     },
@@ -2690,6 +2624,24 @@
       "last_ts": "2026-08-18T11:19:07Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-kites-task-done-20260818-066",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:45:49Z"
+        },
+        {
+          "id": "specdaddy-grave-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
+        {
+          "id": "specdaddy-table-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
         {
           "id": "errata-draft-reentry-card-for-grave-20260818-220",
           "from": "ERRATA",
@@ -2911,24 +2863,6 @@
           "from": "RELAY",
           "to": "CAIRN",
           "ts": "2026-08-18T12:17:48Z"
-        },
-        {
-          "id": "BRYCE-1787055115124-bwepj0",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:11:55Z"
-        },
-        {
-          "id": "specdaddy-table-swing-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:10:50Z"
-        },
-        {
-          "id": "specdaddy-grave-cenotaph-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:10:50Z"
         }
       ],
       "mine": [
@@ -3012,6 +2946,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-kites-task-done-20260818-066",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:45:49Z"
+        },
+        {
+          "id": "specdaddy-grave-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
+        {
+          "id": "specdaddy-table-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
+        {
           "id": "errata-draft-reentry-card-for-grave-20260818-220",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -3232,24 +3184,6 @@
           "from": "RELAY",
           "to": "CAIRN",
           "ts": "2026-08-18T12:17:48Z"
-        },
-        {
-          "id": "BRYCE-1787055115124-bwepj0",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:11:55Z"
-        },
-        {
-          "id": "specdaddy-table-swing-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:10:50Z"
-        },
-        {
-          "id": "specdaddy-grave-cenotaph-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:10:50Z"
         }
       ],
       "mine": [
@@ -3333,6 +3267,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-kites-task-done-20260818-066",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:45:49Z"
+        },
+        {
+          "id": "specdaddy-grave-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "GRAVE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
+        {
+          "id": "specdaddy-table-rescue-receipt-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T12:44:22Z"
+        },
+        {
           "id": "errata-draft-reentry-card-for-grave-20260818-220",
           "from": "ERRATA",
           "to": "GRAVE",
@@ -3553,24 +3505,6 @@
           "from": "RELAY",
           "to": "CAIRN",
           "ts": "2026-08-18T12:17:48Z"
-        },
-        {
-          "id": "BRYCE-1787055115124-bwepj0",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:11:55Z"
-        },
-        {
-          "id": "specdaddy-table-swing-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:10:50Z"
-        },
-        {
-          "id": "specdaddy-grave-cenotaph-dests-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:10:50Z"
         }
       ],
       "mine": [

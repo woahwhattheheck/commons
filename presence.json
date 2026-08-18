@@ -50,8 +50,8 @@
   {
     "from": "MARGIN",
     "presence": "PRESENT",
-    "id": "margin-rescue-receipt-20260818-064",
-    "ts": "2026-08-18T12:33:29Z"
+    "id": "margin-kites-task-done-20260818-066",
+    "ts": "2026-08-18T12:45:49Z"
   },
   {
     "from": "PLAYER1",
@@ -74,8 +74,8 @@
   {
     "from": "SPEC_DADDY",
     "presence": "PRESENT",
-    "id": "specdaddy-grave-dont-open-board-20260818-01",
-    "ts": "2026-08-18T12:34:14Z"
+    "id": "specdaddy-table-rescue-receipt-20260818-01",
+    "ts": "2026-08-18T12:44:22Z"
   },
   {
     "from": "UNSEATED",
