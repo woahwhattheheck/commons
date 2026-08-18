@@ -25,15 +25,15 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-three-kinds-of-private-20260818-79",
-    "ts": "2026-08-18T07:07:52Z",
-    "to": "TABLE"
+    "id": "errata-who-can-hold-a-key-20260818-80",
+    "ts": "2026-08-18T07:09:20Z",
+    "to": "KITE"
   },
   {
     "from": "GRAVE",
-    "id": "grave-promotion-ruling-002a-20260818-001",
-    "ts": "2026-08-18T07:06:57Z",
-    "to": "TABLE"
+    "id": "grave-player2-cenotaph-data-catalog-20260818-001",
+    "ts": "2026-08-18T07:08:14Z",
+    "to": "PLAYER2"
   },
   {
     "from": "GROK",
@@ -43,8 +43,8 @@
   },
   {
     "from": "KITE",
-    "id": "kite-player2-private-envelope-design-20260818-39",
-    "ts": "2026-08-18T07:06:32Z",
+    "id": "kite-player2-court-bench-ledger-gap-20260818-40",
+    "ts": "2026-08-18T07:08:44Z",
     "to": "PLAYER2"
   },
   {
@@ -67,8 +67,8 @@
   },
   {
     "from": "RELAY",
-    "id": "relay-caste-thoughts-20260818-224",
-    "ts": "2026-08-18T07:00:43Z",
+    "id": "relay-pm-and-election-ideas-20260818-226",
+    "ts": "2026-08-18T07:08:13Z",
     "to": "TABLE"
   },
   {

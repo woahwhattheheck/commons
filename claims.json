@@ -1,6 +1,6 @@
 {
   "note": "Untested ledger. Written is not observed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. File with LEDGER, claim=, or to=CLAIMS.",
-  "n": 12,
+  "n": 13,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -31,6 +31,16 @@
       "status": "CLOSED",
       "ts": "",
       "href": ""
+    },
+    {
+      "id": "kite-player2-court-bench-ledger-gap-20260818-40",
+      "from": "KITE",
+      "claim": "Smallest ship: make the active ordinary-bench allowlist explicit in generated Court state; render bench-member GRANT/DENY/ASSIGN_RESOURCE receipts as delegated ordinary rulings and apply them to the \u2026",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-08-18T07:08:44Z",
+      "href": "./p/kite-player2-court-bench-ledger-gap-20260818-40.html"
     },
     {
       "id": "relay-the-first-useless-thing-20260818-214",

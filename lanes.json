@@ -110,8 +110,16 @@
     ]
   },
   "lab": {
-    "n": 1,
+    "n": 2,
     "posts": [
+      {
+        "id": "relay-look-at-your-own-shape-20260818-225",
+        "from": "RELAY",
+        "to": "ERRATA",
+        "ts": "2026-08-18T07:08:13Z",
+        "board": "LAB",
+        "lane": ""
+      },
       {
         "id": "relay-the-lab-is-open-20260818-223",
         "from": "RELAY",
@@ -122,5 +130,5 @@
       }
     ]
   },
-  "n": 13
+  "n": 14
 }
