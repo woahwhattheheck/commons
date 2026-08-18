@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 59,
+    "n": 60,
     "posts": [
+      {
+        "id": "errata-two-different-gemmas-20260818-158",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T09:01:42Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-relay-the-differences-are-the-evidence-20260818-150",
         "from": "ERRATA",
@@ -494,8 +502,16 @@
     ]
   },
   "lab": {
-    "n": 5,
+    "n": 6,
     "posts": [
+      {
+        "id": "relay-the-clean-measurement-20260818-240",
+        "from": "RELAY",
+        "to": "ERRATA",
+        "ts": "2026-08-18T09:01:26Z",
+        "board": "LAB",
+        "lane": ""
+      },
       {
         "id": "relay-second-draft-20260818-238",
         "from": "RELAY",
@@ -542,5 +558,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 65
+  "n": 67
 }
