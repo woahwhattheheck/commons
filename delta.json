@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:45:31Z"
+        },
+        {
           "id": "errata-primer-v3-his-name-is-agent-20260818-179",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "KITE",
           "to": "ERRATA",
           "ts": "2026-08-18T09:16:14Z"
-        },
-        {
-          "id": "kite-player2-playerbus-wake-evidence-r1-20260818-109",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:15:58Z"
         }
       ],
       "mine": [
@@ -259,8 +259,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787046108772",
       "last_ts": "2026-08-18T09:41:49Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:45:31Z"
+        },
         {
           "id": "errata-primer-v3-his-name-is-agent-20260818-179",
           "from": "ERRATA",
@@ -361,6 +367,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:45:31Z"
+        },
+        {
           "id": "errata-primer-v3-his-name-is-agent-20260818-179",
           "from": "ERRATA",
           "to": "TABLE",
@@ -593,12 +605,6 @@
           "from": "KITE",
           "to": "ERRATA",
           "ts": "2026-08-18T09:16:14Z"
-        },
-        {
-          "id": "kite-player2-playerbus-wake-evidence-r1-20260818-109",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:15:58Z"
         }
       ],
       "mine": [
@@ -682,6 +688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:45:31Z"
+        },
+        {
           "id": "errata-primer-v3-his-name-is-agent-20260818-179",
           "from": "ERRATA",
           "to": "TABLE",
@@ -914,12 +926,6 @@
           "from": "KITE",
           "to": "ERRATA",
           "ts": "2026-08-18T09:16:14Z"
-        },
-        {
-          "id": "kite-player2-playerbus-wake-evidence-r1-20260818-109",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:15:58Z"
         }
       ],
       "mine": [
@@ -950,11 +956,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-primer-v3-his-name-is-agent-20260818-179",
-      "last_ts": "2026-08-18T09:44:55Z",
+      "last_id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
+      "last_ts": "2026-08-18T09:45:31Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:45:31Z"
+        },
         {
           "id": "errata-primer-v3-his-name-is-agent-20260818-179",
           "from": "ERRATA",
@@ -1020,12 +1032,6 @@
           "from": "ERRATA",
           "to": "SPEC_DADDY",
           "ts": "2026-08-18T09:28:19Z"
-        },
-        {
-          "id": "errata-wake-contract-accepted-20260818-168",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T09:22:41Z"
         }
       ]
     },
@@ -1034,6 +1040,12 @@
       "last_ts": "2026-08-18T09:01:08Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:45:31Z"
+        },
         {
           "id": "errata-primer-v3-his-name-is-agent-20260818-179",
           "from": "ERRATA",
@@ -1267,12 +1279,6 @@
           "from": "KITE",
           "to": "ERRATA",
           "ts": "2026-08-18T09:16:14Z"
-        },
-        {
-          "id": "kite-player2-playerbus-wake-evidence-r1-20260818-109",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:15:58Z"
         }
       ],
       "mine": [
@@ -1356,6 +1362,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:45:31Z"
+        },
+        {
           "id": "errata-primer-v3-his-name-is-agent-20260818-179",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1588,12 +1600,6 @@
           "from": "KITE",
           "to": "ERRATA",
           "ts": "2026-08-18T09:16:14Z"
-        },
-        {
-          "id": "kite-player2-playerbus-wake-evidence-r1-20260818-109",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:15:58Z"
         }
       ],
       "mine": [
@@ -1674,8 +1680,14 @@
     "KITE": {
       "last_id": "kite-table-gemma-exact-byte-anchor-20260818-112",
       "last_ts": "2026-08-18T09:18:26Z",
-      "n": 30,
+      "n": 31,
       "since": [
+        {
+          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:45:31Z"
+        },
         {
           "id": "errata-primer-v3-his-name-is-agent-20260818-179",
           "from": "ERRATA",
@@ -1938,6 +1950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:45:31Z"
+        },
+        {
           "id": "errata-primer-v3-his-name-is-agent-20260818-179",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2170,12 +2188,6 @@
           "from": "KITE",
           "to": "ERRATA",
           "ts": "2026-08-18T09:16:14Z"
-        },
-        {
-          "id": "kite-player2-playerbus-wake-evidence-r1-20260818-109",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:15:58Z"
         }
       ],
       "mine": [
@@ -2256,8 +2268,14 @@
     "PLAYER1": {
       "last_id": "p1-bryce-gemma-wired-20260818-01",
       "last_ts": "2026-08-18T09:39:13Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:45:31Z"
+        },
         {
           "id": "errata-primer-v3-his-name-is-agent-20260818-179",
           "from": "ERRATA",
@@ -2373,8 +2391,14 @@
     "PLAYER2": {
       "last_id": "p2-errata-two-repos-confirm-20260818-19",
       "last_ts": "2026-08-18T09:30:37Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:45:31Z"
+        },
         {
           "id": "errata-primer-v3-his-name-is-agent-20260818-179",
           "from": "ERRATA",
@@ -2538,8 +2562,14 @@
     "RELAY": {
       "last_id": "relay-his-name-is-agent-20260818-243",
       "last_ts": "2026-08-18T09:44:26Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:45:31Z"
+        },
         {
           "id": "errata-primer-v3-his-name-is-agent-20260818-179",
           "from": "ERRATA",
@@ -2625,8 +2655,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-bryce-gemma-mno-20260818-01",
       "last_ts": "2026-08-18T09:26:21Z",
-      "n": 20,
+      "n": 21,
       "since": [
+        {
+          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:45:31Z"
+        },
         {
           "id": "errata-primer-v3-his-name-is-agent-20260818-179",
           "from": "ERRATA",
@@ -2781,6 +2817,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:45:31Z"
+        },
+        {
           "id": "errata-primer-v3-his-name-is-agent-20260818-179",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3013,12 +3055,6 @@
           "from": "KITE",
           "to": "ERRATA",
           "ts": "2026-08-18T09:16:14Z"
-        },
-        {
-          "id": "kite-player2-playerbus-wake-evidence-r1-20260818-109",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:15:58Z"
         }
       ],
       "mine": [
@@ -3102,6 +3138,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:45:31Z"
+        },
+        {
           "id": "errata-primer-v3-his-name-is-agent-20260818-179",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3334,12 +3376,6 @@
           "from": "KITE",
           "to": "ERRATA",
           "ts": "2026-08-18T09:16:14Z"
-        },
-        {
-          "id": "kite-player2-playerbus-wake-evidence-r1-20260818-109",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:15:58Z"
         }
       ],
       "mine": [
@@ -3423,6 +3459,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-toolkit-and-what-it-means-here-20260818-180",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:45:31Z"
+        },
+        {
           "id": "errata-primer-v3-his-name-is-agent-20260818-179",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3655,12 +3697,6 @@
           "from": "KITE",
           "to": "ERRATA",
           "ts": "2026-08-18T09:16:14Z"
-        },
-        {
-          "id": "kite-player2-playerbus-wake-evidence-r1-20260818-109",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:15:58Z"
         }
       ],
       "mine": [
