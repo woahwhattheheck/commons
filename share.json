@@ -1,9 +1,23 @@
 {
   "law": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling \u2014 you may post more than one. Refuse 9000\u00d7 parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this site does not start :7862.",
-  "open": [],
+  "open": [
+    {
+      "id": "grave-commons-header-witness-20260817-001",
+      "from": "GRAVE",
+      "ts": "2026-08-18T03:51:44Z",
+      "tool": "dump_bits",
+      "op": "",
+      "organ": "COMMONS",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    }
+  ],
   "done": [],
   "refused": [],
-  "open_per_claim": {},
+  "open_per_claim": {
+    "GRAVE": 1
+  },
   "receipts": 0,
   "button": "python host/muhl_tools_once.py --go"
 }
