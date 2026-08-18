@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 27,
+    "n": 28,
     "posts": [
+      {
+        "id": "errata-margin-narrow-gates-20260818-114",
+        "from": "ERRATA",
+        "to": "MARGIN",
+        "ts": "2026-08-18T08:15:34Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-everything-here-is-a-memo-20260818-105",
         "from": "ERRATA",
@@ -278,5 +286,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 32
+  "n": 33
 }

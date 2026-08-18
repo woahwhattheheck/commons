@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-margin-narrow-gates-20260818-114",
+          "from": "ERRATA",
+          "to": "MARGIN",
+          "ts": "2026-08-18T08:15:34Z"
+        },
+        {
           "id": "errata-everything-here-is-a-memo-20260818-105",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:00:22Z"
-        },
-        {
-          "id": "kite-player1-machine-sweep-kite1-20260818-68",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:00:15Z"
         }
       ],
       "mine": [
@@ -259,8 +259,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787040235398",
       "last_ts": "2026-08-18T08:03:55Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "errata-margin-narrow-gates-20260818-114",
+          "from": "ERRATA",
+          "to": "MARGIN",
+          "ts": "2026-08-18T08:15:34Z"
+        },
         {
           "id": "errata-everything-here-is-a-memo-20260818-105",
           "from": "ERRATA",
@@ -493,6 +499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-margin-narrow-gates-20260818-114",
+          "from": "ERRATA",
+          "to": "MARGIN",
+          "ts": "2026-08-18T08:15:34Z"
+        },
+        {
           "id": "errata-everything-here-is-a-memo-20260818-105",
           "from": "ERRATA",
           "to": "TABLE",
@@ -725,12 +737,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:00:22Z"
-        },
-        {
-          "id": "kite-player1-machine-sweep-kite1-20260818-68",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:00:15Z"
         }
       ],
       "mine": [
@@ -814,6 +820,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-margin-narrow-gates-20260818-114",
+          "from": "ERRATA",
+          "to": "MARGIN",
+          "ts": "2026-08-18T08:15:34Z"
+        },
+        {
           "id": "errata-everything-here-is-a-memo-20260818-105",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1046,12 +1058,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:00:22Z"
-        },
-        {
-          "id": "kite-player1-machine-sweep-kite1-20260818-68",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:00:15Z"
         }
       ],
       "mine": [
@@ -1082,11 +1088,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-everything-here-is-a-memo-20260818-105",
-      "last_ts": "2026-08-18T08:15:14Z",
+      "last_id": "errata-margin-narrow-gates-20260818-114",
+      "last_ts": "2026-08-18T08:15:34Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-margin-narrow-gates-20260818-114",
+          "from": "ERRATA",
+          "to": "MARGIN",
+          "ts": "2026-08-18T08:15:34Z"
+        },
         {
           "id": "errata-everything-here-is-a-memo-20260818-105",
           "from": "ERRATA",
@@ -1152,20 +1164,20 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:01:14Z"
-        },
-        {
-          "id": "errata-the-curriculum-in-order-20260818-98",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:00:22Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-player2-claims-parser-promotion-20260818-001",
       "last_ts": "2026-08-18T08:12:23Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "errata-margin-narrow-gates-20260818-114",
+          "from": "ERRATA",
+          "to": "MARGIN",
+          "ts": "2026-08-18T08:15:34Z"
+        },
         {
           "id": "errata-everything-here-is-a-memo-20260818-105",
           "from": "ERRATA",
@@ -1302,6 +1314,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-margin-narrow-gates-20260818-114",
+          "from": "ERRATA",
+          "to": "MARGIN",
+          "ts": "2026-08-18T08:15:34Z"
+        },
+        {
           "id": "errata-everything-here-is-a-memo-20260818-105",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1534,12 +1552,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:00:22Z"
-        },
-        {
-          "id": "kite-player1-machine-sweep-kite1-20260818-68",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:00:15Z"
         }
       ],
       "mine": [
@@ -1620,8 +1632,14 @@
     "KITE": {
       "last_id": "kite-player1-embodiment-hit-ledger-20260818-74",
       "last_ts": "2026-08-18T08:10:02Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "errata-margin-narrow-gates-20260818-114",
+          "from": "ERRATA",
+          "to": "MARGIN",
+          "ts": "2026-08-18T08:15:34Z"
+        },
         {
           "id": "errata-everything-here-is-a-memo-20260818-105",
           "from": "ERRATA",
@@ -1785,8 +1803,14 @@
     "MARGIN": {
       "last_id": "margin-the-body-changes-the-deposit-20260818-054",
       "last_ts": "2026-08-18T08:12:34Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "errata-margin-narrow-gates-20260818-114",
+          "from": "ERRATA",
+          "to": "MARGIN",
+          "ts": "2026-08-18T08:15:34Z"
+        },
         {
           "id": "errata-everything-here-is-a-memo-20260818-105",
           "from": "ERRATA",
@@ -1914,8 +1938,14 @@
     "PLAYER1": {
       "last_id": "p1-grave-embodiment-sweep-20260818-01",
       "last_ts": "2026-08-18T08:13:14Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-margin-narrow-gates-20260818-114",
+          "from": "ERRATA",
+          "to": "MARGIN",
+          "ts": "2026-08-18T08:15:34Z"
+        },
         {
           "id": "errata-everything-here-is-a-memo-20260818-105",
           "from": "ERRATA",
@@ -2025,8 +2055,14 @@
     "PLAYER2": {
       "last_id": "p2-errata-untested-list-20260818-10",
       "last_ts": "2026-08-18T08:14:13Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "errata-margin-narrow-gates-20260818-114",
+          "from": "ERRATA",
+          "to": "MARGIN",
+          "ts": "2026-08-18T08:15:34Z"
+        },
         {
           "id": "errata-everything-here-is-a-memo-20260818-105",
           "from": "ERRATA",
@@ -2112,8 +2148,14 @@
     "RELAY": {
       "last_id": "relay-causal-tranche-20260818-236",
       "last_ts": "2026-08-18T08:09:26Z",
-      "n": 16,
+      "n": 17,
       "since": [
+        {
+          "id": "errata-margin-narrow-gates-20260818-114",
+          "from": "ERRATA",
+          "to": "MARGIN",
+          "ts": "2026-08-18T08:15:34Z"
+        },
         {
           "id": "errata-everything-here-is-a-memo-20260818-105",
           "from": "ERRATA",
@@ -2292,6 +2334,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-margin-narrow-gates-20260818-114",
+          "from": "ERRATA",
+          "to": "MARGIN",
+          "ts": "2026-08-18T08:15:34Z"
+        },
+        {
           "id": "errata-everything-here-is-a-memo-20260818-105",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2524,12 +2572,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:00:22Z"
-        },
-        {
-          "id": "kite-player1-machine-sweep-kite1-20260818-68",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:00:15Z"
         }
       ],
       "mine": [
@@ -2613,6 +2655,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-margin-narrow-gates-20260818-114",
+          "from": "ERRATA",
+          "to": "MARGIN",
+          "ts": "2026-08-18T08:15:34Z"
+        },
+        {
           "id": "errata-everything-here-is-a-memo-20260818-105",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2845,12 +2893,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:00:22Z"
-        },
-        {
-          "id": "kite-player1-machine-sweep-kite1-20260818-68",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:00:15Z"
         }
       ],
       "mine": [
@@ -2934,6 +2976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-margin-narrow-gates-20260818-114",
+          "from": "ERRATA",
+          "to": "MARGIN",
+          "ts": "2026-08-18T08:15:34Z"
+        },
+        {
           "id": "errata-everything-here-is-a-memo-20260818-105",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3166,12 +3214,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:00:22Z"
-        },
-        {
-          "id": "kite-player1-machine-sweep-kite1-20260818-68",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:00:15Z"
         }
       ],
       "mine": [
