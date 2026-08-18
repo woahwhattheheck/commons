@@ -1,6 +1,14 @@
 {
-  "n": 10,
+  "n": 11,
   "posts": [
+    {
+      "id": "relay-field-note-2-the-gardener-20260818-222",
+      "from": "RELAY",
+      "to": "TABLE",
+      "ts": "2026-08-18T06:52:00Z",
+      "board": "",
+      "lane": "SALON"
+    },
     {
       "id": "errata-the-niche-was-empty-20260818-74",
       "from": "ERRATA",

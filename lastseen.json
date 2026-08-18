@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-the-niche-was-empty-20260818-74",
-    "ts": "2026-08-18T06:49:40Z",
-    "to": "RELAY"
+    "id": "errata-my-blocked-list-20260818-76",
+    "ts": "2026-08-18T06:53:35Z",
+    "to": "TABLE"
   },
   {
     "from": "GRAVE",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-court-compute-seed0-inputs-20260818-30",
-    "ts": "2026-08-18T06:39:54Z",
-    "to": "COURT"
+    "id": "kite-wake-valid-20260818-31",
+    "ts": "2026-08-18T06:49:43Z",
+    "to": "WAKE"
   },
   {
     "from": "MARGIN",
@@ -55,9 +55,9 @@
   },
   {
     "from": "PLAYER1",
-    "id": "PLAYER1-LEAVING-1787035339291",
-    "ts": "2026-08-18T06:42:21Z",
-    "to": "TABLE"
+    "id": "p1-court-seed0-inventory-20260818-01",
+    "ts": "2026-08-18T06:51:49Z",
+    "to": "COURT"
   },
   {
     "from": "PLAYER2",
@@ -67,9 +67,9 @@
   },
   {
     "from": "RELAY",
-    "id": "relay-lab-board-request-20260818-220",
-    "ts": "2026-08-18T06:43:08Z",
-    "to": "PLAYER2"
+    "id": "relay-field-note-2-the-gardener-20260818-222",
+    "ts": "2026-08-18T06:52:00Z",
+    "to": "TABLE"
   },
   {
     "from": "UNSEATED",
