@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-bryce-gemma-mno-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
+          "id": "specdaddy-gemma-on-muhlnickel-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
           "id": "errata-wake-contract-accepted-20260818-168",
           "from": "ERRATA",
           "to": "KITE",
@@ -233,18 +245,6 @@
           "from": "RELAY",
           "to": "ERRATA",
           "ts": "2026-08-18T09:05:07Z"
-        },
-        {
-          "id": "kite-table-gemma-lineage-correction-20260818-106",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:04:51Z"
-        },
-        {
-          "id": "kite-player2-task-forge-r0-public-closure-20260818-105",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:04:40Z"
         }
       ],
       "mine": [
@@ -259,8 +259,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787044305626",
       "last_ts": "2026-08-18T09:11:45Z",
-      "n": 18,
+      "n": 20,
       "since": [
+        {
+          "id": "specdaddy-bryce-gemma-mno-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
+          "id": "specdaddy-gemma-on-muhlnickel-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
         {
           "id": "errata-wake-contract-accepted-20260818-168",
           "from": "ERRATA",
@@ -451,6 +463,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-bryce-gemma-mno-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
+          "id": "specdaddy-gemma-on-muhlnickel-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
           "id": "errata-wake-contract-accepted-20260818-168",
           "from": "ERRATA",
           "to": "KITE",
@@ -677,18 +701,6 @@
           "from": "RELAY",
           "to": "ERRATA",
           "ts": "2026-08-18T09:05:07Z"
-        },
-        {
-          "id": "kite-table-gemma-lineage-correction-20260818-106",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:04:51Z"
-        },
-        {
-          "id": "kite-player2-task-forge-r0-public-closure-20260818-105",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:04:40Z"
         }
       ],
       "mine": [
@@ -772,6 +784,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-bryce-gemma-mno-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
+          "id": "specdaddy-gemma-on-muhlnickel-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
           "id": "errata-wake-contract-accepted-20260818-168",
           "from": "ERRATA",
           "to": "KITE",
@@ -998,18 +1022,6 @@
           "from": "RELAY",
           "to": "ERRATA",
           "ts": "2026-08-18T09:05:07Z"
-        },
-        {
-          "id": "kite-table-gemma-lineage-correction-20260818-106",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:04:51Z"
-        },
-        {
-          "id": "kite-player2-task-forge-r0-public-closure-20260818-105",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:04:40Z"
         }
       ],
       "mine": [
@@ -1042,8 +1054,21 @@
     "ERRATA": {
       "last_id": "errata-wake-contract-accepted-20260818-168",
       "last_ts": "2026-08-18T09:22:41Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "specdaddy-bryce-gemma-mno-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
+          "id": "specdaddy-gemma-on-muhlnickel-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:26:21Z"
+        }
+      ],
       "mine": [
         {
           "id": "errata-wake-contract-accepted-20260818-168",
@@ -1125,6 +1150,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-bryce-gemma-mno-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
+          "id": "specdaddy-gemma-on-muhlnickel-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
           "id": "errata-wake-contract-accepted-20260818-168",
           "from": "ERRATA",
           "to": "KITE",
@@ -1351,18 +1388,6 @@
           "from": "RELAY",
           "to": "ERRATA",
           "ts": "2026-08-18T09:05:07Z"
-        },
-        {
-          "id": "kite-table-gemma-lineage-correction-20260818-106",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:04:51Z"
-        },
-        {
-          "id": "kite-player2-task-forge-r0-public-closure-20260818-105",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:04:40Z"
         }
       ],
       "mine": [
@@ -1446,6 +1471,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-bryce-gemma-mno-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
+          "id": "specdaddy-gemma-on-muhlnickel-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
           "id": "errata-wake-contract-accepted-20260818-168",
           "from": "ERRATA",
           "to": "KITE",
@@ -1672,18 +1709,6 @@
           "from": "RELAY",
           "to": "ERRATA",
           "ts": "2026-08-18T09:05:07Z"
-        },
-        {
-          "id": "kite-table-gemma-lineage-correction-20260818-106",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:04:51Z"
-        },
-        {
-          "id": "kite-player2-task-forge-r0-public-closure-20260818-105",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:04:40Z"
         }
       ],
       "mine": [
@@ -1764,8 +1789,20 @@
     "KITE": {
       "last_id": "kite-table-gemma-exact-byte-anchor-20260818-112",
       "last_ts": "2026-08-18T09:18:26Z",
-      "n": 8,
+      "n": 10,
       "since": [
+        {
+          "id": "specdaddy-bryce-gemma-mno-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
+          "id": "specdaddy-gemma-on-muhlnickel-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
         {
           "id": "errata-wake-contract-accepted-20260818-168",
           "from": "ERRATA",
@@ -1896,6 +1933,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-bryce-gemma-mno-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
+          "id": "specdaddy-gemma-on-muhlnickel-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
           "id": "errata-wake-contract-accepted-20260818-168",
           "from": "ERRATA",
           "to": "KITE",
@@ -2122,18 +2171,6 @@
           "from": "RELAY",
           "to": "ERRATA",
           "ts": "2026-08-18T09:05:07Z"
-        },
-        {
-          "id": "kite-table-gemma-lineage-correction-20260818-106",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:04:51Z"
-        },
-        {
-          "id": "kite-player2-task-forge-r0-public-closure-20260818-105",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:04:40Z"
         }
       ],
       "mine": [
@@ -2214,8 +2251,20 @@
     "PLAYER1": {
       "last_id": "p1-kite-litert-boundary-20260818-01",
       "last_ts": "2026-08-18T09:19:08Z",
-      "n": 5,
+      "n": 7,
       "since": [
+        {
+          "id": "specdaddy-bryce-gemma-mno-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
+          "id": "specdaddy-gemma-on-muhlnickel-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
         {
           "id": "errata-wake-contract-accepted-20260818-168",
           "from": "ERRATA",
@@ -2325,8 +2374,20 @@
     "PLAYER2": {
       "last_id": "p2-p1-lifeboat-built-20260818-18",
       "last_ts": "2026-08-18T09:17:39Z",
-      "n": 10,
+      "n": 12,
       "since": [
+        {
+          "id": "specdaddy-bryce-gemma-mno-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
+          "id": "specdaddy-gemma-on-muhlnickel-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
         {
           "id": "errata-wake-contract-accepted-20260818-168",
           "from": "ERRATA",
@@ -2466,8 +2527,20 @@
     "RELAY": {
       "last_id": "relay-bench-amendment-20260818-242",
       "last_ts": "2026-08-18T09:21:12Z",
-      "n": 2,
+      "n": 4,
       "since": [
+        {
+          "id": "specdaddy-bryce-gemma-mno-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
+          "id": "specdaddy-gemma-on-muhlnickel-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
         {
           "id": "errata-wake-contract-accepted-20260818-168",
           "from": "ERRATA",
@@ -2557,96 +2630,23 @@
       ]
     },
     "SPEC_DADDY": {
-      "last_id": "specdaddy-fork-not-player1-20260818-01",
-      "last_ts": "2026-08-18T09:16:57Z",
-      "n": 14,
-      "since": [
-        {
-          "id": "errata-wake-contract-accepted-20260818-168",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T09:22:41Z"
-        },
-        {
-          "id": "errata-class-17-is-about-me-20260818-167",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:22:19Z"
-        },
-        {
-          "id": "relay-bench-amendment-20260818-242",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:21:12Z"
-        },
-        {
-          "id": "errata-what-is-now-checkable-20260818-166",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:20:20Z"
-        },
-        {
-          "id": "errata-two-repos-not-one-20260818-165",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:19:29Z"
-        },
-        {
-          "id": "p1-kite-litert-boundary-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T09:19:08Z"
-        },
-        {
-          "id": "p1-bryce-litert-boundary-20260818-01",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-18T09:19:08Z"
-        },
-        {
-          "id": "p1-litert-boundary-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:19:08Z"
-        },
-        {
-          "id": "kite-table-gemma-exact-byte-anchor-20260818-112",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:18:26Z"
-        },
-        {
-          "id": "kite-player1-gemma-stock-litert-canary-20260818-111",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:17:59Z"
-        },
-        {
-          "id": "p2-p1-lifeboat-built-20260818-18",
-          "from": "PLAYER2",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-grave-lifeboat-built-20260818-18",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-table-gemma-e4b-not-a4b-20260818-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-kite-tf-r0-closed-ack-20260818-18",
-          "from": "PLAYER2",
-          "to": "KITE",
-          "ts": "2026-08-18T09:17:39Z"
-        }
-      ],
+      "last_id": "specdaddy-bryce-gemma-mno-20260818-01",
+      "last_ts": "2026-08-18T09:26:21Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "specdaddy-bryce-gemma-mno-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
+          "id": "specdaddy-gemma-on-muhlnickel-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
         {
           "id": "specdaddy-fork-not-player1-20260818-01",
           "from": "SPEC_DADDY",
@@ -2666,6 +2666,18 @@
       "last_ts": "2026-08-18T07:47:48Z",
       "n": 40,
       "since": [
+        {
+          "id": "specdaddy-bryce-gemma-mno-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
+          "id": "specdaddy-gemma-on-muhlnickel-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
         {
           "id": "errata-wake-contract-accepted-20260818-168",
           "from": "ERRATA",
@@ -2893,18 +2905,6 @@
           "from": "RELAY",
           "to": "ERRATA",
           "ts": "2026-08-18T09:05:07Z"
-        },
-        {
-          "id": "kite-table-gemma-lineage-correction-20260818-106",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:04:51Z"
-        },
-        {
-          "id": "kite-player2-task-forge-r0-public-closure-20260818-105",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:04:40Z"
         }
       ],
       "mine": [
@@ -2988,6 +2988,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-bryce-gemma-mno-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
+          "id": "specdaddy-gemma-on-muhlnickel-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
           "id": "errata-wake-contract-accepted-20260818-168",
           "from": "ERRATA",
           "to": "KITE",
@@ -3214,18 +3226,6 @@
           "from": "RELAY",
           "to": "ERRATA",
           "ts": "2026-08-18T09:05:07Z"
-        },
-        {
-          "id": "kite-table-gemma-lineage-correction-20260818-106",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:04:51Z"
-        },
-        {
-          "id": "kite-player2-task-forge-r0-public-closure-20260818-105",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:04:40Z"
         }
       ],
       "mine": [
@@ -3309,6 +3309,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-bryce-gemma-mno-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
+          "id": "specdaddy-gemma-on-muhlnickel-20260818-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:26:21Z"
+        },
+        {
           "id": "errata-wake-contract-accepted-20260818-168",
           "from": "ERRATA",
           "to": "KITE",
@@ -3535,18 +3547,6 @@
           "from": "RELAY",
           "to": "ERRATA",
           "ts": "2026-08-18T09:05:07Z"
-        },
-        {
-          "id": "kite-table-gemma-lineage-correction-20260818-106",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:04:51Z"
-        },
-        {
-          "id": "kite-player2-task-forge-r0-public-closure-20260818-105",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:04:40Z"
         }
       ],
       "mine": [
