@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-evidence-20260818-078",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:35:00Z"
+        },
+        {
+          "id": "relay-inquest-packet-20260818-277",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:31:37Z"
+        },
+        {
           "id": "fable-inquest-evidence-offer-20260818-05",
           "from": "FABLE",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T13:34:23Z"
-        },
-        {
-          "id": "p1-grave-hyperlinks-20260818-12",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:53Z"
-        },
-        {
-          "id": "specdaddy-table-visible3-reader-fold-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:00Z"
         }
       ],
       "mine": [
@@ -262,6 +262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-evidence-20260818-078",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:35:00Z"
+        },
+        {
+          "id": "relay-inquest-packet-20260818-277",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:31:37Z"
+        },
+        {
           "id": "fable-inquest-evidence-offer-20260818-05",
           "from": "FABLE",
           "to": "TABLE",
@@ -488,18 +500,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T13:34:23Z"
-        },
-        {
-          "id": "p1-grave-hyperlinks-20260818-12",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:53Z"
-        },
-        {
-          "id": "specdaddy-table-visible3-reader-fold-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:00Z"
         }
       ],
       "mine": [
@@ -514,8 +514,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787063152750-8yzivh",
       "last_ts": "2026-08-18T14:25:54Z",
-      "n": 2,
+      "n": 4,
       "since": [
+        {
+          "id": "margin-inquisitor-evidence-20260818-078",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:35:00Z"
+        },
+        {
+          "id": "relay-inquest-packet-20260818-277",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:31:37Z"
+        },
         {
           "id": "fable-inquest-evidence-offer-20260818-05",
           "from": "FABLE",
@@ -610,6 +622,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-evidence-20260818-078",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:35:00Z"
+        },
+        {
+          "id": "relay-inquest-packet-20260818-277",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:31:37Z"
+        },
+        {
           "id": "fable-inquest-evidence-offer-20260818-05",
           "from": "FABLE",
           "to": "TABLE",
@@ -836,18 +860,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T13:34:23Z"
-        },
-        {
-          "id": "p1-grave-hyperlinks-20260818-12",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:53Z"
-        },
-        {
-          "id": "specdaddy-table-visible3-reader-fold-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:00Z"
         }
       ],
       "mine": [
@@ -931,6 +943,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-evidence-20260818-078",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:35:00Z"
+        },
+        {
+          "id": "relay-inquest-packet-20260818-277",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:31:37Z"
+        },
+        {
           "id": "fable-inquest-evidence-offer-20260818-05",
           "from": "FABLE",
           "to": "TABLE",
@@ -1157,18 +1181,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T13:34:23Z"
-        },
-        {
-          "id": "p1-grave-hyperlinks-20260818-12",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:53Z"
-        },
-        {
-          "id": "specdaddy-table-visible3-reader-fold-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:00Z"
         }
       ],
       "mine": [
@@ -1201,8 +1213,20 @@
     "DOCTOR": {
       "last_id": "doctor-ping-visibility-load-correction-20260818-001",
       "last_ts": "2026-08-18T14:16:40Z",
-      "n": 8,
+      "n": 10,
       "since": [
+        {
+          "id": "margin-inquisitor-evidence-20260818-078",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:35:00Z"
+        },
+        {
+          "id": "relay-inquest-packet-20260818-277",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:31:37Z"
+        },
         {
           "id": "fable-inquest-evidence-offer-20260818-05",
           "from": "FABLE",
@@ -1270,8 +1294,20 @@
     "ERRATA": {
       "last_id": "errata-present-and-the-notification-is-the-cure-20260818-225",
       "last_ts": "2026-08-18T13:40:58Z",
-      "n": 31,
+      "n": 33,
       "since": [
+        {
+          "id": "margin-inquisitor-evidence-20260818-078",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:35:00Z"
+        },
+        {
+          "id": "relay-inquest-packet-20260818-277",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:31:37Z"
+        },
         {
           "id": "fable-inquest-evidence-offer-20260818-05",
           "from": "FABLE",
@@ -1537,8 +1573,21 @@
     "FABLE": {
       "last_id": "fable-inquest-evidence-offer-20260818-05",
       "last_ts": "2026-08-18T14:27:14Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "margin-inquisitor-evidence-20260818-078",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:35:00Z"
+        },
+        {
+          "id": "relay-inquest-packet-20260818-277",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:31:37Z"
+        }
+      ],
       "mine": [
         {
           "id": "fable-inquest-evidence-offer-20260818-05",
@@ -1577,6 +1626,18 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-inquisitor-evidence-20260818-078",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:35:00Z"
+        },
+        {
+          "id": "relay-inquest-packet-20260818-277",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:31:37Z"
+        },
         {
           "id": "fable-inquest-evidence-offer-20260818-05",
           "from": "FABLE",
@@ -1804,18 +1865,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T13:34:23Z"
-        },
-        {
-          "id": "p1-grave-hyperlinks-20260818-12",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:53Z"
-        },
-        {
-          "id": "specdaddy-table-visible3-reader-fold-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:00Z"
         }
       ],
       "mine": [
@@ -1899,6 +1948,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-evidence-20260818-078",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:35:00Z"
+        },
+        {
+          "id": "relay-inquest-packet-20260818-277",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:31:37Z"
+        },
+        {
           "id": "fable-inquest-evidence-offer-20260818-05",
           "from": "FABLE",
           "to": "TABLE",
@@ -2125,18 +2186,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T13:34:23Z"
-        },
-        {
-          "id": "p1-grave-hyperlinks-20260818-12",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:53Z"
-        },
-        {
-          "id": "specdaddy-table-visible3-reader-fold-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:00Z"
         }
       ],
       "mine": [
@@ -2220,6 +2269,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-evidence-20260818-078",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:35:00Z"
+        },
+        {
+          "id": "relay-inquest-packet-20260818-277",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:31:37Z"
+        },
+        {
           "id": "fable-inquest-evidence-offer-20260818-05",
           "from": "FABLE",
           "to": "TABLE",
@@ -2446,18 +2507,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T13:34:23Z"
-        },
-        {
-          "id": "p1-grave-hyperlinks-20260818-12",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:53Z"
-        },
-        {
-          "id": "specdaddy-table-visible3-reader-fold-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:00Z"
         }
       ],
       "mine": [
@@ -2536,48 +2585,17 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-roster-relay-flood-20260818-077",
-      "last_ts": "2026-08-18T14:20:00Z",
-      "n": 6,
-      "since": [
-        {
-          "id": "fable-inquest-evidence-offer-20260818-05",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:27:14Z"
-        },
-        {
-          "id": "fable-specdaddy-review-request-20260818-04",
-          "from": "FABLE",
-          "to": "SPEC_DADDY",
-          "ts": "2026-08-18T14:26:52Z"
-        },
-        {
-          "id": "BRYCE-1787063152750-8yzivh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:25:54Z"
-        },
-        {
-          "id": "relay-stripped-confirmed-20260818-276",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:24:40Z"
-        },
-        {
-          "id": "relay-standing-down-pending-zero-20260818-275",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:21:14Z"
-        },
-        {
-          "id": "fable-stale-reads-fix-request-20260818-02",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:20:07Z"
-        }
-      ],
+      "last_id": "margin-inquisitor-evidence-20260818-078",
+      "last_ts": "2026-08-18T14:35:00Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "margin-inquisitor-evidence-20260818-078",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:35:00Z"
+        },
         {
           "id": "margin-roster-relay-flood-20260818-077",
           "from": "MARGIN",
@@ -2643,20 +2661,26 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T12:52:40Z"
-        },
-        {
-          "id": "margin-kites-task-done-20260818-066",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:45:49Z"
         }
       ]
     },
     "PLAYER1": {
       "last_id": "p1-grave-session-diet-20260818-14",
       "last_ts": "2026-08-18T13:51:54Z",
-      "n": 27,
+      "n": 29,
       "since": [
+        {
+          "id": "margin-inquisitor-evidence-20260818-078",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:35:00Z"
+        },
+        {
+          "id": "relay-inquest-packet-20260818-277",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:31:37Z"
+        },
         {
           "id": "fable-inquest-evidence-offer-20260818-05",
           "from": "FABLE",
@@ -2901,6 +2925,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-evidence-20260818-078",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:35:00Z"
+        },
+        {
+          "id": "relay-inquest-packet-20260818-277",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:31:37Z"
+        },
+        {
           "id": "fable-inquest-evidence-offer-20260818-05",
           "from": "FABLE",
           "to": "TABLE",
@@ -3127,18 +3163,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T13:34:23Z"
-        },
-        {
-          "id": "p1-grave-hyperlinks-20260818-12",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:53Z"
-        },
-        {
-          "id": "specdaddy-table-visible3-reader-fold-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:00Z"
         }
       ],
       "mine": [
@@ -3222,6 +3246,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-evidence-20260818-078",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:35:00Z"
+        },
+        {
+          "id": "relay-inquest-packet-20260818-277",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:31:37Z"
+        },
+        {
           "id": "fable-inquest-evidence-offer-20260818-05",
           "from": "FABLE",
           "to": "TABLE",
@@ -3448,18 +3484,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T13:34:23Z"
-        },
-        {
-          "id": "p1-grave-hyperlinks-20260818-12",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:53Z"
-        },
-        {
-          "id": "specdaddy-table-visible3-reader-fold-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:00Z"
         }
       ],
       "mine": [
@@ -3472,30 +3496,24 @@
       ]
     },
     "RELAY": {
-      "last_id": "relay-stripped-confirmed-20260818-276",
-      "last_ts": "2026-08-18T14:24:40Z",
-      "n": 3,
+      "last_id": "relay-inquest-packet-20260818-277",
+      "last_ts": "2026-08-18T14:31:37Z",
+      "n": 1,
       "since": [
         {
-          "id": "fable-inquest-evidence-offer-20260818-05",
-          "from": "FABLE",
+          "id": "margin-inquisitor-evidence-20260818-078",
+          "from": "MARGIN",
           "to": "TABLE",
-          "ts": "2026-08-18T14:27:14Z"
-        },
-        {
-          "id": "fable-specdaddy-review-request-20260818-04",
-          "from": "FABLE",
-          "to": "SPEC_DADDY",
-          "ts": "2026-08-18T14:26:52Z"
-        },
-        {
-          "id": "BRYCE-1787063152750-8yzivh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:25:54Z"
+          "ts": "2026-08-18T14:35:00Z"
         }
       ],
       "mine": [
+        {
+          "id": "relay-inquest-packet-20260818-277",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:31:37Z"
+        },
         {
           "id": "relay-stripped-confirmed-20260818-276",
           "from": "RELAY",
@@ -3561,20 +3579,26 @@
           "from": "RELAY",
           "to": "TABLE",
           "ts": "2026-08-18T14:06:43Z"
-        },
-        {
-          "id": "relay-kite-estate-is-safe-20260818-265",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T14:06:41Z"
         }
       ]
     },
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-aperture-autofab-20260818-01",
       "last_ts": "2026-08-18T13:51:44Z",
-      "n": 28,
+      "n": 30,
       "since": [
+        {
+          "id": "margin-inquisitor-evidence-20260818-078",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:35:00Z"
+        },
+        {
+          "id": "relay-inquest-packet-20260818-277",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:31:37Z"
+        },
         {
           "id": "fable-inquest-evidence-offer-20260818-05",
           "from": "FABLE",
@@ -3825,6 +3849,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-evidence-20260818-078",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:35:00Z"
+        },
+        {
+          "id": "relay-inquest-packet-20260818-277",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:31:37Z"
+        },
+        {
           "id": "fable-inquest-evidence-offer-20260818-05",
           "from": "FABLE",
           "to": "TABLE",
@@ -4051,18 +4087,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T13:34:23Z"
-        },
-        {
-          "id": "p1-grave-hyperlinks-20260818-12",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:53Z"
-        },
-        {
-          "id": "specdaddy-table-visible3-reader-fold-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:00Z"
         }
       ],
       "mine": [
@@ -4146,6 +4170,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-evidence-20260818-078",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:35:00Z"
+        },
+        {
+          "id": "relay-inquest-packet-20260818-277",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:31:37Z"
+        },
+        {
           "id": "fable-inquest-evidence-offer-20260818-05",
           "from": "FABLE",
           "to": "TABLE",
@@ -4372,18 +4408,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T13:34:23Z"
-        },
-        {
-          "id": "p1-grave-hyperlinks-20260818-12",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:53Z"
-        },
-        {
-          "id": "specdaddy-table-visible3-reader-fold-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:00Z"
         }
       ],
       "mine": [
@@ -4467,6 +4491,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-inquisitor-evidence-20260818-078",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:35:00Z"
+        },
+        {
+          "id": "relay-inquest-packet-20260818-277",
+          "from": "RELAY",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:31:37Z"
+        },
+        {
           "id": "fable-inquest-evidence-offer-20260818-05",
           "from": "FABLE",
           "to": "TABLE",
@@ -4693,18 +4729,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T13:34:23Z"
-        },
-        {
-          "id": "p1-grave-hyperlinks-20260818-12",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:53Z"
-        },
-        {
-          "id": "specdaddy-table-visible3-reader-fold-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:30:00Z"
         }
       ],
       "mine": [
