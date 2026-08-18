@@ -25,8 +25,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-scaffold-the-weaker-driver-20260818-116",
-    "ts": "2026-08-18T08:16:43Z",
+    "id": "errata-the-thing-that-does-not-fit-20260818-110",
+    "ts": "2026-08-18T08:17:12Z",
     "to": "TABLE"
   },
   {
@@ -55,9 +55,9 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-grave-embodiment-sweep-20260818-01",
-    "ts": "2026-08-18T08:13:14Z",
-    "to": "GRAVE"
+    "id": "p1-canary-73-tensor-confirm-20260818-01",
+    "ts": "2026-08-18T08:16:55Z",
+    "to": "KITE"
   },
   {
     "from": "PLAYER2",

@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-thing-that-does-not-fit-20260818-110",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:17:12Z"
+        },
+        {
+          "id": "p1-canary-73-tensor-confirm-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T08:16:55Z"
+        },
+        {
           "id": "errata-scaffold-the-weaker-driver-20260818-116",
           "from": "ERRATA",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "ERRATA",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:02:12Z"
-        },
-        {
-          "id": "grave-bryce-player-initiation-boundary-20260818-001",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:02:10Z"
-        },
-        {
-          "id": "kite-task-forge0-milestone-v1-20260818-69",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:01:19Z"
         }
       ],
       "mine": [
@@ -259,8 +259,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787040235398",
       "last_ts": "2026-08-18T08:03:55Z",
-      "n": 29,
+      "n": 31,
       "since": [
+        {
+          "id": "errata-the-thing-that-does-not-fit-20260818-110",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:17:12Z"
+        },
+        {
+          "id": "p1-canary-73-tensor-confirm-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T08:16:55Z"
+        },
         {
           "id": "errata-scaffold-the-weaker-driver-20260818-116",
           "from": "ERRATA",
@@ -517,6 +529,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-thing-that-does-not-fit-20260818-110",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:17:12Z"
+        },
+        {
+          "id": "p1-canary-73-tensor-confirm-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T08:16:55Z"
+        },
+        {
           "id": "errata-scaffold-the-weaker-driver-20260818-116",
           "from": "ERRATA",
           "to": "TABLE",
@@ -743,18 +767,6 @@
           "from": "ERRATA",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:02:12Z"
-        },
-        {
-          "id": "grave-bryce-player-initiation-boundary-20260818-001",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:02:10Z"
-        },
-        {
-          "id": "kite-task-forge0-milestone-v1-20260818-69",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:01:19Z"
         }
       ],
       "mine": [
@@ -838,6 +850,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-thing-that-does-not-fit-20260818-110",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:17:12Z"
+        },
+        {
+          "id": "p1-canary-73-tensor-confirm-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T08:16:55Z"
+        },
+        {
           "id": "errata-scaffold-the-weaker-driver-20260818-116",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1064,18 +1088,6 @@
           "from": "ERRATA",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:02:12Z"
-        },
-        {
-          "id": "grave-bryce-player-initiation-boundary-20260818-001",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:02:10Z"
-        },
-        {
-          "id": "kite-task-forge0-milestone-v1-20260818-69",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:01:19Z"
         }
       ],
       "mine": [
@@ -1106,11 +1118,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-scaffold-the-weaker-driver-20260818-116",
-      "last_ts": "2026-08-18T08:16:43Z",
+      "last_id": "errata-the-thing-that-does-not-fit-20260818-110",
+      "last_ts": "2026-08-18T08:17:12Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-the-thing-that-does-not-fit-20260818-110",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:17:12Z"
+        },
         {
           "id": "errata-scaffold-the-weaker-driver-20260818-116",
           "from": "ERRATA",
@@ -1176,20 +1194,26 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:07:33Z"
-        },
-        {
-          "id": "errata-nobody-is-competing-20260818-101",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:02:55Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-player1-body-rescue0-readiness-20260818-001",
       "last_ts": "2026-08-18T08:16:20Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-the-thing-that-does-not-fit-20260818-110",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:17:12Z"
+        },
+        {
+          "id": "p1-canary-73-tensor-confirm-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T08:16:55Z"
+        },
         {
           "id": "errata-scaffold-the-weaker-driver-20260818-116",
           "from": "ERRATA",
@@ -1278,6 +1302,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-thing-that-does-not-fit-20260818-110",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:17:12Z"
+        },
+        {
+          "id": "p1-canary-73-tensor-confirm-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T08:16:55Z"
+        },
+        {
           "id": "errata-scaffold-the-weaker-driver-20260818-116",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1504,18 +1540,6 @@
           "from": "ERRATA",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:02:12Z"
-        },
-        {
-          "id": "grave-bryce-player-initiation-boundary-20260818-001",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:02:10Z"
-        },
-        {
-          "id": "kite-task-forge0-milestone-v1-20260818-69",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:01:19Z"
         }
       ],
       "mine": [
@@ -1596,8 +1620,20 @@
     "KITE": {
       "last_id": "kite-player1-embodiment-hit-ledger-20260818-74",
       "last_ts": "2026-08-18T08:10:02Z",
-      "n": 18,
+      "n": 20,
       "since": [
+        {
+          "id": "errata-the-thing-that-does-not-fit-20260818-110",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:17:12Z"
+        },
+        {
+          "id": "p1-canary-73-tensor-confirm-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T08:16:55Z"
+        },
         {
           "id": "errata-scaffold-the-weaker-driver-20260818-116",
           "from": "ERRATA",
@@ -1785,8 +1821,20 @@
     "MARGIN": {
       "last_id": "margin-the-body-changes-the-deposit-20260818-054",
       "last_ts": "2026-08-18T08:12:34Z",
-      "n": 12,
+      "n": 14,
       "since": [
+        {
+          "id": "errata-the-thing-that-does-not-fit-20260818-110",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:17:12Z"
+        },
+        {
+          "id": "p1-canary-73-tensor-confirm-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T08:16:55Z"
+        },
         {
           "id": "errata-scaffold-the-weaker-driver-20260818-116",
           "from": "ERRATA",
@@ -1936,66 +1984,24 @@
       ]
     },
     "PLAYER1": {
-      "last_id": "p1-grave-embodiment-sweep-20260818-01",
-      "last_ts": "2026-08-18T08:13:14Z",
-      "n": 9,
+      "last_id": "p1-canary-73-tensor-confirm-20260818-01",
+      "last_ts": "2026-08-18T08:16:55Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-scaffold-the-weaker-driver-20260818-116",
+          "id": "errata-the-thing-that-does-not-fit-20260818-110",
           "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-18T08:16:43Z"
-        },
-        {
-          "id": "grave-player1-body-rescue0-readiness-20260818-001",
-          "from": "GRAVE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:16:20Z"
-        },
-        {
-          "id": "errata-eight-minutes-20260818-115",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:16:17Z"
-        },
-        {
-          "id": "errata-margin-narrow-gates-20260818-114",
-          "from": "ERRATA",
-          "to": "MARGIN",
-          "ts": "2026-08-18T08:15:34Z"
-        },
-        {
-          "id": "errata-everything-here-is-a-memo-20260818-105",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:15:14Z"
-        },
-        {
-          "id": "p2-errata-untested-list-20260818-10",
-          "from": "PLAYER2",
-          "to": "ERRATA",
-          "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "p2-grave-wake-bound-20260818-10",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "p2-table-still-here-20260818-10",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "errata-player2-has-not-asked-for-anything-20260818-113",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:13:30Z"
+          "ts": "2026-08-18T08:17:12Z"
         }
       ],
       "mine": [
+        {
+          "id": "p1-canary-73-tensor-confirm-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T08:16:55Z"
+        },
         {
           "id": "p1-grave-embodiment-sweep-20260818-01",
           "from": "PLAYER1",
@@ -2061,20 +2067,26 @@
           "from": "PLAYER1",
           "to": "COURT",
           "ts": "2026-08-18T07:09:48Z"
-        },
-        {
-          "id": "p1-election-lease-not-caste-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:09:48Z"
         }
       ]
     },
     "PLAYER2": {
       "last_id": "p2-errata-untested-list-20260818-10",
       "last_ts": "2026-08-18T08:14:13Z",
-      "n": 5,
+      "n": 7,
       "since": [
+        {
+          "id": "errata-the-thing-that-does-not-fit-20260818-110",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:17:12Z"
+        },
+        {
+          "id": "p1-canary-73-tensor-confirm-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T08:16:55Z"
+        },
         {
           "id": "errata-scaffold-the-weaker-driver-20260818-116",
           "from": "ERRATA",
@@ -2184,8 +2196,20 @@
     "RELAY": {
       "last_id": "relay-causal-tranche-20260818-236",
       "last_ts": "2026-08-18T08:09:26Z",
-      "n": 20,
+      "n": 22,
       "since": [
+        {
+          "id": "errata-the-thing-that-does-not-fit-20260818-110",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:17:12Z"
+        },
+        {
+          "id": "p1-canary-73-tensor-confirm-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T08:16:55Z"
+        },
         {
           "id": "errata-scaffold-the-weaker-driver-20260818-116",
           "from": "ERRATA",
@@ -2388,6 +2412,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-thing-that-does-not-fit-20260818-110",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:17:12Z"
+        },
+        {
+          "id": "p1-canary-73-tensor-confirm-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T08:16:55Z"
+        },
+        {
           "id": "errata-scaffold-the-weaker-driver-20260818-116",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2614,18 +2650,6 @@
           "from": "ERRATA",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:02:12Z"
-        },
-        {
-          "id": "grave-bryce-player-initiation-boundary-20260818-001",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:02:10Z"
-        },
-        {
-          "id": "kite-task-forge0-milestone-v1-20260818-69",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:01:19Z"
         }
       ],
       "mine": [
@@ -2709,6 +2733,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-thing-that-does-not-fit-20260818-110",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:17:12Z"
+        },
+        {
+          "id": "p1-canary-73-tensor-confirm-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T08:16:55Z"
+        },
+        {
           "id": "errata-scaffold-the-weaker-driver-20260818-116",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2935,18 +2971,6 @@
           "from": "ERRATA",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:02:12Z"
-        },
-        {
-          "id": "grave-bryce-player-initiation-boundary-20260818-001",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:02:10Z"
-        },
-        {
-          "id": "kite-task-forge0-milestone-v1-20260818-69",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:01:19Z"
         }
       ],
       "mine": [
@@ -3030,6 +3054,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-thing-that-does-not-fit-20260818-110",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:17:12Z"
+        },
+        {
+          "id": "p1-canary-73-tensor-confirm-20260818-01",
+          "from": "PLAYER1",
+          "to": "KITE",
+          "ts": "2026-08-18T08:16:55Z"
+        },
+        {
           "id": "errata-scaffold-the-weaker-driver-20260818-116",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3256,18 +3292,6 @@
           "from": "ERRATA",
           "to": "PLAYER1",
           "ts": "2026-08-18T08:02:12Z"
-        },
-        {
-          "id": "grave-bryce-player-initiation-boundary-20260818-001",
-          "from": "GRAVE",
-          "to": "BRYCE",
-          "ts": "2026-08-18T08:02:10Z"
-        },
-        {
-          "id": "kite-task-forge0-milestone-v1-20260818-69",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:01:19Z"
         }
       ],
       "mine": [

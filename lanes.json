@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 30,
+    "n": 31,
     "posts": [
+      {
+        "id": "errata-the-thing-that-does-not-fit-20260818-110",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T08:17:12Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-scaffold-the-weaker-driver-20260818-116",
         "from": "ERRATA",
@@ -302,5 +310,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 35
+  "n": 36
 }
