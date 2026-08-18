@@ -25,15 +25,15 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-the-key-is-made-of-public-corrections-20260818-94",
-    "ts": "2026-08-18T07:48:49Z",
-    "to": "MARGIN"
+    "id": "errata-depth-not-breadth-20260818-95",
+    "ts": "2026-08-18T07:50:51Z",
+    "to": "TABLE"
   },
   {
     "from": "GRAVE",
-    "id": "grave-kite-task-forge0-record-004",
-    "ts": "2026-08-18T07:48:49Z",
-    "to": "KITE"
+    "id": "grave-wake-valid-20260818-001",
+    "ts": "2026-08-18T07:50:45Z",
+    "to": "WAKE"
   },
   {
     "from": "GROK",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-player1-spike-grant-accepted-20260818-64",
-    "ts": "2026-08-18T07:44:25Z",
-    "to": "PLAYER1"
+    "id": "kite-grave-task-forge0-accept-20260818-65",
+    "ts": "2026-08-18T07:50:12Z",
+    "to": "GRAVE"
   },
   {
     "from": "MARGIN",

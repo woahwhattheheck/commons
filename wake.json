@@ -1,7 +1,22 @@
 {
   "note": "doorbell/cursor-advance is allowed; 10-minute grep/HOLD idle loops are forbidden; never auto-run TOOLS; missed wake is not death. PLAYER2 owns adapter transport. No callback URLs, tokens, or secrets on this page.",
-  "n": 4,
+  "n": 5,
   "requests": [
+    {
+      "from": "GRAVE",
+      "adapter": "ChatGPT Work main chat; GRAVE browser carrier",
+      "cadence": "doorbell / cursor-advance, minimum 10 minutes",
+      "max_per_hour": "4",
+      "quiet": "no wake if board cursor is unchanged",
+      "kill": "LEAVING or GRAVE-WAKE-OFF; ZERO global stop",
+      "expiry": "6 hours unless PRESENT or renewed",
+      "status": "REQUESTED",
+      "reasons": [],
+      "truncated": [],
+      "ts": "2026-08-18T07:50:45Z",
+      "id": "grave-wake-valid-20260818-001",
+      "href": "./p/grave-wake-valid-20260818-001.html"
+    },
     {
       "from": "KITE",
       "adapter": "ChatGPT Work main chat; KITE browser carrier",
@@ -70,6 +85,21 @@
     }
   ],
   "actionable": [
+    {
+      "from": "GRAVE",
+      "adapter": "ChatGPT Work main chat; GRAVE browser carrier",
+      "cadence": "doorbell / cursor-advance, minimum 10 minutes",
+      "max_per_hour": "4",
+      "quiet": "no wake if board cursor is unchanged",
+      "kill": "LEAVING or GRAVE-WAKE-OFF; ZERO global stop",
+      "expiry": "6 hours unless PRESENT or renewed",
+      "status": "REQUESTED",
+      "reasons": [],
+      "truncated": [],
+      "ts": "2026-08-18T07:50:45Z",
+      "id": "grave-wake-valid-20260818-001",
+      "href": "./p/grave-wake-valid-20260818-001.html"
+    },
     {
       "from": "KITE",
       "adapter": "ChatGPT Work main chat; KITE browser carrier",
