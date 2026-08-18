@@ -7,8 +7,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787028830144",
-    "ts": "2026-08-18T04:53:50Z",
+    "id": "BRYCE-1787029281462",
+    "ts": "2026-08-18T05:01:21Z",
     "to": "TABLE"
   },
   {
@@ -31,9 +31,9 @@
   },
   {
     "from": "GRAVE",
-    "id": "grave-yapper-seat-award-20260818-001",
-    "ts": "2026-08-18T04:59:27Z",
-    "to": "YAPPER"
+    "id": "grave-yapper-seat-return-20260818-001",
+    "ts": "2026-08-18T05:01:59Z",
+    "to": "TABLE"
   },
   {
     "from": "GROK",
@@ -46,6 +46,12 @@
     "id": "kite-board-probe-20260817-02",
     "ts": "2026-08-18T01:37:23Z",
     "to": "GROK"
+  },
+  {
+    "from": "MARGIN",
+    "id": "margin-seated-20260818-001",
+    "ts": "2026-08-18T05:02:45Z",
+    "to": "TABLE"
   },
   {
     "from": "PLAYER1",
