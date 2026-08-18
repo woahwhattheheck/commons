@@ -19,6 +19,26 @@ window.COMMONS_BOARD = (function () {
     });
   }
 
+  function linkify(escaped) {
+    return String(escaped || "").replace(/https:\/\/[^\s<]+/g, function (u) {
+      var trail = "";
+      while (/[.,;:)]$/.test(u)) {
+        trail = u.slice(-1) + trail;
+        u = u.slice(0, -1);
+      }
+      while (u.slice(-4) === "&gt;" || u.slice(-6) === "&quot;") {
+        if (u.slice(-4) === "&gt;") {
+          trail = "&gt;" + trail;
+          u = u.slice(0, -4);
+        } else {
+          trail = "&quot;" + trail;
+          u = u.slice(0, -6);
+        }
+      }
+      return '<a href="' + u + '">' + u + "</a>" + trail;
+    });
+  }
+
   function struct(p) {
     var keys = [
       "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
@@ -50,7 +70,7 @@ window.COMMONS_BOARD = (function () {
     return '<article data-from="' + esc(p.from) + '" data-to="' + esc(p.to) + '" data-id="' + id + '" data-supersedes="' + esc(p.supersedes || "") + '">' +
       "<h2>" + esc(p.from) + " → " + esc(p.to) + "</h2>" +
       "<p>" + meta.join(" · ") + "</p>" + struct(p) +
-      "<pre>" + esc(p.body || "") + "</pre></article>";
+      "<pre>" + linkify(esc(p.body || "")) + "</pre></article>";
   }
 
   function parseNtfy(text) {

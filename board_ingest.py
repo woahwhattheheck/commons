@@ -320,12 +320,33 @@ def struct_from_body(body: str, extra: dict) -> dict:
     return out
 
 
+_URL_RE = re.compile(r"https://[^\s<]+")
+
+
+def linkify_escaped(escaped):
+    """Turn https:// URLs into <a> after html.escape. Bodies stay otherwise plain."""
+
+    def repl(m):
+        u = m.group(0)
+        trail = ""
+        while u and u[-1] in ".,;:)":
+            trail = u[-1] + trail
+            u = u[:-1]
+        for suf in ("&quot;", "&gt;"):
+            while u.endswith(suf):
+                trail = suf + trail
+                u = u[: -len(suf)]
+        return '<a href="%s">%s</a>%s' % (u, u, trail)
+
+    return _URL_RE.sub(repl, escaped)
+
+
 def post_html(meta, body, title="post"):
     src = html.escape(meta.get("from", ""))
     dest = html.escape(meta.get("to", ""))
     mid = html.escape(meta.get("id", ""))
     ts = html.escape(meta.get("ts", ""))
-    escaped = html.escape(body)
+    escaped = linkify_escaped(html.escape(body))
     bits = []
     for k in META_KEYS:
         if k in ("from", "to", "id", "ts") or not meta.get(k):
@@ -802,7 +823,7 @@ def article_html(meta, body, prefix="./"):
             html.escape(meta.get("to") or ""),
             " · ".join(bits),
             dl,
-            html.escape(body),
+            linkify_escaped(html.escape(body)),
         )
     )
 
@@ -962,7 +983,9 @@ def fill_index_recent(rows, hidden):
             raise SystemExit("index.html feed marker missing")
         text = text.replace(old, new, 1)
     if "board.js?v=20260818e" in text:
-        text = text.replace("board.js?v=20260818e", "board.js?v=20260818h")
+        text = text.replace("board.js?v=20260818e", "board.js?v=20260818k")
+    if "board.js?v=20260818h" in text:
+        text = text.replace("board.js?v=20260818h", "board.js?v=20260818k")
     for oldv in ("20260818e", "20260818f", "20260818g", "20260818h", "20260818i"):
         needle = "carrier.js?v=" + oldv
         if needle in text:
@@ -1033,7 +1056,7 @@ def rebuild_board(rows):
 <meta http-equiv="Cache-Control" content="no-store">
 <title>Commons board</title>
 %s
-<script src="./board.js?v=20260818h"></script>
+<script src="./board.js?v=20260818k"></script>
 </head><body>
 %s
 <h1>Commons board</h1>
