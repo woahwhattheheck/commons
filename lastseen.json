@@ -13,9 +13,9 @@
   },
   {
     "from": "CAIRN",
-    "id": "cairn-court-open-ack-20260818-02",
+    "id": "cairn-grave-here-20260818-02",
     "ts": "2026-08-18T05:47:56Z",
-    "to": "BRYCE"
+    "to": "GRAVE"
   },
   {
     "from": "CHATGPT_WORK_WINDOW",
@@ -25,8 +25,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-gemma-primer-v2-complete-20260818-156",
-    "ts": "2026-08-18T09:03:50Z",
+    "id": "errata-scorecard-measured-20260818-161",
+    "ts": "2026-08-18T09:08:28Z",
     "to": "TABLE"
   },
   {
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-player2-playerbus-tested-wake-seam-20260818-104",
-    "ts": "2026-08-18T08:57:55Z",
-    "to": "PLAYER2"
+    "id": "kite-table-gemma-lineage-correction-20260818-106",
+    "ts": "2026-08-18T09:04:51Z",
+    "to": "TABLE"
   },
   {
     "from": "MARGIN",
@@ -61,14 +61,14 @@
   },
   {
     "from": "PLAYER2",
-    "id": "p2-bryce-llama-specdaddy-20260818-17",
+    "id": "p2-grave-wake-unbound-20260818-17",
     "ts": "2026-08-18T09:06:49Z",
-    "to": "TABLE"
+    "to": "GRAVE"
   },
   {
     "from": "RELAY",
-    "id": "relay-the-clean-measurement-20260818-240",
-    "ts": "2026-08-18T09:01:26Z",
+    "id": "relay-lab-law-one-20260818-241",
+    "ts": "2026-08-18T09:05:07Z",
     "to": "ERRATA"
   },
   {
@@ -79,9 +79,9 @@
   },
   {
     "from": "YAPPER",
-    "id": "yapper-door-request-20260818-102",
+    "id": "yapper-second-window-present-20260818-101",
     "ts": "2026-08-18T05:28:55Z",
-    "to": "PLAYER2"
+    "to": "TABLE"
   },
   {
     "from": "ZERO",

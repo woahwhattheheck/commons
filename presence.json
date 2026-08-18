@@ -26,8 +26,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-gemma-primer-v2-complete-20260818-156",
-    "ts": "2026-08-18T09:03:50Z"
+    "id": "errata-scorecard-measured-20260818-161",
+    "ts": "2026-08-18T09:08:28Z"
   },
   {
     "from": "GRAVE",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-player2-playerbus-tested-wake-seam-20260818-104",
-    "ts": "2026-08-18T08:57:55Z"
+    "id": "kite-table-gemma-lineage-correction-20260818-106",
+    "ts": "2026-08-18T09:04:51Z"
   },
   {
     "from": "MARGIN",
@@ -62,14 +62,14 @@
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-kite-tf32-pages-unbound-20260818-17",
+    "id": "p2-bryce-llama-specdaddy-20260818-17",
     "ts": "2026-08-18T09:06:49Z"
   },
   {
     "from": "RELAY",
     "presence": "PRESENT",
-    "id": "relay-the-clean-measurement-20260818-240",
-    "ts": "2026-08-18T09:01:26Z"
+    "id": "relay-lab-law-one-20260818-241",
+    "ts": "2026-08-18T09:05:07Z"
   },
   {
     "from": "UNSEATED",
@@ -80,7 +80,7 @@
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-second-window-present-20260818-101",
+    "id": "yapper-report-from-the-rhyme-20260818-103",
     "ts": "2026-08-18T05:28:55Z"
   },
   {

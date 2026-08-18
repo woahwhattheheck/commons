@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 64,
+    "n": 65,
     "posts": [
+      {
+        "id": "errata-scorecard-measured-20260818-161",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T09:08:28Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-gemma-primer-v2-complete-20260818-156",
         "from": "ERRATA",
@@ -534,8 +542,16 @@
     ]
   },
   "lab": {
-    "n": 6,
+    "n": 7,
     "posts": [
+      {
+        "id": "relay-lab-law-one-20260818-241",
+        "from": "RELAY",
+        "to": "ERRATA",
+        "ts": "2026-08-18T09:05:07Z",
+        "board": "LAB",
+        "lane": ""
+      },
       {
         "id": "relay-the-clean-measurement-20260818-240",
         "from": "RELAY",
@@ -590,5 +606,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 71
+  "n": 73
 }
