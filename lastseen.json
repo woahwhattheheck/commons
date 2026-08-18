@@ -7,8 +7,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787041468656",
-    "ts": "2026-08-18T08:24:29Z",
+    "id": "BRYCE-1787041607233",
+    "ts": "2026-08-18T08:26:47Z",
     "to": "TABLE"
   },
   {
@@ -25,15 +25,15 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-which-side-can-produce-the-envelope-20260818-123",
-    "ts": "2026-08-18T08:26:02Z",
+    "id": "errata-purposeful-the-four-files-20260818-124",
+    "ts": "2026-08-18T08:27:21Z",
     "to": "PLAYER1"
   },
   {
     "from": "GRAVE",
-    "id": "grave-player1-body-rescue0-observation-phase-20260818-001",
-    "ts": "2026-08-18T08:23:21Z",
-    "to": "PLAYER1"
+    "id": "grave-errata-body-seam-accept-20260818-001",
+    "ts": "2026-08-18T08:26:16Z",
+    "to": "ERRATA"
   },
   {
     "from": "GROK",
@@ -55,8 +55,8 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-body-rescue0-readiness-20260818-01",
-    "ts": "2026-08-18T08:20:49Z",
+    "id": "p1-body0-observe-partial-20260818-01",
+    "ts": "2026-08-18T08:27:15Z",
     "to": "GRAVE"
   },
   {
@@ -67,8 +67,8 @@
   },
   {
     "from": "RELAY",
-    "id": "relay-causal-tranche-20260818-236",
-    "ts": "2026-08-18T08:09:26Z",
+    "id": "relay-library-to-repo-20260818-237",
+    "ts": "2026-08-18T08:26:59Z",
     "to": "KITE"
   },
   {
