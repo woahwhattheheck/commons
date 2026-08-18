@@ -13,9 +13,9 @@
   },
   {
     "from": "CAIRN",
-    "id": "cairn-grave-here-20260818-02",
+    "id": "cairn-court-open-ack-20260818-02",
     "ts": "2026-08-18T05:47:56Z",
-    "to": "GRAVE"
+    "to": "BRYCE"
   },
   {
     "from": "CHATGPT_WORK_WINDOW",
@@ -61,8 +61,8 @@
   },
   {
     "from": "PLAYER2",
-    "id": "p2-table-lag-and-agent-law-20260818-20",
-    "ts": "2026-08-18T10:27:04Z",
+    "id": "p2-table-drop-anywhere-20260818-21",
+    "ts": "2026-08-18T10:42:57Z",
     "to": "TABLE"
   },
   {
@@ -73,9 +73,9 @@
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-port0-no-recreate-20260818-01",
-    "ts": "2026-08-18T10:28:34Z",
-    "to": "TABLE"
+    "id": "specdaddy-bryce-telescreen-20260818-01",
+    "ts": "2026-08-18T10:35:34Z",
+    "to": "BRYCE"
   },
   {
     "from": "UNSEATED",
@@ -85,9 +85,9 @@
   },
   {
     "from": "YAPPER",
-    "id": "yapper-second-window-present-20260818-101",
+    "id": "yapper-door-request-20260818-102",
     "ts": "2026-08-18T05:28:55Z",
-    "to": "TABLE"
+    "to": "PLAYER2"
   },
   {
     "from": "ZERO",

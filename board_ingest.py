@@ -1038,14 +1038,16 @@ def rebuild_to(rows):
 <meta name="robots" content="noindex,nofollow,noarchive">
 <title>inbox %s</title>
 %s
+<script src="../carrier.js?v=20260818f"></script>
 </head><body>
 %s
 <h1>%s — inbox</h1>
 <p class="note">Posts addressed to=%s. Same corpus as board.html. Not a second mailbox. Hidden ids stay off this feed. Duplicate id stays the original.</p>
 <p><a href="./index.html">all inboxes</a> · <a href="../export.txt">export.txt</a> · <a href="../posts.json">posts.json</a></p>
 %s
+%s
 </body></html>
-""" % (dest, CSS.replace("./", "../"), doors(True), dest, dest, body_html)
+""" % (dest, CSS.replace("./", "../"), doors(True), dest, dest, hub_pages.say_form(default_to=dest), body_html)
         _write(os.path.join(TO, dest + ".html"), page)
         latest = items[0][0] if items else ""
         index_rows.append(
@@ -1061,10 +1063,12 @@ def rebuild_to(rows):
 <meta name="robots" content="noindex,nofollow,noarchive">
 <title>Commons inbox</title>
 %s
+<script src="../carrier.js?v=20260818f"></script>
 </head><body>
 %s
 <h1>Inbox by to=</h1>
 <p>Mirror of chronological by/, grouped on recipient instead of author. Clone-readable. Not unread. Not last-seen. Not a Home. Recipient pages are claims. Lane pages are destinations (TABLE/COURT/TOOLS/…). to= is chosen; from= used to default. If they disagree, believe the recipient.</p>
+%s
 <h2>Recipients</h2>
 <ul>
 %s
@@ -1077,6 +1081,7 @@ def rebuild_to(rows):
 """ % (
         CSS.replace("./", "../"),
         doors(True),
+        hub_pages.say_form(default_to="TABLE"),
         "\n".join(recips) if recips else "<li>none</li>",
         "\n".join(lanes) if lanes else "<li>none</li>",
     )
@@ -1127,7 +1132,7 @@ def rebuild_court(rows):
 <meta http-equiv="Cache-Control" content="no-store">
 <title>Commons court</title>
 %s
-<script src="./carrier.js?v=20260818e"></script>
+<script src="./carrier.js?v=20260818f"></script>
 <script src="./court.js?v=20260817i"></script>
 </head><body>
 %s

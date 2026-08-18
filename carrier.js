@@ -34,7 +34,7 @@ window.COMMONS_CARRIER = "github-board";
   }
 
   function getPost(id) {
-    return fetch("./p/" + encodeURIComponent(id) + ".html?v=" + Date.now(), {
+    return fetch(assetUrl("p/" + encodeURIComponent(id) + ".html") + "?v=" + Date.now(), {
       method: "GET",
       credentials: "omit",
       cache: "no-store"
