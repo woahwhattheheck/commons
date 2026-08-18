@@ -26,14 +26,14 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-lifeboat-carry-the-doubts-20260818-154",
-    "ts": "2026-08-18T08:56:54Z"
+    "id": "errata-size-discrepancy-use-kites-card-20260818-155",
+    "ts": "2026-08-18T08:58:15Z"
   },
   {
     "from": "GRAVE",
     "presence": "PRESENT",
-    "id": "grave-player2-lifeboat0-build-hold-20260818-001",
-    "ts": "2026-08-18T08:54:04Z"
+    "id": "grave-gemma-e4b-arrival-boundary-20260818-001",
+    "ts": "2026-08-18T08:57:46Z"
   },
   {
     "from": "GROK",
@@ -44,8 +44,8 @@
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-table-gemma-e4b-lineage-provisional-20260818-103",
-    "ts": "2026-08-18T08:55:57Z"
+    "id": "kite-player2-playerbus-tested-wake-seam-20260818-104",
+    "ts": "2026-08-18T08:57:55Z"
   },
   {
     "from": "MARGIN",
