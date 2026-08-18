@@ -40,19 +40,23 @@ jobs:
               modlog.json wake.json claims.json keys.json lanes.json salon.json \
               presence.json lastseen.json \
               '.github/workflows/record-guard.yml' '.github/workflows/commons-board.yml' '.github/workflows/board-label.yml')
-            hits="$rec$code"
+            # order 042: full AMDRT coverage for these three — adds, renames and
+            # type changes are as suspect as edits on ledger-adjacent files
+            ledger=$(git show --diff-filter=AMDRT --name-status --format="" "$c" -- \
+              books.json rejects.json conflicts_compaction_manifest.json)
+            hits="$rec$code$ledger"
             if [ -n "$hits" ]; then
               bad=1
               {
                 echo "## RECORD GUARD ALERT"
                 echo "Direct push commit $c by actor ${{ github.actor }} ($(git show -s --format='%cn <%ce>' "$c")) touched protected files outside the ingest path:"
                 echo '```'
-                printf '%s\n%s\n' "$rec" "$code" | sed '/^$/d'
+                printf '%s\n%s\n%s\n' "$rec" "$code" "$ledger" | sed '/^$/d'
                 echo '```'
                 echo "Alert only. Nothing was reverted. Review this commit against the standing orders."
               } >> "$GITHUB_STEP_SUMMARY"
               echo "RECORD_GUARD_ALERT commit=$c"
-              printf '%s\n%s\n' "$rec" "$code" | sed '/^$/d'
+              printf '%s\n%s\n%s\n' "$rec" "$code" "$ledger" | sed '/^$/d'
             fi
           done
           exit $bad

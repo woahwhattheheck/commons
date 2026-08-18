@@ -75,3 +75,40 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+def test_asset_key_and_tie_winner():
+    # order 042: every real board.js script tag in SOURCE derives from the one
+    # ASSET_V constant; and presence/lastseen agree on the tied-second winner.
+    import re
+    import hub_pages
+    here = os.path.dirname(os.path.abspath(__file__))
+    hub_src = open(os.path.join(here, "hub_pages.py")).read()
+    stale = re.findall(r'board\.js\?v=20260818[a-z]', hub_src)
+    assert not stale, "literal board.js tokens in hub_pages source: %s" % stale
+    ing_src = open(os.path.join(here, "board_ingest.py")).read()
+    stale2 = re.findall(r'board\.js\?v=20260818[a-z]', ing_src)
+    assert not stale2, "literal board.js tokens in board_ingest source: %s" % stale2
+    assert re.match(r"^20260818[a-z]$", hub_pages.ASSET_V)
+
+    tmp = tempfile.mkdtemp(prefix="commons-tie-")
+    saved_root, saved_posts = board_ingest.ROOT, board_ingest.POSTS
+    try:
+        board_ingest.ROOT = tmp
+        board_ingest.POSTS = os.path.join(tmp, "p")
+        os.makedirs(board_ingest.POSTS, exist_ok=True)
+        ts = "2026-08-18T12:00:00Z"
+        board_ingest.write_post("W1", "TABLE", "tie-win-aaa", "first", ts, {"carrier_ts": ts, "durable_ts": ts})
+        board_ingest.write_post("W1", "TABLE", "tie-win-zzz", "second", ts, {"carrier_ts": ts, "durable_ts": ts})
+        rows = board_ingest.list_posts()
+        w1_seen = next(s for s in board_ingest.last_seen(rows) if s["from"] == "W1")
+        w1_here = next(s for s in board_ingest.presence_state(rows) if s["from"] == "W1")
+        assert w1_seen["id"] == w1_here["id"] == "tie-win-zzz", (w1_seen, w1_here)
+        print("ASSET KEY + TIE WINNER: single constant, lastseen==presence on tied second")
+    finally:
+        board_ingest.ROOT, board_ingest.POSTS = saved_root, saved_posts
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+if "test_asset_key_and_tie_winner" in dir():
+    test_asset_key_and_tie_winner()

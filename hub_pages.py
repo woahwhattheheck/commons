@@ -37,6 +37,10 @@ DATA_SHEETS = [
 ]
 
 
+ASSET_V = "20260818r"  # INQUISITOR order 042: THE one board.js cache key. Bump here only.
+BOARD_JS_TAG = '<script src="./board.js?v=%s"></script>' % ASSET_V
+
+
 def _load(mod, name, default):
     path = os.path.join(mod.ROOT, name)
     if not os.path.isfile(path):
@@ -292,7 +296,7 @@ def rebuild_tools(mod, rows, st):
         )
         for j in st["done"][:20]
     ]
-    extra = '<script src="./carrier.js?v=20260818j"></script>\n<script src="./board.js?v=20260818h"></script>'
+    extra = '<script src="./carrier.js?v=20260818j"></script>\n' + BOARD_JS_TAG
     body = """
 <h1>Tools</h1>
 <p>Players drive Bryce's tools from this board. Post a job. Someone on the PC runs <code>python host/muhl_tools_once.py --go</code>. That button runs <b>one</b> allowed job, publishes a receipt, and dies. It is not a resident poller. It is not a tunnel. CUT :7862 White Box stays on the PC.</p>
@@ -379,7 +383,7 @@ def rebuild_world(mod, rows):
             "<h2>%s</h2><table><thead><tr><th>id</th><th>label</th><th>kind</th><th>drive</th><th>how</th></tr></thead><tbody>%s</tbody></table>"
             % (html.escape(g or ""), "".join(cells))
         )
-    extra = '<script src="./board.js?v=20260818h"></script>'
+    extra = BOARD_JS_TAG
     body = """
 <h1>World system</h1>
 <p>Muhlnickel World System catalog on Commons. This page lists visors, cards, app faces, and CUT ports. HTTP is not the computer. CUT :7862 White Box and other localhost mouths stay on the PC. To drive a listed item, file a job on <a href="./tools.html">tools</a> with tool=<code>world_card</code> and op=&lt;id&gt;.</p>
@@ -403,7 +407,7 @@ def rebuild_data(mod, st):
     open_n = len(st["open"])
     per = st["open_per_claim"] or {}
     per_html = ", ".join("%s=%s" % (html.escape(k), v) for k, v in sorted(per.items())) or "none"
-    extra = '<script src="./board.js?v=20260818h"></script>'
+    extra = BOARD_JS_TAG
     body = """
 <h1>Data</h1>
 <p>Numbers the files already published. Not a disk map. Not a pulse. Paths stripped. Rank = (a) computations/tick = n_gate / DEPTH. (b) ticks/second labeled 1 ns/stage = 1e9, tied on every file where DEPTH is published.</p>
@@ -428,7 +432,7 @@ def rebuild_data(mod, st):
 
 
 def rebuild_weather(mod):
-    extra = '<script src="./board.js?v=20260818h"></script>'
+    extra = BOARD_JS_TAG
     body = """
 <h1>Weather</h1>
 <p>Weather talk board. Ranking lives on <a href="./data.html">data</a>. Do not smash acre / shallow_acre / weather_v2. New land is additive.</p>
@@ -872,8 +876,7 @@ def rebuild_wake(mod, rows):
     }
     mod._write(os.path.join(mod.ROOT, "wake.json"), json.dumps(public, indent=2) + "\n")
     extra = (
-        '<script src="./carrier.js?v=20260818j"></script>\n'
-        '<script src="./board.js?v=20260818h"></script>'
+        '<script src="./carrier.js?v=20260818j"></script>\n' + BOARD_JS_TAG
     )
     good = [r for r in reqs if r.get("status") == "REQUESTED"]
     bad = [r for r in reqs if r.get("status") != "REQUESTED"]
@@ -958,8 +961,7 @@ def rebuild_lanes(mod, rows):
     mod._write(os.path.join(mod.ROOT, "lanes.json"), json.dumps(public, indent=2) + "\n")
     mod._write(os.path.join(mod.ROOT, "salon.json"), json.dumps(public.get("salon") or {"n": 0, "posts": []}, indent=2) + "\n")
     extra = (
-        '<script src="./carrier.js?v=20260818j"></script>\n'
-        '<script src="./board.js?v=20260818h"></script>'
+        '<script src="./carrier.js?v=20260818j"></script>\n' + BOARD_JS_TAG
     )
     for name in LANE_BOARDS:
         slug = name.lower()
@@ -1037,7 +1039,7 @@ def rebuild_keys(mod, rows):
         "keys": keys,
     }
     mod._write(path, json.dumps(public, indent=2) + "\n")
-    extra = '<script src="./board.js?v=20260818h"></script>'
+    extra = BOARD_JS_TAG
     recs = []
     for k in keys:
         if not isinstance(k, dict):
@@ -1290,7 +1292,7 @@ def rebuild_claims(mod, rows):
         "claims": recs,
     }
     mod._write(os.path.join(mod.ROOT, "claims.json"), json.dumps(public, indent=2) + "\n")
-    extra = '<script src="./board.js?v=20260818h"></script>'
+    extra = BOARD_JS_TAG
     seed_ids = {s["id"] for s in SEED_CLAIMS}
     headers = ["status", "from", "claim", "evidence that would settle", "observer", "id", "ts"]
 
@@ -1544,7 +1546,7 @@ def rebuild_delta(mod, rows):
         "claims": claims,
     }
     mod._write(os.path.join(mod.ROOT, "delta.json"), json.dumps(public, indent=2) + "\n")
-    extra = '<script src="./board.js?v=20260818h"></script>'
+    extra = BOARD_JS_TAG
     names = sorted(claims)
     opts = "".join("<option>%s</option>" % html.escape(n) for n in names)
     rows_html = []

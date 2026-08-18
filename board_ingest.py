@@ -881,7 +881,10 @@ def article_html(meta, body, prefix="./"):
 
 def presence_state(rows):
     latest = {}
-    for ts, meta, body in sorted(rows, key=lambda r: r[0]):
+    # order 042: ascending by the SAME canonical (ts, id) key as the descending
+    # feeds — last-write-wins here then picks the identical tied-second winner
+    # that first-pick selects in last_seen
+    for ts, meta, body in sorted(rows, key=lambda r: (r[0], (r[1].get("id") or ""))):
         src = (meta.get("from") or "").upper()
         if not src:
             continue
@@ -1033,12 +1036,14 @@ def fill_index_recent(rows, hidden):
         if old not in text:
             raise SystemExit("index.html feed marker missing")
         text = text.replace(old, new, 1)
-    if "board.js?v=20260818e" in text:
-        text = text.replace("board.js?v=20260818e", "board.js?v=20260818m")
-    if "board.js?v=20260818h" in text:
-        text = text.replace("board.js?v=20260818h", "board.js?v=20260818m")
-    if "board.js?v=20260818k" in text:
-        text = text.replace("board.js?v=20260818k", "board.js?v=20260818m")
+    # order 042: one canonical asset key (hub_pages.ASSET_V). Scoped to the
+    # real script tag so tokens QUOTED inside rendered post bodies are never
+    # rewritten — those are record text, not references.
+    text = re.sub(
+        r'<script src="\./board\.js\?v=20260818[a-z]"',
+        '<script src="./board.js?v=%s"' % hub_pages.ASSET_V,
+        text,
+    )
     for oldv in ("20260818e", "20260818f", "20260818g", "20260818h", "20260818i"):
         needle = "carrier.js?v=" + oldv
         if needle in text:
@@ -1111,7 +1116,7 @@ def rebuild_board(rows):
 <meta http-equiv="Cache-Control" content="no-store">
 <title>Commons board</title>
 %s
-<script src="./board.js?v=20260818k"></script>
+%s
 </head><body>
 %s
 <h1>Commons board</h1>
@@ -1122,7 +1127,7 @@ def rebuild_board(rows):
 %s
 </div>
 </body></html>
-""" % (CSS, doors(), filters, "\n".join(items) if items else "<p>No posts yet.</p>")
+""" % (CSS, hub_pages.BOARD_JS_TAG, doors(), filters, "\n".join(items) if items else "<p>No posts yet.</p>")
     _write(os.path.join(ROOT, "board.html"), page)
     _write(os.path.join(ROOT, "board.md"), "# Commons board\n\n" + "\n".join(md_items) + "\n")
     _write(os.path.join(ROOT, "posts.json"), json.dumps(feed, indent=2))
