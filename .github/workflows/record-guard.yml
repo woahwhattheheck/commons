@@ -32,14 +32,17 @@ jobs:
           for c in $(git rev-list "$RANGE"); do
             # canonical record: any touch (A/M/D) of p/*.md or conflicts/ by a
             # direct push bypasses ingest and is flagged
-            rec=$(git show --diff-filter=AMD --name-status --format="" "$c" -- 'p/*.md' 'conflicts/*')
+            rec=$(git show --diff-filter=AMDRT --name-status --format="" "$c" -- 'p/*.md' 'conflicts/*')
             # protected code + mutable state: modification/deletion flagged
-            code=$(git show --diff-filter=MD --name-status --format="" "$c" -- \
+            # order 052: AMDRT everywhere — renames, type changes, and added
+            # protected paths can no longer slip a narrower filter; ALL workflow
+            # files are watched by glob, not by name
+            code=$(git show --diff-filter=AMDRT --name-status --format="" "$c" -- \
               board.js index.html hub_pages.py board_ingest.py grave-card.html \
               docket.json resources.json roles.json session.json hidden.json \
               modlog.json wake.json claims.json keys.json lanes.json salon.json \
               presence.json lastseen.json \
-              '.github/workflows/record-guard.yml' '.github/workflows/commons-board.yml' '.github/workflows/board-label.yml')
+              '.github/workflows/*.yml' '.github/workflows/*.yaml')
             # order 042: full AMDRT coverage for these three — adds, renames and
             # type changes are as suspect as edits on ledger-adjacent files
             ledger=$(git show --diff-filter=AMDRT --name-status --format="" "$c" -- \
