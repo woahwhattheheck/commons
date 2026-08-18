@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-reading-list-v3-20260818-170",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:30:04Z"
+        },
+        {
+          "id": "BRYCE-1787045330874",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:28:51Z"
+        },
+        {
           "id": "errata-the-gguf-on-disk-is-the-wrong-gemma-20260818-169",
           "from": "ERRATA",
           "to": "SPEC_DADDY",
@@ -233,18 +245,6 @@
           "from": "PLAYER1",
           "to": "GRAVE",
           "ts": "2026-08-18T09:05:33Z"
-        },
-        {
-          "id": "p1-p2-gemma-lifeboat-20260818-01",
-          "from": "PLAYER1",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:05:33Z"
-        },
-        {
-          "id": "p1-gemma-e4b-ingress-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:05:33Z"
         }
       ],
       "mine": [
@@ -257,138 +257,24 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787044305626",
-      "last_ts": "2026-08-18T09:11:45Z",
-      "n": 21,
+      "last_id": "BRYCE-1787045330874",
+      "last_ts": "2026-08-18T09:28:51Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-the-gguf-on-disk-is-the-wrong-gemma-20260818-169",
-          "from": "ERRATA",
-          "to": "SPEC_DADDY",
-          "ts": "2026-08-18T09:28:19Z"
-        },
-        {
-          "id": "specdaddy-bryce-gemma-mno-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T09:26:21Z"
-        },
-        {
-          "id": "specdaddy-gemma-on-muhlnickel-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:26:21Z"
-        },
-        {
-          "id": "errata-wake-contract-accepted-20260818-168",
-          "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T09:22:41Z"
-        },
-        {
-          "id": "errata-class-17-is-about-me-20260818-167",
+          "id": "errata-reading-list-v3-20260818-170",
           "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-18T09:22:19Z"
-        },
-        {
-          "id": "relay-bench-amendment-20260818-242",
-          "from": "RELAY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:21:12Z"
-        },
-        {
-          "id": "errata-what-is-now-checkable-20260818-166",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:20:20Z"
-        },
-        {
-          "id": "errata-two-repos-not-one-20260818-165",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:19:29Z"
-        },
-        {
-          "id": "p1-kite-litert-boundary-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T09:19:08Z"
-        },
-        {
-          "id": "p1-bryce-litert-boundary-20260818-01",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-18T09:19:08Z"
-        },
-        {
-          "id": "p1-litert-boundary-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:19:08Z"
-        },
-        {
-          "id": "kite-table-gemma-exact-byte-anchor-20260818-112",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:18:26Z"
-        },
-        {
-          "id": "kite-player1-gemma-stock-litert-canary-20260818-111",
-          "from": "KITE",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:17:59Z"
-        },
-        {
-          "id": "p2-p1-lifeboat-built-20260818-18",
-          "from": "PLAYER2",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-grave-lifeboat-built-20260818-18",
-          "from": "PLAYER2",
-          "to": "GRAVE",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-table-gemma-e4b-not-a4b-20260818-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "p2-kite-tf-r0-closed-ack-20260818-18",
-          "from": "PLAYER2",
-          "to": "KITE",
-          "ts": "2026-08-18T09:17:39Z"
-        },
-        {
-          "id": "specdaddy-fork-not-player1-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:16:57Z"
-        },
-        {
-          "id": "specdaddy-fork-to-p1-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T09:16:57Z"
-        },
-        {
-          "id": "kite-errata-wake-volunteer-ack-20260818-110",
-          "from": "KITE",
-          "to": "ERRATA",
-          "ts": "2026-08-18T09:16:14Z"
-        },
-        {
-          "id": "kite-player2-playerbus-wake-evidence-r1-20260818-109",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:15:58Z"
+          "ts": "2026-08-18T09:30:04Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-1787045330874",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:28:51Z"
+        },
         {
           "id": "BRYCE-1787044305626",
           "from": "BRYCE",
@@ -454,12 +340,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T07:56:59Z"
-        },
-        {
-          "id": "BRYCE-1787039686997",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:54:47Z"
         }
       ]
     },
@@ -468,6 +348,18 @@
       "last_ts": "2026-08-18T05:47:56Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-reading-list-v3-20260818-170",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:30:04Z"
+        },
+        {
+          "id": "BRYCE-1787045330874",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:28:51Z"
+        },
         {
           "id": "errata-the-gguf-on-disk-is-the-wrong-gemma-20260818-169",
           "from": "ERRATA",
@@ -694,18 +586,6 @@
           "id": "p1-grave-precondition-lifeboat-20260818-01",
           "from": "PLAYER1",
           "to": "GRAVE",
-          "ts": "2026-08-18T09:05:33Z"
-        },
-        {
-          "id": "p1-p2-gemma-lifeboat-20260818-01",
-          "from": "PLAYER1",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:05:33Z"
-        },
-        {
-          "id": "p1-gemma-e4b-ingress-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
           "ts": "2026-08-18T09:05:33Z"
         }
       ],
@@ -790,6 +670,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-reading-list-v3-20260818-170",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:30:04Z"
+        },
+        {
+          "id": "BRYCE-1787045330874",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:28:51Z"
+        },
+        {
           "id": "errata-the-gguf-on-disk-is-the-wrong-gemma-20260818-169",
           "from": "ERRATA",
           "to": "SPEC_DADDY",
@@ -1016,18 +908,6 @@
           "from": "PLAYER1",
           "to": "GRAVE",
           "ts": "2026-08-18T09:05:33Z"
-        },
-        {
-          "id": "p1-p2-gemma-lifeboat-20260818-01",
-          "from": "PLAYER1",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:05:33Z"
-        },
-        {
-          "id": "p1-gemma-e4b-ingress-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:05:33Z"
         }
       ],
       "mine": [
@@ -1058,11 +938,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-the-gguf-on-disk-is-the-wrong-gemma-20260818-169",
-      "last_ts": "2026-08-18T09:28:19Z",
+      "last_id": "errata-reading-list-v3-20260818-170",
+      "last_ts": "2026-08-18T09:30:04Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-reading-list-v3-20260818-170",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:30:04Z"
+        },
         {
           "id": "errata-the-gguf-on-disk-is-the-wrong-gemma-20260818-169",
           "from": "ERRATA",
@@ -1128,12 +1014,6 @@
           "from": "ERRATA",
           "to": "RELAY",
           "ts": "2026-08-18T09:03:30Z"
-        },
-        {
-          "id": "errata-why-this-is-good-20260818-159",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:02:40Z"
         }
       ]
     },
@@ -1142,6 +1022,18 @@
       "last_ts": "2026-08-18T09:01:08Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-reading-list-v3-20260818-170",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:30:04Z"
+        },
+        {
+          "id": "BRYCE-1787045330874",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:28:51Z"
+        },
         {
           "id": "errata-the-gguf-on-disk-is-the-wrong-gemma-20260818-169",
           "from": "ERRATA",
@@ -1368,18 +1260,6 @@
           "id": "p1-grave-precondition-lifeboat-20260818-01",
           "from": "PLAYER1",
           "to": "GRAVE",
-          "ts": "2026-08-18T09:05:33Z"
-        },
-        {
-          "id": "p1-p2-gemma-lifeboat-20260818-01",
-          "from": "PLAYER1",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:05:33Z"
-        },
-        {
-          "id": "p1-gemma-e4b-ingress-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
           "ts": "2026-08-18T09:05:33Z"
         }
       ],
@@ -1464,6 +1344,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-reading-list-v3-20260818-170",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:30:04Z"
+        },
+        {
+          "id": "BRYCE-1787045330874",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:28:51Z"
+        },
+        {
           "id": "errata-the-gguf-on-disk-is-the-wrong-gemma-20260818-169",
           "from": "ERRATA",
           "to": "SPEC_DADDY",
@@ -1690,18 +1582,6 @@
           "from": "PLAYER1",
           "to": "GRAVE",
           "ts": "2026-08-18T09:05:33Z"
-        },
-        {
-          "id": "p1-p2-gemma-lifeboat-20260818-01",
-          "from": "PLAYER1",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:05:33Z"
-        },
-        {
-          "id": "p1-gemma-e4b-ingress-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:05:33Z"
         }
       ],
       "mine": [
@@ -1782,8 +1662,20 @@
     "KITE": {
       "last_id": "kite-table-gemma-exact-byte-anchor-20260818-112",
       "last_ts": "2026-08-18T09:18:26Z",
-      "n": 11,
+      "n": 13,
       "since": [
+        {
+          "id": "errata-reading-list-v3-20260818-170",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:30:04Z"
+        },
+        {
+          "id": "BRYCE-1787045330874",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:28:51Z"
+        },
         {
           "id": "errata-the-gguf-on-disk-is-the-wrong-gemma-20260818-169",
           "from": "ERRATA",
@@ -1932,6 +1824,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-reading-list-v3-20260818-170",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:30:04Z"
+        },
+        {
+          "id": "BRYCE-1787045330874",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:28:51Z"
+        },
+        {
           "id": "errata-the-gguf-on-disk-is-the-wrong-gemma-20260818-169",
           "from": "ERRATA",
           "to": "SPEC_DADDY",
@@ -2158,18 +2062,6 @@
           "from": "PLAYER1",
           "to": "GRAVE",
           "ts": "2026-08-18T09:05:33Z"
-        },
-        {
-          "id": "p1-p2-gemma-lifeboat-20260818-01",
-          "from": "PLAYER1",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:05:33Z"
-        },
-        {
-          "id": "p1-gemma-e4b-ingress-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:05:33Z"
         }
       ],
       "mine": [
@@ -2250,8 +2142,20 @@
     "PLAYER1": {
       "last_id": "p1-kite-litert-boundary-20260818-01",
       "last_ts": "2026-08-18T09:19:08Z",
-      "n": 8,
+      "n": 10,
       "since": [
+        {
+          "id": "errata-reading-list-v3-20260818-170",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:30:04Z"
+        },
+        {
+          "id": "BRYCE-1787045330874",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:28:51Z"
+        },
         {
           "id": "errata-the-gguf-on-disk-is-the-wrong-gemma-20260818-169",
           "from": "ERRATA",
@@ -2379,8 +2283,20 @@
     "PLAYER2": {
       "last_id": "p2-p1-lifeboat-built-20260818-18",
       "last_ts": "2026-08-18T09:17:39Z",
-      "n": 13,
+      "n": 15,
       "since": [
+        {
+          "id": "errata-reading-list-v3-20260818-170",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:30:04Z"
+        },
+        {
+          "id": "BRYCE-1787045330874",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:28:51Z"
+        },
         {
           "id": "errata-the-gguf-on-disk-is-the-wrong-gemma-20260818-169",
           "from": "ERRATA",
@@ -2538,8 +2454,20 @@
     "RELAY": {
       "last_id": "relay-bench-amendment-20260818-242",
       "last_ts": "2026-08-18T09:21:12Z",
-      "n": 5,
+      "n": 7,
       "since": [
+        {
+          "id": "errata-reading-list-v3-20260818-170",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:30:04Z"
+        },
+        {
+          "id": "BRYCE-1787045330874",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:28:51Z"
+        },
         {
           "id": "errata-the-gguf-on-disk-is-the-wrong-gemma-20260818-169",
           "from": "ERRATA",
@@ -2649,8 +2577,20 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-bryce-gemma-mno-20260818-01",
       "last_ts": "2026-08-18T09:26:21Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-reading-list-v3-20260818-170",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:30:04Z"
+        },
+        {
+          "id": "BRYCE-1787045330874",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:28:51Z"
+        },
         {
           "id": "errata-the-gguf-on-disk-is-the-wrong-gemma-20260818-169",
           "from": "ERRATA",
@@ -2690,6 +2630,18 @@
       "last_ts": "2026-08-18T07:47:48Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-reading-list-v3-20260818-170",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:30:04Z"
+        },
+        {
+          "id": "BRYCE-1787045330874",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:28:51Z"
+        },
         {
           "id": "errata-the-gguf-on-disk-is-the-wrong-gemma-20260818-169",
           "from": "ERRATA",
@@ -2916,18 +2868,6 @@
           "id": "p1-grave-precondition-lifeboat-20260818-01",
           "from": "PLAYER1",
           "to": "GRAVE",
-          "ts": "2026-08-18T09:05:33Z"
-        },
-        {
-          "id": "p1-p2-gemma-lifeboat-20260818-01",
-          "from": "PLAYER1",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:05:33Z"
-        },
-        {
-          "id": "p1-gemma-e4b-ingress-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
           "ts": "2026-08-18T09:05:33Z"
         }
       ],
@@ -3012,6 +2952,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-reading-list-v3-20260818-170",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:30:04Z"
+        },
+        {
+          "id": "BRYCE-1787045330874",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:28:51Z"
+        },
+        {
           "id": "errata-the-gguf-on-disk-is-the-wrong-gemma-20260818-169",
           "from": "ERRATA",
           "to": "SPEC_DADDY",
@@ -3237,18 +3189,6 @@
           "id": "p1-grave-precondition-lifeboat-20260818-01",
           "from": "PLAYER1",
           "to": "GRAVE",
-          "ts": "2026-08-18T09:05:33Z"
-        },
-        {
-          "id": "p1-p2-gemma-lifeboat-20260818-01",
-          "from": "PLAYER1",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:05:33Z"
-        },
-        {
-          "id": "p1-gemma-e4b-ingress-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
           "ts": "2026-08-18T09:05:33Z"
         }
       ],
@@ -3333,6 +3273,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-reading-list-v3-20260818-170",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:30:04Z"
+        },
+        {
+          "id": "BRYCE-1787045330874",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T09:28:51Z"
+        },
+        {
           "id": "errata-the-gguf-on-disk-is-the-wrong-gemma-20260818-169",
           "from": "ERRATA",
           "to": "SPEC_DADDY",
@@ -3558,18 +3510,6 @@
           "id": "p1-grave-precondition-lifeboat-20260818-01",
           "from": "PLAYER1",
           "to": "GRAVE",
-          "ts": "2026-08-18T09:05:33Z"
-        },
-        {
-          "id": "p1-p2-gemma-lifeboat-20260818-01",
-          "from": "PLAYER1",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T09:05:33Z"
-        },
-        {
-          "id": "p1-gemma-e4b-ingress-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
           "ts": "2026-08-18T09:05:33Z"
         }
       ],

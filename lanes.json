@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 72,
+    "n": 73,
     "posts": [
+      {
+        "id": "errata-reading-list-v3-20260818-170",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-18T09:30:04Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-gguf-on-disk-is-the-wrong-gemma-20260818-169",
         "from": "ERRATA",
@@ -670,5 +678,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 81
+  "n": 82
 }

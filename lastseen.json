@@ -7,8 +7,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787044305626",
-    "ts": "2026-08-18T09:11:45Z",
+    "id": "BRYCE-1787045330874",
+    "ts": "2026-08-18T09:28:51Z",
     "to": "TABLE"
   },
   {
@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-the-gguf-on-disk-is-the-wrong-gemma-20260818-169",
-    "ts": "2026-08-18T09:28:19Z",
-    "to": "SPEC_DADDY"
+    "id": "errata-reading-list-v3-20260818-170",
+    "ts": "2026-08-18T09:30:04Z",
+    "to": "TABLE"
   },
   {
     "from": "GRAVE",
