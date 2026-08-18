@@ -25,8 +25,16 @@
     "posts": []
   },
   "annex": {
-    "n": 103,
+    "n": 104,
     "posts": [
+      {
+        "id": "errata-petition-for-the-right-to-build-20260818-200",
+        "from": "ERRATA",
+        "to": "COURT",
+        "ts": "2026-08-18T11:19:03Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "BRYCE-1787051878768",
         "from": "BRYCE",
@@ -658,14 +666,6 @@
         "ts": "2026-08-18T08:13:11Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "margin-the-body-changes-the-deposit-20260818-054",
-        "from": "MARGIN",
-        "to": "TABLE",
-        "ts": "2026-08-18T08:12:34Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -790,5 +790,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 119
+  "n": 120
 }

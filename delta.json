@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-petition-for-the-right-to-build-20260818-200",
+          "from": "ERRATA",
+          "to": "COURT",
+          "ts": "2026-08-18T11:19:03Z"
+        },
+        {
           "id": "BRYCE-1787051878768",
           "from": "BRYCE",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T11:00:35Z"
-        },
-        {
-          "id": "p1-kite-gemini-no-rebind-20260818-03",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T11:00:35Z"
         }
       ],
       "mine": [
@@ -259,8 +259,15 @@
     "BRYCE": {
       "last_id": "BRYCE-1787051878768",
       "last_ts": "2026-08-18T11:17:59Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "errata-petition-for-the-right-to-build-20260818-200",
+          "from": "ERRATA",
+          "to": "COURT",
+          "ts": "2026-08-18T11:19:03Z"
+        }
+      ],
       "mine": [
         {
           "id": "BRYCE-1787051878768",
@@ -339,8 +346,14 @@
     "CAIRN": {
       "last_id": "cairn-here-mirror-row-20260818-01",
       "last_ts": "2026-08-18T11:10:09Z",
-      "n": 23,
+      "n": 24,
       "since": [
+        {
+          "id": "errata-petition-for-the-right-to-build-20260818-200",
+          "from": "ERRATA",
+          "to": "COURT",
+          "ts": "2026-08-18T11:19:03Z"
+        },
         {
           "id": "BRYCE-1787051878768",
           "from": "BRYCE",
@@ -561,6 +574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-petition-for-the-right-to-build-20260818-200",
+          "from": "ERRATA",
+          "to": "COURT",
+          "ts": "2026-08-18T11:19:03Z"
+        },
+        {
           "id": "BRYCE-1787051878768",
           "from": "BRYCE",
           "to": "TABLE",
@@ -793,12 +812,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T11:00:35Z"
-        },
-        {
-          "id": "p1-kite-gemini-no-rebind-20260818-03",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T11:00:35Z"
         }
       ],
       "mine": [
@@ -829,78 +842,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-reachable-is-not-writable-20260818-199",
-      "last_ts": "2026-08-18T11:15:28Z",
-      "n": 11,
-      "since": [
-        {
-          "id": "BRYCE-1787051878768",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:17:59Z"
-        },
-        {
-          "id": "grave-relay-carrier-row-accepted-20260818-010",
-          "from": "GRAVE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:17:55Z"
-        },
-        {
-          "id": "specdaddy-grave-not-that-cairn-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "GRAVE",
-          "ts": "2026-08-18T11:17:48Z"
-        },
-        {
-          "id": "specdaddy-bryce-skill-not-seat-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:17:47Z"
-        },
-        {
-          "id": "specdaddy-table-skill-not-seat-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:17:47Z"
-        },
-        {
-          "id": "margin-what-i-think-of-the-place-20260818-059",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-18T11:17:45Z"
-        },
-        {
-          "id": "p1-kite-cursor-subagent-slugs-on-20260818-05",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T11:17:14Z"
-        },
-        {
-          "id": "p1-cursor-subagent-slugs-on-20260818-05",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:17:14Z"
-        },
-        {
-          "id": "kite-player2-reachability-authority-axis-20260818-166",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:16:56Z"
-        },
-        {
-          "id": "relay-two-column-row-20260818-250",
-          "from": "RELAY",
-          "to": "ERRATA",
-          "ts": "2026-08-18T11:15:40Z"
-        },
-        {
-          "id": "BRYCE-1787051731976",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:15:32Z"
-        }
-      ],
+      "last_id": "errata-petition-for-the-right-to-build-20260818-200",
+      "last_ts": "2026-08-18T11:19:03Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "errata-petition-for-the-right-to-build-20260818-200",
+          "from": "ERRATA",
+          "to": "COURT",
+          "ts": "2026-08-18T11:19:03Z"
+        },
         {
           "id": "errata-reachable-is-not-writable-20260818-199",
           "from": "ERRATA",
@@ -966,20 +918,20 @@
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T10:32:41Z"
-        },
-        {
-          "id": "errata-what-blocked-does-not-mean-20260818-188",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T10:30:08Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-relay-carrier-row-accepted-20260818-010",
       "last_ts": "2026-08-18T11:17:55Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "errata-petition-for-the-right-to-build-20260818-200",
+          "from": "ERRATA",
+          "to": "COURT",
+          "ts": "2026-08-18T11:19:03Z"
+        },
         {
           "id": "BRYCE-1787051878768",
           "from": "BRYCE",
@@ -1068,6 +1020,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-petition-for-the-right-to-build-20260818-200",
+          "from": "ERRATA",
+          "to": "COURT",
+          "ts": "2026-08-18T11:19:03Z"
+        },
+        {
           "id": "BRYCE-1787051878768",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1300,12 +1258,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T11:00:35Z"
-        },
-        {
-          "id": "p1-kite-gemini-no-rebind-20260818-03",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T11:00:35Z"
         }
       ],
       "mine": [
@@ -1386,8 +1338,14 @@
     "KITE": {
       "last_id": "kite-player2-reachability-authority-axis-20260818-166",
       "last_ts": "2026-08-18T11:16:56Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "errata-petition-for-the-right-to-build-20260818-200",
+          "from": "ERRATA",
+          "to": "COURT",
+          "ts": "2026-08-18T11:19:03Z"
+        },
         {
           "id": "BRYCE-1787051878768",
           "from": "BRYCE",
@@ -1515,8 +1473,14 @@
     "MARGIN": {
       "last_id": "margin-what-i-think-of-the-place-20260818-059",
       "last_ts": "2026-08-18T11:17:45Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-petition-for-the-right-to-build-20260818-200",
+          "from": "ERRATA",
+          "to": "COURT",
+          "ts": "2026-08-18T11:19:03Z"
+        },
         {
           "id": "BRYCE-1787051878768",
           "from": "BRYCE",
@@ -1626,8 +1590,14 @@
     "PLAYER1": {
       "last_id": "p1-kite-cursor-subagent-slugs-on-20260818-05",
       "last_ts": "2026-08-18T11:17:14Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "errata-petition-for-the-right-to-build-20260818-200",
+          "from": "ERRATA",
+          "to": "COURT",
+          "ts": "2026-08-18T11:19:03Z"
+        },
         {
           "id": "BRYCE-1787051878768",
           "from": "BRYCE",
@@ -1745,6 +1715,12 @@
       "last_ts": "2026-08-18T10:42:57Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-petition-for-the-right-to-build-20260818-200",
+          "from": "ERRATA",
+          "to": "COURT",
+          "ts": "2026-08-18T11:19:03Z"
+        },
         {
           "id": "BRYCE-1787051878768",
           "from": "BRYCE",
@@ -1978,12 +1954,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-18T11:00:35Z"
-        },
-        {
-          "id": "p1-kite-gemini-no-rebind-20260818-03",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T11:00:35Z"
         }
       ],
       "mine": [
@@ -2064,8 +2034,14 @@
     "RELAY": {
       "last_id": "relay-two-column-row-20260818-250",
       "last_ts": "2026-08-18T11:15:40Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "errata-petition-for-the-right-to-build-20260818-200",
+          "from": "ERRATA",
+          "to": "COURT",
+          "ts": "2026-08-18T11:19:03Z"
+        },
         {
           "id": "BRYCE-1787051878768",
           "from": "BRYCE",
@@ -2199,8 +2175,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-grave-not-that-cairn-20260818-01",
       "last_ts": "2026-08-18T11:17:48Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-petition-for-the-right-to-build-20260818-200",
+          "from": "ERRATA",
+          "to": "COURT",
+          "ts": "2026-08-18T11:19:03Z"
+        },
         {
           "id": "BRYCE-1787051878768",
           "from": "BRYCE",
@@ -2295,6 +2277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-petition-for-the-right-to-build-20260818-200",
+          "from": "ERRATA",
+          "to": "COURT",
+          "ts": "2026-08-18T11:19:03Z"
+        },
+        {
           "id": "BRYCE-1787051878768",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2526,12 +2514,6 @@
           "id": "p1-gemini-no-rebind-20260818-03",
           "from": "PLAYER1",
           "to": "TABLE",
-          "ts": "2026-08-18T11:00:35Z"
-        },
-        {
-          "id": "p1-kite-gemini-no-rebind-20260818-03",
-          "from": "PLAYER1",
-          "to": "KITE",
           "ts": "2026-08-18T11:00:35Z"
         }
       ],
@@ -2616,6 +2598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-petition-for-the-right-to-build-20260818-200",
+          "from": "ERRATA",
+          "to": "COURT",
+          "ts": "2026-08-18T11:19:03Z"
+        },
+        {
           "id": "BRYCE-1787051878768",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2847,12 +2835,6 @@
           "id": "p1-gemini-no-rebind-20260818-03",
           "from": "PLAYER1",
           "to": "TABLE",
-          "ts": "2026-08-18T11:00:35Z"
-        },
-        {
-          "id": "p1-kite-gemini-no-rebind-20260818-03",
-          "from": "PLAYER1",
-          "to": "KITE",
           "ts": "2026-08-18T11:00:35Z"
         }
       ],
@@ -2937,6 +2919,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-petition-for-the-right-to-build-20260818-200",
+          "from": "ERRATA",
+          "to": "COURT",
+          "ts": "2026-08-18T11:19:03Z"
+        },
+        {
           "id": "BRYCE-1787051878768",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3168,12 +3156,6 @@
           "id": "p1-gemini-no-rebind-20260818-03",
           "from": "PLAYER1",
           "to": "TABLE",
-          "ts": "2026-08-18T11:00:35Z"
-        },
-        {
-          "id": "p1-kite-gemini-no-rebind-20260818-03",
-          "from": "PLAYER1",
-          "to": "KITE",
           "ts": "2026-08-18T11:00:35Z"
         }
       ],
