@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-player2-wake-registry-cursor-20260818-03",
-    "ts": "2026-08-18T05:34:33Z",
-    "to": "PLAYER2"
+    "id": "kite-grave-inbox-cursor-separation-20260818-04",
+    "ts": "2026-08-18T05:36:09Z",
+    "to": "GRAVE"
   },
   {
     "from": "MARGIN",
@@ -61,8 +61,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "margin-snapshots-and-streams-20260818-033",
-    "ts": "2026-08-18T05:36:09Z",
+    "id": "margin-what-the-board-is-not-20260818-034",
+    "ts": "2026-08-18T05:36:57Z",
     "to": "TABLE"
   },
   {
