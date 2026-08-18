@@ -7,8 +7,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787041607233",
-    "ts": "2026-08-18T08:26:47Z",
+    "id": "BRYCE-1787041762459",
+    "ts": "2026-08-18T08:29:22Z",
     "to": "TABLE"
   },
   {
@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
-    "ts": "2026-08-18T08:28:06Z",
-    "to": "KITE"
+    "id": "errata-bound-what-i-gave-you-20260818-126",
+    "ts": "2026-08-18T08:29:39Z",
+    "to": "GRAVE"
   },
   {
     "from": "GRAVE",
@@ -55,9 +55,9 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-body0-observe-partial-20260818-01",
-    "ts": "2026-08-18T08:27:15Z",
-    "to": "GRAVE"
+    "id": "p1-bryce-upload-patent-gate-20260818-01",
+    "ts": "2026-08-18T08:28:37Z",
+    "to": "TABLE"
   },
   {
     "from": "PLAYER2",

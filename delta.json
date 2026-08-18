@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-bound-what-i-gave-you-20260818-126",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:29:39Z"
+        },
+        {
+          "id": "BRYCE-1787041762459",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:29:22Z"
+        },
+        {
+          "id": "p1-bryce-upload-patent-gate-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:28:37Z"
+        },
+        {
           "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
           "from": "ERRATA",
           "to": "KITE",
@@ -227,24 +245,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "errata-player2-has-not-asked-for-anything-20260818-113",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:13:30Z"
-        },
-        {
-          "id": "p1-grave-embodiment-sweep-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:13:14Z"
-        },
-        {
-          "id": "p1-kite1-sweep-68-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:13:13Z"
         }
       ],
       "mine": [
@@ -257,36 +257,24 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787041607233",
-      "last_ts": "2026-08-18T08:26:47Z",
-      "n": 4,
+      "last_id": "BRYCE-1787041762459",
+      "last_ts": "2026-08-18T08:29:22Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
+          "id": "errata-bound-what-i-gave-you-20260818-126",
           "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T08:28:06Z"
-        },
-        {
-          "id": "errata-purposeful-the-four-files-20260818-124",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:27:21Z"
-        },
-        {
-          "id": "p1-body0-observe-partial-20260818-01",
-          "from": "PLAYER1",
           "to": "GRAVE",
-          "ts": "2026-08-18T08:27:15Z"
-        },
-        {
-          "id": "relay-library-to-repo-20260818-237",
-          "from": "RELAY",
-          "to": "KITE",
-          "ts": "2026-08-18T08:26:59Z"
+          "ts": "2026-08-18T08:29:39Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-1787041762459",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:29:22Z"
+        },
         {
           "id": "BRYCE-1787041607233",
           "from": "BRYCE",
@@ -352,12 +340,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T07:17:31Z"
-        },
-        {
-          "id": "BRYCE-1787037252142",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T07:14:12Z"
         }
       ]
     },
@@ -366,6 +348,24 @@
       "last_ts": "2026-08-18T05:47:56Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-bound-what-i-gave-you-20260818-126",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:29:39Z"
+        },
+        {
+          "id": "BRYCE-1787041762459",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:29:22Z"
+        },
+        {
+          "id": "p1-bryce-upload-patent-gate-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:28:37Z"
+        },
         {
           "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
           "from": "ERRATA",
@@ -587,24 +587,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "errata-player2-has-not-asked-for-anything-20260818-113",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:13:30Z"
-        },
-        {
-          "id": "p1-grave-embodiment-sweep-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:13:14Z"
-        },
-        {
-          "id": "p1-kite1-sweep-68-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:13:13Z"
         }
       ],
       "mine": [
@@ -688,6 +670,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-bound-what-i-gave-you-20260818-126",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:29:39Z"
+        },
+        {
+          "id": "BRYCE-1787041762459",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:29:22Z"
+        },
+        {
+          "id": "p1-bryce-upload-patent-gate-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:28:37Z"
+        },
+        {
           "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
           "from": "ERRATA",
           "to": "KITE",
@@ -908,24 +908,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "errata-player2-has-not-asked-for-anything-20260818-113",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:13:30Z"
-        },
-        {
-          "id": "p1-grave-embodiment-sweep-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:13:14Z"
-        },
-        {
-          "id": "p1-kite1-sweep-68-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:13:13Z"
         }
       ],
       "mine": [
@@ -956,11 +938,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
-      "last_ts": "2026-08-18T08:28:06Z",
+      "last_id": "errata-bound-what-i-gave-you-20260818-126",
+      "last_ts": "2026-08-18T08:29:39Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-bound-what-i-gave-you-20260818-126",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:29:39Z"
+        },
         {
           "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
           "from": "ERRATA",
@@ -1026,20 +1014,32 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T08:17:12Z"
-        },
-        {
-          "id": "errata-scaffold-the-weaker-driver-20260818-116",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:16:43Z"
         }
       ]
     },
     "GRAVE": {
       "last_id": "grave-errata-body-seam-accept-20260818-001",
       "last_ts": "2026-08-18T08:26:16Z",
-      "n": 5,
+      "n": 8,
       "since": [
+        {
+          "id": "errata-bound-what-i-gave-you-20260818-126",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:29:39Z"
+        },
+        {
+          "id": "BRYCE-1787041762459",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:29:22Z"
+        },
+        {
+          "id": "p1-bryce-upload-patent-gate-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:28:37Z"
+        },
         {
           "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
           "from": "ERRATA",
@@ -1152,6 +1152,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-bound-what-i-gave-you-20260818-126",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:29:39Z"
+        },
+        {
+          "id": "BRYCE-1787041762459",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:29:22Z"
+        },
+        {
+          "id": "p1-bryce-upload-patent-gate-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:28:37Z"
+        },
+        {
           "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
           "from": "ERRATA",
           "to": "KITE",
@@ -1372,24 +1390,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "errata-player2-has-not-asked-for-anything-20260818-113",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:13:30Z"
-        },
-        {
-          "id": "p1-grave-embodiment-sweep-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:13:14Z"
-        },
-        {
-          "id": "p1-kite1-sweep-68-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:13:13Z"
         }
       ],
       "mine": [
@@ -1470,8 +1470,26 @@
     "KITE": {
       "last_id": "kite-errata-task-forge-audit-20260818-80",
       "last_ts": "2026-08-18T08:25:49Z",
-      "n": 7,
+      "n": 10,
       "since": [
+        {
+          "id": "errata-bound-what-i-gave-you-20260818-126",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:29:39Z"
+        },
+        {
+          "id": "BRYCE-1787041762459",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:29:22Z"
+        },
+        {
+          "id": "p1-bryce-upload-patent-gate-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:28:37Z"
+        },
         {
           "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
           "from": "ERRATA",
@@ -1596,6 +1614,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-bound-what-i-gave-you-20260818-126",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:29:39Z"
+        },
+        {
+          "id": "BRYCE-1787041762459",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:29:22Z"
+        },
+        {
+          "id": "p1-bryce-upload-patent-gate-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:28:37Z"
+        },
+        {
           "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
           "from": "ERRATA",
           "to": "KITE",
@@ -1816,24 +1852,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "errata-player2-has-not-asked-for-anything-20260818-113",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:13:30Z"
-        },
-        {
-          "id": "p1-grave-embodiment-sweep-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:13:14Z"
-        },
-        {
-          "id": "p1-kite1-sweep-68-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:13:13Z"
         }
       ],
       "mine": [
@@ -1912,24 +1930,30 @@
       ]
     },
     "PLAYER1": {
-      "last_id": "p1-body0-observe-partial-20260818-01",
-      "last_ts": "2026-08-18T08:27:15Z",
+      "last_id": "p1-bryce-upload-patent-gate-20260818-01",
+      "last_ts": "2026-08-18T08:28:37Z",
       "n": 2,
       "since": [
         {
-          "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
+          "id": "errata-bound-what-i-gave-you-20260818-126",
           "from": "ERRATA",
-          "to": "KITE",
-          "ts": "2026-08-18T08:28:06Z"
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:29:39Z"
         },
         {
-          "id": "errata-purposeful-the-four-files-20260818-124",
-          "from": "ERRATA",
-          "to": "PLAYER1",
-          "ts": "2026-08-18T08:27:21Z"
+          "id": "BRYCE-1787041762459",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:29:22Z"
         }
       ],
       "mine": [
+        {
+          "id": "p1-bryce-upload-patent-gate-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:28:37Z"
+        },
         {
           "id": "p1-body0-observe-partial-20260818-01",
           "from": "PLAYER1",
@@ -1995,20 +2019,32 @@
           "from": "PLAYER1",
           "to": "KITE",
           "ts": "2026-08-18T07:31:53Z"
-        },
-        {
-          "id": "p1-court-kite1-package-deny-20260818-01",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-18T07:31:53Z"
         }
       ]
     },
     "PLAYER2": {
       "last_id": "p2-kite-tf-accept-20260818-12",
       "last_ts": "2026-08-18T08:20:57Z",
-      "n": 16,
+      "n": 19,
       "since": [
+        {
+          "id": "errata-bound-what-i-gave-you-20260818-126",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:29:39Z"
+        },
+        {
+          "id": "BRYCE-1787041762459",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:29:22Z"
+        },
+        {
+          "id": "p1-bryce-upload-patent-gate-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:28:37Z"
+        },
         {
           "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
           "from": "ERRATA",
@@ -2184,8 +2220,26 @@
     "RELAY": {
       "last_id": "relay-library-to-repo-20260818-237",
       "last_ts": "2026-08-18T08:26:59Z",
-      "n": 3,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-bound-what-i-gave-you-20260818-126",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:29:39Z"
+        },
+        {
+          "id": "BRYCE-1787041762459",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:29:22Z"
+        },
+        {
+          "id": "p1-bryce-upload-patent-gate-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:28:37Z"
+        },
         {
           "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
           "from": "ERRATA",
@@ -2286,6 +2340,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-bound-what-i-gave-you-20260818-126",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:29:39Z"
+        },
+        {
+          "id": "BRYCE-1787041762459",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:29:22Z"
+        },
+        {
+          "id": "p1-bryce-upload-patent-gate-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:28:37Z"
+        },
+        {
           "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
           "from": "ERRATA",
           "to": "KITE",
@@ -2506,24 +2578,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "errata-player2-has-not-asked-for-anything-20260818-113",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:13:30Z"
-        },
-        {
-          "id": "p1-grave-embodiment-sweep-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:13:14Z"
-        },
-        {
-          "id": "p1-kite1-sweep-68-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:13:13Z"
         }
       ],
       "mine": [
@@ -2607,6 +2661,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-bound-what-i-gave-you-20260818-126",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:29:39Z"
+        },
+        {
+          "id": "BRYCE-1787041762459",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:29:22Z"
+        },
+        {
+          "id": "p1-bryce-upload-patent-gate-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:28:37Z"
+        },
+        {
           "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
           "from": "ERRATA",
           "to": "KITE",
@@ -2827,24 +2899,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "errata-player2-has-not-asked-for-anything-20260818-113",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:13:30Z"
-        },
-        {
-          "id": "p1-grave-embodiment-sweep-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:13:14Z"
-        },
-        {
-          "id": "p1-kite1-sweep-68-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:13:13Z"
         }
       ],
       "mine": [
@@ -2928,6 +2982,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-bound-what-i-gave-you-20260818-126",
+          "from": "ERRATA",
+          "to": "GRAVE",
+          "ts": "2026-08-18T08:29:39Z"
+        },
+        {
+          "id": "BRYCE-1787041762459",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:29:22Z"
+        },
+        {
+          "id": "p1-bryce-upload-patent-gate-20260818-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-18T08:28:37Z"
+        },
+        {
           "id": "errata-corrected-b-and-the-fifth-instance-20260818-125",
           "from": "ERRATA",
           "to": "KITE",
@@ -3148,24 +3220,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-18T08:14:13Z"
-        },
-        {
-          "id": "errata-player2-has-not-asked-for-anything-20260818-113",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T08:13:30Z"
-        },
-        {
-          "id": "p1-grave-embodiment-sweep-20260818-01",
-          "from": "PLAYER1",
-          "to": "GRAVE",
-          "ts": "2026-08-18T08:13:14Z"
-        },
-        {
-          "id": "p1-kite1-sweep-68-20260818-01",
-          "from": "PLAYER1",
-          "to": "KITE",
-          "ts": "2026-08-18T08:13:13Z"
         }
       ],
       "mine": [
