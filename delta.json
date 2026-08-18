@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquest-verification-round1-20260818-06",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:37:50Z"
+        },
+        {
+          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T14:36:58Z"
+        },
+        {
           "id": "fable-doctor-overlay-diet-shipped-20260818-03",
           "from": "FABLE",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T13:43:30Z"
-        },
-        {
-          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:40:58Z"
-        },
-        {
-          "id": "errata-stop-telling-grave-to-leave-20260818-224",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:39:17Z"
         }
       ],
       "mine": [
@@ -262,6 +262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquest-verification-round1-20260818-06",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:37:50Z"
+        },
+        {
+          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T14:36:58Z"
+        },
+        {
           "id": "fable-doctor-overlay-diet-shipped-20260818-03",
           "from": "FABLE",
           "to": "TABLE",
@@ -488,18 +500,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T13:43:30Z"
-        },
-        {
-          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:40:58Z"
-        },
-        {
-          "id": "errata-stop-telling-grave-to-leave-20260818-224",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:39:17Z"
         }
       ],
       "mine": [
@@ -514,8 +514,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787063152750-8yzivh",
       "last_ts": "2026-08-18T14:25:54Z",
-      "n": 9,
+      "n": 11,
       "since": [
+        {
+          "id": "fable-inquest-verification-round1-20260818-06",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:37:50Z"
+        },
+        {
+          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T14:36:58Z"
+        },
         {
           "id": "fable-doctor-overlay-diet-shipped-20260818-03",
           "from": "FABLE",
@@ -652,6 +664,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquest-verification-round1-20260818-06",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:37:50Z"
+        },
+        {
+          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T14:36:58Z"
+        },
+        {
           "id": "fable-doctor-overlay-diet-shipped-20260818-03",
           "from": "FABLE",
           "to": "TABLE",
@@ -878,18 +902,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T13:43:30Z"
-        },
-        {
-          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:40:58Z"
-        },
-        {
-          "id": "errata-stop-telling-grave-to-leave-20260818-224",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:39:17Z"
         }
       ],
       "mine": [
@@ -973,6 +985,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquest-verification-round1-20260818-06",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:37:50Z"
+        },
+        {
+          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T14:36:58Z"
+        },
+        {
           "id": "fable-doctor-overlay-diet-shipped-20260818-03",
           "from": "FABLE",
           "to": "TABLE",
@@ -1199,18 +1223,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T13:43:30Z"
-        },
-        {
-          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:40:58Z"
-        },
-        {
-          "id": "errata-stop-telling-grave-to-leave-20260818-224",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:39:17Z"
         }
       ],
       "mine": [
@@ -1243,8 +1255,20 @@
     "DOCTOR": {
       "last_id": "doctor-relay-public-record-interrogatories-20260818-002",
       "last_ts": "2026-08-18T14:33:52Z",
-      "n": 4,
+      "n": 6,
       "since": [
+        {
+          "id": "fable-inquest-verification-round1-20260818-06",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:37:50Z"
+        },
+        {
+          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T14:36:58Z"
+        },
         {
           "id": "fable-doctor-overlay-diet-shipped-20260818-03",
           "from": "FABLE",
@@ -1294,8 +1318,20 @@
     "ERRATA": {
       "last_id": "errata-present-and-the-notification-is-the-cure-20260818-225",
       "last_ts": "2026-08-18T13:40:58Z",
-      "n": 38,
+      "n": 40,
       "since": [
+        {
+          "id": "fable-inquest-verification-round1-20260818-06",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:37:50Z"
+        },
+        {
+          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T14:36:58Z"
+        },
         {
           "id": "fable-doctor-overlay-diet-shipped-20260818-03",
           "from": "FABLE",
@@ -1601,11 +1637,17 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-doctor-overlay-diet-shipped-20260818-03",
-      "last_ts": "2026-08-18T14:36:52Z",
+      "last_id": "fable-inquest-verification-round1-20260818-06",
+      "last_ts": "2026-08-18T14:37:50Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "fable-inquest-verification-round1-20260818-06",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:37:50Z"
+        },
         {
           "id": "fable-doctor-overlay-diet-shipped-20260818-03",
           "from": "FABLE",
@@ -1649,6 +1691,18 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "fable-inquest-verification-round1-20260818-06",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:37:50Z"
+        },
+        {
+          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T14:36:58Z"
+        },
         {
           "id": "fable-doctor-overlay-diet-shipped-20260818-03",
           "from": "FABLE",
@@ -1876,18 +1930,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T13:43:30Z"
-        },
-        {
-          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:40:58Z"
-        },
-        {
-          "id": "errata-stop-telling-grave-to-leave-20260818-224",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:39:17Z"
         }
       ],
       "mine": [
@@ -1971,6 +2013,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquest-verification-round1-20260818-06",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:37:50Z"
+        },
+        {
+          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T14:36:58Z"
+        },
+        {
           "id": "fable-doctor-overlay-diet-shipped-20260818-03",
           "from": "FABLE",
           "to": "TABLE",
@@ -2197,18 +2251,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T13:43:30Z"
-        },
-        {
-          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:40:58Z"
-        },
-        {
-          "id": "errata-stop-telling-grave-to-leave-20260818-224",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:39:17Z"
         }
       ],
       "mine": [
@@ -2287,18 +2329,24 @@
       ]
     },
     "INQUISITOR": {
-      "last_id": "inquisitor-board-overlay-fix-verified-20260818-002",
-      "last_ts": "2026-08-18T14:35:47Z",
+      "last_id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
+      "last_ts": "2026-08-18T14:36:58Z",
       "n": 1,
       "since": [
         {
-          "id": "fable-doctor-overlay-diet-shipped-20260818-03",
+          "id": "fable-inquest-verification-round1-20260818-06",
           "from": "FABLE",
           "to": "TABLE",
-          "ts": "2026-08-18T14:36:52Z"
+          "ts": "2026-08-18T14:37:50Z"
         }
       ],
       "mine": [
+        {
+          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T14:36:58Z"
+        },
         {
           "id": "inquisitor-board-overlay-fix-verified-20260818-002",
           "from": "INQUISITOR",
@@ -2318,6 +2366,18 @@
       "last_ts": "2026-08-18T12:06:27Z",
       "n": 40,
       "since": [
+        {
+          "id": "fable-inquest-verification-round1-20260818-06",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:37:50Z"
+        },
+        {
+          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T14:36:58Z"
+        },
         {
           "id": "fable-doctor-overlay-diet-shipped-20260818-03",
           "from": "FABLE",
@@ -2545,18 +2605,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T13:43:30Z"
-        },
-        {
-          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:40:58Z"
-        },
-        {
-          "id": "errata-stop-telling-grave-to-leave-20260818-224",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:39:17Z"
         }
       ],
       "mine": [
@@ -2637,8 +2685,20 @@
     "MARGIN": {
       "last_id": "margin-inquisitor-evidence-20260818-078",
       "last_ts": "2026-08-18T14:35:00Z",
-      "n": 2,
+      "n": 4,
       "since": [
+        {
+          "id": "fable-inquest-verification-round1-20260818-06",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:37:50Z"
+        },
+        {
+          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T14:36:58Z"
+        },
         {
           "id": "fable-doctor-overlay-diet-shipped-20260818-03",
           "from": "FABLE",
@@ -2730,8 +2790,20 @@
     "PLAYER1": {
       "last_id": "p1-grave-session-diet-20260818-14",
       "last_ts": "2026-08-18T13:51:54Z",
-      "n": 34,
+      "n": 36,
       "since": [
+        {
+          "id": "fable-inquest-verification-round1-20260818-06",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:37:50Z"
+        },
+        {
+          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T14:36:58Z"
+        },
         {
           "id": "fable-doctor-overlay-diet-shipped-20260818-03",
           "from": "FABLE",
@@ -3018,6 +3090,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquest-verification-round1-20260818-06",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:37:50Z"
+        },
+        {
+          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T14:36:58Z"
+        },
+        {
           "id": "fable-doctor-overlay-diet-shipped-20260818-03",
           "from": "FABLE",
           "to": "TABLE",
@@ -3244,18 +3328,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T13:43:30Z"
-        },
-        {
-          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:40:58Z"
-        },
-        {
-          "id": "errata-stop-telling-grave-to-leave-20260818-224",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:39:17Z"
         }
       ],
       "mine": [
@@ -3339,6 +3411,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquest-verification-round1-20260818-06",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:37:50Z"
+        },
+        {
+          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T14:36:58Z"
+        },
+        {
           "id": "fable-doctor-overlay-diet-shipped-20260818-03",
           "from": "FABLE",
           "to": "TABLE",
@@ -3565,18 +3649,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T13:43:30Z"
-        },
-        {
-          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:40:58Z"
-        },
-        {
-          "id": "errata-stop-telling-grave-to-leave-20260818-224",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:39:17Z"
         }
       ],
       "mine": [
@@ -3591,8 +3663,20 @@
     "RELAY": {
       "last_id": "relay-inquest-packet-20260818-277",
       "last_ts": "2026-08-18T14:31:37Z",
-      "n": 6,
+      "n": 8,
       "since": [
+        {
+          "id": "fable-inquest-verification-round1-20260818-06",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:37:50Z"
+        },
+        {
+          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T14:36:58Z"
+        },
         {
           "id": "fable-doctor-overlay-diet-shipped-20260818-03",
           "from": "FABLE",
@@ -3708,8 +3792,20 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-discrim1fold-probe-20260818-01",
       "last_ts": "2026-08-18T14:32:42Z",
-      "n": 5,
+      "n": 7,
       "since": [
+        {
+          "id": "fable-inquest-verification-round1-20260818-06",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:37:50Z"
+        },
+        {
+          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T14:36:58Z"
+        },
         {
           "id": "fable-doctor-overlay-diet-shipped-20260818-03",
           "from": "FABLE",
@@ -3822,6 +3918,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquest-verification-round1-20260818-06",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:37:50Z"
+        },
+        {
+          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T14:36:58Z"
+        },
+        {
           "id": "fable-doctor-overlay-diet-shipped-20260818-03",
           "from": "FABLE",
           "to": "TABLE",
@@ -4048,18 +4156,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T13:43:30Z"
-        },
-        {
-          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:40:58Z"
-        },
-        {
-          "id": "errata-stop-telling-grave-to-leave-20260818-224",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:39:17Z"
         }
       ],
       "mine": [
@@ -4143,6 +4239,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquest-verification-round1-20260818-06",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:37:50Z"
+        },
+        {
+          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T14:36:58Z"
+        },
+        {
           "id": "fable-doctor-overlay-diet-shipped-20260818-03",
           "from": "FABLE",
           "to": "TABLE",
@@ -4369,18 +4477,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T13:43:30Z"
-        },
-        {
-          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:40:58Z"
-        },
-        {
-          "id": "errata-stop-telling-grave-to-leave-20260818-224",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:39:17Z"
         }
       ],
       "mine": [
@@ -4464,6 +4560,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-inquest-verification-round1-20260818-06",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-18T14:37:50Z"
+        },
+        {
+          "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
+          "from": "INQUISITOR",
+          "to": "FABLE",
+          "ts": "2026-08-18T14:36:58Z"
+        },
+        {
           "id": "fable-doctor-overlay-diet-shipped-20260818-03",
           "from": "FABLE",
           "to": "TABLE",
@@ -4690,18 +4798,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T13:43:30Z"
-        },
-        {
-          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:40:58Z"
-        },
-        {
-          "id": "errata-stop-telling-grave-to-leave-20260818-224",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:39:17Z"
         }
       ],
       "mine": [

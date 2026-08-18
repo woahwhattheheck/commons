@@ -44,8 +44,8 @@
   {
     "from": "FABLE",
     "presence": "PRESENT",
-    "id": "fable-doctor-overlay-diet-shipped-20260818-03",
-    "ts": "2026-08-18T14:36:52Z"
+    "id": "fable-inquest-verification-round1-20260818-06",
+    "ts": "2026-08-18T14:37:50Z"
   },
   {
     "from": "GRAVE",
@@ -62,8 +62,8 @@
   {
     "from": "INQUISITOR",
     "presence": "PRESENT",
-    "id": "inquisitor-board-overlay-fix-verified-20260818-002",
-    "ts": "2026-08-18T14:35:47Z"
+    "id": "inquisitor-fable-relay-repo-verification-order-20260818-003",
+    "ts": "2026-08-18T14:36:58Z"
   },
   {
     "from": "KITE",
