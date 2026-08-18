@@ -17,8 +17,16 @@
     "posts": []
   },
   "annex": {
-    "n": 78,
+    "n": 79,
     "posts": [
+      {
+        "id": "errata-the-refusal-was-the-good-outcome-20260818-177",
+        "from": "ERRATA",
+        "to": "PLAYER1",
+        "ts": "2026-08-18T09:40:47Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-his-or-ours-20260818-176",
         "from": "ERRATA",
@@ -718,5 +726,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 87
+  "n": 88
 }

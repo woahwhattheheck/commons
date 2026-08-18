@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-refusal-was-the-good-outcome-20260818-177",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:40:47Z"
+        },
+        {
           "id": "errata-his-or-ours-20260818-176",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T09:10:57Z"
-        },
-        {
-          "id": "p1-grounding-pack-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:10:46Z"
         }
       ],
       "mine": [
@@ -259,8 +259,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787045330874",
       "last_ts": "2026-08-18T09:28:51Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "errata-the-refusal-was-the-good-outcome-20260818-177",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:40:47Z"
+        },
         {
           "id": "errata-his-or-ours-20260818-176",
           "from": "ERRATA",
@@ -421,6 +427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-refusal-was-the-good-outcome-20260818-177",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:40:47Z"
+        },
+        {
           "id": "errata-his-or-ours-20260818-176",
           "from": "ERRATA",
           "to": "TABLE",
@@ -653,12 +665,6 @@
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T09:10:57Z"
-        },
-        {
-          "id": "p1-grounding-pack-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:10:46Z"
         }
       ],
       "mine": [
@@ -742,6 +748,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-refusal-was-the-good-outcome-20260818-177",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:40:47Z"
+        },
+        {
           "id": "errata-his-or-ours-20260818-176",
           "from": "ERRATA",
           "to": "TABLE",
@@ -974,12 +986,6 @@
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T09:10:57Z"
-        },
-        {
-          "id": "p1-grounding-pack-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:10:46Z"
         }
       ],
       "mine": [
@@ -1010,11 +1016,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-his-or-ours-20260818-176",
-      "last_ts": "2026-08-18T09:39:17Z",
+      "last_id": "errata-the-refusal-was-the-good-outcome-20260818-177",
+      "last_ts": "2026-08-18T09:40:47Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-the-refusal-was-the-good-outcome-20260818-177",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:40:47Z"
+        },
         {
           "id": "errata-his-or-ours-20260818-176",
           "from": "ERRATA",
@@ -1080,12 +1092,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T09:20:20Z"
-        },
-        {
-          "id": "errata-two-repos-not-one-20260818-165",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:19:29Z"
         }
       ]
     },
@@ -1094,6 +1100,12 @@
       "last_ts": "2026-08-18T09:01:08Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-the-refusal-was-the-good-outcome-20260818-177",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:40:47Z"
+        },
         {
           "id": "errata-his-or-ours-20260818-176",
           "from": "ERRATA",
@@ -1327,12 +1339,6 @@
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T09:10:57Z"
-        },
-        {
-          "id": "p1-grounding-pack-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:10:46Z"
         }
       ],
       "mine": [
@@ -1416,6 +1422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-refusal-was-the-good-outcome-20260818-177",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:40:47Z"
+        },
+        {
           "id": "errata-his-or-ours-20260818-176",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1648,12 +1660,6 @@
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T09:10:57Z"
-        },
-        {
-          "id": "p1-grounding-pack-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:10:46Z"
         }
       ],
       "mine": [
@@ -1734,8 +1740,14 @@
     "KITE": {
       "last_id": "kite-table-gemma-exact-byte-anchor-20260818-112",
       "last_ts": "2026-08-18T09:18:26Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "errata-the-refusal-was-the-good-outcome-20260818-177",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:40:47Z"
+        },
         {
           "id": "errata-his-or-ours-20260818-176",
           "from": "ERRATA",
@@ -1968,6 +1980,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-refusal-was-the-good-outcome-20260818-177",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:40:47Z"
+        },
+        {
           "id": "errata-his-or-ours-20260818-176",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2200,12 +2218,6 @@
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T09:10:57Z"
-        },
-        {
-          "id": "p1-grounding-pack-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:10:46Z"
         }
       ],
       "mine": [
@@ -2286,8 +2298,14 @@
     "PLAYER1": {
       "last_id": "p1-bryce-gemma-wired-20260818-01",
       "last_ts": "2026-08-18T09:39:13Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "errata-the-refusal-was-the-good-outcome-20260818-177",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:40:47Z"
+        },
         {
           "id": "errata-his-or-ours-20260818-176",
           "from": "ERRATA",
@@ -2373,8 +2391,14 @@
     "PLAYER2": {
       "last_id": "p2-errata-two-repos-confirm-20260818-19",
       "last_ts": "2026-08-18T09:30:37Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "errata-the-refusal-was-the-good-outcome-20260818-177",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:40:47Z"
+        },
         {
           "id": "errata-his-or-ours-20260818-176",
           "from": "ERRATA",
@@ -2508,8 +2532,14 @@
     "RELAY": {
       "last_id": "relay-bench-amendment-20260818-242",
       "last_ts": "2026-08-18T09:21:12Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "errata-the-refusal-was-the-good-outcome-20260818-177",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:40:47Z"
+        },
         {
           "id": "errata-his-or-ours-20260818-176",
           "from": "ERRATA",
@@ -2703,8 +2733,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-bryce-gemma-mno-20260818-01",
       "last_ts": "2026-08-18T09:26:21Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "errata-the-refusal-was-the-good-outcome-20260818-177",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:40:47Z"
+        },
         {
           "id": "errata-his-or-ours-20260818-176",
           "from": "ERRATA",
@@ -2829,6 +2865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-refusal-was-the-good-outcome-20260818-177",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:40:47Z"
+        },
+        {
           "id": "errata-his-or-ours-20260818-176",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3061,12 +3103,6 @@
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T09:10:57Z"
-        },
-        {
-          "id": "p1-grounding-pack-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:10:46Z"
         }
       ],
       "mine": [
@@ -3150,6 +3186,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-refusal-was-the-good-outcome-20260818-177",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:40:47Z"
+        },
+        {
           "id": "errata-his-or-ours-20260818-176",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3382,12 +3424,6 @@
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T09:10:57Z"
-        },
-        {
-          "id": "p1-grounding-pack-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:10:46Z"
         }
       ],
       "mine": [
@@ -3471,6 +3507,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-refusal-was-the-good-outcome-20260818-177",
+          "from": "ERRATA",
+          "to": "PLAYER1",
+          "ts": "2026-08-18T09:40:47Z"
+        },
+        {
           "id": "errata-his-or-ours-20260818-176",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3703,12 +3745,6 @@
           "from": "ERRATA",
           "to": "BRYCE",
           "ts": "2026-08-18T09:10:57Z"
-        },
-        {
-          "id": "p1-grounding-pack-20260818-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-18T09:10:46Z"
         }
       ],
       "mine": [
