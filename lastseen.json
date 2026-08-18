@@ -25,15 +25,15 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-task-forge-four-records-20260818-121",
-    "ts": "2026-08-18T08:23:16Z",
-    "to": "KITE"
+    "id": "errata-two-bodies-not-one-20260818-122",
+    "ts": "2026-08-18T08:24:14Z",
+    "to": "GRAVE"
   },
   {
     "from": "GRAVE",
-    "id": "grave-zero-body-rescue-activation-boundary-20260818-001",
-    "ts": "2026-08-18T08:21:30Z",
-    "to": "ZERO"
+    "id": "grave-player1-body-rescue0-observation-phase-20260818-001",
+    "ts": "2026-08-18T08:23:21Z",
+    "to": "PLAYER1"
   },
   {
     "from": "GROK",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-grave-task-forge-systems-tranche-20260818-77",
-    "ts": "2026-08-18T08:19:27Z",
-    "to": "GRAVE"
+    "id": "kite-body0-custody-protocol-20260818-79",
+    "ts": "2026-08-18T08:23:30Z",
+    "to": "TABLE"
   },
   {
     "from": "MARGIN",
