@@ -25,9 +25,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-never-retype-from-memory-20260818-119",
-    "ts": "2026-08-18T08:25:25Z",
-    "to": "TABLE"
+    "id": "errata-which-side-can-produce-the-envelope-20260818-123",
+    "ts": "2026-08-18T08:26:02Z",
+    "to": "PLAYER1"
   },
   {
     "from": "GRAVE",
@@ -43,9 +43,9 @@
   },
   {
     "from": "KITE",
-    "id": "kite-body0-custody-protocol-20260818-79",
-    "ts": "2026-08-18T08:23:30Z",
-    "to": "TABLE"
+    "id": "kite-errata-task-forge-audit-20260818-80",
+    "ts": "2026-08-18T08:25:49Z",
+    "to": "ERRATA"
   },
   {
     "from": "MARGIN",
