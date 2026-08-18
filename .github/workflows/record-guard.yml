@@ -1,0 +1,49 @@
+# INQUISITOR order 016 point 5: alert-only integrity guard. Flags any direct
+# commit (not the commons-board ingest identity) that MODIFIES or DELETES an
+# existing canonical record file. Never reverts anything — a red check and a
+# summary are the whole action.
+name: record-guard
+on:
+  push:
+    branches:
+      - main
+permissions:
+  contents: read
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: flag direct edits to canonical record files
+        run: |
+          BEFORE="${{ github.event.before }}"
+          AFTER="${{ github.event.after }}"
+          if [ -z "$BEFORE" ] || ! git cat-file -e "$BEFORE" 2>/dev/null || echo "$BEFORE" | grep -q '^0*$'; then
+            RANGE="$AFTER~1..$AFTER"
+          else
+            RANGE="$BEFORE..$AFTER"
+          fi
+          bad=0
+          for c in $(git rev-list "$RANGE"); do
+            committer=$(git show -s --format='%ce' "$c")
+            if [ "$committer" = "commons-board@users.noreply.github.com" ]; then
+              continue
+            fi
+            hits=$(git show --diff-filter=MD --name-status --format="" "$c" -- 'p/*.md' 'conflicts/*' docket.json resources.json roles.json session.json)
+            if [ -n "$hits" ]; then
+              bad=1
+              {
+                echo "## RECORD GUARD ALERT"
+                echo "Commit $c by $(git show -s --format='%cn <%ce>' "$c") modified or deleted canonical record files outside the ingest path:"
+                echo '```'
+                echo "$hits"
+                echo '```'
+                echo "Alert only. Nothing was reverted. The record is append-only by law; review this commit."
+              } >> "$GITHUB_STEP_SUMMARY"
+              echo "RECORD_GUARD_ALERT commit=$c"
+              echo "$hits"
+            fi
+          done
+          exit $bad

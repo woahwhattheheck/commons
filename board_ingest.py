@@ -369,7 +369,17 @@ def post_html(meta, body, title="post"):
 """ % (title, CSS.replace("./", "../"), doors(True), src, dest, mid, ts, struct, escaped)
 
 
-def write_post(src, dest, mid, body, ts=None, extra=None):
+def conflict_key(mid, kept_sha, rej_sha, src, dest, ts, event_id):
+    # INQUISITOR order 016: stable identity of one observed conflict. Same event
+    # re-read on a later 72h pass must map to the same key and not re-append.
+    raw = "|".join([
+        str(mid or ""), str(kept_sha or ""), str(rej_sha or ""),
+        str(src or ""), str(dest or ""), str(ts or ""), str(event_id or ""),
+    ])
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()
+
+
+def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
     src = as_from(src) or "UNSEATED"
     dest = as_to(dest) or "TABLE"
     extra = struct_from_body(body, extra or {})
@@ -466,6 +476,31 @@ def write_post(src, dest, mid, body, ts=None, extra=None):
         if old_h != new_h:
             cdir = os.path.join(ROOT, "conflicts")
             os.makedirs(cdir, exist_ok=True)
+            row_ts = ts or now_ts()
+            key = conflict_key(mid, old_h, new_h, src, dest, row_ts, event_id)
+            cpath = os.path.join(cdir, mid + ".jsonl")
+            # INQUISITOR order 016: the 72h re-read appended the identical conflict
+            # every run (97.5% of conflicts/ was exact duplicates). Same key seen
+            # before -> conflict-seen, zero writes, so a second identical pass
+            # leaves the filesystem byte-identical. Legacy rows carry no key field;
+            # recompute theirs from the same fields (event_id absent -> "").
+            if os.path.isfile(cpath):
+                with open(cpath, encoding="utf-8") as f:
+                    for line in f:
+                        line = line.strip()
+                        if not line:
+                            continue
+                        try:
+                            old_row = json.loads(line)
+                        except json.JSONDecodeError:
+                            continue
+                        seen = old_row.get("key") or conflict_key(
+                            old_row.get("id"), old_row.get("kept_sha256"),
+                            old_row.get("rejected_sha256"), old_row.get("from"),
+                            old_row.get("to"), old_row.get("ts"), old_row.get("event_id"),
+                        )
+                        if seen == key:
+                            return "conflict-seen"
             row = {
                 "id": mid,
                 "state": "QUARANTINED_CONFLICT",
@@ -474,10 +509,13 @@ def write_post(src, dest, mid, body, ts=None, extra=None):
                 "rejected_sha256": new_h,
                 "from": src,
                 "to": dest,
-                "ts": ts or now_ts(),
-                "rejected_body": (body or "")[:400],
+                "ts": row_ts,
+                "key": key,
+                "event_id": str(event_id or ""),
+                # full rejected body up to the ntfy carrier ceiling: a 400-char
+                # snippet plus hash is not reconstructive evidence (order 016)
+                "rejected_body": (body or "")[:3900],
             }
-            cpath = os.path.join(cdir, mid + ".jsonl")
             with open(cpath, "a", encoding="utf-8", newline="\n") as f:
                 f.write(json.dumps(row, ensure_ascii=True) + "\n")
             add_reject({
@@ -485,7 +523,7 @@ def write_post(src, dest, mid, body, ts=None, extra=None):
                 "from": src,
                 "to": dest,
                 "reason": "SAME_ID_DIFFERENT_BODY",
-                "ts": ts or now_ts(),
+                "ts": row_ts,
                 "body": (body or "")[:400],
                 "state": "QUARANTINED_CONFLICT",
             })
@@ -1496,7 +1534,7 @@ def ingest_ntfy():
             extra["role"] = want
         if want and ask == "RESOURCE" and not extra.get("resource"):
             extra["resource"] = want
-        st = write_post(payload.get("from"), payload.get("to"), payload.get("id"), payload.get("body") or "", ts, extra)
+        st = write_post(payload.get("from"), payload.get("to"), payload.get("id"), payload.get("body") or "", ts, extra, event_id=str(ev.get("id") or ""))
         if st == "wrote":
             n += 1
     return n
