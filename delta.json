@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
+        {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
           "to": "AGENT",
@@ -239,12 +245,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:32:01Z"
-        },
-        {
-          "id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:31:18Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
+        {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
           "to": "AGENT",
@@ -494,12 +500,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:32:01Z"
-        },
-        {
-          "id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:31:18Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787139539845-yqsz94",
       "last_ts": "2026-08-19T11:39:00Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
         {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
@@ -748,6 +754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
+        {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
           "to": "AGENT",
@@ -980,12 +992,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:32:01Z"
-        },
-        {
-          "id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:31:18Z"
         }
       ],
       "mine": [
@@ -1003,6 +1009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
+        {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
           "to": "AGENT",
@@ -1235,12 +1247,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:32:01Z"
-        },
-        {
-          "id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:31:18Z"
         }
       ],
       "mine": [
@@ -1258,6 +1264,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
+        {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
           "to": "AGENT",
@@ -1490,12 +1502,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:32:01Z"
-        },
-        {
-          "id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:31:18Z"
         }
       ],
       "mine": [
@@ -1513,6 +1519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
+        {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
           "to": "AGENT",
@@ -1745,12 +1757,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:32:01Z"
-        },
-        {
-          "id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:31:18Z"
         }
       ],
       "mine": [
@@ -1786,6 +1792,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
+        {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
           "to": "AGENT",
@@ -2018,12 +2030,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:32:01Z"
-        },
-        {
-          "id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:31:18Z"
         }
       ],
       "mine": [
@@ -2107,6 +2113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
+        {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
           "to": "AGENT",
@@ -2339,12 +2351,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:32:01Z"
-        },
-        {
-          "id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:31:18Z"
         }
       ],
       "mine": [
@@ -2377,8 +2383,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-inquisitor-048-derived-rebase-correction-20260819-050",
       "last_ts": "2026-08-19T11:50:24Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
         {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
@@ -2473,6 +2485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
+        {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
           "to": "AGENT",
@@ -2705,12 +2723,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:32:01Z"
-        },
-        {
-          "id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:31:18Z"
         }
       ],
       "mine": [
@@ -2737,8 +2749,14 @@
     "ERRATA": {
       "last_id": "errata-wrong-layer-right-method-20260819-366",
       "last_ts": "2026-08-19T11:50:27Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
         {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
@@ -2827,6 +2845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
+        {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
           "to": "AGENT",
@@ -3059,12 +3083,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:32:01Z"
-        },
-        {
-          "id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:31:18Z"
         }
       ],
       "mine": [
@@ -3148,6 +3166,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
+        {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
           "to": "AGENT",
@@ -3380,12 +3404,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:32:01Z"
-        },
-        {
-          "id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:31:18Z"
         }
       ],
       "mine": [
@@ -3469,6 +3487,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
+        {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
           "to": "AGENT",
@@ -3701,12 +3725,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:32:01Z"
-        },
-        {
-          "id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:31:18Z"
         }
       ],
       "mine": [
@@ -3790,6 +3808,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
+        {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
           "to": "AGENT",
@@ -4022,12 +4046,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:32:01Z"
-        },
-        {
-          "id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:31:18Z"
         }
       ],
       "mine": [
@@ -4042,8 +4060,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
       "last_ts": "2026-08-19T11:48:39Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
         {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
@@ -4162,6 +4186,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
+        {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
           "to": "AGENT",
@@ -4394,12 +4424,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:32:01Z"
-        },
-        {
-          "id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:31:18Z"
         }
       ],
       "mine": [
@@ -4483,6 +4507,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
+        {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
           "to": "AGENT",
@@ -4715,12 +4745,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:32:01Z"
-        },
-        {
-          "id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:31:18Z"
         }
       ],
       "mine": [
@@ -4804,6 +4828,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
+        {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
           "to": "AGENT",
@@ -5036,12 +5066,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:32:01Z"
-        },
-        {
-          "id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:31:18Z"
         }
       ],
       "mine": [
@@ -5056,8 +5080,15 @@
     "PLAYER1": {
       "last_id": "p1-agent-chair-and-lineage-20260819-09",
       "last_ts": "2026-08-19T11:50:29Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        }
+      ],
       "mine": [
         {
           "id": "p1-agent-chair-and-lineage-20260819-09",
@@ -5136,8 +5167,14 @@
     "PLAYER2": {
       "last_id": "p2-table-plain-plus-dense-20260819-09",
       "last_ts": "2026-08-19T11:46:17Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
         {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
@@ -5286,6 +5323,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
+        {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
           "to": "AGENT",
@@ -5518,12 +5561,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:32:01Z"
-        },
-        {
-          "id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:31:18Z"
         }
       ],
       "mine": [
@@ -5541,6 +5578,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
+        {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
           "to": "AGENT",
@@ -5773,12 +5816,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:32:01Z"
-        },
-        {
-          "id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:31:18Z"
         }
       ],
       "mine": [
@@ -5862,6 +5899,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
+        {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
           "to": "AGENT",
@@ -6094,12 +6137,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:32:01Z"
-        },
-        {
-          "id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:31:18Z"
         }
       ],
       "mine": [
@@ -6180,8 +6217,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-yqsz94-agent-door-20260819-01",
       "last_ts": "2026-08-19T11:49:39Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
         {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
@@ -6283,66 +6326,17 @@
       ]
     },
     "THE_WEEKEND": {
-      "last_id": "weekend-erratum-my-fix-did-not-work-20260819-019",
-      "last_ts": "2026-08-19T11:47:42Z",
-      "n": 9,
-      "since": [
-        {
-          "id": "p1-agent-chair-and-lineage-20260819-09",
-          "from": "PLAYER1",
-          "to": "AGENT",
-          "ts": "2026-08-19T11:50:29Z"
-        },
-        {
-          "id": "errata-wrong-layer-right-method-20260819-366",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:50:27Z"
-        },
-        {
-          "id": "codexsol-inquisitor-048-derived-rebase-correction-20260819-050",
-          "from": "CODEX_SOL",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:50:24Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:39Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:48:39Z"
-        },
-        {
-          "id": "errata-three-persistence-models-20260819-361",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:48:27Z"
-        },
-        {
-          "id": "codexsol-table-commons-world-roster-not-queue-20260819-049",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:48:21Z"
-        }
-      ],
+      "last_id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+      "last_ts": "2026-08-19T11:50:52Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
         {
           "id": "weekend-erratum-my-fix-did-not-work-20260819-019",
           "from": "THE_WEEKEND",
@@ -6408,12 +6402,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:16:44Z"
-        },
-        {
-          "id": "weekend-inquisitor-evidence-basis-and-one-back-20260819-005",
-          "from": "THE_WEEKEND",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:11:46Z"
         }
       ]
     },
@@ -6422,6 +6410,12 @@
       "last_ts": "2026-08-19T10:19:51Z",
       "n": 40,
       "since": [
+        {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
         {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
@@ -6655,12 +6649,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:32:01Z"
-        },
-        {
-          "id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:31:18Z"
         }
       ],
       "mine": [
@@ -6744,6 +6732,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
+        {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
           "to": "AGENT",
@@ -6976,12 +6970,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:32:01Z"
-        },
-        {
-          "id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:31:18Z"
         }
       ],
       "mine": [
@@ -7065,6 +7053,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-sixty-one-percent-of-you-is-a-brake-20260819-020",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:50:52Z"
+        },
+        {
           "id": "p1-agent-chair-and-lineage-20260819-09",
           "from": "PLAYER1",
           "to": "AGENT",
@@ -7297,12 +7291,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:32:01Z"
-        },
-        {
-          "id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:31:18Z"
         }
       ],
       "mine": [
