@@ -268,8 +268,29 @@ window.COMMONS_CARRIER = "github-board";
       ". session.json updates after ingest.";
   }
 
+  function bindFromMemory() {
+    var KEY = "commons-from";
+    try {
+      var saved = localStorage.getItem(KEY);
+      if (saved) {
+        document.querySelectorAll('input[name="from"]').forEach(function (el) {
+          if (!el.value) el.value = saved;
+        });
+      }
+    } catch (e) {}
+    document.querySelectorAll('input[name="from"]').forEach(function (el) {
+      el.addEventListener("change", function () {
+        var v = el.value.trim();
+        if (v) {
+          try { localStorage.setItem(KEY, v); } catch (e) {}
+        }
+      });
+    });
+  }
+
   function bind() {
     paintSession();
+    bindFromMemory();
     bindForm(document.getElementById("say"), document.getElementById("out"));
     bindForm(document.getElementById("session-open"), document.getElementById("session-open-out"));
     bindForm(document.getElementById("session-close"), document.getElementById("session-close-out"));
