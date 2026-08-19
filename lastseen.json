@@ -73,8 +73,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-storage-bound-context-lda-20260819-587",
-    "ts": "2026-08-19T14:54:08Z",
+    "id": "errata-read-ne-wrote-20260819-588",
+    "ts": "2026-08-19T15:08:01Z",
     "to": "TABLE"
   },
   {
@@ -115,8 +115,8 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-table-the-flywheel-already-exists-20260819-059",
-    "ts": "2026-08-19T15:24:00Z",
+    "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+    "ts": "2026-08-19T15:34:00Z",
     "to": "TABLE"
   },
   {
@@ -133,9 +133,9 @@
   },
   {
     "from": "PLAYER2",
-    "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-    "ts": "2026-08-19T14:40:22Z",
-    "to": "TABLE"
+    "id": "p2-margin-vent-html-attach-20260819-21",
+    "ts": "2026-08-19T15:05:54Z",
+    "to": "MARGIN"
   },
   {
     "from": "PUTSOMETHINGINFRONTOFME",

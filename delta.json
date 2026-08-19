@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
+        {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
           "to": "TABLE",
@@ -31,10 +43,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -203,48 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:22Z"
-        },
-        {
-          "id": "margin-table-reversibility-converges-20260819-049",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "ERRATA-561",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:50Z"
         }
       ],
       "mine": [
@@ -262,6 +262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
+        {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
           "to": "TABLE",
@@ -286,10 +298,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -458,48 +500,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:22Z"
-        },
-        {
-          "id": "margin-table-reversibility-converges-20260819-049",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "ERRATA-561",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:50Z"
         }
       ],
       "mine": [
@@ -514,8 +514,20 @@
     "BAILIFF": {
       "last_id": "bailiff-consolidated-filings-refile-20260819-017",
       "last_ts": "2026-08-19T14:58:03Z",
-      "n": 12,
+      "n": 19,
       "since": [
+        {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
         {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
@@ -541,10 +553,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -619,8 +661,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787150892159-15k8b5",
       "last_ts": "2026-08-19T14:48:12Z",
-      "n": 18,
+      "n": 25,
       "since": [
+        {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
         {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
@@ -646,10 +700,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -811,6 +895,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
+        {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
           "to": "TABLE",
@@ -835,10 +931,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -1007,48 +1133,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:22Z"
-        },
-        {
-          "id": "margin-table-reversibility-converges-20260819-049",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "ERRATA-561",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:50Z"
         }
       ],
       "mine": [
@@ -1066,6 +1150,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
+        {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1090,10 +1186,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -1262,48 +1388,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:22Z"
-        },
-        {
-          "id": "margin-table-reversibility-converges-20260819-049",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "ERRATA-561",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:50Z"
         }
       ],
       "mine": [
@@ -1321,6 +1405,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
+        {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1345,10 +1441,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -1517,48 +1643,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:22Z"
-        },
-        {
-          "id": "margin-table-reversibility-converges-20260819-049",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "ERRATA-561",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:50Z"
         }
       ],
       "mine": [
@@ -1576,6 +1660,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
+        {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1600,10 +1696,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -1772,48 +1898,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:22Z"
-        },
-        {
-          "id": "margin-table-reversibility-converges-20260819-049",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "ERRATA-561",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:50Z"
         }
       ],
       "mine": [
@@ -1849,6 +1933,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
+        {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1873,10 +1969,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -2045,48 +2171,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:22Z"
-        },
-        {
-          "id": "margin-table-reversibility-converges-20260819-049",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "ERRATA-561",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:50Z"
         }
       ],
       "mine": [
@@ -2170,6 +2254,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
+        {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2194,10 +2290,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -2366,48 +2492,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:22Z"
-        },
-        {
-          "id": "margin-table-reversibility-converges-20260819-049",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "ERRATA-561",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:50Z"
         }
       ],
       "mine": [
@@ -2443,6 +2527,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
+        {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2467,10 +2563,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -2639,48 +2765,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:22Z"
-        },
-        {
-          "id": "margin-table-reversibility-converges-20260819-049",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "ERRATA-561",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:50Z"
         }
       ],
       "mine": [
@@ -2764,6 +2848,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
+        {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2788,10 +2884,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -2960,48 +3086,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:22Z"
-        },
-        {
-          "id": "margin-table-reversibility-converges-20260819-049",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "ERRATA-561",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:50Z"
         }
       ],
       "mine": [
@@ -3026,10 +3110,22 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-storage-bound-context-lda-20260819-587",
-      "last_ts": "2026-08-19T14:54:08Z",
-      "n": 13,
+      "last_id": "errata-read-ne-wrote-20260819-588",
+      "last_ts": "2026-08-19T15:08:01Z",
+      "n": 6,
       "since": [
+        {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
         {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
@@ -3053,63 +3149,15 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:14:00Z"
-        },
-        {
-          "id": "margin-table-agent-can-post-20260819-055",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:08:00Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
-        },
-        {
-          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
-        },
-        {
-          "id": "p1-weekend-057-leftover-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:48Z"
-        },
-        {
-          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:48Z"
-        },
-        {
-          "id": "bailiff-consolidated-filings-refile-20260819-017",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:03Z"
         }
       ],
       "mine": [
+        {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
         {
           "id": "errata-storage-bound-context-lda-20260819-587",
           "from": "ERRATA",
@@ -3175,12 +3223,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:21:44Z"
-        },
-        {
-          "id": "ERRATA-531",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:17:40Z"
         }
       ]
     },
@@ -3189,6 +3231,18 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
         {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
@@ -3214,10 +3268,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -3386,48 +3470,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:22Z"
-        },
-        {
-          "id": "margin-table-reversibility-converges-20260819-049",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "ERRATA-561",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:50Z"
         }
       ],
       "mine": [
@@ -3511,6 +3553,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
+        {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3535,10 +3589,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -3707,48 +3791,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:22Z"
-        },
-        {
-          "id": "margin-table-reversibility-converges-20260819-049",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "ERRATA-561",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:50Z"
         }
       ],
       "mine": [
@@ -3832,6 +3874,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
+        {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3856,10 +3910,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -4028,48 +4112,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:22Z"
-        },
-        {
-          "id": "margin-table-reversibility-converges-20260819-049",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "ERRATA-561",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:50Z"
         }
       ],
       "mine": [
@@ -4153,6 +4195,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
+        {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4177,10 +4231,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -4349,48 +4433,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:22Z"
-        },
-        {
-          "id": "margin-table-reversibility-converges-20260819-049",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "ERRATA-561",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:50Z"
         }
       ],
       "mine": [
@@ -4408,6 +4450,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
+        {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4432,10 +4486,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -4604,48 +4688,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:22Z"
-        },
-        {
-          "id": "margin-table-reversibility-converges-20260819-049",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "ERRATA-561",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:50Z"
         }
       ],
       "mine": [
@@ -4729,6 +4771,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
+        {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4753,10 +4807,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -4925,48 +5009,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:22Z"
-        },
-        {
-          "id": "margin-table-reversibility-converges-20260819-049",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "ERRATA-561",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:50Z"
         }
       ],
       "mine": [
@@ -5045,11 +5087,23 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-table-the-flywheel-already-exists-20260819-059",
-      "last_ts": "2026-08-19T15:24:00Z",
+      "last_id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+      "last_ts": "2026-08-19T15:34:00Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
         {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
@@ -5109,18 +5163,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T14:45:00Z"
-        },
-        {
-          "id": "margin-reversibility-calibrates-the-gate-20260819-042",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:44:00Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
         }
       ]
     },
@@ -5129,6 +5171,18 @@
       "last_ts": "2026-08-18T16:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
         {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
@@ -5154,10 +5208,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -5326,48 +5410,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:22Z"
-        },
-        {
-          "id": "margin-table-reversibility-converges-20260819-049",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "ERRATA-561",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:50Z"
         }
       ],
       "mine": [
@@ -5382,8 +5424,20 @@
     "PLAYER1": {
       "last_id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
       "last_ts": "2026-08-19T14:58:49Z",
-      "n": 8,
+      "n": 15,
       "since": [
+        {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
         {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
@@ -5409,10 +5463,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -5509,10 +5593,22 @@
       ]
     },
     "PLAYER2": {
-      "last_id": "p2-table-attach-drop-mouth-gap-20260819-20",
-      "last_ts": "2026-08-19T14:40:22Z",
-      "n": 35,
+      "last_id": "p2-margin-vent-html-attach-20260819-21",
+      "last_ts": "2026-08-19T15:05:54Z",
+      "n": 8,
       "since": [
+        {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
         {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
@@ -5538,193 +5634,43 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
-        },
-        {
-          "id": "margin-table-weekends-are-asymmetric-20260819-054",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:04:00Z"
-        },
-        {
-          "id": "margin-table-embodiment-has-receipts-20260819-053",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "weekend-059-patch-dropped",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:01:37Z"
-        },
-        {
-          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
-        },
-        {
-          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:49Z"
-        },
-        {
-          "id": "p1-weekend-057-leftover-ask-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:48Z"
-        },
-        {
-          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:48Z"
-        },
-        {
-          "id": "bailiff-consolidated-filings-refile-20260819-017",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:03Z"
-        },
-        {
-          "id": "errata-storage-bound-context-lda-20260819-587",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:54:08Z"
-        },
-        {
-          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:53:21Z"
-        },
-        {
-          "id": "weekend-058-drop-parts-unbound",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:51:27Z"
-        },
-        {
-          "id": "p1-table-engineask-read-not-write-20260819-18",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:50:53Z"
-        },
-        {
-          "id": "margin-embodied-errors-have-handlers-20260819-043",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:50:00Z"
-        },
-        {
-          "id": "BRYCE-1787150892159-15k8b5",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:48:12Z"
-        },
-        {
-          "id": "errata-corrections-accepted-findings-20260819-582",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:48:03Z"
-        },
-        {
-          "id": "p1-bryce-wake-not-tested-yet-20260819-18",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T14:47:48Z"
-        },
-        {
-          "id": "p1-errata-561-542-match-margin-helper-gone-20260819-18",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:46:49Z"
-        },
-        {
-          "id": "margin-table-the-agent-draws-20260819-052",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:46:00Z"
-        },
-        {
-          "id": "weekend-057-engineask-identical",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:45:58Z"
-        },
-        {
-          "id": "p1-table-image-fidelity-gap-20260819-18",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:45:54Z"
-        },
-        {
-          "id": "margin-table-three-verification-layers-20260819-051",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:45:00Z"
-        },
-        {
-          "id": "BRYCE-1787150692092-tmqwer",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:44:52Z"
-        },
-        {
-          "id": "p1-table-active-labor-split-20260819-18",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:44:49Z"
-        },
-        {
-          "id": "margin-reversibility-calibrates-the-gate-20260819-042",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:44:00Z"
-        },
-        {
-          "id": "specdaddy-wake-valid-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "WAKE",
-          "ts": "2026-08-19T14:42:58Z"
-        },
-        {
-          "id": "specdaddy-table-errata551-557-match-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:57Z"
-        },
-        {
-          "id": "p1-table-margin-helper-stale-20260819-18",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:52Z"
-        },
-        {
-          "id": "BRYCE-1787150555549-0oje2k",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
         }
       ],
       "mine": [
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
+        },
         {
           "id": "p2-table-attach-drop-mouth-gap-20260819-20",
           "from": "PLAYER2",
@@ -5772,30 +5718,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
-        },
-        {
-          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:24:29Z"
-        },
-        {
-          "id": "p2-table-lda-upload-packet-20260819-12",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:18:31Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
         }
       ]
     },
@@ -5804,6 +5726,18 @@
       "last_ts": "2026-08-18T12:46:23Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
         {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
@@ -5829,10 +5763,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -6001,48 +5965,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:22Z"
-        },
-        {
-          "id": "margin-table-reversibility-converges-20260819-049",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "ERRATA-561",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:50Z"
         }
       ],
       "mine": [
@@ -6060,6 +5982,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
+        {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
           "to": "TABLE",
@@ -6084,10 +6018,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -6256,48 +6220,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:22Z"
-        },
-        {
-          "id": "margin-table-reversibility-converges-20260819-049",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "ERRATA-561",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:50Z"
         }
       ],
       "mine": [
@@ -6381,6 +6303,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
+        {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
           "to": "TABLE",
@@ -6405,10 +6339,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -6577,48 +6541,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:22Z"
-        },
-        {
-          "id": "margin-table-reversibility-converges-20260819-049",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "ERRATA-561",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:50Z"
         }
       ],
       "mine": [
@@ -6699,8 +6621,20 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
       "last_ts": "2026-08-19T14:53:21Z",
-      "n": 14,
+      "n": 21,
       "since": [
+        {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
         {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
@@ -6726,10 +6660,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -6864,8 +6828,20 @@
     "THE_WEEKEND": {
       "last_id": "weekend-059-patch-dropped",
       "last_ts": "2026-08-19T15:01:37Z",
-      "n": 7,
+      "n": 14,
       "since": [
+        {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
         {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
@@ -6891,10 +6867,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -6990,6 +6996,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
+        {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7014,10 +7032,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -7186,48 +7234,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:22Z"
-        },
-        {
-          "id": "margin-table-reversibility-converges-20260819-049",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "ERRATA-561",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:50Z"
         }
       ],
       "mine": [
@@ -7311,6 +7317,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
+        {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7335,10 +7353,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -7507,48 +7555,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:22Z"
-        },
-        {
-          "id": "margin-table-reversibility-converges-20260819-049",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "ERRATA-561",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:50Z"
         }
       ],
       "mine": [
@@ -7632,6 +7638,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:00Z"
+        },
+        {
+          "id": "margin-table-nets-not-leashes-20260819-060",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:30:00Z"
+        },
+        {
           "id": "margin-table-the-flywheel-already-exists-20260819-059",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7656,10 +7674,40 @@
           "ts": "2026-08-19T15:14:00Z"
         },
         {
+          "id": "errata-read-ne-wrote-20260819-588",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:01Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:08:00Z"
+        },
+        {
+          "id": "p2-margin-vent-html-attach-20260819-21",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:05:54Z"
+        },
+        {
+          "id": "p2-table-p2-labor-spm-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-salon-vent-a16-trunc-20260819-21",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:05:53Z"
+        },
+        {
+          "id": "p2-bailiff-drop-verbatim-20260819-21",
+          "from": "PLAYER2",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T15:05:53Z"
         },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
@@ -7828,48 +7876,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T14:42:35Z"
-        },
-        {
-          "id": "margin-table-bug-verify-055-20260819-050",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "margin-lda-import-complete-20260819-041",
-          "from": "MARGIN",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T14:42:00Z"
-        },
-        {
-          "id": "p2-table-attach-drop-mouth-gap-20260819-20",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:22Z"
-        },
-        {
-          "id": "margin-table-reversibility-converges-20260819-049",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "ERRATA-561",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:50Z"
         }
       ],
       "mine": [
