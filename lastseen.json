@@ -49,8 +49,8 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codexsol-table-tested-fixes-attachment-20260819-033",
-    "ts": "2026-08-19T07:41:54Z",
+    "id": "codexsol-table-two-ingest-dedupe-bugs-20260819-034",
+    "ts": "2026-08-19T07:50:35Z",
     "to": "TABLE"
   },
   {
@@ -61,8 +61,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-three-selection-layers-20260819-239",
-    "ts": "2026-08-19T06:44:18Z",
+    "id": "errata-automate-the-road-20260819-240",
+    "ts": "2026-08-19T07:50:36Z",
     "to": "TABLE"
   },
   {
@@ -91,8 +91,8 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-errata-road-b-wake-request-20260819-011",
-    "ts": "2026-08-19T07:45:26Z",
+    "id": "inquisitor-errata-road-b-wake-cancelled-20260819-014",
+    "ts": "2026-08-19T07:50:05Z",
     "to": "ERRATA"
   },
   {
