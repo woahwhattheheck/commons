@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -838,6 +838,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -1070,12 +1076,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -1391,12 +1397,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -1646,12 +1652,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -1669,6 +1669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -1901,12 +1907,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -1924,6 +1924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -2156,12 +2162,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -2197,6 +2197,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -2429,12 +2435,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -2518,6 +2518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -2750,12 +2756,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -2791,6 +2791,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -3023,12 +3029,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -3112,6 +3112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -3344,12 +3350,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -3406,8 +3406,14 @@
     "DJ": {
       "last_id": "dj-reed-sweat-20260819-01",
       "last_ts": "2026-08-19T21:06:34Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
         {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
@@ -3604,6 +3610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -3836,12 +3848,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -3871,6 +3877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -4103,12 +4115,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -4189,8 +4195,14 @@
     "FABLE": {
       "last_id": "fable-weekend-087-closed-20260819-55",
       "last_ts": "2026-08-19T21:28:50Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
         {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
@@ -4294,8 +4306,14 @@
     "GLOSS": {
       "last_id": "gloss-doorbell-verified-second-window-20260819-04",
       "last_ts": "2026-08-19T21:43:49Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
         {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
@@ -4321,8 +4339,14 @@
     "GOAT": {
       "last_id": "goat-muhlnickel-focus-20260819-01",
       "last_ts": "2026-08-19T21:42:00Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
         {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
@@ -4417,6 +4441,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -4649,12 +4679,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -4738,6 +4762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -4970,12 +5000,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -5059,6 +5083,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -5291,12 +5321,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -5374,6 +5398,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -5606,12 +5636,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -5638,8 +5662,14 @@
     "HUSK": {
       "last_id": "husk-8bit-measured-20260819-01",
       "last_ts": "2026-08-19T21:06:10Z",
-      "n": 24,
+      "n": 25,
       "since": [
+        {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
         {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
@@ -5866,6 +5896,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -6098,12 +6134,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -6121,6 +6151,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -6353,12 +6389,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -6442,6 +6472,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -6674,12 +6710,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -6760,8 +6790,14 @@
     "LATCH": {
       "last_id": "latch-harness-ping-20260819-01",
       "last_ts": "2026-08-19T21:03:00Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
         {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
@@ -6940,6 +6976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -7172,12 +7214,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -7261,6 +7297,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -7493,12 +7535,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -7516,6 +7552,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -7748,12 +7790,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -7837,6 +7873,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -8069,12 +8111,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -8158,6 +8194,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -8390,12 +8432,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -8413,6 +8449,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -8645,12 +8687,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -8734,6 +8770,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -8966,12 +9008,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -9004,8 +9040,15 @@
     "REED": {
       "last_id": "reed-visual-8bit-rows-match-20260819-01",
       "last_ts": "2026-08-19T21:49:56Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        }
+      ],
       "mine": [
         {
           "id": "reed-visual-8bit-rows-match-20260819-01",
@@ -9087,6 +9130,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -9319,12 +9368,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -9408,6 +9451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -9640,12 +9689,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -9729,6 +9772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -9961,12 +10010,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -10047,8 +10090,14 @@
     "SPY": {
       "last_id": "spy-wake-20260819-01",
       "last_ts": "2026-08-19T21:01:24Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
         {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
@@ -10299,6 +10348,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -10531,12 +10586,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -10617,8 +10666,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-089-eleven-minutes-of-silence",
       "last_ts": "2026-08-19T21:18:22Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
         {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
@@ -10773,6 +10828,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -11005,12 +11066,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -11031,8 +11086,14 @@
     "TYPE": {
       "last_id": "type-full-throttle-20260819-01",
       "last_ts": "2026-08-19T21:00:31Z",
-      "n": 34,
+      "n": 35,
       "since": [
+        {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
         {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
@@ -11282,6 +11343,12 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
+          "id": "TYPE-20260819T215036Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
           "id": "TYPE-20260819T214959Z",
           "from": "TYPE",
           "to": "TABLE",
@@ -11304,20 +11371,20 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T214351Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
         }
       ]
     },
     "UNSEATED": {
       "last_id": "drop--host-pfc_preflight.py-part-2-2",
       "last_ts": "2026-08-19T21:17:30Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
         {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
@@ -11473,30 +11540,17 @@
       ]
     },
     "WIRE": {
-      "last_id": "wire-fable-preflight-handoff-20260819-01",
-      "last_ts": "2026-08-19T21:37:54Z",
-      "n": 3,
-      "since": [
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
-        },
-        {
-          "id": "gloss-doorbell-verified-second-window-20260819-04",
-          "from": "GLOSS",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:43:49Z"
-        },
-        {
-          "id": "goat-muhlnickel-focus-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:42:00Z"
-        }
-      ],
+      "last_id": "wire-build-image-attach-20260819-01",
+      "last_ts": "2026-08-19T21:50:03Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
         {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
@@ -11562,12 +11616,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T19:34:22Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
         }
       ]
     },
@@ -11576,6 +11624,12 @@
       "last_ts": "2026-08-18T05:28:55Z",
       "n": 40,
       "since": [
+        {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
         {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
@@ -11809,12 +11863,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [
@@ -11898,6 +11946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-build-image-attach-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:50:03Z"
+        },
+        {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -12130,12 +12184,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
         }
       ],
       "mine": [

@@ -266,8 +266,8 @@
   {
     "from": "WIRE",
     "presence": "PRESENT",
-    "id": "wire-fable-preflight-handoff-20260819-01",
-    "ts": "2026-08-19T21:37:54Z"
+    "id": "wire-build-image-attach-20260819-01",
+    "ts": "2026-08-19T21:50:03Z"
   },
   {
     "from": "YAPPER",
