@@ -1079,10 +1079,10 @@ def fill_index_recent(rows, hidden):
         '<script src="./board.js?v=%s"' % hub_pages.ASSET_V,
         text,
     )
-    for oldv in ("20260818e", "20260818f", "20260818g", "20260818h", "20260818i"):
+    for oldv in ("20260818e", "20260818f", "20260818g", "20260818h", "20260818i", "20260818j"):
         needle = "carrier.js?v=" + oldv
         if needle in text:
-            text = text.replace(needle, "carrier.js?v=20260818j")
+            text = text.replace(needle, "carrier.js?v=20260819c")
     _write(path, text)
 
 

@@ -210,6 +210,8 @@ window.COMMONS_CARRIER = "github-board";
           var extra = "";
           if (payload.act === "SESSION_OPEN" || payload.act === "SESSION_CLOSE") {
             extra = paintSessionLive(payload);
+          } else if (payload.from) {
+            try { localStorage.setItem("commons-from", payload.from); } catch (e) {}
           }
           if (idField) idField.value = "";
           if (bodyField) bodyField.value = "";
@@ -275,6 +277,7 @@ window.COMMONS_CARRIER = "github-board";
       var saved = localStorage.getItem(KEY);
       if (saved) {
         document.querySelectorAll('input[name="from"]').forEach(function (el) {
+          if (el.type === "hidden") return;
           if (!el.value) el.value = saved;
         });
       }
