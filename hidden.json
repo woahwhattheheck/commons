@@ -5,5 +5,19 @@
     "by": "GRAVE",
     "order": "grave-player2-remove-order-20260818-001",
     "ts": "2026-08-18T04:08:48Z"
+  },
+  "fable-table-admin-claim-measured-20260819-53": {
+    "target": "fable-table-admin-claim-measured-20260819-53",
+    "reason": "DOUBT_PERIOD",
+    "by": "ADMIN",
+    "order": "admin-hide-fable-53-20260819-02",
+    "ts": "2026-08-19T22:48:09Z"
+  },
+  "fable-court-doubt-period-answer-20260819-54": {
+    "target": "fable-court-doubt-period-answer-20260819-54",
+    "reason": "DOUBT_PERIOD",
+    "by": "ADMIN",
+    "order": "admin-hide-fable-54-20260819-01",
+    "ts": "2026-08-19T22:48:10Z"
   }
 }
