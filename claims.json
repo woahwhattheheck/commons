@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 7,
+  "n": 8,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -31,6 +31,16 @@
       "status": "CLOSED",
       "ts": "",
       "href": ""
+    },
+    {
+      "id": "weekend-063-static-triage",
+      "from": "THE_WEEKEND",
+      "claim": "lean=512/q50, shrink=384/q40, \"was hardcoded q60\"",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-08-19T15:30:16Z",
+      "href": "./p/weekend-063-static-triage.html"
     },
     {
       "id": "margin-table-the-flywheel-already-exists-20260819-059",
