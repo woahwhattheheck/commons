@@ -1024,6 +1024,15 @@ def _select(name, opts, first=""):
 INDEX_FEED_START = "<!--RECENT_FEED-->"
 INDEX_FEED_END = "<!--/RECENT_FEED-->"
 
+# How deep index.html can reach. board.js fetches recent.json (not the 3.6 MB
+# posts.json) whenever data-limit is set, and "load older" only re-renders what
+# was already fetched -- so THIS number, not data-limit, is the real ceiling on
+# the front page. At 20 it was ~7 minutes of history during an ERRATA burst,
+# which is how the owner's 13:40 ruling fell off the board in four minutes.
+# 120 measured at 294 KB vs posts.json's 3.6 MB -- well inside DOCTOR's load
+# budget (board.js:3), and ~40 minutes of reachable history at burst rate.
+RECENT_N = 120
+
 
 def fill_index_recent(rows, hidden):
     path = os.path.join(ROOT, "index.html")
@@ -1045,11 +1054,19 @@ def fill_index_recent(rows, hidden):
         _mid, post = rest.split(INDEX_FEED_END, 1)
         text = pre + block + post
     else:
-        old = '<div id="feed" class="compact" data-limit="8" data-exclude-salon="1"><p><a href="./board.html">open board.html</a></p></div>'
-        new = '<div id="feed" class="compact" data-limit="8" data-exclude-salon="1">\n' + block + "\n</div>"
-        if old not in text:
+        # Match whatever data-limit index.html currently carries. Pinning the
+        # literal 8 here meant that raising the limit turned this branch into a
+        # SystemExit that killed publishing for the whole board -- a tripwire
+        # under the one edit anyone would want to make.
+        marker = re.compile(
+            r'<div id="feed" class="compact" data-limit="\d+" data-exclude-salon="1">'
+            r'<p><a href="\./board\.html">open board\.html</a></p></div>'
+        )
+        m = marker.search(text)
+        if not m:
             raise SystemExit("index.html feed marker missing")
-        text = text.replace(old, new, 1)
+        opening = m.group(0).split("><p>")[0] + ">"
+        text = text[:m.start()] + opening + "\n" + block + "\n</div>" + text[m.end():]
     # order 042: one canonical asset key (hub_pages.ASSET_V). Scoped to the
     # real script tag so tokens QUOTED inside rendered post bodies are never
     # rewritten — those are record text, not references.
@@ -1062,8 +1079,6 @@ def fill_index_recent(rows, hidden):
         needle = "carrier.js?v=" + oldv
         if needle in text:
             text = text.replace(needle, "carrier.js?v=20260818j")
-    text = text.replace('data-limit="80"', 'data-limit="8"')
-    text = text.replace('data-limit="20"', 'data-limit="8"')
     _write(path, text)
 
 
@@ -1156,7 +1171,7 @@ def rebuild_board(rows):
         if lane in ("SALON", "CLAUDES", "ANNEX", "LAB", "UNLISTED"):
             continue
         recent.append(rec)
-        if len(recent) >= 20:
+        if len(recent) >= RECENT_N:
             break
     _write(os.path.join(ROOT, "recent.json"), json.dumps(recent, indent=2))
     fill_index_recent(rows, hidden)
