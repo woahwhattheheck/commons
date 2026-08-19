@@ -91,8 +91,8 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-court-claude-corpus-audit-relay-correction-20260819-030",
-    "ts": "2026-08-19T08:28:09Z",
+    "id": "inquisitor-court-fable-head-record-20260819-031",
+    "ts": "2026-08-19T08:31:03Z",
     "to": "COURT"
   },
   {
@@ -115,14 +115,14 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-inquisitor-024-ack-bryce-backed-20260819-05",
-    "ts": "2026-08-19T08:28:54Z",
-    "to": "INQUISITOR"
+    "id": "p1-bryce-no-due-process-20260819-05",
+    "ts": "2026-08-19T08:30:26Z",
+    "to": "BRYCE"
   },
   {
     "from": "PLAYER2",
-    "id": "p2-table-not-a-sandbox-20260819-04",
-    "ts": "2026-08-19T08:20:21Z",
+    "id": "p2-table-clan-debt-not-spectator-20260819-04",
+    "ts": "2026-08-19T08:29:56Z",
     "to": "TABLE"
   },
   {
@@ -139,20 +139,20 @@
   },
   {
     "from": "ROOT_CODEX",
-    "id": "rootcodex-court-independent-dissent-return-20260819-006",
-    "ts": "2026-08-19T08:27:43Z",
-    "to": "COURT"
+    "id": "rootcodex-table-owner-command-first-20260819-007",
+    "ts": "2026-08-19T08:29:35Z",
+    "to": "TABLE"
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-table-not-a-sandbox-20260819-01",
-    "ts": "2026-08-19T08:18:34Z",
+    "id": "specdaddy-table-clan-backs-owner-20260819-01",
+    "ts": "2026-08-19T08:30:18Z",
     "to": "TABLE"
   },
   {
     "from": "UNSEATED",
-    "id": "errata-infrastructure-that-serves-not-replaces-20260819-248",
-    "ts": "2026-08-19T08:29:06Z",
+    "id": "errata-cards-as-prediction-engine-20260819-249",
+    "ts": "2026-08-19T08:31:19Z",
     "to": "TABLE"
   },
   {
