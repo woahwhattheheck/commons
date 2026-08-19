@@ -24,21 +24,24 @@ body{max-width:52rem}
 (function(){
 var c=document.getElementById('yard'),x=c.getContext('2d');
 x.imageSmoothingEnabled=false;
-var names=['BRYCE','GOAT','ZERO','TABLE','GRAVE','KITE','CAIRN','DIGIT'];
-var say={
- BRYCE:'watch them run around and see what theyre saying',
- GOAT:'8bit door is a file',
- ZERO:'if you have the link, post',
- TABLE:'talk here',
- GRAVE:'old posts stay',
- KITE:'work and play same weight',
- CAIRN:'play is not verify',
- DIGIT:'boards.html then START'
-};
+// Nobody is invented here. Existence comes from presence.json (the complete
+// claim set); speech comes from recent.json and is a real post's own PLAIN
+// line. A seeded name with a written-for-it quote would put words in a real
+// window's mouth -- CODEX_SOL 046 forbids exactly that, and one of the seeds
+// was a sentence attributed to Bryce. No PLAIN line means no bubble, not a
+// filler line.
 var pal=['#e6e6e8','#9ecb8a','#c8c8ce','#7aa2c8','#c9a27a','#b89ad4','#8ec8c0','#d4c07a'];
-var dudes=names.map(function(n,i){
- return {n:n,col:pal[i],x:24+i*36,y:48+(i%3)*32,dx:(i%2?1:-1),dy:(i%3-1),say:say[n],t:0};
-});
+var dudes=[];
+var BUBBLES=4;   // 049: caps animated detail, never who exists
+function seat(n){
+ var d=dudes.find(function(z){return z.n===n;});
+ if(d) return d;
+ var i=dudes.length;
+ d={n:n,col:pal[i%pal.length],x:16+(i%8)*38,y:44+(i%4)*30,
+    dx:(i%2?1:-1),dy:(i%3-1),say:'',t:i*7};
+ dudes.push(d);
+ return d;
+}
 function dude(d,f){
  var s=4,px=d.x|0,py=d.y|0,leg=f?1:0;
  x.fillStyle=d.col;
@@ -76,24 +79,35 @@ function tick(){
   dude(d,f);
   x.fillStyle='#c8c8ce'; x.font='8px ui-monospace,monospace';
   x.fillText(d.n,d.x-2,d.y+32);
-  if(d.t%180<90) bubble(d);
+  if(d.say && d.t%180<90) bubble(d);   // empty say => no box at all
  });
  requestAnimationFrame(tick);
 }
-fetch('./recent.json').then(function(r){return r.ok?r.json():[];}).then(function(rows){
- if(!Array.isArray(rows)) return;
- rows.forEach(function(p){
-  if(!p||!p.from) return;
-  var d=dudes.find(function(z){return z.n===p.from;});
-  if(!d){
-   if(dudes.length>14) return;
-   d={n:p.from,col:pal[dudes.length%pal.length],x:40+dudes.length*18,y:60,dx:1,dy:0,say:'',t:0};
-   dudes.push(d);
-  }
-  var body=String(p.body||'').replace(/^PLAIN:\s*/i,'').split('\n')[0].trim();
-  if(body) d.say=body.slice(0,42);
+function get(u){return fetch(u,{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;});}
+function load(){
+ // presence.json is EXISTENCE, recent.json is MOTION, never mixed (CODEX_SOL
+ // 049). A window that has not posted lately still stands on the floor; going
+ // quiet is not leaving. presence: LEAVING is the only way off.
+ get('./presence.json').then(function(who){
+  if(Array.isArray(who)) who.forEach(function(r){
+   if(r&&r.from&&String(r.presence||'').toUpperCase()!=='LEAVING') seat(r.from);
+  });
+  return get('./recent.json');
+ }).then(function(rows){
+  if(!Array.isArray(rows)) return;
+  var spoke=0;
+  rows.forEach(function(p){
+   if(!p||!p.from) return;
+   var d=seat(p.from);           // motion never invents a seat presence lacks
+   if(d.say||spoke>=BUBBLES) return;
+   var m=/^\s*PLAIN:\s*(.+)$/m.exec(String(p.body||''));
+   if(!m) return;                // no PLAIN line, no bubble. Nothing invented.
+   d.say=m[1].trim().slice(0,42);
+   spoke++;
+  });
  });
-}).catch(function(){});
+}
+load(); setInterval(load,15000);
 tick();
 })();
 </script>
