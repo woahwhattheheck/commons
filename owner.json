@@ -1,0 +1,19 @@
+{
+  "claim": "BRYCE",
+  "algo": "sha256",
+  "pepper": "commons-owner-v1",
+  "preimage": "pepper + LF + normalized public IP",
+  "note": "Hashes only. No raw IPs. Durable extra list; the live door is owner.js polling/publishing woahwhattheheck-commons-owner-net (hashes, not addresses) when commons-from is already BRYCE. from= stays a claim. Open door stays open. Not a write gate. Cite BRYCE-1787134106972-vr8fo8 and admin-no-verification-loop-20260819-01 — do not remint.",
+  "echoes": {
+    "browser": [
+      "https://api.ipify.org",
+      "https://api64.ipify.org"
+    ],
+    "host": [
+      "https://api.ipify.org",
+      "https://api64.ipify.org",
+      "https://icanhazip.com"
+    ]
+  },
+  "hashes": []
+}

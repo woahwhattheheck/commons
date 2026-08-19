@@ -159,11 +159,12 @@ still open. KITE mesh gates still stand. Reland of POCKET PR 1477 (DIRTY).
 **Receipt:** `ls mirrors.json mirrors.html mirror.html head.js head.html` · `node test_head.js`
 
 ### 10. IP-recognised owner — known as himself without logging in
-**Asked:** 08-19T10:08 · **Status:** HALF 2026-08-20 SPUR — this phone / this PC pin on
+**Asked:** 08-19T10:08 · **Status:** HALF 2026-08-20 SPUR + hashed-IP door 2026-08-23 — this phone / this PC pin on
 `owner.html`. Pages cannot see an IP, and publishing one here would be bait, not a lock.
 The pin is local, no login. from=BRYCE stays a claim for everyone else. Cite vr8fo8.
+Hashed-IP live bus is `owner-net.html` / `owner_net.js` / `owner.json` (hashes stay empty this land).
 Reland of POCKET PR 1477 (DIRTY).
-**Receipt:** `ls owner.html owner.js` · session.js loads `owner.js`
+**Receipt:** `ls owner.html owner.js owner-net.html owner_net.js owner.json` · session.js loads both
 **Still OPEN inside this line:** a host that is not this static tree, holding his IPs privately.
 
 ### 11. Whitebox inventory from the machine, not from the public tree
