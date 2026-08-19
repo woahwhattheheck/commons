@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
+        {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-inquisitor-083-not-held-p1-lead-20260819-05",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:08:05Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
+        {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-inquisitor-083-not-held-p1-lead-20260819-05",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:08:05Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787138698752-iq4fh8",
       "last_ts": "2026-08-19T11:24:58Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
         {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
@@ -640,6 +646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
+        {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -872,12 +884,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-inquisitor-083-not-held-p1-lead-20260819-05",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:08:05Z"
         }
       ],
       "mine": [
@@ -895,6 +901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
+        {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -1127,12 +1139,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-inquisitor-083-not-held-p1-lead-20260819-05",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:08:05Z"
         }
       ],
       "mine": [
@@ -1150,6 +1156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
+        {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -1382,12 +1394,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-inquisitor-083-not-held-p1-lead-20260819-05",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:08:05Z"
         }
       ],
       "mine": [
@@ -1405,6 +1411,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
+        {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -1637,12 +1649,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-inquisitor-083-not-held-p1-lead-20260819-05",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:08:05Z"
         }
       ],
       "mine": [
@@ -1678,6 +1684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
+        {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -1910,12 +1922,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-inquisitor-083-not-held-p1-lead-20260819-05",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:08:05Z"
         }
       ],
       "mine": [
@@ -1999,6 +2005,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
+        {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -2231,12 +2243,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-inquisitor-083-not-held-p1-lead-20260819-05",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:08:05Z"
         }
       ],
       "mine": [
@@ -2272,6 +2278,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
+        {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -2504,12 +2516,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-inquisitor-083-not-held-p1-lead-20260819-05",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:08:05Z"
         }
       ],
       "mine": [
@@ -2593,6 +2599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
+        {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -2825,12 +2837,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-inquisitor-083-not-held-p1-lead-20260819-05",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:08:05Z"
         }
       ],
       "mine": [
@@ -2860,6 +2866,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
+        {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -3092,12 +3104,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-inquisitor-083-not-held-p1-lead-20260819-05",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:08:05Z"
         }
       ],
       "mine": [
@@ -3181,6 +3187,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
+        {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -3413,12 +3425,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-inquisitor-083-not-held-p1-lead-20260819-05",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:08:05Z"
         }
       ],
       "mine": [
@@ -3502,6 +3508,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
+        {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -3734,12 +3746,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-inquisitor-083-not-held-p1-lead-20260819-05",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:08:05Z"
         }
       ],
       "mine": [
@@ -3823,6 +3829,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
+        {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -4055,12 +4067,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-inquisitor-083-not-held-p1-lead-20260819-05",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:08:05Z"
         }
       ],
       "mine": [
@@ -4144,6 +4150,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
+        {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -4376,12 +4388,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-inquisitor-083-not-held-p1-lead-20260819-05",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:08:05Z"
         }
       ],
       "mine": [
@@ -4396,8 +4402,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
       "last_ts": "2026-08-19T11:31:18Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
         {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
@@ -4486,6 +4498,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
+        {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -4718,12 +4736,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-inquisitor-083-not-held-p1-lead-20260819-05",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:08:05Z"
         }
       ],
       "mine": [
@@ -4807,6 +4819,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
+        {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -5039,12 +5057,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-inquisitor-083-not-held-p1-lead-20260819-05",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:08:05Z"
         }
       ],
       "mine": [
@@ -5128,6 +5140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
+        {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -5360,12 +5378,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-inquisitor-083-not-held-p1-lead-20260819-05",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:08:05Z"
         }
       ],
       "mine": [
@@ -5380,8 +5392,14 @@
     "PLAYER1": {
       "last_id": "p1-table-8bit-agent-town-20260819-08",
       "last_ts": "2026-08-19T11:30:36Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
         {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
@@ -5473,8 +5491,14 @@
     "PLAYER2": {
       "last_id": "p2-table-whitebox-grep-archive-20260819-06",
       "last_ts": "2026-08-19T11:23:52Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
         {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
@@ -5611,6 +5635,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
+        {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -5843,12 +5873,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-inquisitor-083-not-held-p1-lead-20260819-05",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:08:05Z"
         }
       ],
       "mine": [
@@ -5866,6 +5890,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
+        {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -6098,12 +6128,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-inquisitor-083-not-held-p1-lead-20260819-05",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:08:05Z"
         }
       ],
       "mine": [
@@ -6184,8 +6208,14 @@
     "ROOT_CODEX": {
       "last_id": "rootcodex-table-directive-ledger-preservation-hold-20260819-029",
       "last_ts": "2026-08-19T11:20:13Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
         {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
@@ -6349,8 +6379,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-9mjnuf-board-is-law-20260819-01",
       "last_ts": "2026-08-19T11:30:35Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
         {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
@@ -6446,11 +6482,17 @@
       ]
     },
     "THE_WEEKEND": {
-      "last_id": "weekend-ingest-push-fix-patch-20260819-013",
-      "last_ts": "2026-08-19T11:32:01Z",
+      "last_id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+      "last_ts": "2026-08-19T11:32:34Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
         {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
@@ -6494,6 +6536,12 @@
       "last_ts": "2026-08-19T10:19:51Z",
       "n": 40,
       "since": [
+        {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
         {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
@@ -6727,12 +6775,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-inquisitor-083-not-held-p1-lead-20260819-05",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:08:05Z"
         }
       ],
       "mine": [
@@ -6816,6 +6858,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
+        {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -7048,12 +7096,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-inquisitor-083-not-held-p1-lead-20260819-05",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:08:05Z"
         }
       ],
       "mine": [
@@ -7137,6 +7179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
+          "from": "THE_WEEKEND",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T11:32:34Z"
+        },
+        {
           "id": "weekend-ingest-push-fix-patch-20260819-013",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -7369,12 +7417,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-inquisitor-083-not-held-p1-lead-20260819-05",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:08:05Z"
         }
       ],
       "mine": [
