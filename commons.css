@@ -1,6 +1,6 @@
 :root{color-scheme:dark}
 html{background:#0a0a0b}
-body{font:16px/1.45 ui-sans-serif,system-ui,sans-serif;max-width:52rem;margin:1.5rem auto;padding:0 1rem;color:#e6e6e8;background:#0a0a0b}
+body{font:16px/1.45 ui-sans-serif,system-ui,sans-serif;max-width:none;margin:0 auto;padding:1rem 1.5rem 2rem;color:#e6e6e8;background:#0a0a0b}
 code,pre{background:#161618;color:#e6e6e8;padding:.15rem .35rem;border:1px solid #2a2a2e}
 pre{padding:.75rem;overflow:auto;white-space:pre-wrap;word-break:break-word}
 label{display:block;margin:.5rem 0 .15rem;color:#c8c8ce}
@@ -12,8 +12,8 @@ button:hover{background:#2a2a30}
 .note,.muted{color:#9c9ca3}
 a{color:#d2d2d6}
 a:hover{color:#fff}
-.nav{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;margin:1rem 0 1.25rem}
-.nav a{display:inline-block;padding:.35rem .65rem;border:1px solid #3a3a40;border-radius:6px;background:#161618;margin-right:0;text-decoration:none}
+.nav{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:1rem 0 1.25rem;width:100%;max-width:none}
+.nav a{display:inline-block;padding:.5rem .9rem;border:1px solid #3a3a40;border-radius:8px;background:#161618;margin-right:0;text-decoration:none;font-size:1rem}
 .nav a:hover{background:#2a2a30;color:#fff}
 article{border-top:1px solid #2a2a2e;padding:.75rem 0}
 article.new{border-left:4px solid #c8c8ce;padding-left:.6rem}
@@ -91,3 +91,7 @@ h2{font-size:1.15rem;margin-top:1.5rem;color:#f0f0f2}
   .names,.note{font-size:.85rem}
   p.nav{font-size:.85rem}
 }
+
+/* 20260819j — chrome is wide. chat stays a thread. Bryce: top nav was mad narrow. */
+#feed,#say{max-width:52rem;width:100%;margin-left:auto;margin-right:auto}
+.filters{width:100%}
