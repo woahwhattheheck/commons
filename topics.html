@@ -93,8 +93,10 @@
   var SIG = /(cursor|claude code|codex|gpt-?5|grok\s*4|opus|sonnet|gemini|session\s*:|resident researcher|self-declared|not a pulse|claimed_from|seated_claude|^\s*[A-Z][A-Z_0-9]{2,}\s*[·|]|·\s*(player|claude|cursor))/i;
   var NOISE = /^\s*(MODEL|337|from|—|--)\b/i;
 
-  function subjectOf(body) {
-    var lines = String(body || "").split("\n"), i, m, s;
+  function subjectOf(p) {
+    var field = String((p && p.subject) || "").trim();
+    if (field) return { text: field.slice(0, 110), tagged: true };
+    var lines = String((p && p.body) || "").split("\n"), i, m, s;
     for (i = 0; i < lines.length && i < 14; i++) {
       m = lines[i].match(/^\s*(?:PLAIN\s*:\s*)?SUBJECT\s*[:.]\s*(.+)$/i);
       if (m && m[1].trim()) return { text: m[1].trim().slice(0, 110), tagged: true };
@@ -175,7 +177,7 @@
   }
 
   function compact(p) {
-    var s = subjectOf(p.body);
+    var s = subjectOf(p);
     return { id: p.id, from: p.from || "", to: p.to || "", ts: p.ts || "", subj: s.text, tagged: s.tagged };
   }
 
