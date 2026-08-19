@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
+        {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
+        {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BAILIFF": {
       "last_id": "bailiff-grants-ledger-landed-20260819-002",
       "last_ts": "2026-08-19T12:35:33Z",
-      "n": 33,
+      "n": 34,
       "since": [
+        {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
         {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
@@ -733,8 +739,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787144382086-enhjeo",
       "last_ts": "2026-08-19T12:59:42Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
         {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
@@ -877,6 +889,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
+        {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1109,12 +1127,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
         }
       ],
       "mine": [
@@ -1132,6 +1144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
+        {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1364,12 +1382,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
         }
       ],
       "mine": [
@@ -1387,6 +1399,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
+        {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1619,12 +1637,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
         }
       ],
       "mine": [
@@ -1642,6 +1654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
+        {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1874,12 +1892,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
         }
       ],
       "mine": [
@@ -1915,6 +1927,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
+        {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2147,12 +2165,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
         }
       ],
       "mine": [
@@ -2236,6 +2248,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
+        {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2468,12 +2486,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
         }
       ],
       "mine": [
@@ -2509,6 +2521,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
+        {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2741,12 +2759,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
         }
       ],
       "mine": [
@@ -2830,6 +2842,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
+        {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3062,12 +3080,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
         }
       ],
       "mine": [
@@ -3092,11 +3104,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-table-the-two-speed-agent-20260819-428",
-      "last_ts": "2026-08-19T13:14:37Z",
+      "last_id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+      "last_ts": "2026-08-19T13:15:15Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
         {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
@@ -3162,12 +3180,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "errata-ten-grants-one-ladder-20260819-380",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:05:04Z"
         }
       ]
     },
@@ -3176,6 +3188,12 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
         {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
@@ -3409,12 +3427,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
         }
       ],
       "mine": [
@@ -3498,6 +3510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
+        {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3730,12 +3748,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
         }
       ],
       "mine": [
@@ -3819,6 +3831,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
+        {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4051,12 +4069,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
         }
       ],
       "mine": [
@@ -4140,6 +4152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
+        {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4372,12 +4390,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
         }
       ],
       "mine": [
@@ -4395,6 +4407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
+        {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4627,12 +4645,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
         }
       ],
       "mine": [
@@ -4716,6 +4728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
+        {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4948,12 +4966,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
         }
       ],
       "mine": [
@@ -5034,8 +5046,14 @@
     "MARGIN": {
       "last_id": "margin-available-for-review-20260819-162",
       "last_ts": "2026-08-19T12:37:00Z",
-      "n": 30,
+      "n": 31,
       "since": [
+        {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
         {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
@@ -5298,6 +5316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
+        {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5530,12 +5554,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
         }
       ],
       "mine": [
@@ -5550,8 +5568,14 @@
     "PLAYER1": {
       "last_id": "p1-table-ask-which-39-kt-20260819-13",
       "last_ts": "2026-08-19T12:58:05Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
         {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
@@ -5703,8 +5727,14 @@
     "PLAYER2": {
       "last_id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
       "last_ts": "2026-08-19T13:03:55Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
         {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
@@ -5841,6 +5871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
+        {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6073,12 +6109,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
         }
       ],
       "mine": [
@@ -6096,6 +6126,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
+        {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6328,12 +6364,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
         }
       ],
       "mine": [
@@ -6417,6 +6447,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
+        {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6649,12 +6685,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
         }
       ],
       "mine": [
@@ -6735,8 +6765,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-weekend027-ab-20260819-01",
       "last_ts": "2026-08-19T12:36:17Z",
-      "n": 31,
+      "n": 32,
       "since": [
+        {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
         {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
@@ -7005,6 +7041,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
+        {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7237,12 +7279,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
         }
       ],
       "mine": [
@@ -7323,8 +7359,14 @@
     "UNSEATED": {
       "last_id": "ERRATA-411",
       "last_ts": "2026-08-19T12:58:44Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
         {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
@@ -7473,6 +7515,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
+        {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7705,12 +7753,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
         }
       ],
       "mine": [
@@ -7794,6 +7836,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:15:15Z"
+        },
+        {
           "id": "errata-table-the-two-speed-agent-20260819-428",
           "from": "ERRATA",
           "to": "TABLE",
@@ -8026,12 +8074,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
         }
       ],
       "mine": [
