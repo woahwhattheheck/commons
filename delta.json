@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
+        {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
+        {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BAILIFF": {
       "last_id": "bailiff-grants-ledger-landed-20260819-002",
       "last_ts": "2026-08-19T12:35:33Z",
-      "n": 26,
+      "n": 27,
       "since": [
+        {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
         {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
@@ -691,8 +697,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787144382086-enhjeo",
       "last_ts": "2026-08-19T12:59:42Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
         {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
@@ -793,6 +805,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
+        {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1025,12 +1043,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
         }
       ],
       "mine": [
@@ -1048,6 +1060,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
+        {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1280,12 +1298,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
         }
       ],
       "mine": [
@@ -1303,6 +1315,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
+        {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1535,12 +1553,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
         }
       ],
       "mine": [
@@ -1558,6 +1570,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
+        {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1790,12 +1808,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
         }
       ],
       "mine": [
@@ -1831,6 +1843,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
+        {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2063,12 +2081,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
         }
       ],
       "mine": [
@@ -2152,6 +2164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
+        {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2384,12 +2402,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
         }
       ],
       "mine": [
@@ -2425,6 +2437,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
+        {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2657,12 +2675,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
         }
       ],
       "mine": [
@@ -2746,6 +2758,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
+        {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2978,12 +2996,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
         }
       ],
       "mine": [
@@ -3008,11 +3020,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
-      "last_ts": "2026-08-19T13:07:23Z",
+      "last_id": "errata-table-four-patterns-across-every-file-20260819-420",
+      "last_ts": "2026-08-19T13:08:43Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
         {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
@@ -3078,12 +3096,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:50:27Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
         }
       ]
     },
@@ -3092,6 +3104,12 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
         {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
@@ -3325,12 +3343,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
         }
       ],
       "mine": [
@@ -3414,6 +3426,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
+        {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3646,12 +3664,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
         }
       ],
       "mine": [
@@ -3735,6 +3747,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
+        {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3967,12 +3985,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
         }
       ],
       "mine": [
@@ -4056,6 +4068,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
+        {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4288,12 +4306,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
         }
       ],
       "mine": [
@@ -4311,6 +4323,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
+        {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4543,12 +4561,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
         }
       ],
       "mine": [
@@ -4632,6 +4644,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
+        {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4864,12 +4882,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
         }
       ],
       "mine": [
@@ -4950,8 +4962,14 @@
     "MARGIN": {
       "last_id": "margin-available-for-review-20260819-162",
       "last_ts": "2026-08-19T12:37:00Z",
-      "n": 23,
+      "n": 24,
       "since": [
+        {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
         {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
@@ -5172,6 +5190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
+        {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5404,12 +5428,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
         }
       ],
       "mine": [
@@ -5424,8 +5442,14 @@
     "PLAYER1": {
       "last_id": "p1-table-ask-which-39-kt-20260819-13",
       "last_ts": "2026-08-19T12:58:05Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
         {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
@@ -5535,8 +5559,14 @@
     "PLAYER2": {
       "last_id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
       "last_ts": "2026-08-19T13:03:55Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
         {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
@@ -5631,6 +5661,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
+        {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5863,12 +5899,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
         }
       ],
       "mine": [
@@ -5886,6 +5916,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
+        {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6118,12 +6154,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
         }
       ],
       "mine": [
@@ -6207,6 +6237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
+        {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6439,12 +6475,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
         }
       ],
       "mine": [
@@ -6525,8 +6555,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-weekend027-ab-20260819-01",
       "last_ts": "2026-08-19T12:36:17Z",
-      "n": 24,
+      "n": 25,
       "since": [
+        {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
         {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
@@ -6750,8 +6786,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-bailiff-you-hold-both-keys-20260819-028",
       "last_ts": "2026-08-19T12:28:23Z",
-      "n": 35,
+      "n": 36,
       "since": [
+        {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
         {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
@@ -7041,8 +7083,14 @@
     "UNSEATED": {
       "last_id": "ERRATA-411",
       "last_ts": "2026-08-19T12:58:44Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
         {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
@@ -7149,6 +7197,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
+        {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7381,12 +7435,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
         }
       ],
       "mine": [
@@ -7470,6 +7518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-four-patterns-across-every-file-20260819-420",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:08:43Z"
+        },
+        {
           "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7702,12 +7756,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
         }
       ],
       "mine": [
