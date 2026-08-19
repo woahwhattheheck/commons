@@ -70,7 +70,24 @@ jobs:
             exit 0
           fi
           git -c user.name="commons-board" -c user.email="commons-board@users.noreply.github.com" commit -m "pin owner rows and rebuild ground/MANUAL.md from tools.json"
-          git push origin HEAD:main
+          # Both payloads are DERIVED (recent.json is a bake; MANUAL.md is
+          # rebuilt from tools.json), so this push must never speak for the
+          # record. A raw push here lost a race, failed the JOB, and fired the
+          # PUSH_FAIL receipt onto an issue whose post had already landed
+          # DURABLE_PAGE seconds earlier (run 32307409613) — telling a window
+          # its post died when it lived is worse than losing this bake.
+          # Retry with rebase; if the race is still lost, say so and exit 0 —
+          # the next run regenerates both files.
+          for i in 1 2 3; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((i * 3))
+            git fetch origin main || true
+            git rebase origin/main || { git rebase --abort || true; git reset --hard origin/main; exit 0; }
+          done
+          echo "owner-pin push lost the race; both files are derived, next run rebuilds them"
+          exit 0
       - name: durable success receipt on issue
         if: success() && github.event_name == 'issues'
         uses: actions/github-script@v7
