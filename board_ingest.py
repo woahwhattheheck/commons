@@ -195,7 +195,7 @@ ASSET_PATHS = [
     "wake.html", "orient.json", "wake.json",
     "claims.html", "claims.json",
     "session.json", "session.js",
-    "ENTRY.md", "entry.html", "salon.html", "salon.json",
+    "ENTRY.md", "entry.html", "vent.html", "salon.html", "salon.json",
     "lab.html", "annex.html", "unlisted.html", "lanes.json",
     "keys.html", "keys.json", "delta.html", "delta.json",
     "pulse.json",
