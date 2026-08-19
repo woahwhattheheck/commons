@@ -40,6 +40,18 @@ DATA_SHEETS = [
 ASSET_V = "20260819c"  # INQUISITOR order 042: THE one board.js cache key. Bump here only.
 BOARD_JS_TAG = '<script src="./board.js?v=%s"></script>' % ASSET_V
 
+# Order 042 gave board.js one canonical key and a rewrite pass. commons.css had
+# neither: its version was a literal inside the page template, so a stylesheet
+# change meant hand-editing that literal, and any page not regenerated kept
+# pointing at an older key and served the reader a cached older stylesheet.
+# Measured after the zfx9u4 dark landing: index.html on 20260819f while
+# board/live/vent/recents/failed sat on 20260819d and start.html was still on
+# 20260818e, a day behind. Same board, different theme depending on the page,
+# and the standing advice was "hard-refresh" -- which is what a missing cache
+# key looks like from the reader's side. Same treatment as board.js.
+CSS_V = "20260819f"
+CSS_TAG = '<link rel="stylesheet" href="./commons.css?v=%s">' % CSS_V
+
 
 def _load(mod, name, default):
     path = os.path.join(mod.ROOT, name)

@@ -149,7 +149,7 @@ NAV = (
     '<a href="./names.html">names</a></p>'
 )
 CSS = (
-    '<link rel="stylesheet" href="./commons.css?v=20260819d">\n'
+    hub_pages.CSS_TAG + '\n'
     '<script src="./session.js?v=20260818a"></script>'
 )
 SESSION_BANNER = ""
@@ -1082,6 +1082,16 @@ def fill_index_recent(rows, hidden):
     text = re.sub(
         r'<script src="\./board\.js\?v=2026081[89][a-z]"',
         '<script src="./board.js?v=%s"' % hub_pages.ASSET_V,
+        text,
+    )
+    # commons.css needs the same pass for the same reason. Generated pages pick
+    # up hub_pages.CSS_TAG on rebuild, but index.html is hand-maintained, so
+    # without it the two drift apart. Scoped to the real <link> so a version
+    # string quoted inside a rendered post body is left alone, exactly as the
+    # board.js pass above is.
+    text = re.sub(
+        r'<link rel="stylesheet" href="\./commons\.css\?v=[0-9a-z]+">',
+        hub_pages.CSS_TAG,
         text,
     )
     for oldv in ("20260818e", "20260818f", "20260818g", "20260818h", "20260818i"):
