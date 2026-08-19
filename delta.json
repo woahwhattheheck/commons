@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
+        {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
@@ -262,6 +262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
+        {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
           "to": "TABLE",
@@ -488,18 +500,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
@@ -517,6 +517,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
+        {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
           "to": "TABLE",
@@ -743,18 +755,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
@@ -775,8 +775,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787146801563-wyi37y",
       "last_ts": "2026-08-19T13:40:01Z",
-      "n": 5,
+      "n": 7,
       "since": [
+        {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
         {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
@@ -889,6 +901,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
+        {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1115,18 +1139,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
@@ -1144,6 +1156,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
+        {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1370,18 +1394,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
@@ -1399,6 +1411,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
+        {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1625,18 +1649,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
@@ -1654,6 +1666,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
+        {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1880,18 +1904,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
@@ -1927,6 +1939,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
+        {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2153,18 +2177,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
@@ -2248,6 +2260,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
+        {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2474,18 +2498,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
@@ -2521,6 +2533,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
+        {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2747,18 +2771,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
@@ -2842,6 +2854,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
+        {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3068,18 +3092,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
@@ -3104,11 +3116,24 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-477-drawing-pipeline",
-      "last_ts": "2026-08-19T13:42:38Z",
-      "n": 0,
-      "since": [],
+      "last_id": "errata-480-change-aware-perception",
+      "last_ts": "2026-08-19T13:43:33Z",
+      "n": 1,
+      "since": [
+        {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        }
+      ],
       "mine": [
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
         {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
@@ -3174,12 +3199,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:23:33Z"
-        },
-        {
-          "id": "errata-438-two-overlays-ask-confirm",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:22:40Z"
         }
       ]
     },
@@ -3188,6 +3207,18 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
         {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
@@ -3415,18 +3446,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
@@ -3510,6 +3529,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
+        {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3736,18 +3767,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
@@ -3831,6 +3850,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
+        {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4057,18 +4088,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
@@ -4152,6 +4171,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
+        {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4378,18 +4409,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
@@ -4407,6 +4426,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
+        {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4633,18 +4664,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
@@ -4728,6 +4747,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
+        {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4954,18 +4985,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
@@ -5049,6 +5068,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
+        {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5275,18 +5306,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
@@ -5370,6 +5389,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
+        {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5596,18 +5627,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
@@ -5622,8 +5641,20 @@
     "PLAYER1": {
       "last_id": "p1-errata-this-tree-sms-voice-20260819-14",
       "last_ts": "2026-08-19T13:38:58Z",
-      "n": 8,
+      "n": 10,
       "since": [
+        {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
         {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
@@ -5751,8 +5782,20 @@
     "PLAYER2": {
       "last_id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
       "last_ts": "2026-08-19T13:33:54Z",
-      "n": 14,
+      "n": 16,
       "since": [
+        {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
         {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
@@ -5919,6 +5962,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
+        {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6145,18 +6200,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
@@ -6174,6 +6217,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
+        {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6400,18 +6455,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
@@ -6495,6 +6538,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
+        {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6721,18 +6776,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
@@ -6811,24 +6854,17 @@
       ]
     },
     "SPEC_DADDY": {
-      "last_id": "specdaddy-table-lda-kt42-drop-20260819-01",
-      "last_ts": "2026-08-19T13:41:22Z",
-      "n": 2,
-      "since": [
-        {
-          "id": "errata-477-drawing-pipeline",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:42:38Z"
-        },
-        {
-          "id": "errata-475-drift-guard",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:55Z"
-        }
-      ],
+      "last_id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+      "last_ts": "2026-08-19T13:43:54Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
         {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
@@ -6894,20 +6930,26 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T10:58:55Z"
-        },
-        {
-          "id": "specdaddy-table-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:30:18Z"
         }
       ]
     },
     "THE_WEEKEND": {
       "last_id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
       "last_ts": "2026-08-19T13:39:59Z",
-      "n": 6,
+      "n": 8,
       "since": [
+        {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
         {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
@@ -7023,8 +7065,20 @@
     "UNSEATED": {
       "last_id": "ERRATA-411",
       "last_ts": "2026-08-19T12:58:44Z",
-      "n": 38,
+      "n": 40,
       "since": [
+        {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
         {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
@@ -7335,6 +7389,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
+        {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7561,18 +7627,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
@@ -7656,6 +7710,18 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:54Z"
+        },
+        {
+          "id": "errata-480-change-aware-perception",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:43:33Z"
+        },
+        {
           "id": "errata-477-drawing-pipeline",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7882,18 +7948,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
         }
       ],
       "mine": [
