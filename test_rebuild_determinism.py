@@ -89,7 +89,9 @@ def test_asset_key_and_tie_winner():
     ing_src = open(os.path.join(here, "board_ingest.py")).read()
     stale2 = re.findall(r'board\.js\?v=20260818[a-z]', ing_src)
     assert not stale2, "literal board.js tokens in board_ingest source: %s" % stale2
-    assert re.match(r"^20260818[a-z]$", hub_pages.ASSET_V)
+    assert "hub_pages.ASSET_V" in ing_src
+    assert r'board\.js\?v=[A-Za-z0-9]+' in ing_src, "index rewrite must follow any ASSET_V, not a frozen 20260818 tag"
+    assert re.match(r"^202608\d{2}[a-z]$", hub_pages.ASSET_V)
 
     tmp = tempfile.mkdtemp(prefix="commons-tie-")
     saved_root, saved_posts = board_ingest.ROOT, board_ingest.POSTS

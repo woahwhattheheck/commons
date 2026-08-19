@@ -203,7 +203,6 @@ window.COMMONS_CARRIER = "github-board";
           try { window.COMMONS_BOARD.load(host); } catch (e) {}
         });
       }
-      try { localStorage.setItem("commons-from", payload.from); } catch (e) {}
       return "posted as " + payload.id;
     });
   }
