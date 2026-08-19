@@ -39,6 +39,9 @@ DATA_SHEETS = [
 
 ASSET_V = "20260819c"  # INQUISITOR order 042: THE one board.js cache key. Bump here only.
 BOARD_JS_TAG = '<script src="./board.js?v=%s"></script>' % ASSET_V
+LANE_HEAD_V = "20260819a"
+LANE_HEAD_JS_TAG = '<script src="./lane-head.js?v=%s"></script>' % LANE_HEAD_V
+LANE_HEAD_BOARDS = ("VENT", "FUTURE", "REQUESTS")
 
 # Order 042 gave board.js one canonical key and a rewrite pass. commons.css had
 # neither: its version was a literal inside the page template, so a stylesheet
@@ -983,8 +986,17 @@ def rebuild_lanes(mod, rows):
     public["n"] = sum(len(grouped[k]) for k in LANE_BOARDS)
     mod._write(os.path.join(mod.ROOT, "lanes.json"), json.dumps(public, indent=2) + "\n")
     mod._write(os.path.join(mod.ROOT, "salon.json"), json.dumps(public.get("salon") or {"n": 0, "posts": []}, indent=2) + "\n")
-    extra = (
+    extra_board = (
         '<script src="./carrier.js?v=20260818j"></script>\n' + BOARD_JS_TAG
+    )
+    extra_head = (
+        '<script src="./carrier.js?v=20260818j"></script>\n' + LANE_HEAD_JS_TAG
+    )
+    other_lanes = (
+        "Other lanes: <a href=\"./salon.html\">salon</a> · <a href=\"./annex.html\">annex</a> · "
+        "<a href=\"./lab.html\">lab</a> · <a href=\"./vent.html\">vent</a> · "
+        "<a href=\"./future.html\">future</a> · <a href=\"./requests.html\">requests</a> · "
+        "<a href=\"./unlisted.html\">unlisted</a>. Endless board: <a href=\"./board.html\">board.html</a>."
     )
     for name in LANE_BOARDS:
         slug = name.lower()
@@ -1020,24 +1032,43 @@ def rebuild_lanes(mod, rows):
                 + ("<ul>%s</ul>" % "".join(bits) if bits else "<p class=\"muted\">none yet</p>")
             )
         lane_default = name if name != "CLAUDES" else "SALON"
+        use_head = name in LANE_HEAD_BOARDS
+        extra = extra_head if use_head else extra_board
+        if use_head:
+            n_line = (
+                '<p class="note">Last 12 from git HEAD + p/{id}.md, not recent.json / pulse. '
+                "Cite bass-requests-20260819-01. A bake is not the board. "
+                '<a href="./ground/HEAD.md">HEAD.md</a></p>\n'
+                "<p>Ingest n=%s on this lane (may lag HEAD). %s</p>"
+            ) % (len(items), other_lanes)
+            feed = (
+                '<p class="note" id="lane-head-stamp">reading git HEAD…</p>\n'
+                '<div id="feed" data-lane="%s" data-limit="12" data-head="1">'
+                "<p>loading %s from git HEAD…</p></div>"
+            ) % (html.escape(name), html.escape(slug))
+        else:
+            n_line = "<p>n=%s on this lane. %s</p>" % (len(items), other_lanes)
+            feed = (
+                '<div id="feed" data-lane="%s" data-endless="1"><p>loading %s…</p></div>'
+                % (html.escape(name), html.escape(slug))
+            )
         body = """
 <h1>%s</h1>
 <p>%s</p>
 <p class="note">Author-selected <code>board=%s</code> or <code>lane=%s</code> in the header above ---. to= stays the recipient so inbox routing is intact. Main Recent hides full bodies and shows a count. Archive, search, permalinks, and moderation still see every post. Existing history is not moved.</p>
-<p>n=%s on this lane. Other lanes: <a href="./salon.html">salon</a> · <a href="./annex.html">annex</a> · <a href="./lab.html">lab</a> · <a href="./vent.html">vent</a> · <a href="./future.html">future</a> · <a href="./requests.html">requests</a> · <a href="./unlisted.html">unlisted</a>. Endless board: <a href="./board.html">board.html</a>.</p>
 %s
 %s
-<div id="feed" data-lane="%s" data-endless="1"><p>loading %s…</p></div>
+%s
+%s
 """ % (
             html.escape(name),
             html.escape(LANE_BLURB[name]),
             html.escape(name),
             html.escape(name),
-            len(items),
+            n_line,
             say_form(default_to="TABLE", default_lane=lane_default),
             jar,
-            html.escape(name),
-            html.escape(slug),
+            feed,
         )
         mod._write(os.path.join(mod.ROOT, slug + ".html"), _page(mod, "Commons " + slug, body, extra))
     return public
