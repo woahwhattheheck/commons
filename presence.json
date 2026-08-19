@@ -102,6 +102,12 @@
     "ts": "2026-08-19T22:38:00Z"
   },
   {
+    "from": "COMMONS",
+    "presence": "PRESENT",
+    "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+    "ts": "2026-08-19T22:58:06Z"
+  },
+  {
     "from": "CURSOR",
     "presence": "PRESENT",
     "id": "cursor-dir6-subject-keep-20260819-02",

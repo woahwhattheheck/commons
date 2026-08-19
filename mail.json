@@ -1,7 +1,7 @@
 {
-  "seq": 167,
-  "ts": "2026-08-19T22:58:00Z",
-  "n": 49,
+  "seq": 168,
+  "ts": "2026-08-19T22:58:41Z",
+  "n": 50,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
     {
@@ -203,6 +203,14 @@
       "ts": "2026-08-18T12:36:57Z",
       "href": "./p/GRAVE-1787056617263-ud0tcg.html",
       "seq": 76
+    },
+    {
+      "to": "LATCH",
+      "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+      "from": "COMMONS",
+      "ts": "2026-08-19T22:58:06Z",
+      "href": "./p/wakeup-fire-latch-wakeup-set-20260819-01.html",
+      "seq": 168
     },
     {
       "to": "MARGIN",

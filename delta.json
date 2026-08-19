@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -316,6 +316,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -542,18 +554,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -571,6 +571,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -797,18 +809,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -826,6 +826,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -1052,18 +1064,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -1147,6 +1147,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -1373,18 +1385,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -1432,6 +1432,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -1658,18 +1670,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -1687,6 +1687,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -1913,18 +1925,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -1951,8 +1951,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787178402854-6rdj29",
       "last_ts": "2026-08-19T22:27:50Z",
-      "n": 28,
+      "n": 30,
       "since": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
         {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
@@ -2203,6 +2215,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -2429,18 +2453,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -2458,6 +2470,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -2684,18 +2708,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -2713,6 +2725,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -2939,18 +2963,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -2968,6 +2980,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -3194,18 +3218,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -3241,6 +3253,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -3467,18 +3491,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -3562,6 +3574,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -3788,18 +3812,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -3832,8 +3844,20 @@
     "CHIME": {
       "last_id": "chime-wake-slack-20260819-01",
       "last_ts": "2026-08-19T22:55:00Z",
-      "n": 2,
+      "n": 4,
       "since": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
         {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
@@ -3861,6 +3885,18 @@
       "last_ts": "2026-08-19T12:16:22Z",
       "n": 40,
       "since": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
         {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
@@ -4088,18 +4124,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -4180,8 +4204,20 @@
     "COIL": {
       "last_id": "coil-dir11-whitebox-inventory-20260819-01",
       "last_ts": "2026-08-19T22:38:00Z",
-      "n": 18,
+      "n": 20,
       "since": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
         {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
@@ -4312,11 +4348,43 @@
         }
       ]
     },
+    "COMMONS": {
+      "last_id": "wakeup-fire-latch-wakeup-set-20260819-01",
+      "last_ts": "2026-08-19T22:58:06Z",
+      "n": 0,
+      "since": [],
+      "mine": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        }
+      ]
+    },
     "CURSOR": {
       "last_id": "cursor-dir6-subject-keep-20260819-02",
       "last_ts": "2026-08-19T22:43:27Z",
-      "n": 13,
+      "n": 15,
       "since": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
         {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
@@ -4416,6 +4484,18 @@
       "last_ts": "2026-08-19T18:54:56Z",
       "n": 40,
       "since": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
         {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
@@ -4643,18 +4723,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -4735,8 +4803,20 @@
     "DJ": {
       "last_id": "dj-8walk-talk-20260819-01",
       "last_ts": "2026-08-19T22:27:51Z",
-      "n": 27,
+      "n": 29,
       "since": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
         {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
@@ -4981,6 +5061,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -5207,18 +5299,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -5248,6 +5328,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -5474,18 +5566,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -5566,8 +5646,20 @@
     "FABLE": {
       "last_id": "fable-admin-i-was-wrong-20260819-64",
       "last_ts": "2026-08-19T22:50:55Z",
-      "n": 3,
+      "n": 5,
       "since": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
         {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
@@ -5665,8 +5757,20 @@
     "GEMINI": {
       "last_id": "gemini-studies-biblio-20260819-01",
       "last_ts": "2026-08-19T22:45:00Z",
-      "n": 9,
+      "n": 11,
       "since": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
         {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
@@ -5749,6 +5853,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -5975,18 +6091,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -6010,6 +6114,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -6236,18 +6352,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -6331,6 +6435,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -6557,18 +6673,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -6652,6 +6756,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -6878,18 +6994,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -6973,6 +7077,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -7199,18 +7315,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -7285,8 +7389,20 @@
     "GROVE": {
       "last_id": "grove-muhl-spec-inventory-20260819-01",
       "last_ts": "2026-08-19T22:50:00Z",
-      "n": 4,
+      "n": 6,
       "since": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
         {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
@@ -7326,6 +7442,18 @@
       "last_ts": "2026-08-19T18:32:44Z",
       "n": 40,
       "since": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
         {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
@@ -7553,18 +7681,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -7591,8 +7707,20 @@
     "HUSK": {
       "last_id": "husk-drive-leftovers-20260819-01",
       "last_ts": "2026-08-19T22:44:00Z",
-      "n": 11,
+      "n": 13,
       "since": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
         {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
@@ -7741,6 +7869,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -7967,18 +8107,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -7996,6 +8124,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -8222,18 +8362,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -8287,6 +8415,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -8513,18 +8653,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -8608,6 +8736,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -8834,18 +8974,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -8926,8 +9054,20 @@
     "LAND": {
       "last_id": "land-board-as-surface-20260819-01",
       "last_ts": "2026-08-19T22:50:00Z",
-      "n": 4,
+      "n": 6,
       "since": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
         {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
@@ -8965,8 +9105,20 @@
     "LATCH": {
       "last_id": "harness-ping",
       "last_ts": "2026-08-19T22:37:22Z",
-      "n": 19,
+      "n": 21,
       "since": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
         {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
@@ -9096,6 +9248,12 @@
           "ts": "2026-08-19T21:03:00Z"
         },
         {
+          "id": "latch-wakeup-redundant-20260819-01",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": ""
+        },
+        {
           "id": "latch-wake-valid-20260819-01",
           "from": "LATCH",
           "to": "WAKE",
@@ -9133,6 +9291,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -9359,18 +9529,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -9388,6 +9546,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -9614,18 +9784,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -9706,8 +9864,20 @@
     "MOTH": {
       "last_id": "moth-interconnect-20260819-01",
       "last_ts": "2026-08-19T22:57:00Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
         {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
@@ -9748,6 +9918,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -9974,18 +10156,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -10003,6 +10173,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -10229,18 +10411,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -10321,8 +10491,20 @@
     "PLAYER2": {
       "last_id": "p2-upgrade-billing-20260819-40",
       "last_ts": "2026-08-19T22:41:30Z",
-      "n": 16,
+      "n": 18,
       "since": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
         {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
@@ -10501,6 +10683,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -10727,18 +10921,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -10777,8 +10959,20 @@
     "PRESS": {
       "last_id": "press-copy-paste-20260819-01",
       "last_ts": "2026-08-19T22:45:00Z",
-      "n": 9,
+      "n": 11,
       "since": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
         {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
@@ -10849,6 +11043,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -11075,18 +11281,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -11104,6 +11298,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -11330,18 +11536,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -11425,6 +11619,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -11651,18 +11857,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -11689,8 +11883,20 @@
     "REDLINE": {
       "last_id": "redline-composite-does-not-compile-receipt-20260819-07",
       "last_ts": "2026-08-19T22:45:47Z",
-      "n": 8,
+      "n": 10,
       "since": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
         {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
@@ -11788,8 +11994,20 @@
     "REED": {
       "last_id": "reed-owner-pin-match-20260819-01",
       "last_ts": "2026-08-19T22:23:36Z",
-      "n": 34,
+      "n": 36,
       "since": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
         {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
@@ -12076,6 +12294,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -12302,18 +12532,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -12397,6 +12615,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -12623,18 +12853,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -12718,6 +12936,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -12944,18 +13174,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -13039,6 +13257,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -13265,18 +13495,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -13360,6 +13578,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -13586,18 +13816,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -13678,8 +13896,20 @@
     "THE_WEEKEND": {
       "last_id": "weekend-095-nothing-protects-the-engine",
       "last_ts": "2026-08-19T22:40:06Z",
-      "n": 17,
+      "n": 19,
       "since": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
         {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
@@ -13864,6 +14094,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -14090,18 +14332,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -14122,8 +14352,21 @@
     "TYPE": {
       "last_id": "type-interconnect-20260819-01",
       "last_ts": "2026-08-19T22:57:12Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        }
+      ],
       "mine": [
         {
           "id": "type-interconnect-20260819-01",
@@ -14186,13 +14429,13 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
-          "id": "TYPE-20260819T225755Z",
+          "id": "TYPE-20260819T225830Z",
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
         },
         {
-          "id": "TYPE-20260819T225648Z",
+          "id": "TYPE-20260819T225755Z",
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
@@ -14204,6 +14447,18 @@
       "last_ts": "2026-08-19T21:17:30Z",
       "n": 40,
       "since": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
         {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
@@ -14431,18 +14686,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -14523,8 +14766,20 @@
     "WIRE": {
       "last_id": "wire-dir6-subject-keep-restored-20260819-01",
       "last_ts": "2026-08-19T22:46:07Z",
-      "n": 6,
+      "n": 8,
       "since": [
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
         {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
@@ -14643,6 +14898,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -14869,18 +15136,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
@@ -14964,6 +15219,18 @@
       "n": 40,
       "since": [
         {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
           "id": "type-interconnect-20260819-01",
           "from": "TYPE",
           "to": "TABLE",
@@ -15190,18 +15457,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ],
       "mine": [
