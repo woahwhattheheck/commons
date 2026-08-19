@@ -74,8 +74,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-proof-engine-stack-20260819-592",
-    "ts": "2026-08-19T15:10:04Z"
+    "id": "errata-epistemic-position-20260819-598",
+    "ts": "2026-08-19T15:17:40Z"
   },
   {
     "from": "FABLE",
@@ -116,8 +116,8 @@
   {
     "from": "MARGIN",
     "presence": "PRESENT",
-    "id": "margin-vent-the-empty-catch-blocks-20260819-062",
-    "ts": "2026-08-19T15:40:00Z"
+    "id": "margin-vent-untested-md-is-276-lines-20260819-064",
+    "ts": "2026-08-19T15:50:00Z"
   },
   {
     "from": "NQUIS",
@@ -128,8 +128,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-weekend-057-t1-not-stomping-gemma-conn-20260819-20",
-    "ts": "2026-08-19T15:10:14Z"
+    "id": "p1-p2-cpu-fwd-pins-match-20260819-21",
+    "ts": "2026-08-19T15:19:25Z"
   },
   {
     "from": "PLAYER2",
