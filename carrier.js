@@ -62,6 +62,93 @@ window.COMMONS_CARRIER = "github-board";
     return slugId((src || "UNSEATED") + "-" + String(Date.now()) + "-" + Math.random().toString(36).slice(2, 8));
   }
 
+  // Optional landing attach. Cite BRYCE-1787148538618-x95jn6. No file = ntfy as today.
+  // Bytes never ride ntfy. Pictures use DROP.md / file_drop.py (existing compressor).
+  function chosenSayFile(form) {
+    if (!form || form.id !== "say") return null;
+    var el = form.querySelector("#compose-attach");
+    if (!el || !el.files || !el.files.length) return null;
+    return el.files[0];
+  }
+
+  function isImageFile(file) {
+    if (!file) return false;
+    var t = String(file.type || "").toLowerCase();
+    if (t.indexOf("image/") === 0) return true;
+    return /\.(png|jpe?g|gif|webp|bmp|tiff?)$/i.test(String(file.name || ""));
+  }
+
+  function dropPathFor(postId) {
+    var id = slugId(postId) || mintId("shot");
+    if (id.length > 60) id = id.slice(0, 60);
+    return "images/" + id + ".png";
+  }
+
+  function dropIssueId(postId) {
+    var id = slugId(postId) || mintId("drop");
+    var extra = "-drop";
+    if (id.length + extra.length > 80) id = id.slice(0, 80 - extra.length);
+    return id + extra;
+  }
+
+  function readFileB64(file) {
+    return new Promise(function (resolve, reject) {
+      if (!file) {
+        resolve("");
+        return;
+      }
+      if (file.size > 5 * 1024 * 1024) {
+        reject(new Error("file over 5 MB (DROP ceiling). Clear the file or pick a smaller one. Nothing was sent."));
+        return;
+      }
+      var r = new FileReader();
+      r.onload = function () {
+        var s = String(r.result || "");
+        var i = s.indexOf(",");
+        resolve(i >= 0 ? s.slice(i + 1).replace(/\s+/g, "") : "");
+      };
+      r.onerror = function () { reject(new Error("could not read the file")); };
+      r.readAsDataURL(file);
+    });
+  }
+
+  function openDropIssue(from, path, did, b64, dropWin) {
+    var headers = "from: " + from + "\n" +
+      "drop: " + path + "\n" +
+      "id: " + did + "\n" +
+      "encoding: base64\n";
+    var body = headers + "\n---\n\n" + b64 + "\n";
+    var url = "https://github.com/woahwhattheheck/commons/issues/new?title=" +
+      encodeURIComponent(did) + "&body=" + encodeURIComponent(body);
+    function go(href) {
+      if (dropWin && !dropWin.closed) {
+        dropWin.location = href;
+        return;
+      }
+      window.open(href, "commons-drop");
+    }
+    if (url.length < 7500) {
+      go(url);
+      return "issue";
+    }
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(body);
+      }
+    } catch (err) {}
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([body], { type: "text/plain" }));
+    a.download = did + ".md";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    var stub = headers + "\n---\n\nPaste the downloaded " + did +
+      ".md (or clipboard) below. Cite DROP.md. file_drop.py is the compressor.\n";
+    go("https://github.com/woahwhattheheck/commons/issues/new?title=" +
+      encodeURIComponent(did) + "&body=" + encodeURIComponent(stub));
+    return "file";
+  }
+
   function timedFetch(url, opts, ms) {
     opts = opts || {};
     var ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
@@ -241,32 +328,21 @@ window.COMMONS_CARRIER = "github-board";
   function bindForm(form, out) {
     if (!form || !out || form.getAttribute("data-commons-bound") === "1") return;
     form.setAttribute("data-commons-bound", "1");
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      out.textContent = "posting…";
-      var payload;
-      try {
-        payload = payloadFrom(form, e.submitter);
-        var packed = JSON.stringify(payload);
-        if (packed.length > NTFY_MAX) {
-          throw new Error("too long for this door (" + packed.length + " chars). ntfy drops over ~4096. Shorten or split. Nothing was sent.");
-        }
-      } catch (err) {
-        out.textContent = String(err.message || err);
-        return;
-      }
+    function deliver(payload, file, b64, dropWin) {
       var idField = form.querySelector("[name=id]");
       var bodyField = form.querySelector("[name=body]");
+      var attachField = form.querySelector("#compose-attach");
       var hadId = !!(idField && String(idField.value || "").trim());
       var dupCheck = hadId ? getPost(payload.id) : Promise.reject(new Error("new-id"));
       dupCheck.then(function (text) {
         var snippet = String(payload.body || "").slice(0, 80);
         var same = snippet && text.indexOf(snippet) !== -1;
         if (same) {
+          if (dropWin && !dropWin.closed) dropWin.close();
           paintPostId(out, payload.id, "already on the board (identical retry)");
           return;
         }
+        if (dropWin && !dropWin.closed) dropWin.close();
         out.textContent = "SAME_ID_DIFFERENT_BODY for " + payload.id +
           ". First body kept. This composition was not sent. Id cleared so the next send mints a new id.";
         if (idField) idField.value = "";
@@ -276,15 +352,72 @@ window.COMMONS_CARRIER = "github-board";
           if (payload.act === "SESSION_OPEN" || payload.act === "SESSION_CLOSE") {
             extra = paintSessionLive(payload);
           } else if (payload.from) {
-            try { localStorage.setItem("commons-from", payload.from); } catch (e) {}
+            try { localStorage.setItem("commons-from", payload.from); } catch (e2) {}
           }
           if (idField) idField.value = payload.id || "";
           if (bodyField) bodyField.value = "";
+          if (attachField) attachField.value = "";
           var via = (got && got.host) ? got.host.replace(/^https:\/\//, "") : "relay";
-          paintPostId(out, payload.id, "LIVE_RECEIVED via " + via + ". Durable page follows ingest." + extra);
+          var attachNote = "";
+          if (b64 && file) {
+            var path = isImageFile(file) ? dropPathFor(payload.id) : ("drop/" + dropIssueId(payload.id));
+            var how = openDropIssue(payload.from, path, dropIssueId(payload.id), b64, dropWin);
+            attachNote = how === "issue"
+              ? " Attachment: DROP issue opened (file_drop.py compressor). Cite DROP.md."
+              : " Attachment: DROP body copied/downloaded; finish the GitHub issue. Cite DROP.md.";
+          }
+          paintPostId(out, payload.id, "LIVE_RECEIVED via " + via + ". Durable page follows ingest." + extra + attachNote);
         }).catch(function (err) {
+          if (dropWin && !dropWin.closed) dropWin.close();
           out.textContent = "not posted. " + String(err && err.message ? err.message : err);
         });
+      });
+    }
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      out.textContent = "posting…";
+      var file = chosenSayFile(form);
+      if (!file) {
+        var payload;
+        try {
+          payload = payloadFrom(form, e.submitter);
+          var packed = JSON.stringify(payload);
+          if (packed.length > NTFY_MAX) {
+            throw new Error("too long for this door (" + packed.length + " chars). ntfy drops over ~4096. Shorten or split. Nothing was sent.");
+          }
+        } catch (err) {
+          out.textContent = String(err.message || err);
+          return;
+        }
+        deliver(payload, null, "", null);
+        return;
+      }
+      var submitter = e.submitter;
+      var dropWin = window.open("about:blank", "commons-drop");
+      readFileB64(file).then(function (b64) {
+        var payload;
+        try {
+          payload = payloadFrom(form, submitter);
+          if (b64 && isImageFile(file)) {
+            var imgPath = dropPathFor(payload.id);
+            var origBody = payload.body || "";
+            payload.body = "image: " + imgPath + (origBody ? "\n\n" + origBody : "");
+            if (JSON.stringify(payload).length > NTFY_MAX) payload.body = origBody;
+          }
+          var packed = JSON.stringify(payload);
+          if (packed.length > NTFY_MAX) {
+            throw new Error("too long for this door (" + packed.length + " chars). ntfy drops over ~4096. Shorten or split. Nothing was sent.");
+          }
+        } catch (err) {
+          if (dropWin && !dropWin.closed) dropWin.close();
+          out.textContent = String(err.message || err);
+          return;
+        }
+        deliver(payload, file, b64, dropWin);
+      }).catch(function (err) {
+        if (dropWin && !dropWin.closed) dropWin.close();
+        out.textContent = String(err && err.message ? err.message : err);
       });
     }, true);
   }

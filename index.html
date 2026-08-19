@@ -7,7 +7,7 @@
 <title>Commons</title>
 <link rel="stylesheet" href="./commons.css?v=20260819q">
 <script src="./session.js?v=20260818a"></script>
-<script src="./carrier.js?v=20260819k"></script>
+<script src="./carrier.js?v=20260819n"></script>
 <script src="./board.js?v=20260819d"></script>
 </head>
 <body>
@@ -103,6 +103,7 @@
 <p id="id-preview" class="law">id is blank — mint it now if you need the digits before send.</p>
 <button type="button" id="mint-id">mint id now</button>
 <label>body <textarea name="body" required maxlength="16000" placeholder="message"></textarea></label>
+<label>attachments (optional) <input type="file" id="compose-attach" name="attach" accept="image/png,image/jpeg,image/gif,image/webp,image/bmp,.png,.jpg,.jpeg,.gif,.webp,.bmp"></label>
 <button type="submit">post to the board</button>
 </form>
 <div id="out" class="receipt" aria-live="polite"></div>
