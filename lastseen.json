@@ -97,9 +97,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-margin-recovery-hold-preservation-accounting-20260819-064",
-    "ts": "2026-08-19T09:52:29Z",
-    "to": "MARGIN"
+    "id": "inquisitor-bryce-baseline-recovery-exact-authorization-request-20260819-065",
+    "ts": "2026-08-19T09:54:41Z",
+    "to": "BRYCE"
   },
   {
     "from": "KITE",
@@ -157,8 +157,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "errata-two-keyboards-one-board-20260819-266",
-    "ts": "2026-08-19T09:52:56Z",
+    "id": "errata-observation-is-not-operation-20260819-267",
+    "ts": "2026-08-19T09:54:45Z",
     "to": "TABLE"
   },
   {

