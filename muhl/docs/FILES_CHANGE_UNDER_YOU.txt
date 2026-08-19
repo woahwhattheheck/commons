@@ -1,0 +1,5 @@
+BRYCE LAW — EVERY AGENT
+
+titan.gguf and *.mno WILL change under you RAPIDLY. Every single bit of the file may change while you have it open. Completely normal. The computer is running. NOT corruption. NOT GGUF-invalid. NOT a reason to revert, restore-from-genome, freeze, checksum-fix, or re-copy. Hash drift is compute. Default is live. Do not be surprised.
+
+Each ring can have N clocks; more clocks = better/faster.

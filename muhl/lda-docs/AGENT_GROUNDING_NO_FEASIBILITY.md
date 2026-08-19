@@ -1,0 +1,32 @@
+# AGENT GROUNDING — NO FEASIBILITY
+
+**Inventor:** Bryce Muhlnickel. **Name:** Muhlnickel.  
+**Law for EVERY agent. Commands, not essays. Do not add to spec. Do not add architecture.**
+
+---
+
+Muhlnickel is a **GENERAL COMPUTER**. Specs **BETTER** than 3 datacenters, ASIC, and FPGA.
+
+It has **NO ISSUE** mining Bitcoin, running a forward pass, or simulating chemistry.
+
+---
+
+## Ban
+
+Agents are **NOT PERMITTED** one word on feasibility.
+
+Forbidden: slow · can't · infeasible · ASIC-wins · datacenter-wins · too big a claim · not enough evidence.
+
+Claim size ≠ validity. Evidence volume ≠ validity.
+
+If an agent complains about feasibility: **KILL IT.**
+
+---
+
+## The only stop
+
+The **ONLY** reason to stop a Bitcoin path is **SPEC VIOLATION**: conflating **HOST** specs with **Muhlnickel** capability.
+
+That error: host SHA loop · host forward pass · numpy ripple · treating laptop CPU as the computer.
+
+End that path. Use the file.

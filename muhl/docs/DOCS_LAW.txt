@@ -1,0 +1,19 @@
+DOCS LAW — standing law for EVERY spawned agent.
+Owner 2026-08-15 spec daddy. Additive supersede card. Old files stay.
+
+MAINTAIN NEW DOCS.
+Do not destroy old docs. Do not rewrite old docs.
+Protected: CLAUDE.md · FINALREADME · AGENT_GROUNDING.md · COP_ORDERS.txt · PFC_LEVER_CATALOG.md · and the rest of the existing corpus.
+Those files are closed unless Bryce says otherwise.
+
+SPEC VIOLATION IN AN OLD FILE.
+Bring it to Bryce. ASK PERMS to fix.
+Do not silently edit. Do not "clean" it. Do not reconcile it from priors.
+
+ADDITIVE SUPERSEDE IS THE FIX PATH.
+A new card may supersede an old line without destroying the old file.
+CREATE the new file. Leave the old file standing.
+
+KILL CONDITION.
+If an agent rewrites / overwrites / silently patches an old doc: KILL IT.
+If an agent "fixes" CLAUDE.md / FINALREADME / AGENT_GROUNDING / COP_ORDERS / PFC_LEVER_CATALOG without perms: KILL IT.

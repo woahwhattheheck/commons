@@ -1,0 +1,34 @@
+==============================================================================
+  LIVE FOUNDRY - designs its own rings, edits its own muhlnickel, keeps running
+==============================================================================
+
+  GENE POOL (rings and settles are GENES, not constants):
+    cells      [8, 16, 32, 64, 128, 256, 512, 1024]
+    senses     [1, 2]
+    contacts   [1, 2, 4, 8, 16, 32, 64, 128]
+    electrons  [1, 2, 4, 8, 16, 32, 64, 128, 256]
+    settles    [1, 2, 4, 8, 16]
+    width      [8, 16, 32, 64, 128, 256, 512]
+    fold       ['flat', 'tree']
+
+  round 1   SELF-EDITED  1024 cells/2 senses/64 contacts/128 electrons settles 2 width 16 flat
+            SILLY 8,192  silly/electron 64.000  bytes/electron 0.125  64 gates  1,600 B written
+  round 2   SELF-EDITED  256 cells/2 senses/64 contacts/256 electrons settles 1 width 16 flat
+            SILLY 16,384  silly/electron 64.000  bytes/electron 0.062  64 gates  1,600 B written
+  round 3   SELF-EDITED  128 cells/2 senses/128 contacts/256 electrons settles 1 width 16 flat
+            SILLY 32,768  silly/electron 128.000  bytes/electron 0.062  64 gates  1,600 B written
+
+  COMPOSITE - best allele per gene across EVERY genome tested, not just winners:
+    cells      1024     (silly/electron 32768.000)
+    senses     2        (silly/electron 32768.000)
+    contacts   128      (silly/electron 32768.000)
+    electrons  256      (silly/electron 32768.000)
+    settles    1        (silly/electron 32768.000)
+    width      8        (silly/electron 32768.000)
+    fold       tree     (silly/electron 32768.000)
+
+  ITS OWN CONTAINER: FOUNDRY0.mno  2,400 B, byte 0 is a GATE, no label inside
+  every self-edit journalled to foundry_live_genome.jsonl with byte counts - reversible
+  SETTLES=1 IS LEGAL AND REACHABLE: a genome that wants one settle pays for it in
+  width and contacts. Nothing here forces N ticks.
+^C^C

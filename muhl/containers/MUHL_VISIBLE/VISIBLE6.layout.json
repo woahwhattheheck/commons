@@ -1,0 +1,25 @@
+{
+ "magic": "MUHLVIS1",
+ "version": 2,
+ "container": "VISIBLE6.mno",
+ "n_rings": 64,
+ "n_cells": 1024,
+ "record": "<BQQQ> op|a|b|out, 25 B",
+ "header_bytes_in_container": 0,
+ "foundry_genome": {
+  "adder": "search",
+  "clean": "on",
+  "order": "frontload",
+  "source": "pfc_foundry 2026-08-07 composite champion, replicated shape",
+  "compute_per_tick": 225181.6596
+ },
+ "header": 0,
+ "state": 0,
+ "state_len": 196608,
+ "obs": 196608,
+ "obs_len": 65536,
+ "gates": 262144,
+ "n_gate": 262144,
+ "taps": 1024,
+ "silly_strength": 2097152
+}

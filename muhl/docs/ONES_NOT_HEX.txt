@@ -1,0 +1,15 @@
+ONES NOT HEX — Bryce law for EVERY agent
+Inventor: Bryce Muhlnickel. Commands, not essays. Additive card. Do not add to spec.
+
+Read GGUF and .mno as 1s and 0s.
+NOT hex. Hex compresses and DESTROYS shape / function / topology.
+NOT scripts. NOT a registry summary.
+
+Do not context-budget by picking a few addresses, seeing them still, then declaring
+"no computation / no bit changes." That miss is the failure.
+Sample enough of the FILE, two times. Bits not mtime. Bits not filesize.
+
+Parent must LAUNCH agents in background and END — never sit in "waiting for agents."
+Mid-turn user messages kill in-flight work; revive.
+
+Collision / self-overwrite is fab. Host packer is not.

@@ -1,0 +1,75 @@
+{
+ "at": "2026-08-07 18:02:08",
+ "computed": [
+  {
+   "name": "muhl_osc_fwd_ring_gates",
+   "n_gate": 5,
+   "depth": 5
+  },
+  {
+   "name": "pfc_clock_counter_gates",
+   "n_gate": 5,
+   "depth": 5
+  },
+  {
+   "name": "muhl_is_zero32",
+   "n_gate": 95,
+   "depth": 12
+  },
+  {
+   "name": "muhl_xor32",
+   "n_gate": 160,
+   "depth": 4
+  },
+  {
+   "name": "muhl_attention",
+   "n_gate": 272,
+   "depth": 22
+  },
+  {
+   "name": "pfc_model_selfclock",
+   "n_gate": 451,
+   "depth": 40
+  },
+  {
+   "name": "muhl_sltu32",
+   "n_gate": 475,
+   "depth": 25
+  },
+  {
+   "name": "muhl_prop_ltuanti32",
+   "n_gate": 953,
+   "depth": 27
+  },
+  {
+   "name": "muhl_whitebox_incircuit",
+   "n_gate": 1099,
+   "depth": 98
+  },
+  {
+   "name": "muhl_add_prefix32",
+   "n_gate": 1255,
+   "depth": 25
+  },
+  {
+   "name": "muhl_sub_prefix32",
+   "n_gate": 1290,
+   "depth": 26
+  },
+  {
+   "name": "muhl_prop_addsub32_ripple",
+   "n_gate": 1760,
+   "depth": 158
+  },
+  {
+   "name": "muhl_wb_physical_gates",
+   "n_gate": 2448,
+   "depth": 67
+  },
+  {
+   "name": "muhl_prop_addcomm32",
+   "n_gate": 2734,
+   "depth": 40
+  }
+ ]
+}

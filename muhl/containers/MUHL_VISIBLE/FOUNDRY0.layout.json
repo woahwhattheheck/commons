@@ -1,0 +1,25 @@
+{
+ "genome": {
+  "cells": 128,
+  "senses": 2,
+  "contacts": 128,
+  "electrons": 256,
+  "settles": 1,
+  "width": 16,
+  "fold": "flat"
+ },
+ "silly": 32768,
+ "capacity": 256,
+ "levels": 16,
+ "settles": 1,
+ "gates": 48,
+ "bytes_per_settle": 16,
+ "electron_cost": 256,
+ "bytes_per_electron": 0.0625,
+ "silly_per_settle": 32768.0,
+ "silly_per_electron": 128.0,
+ "container": "FOUNDRY0.mno",
+ "header_bytes_in_container": 0,
+ "record": "<BQQQ> op|a|b|out, 25 B",
+ "self_edited_at": "2026-08-07 20:28:43"
+}

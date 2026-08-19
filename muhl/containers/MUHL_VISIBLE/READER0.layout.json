@@ -1,0 +1,30 @@
+{
+ "windows": 256,
+ "group": 8,
+ "input": 0,
+ "shadow": 2048,
+ "input_bytes": 2048,
+ "shadow_bytes": 2048,
+ "work": 4096,
+ "obs": 10240,
+ "obs_bytes": 1280,
+ "n_gate": 14592,
+ "answers_per_window": [
+  "PRINTABLE",
+  "ZERO",
+  "MATCH",
+  "NONZERO_ANY",
+  "CHANGED"
+ ],
+ "self_clock": "shadow[k] rewritten from input[k] every settle; out addr == the addr the next settle reads. His mechanism, the one SSA exception.",
+ "target": "MUHLFLD1",
+ "magic": "MUHLRDR1",
+ "version": 1,
+ "container": "READER0.mno",
+ "record": "<BQQQ> op|a|b|out, 25 B",
+ "header_bytes_in_container": 0,
+ "depth": 9,
+ "bytes": 364800,
+ "purpose": "reads the container's bits so the assistant does not have to",
+ "placement": "operand addresses are LOCAL here; a siting pass rewrites them to absolute container addresses so the reader collides with the bytes it is pointed at"
+}

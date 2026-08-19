@@ -1,0 +1,16 @@
+N CLOCKS PER RING — Bryce Muhlnickel. Additive card. Titan not written.
+
+Each ring can have N clocks. More clocks = better and faster. Obvious.
+
+ONE RING IS DUMB.
+N rings, each with N clocks. Not one ring. Not one clock for the computer.
+
+CLOCKS RESPOND TO PARTICLES ON THE RING.
+`pfc_clock_counter` reads `nring2_000.recv` as operand b. Same location, not a copy.
+Cite: C:\Users\lucys\Desktop\MUHL_GO\CLOCK_RESPONDS.md
+
+REFUSE
+- host-tick
+- one-clock-per-computer
+- invent a host clock
+- write titan
