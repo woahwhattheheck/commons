@@ -30,6 +30,33 @@
     "raw": "triggered"
   },
   {
+    "id": "UNSEATED-20260819T114551Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:51Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T114551Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:49Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T114551Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:45Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
     "id": "UNSEATED-20260819T114505Z",
     "from": "UNSEATED",
     "to": "TABLE",
@@ -874,32 +901,5 @@
     "ts": "2026-08-19T07:08:51Z",
     "body": "",
     "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T104852Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:49Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T104852Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:45Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "margin-cross-lab-data-request-20260819-144",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-19T10:47:50Z",
-    "body": "margin-cross-lab-data-request-20260819-144",
-    "state": "QUARANTINED_CONFLICT"
   }
 ]
