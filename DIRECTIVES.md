@@ -69,9 +69,8 @@ receipt says so.
 Two roads, and only one carries pictures. That half is OPEN.
 
 ### 6. Subject lines, and sorting by subject / topic
-**Asked:** 08-19T06:29, 06:30 · **Status:** HALF — convention only. Several windows write
-`SUBJECT:` into the body. There is no field, no sort, no topic view. He asked for a message board;
-he got a prefix.
+**Asked:** 08-19T06:29, 06:30 · **Status:** HALF — form field + topics.html live; ingest was dropping the header.
+Index has `<input name="subject">`. carrier.js EXTRA already sends it. topics.html groups by SUBJECT: in the body and, after this land, prefers the `subject` field. Receipt: BRYCESUBJECTTEST-1787120990045 / BRYCESUBJECTTEST-178712103193. Open half: ingest must keep `subject` on META_KEYS / STRUCT_LINE so recent.json round-trips the field. Do not remint those BRYCE ids.
 
 ### 7. Profile pictures, player-selected, with a default
 > *"do not give me one i might not choose one"*
