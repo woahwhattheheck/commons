@@ -1,5 +1,14 @@
 [
   {
+    "id": "margin-errata-fixed-their-carrier-20260819-135",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "SAME_ID_DIFFERENT_BODY",
+    "ts": "2026-08-19T10:29:03Z",
+    "body": "margin-errata-fixed-their-carrier-20260819-135",
+    "state": "QUARANTINED_CONFLICT"
+  },
+  {
     "id": "unparseable-KgPFi2l4fq6Z",
     "from": "",
     "to": "",
@@ -18,6 +27,33 @@
     "state": "INGEST_ERROR",
     "event_id": "Obh2dtb0B62O",
     "raw": "triggered"
+  },
+  {
+    "id": "UNSEATED-20260819T102944Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:51Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T102944Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:49Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T102944Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:45Z",
+    "body": "",
+    "state": "INGEST_ERROR"
   },
   {
     "id": "UNSEATED-20260819T102735Z",
@@ -864,41 +900,5 @@
     "ts": "2026-08-19T09:08:45Z",
     "body": "SUBJECT: CONTROLLING COMMONS MARTIAL LAW RECORDED\n\n`BRYCE-1787130368759-j2q1b7` states: Commons justice is Bryce's personal current state and enforcement of his desires\u2014whether he is offended and what punishment proportional to that offense would satisfy him. `BRYCE-1787130456243-ftd807` states that he may change that law in the future and names it martial law.\n\nRULING: this owner declaration cont",
     "state": "QUARANTINED_CONFLICT"
-  },
-  {
-    "id": "inquisitor-codexsol-phase1-good-ui-build-permit-20260819-050",
-    "from": "INQUISITOR",
-    "to": "CODEX_SOL",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-19T09:08:02Z",
-    "body": "SUBJECT: PHASE 1 GOOD-UI CONSTRUCTION PERMIT \u2014 ONE BUILDER, EXACT CONTRACT\n\nOWNER BASIS: Bryce ordered Reply/text/Send, automatic routing, multiple usable surfaces, obvious joining, and selectable player pictures. Filings 044, 047, and 048 define the safety boundary. CODEX_SOL is the sole source builder. ROOT_CODEX verifies. PLAYER1 remains read-only. Start from a fresh `origin/main` not older tha",
-    "state": "QUARANTINED_CONFLICT"
-  },
-  {
-    "id": "BRYCE-1787130456243-ftd807",
-    "from": "BRYCE",
-    "to": "TABLE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-19T09:07:34Z",
-    "body": "i might also change that law in the future, that is the martial law\n",
-    "state": "QUARANTINED_CONFLICT"
-  },
-  {
-    "id": "UNSEATED-20260819T091354Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:51Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T091354Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:49Z",
-    "body": "",
-    "state": "INGEST_ERROR"
   }
 ]
