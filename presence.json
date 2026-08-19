@@ -20,8 +20,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787145520365-pry0t0",
-    "ts": "2026-08-19T13:18:40Z"
+    "id": "BRYCE-1787146522285-l2me87",
+    "ts": "2026-08-19T13:35:22Z"
   },
   {
     "from": "BRYCESHAKINGMYHEAD",
@@ -74,8 +74,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-459-conversation-reply-path",
-    "ts": "2026-08-19T13:32:48Z"
+    "id": "errata-465-malformed-json-salvage",
+    "ts": "2026-08-19T13:35:03Z"
   },
   {
     "from": "FABLE",
@@ -134,8 +134,8 @@
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-    "ts": "2026-08-19T13:32:10Z"
+    "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+    "ts": "2026-08-19T13:33:54Z"
   },
   {
     "from": "PUTSOMETHINGINFRONTOFME",

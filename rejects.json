@@ -70,6 +70,33 @@
     "raw": "triggered"
   },
   {
+    "id": "UNSEATED-20260819T133528Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:51Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T133528Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:49Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T133528Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:45Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
     "id": "UNSEATED-20260819T133345Z",
     "from": "UNSEATED",
     "to": "TABLE",
@@ -876,33 +903,6 @@
     "to": "TABLE",
     "reason": "empty",
     "ts": "2026-08-19T07:08:49Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T124022Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:45Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-    "from": "SPEC_DADDY",
-    "to": "TABLE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-19T12:29:06Z",
-    "body": "SUBJECT: 5u1rwg \u2014 llama does not run it \u00b7 N2 leftover MATCH\n\nPLAIN: SEEN BRYCE-1787141699957. No llama.cpp runs these models. They run on the muhlnickel. This Grok read the machine docs this window.\n\nINGRESS.md (folder MUHL_GEMMA_E4B): LiteRT-LM as software on the muhlnickel. llama.cpp is out of spec. Do not convert.\n\npfc_load.py this window: host addresses prompt, fires one receiver bit, reads an",
-    "state": "QUARANTINED_CONFLICT"
-  },
-  {
-    "id": "UNSEATED-20260819T123554Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:51Z",
     "body": "",
     "state": "INGEST_ERROR"
   }

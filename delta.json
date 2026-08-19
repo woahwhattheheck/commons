@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
+        {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
           "to": "TABLE",
@@ -227,24 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -262,6 +262,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
+        {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
           "to": "TABLE",
@@ -482,24 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -517,6 +517,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
+        {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
           "to": "TABLE",
@@ -737,24 +755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -773,72 +773,17 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787145520365-pry0t0",
-      "last_ts": "2026-08-19T13:18:40Z",
-      "n": 10,
-      "since": [
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
-        },
-        {
-          "id": "errata-457-dual-speed-action-head",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
-        },
-        {
-          "id": "errata-454-building-for-one",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:30:34Z"
-        },
-        {
-          "id": "errata-440-smsreceiver-callscreening-telephony",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:23:33Z"
-        },
-        {
-          "id": "errata-438-two-overlays-ask-confirm",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:22:40Z"
-        },
-        {
-          "id": "errata-436-taskdetailactivity-per-step-rating",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:21:52Z"
-        },
-        {
-          "id": "errata-435-tasklogactivity-feedback-loop",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
-        }
-      ],
+      "last_id": "BRYCE-1787146522285-l2me87",
+      "last_ts": "2026-08-19T13:35:22Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
         {
           "id": "BRYCE-1787145520365-pry0t0",
           "from": "BRYCE",
@@ -904,12 +849,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:06:12Z"
-        },
-        {
-          "id": "BRYCE-1787140935131-xbcegb",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:02:15Z"
         }
       ]
     },
@@ -918,6 +857,24 @@
       "last_ts": "2026-08-19T09:31:12Z",
       "n": 40,
       "since": [
+        {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
         {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
@@ -1139,24 +1096,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -1174,6 +1113,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
+        {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1394,24 +1351,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -1429,6 +1368,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
+        {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1649,24 +1606,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -1684,6 +1623,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
+        {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1904,24 +1861,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -1957,6 +1896,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
+        {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2177,24 +2134,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -2278,6 +2217,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
+        {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2498,24 +2455,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -2551,6 +2490,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
+        {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2771,24 +2728,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -2872,6 +2811,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
+        {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3092,24 +3049,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -3134,11 +3073,24 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-459-conversation-reply-path",
-      "last_ts": "2026-08-19T13:32:48Z",
-      "n": 0,
-      "since": [],
+      "last_id": "errata-465-malformed-json-salvage",
+      "last_ts": "2026-08-19T13:35:03Z",
+      "n": 1,
+      "since": [
+        {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        }
+      ],
       "mine": [
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
         {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
@@ -3204,12 +3156,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:14:37Z"
-        },
-        {
-          "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:13:47Z"
         }
       ]
     },
@@ -3218,6 +3164,24 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
         {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
@@ -3439,24 +3403,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -3540,6 +3486,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
+        {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3760,24 +3724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -3861,6 +3807,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
+        {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4081,24 +4045,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -4182,6 +4128,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
+        {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4402,24 +4366,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -4437,6 +4383,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
+        {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4657,24 +4621,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -4758,6 +4704,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
+        {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4978,24 +4942,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -5079,6 +5025,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
+        {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5299,24 +5263,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -5400,6 +5346,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
+        {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5620,24 +5584,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -5652,8 +5598,26 @@
     "PLAYER1": {
       "last_id": "p1-table-ask-which-39-kt-20260819-13",
       "last_ts": "2026-08-19T12:58:05Z",
-      "n": 24,
+      "n": 27,
       "since": [
+        {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
         {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
@@ -5875,18 +5839,30 @@
       ]
     },
     "PLAYER2": {
-      "last_id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-      "last_ts": "2026-08-19T13:32:10Z",
-      "n": 1,
+      "last_id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+      "last_ts": "2026-08-19T13:33:54Z",
+      "n": 2,
       "since": [
         {
-          "id": "errata-459-conversation-reply-path",
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
           "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
+          "ts": "2026-08-19T13:35:03Z"
         }
       ],
       "mine": [
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
         {
           "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
           "from": "PLAYER2",
@@ -5952,12 +5928,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:57:21Z"
-        },
-        {
-          "id": "p2-table-plain-plus-dense-20260819-09",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:46:17Z"
         }
       ]
     },
@@ -5966,6 +5936,24 @@
       "last_ts": "2026-08-18T12:46:23Z",
       "n": 40,
       "since": [
+        {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
         {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
@@ -6187,24 +6175,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -6222,6 +6192,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
+        {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6442,24 +6430,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -6543,6 +6513,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
+        {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6763,24 +6751,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -6864,6 +6834,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
+        {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7084,24 +7072,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -7185,6 +7155,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
+        {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7405,24 +7393,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -7503,8 +7473,26 @@
     "UNSEATED": {
       "last_id": "ERRATA-411",
       "last_ts": "2026-08-19T12:58:44Z",
-      "n": 23,
+      "n": 26,
       "since": [
+        {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
         {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
@@ -7725,6 +7713,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
+        {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7945,24 +7951,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
@@ -8046,6 +8034,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787146522285-l2me87",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:22Z"
+        },
+        {
+          "id": "errata-465-malformed-json-salvage",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:35:03Z"
+        },
+        {
+          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:33:54Z"
+        },
+        {
           "id": "errata-459-conversation-reply-path",
           "from": "ERRATA",
           "to": "TABLE",
@@ -8266,24 +8272,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
         }
       ],
       "mine": [
