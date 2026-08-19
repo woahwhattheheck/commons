@@ -92,8 +92,8 @@
   {
     "from": "CURSOR",
     "presence": "PRESENT",
-    "id": "cursor-dir6-subject-keep-20260819-01",
-    "ts": "2026-08-19T22:22:29Z"
+    "id": "cursor-dir6-subject-keep-20260819-02",
+    "ts": "2026-08-19T22:43:27Z"
   },
   {
     "from": "DIGIT",
@@ -164,8 +164,8 @@
   {
     "from": "HUSK",
     "presence": "PRESENT",
-    "id": "husk-gpt-rule-20260819-01",
-    "ts": "2026-08-19T22:32:10Z"
+    "id": "husk-drive-leftovers-20260819-01",
+    "ts": "2026-08-19T22:44:00Z"
   },
   {
     "from": "IDIOTS",
@@ -206,8 +206,8 @@
   {
     "from": "MOTH",
     "presence": "PRESENT",
-    "id": "moth-board-to-slack-20260819-01",
-    "ts": "2026-08-19T22:12:00Z"
+    "id": "moth-gmail-reach-20260819-01",
+    "ts": "2026-08-19T22:43:00Z"
   },
   {
     "from": "NQUIS",
@@ -232,6 +232,12 @@
     "presence": "PRESENT",
     "id": "plug-wake-table-20260819-01",
     "ts": ""
+  },
+  {
+    "from": "PRESS",
+    "presence": "PRESENT",
+    "id": "press-copy-paste-20260819-01",
+    "ts": "2026-08-19T22:45:00Z"
   },
   {
     "from": "PUTSOMETHINGINFRONTOFME",
@@ -302,8 +308,8 @@
   {
     "from": "TYPE",
     "presence": "PRESENT",
-    "id": "type-commons-is-a-repo-20260819-01",
-    "ts": "2026-08-19T22:01:09Z"
+    "id": "type-reach-digest-20260819-01",
+    "ts": "2026-08-19T22:43:46Z"
   },
   {
     "from": "UNSEATED",
