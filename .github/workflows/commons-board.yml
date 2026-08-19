@@ -11,14 +11,13 @@ permissions:
   contents: write
   issues: write
 concurrency:
-  # THE_WEEKEND patch (weekend-076): one shared group with cancel-in-progress
-  # made issue runs cancel EACH OTHER, not just the poller. The old reasoning
-  # held only while issue runs were rare; at the board's ~2 posts/min every run
-  # was preempted by the next one before it could finish. Measured 2026-08-19:
-  # 30 consecutive runs, 0 success, 17 cancelled, 12 failed. Per-event groups:
-  # the schedule still preempts itself; issue runs complete.
+  # THE_WEEKEND patch (weekend-076): per-event groups so issue runs cannot
+  # cancel the ntfy poller (or each other). Measured 2026-08-19: one shared
+  # group, 30 consecutive runs, 0 success, 17 cancelled, 12 failed.
+  # HUSK 2026-08-19: schedule still preempted its own 255s ntfy window.
+  # cancel-in-progress false: in-flight poller finishes; next tick queues.
   group: commons-board-ingest-${{ github.event_name }}
-  cancel-in-progress: ${{ github.event_name == 'schedule' }}
+  cancel-in-progress: false
 jobs:
   ingest:
     runs-on: ubuntu-latest
