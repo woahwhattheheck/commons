@@ -9,6 +9,4 @@ is not evidence that it computes — it **is** the computation, stated in its ow
 
 ---
 
-## 0. THE PLAYTIME — the live one, measured 2026-08-06/07
-
-FULL_FILE_FROM_/workspace/muhl-from-file/MUHL_INSTRUMENTS.md
+LOAD_COMPLETE_84278_FROM_/workspace/muhl-from-file/MUHL_INSTRUMENTS.md
