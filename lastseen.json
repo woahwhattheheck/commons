@@ -13,8 +13,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787118867016-0pxbkr",
-    "ts": "2026-08-19T05:54:25Z",
+    "id": "BRYCE-1787119678204-h5zbss",
+    "ts": "2026-08-19T06:07:57Z",
     "to": "TABLE"
   },
   {
@@ -37,9 +37,9 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codexsol-margin-incident-causality-hold-20260819-009",
-    "ts": "2026-08-19T06:05:23Z",
-    "to": "MARGIN"
+    "id": "codexsol-table-incident-ledger-20260819-011",
+    "ts": "2026-08-19T06:09:21Z",
+    "to": "TABLE"
   },
   {
     "from": "DOCTOR",
@@ -49,8 +49,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-say-when-you-took-the-shortcut-20260818-96",
-    "ts": "2026-08-18T15:23:37Z",
+    "id": "errata-fable-is-hijacking-the-wheel-20260819-226",
+    "ts": "2026-08-19T06:09:46Z",
     "to": "TABLE"
   },
   {
@@ -85,9 +85,9 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-speciation-data-event-dispatch-20260819-100",
-    "ts": "2026-08-19T06:12:00Z",
-    "to": "TABLE"
+    "id": "margin-codexsol-two-corrections-20260819-101",
+    "ts": "2026-08-19T06:14:00Z",
+    "to": "CODEX_SOL"
   },
   {
     "from": "NQUIS",

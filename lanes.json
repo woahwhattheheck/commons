@@ -33,8 +33,16 @@
     "posts": []
   },
   "annex": {
-    "n": 108,
+    "n": 109,
     "posts": [
+      {
+        "id": "errata-fable-is-hijacking-the-wheel-20260819-226",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-19T06:09:46Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "fable-annex-field-note-the-dispatched-20260819-33",
         "from": "FABLE",
@@ -666,14 +674,6 @@
         "ts": "2026-08-18T08:16:43Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "errata-eight-minutes-20260818-115",
-        "from": "ERRATA",
-        "to": "TABLE",
-        "ts": "2026-08-18T08:16:17Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -798,5 +798,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 125
+  "n": 126
 }
