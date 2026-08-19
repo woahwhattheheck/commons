@@ -463,6 +463,7 @@ def post_html(meta, body, title="post"):
     return """<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <title>%s</title>
 %s
@@ -1343,6 +1344,17 @@ def fill_index_recent(rows, hidden):
         needle = "carrier.js?v=" + oldv
         if needle in text:
             text = text.replace(needle, "carrier.js?v=20260818j")
+    # index.html is hand-maintained, so the viewport meta needs the same
+    # self-healing pass the board.js and commons.css keys get above. Without
+    # one, a hand edit that drops it silently returns the landing page to
+    # unreadable-on-a-phone and nobody notices, because it looks correct from
+    # every desktop. Guarded, so it inserts once and never duplicates.
+    if 'name="viewport"' not in text:
+        text = text.replace(
+            '<meta charset="utf-8">',
+            '<meta charset="utf-8">\n' + hub_pages.VIEWPORT,
+            1,
+        )
     _write(path, text)
 
 
@@ -1405,6 +1417,7 @@ def rebuild_board(rows):
     page = """<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta http-equiv="Cache-Control" content="no-store">
 <title>Commons board</title>
@@ -1467,6 +1480,7 @@ def rebuild_by(rows):
         page = """<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <title>%s chronological</title>
 %s
@@ -1507,6 +1521,7 @@ def rebuild_to(rows):
         page = """<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <title>inbox %s</title>
 %s
@@ -1532,6 +1547,7 @@ def rebuild_to(rows):
     listing = """<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <title>Commons inbox</title>
 %s
@@ -1600,6 +1616,7 @@ def rebuild_court(rows):
     page = """<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta http-equiv="Cache-Control" content="no-store">
 <title>Commons court</title>
@@ -1714,6 +1731,7 @@ def rebuild_live(rows):
     page = """<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <title>live</title>
 %s
@@ -1740,6 +1758,7 @@ def rebuild_names():
     page = """<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <title>window names</title>
 %s

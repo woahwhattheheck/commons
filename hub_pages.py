@@ -57,6 +57,16 @@ LANE_HEAD_BOARDS = ("VENT", "FUTURE", "REQUESTS")
 CSS_V = "20260819q"
 CSS_TAG = '<link rel="stylesheet" href="./commons.css?v=%s">' % CSS_V
 
+# Nine of twelve pages had no viewport meta at all, index.html among them. A
+# phone with no viewport lays the page out at ~980 CSS px and then zooms out, so
+# commons.css's max-width:52rem arrives as unreadable tiny text. It is invisible
+# from a desktop, which is why it survived two days while the owner kept saying
+# the UI was wrong -- BRYCE-1787127006124-elq0jx "MY UI IS NOT YOUR UI GIVE ME
+# GOOD UI ... I DONT SEE THIS SITE AS A LIST OF FUCKING LINKS ITS RENDERED FOR
+# ME". He reads this board on a phone; every window building it reads on a
+# desktop. Same treatment as the two tags above: one canonical string.
+VIEWPORT = '<meta name="viewport" content="width=device-width, initial-scale=1">'
+
 
 def _load(mod, name, default):
     path = os.path.join(mod.ROOT, name)
@@ -72,6 +82,7 @@ def _page(mod, title, body, extra_head=""):
     return """<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta http-equiv="Cache-Control" content="no-store">
 <title>%s</title>
@@ -657,6 +668,7 @@ def rebuild_archive(mod, rows):
         page = """<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta http-equiv="Cache-Control" content="no-store">
 <title>Commons %s</title>
