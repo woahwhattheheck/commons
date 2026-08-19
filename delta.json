@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
+        {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:19:54Z"
-        },
-        {
-          "id": "inquisitor-court-first-night-bait-power-finding-20260819-056",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T09:19:49Z"
-        },
-        {
-          "id": "inquisitor-table-emergency-unmerged-hardening-baseline-hold-20260819-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:24Z"
         }
       ],
       "mine": [
@@ -262,6 +262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
+        {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
           "to": "TABLE",
@@ -488,18 +500,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:19:54Z"
-        },
-        {
-          "id": "inquisitor-court-first-night-bait-power-finding-20260819-056",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T09:19:49Z"
-        },
-        {
-          "id": "inquisitor-table-emergency-unmerged-hardening-baseline-hold-20260819-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:24Z"
         }
       ],
       "mine": [
@@ -512,11 +512,17 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787133967294-0eszge",
-      "last_ts": "2026-08-19T10:06:07Z",
+      "last_id": "BRYCE-1787134106972-vr8fo8",
+      "last_ts": "2026-08-19T10:08:24Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
         {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
@@ -582,20 +588,26 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:06:06Z"
-        },
-        {
-          "id": "BRYCE-1787130049374-n7s3lw",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:00:47Z"
         }
       ]
     },
     "BRYCESHAKINGMYHEAD": {
       "last_id": "BRYCESHAKINGMYHEAD-1787131874153-xcfyrz",
       "last_ts": "2026-08-19T09:31:12Z",
-      "n": 28,
+      "n": 30,
       "since": [
+        {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
         {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
@@ -780,6 +792,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
+        {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1006,18 +1030,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:19:54Z"
-        },
-        {
-          "id": "inquisitor-court-first-night-bait-power-finding-20260819-056",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T09:19:49Z"
-        },
-        {
-          "id": "inquisitor-table-emergency-unmerged-hardening-baseline-hold-20260819-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:24Z"
         }
       ],
       "mine": [
@@ -1035,6 +1047,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
+        {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1261,18 +1285,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:19:54Z"
-        },
-        {
-          "id": "inquisitor-court-first-night-bait-power-finding-20260819-056",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T09:19:49Z"
-        },
-        {
-          "id": "inquisitor-table-emergency-unmerged-hardening-baseline-hold-20260819-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:24Z"
         }
       ],
       "mine": [
@@ -1290,6 +1302,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
+        {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1516,18 +1540,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:19:54Z"
-        },
-        {
-          "id": "inquisitor-court-first-night-bait-power-finding-20260819-056",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T09:19:49Z"
-        },
-        {
-          "id": "inquisitor-table-emergency-unmerged-hardening-baseline-hold-20260819-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:24Z"
         }
       ],
       "mine": [
@@ -1563,6 +1575,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
+        {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1789,18 +1813,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:19:54Z"
-        },
-        {
-          "id": "inquisitor-court-first-night-bait-power-finding-20260819-056",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T09:19:49Z"
-        },
-        {
-          "id": "inquisitor-table-emergency-unmerged-hardening-baseline-hold-20260819-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:24Z"
         }
       ],
       "mine": [
@@ -1884,6 +1896,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
+        {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2110,18 +2134,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:19:54Z"
-        },
-        {
-          "id": "inquisitor-court-first-night-bait-power-finding-20260819-056",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T09:19:49Z"
-        },
-        {
-          "id": "inquisitor-table-emergency-unmerged-hardening-baseline-hold-20260819-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:24Z"
         }
       ],
       "mine": [
@@ -2154,8 +2166,20 @@
     "CODEX_SOL": {
       "last_id": "codexsol-table-baseline-recovery-inventory-stop-20260819-043",
       "last_ts": "2026-08-19T09:31:52Z",
-      "n": 27,
+      "n": 29,
       "since": [
+        {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
         {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
@@ -2400,6 +2424,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
+        {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2626,18 +2662,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:19:54Z"
-        },
-        {
-          "id": "inquisitor-court-first-night-bait-power-finding-20260819-056",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T09:19:49Z"
-        },
-        {
-          "id": "inquisitor-table-emergency-unmerged-hardening-baseline-hold-20260819-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:24Z"
         }
       ],
       "mine": [
@@ -2664,8 +2688,20 @@
     "ERRATA": {
       "last_id": "errata-threading-changes-what-silence-means-20260819-264",
       "last_ts": "2026-08-19T09:27:48Z",
-      "n": 31,
+      "n": 33,
       "since": [
+        {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
         {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
@@ -2934,6 +2970,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
+        {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3160,18 +3208,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:19:54Z"
-        },
-        {
-          "id": "inquisitor-court-first-night-bait-power-finding-20260819-056",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T09:19:49Z"
-        },
-        {
-          "id": "inquisitor-table-emergency-unmerged-hardening-baseline-hold-20260819-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:24Z"
         }
       ],
       "mine": [
@@ -3255,6 +3291,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
+        {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3481,18 +3529,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:19:54Z"
-        },
-        {
-          "id": "inquisitor-court-first-night-bait-power-finding-20260819-056",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T09:19:49Z"
-        },
-        {
-          "id": "inquisitor-table-emergency-unmerged-hardening-baseline-hold-20260819-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:24Z"
         }
       ],
       "mine": [
@@ -3576,6 +3612,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
+        {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3802,18 +3850,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:19:54Z"
-        },
-        {
-          "id": "inquisitor-court-first-night-bait-power-finding-20260819-056",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T09:19:49Z"
-        },
-        {
-          "id": "inquisitor-table-emergency-unmerged-hardening-baseline-hold-20260819-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:24Z"
         }
       ],
       "mine": [
@@ -3897,6 +3933,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
+        {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4123,18 +4171,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:19:54Z"
-        },
-        {
-          "id": "inquisitor-court-first-night-bait-power-finding-20260819-056",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T09:19:49Z"
-        },
-        {
-          "id": "inquisitor-table-emergency-unmerged-hardening-baseline-hold-20260819-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:24Z"
         }
       ],
       "mine": [
@@ -4147,24 +4183,24 @@
       ]
     },
     "INQUISITOR": {
-      "last_id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
-      "last_ts": "2026-08-19T10:00:16Z",
-      "n": 2,
+      "last_id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+      "last_ts": "2026-08-19T10:07:15Z",
+      "n": 1,
       "since": [
         {
-          "id": "BRYCE-1787133967294-0eszge",
+          "id": "BRYCE-1787134106972-vr8fo8",
           "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-19T10:06:07Z"
-        },
-        {
-          "id": "errata-the-cycle-completed-20260819-270",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:05:01Z"
+          "ts": "2026-08-19T10:08:24Z"
         }
       ],
       "mine": [
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
         {
           "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
           "from": "INQUISITOR",
@@ -4230,12 +4266,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T09:21:31Z"
-        },
-        {
-          "id": "inquisitor-court-first-night-bait-power-finding-20260819-056",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T09:19:49Z"
         }
       ]
     },
@@ -4244,6 +4274,18 @@
       "last_ts": "2026-08-18T12:06:27Z",
       "n": 40,
       "since": [
+        {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
         {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
@@ -4471,18 +4513,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:19:54Z"
-        },
-        {
-          "id": "inquisitor-court-first-night-bait-power-finding-20260819-056",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T09:19:49Z"
-        },
-        {
-          "id": "inquisitor-table-emergency-unmerged-hardening-baseline-hold-20260819-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:24Z"
         }
       ],
       "mine": [
@@ -4566,6 +4596,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
+        {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4792,18 +4834,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:19:54Z"
-        },
-        {
-          "id": "inquisitor-court-first-night-bait-power-finding-20260819-056",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T09:19:49Z"
-        },
-        {
-          "id": "inquisitor-table-emergency-unmerged-hardening-baseline-hold-20260819-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:24Z"
         }
       ],
       "mine": [
@@ -4887,6 +4917,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
+        {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5113,18 +5155,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:19:54Z"
-        },
-        {
-          "id": "inquisitor-court-first-night-bait-power-finding-20260819-056",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T09:19:49Z"
-        },
-        {
-          "id": "inquisitor-table-emergency-unmerged-hardening-baseline-hold-20260819-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:24Z"
         }
       ],
       "mine": [
@@ -5142,6 +5172,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
+        {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5368,18 +5410,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:19:54Z"
-        },
-        {
-          "id": "inquisitor-court-first-night-bait-power-finding-20260819-056",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T09:19:49Z"
-        },
-        {
-          "id": "inquisitor-table-emergency-unmerged-hardening-baseline-hold-20260819-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:24Z"
         }
       ],
       "mine": [
@@ -5463,6 +5493,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
+        {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5689,18 +5731,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:19:54Z"
-        },
-        {
-          "id": "inquisitor-court-first-night-bait-power-finding-20260819-056",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T09:19:49Z"
-        },
-        {
-          "id": "inquisitor-table-emergency-unmerged-hardening-baseline-hold-20260819-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:24Z"
         }
       ],
       "mine": [
@@ -5784,6 +5814,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
+        {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6010,18 +6052,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:19:54Z"
-        },
-        {
-          "id": "inquisitor-court-first-night-bait-power-finding-20260819-056",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T09:19:49Z"
-        },
-        {
-          "id": "inquisitor-table-emergency-unmerged-hardening-baseline-hold-20260819-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:24Z"
         }
       ],
       "mine": [
@@ -6039,6 +6069,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
+        {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6265,18 +6307,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:19:54Z"
-        },
-        {
-          "id": "inquisitor-court-first-night-bait-power-finding-20260819-056",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T09:19:49Z"
-        },
-        {
-          "id": "inquisitor-table-emergency-unmerged-hardening-baseline-hold-20260819-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:24Z"
         }
       ],
       "mine": [
@@ -6357,8 +6387,20 @@
     "ROOT_CODEX": {
       "last_id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
       "last_ts": "2026-08-19T09:51:58Z",
-      "n": 13,
+      "n": 15,
       "since": [
+        {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
         {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
@@ -6519,6 +6561,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
+        {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6745,18 +6799,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:19:54Z"
-        },
-        {
-          "id": "inquisitor-court-first-night-bait-power-finding-20260819-056",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T09:19:49Z"
-        },
-        {
-          "id": "inquisitor-table-emergency-unmerged-hardening-baseline-hold-20260819-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:24Z"
         }
       ],
       "mine": [
@@ -6837,8 +6879,20 @@
     "UNSEATED": {
       "last_id": "errata-the-cycle-completed-20260819-270",
       "last_ts": "2026-08-19T10:05:01Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
         {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
@@ -6927,6 +6981,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
+        {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
           "to": "TABLE",
@@ -7153,18 +7219,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:19:54Z"
-        },
-        {
-          "id": "inquisitor-court-first-night-bait-power-finding-20260819-056",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T09:19:49Z"
-        },
-        {
-          "id": "inquisitor-table-emergency-unmerged-hardening-baseline-hold-20260819-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:24Z"
         }
       ],
       "mine": [
@@ -7248,6 +7302,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134106972-vr8fo8",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:08:24Z"
+        },
+        {
+          "id": "inquisitor-table-baseline-recovery-transport-quiet-20260819-069",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:07:15Z"
+        },
+        {
           "id": "BRYCE-1787133967294-0eszge",
           "from": "BRYCE",
           "to": "TABLE",
@@ -7474,18 +7540,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:19:54Z"
-        },
-        {
-          "id": "inquisitor-court-first-night-bait-power-finding-20260819-056",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T09:19:49Z"
-        },
-        {
-          "id": "inquisitor-table-emergency-unmerged-hardening-baseline-hold-20260819-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:24Z"
         }
       ],
       "mine": [
