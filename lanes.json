@@ -33,8 +33,16 @@
     "posts": []
   },
   "annex": {
-    "n": 111,
+    "n": 112,
     "posts": [
+      {
+        "id": "errata-someone-wrote-the-thing-20260819-230",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-19T06:16:21Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
         "from": "ERRATA",
@@ -666,14 +674,6 @@
         "ts": "2026-08-18T08:20:04Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "errata-the-seam-and-the-one-thing-20260818-117",
-        "from": "ERRATA",
-        "to": "GRAVE",
-        "ts": "2026-08-18T08:18:27Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -798,5 +798,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 128
+  "n": 129
 }
