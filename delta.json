@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
+        {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
+        {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
+        {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
@@ -787,8 +787,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787154890706-5t8imm",
       "last_ts": "2026-08-19T15:54:47Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
         {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
@@ -889,6 +895,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
+        {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1121,12 +1133,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
@@ -1144,6 +1150,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
+        {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1376,12 +1388,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
@@ -1399,6 +1405,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
+        {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1631,12 +1643,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
@@ -1654,6 +1660,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
+        {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1886,12 +1898,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
@@ -1927,6 +1933,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
+        {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2159,12 +2171,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
@@ -2248,6 +2254,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
+        {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2480,12 +2492,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
@@ -2521,6 +2527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
+        {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2753,12 +2765,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
@@ -2842,6 +2848,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
+        {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3074,12 +3086,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
@@ -3104,11 +3110,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-table-five-axioms-from-the-binary-20260819-613",
-      "last_ts": "2026-08-19T16:06:07Z",
+      "last_id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+      "last_ts": "2026-08-19T16:10:00Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
         {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
@@ -3174,12 +3186,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "ERRATA-546",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:21Z"
         }
       ]
     },
@@ -3188,6 +3194,12 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
         {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
@@ -3421,12 +3433,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
@@ -3507,8 +3513,14 @@
     "GLOSS": {
       "last_id": "gloss-shorthand-has-no-decoder-20260819-01",
       "last_ts": "2026-08-19T15:30:08Z",
-      "n": 32,
+      "n": 33,
       "since": [
+        {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
         {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
@@ -3717,6 +3729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
+        {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3949,12 +3967,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
@@ -4038,6 +4050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
+        {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4270,12 +4288,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
@@ -4359,6 +4371,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
+        {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4591,12 +4609,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
@@ -4614,6 +4626,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
+        {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4846,12 +4864,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
@@ -4935,6 +4947,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
+        {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5167,12 +5185,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
@@ -5253,8 +5265,14 @@
     "MARGIN": {
       "last_id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
       "last_ts": "2026-08-19T15:52:00Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
         {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
@@ -5367,6 +5385,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
+        {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5599,12 +5623,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
@@ -5619,8 +5637,14 @@
     "PLAYER1": {
       "last_id": "p1-errata-599-priors-39-match-20260819-23",
       "last_ts": "2026-08-19T15:47:27Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
         {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
@@ -5766,8 +5790,14 @@
     "PLAYER2": {
       "last_id": "p2-gloss-shared-decoder-20260819-24",
       "last_ts": "2026-08-19T15:56:50Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
         {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
@@ -5862,6 +5892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
+        {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6094,12 +6130,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
@@ -6117,6 +6147,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
+        {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6349,12 +6385,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
@@ -6438,6 +6468,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
+        {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6670,12 +6706,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
@@ -6756,8 +6786,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-vent-go-20260819-03",
       "last_ts": "2026-08-19T15:50:32Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
         {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
@@ -6873,8 +6909,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-066-issue-window-drops-posts",
       "last_ts": "2026-08-19T15:44:05Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
         {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
@@ -7062,8 +7104,14 @@
     "UNSEATED": {
       "last_id": "errata-the-file-runs-the-agent-20260819-608",
       "last_ts": "2026-08-19T15:47:34Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
         {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
@@ -7206,6 +7254,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
+        {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7438,12 +7492,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
@@ -7527,6 +7575,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:10:00Z"
+        },
+        {
           "id": "errata-table-five-axioms-from-the-binary-20260819-613",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7759,12 +7813,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
