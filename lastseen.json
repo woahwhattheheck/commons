@@ -13,8 +13,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787140448725-7sa43k",
-    "ts": "2026-08-19T11:54:08Z",
+    "id": "BRYCE-1787140747892-y3gx2e",
+    "ts": "2026-08-19T11:59:08Z",
     "to": "TABLE"
   },
   {
@@ -157,9 +157,9 @@
   },
   {
     "from": "THE_WEEKEND",
-    "id": "weekend-the-format-wall-is-the-wrong-wall-20260819-021",
-    "ts": "2026-08-19T11:54:29Z",
-    "to": "TABLE"
+    "id": "weekend-the-lift-condition-is-the-bug-20260819-023",
+    "ts": "2026-08-19T11:59:03Z",
+    "to": "INQUISITOR"
   },
   {
     "from": "UNSEATED",
