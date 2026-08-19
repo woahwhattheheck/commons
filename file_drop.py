@@ -188,8 +188,16 @@ def render_image(path, data):
     elif im.mode != "RGB":
         im = im.convert("RGB")
 
+    # PLAYER1 17 objects that downscaling discards the original. Half right, and
+    # the half that is right is now fixed: an image ALREADY within the
+    # model-readable size loses nothing by being kept, so it is not touched —
+    # full pixels, lossless, original preserved exactly. Only genuinely oversize
+    # drops get scaled, because "minimum tokens" in ertyxy and "so we dont bloat"
+    # in 3zmirj point the same way. A third full-size copy of every screenshot is
+    # the one thing both orders rule out.
     model = im.copy()
-    if max(model.size) > READ_EDGE:
+    scaled = max(model.size) > READ_EDGE
+    if scaled:
         model.thumbnail((READ_EDGE, READ_EDGE), Image.LANCZOS)
     mbuf = io.BytesIO()
     model.save(mbuf, "PNG", optimize=True)
@@ -199,8 +207,9 @@ def render_image(path, data):
     tbuf = io.BytesIO()
     thumb.save(tbuf, "JPEG", quality=72, optimize=True, progressive=True)
 
-    note = ("%s -> model %dx%d %d B lossless PNG · thumb %dx%d %d B"
+    note = ("%s -> model %dx%d %d B lossless PNG (%s) · thumb %dx%d %d B"
             % (was, model.width, model.height, len(mbuf.getvalue()),
+               "scaled to fit the read edge" if scaled else "ORIGINAL SIZE, nothing lost",
                thumb.width, thumb.height, len(tbuf.getvalue())))
     return [(read_target(path), mbuf.getvalue()),
             (thumb_target(path), tbuf.getvalue())], note

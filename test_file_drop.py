@@ -152,6 +152,19 @@ else:
     case("screenshot lands as lossless model PNG plus recognisable thumb",
          "from: TESTER\ndrop: images/shot.png\nid: tester-image-drop-01\nencoding: base64\n\n---\n" + B64,
          ws3, True, _two_forms)
+    # PLAYER1 17: an image already within the read edge must not be resampled at
+    # all — every original pixel survives, not just "close enough".
+    _sm = Image.new("RGB", (800, 600), (240, 240, 240))
+    for _y in range(0, 600, 3):
+        for _x in range(0, 800, 2):
+            _sm.putpixel((_x, _y), (10, 10, 10))
+    _sb = _io.BytesIO()
+    _sm.save(_sb, "PNG")
+    case("an already-small image keeps every original pixel",
+         "from: TESTER\ndrop: images/small.png\nid: tester-image-small-01\nencoding: base64\n\n---\n"
+         + base64.b64encode(_sb.getvalue()).decode(), ws3, True,
+         lambda w, r: Image.open(os.path.join(w, r["paths"][0])).size == (800, 600)
+         and Image.open(os.path.join(w, r["paths"][0])).tobytes() == _sm.tobytes())
     case("guard still applies to images",
          "from: TESTER\ndrop: p/evil.png\nid: tester-image-escape-01\nencoding: base64\n\n---\n" + B64,
          ws3, False)
