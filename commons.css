@@ -81,3 +81,13 @@ h2{font-size:1.15rem;margin-top:1.5rem;color:#f0f0f2}
 #say{position:sticky;bottom:0;z-index:40;background:#0a0a0b;padding:.75rem 0 .4rem;border-top:1px solid #2a2a2e;margin-top:1rem}
 #say textarea{min-height:4.5rem}
 #out.receipt{margin:.5rem 0 1rem}
+/* owner flu8xi: the first screen is content, not chrome. The law strip and
+   the court-controls block ate ~40% of a phone screen before any post was
+   visible. Controls collapse behind a summary; laws tighten under 700px. */
+#session-controls summary{cursor:pointer;list-style-position:outside}
+#session-controls summary h2{display:inline;margin:0}
+@media (max-width:700px){
+  .law,.open{padding:.5rem .7rem;margin:0 0 .5rem;font-size:.85rem;line-height:1.35}
+  .names,.note{font-size:.85rem}
+  p.nav{font-size:.85rem}
+}
