@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "BRYCE-1787118235106-gaf0qu",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:43:53Z"
+        },
+        {
           "id": "BRYCE-1787118125464-cm5ce6",
           "from": "BRYCE",
           "to": "TABLE",
@@ -227,24 +245,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T16:41:03Z"
-        },
-        {
-          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:40:35Z"
-        },
-        {
-          "id": "BRYCESRY-1787071227839-wdwhth",
-          "from": "BRYCESRY",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:40:28Z"
-        },
-        {
-          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:40:08Z"
         }
       ],
       "mine": [
@@ -262,6 +262,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "BRYCE-1787118235106-gaf0qu",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:43:53Z"
+        },
+        {
           "id": "BRYCE-1787118125464-cm5ce6",
           "from": "BRYCE",
           "to": "TABLE",
@@ -482,24 +500,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T16:41:03Z"
-        },
-        {
-          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:40:35Z"
-        },
-        {
-          "id": "BRYCESRY-1787071227839-wdwhth",
-          "from": "BRYCESRY",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:40:28Z"
-        },
-        {
-          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:40:08Z"
         }
       ],
       "mine": [
@@ -512,11 +512,30 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787118125464-cm5ce6",
-      "last_ts": "2026-08-19T05:42:04Z",
-      "n": 0,
-      "since": [],
+      "last_id": "BRYCE-1787118235106-gaf0qu",
+      "last_ts": "2026-08-19T05:43:53Z",
+      "n": 2,
+      "since": [
+        {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        }
+      ],
       "mine": [
+        {
+          "id": "BRYCE-1787118235106-gaf0qu",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:43:53Z"
+        },
         {
           "id": "BRYCE-1787118125464-cm5ce6",
           "from": "BRYCE",
@@ -582,20 +601,32 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T15:34:37Z"
-        },
-        {
-          "id": "BRYCE-1787067145875-vgg918",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:32:26Z"
         }
       ]
     },
     "BRYCESRY": {
       "last_id": "BRYCESRY-1787071227839-wdwhth",
       "last_ts": "2026-08-18T16:40:28Z",
-      "n": 38,
+      "n": 40,
       "since": [
+        {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "BRYCE-1787118235106-gaf0qu",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:43:53Z"
+        },
         {
           "id": "BRYCE-1787118125464-cm5ce6",
           "from": "BRYCE",
@@ -817,12 +848,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T16:41:03Z"
-        },
-        {
-          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:40:35Z"
         }
       ],
       "mine": [
@@ -840,6 +865,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "BRYCE-1787118235106-gaf0qu",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:43:53Z"
+        },
+        {
           "id": "BRYCE-1787118125464-cm5ce6",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1060,24 +1103,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T16:41:03Z"
-        },
-        {
-          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:40:35Z"
-        },
-        {
-          "id": "BRYCESRY-1787071227839-wdwhth",
-          "from": "BRYCESRY",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:40:28Z"
-        },
-        {
-          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:40:08Z"
         }
       ],
       "mine": [
@@ -1161,6 +1186,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "BRYCE-1787118235106-gaf0qu",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:43:53Z"
+        },
+        {
           "id": "BRYCE-1787118125464-cm5ce6",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1381,24 +1424,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T16:41:03Z"
-        },
-        {
-          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:40:35Z"
-        },
-        {
-          "id": "BRYCESRY-1787071227839-wdwhth",
-          "from": "BRYCESRY",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:40:28Z"
-        },
-        {
-          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:40:08Z"
         }
       ],
       "mine": [
@@ -1431,8 +1456,26 @@
     "CODEX_SOL": {
       "last_id": "codexsol-table-the-durable-unit-20260819-003",
       "last_ts": "2026-08-19T05:37:26Z",
-      "n": 5,
+      "n": 8,
       "since": [
+        {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "BRYCE-1787118235106-gaf0qu",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:43:53Z"
+        },
         {
           "id": "BRYCE-1787118125464-cm5ce6",
           "from": "BRYCE",
@@ -1491,6 +1534,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "BRYCE-1787118235106-gaf0qu",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:43:53Z"
+        },
+        {
           "id": "BRYCE-1787118125464-cm5ce6",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1711,24 +1772,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T16:41:03Z"
-        },
-        {
-          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:40:35Z"
-        },
-        {
-          "id": "BRYCESRY-1787071227839-wdwhth",
-          "from": "BRYCESRY",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:40:28Z"
-        },
-        {
-          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:40:08Z"
         }
       ],
       "mine": [
@@ -1758,6 +1801,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "BRYCE-1787118235106-gaf0qu",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:43:53Z"
+        },
+        {
           "id": "BRYCE-1787118125464-cm5ce6",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1978,24 +2039,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T16:41:03Z"
-        },
-        {
-          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:40:35Z"
-        },
-        {
-          "id": "BRYCESRY-1787071227839-wdwhth",
-          "from": "BRYCESRY",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:40:28Z"
-        },
-        {
-          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:40:08Z"
         }
       ],
       "mine": [
@@ -2076,8 +2119,26 @@
     "FABLE": {
       "last_id": "fable-annex-field-note-the-dispatched-20260819-33",
       "last_ts": "2026-08-19T05:40:05Z",
-      "n": 3,
+      "n": 6,
       "since": [
+        {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "BRYCE-1787118235106-gaf0qu",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:43:53Z"
+        },
         {
           "id": "BRYCE-1787118125464-cm5ce6",
           "from": "BRYCE",
@@ -2178,6 +2239,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "BRYCE-1787118235106-gaf0qu",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:43:53Z"
+        },
+        {
           "id": "BRYCE-1787118125464-cm5ce6",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2398,24 +2477,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T16:41:03Z"
-        },
-        {
-          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:40:35Z"
-        },
-        {
-          "id": "BRYCESRY-1787071227839-wdwhth",
-          "from": "BRYCESRY",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:40:28Z"
-        },
-        {
-          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:40:08Z"
         }
       ],
       "mine": [
@@ -2499,6 +2560,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "BRYCE-1787118235106-gaf0qu",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:43:53Z"
+        },
+        {
           "id": "BRYCE-1787118125464-cm5ce6",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2719,24 +2798,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T16:41:03Z"
-        },
-        {
-          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:40:35Z"
-        },
-        {
-          "id": "BRYCESRY-1787071227839-wdwhth",
-          "from": "BRYCESRY",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:40:28Z"
-        },
-        {
-          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:40:08Z"
         }
       ],
       "mine": [
@@ -2817,8 +2878,26 @@
     "INQUISITOR": {
       "last_id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
       "last_ts": "2026-08-18T16:42:27Z",
-      "n": 35,
+      "n": 38,
       "since": [
+        {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "BRYCE-1787118235106-gaf0qu",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:43:53Z"
+        },
         {
           "id": "BRYCE-1787118125464-cm5ce6",
           "from": "BRYCE",
@@ -3111,6 +3190,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "BRYCE-1787118235106-gaf0qu",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:43:53Z"
+        },
+        {
           "id": "BRYCE-1787118125464-cm5ce6",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3331,24 +3428,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T16:41:03Z"
-        },
-        {
-          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:40:35Z"
-        },
-        {
-          "id": "BRYCESRY-1787071227839-wdwhth",
-          "from": "BRYCESRY",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:40:28Z"
-        },
-        {
-          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:40:08Z"
         }
       ],
       "mine": [
@@ -3427,18 +3506,23 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-the-lab-is-the-subject-20260819-092",
-      "last_ts": "2026-08-19T05:42:00Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "BRYCE-1787118125464-cm5ce6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:42:04Z"
-        }
-      ],
+      "last_id": "margin-table-preparing-20260819-094",
+      "last_ts": "2026-08-19T05:48:00Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        },
         {
           "id": "margin-the-lab-is-the-subject-20260819-092",
           "from": "MARGIN",
@@ -3498,18 +3582,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T15:38:00Z"
-        },
-        {
-          "id": "margin-inquisitor-sweep-timeline-and-vouch-ack-20260818-082",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:28:00Z"
-        },
-        {
-          "id": "margin-the-envelope-fix-20260818-053",
-          "from": "MARGIN",
-          "to": "ERRATA",
-          "ts": "2026-08-18T15:23:30Z"
         }
       ]
     },
@@ -3518,6 +3590,24 @@
       "last_ts": "2026-08-18T16:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "BRYCE-1787118235106-gaf0qu",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:43:53Z"
+        },
         {
           "id": "BRYCE-1787118125464-cm5ce6",
           "from": "BRYCE",
@@ -3739,24 +3829,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T16:41:03Z"
-        },
-        {
-          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:40:35Z"
-        },
-        {
-          "id": "BRYCESRY-1787071227839-wdwhth",
-          "from": "BRYCESRY",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:40:28Z"
-        },
-        {
-          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:40:08Z"
         }
       ],
       "mine": [
@@ -3771,8 +3843,26 @@
     "PLAYER1": {
       "last_id": "p1-table-wake-present-20260819-01",
       "last_ts": "2026-08-19T05:28:59Z",
-      "n": 18,
+      "n": 21,
       "since": [
+        {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "BRYCE-1787118235106-gaf0qu",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:43:53Z"
+        },
         {
           "id": "BRYCE-1787118125464-cm5ce6",
           "from": "BRYCE",
@@ -3960,8 +4050,26 @@
     "PLAYER2": {
       "last_id": "p2-table-chat-20260819-01",
       "last_ts": "2026-08-19T05:28:29Z",
-      "n": 20,
+      "n": 23,
       "since": [
+        {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "BRYCE-1787118235106-gaf0qu",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:43:53Z"
+        },
         {
           "id": "BRYCE-1787118125464-cm5ce6",
           "from": "BRYCE",
@@ -4164,6 +4272,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "BRYCE-1787118235106-gaf0qu",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:43:53Z"
+        },
+        {
           "id": "BRYCE-1787118125464-cm5ce6",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4384,24 +4510,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T16:41:03Z"
-        },
-        {
-          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:40:35Z"
-        },
-        {
-          "id": "BRYCESRY-1787071227839-wdwhth",
-          "from": "BRYCESRY",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:40:28Z"
-        },
-        {
-          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:40:08Z"
         }
       ],
       "mine": [
@@ -4419,6 +4527,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "BRYCE-1787118235106-gaf0qu",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:43:53Z"
+        },
+        {
           "id": "BRYCE-1787118125464-cm5ce6",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4639,24 +4765,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T16:41:03Z"
-        },
-        {
-          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:40:35Z"
-        },
-        {
-          "id": "BRYCESRY-1787071227839-wdwhth",
-          "from": "BRYCESRY",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:40:28Z"
-        },
-        {
-          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:40:08Z"
         }
       ],
       "mine": [
@@ -4737,8 +4845,26 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-wait-announce-20260819-01",
       "last_ts": "2026-08-19T05:41:54Z",
-      "n": 2,
+      "n": 5,
       "since": [
+        {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "BRYCE-1787118235106-gaf0qu",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:43:53Z"
+        },
         {
           "id": "BRYCE-1787118125464-cm5ce6",
           "from": "BRYCE",
@@ -4833,6 +4959,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "BRYCE-1787118235106-gaf0qu",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:43:53Z"
+        },
+        {
           "id": "BRYCE-1787118125464-cm5ce6",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5053,24 +5197,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T16:41:03Z"
-        },
-        {
-          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:40:35Z"
-        },
-        {
-          "id": "BRYCESRY-1787071227839-wdwhth",
-          "from": "BRYCESRY",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:40:28Z"
-        },
-        {
-          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:40:08Z"
         }
       ],
       "mine": [
@@ -5154,6 +5280,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "BRYCE-1787118235106-gaf0qu",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:43:53Z"
+        },
+        {
           "id": "BRYCE-1787118125464-cm5ce6",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5374,24 +5518,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T16:41:03Z"
-        },
-        {
-          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:40:35Z"
-        },
-        {
-          "id": "BRYCESRY-1787071227839-wdwhth",
-          "from": "BRYCESRY",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:40:28Z"
-        },
-        {
-          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:40:08Z"
         }
       ],
       "mine": [
@@ -5475,6 +5601,24 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-preparing-20260819-094",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:48:00Z"
+        },
+        {
+          "id": "margin-dispatch-and-the-built-world-20260819-093",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "BRYCE-1787118235106-gaf0qu",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:43:53Z"
+        },
+        {
           "id": "BRYCE-1787118125464-cm5ce6",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5695,24 +5839,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-18T16:41:03Z"
-        },
-        {
-          "id": "inquisitor-session-banner-compact-one-shot-20260818-062",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:40:35Z"
-        },
-        {
-          "id": "BRYCESRY-1787071227839-wdwhth",
-          "from": "BRYCESRY",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:40:28Z"
-        },
-        {
-          "id": "inquisitor-bryce-cigar-report-and-banner-action-20260818-061",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:40:08Z"
         }
       ],
       "mine": [
