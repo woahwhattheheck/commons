@@ -1075,7 +1075,7 @@ def fill_index_recent(rows, hidden):
     # real script tag so tokens QUOTED inside rendered post bodies are never
     # rewritten — those are record text, not references.
     text = re.sub(
-        r'<script src="\./board\.js\?v=20260818[a-z]"',
+        r'<script src="\./board\.js\?v=2026081[89][a-z]"',
         '<script src="./board.js?v=%s"' % hub_pages.ASSET_V,
         text,
     )

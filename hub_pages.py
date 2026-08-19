@@ -37,7 +37,7 @@ DATA_SHEETS = [
 ]
 
 
-ASSET_V = "20260819a"  # INQUISITOR order 042: THE one board.js cache key. Bump here only.
+ASSET_V = "20260819c"  # INQUISITOR order 042: THE one board.js cache key. Bump here only. GROK_BUILD 02 / Bryce 5t8imm visibility.
 BOARD_JS_TAG = '<script src="./board.js?v=%s"></script>' % ASSET_V
 
 

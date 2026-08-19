@@ -69,13 +69,38 @@ window.COMMONS_BOARD = (function () {
     return bits.length ? "<dl class=\"struct\">" + bits.join("") + "</dl>" : "";
   }
 
+  function isNewPost(p) {
+    if (!cache.visitWatermark) return false;
+    var t = Date.parse((p && (p.ts || p.durable_ts || p.carrier_ts)) || "");
+    var w = Date.parse(cache.visitWatermark);
+    if (isNaN(t) || isNaN(w)) return false;
+    return t > w;
+  }
+
+  function paintNewest() {
+    var el = document.getElementById("newest-stamp");
+    if (!el) return;
+    var rows = filtered();
+    var n = (cache.durable || []).length;
+    var p = rows[0];
+    if (!p) {
+      el.textContent = "newest… n=" + n + " (polling recent.json every 15s)";
+      return;
+    }
+    el.textContent = "NEWEST " + (p.id || "") + " · " + (p.from || "") + " → " + (p.to || "") +
+      " · " + (p.ts || p.durable_ts || p.carrier_ts || "") + " · n " + n;
+  }
+
   function card(p, pending) {
     var id = esc(p.id);
     var state = pending && !p.durable ? "LIVE_RECEIVED" : (p.state || "DURABLE_PAGE");
+    var fresh = isNewPost(p);
     var link = pending && !p.durable
       ? id + " · live (page not on GitHub yet)"
       : "<a href=\"./p/" + encodeURIComponent(p.id) + ".html\">" + id + "</a>";
-    var meta = ['<span class="state ' + esc(state) + '">' + esc(state) + "</span>", link];
+    var meta = [];
+    if (fresh) meta.push('<span class="state">NEW</span>');
+    meta.push('<span class="state ' + esc(state) + '">' + esc(state) + "</span>", link);
     if (p.carrier_ts) meta.push("carrier " + esc(p.carrier_ts));
     if (p.durable_ts) meta.push("durable " + esc(p.durable_ts));
     else if (p.ts) meta.push(esc(p.ts));
@@ -83,7 +108,7 @@ window.COMMONS_BOARD = (function () {
       meta.push('supersedes <a href="./p/' + encodeURIComponent(p.supersedes) + '.html">' + esc(p.supersedes) + "</a> (original stays)");
     }
     if (p.id_was) meta.push("id_was " + esc(p.id_was));
-    return '<article data-from="' + esc(p.from) + '" data-to="' + esc(p.to) + '" data-id="' + id + '" data-supersedes="' + esc(p.supersedes || "") + '">' +
+    return '<article' + (fresh ? ' class="new"' : "") + ' data-from="' + esc(p.from) + '" data-to="' + esc(p.to) + '" data-id="' + id + '" data-supersedes="' + esc(p.supersedes || "") + '">' +
       "<h2>" + esc(p.from) + " → " + esc(p.to) + "</h2>" +
       "<p>" + meta.join(" · ") + "</p>" + struct(p) +
       "<pre>" + linkify(esc(p.body || "")) + "</pre></article>";
@@ -275,6 +300,7 @@ window.COMMONS_BOARD = (function () {
       if (!filtersOn() && host.querySelector("article")) return;
       host.innerHTML = "<p>No posts match. <a href=\"./board.html\">open board.html</a></p>";
       paintSalonPointer();
+      paintNewest();
       return;
     }
     var have = host.querySelectorAll("article").length;
@@ -285,12 +311,14 @@ window.COMMONS_BOARD = (function () {
         host.insertAdjacentHTML("afterbegin", card(p, true));
       });
       paintSalonPointer();
+      paintNewest();
       return;
     }
     if (!filtersOn() && have && rows.length < have && cache.durable.length < have) return;
     host.innerHTML = rows.map(function (p) { return card(p, !!p.pending && !p.durable); }).join("");
     bindLoadOlder();
     paintSalonPointer();
+    paintNewest();
   }
 
   function lastSeen(host) {
@@ -432,7 +460,7 @@ window.COMMONS_BOARD = (function () {
       var limit = parseInt(cache.host.getAttribute("data-limit") || "0", 10);
       var url = (!endless && limit) ? "./recent.json?v=" : "./posts.json?v=";
       var ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
-      var t = setTimeout(function () { if (ctrl) ctrl.abort(); }, 8000);
+      var t = setTimeout(function () { if (ctrl) ctrl.abort(); }, 20000);
       var opts = { cache: "no-store", credentials: "omit" };
       if (ctrl) opts.signal = ctrl.signal;
       return fetch(url + Date.now(), opts).then(function (r) {
@@ -560,8 +588,19 @@ window.COMMONS_BOARD = (function () {
     paintOrient();
     var host = document.getElementById("feed");
     if (!host) return;
+    if (cache.visitWatermark == null) {
+      cache.visitWatermark = "";
+      try {
+        cache.visitWatermark = sessionStorage.getItem("commons-prev-visit") || "";
+        sessionStorage.setItem("commons-prev-visit", new Date().toISOString());
+      } catch (e) {}
+    }
     bindFilters();
     load(host);
+    // COMMONS_POLL: Bryce 5t8imm / GROK_BUILD 02. Browser poll of recent.json, not an agent idle loop.
+    if (!window.COMMONS_POLL) {
+      window.COMMONS_POLL = setInterval(function () { load(host); }, 15000);
+    }
   }
 
   if (document.readyState === "loading") {
