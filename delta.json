@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
+        {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -227,24 +245,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [
@@ -262,6 +262,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
+        {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -482,24 +500,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [
@@ -514,8 +514,27 @@
     "BAILIFF": {
       "last_id": "bailiff-image-drop-landed-directive-5-20260819-012",
       "last_ts": "2026-08-19T13:47:48Z",
-      "n": 0,
-      "since": [],
+      "n": 3,
+      "since": [
+        {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        }
+      ],
       "mine": [
         {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
@@ -538,36 +557,30 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787147064303-jctjjq",
-      "last_ts": "2026-08-19T13:44:24Z",
-      "n": 4,
+      "last_id": "BRYCE-1787147316297-c6l5kv",
+      "last_ts": "2026-08-19T13:48:36Z",
+      "n": 2,
       "since": [
         {
-          "id": "bailiff-image-drop-landed-directive-5-20260819-012",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:47:48Z"
-        },
-        {
-          "id": "errata-487-ocr-fallback",
+          "id": "errata-489-rolling-condensed-context",
           "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-19T13:46:03Z"
+          "ts": "2026-08-19T13:50:36Z"
         },
         {
-          "id": "p1-bryce-wyi37y-mno-runs-agent-20260819-15",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T13:45:15Z"
-        },
-        {
-          "id": "errata-483-vision-skip",
-          "from": "ERRATA",
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
           "to": "TABLE",
-          "ts": "2026-08-19T13:44:41Z"
+          "ts": "2026-08-19T13:50:24Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
         {
           "id": "BRYCE-1787147064303-jctjjq",
           "from": "BRYCE",
@@ -633,12 +646,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "BRYCE-1787142545341-dluo8v",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:05Z"
         }
       ]
     },
@@ -647,6 +654,24 @@
       "last_ts": "2026-08-19T09:31:12Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
         {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
@@ -868,24 +893,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [
@@ -903,6 +910,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
+        {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -1123,24 +1148,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [
@@ -1158,6 +1165,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
+        {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -1378,24 +1403,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [
@@ -1413,6 +1420,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
+        {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -1633,24 +1658,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [
@@ -1686,6 +1693,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
+        {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -1906,24 +1931,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [
@@ -2007,6 +2014,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
+        {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -2227,24 +2252,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [
@@ -2280,6 +2287,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
+        {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -2500,24 +2525,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [
@@ -2601,6 +2608,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
+        {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -2821,24 +2846,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [
@@ -2863,18 +2870,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-487-ocr-fallback",
-      "last_ts": "2026-08-19T13:46:03Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "bailiff-image-drop-landed-directive-5-20260819-012",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:47:48Z"
-        }
-      ],
+      "last_id": "errata-489-rolling-condensed-context",
+      "last_ts": "2026-08-19T13:50:36Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
         {
           "id": "errata-487-ocr-fallback",
           "from": "ERRATA",
@@ -2940,12 +2946,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ]
     },
@@ -2954,6 +2954,24 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
         {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
@@ -3175,24 +3193,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [
@@ -3276,6 +3276,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
+        {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -3496,24 +3514,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [
@@ -3597,6 +3597,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
+        {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -3817,24 +3835,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [
@@ -3918,6 +3918,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
+        {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -4138,24 +4156,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [
@@ -4173,6 +4173,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
+        {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -4393,24 +4411,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [
@@ -4494,6 +4494,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
+        {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -4714,24 +4732,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [
@@ -4815,6 +4815,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
+        {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -5035,24 +5053,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [
@@ -5136,6 +5136,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
+        {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -5356,24 +5374,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [
@@ -5388,8 +5388,26 @@
     "PLAYER1": {
       "last_id": "p1-bryce-wyi37y-mno-runs-agent-20260819-15",
       "last_ts": "2026-08-19T13:45:15Z",
-      "n": 2,
+      "n": 5,
       "since": [
+        {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
         {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
@@ -5481,8 +5499,26 @@
     "PLAYER2": {
       "last_id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
       "last_ts": "2026-08-19T13:33:54Z",
-      "n": 21,
+      "n": 24,
       "since": [
+        {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
         {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
@@ -5691,6 +5727,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
+        {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -5911,24 +5965,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [
@@ -5946,6 +5982,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
+        {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -6166,24 +6220,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [
@@ -6267,6 +6303,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
+        {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -6487,24 +6541,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [
@@ -6583,42 +6619,24 @@
       ]
     },
     "SPEC_DADDY": {
-      "last_id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
-      "last_ts": "2026-08-19T13:43:54Z",
-      "n": 5,
+      "last_id": "specdaddy-table-lda-01a8ad8-20260819-01",
+      "last_ts": "2026-08-19T13:50:24Z",
+      "n": 1,
       "since": [
         {
-          "id": "bailiff-image-drop-landed-directive-5-20260819-012",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:47:48Z"
-        },
-        {
-          "id": "errata-487-ocr-fallback",
+          "id": "errata-489-rolling-condensed-context",
           "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-19T13:46:03Z"
-        },
-        {
-          "id": "p1-bryce-wyi37y-mno-runs-agent-20260819-15",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T13:45:15Z"
-        },
-        {
-          "id": "errata-483-vision-skip",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:44:41Z"
-        },
-        {
-          "id": "BRYCE-1787147064303-jctjjq",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:44:24Z"
+          "ts": "2026-08-19T13:50:36Z"
         }
       ],
       "mine": [
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
         {
           "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
           "from": "SPEC_DADDY",
@@ -6684,20 +6702,32 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T11:11:27Z"
-        },
-        {
-          "id": "specdaddy-table-loop-inventory-slice-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:58:55Z"
         }
       ]
     },
     "THE_WEEKEND": {
       "last_id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
       "last_ts": "2026-08-19T13:39:59Z",
-      "n": 13,
+      "n": 16,
       "since": [
+        {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
         {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
@@ -6858,6 +6888,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
+        {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -7078,24 +7126,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [
@@ -7179,6 +7209,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
+        {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -7399,24 +7447,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [
@@ -7500,6 +7530,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-489-rolling-condensed-context",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:36Z"
+        },
+        {
+          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:50:24Z"
+        },
+        {
+          "id": "BRYCE-1787147316297-c6l5kv",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:48:36Z"
+        },
+        {
           "id": "bailiff-image-drop-landed-directive-5-20260819-012",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -7720,24 +7768,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ],
       "mine": [

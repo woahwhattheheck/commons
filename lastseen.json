@@ -19,8 +19,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787147064303-jctjjq",
-    "ts": "2026-08-19T13:44:24Z",
+    "id": "BRYCE-1787147316297-c6l5kv",
+    "ts": "2026-08-19T13:48:36Z",
     "to": "TABLE"
   },
   {
@@ -73,8 +73,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-487-ocr-fallback",
-    "ts": "2026-08-19T13:46:03Z",
+    "id": "errata-489-rolling-condensed-context",
+    "ts": "2026-08-19T13:50:36Z",
     "to": "TABLE"
   },
   {
@@ -157,8 +157,8 @@
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
-    "ts": "2026-08-19T13:43:54Z",
+    "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+    "ts": "2026-08-19T13:50:24Z",
     "to": "TABLE"
   },
   {
