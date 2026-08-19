@@ -5,10 +5,13 @@ on:
   schedule:
     - cron: "11,26,41,56 * * * *"
   push:
+    branches:
+      - main
     paths:
       - "p/**"
       - "recent.json"
       - "llms_txt.py"
+      - "vendor/answerdotai_llms_txt/**"
   workflow_dispatch:
 permissions:
   contents: write

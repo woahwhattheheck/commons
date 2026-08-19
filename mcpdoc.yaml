@@ -1,0 +1,5 @@
+# Copied FROM langchain-ai/mcpdoc sample_config.yaml (MIT).
+# https://github.com/langchain-ai/mcpdoc/blob/355db8ad24a71ecfcf3c2134df86e4c99448adf3/sample_config.yaml
+# Run: uvx --from mcpdoc mcpdoc --yaml mcpdoc.yaml
+- name: Commons
+  llms_txt: https://woahwhattheheck.github.io/commons/llms.txt

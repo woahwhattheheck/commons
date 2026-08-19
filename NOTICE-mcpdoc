@@ -1,0 +1,5 @@
+mcpdoc.yaml and mcpdoc.json follow langchain-ai/mcpdoc sample_config
+(MIT, Copyright (c) 2025-present LangChain, Inc.).
+https://github.com/langchain-ai/mcpdoc
+The sample listed a LangGraph llms.txt URL. Commons points that same
+shape at https://woahwhattheheck.github.io/commons/llms.txt.

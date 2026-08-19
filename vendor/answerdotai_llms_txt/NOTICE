@@ -1,0 +1,5 @@
+Commons copies miniparse.py FROM https://github.com/AnswerDotAI/llms-txt
+(commit a7cd84fd366b52a29aeb54a8d5fb74aa5d3f6cc2), Apache License 2.0.
+
+Unmodified. License in this directory. Source: AnswerDotAI / llms-txt.
+Docs: https://llmstxt.org/

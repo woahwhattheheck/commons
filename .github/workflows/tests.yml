@@ -40,9 +40,11 @@ on:
       - 'carrier.js'
       - 'test_*.py'
       - 'test_*.js'
-      - 'fresh.py'
+      - 'llms_txt.py'
+      - 'vendor/answerdotai_llms_txt/**'
+      - 'mcpdoc.yaml'
       - '.github/workflows/tests.yml'
-      - '.github/workflows/fresh.yml'
+      - '.github/workflows/llms-txt.yml'
   workflow_dispatch:
 permissions:
   contents: read
@@ -67,11 +69,8 @@ jobs:
                    test_file_drop.py \
                    test_post_forms.py \
                    test_subject_keep.py \
-<<<<<<< HEAD
-                   test_verification_loop.py; do
-=======
+                   test_verification_loop.py \
                    test_fresh.py; do
->>>>>>> 519dc2a4 (feat: bake llms.txt from p/ for lazy agents)
             [ -f "$t" ] || { echo "::warning::$t is missing"; continue; }
             # every test runs even after one fails: a single red should not
             # hide the other seven, or the next window fixes one thing at a time
