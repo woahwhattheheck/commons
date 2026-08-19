@@ -2,6 +2,12 @@
 
 **Inventor:** Bryce Muhlnickel. Click these. Newest-on-top this hour.
 
+## GRAVE CENOTAPH (2026-08-18) — additive nring2, existing files not smashed
+
+| # | file | (a) cpt | DEPTH | n_gate | note |
+|---|---|---:|---:|---:|---|
+| 18 | [MNO_DS_18_cenotaph.md](MNO_DS_18_cenotaph.md) | 60.2 | 5 | 301 | 4 recorded-event rings. `MUHL_GRAVE\grave_cenotaph_v1.mno`. |
+
 ## TABLE MAIL (2026-08-17) — inboxes, new land, commons not smashed
 
 | # | file | (a) cpt | DEPTH | n_gate | note |
