@@ -125,13 +125,72 @@ def write(path, data):
         f.write(data)
 
 
+IMAGE_EXT = (".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp", ".tif", ".tiff")
+MAX_EDGE = 1280        # a phone screenshot stays readable; a 4 MB PNG does not belong
+THUMB_TARGET = 400 * 1024
+
+
+def shrink(path, data):
+    """Directive 5, BRYCE-1787128956503-3zmirj: "its a repo why cant i drop images
+    im a screenshotter and i own the thing no reason i cant put pics in but like
+    compress it into something the models can read and just store a thumbnail so
+    we dont bloat."
+
+    Both halves of that sentence matter and they pull against each other. Store
+    ONLY the reduced image, never the original, or the corpus bloats. But keep it
+    legible — he drops SCREENSHOTS, and a screenshot whose text has been blurred
+    away is not "something the models can read", it is a smear. So cap the long
+    edge at 1280 and step quality down only if the result is still fat.
+
+    Returns (data, note). If Pillow is missing the original is stored unchanged
+    and the receipt says so: a drop that lands honestly beats a drop that fails.
+    """
+    if not path.lower().endswith(IMAGE_EXT):
+        return data, None
+    try:
+        import io
+        from PIL import Image
+    except ImportError:
+        return data, "stored as-is: Pillow unavailable in this runner, not resized"
+    try:
+        im = Image.open(io.BytesIO(data))
+        im.load()
+    except Exception as e:
+        return data, "stored as-is: not a decodable image (%s)" % e
+    was = "%dx%d %d B" % (im.width, im.height, len(data))
+    if im.mode in ("RGBA", "LA", "P"):
+        bg = Image.new("RGB", im.size, (255, 255, 255))
+        im = im.convert("RGBA")
+        bg.paste(im, mask=im.split()[-1])
+        im = bg
+    elif im.mode != "RGB":
+        im = im.convert("RGB")
+    if max(im.size) > MAX_EDGE:
+        im.thumbnail((MAX_EDGE, MAX_EDGE), Image.LANCZOS)
+    out = data
+    for quality in (78, 65, 55):
+        buf = io.BytesIO()
+        im.save(buf, "JPEG", quality=quality, optimize=True, progressive=True)
+        out = buf.getvalue()
+        if len(out) <= THUMB_TARGET:
+            break
+    return out, "resized %s -> %dx%d %d B" % (was, im.width, im.height, len(out))
+
+
+def image_target(path):
+    """An image always lands as .jpg, because a JPEG is what got stored."""
+    if path.lower().endswith(IMAGE_EXT) and not path.lower().endswith((".jpg", ".jpeg")):
+        return re.sub(r"\.[A-Za-z0-9]+$", ".jpg", path)
+    return path
+
+
 def main():
     body = os.environ.get("ISSUE_BODY", "")
     head, content = parse(body)
     if content is None:
         reject("no --- separator: headers above it, content below it")
 
-    path = head.get("drop", "")
+    path = image_target(head.get("drop", ""))
     did = head.get("id", "")
     if not ID_OK.match(did):
         reject("id must be 8-80 chars of letters, digits, dot, dash, underscore")
@@ -164,17 +223,20 @@ def main():
             return
         blob = b"".join(open(os.path.join(stage, "%04d" % i), "rb").read()
                         for i in range(1, total + 1))
+        # shrink only once the whole image exists — a partial JPEG is not an image
+        blob, note = shrink(path, blob)
         check_path(path)  # re-check: main may have moved since the first part
         write(path, blob)
         subprocess.run(["rm", "-rf", stage], check=False)
         data = blob
     else:
+        data, note = shrink(path, data)
         check_path(path)
         write(path, data)
 
-    print("DROP_OK: %s %d bytes" % (path, len(data)))
+    print("DROP_OK: %s %d bytes%s" % (path, len(data), (" · " + note) if note else ""))
     json.dump({"ok": True, "path": path, "bytes": len(data), "id": did,
-               "from": head.get("from", "")}, open(".drop_receipt", "w"))
+               "from": head.get("from", ""), "note": note}, open(".drop_receipt", "w"))
 
 
 if __name__ == "__main__":

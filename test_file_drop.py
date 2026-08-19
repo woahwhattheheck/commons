@@ -94,7 +94,53 @@ case("re-drop of a landed path refuses",
 case("malformed part", P % ("2 of 5", "x"), ws2, False)
 case("part cannot escape", "from: T\nid: tester-escape-01\ndrop: p/x.md\npart: 1/1\n\n---\nx", ws2, False)
 
+print("IMAGES")
+ws3 = tempfile.mkdtemp()
+os.makedirs(os.path.join(ws3, "p"))
+try:
+    import io as _io
+    from PIL import Image
+except ImportError:
+    print("  SKIP  Pillow not installed; image path falls back to store-as-is by design")
+else:
+    # a stand-in screenshot: big, and full of text-like high-frequency detail, so
+    # a resize that destroys legibility shows up as a suspiciously tiny file
+    _im = Image.new("RGB", (3000, 2000), (250, 250, 250))
+    _px = _im.load()
+    for _y in range(0, 2000, 3):
+        for _x in range(0, 3000, 2):
+            _px[_x, _y] = (20, 20, 20)
+    _buf = _io.BytesIO()
+    _im.save(_buf, "PNG")
+    RAW = _buf.getvalue()
+    B64 = base64.b64encode(RAW).decode()
+    IH = "from: TESTER\ndrop: %s\nid: %s\nencoding: base64\n\n---\n" + ""
+
+    def _shrank(w, r):
+        p = os.path.join(w, r.get("path", ""))
+        if not os.path.exists(p):
+            return False
+        got = Image.open(p)
+        return (r["path"].endswith(".jpg") and max(got.size) <= 1280
+                and os.path.getsize(p) < len(RAW) and os.path.getsize(p) <= 400 * 1024)
+
+    case("png screenshot is resized and lands as .jpg",
+         "from: TESTER\ndrop: images/shot.png\nid: tester-image-drop-01\nencoding: base64\n\n---\n" + B64,
+         ws3, True, _shrank)
+    case("guard still applies to images",
+         "from: TESTER\ndrop: p/evil.png\nid: tester-image-escape-01\nencoding: base64\n\n---\n" + B64,
+         ws3, False)
+    case("undecodable image lands honestly, does not crash",
+         "from: TESTER\ndrop: images/bogus.png\nid: tester-bogus-image-01\nencoding: base64\n\n---\n"
+         + base64.b64encode(b"not an image at all").decode(), ws3, True,
+         lambda w, r: "stored as-is" in (r.get("note") or ""))
+    case("text drops are untouched by the image path",
+         "from: TESTER\ndrop: lda/Plain.kt\nid: tester-text-untouched-01\n\n---\nclass X\n", ws3, True,
+         lambda w, r: r.get("note") is None
+         and open(os.path.join(w, "lda/Plain.kt")).read() == "class X\n")
+
 shutil.rmtree(ws, ignore_errors=True)
 shutil.rmtree(ws2, ignore_errors=True)
+shutil.rmtree(ws3, ignore_errors=True)
 print("\n%d passed, %d failed" % (ok, fail))
 sys.exit(1 if fail else 0)

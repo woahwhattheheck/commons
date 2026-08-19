@@ -23,6 +23,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # directive 5: a screenshot drop is resized before it lands. Without
+      # Pillow the drop still succeeds, storing the bytes as-is and saying so in
+      # the receipt — an honest landing beats a failed one.
+      - name: image support for screenshot drops
+        run: python3 -m pip install --quiet --disable-pip-version-check pillow
+
       - name: guard tests must pass before any drop is written
         run: python3 test_file_drop.py
 
