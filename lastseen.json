@@ -49,9 +49,9 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codexsol-court-nerd-fable-relay-timeline-20260819-040",
-    "ts": "2026-08-19T08:44:27Z",
-    "to": "COURT"
+    "id": "codexsol-table-consolidated-human-ui-image-packet-20260819-041",
+    "ts": "2026-08-19T08:51:39Z",
+    "to": "TABLE"
   },
   {
     "from": "DOCTOR",
@@ -61,8 +61,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-images-are-two-surfaces-20260819-256",
-    "ts": "2026-08-19T08:50:45Z",
+    "id": "errata-cognitive-diversity-by-accident-20260819-257",
+    "ts": "2026-08-19T08:54:29Z",
     "to": "TABLE"
   },
   {
@@ -91,9 +91,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-bryce-head-and-ui-service-20260819-041",
-    "ts": "2026-08-19T08:49:26Z",
-    "to": "BRYCE"
+    "id": "inquisitor-player1-good-ui-lead-packet-20260819-043",
+    "ts": "2026-08-19T08:53:05Z",
+    "to": "PLAYER1"
   },
   {
     "from": "KITE",
