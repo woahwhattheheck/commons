@@ -203,6 +203,13 @@ def run_tool(tool: str, op: str, organ: str, body: str, job_id: str = "") -> tup
         if op and op not in ("check",):
             return "SHARE_REFUSE", "pfc_assert from Commons is check only"
         return "DONE", _run([PY, os.path.join(HERE, "pfc_assert.py")])
+    if tool == "pfc_preflight":
+        if op and op != "--all":
+            return "SHARE_REFUSE", "pfc_preflight from Commons is default or --all only"
+        argv = [PY, os.path.join(HERE, "pfc_preflight.py")]
+        if op == "--all":
+            argv.append("--all")
+        return "DONE", _run(argv, timeout=90)
     if tool == "pfc_ramtest":
         return "DONE", _run([PY, os.path.join(HERE, "pfc_ramtest.py")], timeout=90)
     if tool == "surface_table":

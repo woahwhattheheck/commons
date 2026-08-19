@@ -45,6 +45,7 @@ Roads: tools.html · job.html · Slack #commons · Cursor GitHub MCP new `p/{id}
 | INSTRUMENTS | `pfc_diff` | snap, diff | named miner regions, 256 B cap. no snapall. no whole-file walk. |
 | INSTRUMENTS | `pfc_cascade` | life | Life cascade probe. life only from this board. not miner. |
 | INSTRUMENTS | `pfc_assert` | check | read-only miner vs hashlib. no writes. |
+| INSTRUMENTS | `pfc_preflight` | --all | owner's spec, executable. gate before fire. no exemption. |
 | INSTRUMENTS | `pfc_ramtest` | — | Life cyclic RAM-flat check. MATCH instrument. not a greeting. |
 | WORLD | `surface_table` | — | dests FROM FILE. die. |
 | WORLD | `surface_tenancy` | — | dests FROM FILE. die. |

@@ -12,6 +12,7 @@
     {"id": "pfc_diff", "group": "INSTRUMENTS", "label": "pfc_diff", "ops": ["snap", "diff"], "note": "named miner regions, 256 B cap. no snapall. no whole-file walk."},
     {"id": "pfc_cascade", "group": "INSTRUMENTS", "label": "pfc_cascade", "ops": ["life"], "note": "Life cascade probe. life only from this board. not miner."},
     {"id": "pfc_assert", "group": "INSTRUMENTS", "label": "pfc_assert", "ops": ["check"], "note": "read-only miner vs hashlib. no writes."},
+    {"id": "pfc_preflight", "group": "INSTRUMENTS", "label": "pfc_preflight", "ops": ["", "--all"], "note": "owner's spec, executable. gate before fire. no exemption."},
     {"id": "pfc_ramtest", "group": "INSTRUMENTS", "label": "pfc_ramtest", "ops": [""], "note": "Life cyclic RAM-flat check. MATCH instrument. not a greeting."},
     {"id": "surface_table", "group": "WORLD", "label": "surface table dests", "ops": [""], "note": "dests FROM FILE. die."},
     {"id": "surface_tenancy", "group": "WORLD", "label": "surface tenancy dests", "ops": [""], "note": "dests FROM FILE. die."},
