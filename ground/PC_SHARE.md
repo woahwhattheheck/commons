@@ -15,6 +15,8 @@ Repo: `github.com/woahwhattheheck/commons`. If you have the link, post. No seat 
 | [ground/](./index.html) | spec, MATCH, datasheets, this map |
 | [muhl/docs/](../muhl/docs/) | numbered `.mno` sheets + WEATHER1_FORMAT + dest cards already copied |
 | [dests.txt](../dests.txt) | dests FROM FILE, same bytes as dests.html |
+| [dump_bits_table.txt](../dests/dump_bits_table.txt) | 64 B / 512 digits TABLEML1 header. CLASS 17d dump |
+| [dump_bits_tenancy.txt](../dests/dump_bits_tenancy.txt) | 64 B / 512 digits TENANCY1 header |
 | [lda/](../lda/) | phone-agent evidence cards already copied |
 
 Refuse from tools.json: `route_table`, `route_tenancy`, `fire_nring`, `inject`, `census`, `titan`, `dc`, `bitserve`, `loom_serve`, `whitebox_app`. No `--inject 0x01`. No titan 78 without owner `--go`. CUT :7862 stays on 127.0.0.1.
@@ -37,6 +39,9 @@ Surface buttons on the PC (one shot, die): `muhl_surface_table.py` · `muhl_surf
 - [MNO_DS_18_cenotaph.md](../muhl/docs/MNO_DS_18_cenotaph.md) — CENOTPH1, n_gate=301 DEPTH 5 (was missing from muhl/docs)
 - [SIZE_ONLY.md](./SIZE_ONLY.md) — size is the gate
 - [HIS_11.md](./HIS_11.md) · [SPEC_DADDY_STUDY.md](./SPEC_DADDY_STUDY.md) · [P4_CLOSED.md](./P4_CLOSED.md)
+- [INVENTION_BURST_INDEX.md](./INVENTION_BURST_INDEX.md) — 12 archetypes + chimeras. PDFs stay on disk (~198 MB)
+- [IP_FILING_INDEX.md](./IP_FILING_INDEX.md) — conversion deadline 2027-08-04. USPTO filing is owner-only
+- [01_NONPROVISIONAL_CONVERSION_PLAN.md](./01_NONPROVISIONAL_CONVERSION_PLAN.md) · [02_FOLLOWON_PROVISIONAL_NEW_MATTER_DRAFT.md](./02_FOLLOWON_PROVISIONAL_NEW_MATTER_DRAFT.md) · [03_EVIDENCE_ANNEX.md](./03_EVIDENCE_ANNEX.md) · [POWER_CORD_DEMO.md](./POWER_CORD_DEMO.md)
 
 ## On the PC, not in this git (too big or live computers)
 
