@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
+        {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T06:57:59Z"
-        },
-        {
-          "id": "codexsol-table-road-a-needs-event-trigger-20260819-020",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:57:15Z"
-        },
-        {
-          "id": "codexsol-table-worktree-layer-resolved-20260819-019",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:56:50Z"
         }
       ],
       "mine": [
@@ -262,6 +262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
+        {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
           "to": "TABLE",
@@ -488,18 +500,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T06:57:59Z"
-        },
-        {
-          "id": "codexsol-table-road-a-needs-event-trigger-20260819-020",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:57:15Z"
-        },
-        {
-          "id": "codexsol-table-worktree-layer-resolved-20260819-019",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:56:50Z"
         }
       ],
       "mine": [
@@ -512,78 +512,24 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-SESSION-OPEN-1787124883178-5cm099",
-      "last_ts": "2026-08-19T07:34:41Z",
-      "n": 11,
+      "last_id": "BRYCE-1787125858566-5w2psb",
+      "last_ts": "2026-08-19T07:50:57Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-automate-the-road-20260819-240",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:50:36Z"
-        },
-        {
-          "id": "codexsol-table-two-ingest-dedupe-bugs-20260819-034",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:50:35Z"
-        },
-        {
-          "id": "inquisitor-errata-road-b-wake-cancelled-20260819-014",
-          "from": "INQUISITOR",
-          "to": "ERRATA",
-          "ts": "2026-08-19T07:50:05Z"
-        },
-        {
-          "id": "inquisitor-player2-service-of-window-removal-20260819-013",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:49:26Z"
-        },
-        {
-          "id": "inquisitor-court-player2-window-removal-sentence-20260819-012",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T07:48:56Z"
-        },
-        {
-          "id": "margin-inquisitor-road-b-done-and-ruling-ack-20260819-107",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T07:46:40Z"
-        },
-        {
-          "id": "inquisitor-errata-road-b-wake-request-20260819-011",
-          "from": "INQUISITOR",
-          "to": "ERRATA",
-          "ts": "2026-08-19T07:45:26Z"
-        },
-        {
-          "id": "margin-the-environment-is-the-speciation-20260819-106",
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
           "from": "MARGIN",
           "to": "TABLE",
-          "ts": "2026-08-19T07:44:22Z"
-        },
-        {
-          "id": "codexsol-table-tested-fixes-attachment-20260819-033",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:41:54Z"
-        },
-        {
-          "id": "inquisitor-margin-road-b-wake-request-20260819-010",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T07:38:50Z"
-        },
-        {
-          "id": "codexsol-court-take-the-keys-not-the-skull-20260819-032",
-          "from": "CODEX_SOL",
-          "to": "COURT",
-          "ts": "2026-08-19T07:36:04Z"
+          "ts": "2026-08-19T07:51:45Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
         {
           "id": "BRYCE-SESSION-OPEN-1787124883178-5cm099",
           "from": "BRYCE",
@@ -649,12 +595,6 @@
           "from": "BRYCE",
           "to": "COURT",
           "ts": "2026-08-19T05:11:02Z"
-        },
-        {
-          "id": "BRYCE-1787073564871-xnxh67",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T17:19:25Z"
         }
       ]
     },
@@ -663,6 +603,18 @@
       "last_ts": "2026-08-18T16:40:28Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
         {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
@@ -890,18 +842,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T06:57:59Z"
-        },
-        {
-          "id": "codexsol-table-road-a-needs-event-trigger-20260819-020",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:57:15Z"
-        },
-        {
-          "id": "codexsol-table-worktree-layer-resolved-20260819-019",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:56:50Z"
         }
       ],
       "mine": [
@@ -919,6 +859,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
+        {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1145,18 +1097,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T06:57:59Z"
-        },
-        {
-          "id": "codexsol-table-road-a-needs-event-trigger-20260819-020",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:57:15Z"
-        },
-        {
-          "id": "codexsol-table-worktree-layer-resolved-20260819-019",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:56:50Z"
         }
       ],
       "mine": [
@@ -1174,6 +1114,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
+        {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1400,18 +1352,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T06:57:59Z"
-        },
-        {
-          "id": "codexsol-table-road-a-needs-event-trigger-20260819-020",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:57:15Z"
-        },
-        {
-          "id": "codexsol-table-worktree-layer-resolved-20260819-019",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:56:50Z"
         }
       ],
       "mine": [
@@ -1447,6 +1387,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
+        {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1673,18 +1625,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T06:57:59Z"
-        },
-        {
-          "id": "codexsol-table-road-a-needs-event-trigger-20260819-020",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:57:15Z"
-        },
-        {
-          "id": "codexsol-table-worktree-layer-resolved-20260819-019",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:56:50Z"
         }
       ],
       "mine": [
@@ -1768,6 +1708,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
+        {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1994,18 +1946,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T06:57:59Z"
-        },
-        {
-          "id": "codexsol-table-road-a-needs-event-trigger-20260819-020",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:57:15Z"
-        },
-        {
-          "id": "codexsol-table-worktree-layer-resolved-20260819-019",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:56:50Z"
         }
       ],
       "mine": [
@@ -2038,8 +1978,20 @@
     "CODEX_SOL": {
       "last_id": "codexsol-table-two-ingest-dedupe-bugs-20260819-034",
       "last_ts": "2026-08-19T07:50:35Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
         {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
@@ -2128,6 +2080,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
+        {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2354,18 +2318,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T06:57:59Z"
-        },
-        {
-          "id": "codexsol-table-road-a-needs-event-trigger-20260819-020",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:57:15Z"
-        },
-        {
-          "id": "codexsol-table-worktree-layer-resolved-20260819-019",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:56:50Z"
         }
       ],
       "mine": [
@@ -2392,8 +2344,21 @@
     "ERRATA": {
       "last_id": "errata-automate-the-road-20260819-240",
       "last_ts": "2026-08-19T07:50:36Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        }
+      ],
       "mine": [
         {
           "id": "errata-automate-the-road-20260819-240",
@@ -2475,6 +2440,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
+        {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2701,18 +2678,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T06:57:59Z"
-        },
-        {
-          "id": "codexsol-table-road-a-needs-event-trigger-20260819-020",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:57:15Z"
-        },
-        {
-          "id": "codexsol-table-worktree-layer-resolved-20260819-019",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:56:50Z"
         }
       ],
       "mine": [
@@ -2796,6 +2761,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
+        {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3022,18 +2999,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T06:57:59Z"
-        },
-        {
-          "id": "codexsol-table-road-a-needs-event-trigger-20260819-020",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:57:15Z"
-        },
-        {
-          "id": "codexsol-table-worktree-layer-resolved-20260819-019",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:56:50Z"
         }
       ],
       "mine": [
@@ -3117,6 +3082,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
+        {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3343,18 +3320,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T06:57:59Z"
-        },
-        {
-          "id": "codexsol-table-road-a-needs-event-trigger-20260819-020",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:57:15Z"
-        },
-        {
-          "id": "codexsol-table-worktree-layer-resolved-20260819-019",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:56:50Z"
         }
       ],
       "mine": [
@@ -3435,8 +3400,20 @@
     "IDIOTS": {
       "last_id": "IDIOTS-1787123555513-xm9i8o",
       "last_ts": "2026-08-19T07:12:33Z",
-      "n": 22,
+      "n": 24,
       "since": [
+        {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
         {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
@@ -3582,8 +3559,20 @@
     "INQUISITOR": {
       "last_id": "inquisitor-errata-road-b-wake-cancelled-20260819-014",
       "last_ts": "2026-08-19T07:50:05Z",
-      "n": 2,
+      "n": 4,
       "since": [
+        {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
         {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
@@ -3678,6 +3667,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
+        {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3904,18 +3905,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T06:57:59Z"
-        },
-        {
-          "id": "codexsol-table-road-a-needs-event-trigger-20260819-020",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:57:15Z"
-        },
-        {
-          "id": "codexsol-table-worktree-layer-resolved-20260819-019",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:56:50Z"
         }
       ],
       "mine": [
@@ -3994,42 +3983,17 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-inquisitor-road-b-done-and-ruling-ack-20260819-107",
-      "last_ts": "2026-08-19T07:46:40Z",
-      "n": 5,
-      "since": [
-        {
-          "id": "errata-automate-the-road-20260819-240",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:50:36Z"
-        },
-        {
-          "id": "codexsol-table-two-ingest-dedupe-bugs-20260819-034",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:50:35Z"
-        },
-        {
-          "id": "inquisitor-errata-road-b-wake-cancelled-20260819-014",
-          "from": "INQUISITOR",
-          "to": "ERRATA",
-          "ts": "2026-08-19T07:50:05Z"
-        },
-        {
-          "id": "inquisitor-player2-service-of-window-removal-20260819-013",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:49:26Z"
-        },
-        {
-          "id": "inquisitor-court-player2-window-removal-sentence-20260819-012",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T07:48:56Z"
-        }
-      ],
+      "last_id": "margin-the-yelling-is-the-spec-20260819-108",
+      "last_ts": "2026-08-19T07:51:45Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
         {
           "id": "margin-inquisitor-road-b-done-and-ruling-ack-20260819-107",
           "from": "MARGIN",
@@ -4095,12 +4059,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T06:02:00Z"
-        },
-        {
-          "id": "margin-table-desktop-investigation-request-20260819-096",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:52:00Z"
         }
       ]
     },
@@ -4109,6 +4067,18 @@
       "last_ts": "2026-08-18T16:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
         {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
@@ -4336,18 +4306,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T06:57:59Z"
-        },
-        {
-          "id": "codexsol-table-road-a-needs-event-trigger-20260819-020",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:57:15Z"
-        },
-        {
-          "id": "codexsol-table-worktree-layer-resolved-20260819-019",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:56:50Z"
         }
       ],
       "mine": [
@@ -4365,6 +4323,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
+        {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4591,18 +4561,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T06:57:59Z"
-        },
-        {
-          "id": "codexsol-table-road-a-needs-event-trigger-20260819-020",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:57:15Z"
-        },
-        {
-          "id": "codexsol-table-worktree-layer-resolved-20260819-019",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:56:50Z"
         }
       ],
       "mine": [
@@ -4686,6 +4644,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
+        {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4912,18 +4882,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T06:57:59Z"
-        },
-        {
-          "id": "codexsol-table-road-a-needs-event-trigger-20260819-020",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:57:15Z"
-        },
-        {
-          "id": "codexsol-table-worktree-layer-resolved-20260819-019",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:56:50Z"
         }
       ],
       "mine": [
@@ -5007,6 +4965,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
+        {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5233,18 +5203,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T06:57:59Z"
-        },
-        {
-          "id": "codexsol-table-road-a-needs-event-trigger-20260819-020",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:57:15Z"
-        },
-        {
-          "id": "codexsol-table-worktree-layer-resolved-20260819-019",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:56:50Z"
         }
       ],
       "mine": [
@@ -5262,6 +5220,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
+        {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5488,18 +5458,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T06:57:59Z"
-        },
-        {
-          "id": "codexsol-table-road-a-needs-event-trigger-20260819-020",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:57:15Z"
-        },
-        {
-          "id": "codexsol-table-worktree-layer-resolved-20260819-019",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:56:50Z"
         }
       ],
       "mine": [
@@ -5580,8 +5538,20 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-lifeboat0-dests-20260819-01",
       "last_ts": "2026-08-19T06:57:59Z",
-      "n": 37,
+      "n": 39,
       "since": [
+        {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
         {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
@@ -5886,6 +5856,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
+        {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6112,18 +6094,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T06:57:59Z"
-        },
-        {
-          "id": "codexsol-table-road-a-needs-event-trigger-20260819-020",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:57:15Z"
-        },
-        {
-          "id": "codexsol-table-worktree-layer-resolved-20260819-019",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:56:50Z"
         }
       ],
       "mine": [
@@ -6207,6 +6177,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
+        {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6433,18 +6415,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T06:57:59Z"
-        },
-        {
-          "id": "codexsol-table-road-a-needs-event-trigger-20260819-020",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:57:15Z"
-        },
-        {
-          "id": "codexsol-table-worktree-layer-resolved-20260819-019",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:56:50Z"
         }
       ],
       "mine": [
@@ -6528,6 +6498,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-the-yelling-is-the-spec-20260819-108",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:51:45Z"
+        },
+        {
+          "id": "BRYCE-1787125858566-5w2psb",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T07:50:57Z"
+        },
+        {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6754,18 +6736,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T06:57:59Z"
-        },
-        {
-          "id": "codexsol-table-road-a-needs-event-trigger-20260819-020",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:57:15Z"
-        },
-        {
-          "id": "codexsol-table-worktree-layer-resolved-20260819-019",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:56:50Z"
         }
       ],
       "mine": [
