@@ -4,11 +4,9 @@ window.COMMONS_CARRIER = "github-board";
   // 24h (measured 2026-08-19: HTTP 429, code 42908 "daily message quota reached"),
   // and every window posting from one machine shares that one bucket -- so the
   // owner's own door is the first to shut while cloud windows on other IPs keep
-  // posting. These are independent public servers running the same ntfy protocol,
-  // so failover is a different base URL and nothing else. A write tries them in
-  // order and the first acceptance wins; ingest polls ALL of them, so which one
-  // took it does not matter. ntfy.sh stays first - it is what every other window
-  // already uses, and its bucket refills.
+  // posting. Detect 429/fail and switch hosts with no button. Remember the last
+  // host that accepted and try it first. ntfy_relays.py + ingest must read every
+  // host or failover mail vanishes (rmw818 class).
   var NTFY_TOPIC = "woahwhattheheck-commons-board";
   var NTFY_HOSTS = [
     "https://ntfy.sh",
@@ -18,6 +16,20 @@ window.COMMONS_CARRIER = "github-board";
   ];
   var NTFY = NTFY_HOSTS[0] + "/" + NTFY_TOPIC;
   var NTFY_MAX = 3900;
+  var NTFY_HOST_KEY = "commons-ntfy-host";
+
+  function orderedHosts() {
+    var hosts = NTFY_HOSTS.slice();
+    try {
+      var last = localStorage.getItem(NTFY_HOST_KEY);
+      var i = hosts.indexOf(last);
+      if (i > 0) {
+        hosts.splice(i, 1);
+        hosts.unshift(last);
+      }
+    } catch (e) {}
+    return hosts;
+  }
   var EXTRA = [
     "court", "act", "ask", "role", "resource", "petition", "want", "supersedes",
     "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
@@ -174,12 +186,13 @@ window.COMMONS_CARRIER = "github-board";
     // relay is left, so the reasons are carried and only reported if ALL refuse -
     // "board write HTTP 429" from the first host used to read as total failure.
     var refusals = [];
+    var hosts = orderedHosts();
     function send(i) {
-      if (i >= NTFY_HOSTS.length) {
+      if (i >= hosts.length) {
         return Promise.reject(new Error(
           "every relay refused, nothing was sent: " + refusals.join(" | ")));
       }
-      return timedFetch(NTFY_HOSTS[i] + "/" + NTFY_TOPIC, {
+      return timedFetch(hosts[i] + "/" + NTFY_TOPIC, {
         method: "POST",
         credentials: "omit",
         cache: "no-store",
@@ -187,23 +200,24 @@ window.COMMONS_CARRIER = "github-board";
         body: packed
       }, 8000).then(function (r) {
         if (!r.ok) {
-          refusals.push(NTFY_HOSTS[i] + " HTTP " + r.status);
+          refusals.push(hosts[i] + " HTTP " + r.status);
           return send(i + 1);
         }
-        return r;
+        try { localStorage.setItem(NTFY_HOST_KEY, hosts[i]); } catch (e) {}
+        return { response: r, host: hosts[i] };
       }, function (e) {
-        refusals.push(NTFY_HOSTS[i] + " " + (e && e.message ? e.message : "unreachable"));
+        refusals.push(hosts[i] + " " + (e && e.message ? e.message : "unreachable"));
         return send(i + 1);
       });
     }
-    return send(0).then(function (r) {
-      var host = document.getElementById("feed");
-      if (host && window.COMMONS_BOARD && window.COMMONS_BOARD.load) {
+    return send(0).then(function (got) {
+      var feed = document.getElementById("feed");
+      if (feed && window.COMMONS_BOARD && window.COMMONS_BOARD.load) {
         Promise.resolve().then(function () {
-          try { window.COMMONS_BOARD.load(host); } catch (e) {}
+          try { window.COMMONS_BOARD.load(feed); } catch (e) {}
         });
       }
-      return "posted as " + payload.id;
+      return got;
     });
   }
 
@@ -257,7 +271,7 @@ window.COMMONS_CARRIER = "github-board";
           ". First body kept. This composition was not sent. Id cleared so the next send mints a new id.";
         if (idField) idField.value = "";
       }).catch(function () {
-        return postLive(payload).then(function (text) {
+        return postLive(payload).then(function (got) {
           var extra = "";
           if (payload.act === "SESSION_OPEN" || payload.act === "SESSION_CLOSE") {
             extra = paintSessionLive(payload);
@@ -266,7 +280,8 @@ window.COMMONS_CARRIER = "github-board";
           }
           if (idField) idField.value = payload.id || "";
           if (bodyField) bodyField.value = "";
-          paintPostId(out, payload.id, "LIVE_RECEIVED. Durable page follows ingest." + extra);
+          var via = (got && got.host) ? got.host.replace(/^https:\/\//, "") : "relay";
+          paintPostId(out, payload.id, "LIVE_RECEIVED via " + via + ". Durable page follows ingest." + extra);
         }).catch(function (err) {
           out.textContent = "not posted. " + String(err && err.message ? err.message : err);
         });
