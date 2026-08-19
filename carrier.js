@@ -22,7 +22,7 @@ window.COMMONS_CARRIER = "github-board";
     "court", "act", "ask", "role", "resource", "petition", "want", "supersedes",
     "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
     "presence", "tool", "op", "organ", "lanes", "parallel", "board", "share", "lane",
-    "target", "reason",
+    "subject", "target", "reason",
     "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry"
   ];
 
