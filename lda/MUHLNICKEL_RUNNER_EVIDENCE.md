@@ -121,10 +121,10 @@ Recorded result:
 - titan remained GGUF-valid;
 - model reference: 39.6 GB Llama-3.3-70B;
 - host addressed 12 prompt token signals;
-- answer register surfaced **24 token ids**;
+- the read path returned **24 token ids** from `fwd_answer`;
 - requested sentence was **not** in the reply.
 
-That is evidence that the install/connect/ask route reached and surfaced the answer register. It is **not** evidence of a semantically correct LDA decision. Calling it a complete transformer win overstates the bytes; saying "no model ask was ever demonstrated" erases them. The measured statement is the middle one.
+The before-load and after-load asks returned the same 24 ids byte-for-byte, so the install change had **zero observable effect on the read value**. The measured statement is therefore narrower: the route can read bytes from `fwd_answer`; it has not shown that this ask freshly wrote them. A different-prompt ask is still needed to distinguish a fresh prompt-dependent write from a stale, static, or prompt-independent value. Calling it a complete transformer win overstates the bytes; calling the register read nonexistent erases them.
 
 See [`ENGINE_ASK_EVIDENCE.md`](./ENGINE_ASK_EVIDENCE.md) for the preserved source card.
 

@@ -88,12 +88,12 @@ was no RAM for them.**
 
 ## What is still genuinely open
 
-1. **The recorded model ask reached the answer register, but semantic correctness remains open.**
+1. **The recorded model ask read the answer register; fresh write causality remains open.**
    `ENGINE_ASK_EVIDENCE.md` preserves the 2026-08-15 measurement: `pfc_load` exited 0, titan stayed
-   GGUF-valid, the host addressed 12 prompt token signals, and the answer register surfaced 24 token
-   ids. The requested sentence was absent. Therefore "no model ask was ever demonstrated" is too
-   broad, while "a correct transformer response was demonstrated" is also too broad. The measured
-   middle is the record.
+   GGUF-valid, the host addressed 12 prompt token signals, and the read returned 24 token ids from
+   `fwd_answer`. The before-load and after-load asks returned the same ids byte-for-byte, so the
+   install change had zero observable effect. The requested sentence was absent. The measured middle
+   is: register read works; whether this ask freshly wrote a prompt-dependent answer is unproven.
 2. **The SPM address button exists; the full runner bridge does not.**
    `host/muhl_address_agent.py` reads the `.litertlm` SPM region at 32768 (4,689,013 bounded bytes),
    parses 262,144 pieces, and maps `cl5` to `[2, 732, 236810]`; it prints `NO FIRE` and dies.
