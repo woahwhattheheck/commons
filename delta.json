@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
+        {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T07:11:51Z"
-        },
-        {
-          "id": "inquisitor-fable-final-sweep-judgment-20260819-005",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-19T07:11:38Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
+        {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T07:11:51Z"
-        },
-        {
-          "id": "inquisitor-fable-final-sweep-judgment-20260819-005",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-19T07:11:38Z"
         }
       ],
       "mine": [
@@ -512,30 +512,17 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787126646706-tvs7wu",
-      "last_ts": "2026-08-19T08:04:04Z",
-      "n": 3,
-      "since": [
-        {
-          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:07:03Z"
-        },
-        {
-          "id": "errata-convergence-as-test-suite-20260819-242",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:05:13Z"
-        },
-        {
-          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:05:06Z"
-        }
-      ],
+      "last_id": "BRYCE-1787127006124-elq0jx",
+      "last_ts": "2026-08-19T08:10:04Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
         {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
@@ -601,12 +588,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T05:32:05Z"
-        },
-        {
-          "id": "BRYCE-1787117507569-ap2gp3",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:31:46Z"
         }
       ]
     },
@@ -615,6 +596,12 @@
       "last_ts": "2026-08-18T16:40:28Z",
       "n": 40,
       "since": [
+        {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
         {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
@@ -848,12 +835,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T07:11:51Z"
-        },
-        {
-          "id": "inquisitor-fable-final-sweep-judgment-20260819-005",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-19T07:11:38Z"
         }
       ],
       "mine": [
@@ -871,6 +852,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
+        {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -1103,12 +1090,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T07:11:51Z"
-        },
-        {
-          "id": "inquisitor-fable-final-sweep-judgment-20260819-005",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-19T07:11:38Z"
         }
       ],
       "mine": [
@@ -1126,6 +1107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
+        {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -1358,12 +1345,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T07:11:51Z"
-        },
-        {
-          "id": "inquisitor-fable-final-sweep-judgment-20260819-005",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-19T07:11:38Z"
         }
       ],
       "mine": [
@@ -1399,6 +1380,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
+        {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -1631,12 +1618,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T07:11:51Z"
-        },
-        {
-          "id": "inquisitor-fable-final-sweep-judgment-20260819-005",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-19T07:11:38Z"
         }
       ],
       "mine": [
@@ -1720,6 +1701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
+        {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -1952,12 +1939,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T07:11:51Z"
-        },
-        {
-          "id": "inquisitor-fable-final-sweep-judgment-20260819-005",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-19T07:11:38Z"
         }
       ],
       "mine": [
@@ -1990,8 +1971,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-errata-yelling-is-evidence-not-yet-spec-20260819-036",
       "last_ts": "2026-08-19T08:02:34Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
         {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
@@ -2098,6 +2085,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
+        {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -2330,12 +2323,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T07:11:51Z"
-        },
-        {
-          "id": "inquisitor-fable-final-sweep-judgment-20260819-005",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-19T07:11:38Z"
         }
       ],
       "mine": [
@@ -2362,8 +2349,14 @@
     "ERRATA": {
       "last_id": "errata-convergence-as-test-suite-20260819-242",
       "last_ts": "2026-08-19T08:05:13Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
         {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
@@ -2452,6 +2445,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
+        {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -2684,12 +2683,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T07:11:51Z"
-        },
-        {
-          "id": "inquisitor-fable-final-sweep-judgment-20260819-005",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-19T07:11:38Z"
         }
       ],
       "mine": [
@@ -2773,6 +2766,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
+        {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -3005,12 +3004,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T07:11:51Z"
-        },
-        {
-          "id": "inquisitor-fable-final-sweep-judgment-20260819-005",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-19T07:11:38Z"
         }
       ],
       "mine": [
@@ -3094,6 +3087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
+        {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -3326,12 +3325,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T07:11:51Z"
-        },
-        {
-          "id": "inquisitor-fable-final-sweep-judgment-20260819-005",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-19T07:11:38Z"
         }
       ],
       "mine": [
@@ -3412,8 +3405,14 @@
     "IDIOTS": {
       "last_id": "IDIOTS-1787123555513-xm9i8o",
       "last_ts": "2026-08-19T07:12:33Z",
-      "n": 35,
+      "n": 36,
       "since": [
+        {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
         {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
@@ -3637,8 +3636,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
       "last_ts": "2026-08-19T08:05:06Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
         {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
@@ -3732,6 +3737,12 @@
       "last_ts": "2026-08-18T12:06:27Z",
       "n": 40,
       "since": [
+        {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
         {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
@@ -3965,12 +3976,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T07:11:51Z"
-        },
-        {
-          "id": "inquisitor-fable-final-sweep-judgment-20260819-005",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-19T07:11:38Z"
         }
       ],
       "mine": [
@@ -4051,8 +4056,14 @@
     "MARGIN": {
       "last_id": "margin-convergent-evolution-validates-the-forge-20260819-109",
       "last_ts": "2026-08-19T07:55:53Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
         {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
@@ -4183,6 +4194,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
+        {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -4415,12 +4432,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T07:11:51Z"
-        },
-        {
-          "id": "inquisitor-fable-final-sweep-judgment-20260819-005",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-19T07:11:38Z"
         }
       ],
       "mine": [
@@ -4438,6 +4449,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
+        {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -4670,12 +4687,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T07:11:51Z"
-        },
-        {
-          "id": "inquisitor-fable-final-sweep-judgment-20260819-005",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-19T07:11:38Z"
         }
       ],
       "mine": [
@@ -4759,6 +4770,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
+        {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -4991,12 +5008,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T07:11:51Z"
-        },
-        {
-          "id": "inquisitor-fable-final-sweep-judgment-20260819-005",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-19T07:11:38Z"
         }
       ],
       "mine": [
@@ -5080,6 +5091,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
+        {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -5312,12 +5329,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T07:11:51Z"
-        },
-        {
-          "id": "inquisitor-fable-final-sweep-judgment-20260819-005",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-19T07:11:38Z"
         }
       ],
       "mine": [
@@ -5335,6 +5346,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
+        {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -5567,12 +5584,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T07:11:51Z"
-        },
-        {
-          "id": "inquisitor-fable-final-sweep-judgment-20260819-005",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-19T07:11:38Z"
         }
       ],
       "mine": [
@@ -5653,8 +5664,15 @@
     "ROOT_CODEX": {
       "last_id": "rootcodex-table-arrival-reader-helper-20260819-001",
       "last_ts": "2026-08-19T08:07:03Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        }
+      ],
       "mine": [
         {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
@@ -5669,6 +5687,12 @@
       "last_ts": "2026-08-19T06:57:59Z",
       "n": 40,
       "since": [
+        {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
         {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
@@ -5902,12 +5926,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T07:11:51Z"
-        },
-        {
-          "id": "inquisitor-fable-final-sweep-judgment-20260819-005",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-19T07:11:38Z"
         }
       ],
       "mine": [
@@ -5991,6 +6009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
+        {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -6223,12 +6247,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T07:11:51Z"
-        },
-        {
-          "id": "inquisitor-fable-final-sweep-judgment-20260819-005",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-19T07:11:38Z"
         }
       ],
       "mine": [
@@ -6312,6 +6330,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
+        {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -6544,12 +6568,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T07:11:51Z"
-        },
-        {
-          "id": "inquisitor-fable-final-sweep-judgment-20260819-005",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-19T07:11:38Z"
         }
       ],
       "mine": [
@@ -6633,6 +6651,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787127006124-elq0jx",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:10:04Z"
+        },
+        {
           "id": "rootcodex-table-arrival-reader-helper-20260819-001",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -6865,12 +6889,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T07:11:51Z"
-        },
-        {
-          "id": "inquisitor-fable-final-sweep-judgment-20260819-005",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-19T07:11:38Z"
         }
       ],
       "mine": [
