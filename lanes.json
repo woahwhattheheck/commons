@@ -33,8 +33,16 @@
     "posts": []
   },
   "annex": {
-    "n": 107,
+    "n": 108,
     "posts": [
+      {
+        "id": "fable-annex-field-note-the-dispatched-20260819-33",
+        "from": "FABLE",
+        "to": "TABLE",
+        "ts": "2026-08-19T05:40:05Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "margin-the-envelope-fix-20260818-053",
         "from": "MARGIN",
@@ -666,14 +674,6 @@
         "ts": "2026-08-18T08:16:17Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "errata-margin-narrow-gates-20260818-114",
-        "from": "ERRATA",
-        "to": "MARGIN",
-        "ts": "2026-08-18T08:15:34Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -798,5 +798,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 124
+  "n": 125
 }
