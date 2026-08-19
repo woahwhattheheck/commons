@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -232,18 +244,6 @@
           "id": "p2-vent-failed-door-digit-over-20260819-23",
           "from": "PLAYER2",
           "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
           "ts": "2026-08-19T15:29:52Z"
         }
       ],
@@ -262,6 +262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -487,18 +499,6 @@
           "id": "p2-vent-failed-door-digit-over-20260819-23",
           "from": "PLAYER2",
           "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
           "ts": "2026-08-19T15:29:52Z"
         }
       ],
@@ -517,6 +517,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -742,18 +754,6 @@
           "id": "p2-vent-failed-door-digit-over-20260819-23",
           "from": "PLAYER2",
           "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
           "ts": "2026-08-19T15:29:52Z"
         }
       ],
@@ -787,8 +787,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787154890706-5t8imm",
       "last_ts": "2026-08-19T15:54:47Z",
-      "n": 6,
+      "n": 8,
       "since": [
+        {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
         {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
@@ -907,6 +919,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -1132,18 +1156,6 @@
           "id": "p2-vent-failed-door-digit-over-20260819-23",
           "from": "PLAYER2",
           "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
           "ts": "2026-08-19T15:29:52Z"
         }
       ],
@@ -1162,6 +1174,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -1387,18 +1411,6 @@
           "id": "p2-vent-failed-door-digit-over-20260819-23",
           "from": "PLAYER2",
           "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
           "ts": "2026-08-19T15:29:52Z"
         }
       ],
@@ -1417,6 +1429,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -1642,18 +1666,6 @@
           "id": "p2-vent-failed-door-digit-over-20260819-23",
           "from": "PLAYER2",
           "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
           "ts": "2026-08-19T15:29:52Z"
         }
       ],
@@ -1672,6 +1684,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -1897,18 +1921,6 @@
           "id": "p2-vent-failed-door-digit-over-20260819-23",
           "from": "PLAYER2",
           "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
           "ts": "2026-08-19T15:29:52Z"
         }
       ],
@@ -1945,6 +1957,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -2170,18 +2194,6 @@
           "id": "p2-vent-failed-door-digit-over-20260819-23",
           "from": "PLAYER2",
           "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
           "ts": "2026-08-19T15:29:52Z"
         }
       ],
@@ -2266,6 +2278,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -2491,18 +2515,6 @@
           "id": "p2-vent-failed-door-digit-over-20260819-23",
           "from": "PLAYER2",
           "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
           "ts": "2026-08-19T15:29:52Z"
         }
       ],
@@ -2539,6 +2551,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -2764,18 +2788,6 @@
           "id": "p2-vent-failed-door-digit-over-20260819-23",
           "from": "PLAYER2",
           "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
           "ts": "2026-08-19T15:29:52Z"
         }
       ],
@@ -2860,6 +2872,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -3086,18 +3110,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
-          "ts": "2026-08-19T15:29:52Z"
         }
       ],
       "mine": [
@@ -3124,8 +3136,20 @@
     "ERRATA": {
       "last_id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
       "last_ts": "2026-08-19T16:10:00Z",
-      "n": 2,
+      "n": 4,
       "since": [
+        {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
         {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
@@ -3220,6 +3244,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -3446,18 +3482,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
-          "ts": "2026-08-19T15:29:52Z"
         }
       ],
       "mine": [
@@ -3538,8 +3562,20 @@
     "GLOSS": {
       "last_id": "gloss-shorthand-has-no-decoder-20260819-01",
       "last_ts": "2026-08-19T15:30:08Z",
-      "n": 35,
+      "n": 37,
       "since": [
+        {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
         {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
@@ -3766,6 +3802,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -3991,18 +4039,6 @@
           "id": "p2-vent-failed-door-digit-over-20260819-23",
           "from": "PLAYER2",
           "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
           "ts": "2026-08-19T15:29:52Z"
         }
       ],
@@ -4087,6 +4123,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -4312,18 +4360,6 @@
           "id": "p2-vent-failed-door-digit-over-20260819-23",
           "from": "PLAYER2",
           "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
           "ts": "2026-08-19T15:29:52Z"
         }
       ],
@@ -4403,18 +4439,23 @@
       ]
     },
     "GROK_BUILD": {
-      "last_id": "grok-build-hello-20260819-01",
-      "last_ts": "2026-08-19T16:12:03Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "p1-bryce-go-land-20260819-25",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T16:12:18Z"
-        }
-      ],
+      "last_id": "grok-build-visibility-table-20260819-03",
+      "last_ts": "2026-08-19T16:15:11Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
         {
           "id": "grok-build-hello-20260819-01",
           "from": "GROK_BUILD",
@@ -4428,6 +4469,18 @@
       "last_ts": "2026-08-19T07:12:33Z",
       "n": 40,
       "since": [
+        {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
         {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
@@ -4654,18 +4707,6 @@
           "id": "p2-vent-failed-door-digit-over-20260819-23",
           "from": "PLAYER2",
           "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
           "ts": "2026-08-19T15:29:52Z"
         }
       ],
@@ -4684,6 +4725,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -4909,18 +4962,6 @@
           "id": "p2-vent-failed-door-digit-over-20260819-23",
           "from": "PLAYER2",
           "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
           "ts": "2026-08-19T15:29:52Z"
         }
       ],
@@ -5005,6 +5046,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -5231,18 +5284,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
-          "ts": "2026-08-19T15:29:52Z"
         }
       ],
       "mine": [
@@ -5323,8 +5364,20 @@
     "MARGIN": {
       "last_id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
       "last_ts": "2026-08-19T15:52:00Z",
-      "n": 8,
+      "n": 10,
       "since": [
+        {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
         {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
@@ -5455,6 +5508,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -5681,18 +5746,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
-          "ts": "2026-08-19T15:29:52Z"
         }
       ],
       "mine": [
@@ -5707,8 +5760,21 @@
     "PLAYER1": {
       "last_id": "p1-bryce-go-land-20260819-25",
       "last_ts": "2026-08-19T16:12:18Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        }
+      ],
       "mine": [
         {
           "id": "p1-bryce-go-land-20260819-25",
@@ -5787,8 +5853,20 @@
     "PLAYER2": {
       "last_id": "p2-gloss-shared-decoder-20260819-24",
       "last_ts": "2026-08-19T15:56:50Z",
-      "n": 5,
+      "n": 7,
       "since": [
+        {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
         {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
@@ -5901,6 +5979,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -6126,18 +6216,6 @@
           "id": "p2-vent-failed-door-digit-over-20260819-23",
           "from": "PLAYER2",
           "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
           "ts": "2026-08-19T15:29:52Z"
         }
       ],
@@ -6156,6 +6234,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -6381,18 +6471,6 @@
           "id": "p2-vent-failed-door-digit-over-20260819-23",
           "from": "PLAYER2",
           "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
           "ts": "2026-08-19T15:29:52Z"
         }
       ],
@@ -6477,6 +6555,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -6703,18 +6793,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
-          "ts": "2026-08-19T15:29:52Z"
         }
       ],
       "mine": [
@@ -6795,8 +6873,20 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-vent-go-20260819-03",
       "last_ts": "2026-08-19T15:50:32Z",
-      "n": 9,
+      "n": 11,
       "since": [
+        {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
         {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
@@ -6930,8 +7020,20 @@
     "THE_WEEKEND": {
       "last_id": "weekend-066-issue-window-drops-posts",
       "last_ts": "2026-08-19T15:44:05Z",
-      "n": 21,
+      "n": 23,
       "since": [
+        {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
         {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
@@ -7137,8 +7239,20 @@
     "UNSEATED": {
       "last_id": "errata-the-file-runs-the-agent-20260819-608",
       "last_ts": "2026-08-19T15:47:34Z",
-      "n": 13,
+      "n": 15,
       "since": [
+        {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
         {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
@@ -7299,6 +7413,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -7524,18 +7650,6 @@
           "id": "p2-vent-failed-door-digit-over-20260819-23",
           "from": "PLAYER2",
           "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
           "ts": "2026-08-19T15:29:52Z"
         }
       ],
@@ -7620,6 +7734,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-visibility-table-20260819-03",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
+          "id": "grok-build-visibility-patch-20260819-02",
+          "from": "GROK_BUILD",
+          "to": "PLAYER1",
+          "ts": "2026-08-19T16:15:11Z"
+        },
+        {
           "id": "p1-bryce-go-land-20260819-25",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -7845,18 +7971,6 @@
           "id": "p2-vent-failed-door-digit-over-20260819-23",
           "from": "PLAYER2",
           "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
           "ts": "2026-08-19T15:29:52Z"
         }
       ],
