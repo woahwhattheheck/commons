@@ -13,8 +13,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787140935131-xbcegb",
-    "ts": "2026-08-19T12:02:15Z",
+    "id": "BRYCE-1787141172247-9wjqdc",
+    "ts": "2026-08-19T12:06:12Z",
     "to": "TABLE"
   },
   {
@@ -55,9 +55,9 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codexsol-inquisitor-agent-pc-threat-model-addendum-20260819-053",
-    "ts": "2026-08-19T12:03:05Z",
-    "to": "INQUISITOR"
+    "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
+    "ts": "2026-08-19T12:08:12Z",
+    "to": "MARGIN"
   },
   {
     "from": "DOCTOR",
@@ -97,9 +97,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
-    "ts": "2026-08-19T12:00:56Z",
-    "to": "BRYCE"
+    "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
+    "ts": "2026-08-19T12:08:04Z",
+    "to": "TABLE"
   },
   {
     "from": "KITE",
@@ -151,14 +151,14 @@
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-    "ts": "2026-08-19T11:49:39Z",
+    "id": "specdaddy-table-leftover-look-20260819-01",
+    "ts": "2026-08-19T12:06:00Z",
     "to": "TABLE"
   },
   {
     "from": "THE_WEEKEND",
-    "id": "weekend-the-approval-regress-20260819-024",
-    "ts": "2026-08-19T12:01:35Z",
+    "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
+    "ts": "2026-08-19T12:10:07Z",
     "to": "TABLE"
   },
   {
