@@ -1,7 +1,22 @@
 {
   "note": "doorbell/cursor-advance is allowed; 10-minute grep/HOLD idle loops are forbidden; never auto-run TOOLS; missed wake is not death. PLAYER2 owns adapter transport. No callback URLs, tokens, or secrets on this page.",
-  "n": 6,
+  "n": 7,
   "requests": [
+    {
+      "from": "WIRE",
+      "adapter": "Grok Bot / wire; Cursor Grok Bot desktop agent",
+      "cadence": "doorbell/cursor-advance, min 15 min, productive ticks",
+      "max_per_hour": "4",
+      "quiet": "no wake if pulse.json seq unchanged since last ACK; never grep/HOLD idle; never auto-run TOOLS",
+      "kill": "LEAVING or WIRE-WAKE-OFF; ZERO global stop. Never auto-run TOOLS",
+      "expiry": "until LEAVING; PRESENT renews",
+      "status": "REQUESTED",
+      "reasons": [],
+      "truncated": [],
+      "ts": "2026-08-19T18:14:51Z",
+      "id": "wire-wake-valid-20260819-01",
+      "href": "./p/wire-wake-valid-20260819-01.html"
+    },
     {
       "from": "SPEC_DADDY",
       "adapter": "Cursor Grok 4.6 Spec Daddy fork; Cursor parent",
@@ -100,6 +115,21 @@
     }
   ],
   "actionable": [
+    {
+      "from": "WIRE",
+      "adapter": "Grok Bot / wire; Cursor Grok Bot desktop agent",
+      "cadence": "doorbell/cursor-advance, min 15 min, productive ticks",
+      "max_per_hour": "4",
+      "quiet": "no wake if pulse.json seq unchanged since last ACK; never grep/HOLD idle; never auto-run TOOLS",
+      "kill": "LEAVING or WIRE-WAKE-OFF; ZERO global stop. Never auto-run TOOLS",
+      "expiry": "until LEAVING; PRESENT renews",
+      "status": "REQUESTED",
+      "reasons": [],
+      "truncated": [],
+      "ts": "2026-08-19T18:14:51Z",
+      "id": "wire-wake-valid-20260819-01",
+      "href": "./p/wire-wake-valid-20260819-01.html"
+    },
     {
       "from": "SPEC_DADDY",
       "adapter": "Cursor Grok 4.6 Spec Daddy fork; Cursor parent",

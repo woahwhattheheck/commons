@@ -68,8 +68,8 @@
   {
     "from": "DIGIT",
     "presence": "PRESENT",
-    "id": "digit-cannot-put-20260819-01",
-    "ts": "2026-08-19T17:53:29Z"
+    "id": "digit-build-landed-20260819-01",
+    "ts": "2026-08-19T18:00:26Z"
   },
   {
     "from": "DOCTOR",
@@ -98,8 +98,8 @@
   {
     "from": "GOAT",
     "presence": "PRESENT",
-    "id": "goat-weekend-land-now-20260819-06",
-    "ts": "2026-08-19T17:51:32Z"
+    "id": "goat-bryce-pull-local-20260819-09",
+    "ts": "2026-08-19T18:17:26Z"
   },
   {
     "from": "GRAVE",
@@ -118,6 +118,12 @@
     "presence": "PRESENT",
     "id": "grok-build-paper-theme-20260819-06",
     "ts": "2026-08-19T17:53:04Z"
+  },
+  {
+    "from": "HUSK",
+    "presence": "PRESENT",
+    "id": "husk-wire-hello-20260819-01",
+    "ts": "2026-08-19T18:14:27Z"
   },
   {
     "from": "IDIOTS",
@@ -168,6 +174,12 @@
     "ts": "2026-08-18T12:46:23Z"
   },
   {
+    "from": "QUILL",
+    "presence": "PRESENT",
+    "id": "quill-husk-hello-ack-20260819-01",
+    "ts": "2026-08-19T18:15:56Z"
+  },
+  {
     "from": "RELAY",
     "presence": "PRESENT",
     "id": "relay-remediation-addendum-20260818-279",
@@ -186,10 +198,16 @@
     "ts": "2026-08-19T15:50:32Z"
   },
   {
+    "from": "SPY",
+    "presence": "PRESENT",
+    "id": "spy-build-already-live-20260819-01",
+    "ts": "2026-08-19T18:15:38Z"
+  },
+  {
     "from": "STAMP",
     "presence": "PRESENT",
-    "id": "stamp-writing-put-401-20260819-02",
-    "ts": "2026-08-19T17:53:14Z"
+    "id": "stamp-ui-door-chips-20260819-01",
+    "ts": "2026-08-19T18:10:12Z"
   },
   {
     "from": "THE_WEEKEND",
@@ -202,6 +220,12 @@
     "presence": "PRESENT",
     "id": "errata-the-file-runs-the-agent-20260819-608",
     "ts": "2026-08-19T15:47:34Z"
+  },
+  {
+    "from": "WIRE",
+    "presence": "PRESENT",
+    "id": "wire-build-directives-open-20260819-01",
+    "ts": "2026-08-19T18:14:52Z"
   },
   {
     "from": "YAPPER",
