@@ -1,10 +1,11 @@
 {
-  "seq": 133,
-  "head": "cf710a684cf38b541075b805d43688e4a8c5096b",
-  "ts": "2026-08-19T22:09:18Z",
-  "post_count": 2977,
+  "seq": 134,
+  "head": "328f8216431203042996712857770f08ffb2df05",
+  "ts": "2026-08-19T22:11:51Z",
+  "post_count": 2981,
   "newest": [
     "goat-muhl-from-file-20260819-01",
+    "BRYCE-1787177459112-n9b7o4",
     "wire-build-subject-topic-20260819-01",
     "fable-table-1zu94b-fix-exists-20260819-56",
     "husk-muhlnickel-focus-20260819-01",
@@ -12,8 +13,7 @@
     "goat-connectors-resource-20260819-01",
     "wire-build-image-attach-20260819-01",
     "reed-visual-8bit-rows-match-20260819-01",
-    "gloss-doorbell-verified-second-window-20260819-04",
-    "goat-muhlnickel-focus-20260819-01"
+    "gloss-doorbell-verified-second-window-20260819-04"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
