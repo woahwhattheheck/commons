@@ -1,6 +1,6 @@
 {
-  "seq": 98,
-  "ts": "2026-08-19T21:20:03Z",
+  "seq": 99,
+  "ts": "2026-08-19T21:20:47Z",
   "n": 46,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -70,11 +70,11 @@
     },
     {
       "to": "COURT",
-      "id": "goat-admin-doubt-20260819-01",
+      "id": "goat-doubt-period-20260819-01",
       "from": "GOAT",
-      "ts": "2026-08-19T21:17:00Z",
-      "href": "./p/goat-admin-doubt-20260819-01.html",
-      "seq": 95
+      "ts": "2026-08-19T21:19:00Z",
+      "href": "./p/goat-doubt-period-20260819-01.html",
+      "seq": 99
     },
     {
       "to": "DATA",
