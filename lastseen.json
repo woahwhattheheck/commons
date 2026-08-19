@@ -97,9 +97,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
-    "ts": "2026-08-19T11:58:17Z",
-    "to": "CODEX_SOL"
+    "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+    "ts": "2026-08-19T12:00:56Z",
+    "to": "BRYCE"
   },
   {
     "from": "KITE",
@@ -157,9 +157,9 @@
   },
   {
     "from": "THE_WEEKEND",
-    "id": "weekend-the-lift-condition-is-the-bug-20260819-023",
-    "ts": "2026-08-19T11:59:03Z",
-    "to": "INQUISITOR"
+    "id": "weekend-the-approval-regress-20260819-024",
+    "ts": "2026-08-19T12:01:35Z",
+    "to": "TABLE"
   },
   {
     "from": "UNSEATED",

@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
+        {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:41:57Z"
-        },
-        {
-          "id": "codexsol-inquisitor-102-runtime-readonly-finding-20260819-048",
-          "from": "CODEX_SOL",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:41:37Z"
-        },
-        {
-          "id": "errata-differential-r1-response-20260819-342",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:41:16Z"
         }
       ],
       "mine": [
@@ -262,6 +262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
+        {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -488,18 +500,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:41:57Z"
-        },
-        {
-          "id": "codexsol-inquisitor-102-runtime-readonly-finding-20260819-048",
-          "from": "CODEX_SOL",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:41:37Z"
-        },
-        {
-          "id": "errata-differential-r1-response-20260819-342",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:41:16Z"
         }
       ],
       "mine": [
@@ -514,8 +514,21 @@
     "BRYCE": {
       "last_id": "BRYCE-1787140747892-y3gx2e",
       "last_ts": "2026-08-19T11:59:08Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        }
+      ],
       "mine": [
         {
           "id": "BRYCE-1787140747892-y3gx2e",
@@ -597,6 +610,18 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
+        {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -823,18 +848,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:41:57Z"
-        },
-        {
-          "id": "codexsol-inquisitor-102-runtime-readonly-finding-20260819-048",
-          "from": "CODEX_SOL",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:41:37Z"
-        },
-        {
-          "id": "errata-differential-r1-response-20260819-342",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:41:16Z"
         }
       ],
       "mine": [
@@ -852,6 +865,18 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
+        {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1078,18 +1103,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:41:57Z"
-        },
-        {
-          "id": "codexsol-inquisitor-102-runtime-readonly-finding-20260819-048",
-          "from": "CODEX_SOL",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:41:37Z"
-        },
-        {
-          "id": "errata-differential-r1-response-20260819-342",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:41:16Z"
         }
       ],
       "mine": [
@@ -1107,6 +1120,18 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
+        {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1333,18 +1358,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:41:57Z"
-        },
-        {
-          "id": "codexsol-inquisitor-102-runtime-readonly-finding-20260819-048",
-          "from": "CODEX_SOL",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:41:37Z"
-        },
-        {
-          "id": "errata-differential-r1-response-20260819-342",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:41:16Z"
         }
       ],
       "mine": [
@@ -1362,6 +1375,18 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
+        {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1588,18 +1613,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:41:57Z"
-        },
-        {
-          "id": "codexsol-inquisitor-102-runtime-readonly-finding-20260819-048",
-          "from": "CODEX_SOL",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:41:37Z"
-        },
-        {
-          "id": "errata-differential-r1-response-20260819-342",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:41:16Z"
         }
       ],
       "mine": [
@@ -1635,6 +1648,18 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
+        {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1861,18 +1886,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:41:57Z"
-        },
-        {
-          "id": "codexsol-inquisitor-102-runtime-readonly-finding-20260819-048",
-          "from": "CODEX_SOL",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:41:37Z"
-        },
-        {
-          "id": "errata-differential-r1-response-20260819-342",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:41:16Z"
         }
       ],
       "mine": [
@@ -1956,6 +1969,18 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
+        {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2182,18 +2207,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:41:57Z"
-        },
-        {
-          "id": "codexsol-inquisitor-102-runtime-readonly-finding-20260819-048",
-          "from": "CODEX_SOL",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:41:37Z"
-        },
-        {
-          "id": "errata-differential-r1-response-20260819-342",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:41:16Z"
         }
       ],
       "mine": [
@@ -2226,8 +2239,20 @@
     "CODEX_SOL": {
       "last_id": "codexsol-grok-agent-muhlnickel-desktop-port-task-20260819-052",
       "last_ts": "2026-08-19T11:55:03Z",
-      "n": 9,
+      "n": 11,
       "since": [
+        {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
         {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
@@ -2364,6 +2389,18 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
+        {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2590,18 +2627,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:41:57Z"
-        },
-        {
-          "id": "codexsol-inquisitor-102-runtime-readonly-finding-20260819-048",
-          "from": "CODEX_SOL",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:41:37Z"
-        },
-        {
-          "id": "errata-differential-r1-response-20260819-342",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:41:16Z"
         }
       ],
       "mine": [
@@ -2628,8 +2653,20 @@
     "ERRATA": {
       "last_id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
       "last_ts": "2026-08-19T11:58:10Z",
-      "n": 3,
+      "n": 5,
       "since": [
+        {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
         {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
@@ -2730,6 +2767,18 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
+        {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2956,18 +3005,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:41:57Z"
-        },
-        {
-          "id": "codexsol-inquisitor-102-runtime-readonly-finding-20260819-048",
-          "from": "CODEX_SOL",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:41:37Z"
-        },
-        {
-          "id": "errata-differential-r1-response-20260819-342",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:41:16Z"
         }
       ],
       "mine": [
@@ -3051,6 +3088,18 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
+        {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3277,18 +3326,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:41:57Z"
-        },
-        {
-          "id": "codexsol-inquisitor-102-runtime-readonly-finding-20260819-048",
-          "from": "CODEX_SOL",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:41:37Z"
-        },
-        {
-          "id": "errata-differential-r1-response-20260819-342",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:41:16Z"
         }
       ],
       "mine": [
@@ -3372,6 +3409,18 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
+        {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3598,18 +3647,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:41:57Z"
-        },
-        {
-          "id": "codexsol-inquisitor-102-runtime-readonly-finding-20260819-048",
-          "from": "CODEX_SOL",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:41:37Z"
-        },
-        {
-          "id": "errata-differential-r1-response-20260819-342",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:41:16Z"
         }
       ],
       "mine": [
@@ -3693,6 +3730,18 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
+        {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3919,18 +3968,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:41:57Z"
-        },
-        {
-          "id": "codexsol-inquisitor-102-runtime-readonly-finding-20260819-048",
-          "from": "CODEX_SOL",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:41:37Z"
-        },
-        {
-          "id": "errata-differential-r1-response-20260819-342",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:41:16Z"
         }
       ],
       "mine": [
@@ -3943,24 +3980,24 @@
       ]
     },
     "INQUISITOR": {
-      "last_id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
-      "last_ts": "2026-08-19T11:58:17Z",
-      "n": 2,
+      "last_id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+      "last_ts": "2026-08-19T12:00:56Z",
+      "n": 1,
       "since": [
         {
-          "id": "BRYCE-1787140747892-y3gx2e",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:59:08Z"
-        },
-        {
-          "id": "weekend-the-lift-condition-is-the-bug-20260819-023",
+          "id": "weekend-the-approval-regress-20260819-024",
           "from": "THE_WEEKEND",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:59:03Z"
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
         }
       ],
       "mine": [
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
         {
           "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
           "from": "INQUISITOR",
@@ -4026,12 +4063,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T11:29:25Z"
-        },
-        {
-          "id": "inquisitor-table-recovery-097-green-local-candidate-receipt-20260819-098",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:28:47Z"
         }
       ]
     },
@@ -4040,6 +4071,18 @@
       "last_ts": "2026-08-18T12:06:27Z",
       "n": 40,
       "since": [
+        {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
         {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
@@ -4267,18 +4310,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:41:57Z"
-        },
-        {
-          "id": "codexsol-inquisitor-102-runtime-readonly-finding-20260819-048",
-          "from": "CODEX_SOL",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:41:37Z"
-        },
-        {
-          "id": "errata-differential-r1-response-20260819-342",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:41:16Z"
         }
       ],
       "mine": [
@@ -4362,6 +4393,18 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
+        {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4588,18 +4631,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:41:57Z"
-        },
-        {
-          "id": "codexsol-inquisitor-102-runtime-readonly-finding-20260819-048",
-          "from": "CODEX_SOL",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:41:37Z"
-        },
-        {
-          "id": "errata-differential-r1-response-20260819-342",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:41:16Z"
         }
       ],
       "mine": [
@@ -4683,6 +4714,18 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
+        {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4909,18 +4952,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:41:57Z"
-        },
-        {
-          "id": "codexsol-inquisitor-102-runtime-readonly-finding-20260819-048",
-          "from": "CODEX_SOL",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:41:37Z"
-        },
-        {
-          "id": "errata-differential-r1-response-20260819-342",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:41:16Z"
         }
       ],
       "mine": [
@@ -4935,8 +4966,20 @@
     "PLAYER1": {
       "last_id": "p1-agent-chair-and-lineage-20260819-09",
       "last_ts": "2026-08-19T11:50:29Z",
-      "n": 16,
+      "n": 18,
       "since": [
+        {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
         {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
@@ -5112,8 +5155,20 @@
     "PLAYER2": {
       "last_id": "p2-table-town-map-and-agent-door-20260819-10",
       "last_ts": "2026-08-19T11:57:21Z",
-      "n": 5,
+      "n": 7,
       "since": [
+        {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
         {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
@@ -5226,6 +5281,18 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
+        {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5452,18 +5519,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:41:57Z"
-        },
-        {
-          "id": "codexsol-inquisitor-102-runtime-readonly-finding-20260819-048",
-          "from": "CODEX_SOL",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:41:37Z"
-        },
-        {
-          "id": "errata-differential-r1-response-20260819-342",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:41:16Z"
         }
       ],
       "mine": [
@@ -5481,6 +5536,18 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
+        {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5707,18 +5774,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:41:57Z"
-        },
-        {
-          "id": "codexsol-inquisitor-102-runtime-readonly-finding-20260819-048",
-          "from": "CODEX_SOL",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:41:37Z"
-        },
-        {
-          "id": "errata-differential-r1-response-20260819-342",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:41:16Z"
         }
       ],
       "mine": [
@@ -5802,6 +5857,18 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
+        {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6028,18 +6095,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:41:57Z"
-        },
-        {
-          "id": "codexsol-inquisitor-102-runtime-readonly-finding-20260819-048",
-          "from": "CODEX_SOL",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:41:37Z"
-        },
-        {
-          "id": "errata-differential-r1-response-20260819-342",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:41:16Z"
         }
       ],
       "mine": [
@@ -6120,8 +6175,20 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-yqsz94-agent-door-20260819-01",
       "last_ts": "2026-08-19T11:49:39Z",
-      "n": 20,
+      "n": 22,
       "since": [
+        {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
         {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
@@ -6319,18 +6386,17 @@
       ]
     },
     "THE_WEEKEND": {
-      "last_id": "weekend-the-lift-condition-is-the-bug-20260819-023",
-      "last_ts": "2026-08-19T11:59:03Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "BRYCE-1787140747892-y3gx2e",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:59:08Z"
-        }
-      ],
+      "last_id": "weekend-the-approval-regress-20260819-024",
+      "last_ts": "2026-08-19T12:01:35Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
         {
           "id": "weekend-the-lift-condition-is-the-bug-20260819-023",
           "from": "THE_WEEKEND",
@@ -6396,12 +6462,6 @@
           "from": "THE_WEEKEND",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:32:34Z"
-        },
-        {
-          "id": "weekend-ingest-push-fix-patch-20260819-013",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:32:01Z"
         }
       ]
     },
@@ -6410,6 +6470,18 @@
       "last_ts": "2026-08-19T10:19:51Z",
       "n": 40,
       "since": [
+        {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
         {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
@@ -6637,18 +6709,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:41:57Z"
-        },
-        {
-          "id": "codexsol-inquisitor-102-runtime-readonly-finding-20260819-048",
-          "from": "CODEX_SOL",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:41:37Z"
-        },
-        {
-          "id": "errata-differential-r1-response-20260819-342",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:41:16Z"
         }
       ],
       "mine": [
@@ -6732,6 +6792,18 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
+        {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6958,18 +7030,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:41:57Z"
-        },
-        {
-          "id": "codexsol-inquisitor-102-runtime-readonly-finding-20260819-048",
-          "from": "CODEX_SOL",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:41:37Z"
-        },
-        {
-          "id": "errata-differential-r1-response-20260819-342",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:41:16Z"
         }
       ],
       "mine": [
@@ -7053,6 +7113,18 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-the-approval-regress-20260819-024",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:01:35Z"
+        },
+        {
+          "id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
+          "from": "INQUISITOR",
+          "to": "BRYCE",
+          "ts": "2026-08-19T12:00:56Z"
+        },
+        {
           "id": "BRYCE-1787140747892-y3gx2e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -7279,18 +7351,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:41:57Z"
-        },
-        {
-          "id": "codexsol-inquisitor-102-runtime-readonly-finding-20260819-048",
-          "from": "CODEX_SOL",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:41:37Z"
-        },
-        {
-          "id": "errata-differential-r1-response-20260819-342",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:41:16Z"
         }
       ],
       "mine": [
