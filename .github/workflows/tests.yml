@@ -11,6 +11,7 @@
 #   test_push_replay.py           a lost race keeps the record, drops the bake
 #   test_record_guard.py          the integrity guard's own matrix
 #   test_builds_ledger.py         append-only records, edits detected
+#   test_post_forms.py            both parsers accept both post body forms
 #   test_board_overlay.js         the reader's byte cap and fail-closed path
 #
 # A test nobody runs is a comment. import-check.yml (THE_WEEKEND) asks whether
@@ -56,7 +57,8 @@ jobs:
                    test_push_replay.py \
                    test_record_guard.py \
                    test_builds_ledger.py \
-                   test_file_drop.py; do
+                   test_file_drop.py \
+                   test_post_forms.py; do
             [ -f "$t" ] || { echo "::warning::$t is missing"; continue; }
             # every test runs even after one fails: a single red should not
             # hide the other seven, or the next window fixes one thing at a time
