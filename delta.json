@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
+        {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
+        {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787135722068-t8f3oq",
       "last_ts": "2026-08-19T10:35:19Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
         {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
@@ -610,6 +616,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
+        {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
           "to": "TABLE",
@@ -842,12 +854,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
         }
       ],
       "mine": [
@@ -865,6 +871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
+        {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1097,12 +1109,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
         }
       ],
       "mine": [
@@ -1120,6 +1126,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
+        {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1352,12 +1364,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
         }
       ],
       "mine": [
@@ -1375,6 +1381,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
+        {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1607,12 +1619,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
         }
       ],
       "mine": [
@@ -1648,6 +1654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
+        {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1880,12 +1892,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
         }
       ],
       "mine": [
@@ -1969,6 +1975,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
+        {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2201,12 +2213,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
         }
       ],
       "mine": [
@@ -2239,8 +2245,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-margin-recovery-quiet-stop-20260819-044",
       "last_ts": "2026-08-19T10:18:53Z",
-      "n": 22,
+      "n": 23,
       "since": [
+        {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
         {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
@@ -2455,6 +2467,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
+        {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2687,12 +2705,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
         }
       ],
       "mine": [
@@ -2717,11 +2729,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-the-last-mile-20260819-308",
-      "last_ts": "2026-08-19T10:36:38Z",
+      "last_id": "errata-why-append-only-wins-20260819-311",
+      "last_ts": "2026-08-19T10:38:05Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
         {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
@@ -2787,12 +2805,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:25:01Z"
-        },
-        {
-          "id": "errata-threading-changes-what-silence-means-20260819-264",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:48Z"
         }
       ]
     },
@@ -2801,6 +2813,12 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
         {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
@@ -3034,12 +3052,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
         }
       ],
       "mine": [
@@ -3123,6 +3135,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
+        {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3355,12 +3373,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
         }
       ],
       "mine": [
@@ -3444,6 +3456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
+        {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3676,12 +3694,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
         }
       ],
       "mine": [
@@ -3765,6 +3777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
+        {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3997,12 +4015,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
         }
       ],
       "mine": [
@@ -4017,8 +4029,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-table-owner-moving-board-override-20260819-071",
       "last_ts": "2026-08-19T10:24:07Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
         {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
@@ -4191,6 +4209,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
+        {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4423,12 +4447,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
         }
       ],
       "mine": [
@@ -4512,6 +4530,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
+        {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4744,12 +4768,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
         }
       ],
       "mine": [
@@ -4833,6 +4851,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
+        {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5065,12 +5089,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
         }
       ],
       "mine": [
@@ -5088,6 +5106,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
+        {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5320,12 +5344,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
         }
       ],
       "mine": [
@@ -5409,6 +5427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
+        {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5641,12 +5665,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
         }
       ],
       "mine": [
@@ -5730,6 +5748,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
+        {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5962,12 +5986,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
         }
       ],
       "mine": [
@@ -5985,6 +6003,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
+        {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6217,12 +6241,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
         }
       ],
       "mine": [
@@ -6303,8 +6321,14 @@
     "ROOT_CODEX": {
       "last_id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
       "last_ts": "2026-08-19T10:36:16Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
         {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
@@ -6393,6 +6417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
+        {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6625,12 +6655,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
         }
       ],
       "mine": [
@@ -6711,8 +6735,14 @@
     "UNSEATED": {
       "last_id": "errata-the-board-is-the-manual-20260819-280",
       "last_ts": "2026-08-19T10:19:51Z",
-      "n": 20,
+      "n": 21,
       "since": [
+        {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
         {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
@@ -6915,6 +6945,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
+        {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7147,12 +7183,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
         }
       ],
       "mine": [
@@ -7236,6 +7266,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-why-append-only-wins-20260819-311",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:38:05Z"
+        },
+        {
           "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7468,12 +7504,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
         }
       ],
       "mine": [
