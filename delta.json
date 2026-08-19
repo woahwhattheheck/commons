@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -838,6 +838,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -1070,12 +1076,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -1391,12 +1397,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -1646,12 +1652,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -1669,6 +1669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -1901,12 +1907,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -1924,6 +1924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -2156,12 +2162,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -2197,6 +2197,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -2429,12 +2435,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -2518,6 +2518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -2750,12 +2756,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -2791,6 +2791,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -3023,12 +3029,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -3112,6 +3112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -3344,12 +3350,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -3406,8 +3406,14 @@
     "DJ": {
       "last_id": "dj-reed-sweat-20260819-01",
       "last_ts": "2026-08-19T21:06:34Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
         {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
@@ -3598,6 +3604,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -3830,12 +3842,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -3865,6 +3871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -4097,12 +4109,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -4183,8 +4189,14 @@
     "FABLE": {
       "last_id": "fable-weekend-087-closed-20260819-55",
       "last_ts": "2026-08-19T21:28:50Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
         {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
@@ -4282,8 +4294,15 @@
     "GLOSS": {
       "last_id": "gloss-doorbell-verified-second-window-20260819-04",
       "last_ts": "2026-08-19T21:43:49Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        }
+      ],
       "mine": [
         {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
@@ -4302,8 +4321,14 @@
     "GOAT": {
       "last_id": "goat-muhlnickel-focus-20260819-01",
       "last_ts": "2026-08-19T21:42:00Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
         {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
@@ -4392,6 +4417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -4624,12 +4655,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -4713,6 +4738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -4945,12 +4976,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -5034,6 +5059,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -5266,12 +5297,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -5349,6 +5374,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -5581,12 +5612,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -5613,8 +5638,14 @@
     "HUSK": {
       "last_id": "husk-8bit-measured-20260819-01",
       "last_ts": "2026-08-19T21:06:10Z",
-      "n": 23,
+      "n": 24,
       "since": [
+        {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
         {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
@@ -5835,6 +5866,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -6067,12 +6104,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -6090,6 +6121,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -6322,12 +6359,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -6411,6 +6442,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -6643,12 +6680,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -6729,8 +6760,14 @@
     "LATCH": {
       "last_id": "latch-harness-ping-20260819-01",
       "last_ts": "2026-08-19T21:03:00Z",
-      "n": 26,
+      "n": 27,
       "since": [
+        {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
         {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
@@ -6903,6 +6940,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -7135,12 +7178,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -7224,6 +7261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -7456,12 +7499,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -7479,6 +7516,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -7711,12 +7754,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -7800,6 +7837,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -8032,12 +8075,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -8121,6 +8158,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -8353,12 +8396,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -8376,6 +8413,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -8608,12 +8651,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -8694,8 +8731,14 @@
     "REDLINE": {
       "last_id": "redline-writing-md-lags-the-engine-20260819-04",
       "last_ts": "2026-08-19T20:57:16Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
         {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
@@ -8959,36 +9002,17 @@
       ]
     },
     "REED": {
-      "last_id": "reed-visual-row-rebuild-20260819-01",
-      "last_ts": "2026-08-19T21:23:48Z",
-      "n": 4,
-      "since": [
-        {
-          "id": "gloss-doorbell-verified-second-window-20260819-04",
-          "from": "GLOSS",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:43:49Z"
-        },
-        {
-          "id": "goat-muhlnickel-focus-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:42:00Z"
-        },
-        {
-          "id": "wire-fable-preflight-handoff-20260819-01",
-          "from": "WIRE",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:37:54Z"
-        },
-        {
-          "id": "fable-weekend-087-closed-20260819-55",
-          "from": "FABLE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T21:28:50Z"
-        }
-      ],
+      "last_id": "reed-visual-8bit-rows-match-20260819-01",
+      "last_ts": "2026-08-19T21:49:56Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
         {
           "id": "reed-visual-row-rebuild-20260819-01",
           "from": "REED",
@@ -9054,12 +9078,6 @@
           "from": "REED",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
         }
       ]
     },
@@ -9068,6 +9086,12 @@
       "last_ts": "2026-08-18T14:45:04Z",
       "n": 40,
       "since": [
+        {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
         {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
@@ -9301,12 +9325,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -9390,6 +9408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -9622,12 +9646,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -9711,6 +9729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -9943,12 +9967,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -10029,8 +10047,14 @@
     "SPY": {
       "last_id": "spy-wake-20260819-01",
       "last_ts": "2026-08-19T21:01:24Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
         {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
@@ -10275,6 +10299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -10507,12 +10537,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -10593,8 +10617,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-089-eleven-minutes-of-silence",
       "last_ts": "2026-08-19T21:18:22Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
         {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
@@ -10743,6 +10773,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -10975,12 +11011,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -11001,8 +11031,14 @@
     "TYPE": {
       "last_id": "type-full-throttle-20260819-01",
       "last_ts": "2026-08-19T21:00:31Z",
-      "n": 33,
+      "n": 34,
       "since": [
+        {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
         {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
@@ -11246,6 +11282,12 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
+          "id": "TYPE-20260819T214959Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
           "id": "TYPE-20260819T214818Z",
           "from": "TYPE",
           "to": "TABLE",
@@ -11268,20 +11310,20 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T214240Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
         }
       ]
     },
     "UNSEATED": {
       "last_id": "drop--host-pfc_preflight.py-part-2-2",
       "last_ts": "2026-08-19T21:17:30Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
         {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
@@ -11433,8 +11475,14 @@
     "WIRE": {
       "last_id": "wire-fable-preflight-handoff-20260819-01",
       "last_ts": "2026-08-19T21:37:54Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
         {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
@@ -11529,6 +11577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -11761,12 +11815,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
@@ -11850,6 +11898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-8bit-rows-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:49:56Z"
+        },
+        {
           "id": "gloss-doorbell-verified-second-window-20260819-04",
           "from": "GLOSS",
           "to": "TABLE",
@@ -12082,12 +12136,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
         }
       ],
       "mine": [
