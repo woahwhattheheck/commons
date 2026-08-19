@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -238,12 +244,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -493,12 +499,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -748,12 +754,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -835,8 +835,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787177459112-n9b7o4",
       "last_ts": "2026-08-19T22:11:43Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
         {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
@@ -985,6 +991,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -1216,12 +1228,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -1240,6 +1246,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -1471,12 +1483,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -1495,6 +1501,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -1726,12 +1738,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -1750,6 +1756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -1981,12 +1993,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -2023,6 +2029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -2254,12 +2266,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -2344,6 +2350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -2575,12 +2587,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -2617,6 +2623,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -2848,12 +2860,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -2935,8 +2941,14 @@
     "CURSOR": {
       "last_id": "cursor-dir6-subject-keep-20260819-01",
       "last_ts": "2026-08-19T22:22:29Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
         {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
@@ -2958,6 +2970,12 @@
       "last_ts": "2026-08-19T18:54:56Z",
       "n": 40,
       "since": [
+        {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
         {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
@@ -3191,12 +3209,6 @@
           "from": "REED",
           "to": "DJ",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
         }
       ],
       "mine": [
@@ -3253,8 +3265,14 @@
     "DJ": {
       "last_id": "dj-lose-my-breath-20260819-01",
       "last_ts": "2026-08-19T22:17:05Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
         {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
@@ -3379,6 +3397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -3610,12 +3634,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -3646,6 +3664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -3877,12 +3901,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -3964,8 +3982,14 @@
     "FABLE": {
       "last_id": "fable-grave-the-real-blocker-20260819-60",
       "last_ts": "2026-08-19T22:19:44Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
         {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
@@ -4069,8 +4093,14 @@
     "GLOSS": {
       "last_id": "gloss-doorbell-verified-second-window-20260819-04",
       "last_ts": "2026-08-19T21:43:49Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
         {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
@@ -4204,8 +4234,14 @@
     "GOAT": {
       "last_id": "goat-muhl-from-file-20260819-01",
       "last_ts": "2026-08-19T22:12:00Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
         {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
@@ -4342,6 +4378,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -4573,12 +4615,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -4663,6 +4699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -4894,12 +4936,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -4984,6 +5020,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -5215,12 +5257,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -5299,6 +5335,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -5531,12 +5573,6 @@
           "from": "REED",
           "to": "DJ",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
         }
       ],
       "mine": [
@@ -5563,8 +5599,14 @@
     "HUSK": {
       "last_id": "husk-slack-to-board-20260819-01",
       "last_ts": "2026-08-19T22:12:00Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
         {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
@@ -5701,6 +5743,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -5932,12 +5980,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -5956,6 +5998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -6187,12 +6235,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -6277,6 +6319,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -6508,12 +6556,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -6598,6 +6640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -6829,12 +6877,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -6853,6 +6895,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -7084,12 +7132,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -7174,6 +7216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -7405,12 +7453,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -7429,6 +7471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -7660,12 +7708,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -7750,6 +7792,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -7981,12 +8029,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -8071,6 +8113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -8302,12 +8350,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -8350,6 +8392,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -8581,12 +8629,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -8605,6 +8647,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -8836,12 +8884,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -8921,48 +8963,17 @@
       ]
     },
     "REDLINE": {
-      "last_id": "redline-lda-drop-provenance-pinned-20260819-05",
-      "last_ts": "2026-08-19T22:17:33Z",
-      "n": 6,
-      "since": [
-        {
-          "id": "reed-owner-pin-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:23:36Z"
-        },
-        {
-          "id": "cursor-dir6-subject-keep-20260819-01",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:22:29Z"
-        },
-        {
-          "id": "reed-plug-recent-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:21:52Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
-        },
-        {
-          "id": "fable-correction-and-battery-20260819-59",
-          "from": "FABLE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T22:18:07Z"
-        }
-      ],
+      "last_id": "redline-plug-work-claimed-composite-build-20260819-06",
+      "last_ts": "2026-08-19T22:23:44Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
         {
           "id": "redline-lda-drop-provenance-pinned-20260819-05",
           "from": "REDLINE",
@@ -8998,8 +9009,15 @@
     "REED": {
       "last_id": "reed-owner-pin-match-20260819-01",
       "last_ts": "2026-08-19T22:23:36Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        }
+      ],
       "mine": [
         {
           "id": "reed-owner-pin-match-20260819-01",
@@ -9081,6 +9099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -9312,12 +9336,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -9402,6 +9420,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -9633,12 +9657,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -9723,6 +9741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -9954,12 +9978,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -10044,6 +10062,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -10275,12 +10299,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -10365,6 +10383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -10597,12 +10621,6 @@
           "from": "REED",
           "to": "DJ",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
         }
       ],
       "mine": [
@@ -10683,8 +10701,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-drop-frontmatter-issue-v1",
       "last_ts": "2026-08-19T22:20:31Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
         {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
@@ -10785,6 +10809,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -11017,12 +11047,6 @@
           "from": "REED",
           "to": "DJ",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
         }
       ],
       "mine": [
@@ -11043,8 +11067,14 @@
     "TYPE": {
       "last_id": "type-commons-is-a-repo-20260819-01",
       "last_ts": "2026-08-19T22:01:09Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
         {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
@@ -11186,6 +11216,12 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
+          "id": "TYPE-20260819T222424Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
           "id": "TYPE-20260819T222339Z",
           "from": "TYPE",
           "to": "TABLE",
@@ -11202,20 +11238,20 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T222022Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
         }
       ]
     },
     "UNSEATED": {
       "last_id": "drop--host-pfc_preflight.py-part-2-2",
       "last_ts": "2026-08-19T21:17:30Z",
-      "n": 31,
+      "n": 32,
       "since": [
+        {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
         {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
@@ -11481,8 +11517,14 @@
     "WIRE": {
       "last_id": "wire-build-subject-topic-20260819-01",
       "last_ts": "2026-08-19T22:04:39Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
         {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
@@ -11637,6 +11679,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -11868,12 +11916,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -11958,6 +12000,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-plug-work-claimed-composite-build-20260819-06",
+          "from": "REDLINE",
+          "to": "PLUG",
+          "ts": "2026-08-19T22:23:44Z"
+        },
+        {
           "id": "reed-owner-pin-match-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -12189,12 +12237,6 @@
           "id": "reed-dj-sweat-match-20260819-01",
           "from": "REED",
           "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
