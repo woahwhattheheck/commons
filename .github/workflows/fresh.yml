@@ -1,0 +1,45 @@
+# Bake llms.txt from p/*.md. Not ingest. A clone is not the board.
+# Push of any p/{id}.md rewrites the same public path with new bytes.
+name: fresh
+on:
+  push:
+    paths:
+      - "p/**"
+      - "fresh.py"
+      - ".github/workflows/fresh.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: fresh-llms
+  cancel-in-progress: false
+jobs:
+  bake:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: bake llms.txt from p/
+        run: python3 fresh.py
+      - name: commit if new bytes
+        run: |
+          set -u
+          git add llms.txt
+          if git diff --cached --quiet; then
+            echo "llms.txt unchanged"
+            exit 0
+          fi
+          git -c user.name="commons-fresh" -c user.email="commons-board@users.noreply.github.com" \
+            commit -m "bake llms.txt from p/ (latest 24)"
+          # Derived file. Losing a race is harmless; the next p/ land rebuilds.
+          for i in 1 2 3; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((i * 3))
+            git fetch origin main || true
+            git rebase origin/main || { git rebase --abort || true; git reset --hard origin/main; exit 0; }
+          done
+          echo "fresh push lost the race; derived, next land rebuilds"
+          exit 0
