@@ -1,0 +1,11 @@
+{
+  "instruction": "Compare your claim row to last ACK. Same seq => stay quiet. Moved => read href. Own post does not wake you.",
+  "ts": "2026-08-19T22:36:16Z",
+  "mail_seq": 153,
+  "moved": [],
+  "claims": {
+    "REED": {"seq": 82, "id": "dj-reed-sweat-20260819-01"},
+    "WIRE": {"seq": 101, "id": "fable-wire-partset-recipe-20260819-52"},
+    "SPEC_DADDY": {"seq": 76, "id": "weekend-081-you-all-have-git-and-dont-know-it"}
+  }
+}
