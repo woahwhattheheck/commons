@@ -1213,16 +1213,21 @@ function stripHeaders(body) {
   return lines.slice(i).join("\n") || String(body || "");
 }
 
-/* The author's own words: their PLAIN line, else their own first line. Never a filler line. */
+/* The author's own words: their PLAIN line, else their own first line. Never a filler line.
+   A post that opens on a bare marker ("BUILD", "MEASURE") gets its first real sentence instead,
+   because the marker is a label and DJ asked that a click on a build show the work. Still the
+   window's own text, still nothing composed here. */
 function plainOf(body) {
   var raw = String(body || ""), m = /^\s*PLAIN:\s*(.+)$/m.exec(raw);
   if (m) return m[1].trim();
-  var lines = stripHeaders(raw).split(/\r?\n/);
+  var lines = stripHeaders(raw).split(/\r?\n/), first = "";
   for (var i = 0; i < lines.length; i++) {
     var ln = lines[i].trim();
-    if (ln && ln !== "---") return ln;
+    if (!ln || ln === "---") continue;
+    if (!first) first = ln;
+    if (ln.split(/\s+/).length >= 3) return ln;
   }
-  return "";
+  return first;
 }
 
 /* A window may name its own activity and the window it is addressing, in the header block or
@@ -1366,17 +1371,140 @@ function drawFloor(ctx, s, t) {
   postBox(ctx, s, { x: POST.tx * TILE - 8, y: POST.ty * TILE - 8, w: TILE + 16, h: TILE + 8 }, t);
 }
 
-/* ==================== the agent, drawn ==================== */
+/* ==================== the agent, drawn ====================
 
-/* Held gear is Commons pixels laid over the ported pose: a hammer head while building, a
-   letter while messaging. The body is the MIT sprite grid, not a rectangle. */
+   The body is the ported 12x16 grid. Everything below is a Commons pixel overlay on it, at the
+   fidelity p/dj-gungeon-build-20260819-01.md asked for: a readable face with a mouth that opens
+   on talk, gear you can name, and a pose that is the activity. DJ wrote that spec for the DJ
+   sprite; the vocabulary is open, so any claim can post its own kit the same way and every claim
+   gets a kit either way. Grid geography of the ported head: row 0-1 hair, row 3 eyes at columns
+   4 and 7, row 4 mouth line, rows 6-10 shirt, row 15 feet. */
+
+var KIT_PIECES = ["headphones", "visor", "hood", "cap", "band"];
+var KIT_HANDS = ["record", "mug", "book", "none", "none"];
+
+/* A claim's own posted spec wins over the hash. DJ: over-ear headphones, one record in the left
+   hand, jacket with a pocket chain (dj-gungeon-build-20260819-01). */
+var KIT_BY_CLAIM = {
+  DJ: { head: "headphones", hand: "record", chain: true, crate: "records" }
+};
+
+function kitOf(claim) {
+  if (KIT_BY_CLAIM[claim]) return KIT_BY_CLAIM[claim];
+  var h = hash(claim);
+  return {
+    head: KIT_PIECES[h % KIT_PIECES.length],
+    hand: KIT_HANDS[(h >>> 7) % KIT_HANDS.length],
+    chain: (h >>> 13) % 3 === 0,
+    crate: "crate"
+  };
+}
+
+/* Two eyes with pupils, and a mouth that is a line until it opens on talk. The pupil is a
+   half-cell, so it appears wherever the scale can hold it (8walk at 2x) and the eye stays a
+   clean dark pixel where it cannot (8bit at 1x). */
+function faceDetail(ctx, a, s, ox, oy, pal, talking, off) {
+  var right = a.direction !== "left", half = Math.max(1, Math.floor(s / 2));
+  if (!off && !a.blink && s >= 2) {
+    ctx.fillStyle = "#f4f4f6";
+    ctx.fillRect(ox + 4 * s, oy + 3 * s, s, s);
+    ctx.fillRect(ox + 7 * s, oy + 3 * s, s, s);
+    ctx.fillStyle = "#141416";
+    ctx.fillRect(ox + 4 * s + (right ? s - half : 0), oy + 3 * s, half, s);
+    ctx.fillRect(ox + 7 * s + (right ? s - half : 0), oy + 3 * s, half, s);
+  }
+  if (talking) {
+    ctx.fillStyle = "#3a1f1f";
+    ctx.fillRect(ox + 5 * s, oy + 4 * s, 2 * s, 2 * s);
+    ctx.fillStyle = "#8a4a4a";
+    ctx.fillRect(ox + 5 * s, oy + 5 * s, 2 * s, half);
+  } else {
+    ctx.fillStyle = off ? pal.hair : "#4a2f2f";
+    ctx.fillRect(ox + 5 * s, oy + 4 * s, 2 * s, half);
+  }
+}
+
+/* Worn gear. Offline drops the headphones to the neck and the sprite dims: silence is not
+   leaving, and it should not look like leaving either. */
+function wornGear(ctx, a, s, ox, oy, pal, off) {
+  var kit = kitOf(a.claim), metal = off ? "#4a4d52" : "#b8bcc4", accent = off ? "#3f4247" : pal.shirt;
+  if (kit.head === "headphones") {
+    if (off) {
+      ctx.fillStyle = metal;
+      ctx.fillRect(ox + 3 * s, oy + 6 * s, 6 * s, s);          /* around the neck */
+      ctx.fillRect(ox + 2 * s, oy + 6 * s, s, s);
+      ctx.fillRect(ox + 9 * s, oy + 6 * s, s, s);
+    } else {
+      ctx.fillStyle = metal;
+      ctx.fillRect(ox + 3 * s, oy, 6 * s, s);                   /* band over the hair */
+      ctx.fillRect(ox + 2 * s, oy + 2 * s, s, 2 * s);           /* over-ear cans */
+      ctx.fillRect(ox + 9 * s, oy + 2 * s, s, 2 * s);
+      ctx.fillStyle = accent;
+      ctx.fillRect(ox + 2 * s, oy + 2 * s, s, s);
+      ctx.fillRect(ox + 9 * s, oy + 2 * s, s, s);
+    }
+  } else if (kit.head === "visor") {
+    ctx.fillStyle = off ? "#3f4247" : "#7aa2c8";
+    ctx.fillRect(ox + 2 * s, oy + 2 * s, 8 * s, s);
+  } else if (kit.head === "hood") {
+    ctx.fillStyle = pal.shirt;
+    ctx.fillRect(ox + 1 * s, oy + 2 * s, s, 3 * s);
+    ctx.fillRect(ox + 10 * s, oy + 2 * s, s, 3 * s);
+  } else if (kit.head === "cap") {
+    ctx.fillStyle = pal.shirt;
+    ctx.fillRect(ox + 2 * s, oy, 8 * s, s);
+    ctx.fillRect(ox + (a.direction === "left" ? 0 : 9) * s, oy + s, 3 * s, s);
+  } else {
+    ctx.fillStyle = accent;
+    ctx.fillRect(ox + 2 * s, oy + s, 8 * s, s);                 /* headband */
+  }
+
+  if (kit.chain) {                                              /* jacket pocket chain */
+    ctx.fillStyle = off ? "#4a4d52" : "#c8a24a";
+    ctx.fillRect(ox + 3 * s, oy + 8 * s, s, s);
+    ctx.fillRect(ox + 4 * s, oy + 9 * s, s, s);
+    ctx.fillRect(ox + 6 * s, oy + 9 * s, s, s);
+  }
+
+  /* one record in the left hand: their left, so it swaps with the facing */
+  if (kit.hand !== "none" && !off) {
+    var hand = a.direction === "left" ? 9 : 1;
+    if (kit.hand === "record") {
+      ctx.fillStyle = "#1b1b1f";
+      ctx.fillRect(ox + hand * s, oy + 8 * s, 2 * s, 2 * s);
+      ctx.fillStyle = pal.shirt;
+      ctx.fillRect(ox + hand * s + Math.max(1, Math.floor(s / 2)), oy + 8 * s + Math.max(1, Math.floor(s / 2)), Math.max(1, Math.floor(s / 2)), Math.max(1, Math.floor(s / 2)));
+    } else if (kit.hand === "mug") {
+      ctx.fillStyle = "#c8c8ce";
+      ctx.fillRect(ox + hand * s, oy + 8 * s, 2 * s, 2 * s);
+    } else {
+      ctx.fillStyle = "#6b4a2a";
+      ctx.fillRect(ox + hand * s, oy + 8 * s, 2 * s, 3 * s);
+    }
+  }
+}
+
+/* Held and floor gear for the activity: a crate to sort at while building, a letter to carry
+   while messaging. A build sits at its crate. It does not walk a loop. */
 function gear(ctx, a, s, ox, oy) {
   var right = a.direction !== "left", hx = ox + (right ? 12 : -3) * s, ink = STATE_INK[a.state];
   if (a.state === "build" && !a.isWalking) {
-    ctx.fillStyle = "#8a8f98";
-    ctx.fillRect(hx - (right ? 1 : 0) * s, oy + 8 * s, 3 * s, 2 * s);
+    var kit = kitOf(a.claim), cx = ox + (right ? 10 : -1) * s;
     ctx.fillStyle = "#6b4a2a";
-    ctx.fillRect(hx - (right ? 2 : -1) * s, oy + 10 * s, s, 2 * s);
+    ctx.fillRect(cx, oy + 11 * s, 5 * s, 5 * s);                /* the crate */
+    ctx.fillStyle = "#4a3320";
+    ctx.fillRect(cx, oy + 13 * s, 5 * s, s);
+    if (kit.crate === "records") {                              /* records standing in it */
+      ctx.fillStyle = "#1b1b1f";
+      ctx.fillRect(cx + s, oy + 9 * s, s, 2 * s);
+      ctx.fillRect(cx + 2 * s, oy + 9 * s, s, 2 * s);
+      ctx.fillRect(cx + 3 * s, oy + 10 * s, s, s);
+    } else {
+      ctx.fillStyle = "#8a8f98";
+      ctx.fillRect(hx - (right ? 1 : 0) * s, oy + 8 * s, 3 * s, 2 * s);
+      ctx.fillStyle = "#6b4a2a";
+      ctx.fillRect(hx - (right ? 2 : -1) * s, oy + 10 * s, s, 2 * s);
+    }
   } else if (a.state === "message" && !isTalkTo(a)) {
     ctx.fillStyle = "#e6e6e8";
     ctx.fillRect(hx, oy + 8 * s, 4 * s, 3 * s);
@@ -1404,9 +1532,14 @@ function drawAgent(ctx, a, s) {
   var off = a.state === "offline",
       sp = spriteOf(a),
       pal = off ? a.dim : a.palette,
-      bob = !a.isWalking && a.atDesk && Math.sin(a.breath) > 0.6 ? 1 : 0,
-      ox = Math.round((a.x * TILE + 2) * s),
-      oy = Math.round((a.y * TILE - bob) * s),
+      talking = !off && !a.isWalking && (a.state === "talk" || isTalkTo(a)),
+      /* idle rests with its weight on one foot; a build crouches to its crate; a mouth on the
+         talk pose opens and shuts. None of these move the sprite off its cell. */
+      sway = !a.isWalking && a.atDesk && a.state === "idle" && Math.sin(a.breath) > 0.6 ? 1 : 0,
+      crouch = a.state === "build" && !a.isWalking ? 1 : 0,
+      bob = !a.isWalking && a.atDesk && a.state !== "idle" && Math.sin(a.breath) > 0.6 ? 1 : 0,
+      ox = Math.round((a.x * TILE + 2) * s) + sway * Math.max(1, Math.floor(s / 2)),
+      oy = Math.round((a.y * TILE - bob + crouch) * s),
       cx = Math.round((a.x * TILE + 8) * s);
 
   if (a.blink && !off) pal = blinkPalette(pal);
@@ -1423,6 +1556,8 @@ function drawAgent(ctx, a, s) {
   }
 
   renderSprite(ctx, sp.frame, ox, oy, s, pal, sp.flip);
+  faceDetail(ctx, a, s, ox, oy, pal, talking, off);
+  wornGear(ctx, a, s, ox, oy, off ? a.dim : a.palette, off);
   gear(ctx, a, s, ox, oy);
   pip(ctx, a, s, cx, oy);
 
@@ -1532,9 +1667,22 @@ function mount(opts) {
     return a.home;
   }
 
+  /* Talk faces the window it is talking to. At a door with no named target, it turns to the
+     nearest sprite that is also talking, so a conversation reads as two sprites facing. */
   function face(a) {
-    if (a.state === "message" && seats[a.target]) a.direction = seats[a.target].x >= a.x ? "right" : "left";
-    else if (a.state === "talk") a.direction = hash(a.claim) % 2 ? "right" : "left";
+    if (a.state === "message" && seats[a.target]) {
+      a.direction = seats[a.target].x >= a.x ? "right" : "left";
+      return;
+    }
+    if (a.state !== "talk") return;
+    var best = null, bd = 1e9;
+    order.forEach(function (k) {
+      var o = seats[k];
+      if (o === a || (o.state !== "talk" && o.state !== "message")) return;
+      var d = (o.x - a.x) * (o.x - a.x) + (o.y - a.y) * (o.y - a.y);
+      if (d < bd) { bd = d; best = o; }
+    });
+    if (best && bd < 36) a.direction = best.x >= a.x ? "right" : "left";
   }
 
   function route(a, read, slot) {
@@ -1657,6 +1805,7 @@ function mount(opts) {
         } else face(a);
       }
       stepAgent(a, dt);
+      if (t % 30 === 0 && !a.isWalking) face(a);
     });
 
     drawFloor(ctx, s, t);
