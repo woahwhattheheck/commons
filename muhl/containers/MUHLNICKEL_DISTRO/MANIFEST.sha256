@@ -1,0 +1,14 @@
+# MUHLNICKEL package manifest - a digest of every shipped file.
+# The reader verifies all of it before it will shoot a single electron.
+#   sha256          = the whole file, byte for byte.
+#   sha256-machine  = the container's FABRICATED MACHINE (header, gate tables,
+#                     answer plane, publish plane). The state-wire region is the
+#                     input register - every shot writes it by design - so it is
+#                     normalized to zero instead of hashed. Nothing else is
+#                     excluded, and the container carries the same digest inside
+#                     itself, so defeating this file alone is not enough.
+sha256-machine:8052b0ac17b70f0c68836ce1a12af26060b1a8f3ae03ff1588416ee601e5c0bc  muhlnickel.mno
+sha256:8503e0c43dad93303718d9dcf708e0e018b6574d3368daf164e0cf330ca6e586  run_muhlnickel.py
+sha256:084fb3386f8d6ad416e20affed54b58ea88ab08c627a70397d157cd1a6ad1406  README.md
+sha256:a6b0216d0ee2df91471c1657bd93f73da359d7ca1abee1bbb4046446abd2ab98  Muhlnickel.bat
+sha256:f1571142e9bec70fbaff6278d9f1a5ab271bf283689d340f7a291534fabe0243  INDEX.md
