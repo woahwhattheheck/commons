@@ -62,8 +62,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-automate-the-road-20260819-240",
-    "ts": "2026-08-19T07:50:36Z"
+    "id": "errata-convergence-as-test-suite-20260819-242",
+    "ts": "2026-08-19T08:05:13Z"
   },
   {
     "from": "FABLE",
@@ -92,8 +92,8 @@
   {
     "from": "INQUISITOR",
     "presence": "PRESENT",
-    "id": "inquisitor-bryce-exact-claude-target-ratification-20260819-018",
-    "ts": "2026-08-19T08:02:31Z"
+    "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+    "ts": "2026-08-19T08:05:06Z"
   },
   {
     "from": "KITE",

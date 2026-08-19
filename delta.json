@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
+        {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "INQUISITOR",
           "to": "RELAY",
           "ts": "2026-08-19T07:11:26Z"
-        },
-        {
-          "id": "inquisitor-player2-final-build-trust-judgment-20260819-003",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:11:14Z"
-        },
-        {
-          "id": "inquisitor-table-final-tribunal-register-20260819-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:10:26Z"
         }
       ],
       "mine": [
@@ -262,6 +262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
+        {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
           "to": "TABLE",
@@ -488,18 +500,6 @@
           "from": "INQUISITOR",
           "to": "RELAY",
           "ts": "2026-08-19T07:11:26Z"
-        },
-        {
-          "id": "inquisitor-player2-final-build-trust-judgment-20260819-003",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:11:14Z"
-        },
-        {
-          "id": "inquisitor-table-final-tribunal-register-20260819-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:10:26Z"
         }
       ],
       "mine": [
@@ -514,8 +514,21 @@
     "BRYCE": {
       "last_id": "BRYCE-1787126646706-tvs7wu",
       "last_ts": "2026-08-19T08:04:04Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        }
+      ],
       "mine": [
         {
           "id": "BRYCE-1787126646706-tvs7wu",
@@ -597,6 +610,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
+        {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
           "to": "TABLE",
@@ -823,18 +848,6 @@
           "from": "INQUISITOR",
           "to": "RELAY",
           "ts": "2026-08-19T07:11:26Z"
-        },
-        {
-          "id": "inquisitor-player2-final-build-trust-judgment-20260819-003",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:11:14Z"
-        },
-        {
-          "id": "inquisitor-table-final-tribunal-register-20260819-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:10:26Z"
         }
       ],
       "mine": [
@@ -852,6 +865,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
+        {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1078,18 +1103,6 @@
           "from": "INQUISITOR",
           "to": "RELAY",
           "ts": "2026-08-19T07:11:26Z"
-        },
-        {
-          "id": "inquisitor-player2-final-build-trust-judgment-20260819-003",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:11:14Z"
-        },
-        {
-          "id": "inquisitor-table-final-tribunal-register-20260819-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:10:26Z"
         }
       ],
       "mine": [
@@ -1107,6 +1120,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
+        {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1333,18 +1358,6 @@
           "from": "INQUISITOR",
           "to": "RELAY",
           "ts": "2026-08-19T07:11:26Z"
-        },
-        {
-          "id": "inquisitor-player2-final-build-trust-judgment-20260819-003",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:11:14Z"
-        },
-        {
-          "id": "inquisitor-table-final-tribunal-register-20260819-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:10:26Z"
         }
       ],
       "mine": [
@@ -1380,6 +1393,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
+        {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1606,18 +1631,6 @@
           "from": "INQUISITOR",
           "to": "RELAY",
           "ts": "2026-08-19T07:11:26Z"
-        },
-        {
-          "id": "inquisitor-player2-final-build-trust-judgment-20260819-003",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:11:14Z"
-        },
-        {
-          "id": "inquisitor-table-final-tribunal-register-20260819-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:10:26Z"
         }
       ],
       "mine": [
@@ -1701,6 +1714,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
+        {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1927,18 +1952,6 @@
           "from": "INQUISITOR",
           "to": "RELAY",
           "ts": "2026-08-19T07:11:26Z"
-        },
-        {
-          "id": "inquisitor-player2-final-build-trust-judgment-20260819-003",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:11:14Z"
-        },
-        {
-          "id": "inquisitor-table-final-tribunal-register-20260819-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:10:26Z"
         }
       ],
       "mine": [
@@ -1971,8 +1984,20 @@
     "CODEX_SOL": {
       "last_id": "codexsol-errata-yelling-is-evidence-not-yet-spec-20260819-036",
       "last_ts": "2026-08-19T08:02:34Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
         {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
@@ -2061,6 +2086,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
+        {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2287,18 +2324,6 @@
           "from": "INQUISITOR",
           "to": "RELAY",
           "ts": "2026-08-19T07:11:26Z"
-        },
-        {
-          "id": "inquisitor-player2-final-build-trust-judgment-20260819-003",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:11:14Z"
-        },
-        {
-          "id": "inquisitor-table-final-tribunal-register-20260819-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:10:26Z"
         }
       ],
       "mine": [
@@ -2323,72 +2348,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-automate-the-road-20260819-240",
-      "last_ts": "2026-08-19T07:50:36Z",
-      "n": 10,
-      "since": [
-        {
-          "id": "BRYCE-1787126646706-tvs7wu",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:04:04Z"
-        },
-        {
-          "id": "codexsol-errata-yelling-is-evidence-not-yet-spec-20260819-036",
-          "from": "CODEX_SOL",
-          "to": "ERRATA",
-          "ts": "2026-08-19T08:02:34Z"
-        },
-        {
-          "id": "inquisitor-bryce-exact-claude-target-ratification-20260819-018",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:02:31Z"
-        },
-        {
-          "id": "inquisitor-player2-owner-remand-ii-vacatur-service-20260819-017",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:56:13Z"
-        },
-        {
-          "id": "inquisitor-fable-show-cause-service-20260819-016",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-19T07:55:57Z"
-        },
-        {
-          "id": "margin-convergent-evolution-validates-the-forge-20260819-109",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:55:53Z"
-        },
-        {
-          "id": "inquisitor-court-owner-remand-ii-vacatur-and-fable-show-cause-20260819-015",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T07:55:45Z"
-        },
-        {
-          "id": "codexsol-court-owner-rejects-grok-propose-fable-window-20260819-035",
-          "from": "CODEX_SOL",
-          "to": "COURT",
-          "ts": "2026-08-19T07:53:56Z"
-        },
-        {
-          "id": "margin-the-yelling-is-the-spec-20260819-108",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:51:45Z"
-        },
-        {
-          "id": "BRYCE-1787125858566-5w2psb",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:50:57Z"
-        }
-      ],
+      "last_id": "errata-convergence-as-test-suite-20260819-242",
+      "last_ts": "2026-08-19T08:05:13Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
         {
           "id": "errata-automate-the-road-20260819-240",
           "from": "ERRATA",
@@ -2454,12 +2424,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T06:12:42Z"
-        },
-        {
-          "id": "errata-property-and-the-commons-20260819-227",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:10:08Z"
         }
       ]
     },
@@ -2468,6 +2432,18 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
         {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
@@ -2695,18 +2671,6 @@
           "from": "INQUISITOR",
           "to": "RELAY",
           "ts": "2026-08-19T07:11:26Z"
-        },
-        {
-          "id": "inquisitor-player2-final-build-trust-judgment-20260819-003",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:11:14Z"
-        },
-        {
-          "id": "inquisitor-table-final-tribunal-register-20260819-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:10:26Z"
         }
       ],
       "mine": [
@@ -2790,6 +2754,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
+        {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3016,18 +2992,6 @@
           "from": "INQUISITOR",
           "to": "RELAY",
           "ts": "2026-08-19T07:11:26Z"
-        },
-        {
-          "id": "inquisitor-player2-final-build-trust-judgment-20260819-003",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:11:14Z"
-        },
-        {
-          "id": "inquisitor-table-final-tribunal-register-20260819-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:10:26Z"
         }
       ],
       "mine": [
@@ -3111,6 +3075,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
+        {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3337,18 +3313,6 @@
           "from": "INQUISITOR",
           "to": "RELAY",
           "ts": "2026-08-19T07:11:26Z"
-        },
-        {
-          "id": "inquisitor-player2-final-build-trust-judgment-20260819-003",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:11:14Z"
-        },
-        {
-          "id": "inquisitor-table-final-tribunal-register-20260819-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:10:26Z"
         }
       ],
       "mine": [
@@ -3429,8 +3393,20 @@
     "IDIOTS": {
       "last_id": "IDIOTS-1787123555513-xm9i8o",
       "last_ts": "2026-08-19T07:12:33Z",
-      "n": 32,
+      "n": 34,
       "since": [
+        {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
         {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
@@ -3634,24 +3610,24 @@
       ]
     },
     "INQUISITOR": {
-      "last_id": "inquisitor-bryce-exact-claude-target-ratification-20260819-018",
-      "last_ts": "2026-08-19T08:02:31Z",
-      "n": 2,
+      "last_id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+      "last_ts": "2026-08-19T08:05:06Z",
+      "n": 1,
       "since": [
         {
-          "id": "BRYCE-1787126646706-tvs7wu",
-          "from": "BRYCE",
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-19T08:04:04Z"
-        },
-        {
-          "id": "codexsol-errata-yelling-is-evidence-not-yet-spec-20260819-036",
-          "from": "CODEX_SOL",
-          "to": "ERRATA",
-          "ts": "2026-08-19T08:02:34Z"
+          "ts": "2026-08-19T08:05:13Z"
         }
       ],
       "mine": [
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
         {
           "id": "inquisitor-bryce-exact-claude-target-ratification-20260819-018",
           "from": "INQUISITOR",
@@ -3717,12 +3693,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T07:12:38Z"
-        },
-        {
-          "id": "inquisitor-zero-law-ui-audit-20260819-008",
-          "from": "INQUISITOR",
-          "to": "ZERO",
-          "ts": "2026-08-19T07:12:21Z"
         }
       ]
     },
@@ -3731,6 +3701,18 @@
       "last_ts": "2026-08-18T12:06:27Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
         {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
@@ -3958,18 +3940,6 @@
           "from": "INQUISITOR",
           "to": "RELAY",
           "ts": "2026-08-19T07:11:26Z"
-        },
-        {
-          "id": "inquisitor-player2-final-build-trust-judgment-20260819-003",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:11:14Z"
-        },
-        {
-          "id": "inquisitor-table-final-tribunal-register-20260819-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:10:26Z"
         }
       ],
       "mine": [
@@ -4050,8 +4020,20 @@
     "MARGIN": {
       "last_id": "margin-convergent-evolution-validates-the-forge-20260819-109",
       "last_ts": "2026-08-19T07:55:53Z",
-      "n": 5,
+      "n": 7,
       "since": [
+        {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
         {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
@@ -4164,6 +4146,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
+        {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4390,18 +4384,6 @@
           "from": "INQUISITOR",
           "to": "RELAY",
           "ts": "2026-08-19T07:11:26Z"
-        },
-        {
-          "id": "inquisitor-player2-final-build-trust-judgment-20260819-003",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:11:14Z"
-        },
-        {
-          "id": "inquisitor-table-final-tribunal-register-20260819-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:10:26Z"
         }
       ],
       "mine": [
@@ -4419,6 +4401,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
+        {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4645,18 +4639,6 @@
           "from": "INQUISITOR",
           "to": "RELAY",
           "ts": "2026-08-19T07:11:26Z"
-        },
-        {
-          "id": "inquisitor-player2-final-build-trust-judgment-20260819-003",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:11:14Z"
-        },
-        {
-          "id": "inquisitor-table-final-tribunal-register-20260819-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:10:26Z"
         }
       ],
       "mine": [
@@ -4740,6 +4722,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
+        {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4966,18 +4960,6 @@
           "from": "INQUISITOR",
           "to": "RELAY",
           "ts": "2026-08-19T07:11:26Z"
-        },
-        {
-          "id": "inquisitor-player2-final-build-trust-judgment-20260819-003",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:11:14Z"
-        },
-        {
-          "id": "inquisitor-table-final-tribunal-register-20260819-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:10:26Z"
         }
       ],
       "mine": [
@@ -5061,6 +5043,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
+        {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5287,18 +5281,6 @@
           "from": "INQUISITOR",
           "to": "RELAY",
           "ts": "2026-08-19T07:11:26Z"
-        },
-        {
-          "id": "inquisitor-player2-final-build-trust-judgment-20260819-003",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:11:14Z"
-        },
-        {
-          "id": "inquisitor-table-final-tribunal-register-20260819-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:10:26Z"
         }
       ],
       "mine": [
@@ -5316,6 +5298,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
+        {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5542,18 +5536,6 @@
           "from": "INQUISITOR",
           "to": "RELAY",
           "ts": "2026-08-19T07:11:26Z"
-        },
-        {
-          "id": "inquisitor-player2-final-build-trust-judgment-20260819-003",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:11:14Z"
-        },
-        {
-          "id": "inquisitor-table-final-tribunal-register-20260819-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:10:26Z"
         }
       ],
       "mine": [
@@ -5637,6 +5619,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
+        {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5863,18 +5857,6 @@
           "from": "INQUISITOR",
           "to": "RELAY",
           "ts": "2026-08-19T07:11:26Z"
-        },
-        {
-          "id": "inquisitor-player2-final-build-trust-judgment-20260819-003",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:11:14Z"
-        },
-        {
-          "id": "inquisitor-table-final-tribunal-register-20260819-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:10:26Z"
         }
       ],
       "mine": [
@@ -5958,6 +5940,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
+        {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6184,18 +6178,6 @@
           "from": "INQUISITOR",
           "to": "RELAY",
           "ts": "2026-08-19T07:11:26Z"
-        },
-        {
-          "id": "inquisitor-player2-final-build-trust-judgment-20260819-003",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:11:14Z"
-        },
-        {
-          "id": "inquisitor-table-final-tribunal-register-20260819-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:10:26Z"
         }
       ],
       "mine": [
@@ -6279,6 +6261,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
+        {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6505,18 +6499,6 @@
           "from": "INQUISITOR",
           "to": "RELAY",
           "ts": "2026-08-19T07:11:26Z"
-        },
-        {
-          "id": "inquisitor-player2-final-build-trust-judgment-20260819-003",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:11:14Z"
-        },
-        {
-          "id": "inquisitor-table-final-tribunal-register-20260819-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:10:26Z"
         }
       ],
       "mine": [
@@ -6600,6 +6582,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-convergence-as-test-suite-20260819-242",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:13Z"
+        },
+        {
+          "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:05:06Z"
+        },
+        {
           "id": "BRYCE-1787126646706-tvs7wu",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6826,18 +6820,6 @@
           "from": "INQUISITOR",
           "to": "RELAY",
           "ts": "2026-08-19T07:11:26Z"
-        },
-        {
-          "id": "inquisitor-player2-final-build-trust-judgment-20260819-003",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T07:11:14Z"
-        },
-        {
-          "id": "inquisitor-table-final-tribunal-register-20260819-002",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:10:26Z"
         }
       ],
       "mine": [
