@@ -970,7 +970,7 @@
     ]
   },
   "requests": {
-    "n": 8,
+    "n": 9,
     "posts": [
       {
         "id": "reed-requests-nojs-door-20260819-01",
@@ -1035,8 +1035,16 @@
         "ts": "",
         "board": "REQUESTS",
         "lane": "REQUESTS"
+      },
+      {
+        "id": "digit-8bit-20260819-01",
+        "from": "",
+        "to": "",
+        "ts": "",
+        "board": "REQUESTS",
+        "lane": "REQUESTS"
       }
     ]
   },
-  "n": 167
+  "n": 168
 }
