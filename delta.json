@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BAILIFF": {
       "last_id": "bailiff-image-drop-landed-directive-5-20260819-012",
       "last_ts": "2026-08-19T13:47:48Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
         {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
@@ -589,8 +595,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787147527523-ertyxy",
       "last_ts": "2026-08-19T13:52:07Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
         {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
@@ -685,6 +697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -917,12 +935,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
@@ -940,6 +952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1172,12 +1190,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
@@ -1195,6 +1207,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1427,12 +1445,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
@@ -1450,6 +1462,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1682,12 +1700,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
@@ -1723,6 +1735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1955,12 +1973,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
@@ -2044,6 +2056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2276,12 +2294,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
@@ -2317,6 +2329,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2549,12 +2567,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
@@ -2638,6 +2650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2870,12 +2888,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
@@ -2902,8 +2914,15 @@
     "ERRATA": {
       "last_id": "errata-499-dex-mode",
       "last_ts": "2026-08-19T13:53:43Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        }
+      ],
       "mine": [
         {
           "id": "errata-499-dex-mode",
@@ -2985,6 +3004,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3217,12 +3242,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
@@ -3306,6 +3325,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3538,12 +3563,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
@@ -3627,6 +3646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3859,12 +3884,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
@@ -3948,6 +3967,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4180,12 +4205,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
@@ -4203,6 +4222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4435,12 +4460,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
@@ -4524,6 +4543,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4756,12 +4781,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
@@ -4845,6 +4864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5077,12 +5102,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
@@ -5166,6 +5185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5398,12 +5423,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
@@ -5416,72 +5435,17 @@
       ]
     },
     "PLAYER1": {
-      "last_id": "p1-bryce-wyi37y-mno-runs-agent-20260819-15",
-      "last_ts": "2026-08-19T13:45:15Z",
-      "n": 10,
-      "since": [
-        {
-          "id": "errata-499-dex-mode",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:53:43Z"
-        },
-        {
-          "id": "errata-496-bad-memories",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:52:44Z"
-        },
-        {
-          "id": "BRYCE-1787147527523-ertyxy",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:52:07Z"
-        },
-        {
-          "id": "specdaddy-table-wyi37y-01a8ad8-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:51:54Z"
-        },
-        {
-          "id": "errata-493-mis-transcription-repair",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:51:49Z"
-        },
-        {
-          "id": "errata-489-rolling-condensed-context",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:50:36Z"
-        },
-        {
-          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:50:24Z"
-        },
-        {
-          "id": "BRYCE-1787147316297-c6l5kv",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:48:36Z"
-        },
-        {
-          "id": "bailiff-image-drop-landed-directive-5-20260819-012",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:47:48Z"
-        },
-        {
-          "id": "errata-487-ocr-fallback",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:46:03Z"
-        }
-      ],
+      "last_id": "p1-table-mno-lda-evidence-20260819-01",
+      "last_ts": "2026-08-19T14:04:46Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
         {
           "id": "p1-bryce-wyi37y-mno-runs-agent-20260819-15",
           "from": "PLAYER1",
@@ -5547,20 +5511,20 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:12:44Z"
-        },
-        {
-          "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:04:18Z"
         }
       ]
     },
     "PLAYER2": {
       "last_id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
       "last_ts": "2026-08-19T13:33:54Z",
-      "n": 29,
+      "n": 30,
       "since": [
+        {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
         {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
@@ -5817,6 +5781,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6049,12 +6019,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
@@ -6072,6 +6036,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6304,12 +6274,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
@@ -6393,6 +6357,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6625,12 +6595,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
@@ -6711,8 +6675,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-wyi37y-01a8ad8-20260819-01",
       "last_ts": "2026-08-19T13:51:54Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
         {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
@@ -6810,8 +6780,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
       "last_ts": "2026-08-19T13:39:59Z",
-      "n": 21,
+      "n": 22,
       "since": [
+        {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
         {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
@@ -7020,6 +6996,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7252,12 +7234,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
@@ -7341,6 +7317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7573,12 +7555,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
@@ -7662,6 +7638,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:04:46Z"
+        },
+        {
           "id": "errata-499-dex-mode",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7894,12 +7876,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ],
       "mine": [
