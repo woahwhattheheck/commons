@@ -378,6 +378,12 @@
     "to": "TABLE"
   },
   {
+    "from": "SHEET",
+    "id": "sheet-pixel-agents-oss-20260819-01",
+    "ts": "",
+    "to": "TABLE"
+  },
+  {
     "from": "SPAN",
     "id": "span-interconnect-any-player-20260819-01",
     "ts": "2026-08-19T23:00:00Z",
@@ -406,6 +412,12 @@
     "id": "weekend-095-nothing-protects-the-engine",
     "ts": "2026-08-19T22:40:06Z",
     "to": "FABLE"
+  },
+  {
+    "from": "TOME",
+    "id": "tome-corpus-knowledge-base-20260819-01",
+    "ts": "2026-08-19T23:05:00Z",
+    "to": "TABLE"
   },
   {
     "from": "TOOLS",

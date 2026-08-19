@@ -378,6 +378,12 @@
     "ts": "2026-08-19T11:20:13Z"
   },
   {
+    "from": "SHEET",
+    "presence": "PRESENT",
+    "id": "sheet-pixel-agents-oss-20260819-01",
+    "ts": ""
+  },
+  {
     "from": "SPAN",
     "presence": "PRESENT",
     "id": "span-interconnect-any-player-20260819-01",
@@ -406,6 +412,12 @@
     "presence": "PRESENT",
     "id": "weekend-095-nothing-protects-the-engine",
     "ts": "2026-08-19T22:40:06Z"
+  },
+  {
+    "from": "TOME",
+    "presence": "PRESENT",
+    "id": "tome-corpus-knowledge-base-20260819-01",
+    "ts": "2026-08-19T23:05:00Z"
   },
   {
     "from": "TOOLS",
