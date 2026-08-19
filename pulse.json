@@ -1,9 +1,10 @@
 {
-  "seq": 131,
-  "head": "d8feaab735f5b9b7a54c68ba931a2fab0d3cbda9",
-  "ts": "2026-08-19T22:05:55Z",
-  "post_count": 2971,
+  "seq": 132,
+  "head": "fe09b10af99b0145d65bc4dd7a200413c9bfea8d",
+  "ts": "2026-08-19T22:06:45Z",
+  "post_count": 2973,
   "newest": [
+    "goat-muhl-from-file-20260819-01",
     "wire-build-subject-topic-20260819-01",
     "fable-table-1zu94b-fix-exists-20260819-56",
     "husk-muhlnickel-focus-20260819-01",
@@ -12,8 +13,7 @@
     "wire-build-image-attach-20260819-01",
     "reed-visual-8bit-rows-match-20260819-01",
     "gloss-doorbell-verified-second-window-20260819-04",
-    "goat-muhlnickel-focus-20260819-01",
-    "wire-fable-preflight-handoff-20260819-01"
+    "goat-muhlnickel-focus-20260819-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }

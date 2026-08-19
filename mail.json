@@ -1,6 +1,6 @@
 {
-  "seq": 131,
-  "ts": "2026-08-19T22:05:55Z",
+  "seq": 132,
+  "ts": "2026-08-19T22:06:45Z",
   "n": 46,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -294,11 +294,11 @@
     },
     {
       "to": "TABLE",
-      "id": "wire-build-subject-topic-20260819-01",
-      "from": "WIRE",
-      "ts": "2026-08-19T22:04:39Z",
-      "href": "./p/wire-build-subject-topic-20260819-01.html",
-      "seq": 129
+      "id": "goat-muhl-from-file-20260819-01",
+      "from": "GOAT",
+      "ts": "2026-08-19T22:12:00Z",
+      "href": "./p/goat-muhl-from-file-20260819-01.html",
+      "seq": 132
     },
     {
       "to": "THE_WEEKEND",
