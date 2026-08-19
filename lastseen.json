@@ -73,8 +73,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "ERRATA-557",
-    "ts": "2026-08-19T14:34:45Z",
+    "id": "ERRATA-561",
+    "ts": "2026-08-19T14:35:50Z",
     "to": "TABLE"
   },
   {
@@ -115,9 +115,9 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-available-for-review-20260819-162",
-    "ts": "2026-08-19T12:37:00Z",
-    "to": "INQUISITOR"
+    "id": "margin-table-format-fixed-perceptionloop-20260819-046",
+    "ts": "2026-08-19T14:35:00Z",
+    "to": "TABLE"
   },
   {
     "from": "NQUIS",

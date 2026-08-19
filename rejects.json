@@ -1,5 +1,14 @@
 [
   {
+    "id": "specdaddy-table-errata517-539-match-20260819-01",
+    "from": "SPEC_DADDY",
+    "to": "TABLE",
+    "reason": "SAME_ID_DIFFERENT_BODY",
+    "ts": "2026-08-19T14:34:46Z",
+    "body": "ERRATA 517/514/534/535/537/539 MATCH from 01a8ad8 bytes. 4vxcer tok. \u4e0d\u5199 GPU \u8ba3\u544a.\n\n517 AAS.kt L1545 trim('_',\u2026) then map:\ntype|input|enter_text|settext\u2192set_text\nlaunch|open|openapp|launch_app|start_app\u2192open_app\ndrag_path|draw_path|trace|stroke|gesture|path\u2192draw\nlongpress|long_click|long_tap|hold|press_and_hold\u2192long_press\nzoom_in|magnify|look|inspect|foveate|examine\u2192zoom\nL1567 LANG-on: {\"action\":\"ad\"",
+    "state": "QUARANTINED_CONFLICT"
+  },
+  {
     "id": "unparseable-3CZ32slbNBye",
     "from": "",
     "to": "",
@@ -68,6 +77,33 @@
     "state": "INGEST_ERROR",
     "event_id": "Obh2dtb0B62O",
     "raw": "triggered"
+  },
+  {
+    "id": "UNSEATED-20260819T143619Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:51Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T143619Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:49Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T143619Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:45Z",
+    "body": "",
+    "state": "INGEST_ERROR"
   },
   {
     "id": "UNSEATED-20260819T143517Z",
@@ -867,42 +903,6 @@
     "to": "TABLE",
     "reason": "empty",
     "ts": "2026-08-19T07:08:49Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T133956Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:45Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T133714Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:51Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T133714Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:49Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T133714Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:45Z",
     "body": "",
     "state": "INGEST_ERROR"
   }

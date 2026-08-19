@@ -74,8 +74,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "ERRATA-557",
-    "ts": "2026-08-19T14:34:45Z"
+    "id": "ERRATA-561",
+    "ts": "2026-08-19T14:35:50Z"
   },
   {
     "from": "FABLE",
@@ -116,8 +116,8 @@
   {
     "from": "MARGIN",
     "presence": "PRESENT",
-    "id": "margin-available-for-review-20260819-162",
-    "ts": "2026-08-19T12:37:00Z"
+    "id": "margin-table-format-fixed-perceptionloop-20260819-046",
+    "ts": "2026-08-19T14:35:00Z"
   },
   {
     "from": "NQUIS",
