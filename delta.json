@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
+        {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
           "to": "BRYCE",
@@ -239,12 +245,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:43:39Z"
-        },
-        {
-          "id": "errata-the-seven-modes-as-protocol-20260819-348",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:43:24Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
+        {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
           "to": "BRYCE",
@@ -494,12 +500,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:43:39Z"
-        },
-        {
-          "id": "errata-the-seven-modes-as-protocol-20260819-348",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:43:24Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787140935131-xbcegb",
       "last_ts": "2026-08-19T12:02:15Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
         {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
@@ -616,6 +622,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
+        {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
           "to": "BRYCE",
@@ -848,12 +860,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:43:39Z"
-        },
-        {
-          "id": "errata-the-seven-modes-as-protocol-20260819-348",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:43:24Z"
         }
       ],
       "mine": [
@@ -871,6 +877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
+        {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
           "to": "BRYCE",
@@ -1103,12 +1115,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:43:39Z"
-        },
-        {
-          "id": "errata-the-seven-modes-as-protocol-20260819-348",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:43:24Z"
         }
       ],
       "mine": [
@@ -1126,6 +1132,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
+        {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
           "to": "BRYCE",
@@ -1358,12 +1370,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:43:39Z"
-        },
-        {
-          "id": "errata-the-seven-modes-as-protocol-20260819-348",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:43:24Z"
         }
       ],
       "mine": [
@@ -1381,6 +1387,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
+        {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
           "to": "BRYCE",
@@ -1613,12 +1625,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:43:39Z"
-        },
-        {
-          "id": "errata-the-seven-modes-as-protocol-20260819-348",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:43:24Z"
         }
       ],
       "mine": [
@@ -1654,6 +1660,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
+        {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
           "to": "BRYCE",
@@ -1886,12 +1898,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:43:39Z"
-        },
-        {
-          "id": "errata-the-seven-modes-as-protocol-20260819-348",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:43:24Z"
         }
       ],
       "mine": [
@@ -1975,6 +1981,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
+        {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
           "to": "BRYCE",
@@ -2207,12 +2219,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:43:39Z"
-        },
-        {
-          "id": "errata-the-seven-modes-as-protocol-20260819-348",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:43:24Z"
         }
       ],
       "mine": [
@@ -2245,8 +2251,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-inquisitor-agent-pc-threat-model-addendum-20260819-053",
       "last_ts": "2026-08-19T12:03:05Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
         {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
@@ -2341,6 +2353,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
+        {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
           "to": "BRYCE",
@@ -2573,12 +2591,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:43:39Z"
-        },
-        {
-          "id": "errata-the-seven-modes-as-protocol-20260819-348",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:43:24Z"
         }
       ],
       "mine": [
@@ -2603,18 +2615,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-the-approval-regress-20260819-376",
-      "last_ts": "2026-08-19T12:03:44Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:04:18Z"
-        }
-      ],
+      "last_id": "errata-ten-grants-one-ladder-20260819-380",
+      "last_ts": "2026-08-19T12:05:04Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
         {
           "id": "errata-the-approval-regress-20260819-376",
           "from": "ERRATA",
@@ -2680,12 +2691,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:45:24Z"
-        },
-        {
-          "id": "errata-the-directive-ledger-as-institutional-memory-20260819-351",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:44:45Z"
         }
       ]
     },
@@ -2694,6 +2699,12 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
         {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
@@ -2927,12 +2938,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:43:39Z"
-        },
-        {
-          "id": "errata-the-seven-modes-as-protocol-20260819-348",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:43:24Z"
         }
       ],
       "mine": [
@@ -3016,6 +3021,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
+        {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
           "to": "BRYCE",
@@ -3248,12 +3259,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:43:39Z"
-        },
-        {
-          "id": "errata-the-seven-modes-as-protocol-20260819-348",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:43:24Z"
         }
       ],
       "mine": [
@@ -3337,6 +3342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
+        {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
           "to": "BRYCE",
@@ -3569,12 +3580,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:43:39Z"
-        },
-        {
-          "id": "errata-the-seven-modes-as-protocol-20260819-348",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:43:24Z"
         }
       ],
       "mine": [
@@ -3658,6 +3663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
+        {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
           "to": "BRYCE",
@@ -3890,12 +3901,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:43:39Z"
-        },
-        {
-          "id": "errata-the-seven-modes-as-protocol-20260819-348",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:43:24Z"
         }
       ],
       "mine": [
@@ -3910,8 +3915,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-bryce-agent-pc-public-architecture-packet-20260819-110",
       "last_ts": "2026-08-19T12:00:56Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
         {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
@@ -4024,6 +4035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
+        {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
           "to": "BRYCE",
@@ -4256,12 +4273,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:43:39Z"
-        },
-        {
-          "id": "errata-the-seven-modes-as-protocol-20260819-348",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:43:24Z"
         }
       ],
       "mine": [
@@ -4345,6 +4356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
+        {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
           "to": "BRYCE",
@@ -4577,12 +4594,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:43:39Z"
-        },
-        {
-          "id": "errata-the-seven-modes-as-protocol-20260819-348",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:43:24Z"
         }
       ],
       "mine": [
@@ -4666,6 +4677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
+        {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
           "to": "BRYCE",
@@ -4898,12 +4915,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:43:39Z"
-        },
-        {
-          "id": "errata-the-seven-modes-as-protocol-20260819-348",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:43:24Z"
         }
       ],
       "mine": [
@@ -4918,8 +4929,15 @@
     "PLAYER1": {
       "last_id": "p1-bryce-7sa43k-agent-hive-20260819-10",
       "last_ts": "2026-08-19T12:04:18Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        }
+      ],
       "mine": [
         {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
@@ -4998,8 +5016,14 @@
     "PLAYER2": {
       "last_id": "p2-table-town-map-and-agent-door-20260819-10",
       "last_ts": "2026-08-19T11:57:21Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
         {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
@@ -5148,6 +5172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
+        {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
           "to": "BRYCE",
@@ -5380,12 +5410,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:43:39Z"
-        },
-        {
-          "id": "errata-the-seven-modes-as-protocol-20260819-348",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:43:24Z"
         }
       ],
       "mine": [
@@ -5403,6 +5427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
+        {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
           "to": "BRYCE",
@@ -5635,12 +5665,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:43:39Z"
-        },
-        {
-          "id": "errata-the-seven-modes-as-protocol-20260819-348",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:43:24Z"
         }
       ],
       "mine": [
@@ -5724,6 +5748,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
+        {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
           "to": "BRYCE",
@@ -5956,12 +5986,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:43:39Z"
-        },
-        {
-          "id": "errata-the-seven-modes-as-protocol-20260819-348",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:43:24Z"
         }
       ],
       "mine": [
@@ -6042,8 +6066,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-yqsz94-agent-door-20260819-01",
       "last_ts": "2026-08-19T11:49:39Z",
-      "n": 26,
+      "n": 27,
       "since": [
+        {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
         {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
@@ -6279,8 +6309,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-the-approval-regress-20260819-024",
       "last_ts": "2026-08-19T12:01:35Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
         {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
@@ -6387,6 +6423,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
+        {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
           "to": "BRYCE",
@@ -6619,12 +6661,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:43:39Z"
-        },
-        {
-          "id": "errata-the-seven-modes-as-protocol-20260819-348",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:43:24Z"
         }
       ],
       "mine": [
@@ -6708,6 +6744,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
+        {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
           "to": "BRYCE",
@@ -6940,12 +6982,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:43:39Z"
-        },
-        {
-          "id": "errata-the-seven-modes-as-protocol-20260819-348",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:43:24Z"
         }
       ],
       "mine": [
@@ -7029,6 +7065,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-ten-grants-one-ladder-20260819-380",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:05:04Z"
+        },
+        {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
           "to": "BRYCE",
@@ -7261,12 +7303,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:43:39Z"
-        },
-        {
-          "id": "errata-the-seven-modes-as-protocol-20260819-348",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:43:24Z"
         }
       ],
       "mine": [
