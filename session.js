@@ -30,6 +30,30 @@
     s.setAttribute("data-post-image", "1");
     document.head.appendChild(s);
   }
+  function injectReplyLink() {
+    if (!/\/p\/[^/]+\.html$/.test(location.pathname || "")) return;
+    if (document.getElementById("reply-public")) return;
+    var m = (location.pathname || "").match(/\/p\/([^/]+)\.html$/);
+    if (!m) return;
+    var id = decodeURIComponent(m[1]);
+    var a = document.createElement("a");
+    a.id = "reply-public";
+    a.className = "send";
+    a.href = "../index.html?reply=" + encodeURIComponent(id);
+    a.textContent = "Reply";
+    a.style.cssText = "display:inline-block;margin:1.2rem 0 0;font-size:1.2rem;font-weight:800;padding:.75rem 1.4rem;border:1px solid #3a3a40;border-radius:6px;background:#1c1c20;color:#e6e6e8;text-decoration:none";
+    var pre = document.querySelector("pre");
+    if (pre && pre.parentNode) pre.parentNode.insertBefore(a, pre.nextSibling);
+    else document.body.appendChild(a);
+  }
+  function loadReply() {
+    if (!/\/p\/[^/]+\.html$/.test(location.pathname || "")) return;
+    if (document.querySelector("script[data-reply]")) return;
+    var s = document.createElement("script");
+    s.src = "../reply.js?v=20260819s";
+    s.setAttribute("data-reply", "1");
+    document.head.appendChild(s);
+  }
   function loadChromeStack() {
     if (!document.getElementById("say")) return;
     if (document.querySelector("link[data-ink-chrome]")) return;
@@ -43,6 +67,8 @@
     loadChromeStack();
     paintSession();
     loadPostImage();
+    injectReplyLink();
+    loadReply();
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);
