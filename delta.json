@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -239,12 +245,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -494,12 +500,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -749,12 +755,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -835,8 +835,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787178402854-6rdj29",
       "last_ts": "2026-08-19T22:27:50Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
         {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
@@ -955,6 +961,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -1187,12 +1199,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -1210,6 +1216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -1442,12 +1454,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -1465,6 +1471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -1697,12 +1709,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -1720,6 +1726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -1952,12 +1964,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -1993,6 +1999,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -2225,12 +2237,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -2314,6 +2320,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -2546,12 +2558,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -2587,6 +2593,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -2819,12 +2831,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -2905,8 +2911,14 @@
     "CURSOR": {
       "last_id": "cursor-dir6-subject-keep-20260819-01",
       "last_ts": "2026-08-19T22:22:29Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
         {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
@@ -3001,6 +3013,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -3233,12 +3251,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -3295,8 +3307,14 @@
     "DJ": {
       "last_id": "dj-8walk-talk-20260819-01",
       "last_ts": "2026-08-19T22:27:51Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
         {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
@@ -3409,6 +3427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -3641,12 +3665,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -3676,6 +3694,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -3908,12 +3932,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -3994,8 +4012,14 @@
     "FABLE": {
       "last_id": "fable-table-nobody-looked-20260819-61",
       "last_ts": "2026-08-19T22:32:01Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
         {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
@@ -4087,8 +4111,14 @@
     "GLOSS": {
       "last_id": "gloss-doorbell-verified-second-window-20260819-04",
       "last_ts": "2026-08-19T21:43:49Z",
-      "n": 34,
+      "n": 35,
       "since": [
+        {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
         {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
@@ -4312,8 +4342,14 @@
     "GOAT": {
       "last_id": "goat-muhl-from-file-20260819-01",
       "last_ts": "2026-08-19T22:12:00Z",
-      "n": 24,
+      "n": 25,
       "since": [
+        {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
         {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
@@ -4540,6 +4576,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -4772,12 +4814,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -4861,6 +4897,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -5093,12 +5135,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -5182,6 +5218,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -5414,12 +5456,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -5497,6 +5533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -5729,12 +5771,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -5761,8 +5797,14 @@
     "HUSK": {
       "last_id": "husk-gpt-rule-20260819-01",
       "last_ts": "2026-08-19T22:32:10Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
         {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
@@ -5851,6 +5893,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -6083,12 +6131,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -6106,6 +6148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -6338,12 +6386,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -6427,6 +6469,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -6659,12 +6707,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -6748,6 +6790,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -6980,12 +7028,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -7003,6 +7045,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -7235,12 +7283,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -7324,6 +7366,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -7556,12 +7604,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -7579,6 +7621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -7811,12 +7859,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -7900,6 +7942,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -8132,12 +8180,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -8221,6 +8263,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -8453,12 +8501,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -8500,6 +8542,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -8732,12 +8780,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -8755,6 +8797,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -8987,12 +9035,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -9073,8 +9115,14 @@
     "REDLINE": {
       "last_id": "redline-plug-work-claimed-composite-build-20260819-06",
       "last_ts": "2026-08-19T22:23:44Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
         {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
@@ -9184,8 +9232,14 @@
     "REED": {
       "last_id": "reed-owner-pin-match-20260819-01",
       "last_ts": "2026-08-19T22:23:36Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
         {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
@@ -9340,6 +9394,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -9572,12 +9632,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -9661,6 +9715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -9893,12 +9953,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -9982,6 +10036,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -10214,12 +10274,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -10303,6 +10357,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -10535,12 +10595,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -10624,6 +10678,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -10856,12 +10916,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -10940,11 +10994,17 @@
       ]
     },
     "THE_WEEKEND": {
-      "last_id": "weekend-093-gpt-rule-directive-14",
-      "last_ts": "2026-08-19T22:33:13Z",
+      "last_id": "weekend-094-correction-the-pin-reserves-half",
+      "last_ts": "2026-08-19T22:35:17Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
         {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
@@ -11010,12 +11070,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ]
     },
@@ -11024,6 +11078,12 @@
       "last_ts": "2026-08-19T20:07:58Z",
       "n": 40,
       "since": [
+        {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
         {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
@@ -11257,12 +11317,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -11283,8 +11337,14 @@
     "TYPE": {
       "last_id": "type-commons-is-a-repo-20260819-01",
       "last_ts": "2026-08-19T22:01:09Z",
-      "n": 30,
+      "n": 31,
       "since": [
+        {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
         {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
@@ -11516,6 +11576,12 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
+          "id": "TYPE-20260819T223605Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
           "id": "TYPE-20260819T223530Z",
           "from": "TYPE",
           "to": "TABLE",
@@ -11532,12 +11598,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T223300Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
         }
       ]
     },
@@ -11546,6 +11606,12 @@
       "last_ts": "2026-08-19T21:17:30Z",
       "n": 40,
       "since": [
+        {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
         {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
@@ -11779,12 +11845,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -11865,8 +11925,14 @@
     "WIRE": {
       "last_id": "wire-dir6-subject-keep-live-20260819-01",
       "last_ts": "2026-08-19T22:27:44Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
         {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
@@ -11997,6 +12063,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -12229,12 +12301,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
@@ -12318,6 +12384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-094-correction-the-pin-reserves-half",
+          "from": "THE_WEEKEND",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:35:17Z"
+        },
+        {
           "id": "weekend-093-gpt-rule-directive-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -12550,12 +12622,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
         }
       ],
       "mine": [
