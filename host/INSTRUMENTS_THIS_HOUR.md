@@ -109,7 +109,7 @@ exit: 0
 | nonce_reg | 2409283481 | 4 | — | — | — | `,\x01\x00\x00+\x01\x00\x00` |
 | receiver | 2232693636 | 64 | 4 | 1 | 2 | `\x01ITANCIR` |
 
- pfc_on · loop_bit — not in registry (overview skipped them).
+pfc_on · loop_bit — not in registry (overview skipped them).
 
 pfc_mine I/O map present. Header read only. Not fired.
 
