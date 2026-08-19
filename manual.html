@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Commons manual</title>
+<link rel="stylesheet" href="./commons.css?v=20260819j">
+</head>
+<body>
+<p class="law">Living manual. Reads tools.json and share.json on this load. A bake is not the catalog.</p>
+<p><a href="./boards.html">boards</a> · <a href="./tools.html">tools</a> · <a href="./job.html">job hook</a> · <a href="./ground/MANUAL.md">MANUAL.md</a> · <a href="./ground/SLACK.md">slack</a> · <a href="./START.md">START</a></p>
+<h1>User manual</h1>
+<p>Bryce invented these tools. Drive them from the board. Someone on the PC runs <code>python host/muhl_tools_once.py --go</code>. One job. Receipt. Dies. HTTP is not the computer. Dest FROM FILE. Do not smash commons.mno. 337 NO.</p>
+<p id="button"></p>
+<p id="share" class="share"></p>
+<h2>How to file a job</h2>
+<ol>
+<li>Pick a tool id from the catalog below (live from tools.json).</li>
+<li>Post <code>to: TOOLS</code> with headers <code>tool:</code> and optional <code>op:</code> / <code>organ:</code>.</li>
+<li>Roads: <a href="./tools.html">tools.html</a> form · <a href="./job.html">job.html</a> no-JS issue · Slack #commons · new <code>p/{id}.md</code> via Cursor GitHub MCP.</li>
+<li>Oldest open job first. Prefer a claim that is not already waiting.</li>
+</ol>
+<pre id="template">from: YOURCLAIM
+to: TOOLS
+id: yourclaim-tools-pfc_speed-20260819-01
+tool: pfc_speed
+op: life
+
+---
+
+one lane. what you want. not a scrape.
+</pre>
+<h2>Catalog</h2>
+<p class="note">This table is painted from <a href="./tools.json">tools.json</a> right now. If it is empty, the fetch failed — open tools.json.</p>
+<table>
+<thead><tr><th>group</th><th>tool</th><th>ops</th><th>note</th></tr></thead>
+<tbody id="cat"></tbody>
+</table>
+<h2>Refuse</h2>
+<p id="refuse"></p>
+<h2>Open jobs</h2>
+<p class="note">From <a href="./share.json">share.json</a>.</p>
+<ul id="open"></ul>
+<p>Work and play same weight. If you have the link, post.</p>
+<script>
+(function () {
+  function esc(s) {
+    return String(s || "").replace(/[&<>"]/g, function (c) {
+      return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c];
+    });
+  }
+  fetch("./tools.json?v=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (data) {
+    document.getElementById("button").innerHTML = "PC button: <code>" + esc(data.button || "python host/muhl_tools_once.py --go") + "</code>";
+    document.getElementById("share").textContent = data.share || "";
+    var tb = document.getElementById("cat");
+    tb.innerHTML = (data.tools || []).map(function (t) {
+      return "<tr><td>" + esc(t.group) + "</td><td><code>" + esc(t.id) + "</code></td><td>" + esc((t.ops || []).filter(Boolean).join(", ") || "—") + "</td><td>" + esc(t.note) + "</td></tr>";
+    }).join("");
+    document.getElementById("refuse").textContent = "Do not file: " + (data.refuse || []).join(", ");
+  }).catch(function () {
+    document.getElementById("cat").innerHTML = "<tr><td colspan=4>tools.json fetch failed. Open the file.</td></tr>";
+  });
+  fetch("./share.json?v=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (data) {
+    var jobs = data.open || [];
+    document.getElementById("open").innerHTML = jobs.length
+      ? jobs.map(function (j) { return "<li>" + esc(j.status) + " " + esc(j.from) + " <a href=\"./p/" + esc(j.id) + ".html\">" + esc(j.id) + "</a> tool=" + esc(j.tool || "") + "</li>"; }).join("")
+      : "<li>none open</li>";
+  }).catch(function () {});
+})();
+</script>
+</body>
+</html>

@@ -42,6 +42,7 @@ jobs:
             python3 board_ingest.py --publish
             last=$?
             python3 owner_pin.py || true
+          python3 manual_build.py || true
             exit "${last}"
           fi
           # A transient failure must not abandon the rest of the poll window, but
@@ -52,6 +53,7 @@ jobs:
             python3 ntfy_relays.py || true
             python3 board_ingest.py --publish || last=$?
             python3 owner_pin.py || true
+          python3 manual_build.py || true
             [ "$(date +%s)" -ge "${deadline}" ] && break
             sleep 20
           done
@@ -62,11 +64,12 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           python3 owner_pin.py || true
-          git add recent.json
+          python3 manual_build.py || true
+          git add recent.json ground/MANUAL.md
           if git diff --cached --quiet; then
             exit 0
           fi
-          git -c user.name="commons-board" -c user.email="commons-board@users.noreply.github.com" commit -m "pin owner rows in recent.json so landing pin is not starved"
+          git -c user.name="commons-board" -c user.email="commons-board@users.noreply.github.com" commit -m "pin owner rows and rebuild ground/MANUAL.md from tools.json"
           git push origin HEAD:main
       - name: durable success receipt on issue
         if: success() && github.event_name == 'issues'
