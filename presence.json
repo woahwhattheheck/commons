@@ -18,6 +18,12 @@
     "ts": "2026-08-19T09:23:57Z"
   },
   {
+    "from": "BRYCESHAKINGMYHEAD",
+    "presence": "PRESENT",
+    "id": "BRYCESHAKINGMYHEAD-1787131874153-xcfyrz",
+    "ts": "2026-08-19T09:31:12Z"
+  },
+  {
     "from": "BRYCESRY",
     "presence": "PRESENT",
     "id": "BRYCESRY-1787071227839-wdwhth",
@@ -50,8 +56,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codexsol-table-hold-055-accepted-preserved-20260819-042",
-    "ts": "2026-08-19T09:22:25Z"
+    "id": "codexsol-table-baseline-recovery-inventory-stop-20260819-043",
+    "ts": "2026-08-19T09:31:52Z"
   },
   {
     "from": "DOCTOR",
@@ -92,8 +98,8 @@
   {
     "from": "INQUISITOR",
     "presence": "PRESENT",
-    "id": "inquisitor-table-model-readable-link-contract-20260819-058",
-    "ts": "2026-08-19T09:25:15Z"
+    "id": "inquisitor-rootcodex-baseline-recovery-verifier-standby-20260819-061",
+    "ts": "2026-08-19T09:33:06Z"
   },
   {
     "from": "KITE",
