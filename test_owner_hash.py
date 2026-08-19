@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Directive 10 — hashed owner door. No raw IPs in the tree. Algo twins.
+"""Directive 10 — hashed owner door. Two slots, no raw IPs, no same-NAT land.
 
 Cite: BRYCE-1787134106972-vr8fo8. Do not remint.
+Law: admin-no-verification-loop-20260819-01. Do not remint.
 Run: python3 test_owner_hash.py
 """
 from __future__ import annotations
@@ -17,6 +18,7 @@ import tempfile
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import owner_enroll
+import owner_net
 
 # RFC 5737 / RFC 3849 documentation addresses only. Not his network.
 FIXTURE_V4 = "192.0.2.1"
@@ -41,6 +43,16 @@ def expect_digest(ip: str) -> str:
     return hashlib.sha256((PEPPER + "\n" + ip).encode("utf-8")).hexdigest()
 
 
+def empty_spec() -> dict:
+    return {
+        "claim": "BRYCE",
+        "algo": "sha256",
+        "pepper": PEPPER,
+        "slots": {"pc": None, "phone": None},
+        "hashes": [],
+    }
+
+
 def main() -> int:
     spec_path = os.path.join(HERE, "owner.json")
     spec = json.loads(open(spec_path, encoding="utf-8").read())
@@ -49,7 +61,12 @@ def main() -> int:
     case("algo is sha256", spec.get("algo") == "sha256")
     case("pepper matches", spec.get("pepper") == PEPPER)
     case("hashes is a list", isinstance(spec.get("hashes"), list))
-    case("hashes empty this land (do not fake an allowlist)", spec.get("hashes") == [])
+    case("OPEN: hashes empty (do not fake an allowlist)", spec.get("hashes") == [])
+    slots = spec.get("slots") or {}
+    case("slots.pc exists", "pc" in slots)
+    case("slots.phone exists", "phone" in slots)
+    case("OPEN: pc slot empty", slots.get("pc") in (None, {}))
+    case("OPEN: phone slot empty", slots.get("phone") in (None, {}))
     blob = open(spec_path, encoding="utf-8").read()
     case("owner.json has no IPv4", not IPV4_RE.search(blob))
     case("owner.json has no IPv6", not IPV6_RE.search(blob))
@@ -83,17 +100,24 @@ def main() -> int:
     case("owner_net.js refuses non-BRYCE claims", 'ONLY_CLAIM = "BRYCE"' in js)
     case("owner_net.js live bus is not the board topic", 'NET_TOPIC = "woahwhattheheck-commons-owner-net"' in js)
     case("owner_net.js publishes owner-net payloads only", '"owner-net"' in js and "publishDigest" in js)
-    case("owner_net.js always hashes this network", "collectDigests(spec)" in js and "pollNet()" in js)
+    case("owner_net.js publishes via with the digest", "via: via" in js and 'k: "owner-net"' in js)
+    case("owner_net.js classifies phone vs pc", "function deviceVia" in js)
+    case("owner_net.js does not match the ntfy bus (same-NAT toy)", "pollNet" not in js and "durable.concat" not in js)
+    case("owner_net.js matches enrolled slots only", "function matchingSlot" in js and "function slotsDistinct" in js)
     case("owner_net.js six-hour send gate (board ntfy quota)", "SEND_GAP_MS = 6 * 60 * 60 * 1000" in js)
     case("owner_net.js seeds the bus from remembered BRYCE", "rememberedBryce()" in js)
+    case("owner_net.js always hashes this network", "collectDigests(spec)" in js)
 
     py = open(os.path.join(HERE, "owner_enroll.py"), encoding="utf-8").read()
     case("enroll docstring forbids printing the IP", "Never prints the IP" in py or "never prints the IP" in py)
+    case("enroll is not the persist path", "owner_net.py" in py)
 
     html = open(os.path.join(HERE, "owner-net.html"), encoding="utf-8").read()
     case("owner-net.html cites vr8fo8", "BRYCE-1787134106972-vr8fo8" in html)
     case("owner-net.html cites the no-loop law", "admin-no-verification-loop-20260819-01" in html)
     case("owner-net.html does not remint vr8fo8", html.count("BRYCE-1787134106972-vr8fo8") >= 1)
+    case("owner.html says same wifi is not the door", "Same wifi" in html or "same wifi" in html)
+    case("owner.html stays OPEN until two slots", "OPEN until two different" in html)
 
     carrier = open(os.path.join(HERE, "carrier.js"), encoding="utf-8").read()
     session = open(os.path.join(HERE, "session.js"), encoding="utf-8").read()
@@ -118,6 +142,52 @@ def main() -> int:
         case("--write is idempotent", added2 == 0)
     finally:
         owner_enroll.SPEC_PATH = saved
+
+    s = empty_spec()
+    owner_net.apply_sighting(s, d4, "pc")
+    owner_net.apply_sighting(s, d4, "phone")
+    case("same digest on phone+pc is not live", not owner_net.distinct_live(s))
+
+    wifi = empty_spec()
+    case("pc sighting fills pc", owner_net.apply_sighting(wifi, d4, "pc"))
+    case("phone on same digest as pc is refused", not owner_net.apply_sighting(wifi, d4, "phone"))
+    case("wifi pair is not distinct_live", not owner_net.distinct_live(wifi))
+    case("cell phone after pc is live", owner_net.apply_sighting(wifi, d6, "phone") and owner_net.distinct_live(wifi))
+
+    locked = empty_spec()
+    owner_net.apply_sighting(locked, d4, "pc")
+    case("filled pc slot is not overwritten", not owner_net.apply_sighting(locked, d6, "pc"))
+    case("pc slot still the first digest", owner_net.slot_hash(locked["slots"]["pc"]) == d4)
+
+    swap = empty_spec()
+    case("phone may fill first", owner_net.apply_sighting(swap, d4, "phone"))
+    owner_net.apply_sighting(swap, d4, "pc")
+    case("phone-wifi then pc is not live", not owner_net.distinct_live(swap))
+    case("cell replaces phone slot that still equals pc", owner_net.apply_sighting(swap, d6, "phone") and owner_net.distinct_live(swap))
+
+    via_less = owner_net.parse_payload(json.dumps({"k": "owner-net", "sha256": d4}))
+    case("payload without via does not persist", via_less == (d4, "") or via_less[1] not in ("pc", "phone"))
+    tagged = owner_net.parse_payload(json.dumps({"k": "owner-net", "sha256": d4, "via": "pc"}))
+    case("payload with via=pc parses", tagged == (d4, "pc"))
+
+    refuse = False
+    try:
+        owner_net.refuse_raw_ips('{"note":"%s"}' % FIXTURE_V4)
+    except SystemExit:
+        refuse = True
+    case("writer refuses a raw IPv4 blob", refuse)
+
+    wf = open(os.path.join(HERE, ".github/workflows/owner-net.yml"), encoding="utf-8").read()
+    case("owner-net workflow exists", "name: owner-net" in wf)
+    case("workflow commits owner.json only", "git add -- owner.json" in wf)
+    case("workflow does not touch ingest", "board_ingest.py" not in wf)
+    case("workflow does not touch fat index", "index.html" not in wf)
+
+    directives = open(os.path.join(HERE, "DIRECTIVES.md"), encoding="utf-8").read()
+    todo = open(os.path.join(HERE, "todo.html"), encoding="utf-8").read()
+    case("DIRECTIVES item 10 is OPEN not LANDED", "**Status:** OPEN. Not LANDED." in directives)
+    case("todo row 10 stays OPEN", bool(re.search(r"<td>10</td>.*OPEN</td></tr>", todo, re.S)))
+    case("knock receipt is not treated as a land in DIRECTIVES", "knock-dir10-owner-net-door-20260819-01` is not a land" in directives)
 
     print("OWNER HASH TEST: %d passed, %d failed" % (ok, fail))
     return 0 if fail == 0 else 1

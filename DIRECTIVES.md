@@ -159,13 +159,12 @@ still open. KITE mesh gates still stand. Reland of POCKET PR 1477 (DIRTY).
 **Receipt:** `ls mirrors.json mirrors.html mirror.html head.js head.html` · `node test_head.js`
 
 ### 10. IP-recognised owner — known as himself without logging in
-**Asked:** 08-19T10:08 · **Status:** HALF 2026-08-20 SPUR + hashed-IP door 2026-08-23 — this phone / this PC pin on
-`owner.html`. Pages cannot see an IP, and publishing one here would be bait, not a lock.
-The pin is local, no login. from=BRYCE stays a claim for everyone else. Cite vr8fo8.
-Hashed-IP live bus is `owner-net.html` / `owner_net.js` / `owner.json` (hashes stay empty this land).
-Reland of POCKET PR 1477 (DIRTY).
-**Receipt:** `ls owner.html owner.js owner-net.html owner_net.js owner.json` · session.js loads both
-**Still OPEN inside this line:** a host that is not this static tree, holding his IPs privately.
+**Asked:** 08-19T10:08 · **Status:** OPEN. Not LANDED.
+Phone/PC pin on `owner.html` is the local half. Pages cannot see an IP, and publishing one here would be bait, not a lock. from=BRYCE stays a claim for everyone else. Cite vr8fo8.
+Hashed-IP two-slot door is `owner-net.html` / `owner_net.js` / `owner_net.py` / `owner.json` (pc and phone slots start empty; OPEN until two different digests).
+`p/knock-dir10-owner-net-door-20260819-01` is not a land.
+**Receipt:** `ls owner.html owner.js owner-net.html owner_net.js owner.json owner_net.py` · session.js loads both
+**Still OPEN inside this line:** two different enrolled digests (home wifi vs cell), plus a host that is not this static tree, holding his IPs privately.
 
 ### 11. Whitebox inventory from the machine, not from the public tree
 > *"Its on my machine. All my data is on my machine. Groks are local sessions on my machine. If its
