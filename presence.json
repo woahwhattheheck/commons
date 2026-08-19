@@ -74,8 +74,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-483-vision-skip",
-    "ts": "2026-08-19T13:44:41Z"
+    "id": "errata-487-ocr-fallback",
+    "ts": "2026-08-19T13:46:03Z"
   },
   {
     "from": "FABLE",
