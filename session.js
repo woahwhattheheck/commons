@@ -30,7 +30,17 @@
     s.setAttribute("data-post-image", "1");
     document.head.appendChild(s);
   }
+  function loadChromeStack() {
+    if (!document.getElementById("say")) return;
+    if (document.querySelector("link[data-ink-chrome]")) return;
+    var l = document.createElement("link");
+    l.rel = "stylesheet";
+    l.href = "./chrome-stack.css?v=20260819k";
+    l.setAttribute("data-ink-chrome", "1");
+    document.head.appendChild(l);
+  }
   function boot() {
+    loadChromeStack();
     paintSession();
     loadPostImage();
   }
