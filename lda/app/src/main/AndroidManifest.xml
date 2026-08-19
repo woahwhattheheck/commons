@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
+    <uses-permission android:name="android.permission.BIND_CALL_SCREENING_SERVICE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- Lets the agent's set_alarm deep-link (#4) hand the Clock app a pre-filled alarm. Normal-level
+         permission, auto-granted; without it ACTION_SET_ALARM throws and falls back to the GUI path. -->
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+        <!-- So the agent can learn THIS phone's default apps for common jobs (browser, texts,
+             phone, email, maps, camera) and route to them instead of guessing. Read-only. -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="sms" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.DIAL" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.SENDTO" />
+            <data android:scheme="mailto" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="geo" />
+        </intent>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+        <!-- So SpeechRecognizer can find the system speech-recognition service on Android 11+ (package
+             visibility). Used for the higher-accuracy command capture after the Vosk wake word. -->
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+    </queries>
+
+    <application
+        android:name=".AgentApp"
+        android:allowBackup="true"
+        android:label="Local Agent"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.LocalAgent">
+
+        <!-- Optional GPU acceleration for LiteRT-LM (ignored if unavailable). -->
+        <uses-native-library android:name="libOpenCL.so" android:required="false" />
+        <uses-native-library android:name="libvndksupport.so" android:required="false" />
+
+        <service
+            android:name=".ActionAccessibilityService"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+
+        <service
+            android:name=".AgentService"
+            android:foregroundServiceType="microphone"
+            android:exported="false" />
+
+        <service android:name=".FloatingButtonService" android:exported="false" />
+        <service android:name=".VoiceCaptureService" android:exported="false" />
+
+        <service
+            android:name=".AgentCallScreeningService"
+            android:permission="android.permission.BIND_CALL_SCREENING_SERVICE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.telecom.CallScreeningService" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".ChatActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".MainActivity" android:exported="false" />
+
+        <activity android:name=".SettingsActivity" android:exported="false" />
+        <activity android:name=".DebugLogActivity" android:exported="false" />
+        <activity android:name=".TaskLogActivity" android:exported="false" />
+        <activity android:name=".TaskDetailActivity" android:exported="false" />
+        <activity android:name=".MemoryActivity" android:exported="false" />
+        <activity android:name=".TrainingActivity" android:exported="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        <activity
+            android:name=".AuthGateActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+    </application>
+</manifest>
