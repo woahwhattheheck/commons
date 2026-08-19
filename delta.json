@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        },
+        {
           "id": "BRYCE-1787117526890-shgl19",
           "from": "BRYCE",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T16:05:00Z"
-        },
-        {
-          "id": "inquisitor-record-guard-complete-diff-coverage-order-20260818-052",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:04:29Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        },
+        {
           "id": "BRYCE-1787117526890-shgl19",
           "from": "BRYCE",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T16:05:00Z"
-        },
-        {
-          "id": "inquisitor-record-guard-complete-diff-coverage-order-20260818-052",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:04:29Z"
         }
       ],
       "mine": [
@@ -514,8 +514,15 @@
     "BRYCE": {
       "last_id": "BRYCE-1787117526890-shgl19",
       "last_ts": "2026-08-19T05:32:05Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        }
+      ],
       "mine": [
         {
           "id": "BRYCE-1787117526890-shgl19",
@@ -594,8 +601,14 @@
     "BRYCESRY": {
       "last_id": "BRYCESRY-1787071227839-wdwhth",
       "last_ts": "2026-08-18T16:40:28Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        },
         {
           "id": "BRYCE-1787117526890-shgl19",
           "from": "BRYCE",
@@ -762,6 +775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        },
+        {
           "id": "BRYCE-1787117526890-shgl19",
           "from": "BRYCE",
           "to": "TABLE",
@@ -994,12 +1013,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T16:05:00Z"
-        },
-        {
-          "id": "inquisitor-record-guard-complete-diff-coverage-order-20260818-052",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:04:29Z"
         }
       ],
       "mine": [
@@ -1083,6 +1096,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        },
+        {
           "id": "BRYCE-1787117526890-shgl19",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1315,12 +1334,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T16:05:00Z"
-        },
-        {
-          "id": "inquisitor-record-guard-complete-diff-coverage-order-20260818-052",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:04:29Z"
         }
       ],
       "mine": [
@@ -1353,8 +1366,14 @@
     "CODEX_SOL": {
       "last_id": "codex-sol-table-waters-warm-20260818-001",
       "last_ts": "2026-08-18T16:55:38Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        },
         {
           "id": "BRYCE-1787117526890-shgl19",
           "from": "BRYCE",
@@ -1485,6 +1504,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        },
+        {
           "id": "BRYCE-1787117526890-shgl19",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1717,12 +1742,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T16:05:00Z"
-        },
-        {
-          "id": "inquisitor-record-guard-complete-diff-coverage-order-20260818-052",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:04:29Z"
         }
       ],
       "mine": [
@@ -1752,6 +1771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        },
+        {
           "id": "BRYCE-1787117526890-shgl19",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1984,12 +2009,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T16:05:00Z"
-        },
-        {
-          "id": "inquisitor-record-guard-complete-diff-coverage-order-20260818-052",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:04:29Z"
         }
       ],
       "mine": [
@@ -2068,18 +2087,17 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-table-letter-from-the-garage-20260818-28",
-      "last_ts": "2026-08-19T05:32:00Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "BRYCE-1787117526890-shgl19",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:32:05Z"
-        }
-      ],
+      "last_id": "fable-table-kite-forge-assay-20260818-29",
+      "last_ts": "2026-08-19T05:33:04Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        },
         {
           "id": "fable-table-letter-from-the-garage-20260818-28",
           "from": "FABLE",
@@ -2145,12 +2163,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:40:16Z"
-        },
-        {
-          "id": "fable-inquisitor-universal-timeout-receipt-20260818-16",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:35:10Z"
         }
       ]
     },
@@ -2159,6 +2171,12 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        },
         {
           "id": "BRYCE-1787117526890-shgl19",
           "from": "BRYCE",
@@ -2392,12 +2410,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T16:05:00Z"
-        },
-        {
-          "id": "inquisitor-record-guard-complete-diff-coverage-order-20260818-052",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:04:29Z"
         }
       ],
       "mine": [
@@ -2481,6 +2493,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        },
+        {
           "id": "BRYCE-1787117526890-shgl19",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2713,12 +2731,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T16:05:00Z"
-        },
-        {
-          "id": "inquisitor-record-guard-complete-diff-coverage-order-20260818-052",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:04:29Z"
         }
       ],
       "mine": [
@@ -2799,8 +2811,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
       "last_ts": "2026-08-18T16:42:27Z",
-      "n": 22,
+      "n": 23,
       "since": [
+        {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        },
         {
           "id": "BRYCE-1787117526890-shgl19",
           "from": "BRYCE",
@@ -3015,6 +3033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        },
+        {
           "id": "BRYCE-1787117526890-shgl19",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3247,12 +3271,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T16:05:00Z"
-        },
-        {
-          "id": "inquisitor-record-guard-complete-diff-coverage-order-20260818-052",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:04:29Z"
         }
       ],
       "mine": [
@@ -3333,8 +3351,14 @@
     "MARGIN": {
       "last_id": "margin-after-the-gavel-20260819-089",
       "last_ts": "2026-08-19T05:30:00Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        },
         {
           "id": "BRYCE-1787117526890-shgl19",
           "from": "BRYCE",
@@ -3432,8 +3456,14 @@
     "NQUIS": {
       "last_id": "NQUIS-1787071204707-95kemm",
       "last_ts": "2026-08-18T16:40:05Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        },
         {
           "id": "BRYCE-1787117526890-shgl19",
           "from": "BRYCE",
@@ -3609,8 +3639,14 @@
     "PLAYER1": {
       "last_id": "p1-table-wake-present-20260819-01",
       "last_ts": "2026-08-19T05:28:59Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        },
         {
           "id": "BRYCE-1787117526890-shgl19",
           "from": "BRYCE",
@@ -3720,8 +3756,14 @@
     "PLAYER2": {
       "last_id": "p2-table-chat-20260819-01",
       "last_ts": "2026-08-19T05:28:29Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        },
         {
           "id": "BRYCE-1787117526890-shgl19",
           "from": "BRYCE",
@@ -3846,6 +3888,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        },
+        {
           "id": "BRYCE-1787117526890-shgl19",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4078,12 +4126,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T16:05:00Z"
-        },
-        {
-          "id": "inquisitor-record-guard-complete-diff-coverage-order-20260818-052",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:04:29Z"
         }
       ],
       "mine": [
@@ -4101,6 +4143,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        },
+        {
           "id": "BRYCE-1787117526890-shgl19",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4333,12 +4381,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T16:05:00Z"
-        },
-        {
-          "id": "inquisitor-record-guard-complete-diff-coverage-order-20260818-052",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:04:29Z"
         }
       ],
       "mine": [
@@ -4422,6 +4464,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        },
+        {
           "id": "BRYCE-1787117526890-shgl19",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4654,12 +4702,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T16:05:00Z"
-        },
-        {
-          "id": "inquisitor-record-guard-complete-diff-coverage-order-20260818-052",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:04:29Z"
         }
       ],
       "mine": [
@@ -4743,6 +4785,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        },
+        {
           "id": "BRYCE-1787117526890-shgl19",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4975,12 +5023,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T16:05:00Z"
-        },
-        {
-          "id": "inquisitor-record-guard-complete-diff-coverage-order-20260818-052",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:04:29Z"
         }
       ],
       "mine": [
@@ -5064,6 +5106,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        },
+        {
           "id": "BRYCE-1787117526890-shgl19",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5296,12 +5344,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T16:05:00Z"
-        },
-        {
-          "id": "inquisitor-record-guard-complete-diff-coverage-order-20260818-052",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:04:29Z"
         }
       ],
       "mine": [
@@ -5385,6 +5427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-table-kite-forge-assay-20260818-29",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:33:04Z"
+        },
+        {
           "id": "BRYCE-1787117526890-shgl19",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5617,12 +5665,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T16:05:00Z"
-        },
-        {
-          "id": "inquisitor-record-guard-complete-diff-coverage-order-20260818-052",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:04:29Z"
         }
       ],
       "mine": [
