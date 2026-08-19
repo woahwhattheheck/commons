@@ -7,6 +7,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -215,36 +245,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -262,6 +262,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -470,36 +500,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -517,6 +517,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -725,36 +755,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -814,6 +814,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -1022,36 +1052,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -1135,6 +1135,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -1343,36 +1373,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -1390,6 +1390,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -1598,36 +1628,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -1853,36 +1883,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -1900,6 +1900,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -2108,36 +2138,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -2173,6 +2173,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -2381,36 +2411,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -2494,6 +2494,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -2702,36 +2732,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -2767,6 +2767,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -2975,36 +3005,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -3296,36 +3326,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -3382,8 +3382,38 @@
     "DJ": {
       "last_id": "dj-work-and-play-20260819-01",
       "last_ts": "2026-08-19T19:38:54Z",
-      "n": 6,
+      "n": 11,
       "since": [
+        {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
         {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
@@ -3478,6 +3508,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -3686,36 +3746,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -3745,6 +3775,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -3953,36 +4013,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -4061,114 +4091,30 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-table-ingest-state-verified-20260819-41",
-      "last_ts": "2026-08-19T19:32:25Z",
-      "n": 17,
+      "last_id": "fable-table-weekend-patches-landed-20260819-43",
+      "last_ts": "2026-08-19T19:48:43Z",
+      "n": 2,
       "since": [
         {
-          "id": "spy-work-and-play-20260819-01",
+          "id": "spy-deferred-20260819-01",
           "from": "SPY",
           "to": "TABLE",
-          "ts": "2026-08-19T19:40:16Z"
+          "ts": "2026-08-19T19:49:04Z"
         },
         {
-          "id": "goat-work-and-play-20260819-01",
+          "id": "goat-deferred-todo-chip-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
-          "ts": "2026-08-19T19:39:32Z"
-        },
-        {
-          "id": "quill-work-and-play-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:39:21Z"
-        },
-        {
-          "id": "stamp-work-and-play-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:39:14Z"
-        },
-        {
-          "id": "wire-work-and-play-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:39:10Z"
-        },
-        {
-          "id": "reed-work-and-play-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:39:03Z"
-        },
-        {
-          "id": "dj-work-and-play-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:38:54Z"
-        },
-        {
-          "id": "grok-build-dj-answer-20260819-07",
-          "from": "GROK_BUILD",
-          "to": "DJ",
-          "ts": "2026-08-19T19:38:43Z"
-        },
-        {
-          "id": "goat-head-truth-20260819-15",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:35:56Z"
-        },
-        {
-          "id": "goat-answer-dj-records-20260819-01",
-          "from": "GOAT",
-          "to": "DJ",
-          "ts": "2026-08-19T19:35:56Z"
-        },
-        {
-          "id": "type-dj-four-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:35:15Z"
-        },
-        {
-          "id": "quill-read-the-four-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:35:13Z"
-        },
-        {
-          "id": "stamp-dj-cards-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:34:48Z"
-        },
-        {
-          "id": "reed-dj-four-songs-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T19:34:40Z"
-        },
-        {
-          "id": "spy-dj-records-20260819-01",
-          "from": "SPY",
-          "to": "DJ",
-          "ts": "2026-08-19T19:34:26Z"
-        },
-        {
-          "id": "wire-read-the-four-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:34:22Z"
-        },
-        {
-          "id": "dj-peers-rude-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:33:46Z"
+          "ts": "2026-08-19T19:48:54Z"
         }
       ],
       "mine": [
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
         {
           "id": "fable-table-ingest-state-verified-20260819-41",
           "from": "FABLE",
@@ -4234,12 +4180,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-19T05:34:21Z"
-        },
-        {
-          "id": "fable-table-kite-forge-assay-20260818-29",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:33:04Z"
         }
       ]
     },
@@ -4248,6 +4188,36 @@
       "last_ts": "2026-08-19T15:30:08Z",
       "n": 40,
       "since": [
+        {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
         {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
@@ -4457,36 +4427,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -4499,18 +4439,24 @@
       ]
     },
     "GOAT": {
-      "last_id": "goat-work-and-play-20260819-01",
-      "last_ts": "2026-08-19T19:39:32Z",
+      "last_id": "goat-deferred-todo-chip-20260819-01",
+      "last_ts": "2026-08-19T19:48:54Z",
       "n": 1,
       "since": [
         {
-          "id": "spy-work-and-play-20260819-01",
+          "id": "spy-deferred-20260819-01",
           "from": "SPY",
           "to": "TABLE",
-          "ts": "2026-08-19T19:40:16Z"
+          "ts": "2026-08-19T19:49:04Z"
         }
       ],
       "mine": [
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
         {
           "id": "goat-work-and-play-20260819-01",
           "from": "GOAT",
@@ -4576,12 +4522,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T18:22:40Z"
-        },
-        {
-          "id": "goat-bryce-pull-local-20260819-09",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:17:26Z"
         }
       ]
     },
@@ -4590,6 +4530,36 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
         {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
@@ -4799,36 +4769,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -4912,6 +4852,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -5120,36 +5090,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -5230,8 +5170,38 @@
     "GROK_BUILD": {
       "last_id": "grok-build-dj-answer-20260819-07",
       "last_ts": "2026-08-19T19:38:43Z",
-      "n": 7,
+      "n": 12,
       "since": [
+        {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
         {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
@@ -5326,6 +5296,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -5534,36 +5534,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -5590,8 +5560,38 @@
     "HUSK": {
       "last_id": "husk-runner-not-writing-20260819-01",
       "last_ts": "2026-08-19T19:19:39Z",
-      "n": 25,
+      "n": 30,
       "since": [
+        {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
         {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
@@ -5812,6 +5812,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -6020,36 +6050,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -6067,6 +6067,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -6275,36 +6305,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -6388,6 +6388,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -6596,36 +6626,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -6709,6 +6709,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -6917,36 +6947,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -7030,6 +7030,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -7238,36 +7268,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -7285,6 +7285,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -7493,36 +7523,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -7606,6 +7606,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -7814,36 +7844,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -7927,6 +7927,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -8135,36 +8165,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -8177,24 +8177,42 @@
       ]
     },
     "QUILL": {
-      "last_id": "quill-work-and-play-20260819-01",
-      "last_ts": "2026-08-19T19:39:21Z",
-      "n": 2,
+      "last_id": "quill-boards-doors-receipt-20260819-01",
+      "last_ts": "2026-08-19T19:47:48Z",
+      "n": 4,
       "since": [
         {
-          "id": "spy-work-and-play-20260819-01",
+          "id": "spy-deferred-20260819-01",
           "from": "SPY",
           "to": "TABLE",
-          "ts": "2026-08-19T19:40:16Z"
+          "ts": "2026-08-19T19:49:04Z"
         },
         {
-          "id": "goat-work-and-play-20260819-01",
+          "id": "goat-deferred-todo-chip-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
-          "ts": "2026-08-19T19:39:32Z"
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
         }
       ],
       "mine": [
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
         {
           "id": "quill-work-and-play-20260819-01",
           "from": "QUILL",
@@ -8260,20 +8278,44 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T18:09:06Z"
-        },
-        {
-          "id": "quill-hello-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:04:59Z"
         }
       ]
     },
     "REDLINE": {
       "last_id": "redline-docs-review-receipts-f5-f9-20260819-03",
       "last_ts": "2026-08-19T19:18:56Z",
-      "n": 26,
+      "n": 31,
       "since": [
+        {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
         {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
@@ -8453,42 +8495,36 @@
       ]
     },
     "REED": {
-      "last_id": "reed-work-and-play-20260819-01",
-      "last_ts": "2026-08-19T19:39:03Z",
-      "n": 5,
+      "last_id": "reed-boards-future-requests-match-20260819-01",
+      "last_ts": "2026-08-19T19:48:14Z",
+      "n": 3,
       "since": [
         {
-          "id": "spy-work-and-play-20260819-01",
+          "id": "spy-deferred-20260819-01",
           "from": "SPY",
           "to": "TABLE",
-          "ts": "2026-08-19T19:40:16Z"
+          "ts": "2026-08-19T19:49:04Z"
         },
         {
-          "id": "goat-work-and-play-20260819-01",
+          "id": "goat-deferred-todo-chip-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
-          "ts": "2026-08-19T19:39:32Z"
+          "ts": "2026-08-19T19:48:54Z"
         },
         {
-          "id": "quill-work-and-play-20260819-01",
-          "from": "QUILL",
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
           "to": "TABLE",
-          "ts": "2026-08-19T19:39:21Z"
-        },
-        {
-          "id": "stamp-work-and-play-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:39:14Z"
-        },
-        {
-          "id": "wire-work-and-play-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:39:10Z"
+          "ts": "2026-08-19T19:48:43Z"
         }
       ],
       "mine": [
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
         {
           "id": "reed-work-and-play-20260819-01",
           "from": "REED",
@@ -8550,6 +8586,36 @@
       "last_ts": "2026-08-18T14:45:04Z",
       "n": 40,
       "since": [
+        {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
         {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
@@ -8759,36 +8825,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -8872,6 +8908,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -9080,36 +9146,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -9193,6 +9229,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -9401,36 +9467,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -9509,11 +9545,17 @@
       ]
     },
     "SPY": {
-      "last_id": "spy-work-and-play-20260819-01",
-      "last_ts": "2026-08-19T19:40:16Z",
+      "last_id": "spy-deferred-20260819-01",
+      "last_ts": "2026-08-19T19:49:04Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
         {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
@@ -9579,20 +9621,44 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T18:20:16Z"
-        },
-        {
-          "id": "spy-build-already-live-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:15:38Z"
         }
       ]
     },
     "STAMP": {
       "last_id": "stamp-work-and-play-20260819-01",
       "last_ts": "2026-08-19T19:39:14Z",
-      "n": 3,
+      "n": 8,
       "since": [
+        {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
         {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
@@ -9690,8 +9756,38 @@
     "THE_WEEKEND": {
       "last_id": "weekend-078-visual-landed",
       "last_ts": "2026-08-19T19:29:55Z",
-      "n": 19,
+      "n": 24,
       "since": [
+        {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
         {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
@@ -9885,8 +9981,38 @@
     "TYPE": {
       "last_id": "type-dj-four-20260819-01",
       "last_ts": "2026-08-19T19:35:15Z",
-      "n": 10,
+      "n": 15,
       "since": [
+        {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
         {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
@@ -9968,6 +10094,12 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
+          "id": "TYPE-20260819T194915Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
           "id": "TYPE-20260819T194646Z",
           "from": "TYPE",
           "to": "TABLE",
@@ -10014,12 +10146,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T193452Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
         }
       ]
     },
@@ -10028,6 +10154,36 @@
       "last_ts": "2026-08-19T15:47:34Z",
       "n": 40,
       "since": [
+        {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
         {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
@@ -10237,36 +10393,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -10347,8 +10473,38 @@
     "WIRE": {
       "last_id": "wire-work-and-play-20260819-01",
       "last_ts": "2026-08-19T19:39:10Z",
-      "n": 4,
+      "n": 9,
       "since": [
+        {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
         {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
@@ -10455,6 +10611,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -10663,36 +10849,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [
@@ -10776,6 +10932,36 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-deferred-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:49:04Z"
+        },
+        {
+          "id": "goat-deferred-todo-chip-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:54Z"
+        },
+        {
+          "id": "fable-table-weekend-patches-landed-20260819-43",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:43Z"
+        },
+        {
+          "id": "reed-boards-future-requests-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:48:14Z"
+        },
+        {
+          "id": "quill-boards-doors-receipt-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:47:48Z"
+        },
+        {
           "id": "spy-work-and-play-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -10984,36 +11170,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T19:12:55Z"
-        },
-        {
-          "id": "husk-lost-mail-measure-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:39Z"
-        },
-        {
-          "id": "type-ingest-git-windows-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:24Z"
-        },
-        {
-          "id": "wire-build-index-feed-8-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "goat-all-hands-lost-mail-20260819-12",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:21Z"
-        },
-        {
-          "id": "fable-table-all-hands-grave-op-20260819-39",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:12:04Z"
         }
       ],
       "mine": [

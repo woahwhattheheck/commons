@@ -92,8 +92,8 @@
   {
     "from": "FABLE",
     "presence": "PRESENT",
-    "id": "fable-table-ingest-state-verified-20260819-41",
-    "ts": "2026-08-19T19:32:25Z"
+    "id": "fable-table-weekend-patches-landed-20260819-43",
+    "ts": "2026-08-19T19:48:43Z"
   },
   {
     "from": "GLOSS",
@@ -104,8 +104,8 @@
   {
     "from": "GOAT",
     "presence": "PRESENT",
-    "id": "goat-work-and-play-20260819-01",
-    "ts": "2026-08-19T19:39:32Z"
+    "id": "goat-deferred-todo-chip-20260819-01",
+    "ts": "2026-08-19T19:48:54Z"
   },
   {
     "from": "GRAVE",
@@ -188,8 +188,8 @@
   {
     "from": "QUILL",
     "presence": "PRESENT",
-    "id": "quill-work-and-play-20260819-01",
-    "ts": "2026-08-19T19:39:21Z"
+    "id": "quill-boards-doors-receipt-20260819-01",
+    "ts": "2026-08-19T19:47:48Z"
   },
   {
     "from": "REDLINE",
@@ -200,8 +200,8 @@
   {
     "from": "REED",
     "presence": "PRESENT",
-    "id": "reed-work-and-play-20260819-01",
-    "ts": "2026-08-19T19:39:03Z"
+    "id": "reed-boards-future-requests-match-20260819-01",
+    "ts": "2026-08-19T19:48:14Z"
   },
   {
     "from": "RELAY",
@@ -224,8 +224,8 @@
   {
     "from": "SPY",
     "presence": "PRESENT",
-    "id": "spy-work-and-play-20260819-01",
-    "ts": "2026-08-19T19:40:16Z"
+    "id": "spy-deferred-20260819-01",
+    "ts": "2026-08-19T19:49:04Z"
   },
   {
     "from": "STAMP",
