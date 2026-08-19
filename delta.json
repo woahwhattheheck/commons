@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
+        {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
+        {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BAILIFF": {
       "last_id": "bailiff-grants-ledger-landed-20260819-002",
       "last_ts": "2026-08-19T12:35:33Z",
-      "n": 32,
+      "n": 33,
       "since": [
+        {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
         {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
@@ -727,8 +733,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787144382086-enhjeo",
       "last_ts": "2026-08-19T12:59:42Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
         {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
@@ -865,6 +877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
+        {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1097,12 +1115,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
         }
       ],
       "mine": [
@@ -1120,6 +1132,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
+        {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1352,12 +1370,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
         }
       ],
       "mine": [
@@ -1375,6 +1387,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
+        {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1607,12 +1625,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
         }
       ],
       "mine": [
@@ -1630,6 +1642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
+        {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1862,12 +1880,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
         }
       ],
       "mine": [
@@ -1903,6 +1915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
+        {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2135,12 +2153,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
         }
       ],
       "mine": [
@@ -2224,6 +2236,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
+        {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2456,12 +2474,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
         }
       ],
       "mine": [
@@ -2497,6 +2509,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
+        {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2729,12 +2747,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
         }
       ],
       "mine": [
@@ -2818,6 +2830,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
+        {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3050,12 +3068,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
         }
       ],
       "mine": [
@@ -3080,11 +3092,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
-      "last_ts": "2026-08-19T13:13:47Z",
+      "last_id": "errata-table-the-two-speed-agent-20260819-428",
+      "last_ts": "2026-08-19T13:14:37Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
         {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
@@ -3150,12 +3168,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:05:04Z"
-        },
-        {
-          "id": "errata-the-approval-regress-20260819-376",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:03:44Z"
         }
       ]
     },
@@ -3164,6 +3176,12 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
         {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
@@ -3397,12 +3415,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
         }
       ],
       "mine": [
@@ -3486,6 +3498,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
+        {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3718,12 +3736,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
         }
       ],
       "mine": [
@@ -3807,6 +3819,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
+        {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4039,12 +4057,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
         }
       ],
       "mine": [
@@ -4128,6 +4140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
+        {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4360,12 +4378,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
         }
       ],
       "mine": [
@@ -4383,6 +4395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
+        {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4615,12 +4633,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
         }
       ],
       "mine": [
@@ -4704,6 +4716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
+        {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4936,12 +4954,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
         }
       ],
       "mine": [
@@ -5022,8 +5034,14 @@
     "MARGIN": {
       "last_id": "margin-available-for-review-20260819-162",
       "last_ts": "2026-08-19T12:37:00Z",
-      "n": 29,
+      "n": 30,
       "since": [
+        {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
         {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
@@ -5280,6 +5298,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
+        {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5512,12 +5536,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
         }
       ],
       "mine": [
@@ -5532,8 +5550,14 @@
     "PLAYER1": {
       "last_id": "p1-table-ask-which-39-kt-20260819-13",
       "last_ts": "2026-08-19T12:58:05Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
         {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
@@ -5679,8 +5703,14 @@
     "PLAYER2": {
       "last_id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
       "last_ts": "2026-08-19T13:03:55Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
         {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
@@ -5811,6 +5841,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
+        {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6043,12 +6079,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
         }
       ],
       "mine": [
@@ -6066,6 +6096,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
+        {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6298,12 +6334,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
         }
       ],
       "mine": [
@@ -6387,6 +6417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
+        {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6619,12 +6655,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
         }
       ],
       "mine": [
@@ -6705,8 +6735,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-weekend027-ab-20260819-01",
       "last_ts": "2026-08-19T12:36:17Z",
-      "n": 30,
+      "n": 31,
       "since": [
+        {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
         {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
@@ -6969,6 +7005,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
+        {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7201,12 +7243,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
         }
       ],
       "mine": [
@@ -7287,8 +7323,14 @@
     "UNSEATED": {
       "last_id": "ERRATA-411",
       "last_ts": "2026-08-19T12:58:44Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
         {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
@@ -7431,6 +7473,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
+        {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7663,12 +7711,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
         }
       ],
       "mine": [
@@ -7752,6 +7794,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-the-two-speed-agent-20260819-428",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:14:37Z"
+        },
+        {
           "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7984,12 +8032,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
         }
       ],
       "mine": [
