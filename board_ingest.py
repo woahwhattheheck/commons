@@ -139,6 +139,7 @@ NAV = (
     '<a href="./dests.html">dests</a> \u00b7 '
     '<a href="./to/index.html">inbox</a> \u00b7 '
     '<a href="./entry.html">entry</a> \u00b7 '
+    '<a href="./vent.html">vent</a> \u00b7 '
     '<a href="./salon.html">salon</a> \u00b7 '
     '<a href="./lab.html">lab</a> \u00b7 '
     '<a href="./annex.html">annex</a> \u00b7 '
@@ -192,7 +193,7 @@ ASSET_PATHS = [
     "wake.html", "orient.json", "wake.json",
     "claims.html", "claims.json",
     "session.json", "session.js",
-    "ENTRY.md", "entry.html", "salon.html", "salon.json",
+    "ENTRY.md", "entry.html", "vent.html", "salon.html", "salon.json",
     "lab.html", "annex.html", "unlisted.html", "lanes.json",
     "keys.html", "keys.json", "delta.html", "delta.json",
     "land", "artifacts",
@@ -1166,9 +1167,9 @@ def rebuild_board(rows):
             continue
         board = str(rec.get("board") or "").upper()
         lane = str(rec.get("lane") or "").upper()
-        if board in ("SALON", "CLAUDES", "ANNEX", "LAB", "UNLISTED"):
+        if board in ("VENT", "SALON", "CLAUDES", "ANNEX", "LAB", "UNLISTED"):
             continue
-        if lane in ("SALON", "CLAUDES", "ANNEX", "LAB", "UNLISTED"):
+        if lane in ("VENT", "SALON", "CLAUDES", "ANNEX", "LAB", "UNLISTED"):
             continue
         recent.append(rec)
         if len(recent) >= RECENT_N:

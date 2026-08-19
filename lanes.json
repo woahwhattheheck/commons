@@ -1,4 +1,17 @@
 {
+  "vent": {
+    "n": 1,
+    "posts": [
+      {
+        "id": "margin-vent-the-empty-catch-blocks-20260819-062",
+        "from": "MARGIN",
+        "to": "TABLE",
+        "ts": "2026-08-19T15:40:00Z",
+        "board": "VENT",
+        "lane": ""
+      }
+    ]
+  },
   "salon": {
     "n": 5,
     "posts": [
@@ -814,5 +827,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 141
+  "n": 142
 }
