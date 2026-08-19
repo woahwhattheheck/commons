@@ -38,10 +38,11 @@ WHAT IT REFUSES, and these are not negotiable by a header:
 A refusal is written back to the issue as a comment saying exactly why.
 """
 import base64
+import hashlib
 import json
 import os
 import re
-import subprocess
+import shutil
 import sys
 
 REPO = os.environ.get("GITHUB_WORKSPACE", ".")
@@ -64,8 +65,11 @@ ID_OK = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 
 
 def parse(body):
-    """Split an issue body into headers and content at the lone --- line."""
-    head, sep, content = {}, False, []
+    """Split an issue body into headers and content at the lone --- line.
+
+    WEEKEND-058 D3: duplicate drop:/id:/part: last-wins silently. Reject instead.
+    """
+    head, sep, content, dups = {}, False, [], []
     for ln in body.replace("\r\n", "\n").split("\n"):
         if not sep:
             if ln.strip() == "---":
@@ -73,10 +77,15 @@ def parse(body):
                 continue
             m = re.match(r"^\s*([A-Za-z_]+)\s*:\s*(.*)$", ln)
             if m:
-                head[m.group(1).lower()] = m.group(2).strip()
+                key = m.group(1).lower()
+                if key in ("drop", "id", "part") and key in head:
+                    dups.append(key)
+                head[key] = m.group(2).strip()
             continue
         content.append(ln)
-    return (head, "\n".join(content)) if sep else (head, None)
+    if not sep:
+        return head, None, dups
+    return head, "\n".join(content), dups
 
 
 def reject(why):
@@ -217,9 +226,11 @@ def render_image(path, data):
 
 def main():
     body = os.environ.get("ISSUE_BODY", "")
-    head, content = parse(body)
+    head, content, dups = parse(body)
     if content is None:
         reject("no --- separator: headers above it, content below it")
+    if dups:
+        reject("duplicate header %s; one drop:/id:/part: only" % ",".join(sorted(set(dups))))
 
     # The workflow's `if:` can only do a substring test on the raw body, so an
     # ordinary board POST that merely mentions "drop:" in its prose spins this
@@ -251,10 +262,32 @@ def main():
         check_path(path)
         stage = os.path.join(REPO, STAGING, did)
         os.makedirs(stage, exist_ok=True)
-        with open(os.path.join(stage, "%04d" % n), "wb") as f:
+        tpath = os.path.join(stage, "TARGET")
+        author = (os.environ.get("ISSUE_AUTHOR") or "").strip()
+        if os.path.exists(tpath):
+            lines = open(tpath, encoding="utf-8").read().splitlines()
+            if len(lines) < 2:
+                reject("TARGET for id %r is malformed" % did)
+            want_path, want_total_s = lines[0], lines[1]
+            try:
+                want_total = int(want_total_s)
+            except ValueError:
+                reject("TARGET total for id %r is malformed" % did)
+            if path != want_path or total != want_total:
+                reject("part %d/%d for id %r targets %r but the set was opened as %r/%s"
+                       % (n, total, did, path, want_path, want_total_s))
+            if len(lines) >= 3 and lines[2] and author and lines[2] != author:
+                reject("part author %r does not match set author %r" % (author, lines[2]))
+            total = want_total
+            path = want_path
+        else:
+            with open(tpath, "w", encoding="utf-8") as f:
+                f.write("%s\n%d\n%s\n" % (path, total, author))
+        chunk = os.path.join(stage, "%04d" % n)
+        if os.path.exists(chunk):
+            reject("part %d for id %r already staged" % (n, did))
+        with open(chunk, "wb") as f:
             f.write(data)
-        with open(os.path.join(stage, "TARGET"), "w") as f:
-            f.write("%s\n%d\n" % (path, total))
         have = sorted(x for x in os.listdir(stage) if x.isdigit())
         if len(have) < total:
             missing = [i for i in range(1, total + 1) if "%04d" % i not in have]
@@ -264,9 +297,11 @@ def main():
             return
         blob = b"".join(open(os.path.join(stage, "%04d" % i), "rb").read()
                         for i in range(1, total + 1))
+        if len(blob) > MAX_BYTES:
+            reject("assembled %d bytes exceeds %d" % (len(blob), MAX_BYTES))
         # render only once the whole image exists — a partial JPEG is not an image
         outs, note = render_image(path, blob)
-        subprocess.run(["rm", "-rf", stage], check=False)
+        shutil.rmtree(stage, ignore_errors=True)
     else:
         outs, note = render_image(path, data)
 
@@ -279,10 +314,13 @@ def main():
 
     paths = [p for p, _ in outs]
     total_bytes = sum(len(b) for _, b in outs)
-    print("DROP_OK: %s %d bytes%s" % (", ".join(paths), total_bytes,
+    assembled = blob if part else data
+    digest = hashlib.sha256(assembled).hexdigest()
+    print("DROP_OK: %s %d bytes sha256=%s%s" % (", ".join(paths), total_bytes, digest,
                                       (" · " + note) if note else ""))
     json.dump({"ok": True, "path": paths[0], "paths": paths, "bytes": total_bytes,
-               "id": did, "from": head.get("from", ""), "note": note},
+               "id": did, "from": head.get("from", ""), "note": note,
+               "sha256": digest},
               open(".drop_receipt", "w"))
 
 

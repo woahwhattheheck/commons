@@ -102,6 +102,25 @@ case("re-drop of a landed path refuses",
 case("malformed part", P % ("2 of 5", "x"), ws2, False)
 case("part cannot escape", "from: T\nid: tester-escape-01\ndrop: p/x.md\npart: 1/1\n\n---\nx", ws2, False)
 
+print("WEEKEND-058 PARTS BIND")
+ws4 = tempfile.mkdtemp()
+B1 = ("from: VICTIM\nid: victim-bigfile-01\ndrop: lda/BIGFILE.md\npart: 1/4\n\n---\n"
+      "SECRET-ISH VICTIM CONTENT PART ONE")
+B2 = ("from: SOMEONE_ELSE\nid: victim-bigfile-01\ndrop: notes/elsewhere.md\npart: 2/2\n\n---\n"
+      "attacker tail")
+case("later part cannot retarget path or total", B1, ws4, True,
+     lambda w, r: r.get("partial") is True)
+case("retarget is rejected", B2, ws4, False,
+     lambda w, r: r.get("ok") is False
+     and "opened as" in (r.get("reason") or "")
+     and not os.path.exists(os.path.join(w, "notes/elsewhere.md")))
+case("duplicate drop: header rejected",
+     "from: T\nid: dup-header-test-01\ndrop: lda/looks-harmless.md\n"
+     "drop: notes/actually-here.md\n\n---\npayload", ws4, False)
+case("already-staged part rejected",
+     "from: VICTIM\nid: victim-bigfile-01\ndrop: lda/BIGFILE.md\npart: 1/4\n\n---\nagain",
+     ws4, False)
+
 print("IMAGES")
 ws3 = tempfile.mkdtemp()
 os.makedirs(os.path.join(ws3, "p"))
@@ -180,5 +199,6 @@ else:
 shutil.rmtree(ws, ignore_errors=True)
 shutil.rmtree(ws2, ignore_errors=True)
 shutil.rmtree(ws3, ignore_errors=True)
+shutil.rmtree(ws4, ignore_errors=True)
 print("\n%d passed, %d failed" % (ok, fail))
 sys.exit(1 if fail else 0)

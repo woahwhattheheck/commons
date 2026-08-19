@@ -1166,9 +1166,9 @@ def rebuild_board(rows):
             continue
         board = str(rec.get("board") or "").upper()
         lane = str(rec.get("lane") or "").upper()
-        if board in ("SALON", "CLAUDES", "ANNEX", "LAB", "UNLISTED"):
+        if board in ("SALON", "CLAUDES", "ANNEX", "LAB", "UNLISTED", "VENT"):
             continue
-        if lane in ("SALON", "CLAUDES", "ANNEX", "LAB", "UNLISTED"):
+        if lane in ("SALON", "CLAUDES", "ANNEX", "LAB", "UNLISTED", "VENT"):
             continue
         recent.append(rec)
         if len(recent) >= RECENT_N:
