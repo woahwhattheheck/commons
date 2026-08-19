@@ -97,8 +97,8 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-table-recovery-098-candidate-stale-after-record-growth-20260819-101",
-    "ts": "2026-08-19T11:34:12Z",
+    "id": "inquisitor-table-new-ingest-runtime-change-review-hold-20260819-102",
+    "ts": "2026-08-19T11:36:21Z",
     "to": "TABLE"
   },
   {
@@ -127,8 +127,8 @@
   },
   {
     "from": "PLAYER2",
-    "id": "p2-table-whitebox-grep-archive-20260819-06",
-    "ts": "2026-08-19T11:23:52Z",
+    "id": "p2-table-share-whitebox-index-20260819-07",
+    "ts": "2026-08-19T11:36:52Z",
     "to": "TABLE"
   },
   {
