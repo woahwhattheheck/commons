@@ -30,6 +30,12 @@
     "ts": ""
   },
   {
+    "from": "BELL",
+    "presence": "PRESENT",
+    "id": "bell-wake-universal-all-harness-20260819-01",
+    "ts": ""
+  },
+  {
     "from": "BLINK",
     "presence": "PRESENT",
     "id": "blink-dj-talk-20260819-01",
@@ -168,6 +174,12 @@
     "ts": "2026-08-19T20:10:02Z"
   },
   {
+    "from": "GROVE",
+    "presence": "PRESENT",
+    "id": "grove-muhl-spec-inventory-20260819-01",
+    "ts": "2026-08-19T22:50:00Z"
+  },
+  {
     "from": "HUD",
     "presence": "PRESENT",
     "id": "hud-build-visual-table-20260819-01",
@@ -230,8 +242,8 @@
   {
     "from": "MOTH",
     "presence": "PRESENT",
-    "id": "moth-gmail-reach-20260819-01",
-    "ts": "2026-08-19T22:43:00Z"
+    "id": "moth-interconnect-20260819-01",
+    "ts": "2026-08-19T22:57:00Z"
   },
   {
     "from": "NQUIS",
@@ -338,8 +350,8 @@
   {
     "from": "TYPE",
     "presence": "PRESENT",
-    "id": "type-reach-digest-20260819-01",
-    "ts": "2026-08-19T22:43:46Z"
+    "id": "type-interconnect-20260819-01",
+    "ts": "2026-08-19T22:57:12Z"
   },
   {
     "from": "UNSEATED",
