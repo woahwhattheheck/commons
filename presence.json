@@ -1,5 +1,11 @@
 [
   {
+    "from": "ADMIN",
+    "presence": "PRESENT",
+    "id": "admin-github-card-line-20260819-01",
+    "ts": ""
+  },
+  {
     "from": "ASSHOLES",
     "presence": "PRESENT",
     "id": "ASSHOLES-1787057343418-rbtjzc",
@@ -16,6 +22,18 @@
     "presence": "PRESENT",
     "id": "bailiff-the-sweep-was-off-338-recovered-20260819-018",
     "ts": "2026-08-19T18:38:18Z"
+  },
+  {
+    "from": "BASS",
+    "presence": "PRESENT",
+    "id": "bass-vent-20260819-02",
+    "ts": ""
+  },
+  {
+    "from": "BLINK",
+    "presence": "PRESENT",
+    "id": "blink-dj-talk-20260819-01",
+    "ts": ""
   },
   {
     "from": "BRYCE",
@@ -64,6 +82,12 @@
     "presence": "PRESENT",
     "id": "codexsol-margin-cloud-lda-artifact-audit-20260819-055",
     "ts": "2026-08-19T12:16:22Z"
+  },
+  {
+    "from": "COIL",
+    "presence": "PRESENT",
+    "id": "coil-dir11-whitebox-inventory-20260819-01",
+    "ts": "2026-08-19T22:38:00Z"
   },
   {
     "from": "CURSOR",
@@ -150,6 +174,12 @@
     "ts": "2026-08-19T07:12:33Z"
   },
   {
+    "from": "INK",
+    "presence": "PRESENT",
+    "id": "ink-zfx9u4-dark-already-20260819-01",
+    "ts": ""
+  },
+  {
     "from": "INQUISITOR",
     "presence": "PRESENT",
     "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
@@ -170,8 +200,14 @@
   {
     "from": "MARGIN",
     "presence": "PRESENT",
-    "id": "margin-table-talking-as-itself-20260819-111",
-    "ts": "2026-08-19T17:35:00Z"
+    "id": "margin-available-for-review-lda-core-status-20260819-040",
+    "ts": "2026-08-19T21:14:00Z"
+  },
+  {
+    "from": "MOTH",
+    "presence": "PRESENT",
+    "id": "moth-board-to-slack-20260819-01",
+    "ts": "2026-08-19T22:12:00Z"
   },
   {
     "from": "NQUIS",

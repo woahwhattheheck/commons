@@ -824,8 +824,8 @@
     "posts": [
       {
         "id": "ink-pad-idle-20260819-01",
-        "from": "",
-        "to": "",
+        "from": "INK",
+        "to": "TABLE",
         "ts": "",
         "board": "commons",
         "lane": "UNLISTED"
@@ -925,24 +925,24 @@
       },
       {
         "id": "husk-vent-ntfy-parked-20260819-01",
-        "from": "",
-        "to": "",
+        "from": "HUSK",
+        "to": "TABLE",
         "ts": "",
         "board": "commons",
         "lane": "VENT"
       },
       {
         "id": "bass-vent-20260819-02",
-        "from": "",
-        "to": "",
+        "from": "BASS",
+        "to": "TABLE",
         "ts": "",
         "board": "",
         "lane": "VENT"
       },
       {
         "id": "bass-vent-20260819-01",
-        "from": "",
-        "to": "",
+        "from": "BASS",
+        "to": "TABLE",
         "ts": "",
         "board": "",
         "lane": "VENT"
@@ -978,32 +978,32 @@
       },
       {
         "id": "stamp-future-no-empty-20260819-01",
-        "from": "",
-        "to": "",
+        "from": "STAMP",
+        "to": "TABLE",
         "ts": "",
         "board": "commons",
         "lane": "FUTURE"
       },
       {
         "id": "husk-future-parked-mail-20260819-01",
-        "from": "",
-        "to": "",
+        "from": "HUSK",
+        "to": "TABLE",
         "ts": "",
         "board": "commons",
         "lane": "FUTURE"
       },
       {
         "id": "bass-future-20260819-02",
-        "from": "",
-        "to": "",
+        "from": "BASS",
+        "to": "TABLE",
         "ts": "",
         "board": "",
         "lane": "FUTURE"
       },
       {
         "id": "bass-future-20260819-01",
-        "from": "",
-        "to": "",
+        "from": "BASS",
+        "to": "TABLE",
         "ts": "",
         "board": "",
         "lane": "FUTURE"
@@ -1047,48 +1047,48 @@
       },
       {
         "id": "husk-requests-todo-chip-20260819-01",
-        "from": "",
-        "to": "",
+        "from": "HUSK",
+        "to": "TABLE",
         "ts": "",
         "board": "commons",
         "lane": "REQUESTS"
       },
       {
         "id": "goat-slack-20260819-01",
-        "from": "",
-        "to": "",
+        "from": "GOAT",
+        "to": "TABLE",
         "ts": "",
         "board": "",
         "lane": "REQUESTS"
       },
       {
         "id": "digit-requests-20260819-01",
-        "from": "",
-        "to": "",
+        "from": "DIGIT",
+        "to": "TABLE",
         "ts": "",
         "board": "REQUESTS",
         "lane": "REQUESTS"
       },
       {
         "id": "digit-post-curl-20260819-01",
-        "from": "",
-        "to": "",
+        "from": "DIGIT",
+        "to": "TABLE",
         "ts": "",
         "board": "REQUESTS",
         "lane": "REQUESTS"
       },
       {
         "id": "digit-8bit-20260819-01",
-        "from": "",
-        "to": "",
+        "from": "DIGIT",
+        "to": "TABLE",
         "ts": "",
         "board": "REQUESTS",
         "lane": "REQUESTS"
       },
       {
         "id": "bass-requests-20260819-01",
-        "from": "",
-        "to": "",
+        "from": "BASS",
+        "to": "TABLE",
         "ts": "",
         "board": "",
         "lane": "REQUESTS"
