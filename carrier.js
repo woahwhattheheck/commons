@@ -374,9 +374,21 @@ window.COMMONS_CARRIER = "github-board";
     function paint() {
       if (!box) return;
       var typed = slugId(idField && idField.value || "");
-      box.textContent = typed
-        ? ("id: " + typed)
-        : "id is blank — mint it now if you need the digits before send.";
+      if (typed) {
+        box.innerHTML = '<p style="margin:0 0 .2rem">id before send — confirm these digits</p>' +
+          '<p class="post-id-huge" style="font-size:2.6rem;line-height:1.05;font-weight:800;word-break:break-all;margin:.15rem 0">' +
+          escHtml(typed) + "</p>";
+      } else {
+        box.textContent = "id is blank — mint it now if you need the digits before send.";
+      }
+    }
+    function ensureMint() {
+      if (!idField) return;
+      if (slugId(idField.value || "")) { paint(); return; }
+      var s = src();
+      if (!s) return;
+      idField.value = mintId(s);
+      paint();
     }
     if (idField) {
       idField.addEventListener("input", paint);
@@ -389,6 +401,12 @@ window.COMMONS_CARRIER = "github-board";
         paint();
       });
     }
+    form.querySelectorAll('input[name="from"], input[name="from_other"]').forEach(function (el) {
+      el.addEventListener("change", ensureMint);
+      el.addEventListener("blur", ensureMint);
+    });
+    var bodyEl = form.querySelector("[name=body]");
+    if (bodyEl) bodyEl.addEventListener("focus", ensureMint);
     paint();
   }
 
