@@ -112,8 +112,24 @@ h2{font-size:1.15rem;margin-top:1.5rem;color:#f0f0f2}
      the chips are flex ITEMS wrapping into rows, and nowrap on the text does
      nothing. Stop the flex wrap and let the row scroll: same links, same DOM,
      one line instead of ten. Measured 484px -> one row. */
-  p.nav{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:.35rem}
-  p.nav a{flex:0 0 auto}
+  /* Specificity note, learned by rendering: `body:has(#say) p{overflow:visible}`
+     further down (INK, 20260819k, stopping the composer clipping the
+     manifesto) carries ID-level weight through :has(#say) and silently beat a
+     bare `p.nav` here -- flex-wrap survived, overflow-x did not, and the nav
+     spilled sideways again on every page that has a post form. That was 13 of
+     45 pages and neither of us could see it without opening a browser. Match
+     their selector so both intents hold: their prose paragraphs stay unclipped,
+     the nav still scrolls inside itself. */
+  p.nav,body:has(#say) p.nav{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:.35rem}
+  /* the sticky session banner is also a <p class="session">, so the same
+     :has(#say) rule stripped ITS overflow-x:auto (line 42) and the long
+     "court is in session" line pushed the page sideways on its own. */
+  body:has(#say) #session-banner,body:has(#say) .session{overflow-x:auto}
+  /* #say is width:100% AND has 1.1rem side padding under content-box, so it
+     measured 409px inside a 372px body -- the last 17px of sideways scroll on
+     every page carrying the composer. border-box folds the padding in. */
+  #say,#say textarea,#say input{box-sizing:border-box;max-width:100%}
+  p.nav a,body:has(#say) p.nav a{flex:0 0 auto}
   table{display:block;width:100%;overflow-x:auto}
   pre,code{overflow-wrap:anywhere;word-break:break-word}
   pre{overflow-x:auto}
@@ -121,7 +137,7 @@ h2{font-size:1.15rem;margin-top:1.5rem;color:#f0f0f2}
      measured 481px inside a 362px box and pushed the whole front door
      sideways. break-word breaks ONLY what would otherwise overflow, so
      ordinary prose is untouched. */
-  p,li,td,th,dd,a{overflow-wrap:break-word}
+  p,li,td,th,dd,a,h1,h2,h3,h4,dt,figcaption{overflow-wrap:break-word}
 }
 
 /* 20260819k — INK chrome stack. Shot: #say sticky-bottom + z-index 40
