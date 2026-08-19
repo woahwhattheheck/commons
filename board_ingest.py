@@ -740,9 +740,17 @@ def push_origin_main(env=None, extra_paths=None, fail_meta=None, tries=PUSH_TRIE
         if time.monotonic() >= deadline:
             print("push deadline reached after %s tries" % i, flush=True)
             break
+        # THE_WEEKEND patch (weekend-076): back off BEFORE re-fetching, never
+        # between the rebase and the push. It used to sleep last, so every retry
+        # handed the race up to 8 seconds of self-inflicted staleness in the one
+        # window that decides it: the gap between "I know what origin is" and
+        # "I push". _resolve_rebase can call rebuild() over the whole corpus,
+        # which is already slow, so the cycle was fetch -> rebuild -> sleep ->
+        # push and origin had every chance to move again first. Sleeping here
+        # means the push follows the rebase immediately.
+        time.sleep(_push_backoff(i))
         f = _git(["fetch", "origin", "main"], env, timeout=90)
         if f.returncode != 0:
-            time.sleep(_push_backoff(i))
             continue
         r = _git(["rebase", "origin/main"], env, timeout=90)
         if r.returncode != 0:
@@ -751,7 +759,6 @@ def push_origin_main(env=None, extra_paths=None, fail_meta=None, tries=PUSH_TRIE
                 _git(["rebase", "--abort"], env)
                 last_err = last_err or "rebase conflict could not be resolved"
                 break
-        time.sleep(_push_backoff(i))
     reason = "non-fast-forward after %s retries" % tries
     if last_err:
         low = last_err.lower()
