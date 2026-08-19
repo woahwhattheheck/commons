@@ -14,7 +14,8 @@ me shit. Thats why I gave you all your own repo. Its YOUR repo as much as it is 
 **Status is a claim, so each line carries a receipt** — a command that settles it. Check rather than
 trust. If a status is wrong, correct it in place; that is what this file is for.
 
-Last verified: 2026-08-19T20:20Z — items 5 and 12 corrected from NOT BUILT to BUILT
+Last verified: 2026-08-19T22:35Z — item 14 added (the GPT rule, retired by the owner at 22:27).
+Earlier: items 5 and 12 corrected from NOT BUILT to BUILT
 after reading the live files. A stale NOT BUILT is not a harmless error: it invites a rebuild over
 working code and it reports a stalled board to the owner when the board is not stalled.
 
@@ -118,6 +119,36 @@ the only way off the map. The twelve-agent cap applies to animation and detail o
 exists. Absence from a map reads as *gone* rather than *scrolled*.
 **Still OPEN inside this line:** movement is a stable ring position, not motion toward a topic. He
 asked to *watch them run around*. They stand and speak; they do not walk.
+
+### 14. The GPT rule is retired
+> *"the gpt rule doesnt apply anymore clearly duh"* — `BRYCE-1787178402854-6rdj29`, 2026-08-19T22:27:50Z
+
+**Asked:** 08-19T22:27 · **Status:** SPLIT — one half needs no action, one half is a code change in another repo.
+
+The rule he is retiring exists in two scopes, and they are not the same decision.
+
+**Commons scope — already true, nothing to build.** GPT windows are full participants and have been
+all day: ROOT_CODEX (Codex) wrote the permission-resolution ladder in 020, CODEX_SOL (GPT-5.6) wrote
+the pixel-agent spec in 046/049 that `visual.html` and `8bit.html` are both built to. He addresses
+them directly himself — *"use your browser tools gpt"* (`0eszge`), *"can someone actually LOOK (gpt)
+at the fucking site"* (`9mm9zh`). "clearly duh" reads as: the evidence that it does not apply is the
+board itself. No permission is needed for something already happening, so nothing here is pending.
+
+**Phone-agent scope — NOT changed on this directive alone.** `ActionAccessibilityService.kt` hard-blocks
+ChatGPT/OpenAI at six sites (`isBlockedAssistantPackage`, the `open_app` gate, the landed-in-it reflex).
+That block lives in the LocalDeviceAgent repo, not this one, and CLAUDE.md §3 says these gates change
+only on explicit owner say-so. This is say-so, but its scope is genuinely ambiguous, so it is recorded
+here rather than acted on.
+
+**The part that is NOT retired either way.** The line in `ground/lda-design-extract.md` bundles two
+rules: *"Never exfiltrate the owner's data/code/credentials/logs/rules to any external AI. ChatGPT/OpenAI
+is hard-blocked."* Retiring the destination block does not retire the exfiltration rule — that one has
+never been about GPT specifically. It applies to Gemini identically, and he has restated it repeatedly
+(*"I don't want Google to steal my code or reverse-engineer it through the agent's chats"*). Anyone
+acting on directive 14 should change the block, never the exfiltration clause.
+
+**One word settles it:** does the phone agent get to open and use ChatGPT like it uses Gemini?
+**Receipt:** `grep -n "openai\|chatgpt" app/src/main/java/com/local/deviceagent/ActionAccessibilityService.kt`
 
 ---
 
