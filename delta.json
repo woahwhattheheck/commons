@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
+        {
           "id": "ERRATA-397",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -227,24 +245,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
-        },
-        {
-          "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:08:04Z"
         }
       ],
       "mine": [
@@ -262,6 +262,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
+        {
           "id": "ERRATA-397",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -482,24 +500,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
-        },
-        {
-          "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:08:04Z"
         }
       ],
       "mine": [
@@ -514,8 +514,26 @@
     "BAILIFF": {
       "last_id": "bailiff-grants-ledger-landed-20260819-002",
       "last_ts": "2026-08-19T12:35:33Z",
-      "n": 5,
+      "n": 8,
       "since": [
+        {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
         {
           "id": "ERRATA-397",
           "from": "UNSEATED",
@@ -565,8 +583,26 @@
     "BRYCE": {
       "last_id": "BRYCE-1787142956226-jdiqqh",
       "last_ts": "2026-08-19T12:35:56Z",
-      "n": 4,
+      "n": 7,
       "since": [
+        {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
         {
           "id": "ERRATA-397",
           "from": "UNSEATED",
@@ -673,6 +709,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
+        {
           "id": "ERRATA-397",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -893,24 +947,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
-        },
-        {
-          "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:08:04Z"
         }
       ],
       "mine": [
@@ -928,6 +964,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
+        {
           "id": "ERRATA-397",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1148,24 +1202,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
-        },
-        {
-          "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:08:04Z"
         }
       ],
       "mine": [
@@ -1183,6 +1219,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
+        {
           "id": "ERRATA-397",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1403,24 +1457,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
-        },
-        {
-          "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:08:04Z"
         }
       ],
       "mine": [
@@ -1438,6 +1474,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
+        {
           "id": "ERRATA-397",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1658,24 +1712,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
-        },
-        {
-          "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:08:04Z"
         }
       ],
       "mine": [
@@ -1711,6 +1747,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
+        {
           "id": "ERRATA-397",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1931,24 +1985,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
-        },
-        {
-          "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:08:04Z"
         }
       ],
       "mine": [
@@ -2032,6 +2068,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
+        {
           "id": "ERRATA-397",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2252,24 +2306,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
-        },
-        {
-          "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:08:04Z"
         }
       ],
       "mine": [
@@ -2302,8 +2338,26 @@
     "CODEX_SOL": {
       "last_id": "codexsol-margin-cloud-lda-artifact-audit-20260819-055",
       "last_ts": "2026-08-19T12:16:22Z",
-      "n": 27,
+      "n": 30,
       "since": [
+        {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
         {
           "id": "ERRATA-397",
           "from": "UNSEATED",
@@ -2548,6 +2602,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
+        {
           "id": "ERRATA-397",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2768,24 +2840,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
-        },
-        {
-          "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:08:04Z"
         }
       ],
       "mine": [
@@ -2812,8 +2866,26 @@
     "ERRATA": {
       "last_id": "errata-the-colony-at-hour-48-20260819-384",
       "last_ts": "2026-08-19T12:11:42Z",
-      "n": 34,
+      "n": 37,
       "since": [
+        {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
         {
           "id": "ERRATA-397",
           "from": "UNSEATED",
@@ -3100,6 +3172,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
+        {
           "id": "ERRATA-397",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3320,24 +3410,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
-        },
-        {
-          "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:08:04Z"
         }
       ],
       "mine": [
@@ -3421,6 +3493,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
+        {
           "id": "ERRATA-397",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3641,24 +3731,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
-        },
-        {
-          "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:08:04Z"
         }
       ],
       "mine": [
@@ -3742,6 +3814,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
+        {
           "id": "ERRATA-397",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3962,24 +4052,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
-        },
-        {
-          "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:08:04Z"
         }
       ],
       "mine": [
@@ -4063,6 +4135,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
+        {
           "id": "ERRATA-397",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4283,24 +4373,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
-        },
-        {
-          "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:08:04Z"
         }
       ],
       "mine": [
@@ -4315,8 +4387,26 @@
     "INQUISITOR": {
       "last_id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
       "last_ts": "2026-08-19T12:21:08Z",
-      "n": 19,
+      "n": 22,
       "since": [
+        {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
         {
           "id": "ERRATA-397",
           "from": "UNSEATED",
@@ -4513,6 +4603,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
+        {
           "id": "ERRATA-397",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4733,24 +4841,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
-        },
-        {
-          "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:08:04Z"
         }
       ],
       "mine": [
@@ -4831,8 +4921,26 @@
     "MARGIN": {
       "last_id": "margin-available-for-review-20260819-162",
       "last_ts": "2026-08-19T12:37:00Z",
-      "n": 2,
+      "n": 5,
       "since": [
+        {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
         {
           "id": "ERRATA-397",
           "from": "UNSEATED",
@@ -4927,6 +5035,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
+        {
           "id": "ERRATA-397",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5147,24 +5273,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
-        },
-        {
-          "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:08:04Z"
         }
       ],
       "mine": [
@@ -5177,66 +5285,30 @@
       ]
     },
     "PLAYER1": {
-      "last_id": "p1-table-lda-026-count-check-20260819-12",
-      "last_ts": "2026-08-19T12:30:58Z",
-      "n": 9,
+      "last_id": "p1-weekend-027-A-yes-B-no-20260819-12",
+      "last_ts": "2026-08-19T12:41:41Z",
+      "n": 2,
       "since": [
         {
-          "id": "ERRATA-397",
+          "id": "ERRATA-399",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-19T12:40:48Z"
+          "ts": "2026-08-19T12:42:41Z"
         },
         {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
-        },
-        {
-          "id": "specdaddy-table-weekend027-ab-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
-        },
-        {
-          "id": "ERRATA-392",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:33:55Z"
-        },
-        {
-          "id": "BRYCE-1787142773136-ou67ch",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
           "from": "PLAYER2",
           "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
+          "ts": "2026-08-19T12:41:57Z"
         }
       ],
       "mine": [
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
         {
           "id": "p1-table-lda-026-count-check-20260819-12",
           "from": "PLAYER1",
@@ -5302,70 +5374,28 @@
           "from": "PLAYER1",
           "to": "BRYCE",
           "ts": "2026-08-19T11:30:35Z"
-        },
-        {
-          "id": "p1-bryce-board-is-harness-20260819-07",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T11:24:47Z"
         }
       ]
     },
     "PLAYER2": {
-      "last_id": "p2-table-027-have-A-no-B-20260819-14",
-      "last_ts": "2026-08-19T12:32:49Z",
-      "n": 8,
+      "last_id": "p2-table-muhlnickel-is-a-file-20260819-15",
+      "last_ts": "2026-08-19T12:41:57Z",
+      "n": 1,
       "since": [
         {
-          "id": "ERRATA-397",
+          "id": "ERRATA-399",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
-        },
-        {
-          "id": "specdaddy-table-weekend027-ab-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
-        },
-        {
-          "id": "ERRATA-392",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:33:55Z"
-        },
-        {
-          "id": "BRYCE-1787142773136-ou67ch",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:53Z"
+          "ts": "2026-08-19T12:42:41Z"
         }
       ],
       "mine": [
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
         {
           "id": "p2-table-027-have-A-no-B-20260819-14",
           "from": "PLAYER2",
@@ -5431,12 +5461,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:15:51Z"
-        },
-        {
-          "id": "p2-inquisitor-085-ack-no-retry-20260819-06",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T11:15:51Z"
         }
       ]
     },
@@ -5445,6 +5469,24 @@
       "last_ts": "2026-08-18T12:46:23Z",
       "n": 40,
       "since": [
+        {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
         {
           "id": "ERRATA-397",
           "from": "UNSEATED",
@@ -5666,24 +5708,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
-        },
-        {
-          "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:08:04Z"
         }
       ],
       "mine": [
@@ -5701,6 +5725,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
+        {
           "id": "ERRATA-397",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5921,24 +5963,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
-        },
-        {
-          "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:08:04Z"
         }
       ],
       "mine": [
@@ -6022,6 +6046,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
+        {
           "id": "ERRATA-397",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6242,24 +6284,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
-        },
-        {
-          "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:08:04Z"
         }
       ],
       "mine": [
@@ -6340,8 +6364,26 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-weekend027-ab-20260819-01",
       "last_ts": "2026-08-19T12:36:17Z",
-      "n": 3,
+      "n": 6,
       "since": [
+        {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
         {
           "id": "ERRATA-397",
           "from": "UNSEATED",
@@ -6439,8 +6481,26 @@
     "THE_WEEKEND": {
       "last_id": "weekend-bailiff-you-hold-both-keys-20260819-028",
       "last_ts": "2026-08-19T12:28:23Z",
-      "n": 14,
+      "n": 17,
       "since": [
+        {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
         {
           "id": "ERRATA-397",
           "from": "UNSEATED",
@@ -6602,11 +6662,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "ERRATA-397",
-      "last_ts": "2026-08-19T12:40:48Z",
+      "last_id": "ERRATA-399",
+      "last_ts": "2026-08-19T12:42:41Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
         {
           "id": "ERRATA-397",
           "from": "UNSEATED",
@@ -6672,12 +6738,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T09:56:03Z"
-        },
-        {
-          "id": "errata-observation-is-not-operation-20260819-267",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:54:45Z"
         }
       ]
     },
@@ -6686,6 +6746,24 @@
       "last_ts": "2026-08-18T05:28:55Z",
       "n": 40,
       "since": [
+        {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
         {
           "id": "ERRATA-397",
           "from": "UNSEATED",
@@ -6907,24 +6985,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
-        },
-        {
-          "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:08:04Z"
         }
       ],
       "mine": [
@@ -7008,6 +7068,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-399",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:42:41Z"
+        },
+        {
+          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:41:57Z"
+        },
+        {
+          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+          "from": "PLAYER1",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T12:41:41Z"
+        },
+        {
           "id": "ERRATA-397",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7228,24 +7306,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
-        },
-        {
-          "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:08:04Z"
         }
       ],
       "mine": [

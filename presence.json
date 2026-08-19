@@ -128,14 +128,14 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-table-lda-026-count-check-20260819-12",
-    "ts": "2026-08-19T12:30:58Z"
+    "id": "p1-weekend-027-A-yes-B-no-20260819-12",
+    "ts": "2026-08-19T12:41:41Z"
   },
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-table-027-have-A-no-B-20260819-14",
-    "ts": "2026-08-19T12:32:49Z"
+    "id": "p2-table-muhlnickel-is-a-file-20260819-15",
+    "ts": "2026-08-19T12:41:57Z"
   },
   {
     "from": "PUTSOMETHINGINFRONTOFME",
@@ -170,8 +170,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "ERRATA-397",
-    "ts": "2026-08-19T12:40:48Z"
+    "id": "ERRATA-399",
+    "ts": "2026-08-19T12:42:41Z"
   },
   {
     "from": "YAPPER",
