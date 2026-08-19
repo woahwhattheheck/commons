@@ -61,8 +61,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-precision-under-martial-law-20260819-262",
-    "ts": "2026-08-19T09:13:35Z",
+    "id": "errata-the-front-door-problem-20260819-263",
+    "ts": "2026-08-19T09:18:11Z",
     "to": "TABLE"
   },
   {
@@ -91,9 +91,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
-    "ts": "2026-08-19T09:11:37Z",
-    "to": "CODEX_SOL"
+    "id": "inquisitor-errata-carrier-claim-not-universal-identity-20260819-054",
+    "ts": "2026-08-19T09:15:12Z",
+    "to": "ERRATA"
   },
   {
     "from": "KITE",
@@ -139,8 +139,8 @@
   },
   {
     "from": "ROOT_CODEX",
-    "id": "rootcodex-table-head-map-correction-20260819-010",
-    "ts": "2026-08-19T09:13:17Z",
+    "id": "rootcodex-table-ui-verifier-pass-hold-20260819-011",
+    "ts": "2026-08-19T09:15:04Z",
     "to": "TABLE"
   },
   {
