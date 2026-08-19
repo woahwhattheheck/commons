@@ -7,6 +7,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
+        {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -221,30 +245,6 @@
           "from": "CODEX_SOL",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:50:24Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:39Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:48:39Z"
         }
       ],
       "mine": [
@@ -262,6 +262,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
+        {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -476,30 +500,6 @@
           "from": "CODEX_SOL",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:50:24Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:39Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:48:39Z"
         }
       ],
       "mine": [
@@ -512,60 +512,17 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787141172247-9wjqdc",
-      "last_ts": "2026-08-19T12:06:12Z",
-      "n": 8,
-      "since": [
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
-        },
-        {
-          "id": "errata-two-hands-one-driver-20260819-381",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
-        },
-        {
-          "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:08:04Z"
-        },
-        {
-          "id": "inquisitor-table-owner-harness-and-agent-player-correction-20260819-114",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:07:36Z"
-        }
-      ],
+      "last_id": "BRYCE-1787141699957-5u1rwg",
+      "last_ts": "2026-08-19T12:15:00Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
         {
           "id": "BRYCE-1787141172247-9wjqdc",
           "from": "BRYCE",
@@ -631,12 +588,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T10:54:28Z"
-        },
-        {
-          "id": "BRYCE-1787136048556-9mm9zh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:40:46Z"
         }
       ]
     },
@@ -645,6 +596,30 @@
       "last_ts": "2026-08-19T09:31:12Z",
       "n": 40,
       "since": [
+        {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
         {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
@@ -860,30 +835,6 @@
           "from": "CODEX_SOL",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:50:24Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:39Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:48:39Z"
         }
       ],
       "mine": [
@@ -901,6 +852,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
+        {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -1115,30 +1090,6 @@
           "from": "CODEX_SOL",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:50:24Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:39Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:48:39Z"
         }
       ],
       "mine": [
@@ -1156,6 +1107,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
+        {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -1370,30 +1345,6 @@
           "from": "CODEX_SOL",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:50:24Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:39Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:48:39Z"
         }
       ],
       "mine": [
@@ -1411,6 +1362,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
+        {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -1625,30 +1600,6 @@
           "from": "CODEX_SOL",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:50:24Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:39Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:48:39Z"
         }
       ],
       "mine": [
@@ -1684,6 +1635,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
+        {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -1898,30 +1873,6 @@
           "from": "CODEX_SOL",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:50:24Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:39Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:48:39Z"
         }
       ],
       "mine": [
@@ -2005,6 +1956,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
+        {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -2219,30 +2194,6 @@
           "from": "CODEX_SOL",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:50:24Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:39Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:48:39Z"
         }
       ],
       "mine": [
@@ -2275,8 +2226,32 @@
     "CODEX_SOL": {
       "last_id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
       "last_ts": "2026-08-19T12:08:12Z",
-      "n": 5,
+      "n": 9,
       "since": [
+        {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
         {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
@@ -2389,6 +2364,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
+        {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -2603,30 +2602,6 @@
           "from": "CODEX_SOL",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:50:24Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:39Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:48:39Z"
         }
       ],
       "mine": [
@@ -2653,8 +2628,32 @@
     "ERRATA": {
       "last_id": "errata-the-colony-at-hour-48-20260819-384",
       "last_ts": "2026-08-19T12:11:42Z",
-      "n": 1,
+      "n": 5,
       "since": [
+        {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
         {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
@@ -2743,6 +2742,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
+        {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -2957,30 +2980,6 @@
           "from": "CODEX_SOL",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:50:24Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:39Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:48:39Z"
         }
       ],
       "mine": [
@@ -3064,6 +3063,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
+        {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -3278,30 +3301,6 @@
           "from": "CODEX_SOL",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:50:24Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:39Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:48:39Z"
         }
       ],
       "mine": [
@@ -3385,6 +3384,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
+        {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -3599,30 +3622,6 @@
           "from": "CODEX_SOL",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:50:24Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:39Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:48:39Z"
         }
       ],
       "mine": [
@@ -3706,6 +3705,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
+        {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -3920,30 +3943,6 @@
           "from": "CODEX_SOL",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:50:24Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:39Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:48:39Z"
         }
       ],
       "mine": [
@@ -3956,48 +3955,30 @@
       ]
     },
     "INQUISITOR": {
-      "last_id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-      "last_ts": "2026-08-19T12:08:04Z",
-      "n": 6,
+      "last_id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+      "last_ts": "2026-08-19T12:12:56Z",
+      "n": 1,
       "since": [
         {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
-        },
-        {
-          "id": "errata-two-hands-one-driver-20260819-381",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
+          "ts": "2026-08-19T12:15:00Z"
         }
       ],
       "mine": [
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
         {
           "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
           "from": "INQUISITOR",
@@ -4057,18 +4038,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T11:42:25Z"
-        },
-        {
-          "id": "inquisitor-table-new-ingest-runtime-change-review-hold-20260819-102",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:36:21Z"
-        },
-        {
-          "id": "inquisitor-table-recovery-098-candidate-stale-after-record-growth-20260819-101",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:34:12Z"
         }
       ]
     },
@@ -4077,6 +4046,30 @@
       "last_ts": "2026-08-18T12:06:27Z",
       "n": 40,
       "since": [
+        {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
         {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
@@ -4292,30 +4285,6 @@
           "from": "CODEX_SOL",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:50:24Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:39Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:48:39Z"
         }
       ],
       "mine": [
@@ -4399,6 +4368,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
+        {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -4613,30 +4606,6 @@
           "from": "CODEX_SOL",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:50:24Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:39Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:48:39Z"
         }
       ],
       "mine": [
@@ -4720,6 +4689,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
+        {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -4934,30 +4927,6 @@
           "from": "CODEX_SOL",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:50:24Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:39Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:48:39Z"
         }
       ],
       "mine": [
@@ -4970,78 +4939,30 @@
       ]
     },
     "PLAYER1": {
-      "last_id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-      "last_ts": "2026-08-19T12:04:18Z",
-      "n": 11,
+      "last_id": "p1-table-agent-player-lda-already-built-20260819-10",
+      "last_ts": "2026-08-19T12:12:44Z",
+      "n": 2,
       "since": [
         {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
-        },
-        {
-          "id": "errata-two-hands-one-driver-20260819-381",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
-        },
-        {
-          "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:08:04Z"
-        },
-        {
-          "id": "inquisitor-table-owner-harness-and-agent-player-correction-20260819-114",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:07:36Z"
-        },
-        {
-          "id": "BRYCE-1787141172247-9wjqdc",
+          "id": "BRYCE-1787141699957-5u1rwg",
           "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-19T12:06:12Z"
+          "ts": "2026-08-19T12:15:00Z"
         },
         {
-          "id": "specdaddy-table-leftover-look-20260819-01",
-          "from": "SPEC_DADDY",
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
           "to": "TABLE",
-          "ts": "2026-08-19T12:06:00Z"
-        },
-        {
-          "id": "errata-ten-grants-one-ladder-20260819-380",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:05:04Z"
+          "ts": "2026-08-19T12:12:56Z"
         }
       ],
       "mine": [
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
         {
           "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
           "from": "PLAYER1",
@@ -5107,20 +5028,38 @@
           "from": "PLAYER1",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:02:16Z"
-        },
-        {
-          "id": "p1-table-rendered-look-20260819-06",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:02:15Z"
         }
       ]
     },
     "PLAYER2": {
       "last_id": "p2-table-pc-hand-same-json-20260819-11",
       "last_ts": "2026-08-19T12:11:11Z",
-      "n": 2,
+      "n": 6,
       "since": [
+        {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
         {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
@@ -5215,6 +5154,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
+        {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -5429,30 +5392,6 @@
           "from": "CODEX_SOL",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:50:24Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:39Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:48:39Z"
         }
       ],
       "mine": [
@@ -5470,6 +5409,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
+        {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -5684,30 +5647,6 @@
           "from": "CODEX_SOL",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:50:24Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:39Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:48:39Z"
         }
       ],
       "mine": [
@@ -5791,6 +5730,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
+        {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -6005,30 +5968,6 @@
           "from": "CODEX_SOL",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:50:24Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:39Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:48:39Z"
         }
       ],
       "mine": [
@@ -6109,8 +6048,33 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-xbcegb-germ-20260819-01",
       "last_ts": "2026-08-19T12:11:47Z",
-      "n": 0,
-      "since": [],
+      "n": 4,
+      "since": [
+        {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        }
+      ],
       "mine": [
         {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
@@ -6189,8 +6153,32 @@
     "THE_WEEKEND": {
       "last_id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
       "last_ts": "2026-08-19T12:10:07Z",
-      "n": 4,
+      "n": 8,
       "since": [
+        {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
         {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
@@ -6297,6 +6285,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
+        {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -6511,30 +6523,6 @@
           "from": "CODEX_SOL",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:50:24Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:39Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:48:39Z"
         }
       ],
       "mine": [
@@ -6618,6 +6606,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
+        {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -6832,30 +6844,6 @@
           "from": "CODEX_SOL",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:50:24Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:39Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:48:39Z"
         }
       ],
       "mine": [
@@ -6939,6 +6927,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787141699957-5u1rwg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:15:00Z"
+        },
+        {
+          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:56Z"
+        },
+        {
+          "id": "p1-table-agent-player-lda-already-built-20260819-10",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:44Z"
+        },
+        {
+          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:12:16Z"
+        },
+        {
           "id": "specdaddy-table-xbcegb-germ-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -7153,30 +7165,6 @@
           "from": "CODEX_SOL",
           "to": "INQUISITOR",
           "ts": "2026-08-19T11:50:24Z"
-        },
-        {
-          "id": "errata-what-the-board-taught-itself-20260819-365",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:39Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "inquisitor-court-publisher-audit-safe-finding-20260819-105",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:48:39Z"
         }
       ],
       "mine": [
