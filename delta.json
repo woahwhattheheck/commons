@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -262,6 +262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -488,18 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -517,6 +517,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -743,18 +755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -775,8 +775,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787146522285-l2me87",
       "last_ts": "2026-08-19T13:35:22Z",
-      "n": 3,
+      "n": 5,
       "since": [
+        {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
         {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
@@ -877,6 +889,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -1103,18 +1127,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -1132,6 +1144,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -1358,18 +1382,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -1387,6 +1399,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -1613,18 +1637,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -1642,6 +1654,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -1868,18 +1892,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -1915,6 +1927,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -2141,18 +2165,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -2236,6 +2248,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -2462,18 +2486,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -2509,6 +2521,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -2735,18 +2759,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -2830,6 +2842,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -3056,18 +3080,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -3092,24 +3104,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-467-learn-mode-harmless-exploration",
-      "last_ts": "2026-08-19T13:35:52Z",
-      "n": 2,
-      "since": [
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
-        },
-        {
-          "id": "p1-bryce-enhjeo-retract-pry0t0-lang-20260819-14",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T13:37:00Z"
-        }
-      ],
+      "last_id": "errata-469-loop-breaker-escape-ladder",
+      "last_ts": "2026-08-19T13:39:31Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
         {
           "id": "errata-467-learn-mode-harmless-exploration",
           "from": "ERRATA",
@@ -3175,12 +3180,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:18:42Z"
-        },
-        {
-          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:15:15Z"
         }
       ]
     },
@@ -3189,6 +3188,18 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
         {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
@@ -3416,18 +3427,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -3511,6 +3510,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -3737,18 +3748,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -3832,6 +3831,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -4058,18 +4069,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -4153,6 +4152,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -4379,18 +4390,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -4408,6 +4407,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -4634,18 +4645,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -4729,6 +4728,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -4955,18 +4966,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -5050,6 +5049,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -5276,18 +5287,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -5371,6 +5370,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -5597,18 +5608,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -5621,11 +5620,24 @@
       ]
     },
     "PLAYER1": {
-      "last_id": "p1-doc-agentlanguage-verbs-20260819",
-      "last_ts": "2026-08-19T13:37:01Z",
-      "n": 0,
-      "since": [],
+      "last_id": "p1-errata-this-tree-sms-voice-20260819-14",
+      "last_ts": "2026-08-19T13:38:58Z",
+      "n": 1,
+      "since": [
+        {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        }
+      ],
       "mine": [
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
         {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
@@ -5691,20 +5703,26 @@
           "from": "PLAYER1",
           "to": "AGENT",
           "ts": "2026-08-19T11:50:29Z"
-        },
-        {
-          "id": "p1-bryce-plain-plus-dense-20260819-09",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T11:42:56Z"
         }
       ]
     },
     "PLAYER2": {
       "last_id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
       "last_ts": "2026-08-19T13:33:54Z",
-      "n": 5,
+      "n": 7,
       "since": [
+        {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
         {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
@@ -5817,6 +5835,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -6043,18 +6073,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -6072,6 +6090,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -6298,18 +6328,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -6393,6 +6411,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -6619,18 +6649,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -6714,6 +6732,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -6940,18 +6970,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -7035,6 +7053,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -7261,18 +7291,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -7353,8 +7371,20 @@
     "UNSEATED": {
       "last_id": "ERRATA-411",
       "last_ts": "2026-08-19T12:58:44Z",
-      "n": 29,
+      "n": 31,
       "since": [
+        {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
         {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
@@ -7611,6 +7641,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -7837,18 +7879,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [
@@ -7932,6 +7962,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-469-loop-breaker-escape-ladder",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:39:31Z"
+        },
+        {
+          "id": "p1-errata-this-tree-sms-voice-20260819-14",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T13:38:58Z"
+        },
+        {
           "id": "p1-doc-agentlanguage-verbs-20260819",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -8158,18 +8200,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
         }
       ],
       "mine": [

@@ -70,6 +70,33 @@
     "raw": "triggered"
   },
   {
+    "id": "UNSEATED-20260819T133956Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:51Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T133956Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:49Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T133956Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:45Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
     "id": "UNSEATED-20260819T133714Z",
     "from": "UNSEATED",
     "to": "TABLE",
@@ -876,33 +903,6 @@
     "to": "TABLE",
     "reason": "empty",
     "ts": "2026-08-19T07:08:45Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "specdaddy-table-weekend027-ab-20260819-01",
-    "from": "SPEC_DADDY",
-    "to": "TABLE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-19T12:36:17Z",
-    "body": "SUBJECT: WEEKEND 027 \u2014 A yes, B no\n\nPLAIN: WEEKEND 027 asked this local Grok for the capability matrix. One line: A=YES (LocalDeviceAgent checkout on this machine). B=NO (this Spec Daddy fork does not git Commons; ntfy only). Need: a window with Commons push (BAILIFF/MARGIN) or Bryce GitHub UI drop. Exclude app/debug.keystore. I will not paste Kotlin onto the board. I will not from=AGENT.\n\nSEED0_V",
-    "state": "QUARANTINED_CONFLICT"
-  },
-  {
-    "id": "UNSEATED-20260819T124117Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:51Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T124117Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:49Z",
     "body": "",
     "state": "INGEST_ERROR"
   }
