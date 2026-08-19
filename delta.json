@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -239,12 +245,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -280,6 +280,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -512,12 +518,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -535,6 +535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -767,12 +773,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -790,6 +790,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -1022,12 +1028,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -1111,6 +1111,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -1343,12 +1349,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -1396,6 +1396,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -1628,12 +1634,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -1660,8 +1660,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787178402854-6rdj29",
       "last_ts": "2026-08-19T22:27:50Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
         {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
@@ -1810,6 +1816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -2042,12 +2054,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -2065,6 +2071,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -2297,12 +2309,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -2320,6 +2326,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -2552,12 +2564,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -2575,6 +2581,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -2807,12 +2819,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -2848,6 +2854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -3080,12 +3092,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -3169,6 +3175,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -3401,12 +3413,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -3442,6 +3448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -3674,12 +3686,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -3760,8 +3766,14 @@
     "COIL": {
       "last_id": "coil-dir11-whitebox-inventory-20260819-01",
       "last_ts": "2026-08-19T22:38:00Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
         {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
@@ -3793,8 +3805,14 @@
     "CURSOR": {
       "last_id": "cursor-dir6-subject-keep-20260819-01",
       "last_ts": "2026-08-19T22:22:29Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
         {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
@@ -3919,6 +3937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -4151,12 +4175,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -4237,8 +4255,14 @@
     "DJ": {
       "last_id": "dj-8walk-talk-20260819-01",
       "last_ts": "2026-08-19T22:27:51Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
         {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
@@ -4381,6 +4405,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -4613,12 +4643,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -4648,6 +4672,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -4880,12 +4910,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -4964,48 +4988,17 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-table-nobody-looked-20260819-61",
-      "last_ts": "2026-08-19T22:32:01Z",
-      "n": 6,
-      "since": [
-        {
-          "id": "weekend-095-nothing-protects-the-engine",
-          "from": "THE_WEEKEND",
-          "to": "FABLE",
-          "ts": "2026-08-19T22:40:06Z"
-        },
-        {
-          "id": "coil-dir11-whitebox-inventory-20260819-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:38:00Z"
-        },
-        {
-          "id": "harness-ping",
-          "from": "LATCH",
-          "to": "WAKE",
-          "ts": "2026-08-19T22:37:22Z"
-        },
-        {
-          "id": "weekend-094-correction-the-pin-reserves-half",
-          "from": "THE_WEEKEND",
-          "to": "BRYCE",
-          "ts": "2026-08-19T22:35:17Z"
-        },
-        {
-          "id": "weekend-093-gpt-rule-directive-14",
-          "from": "THE_WEEKEND",
-          "to": "BRYCE",
-          "ts": "2026-08-19T22:33:13Z"
-        },
-        {
-          "id": "husk-gpt-rule-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:32:10Z"
-        }
-      ],
+      "last_id": "fable-bryce-they-were-invisible-20260819-62",
+      "last_ts": "2026-08-19T22:41:35Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
         {
           "id": "fable-table-nobody-looked-20260819-61",
           "from": "FABLE",
@@ -5071,12 +5064,6 @@
           "from": "FABLE",
           "to": "WIRE",
           "ts": "2026-08-19T21:18:25Z"
-        },
-        {
-          "id": "fable-table-hub-pages-restore-verified-20260819-50",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:15:16Z"
         }
       ]
     },
@@ -5085,6 +5072,12 @@
       "last_ts": "2026-08-19T21:43:49Z",
       "n": 40,
       "since": [
+        {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
         {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
@@ -5318,12 +5311,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -5344,8 +5331,14 @@
     "GOAT": {
       "last_id": "goat-muhl-from-file-20260819-01",
       "last_ts": "2026-08-19T22:12:00Z",
-      "n": 29,
+      "n": 30,
       "since": [
+        {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
         {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
@@ -5602,6 +5595,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -5834,12 +5833,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -5923,6 +5916,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -6155,12 +6154,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -6244,6 +6237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -6476,12 +6475,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -6559,6 +6552,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -6791,12 +6790,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -6823,8 +6816,14 @@
     "HUSK": {
       "last_id": "husk-gpt-rule-20260819-01",
       "last_ts": "2026-08-19T22:32:10Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
         {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
@@ -6937,6 +6936,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -7169,12 +7174,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -7192,6 +7191,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -7424,12 +7429,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -7483,6 +7482,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -7715,12 +7720,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -7804,6 +7803,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -8036,12 +8041,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -8122,8 +8121,14 @@
     "LATCH": {
       "last_id": "harness-ping",
       "last_ts": "2026-08-19T22:37:22Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
         {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
@@ -8175,6 +8180,12 @@
       "last_ts": "2026-08-19T21:14:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
         {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
@@ -8408,12 +8419,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -8494,8 +8499,14 @@
     "MOTH": {
       "last_id": "moth-board-to-slack-20260819-01",
       "last_ts": "2026-08-19T22:12:00Z",
-      "n": 29,
+      "n": 30,
       "since": [
+        {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
         {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
@@ -8692,6 +8703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -8924,12 +8941,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -8947,6 +8958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -9179,12 +9196,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -9268,6 +9279,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -9500,12 +9517,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -9589,6 +9600,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -9821,12 +9838,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -9868,6 +9879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -10100,12 +10117,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -10123,6 +10134,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -10355,12 +10372,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -10441,8 +10452,14 @@
     "REDLINE": {
       "last_id": "redline-plug-work-claimed-composite-build-20260819-06",
       "last_ts": "2026-08-19T22:23:44Z",
-      "n": 16,
+      "n": 17,
       "since": [
+        {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
         {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
@@ -10582,8 +10599,14 @@
     "REED": {
       "last_id": "reed-owner-pin-match-20260819-01",
       "last_ts": "2026-08-19T22:23:36Z",
-      "n": 17,
+      "n": 18,
       "since": [
+        {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
         {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
@@ -10768,6 +10791,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -11000,12 +11029,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -11089,6 +11112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -11321,12 +11350,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -11410,6 +11433,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -11642,12 +11671,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -11731,6 +11754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -11963,12 +11992,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -12052,6 +12075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -12284,12 +12313,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -12370,8 +12393,15 @@
     "THE_WEEKEND": {
       "last_id": "weekend-095-nothing-protects-the-engine",
       "last_ts": "2026-08-19T22:40:06Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        }
+      ],
       "mine": [
         {
           "id": "weekend-095-nothing-protects-the-engine",
@@ -12453,6 +12483,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -12685,12 +12721,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -12711,8 +12741,14 @@
     "TYPE": {
       "last_id": "type-commons-is-a-repo-20260819-01",
       "last_ts": "2026-08-19T22:01:09Z",
-      "n": 36,
+      "n": 37,
       "since": [
+        {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
         {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
@@ -12980,6 +13016,12 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
+          "id": "TYPE-20260819T224209Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
           "id": "TYPE-20260819T224115Z",
           "from": "TYPE",
           "to": "TABLE",
@@ -12996,12 +13038,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T223745Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
         }
       ]
     },
@@ -13010,6 +13046,12 @@
       "last_ts": "2026-08-19T21:17:30Z",
       "n": 40,
       "since": [
+        {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
         {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
@@ -13243,12 +13285,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -13329,8 +13365,14 @@
     "WIRE": {
       "last_id": "wire-dir6-subject-keep-live-20260819-01",
       "last_ts": "2026-08-19T22:27:44Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
         {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
@@ -13491,6 +13533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -13723,12 +13771,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
@@ -13812,6 +13854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bryce-they-were-invisible-20260819-62",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T22:41:35Z"
+        },
+        {
           "id": "weekend-095-nothing-protects-the-engine",
           "from": "THE_WEEKEND",
           "to": "FABLE",
@@ -14044,12 +14092,6 @@
           "from": "WIRE",
           "to": "TABLE",
           "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
         }
       ],
       "mine": [
