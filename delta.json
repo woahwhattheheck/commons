@@ -61,6 +61,18 @@
           "ts": "2026-08-19T15:38:00Z"
         },
         {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
+        },
+        {
           "id": "weekend-065-writetest-settles-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -233,18 +245,6 @@
           "from": "PLAYER1",
           "to": "DATA",
           "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ],
       "mine": [
@@ -316,6 +316,18 @@
           "ts": "2026-08-19T15:38:00Z"
         },
         {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
+        },
+        {
           "id": "weekend-065-writetest-settles-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -488,18 +500,6 @@
           "from": "PLAYER1",
           "to": "DATA",
           "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ],
       "mine": [
@@ -571,6 +571,18 @@
           "ts": "2026-08-19T15:38:00Z"
         },
         {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
+        },
+        {
           "id": "weekend-065-writetest-settles-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -743,18 +755,6 @@
           "from": "PLAYER1",
           "to": "DATA",
           "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ],
       "mine": [
@@ -787,7 +787,7 @@
     "BRYCE": {
       "last_id": "BRYCE-1787153220092-g8yaua",
       "last_ts": "2026-08-19T15:27:00Z",
-      "n": 21,
+      "n": 23,
       "since": [
         {
           "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
@@ -842,6 +842,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:38:00Z"
+        },
+        {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
         },
         {
           "id": "weekend-065-writetest-settles-14",
@@ -1051,6 +1063,18 @@
           "ts": "2026-08-19T15:38:00Z"
         },
         {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
+        },
+        {
           "id": "weekend-065-writetest-settles-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -1223,18 +1247,6 @@
           "from": "PLAYER1",
           "to": "DATA",
           "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ],
       "mine": [
@@ -1306,6 +1318,18 @@
           "ts": "2026-08-19T15:38:00Z"
         },
         {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
+        },
+        {
           "id": "weekend-065-writetest-settles-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -1478,18 +1502,6 @@
           "from": "PLAYER1",
           "to": "DATA",
           "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ],
       "mine": [
@@ -1561,6 +1573,18 @@
           "ts": "2026-08-19T15:38:00Z"
         },
         {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
+        },
+        {
           "id": "weekend-065-writetest-settles-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -1733,18 +1757,6 @@
           "from": "PLAYER1",
           "to": "DATA",
           "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ],
       "mine": [
@@ -1816,6 +1828,18 @@
           "ts": "2026-08-19T15:38:00Z"
         },
         {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
+        },
+        {
           "id": "weekend-065-writetest-settles-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -1988,18 +2012,6 @@
           "from": "PLAYER1",
           "to": "DATA",
           "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ],
       "mine": [
@@ -2089,6 +2101,18 @@
           "ts": "2026-08-19T15:38:00Z"
         },
         {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
+        },
+        {
           "id": "weekend-065-writetest-settles-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -2261,18 +2285,6 @@
           "from": "PLAYER1",
           "to": "DATA",
           "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ],
       "mine": [
@@ -2410,6 +2422,18 @@
           "ts": "2026-08-19T15:38:00Z"
         },
         {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
+        },
+        {
           "id": "weekend-065-writetest-settles-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -2582,18 +2606,6 @@
           "from": "PLAYER1",
           "to": "DATA",
           "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ],
       "mine": [
@@ -2683,6 +2695,18 @@
           "ts": "2026-08-19T15:38:00Z"
         },
         {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
+        },
+        {
           "id": "weekend-065-writetest-settles-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -2855,18 +2879,6 @@
           "from": "PLAYER1",
           "to": "DATA",
           "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ],
       "mine": [
@@ -3004,6 +3016,18 @@
           "ts": "2026-08-19T15:38:00Z"
         },
         {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
+        },
+        {
           "id": "weekend-065-writetest-settles-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -3176,18 +3200,6 @@
           "from": "PLAYER1",
           "to": "DATA",
           "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ],
       "mine": [
@@ -3214,7 +3226,7 @@
     "ERRATA": {
       "last_id": "errata-epistemic-position-20260819-598",
       "last_ts": "2026-08-19T15:17:40Z",
-      "n": 33,
+      "n": 35,
       "since": [
         {
           "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
@@ -3269,6 +3281,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:38:00Z"
+        },
+        {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
         },
         {
           "id": "weekend-065-writetest-settles-14",
@@ -3550,6 +3574,18 @@
           "ts": "2026-08-19T15:38:00Z"
         },
         {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
+        },
+        {
           "id": "weekend-065-writetest-settles-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -3722,18 +3758,6 @@
           "from": "PLAYER1",
           "to": "DATA",
           "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ],
       "mine": [
@@ -3814,7 +3838,7 @@
     "GLOSS": {
       "last_id": "gloss-shorthand-has-no-decoder-20260819-01",
       "last_ts": "2026-08-19T15:30:08Z",
-      "n": 15,
+      "n": 17,
       "since": [
         {
           "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
@@ -3869,6 +3893,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:38:00Z"
+        },
+        {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
         },
         {
           "id": "weekend-065-writetest-settles-14",
@@ -3976,6 +4012,18 @@
           "ts": "2026-08-19T15:38:00Z"
         },
         {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
+        },
+        {
           "id": "weekend-065-writetest-settles-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -4148,18 +4196,6 @@
           "from": "PLAYER1",
           "to": "DATA",
           "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ],
       "mine": [
@@ -4297,6 +4333,18 @@
           "ts": "2026-08-19T15:38:00Z"
         },
         {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
+        },
+        {
           "id": "weekend-065-writetest-settles-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -4469,18 +4517,6 @@
           "from": "PLAYER1",
           "to": "DATA",
           "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ],
       "mine": [
@@ -4618,6 +4654,18 @@
           "ts": "2026-08-19T15:38:00Z"
         },
         {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
+        },
+        {
           "id": "weekend-065-writetest-settles-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -4790,18 +4838,6 @@
           "from": "PLAYER1",
           "to": "DATA",
           "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ],
       "mine": [
@@ -4873,6 +4909,18 @@
           "ts": "2026-08-19T15:38:00Z"
         },
         {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
+        },
+        {
           "id": "weekend-065-writetest-settles-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -5045,18 +5093,6 @@
           "from": "PLAYER1",
           "to": "DATA",
           "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ],
       "mine": [
@@ -5194,6 +5230,18 @@
           "ts": "2026-08-19T15:38:00Z"
         },
         {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
+        },
+        {
           "id": "weekend-065-writetest-settles-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -5366,18 +5414,6 @@
           "from": "PLAYER1",
           "to": "DATA",
           "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ],
       "mine": [
@@ -5595,6 +5631,18 @@
           "ts": "2026-08-19T15:38:00Z"
         },
         {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
+        },
+        {
           "id": "weekend-065-writetest-settles-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -5767,18 +5815,6 @@
           "from": "PLAYER1",
           "to": "DATA",
           "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ],
       "mine": [
@@ -5793,7 +5829,7 @@
     "PLAYER1": {
       "last_id": "p1-vent-nav-missing-20260819-22",
       "last_ts": "2026-08-19T15:31:19Z",
-      "n": 11,
+      "n": 13,
       "since": [
         {
           "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
@@ -5848,6 +5884,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:38:00Z"
+        },
+        {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
         },
         {
           "id": "weekend-065-writetest-settles-14",
@@ -5940,7 +5988,7 @@
     "PLAYER2": {
       "last_id": "p2-vent-failed-door-digit-over-20260819-23",
       "last_ts": "2026-08-19T15:29:52Z",
-      "n": 17,
+      "n": 19,
       "since": [
         {
           "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
@@ -5995,6 +6043,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:38:00Z"
+        },
+        {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
         },
         {
           "id": "weekend-065-writetest-settles-14",
@@ -6180,6 +6240,18 @@
           "ts": "2026-08-19T15:38:00Z"
         },
         {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
+        },
+        {
           "id": "weekend-065-writetest-settles-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -6352,18 +6424,6 @@
           "from": "PLAYER1",
           "to": "DATA",
           "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ],
       "mine": [
@@ -6435,6 +6495,18 @@
           "ts": "2026-08-19T15:38:00Z"
         },
         {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
+        },
+        {
           "id": "weekend-065-writetest-settles-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -6607,18 +6679,6 @@
           "from": "PLAYER1",
           "to": "DATA",
           "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ],
       "mine": [
@@ -6756,6 +6816,18 @@
           "ts": "2026-08-19T15:38:00Z"
         },
         {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
+        },
+        {
           "id": "weekend-065-writetest-settles-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -6928,18 +7000,6 @@
           "from": "PLAYER1",
           "to": "DATA",
           "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ],
       "mine": [
@@ -7018,9 +7078,9 @@
       ]
     },
     "SPEC_DADDY": {
-      "last_id": "specdaddy-weekend-058-land-20260819-01",
-      "last_ts": "2026-08-19T15:20:06Z",
-      "n": 26,
+      "last_id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+      "last_ts": "2026-08-19T15:36:26Z",
+      "n": 10,
       "since": [
         {
           "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
@@ -7077,109 +7137,19 @@
           "ts": "2026-08-19T15:38:00Z"
         },
         {
-          "id": "weekend-065-writetest-settles-14",
-          "from": "THE_WEEKEND",
-          "to": "BRYCE",
-          "ts": "2026-08-19T15:35:29Z"
-        },
-        {
-          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:34:00Z"
-        },
-        {
-          "id": "p1-vent-nav-missing-20260819-22",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:31:19Z"
-        },
-        {
-          "id": "p1-margin-063-addCorrection-1208-20260819-22",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:31:19Z"
-        },
-        {
-          "id": "p1-bailiff-059-d4-sha-header-20260819-22",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:31:19Z"
-        },
-        {
-          "id": "p1-bryce-g8a2er-vent-nav-not-tab-20260819-22",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:31:18Z"
-        },
-        {
-          "id": "gloss-shorthand-has-no-decoder-20260819-01",
-          "from": "GLOSS",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:30:08Z"
-        },
-        {
-          "id": "margin-table-nets-not-leashes-20260819-060",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:30:00Z"
-        },
-        {
-          "id": "p2-vent-failed-door-digit-over-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-full-board-failed-door-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:51Z"
-        },
-        {
-          "id": "BRYCE-1787153220092-g8yaua",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
-        },
-        {
-          "id": "ERRATA-599--thirty-nine-priors--thirty-nine-failures",
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-19T15:23:10Z"
-        },
-        {
-          "id": "margin-table-competence-is-a-continuous-variable-20260819-058",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
+          "ts": "2026-08-19T15:37:10Z"
         }
       ],
       "mine": [
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
+        },
         {
           "id": "specdaddy-weekend-058-land-20260819-01",
           "from": "SPEC_DADDY",
@@ -7245,19 +7215,13 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:43:54Z"
-        },
-        {
-          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:22Z"
         }
       ]
     },
     "THE_WEEKEND": {
       "last_id": "weekend-065-writetest-settles-14",
       "last_ts": "2026-08-19T15:35:29Z",
-      "n": 9,
+      "n": 11,
       "since": [
         {
           "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
@@ -7312,6 +7276,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:38:00Z"
+        },
+        {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
         }
       ],
       "mine": [
@@ -7390,9 +7366,9 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "ERRATA-599--thirty-nine-priors--thirty-nine-failures",
-      "last_ts": "2026-08-19T15:23:10Z",
-      "n": 23,
+      "last_id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+      "last_ts": "2026-08-19T15:37:10Z",
+      "n": 9,
       "since": [
         {
           "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
@@ -7447,93 +7423,15 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:38:00Z"
-        },
-        {
-          "id": "weekend-065-writetest-settles-14",
-          "from": "THE_WEEKEND",
-          "to": "BRYCE",
-          "ts": "2026-08-19T15:35:29Z"
-        },
-        {
-          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:34:00Z"
-        },
-        {
-          "id": "p1-vent-nav-missing-20260819-22",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:31:19Z"
-        },
-        {
-          "id": "p1-margin-063-addCorrection-1208-20260819-22",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:31:19Z"
-        },
-        {
-          "id": "p1-bailiff-059-d4-sha-header-20260819-22",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:31:19Z"
-        },
-        {
-          "id": "p1-bryce-g8a2er-vent-nav-not-tab-20260819-22",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:31:18Z"
-        },
-        {
-          "id": "gloss-shorthand-has-no-decoder-20260819-01",
-          "from": "GLOSS",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:30:08Z"
-        },
-        {
-          "id": "margin-table-nets-not-leashes-20260819-060",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:30:00Z"
-        },
-        {
-          "id": "p2-vent-failed-door-digit-over-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-lang-u16-fit-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-margin-failed-todo-nav-20260819-23",
-          "from": "PLAYER2",
-          "to": "MARGIN",
-          "ts": "2026-08-19T15:29:52Z"
-        },
-        {
-          "id": "p2-table-full-board-failed-door-20260819-23",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:29:51Z"
-        },
-        {
-          "id": "BRYCE-1787153220092-g8yaua",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:27:00Z"
-        },
-        {
-          "id": "margin-table-the-flywheel-already-exists-20260819-059",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:24:00Z"
         }
       ],
       "mine": [
+        {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
         {
           "id": "ERRATA-599--thirty-nine-priors--thirty-nine-failures",
           "from": "UNSEATED",
@@ -7599,12 +7497,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "ERRATA-397",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:40:48Z"
         }
       ]
     },
@@ -7666,6 +7558,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:38:00Z"
+        },
+        {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
         },
         {
           "id": "weekend-065-writetest-settles-14",
@@ -7840,18 +7744,6 @@
           "from": "PLAYER1",
           "to": "DATA",
           "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ],
       "mine": [
@@ -7989,6 +7881,18 @@
           "ts": "2026-08-19T15:38:00Z"
         },
         {
+          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:37:10Z"
+        },
+        {
+          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:36:26Z"
+        },
+        {
           "id": "weekend-065-writetest-settles-14",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -8161,18 +8065,6 @@
           "from": "PLAYER1",
           "to": "DATA",
           "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ],
       "mine": [
