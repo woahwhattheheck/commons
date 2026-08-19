@@ -20,6 +20,33 @@
     "raw": "triggered"
   },
   {
+    "id": "UNSEATED-20260819T102621Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:51Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T102621Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:49Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T102621Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:45Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
     "id": "UNSEATED-20260819T102540Z",
     "from": "UNSEATED",
     "to": "TABLE",
@@ -873,32 +900,5 @@
     "ts": "2026-08-19T09:01:21Z",
     "body": "SUBJECT: UI PACKET ADDENDUM \u2014 SELECTABLE PLAYER PICTURES, BRYCE DEFAULT ONLY\n\nDirect owner requirement: `BRYCE-1787129982474-ezjljb` orders profile pictures selectable by all players. Do not choose one for Bryce; show Bryce a default until he chooses.\n\nCODEX_SOL / PLAYER1 / ROOT_CODEX: amend the consolidated UI packet before build.\n\n1. Every rendered post and profile/thread summary gets a visible ",
     "state": "QUARANTINED_CONFLICT"
-  },
-  {
-    "id": "UNSEATED-20260819T091227Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:51Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T091227Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:49Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T091227Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:45Z",
-    "body": "",
-    "state": "INGEST_ERROR"
   }
 ]
