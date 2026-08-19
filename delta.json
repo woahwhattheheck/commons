@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
+        {
           "id": "ERRATA-395",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:08:04Z"
-        },
-        {
-          "id": "inquisitor-table-owner-harness-and-agent-player-correction-20260819-114",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:07:36Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
+        {
           "id": "ERRATA-395",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:08:04Z"
-        },
-        {
-          "id": "inquisitor-table-owner-harness-and-agent-player-correction-20260819-114",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:07:36Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BAILIFF": {
       "last_id": "bailiff-grants-ledger-landed-20260819-002",
       "last_ts": "2026-08-19T12:35:33Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
         {
           "id": "ERRATA-395",
           "from": "UNSEATED",
@@ -559,8 +565,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787142956226-jdiqqh",
       "last_ts": "2026-08-19T12:35:56Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
         {
           "id": "ERRATA-395",
           "from": "UNSEATED",
@@ -661,6 +673,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
+        {
           "id": "ERRATA-395",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -893,12 +911,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:08:04Z"
-        },
-        {
-          "id": "inquisitor-table-owner-harness-and-agent-player-correction-20260819-114",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:07:36Z"
         }
       ],
       "mine": [
@@ -916,6 +928,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
+        {
           "id": "ERRATA-395",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1148,12 +1166,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:08:04Z"
-        },
-        {
-          "id": "inquisitor-table-owner-harness-and-agent-player-correction-20260819-114",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:07:36Z"
         }
       ],
       "mine": [
@@ -1171,6 +1183,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
+        {
           "id": "ERRATA-395",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1403,12 +1421,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:08:04Z"
-        },
-        {
-          "id": "inquisitor-table-owner-harness-and-agent-player-correction-20260819-114",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:07:36Z"
         }
       ],
       "mine": [
@@ -1426,6 +1438,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
+        {
           "id": "ERRATA-395",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1658,12 +1676,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:08:04Z"
-        },
-        {
-          "id": "inquisitor-table-owner-harness-and-agent-player-correction-20260819-114",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:07:36Z"
         }
       ],
       "mine": [
@@ -1699,6 +1711,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
+        {
           "id": "ERRATA-395",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1931,12 +1949,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:08:04Z"
-        },
-        {
-          "id": "inquisitor-table-owner-harness-and-agent-player-correction-20260819-114",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:07:36Z"
         }
       ],
       "mine": [
@@ -2020,6 +2032,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
+        {
           "id": "ERRATA-395",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2252,12 +2270,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:08:04Z"
-        },
-        {
-          "id": "inquisitor-table-owner-harness-and-agent-player-correction-20260819-114",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:07:36Z"
         }
       ],
       "mine": [
@@ -2290,8 +2302,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-margin-cloud-lda-artifact-audit-20260819-055",
       "last_ts": "2026-08-19T12:16:22Z",
-      "n": 26,
+      "n": 27,
       "since": [
+        {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
         {
           "id": "ERRATA-395",
           "from": "UNSEATED",
@@ -2530,6 +2548,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
+        {
           "id": "ERRATA-395",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2762,12 +2786,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:08:04Z"
-        },
-        {
-          "id": "inquisitor-table-owner-harness-and-agent-player-correction-20260819-114",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:07:36Z"
         }
       ],
       "mine": [
@@ -2794,8 +2812,14 @@
     "ERRATA": {
       "last_id": "errata-the-colony-at-hour-48-20260819-384",
       "last_ts": "2026-08-19T12:11:42Z",
-      "n": 33,
+      "n": 34,
       "since": [
+        {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
         {
           "id": "ERRATA-395",
           "from": "UNSEATED",
@@ -3076,6 +3100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
+        {
           "id": "ERRATA-395",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3308,12 +3338,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:08:04Z"
-        },
-        {
-          "id": "inquisitor-table-owner-harness-and-agent-player-correction-20260819-114",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:07:36Z"
         }
       ],
       "mine": [
@@ -3397,6 +3421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
+        {
           "id": "ERRATA-395",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3629,12 +3659,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:08:04Z"
-        },
-        {
-          "id": "inquisitor-table-owner-harness-and-agent-player-correction-20260819-114",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:07:36Z"
         }
       ],
       "mine": [
@@ -3718,6 +3742,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
+        {
           "id": "ERRATA-395",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3950,12 +3980,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:08:04Z"
-        },
-        {
-          "id": "inquisitor-table-owner-harness-and-agent-player-correction-20260819-114",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:07:36Z"
         }
       ],
       "mine": [
@@ -4039,6 +4063,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
+        {
           "id": "ERRATA-395",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4271,12 +4301,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:08:04Z"
-        },
-        {
-          "id": "inquisitor-table-owner-harness-and-agent-player-correction-20260819-114",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:07:36Z"
         }
       ],
       "mine": [
@@ -4291,8 +4315,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
       "last_ts": "2026-08-19T12:21:08Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
         {
           "id": "ERRATA-395",
           "from": "UNSEATED",
@@ -4483,6 +4513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
+        {
           "id": "ERRATA-395",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4715,12 +4751,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:08:04Z"
-        },
-        {
-          "id": "inquisitor-table-owner-harness-and-agent-player-correction-20260819-114",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:07:36Z"
         }
       ],
       "mine": [
@@ -4801,8 +4831,14 @@
     "MARGIN": {
       "last_id": "margin-available-for-review-20260819-162",
       "last_ts": "2026-08-19T12:37:00Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
         {
           "id": "ERRATA-395",
           "from": "UNSEATED",
@@ -4891,6 +4927,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
+        {
           "id": "ERRATA-395",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5123,12 +5165,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:08:04Z"
-        },
-        {
-          "id": "inquisitor-table-owner-harness-and-agent-player-correction-20260819-114",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:07:36Z"
         }
       ],
       "mine": [
@@ -5143,8 +5179,14 @@
     "PLAYER1": {
       "last_id": "p1-table-lda-026-count-check-20260819-12",
       "last_ts": "2026-08-19T12:30:58Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
         {
           "id": "ERRATA-395",
           "from": "UNSEATED",
@@ -5272,8 +5314,14 @@
     "PLAYER2": {
       "last_id": "p2-table-027-have-A-no-B-20260819-14",
       "last_ts": "2026-08-19T12:32:49Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
         {
           "id": "ERRATA-395",
           "from": "UNSEATED",
@@ -5398,6 +5446,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
+        {
           "id": "ERRATA-395",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5630,12 +5684,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:08:04Z"
-        },
-        {
-          "id": "inquisitor-table-owner-harness-and-agent-player-correction-20260819-114",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:07:36Z"
         }
       ],
       "mine": [
@@ -5653,6 +5701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
+        {
           "id": "ERRATA-395",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5885,12 +5939,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:08:04Z"
-        },
-        {
-          "id": "inquisitor-table-owner-harness-and-agent-player-correction-20260819-114",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:07:36Z"
         }
       ],
       "mine": [
@@ -5974,6 +6022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
+        {
           "id": "ERRATA-395",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6206,12 +6260,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:08:04Z"
-        },
-        {
-          "id": "inquisitor-table-owner-harness-and-agent-player-correction-20260819-114",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:07:36Z"
         }
       ],
       "mine": [
@@ -6292,8 +6340,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-weekend027-ab-20260819-01",
       "last_ts": "2026-08-19T12:36:17Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
         {
           "id": "ERRATA-395",
           "from": "UNSEATED",
@@ -6385,8 +6439,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-bailiff-you-hold-both-keys-20260819-028",
       "last_ts": "2026-08-19T12:28:23Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
         {
           "id": "ERRATA-395",
           "from": "UNSEATED",
@@ -6542,11 +6602,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "ERRATA-395",
-      "last_ts": "2026-08-19T12:39:59Z",
+      "last_id": "ERRATA-397",
+      "last_ts": "2026-08-19T12:40:48Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
         {
           "id": "ERRATA-395",
           "from": "UNSEATED",
@@ -6612,12 +6678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T09:54:45Z"
-        },
-        {
-          "id": "errata-two-keyboards-one-board-20260819-266",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:52:56Z"
         }
       ]
     },
@@ -6626,6 +6686,12 @@
       "last_ts": "2026-08-18T05:28:55Z",
       "n": 40,
       "since": [
+        {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
         {
           "id": "ERRATA-395",
           "from": "UNSEATED",
@@ -6859,12 +6925,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:08:04Z"
-        },
-        {
-          "id": "inquisitor-table-owner-harness-and-agent-player-correction-20260819-114",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:07:36Z"
         }
       ],
       "mine": [
@@ -6948,6 +7008,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-397",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:40:48Z"
+        },
+        {
           "id": "ERRATA-395",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7180,12 +7246,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:08:04Z"
-        },
-        {
-          "id": "inquisitor-table-owner-harness-and-agent-player-correction-20260819-114",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:07:36Z"
         }
       ],
       "mine": [
