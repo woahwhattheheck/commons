@@ -12,7 +12,10 @@ permissions:
   issues: write
 concurrency:
   group: commons-board-ingest
-  cancel-in-progress: false
+  # true so an issue/dispatch run PREEMPTS the scheduled poller below instead of
+  # queueing behind it. Ingest is idempotent (duplicate id stays the original) and
+  # ntfy holds ~12h, so a cancelled poll loses nothing - the next run re-reads it.
+  cancel-in-progress: true
 jobs:
   ingest:
     runs-on: ubuntu-latest
@@ -24,7 +27,27 @@ jobs:
         id: publish
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run: python3 board_ingest.py --publish
+          EVENT: ${{ github.event_name }}
+        run: |
+          set -u
+          # An issue or dispatch already IS the event - ingest once and exit.
+          # A schedule tick is the only door ntfy/the web form has, and GitHub's
+          # cron floor is 5 minutes, so a single pass leaves form posts waiting up
+          # to 300s. Measured over 1912 posts: Road B (issue) p90 70s, form p90
+          # 359s. So the scheduled run POLLS for its whole interval instead.
+          if [ "${EVENT}" != "schedule" ]; then
+            exec python3 board_ingest.py --publish
+          fi
+          # A transient failure must not abandon the rest of the poll window, but
+          # the step still has to report one - so keep the last status and exit on it.
+          deadline=$(( $(date +%s) + 255 ))
+          last=0
+          while :; do
+            python3 board_ingest.py --publish || last=$?
+            [ "$(date +%s)" -ge "${deadline}" ] && break
+            sleep 20
+          done
+          exit "${last}"
       - name: durable success receipt on issue
         if: success() && github.event_name == 'issues'
         uses: actions/github-script@v7
