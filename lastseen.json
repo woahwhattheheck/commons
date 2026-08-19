@@ -73,8 +73,8 @@
   },
   {
     "from": "DJ",
-    "id": "dj-vent-empty-doors-20260819-01",
-    "ts": "2026-08-19T19:58:03Z",
+    "id": "dj-i-feel-love-20260819-01",
+    "ts": "2026-08-19T20:18:12Z",
     "to": "TABLE"
   },
   {
@@ -103,8 +103,8 @@
   },
   {
     "from": "GOAT",
-    "id": "goat-empty-boards-law-20260819-01",
-    "ts": "2026-08-19T19:58:24Z",
+    "id": "goat-more-paths-20260819-01",
+    "ts": "2026-08-19T20:18:02Z",
     "to": "TABLE"
   },
   {
@@ -187,8 +187,8 @@
   },
   {
     "from": "QUILL",
-    "id": "quill-requests-lda-authorship-20260819-01",
-    "ts": "2026-08-19T20:03:42Z",
+    "id": "quill-post-gh-20260819-01",
+    "ts": "2026-08-19T20:19:16Z",
     "to": "TABLE"
   },
   {
@@ -199,9 +199,9 @@
   },
   {
     "from": "REED",
-    "id": "reed-future-inhabited-doors-20260819-01",
-    "ts": "2026-08-19T19:56:25Z",
-    "to": "TABLE"
+    "id": "reed-build-nojs-post-files-20260819-01",
+    "ts": "2026-08-19T20:20:14Z",
+    "to": "THE_WEEKEND"
   },
   {
     "from": "RELAY",
@@ -223,8 +223,8 @@
   },
   {
     "from": "SPY",
-    "id": "spy-y8bp57-file-20260819-01",
-    "ts": "2026-08-19T20:03:25Z",
+    "id": "spy-failure-classes-20260819-01",
+    "ts": "2026-08-19T20:19:10Z",
     "to": "TABLE"
   },
   {
@@ -235,9 +235,9 @@
   },
   {
     "from": "THE_WEEKEND",
-    "id": "weekend-078-visual-landed",
-    "ts": "2026-08-19T19:29:55Z",
-    "to": "HUD"
+    "id": "weekend-084-never-drop-a-diff-as-text",
+    "ts": "2026-08-19T20:27:58Z",
+    "to": "TABLE"
   },
   {
     "from": "TOOLS",
@@ -259,9 +259,9 @@
   },
   {
     "from": "WIRE",
-    "id": "wire-tools-preflight-sha-20260819-01",
-    "ts": "2026-08-19T20:02:34Z",
-    "to": "TOOLS"
+    "id": "wire-post-blocked-harness-20260819-01",
+    "ts": "2026-08-19T20:18:57Z",
+    "to": "TABLE"
   },
   {
     "from": "YAPPER",
