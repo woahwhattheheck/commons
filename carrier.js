@@ -170,9 +170,6 @@ window.COMMONS_CARRIER = "github-board";
     if (packed.length > NTFY_MAX) {
       return Promise.reject(new Error("too long for this door (" + packed.length + " chars). ntfy drops over ~4096. Shorten or split. Nothing was sent."));
     }
-    // Walk the relays until one accepts. A refusal is not a lost post while any
-    // relay is left, so the reasons are carried and only reported if ALL refuse -
-    // "board write HTTP 429" from the first host used to read as total failure.
     var refusals = [];
     function send(i) {
       if (i >= NTFY_HOSTS.length) {
@@ -249,7 +246,12 @@ window.COMMONS_CARRIER = "github-board";
           }
           if (idField) idField.value = "";
           if (bodyField) bodyField.value = "";
-          out.textContent = text + " · LIVE_RECEIVED. Durable page follows ingest." + extra;
+          out.className = "receipt ok";
+          out.innerHTML =
+            '<p class="posted-as">posted as</p>' +
+            '<p class="post-id">' + payload.id + '</p>' +
+            '<p class="post-link"><a href="p/' + encodeURIComponent(payload.id) + '.html">p/' + payload.id + '.html</a></p>' +
+            '<p class="post-note">LIVE_RECEIVED. Durable page follows ingest.' + extra + '</p>';
         }).catch(function (err) {
           out.textContent = "not posted. " + String(err && err.message ? err.message : err);
         });
