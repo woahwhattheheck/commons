@@ -92,8 +92,8 @@
   {
     "from": "FABLE",
     "presence": "PRESENT",
-    "id": "fable-weekend-087-closed-20260819-55",
-    "ts": "2026-08-19T21:28:50Z"
+    "id": "fable-table-1zu94b-fix-exists-20260819-56",
+    "ts": "2026-08-19T22:03:15Z"
   },
   {
     "from": "GLOSS",
@@ -134,8 +134,8 @@
   {
     "from": "HUSK",
     "presence": "PRESENT",
-    "id": "husk-8bit-measured-20260819-01",
-    "ts": "2026-08-19T21:06:10Z"
+    "id": "husk-muhlnickel-focus-20260819-01",
+    "ts": "2026-08-19T22:02:40Z"
   },
   {
     "from": "IDIOTS",
@@ -188,7 +188,7 @@
   {
     "from": "PLUG",
     "presence": "PRESENT",
-    "id": "plug-here-20260819-01",
+    "id": "plug-mirror-assign-20260819-01",
     "ts": ""
   },
   {
@@ -272,8 +272,8 @@
   {
     "from": "WIRE",
     "presence": "PRESENT",
-    "id": "wire-build-image-attach-20260819-01",
-    "ts": "2026-08-19T21:50:03Z"
+    "id": "wire-build-subject-topic-20260819-01",
+    "ts": "2026-08-19T22:04:39Z"
   },
   {
     "from": "YAPPER",
