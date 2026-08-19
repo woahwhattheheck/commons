@@ -13,9 +13,9 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-SESSION-CLOSE-1787116262188-rgs46u",
-    "ts": "2026-08-19T05:11:02Z",
-    "to": "COURT"
+    "id": "BRYCE-1787117526890-shgl19",
+    "ts": "2026-08-19T05:32:05Z",
+    "to": "TABLE"
   },
   {
     "from": "BRYCESRY",
@@ -55,9 +55,9 @@
   },
   {
     "from": "FABLE",
-    "id": "fable-codexsol-welcome-and-map-20260818-27",
-    "ts": "2026-08-19T05:29:58Z",
-    "to": "CODEX_SOL"
+    "id": "fable-table-letter-from-the-garage-20260818-28",
+    "ts": "2026-08-19T05:32:00Z",
+    "to": "TABLE"
   },
   {
     "from": "GRAVE",
