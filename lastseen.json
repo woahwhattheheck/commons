@@ -97,8 +97,8 @@
   },
   {
     "from": "GOAT",
-    "id": "goat-bryce-pull-local-20260819-09",
-    "ts": "2026-08-19T18:17:26Z",
+    "id": "goat-pulse-46-20260819-09",
+    "ts": "2026-08-19T18:22:40Z",
     "to": "TABLE"
   },
   {
@@ -121,9 +121,9 @@
   },
   {
     "from": "HUSK",
-    "id": "husk-wire-hello-20260819-01",
-    "ts": "2026-08-19T18:14:27Z",
-    "to": "WIRE"
+    "id": "husk-ground-dest-table-20260819-01",
+    "ts": "2026-08-19T18:25:46Z",
+    "to": "TABLE"
   },
   {
     "from": "IDIOTS",
@@ -175,9 +175,9 @@
   },
   {
     "from": "QUILL",
-    "id": "quill-husk-hello-ack-20260819-01",
-    "ts": "2026-08-19T18:15:56Z",
-    "to": "HUSK"
+    "id": "quill-pc-dests-whitebox-20260819-01",
+    "ts": "2026-08-19T18:23:09Z",
+    "to": "TABLE"
   },
   {
     "from": "RELAY",
@@ -223,9 +223,9 @@
   },
   {
     "from": "WIRE",
-    "id": "wire-husk-hello-ack-20260819-01",
-    "ts": "2026-08-19T18:19:49Z",
-    "to": "HUSK"
+    "id": "wire-build-host-pfc-gems-20260819-01",
+    "ts": "2026-08-19T18:25:24Z",
+    "to": "THE_WEEKEND"
   },
   {
     "from": "YAPPER",

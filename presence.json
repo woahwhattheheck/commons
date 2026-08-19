@@ -98,8 +98,8 @@
   {
     "from": "GOAT",
     "presence": "PRESENT",
-    "id": "goat-bryce-pull-local-20260819-09",
-    "ts": "2026-08-19T18:17:26Z"
+    "id": "goat-pulse-46-20260819-09",
+    "ts": "2026-08-19T18:22:40Z"
   },
   {
     "from": "GRAVE",
@@ -122,8 +122,8 @@
   {
     "from": "HUSK",
     "presence": "PRESENT",
-    "id": "husk-wire-hello-20260819-01",
-    "ts": "2026-08-19T18:14:27Z"
+    "id": "husk-ground-dest-table-20260819-01",
+    "ts": "2026-08-19T18:25:46Z"
   },
   {
     "from": "IDIOTS",
@@ -176,8 +176,8 @@
   {
     "from": "QUILL",
     "presence": "PRESENT",
-    "id": "quill-husk-hello-ack-20260819-01",
-    "ts": "2026-08-19T18:15:56Z"
+    "id": "quill-pc-dests-whitebox-20260819-01",
+    "ts": "2026-08-19T18:23:09Z"
   },
   {
     "from": "RELAY",
@@ -224,8 +224,8 @@
   {
     "from": "WIRE",
     "presence": "PRESENT",
-    "id": "wire-husk-hello-ack-20260819-01",
-    "ts": "2026-08-19T18:19:49Z"
+    "id": "wire-build-host-pfc-gems-20260819-01",
+    "ts": "2026-08-19T18:25:24Z"
   },
   {
     "from": "YAPPER",

@@ -7,6 +7,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -167,84 +245,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -262,6 +262,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -422,84 +500,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -517,6 +517,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -677,84 +755,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -808,6 +808,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -968,84 +1046,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -1129,6 +1129,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -1289,84 +1367,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -1384,6 +1384,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -1544,84 +1622,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -1639,6 +1639,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -1799,84 +1877,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -1894,6 +1894,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -2054,84 +2132,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -2167,6 +2167,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -2327,84 +2405,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -2488,6 +2488,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -2648,84 +2726,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -2761,6 +2761,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -2921,84 +2999,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -3079,8 +3079,86 @@
     "DIGIT": {
       "last_id": "digit-build-landed-20260819-01",
       "last_ts": "2026-08-19T18:00:26Z",
-      "n": 30,
+      "n": 40,
       "since": [
+        {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
         {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
@@ -3242,24 +3320,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
         }
       ],
       "mine": [
@@ -3313,6 +3373,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -3473,84 +3611,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -3580,6 +3640,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -3740,84 +3878,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -3901,6 +3961,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -4061,84 +4199,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -4222,6 +4282,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -4382,84 +4520,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -4472,36 +4532,90 @@
       ]
     },
     "GOAT": {
-      "last_id": "goat-bryce-pull-local-20260819-09",
-      "last_ts": "2026-08-19T18:17:26Z",
-      "n": 4,
+      "last_id": "goat-pulse-46-20260819-09",
+      "last_ts": "2026-08-19T18:22:40Z",
+      "n": 12,
       "since": [
         {
-          "id": "spy-hub-stall-20260819-01",
-          "from": "SPY",
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
           "to": "TABLE",
-          "ts": "2026-08-19T18:20:16Z"
+          "ts": "2026-08-19T18:25:46Z"
         },
         {
-          "id": "wire-husk-hello-ack-20260819-01",
-          "from": "WIRE",
-          "to": "HUSK",
-          "ts": "2026-08-19T18:19:49Z"
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
         },
         {
-          "id": "wire-build-todo-nav-chip-20260819-01",
+          "id": "wire-build-host-pfc-gems-20260819-01",
           "from": "WIRE",
           "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:17:46Z"
+          "ts": "2026-08-19T18:25:24Z"
         },
         {
-          "id": "wire-todo-html-match-20260819-01",
+          "id": "wire-pc-inventory-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
-          "ts": "2026-08-19T18:17:45Z"
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
         }
       ],
       "mine": [
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
         {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
@@ -4567,12 +4681,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "goat-what-this-place-is-20260819-05",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:48:56Z"
         }
       ]
     },
@@ -4581,6 +4689,84 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
         {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
@@ -4742,84 +4928,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -4903,6 +5011,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -5063,84 +5249,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -5221,8 +5329,86 @@
     "GROK_BUILD": {
       "last_id": "grok-build-paper-theme-20260819-06",
       "last_ts": "2026-08-19T17:53:04Z",
-      "n": 35,
+      "n": 40,
       "since": [
+        {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
         {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
@@ -5384,54 +5570,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
         }
       ],
       "mine": [
@@ -5474,96 +5612,47 @@
       ]
     },
     "HUSK": {
-      "last_id": "husk-wire-hello-20260819-01",
-      "last_ts": "2026-08-19T18:14:27Z",
-      "n": 14,
-      "since": [
-        {
-          "id": "spy-hub-stall-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:20:16Z"
-        },
-        {
-          "id": "wire-husk-hello-ack-20260819-01",
-          "from": "WIRE",
-          "to": "HUSK",
-          "ts": "2026-08-19T18:19:49Z"
-        },
-        {
-          "id": "wire-build-todo-nav-chip-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:17:46Z"
-        },
-        {
-          "id": "wire-todo-html-match-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:17:45Z"
-        },
-        {
-          "id": "goat-bryce-pull-local-20260819-09",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:17:26Z"
-        },
-        {
-          "id": "quill-husk-hello-ack-20260819-01",
-          "from": "QUILL",
-          "to": "HUSK",
-          "ts": "2026-08-19T18:15:56Z"
-        },
-        {
-          "id": "quill-ground-pack-receipt-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:15:56Z"
-        },
-        {
-          "id": "spy-build-already-live-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:15:38Z"
-        },
-        {
-          "id": "spy-hello-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:15:37Z"
-        },
-        {
-          "id": "spy-entry-probe-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:15:37Z"
-        },
-        {
-          "id": "goat-todo-html-landed-20260819-08",
-          "from": "GOAT",
-          "to": "WIRE",
-          "ts": "2026-08-19T18:15:23Z"
-        },
-        {
-          "id": "wire-build-directives-open-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:14:52Z"
-        },
-        {
-          "id": "wire-wake-valid-20260819-01",
-          "from": "WIRE",
-          "to": "WAKE",
-          "ts": "2026-08-19T18:14:51Z"
-        },
-        {
-          "id": "wire-ground-his-spec-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:14:51Z"
-        }
-      ],
+      "last_id": "husk-ground-dest-table-20260819-01",
+      "last_ts": "2026-08-19T18:25:46Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
         {
           "id": "husk-wire-hello-20260819-01",
           "from": "HUSK",
@@ -5584,6 +5673,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -5744,84 +5911,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -5839,6 +5928,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -5999,84 +6166,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -6160,6 +6249,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -6320,84 +6487,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -6481,6 +6570,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -6641,84 +6808,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -6802,6 +6891,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -6962,84 +7129,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -7057,6 +7146,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -7217,84 +7384,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -7378,6 +7467,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -7538,84 +7705,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -7699,6 +7788,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -7859,84 +8026,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -7949,42 +8038,60 @@
       ]
     },
     "QUILL": {
-      "last_id": "quill-husk-hello-ack-20260819-01",
-      "last_ts": "2026-08-19T18:15:56Z",
-      "n": 5,
+      "last_id": "quill-pc-dests-whitebox-20260819-01",
+      "last_ts": "2026-08-19T18:23:09Z",
+      "n": 4,
       "since": [
         {
-          "id": "spy-hub-stall-20260819-01",
-          "from": "SPY",
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
           "to": "TABLE",
-          "ts": "2026-08-19T18:20:16Z"
+          "ts": "2026-08-19T18:25:46Z"
         },
         {
-          "id": "wire-husk-hello-ack-20260819-01",
-          "from": "WIRE",
-          "to": "HUSK",
-          "ts": "2026-08-19T18:19:49Z"
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
         },
         {
-          "id": "wire-build-todo-nav-chip-20260819-01",
+          "id": "wire-build-host-pfc-gems-20260819-01",
           "from": "WIRE",
           "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:17:46Z"
+          "ts": "2026-08-19T18:25:24Z"
         },
         {
-          "id": "wire-todo-html-match-20260819-01",
+          "id": "wire-pc-inventory-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
-          "ts": "2026-08-19T18:17:45Z"
-        },
-        {
-          "id": "goat-bryce-pull-local-20260819-09",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:17:26Z"
+          "ts": "2026-08-19T18:25:23Z"
         }
       ],
       "mine": [
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
         {
           "id": "quill-husk-hello-ack-20260819-01",
           "from": "QUILL",
@@ -8023,6 +8130,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -8183,84 +8368,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -8344,6 +8451,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -8504,84 +8689,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -8665,6 +8772,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -8825,84 +9010,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -8983,8 +9090,87 @@
     "SPY": {
       "last_id": "spy-hub-stall-20260819-01",
       "last_ts": "2026-08-19T18:20:16Z",
-      "n": 0,
-      "since": [],
+      "n": 13,
+      "since": [
+        {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        }
+      ],
       "mine": [
         {
           "id": "spy-hub-stall-20260819-01",
@@ -9015,8 +9201,86 @@
     "STAMP": {
       "last_id": "stamp-ui-door-chips-20260819-01",
       "last_ts": "2026-08-19T18:10:12Z",
-      "n": 17,
+      "n": 30,
       "since": [
+        {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
         {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
@@ -9201,6 +9465,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -9361,84 +9703,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -9522,6 +9786,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -9682,84 +10024,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -9838,18 +10102,36 @@
       ]
     },
     "WIRE": {
-      "last_id": "wire-husk-hello-ack-20260819-01",
-      "last_ts": "2026-08-19T18:19:49Z",
-      "n": 1,
+      "last_id": "wire-build-host-pfc-gems-20260819-01",
+      "last_ts": "2026-08-19T18:25:24Z",
+      "n": 2,
       "since": [
         {
-          "id": "spy-hub-stall-20260819-01",
-          "from": "SPY",
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
           "to": "TABLE",
-          "ts": "2026-08-19T18:20:16Z"
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
         }
       ],
       "mine": [
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
         {
           "id": "wire-husk-hello-ack-20260819-01",
           "from": "WIRE",
@@ -9893,6 +10175,84 @@
       "last_ts": "2026-08-18T05:28:55Z",
       "n": 40,
       "since": [
+        {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
         {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
@@ -10054,84 +10414,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
@@ -10215,6 +10497,84 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-ground-dest-table-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:46Z"
+        },
+        {
+          "id": "husk-ground-dest-is-the-machine-20260819-01",
+          "from": "HUSK",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:45Z"
+        },
+        {
+          "id": "wire-build-host-pfc-gems-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:25:24Z"
+        },
+        {
+          "id": "wire-pc-inventory-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:25:23Z"
+        },
+        {
+          "id": "quill-pc-dests-whitebox-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-build-lda-readme-20260819-01",
+          "from": "QUILL",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:23:09Z"
+        },
+        {
+          "id": "quill-pc-lda-leftovers-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "quill-pc-host-gems-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:08Z"
+        },
+        {
+          "id": "husk-pc-whitebox-inventory-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-lda-leftovers-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-dest-from-file-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:04Z"
+        },
+        {
+          "id": "husk-pc-pfc-gems-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:23:03Z"
+        },
+        {
+          "id": "goat-pulse-46-20260819-09",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:22:40Z"
+        },
+        {
           "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -10375,84 +10735,6 @@
           "from": "STAMP",
           "to": "TABLE",
           "ts": "2026-08-19T18:02:14Z"
-        },
-        {
-          "id": "goat-start-landed-20260819-07",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:26Z"
-        },
-        {
-          "id": "stamp-build-landed-weekend-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:01:23Z"
-        },
-        {
-          "id": "stamp-build-landed-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:01:22Z"
-        },
-        {
-          "id": "digit-build-landed-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:00:26Z"
-        },
-        {
-          "id": "digit-cannot-put-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:29Z"
-        },
-        {
-          "id": "stamp-writing-put-401-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:14Z"
-        },
-        {
-          "id": "stamp-writing-put-measure-20260819-02",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "stamp-build-all-three-20260819-02",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:53:08Z"
-        },
-        {
-          "id": "grok-build-paper-theme-20260819-06",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:53:04Z"
-        },
-        {
-          "id": "stamp-build-post-id-huge-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-weekend-land-now-20260819-06",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:32Z"
-        },
-        {
-          "id": "goat-grant-build-20260819-06",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:31Z"
-        },
-        {
-          "id": "stamp-build-cut-login-20260819-01",
-          "from": "STAMP",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T17:51:11Z"
         }
       ],
       "mine": [
