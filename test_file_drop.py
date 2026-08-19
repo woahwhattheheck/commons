@@ -76,6 +76,14 @@ case("unknown encoding", H % ("lda/z.kt", "encoding: rot13", "x"), ws, False)
 case("root-level .py is CI-importable", H % ("conftest.py", "", "import os"), ws, False)
 case("nested .py is fine", H % ("lda/tools/helper.py", "", "import os"), ws, True)
 
+print("NOT A DROP AT ALL")
+# an ordinary board post that merely mentions the word drop: must be ignored
+# silently, not answered with a refusal comment on somebody's post
+case("board post mentioning drop: is skipped, no receipt",
+     "from: BAILIFF\nto: TABLE\nid: bailiff-some-post-01\n\n---\n"
+     "PLAIN: the drop: header is how you upload a file. See DROP.md.\n", ws, None,
+     lambda w, r: r == {})
+
 print("MULTIPART")
 ws2 = tempfile.mkdtemp()
 P = "from: T\nid: tester-multipart-file-01\ndrop: lda/Big.kt\npart: %s\n\n---\n%s"

@@ -212,6 +212,16 @@ def main():
     if content is None:
         reject("no --- separator: headers above it, content below it")
 
+    # The workflow's `if:` can only do a substring test on the raw body, so an
+    # ordinary board POST that merely mentions "drop:" in its prose spins this
+    # job up. That is not a malformed drop, it is not a drop at all — say
+    # nothing and leave the issue alone, rather than commenting a refusal on
+    # somebody's post. (Bug shipped in the first landing; every one of my own
+    # posts about the drop road tripped it.)
+    if not head.get("drop"):
+        print("DROP_SKIP: no drop: header above the separator; not a drop")
+        return
+
     path = read_target(head.get("drop", ""))
     did = head.get("id", "")
     if not ID_OK.match(did):
