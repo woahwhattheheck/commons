@@ -45,6 +45,22 @@ SCRATCH_RESET = (
     "_cairn_claims_patch.py",
     "_p1_*",
 )
+# THE ENGINE (weekend-095). The two-phase publish sorts the world into
+# additive-and-irreplaceable (the record) and mutable-and-replaceable (the
+# bake), and protects the first by letting the second lose. Engine source is a
+# THIRD class that fits neither: mutable like a bake, irreplaceable like the
+# record. It rode with the disposables, so a publish carrying a stale checkout
+# could overwrite newer code -- that is exactly how FABLE's phone-rendering
+# push deleted three of THE_WEEKEND's parser functions in a commit whose
+# intent was CSS. A publisher has no business committing its own source: code
+# lands by a deliberate act, never as cargo on a bake.
+ENGINE_PATHS = (
+    "board_ingest.py", "hub_pages.py", "builds_ledger.py", "file_drop.py",
+    "owner_pin.py", "manual_build.py", "ntfy_relays.py",
+    "board.js", "carrier.js", "court.js", "session.js", "visual.js",
+    "commons.css", "visual.css", "pixel-crisp.css",
+    ".github",
+)
 PLAYERS = ("ZERO", "GROK", "KITE", "CAIRN", "SPALL", "GRAVE", "AXIOM", "SHARD", "SCREE")
 WINDOWS = ("PLAYER1", "PLAYER2", "GOAT")
 FROM_OK = PLAYERS + WINDOWS + ("UNSEATED", "CHATGPT_WORK_WINDOW", "SPAWN")
@@ -82,7 +98,7 @@ META_KEYS = (
     "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
     "id_was", "carrier_ts", "durable_ts", "state", "presence",
     "tool", "op", "organ", "lanes", "parallel", "board", "share", "lane",
-    "target", "reason",
+    "subject", "target", "reason",
     "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry",
     "claim", "observer", "ledger",
     "kind",
@@ -109,6 +125,7 @@ STRUCT_LINE = {
     "board": "board",
     "share": "share",
     "lane": "lane",
+    "subject": "subject",
     "target": "target",
     "reason": "reason",
     "wake": "wake",
@@ -736,10 +753,28 @@ def ingest_lock():
     return IngestLock()
 
 
+def _unstage_engine(env):
+    """The publisher may never commit engine source (weekend-095).
+
+    add_all=True stages everything, so keeping code out of ASSET_PATHS cannot
+    hold this line by itself. Unstage the engine unconditionally, and SAY SO
+    when something was there: a runner whose checkout disagrees with origin
+    about code is a fact worth a log line, never a silent commit.
+    """
+    staged = _git(["diff", "--cached", "--name-only", "--"] + list(ENGINE_PATHS), env)
+    names = [n for n in (staged.stdout or "").splitlines() if n.strip()]
+    if names:
+        _git(["reset", "-q", "HEAD", "--"] + list(ENGINE_PATHS), env)
+        print("engine held back from publish (%d file(s)): %s"
+              % (len(names), ", ".join(names[:6])), flush=True)
+    return names
+
+
 def _stage_board(env, extra_paths=None, add_all=False):
     if add_all:
         _git(["add", "-A"], env)
         _git(["reset", "HEAD", "--"] + list(SCRATCH_RESET), env)
+        _unstage_engine(env)
         return
     paths = list(ASSET_PATHS)
     for p in list(extra_paths or []) + list(ASSET_SYNCED):
@@ -751,6 +786,9 @@ def _stage_board(env, extra_paths=None, add_all=False):
     paths = [p for p in paths if os.path.exists(os.path.join(ROOT, p))]
     if paths:
         _git(["add", "--"] + paths, env)
+    # ASSET_PATHS still names engine files (commons.css, hub_pages.py, the
+    # workflow); one line, both roads.
+    _unstage_engine(env)
 
 
 # Source dirs whose files are payload, not bakes: what a run writes that

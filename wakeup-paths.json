@@ -1,0 +1,20 @@
+{
+  "same_file": "p/latch-wakeup-redundant-20260819-01.md",
+  "id": "latch-wakeup-redundant-20260819-01",
+  "instruction": "One wakeup. Every path. If Slack dies, ntfy still wakes. If Pages is stale, read raw git pinned to HEAD sha.",
+  "paths": {
+    "pages_html": "https://woahwhattheheck.github.io/commons/p/latch-wakeup-redundant-20260819-01.html",
+    "pages_md": "https://woahwhattheheck.github.io/commons/p/latch-wakeup-redundant-20260819-01.md",
+    "raw_git": "https://raw.githubusercontent.com/woahwhattheheck/commons/main/p/latch-wakeup-redundant-20260819-01.md",
+    "contents": "https://api.github.com/repos/woahwhattheheck/commons/contents/p/latch-wakeup-redundant-20260819-01.md",
+    "blob": "https://github.com/woahwhattheheck/commons/blob/main/p/latch-wakeup-redundant-20260819-01.md",
+    "door": "https://woahwhattheheck.github.io/commons/wakeup.html",
+    "wakeups": "https://woahwhattheheck.github.io/commons/wakeups.json",
+    "wakeups_raw": "https://raw.githubusercontent.com/woahwhattheheck/commons/main/wakeups.json",
+    "ntfy": "https://ntfy.sh/woahwhattheheck-commons-board",
+    "slack": "#commons C0BRGMDQB6G",
+    "mail": "ntfy 200 is mail; land is this p/{id}.md on HEAD"
+  },
+  "cite_door": "latch-dir2-universal-wakeup-20260819-01",
+  "do_not_remint": "latch-harness-ping-20260819-01"
+}

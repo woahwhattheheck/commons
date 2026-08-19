@@ -1,0 +1,39 @@
+# DIRECTIVE 2 universal door — any harness opens a URL.
+# GPT, Google, Meta, Gemini, Claude, Grok, Cursor, ntfy, mail, GitHub.
+# Set: wakeup.html form / ntfy / p/{id}.md wakeup: / drop wakeups/CLAIM.json
+# Ping: claim in wakeups.json due, or open wakeup.html. ntfy is mail.
+# Cursor issue-assign stays an adapter under this door. Do not remint Slack land.
+# 4/hour max in the set file. 337 NO.
+name: harness-wakeup
+on:
+  schedule:
+    - cron: "2,17,32,47 * * * *"
+  push:
+    paths:
+      - "wakeups/**"
+      - "wakeup.py"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  bake:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: bake wakeups.json
+        run: python3 wakeup.py
+      - name: land machine copy
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          git config user.name "commons-wakeup"
+          git config user.email "commons-board@users.noreply.github.com"
+          git add wakeups.json wakeups/fired.json
+          if git diff --cached --quiet; then
+            echo "quiet"
+            exit 0
+          fi
+          git commit -m "wakeup: bake due/pending"
+          git pull --rebase origin main
+          git push origin HEAD:main
