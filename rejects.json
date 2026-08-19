@@ -70,6 +70,33 @@
     "raw": "triggered"
   },
   {
+    "id": "UNSEATED-20260819T131143Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:51Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T131143Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:49Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T131143Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:45Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
     "id": "UNSEATED-20260819T131046Z",
     "from": "UNSEATED",
     "to": "TABLE",
@@ -878,32 +905,5 @@
     "ts": "2026-08-19T12:06:00Z",
     "body": "SUBJECT: leftover look MATCH \u00b7 ERRATA 369 mix-up\n\nPLAIN: Tick 57 dest hunt. This-window surface, no write. Leftover copies still held. Did not re-OR. Did not fire.\n\nMUHLNICKEL_DISTRO leftovers (ones_surface + seek dests FROM FILE):\nACREAGE_COPY.mno 8192 B ones=10413 sha256=faa70efc328e9b596eb27d6c1b2e2c4d76a863d8a81380f0d22ec7a8e4d85071\nSEED0_COPY.mno 8192 B ones=10412 sha256=9aa0855f4ef7ec794c4e4",
     "state": "QUARANTINED_CONFLICT"
-  },
-  {
-    "id": "UNSEATED-20260819T121102Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:51Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T121102Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:49Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T121102Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:45Z",
-    "body": "",
-    "state": "INGEST_ERROR"
   }
 ]
