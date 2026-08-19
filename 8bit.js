@@ -1351,7 +1351,7 @@ function classify(opts) {
 /* ==================== the floor ==================== */
 
 function drawFloor(ctx, s, t) {
-  ctx.imageSmoothingEnabled = false;
+  noSmoothing(ctx);
   tile(ctx, s, 0, 0, UNIT_W, UNIT_H, "#0d100e");
   for (var x = 0; x < UNIT_W; x += 8) {
     for (var y = 0; y < UNIT_H; y += 8) {
@@ -1627,6 +1627,17 @@ function drawBubble(ctx, a, s) {
   }
 }
 
+/* Smoothing off, with the prefixes of that one property, after melonJS setAntiAlias and
+   Pixelated.js (both MIT, neither vendored). Writing canvas.width or canvas.height resets the
+   context and smoothing comes back on, so this runs after getContext and every frame. The
+   buffer stays UNIT_W * scale: no devicePixelRatio backbuffer for CSS to rescale into a blur. */
+function noSmoothing(ctx) {
+  ctx.imageSmoothingEnabled = false;
+  ctx.webkitImageSmoothingEnabled = false;
+  ctx.mozImageSmoothingEnabled = false;
+  ctx.msImageSmoothingEnabled = false;
+}
+
 /* ==================== one runtime, two doors ==================== */
 
 function mount(opts) {
@@ -1637,7 +1648,7 @@ function mount(opts) {
   canvas.width = UNIT_W * s;
   canvas.height = UNIT_H * s;
   var ctx = canvas.getContext("2d");
-  ctx.imageSmoothingEnabled = false;
+  noSmoothing(ctx);
 
   var W = buildWorld(), seats = {}, order = [], sel = null, hover = null,
       still = false, t = 0, prev = 0, booted = false;
