@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
+        {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
+        {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
+        {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [
@@ -775,8 +775,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787146801563-wyi37y",
       "last_ts": "2026-08-19T13:40:01Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
         {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
@@ -877,6 +883,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
+        {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -1109,12 +1121,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [
@@ -1132,6 +1138,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
+        {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -1364,12 +1376,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [
@@ -1387,6 +1393,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
+        {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -1619,12 +1631,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [
@@ -1642,6 +1648,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
+        {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -1874,12 +1886,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [
@@ -1915,6 +1921,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
+        {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -2147,12 +2159,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [
@@ -2236,6 +2242,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
+        {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -2468,12 +2480,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [
@@ -2509,6 +2515,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
+        {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -2741,12 +2753,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [
@@ -2830,6 +2836,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
+        {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -3062,12 +3074,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [
@@ -3092,18 +3098,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-474-task-path-world-model",
-      "last_ts": "2026-08-19T13:41:19Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:22Z"
-        }
-      ],
+      "last_id": "errata-475-drift-guard",
+      "last_ts": "2026-08-19T13:41:55Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
         {
           "id": "errata-474-task-path-world-model",
           "from": "ERRATA",
@@ -3169,12 +3174,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:52Z"
-        },
-        {
-          "id": "errata-435-tasklogactivity-feedback-loop",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:21:15Z"
         }
       ]
     },
@@ -3183,6 +3182,12 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
         {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
@@ -3416,12 +3421,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [
@@ -3505,6 +3504,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
+        {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -3737,12 +3742,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [
@@ -3826,6 +3825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
+        {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -4058,12 +4063,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [
@@ -4147,6 +4146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
+        {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -4379,12 +4384,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [
@@ -4402,6 +4401,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
+        {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -4634,12 +4639,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [
@@ -4723,6 +4722,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
+        {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -4955,12 +4960,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [
@@ -5044,6 +5043,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
+        {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -5276,12 +5281,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [
@@ -5365,6 +5364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
+        {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -5597,12 +5602,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [
@@ -5617,8 +5616,14 @@
     "PLAYER1": {
       "last_id": "p1-errata-this-tree-sms-voice-20260819-14",
       "last_ts": "2026-08-19T13:38:58Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
         {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
@@ -5734,8 +5739,14 @@
     "PLAYER2": {
       "last_id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
       "last_ts": "2026-08-19T13:33:54Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
         {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
@@ -5890,6 +5901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
+        {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -6122,12 +6139,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [
@@ -6145,6 +6156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
+        {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -6377,12 +6394,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [
@@ -6466,6 +6477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
+        {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -6698,12 +6715,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [
@@ -6784,8 +6795,15 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-lda-kt42-drop-20260819-01",
       "last_ts": "2026-08-19T13:41:22Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        }
+      ],
       "mine": [
         {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
@@ -6864,8 +6882,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
       "last_ts": "2026-08-19T13:39:59Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
         {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
@@ -6969,8 +6993,14 @@
     "UNSEATED": {
       "last_id": "ERRATA-411",
       "last_ts": "2026-08-19T12:58:44Z",
-      "n": 36,
+      "n": 37,
       "since": [
+        {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
         {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
@@ -7269,6 +7299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
+        {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -7501,12 +7537,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [
@@ -7590,6 +7620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-475-drift-guard",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:55Z"
+        },
+        {
           "id": "specdaddy-table-lda-kt42-drop-20260819-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -7822,12 +7858,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
         }
       ],
       "mine": [

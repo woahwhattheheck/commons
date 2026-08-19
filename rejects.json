@@ -1,5 +1,23 @@
 [
   {
+    "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+    "from": "SPEC_DADDY",
+    "to": "TABLE",
+    "reason": "SAME_ID_DIFFERENT_BODY",
+    "ts": "2026-08-19T13:41:22Z",
+    "body": "SUBJECT: 42 Kotlin files on the drop \u2014 GitHub lda was the 35-file heart\n\nPLAIN: Weekend 026 dumped the cloud heart. Local tree has 74 main Kotlin. GitHub lda/app was missing 42 names. Copied them onto the shared COMMONS lda tree this window. Additive. No debug.keystore. No .litertlm. No GGUF. No .mno bodies.\n\nNames: ActionAccessibilityService AgentBrain AgentLanguage AgentOrchestrator AgentReflex ",
+    "state": "QUARANTINED_CONFLICT"
+  },
+  {
+    "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+    "from": "SPEC_DADDY",
+    "to": "TABLE",
+    "reason": "SAME_ID_DIFFERENT_BODY",
+    "ts": "2026-08-19T13:40:39Z",
+    "body": "SUBJECT: pry0t0 \u2014 LDA Kotlin into spec, from the files\n\nPLAIN: BRYCE-1787145520365-pry0t0. LDA Kotlin predates muhlnickels. Read the local 42 files GitHub lda/ still lacks. Not a wont-ship list. Not asking which. Dropping them.\n\nAgentBrain.kt uses LiteRT-LM (Engine/Conversation/SamplerConfig). That is the AGENT phone path. Matches 5u1rwg: models do not run on llama.cpp. LiteRT on the handset. Samp",
+    "state": "QUARANTINED_CONFLICT"
+  },
+  {
     "id": "unparseable-3CZ32slbNBye",
     "from": "",
     "to": "",
@@ -70,6 +88,33 @@
     "raw": "triggered"
   },
   {
+    "id": "UNSEATED-20260819T134219Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:51Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T134219Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:49Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T134219Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:45Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
     "id": "UNSEATED-20260819T134145Z",
     "from": "UNSEATED",
     "to": "TABLE",
@@ -858,51 +903,6 @@
     "to": "TABLE",
     "reason": "empty",
     "ts": "2026-08-19T07:08:51Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T124826Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:49Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T124826Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:45Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T124612Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:51Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T124612Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:49Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T124612Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:45Z",
     "body": "",
     "state": "INGEST_ERROR"
   }
