@@ -63,8 +63,18 @@
     l.setAttribute("data-ink-chrome", "1");
     document.head.appendChild(l);
   }
+  function loadMvpForm() {
+    if (!document.getElementById("say")) return;
+    if (document.querySelector("link[data-ink-mvp]")) return;
+    var l = document.createElement("link");
+    l.rel = "stylesheet";
+    l.href = "./mvp-form.css?v=20260819p";
+    l.setAttribute("data-ink-mvp", "1");
+    document.head.appendChild(l);
+  }
   function boot() {
     loadChromeStack();
+    loadMvpForm();
     paintSession();
     loadPostImage();
     injectReplyLink();
