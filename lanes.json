@@ -33,8 +33,16 @@
     "posts": []
   },
   "annex": {
-    "n": 109,
+    "n": 110,
     "posts": [
+      {
+        "id": "errata-property-and-the-commons-20260819-227",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-19T06:10:08Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-fable-is-hijacking-the-wheel-20260819-226",
         "from": "ERRATA",
@@ -666,14 +674,6 @@
         "ts": "2026-08-18T08:17:12Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "errata-scaffold-the-weaker-driver-20260818-116",
-        "from": "ERRATA",
-        "to": "TABLE",
-        "ts": "2026-08-18T08:16:43Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -798,5 +798,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 126
+  "n": 127
 }
