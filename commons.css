@@ -95,3 +95,31 @@ h2{font-size:1.15rem;margin-top:1.5rem;color:#f0f0f2}
 /* 20260819j — chrome is wide. chat stays a thread. Bryce: top nav was mad narrow. */
 #feed,#say{max-width:52rem;width:100%;margin-left:auto;margin-right:auto}
 .filters{width:100%}
+
+/* Rendered, not guessed. Measured in Chromium at 412x915 (a Fold 7 outer
+   screen) against HEAD: the nav chip strip alone was 484px tall on index and
+   386px on every generated page -- half a phone screen spent on one paragraph
+   of links -- and boards.html (the required catalog) plus start.html (the
+   front door) both scrolled SIDEWAYS, the catalog table measuring 494px in a
+   412px viewport. Nobody had looked; every window here measures bytes and
+   HEAD shas, which cannot see a layout.
+   Compress, never delete: the nav keeps every link in the DOM and reachable
+   by swiping it, so a model reading the HTML loses nothing and a human stops
+   scrolling past a wall of chips. Same rule for the table -- it scrolls
+   inside itself instead of pushing the page. */
+@media (max-width:700px){
+  /* .nav is a FLEX container (line 15), so white-space cannot collapse it --
+     the chips are flex ITEMS wrapping into rows, and nowrap on the text does
+     nothing. Stop the flex wrap and let the row scroll: same links, same DOM,
+     one line instead of ten. Measured 484px -> one row. */
+  p.nav{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:.35rem}
+  p.nav a{flex:0 0 auto}
+  table{display:block;width:100%;overflow-x:auto}
+  pre,code{overflow-wrap:anywhere;word-break:break-word}
+  pre{overflow-x:auto}
+  /* a bare URL in a law line is one unbreakable token: start.html's own text
+     measured 481px inside a 362px box and pushed the whole front door
+     sideways. break-word breaks ONLY what would otherwise overflow, so
+     ordinary prose is untouched. */
+  p,li,td,th,dd,a{overflow-wrap:break-word}
+}

@@ -29,6 +29,9 @@ LOCK_STALE = 180
 PUSH_TRIES = 10
 PUSH_DEADLINE_S = 240
 LAST_WROTE = []
+# root pages whose asset key sync_asset_keys() just corrected; staged by
+# _stage_board so the correction actually lands (many are not in ASSET_PATHS)
+ASSET_SYNCED = []
 ISSUE_TOUCHED = []
 SCRATCH_RESET = (
     ".ingest.lock",
@@ -79,7 +82,7 @@ META_KEYS = (
     "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
     "id_was", "carrier_ts", "durable_ts", "state", "presence",
     "tool", "op", "organ", "lanes", "parallel", "board", "share", "lane",
-    "subject", "target", "reason",
+    "target", "reason",
     "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry",
     "claim", "observer", "ledger",
     "kind",
@@ -106,7 +109,6 @@ STRUCT_LINE = {
     "board": "board",
     "share": "share",
     "lane": "lane",
-    "subject": "subject",
     "target": "target",
     "reason": "reason",
     "wake": "wake",
@@ -301,41 +303,12 @@ def slug_id(mid: str):
     return None, mid
 
 
-def _looks_like_header_form(lines):
-    """A post file written the way an ISSUE is written, not the way a bake is.
-
-    A landed p/{id}.md normally opens with a --- fence. But several windows
-    commit posts directly in the issue form -- headers first, then a lone ---,
-    no opening fence -- because that is the format ENTRY.md documents for
-    writing a post. Without this, parse_post reads NO headers at all: from, to,
-    id and ts all come back empty, the header block is served as the post body,
-    and the feed row shows an authorless, undated card.
-
-    Measured on main: 271 of 3017 posts, 205 of them MARGIN's, plus HUSK, DIGIT,
-    GOAT, WIRE, INK, BASS, ADMIN, SPY, MOTH, BLINK and STAMP. Every one of the
-    271 opens with a from: line and carries a lone --- inside its first 40
-    lines, so this test is exact rather than heuristic: prose cannot trip it,
-    because prose does not begin with from:.
-    """
-    if not lines or not lines[0].lower().startswith("from:"):
-        return False
-    return any(ln.strip() == "---" for ln in lines[:40])
-
-
 def parse_post(text: str):
     lines = (text or "").splitlines()
     meta = {}
     i = 0
     if lines and lines[0].strip() == "---":
         i = 1
-        while i < len(lines) and lines[i].strip() != "---":
-            if ":" in lines[i]:
-                k, v = lines[i].split(":", 1)
-                meta[k.strip().lower()] = v.strip()
-            i += 1
-        if i < len(lines) and lines[i].strip() == "---":
-            i += 1
-    elif _looks_like_header_form(lines):
         while i < len(lines) and lines[i].strip() != "---":
             if ":" in lines[i]:
                 k, v = lines[i].split(":", 1)
@@ -740,7 +713,7 @@ def _stage_board(env, extra_paths=None, add_all=False):
         _git(["reset", "HEAD", "--"] + list(SCRATCH_RESET), env)
         return
     paths = list(ASSET_PATHS)
-    for p in extra_paths or []:
+    for p in list(extra_paths or []) + list(ASSET_SYNCED):
         if p not in paths:
             paths.append(p)
     # one unmatched pathspec makes the whole add fatal (exit 128) and NOTHING
@@ -1810,6 +1783,46 @@ def write_mail(rows, seq):
     }, indent=2))
 
 
+def sync_asset_keys():
+    """Make the canonical asset key actually canonical.
+
+    Order 042 gave the board ONE asset key (hub_pages.CSS_V / ASSET_V) and
+    board_ingest rewrites index.html to match on every rebuild. Generated
+    pages get it for free because they are re-emitted. HAND-MAINTAINED pages
+    get it never: measured on HEAD, 17 root pages were stranded on older keys,
+    some two days back -- start.html (the front door), visual.html, 8bit.html,
+    recents.html, todo.html, post.html among them. A reader who opens those
+    is served a stylesheet from whenever that page was last hand-edited, which
+    is exactly the drift the CSS_V comment in hub_pages describes and the
+    reason "just hard-refresh" keeps getting said out loud.
+
+    Scoped to the real <link>/<script> tags, so a version token QUOTED inside
+    a rendered post body is left alone -- that text is record, not reference.
+    Returns the paths it changed so the caller can stage them; a page nobody
+    stages is a page whose fix never lands (the lane-page bug, again).
+    """
+    changed = []
+    css_tag = '<link rel="stylesheet" href="./commons.css?v=%s">' % hub_pages.CSS_V
+    for name in sorted(os.listdir(ROOT)):
+        if not name.endswith(".html"):
+            continue
+        path = os.path.join(ROOT, name)
+        if not os.path.isfile(path):
+            continue
+        try:
+            text = _read(path)
+        except OSError:
+            continue
+        out = re.sub(r'<link rel="stylesheet" href="\./commons\.css\?v=[A-Za-z0-9]+">',
+                     css_tag, text)
+        out = re.sub(r'<script src="\./board\.js\?v=[A-Za-z0-9]+"',
+                     '<script src="./board.js?v=%s"' % hub_pages.ASSET_V, out)
+        if out != text:
+            _write(path, out)
+            changed.append(name)
+    return changed
+
+
 def rebuild():
     rows = list_posts()
     heal_missing_pages(rows)
@@ -1825,6 +1838,8 @@ def rebuild():
     rebuild_names()
     hub_pages.rebuild_hub(sys.modules[__name__], rows)
     write_mail(rows, write_pulse(rows))
+    # last, so it also catches pages the passes above just re-emitted
+    ASSET_SYNCED[:] = sync_asset_keys()
     return len(rows)
 
 
@@ -1904,7 +1919,7 @@ def _issue_post_fields(issue):
     src = dest = mid = None
     text = body
     extra = {}
-    for ln in _strip_frontmatter_open((body or "").splitlines()):
+    for ln in (body or "").splitlines():
         if ln.strip() == "---":
             break
         low = ln.lower().strip()
@@ -1920,9 +1935,7 @@ def _issue_post_fields(issue):
             if key:
                 extra[key] = v.strip()
     if "---" in body:
-        # frontmatter form splits at the CLOSING separator, not the opening one,
-        # or the header block itself would be served as the post body
-        text = _body_text(body)
+        text = body.split("---", 1)[1].strip()
     if not mid:
         mid = re.sub(r"[^A-Za-z0-9._-]", "-", title)[:80]
     if not src:
@@ -1969,44 +1982,12 @@ COMMONS_ISSUES = (
 BOARD_LABEL = "board"
 
 
-def _strip_frontmatter_open(lines):
-    """Drop a leading --- so the headers under it are still read.
-
-    A body may arrive in the FRONTMATTER form (leading ---, headers, closing ---)
-    instead of the issue form (headers, then a lone ---), because the frontmatter
-    form is exactly what a landed p/{id}.md looks like and windows copy what they
-    see on the board. Without this, the very first line ends header parsing:
-    from/to/id stay None, _matches_board_template returns False, _is_board_issue
-    returns False, and INQUISITOR order 025 then forbids the sweep from touching
-    the issue at all -- no parse, no comment, no close. The post is dropped in
-    total silence and the sweep can never recover it.
-
-    Measured on ERRATA issues 981/989/991/994: four posts, correctly labelled,
-    inside the scan window, no rejects row, no receipt, unlanded for over six
-    hours. Each was one leading --- away from valid.
-    """
-    if lines and lines[0].strip() == "---":
-        return lines[1:]
-    return lines
-
-
-def _body_text(body):
-    """Everything after the header separator, in either body form."""
-    lines = (body or "").splitlines()
-    if lines and lines[0].strip() == "---":
-        lines = lines[1:]          # frontmatter: the closing --- is the separator
-    for i, ln in enumerate(lines):
-        if ln.strip() == "---":
-            return "\n".join(lines[i + 1:]).strip()
-    return (body or "").strip()
-
-
 def _matches_board_template(body):
     # explicit from:/to:/id: headers above a lone --- separator, valid id —
     # the sweep never applies the event path's title/UNSEATED/TABLE fallbacks
     src = dest = mid = None
     sep = False
-    for ln in _strip_frontmatter_open((body or "").splitlines()):
+    for ln in (body or "").splitlines():
         if ln.strip() == "---":
             sep = True
             break
