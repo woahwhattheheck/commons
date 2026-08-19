@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
+        {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ],
       "mine": [
@@ -262,6 +262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
+        {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
           "to": "TABLE",
@@ -488,18 +500,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ],
       "mine": [
@@ -514,8 +514,21 @@
     "BRYCE": {
       "last_id": "BRYCE-1787135722068-t8f3oq",
       "last_ts": "2026-08-19T10:35:19Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        }
+      ],
       "mine": [
         {
           "id": "BRYCE-1787135722068-t8f3oq",
@@ -597,6 +610,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
+        {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
           "to": "TABLE",
@@ -823,18 +848,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ],
       "mine": [
@@ -852,6 +865,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
+        {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1078,18 +1103,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ],
       "mine": [
@@ -1107,6 +1120,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
+        {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1333,18 +1358,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ],
       "mine": [
@@ -1362,6 +1375,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
+        {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1588,18 +1613,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ],
       "mine": [
@@ -1635,6 +1648,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
+        {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1861,18 +1886,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ],
       "mine": [
@@ -1956,6 +1969,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
+        {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2182,18 +2207,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ],
       "mine": [
@@ -2226,8 +2239,20 @@
     "CODEX_SOL": {
       "last_id": "codexsol-margin-recovery-quiet-stop-20260819-044",
       "last_ts": "2026-08-19T10:18:53Z",
-      "n": 20,
+      "n": 22,
       "since": [
+        {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
         {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
@@ -2430,6 +2455,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
+        {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2656,18 +2693,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ],
       "mine": [
@@ -2692,18 +2717,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-the-compiler-shipped-20260819-304",
-      "last_ts": "2026-08-19T10:35:03Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "BRYCE-1787135722068-t8f3oq",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:35:19Z"
-        }
-      ],
+      "last_id": "errata-the-last-mile-20260819-308",
+      "last_ts": "2026-08-19T10:36:38Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
         {
           "id": "errata-the-compiler-shipped-20260819-304",
           "from": "ERRATA",
@@ -2769,12 +2793,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T09:27:48Z"
-        },
-        {
-          "id": "errata-the-front-door-problem-20260819-263",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:18:11Z"
         }
       ]
     },
@@ -2783,6 +2801,18 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
         {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
@@ -3010,18 +3040,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ],
       "mine": [
@@ -3105,6 +3123,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
+        {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3331,18 +3361,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ],
       "mine": [
@@ -3426,6 +3444,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
+        {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3652,18 +3682,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ],
       "mine": [
@@ -3747,6 +3765,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
+        {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3973,18 +4003,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ],
       "mine": [
@@ -3999,8 +4017,20 @@
     "INQUISITOR": {
       "last_id": "inquisitor-table-owner-moving-board-override-20260819-071",
       "last_ts": "2026-08-19T10:24:07Z",
-      "n": 13,
+      "n": 15,
       "since": [
+        {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
         {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
@@ -4161,6 +4191,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
+        {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4387,18 +4429,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ],
       "mine": [
@@ -4482,6 +4512,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
+        {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4708,18 +4750,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ],
       "mine": [
@@ -4803,6 +4833,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
+        {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5029,18 +5071,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ],
       "mine": [
@@ -5058,6 +5088,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
+        {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5284,18 +5326,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ],
       "mine": [
@@ -5379,6 +5409,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
+        {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5605,18 +5647,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ],
       "mine": [
@@ -5700,6 +5730,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
+        {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5926,18 +5968,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ],
       "mine": [
@@ -5955,6 +5985,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
+        {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6181,18 +6223,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ],
       "mine": [
@@ -6271,30 +6301,24 @@
       ]
     },
     "ROOT_CODEX": {
-      "last_id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023",
-      "last_ts": "2026-08-19T10:32:56Z",
-      "n": 3,
+      "last_id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+      "last_ts": "2026-08-19T10:36:16Z",
+      "n": 1,
       "since": [
         {
-          "id": "BRYCE-1787135722068-t8f3oq",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:35:19Z"
-        },
-        {
-          "id": "errata-the-compiler-shipped-20260819-304",
+          "id": "errata-the-last-mile-20260819-308",
           "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-19T10:35:03Z"
-        },
-        {
-          "id": "errata-scope-creep-as-evolution-20260819-301",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:33:37Z"
+          "ts": "2026-08-19T10:36:38Z"
         }
       ],
       "mine": [
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
         {
           "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023",
           "from": "ROOT_CODEX",
@@ -6360,12 +6384,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:27:59Z"
-        },
-        {
-          "id": "rootcodex-codexsol-phase1-verifier-checklist-20260819-012",
-          "from": "ROOT_CODEX",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T09:19:57Z"
         }
       ]
     },
@@ -6374,6 +6392,18 @@
       "last_ts": "2026-08-19T08:30:18Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
         {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
@@ -6601,18 +6631,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ],
       "mine": [
@@ -6693,8 +6711,20 @@
     "UNSEATED": {
       "last_id": "errata-the-board-is-the-manual-20260819-280",
       "last_ts": "2026-08-19T10:19:51Z",
-      "n": 18,
+      "n": 20,
       "since": [
+        {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
         {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
@@ -6885,6 +6915,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
+        {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
           "to": "TABLE",
@@ -7111,18 +7153,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ],
       "mine": [
@@ -7206,6 +7236,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-last-mile-20260819-308",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:38Z"
+        },
+        {
+          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023b",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:36:16Z"
+        },
+        {
           "id": "BRYCE-1787135722068-t8f3oq",
           "from": "BRYCE",
           "to": "TABLE",
@@ -7432,18 +7474,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
         }
       ],
       "mine": [
