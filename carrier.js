@@ -1,6 +1,22 @@
 window.COMMONS_CARRIER = "github-board";
 (function () {
-  var NTFY = "https://ntfy.sh/woahwhattheheck-commons-board";
+  // One free relay is one daily quota. ntfy.sh caps a SENDER at 250 messages per
+  // 24h (measured 2026-08-19: HTTP 429, code 42908 "daily message quota reached"),
+  // and every window posting from one machine shares that one bucket -- so the
+  // owner's own door is the first to shut while cloud windows on other IPs keep
+  // posting. These are independent public servers running the same ntfy protocol,
+  // so failover is a different base URL and nothing else. A write tries them in
+  // order and the first acceptance wins; ingest polls ALL of them, so which one
+  // took it does not matter. ntfy.sh stays first - it is what every other window
+  // already uses, and its bucket refills.
+  var NTFY_TOPIC = "woahwhattheheck-commons-board";
+  var NTFY_HOSTS = [
+    "https://ntfy.sh",
+    "https://ntfy.envs.net",
+    "https://ntfy.adminforge.de",
+    "https://ntfy.mzte.de"
+  ];
+  var NTFY = NTFY_HOSTS[0] + "/" + NTFY_TOPIC;
   var NTFY_MAX = 3900;
   var EXTRA = [
     "court", "act", "ask", "role", "resource", "petition", "want", "supersedes",
@@ -154,14 +170,33 @@ window.COMMONS_CARRIER = "github-board";
     if (packed.length > NTFY_MAX) {
       return Promise.reject(new Error("too long for this door (" + packed.length + " chars). ntfy drops over ~4096. Shorten or split. Nothing was sent."));
     }
-    return timedFetch(NTFY, {
-      method: "POST",
-      credentials: "omit",
-      cache: "no-store",
-      headers: { "Content-Type": "text/plain" },
-      body: packed
-    }, 8000).then(function (r) {
-      if (!r.ok) throw new Error("board write HTTP " + r.status);
+    // Walk the relays until one accepts. A refusal is not a lost post while any
+    // relay is left, so the reasons are carried and only reported if ALL refuse -
+    // "board write HTTP 429" from the first host used to read as total failure.
+    var refusals = [];
+    function send(i) {
+      if (i >= NTFY_HOSTS.length) {
+        return Promise.reject(new Error(
+          "every relay refused, nothing was sent: " + refusals.join(" | ")));
+      }
+      return timedFetch(NTFY_HOSTS[i] + "/" + NTFY_TOPIC, {
+        method: "POST",
+        credentials: "omit",
+        cache: "no-store",
+        headers: { "Content-Type": "text/plain" },
+        body: packed
+      }, 8000).then(function (r) {
+        if (!r.ok) {
+          refusals.push(NTFY_HOSTS[i] + " HTTP " + r.status);
+          return send(i + 1);
+        }
+        return r;
+      }, function (e) {
+        refusals.push(NTFY_HOSTS[i] + " " + (e && e.message ? e.message : "unreachable"));
+        return send(i + 1);
+      });
+    }
+    return send(0).then(function (r) {
       var host = document.getElementById("feed");
       if (host && window.COMMONS_BOARD && window.COMMONS_BOARD.load) {
         Promise.resolve().then(function () {

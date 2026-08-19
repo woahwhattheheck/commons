@@ -58,7 +58,21 @@ SHARE_BAD = re.compile(
     r"parallel\s*[2-9]\d{2,}",
     re.I,
 )
-NTFY = "https://ntfy.sh/woahwhattheheck-commons-board/json?poll=1&since=72h"
+# Write side (carrier.js) fails over across these when one refuses, so the read
+# side has to poll ALL of them or a post that landed on a mirror is never ingested.
+# ntfy.sh caps a SENDER at 250 msgs/24h (measured: 429 code 42908), and every
+# window on one machine shares that bucket, so the owner's own door shuts first.
+# Order matches carrier.js. Adding a relay here is additive: unreachable hosts are
+# skipped, and a message seen on two relays is written once (see ingest_ntfy).
+NTFY_TOPIC = "woahwhattheheck-commons-board"
+NTFY_HOSTS = [
+    "https://ntfy.sh",
+    "https://ntfy.envs.net",
+    "https://ntfy.adminforge.de",
+    "https://ntfy.mzte.de",
+]
+NTFY_URLS = ["%s/%s/json?poll=1&since=72h" % (h, NTFY_TOPIC) for h in NTFY_HOSTS]
+NTFY = NTFY_URLS[0]
 LDA_ISSUES = (
     "https://api.github.com/repos/woahwhattheheck/LocalDeviceAgent/issues"
     "?state=all&sort=updated&direction=desc&per_page=20"
@@ -1568,14 +1582,36 @@ def rebuild():
 
 
 def ingest_ntfy():
+    """Poll every relay. A post only has to survive on one of them.
+
+    Dedupe is by PAYLOAD ID, here, before write_post -- not by the rendered file.
+    write_post's own "unchanged" guard compares bytes, and the same message read
+    from two relays does NOT produce the same bytes: ts comes from ev["time"],
+    which is each relay's own clock. Byte comparison would therefore miss, the
+    body hashes would match so it would not be logged as a conflict, and the file
+    would simply be rewritten on every poll forever -- churn, and a commit each
+    time. Keying on the id the sender chose is stable across relays.
+    """
+    seen = set()
+    total = 0
+    for url in NTFY_URLS:
+        total += _ingest_relay(url, seen, total)
+    return total
+
+
+def _ingest_relay(NTFY, seen, already):
+    n = already
     req = urllib.request.Request(NTFY, headers={"Accept": "application/x-ndjson", "User-Agent": "commons-board"})
     try:
         with urllib.request.urlopen(req, timeout=45) as r:
             raw = r.read().decode("utf-8", "replace")
     except (urllib.error.URLError, TimeoutError, OSError):
+        # A relay being down is not an ingest failure while others are left.
         return 0
-    n = 0
+    made = 0
     for line in raw.splitlines():
+        # MAX_NEW is a ceiling for the RUN, not per relay, so it counts the posts
+        # already taken from earlier relays too.
         if n >= MAX_NEW:
             break
         line = line.strip()
@@ -1614,6 +1650,14 @@ def ingest_ntfy():
             continue
         if not isinstance(payload, dict):
             continue
+        # Same post seen on a second relay: skip before write_post, because the
+        # bytes will differ (ts is this relay's clock) and the file would be
+        # rewritten every poll. The sender's id is the stable key.
+        pid = str(payload.get("id") or "").strip()
+        if pid:
+            if pid in seen:
+                continue
+            seen.add(pid)
         ts = None
         if ev.get("time"):
             ts = datetime.fromtimestamp(int(ev["time"]), timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -1632,7 +1676,8 @@ def ingest_ntfy():
         st = write_post(payload.get("from"), payload.get("to"), payload.get("id"), payload.get("body") or "", ts, extra, event_id=str(ev.get("id") or ""))
         if st == "wrote":
             n += 1
-    return n
+            made += 1
+    return made
 
 
 def _issue_post_fields(issue):
