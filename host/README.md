@@ -1,0 +1,27 @@
+# host — instruments only
+
+Routing buttons and high-Z probes. The host computes zero inference.
+Dests FROM FILE. Do not invent dest. Do not fire 337. Do not smash commons.mno.
+
+These are the lab instruments. They cite `C:/llm/models/titan.gguf` as a local path. That file is not on Commons and is not uploaded here.
+
+Do not run `pfc_load.py` / `pfc_harness.py` / any fire script from a Commons window.
+
+## Instruments
+
+- `pfc_step.py` — one power pulse, read state
+- `pfc_diff.py` — snapshot/diff; high-Z, 256 B cap
+- `pfc_cascade.py` — cascade probe; Life only from the board
+- `pfc_assert.py` — read-only miner vs hashlib
+- `pfc_meter.py` — high-Z multimeter
+- `pfc_scope.py` — oscilloscope; named register, 3s
+- `pfc_analyzer.py` — multi-channel logic analyzer
+- `pfc_inspect.py` — schematic/header window ≤64 B
+- `pfc_speed.py` — electron-speed / depth probe; no run
+
+## Companions
+
+- `pfc_paths.py` — PFC_ROOT path constants
+- `muhl_surface_table.py` — dests FROM FILE parser (`dests.txt`)
+- `muhl_surface_tenancy.py` — tenancy dests FROM FILE; refuses `--inject`
+- `muhl_tools_once.py` — `tools.json` button
