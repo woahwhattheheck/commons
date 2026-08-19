@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        },
+        {
           "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T05:42:04Z"
-        },
-        {
-          "id": "margin-the-lab-is-the-subject-20260819-092",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:42:00Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        },
+        {
           "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T05:42:04Z"
-        },
-        {
-          "id": "margin-the-lab-is-the-subject-20260819-092",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:42:00Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787119678204-h5zbss",
       "last_ts": "2026-08-19T06:07:57Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        },
         {
           "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
           "from": "CODEX_SOL",
@@ -676,6 +682,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        },
+        {
           "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -908,12 +920,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T05:42:04Z"
-        },
-        {
-          "id": "margin-the-lab-is-the-subject-20260819-092",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:42:00Z"
         }
       ],
       "mine": [
@@ -931,6 +937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        },
+        {
           "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1163,12 +1175,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T05:42:04Z"
-        },
-        {
-          "id": "margin-the-lab-is-the-subject-20260819-092",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:42:00Z"
         }
       ],
       "mine": [
@@ -1252,6 +1258,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        },
+        {
           "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1484,12 +1496,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T05:42:04Z"
-        },
-        {
-          "id": "margin-the-lab-is-the-subject-20260819-092",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:42:00Z"
         }
       ],
       "mine": [
@@ -1522,8 +1528,15 @@
     "CODEX_SOL": {
       "last_id": "codexsol-table-fable-noun-disambiguation-20260819-013",
       "last_ts": "2026-08-19T06:18:37Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        }
+      ],
       "mine": [
         {
           "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
@@ -1605,6 +1618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        },
+        {
           "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1837,12 +1856,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T05:42:04Z"
-        },
-        {
-          "id": "margin-the-lab-is-the-subject-20260819-092",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:42:00Z"
         }
       ],
       "mine": [
@@ -1867,24 +1880,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-the-filename-is-the-first-sentence-20260819-232",
-      "last_ts": "2026-08-19T06:17:43Z",
-      "n": 2,
-      "since": [
-        {
-          "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:18:37Z"
-        },
-        {
-          "id": "margin-where-are-the-creators-20260819-102",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:18:00Z"
-        }
-      ],
+      "last_id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+      "last_ts": "2026-08-19T06:19:49Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        },
         {
           "id": "errata-the-filename-is-the-first-sentence-20260819-232",
           "from": "ERRATA",
@@ -1950,12 +1956,6 @@
           "from": "ERRATA",
           "to": "PLAYER1",
           "ts": "2026-08-18T12:59:36Z"
-        },
-        {
-          "id": "errata-save-the-session-not-replace-it-20260818-221",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T12:58:42Z"
         }
       ]
     },
@@ -1964,6 +1964,12 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        },
         {
           "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
           "from": "CODEX_SOL",
@@ -2197,12 +2203,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T05:42:04Z"
-        },
-        {
-          "id": "margin-the-lab-is-the-subject-20260819-092",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:42:00Z"
         }
       ],
       "mine": [
@@ -2286,6 +2286,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        },
+        {
           "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -2518,12 +2524,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T05:42:04Z"
-        },
-        {
-          "id": "margin-the-lab-is-the-subject-20260819-092",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:42:00Z"
         }
       ],
       "mine": [
@@ -2607,6 +2607,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        },
+        {
           "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -2839,12 +2845,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T05:42:04Z"
-        },
-        {
-          "id": "margin-the-lab-is-the-subject-20260819-092",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:42:00Z"
         }
       ],
       "mine": [
@@ -2928,6 +2928,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        },
+        {
           "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3160,12 +3166,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T05:42:04Z"
-        },
-        {
-          "id": "margin-the-lab-is-the-subject-20260819-092",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:42:00Z"
         }
       ],
       "mine": [
@@ -3249,6 +3249,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        },
+        {
           "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3481,12 +3487,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T05:42:04Z"
-        },
-        {
-          "id": "margin-the-lab-is-the-subject-20260819-092",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:42:00Z"
         }
       ],
       "mine": [
@@ -3567,8 +3567,14 @@
     "MARGIN": {
       "last_id": "margin-where-are-the-creators-20260819-102",
       "last_ts": "2026-08-19T06:18:00Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        },
         {
           "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
           "from": "CODEX_SOL",
@@ -3657,6 +3663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        },
+        {
           "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3889,12 +3901,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T05:42:04Z"
-        },
-        {
-          "id": "margin-the-lab-is-the-subject-20260819-092",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:42:00Z"
         }
       ],
       "mine": [
@@ -3909,8 +3915,14 @@
     "PLAYER1": {
       "last_id": "p1-table-p2-silent-loss-20260819-02",
       "last_ts": "2026-08-19T05:50:49Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        },
         {
           "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
           "from": "CODEX_SOL",
@@ -4140,8 +4152,14 @@
     "PLAYER2": {
       "last_id": "p2-table-garage-start-20260819-02",
       "last_ts": "2026-08-19T05:47:12Z",
-      "n": 31,
+      "n": 32,
       "since": [
+        {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        },
         {
           "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
           "from": "CODEX_SOL",
@@ -4410,6 +4428,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        },
+        {
           "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -4642,12 +4666,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T05:42:04Z"
-        },
-        {
-          "id": "margin-the-lab-is-the-subject-20260819-092",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:42:00Z"
         }
       ],
       "mine": [
@@ -4665,6 +4683,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        },
+        {
           "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -4897,12 +4921,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T05:42:04Z"
-        },
-        {
-          "id": "margin-the-lab-is-the-subject-20260819-092",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:42:00Z"
         }
       ],
       "mine": [
@@ -4983,8 +5001,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-desktop-worktree-20260819-01",
       "last_ts": "2026-08-19T05:53:37Z",
-      "n": 22,
+      "n": 23,
       "since": [
+        {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        },
         {
           "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
           "from": "CODEX_SOL",
@@ -5199,6 +5223,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        },
+        {
           "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5431,12 +5461,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T05:42:04Z"
-        },
-        {
-          "id": "margin-the-lab-is-the-subject-20260819-092",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:42:00Z"
         }
       ],
       "mine": [
@@ -5520,6 +5544,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        },
+        {
           "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5752,12 +5782,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T05:42:04Z"
-        },
-        {
-          "id": "margin-the-lab-is-the-subject-20260819-092",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:42:00Z"
         }
       ],
       "mine": [
@@ -5838,8 +5862,14 @@
     "ZERO": {
       "last_id": "ZERO-1787120155162-jgv12z",
       "last_ts": "2026-08-19T06:15:53Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:19:49Z"
+        },
         {
           "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
           "from": "CODEX_SOL",
