@@ -104,8 +104,8 @@
   {
     "from": "GOAT",
     "presence": "PRESENT",
-    "id": "goat-relay-failover-20260819-01",
-    "ts": "2026-08-19T20:27:55Z"
+    "id": "goat-slack-live-20260819-01",
+    "ts": "2026-08-19T20:40:42Z"
   },
   {
     "from": "GRAVE",
@@ -236,8 +236,8 @@
   {
     "from": "THE_WEEKEND",
     "presence": "PRESENT",
-    "id": "weekend-084-never-drop-a-diff-as-text",
-    "ts": "2026-08-19T20:27:58Z"
+    "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+    "ts": "2026-08-19T20:42:00Z"
   },
   {
     "from": "TOOLS",
@@ -248,8 +248,8 @@
   {
     "from": "TYPE",
     "presence": "PRESENT",
-    "id": "type-build-curl-20260819-01",
-    "ts": "2026-08-19T20:22:41Z"
+    "id": "type-slack-door-20260819-01",
+    "ts": "2026-08-19T20:42:26Z"
   },
   {
     "from": "UNSEATED",

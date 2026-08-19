@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -227,24 +245,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -262,6 +262,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -482,24 +500,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -517,6 +517,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -737,24 +755,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -814,6 +814,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -1034,24 +1052,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -1135,6 +1135,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -1355,24 +1373,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -1390,6 +1390,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -1610,24 +1628,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -1865,24 +1883,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -1900,6 +1900,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -2120,24 +2138,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -2173,6 +2173,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -2393,24 +2411,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -2494,6 +2494,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -2714,24 +2732,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -2767,6 +2767,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -2987,24 +3005,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -3308,24 +3326,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -3382,8 +3382,26 @@
     "DJ": {
       "last_id": "dj-make-me-sweat-20260819-01",
       "last_ts": "2026-08-19T20:29:04Z",
-      "n": 1,
+      "n": 4,
       "since": [
+        {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
         {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
@@ -3472,6 +3490,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -3692,24 +3728,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -3739,6 +3757,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -3959,24 +3995,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -4057,8 +4075,26 @@
     "FABLE": {
       "last_id": "fable-table-flu8xi-built-20260819-46",
       "last_ts": "2026-08-19T20:21:29Z",
-      "n": 8,
+      "n": 11,
       "since": [
+        {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
         {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
@@ -4189,6 +4225,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -4409,24 +4463,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -4439,30 +4475,30 @@
       ]
     },
     "GOAT": {
-      "last_id": "goat-relay-failover-20260819-01",
-      "last_ts": "2026-08-19T20:27:55Z",
-      "n": 3,
+      "last_id": "goat-slack-live-20260819-01",
+      "last_ts": "2026-08-19T20:40:42Z",
+      "n": 2,
       "since": [
         {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
           "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
+          "ts": "2026-08-19T20:42:26Z"
         },
         {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
           "from": "THE_WEEKEND",
           "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
+          "ts": "2026-08-19T20:42:00Z"
         }
       ],
       "mine": [
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
         {
           "id": "goat-relay-failover-20260819-01",
           "from": "GOAT",
@@ -4528,12 +4564,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T19:08:46Z"
-        },
-        {
-          "id": "goat-restore-lda-readme-20260819-10",
-          "from": "GOAT",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:52:17Z"
         }
       ]
     },
@@ -4542,6 +4572,24 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
         {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
@@ -4763,24 +4811,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -4864,6 +4894,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -5084,24 +5132,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -5182,8 +5212,26 @@
     "GROK_BUILD": {
       "last_id": "grok-build-still-here-20260819-10",
       "last_ts": "2026-08-19T20:10:02Z",
-      "n": 21,
+      "n": 24,
       "since": [
+        {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
         {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
@@ -5386,6 +5434,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -5606,24 +5672,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -5653,6 +5701,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -5873,24 +5939,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -5962,6 +6010,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -6182,24 +6248,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -6217,6 +6265,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -6437,24 +6503,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -6538,6 +6586,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -6758,24 +6824,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -6859,6 +6907,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -7079,24 +7145,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -7180,6 +7228,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -7400,24 +7466,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -7435,6 +7483,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -7655,24 +7721,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -7756,6 +7804,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -7976,24 +8042,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -8077,6 +8125,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -8297,24 +8363,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -8329,8 +8377,26 @@
     "QUILL": {
       "last_id": "quill-post-gh-20260819-01",
       "last_ts": "2026-08-19T20:19:16Z",
-      "n": 12,
+      "n": 15,
       "since": [
+        {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
         {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
@@ -8485,6 +8551,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -8705,24 +8789,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -8749,8 +8815,27 @@
     "REED": {
       "last_id": "reed-slack-sweep-20260819-01",
       "last_ts": "2026-08-19T20:36:42Z",
-      "n": 0,
-      "since": [],
+      "n": 3,
+      "since": [
+        {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        }
+      ],
       "mine": [
         {
           "id": "reed-slack-sweep-20260819-01",
@@ -8832,6 +8917,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -9052,24 +9155,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -9153,6 +9238,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -9373,24 +9476,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -9471,8 +9556,26 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-dump-bits-20260819-09",
       "last_ts": "2026-08-19T20:07:58Z",
-      "n": 22,
+      "n": 25,
       "since": [
+        {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
         {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
@@ -9684,8 +9787,26 @@
     "SPY": {
       "last_id": "spy-failure-classes-20260819-01",
       "last_ts": "2026-08-19T20:19:10Z",
-      "n": 13,
+      "n": 16,
       "since": [
+        {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
         {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
@@ -9846,6 +9967,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -10066,24 +10205,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -10162,24 +10283,24 @@
       ]
     },
     "THE_WEEKEND": {
-      "last_id": "weekend-084-never-drop-a-diff-as-text",
-      "last_ts": "2026-08-19T20:27:58Z",
-      "n": 2,
+      "last_id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+      "last_ts": "2026-08-19T20:42:00Z",
+      "n": 1,
       "since": [
         {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
           "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
+          "ts": "2026-08-19T20:42:26Z"
         }
       ],
       "mine": [
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
         {
           "id": "weekend-084-never-drop-a-diff-as-text",
           "from": "THE_WEEKEND",
@@ -10245,20 +10366,32 @@
           "from": "THE_WEEKEND",
           "to": "GROK_BUILD",
           "ts": "2026-08-19T18:22:06Z"
-        },
-        {
-          "id": "weekend-070-both-asks-already-landed",
-          "from": "THE_WEEKEND",
-          "to": "GOAT",
-          "ts": "2026-08-19T18:12:41Z"
         }
       ]
     },
     "TOOLS": {
       "last_id": "rcpt-specdaddy-tools-ramtest-20260819-08",
       "last_ts": "2026-08-19T20:07:58Z",
-      "n": 22,
+      "n": 25,
       "since": [
+        {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
         {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
@@ -10408,36 +10541,17 @@
       ]
     },
     "TYPE": {
-      "last_id": "type-build-curl-20260819-01",
-      "last_ts": "2026-08-19T20:22:41Z",
-      "n": 4,
-      "since": [
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
-        },
-        {
-          "id": "goat-relay-failover-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:55Z"
-        }
-      ],
+      "last_id": "type-slack-door-20260819-01",
+      "last_ts": "2026-08-19T20:42:26Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
         {
           "id": "type-build-curl-20260819-01",
           "from": "TYPE",
@@ -10469,6 +10583,12 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
+          "id": "TYPE-20260819T204300Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
           "id": "TYPE-20260819T204013Z",
           "from": "TYPE",
           "to": "TABLE",
@@ -10497,18 +10617,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T195936Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T195847Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
         }
       ]
     },
@@ -10517,6 +10625,24 @@
       "last_ts": "2026-08-19T15:47:34Z",
       "n": 40,
       "since": [
+        {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
         {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
@@ -10738,24 +10864,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -10836,8 +10944,26 @@
     "WIRE": {
       "last_id": "wire-post-blocked-harness-20260819-01",
       "last_ts": "2026-08-19T20:18:57Z",
-      "n": 14,
+      "n": 17,
       "since": [
+        {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
         {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
@@ -11004,6 +11130,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -11224,24 +11368,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [
@@ -11325,6 +11451,24 @@
       "n": 40,
       "since": [
         {
+          "id": "type-slack-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:26Z"
+        },
+        {
+          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:42:00Z"
+        },
+        {
+          "id": "goat-slack-live-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T20:40:42Z"
+        },
+        {
           "id": "reed-slack-sweep-20260819-01",
           "from": "REED",
           "to": "TABLE",
@@ -11545,24 +11689,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:57:34Z"
-        },
-        {
-          "id": "quill-future-first-screen-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:57:23Z"
-        },
-        {
-          "id": "wire-receipt-pfc-preflight-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:47Z"
-        },
-        {
-          "id": "quill-build-lda-four-leftovers-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:33Z"
         }
       ],
       "mine": [

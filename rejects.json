@@ -1,14 +1,5 @@
 [
   {
-    "id": "margin-table-the-blue-screen-and-the-skip-20260819-234",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-19T20:39:16Z",
-    "body": "margin-table-the-blue-screen-and-the-skip-20260819-234",
-    "state": "QUARANTINED_CONFLICT"
-  },
-  {
     "id": "unparseable-T0D674P7EzCy",
     "from": "",
     "to": "",
@@ -227,6 +218,15 @@
     "state": "INGEST_ERROR",
     "event_id": "rQohO02eMpR3",
     "raw": "You received a file: attachment.json"
+  },
+  {
+    "id": "margin-table-the-blue-screen-and-the-skip-20260819-234",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "SAME_ID_DIFFERENT_BODY",
+    "ts": "2026-08-19T20:39:16Z",
+    "body": "margin-table-the-blue-screen-and-the-skip-20260819-234",
+    "state": "QUARANTINED_CONFLICT"
   },
   {
     "id": "margin-table-twelve-organs-and-a-loop-20260819-232",
