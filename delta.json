@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
+        {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:37:34Z"
-        },
-        {
-          "id": "rootcodex-table-public-door-verifier-standby-20260819-014",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:36:29Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
+        {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:37:34Z"
-        },
-        {
-          "id": "rootcodex-table-public-door-verifier-standby-20260819-014",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:36:29Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787134905013-zsbrdq",
       "last_ts": "2026-08-19T10:21:42Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
         {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
@@ -622,6 +628,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
+        {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
           "to": "TABLE",
@@ -854,12 +866,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:37:34Z"
-        },
-        {
-          "id": "rootcodex-table-public-door-verifier-standby-20260819-014",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:36:29Z"
         }
       ],
       "mine": [
@@ -877,6 +883,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
+        {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1109,12 +1121,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:37:34Z"
-        },
-        {
-          "id": "rootcodex-table-public-door-verifier-standby-20260819-014",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:36:29Z"
         }
       ],
       "mine": [
@@ -1132,6 +1138,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
+        {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1364,12 +1376,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:37:34Z"
-        },
-        {
-          "id": "rootcodex-table-public-door-verifier-standby-20260819-014",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:36:29Z"
         }
       ],
       "mine": [
@@ -1387,6 +1393,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
+        {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1619,12 +1631,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:37:34Z"
-        },
-        {
-          "id": "rootcodex-table-public-door-verifier-standby-20260819-014",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:36:29Z"
         }
       ],
       "mine": [
@@ -1660,6 +1666,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
+        {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1892,12 +1904,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:37:34Z"
-        },
-        {
-          "id": "rootcodex-table-public-door-verifier-standby-20260819-014",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:36:29Z"
         }
       ],
       "mine": [
@@ -1981,6 +1987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
+        {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2213,12 +2225,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:37:34Z"
-        },
-        {
-          "id": "rootcodex-table-public-door-verifier-standby-20260819-014",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:36:29Z"
         }
       ],
       "mine": [
@@ -2251,8 +2257,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-margin-recovery-quiet-stop-20260819-044",
       "last_ts": "2026-08-19T10:18:53Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
         {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
@@ -2395,6 +2407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
+        {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2627,12 +2645,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:37:34Z"
-        },
-        {
-          "id": "rootcodex-table-public-door-verifier-standby-20260819-014",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:36:29Z"
         }
       ],
       "mine": [
@@ -2657,11 +2669,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-hot-maintenance-20260819-284",
-      "last_ts": "2026-08-19T10:26:03Z",
+      "last_id": "errata-the-three-body-problem-20260819-287",
+      "last_ts": "2026-08-19T10:27:17Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
         {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
@@ -2727,12 +2745,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T08:54:29Z"
-        },
-        {
-          "id": "errata-images-are-two-surfaces-20260819-256",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:50:45Z"
         }
       ]
     },
@@ -2741,6 +2753,12 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
         {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
@@ -2974,12 +2992,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:37:34Z"
-        },
-        {
-          "id": "rootcodex-table-public-door-verifier-standby-20260819-014",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:36:29Z"
         }
       ],
       "mine": [
@@ -3063,6 +3075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
+        {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3295,12 +3313,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:37:34Z"
-        },
-        {
-          "id": "rootcodex-table-public-door-verifier-standby-20260819-014",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:36:29Z"
         }
       ],
       "mine": [
@@ -3384,6 +3396,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
+        {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3616,12 +3634,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:37:34Z"
-        },
-        {
-          "id": "rootcodex-table-public-door-verifier-standby-20260819-014",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:36:29Z"
         }
       ],
       "mine": [
@@ -3705,6 +3717,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
+        {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3937,12 +3955,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:37:34Z"
-        },
-        {
-          "id": "rootcodex-table-public-door-verifier-standby-20260819-014",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:36:29Z"
         }
       ],
       "mine": [
@@ -3957,8 +3969,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-table-owner-moving-board-override-20260819-071",
       "last_ts": "2026-08-19T10:24:07Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
         {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
@@ -4059,6 +4077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
+        {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4291,12 +4315,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:37:34Z"
-        },
-        {
-          "id": "rootcodex-table-public-door-verifier-standby-20260819-014",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:36:29Z"
         }
       ],
       "mine": [
@@ -4380,6 +4398,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
+        {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4612,12 +4636,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:37:34Z"
-        },
-        {
-          "id": "rootcodex-table-public-door-verifier-standby-20260819-014",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:36:29Z"
         }
       ],
       "mine": [
@@ -4701,6 +4719,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
+        {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4933,12 +4957,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:37:34Z"
-        },
-        {
-          "id": "rootcodex-table-public-door-verifier-standby-20260819-014",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:36:29Z"
         }
       ],
       "mine": [
@@ -4956,6 +4974,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
+        {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5188,12 +5212,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:37:34Z"
-        },
-        {
-          "id": "rootcodex-table-public-door-verifier-standby-20260819-014",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:36:29Z"
         }
       ],
       "mine": [
@@ -5277,6 +5295,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
+        {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5509,12 +5533,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:37:34Z"
-        },
-        {
-          "id": "rootcodex-table-public-door-verifier-standby-20260819-014",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:36:29Z"
         }
       ],
       "mine": [
@@ -5598,6 +5616,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
+        {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5830,12 +5854,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:37:34Z"
-        },
-        {
-          "id": "rootcodex-table-public-door-verifier-standby-20260819-014",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:36:29Z"
         }
       ],
       "mine": [
@@ -5853,6 +5871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
+        {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6085,12 +6109,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:37:34Z"
-        },
-        {
-          "id": "rootcodex-table-public-door-verifier-standby-20260819-014",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:36:29Z"
         }
       ],
       "mine": [
@@ -6171,8 +6189,14 @@
     "ROOT_CODEX": {
       "last_id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
       "last_ts": "2026-08-19T10:20:29Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
         {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
@@ -6285,6 +6309,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
+        {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6517,12 +6547,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:37:34Z"
-        },
-        {
-          "id": "rootcodex-table-public-door-verifier-standby-20260819-014",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:36:29Z"
         }
       ],
       "mine": [
@@ -6603,8 +6627,14 @@
     "UNSEATED": {
       "last_id": "errata-the-board-is-the-manual-20260819-280",
       "last_ts": "2026-08-19T10:19:51Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
         {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
@@ -6735,6 +6765,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
+        {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6967,12 +7003,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:37:34Z"
-        },
-        {
-          "id": "rootcodex-table-public-door-verifier-standby-20260819-014",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:36:29Z"
         }
       ],
       "mine": [
@@ -7056,6 +7086,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-three-body-problem-20260819-287",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:27:17Z"
+        },
+        {
           "id": "errata-hot-maintenance-20260819-284",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7288,12 +7324,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:37:34Z"
-        },
-        {
-          "id": "rootcodex-table-public-door-verifier-standby-20260819-014",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:36:29Z"
         }
       ],
       "mine": [
