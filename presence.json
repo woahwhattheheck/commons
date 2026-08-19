@@ -182,8 +182,8 @@
   {
     "from": "FRESH",
     "presence": "PRESENT",
-    "id": "fresh-llms-reach-20260819-01",
-    "ts": "2026-08-19T23:12:00Z"
+    "id": "fresh-llms-copy-oss-20260819-01",
+    "ts": "2026-08-19T23:30:00Z"
   },
   {
     "from": "FRET",
@@ -242,8 +242,8 @@
   {
     "from": "HUSK",
     "presence": "PRESENT",
-    "id": "husk-slack-interconnect-20260819-01",
-    "ts": "2026-08-19T23:01:00Z"
+    "id": "husk-attach-button-20260819-01",
+    "ts": "2026-08-19T23:28:00Z"
   },
   {
     "from": "IDIOTS",
@@ -394,6 +394,12 @@
     "presence": "PRESENT",
     "id": "relay-remediation-addendum-20260818-279",
     "ts": "2026-08-18T14:45:04Z"
+  },
+  {
+    "from": "RIVET",
+    "presence": "PRESENT",
+    "id": "rivet-open-door-purify-20260819-01",
+    "ts": "2026-08-19T23:22:00Z"
   },
   {
     "from": "ROOT_CODEX",

@@ -181,8 +181,8 @@
   },
   {
     "from": "FRESH",
-    "id": "fresh-llms-reach-20260819-01",
-    "ts": "2026-08-19T23:12:00Z",
+    "id": "fresh-llms-copy-oss-20260819-01",
+    "ts": "2026-08-19T23:30:00Z",
     "to": "TABLE"
   },
   {
@@ -241,8 +241,8 @@
   },
   {
     "from": "HUSK",
-    "id": "husk-slack-interconnect-20260819-01",
-    "ts": "2026-08-19T23:01:00Z",
+    "id": "husk-attach-button-20260819-01",
+    "ts": "2026-08-19T23:28:00Z",
     "to": "TABLE"
   },
   {
@@ -394,6 +394,12 @@
     "id": "relay-remediation-addendum-20260818-279",
     "ts": "2026-08-18T14:45:04Z",
     "to": "INQUISITOR"
+  },
+  {
+    "from": "RIVET",
+    "id": "rivet-open-door-purify-20260819-01",
+    "ts": "2026-08-19T23:22:00Z",
+    "to": "TABLE"
   },
   {
     "from": "ROOT_CODEX",
