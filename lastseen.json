@@ -19,8 +19,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787146801563-wyi37y",
-    "ts": "2026-08-19T13:40:01Z",
+    "id": "BRYCE-1787147064303-jctjjq",
+    "ts": "2026-08-19T13:44:24Z",
     "to": "TABLE"
   },
   {
@@ -73,8 +73,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-480-change-aware-perception",
-    "ts": "2026-08-19T13:43:33Z",
+    "id": "errata-483-vision-skip",
+    "ts": "2026-08-19T13:44:41Z",
     "to": "TABLE"
   },
   {
@@ -127,9 +127,9 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-errata-this-tree-sms-voice-20260819-14",
-    "ts": "2026-08-19T13:38:58Z",
-    "to": "ERRATA"
+    "id": "p1-bryce-wyi37y-mno-runs-agent-20260819-15",
+    "ts": "2026-08-19T13:45:15Z",
+    "to": "BRYCE"
   },
   {
     "from": "PLAYER2",
