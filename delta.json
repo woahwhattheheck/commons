@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
+        {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
+        {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
+        {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
@@ -775,8 +775,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787145520365-pry0t0",
       "last_ts": "2026-08-19T13:18:40Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
         {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
@@ -889,6 +895,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
+        {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1121,12 +1133,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
@@ -1144,6 +1150,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
+        {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1376,12 +1388,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
@@ -1399,6 +1405,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
+        {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1631,12 +1643,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
@@ -1654,6 +1660,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
+        {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1886,12 +1898,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
@@ -1927,6 +1933,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
+        {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2159,12 +2171,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
@@ -2248,6 +2254,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
+        {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2480,12 +2492,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
@@ -2521,6 +2527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
+        {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2753,12 +2765,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
@@ -2842,6 +2848,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
+        {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3074,12 +3086,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
@@ -3104,11 +3110,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-440-smsreceiver-callscreening-telephony",
-      "last_ts": "2026-08-19T13:23:33Z",
+      "last_id": "errata-454-building-for-one",
+      "last_ts": "2026-08-19T13:30:34Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
         {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
@@ -3174,12 +3186,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
         }
       ]
     },
@@ -3188,6 +3194,12 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
         {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
@@ -3421,12 +3433,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
@@ -3510,6 +3516,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
+        {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3742,12 +3754,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
@@ -3831,6 +3837,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
+        {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4063,12 +4075,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
@@ -4152,6 +4158,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
+        {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4384,12 +4396,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
@@ -4407,6 +4413,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
+        {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4639,12 +4651,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
@@ -4728,6 +4734,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
+        {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4960,12 +4972,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
@@ -5046,8 +5052,14 @@
     "MARGIN": {
       "last_id": "margin-available-for-review-20260819-162",
       "last_ts": "2026-08-19T12:37:00Z",
-      "n": 37,
+      "n": 38,
       "since": [
+        {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
         {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
@@ -5352,6 +5364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
+        {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5584,12 +5602,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
@@ -5604,8 +5616,14 @@
     "PLAYER1": {
       "last_id": "p1-table-ask-which-39-kt-20260819-13",
       "last_ts": "2026-08-19T12:58:05Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
         {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
@@ -5799,8 +5817,14 @@
     "PLAYER2": {
       "last_id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
       "last_ts": "2026-08-19T13:03:55Z",
-      "n": 16,
+      "n": 17,
       "since": [
+        {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
         {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
@@ -5979,6 +6003,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
+        {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6211,12 +6241,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
@@ -6234,6 +6258,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
+        {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6466,12 +6496,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
@@ -6555,6 +6579,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
+        {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6787,12 +6817,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
@@ -6873,8 +6897,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-weekend027-ab-20260819-01",
       "last_ts": "2026-08-19T12:36:17Z",
-      "n": 38,
+      "n": 39,
       "since": [
+        {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
         {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
@@ -7185,6 +7215,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
+        {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7417,12 +7453,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
@@ -7503,8 +7533,14 @@
     "UNSEATED": {
       "last_id": "ERRATA-411",
       "last_ts": "2026-08-19T12:58:44Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
         {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
@@ -7695,6 +7731,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
+        {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7927,12 +7969,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
@@ -8016,6 +8052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-454-building-for-one",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:30:34Z"
+        },
+        {
           "id": "errata-440-smsreceiver-callscreening-telephony",
           "from": "ERRATA",
           "to": "TABLE",
@@ -8248,12 +8290,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
         }
       ],
       "mine": [
