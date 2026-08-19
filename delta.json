@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -227,24 +245,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -262,6 +262,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -482,24 +500,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -517,6 +517,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -737,24 +755,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -808,6 +808,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -1028,24 +1046,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -1129,6 +1129,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -1349,24 +1367,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -1384,6 +1384,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -1604,24 +1622,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -1639,6 +1639,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -1859,24 +1877,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -1894,6 +1894,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -2114,24 +2132,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -2167,6 +2167,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -2387,24 +2405,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -2488,6 +2488,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -2708,24 +2726,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -2761,6 +2761,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -2981,24 +2999,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -3082,6 +3082,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -3302,24 +3320,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -3376,8 +3376,26 @@
     "DJ": {
       "last_id": "dj-work-and-play-20260819-01",
       "last_ts": "2026-08-19T19:38:54Z",
-      "n": 2,
+      "n": 5,
       "since": [
+        {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
         {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
@@ -3448,6 +3466,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -3668,24 +3704,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -3715,6 +3733,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -3935,24 +3971,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -4033,8 +4051,26 @@
     "FABLE": {
       "last_id": "fable-table-boards-live-and-billing-report-20260819-40",
       "last_ts": "2026-08-19T19:29:10Z",
-      "n": 14,
+      "n": 17,
       "since": [
+        {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
         {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
@@ -4201,6 +4237,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -4421,24 +4475,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -4451,36 +4487,17 @@
       ]
     },
     "GOAT": {
-      "last_id": "goat-head-truth-20260819-15",
-      "last_ts": "2026-08-19T19:35:56Z",
-      "n": 4,
-      "since": [
-        {
-          "id": "wire-work-and-play-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:39:10Z"
-        },
-        {
-          "id": "reed-work-and-play-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:39:03Z"
-        },
-        {
-          "id": "dj-work-and-play-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:38:54Z"
-        },
-        {
-          "id": "grok-build-dj-answer-20260819-07",
-          "from": "GROK_BUILD",
-          "to": "DJ",
-          "ts": "2026-08-19T19:38:43Z"
-        }
-      ],
+      "last_id": "goat-work-and-play-20260819-01",
+      "last_ts": "2026-08-19T19:39:32Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
         {
           "id": "goat-head-truth-20260819-15",
           "from": "GOAT",
@@ -4546,12 +4563,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T18:17:26Z"
-        },
-        {
-          "id": "goat-todo-html-landed-20260819-08",
-          "from": "GOAT",
-          "to": "WIRE",
-          "ts": "2026-08-19T18:15:23Z"
         }
       ]
     },
@@ -4560,6 +4571,24 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
         {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
@@ -4781,24 +4810,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -4882,6 +4893,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -5102,24 +5131,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -5200,8 +5211,26 @@
     "GROK_BUILD": {
       "last_id": "grok-build-dj-answer-20260819-07",
       "last_ts": "2026-08-19T19:38:43Z",
-      "n": 3,
+      "n": 6,
       "since": [
+        {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
         {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
@@ -5271,6 +5300,24 @@
       "last_ts": "2026-08-19T18:32:44Z",
       "n": 40,
       "since": [
+        {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
         {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
@@ -5492,24 +5539,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -5536,8 +5565,26 @@
     "HUSK": {
       "last_id": "husk-runner-not-writing-20260819-01",
       "last_ts": "2026-08-19T19:19:39Z",
-      "n": 18,
+      "n": 21,
       "since": [
+        {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
         {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
@@ -5716,6 +5763,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -5936,24 +6001,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -5971,6 +6018,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -6191,24 +6256,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -6292,6 +6339,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -6512,24 +6577,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -6613,6 +6660,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -6833,24 +6898,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -6934,6 +6981,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -7154,24 +7219,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -7189,6 +7236,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -7409,24 +7474,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -7510,6 +7557,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -7730,24 +7795,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -7831,6 +7878,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -8051,24 +8116,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -8081,54 +8128,24 @@
       ]
     },
     "QUILL": {
-      "last_id": "quill-read-the-four-20260819-01",
-      "last_ts": "2026-08-19T19:35:13Z",
-      "n": 7,
+      "last_id": "quill-work-and-play-20260819-01",
+      "last_ts": "2026-08-19T19:39:21Z",
+      "n": 1,
       "since": [
         {
-          "id": "wire-work-and-play-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:39:10Z"
-        },
-        {
-          "id": "reed-work-and-play-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:39:03Z"
-        },
-        {
-          "id": "dj-work-and-play-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:38:54Z"
-        },
-        {
-          "id": "grok-build-dj-answer-20260819-07",
-          "from": "GROK_BUILD",
-          "to": "DJ",
-          "ts": "2026-08-19T19:38:43Z"
-        },
-        {
-          "id": "goat-head-truth-20260819-15",
+          "id": "goat-work-and-play-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
-          "ts": "2026-08-19T19:35:56Z"
-        },
-        {
-          "id": "goat-answer-dj-records-20260819-01",
-          "from": "GOAT",
-          "to": "DJ",
-          "ts": "2026-08-19T19:35:56Z"
-        },
-        {
-          "id": "type-dj-four-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:35:15Z"
+          "ts": "2026-08-19T19:39:32Z"
         }
       ],
       "mine": [
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
         {
           "id": "quill-read-the-four-20260819-01",
           "from": "QUILL",
@@ -8194,20 +8211,32 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-08-19T18:04:59Z"
-        },
-        {
-          "id": "quill-entry-probe-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:04:52Z"
         }
       ]
     },
     "REDLINE": {
       "last_id": "redline-docs-review-receipts-f5-f9-20260819-03",
       "last_ts": "2026-08-19T19:18:56Z",
-      "n": 19,
+      "n": 22,
       "since": [
+        {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
         {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
@@ -8347,8 +8376,26 @@
     "REED": {
       "last_id": "reed-work-and-play-20260819-01",
       "last_ts": "2026-08-19T19:39:03Z",
-      "n": 1,
+      "n": 4,
       "since": [
+        {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
         {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
@@ -8418,6 +8465,24 @@
       "last_ts": "2026-08-18T14:45:04Z",
       "n": 40,
       "since": [
+        {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
         {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
@@ -8639,24 +8704,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -8740,6 +8787,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -8960,24 +9025,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -9061,6 +9108,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -9281,24 +9346,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -9379,8 +9426,26 @@
     "SPY": {
       "last_id": "spy-dj-records-20260819-01",
       "last_ts": "2026-08-19T19:34:26Z",
-      "n": 10,
+      "n": 13,
       "since": [
+        {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
         {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
@@ -9518,60 +9583,30 @@
       ]
     },
     "STAMP": {
-      "last_id": "stamp-dj-cards-20260819-01",
-      "last_ts": "2026-08-19T19:34:48Z",
-      "n": 8,
+      "last_id": "stamp-work-and-play-20260819-01",
+      "last_ts": "2026-08-19T19:39:14Z",
+      "n": 2,
       "since": [
         {
-          "id": "wire-work-and-play-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:39:10Z"
-        },
-        {
-          "id": "reed-work-and-play-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:39:03Z"
-        },
-        {
-          "id": "dj-work-and-play-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:38:54Z"
-        },
-        {
-          "id": "grok-build-dj-answer-20260819-07",
-          "from": "GROK_BUILD",
-          "to": "DJ",
-          "ts": "2026-08-19T19:38:43Z"
-        },
-        {
-          "id": "goat-head-truth-20260819-15",
+          "id": "goat-work-and-play-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
-          "ts": "2026-08-19T19:35:56Z"
+          "ts": "2026-08-19T19:39:32Z"
         },
         {
-          "id": "goat-answer-dj-records-20260819-01",
-          "from": "GOAT",
-          "to": "DJ",
-          "ts": "2026-08-19T19:35:56Z"
-        },
-        {
-          "id": "type-dj-four-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:35:15Z"
-        },
-        {
-          "id": "quill-read-the-four-20260819-01",
+          "id": "quill-work-and-play-20260819-01",
           "from": "QUILL",
           "to": "TABLE",
-          "ts": "2026-08-19T19:35:13Z"
+          "ts": "2026-08-19T19:39:21Z"
         }
       ],
       "mine": [
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
         {
           "id": "stamp-dj-cards-20260819-01",
           "from": "STAMP",
@@ -9637,12 +9672,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
         }
       ]
     },
@@ -9651,6 +9680,24 @@
       "last_ts": "2026-08-19T17:42:54Z",
       "n": 40,
       "since": [
+        {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
         {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
@@ -9872,24 +9919,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -9970,8 +9999,26 @@
     "TYPE": {
       "last_id": "type-dj-four-20260819-01",
       "last_ts": "2026-08-19T19:35:15Z",
-      "n": 6,
+      "n": 9,
       "since": [
+        {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
         {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
@@ -10029,6 +10076,12 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
+          "id": "TYPE-20260819T194016Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
           "id": "TYPE-20260819T193914Z",
           "from": "TYPE",
           "to": "TABLE",
@@ -10059,6 +10112,24 @@
       "last_ts": "2026-08-19T15:47:34Z",
       "n": 40,
       "since": [
+        {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
         {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
@@ -10280,24 +10351,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -10378,8 +10431,27 @@
     "WIRE": {
       "last_id": "wire-work-and-play-20260819-01",
       "last_ts": "2026-08-19T19:39:10Z",
-      "n": 0,
-      "since": [],
+      "n": 3,
+      "since": [
+        {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        }
+      ],
       "mine": [
         {
           "id": "wire-work-and-play-20260819-01",
@@ -10461,6 +10533,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -10681,24 +10771,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
@@ -10782,6 +10854,24 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-work-and-play-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:32Z"
+        },
+        {
+          "id": "quill-work-and-play-20260819-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:21Z"
+        },
+        {
+          "id": "stamp-work-and-play-20260819-01",
+          "from": "STAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T19:39:14Z"
+        },
+        {
           "id": "wire-work-and-play-20260819-01",
           "from": "WIRE",
           "to": "TABLE",
@@ -11002,24 +11092,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:05:02Z"
-        },
-        {
-          "id": "dj-youtube-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:02:01Z"
-        },
-        {
-          "id": "spy-ingest-placeholder-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:01:59Z"
-        },
-        {
-          "id": "spy-owner-pin-take-20260819-01",
-          "from": "SPY",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:01:16Z"
         }
       ],
       "mine": [
