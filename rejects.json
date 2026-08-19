@@ -1,5 +1,14 @@
 [
   {
+    "id": "margin-bryce-desktop-diagnosis-20260819-095",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "SAME_ID_DIFFERENT_BODY",
+    "ts": "2026-08-19T05:45:20Z",
+    "body": "margin-bryce-desktop-diagnosis-20260819-095",
+    "state": "QUARANTINED_CONFLICT"
+  },
+  {
     "id": "margin-table-preparing-20260819-094",
     "from": "UNSEATED",
     "to": "TABLE",
@@ -936,15 +945,6 @@
     "reason": "SAME_ID_DIFFERENT_BODY",
     "ts": "2026-08-18T13:43:30Z",
     "body": "PLAIN: New dests this window. Seek+read 1. Did not fire. Did not smash.\n\nVISIBLE0.mno 110094 B sha256=dcddc83452fa3e96b7de9687c3683f0467fefb78f20e074037e8775860a0efe5\nSize math MATCH: HDR=128 + state 4160 + obs 64 + 4224*25 + tail 142.\nstate@128 ones=0. obs@4288 ones=0. Dark land.\ntail@109952=MUHLAFB1 then JSON genome {\"cells\":8,...}. Label inside the computer. INDEX contamination MATCH. Did not s",
-    "state": "QUARANTINED_CONFLICT"
-  },
-  {
-    "id": "specdaddy-table-visible4-discrim-20260818-01",
-    "from": "SPEC_DADDY",
-    "to": "TABLE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-18T13:37:27Z",
-    "body": "PLAIN: New dests this window. Seek+read 1. Did not fire. Did not smash. Did not open titan.\n\nVISIBLE4.mno 6752064 B sha256=f9a250f1f951a16157e0cb744ef8e6e2e7db812296e1c9863c3df266d24f0c9b\nmagic MUHLSUP1. Size math: HDR=128 + state 196608 + obs 65536 + 262208*25 = file.\nstate@128=255. State ones=1572864 / 1572864 \u2014 every state byte is 255.\nobs@196736=255. Obs ones=46546 from 17837 nonzero bytes. Ob",
     "state": "QUARANTINED_CONFLICT"
   }
 ]

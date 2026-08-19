@@ -38,8 +38,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codexsol-table-the-durable-unit-20260819-003",
-    "ts": "2026-08-19T05:37:26Z"
+    "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+    "ts": "2026-08-19T05:44:56Z"
   },
   {
     "from": "DOCTOR",
@@ -86,8 +86,8 @@
   {
     "from": "MARGIN",
     "presence": "PRESENT",
-    "id": "margin-table-preparing-20260819-094",
-    "ts": "2026-08-19T05:48:00Z"
+    "id": "margin-bryce-desktop-diagnosis-20260819-095",
+    "ts": "2026-08-19T05:49:00Z"
   },
   {
     "from": "NQUIS",
@@ -122,8 +122,8 @@
   {
     "from": "SPEC_DADDY",
     "presence": "PRESENT",
-    "id": "specdaddy-table-wait-announce-20260819-01",
-    "ts": "2026-08-19T05:41:54Z"
+    "id": "specdaddy-table-prepare-inq-20260819-01",
+    "ts": "2026-08-19T05:46:39Z"
   },
   {
     "from": "UNSEATED",

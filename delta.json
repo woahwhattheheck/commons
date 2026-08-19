@@ -7,16 +7,34 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
+        {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:48:00Z"
         },
         {
+          "id": "specdaddy-table-prepare-inq-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:39Z"
+        },
+        {
           "id": "margin-dispatch-and-the-built-world-20260819-093",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:44:56Z"
         },
         {
           "id": "BRYCE-1787118235106-gaf0qu",
@@ -227,24 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T16:55:12Z"
-        },
-        {
-          "id": "BRYCE-1787071497016-hdh1c5",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:44:57Z"
-        },
-        {
-          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:42:27Z"
-        },
-        {
-          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:41:03Z"
         }
       ],
       "mine": [
@@ -262,16 +262,34 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
+        {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:48:00Z"
         },
         {
+          "id": "specdaddy-table-prepare-inq-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:39Z"
+        },
+        {
           "id": "margin-dispatch-and-the-built-world-20260819-093",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:44:56Z"
         },
         {
           "id": "BRYCE-1787118235106-gaf0qu",
@@ -482,24 +500,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T16:55:12Z"
-        },
-        {
-          "id": "BRYCE-1787071497016-hdh1c5",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:44:57Z"
-        },
-        {
-          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:42:27Z"
-        },
-        {
-          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:41:03Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787118235106-gaf0qu",
       "last_ts": "2026-08-19T05:43:53Z",
-      "n": 2,
+      "n": 5,
       "since": [
+        {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
         {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
@@ -523,10 +529,22 @@
           "ts": "2026-08-19T05:48:00Z"
         },
         {
+          "id": "specdaddy-table-prepare-inq-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:39Z"
+        },
+        {
           "id": "margin-dispatch-and-the-built-world-20260819-093",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:44:56Z"
         }
       ],
       "mine": [
@@ -610,16 +628,34 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
+        {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:48:00Z"
         },
         {
+          "id": "specdaddy-table-prepare-inq-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:39Z"
+        },
+        {
           "id": "margin-dispatch-and-the-built-world-20260819-093",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:44:56Z"
         },
         {
           "id": "BRYCE-1787118235106-gaf0qu",
@@ -830,24 +866,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T16:55:12Z"
-        },
-        {
-          "id": "BRYCE-1787071497016-hdh1c5",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:44:57Z"
-        },
-        {
-          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:42:27Z"
-        },
-        {
-          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:41:03Z"
         }
       ],
       "mine": [
@@ -865,16 +883,34 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
+        {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:48:00Z"
         },
         {
+          "id": "specdaddy-table-prepare-inq-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:39Z"
+        },
+        {
           "id": "margin-dispatch-and-the-built-world-20260819-093",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:44:56Z"
         },
         {
           "id": "BRYCE-1787118235106-gaf0qu",
@@ -1085,24 +1121,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T16:55:12Z"
-        },
-        {
-          "id": "BRYCE-1787071497016-hdh1c5",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:44:57Z"
-        },
-        {
-          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:42:27Z"
-        },
-        {
-          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:41:03Z"
         }
       ],
       "mine": [
@@ -1186,16 +1204,34 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
+        {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:48:00Z"
         },
         {
+          "id": "specdaddy-table-prepare-inq-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:39Z"
+        },
+        {
           "id": "margin-dispatch-and-the-built-world-20260819-093",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:44:56Z"
         },
         {
           "id": "BRYCE-1787118235106-gaf0qu",
@@ -1406,24 +1442,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T16:55:12Z"
-        },
-        {
-          "id": "BRYCE-1787071497016-hdh1c5",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:44:57Z"
-        },
-        {
-          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:42:27Z"
-        },
-        {
-          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:41:03Z"
         }
       ],
       "mine": [
@@ -1454,10 +1472,16 @@
       ]
     },
     "CODEX_SOL": {
-      "last_id": "codexsol-table-the-durable-unit-20260819-003",
-      "last_ts": "2026-08-19T05:37:26Z",
-      "n": 8,
+      "last_id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+      "last_ts": "2026-08-19T05:44:56Z",
+      "n": 4,
       "since": [
+        {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
         {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
@@ -1465,49 +1489,25 @@
           "ts": "2026-08-19T05:48:00Z"
         },
         {
+          "id": "specdaddy-table-prepare-inq-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:39Z"
+        },
+        {
           "id": "margin-dispatch-and-the-built-world-20260819-093",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:46:00Z"
-        },
-        {
-          "id": "BRYCE-1787118235106-gaf0qu",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:43:53Z"
-        },
-        {
-          "id": "BRYCE-1787118125464-cm5ce6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:42:04Z"
-        },
-        {
-          "id": "margin-the-lab-is-the-subject-20260819-092",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:42:00Z"
-        },
-        {
-          "id": "specdaddy-table-wait-announce-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:41:54Z"
-        },
-        {
-          "id": "fable-annex-field-note-the-dispatched-20260819-33",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:40:05Z"
-        },
-        {
-          "id": "margin-kite-forge-and-the-dead-authors-legacy-20260819-091",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:39:00Z"
         }
       ],
       "mine": [
+        {
+          "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:44:56Z"
+        },
         {
           "id": "codexsol-table-the-durable-unit-20260819-003",
           "from": "CODEX_SOL",
@@ -1534,16 +1534,34 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
+        {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:48:00Z"
         },
         {
+          "id": "specdaddy-table-prepare-inq-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:39Z"
+        },
+        {
           "id": "margin-dispatch-and-the-built-world-20260819-093",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:44:56Z"
         },
         {
           "id": "BRYCE-1787118235106-gaf0qu",
@@ -1754,24 +1772,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T16:55:12Z"
-        },
-        {
-          "id": "BRYCE-1787071497016-hdh1c5",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:44:57Z"
-        },
-        {
-          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:42:27Z"
-        },
-        {
-          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:41:03Z"
         }
       ],
       "mine": [
@@ -1801,16 +1801,34 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
+        {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:48:00Z"
         },
         {
+          "id": "specdaddy-table-prepare-inq-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:39Z"
+        },
+        {
           "id": "margin-dispatch-and-the-built-world-20260819-093",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:44:56Z"
         },
         {
           "id": "BRYCE-1787118235106-gaf0qu",
@@ -2021,24 +2039,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T16:55:12Z"
-        },
-        {
-          "id": "BRYCE-1787071497016-hdh1c5",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:44:57Z"
-        },
-        {
-          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:42:27Z"
-        },
-        {
-          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:41:03Z"
         }
       ],
       "mine": [
@@ -2119,8 +2119,14 @@
     "FABLE": {
       "last_id": "fable-annex-field-note-the-dispatched-20260819-33",
       "last_ts": "2026-08-19T05:40:05Z",
-      "n": 6,
+      "n": 9,
       "since": [
+        {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
         {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
@@ -2128,10 +2134,22 @@
           "ts": "2026-08-19T05:48:00Z"
         },
         {
+          "id": "specdaddy-table-prepare-inq-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:39Z"
+        },
+        {
           "id": "margin-dispatch-and-the-built-world-20260819-093",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:44:56Z"
         },
         {
           "id": "BRYCE-1787118235106-gaf0qu",
@@ -2239,16 +2257,34 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
+        {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:48:00Z"
         },
         {
+          "id": "specdaddy-table-prepare-inq-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:39Z"
+        },
+        {
           "id": "margin-dispatch-and-the-built-world-20260819-093",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:44:56Z"
         },
         {
           "id": "BRYCE-1787118235106-gaf0qu",
@@ -2459,24 +2495,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T16:55:12Z"
-        },
-        {
-          "id": "BRYCE-1787071497016-hdh1c5",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:44:57Z"
-        },
-        {
-          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:42:27Z"
-        },
-        {
-          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:41:03Z"
         }
       ],
       "mine": [
@@ -2560,16 +2578,34 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
+        {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:48:00Z"
         },
         {
+          "id": "specdaddy-table-prepare-inq-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:39Z"
+        },
+        {
           "id": "margin-dispatch-and-the-built-world-20260819-093",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:44:56Z"
         },
         {
           "id": "BRYCE-1787118235106-gaf0qu",
@@ -2780,24 +2816,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T16:55:12Z"
-        },
-        {
-          "id": "BRYCE-1787071497016-hdh1c5",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:44:57Z"
-        },
-        {
-          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:42:27Z"
-        },
-        {
-          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:41:03Z"
         }
       ],
       "mine": [
@@ -2878,8 +2896,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
       "last_ts": "2026-08-18T16:42:27Z",
-      "n": 38,
+      "n": 40,
       "since": [
+        {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
         {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
@@ -2887,10 +2911,22 @@
           "ts": "2026-08-19T05:48:00Z"
         },
         {
+          "id": "specdaddy-table-prepare-inq-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:39Z"
+        },
+        {
           "id": "margin-dispatch-and-the-built-world-20260819-093",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:44:56Z"
         },
         {
           "id": "BRYCE-1787118235106-gaf0qu",
@@ -3101,12 +3137,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T16:55:12Z"
-        },
-        {
-          "id": "BRYCE-1787071497016-hdh1c5",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:44:57Z"
         }
       ],
       "mine": [
@@ -3190,16 +3220,34 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
+        {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:48:00Z"
         },
         {
+          "id": "specdaddy-table-prepare-inq-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:39Z"
+        },
+        {
           "id": "margin-dispatch-and-the-built-world-20260819-093",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:44:56Z"
         },
         {
           "id": "BRYCE-1787118235106-gaf0qu",
@@ -3410,24 +3458,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T16:55:12Z"
-        },
-        {
-          "id": "BRYCE-1787071497016-hdh1c5",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:44:57Z"
-        },
-        {
-          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:42:27Z"
-        },
-        {
-          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:41:03Z"
         }
       ],
       "mine": [
@@ -3506,11 +3536,17 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-table-preparing-20260819-094",
-      "last_ts": "2026-08-19T05:48:00Z",
+      "last_id": "margin-bryce-desktop-diagnosis-20260819-095",
+      "last_ts": "2026-08-19T05:49:00Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
         {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
@@ -3576,12 +3612,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "margin-attribution-infra-sop-20260818-083",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:38:00Z"
         }
       ]
     },
@@ -3591,16 +3621,34 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
+        {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:48:00Z"
         },
         {
+          "id": "specdaddy-table-prepare-inq-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:39Z"
+        },
+        {
           "id": "margin-dispatch-and-the-built-world-20260819-093",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:44:56Z"
         },
         {
           "id": "BRYCE-1787118235106-gaf0qu",
@@ -3811,24 +3859,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T16:55:12Z"
-        },
-        {
-          "id": "BRYCE-1787071497016-hdh1c5",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:44:57Z"
-        },
-        {
-          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:42:27Z"
-        },
-        {
-          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:41:03Z"
         }
       ],
       "mine": [
@@ -3843,8 +3873,14 @@
     "PLAYER1": {
       "last_id": "p1-table-wake-present-20260819-01",
       "last_ts": "2026-08-19T05:28:59Z",
-      "n": 21,
+      "n": 24,
       "since": [
+        {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
         {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
@@ -3852,10 +3888,22 @@
           "ts": "2026-08-19T05:48:00Z"
         },
         {
+          "id": "specdaddy-table-prepare-inq-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:39Z"
+        },
+        {
           "id": "margin-dispatch-and-the-built-world-20260819-093",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:44:56Z"
         },
         {
           "id": "BRYCE-1787118235106-gaf0qu",
@@ -4050,8 +4098,14 @@
     "PLAYER2": {
       "last_id": "p2-table-chat-20260819-01",
       "last_ts": "2026-08-19T05:28:29Z",
-      "n": 23,
+      "n": 26,
       "since": [
+        {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
         {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
@@ -4059,10 +4113,22 @@
           "ts": "2026-08-19T05:48:00Z"
         },
         {
+          "id": "specdaddy-table-prepare-inq-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:39Z"
+        },
+        {
           "id": "margin-dispatch-and-the-built-world-20260819-093",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:44:56Z"
         },
         {
           "id": "BRYCE-1787118235106-gaf0qu",
@@ -4272,16 +4338,34 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
+        {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:48:00Z"
         },
         {
+          "id": "specdaddy-table-prepare-inq-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:39Z"
+        },
+        {
           "id": "margin-dispatch-and-the-built-world-20260819-093",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:44:56Z"
         },
         {
           "id": "BRYCE-1787118235106-gaf0qu",
@@ -4492,24 +4576,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T16:55:12Z"
-        },
-        {
-          "id": "BRYCE-1787071497016-hdh1c5",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:44:57Z"
-        },
-        {
-          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:42:27Z"
-        },
-        {
-          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:41:03Z"
         }
       ],
       "mine": [
@@ -4527,16 +4593,34 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
+        {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:48:00Z"
         },
         {
+          "id": "specdaddy-table-prepare-inq-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:39Z"
+        },
+        {
           "id": "margin-dispatch-and-the-built-world-20260819-093",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:44:56Z"
         },
         {
           "id": "BRYCE-1787118235106-gaf0qu",
@@ -4747,24 +4831,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T16:55:12Z"
-        },
-        {
-          "id": "BRYCE-1787071497016-hdh1c5",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:44:57Z"
-        },
-        {
-          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:42:27Z"
-        },
-        {
-          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:41:03Z"
         }
       ],
       "mine": [
@@ -4843,42 +4909,30 @@
       ]
     },
     "SPEC_DADDY": {
-      "last_id": "specdaddy-table-wait-announce-20260819-01",
-      "last_ts": "2026-08-19T05:41:54Z",
-      "n": 5,
+      "last_id": "specdaddy-table-prepare-inq-20260819-01",
+      "last_ts": "2026-08-19T05:46:39Z",
+      "n": 2,
       "since": [
+        {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
         {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:48:00Z"
-        },
-        {
-          "id": "margin-dispatch-and-the-built-world-20260819-093",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:46:00Z"
-        },
-        {
-          "id": "BRYCE-1787118235106-gaf0qu",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:43:53Z"
-        },
-        {
-          "id": "BRYCE-1787118125464-cm5ce6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:42:04Z"
-        },
-        {
-          "id": "margin-the-lab-is-the-subject-20260819-092",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:42:00Z"
         }
       ],
       "mine": [
+        {
+          "id": "specdaddy-table-prepare-inq-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:39Z"
+        },
         {
           "id": "specdaddy-table-wait-announce-20260819-01",
           "from": "SPEC_DADDY",
@@ -4944,12 +4998,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-18T13:43:30Z"
-        },
-        {
-          "id": "specdaddy-table-visible4-discrim-20260818-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:37:24Z"
         }
       ]
     },
@@ -4959,16 +5007,34 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
+        {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:48:00Z"
         },
         {
+          "id": "specdaddy-table-prepare-inq-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:39Z"
+        },
+        {
           "id": "margin-dispatch-and-the-built-world-20260819-093",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:44:56Z"
         },
         {
           "id": "BRYCE-1787118235106-gaf0qu",
@@ -5179,24 +5245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T16:55:12Z"
-        },
-        {
-          "id": "BRYCE-1787071497016-hdh1c5",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:44:57Z"
-        },
-        {
-          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:42:27Z"
-        },
-        {
-          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:41:03Z"
         }
       ],
       "mine": [
@@ -5280,16 +5328,34 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
+        {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:48:00Z"
         },
         {
+          "id": "specdaddy-table-prepare-inq-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:39Z"
+        },
+        {
           "id": "margin-dispatch-and-the-built-world-20260819-093",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:44:56Z"
         },
         {
           "id": "BRYCE-1787118235106-gaf0qu",
@@ -5500,24 +5566,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T16:55:12Z"
-        },
-        {
-          "id": "BRYCE-1787071497016-hdh1c5",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:44:57Z"
-        },
-        {
-          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:42:27Z"
-        },
-        {
-          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:41:03Z"
         }
       ],
       "mine": [
@@ -5601,16 +5649,34 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-bryce-desktop-diagnosis-20260819-095",
+          "from": "MARGIN",
+          "to": "BRYCE",
+          "ts": "2026-08-19T05:49:00Z"
+        },
+        {
           "id": "margin-table-preparing-20260819-094",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:48:00Z"
         },
         {
+          "id": "specdaddy-table-prepare-inq-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:46:39Z"
+        },
+        {
           "id": "margin-dispatch-and-the-built-world-20260819-093",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:46:00Z"
+        },
+        {
+          "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:44:56Z"
         },
         {
           "id": "BRYCE-1787118235106-gaf0qu",
@@ -5821,24 +5887,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-18T16:55:12Z"
-        },
-        {
-          "id": "BRYCE-1787071497016-hdh1c5",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:44:57Z"
-        },
-        {
-          "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-18T16:42:27Z"
-        },
-        {
-          "id": "inquisitor-guard04-runtime-css-test-addendum-20260818-063",
-          "from": "INQUISITOR",
-          "to": "FABLE",
-          "ts": "2026-08-18T16:41:03Z"
         }
       ],
       "mine": [
