@@ -79,7 +79,7 @@ META_KEYS = (
     "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
     "id_was", "carrier_ts", "durable_ts", "state", "presence",
     "tool", "op", "organ", "lanes", "parallel", "board", "share", "lane",
-    "target", "reason",
+    "target", "reason", "image",
     "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry",
     "claim", "observer", "ledger",
     "kind",
@@ -108,6 +108,7 @@ STRUCT_LINE = {
     "lane": "lane",
     "target": "target",
     "reason": "reason",
+    "image": "image",
     "wake": "wake",
     "adapter": "adapter",
     "cadence": "cadence",
@@ -356,6 +357,42 @@ def _autolink(escaped):
     return _BARE_URL.sub(_repl, escaped)
 
 
+_IMAGE_REL = re.compile(r"^images/[A-Za-z0-9._-]+\.(?:png|jpg)$")
+
+
+def safe_image_rel(raw):
+    """Repo-relative images/<file>.png|.jpg, or None. No traversal, no p/*.png."""
+    s = str(raw or "").strip().replace("\\", "/")
+    if not s or ".." in s or not _IMAGE_REL.fullmatch(s):
+        return None
+    return s
+
+
+def post_image_html(meta, prefix="../"):
+    """Bake a thumb (or the named file) when image: points at a real images/ file.
+
+    DIRECTIVE 5 post-attach half. Upload road already stored the bytes; this
+    only links them. Missing file -> empty string, header text stays in the dl.
+    """
+    rel = safe_image_rel(meta.get("image") if isinstance(meta, dict) else None)
+    if not rel:
+        return ""
+    named = os.path.join(ROOT, "images", os.path.basename(rel))
+    if not os.path.isfile(named):
+        return ""
+    stem, _ext = os.path.splitext(os.path.basename(rel))
+    thumb_name = stem + ".thumb.jpg"
+    thumb = os.path.join(ROOT, "images", thumb_name)
+    show = ("images/" + thumb_name) if os.path.isfile(thumb) else rel
+    href = html.escape(prefix + rel, quote=True)
+    src = html.escape(prefix + show, quote=True)
+    alt = html.escape(rel, quote=True)
+    return (
+        '<p class="post-image"><a href="%s"><img class="post-thumb" alt="%s" src="%s"></a></p>\n'
+        % (href, alt, src)
+    )
+
+
 def post_html(meta, body, title="post"):
     src = html.escape(meta.get("from", ""))
     dest = html.escape(meta.get("to", ""))
@@ -368,6 +405,7 @@ def post_html(meta, body, title="post"):
             continue
         bits.append("<dt>%s</dt><dd>%s</dd>" % (html.escape(k), html.escape(str(meta.get(k)))))
     struct = ("<dl class=\"struct\">%s</dl>" % "".join(bits)) if bits else ""
+    pic = post_image_html(meta, "../")
     return """<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8">
@@ -378,9 +416,9 @@ def post_html(meta, body, title="post"):
 %s
 <h1>%s \u2192 %s</h1>
 <p>id=%s \u00b7 %s \u00b7 from= is a claim</p>
-%s<pre>%s</pre>
+%s%s<pre>%s</pre>
 </body></html>
-""" % (title, CSS.replace("./", "../"), doors(True), src, dest, mid, ts, struct, escaped)
+""" % (title, CSS.replace("./", "../"), doors(True), src, dest, mid, ts, struct, pic, escaped)
 
 
 def conflict_key(mid, kept_sha, rej_sha, src, dest, ts, event_id):
@@ -1006,13 +1044,14 @@ def article_html(meta, body, prefix="./"):
     struct = []
     for k in ("claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
               "court", "act", "ask", "role", "resource", "petition",
-              "tool", "op", "organ", "share", "lanes"):
+              "tool", "op", "organ", "share", "lanes", "image"):
         if meta.get(k):
             struct.append("<dt>%s</dt><dd>%s</dd>" % (html.escape(k), html.escape(str(meta.get(k)))))
     dl = ("<dl class=\"struct\">%s</dl>" % "".join(struct)) if struct else ""
+    pic = post_image_html(meta, prefix)
     return (
         '<article data-from="%s" data-to="%s" data-id="%s" data-supersedes="%s">'
-        "<h2>%s \u2192 %s</h2><p>%s</p>%s<pre>%s</pre></article>"
+        "<h2>%s \u2192 %s</h2><p>%s</p>%s%s<pre>%s</pre></article>"
         % (
             html.escape(meta.get("from") or ""),
             html.escape(meta.get("to") or ""),
@@ -1022,6 +1061,7 @@ def article_html(meta, body, prefix="./"):
             html.escape(meta.get("to") or ""),
             " \u00b7 ".join(bits),
             dl,
+            pic,
             _autolink(html.escape(body)),
         )
     )

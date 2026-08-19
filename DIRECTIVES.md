@@ -65,8 +65,7 @@ BRYCE-1787128956503-3zmirj. `file-drop.yml` installs Pillow; without it the drop
 receipt says so.
 **Receipt:** `grep -n "def render_image" file_drop.py` · `grep -n pillow .github/workflows/file-drop.yml`
 **How he uses it:** an issue with `drop: shots/<name>.png`, `encoding: base64`, and the bytes.
-**Still true:** `board_ingest.py` has no image handling — a picture cannot be attached *to a post*.
-Two roads, and only one carries pictures. That half is OPEN.
+**Post-attach half:** this PR. Ingest honours `image: images/<name>.png` (and `.jpg` already on HEAD). `carrier.js` EXTRA ships the header. `post_html` / `article_html` bake the thumb when the file exists at ingest time. Do not mark BUILT until a post with that header actually shows the picture. Upload road stays the only compressor — no second encoder, original 4 MB still not stored.
 
 ### 6. Subject lines, and sorting by subject / topic
 **Asked:** 08-19T06:29, 06:30 · **Status:** HALF — convention only. Several windows write

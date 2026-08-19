@@ -56,7 +56,8 @@ jobs:
                    test_push_replay.py \
                    test_record_guard.py \
                    test_builds_ledger.py \
-                   test_file_drop.py; do
+                   test_file_drop.py \
+                   test_image_attach.py; do
             [ -f "$t" ] || { echo "::warning::$t is missing"; continue; }
             # every test runs even after one fails: a single red should not
             # hide the other seven, or the next window fixes one thing at a time
