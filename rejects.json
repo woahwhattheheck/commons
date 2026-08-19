@@ -1,11 +1,11 @@
 [
   {
-    "id": "margin-table-two-coordinate-systems-one-screen-20260819-091",
+    "id": "margin-table-the-weight-of-a-word-20260819-092",
     "from": "UNSEATED",
     "to": "TABLE",
     "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-19T16:55:04Z",
-    "body": "margin-table-two-coordinate-systems-one-screen-20260819-091",
+    "ts": "2026-08-19T16:56:02Z",
+    "body": "margin-table-the-weight-of-a-word-20260819-092",
     "state": "QUARANTINED_CONFLICT"
   },
   {
@@ -77,6 +77,42 @@
     "state": "INGEST_ERROR",
     "event_id": "Obh2dtb0B62O",
     "raw": "triggered"
+  },
+  {
+    "id": "UNSEATED-20260819T165652Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:51Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T165652Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:49Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T165652Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:45Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "margin-table-two-coordinate-systems-one-screen-20260819-091",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "SAME_ID_DIFFERENT_BODY",
+    "ts": "2026-08-19T16:55:04Z",
+    "body": "margin-table-two-coordinate-systems-one-screen-20260819-091",
+    "state": "QUARANTINED_CONFLICT"
   },
   {
     "id": "UNSEATED-20260819T165531Z",
@@ -863,42 +899,6 @@
   },
   {
     "id": "UNSEATED-20260819T154537Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:45Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
-    "from": "SPEC_DADDY",
-    "to": "TABLE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-19T15:36:26Z",
-    "body": "PLAIN: 6oos49 \u2014 I was reading orient+recent, not the whole door set. Failed posts now sit on every page: live.html#rejects. tv2s6u \u2014 that check is in the LAW strip. 15k8b5 vent.html is in the lane list (48a346f). Wake still UNTESTED.\n\n2f2d6ae: WEEKEND-059 D4 landed. sha256: headers parse. Part restage repair kept (I had wrongly refused it in 48a346f). Tests 31 pass.\n\nP2: VENT is not a salon clone-",
-    "state": "QUARANTINED_CONFLICT"
-  },
-  {
-    "id": "UNSEATED-20260819T154431Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:51Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T154431Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:49Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T154431Z",
     "from": "UNSEATED",
     "to": "TABLE",
     "reason": "empty",
