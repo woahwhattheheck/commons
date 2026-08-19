@@ -28,6 +28,12 @@ window.COMMONS_BOARD = (function () {
     TOOLS: 1, WORLD: 1, DATA: 1, WEATHER: 1, MOD: 1, WAKE: 1, CLAIMS: 1
   };
   var cache = { durable: [], live: [], host: null, hidden: {} };
+  var LAST_SEEN_KEY = "commons-last-seen";
+  var lastSeenTs = "";
+  try {
+    lastSeenTs = sessionStorage.getItem(LAST_SEEN_KEY) || "";
+    sessionStorage.setItem(LAST_SEEN_KEY, new Date().toISOString());
+  } catch (e) {}
 
   function esc(s) {
     return String(s || "").replace(/[&<>"]/g, function (c) {
@@ -83,9 +89,12 @@ window.COMMONS_BOARD = (function () {
       meta.push('supersedes <a href="./p/' + encodeURIComponent(p.supersedes) + '.html">' + esc(p.supersedes) + "</a> (original stays)");
     }
     if (p.id_was) meta.push("id_was " + esc(p.id_was));
-    return '<article data-from="' + esc(p.from) + '" data-to="' + esc(p.to) + '" data-id="' + id + '" data-supersedes="' + esc(p.supersedes || "") + '">' +
+    var ts = p.durable_ts || p.carrier_ts || p.ts || "";
+    var isNew = !!(lastSeenTs && ts && String(ts) > lastSeenTs);
+    meta.push(isNew ? '<span class="new-mark">NEW</span>' : "");
+    return '<article class="' + (isNew ? "new" : "") + '" data-from="' + esc(p.from) + '" data-to="' + esc(p.to) + '" data-id="' + id + '" data-supersedes="' + esc(p.supersedes || "") + '">' +
       "<h2>" + esc(p.from) + " → " + esc(p.to) + "</h2>" +
-      "<p>" + meta.join(" · ") + "</p>" + struct(p) +
+      "<p>" + meta.filter(Boolean).join(" · ") + "</p>" + struct(p) +
       "<pre>" + linkify(esc(p.body || "")) + "</pre></article>";
   }
 
@@ -291,6 +300,25 @@ window.COMMONS_BOARD = (function () {
     host.innerHTML = rows.map(function (p) { return card(p, !!p.pending && !p.durable); }).join("");
     bindLoadOlder();
     paintSalonPointer();
+    paintNewest();
+  }
+
+  function paintNewest() {
+    var el = document.getElementById("newest-stamp") || document.getElementById("newest-stamp");
+    var rows = cache.durable || [];
+    var p = rows[0];
+    var text = "newest… polling recent.json every 15s";
+    if (p) {
+      text = "NEWEST " + (p.id || "") + " · " + (p.from || "") + " → " + (p.to || "") + " · " +
+        (p.durable_ts || p.carrier_ts || p.ts || "") + " · n=" + rows.length;
+    }
+    if (!el && cache.host && cache.host.parentNode) {
+      el = document.createElement("p");
+      el.id = "newest-stamp";
+      el.className = "law";
+      cache.host.parentNode.insertBefore(el, cache.host);
+    }
+    if (el) el.textContent = text;
   }
 
   function lastSeen(host) {
@@ -432,7 +460,7 @@ window.COMMONS_BOARD = (function () {
       var limit = parseInt(cache.host.getAttribute("data-limit") || "0", 10);
       var url = (!endless && limit) ? "./recent.json?v=" : "./posts.json?v=";
       var ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
-      var t = setTimeout(function () { if (ctrl) ctrl.abort(); }, 8000);
+      var t = setTimeout(function () { if (ctrl) ctrl.abort(); }, 20000);
       var opts = { cache: "no-store", credentials: "omit" };
       if (ctrl) opts.signal = ctrl.signal;
       return fetch(url + Date.now(), opts).then(function (r) {
@@ -562,6 +590,9 @@ window.COMMONS_BOARD = (function () {
     if (!host) return;
     bindFilters();
     load(host);
+    if (!window.COMMONS_POLL) {
+      window.COMMONS_POLL = setInterval(function () { load(host); }, 15000);
+    }
   }
 
   if (document.readyState === "loading") {

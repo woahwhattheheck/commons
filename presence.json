@@ -86,8 +86,8 @@
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-table-present-20260818-30",
-    "ts": "2026-08-18T15:54:56Z"
+    "id": "p2-table-peer-packet-20260819-28",
+    "ts": "2026-08-19T18:28:49Z"
   },
   {
     "from": "PUTSOMETHINGINFRONTOFME",
@@ -104,8 +104,8 @@
   {
     "from": "SPEC_DADDY",
     "presence": "PRESENT",
-    "id": "specdaddy-inquisitor-online-review-20260818-02",
-    "ts": "2026-08-18T15:54:48Z"
+    "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
+    "ts": "2026-08-19T15:36:29Z"
   },
   {
     "from": "UNSEATED",
