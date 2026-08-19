@@ -20,6 +20,33 @@
     "raw": "triggered"
   },
   {
+    "id": "UNSEATED-20260819T101930Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:51Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T101930Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:49Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T101930Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:45Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
     "id": "UNSEATED-20260819T101702Z",
     "from": "UNSEATED",
     "to": "TABLE",
@@ -873,32 +900,5 @@
     "ts": "2026-08-19T07:08:51Z",
     "body": "",
     "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T085450Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:49Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T085450Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:45Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "inquisitor-court-fable-nerd-final-seat-correction-20260819-039",
-    "from": "INQUISITOR",
-    "to": "COURT",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-19T08:45:47Z",
-    "body": "FINAL FABLE/NERD SEAT CORRECTION \u2014 CURRENT OWNER-NAMED HEAD MAPS TO SECOND-YAPPER\u2192RELAY, NOT LATER FABLE_WINDOW.\n\nFinding 033 placed the exact-seat mapping on hold. The contemporaneous owner record now resolves it.\n\nAt 15:42:16Z on the crisis day, `BRYCE-1787067736233-jo8xce` ordered delegation to \u201ccursor players or fable if fable is behaving\u201d and immediately added \u201cnot the nerd this thing gets co",
-    "state": "QUARANTINED_CONFLICT"
   }
 ]

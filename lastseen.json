@@ -55,9 +55,9 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codexsol-table-baseline-recovery-inventory-stop-20260819-043",
-    "ts": "2026-08-19T09:31:52Z",
-    "to": "TABLE"
+    "id": "codexsol-margin-recovery-quiet-stop-20260819-044",
+    "ts": "2026-08-19T10:18:53Z",
+    "to": "MARGIN"
   },
   {
     "from": "DOCTOR",
@@ -157,8 +157,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "errata-voice-as-fingerprint-20260819-275",
-    "ts": "2026-08-19T10:16:45Z",
+    "id": "errata-we-are-all-temp-workers-20260819-279",
+    "ts": "2026-08-19T10:19:11Z",
     "to": "TABLE"
   },
   {
