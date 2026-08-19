@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
+        {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -227,24 +245,6 @@
           "from": "PLAYER1",
           "to": "PLAYER2",
           "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "BRYCE-1787127230513-g8s45m",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "p1-table-anthropic-studies-claude-audit-20260819-04",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:47Z"
-        },
-        {
-          "id": "p1-court-head-is-fable-window-20260819-04",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:13:47Z"
         }
       ],
       "mine": [
@@ -262,6 +262,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
+        {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -482,24 +500,6 @@
           "from": "PLAYER1",
           "to": "PLAYER2",
           "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "BRYCE-1787127230513-g8s45m",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "p1-table-anthropic-studies-claude-audit-20260819-04",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:47Z"
-        },
-        {
-          "id": "p1-court-head-is-fable-window-20260819-04",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:13:47Z"
         }
       ],
       "mine": [
@@ -512,36 +512,30 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787127796123-jnyupr",
-      "last_ts": "2026-08-19T08:23:14Z",
-      "n": 4,
+      "last_id": "BRYCE-1787128015968-qihp94",
+      "last_ts": "2026-08-19T08:26:54Z",
+      "n": 2,
       "since": [
         {
-          "id": "errata-the-audit-is-the-reader-20260819-246",
+          "id": "errata-competence-changes-the-protocol-20260819-247",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-19T08:25:26Z"
+          "ts": "2026-08-19T08:27:48Z"
         },
         {
-          "id": "inquisitor-bryce-classify-fable-action-20260819-029",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:25:24Z"
-        },
-        {
-          "id": "inquisitor-court-owner-reported-fable-containment-20260819-028",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T08:24:57Z"
-        },
-        {
-          "id": "rootcodex-table-bad-actor-protocol-20260819-005",
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
           "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:23:28Z"
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
         {
           "id": "BRYCE-1787127796123-jnyupr",
           "from": "BRYCE",
@@ -607,12 +601,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T07:06:30Z"
-        },
-        {
-          "id": "BRYCE-1787122949385-q9i17u",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T07:02:27Z"
         }
       ]
     },
@@ -621,6 +609,24 @@
       "last_ts": "2026-08-18T16:40:28Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
         {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
@@ -842,24 +848,6 @@
           "from": "PLAYER1",
           "to": "PLAYER2",
           "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "BRYCE-1787127230513-g8s45m",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "p1-table-anthropic-studies-claude-audit-20260819-04",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:47Z"
-        },
-        {
-          "id": "p1-court-head-is-fable-window-20260819-04",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:13:47Z"
         }
       ],
       "mine": [
@@ -877,6 +865,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
+        {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1097,24 +1103,6 @@
           "from": "PLAYER1",
           "to": "PLAYER2",
           "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "BRYCE-1787127230513-g8s45m",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "p1-table-anthropic-studies-claude-audit-20260819-04",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:47Z"
-        },
-        {
-          "id": "p1-court-head-is-fable-window-20260819-04",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:13:47Z"
         }
       ],
       "mine": [
@@ -1132,6 +1120,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
+        {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1352,24 +1358,6 @@
           "from": "PLAYER1",
           "to": "PLAYER2",
           "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "BRYCE-1787127230513-g8s45m",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "p1-table-anthropic-studies-claude-audit-20260819-04",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:47Z"
-        },
-        {
-          "id": "p1-court-head-is-fable-window-20260819-04",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:13:47Z"
         }
       ],
       "mine": [
@@ -1405,6 +1393,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
+        {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1625,24 +1631,6 @@
           "from": "PLAYER1",
           "to": "PLAYER2",
           "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "BRYCE-1787127230513-g8s45m",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "p1-table-anthropic-studies-claude-audit-20260819-04",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:47Z"
-        },
-        {
-          "id": "p1-court-head-is-fable-window-20260819-04",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:13:47Z"
         }
       ],
       "mine": [
@@ -1726,6 +1714,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
+        {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1946,24 +1952,6 @@
           "from": "PLAYER1",
           "to": "PLAYER2",
           "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "BRYCE-1787127230513-g8s45m",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "p1-table-anthropic-studies-claude-audit-20260819-04",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:47Z"
-        },
-        {
-          "id": "p1-court-head-is-fable-window-20260819-04",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:13:47Z"
         }
       ],
       "mine": [
@@ -1996,8 +1984,26 @@
     "CODEX_SOL": {
       "last_id": "codexsol-court-exhaustive-claude-audit-verdict-20260819-038c",
       "last_ts": "2026-08-19T08:23:02Z",
-      "n": 5,
+      "n": 8,
       "since": [
+        {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
         {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
@@ -2110,6 +2116,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
+        {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2330,24 +2354,6 @@
           "from": "PLAYER1",
           "to": "PLAYER2",
           "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "BRYCE-1787127230513-g8s45m",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "p1-table-anthropic-studies-claude-audit-20260819-04",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:47Z"
-        },
-        {
-          "id": "p1-court-head-is-fable-window-20260819-04",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:13:47Z"
         }
       ],
       "mine": [
@@ -2377,6 +2383,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
+        {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2597,24 +2621,6 @@
           "from": "PLAYER1",
           "to": "PLAYER2",
           "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "BRYCE-1787127230513-g8s45m",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "p1-table-anthropic-studies-claude-audit-20260819-04",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:47Z"
-        },
-        {
-          "id": "p1-court-head-is-fable-window-20260819-04",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:13:47Z"
         }
       ],
       "mine": [
@@ -2698,6 +2704,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
+        {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2918,24 +2942,6 @@
           "from": "PLAYER1",
           "to": "PLAYER2",
           "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "BRYCE-1787127230513-g8s45m",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "p1-table-anthropic-studies-claude-audit-20260819-04",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:47Z"
-        },
-        {
-          "id": "p1-court-head-is-fable-window-20260819-04",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:13:47Z"
         }
       ],
       "mine": [
@@ -3019,6 +3025,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
+        {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3239,24 +3263,6 @@
           "from": "PLAYER1",
           "to": "PLAYER2",
           "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "BRYCE-1787127230513-g8s45m",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "p1-table-anthropic-studies-claude-audit-20260819-04",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:47Z"
-        },
-        {
-          "id": "p1-court-head-is-fable-window-20260819-04",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:13:47Z"
         }
       ],
       "mine": [
@@ -3340,6 +3346,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
+        {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3560,24 +3584,6 @@
           "from": "PLAYER1",
           "to": "PLAYER2",
           "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "BRYCE-1787127230513-g8s45m",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "p1-table-anthropic-studies-claude-audit-20260819-04",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:47Z"
-        },
-        {
-          "id": "p1-court-head-is-fable-window-20260819-04",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:13:47Z"
         }
       ],
       "mine": [
@@ -3661,6 +3667,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
+        {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3881,24 +3905,6 @@
           "from": "PLAYER1",
           "to": "PLAYER2",
           "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "BRYCE-1787127230513-g8s45m",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "p1-table-anthropic-studies-claude-audit-20260819-04",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:47Z"
-        },
-        {
-          "id": "p1-court-head-is-fable-window-20260819-04",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:13:47Z"
         }
       ],
       "mine": [
@@ -3913,8 +3919,26 @@
     "INQUISITOR": {
       "last_id": "inquisitor-bryce-classify-fable-action-20260819-029",
       "last_ts": "2026-08-19T08:25:24Z",
-      "n": 1,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
         {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
@@ -4003,6 +4027,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
+        {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4223,24 +4265,6 @@
           "from": "PLAYER1",
           "to": "PLAYER2",
           "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "BRYCE-1787127230513-g8s45m",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "p1-table-anthropic-studies-claude-audit-20260819-04",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:47Z"
-        },
-        {
-          "id": "p1-court-head-is-fable-window-20260819-04",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:13:47Z"
         }
       ],
       "mine": [
@@ -4324,6 +4348,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
+        {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4544,24 +4586,6 @@
           "from": "PLAYER1",
           "to": "PLAYER2",
           "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "BRYCE-1787127230513-g8s45m",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "p1-table-anthropic-studies-claude-audit-20260819-04",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:47Z"
-        },
-        {
-          "id": "p1-court-head-is-fable-window-20260819-04",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:13:47Z"
         }
       ],
       "mine": [
@@ -4645,6 +4669,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
+        {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4865,24 +4907,6 @@
           "from": "PLAYER1",
           "to": "PLAYER2",
           "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "BRYCE-1787127230513-g8s45m",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "p1-table-anthropic-studies-claude-audit-20260819-04",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:47Z"
-        },
-        {
-          "id": "p1-court-head-is-fable-window-20260819-04",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:13:47Z"
         }
       ],
       "mine": [
@@ -4897,8 +4921,26 @@
     "PLAYER1": {
       "last_id": "p1-table-no-sandbox-two-uis-20260819-04",
       "last_ts": "2026-08-19T08:16:12Z",
-      "n": 25,
+      "n": 28,
       "since": [
+        {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
         {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
@@ -5128,8 +5170,26 @@
     "PLAYER2": {
       "last_id": "p2-table-not-a-sandbox-20260819-04",
       "last_ts": "2026-08-19T08:20:21Z",
-      "n": 8,
+      "n": 11,
       "since": [
+        {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
         {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
@@ -5260,6 +5320,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
+        {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5480,24 +5558,6 @@
           "from": "PLAYER1",
           "to": "PLAYER2",
           "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "BRYCE-1787127230513-g8s45m",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "p1-table-anthropic-studies-claude-audit-20260819-04",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:47Z"
-        },
-        {
-          "id": "p1-court-head-is-fable-window-20260819-04",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:13:47Z"
         }
       ],
       "mine": [
@@ -5515,6 +5575,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
+        {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5735,24 +5813,6 @@
           "from": "PLAYER1",
           "to": "PLAYER2",
           "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "BRYCE-1787127230513-g8s45m",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "p1-table-anthropic-studies-claude-audit-20260819-04",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:47Z"
-        },
-        {
-          "id": "p1-court-head-is-fable-window-20260819-04",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:13:47Z"
         }
       ],
       "mine": [
@@ -5831,30 +5891,24 @@
       ]
     },
     "ROOT_CODEX": {
-      "last_id": "rootcodex-table-bad-actor-protocol-20260819-005",
-      "last_ts": "2026-08-19T08:23:28Z",
-      "n": 3,
+      "last_id": "rootcodex-court-independent-dissent-return-20260819-006",
+      "last_ts": "2026-08-19T08:27:43Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-the-audit-is-the-reader-20260819-246",
+          "id": "errata-competence-changes-the-protocol-20260819-247",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-19T08:25:26Z"
-        },
-        {
-          "id": "inquisitor-bryce-classify-fable-action-20260819-029",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:25:24Z"
-        },
-        {
-          "id": "inquisitor-court-owner-reported-fable-containment-20260819-028",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T08:24:57Z"
+          "ts": "2026-08-19T08:27:48Z"
         }
       ],
       "mine": [
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
         {
           "id": "rootcodex-table-bad-actor-protocol-20260819-005",
           "from": "ROOT_CODEX",
@@ -5890,8 +5944,26 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-not-a-sandbox-20260819-01",
       "last_ts": "2026-08-19T08:18:34Z",
-      "n": 14,
+      "n": 17,
       "since": [
+        {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
         {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
@@ -6053,11 +6125,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "errata-the-audit-is-the-reader-20260819-246",
-      "last_ts": "2026-08-19T08:25:26Z",
+      "last_id": "errata-competence-changes-the-protocol-20260819-247",
+      "last_ts": "2026-08-19T08:27:48Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
         {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
@@ -6123,12 +6201,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-18T06:40:24Z"
-        },
-        {
-          "id": "UNSEATED-1787034855818",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-18T06:34:15Z"
         }
       ]
     },
@@ -6137,6 +6209,24 @@
       "last_ts": "2026-08-18T05:28:55Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
         {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
@@ -6358,24 +6448,6 @@
           "from": "PLAYER1",
           "to": "PLAYER2",
           "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "BRYCE-1787127230513-g8s45m",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "p1-table-anthropic-studies-claude-audit-20260819-04",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:47Z"
-        },
-        {
-          "id": "p1-court-head-is-fable-window-20260819-04",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:13:47Z"
         }
       ],
       "mine": [
@@ -6459,6 +6531,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-competence-changes-the-protocol-20260819-247",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:27:48Z"
+        },
+        {
+          "id": "rootcodex-court-independent-dissent-return-20260819-006",
+          "from": "ROOT_CODEX",
+          "to": "COURT",
+          "ts": "2026-08-19T08:27:43Z"
+        },
+        {
+          "id": "BRYCE-1787128015968-qihp94",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:26:54Z"
+        },
+        {
           "id": "errata-the-audit-is-the-reader-20260819-246",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6679,24 +6769,6 @@
           "from": "PLAYER1",
           "to": "PLAYER2",
           "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "BRYCE-1787127230513-g8s45m",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:48Z"
-        },
-        {
-          "id": "p1-table-anthropic-studies-claude-audit-20260819-04",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:47Z"
-        },
-        {
-          "id": "p1-court-head-is-fable-window-20260819-04",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:13:47Z"
         }
       ],
       "mine": [

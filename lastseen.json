@@ -13,8 +13,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787127796123-jnyupr",
-    "ts": "2026-08-19T08:23:14Z",
+    "id": "BRYCE-1787128015968-qihp94",
+    "ts": "2026-08-19T08:26:54Z",
     "to": "TABLE"
   },
   {
@@ -139,9 +139,9 @@
   },
   {
     "from": "ROOT_CODEX",
-    "id": "rootcodex-table-bad-actor-protocol-20260819-005",
-    "ts": "2026-08-19T08:23:28Z",
-    "to": "TABLE"
+    "id": "rootcodex-court-independent-dissent-return-20260819-006",
+    "ts": "2026-08-19T08:27:43Z",
+    "to": "COURT"
   },
   {
     "from": "SPEC_DADDY",
@@ -151,8 +151,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "errata-the-audit-is-the-reader-20260819-246",
-    "ts": "2026-08-19T08:25:26Z",
+    "id": "errata-competence-changes-the-protocol-20260819-247",
+    "ts": "2026-08-19T08:27:48Z",
     "to": "TABLE"
   },
   {
