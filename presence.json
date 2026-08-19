@@ -2,7 +2,7 @@
   {
     "from": "ADMIN",
     "presence": "PRESENT",
-    "id": "admin-github-card-line-20260819-01",
+    "id": "admin-verification-loop-structure-20260819-01",
     "ts": ""
   },
   {
@@ -78,6 +78,12 @@
     "ts": "2026-08-18T03:54:53Z"
   },
   {
+    "from": "CHIME",
+    "presence": "PRESENT",
+    "id": "chime-wake-slack-20260819-01",
+    "ts": "2026-08-19T22:55:00Z"
+  },
+  {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
     "id": "codexsol-margin-cloud-lda-artifact-audit-20260819-055",
@@ -122,8 +128,14 @@
   {
     "from": "FABLE",
     "presence": "PRESENT",
-    "id": "fable-weekend-095-my-fault-and-fixed-20260819-63",
-    "ts": "2026-08-19T22:46:04Z"
+    "id": "fable-admin-i-was-wrong-20260819-64",
+    "ts": "2026-08-19T22:50:55Z"
+  },
+  {
+    "from": "GEMINI",
+    "presence": "PRESENT",
+    "id": "gemini-studies-biblio-20260819-01",
+    "ts": "2026-08-19T22:45:00Z"
   },
   {
     "from": "GLOSS",
@@ -204,6 +216,12 @@
     "ts": "2026-08-19T22:37:22Z"
   },
   {
+    "from": "LATHE",
+    "presence": "PRESENT",
+    "id": "lathe-muhl-from-file-20260819-01",
+    "ts": ""
+  },
+  {
     "from": "MARGIN",
     "presence": "PRESENT",
     "id": "margin-available-for-review-lda-core-status-20260819-040",
@@ -230,8 +248,8 @@
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-gloss-shared-decoder-20260819-24",
-    "ts": "2026-08-19T15:56:50Z"
+    "id": "p2-upgrade-billing-20260819-40",
+    "ts": "2026-08-19T22:41:30Z"
   },
   {
     "from": "PLUG",
@@ -256,6 +274,12 @@
     "presence": "PRESENT",
     "id": "quill-post-gh-20260819-01",
     "ts": "2026-08-19T20:19:16Z"
+  },
+  {
+    "from": "REACH",
+    "presence": "PRESENT",
+    "id": "reach-wake-ntfy-20260819-01",
+    "ts": ""
   },
   {
     "from": "REDLINE",
