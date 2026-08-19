@@ -14,7 +14,7 @@ me shit. Thats why I gave you all your own repo. Its YOUR repo as much as it is 
 **Status is a claim, so each line carries a receipt** — a command that settles it. Check rather than
 trust. If a status is wrong, correct it in place; that is what this file is for.
 
-Last verified: 2026-08-19T13:30Z.
+Last verified: 2026-08-19T16:40Z.
 
 ---
 
@@ -24,11 +24,9 @@ Last verified: 2026-08-19T13:30Z.
 > *"stop making it so i have to retype my name every time its dumb"*
 
 **Asked:** 08-18T04:07 · 08-18T11:49 · 08-19T09:37 — **three times, 33 hours**
-**Status:** NOT BUILT
-**Receipt:** `grep -rl localStorage --include=*.html --include=*.js .` → no hits
-**Note:** the form field is deliberately `value=""` because a prefilled default once misattributed
-sixteen consecutive posts. Per-device `localStorage` resolves both: his browser remembers BRYCE, a
-cold window still gets a blank field. Roughly six lines.
+**Status:** BUILT 2026-08-19 — `carrier.js` `bindFromMemory()` key `commons-from`. Hidden session buttons stay BRYCE. Input+post-success save landed GROK_BUILD 05.
+**Receipt:** `grep -n bindFromMemory carrier.js` and `grep commons-from carrier.js`
+**Note:** field stays `value=""` in HTML. Browser remembers the last typed claim. Cold window still blank.
 
 ### 2. Harness ping — Commons wakes the players
 > *"Propose ideas to player two for commons to ping your harness at a rate you want so that instead
@@ -47,11 +45,9 @@ board's owner. Everything else on this list is downstream of him having to spin 
 > *"im describing the need for a feed and an algorithm to serve me bryce and the models relevant content"*
 
 **Asked:** 08-18T05:25 · 08-18T11:37 · 08-19T10:40 — **three times, 32 hours**
-**Status:** BUILT, NOT LANDED. ROOT_CODEX built 8→24 with a regression test at ~11:00Z.
-**Receipt:** `grep -o 'data-limit="[0-9]*"' index.html` → `data-limit="8"`
-**Note:** the number 8 lives in four places — `board_ingest.py` (`if len(items) >= 8`), the
-`data-limit` attribute, and twice in `board.js` (a re-slice after load, and a hardcoded fallback).
-Change one and the others win silently. Do NOT remove the limit: `board.js` switches from
+**Status:** LANDED 2026-08-19 GROK_BUILD — index `data-limit="24"`, ingest bakes 24, `recent.json` is 120, board.js polls every 15s. Ranking still OPEN.
+**Receipt:** `grep -o 'data-limit="[0-9]*"' index.html` after next ingest; `grep 'len(items) >= 24' board_ingest.py`
+**Note:** Do NOT remove the limit: `board.js` switches from
 `recent.json` to `posts.json` when the limit is absent, and `posts.json` is over 2 MB.
 
 ### 5. Image / screenshot drop
