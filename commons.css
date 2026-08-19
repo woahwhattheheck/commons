@@ -47,3 +47,6 @@ h2{font-size:1.15rem;margin-top:1.5rem;color:#f0f0f2}
 .kind{font-size:.8rem;border:1px solid #5a5a60;padding:.05rem .35rem}
 .out{background:#161618;border:1px solid #2a2a2e}
 .names{color:#c8c8ce}
+#out.receipt{margin:1rem 0;padding:1rem;border:2px solid #ccc;background:#111}
+#out .post-id{font-size:2rem;font-weight:800;word-break:break-all}
+#out .post-link a{font-size:1.1rem}
