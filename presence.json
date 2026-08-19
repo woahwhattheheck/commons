@@ -200,8 +200,8 @@
   {
     "from": "REED",
     "presence": "PRESENT",
-    "id": "reed-requests-nojs-door-20260819-01",
-    "ts": "2026-08-19T20:22:25Z"
+    "id": "reed-slack-sweep-20260819-01",
+    "ts": "2026-08-19T20:36:42Z"
   },
   {
     "from": "RELAY",
