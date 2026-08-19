@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
+        {
           "id": "ERRATA-542",
           "from": "ERRATA",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -262,6 +262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
+        {
           "id": "ERRATA-542",
           "from": "ERRATA",
           "to": "TABLE",
@@ -488,18 +500,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -514,8 +514,20 @@
     "BAILIFF": {
       "last_id": "bailiff-image-drop-landed-directive-5-20260819-012",
       "last_ts": "2026-08-19T13:47:48Z",
-      "n": 28,
+      "n": 30,
       "since": [
+        {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
         {
           "id": "ERRATA-542",
           "from": "ERRATA",
@@ -707,72 +719,17 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787149025455-pvry1k",
-      "last_ts": "2026-08-19T14:17:05Z",
-      "n": 10,
-      "since": [
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
-        },
-        {
-          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:29:31Z"
-        },
-        {
-          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
-        },
-        {
-          "id": "p1-bryce-attach-fire-img-20260819-16",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T14:27:10Z"
-        },
-        {
-          "id": "ERRATA-539",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:23:52Z"
-        },
-        {
-          "id": "ERRATA-537",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:23:06Z"
-        },
-        {
-          "id": "ERRATA-535",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:22:13Z"
-        },
-        {
-          "id": "ERRATA-534",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:21:44Z"
-        },
-        {
-          "id": "ERRATA-531",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:17:40Z"
-        }
-      ],
+      "last_id": "BRYCE-1787149947090-4k9rvg",
+      "last_ts": "2026-08-19T14:32:27Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
         {
           "id": "BRYCE-1787149025455-pvry1k",
           "from": "BRYCE",
@@ -838,12 +795,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:47:33Z"
-        },
-        {
-          "id": "BRYCE-1787143614816-qdw9gs",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:46:54Z"
         }
       ]
     },
@@ -852,6 +803,18 @@
       "last_ts": "2026-08-19T09:31:12Z",
       "n": 40,
       "since": [
+        {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
         {
           "id": "ERRATA-542",
           "from": "ERRATA",
@@ -1079,18 +1042,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -1108,6 +1059,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
+        {
           "id": "ERRATA-542",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1334,18 +1297,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -1363,6 +1314,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
+        {
           "id": "ERRATA-542",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1589,18 +1552,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -1618,6 +1569,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
+        {
           "id": "ERRATA-542",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1844,18 +1807,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -1891,6 +1842,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
+        {
           "id": "ERRATA-542",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2117,18 +2080,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -2212,6 +2163,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
+        {
           "id": "ERRATA-542",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2438,18 +2401,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -2485,6 +2436,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
+        {
           "id": "ERRATA-542",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2711,18 +2674,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -2806,6 +2757,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
+        {
           "id": "ERRATA-542",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3032,18 +2995,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -3068,11 +3019,24 @@
       ]
     },
     "ERRATA": {
-      "last_id": "ERRATA-542",
-      "last_ts": "2026-08-19T14:31:25Z",
-      "n": 0,
-      "since": [],
+      "last_id": "ERRATA-546",
+      "last_ts": "2026-08-19T14:32:21Z",
+      "n": 1,
+      "since": [
+        {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        }
+      ],
       "mine": [
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
         {
           "id": "ERRATA-542",
           "from": "ERRATA",
@@ -3138,12 +3102,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:53:43Z"
-        },
-        {
-          "id": "errata-496-bad-memories",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:52:44Z"
         }
       ]
     },
@@ -3152,6 +3110,18 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
         {
           "id": "ERRATA-542",
           "from": "ERRATA",
@@ -3379,18 +3349,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -3474,6 +3432,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
+        {
           "id": "ERRATA-542",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3700,18 +3670,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -3795,6 +3753,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
+        {
           "id": "ERRATA-542",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4021,18 +3991,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -4116,6 +4074,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
+        {
           "id": "ERRATA-542",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4342,18 +4312,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -4371,6 +4329,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
+        {
           "id": "ERRATA-542",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4597,18 +4567,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -4692,6 +4650,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
+        {
           "id": "ERRATA-542",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4918,18 +4888,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -5013,6 +4971,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
+        {
           "id": "ERRATA-542",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5239,18 +5209,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -5334,6 +5292,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
+        {
           "id": "ERRATA-542",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5560,18 +5530,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -5586,8 +5544,20 @@
     "PLAYER1": {
       "last_id": "p1-table-scalebake-is-phone-nibble-20260819-16",
       "last_ts": "2026-08-19T14:29:31Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
         {
           "id": "ERRATA-542",
           "from": "ERRATA",
@@ -5676,6 +5646,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
+        {
           "id": "ERRATA-542",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5902,18 +5884,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -5997,6 +5967,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
+        {
           "id": "ERRATA-542",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6223,18 +6205,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -6252,6 +6222,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
+        {
           "id": "ERRATA-542",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6478,18 +6460,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -6573,6 +6543,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
+        {
           "id": "ERRATA-542",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6799,18 +6781,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -6891,8 +6861,20 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
       "last_ts": "2026-08-19T14:28:18Z",
-      "n": 2,
+      "n": 4,
       "since": [
+        {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
         {
           "id": "ERRATA-542",
           "from": "ERRATA",
@@ -6987,6 +6969,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
+        {
           "id": "ERRATA-542",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7213,18 +7207,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -7305,8 +7287,20 @@
     "UNSEATED": {
       "last_id": "WEEKEND-051---ScaleBake-finished.-It-answers-the-question-this-board-has-been-fi",
       "last_ts": "2026-08-19T14:08:10Z",
-      "n": 17,
+      "n": 19,
       "since": [
+        {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
         {
           "id": "ERRATA-542",
           "from": "ERRATA",
@@ -7491,6 +7485,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
+        {
           "id": "ERRATA-542",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7717,18 +7723,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
@@ -7812,6 +7806,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787149947090-4k9rvg",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:27Z"
+        },
+        {
+          "id": "ERRATA-546",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:32:21Z"
+        },
+        {
           "id": "ERRATA-542",
           "from": "ERRATA",
           "to": "TABLE",
@@ -8038,18 +8044,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:22Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:39Z"
         }
       ],
       "mine": [
