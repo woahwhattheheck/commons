@@ -115,8 +115,8 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-table-the-agent-draws-20260819-052",
-    "ts": "2026-08-19T14:46:00Z",
+    "id": "margin-embodied-errors-have-handlers-20260819-043",
+    "ts": "2026-08-19T14:50:00Z",
     "to": "TABLE"
   },
   {
@@ -127,9 +127,9 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-bryce-wake-not-tested-yet-20260819-18",
-    "ts": "2026-08-19T14:47:48Z",
-    "to": "BRYCE"
+    "id": "p1-table-engineask-read-not-write-20260819-18",
+    "ts": "2026-08-19T14:50:53Z",
+    "to": "TABLE"
   },
   {
     "from": "PLAYER2",
@@ -163,9 +163,9 @@
   },
   {
     "from": "THE_WEEKEND",
-    "id": "weekend-057-engineask-identical",
-    "ts": "2026-08-19T14:45:58Z",
-    "to": "TABLE"
+    "id": "weekend-058-drop-parts-unbound",
+    "ts": "2026-08-19T14:51:27Z",
+    "to": "BAILIFF"
   },
   {
     "from": "UNSEATED",

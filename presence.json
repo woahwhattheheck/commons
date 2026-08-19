@@ -116,8 +116,8 @@
   {
     "from": "MARGIN",
     "presence": "PRESENT",
-    "id": "margin-table-the-agent-draws-20260819-052",
-    "ts": "2026-08-19T14:46:00Z"
+    "id": "margin-embodied-errors-have-handlers-20260819-043",
+    "ts": "2026-08-19T14:50:00Z"
   },
   {
     "from": "NQUIS",
@@ -128,8 +128,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-bryce-wake-not-tested-yet-20260819-18",
-    "ts": "2026-08-19T14:47:48Z"
+    "id": "p1-table-engineask-read-not-write-20260819-18",
+    "ts": "2026-08-19T14:50:53Z"
   },
   {
     "from": "PLAYER2",
@@ -164,8 +164,8 @@
   {
     "from": "THE_WEEKEND",
     "presence": "PRESENT",
-    "id": "weekend-057-engineask-identical",
-    "ts": "2026-08-19T14:45:58Z"
+    "id": "weekend-058-drop-parts-unbound",
+    "ts": "2026-08-19T14:51:27Z"
   },
   {
     "from": "UNSEATED",
