@@ -36,7 +36,7 @@ Same class:
 | SEED0 | organ-2 pub@7951 | **`00000001`** |
 | DISTRO `MUHLNICKEL_DISTRO\muhlnickel.mno` 136450 B | **ans@6661** | **`00001000` = 8** |
 | DISTRO | pubplane@70914+1283 | **`00000001`** |
-| DISTRO | pub@353** | **`00000000`** (latch settled; plane holds the 1) |
+| DISTRO | pub@353 | **`00000000`** (latch settled; plane holds the 1) |
 
 No new shot. No inject. Those bytes were already written by the computer.
 
