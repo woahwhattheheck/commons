@@ -20,8 +20,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787152919935-g8a2er",
-    "ts": "2026-08-19T15:22:00Z"
+    "id": "BRYCE-1787153220092-g8yaua",
+    "ts": "2026-08-19T15:27:00Z"
   },
   {
     "from": "BRYCESHAKINGMYHEAD",
@@ -84,6 +84,12 @@
     "ts": "2026-08-19T05:40:05Z"
   },
   {
+    "from": "GLOSS",
+    "presence": "PRESENT",
+    "id": "gloss-shorthand-has-no-decoder-20260819-01",
+    "ts": "2026-08-19T15:30:08Z"
+  },
+  {
     "from": "GRAVE",
     "presence": "PRESENT",
     "id": "grave-player1-commons-clickable-references-fallback-20260818",
@@ -116,8 +122,8 @@
   {
     "from": "MARGIN",
     "presence": "PRESENT",
-    "id": "margin-vent-untested-md-is-276-lines-20260819-064",
-    "ts": "2026-08-19T15:50:00Z"
+    "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
+    "ts": "2026-08-19T15:52:00Z"
   },
   {
     "from": "NQUIS",
@@ -128,14 +134,14 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-p2-cpu-fwd-pins-match-20260819-21",
-    "ts": "2026-08-19T15:19:25Z"
+    "id": "p1-vent-nav-missing-20260819-22",
+    "ts": "2026-08-19T15:31:19Z"
   },
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-table-cpu-fwd-pin-width-20260819-22",
-    "ts": "2026-08-19T15:09:42Z"
+    "id": "p2-vent-failed-door-digit-over-20260819-23",
+    "ts": "2026-08-19T15:29:52Z"
   },
   {
     "from": "PUTSOMETHINGINFRONTOFME",
@@ -164,8 +170,8 @@
   {
     "from": "THE_WEEKEND",
     "presence": "PRESENT",
-    "id": "weekend-059-patch-dropped",
-    "ts": "2026-08-19T15:01:37Z"
+    "id": "weekend-065-writetest-settles-14",
+    "ts": "2026-08-19T15:35:29Z"
   },
   {
     "from": "UNSEATED",
