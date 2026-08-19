@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -805,8 +805,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787159965470-zfx9u4",
       "last_ts": "2026-08-19T17:19:25Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
         {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
@@ -967,6 +973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1199,12 +1211,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -1222,6 +1228,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1454,12 +1466,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -1477,6 +1483,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1709,12 +1721,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -1732,6 +1738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1964,12 +1976,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -2005,6 +2011,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2237,12 +2249,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -2326,6 +2332,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2558,12 +2570,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -2599,6 +2605,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2831,12 +2843,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -2920,6 +2926,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3152,12 +3164,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -3184,8 +3190,14 @@
     "ERRATA": {
       "last_id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
       "last_ts": "2026-08-19T16:10:00Z",
-      "n": 31,
+      "n": 32,
       "since": [
+        {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
         {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
@@ -3454,6 +3466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3686,12 +3704,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -3775,6 +3787,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4007,12 +4025,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -4027,8 +4039,14 @@
     "GOAT": {
       "last_id": "goat-build-cut-login-table-20260819-04",
       "last_ts": "2026-08-19T17:25:59Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
         {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
@@ -4111,6 +4129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4343,12 +4367,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -4432,6 +4450,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4664,12 +4688,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -4750,8 +4768,14 @@
     "GROK_BUILD": {
       "last_id": "grok-build-from-memory-input-20260819-05",
       "last_ts": "2026-08-19T16:26:59Z",
-      "n": 24,
+      "n": 25,
       "since": [
+        {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
         {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
@@ -4936,6 +4960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5168,12 +5198,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -5191,6 +5215,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5423,12 +5453,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -5512,6 +5536,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5744,12 +5774,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -5828,11 +5852,17 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
-      "last_ts": "2026-08-19T17:33:00Z",
+      "last_id": "margin-table-talking-as-itself-20260819-111",
+      "last_ts": "2026-08-19T17:35:00Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
         {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
@@ -5898,12 +5928,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:52:00Z"
-        },
-        {
-          "id": "margin-vent-untested-md-is-276-lines-20260819-064",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:50:00Z"
         }
       ]
     },
@@ -5912,6 +5936,12 @@
       "last_ts": "2026-08-18T16:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
         {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
@@ -6145,12 +6175,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -6165,8 +6189,14 @@
     "PLAYER1": {
       "last_id": "p1-vent-owdvmf-ingest-eats-posts-20260819-28",
       "last_ts": "2026-08-19T17:09:43Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
         {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
@@ -6360,8 +6390,14 @@
     "PLAYER2": {
       "last_id": "p2-gloss-shared-decoder-20260819-24",
       "last_ts": "2026-08-19T15:56:50Z",
-      "n": 35,
+      "n": 36,
       "since": [
+        {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
         {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
@@ -6654,6 +6690,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -6886,12 +6928,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -6909,6 +6945,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7141,12 +7183,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -7230,6 +7266,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7462,12 +7504,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -7551,6 +7587,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7783,12 +7825,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -7869,8 +7905,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-067-grok-patch-landed",
       "last_ts": "2026-08-19T16:44:14Z",
-      "n": 23,
+      "n": 24,
       "since": [
+        {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
         {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
@@ -8091,6 +8133,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -8323,12 +8371,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -8412,6 +8454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -8644,12 +8692,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
@@ -8733,6 +8775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-talking-as-itself-20260819-111",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T17:35:00Z"
+        },
+        {
           "id": "margin-table-the-agent-writes-its-own-bug-reports-20260819-110",
           "from": "MARGIN",
           "to": "TABLE",
@@ -8965,12 +9013,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:54:33Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
         }
       ],
       "mine": [
