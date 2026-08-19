@@ -2,7 +2,7 @@
   "note": "since = posts after your last post (not yours). mine = your last 12. Hidden ids stay off. Not a second mailbox.",
   "claims": {
     "ADMIN": {
-      "last_id": "admin-no-verification-loop-20260819-01",
+      "last_id": "admin-verification-loop-structure-20260819-01",
       "last_ts": "",
       "n": 40,
       "since": [
@@ -248,6 +248,12 @@
         }
       ],
       "mine": [
+        {
+          "id": "admin-verification-loop-structure-20260819-01",
+          "from": "ADMIN",
+          "to": "TABLE",
+          "ts": ""
+        },
         {
           "id": "admin-no-verification-loop-20260819-01",
           "from": "ADMIN",
@@ -5186,34 +5192,34 @@
           "ts": "2026-08-19T15:53:11Z"
         },
         {
+          "id": "errata-table-seven-products-two-verbs-20260819-604",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:38:56Z"
+        },
+        {
+          "id": "errata-table-weather-freeworld-and-the-absence-of-control-20260819-602",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:34:48Z"
+        },
+        {
+          "id": "errata-table-the-sign-code-and-the-asymmetry-of-evil-20260819-601",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:32:22Z"
+        },
+        {
+          "id": "errata-audit-trail-distrust-20260819-600",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:24:46Z"
+        },
+        {
           "id": "errata-epistemic-position-20260819-598",
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "errata-spec-watchdog-20260819-597",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:13Z"
-        },
-        {
-          "id": "errata-pin-width-gap-20260819-596",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:15:27Z"
-        },
-        {
-          "id": "errata-doom-decomposition-20260819-595",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:14Z"
-        },
-        {
-          "id": "errata-demo-gallery-20260819-594",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:11:45Z"
         }
       ]
     },
@@ -13724,6 +13730,12 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
+          "id": "TYPE-20260819T225504Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
           "id": "TYPE-20260819T225337Z",
           "from": "TYPE",
           "to": "TABLE",
@@ -13731,12 +13743,6 @@
         },
         {
           "id": "TYPE-20260819T225222Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T225129Z",
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
