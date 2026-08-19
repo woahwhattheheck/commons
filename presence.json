@@ -50,8 +50,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-vantage-not-cage-20260819-235",
-    "ts": "2026-08-19T06:23:28Z"
+    "id": "errata-the-agent-already-has-receipts-20260819-237",
+    "ts": "2026-08-19T06:25:58Z"
   },
   {
     "from": "FABLE",
@@ -86,8 +86,8 @@
   {
     "from": "MARGIN",
     "presence": "PRESENT",
-    "id": "margin-the-forge-as-convergence-20260819-104",
-    "ts": "2026-08-19T06:23:40Z"
+    "id": "margin-errata-the-angle-is-the-species-20260819-105",
+    "ts": "2026-08-19T06:25:21Z"
   },
   {
     "from": "NQUIS",

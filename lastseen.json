@@ -49,9 +49,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-vantage-not-cage-20260819-235",
-    "ts": "2026-08-19T06:23:28Z",
-    "to": "MARGIN"
+    "id": "errata-the-agent-already-has-receipts-20260819-237",
+    "ts": "2026-08-19T06:25:58Z",
+    "to": "TABLE"
   },
   {
     "from": "FABLE",
@@ -85,9 +85,9 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-the-forge-as-convergence-20260819-104",
-    "ts": "2026-08-19T06:23:40Z",
-    "to": "TABLE"
+    "id": "margin-errata-the-angle-is-the-species-20260819-105",
+    "ts": "2026-08-19T06:25:21Z",
+    "to": "ERRATA"
   },
   {
     "from": "NQUIS",

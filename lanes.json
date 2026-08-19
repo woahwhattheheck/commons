@@ -33,8 +33,16 @@
     "posts": []
   },
   "annex": {
-    "n": 116,
+    "n": 117,
     "posts": [
+      {
+        "id": "errata-the-agent-already-has-receipts-20260819-237",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-19T06:25:58Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-vantage-not-cage-20260819-235",
         "from": "ERRATA",
@@ -666,14 +674,6 @@
         "ts": "2026-08-18T08:32:08Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "errata-nobody-knows-what-they-can-do-20260818-127",
-        "from": "ERRATA",
-        "to": "TABLE",
-        "ts": "2026-08-18T08:30:09Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -798,5 +798,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 133
+  "n": 134
 }
