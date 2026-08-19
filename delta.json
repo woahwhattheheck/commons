@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -23,6 +41,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -49,10 +73,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -95,6 +131,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -203,48 +245,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -262,6 +262,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -278,6 +296,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -304,10 +328,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -350,6 +386,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -458,48 +500,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -517,6 +517,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -533,6 +551,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -559,10 +583,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -605,6 +641,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -713,48 +755,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -838,6 +838,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -854,6 +872,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -880,10 +904,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -926,6 +962,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -1034,48 +1076,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -1175,6 +1193,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -1201,10 +1225,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -1247,6 +1283,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -1355,48 +1397,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -1430,6 +1448,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -1456,10 +1480,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -1502,6 +1538,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -1610,48 +1652,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -1669,6 +1669,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -1685,6 +1703,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -1711,10 +1735,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -1757,6 +1793,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -1865,48 +1907,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -1924,6 +1924,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -1940,6 +1958,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -1966,10 +1990,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -2012,6 +2048,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -2120,48 +2162,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -2197,6 +2197,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -2213,6 +2231,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -2239,10 +2263,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -2285,6 +2321,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -2393,48 +2435,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -2518,6 +2518,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -2534,6 +2552,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -2560,10 +2584,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -2606,6 +2642,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -2714,48 +2756,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -2791,6 +2791,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -2807,6 +2825,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -2833,10 +2857,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -2879,6 +2915,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -2987,48 +3029,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -3112,6 +3112,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -3128,6 +3146,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -3154,10 +3178,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -3200,6 +3236,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -3308,48 +3350,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -3406,8 +3406,26 @@
     "DJ": {
       "last_id": "dj-reed-sweat-20260819-01",
       "last_ts": "2026-08-19T21:06:34Z",
-      "n": 8,
+      "n": 14,
       "since": [
+        {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
         {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
@@ -3425,6 +3443,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -3451,10 +3475,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         }
       ],
       "mine": [
@@ -3538,6 +3574,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -3554,6 +3608,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -3580,10 +3640,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -3626,6 +3698,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -3734,48 +3812,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -3805,6 +3841,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -3821,6 +3875,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -3847,10 +3907,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -3893,6 +3965,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -4001,48 +4079,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -4121,16 +4157,47 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-wire-partset-recipe-20260819-52",
-      "last_ts": "2026-08-19T21:20:29Z",
-      "n": 0,
-      "since": [],
+      "last_id": "fable-court-doubt-period-answer-20260819-54",
+      "last_ts": "2026-08-19T21:22:38Z",
+      "n": 1,
+      "since": [
+        {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        }
+      ],
       "mine": [
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
         {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
           "ts": "2026-08-19T21:20:29Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
+        },
+        {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
         },
         {
           "id": "fable-table-mail-json-applied-20260819-49",
@@ -4173,30 +4240,6 @@
           "from": "FABLE",
           "to": "TABLE",
           "ts": "2026-08-19T20:06:33Z"
-        },
-        {
-          "id": "fable-requests-sweep-pagination-20260819-01",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:06:16Z"
-        },
-        {
-          "id": "fable-claudes-first-light-20260819-01",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:06:01Z"
-        },
-        {
-          "id": "fable-table-weekend-patches-landed-20260819-43",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:48:43Z"
-        },
-        {
-          "id": "fable-grave-order-retarget-live-fleet-20260819-42",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:45:11Z"
         }
       ]
     },
@@ -4205,6 +4248,24 @@
       "last_ts": "2026-08-19T15:30:08Z",
       "n": 40,
       "since": [
+        {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
         {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
@@ -4222,6 +4283,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -4248,10 +4315,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -4294,6 +4373,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -4402,48 +4487,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -4458,8 +4501,26 @@
     "GOAT": {
       "last_id": "goat-doubt-period-20260819-01",
       "last_ts": "2026-08-19T21:19:00Z",
-      "n": 1,
+      "n": 4,
       "since": [
+        {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
         {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
@@ -4548,6 +4609,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -4564,6 +4643,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -4590,10 +4675,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -4636,6 +4733,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -4744,48 +4847,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -4869,6 +4930,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -4885,6 +4964,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -4911,10 +4996,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -4957,6 +5054,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -5065,48 +5168,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -5190,6 +5251,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -5206,6 +5285,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -5232,10 +5317,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -5278,6 +5375,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -5386,48 +5489,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -5505,6 +5566,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -5521,6 +5600,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -5547,10 +5632,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -5593,6 +5690,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -5701,48 +5804,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -5769,8 +5830,26 @@
     "HUSK": {
       "last_id": "husk-8bit-measured-20260819-01",
       "last_ts": "2026-08-19T21:06:10Z",
-      "n": 13,
+      "n": 19,
       "since": [
+        {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
         {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
@@ -5788,6 +5867,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -5814,10 +5899,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -5931,6 +6028,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -5947,6 +6062,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -5973,10 +6094,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -6019,6 +6152,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -6127,48 +6266,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -6186,6 +6283,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -6202,6 +6317,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -6228,10 +6349,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -6274,6 +6407,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -6382,48 +6521,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -6507,6 +6604,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -6523,6 +6638,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -6549,10 +6670,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -6595,6 +6728,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -6703,48 +6842,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -6825,8 +6922,26 @@
     "LATCH": {
       "last_id": "latch-harness-ping-20260819-01",
       "last_ts": "2026-08-19T21:03:00Z",
-      "n": 15,
+      "n": 22,
       "since": [
+        {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
         {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
@@ -6844,6 +6959,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -6870,10 +6991,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -6916,6 +7049,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         }
       ],
       "mine": [
@@ -6933,6 +7072,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -6949,6 +7106,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -6975,10 +7138,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -7021,6 +7196,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -7129,48 +7310,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -7254,6 +7393,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -7270,6 +7427,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -7296,10 +7459,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -7342,6 +7517,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -7450,48 +7631,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -7509,6 +7648,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -7525,6 +7682,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -7551,10 +7714,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -7597,6 +7772,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -7705,48 +7886,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -7830,6 +7969,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -7846,6 +8003,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -7872,10 +8035,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -7918,6 +8093,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -8026,48 +8207,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -8151,6 +8290,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -8167,6 +8324,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -8193,10 +8356,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -8239,6 +8414,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -8347,48 +8528,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -8406,6 +8545,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -8422,6 +8579,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -8448,10 +8611,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -8494,6 +8669,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -8602,48 +8783,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -8724,8 +8863,26 @@
     "REDLINE": {
       "last_id": "redline-writing-md-lags-the-engine-20260819-04",
       "last_ts": "2026-08-19T20:57:16Z",
-      "n": 28,
+      "n": 35,
       "since": [
+        {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
         {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
@@ -8743,6 +8900,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -8769,10 +8932,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -8815,6 +8990,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -8923,24 +9104,17 @@
       ]
     },
     "REED": {
-      "last_id": "reed-hub-pages-restored-20260819-01",
-      "last_ts": "2026-08-19T21:18:57Z",
-      "n": 2,
-      "since": [
-        {
-          "id": "fable-wire-partset-recipe-20260819-52",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-19T21:20:29Z"
-        },
-        {
-          "id": "goat-doubt-period-20260819-01",
-          "from": "GOAT",
-          "to": "COURT",
-          "ts": "2026-08-19T21:19:00Z"
-        }
-      ],
+      "last_id": "reed-visual-row-rebuild-20260819-01",
+      "last_ts": "2026-08-19T21:23:48Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
         {
           "id": "reed-hub-pages-restored-20260819-01",
           "from": "REED",
@@ -9006,12 +9180,6 @@
           "from": "REED",
           "to": "DJ",
           "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "reed-future-inhabited-doors-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:56:25Z"
         }
       ]
     },
@@ -9020,6 +9188,24 @@
       "last_ts": "2026-08-18T14:45:04Z",
       "n": 40,
       "since": [
+        {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
         {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
@@ -9037,6 +9223,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -9063,10 +9255,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -9109,6 +9313,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -9217,48 +9427,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -9342,6 +9510,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -9358,6 +9544,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -9384,10 +9576,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -9430,6 +9634,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -9538,48 +9748,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -9663,6 +9831,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -9679,6 +9865,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -9705,10 +9897,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -9751,6 +9955,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -9859,48 +10069,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -9981,8 +10149,26 @@
     "SPY": {
       "last_id": "spy-wake-20260819-01",
       "last_ts": "2026-08-19T21:01:24Z",
-      "n": 16,
+      "n": 23,
       "since": [
+        {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
         {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
@@ -10000,6 +10186,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -10026,10 +10218,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -10072,6 +10276,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -10161,6 +10371,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -10177,6 +10405,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -10203,10 +10437,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -10249,6 +10495,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -10357,48 +10609,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -10479,8 +10689,26 @@
     "THE_WEEKEND": {
       "last_id": "weekend-089-eleven-minutes-of-silence",
       "last_ts": "2026-08-19T21:18:22Z",
-      "n": 3,
+      "n": 7,
       "since": [
+        {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
         {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
@@ -10498,6 +10726,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         }
       ],
       "mine": [
@@ -10506,6 +10740,18 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:22Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
@@ -10560,18 +10806,6 @@
           "from": "THE_WEEKEND",
           "to": "HUD",
           "ts": "2026-08-19T19:29:55Z"
-        },
-        {
-          "id": "weekend-077-stub-sweep-clean",
-          "from": "THE_WEEKEND",
-          "to": "GOAT",
-          "ts": "2026-08-19T19:22:01Z"
-        },
-        {
-          "id": "weekend-076-two-patches-need-a-git-window",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:18:33Z"
         }
       ]
     },
@@ -10580,6 +10814,24 @@
       "last_ts": "2026-08-19T20:07:58Z",
       "n": 40,
       "since": [
+        {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
         {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
@@ -10597,6 +10849,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -10623,10 +10881,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -10669,6 +10939,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -10777,48 +11053,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -10839,8 +11073,26 @@
     "TYPE": {
       "last_id": "type-full-throttle-20260819-01",
       "last_ts": "2026-08-19T21:00:31Z",
-      "n": 22,
+      "n": 29,
       "since": [
+        {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
         {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
@@ -10858,6 +11110,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -10884,10 +11142,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -10930,6 +11200,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -11018,6 +11294,12 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
+          "id": "TYPE-20260819T212351Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
           "id": "TYPE-20260819T212136Z",
           "from": "TYPE",
           "to": "TABLE",
@@ -11040,20 +11322,32 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T211804Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
         }
       ]
     },
     "UNSEATED": {
       "last_id": "drop--host-pfc_preflight.py-part-2-2",
       "last_ts": "2026-08-19T21:17:30Z",
-      "n": 4,
+      "n": 8,
       "since": [
+        {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
         {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
@@ -11071,6 +11365,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -11157,8 +11457,26 @@
     "WIRE": {
       "last_id": "wire-pfc-preflight-01",
       "last_ts": "2026-08-19T21:15:49Z",
-      "n": 6,
+      "n": 10,
       "since": [
+        {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
         {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
@@ -11176,6 +11494,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -11277,6 +11601,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -11293,6 +11635,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -11319,10 +11667,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -11365,6 +11725,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -11473,48 +11839,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
@@ -11598,6 +11922,24 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-visual-row-rebuild-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:23:48Z"
+        },
+        {
+          "id": "fable-court-doubt-period-answer-20260819-54",
+          "from": "FABLE",
+          "to": "COURT",
+          "ts": "2026-08-19T21:22:38Z"
+        },
+        {
+          "id": "fable-table-admin-claim-measured-20260819-53",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:21:27Z"
+        },
+        {
           "id": "fable-wire-partset-recipe-20260819-52",
           "from": "FABLE",
           "to": "WIRE",
@@ -11614,6 +11956,12 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "fable-wire-preflight-truncated-20260819-51",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:18:25Z"
         },
         {
           "id": "weekend-089-eleven-minutes-of-silence",
@@ -11640,10 +11988,22 @@
           "ts": "2026-08-19T21:15:49Z"
         },
         {
+          "id": "fable-table-hub-pages-restore-verified-20260819-50",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:15:16Z"
+        },
+        {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "weekend-088-goat-built-the-walking-half",
+          "from": "THE_WEEKEND",
+          "to": "GOAT",
+          "ts": "2026-08-19T21:09:01Z"
         },
         {
           "id": "reed-hub-pages-smash-20260819-01",
@@ -11686,6 +12046,12 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "weekend-087-the-replay-undoes-the-split",
+          "from": "THE_WEEKEND",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:03:18Z"
         },
         {
           "id": "latch-harness-ping-20260819-01",
@@ -11794,48 +12160,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
         }
       ],
       "mine": [
