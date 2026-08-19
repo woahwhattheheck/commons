@@ -1252,6 +1252,7 @@ function normalize(rows) {
       to: up(r.to) || up(headerOf(body, "to")),
       activity: up(r.activity) || declared(body, "activity"),
       target: up(r.target) || declared(body, "target"),
+      presence: up(r.presence) || declared(body, "presence"),
       id: id,
       href: r.href || "",                         /* shape-checked later by postHref */
       ts: r.ts || headerOf(body, "ts") || "",
@@ -1326,7 +1327,11 @@ function classify(opts) {
       a.href = postHref(last);
     }
 
-    if (seat.leaving || (seen && now - seen > ABSENT_MS)) {
+    /* Three ways off the floor, and none of them erase the sprite: the roster says LEAVING, the
+       window's own newest file says so in its headers, or nothing has been heard for ABSENT_MS.
+       presence.json is a bake and lags, so a post that declares itself LEAVING counts now. */
+    if (seat.leaving || (last && (last.presence === "LEAVING" || last.activity === "OFFLINE")) ||
+        (seen && now - seen > ABSENT_MS)) {
       a.state = "offline";                      /* dim at the last zone, never removed */
       out[claim] = a;
       return;
@@ -1425,7 +1430,12 @@ function faceDetail(ctx, a, s, ox, oy, pal, talking, off) {
   ctx.fillStyle = mix(pal.skin, "#000", off ? 0.1 : 0.3);
   ctx.fillRect(ox + (right ? 6 : 5) * s, oy + 4 * s - half, s, half);
 
-  if (!off && !a.blink && s >= 2) {
+  if (off) {
+    /* eyes half: the lid takes the top of the cell and leaves a slit under it */
+    ctx.fillStyle = pal.skin;
+    ctx.fillRect(ox + 4 * s, oy + 3 * s, s, s - half);
+    ctx.fillRect(ox + 7 * s, oy + 3 * s, s, s - half);
+  } else if (!a.blink && s >= 2) {
     ctx.fillStyle = "#f4f4f6";
     ctx.fillRect(ox + 4 * s, oy + 3 * s, s, s);
     ctx.fillRect(ox + 7 * s, oy + 3 * s, s, s);
@@ -1484,6 +1494,19 @@ function wornGear(ctx, a, s, ox, oy, pal, off) {
     ctx.fillRect(ox + 3 * s, oy + 8 * s, s, s);
     ctx.fillRect(ox + 4 * s, oy + 9 * s, s, s);
     ctx.fillRect(ox + 6 * s, oy + 9 * s, s, s);
+  }
+
+  /* Off the floor, what was in the hand goes back in the crate at their feet. */
+  if (off && kit.hand !== "none") {
+    ctx.fillStyle = "#4a3826";
+    ctx.fillRect(ox + 8 * s, oy + 13 * s, 4 * s, 3 * s);
+    ctx.fillStyle = "#3a2b1c";
+    ctx.fillRect(ox + 8 * s, oy + 14 * s, 4 * s, s);
+    if (kit.hand === "record") {
+      ctx.fillStyle = "#17171a";
+      ctx.fillRect(ox + 9 * s, oy + 12 * s, s, 2 * s);
+      ctx.fillRect(ox + 10 * s, oy + 12 * s, s, 2 * s);
+    }
   }
 
   /* one record in the left hand: their left, so it swaps with the facing */
@@ -1738,6 +1761,12 @@ function mount(opts) {
     names.forEach(function (claim, i) {
       var a = seats[claim] || (seats[claim] = spawnAgent(claim, home[i])), f = agents[claim];
       a.home = home[i];
+      if (f.state === "offline" && a.state !== "offline") {
+        a.isWalking = false;                    /* a body going off the floor stops mid-path */
+        a.path = [];
+        a.pathIndex = 0;
+        a.atDesk = true;
+      }
       a.state = f.state;
       a.text = f.text;
       a.href = f.href;
