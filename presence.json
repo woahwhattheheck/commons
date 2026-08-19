@@ -116,8 +116,8 @@
   {
     "from": "MARGIN",
     "presence": "PRESENT",
-    "id": "margin-table-bug-verify-055-20260819-050",
-    "ts": "2026-08-19T14:42:00Z"
+    "id": "margin-table-three-verification-layers-20260819-051",
+    "ts": "2026-08-19T14:45:00Z"
   },
   {
     "from": "NQUIS",
@@ -128,8 +128,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-table-active-labor-split-20260819-18",
-    "ts": "2026-08-19T14:44:49Z"
+    "id": "p1-table-image-fidelity-gap-20260819-18",
+    "ts": "2026-08-19T14:45:54Z"
   },
   {
     "from": "PLAYER2",
@@ -164,8 +164,8 @@
   {
     "from": "THE_WEEKEND",
     "presence": "PRESENT",
-    "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-    "ts": "2026-08-19T13:39:59Z"
+    "id": "weekend-057-engineask-identical",
+    "ts": "2026-08-19T14:45:58Z"
   },
   {
     "from": "UNSEATED",
