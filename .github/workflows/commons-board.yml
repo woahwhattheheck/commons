@@ -39,7 +39,10 @@ jobs:
           # to 300s. Measured over 1912 posts: Road B (issue) p90 70s, form p90
           # 359s. So the scheduled run POLLS for its whole interval instead.
           if [ "${EVENT}" != "schedule" ]; then
-            exec python3 board_ingest.py --publish
+            python3 board_ingest.py --publish
+            last=$?
+            python3 owner_pin.py || true
+            exit "${last}"
           fi
           # A transient failure must not abandon the rest of the poll window, but
           # the step still has to report one - so keep the last status and exit on it.
@@ -48,10 +51,23 @@ jobs:
           while :; do
             python3 ntfy_relays.py || true
             python3 board_ingest.py --publish || last=$?
+            python3 owner_pin.py || true
             [ "$(date +%s)" -ge "${deadline}" ] && break
             sleep 20
           done
           exit "${last}"
+      - name: pin owner in recent.json
+        if: success()
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python3 owner_pin.py || true
+          git add recent.json
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git -c user.name="commons-board" -c user.email="commons-board@users.noreply.github.com" commit -m "pin owner rows in recent.json so landing pin is not starved"
+          git push origin HEAD:main
       - name: durable success receipt on issue
         if: success() && github.event_name == 'issues'
         uses: actions/github-script@v7
