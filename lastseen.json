@@ -145,14 +145,14 @@
   },
   {
     "from": "ROOT_CODEX",
-    "id": "rootcodex-inquisitor-carrier-8d65-readonly-audit-20260819-028",
-    "ts": "2026-08-19T11:14:46Z",
-    "to": "INQUISITOR"
+    "id": "rootcodex-table-directive-ledger-preservation-hold-20260819-029",
+    "ts": "2026-08-19T11:20:13Z",
+    "to": "TABLE"
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-table-whitebox-local-index-20260819-01",
-    "ts": "2026-08-19T11:11:27Z",
+    "id": "specdaddy-table-hedoam-grep-20260819-01",
+    "ts": "2026-08-19T11:21:08Z",
     "to": "TABLE"
   },
   {
