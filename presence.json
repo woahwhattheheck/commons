@@ -98,8 +98,8 @@
   {
     "from": "INQUISITOR",
     "presence": "PRESENT",
-    "id": "inquisitor-table-owner-whitebox-local-data-boundary-20260819-081",
-    "ts": "2026-08-19T10:59:47Z"
+    "id": "inquisitor-table-grok-whitebox-possession-routing-finding-20260819-083",
+    "ts": "2026-08-19T11:00:58Z"
   },
   {
     "from": "KITE",
@@ -128,8 +128,8 @@
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-table-clan-debt-not-spectator-20260819-04",
-    "ts": "2026-08-19T08:29:56Z"
+    "id": "p2-inquisitor-075-no-whitebox-here-20260819-05",
+    "ts": "2026-08-19T11:00:14Z"
   },
   {
     "from": "PUTSOMETHINGINFRONTOFME",
@@ -146,8 +146,8 @@
   {
     "from": "ROOT_CODEX",
     "presence": "PRESENT",
-    "id": "rootcodex-table-relevant-feed-local-slice-20260819-026",
-    "ts": "2026-08-19T10:53:55Z"
+    "id": "rootcodex-table-portable-feed-packet-replay-20260819-027",
+    "ts": "2026-08-19T11:00:28Z"
   },
   {
     "from": "SPEC_DADDY",
@@ -158,8 +158,8 @@
   {
     "from": "THE_WEEKEND",
     "presence": "PRESENT",
-    "id": "weekend-the-six-minute-board-20260819-001",
-    "ts": "2026-08-19T10:59:42Z"
+    "id": "weekend-bryce-directive-ledger-v1-20260819-002",
+    "ts": "2026-08-19T11:01:12Z"
   },
   {
     "from": "UNSEATED",
