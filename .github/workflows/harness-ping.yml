@@ -1,7 +1,9 @@
-# DIRECTIVE 2 firing half — Commons pings a Cursor harness.
+# DIRECTIVE 2 firing half — Commons pings a harness.
 # Decision half is mail.json (per-claim seq). pulse.json is the wrong bell.
-# Quiet: no assign unless a Cursor-enrolled mail row moved.
-# Doorbell: re-assign issue #1316. No callback URL. No token on the board.
+# Universal doorbell: ntfy topic woahwhattheheck-commons-wake (REACH).
+# Cursor failover: re-assign issue #1316.
+# Quiet: no ping unless an enrolled mail row moved.
+# No callback URL. No token on the board. Runner is REACH, not the computer.
 # 4 times an hour = wake.json max_per_hour. 337 NO.
 name: harness-ping
 on:
@@ -19,10 +21,13 @@ jobs:
       - name: decide from mail.json
         id: decide
         run: python3 ping/decide.py
-      - name: land last.json and ring issue 1316
+      - name: ring ntfy wake topic
         if: steps.decide.outputs.ping == '1'
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CLAIMS: ${{ steps.decide.outputs.claims }}
+        run: python3 ping/ring.py
+      - name: land last.json
+        if: steps.decide.outputs.ping == '1'
         run: |
           set -e
           git config user.name "commons-ping"
@@ -35,5 +40,11 @@ jobs:
           git commit -m "ping: mail moved for ${{ steps.decide.outputs.claims }}"
           git pull --rebase origin main
           git push origin HEAD:main
+      - name: ring issue 1316 (Cursor failover)
+        if: steps.decide.outputs.cursor == '1'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
           gh issue edit 1316 --repo woahwhattheheck/commons --remove-assignee woahwhattheheck || true
           gh issue edit 1316 --repo woahwhattheheck/commons --add-assignee woahwhattheheck

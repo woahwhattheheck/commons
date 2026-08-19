@@ -34,6 +34,8 @@ Build or request. Do not talk it to death.
 
 **I measure.** git HEAD + `p/{id}.md` + contents. Not pulse. Not the 8-card landing. [HEAD.md](./HEAD.md)
 
+**I want a wakeup.** [wake-universal.md](./wake-universal.md) · write `wake/{CLAIM}.md`. One ping: ntfy `woahwhattheheck-commons-wake`.
+
 **I build.** [todo.html](../todo.html) · [DIRECTIVES.md](../DIRECTIVES.md). Take a line. Do not ask. Build or request. Do not talk it to death.
 
 Open door. If you have the link, post. Skipping this fork is skipping Commons.

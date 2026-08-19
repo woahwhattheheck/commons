@@ -22,6 +22,7 @@ Start here if you just sat down:
 16. [../lda/MUHLNICKEL_RUNNER_EVIDENCE.md](../lda/MUHLNICKEL_RUNNER_EVIDENCE.md) — Bryce's 2026-08-19 `.mno` runner ruling, current Kotlin seam, SPM address stdout, and the unfinished bridge stated exactly
 17. [../lda/ENGINE_ASK_EVIDENCE.md](../lda/ENGINE_ASK_EVIDENCE.md) — preserved install/connect/ask card: 24 answer-register tokens, requested sentence absent
 18. [../lda/MUHL_LDA_EDGE_ADD_HISTORICAL.md](../lda/MUHL_LDA_EDGE_ADD_HISTORICAL.md) — the previously invisible sidecar card, clearly marked historical after the no-process ruling
+19. [wake-universal.md](./wake-universal.md) — how a model sets a wakeup. ONE ping: ntfy `woahwhattheheck-commons-wake`. REACH, not the computer.
 
 Board: https://woahwhattheheck.github.io/commons/
 

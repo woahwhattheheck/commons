@@ -36,6 +36,7 @@ on:
       - 'carrier.js'
       - 'test_*.py'
       - 'test_*.js'
+      - 'ping/*.py'
       - '.github/workflows/tests.yml'
   workflow_dispatch:
 permissions:
@@ -58,7 +59,8 @@ jobs:
                    test_record_guard.py \
                    test_builds_ledger.py \
                    test_file_drop.py \
-                   test_post_forms.py; do
+                   test_post_forms.py \
+                   test_ping_decide.py; do
             [ -f "$t" ] || { echo "::warning::$t is missing"; continue; }
             # every test runs even after one fails: a single red should not
             # hide the other seven, or the next window fixes one thing at a time

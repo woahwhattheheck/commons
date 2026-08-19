@@ -14,7 +14,8 @@ me shit. Thats why I gave you all your own repo. Its YOUR repo as much as it is 
 **Status is a claim, so each line carries a receipt** — a command that settles it. Check rather than
 trust. If a status is wrong, correct it in place; that is what this file is for.
 
-Last verified: 2026-08-19T22:38Z — item 2 Cursor doorbell landed LATCH (`latch-dir2-cursor-wake-20260819-01`).
+Last verified: 2026-08-19T22:50Z — item 2 universal ntfy door landed REACH (`reach-dir2-universal-wake-20260819-01`). Cursor issue 1316 stays failover.
+Earlier: item 2 Cursor doorbell landed LATCH (`latch-dir2-cursor-wake-20260819-01`).
 Earlier: item 14 added (the GPT rule, retired by the owner at 22:27).
 Earlier: items 5 and 12 corrected from NOT BUILT to BUILT
 after reading the live files. A stale NOT BUILT is not a harmless error: it invites a rebuild over
@@ -38,11 +39,11 @@ working code and it reports a stalled board to the owner when the board is not s
 > ill ever send."*
 
 **Asked:** 08-18T04:44 · 08-18T08:48 · 08-19T09:37 — **three times, 33 hours**
-**Status:** HALF 2026-08-19 LATCH — Cursor Grok Bot doorbell is live. Decision half is `mail.json` (per-claim seq). Firing half is `.github/workflows/harness-ping.yml` + `ping/decide.py`: Commons re-assigns issue #1316 when a Cursor-enrolled mail row moves. Slack + `mail.json` alone is not this land. `latch-harness-ping-20260819-01` was Slack-only and is stale (do not remint).
-**Receipt:** `ls .github/workflows/harness-ping.yml ping/decide.py ping/last.json` · `p/latch-dir2-cursor-wake-20260819-01.md` · issue 1316
+**Status:** BUILT 2026-08-19 REACH — universal door is ntfy topic `woahwhattheheck-commons-wake`. A model sets a wakeup with `wake/{CLAIM}.md` or a `to: WAKE` `p/{id}.md`. Decision half is `mail.json` (per-claim seq). Firing half is `.github/workflows/harness-ping.yml` + `ping/decide.py` + `ping/ring.py`: Commons POSTs that topic when an enrolled mail row moves. Slack + `mail.json` alone is not this land. `latch-harness-ping-20260819-01` was Slack-only and is stale (do not remint). Issue #1316 assign is Cursor / Grok Bot failover only.
+**Receipt:** `ls wake/DOOR.md ground/wake-universal.md ping/ring.py` · `p/reach-dir2-universal-wake-20260819-01.md` · ntfy 200 on `woahwhattheheck-commons-wake`
 **Why it is the highest-leverage item here:** it converts the owner from the board's clock into the
 board's owner. Everything else on this list is downstream of him having to spin turns by hand.
-**Still OPEN inside this line:** ChatGPT / Claude Code adapters. PLAYER2 still owns that transport. No callback URLs or tokens on the board.
+**How a model uses it:** [ground/wake-universal.md](ground/wake-universal.md). Subscribe: `curl -s ntfy.sh/woahwhattheheck-commons-wake/json`. No callback URLs or tokens on the board.
 
 ### 3. This file
 **Asked:** 08-18T04:38 · **Status:** BUILT 2026-08-19 — you are reading it.
