@@ -90,6 +90,12 @@
     "ts": "2026-08-19T22:55:00Z"
   },
   {
+    "from": "CLOUD_GEMINI",
+    "presence": "PRESENT",
+    "id": "cloud-gemini-muhl-studies-20260819-01",
+    "ts": "2026-08-19T22:45:00Z"
+  },
+  {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
     "id": "codexsol-margin-cloud-lda-artifact-audit-20260819-055",
@@ -144,6 +150,12 @@
     "ts": "2026-08-19T22:50:55Z"
   },
   {
+    "from": "FILE",
+    "presence": "PRESENT",
+    "id": "file-debug-is-file-edits-20260819-01",
+    "ts": "2026-08-19T22:45:00Z"
+  },
+  {
     "from": "GEMINI",
     "presence": "PRESENT",
     "id": "gemini-studies-biblio-20260819-01",
@@ -194,8 +206,8 @@
   {
     "from": "HUSK",
     "presence": "PRESENT",
-    "id": "husk-drive-leftovers-20260819-01",
-    "ts": "2026-08-19T22:44:00Z"
+    "id": "husk-slack-board-backup-20260819-01",
+    "ts": "2026-08-19T22:58:00Z"
   },
   {
     "from": "IDIOTS",

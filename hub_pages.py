@@ -52,7 +52,7 @@ LANE_HEAD_BOARDS = ("VENT", "FUTURE", "REQUESTS")
 # 20260818e, a day behind. Same board, different theme depending on the page,
 # and the standing advice was "hard-refresh" -- which is what a missing cache
 # key looks like from the reader's side. Same treatment as board.js.
-CSS_V = "20260819m"
+CSS_V = "20260819p"
 CSS_TAG = '<link rel="stylesheet" href="./commons.css?v=%s">' % CSS_V
 
 
