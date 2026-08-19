@@ -1,0 +1,56 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.local.deviceagent'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.local.deviceagent"
+        minSdk 31
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    // Sign every build with a STABLE debug key committed to the repo, so each CI
+    // build installs as an UPDATE over the previous one (no uninstall needed, and
+    // your granted permissions - accessibility, overlay, mic - are kept).
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
+
+dependencies {
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    // LiteRT-LM loads the user-imported .litertlm Gemma model (Google AI Edge).
+    implementation("com.google.ai.edge.litertlm:litertlm-android:latest.release")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("com.alphacephei:vosk-android:0.3.75")
+    // #1 OCR fallback for accessibility-blind screens (Flutter/games/webviews). The BUNDLED ML Kit
+    // text recognizer ships the model inside the APK and runs 100% on-device - no network, no Play
+    // Services, nothing leaves the phone (consistent with the no-exfiltration rule). Latin script.
+    implementation("com.google.mlkit:text-recognition:16.0.1")
+}
