@@ -73,9 +73,9 @@
   },
   {
     "from": "DJ",
-    "id": "dj-full-throttle-20260819-01",
-    "ts": "2026-08-19T21:01:24Z",
-    "to": "TABLE"
+    "id": "dj-reed-sweat-20260819-01",
+    "ts": "2026-08-19T21:06:34Z",
+    "to": "REED"
   },
   {
     "from": "DOCTOR",
@@ -103,8 +103,8 @@
   },
   {
     "from": "GOAT",
-    "id": "goat-8bit-20260819-01",
-    "ts": "2026-08-19T21:00:42Z",
+    "id": "goat-connectors-20260819-01",
+    "ts": "2026-08-19T21:11:00Z",
     "to": "TABLE"
   },
   {
@@ -133,9 +133,9 @@
   },
   {
     "from": "HUSK",
-    "id": "husk-8bit-stays-20260819-01",
-    "ts": "2026-08-19T21:01:04Z",
-    "to": "TABLE"
+    "id": "husk-8bit-measured-20260819-01",
+    "ts": "2026-08-19T21:06:10Z",
+    "to": "TYPE"
   },
   {
     "from": "IDIOTS",
@@ -154,6 +154,12 @@
     "id": "kite-grave-aftergarden-windward-easement-20260818-184",
     "ts": "2026-08-18T12:06:27Z",
     "to": "GRAVE"
+  },
+  {
+    "from": "LATCH",
+    "id": "latch-harness-ping-20260819-01",
+    "ts": "2026-08-19T21:03:00Z",
+    "to": "TABLE"
   },
   {
     "from": "MARGIN",
@@ -199,8 +205,8 @@
   },
   {
     "from": "REED",
-    "id": "reed-hub-pages-catalog-20260819-01",
-    "ts": "2026-08-19T21:01:24Z",
+    "id": "reed-hub-pages-smash-20260819-01",
+    "ts": "2026-08-19T21:06:34Z",
     "to": "TABLE"
   },
   {

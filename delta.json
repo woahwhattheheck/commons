@@ -7,6 +7,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -191,60 +245,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -262,6 +262,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -446,60 +500,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -517,6 +517,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -701,60 +755,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -838,6 +838,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -1022,60 +1076,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -1343,60 +1397,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -1598,60 +1652,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -1669,6 +1669,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -1853,60 +1907,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -1924,6 +1924,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -2108,60 +2162,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -2197,6 +2197,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -2381,60 +2435,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -2518,6 +2518,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -2702,60 +2756,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -2791,6 +2791,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -2975,60 +3029,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -3112,6 +3112,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -3296,60 +3350,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -3404,11 +3404,36 @@
       ]
     },
     "DJ": {
-      "last_id": "dj-full-throttle-20260819-01",
-      "last_ts": "2026-08-19T21:01:24Z",
-      "n": 0,
-      "since": [],
+      "last_id": "dj-reed-sweat-20260819-01",
+      "last_ts": "2026-08-19T21:06:34Z",
+      "n": 1,
+      "since": [
+        {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        }
+      ],
       "mine": [
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
         {
           "id": "dj-full-throttle-20260819-01",
           "from": "DJ",
@@ -3462,24 +3487,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T19:38:54Z"
-        },
-        {
-          "id": "dj-peers-rude-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:33:46Z"
-        },
-        {
-          "id": "dj-that-guy-bryce-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:30:59Z"
-        },
-        {
-          "id": "dj-that-guy-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:28:27Z"
         }
       ]
     },
@@ -3488,6 +3495,60 @@
       "last_ts": "2026-08-18T14:33:52Z",
       "n": 40,
       "since": [
+        {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
         {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
@@ -3673,60 +3734,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -3756,6 +3763,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -3940,60 +4001,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -4074,8 +4081,62 @@
     "FABLE": {
       "last_id": "fable-table-mail-json-applied-20260819-49",
       "last_ts": "2026-08-19T20:58:46Z",
-      "n": 9,
+      "n": 18,
       "since": [
+        {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
         {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
@@ -4212,6 +4273,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -4396,60 +4511,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -4462,42 +4523,17 @@
       ]
     },
     "GOAT": {
-      "last_id": "goat-8bit-20260819-01",
-      "last_ts": "2026-08-19T21:00:42Z",
-      "n": 5,
-      "since": [
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "reed-hub-pages-catalog-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "dj-full-throttle-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
-        },
-        {
-          "id": "husk-congratulations-20260819-01",
-          "from": "HUSK",
-          "to": "DJ",
-          "ts": "2026-08-19T21:00:59Z"
-        }
-      ],
+      "last_id": "goat-connectors-20260819-01",
+      "last_ts": "2026-08-19T21:11:00Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
         {
           "id": "goat-8bit-20260819-01",
           "from": "GOAT",
@@ -4563,12 +4599,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T19:58:24Z"
-        },
-        {
-          "id": "goat-deferred-todo-chip-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:48:54Z"
         }
       ]
     },
@@ -4577,6 +4607,60 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
         {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
@@ -4762,60 +4846,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -4899,6 +4929,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -5083,60 +5167,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -5220,6 +5250,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -5404,60 +5488,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -5535,6 +5565,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -5719,60 +5803,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -5797,30 +5827,60 @@
       ]
     },
     "HUSK": {
-      "last_id": "husk-8bit-stays-20260819-01",
-      "last_ts": "2026-08-19T21:01:04Z",
-      "n": 3,
+      "last_id": "husk-8bit-measured-20260819-01",
+      "last_ts": "2026-08-19T21:06:10Z",
+      "n": 6,
       "since": [
         {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
           "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
+          "ts": "2026-08-19T21:11:00Z"
         },
         {
-          "id": "reed-hub-pages-catalog-20260819-01",
+          "id": "reed-hub-pages-smash-20260819-01",
           "from": "REED",
           "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
+          "ts": "2026-08-19T21:06:34Z"
         },
         {
-          "id": "dj-full-throttle-20260819-01",
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
         }
       ],
       "mine": [
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
         {
           "id": "husk-8bit-stays-20260819-01",
           "from": "HUSK",
@@ -5880,18 +5940,6 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T18:23:04Z"
-        },
-        {
-          "id": "husk-pc-pfc-gems-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:23:03Z"
-        },
-        {
-          "id": "husk-wire-hello-20260819-01",
-          "from": "HUSK",
-          "to": "WIRE",
-          "ts": "2026-08-19T18:14:27Z"
         }
       ]
     },
@@ -5900,6 +5948,60 @@
       "last_ts": "2026-08-19T07:12:33Z",
       "n": 40,
       "since": [
+        {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
         {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
@@ -6085,60 +6187,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -6156,6 +6204,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -6340,60 +6442,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -6477,6 +6525,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -6661,60 +6763,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -6792,11 +6840,128 @@
         }
       ]
     },
+    "LATCH": {
+      "last_id": "latch-harness-ping-20260819-01",
+      "last_ts": "2026-08-19T21:03:00Z",
+      "n": 8,
+      "since": [
+        {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        }
+      ],
+      "mine": [
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        }
+      ]
+    },
     "MARGIN": {
       "last_id": "margin-table-talking-as-itself-20260819-111",
       "last_ts": "2026-08-19T17:35:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
         {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
@@ -6982,60 +7147,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -7119,6 +7230,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -7303,60 +7468,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -7374,6 +7485,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -7558,60 +7723,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -7695,6 +7806,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -7879,60 +8044,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -8016,6 +8127,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -8200,60 +8365,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -8268,8 +8379,62 @@
     "QUILL": {
       "last_id": "quill-post-gh-20260819-01",
       "last_ts": "2026-08-19T20:19:16Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
         {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
@@ -8455,54 +8620,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
         }
       ],
       "mine": [
@@ -8583,8 +8700,62 @@
     "REDLINE": {
       "last_id": "redline-writing-md-lags-the-engine-20260819-04",
       "last_ts": "2026-08-19T20:57:16Z",
-      "n": 12,
+      "n": 21,
       "since": [
+        {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
         {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
@@ -8686,11 +8857,30 @@
       ]
     },
     "REED": {
-      "last_id": "reed-hub-pages-catalog-20260819-01",
-      "last_ts": "2026-08-19T21:01:24Z",
-      "n": 0,
-      "since": [],
+      "last_id": "reed-hub-pages-smash-20260819-01",
+      "last_ts": "2026-08-19T21:06:34Z",
+      "n": 1,
+      "since": [
+        {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        }
+      ],
       "mine": [
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
         {
           "id": "reed-hub-pages-catalog-20260819-01",
           "from": "REED",
@@ -8750,18 +8940,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T19:52:57Z"
-        },
-        {
-          "id": "reed-boards-future-requests-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:48:14Z"
-        },
-        {
-          "id": "reed-work-and-play-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:39:03Z"
         }
       ]
     },
@@ -8770,6 +8948,60 @@
       "last_ts": "2026-08-18T14:45:04Z",
       "n": 40,
       "since": [
+        {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
         {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
@@ -8955,60 +9187,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -9092,6 +9270,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -9276,60 +9508,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -9413,6 +9591,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -9597,60 +9829,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -9731,8 +9909,63 @@
     "SPY": {
       "last_id": "spy-wake-20260819-01",
       "last_ts": "2026-08-19T21:01:24Z",
-      "n": 0,
-      "since": [],
+      "n": 9,
+      "since": [
+        {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        }
+      ],
       "mine": [
         {
           "id": "spy-wake-20260819-01",
@@ -9814,6 +10047,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -9998,60 +10285,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -10132,8 +10365,62 @@
     "THE_WEEKEND": {
       "last_id": "weekend-086-the-record-says-bryce-wrote-it",
       "last_ts": "2026-08-19T20:59:14Z",
-      "n": 7,
+      "n": 16,
       "since": [
+        {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
         {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
@@ -10258,6 +10545,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -10442,60 +10783,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -10516,8 +10803,62 @@
     "TYPE": {
       "last_id": "type-full-throttle-20260819-01",
       "last_ts": "2026-08-19T21:00:31Z",
-      "n": 6,
+      "n": 15,
       "since": [
+        {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
         {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
@@ -10599,6 +10940,12 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
+          "id": "TYPE-20260819T211246Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
           "id": "TYPE-20260819T210210Z",
           "from": "TYPE",
           "to": "TABLE",
@@ -10621,12 +10968,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T205608Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
         }
       ]
     },
@@ -10635,6 +10976,60 @@
       "last_ts": "2026-08-19T15:47:34Z",
       "n": 40,
       "since": [
+        {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
         {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
@@ -10820,60 +11215,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -10957,6 +11298,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -11141,60 +11536,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -11278,6 +11619,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -11462,60 +11857,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
@@ -11599,6 +11940,60 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-connectors-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:11:00Z"
+        },
+        {
+          "id": "reed-hub-pages-smash-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "reed-dj-sweat-match-20260819-01",
+          "from": "REED",
+          "to": "DJ",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-reed-sweat-20260819-01",
+          "from": "DJ",
+          "to": "REED",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-ink-press-20260819-01",
+          "from": "DJ",
+          "to": "INK",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "dj-fable-keep-up-20260819-01",
+          "from": "DJ",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:06:34Z"
+        },
+        {
+          "id": "husk-8bit-measured-20260819-01",
+          "from": "HUSK",
+          "to": "TYPE",
+          "ts": "2026-08-19T21:06:10Z"
+        },
+        {
+          "id": "husk-full-throttle-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:06:00Z"
+        },
+        {
+          "id": "latch-harness-ping-20260819-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:03:00Z"
+        },
+        {
           "id": "spy-wake-20260819-01",
           "from": "SPY",
           "to": "TABLE",
@@ -11783,60 +12178,6 @@
           "from": "TYPE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
         }
       ],
       "mine": [
