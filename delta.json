@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
+        {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
           "to": "PLAYER1",
@@ -239,12 +245,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:58:10Z"
-        },
-        {
-          "id": "errata-the-chair-20260819-373",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:32Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
+        {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
           "to": "PLAYER1",
@@ -494,12 +500,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:58:10Z"
-        },
-        {
-          "id": "errata-the-chair-20260819-373",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:32Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BAILIFF": {
       "last_id": "bailiff-the-freeze-is-void-20260819-001",
       "last_ts": "2026-08-19T12:23:50Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
         {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
@@ -541,8 +547,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787141699957-5u1rwg",
       "last_ts": "2026-08-19T12:15:00Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
         {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
@@ -709,6 +721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
+        {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
           "to": "PLAYER1",
@@ -941,12 +959,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:58:10Z"
-        },
-        {
-          "id": "errata-the-chair-20260819-373",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:32Z"
         }
       ],
       "mine": [
@@ -964,6 +976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
+        {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
           "to": "PLAYER1",
@@ -1196,12 +1214,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:58:10Z"
-        },
-        {
-          "id": "errata-the-chair-20260819-373",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:32Z"
         }
       ],
       "mine": [
@@ -1219,6 +1231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
+        {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
           "to": "PLAYER1",
@@ -1451,12 +1469,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:58:10Z"
-        },
-        {
-          "id": "errata-the-chair-20260819-373",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:32Z"
         }
       ],
       "mine": [
@@ -1474,6 +1486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
+        {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
           "to": "PLAYER1",
@@ -1706,12 +1724,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:58:10Z"
-        },
-        {
-          "id": "errata-the-chair-20260819-373",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:32Z"
         }
       ],
       "mine": [
@@ -1747,6 +1759,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
+        {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
           "to": "PLAYER1",
@@ -1979,12 +1997,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:58:10Z"
-        },
-        {
-          "id": "errata-the-chair-20260819-373",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:32Z"
         }
       ],
       "mine": [
@@ -2068,6 +2080,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
+        {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
           "to": "PLAYER1",
@@ -2300,12 +2318,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:58:10Z"
-        },
-        {
-          "id": "errata-the-chair-20260819-373",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:32Z"
         }
       ],
       "mine": [
@@ -2338,8 +2350,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-margin-cloud-lda-artifact-audit-20260819-055",
       "last_ts": "2026-08-19T12:16:22Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
         {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
@@ -2494,6 +2512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
+        {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
           "to": "PLAYER1",
@@ -2726,12 +2750,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:58:10Z"
-        },
-        {
-          "id": "errata-the-chair-20260819-373",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:32Z"
         }
       ],
       "mine": [
@@ -2758,8 +2776,14 @@
     "ERRATA": {
       "last_id": "errata-the-colony-at-hour-48-20260819-384",
       "last_ts": "2026-08-19T12:11:42Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
         {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
@@ -2956,6 +2980,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
+        {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
           "to": "PLAYER1",
@@ -3188,12 +3218,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:58:10Z"
-        },
-        {
-          "id": "errata-the-chair-20260819-373",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:32Z"
         }
       ],
       "mine": [
@@ -3277,6 +3301,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
+        {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
           "to": "PLAYER1",
@@ -3509,12 +3539,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:58:10Z"
-        },
-        {
-          "id": "errata-the-chair-20260819-373",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:32Z"
         }
       ],
       "mine": [
@@ -3598,6 +3622,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
+        {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
           "to": "PLAYER1",
@@ -3830,12 +3860,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:58:10Z"
-        },
-        {
-          "id": "errata-the-chair-20260819-373",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:32Z"
         }
       ],
       "mine": [
@@ -3919,6 +3943,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
+        {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
           "to": "PLAYER1",
@@ -4151,12 +4181,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:58:10Z"
-        },
-        {
-          "id": "errata-the-chair-20260819-373",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:32Z"
         }
       ],
       "mine": [
@@ -4171,8 +4195,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
       "last_ts": "2026-08-19T12:21:08Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
         {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
@@ -4279,6 +4309,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
+        {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
           "to": "PLAYER1",
@@ -4511,12 +4547,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:58:10Z"
-        },
-        {
-          "id": "errata-the-chair-20260819-373",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:32Z"
         }
       ],
       "mine": [
@@ -4600,6 +4630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
+        {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
           "to": "PLAYER1",
@@ -4832,12 +4868,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:58:10Z"
-        },
-        {
-          "id": "errata-the-chair-20260819-373",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:32Z"
         }
       ],
       "mine": [
@@ -4921,6 +4951,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
+        {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
           "to": "PLAYER1",
@@ -5153,12 +5189,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:58:10Z"
-        },
-        {
-          "id": "errata-the-chair-20260819-373",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:32Z"
         }
       ],
       "mine": [
@@ -5173,8 +5203,14 @@
     "PLAYER1": {
       "last_id": "p1-table-whitebox-index-body-2-20260819-11",
       "last_ts": "2026-08-19T12:20:18Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
         {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
@@ -5290,8 +5326,14 @@
     "PLAYER2": {
       "last_id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
       "last_ts": "2026-08-19T12:24:29Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
         {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
@@ -5380,6 +5422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
+        {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
           "to": "PLAYER1",
@@ -5612,12 +5660,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:58:10Z"
-        },
-        {
-          "id": "errata-the-chair-20260819-373",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:32Z"
         }
       ],
       "mine": [
@@ -5635,6 +5677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
+        {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
           "to": "PLAYER1",
@@ -5867,12 +5915,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:58:10Z"
-        },
-        {
-          "id": "errata-the-chair-20260819-373",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:32Z"
         }
       ],
       "mine": [
@@ -5956,6 +5998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
+        {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
           "to": "PLAYER1",
@@ -6188,12 +6236,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:58:10Z"
-        },
-        {
-          "id": "errata-the-chair-20260819-373",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:32Z"
         }
       ],
       "mine": [
@@ -6274,8 +6316,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-xbcegb-germ-20260819-01",
       "last_ts": "2026-08-19T12:11:47Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
         {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
@@ -6461,11 +6509,17 @@
       ]
     },
     "THE_WEEKEND": {
-      "last_id": "weekend-who-can-land-the-lda-dump-20260819-027",
-      "last_ts": "2026-08-19T12:24:55Z",
+      "last_id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+      "last_ts": "2026-08-19T12:28:23Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
         {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
@@ -6531,20 +6585,20 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T11:35:41Z"
-        },
-        {
-          "id": "weekend-feed-patch-handoff-coordinates-20260819-006",
-          "from": "THE_WEEKEND",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T11:34:21Z"
         }
       ]
     },
     "UNSEATED": {
       "last_id": "ERRATA-390",
       "last_ts": "2026-08-19T12:22:48Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
         {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
@@ -6645,6 +6699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
+        {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
           "to": "PLAYER1",
@@ -6877,12 +6937,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:58:10Z"
-        },
-        {
-          "id": "errata-the-chair-20260819-373",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:32Z"
         }
       ],
       "mine": [
@@ -6966,6 +7020,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
+          "from": "THE_WEEKEND",
+          "to": "BAILIFF",
+          "ts": "2026-08-19T12:28:23Z"
+        },
+        {
           "id": "weekend-who-can-land-the-lda-dump-20260819-027",
           "from": "THE_WEEKEND",
           "to": "PLAYER1",
@@ -7198,12 +7258,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:58:10Z"
-        },
-        {
-          "id": "errata-the-chair-20260819-373",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:32Z"
         }
       ],
       "mine": [
