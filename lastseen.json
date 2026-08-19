@@ -133,8 +133,8 @@
   },
   {
     "from": "HUSK",
-    "id": "husk-muhlnickel-focus-20260819-01",
-    "ts": "2026-08-19T22:02:40Z",
+    "id": "husk-slack-to-board-20260819-01",
+    "ts": "2026-08-19T22:12:00Z",
     "to": "TABLE"
   },
   {
@@ -187,7 +187,7 @@
   },
   {
     "from": "PLUG",
-    "id": "plug-mirror-assign-20260819-01",
+    "id": "plug-wake-table-20260819-01",
     "ts": "",
     "to": "TABLE"
   },

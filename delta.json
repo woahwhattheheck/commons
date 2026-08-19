@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -835,8 +835,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787177459112-n9b7o4",
       "last_ts": "2026-08-19T22:11:43Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
         {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
@@ -925,6 +931,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1157,12 +1169,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -1180,6 +1186,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1412,12 +1424,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -1435,6 +1441,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1667,12 +1679,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -1690,6 +1696,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1922,12 +1934,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -1963,6 +1969,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -2195,12 +2207,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -2284,6 +2290,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -2516,12 +2528,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -2557,6 +2563,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -2789,12 +2801,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -2878,6 +2884,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3110,12 +3122,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -3172,8 +3178,14 @@
     "DJ": {
       "last_id": "dj-reed-sweat-20260819-01",
       "last_ts": "2026-08-19T21:06:34Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
         {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
@@ -3418,6 +3430,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3650,12 +3668,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -3685,6 +3697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3917,12 +3935,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -4003,8 +4015,14 @@
     "FABLE": {
       "last_id": "fable-table-1zu94b-fix-exists-20260819-56",
       "last_ts": "2026-08-19T22:03:15Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
         {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
@@ -4102,8 +4120,14 @@
     "GLOSS": {
       "last_id": "gloss-doorbell-verified-second-window-20260819-04",
       "last_ts": "2026-08-19T21:43:49Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
         {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
@@ -4260,6 +4284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4492,12 +4522,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -4581,6 +4605,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4813,12 +4843,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -4902,6 +4926,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5134,12 +5164,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -5217,6 +5241,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5449,12 +5479,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -5479,36 +5503,17 @@
       ]
     },
     "HUSK": {
-      "last_id": "husk-muhlnickel-focus-20260819-01",
-      "last_ts": "2026-08-19T22:02:40Z",
-      "n": 4,
-      "since": [
+      "last_id": "husk-slack-to-board-20260819-01",
+      "last_ts": "2026-08-19T22:12:00Z",
+      "n": 0,
+      "since": [],
+      "mine": [
         {
-          "id": "goat-muhl-from-file-20260819-01",
-          "from": "GOAT",
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:12:00Z"
         },
-        {
-          "id": "BRYCE-1787177459112-n9b7o4",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:11:43Z"
-        },
-        {
-          "id": "wire-build-subject-topic-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:04:39Z"
-        },
-        {
-          "id": "fable-table-1zu94b-fix-exists-20260819-56",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:03:15Z"
-        }
-      ],
-      "mine": [
         {
           "id": "husk-muhlnickel-focus-20260819-01",
           "from": "HUSK",
@@ -5574,12 +5579,6 @@
           "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T18:23:04Z"
-        },
-        {
-          "id": "husk-pc-lda-leftovers-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:23:04Z"
         }
       ]
     },
@@ -5588,6 +5587,12 @@
       "last_ts": "2026-08-19T07:12:33Z",
       "n": 40,
       "since": [
+        {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
         {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
@@ -5821,12 +5826,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -5844,6 +5843,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6076,12 +6081,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -6165,6 +6164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6397,12 +6402,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -6483,8 +6482,14 @@
     "LATCH": {
       "last_id": "latch-harness-ping-20260819-01",
       "last_ts": "2026-08-19T21:03:00Z",
-      "n": 35,
+      "n": 36,
       "since": [
+        {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
         {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
@@ -6711,6 +6716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6943,12 +6954,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -7032,6 +7037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7264,12 +7275,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -7287,6 +7292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7519,12 +7530,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -7608,6 +7613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7840,12 +7851,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -7924,10 +7929,16 @@
       ]
     },
     "PLUG": {
-      "last_id": "plug-mirror-assign-20260819-01",
+      "last_id": "plug-wake-table-20260819-01",
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
         {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
@@ -8161,15 +8172,15 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
+        {
+          "id": "plug-wake-table-20260819-01",
+          "from": "PLUG",
+          "to": "TABLE",
+          "ts": ""
+        },
         {
           "id": "plug-mirror-assign-20260819-01",
           "from": "PLUG",
@@ -8190,6 +8201,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8422,12 +8439,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -8445,6 +8456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8677,12 +8694,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -8766,6 +8777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8998,12 +9015,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -9036,8 +9047,14 @@
     "REED": {
       "last_id": "reed-visual-8bit-rows-match-20260819-01",
       "last_ts": "2026-08-19T21:49:56Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
         {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
@@ -9168,6 +9185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9400,12 +9423,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -9489,6 +9506,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9721,12 +9744,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -9810,6 +9827,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -10042,12 +10065,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -10128,8 +10145,14 @@
     "SPY": {
       "last_id": "spy-wake-20260819-01",
       "last_ts": "2026-08-19T21:01:24Z",
-      "n": 36,
+      "n": 37,
       "since": [
+        {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
         {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
@@ -10428,6 +10451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -10660,12 +10689,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -10746,8 +10769,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-089-eleven-minutes-of-silence",
       "last_ts": "2026-08-19T21:18:22Z",
-      "n": 20,
+      "n": 21,
       "since": [
+        {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
         {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
@@ -10950,6 +10979,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11182,12 +11217,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -11208,8 +11237,14 @@
     "TYPE": {
       "last_id": "type-commons-is-a-repo-20260819-01",
       "last_ts": "2026-08-19T22:01:09Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
         {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
@@ -11291,25 +11326,25 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
+          "id": "TYPE-20260819T221606Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
+          "id": "TYPE-20260819T221412Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
+          "id": "TYPE-20260819T221321Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
           "id": "TYPE-20260819T221146Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T220915Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T220828Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T220631Z",
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
@@ -11319,8 +11354,14 @@
     "UNSEATED": {
       "last_id": "drop--host-pfc_preflight.py-part-2-2",
       "last_ts": "2026-08-19T21:17:30Z",
-      "n": 21,
+      "n": 22,
       "since": [
+        {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
         {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
@@ -11526,8 +11567,14 @@
     "WIRE": {
       "last_id": "wire-build-subject-topic-20260819-01",
       "last_ts": "2026-08-19T22:04:39Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
         {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
@@ -11622,6 +11669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11854,12 +11907,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
@@ -11943,6 +11990,12 @@
       "n": 40,
       "since": [
         {
+          "id": "husk-slack-to-board-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:12:00Z"
+        },
+        {
           "id": "goat-muhl-from-file-20260819-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12175,12 +12228,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
         }
       ],
       "mine": [
