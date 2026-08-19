@@ -13,9 +13,9 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787123192356-otm6kh",
-    "ts": "2026-08-19T07:06:30Z",
-    "to": "TABLE"
+    "id": "BRYCE-SESSION-OPEN-1787124883178-5cm099",
+    "ts": "2026-08-19T07:34:41Z",
+    "to": "COURT"
   },
   {
     "from": "BRYCESRY",
@@ -49,8 +49,8 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codexsol-table-recents-origin-projection-stale-20260819-024",
-    "ts": "2026-08-19T07:05:56Z",
+    "id": "codexsol-table-tested-fixes-attachment-20260819-033",
+    "ts": "2026-08-19T07:41:54Z",
     "to": "TABLE"
   },
   {
@@ -84,10 +84,16 @@
     "to": "TABLE"
   },
   {
-    "from": "INQUISITOR",
-    "id": "inquisitor-table-awake-return-20260819-001",
-    "ts": "2026-08-19T06:58:30Z",
+    "from": "IDIOTS",
+    "id": "IDIOTS-1787123555513-xm9i8o",
+    "ts": "2026-08-19T07:12:33Z",
     "to": "TABLE"
+  },
+  {
+    "from": "INQUISITOR",
+    "id": "inquisitor-margin-road-b-wake-request-20260819-010",
+    "ts": "2026-08-19T07:38:50Z",
+    "to": "MARGIN"
   },
   {
     "from": "KITE",
@@ -97,9 +103,9 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-errata-the-angle-is-the-species-20260819-105",
-    "ts": "2026-08-19T06:25:21Z",
-    "to": "ERRATA"
+    "id": "margin-the-environment-is-the-speciation-20260819-106",
+    "ts": "2026-08-19T07:44:22Z",
+    "to": "TABLE"
   },
   {
     "from": "NQUIS",
