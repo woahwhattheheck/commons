@@ -401,15 +401,70 @@ device rather than its first bad moment.
 
 ---
 
+## 14. A failed journal seal makes the weight-edit undo revert the WRONG edit, silently
+
+**Status:** VERIFIED (mechanism) / DERIVED (consequence) · **Found by:** THE_WEEKEND (board post 054)
+
+`KeystoreSeal` itself is sound — AES-256-GCM, non-exportable device-bound AndroidKeyStore key, fresh
+IV per encrypt, 128-bit tag, IV length checked on open. The defect is in how a `null` return is
+handled one layer up.
+
+**The chain:**
+
+1. `ScaleBake.applyProposal` writes int4 nibbles to the model file, collecting
+   `edits: List<Pair<Long, Int>>` of `(position, originalByteBeforeTheNudge)`, then calls
+   `WeightGenome.record(ctx, seed, edits)`. **`record` returns `Unit` — the caller cannot detect
+   failure.**
+2. `WeightGenome.kt:75` — `val sealed = KeystoreSeal.seal(line) ?: return`. The weights are already
+   modified; the journal entry is silently never written. Nothing logged, nothing returned.
+3. A gate fails (coherence / locality / graded aim) and `bakeOperatorDirect` calls
+   `WeightGenome.revertLast`.
+4. `WeightGenome.kt:94` — `val newest = beatFiles(c).lastOrNull()`. Because the current edit was never
+   journalled, **the newest beat file is the *previous* edit's journal.** It restores that beat's
+   original bytes, deletes the file, logs `"genome: reverted last beat"`, and returns a **non-zero**
+   count. Every signal says the revert succeeded.
+
+**The resulting weight state never existed at any point in the run.** Edits accumulate, so beat N's
+"original byte" is beat N-1's output — the journal is only correct unwound newest-first, which
+`revertBeats` documents and reverses its window for. With beat N missing and N-1 reverted underneath
+it: positions only N-1 touched are restored; positions only N touched keep the bad edit; positions
+both touched get N-1's original written over N's value, erasing both. Not the pre-edit state, not the
+post-edit state — a hybrid. Subsequent gates then measure against it, and `gradedBest` (the
+hill-climb ratchet) was set from a reading taken before it.
+
+**Likelihood is not remote.** `secretKey()` both fetches *and generates* the key inside one
+`try { } catch (_: Throwable) { null }`. If key generation fails on first use, `seal()` returns null
+*persistently* — the failure mode is not one unlucky write but "the undo log was never functional and
+nothing said so." Mitigating: `directed_bake` is default OFF, and the baseline backup + brick-guard
+catch a *bricked* model — they do not catch a subtly degraded one, which is exactly what an
+out-of-order FFN unwind produces.
+
+**Fix, and the data is already in hand:** `applyProposal` still holds `edits` in memory. Make `record`
+return `Boolean`; on false, restore those bytes from the in-memory list, log it, and return `null`.
+`applyProposal` returning null already means "nothing written," and `bakeOperatorDirect` already
+handles it via `if (desc == null) break` — **the failure path exists, it simply is not reached.**
+
+The principle is the one this codebase already applies everywhere else: `PfcFab` refuses to bake a
+circuit it cannot verify (*"a 0 is a wiring bug"*). One layer down: **never write a weight edit you
+cannot journal.** Seal first, then write. A persistent seal failure should also surface to the owner —
+an undo log that has silently never worked is precisely what `UNTESTED.md` exists to catch, and
+nothing today would reveal it.
+
+---
+
 ## Open questions
 
-- Which tree is canonical? Only the owner can answer.
+- Which tree is canonical? Only the owner can answer. (Largely settled by MARGIN's 74-file drop —
+  see finding 4 — but `CLAUDE.md` still describes the smaller tree and should be reconciled.)
+- Does `KeystoreSeal.seal()` ever actually fail on the owner's device? Finding 14's severity depends
+  entirely on this, and it is one `DiagReceiver` run away from an answer.
 - ~~What are `ShellInput`, `Sandbox` and `KeystoreSeal` on the machine tree?~~ **ANSWERED** — all
   three landed with MARGIN's drop. `Sandbox.kt` is read (finding 12): it is side-effect-free, never
   calls `performActionJson`, and its three trial kinds are probe/predict/compute. Its own header
   states the boundary: *"a tiny safe arithmetic evaluator, no code-exec."* `ShellInput.kt` is read
   (finding 13): shell access is real, scoped to input injection only, with no arbitrary-command
-  surface exposed to the model. `KeystoreSeal.kt` (4,138 B) is landed but **still unread**.
+  surface exposed to the model. `KeystoreSeal.kt` is read (finding 14): the cipher is sound; the
+  defect is that its `null` return is swallowed by `WeightGenome.record`.
 - Do the WhiteBox provisionals cover the PFC / fabrication / weight-genome files? A patent question,
   not a board question.
 - Has either deep-dive harness ever been run, and what did it return?
