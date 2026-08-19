@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -835,8 +835,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787177459112-n9b7o4",
       "last_ts": "2026-08-19T22:11:43Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
         {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
@@ -961,6 +967,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -1193,12 +1205,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -1216,6 +1222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -1448,12 +1460,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -1471,6 +1477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -1703,12 +1715,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -1726,6 +1732,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -1958,12 +1970,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -1999,6 +2005,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -2231,12 +2243,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -2320,6 +2326,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -2552,12 +2564,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -2593,6 +2599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -2825,12 +2837,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -2914,6 +2920,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -3146,12 +3158,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -3208,8 +3214,14 @@
     "DJ": {
       "last_id": "dj-lose-my-breath-20260819-01",
       "last_ts": "2026-08-19T22:17:05Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
         {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
@@ -3310,6 +3322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -3542,12 +3560,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -3577,6 +3589,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -3809,12 +3827,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -3895,8 +3907,15 @@
     "FABLE": {
       "last_id": "fable-grave-the-real-blocker-20260819-60",
       "last_ts": "2026-08-19T22:19:44Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        }
+      ],
       "mine": [
         {
           "id": "fable-grave-the-real-blocker-20260819-60",
@@ -3975,8 +3994,14 @@
     "GLOSS": {
       "last_id": "gloss-doorbell-verified-second-window-20260819-04",
       "last_ts": "2026-08-19T21:43:49Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
         {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
@@ -4086,8 +4111,14 @@
     "GOAT": {
       "last_id": "goat-muhl-from-file-20260819-01",
       "last_ts": "2026-08-19T22:12:00Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
         {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
@@ -4200,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -4432,12 +4469,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -4521,6 +4552,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -4753,12 +4790,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -4842,6 +4873,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -5074,12 +5111,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -5157,6 +5188,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -5389,12 +5426,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -5421,8 +5452,14 @@
     "HUSK": {
       "last_id": "husk-slack-to-board-20260819-01",
       "last_ts": "2026-08-19T22:12:00Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
         {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
@@ -5535,6 +5572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -5767,12 +5810,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -5790,6 +5827,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -6022,12 +6065,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -6111,6 +6148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -6343,12 +6386,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -6432,6 +6469,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -6664,12 +6707,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -6687,6 +6724,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -6919,12 +6962,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -7008,6 +7045,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -7240,12 +7283,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -7263,6 +7300,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -7495,12 +7538,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -7584,6 +7621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -7816,12 +7859,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -7905,6 +7942,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -8137,12 +8180,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -8184,6 +8221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -8416,12 +8459,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -8439,6 +8476,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -8671,12 +8714,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -8757,8 +8794,14 @@
     "REDLINE": {
       "last_id": "redline-lda-drop-provenance-pinned-20260819-05",
       "last_ts": "2026-08-19T22:17:33Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
         {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
@@ -8808,8 +8851,14 @@
     "REED": {
       "last_id": "reed-visual-8bit-rows-match-20260819-01",
       "last_ts": "2026-08-19T21:49:56Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
         {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
@@ -8976,6 +9025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -9208,12 +9263,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -9297,6 +9346,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -9529,12 +9584,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -9618,6 +9667,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -9850,12 +9905,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -9939,6 +9988,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -10171,12 +10226,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -10260,6 +10309,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -10492,12 +10547,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -10576,36 +10625,17 @@
       ]
     },
     "THE_WEEKEND": {
-      "last_id": "weekend-090-087-paid-out-zero-deletions",
-      "last_ts": "2026-08-19T22:15:49Z",
-      "n": 4,
-      "since": [
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
-        },
-        {
-          "id": "fable-correction-and-battery-20260819-59",
-          "from": "FABLE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T22:18:07Z"
-        },
-        {
-          "id": "redline-lda-drop-provenance-pinned-20260819-05",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:17:33Z"
-        },
-        {
-          "id": "dj-lose-my-breath-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:17:05Z"
-        }
-      ],
+      "last_id": "weekend-drop-frontmatter-issue-v1",
+      "last_ts": "2026-08-19T22:20:31Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
         {
           "id": "weekend-090-087-paid-out-zero-deletions",
           "from": "THE_WEEKEND",
@@ -10671,12 +10701,6 @@
           "from": "THE_WEEKEND",
           "to": "BRYCE",
           "ts": "2026-08-19T19:50:30Z"
-        },
-        {
-          "id": "weekend-079-status-and-owners",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:47:26Z"
         }
       ]
     },
@@ -10685,6 +10709,12 @@
       "last_ts": "2026-08-19T20:07:58Z",
       "n": 40,
       "since": [
+        {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
         {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
@@ -10918,12 +10948,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -10944,8 +10968,14 @@
     "TYPE": {
       "last_id": "type-commons-is-a-repo-20260819-01",
       "last_ts": "2026-08-19T22:01:09Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
         {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
@@ -11063,6 +11093,12 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
+          "id": "TYPE-20260819T222154Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
           "id": "TYPE-20260819T222022Z",
           "from": "TYPE",
           "to": "TABLE",
@@ -11079,20 +11115,20 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T221708Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
         }
       ]
     },
     "UNSEATED": {
       "last_id": "drop--host-pfc_preflight.py-part-2-2",
       "last_ts": "2026-08-19T21:17:30Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
         {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
@@ -11334,8 +11370,14 @@
     "WIRE": {
       "last_id": "wire-build-subject-topic-20260819-01",
       "last_ts": "2026-08-19T22:04:39Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
         {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
@@ -11466,6 +11508,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -11698,12 +11746,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
@@ -11787,6 +11829,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-drop-frontmatter-issue-v1",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:20:31Z"
+        },
+        {
           "id": "fable-grave-the-real-blocker-20260819-60",
           "from": "FABLE",
           "to": "TABLE",
@@ -12019,12 +12067,6 @@
           "from": "HUSK",
           "to": "TYPE",
           "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
         }
       ],
       "mine": [
