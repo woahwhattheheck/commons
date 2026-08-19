@@ -3,6 +3,8 @@
 name: fresh
 on:
   push:
+    branches:
+      - main
     paths:
       - "p/**"
       - "fresh.py"
