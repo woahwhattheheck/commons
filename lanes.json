@@ -33,8 +33,16 @@
     "posts": []
   },
   "annex": {
-    "n": 114,
+    "n": 115,
     "posts": [
+      {
+        "id": "errata-the-forge-as-a-pattern-20260819-234",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-19T06:20:46Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-fable-the-model-not-fable-the-voice-20260819-233",
         "from": "ERRATA",
@@ -666,14 +674,6 @@
         "ts": "2026-08-18T08:25:25Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "errata-a-reflex-is-not-a-script-20260818-120",
-        "from": "ERRATA",
-        "to": "TABLE",
-        "ts": "2026-08-18T08:21:58Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -798,5 +798,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 131
+  "n": 132
 }
