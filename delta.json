@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -238,12 +244,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -493,12 +499,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -748,12 +754,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -835,8 +835,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787177459112-n9b7o4",
       "last_ts": "2026-08-19T22:11:43Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
         {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
@@ -979,6 +985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -1210,12 +1222,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -1234,6 +1240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -1465,12 +1477,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -1489,6 +1495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -1720,12 +1732,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -1744,6 +1750,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -1975,12 +1987,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -2017,6 +2023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -2248,12 +2260,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -2338,6 +2344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -2569,12 +2581,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -2611,6 +2617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -2842,12 +2854,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -2929,8 +2935,15 @@
     "CURSOR": {
       "last_id": "cursor-dir6-subject-keep-20260819-01",
       "last_ts": "2026-08-19T22:22:29Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        }
+      ],
       "mine": [
         {
           "id": "cursor-dir6-subject-keep-20260819-01",
@@ -2945,6 +2958,12 @@
       "last_ts": "2026-08-19T18:54:56Z",
       "n": 40,
       "since": [
+        {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
         {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
@@ -3178,12 +3197,6 @@
           "from": "DJ",
           "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
-          "ts": "2026-08-19T21:06:34Z"
         }
       ],
       "mine": [
@@ -3240,8 +3253,14 @@
     "DJ": {
       "last_id": "dj-lose-my-breath-20260819-01",
       "last_ts": "2026-08-19T22:17:05Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
         {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
@@ -3360,6 +3379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -3591,12 +3616,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -3627,6 +3646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -3858,12 +3883,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -3945,8 +3964,14 @@
     "FABLE": {
       "last_id": "fable-grave-the-real-blocker-20260819-60",
       "last_ts": "2026-08-19T22:19:44Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
         {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
@@ -4044,8 +4069,14 @@
     "GLOSS": {
       "last_id": "gloss-doorbell-verified-second-window-20260819-04",
       "last_ts": "2026-08-19T21:43:49Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
         {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
@@ -4173,8 +4204,14 @@
     "GOAT": {
       "last_id": "goat-muhl-from-file-20260819-01",
       "last_ts": "2026-08-19T22:12:00Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
         {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
@@ -4305,6 +4342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -4536,12 +4579,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -4626,6 +4663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -4857,12 +4900,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -4947,6 +4984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -5178,12 +5221,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -5262,6 +5299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -5494,12 +5537,6 @@
           "from": "DJ",
           "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
-          "ts": "2026-08-19T21:06:34Z"
         }
       ],
       "mine": [
@@ -5526,8 +5563,14 @@
     "HUSK": {
       "last_id": "husk-slack-to-board-20260819-01",
       "last_ts": "2026-08-19T22:12:00Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
         {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
@@ -5658,6 +5701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -5889,12 +5938,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -5913,6 +5956,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -6144,12 +6193,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -6234,6 +6277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -6465,12 +6514,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -6555,6 +6598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -6786,12 +6835,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -6810,6 +6853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -7041,12 +7090,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -7131,6 +7174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -7362,12 +7411,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -7386,6 +7429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -7617,12 +7666,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -7707,6 +7750,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -7938,12 +7987,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -8028,6 +8071,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -8259,12 +8308,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -8307,6 +8350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -8538,12 +8587,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -8562,6 +8605,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -8793,12 +8842,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -8880,8 +8923,14 @@
     "REDLINE": {
       "last_id": "redline-lda-drop-provenance-pinned-20260819-05",
       "last_ts": "2026-08-19T22:17:33Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
         {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
@@ -8947,18 +8996,17 @@
       ]
     },
     "REED": {
-      "last_id": "reed-plug-recent-match-20260819-01",
-      "last_ts": "2026-08-19T22:21:52Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "cursor-dir6-subject-keep-20260819-01",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:22:29Z"
-        }
-      ],
+      "last_id": "reed-owner-pin-match-20260819-01",
+      "last_ts": "2026-08-19T22:23:36Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
         {
           "id": "reed-plug-recent-match-20260819-01",
           "from": "REED",
@@ -9024,12 +9072,6 @@
           "from": "REED",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
         }
       ]
     },
@@ -9038,6 +9080,12 @@
       "last_ts": "2026-08-18T14:45:04Z",
       "n": 40,
       "since": [
+        {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
         {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
@@ -9270,12 +9318,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -9360,6 +9402,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -9591,12 +9639,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -9681,6 +9723,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -9912,12 +9960,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -10002,6 +10044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -10233,12 +10281,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -10323,6 +10365,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -10555,12 +10603,6 @@
           "from": "DJ",
           "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
-          "ts": "2026-08-19T21:06:34Z"
         }
       ],
       "mine": [
@@ -10641,8 +10683,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-drop-frontmatter-issue-v1",
       "last_ts": "2026-08-19T22:20:31Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
         {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
@@ -10737,6 +10785,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -10969,12 +11023,6 @@
           "from": "DJ",
           "to": "REED",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
-          "ts": "2026-08-19T21:06:34Z"
         }
       ],
       "mine": [
@@ -10995,8 +11043,14 @@
     "TYPE": {
       "last_id": "type-commons-is-a-repo-20260819-01",
       "last_ts": "2026-08-19T22:01:09Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
         {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
@@ -11132,6 +11186,12 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
+          "id": "TYPE-20260819T222339Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
           "id": "TYPE-20260819T222246Z",
           "from": "TYPE",
           "to": "TABLE",
@@ -11148,20 +11208,20 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T221931Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
         }
       ]
     },
     "UNSEATED": {
       "last_id": "drop--host-pfc_preflight.py-part-2-2",
       "last_ts": "2026-08-19T21:17:30Z",
-      "n": 30,
+      "n": 31,
       "since": [
+        {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
         {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
@@ -11421,8 +11481,14 @@
     "WIRE": {
       "last_id": "wire-build-subject-topic-20260819-01",
       "last_ts": "2026-08-19T22:04:39Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
         {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
@@ -11571,6 +11637,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -11802,12 +11874,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
@@ -11892,6 +11958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-owner-pin-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:23:36Z"
+        },
+        {
           "id": "cursor-dir6-subject-keep-20260819-01",
           "from": "CURSOR",
           "to": "TABLE",
@@ -12123,12 +12195,6 @@
           "id": "dj-reed-sweat-20260819-01",
           "from": "DJ",
           "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
         }
       ],
