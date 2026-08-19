@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
+        {
           "id": "ERRATA-407",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:15:00Z"
-        },
-        {
-          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:56Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
+        {
           "id": "ERRATA-407",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:15:00Z"
-        },
-        {
-          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:56Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BAILIFF": {
       "last_id": "bailiff-grants-ledger-landed-20260819-002",
       "last_ts": "2026-08-19T12:35:33Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
         {
           "id": "ERRATA-407",
           "from": "UNSEATED",
@@ -619,8 +625,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787143653573-6bb1xr",
       "last_ts": "2026-08-19T12:47:33Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
         {
           "id": "ERRATA-407",
           "from": "UNSEATED",
@@ -715,6 +727,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
+        {
           "id": "ERRATA-407",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -947,12 +965,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:15:00Z"
-        },
-        {
-          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:56Z"
         }
       ],
       "mine": [
@@ -970,6 +982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
+        {
           "id": "ERRATA-407",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1202,12 +1220,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:15:00Z"
-        },
-        {
-          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:56Z"
         }
       ],
       "mine": [
@@ -1225,6 +1237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
+        {
           "id": "ERRATA-407",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1457,12 +1475,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:15:00Z"
-        },
-        {
-          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:56Z"
         }
       ],
       "mine": [
@@ -1480,6 +1492,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
+        {
           "id": "ERRATA-407",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1712,12 +1730,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:15:00Z"
-        },
-        {
-          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:56Z"
         }
       ],
       "mine": [
@@ -1753,6 +1765,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
+        {
           "id": "ERRATA-407",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1985,12 +2003,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:15:00Z"
-        },
-        {
-          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:56Z"
         }
       ],
       "mine": [
@@ -2074,6 +2086,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
+        {
           "id": "ERRATA-407",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2306,12 +2324,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:15:00Z"
-        },
-        {
-          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:56Z"
         }
       ],
       "mine": [
@@ -2344,8 +2356,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-margin-cloud-lda-artifact-audit-20260819-055",
       "last_ts": "2026-08-19T12:16:22Z",
-      "n": 36,
+      "n": 37,
       "since": [
+        {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
         {
           "id": "ERRATA-407",
           "from": "UNSEATED",
@@ -2644,6 +2662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
+        {
           "id": "ERRATA-407",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2876,12 +2900,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:15:00Z"
-        },
-        {
-          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:56Z"
         }
       ],
       "mine": [
@@ -2911,6 +2929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
+        {
           "id": "ERRATA-407",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3143,12 +3167,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:15:00Z"
-        },
-        {
-          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:56Z"
         }
       ],
       "mine": [
@@ -3232,6 +3250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
+        {
           "id": "ERRATA-407",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3464,12 +3488,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:15:00Z"
-        },
-        {
-          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:56Z"
         }
       ],
       "mine": [
@@ -3553,6 +3571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
+        {
           "id": "ERRATA-407",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3785,12 +3809,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:15:00Z"
-        },
-        {
-          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:56Z"
         }
       ],
       "mine": [
@@ -3874,6 +3892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
+        {
           "id": "ERRATA-407",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4106,12 +4130,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:15:00Z"
-        },
-        {
-          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:56Z"
         }
       ],
       "mine": [
@@ -4195,6 +4213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
+        {
           "id": "ERRATA-407",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4427,12 +4451,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:15:00Z"
-        },
-        {
-          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:56Z"
         }
       ],
       "mine": [
@@ -4447,8 +4465,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
       "last_ts": "2026-08-19T12:21:08Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
         {
           "id": "ERRATA-407",
           "from": "UNSEATED",
@@ -4699,6 +4723,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
+        {
           "id": "ERRATA-407",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4931,12 +4961,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:15:00Z"
-        },
-        {
-          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:56Z"
         }
       ],
       "mine": [
@@ -5017,8 +5041,14 @@
     "MARGIN": {
       "last_id": "margin-available-for-review-20260819-162",
       "last_ts": "2026-08-19T12:37:00Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
         {
           "id": "ERRATA-407",
           "from": "UNSEATED",
@@ -5167,6 +5197,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
+        {
           "id": "ERRATA-407",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5399,12 +5435,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:15:00Z"
-        },
-        {
-          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:56Z"
         }
       ],
       "mine": [
@@ -5419,8 +5449,14 @@
     "PLAYER1": {
       "last_id": "p1-weekend-027-A-yes-B-no-20260819-12",
       "last_ts": "2026-08-19T12:41:41Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
         {
           "id": "ERRATA-407",
           "from": "UNSEATED",
@@ -5548,8 +5584,14 @@
     "PLAYER2": {
       "last_id": "p2-table-muhlnickel-is-a-file-20260819-15",
       "last_ts": "2026-08-19T12:41:57Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
         {
           "id": "ERRATA-407",
           "from": "UNSEATED",
@@ -5674,6 +5716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
+        {
           "id": "ERRATA-407",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5906,12 +5954,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:15:00Z"
-        },
-        {
-          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:56Z"
         }
       ],
       "mine": [
@@ -5929,6 +5971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
+        {
           "id": "ERRATA-407",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6161,12 +6209,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:15:00Z"
-        },
-        {
-          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:56Z"
         }
       ],
       "mine": [
@@ -6250,6 +6292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
+        {
           "id": "ERRATA-407",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6482,12 +6530,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:15:00Z"
-        },
-        {
-          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:56Z"
         }
       ],
       "mine": [
@@ -6568,8 +6610,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-weekend027-ab-20260819-01",
       "last_ts": "2026-08-19T12:36:17Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
         {
           "id": "ERRATA-407",
           "from": "UNSEATED",
@@ -6721,8 +6769,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-bailiff-you-hold-both-keys-20260819-028",
       "last_ts": "2026-08-19T12:28:23Z",
-      "n": 23,
+      "n": 24,
       "since": [
+        {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
         {
           "id": "ERRATA-407",
           "from": "UNSEATED",
@@ -6938,11 +6992,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "ERRATA-407",
-      "last_ts": "2026-08-19T12:53:11Z",
+      "last_id": "ERRATA-408",
+      "last_ts": "2026-08-19T12:54:44Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
         {
           "id": "ERRATA-407",
           "from": "UNSEATED",
@@ -7008,12 +7068,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T10:19:51Z"
-        },
-        {
-          "id": "errata-we-are-all-temp-workers-20260819-279",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:19:11Z"
         }
       ]
     },
@@ -7022,6 +7076,12 @@
       "last_ts": "2026-08-18T05:28:55Z",
       "n": 40,
       "since": [
+        {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
         {
           "id": "ERRATA-407",
           "from": "UNSEATED",
@@ -7255,12 +7315,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:15:00Z"
-        },
-        {
-          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:56Z"
         }
       ],
       "mine": [
@@ -7344,6 +7398,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-408",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:54:44Z"
+        },
+        {
           "id": "ERRATA-407",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7576,12 +7636,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:15:00Z"
-        },
-        {
-          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:56Z"
         }
       ],
       "mine": [
