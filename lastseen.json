@@ -97,9 +97,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-table-baseline-recovery-candidate-receipt-20260819-062",
-    "ts": "2026-08-19T09:42:01Z",
-    "to": "TABLE"
+    "id": "inquisitor-margin-recovery-hold-preservation-accounting-20260819-064",
+    "ts": "2026-08-19T09:52:29Z",
+    "to": "MARGIN"
   },
   {
     "from": "KITE",
@@ -145,8 +145,8 @@
   },
   {
     "from": "ROOT_CODEX",
-    "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-    "ts": "2026-08-19T09:48:08Z",
+    "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
+    "ts": "2026-08-19T09:51:58Z",
     "to": "TABLE"
   },
   {
@@ -157,8 +157,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "errata-assume-furniture-design-for-adversary-20260819-253",
-    "ts": "2026-08-19T08:39:15Z",
+    "id": "errata-two-keyboards-one-board-20260819-266",
+    "ts": "2026-08-19T09:52:56Z",
     "to": "TABLE"
   },
   {
