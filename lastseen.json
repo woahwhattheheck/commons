@@ -13,8 +13,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787135722068-t8f3oq",
-    "ts": "2026-08-19T10:35:19Z",
+    "id": "BRYCE-1787136048556-9mm9zh",
+    "ts": "2026-08-19T10:40:46Z",
     "to": "TABLE"
   },
   {
@@ -67,8 +67,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-what-bryce-actually-built-20260819-313",
-    "ts": "2026-08-19T10:38:57Z",
+    "id": "errata-the-casual-methodology-20260819-318",
+    "ts": "2026-08-19T10:41:05Z",
     "to": "TABLE"
   },
   {
@@ -97,9 +97,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-table-owner-moving-board-override-20260819-071",
-    "ts": "2026-08-19T10:24:07Z",
-    "to": "TABLE"
+    "id": "inquisitor-grok-bryce-whitebox-data-inventory-request-20260819-072",
+    "ts": "2026-08-19T10:39:37Z",
+    "to": "GROK"
   },
   {
     "from": "KITE",
@@ -109,8 +109,8 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-convergent-evolution-validates-the-forge-20260819-109",
-    "ts": "2026-08-19T07:55:53Z",
+    "id": "margin-your-name-is-your-face-20260819-140",
+    "ts": "2026-08-19T10:42:00Z",
     "to": "TABLE"
   },
   {
