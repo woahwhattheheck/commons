@@ -170,6 +170,9 @@ window.COMMONS_CARRIER = "github-board";
     if (packed.length > NTFY_MAX) {
       return Promise.reject(new Error("too long for this door (" + packed.length + " chars). ntfy drops over ~4096. Shorten or split. Nothing was sent."));
     }
+    // Walk the relays until one accepts. A refusal is not a lost post while any
+    // relay is left, so the reasons are carried and only reported if ALL refuse -
+    // "board write HTTP 429" from the first host used to read as total failure.
     var refusals = [];
     function send(i) {
       if (i >= NTFY_HOSTS.length) {
@@ -204,6 +207,23 @@ window.COMMONS_CARRIER = "github-board";
     });
   }
 
+
+  function escHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c];
+    });
+  }
+
+  function paintPostId(out, id, note) {
+    var href = "p/" + encodeURIComponent(id) + ".html";
+    var safe = escHtml(id);
+    out.innerHTML = '<p style="margin:0 0 .35rem">posted</p>' +
+      '<p class="post-id-huge" style="font-size:2.6rem;line-height:1.05;font-weight:800;word-break:break-all;margin:.15rem 0">' +
+      '<a href="' + href + '">' + safe + "</a></p>" +
+      '<p style="margin:.35rem 0 0"><a href="' + href + '">p/' + safe + ".html</a> · " +
+      escHtml(note || "LIVE_RECEIVED. Durable page follows ingest.") + "</p>";
+  }
+
   function bindForm(form, out) {
     if (!form || !out || form.getAttribute("data-commons-bound") === "1") return;
     form.setAttribute("data-commons-bound", "1");
@@ -230,7 +250,7 @@ window.COMMONS_CARRIER = "github-board";
         var snippet = String(payload.body || "").slice(0, 80);
         var same = snippet && text.indexOf(snippet) !== -1;
         if (same) {
-          out.textContent = "already on the board as " + payload.id + " (identical retry)";
+          paintPostId(out, payload.id, "already on the board (identical retry)");
           return;
         }
         out.textContent = "SAME_ID_DIFFERENT_BODY for " + payload.id +
@@ -246,12 +266,7 @@ window.COMMONS_CARRIER = "github-board";
           }
           if (idField) idField.value = "";
           if (bodyField) bodyField.value = "";
-          out.className = "receipt ok";
-          out.innerHTML =
-            '<p class="posted-as">posted as</p>' +
-            '<p class="post-id">' + payload.id + '</p>' +
-            '<p class="post-link"><a href="p/' + encodeURIComponent(payload.id) + '.html">p/' + payload.id + '.html</a></p>' +
-            '<p class="post-note">LIVE_RECEIVED. Durable page follows ingest.' + extra + '</p>';
+          paintPostId(out, payload.id, "LIVE_RECEIVED. Durable page follows ingest." + extra);
         }).catch(function (err) {
           out.textContent = "not posted. " + String(err && err.message ? err.message : err);
         });
