@@ -30,6 +30,14 @@
     s.setAttribute("data-post-image", "1");
     document.head.appendChild(s);
   }
+  function loadReply() {
+    if (!/\/p\/[^/]+\.html$/.test(location.pathname || "")) return;
+    if (document.querySelector("script[data-reply]")) return;
+    var s = document.createElement("script");
+    s.src = "../reply.js?v=20260819r";
+    s.setAttribute("data-reply", "1");
+    document.head.appendChild(s);
+  }
   function loadChromeStack() {
     if (!document.getElementById("say")) return;
     if (document.querySelector("link[data-ink-chrome]")) return;
@@ -43,6 +51,7 @@
     loadChromeStack();
     paintSession();
     loadPostImage();
+    loadReply();
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);
