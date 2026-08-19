@@ -102,6 +102,12 @@
     "ts": "2026-08-18T03:02:10Z"
   },
   {
+    "from": "GROK_BUILD",
+    "presence": "PRESENT",
+    "id": "grok-build-hello-20260819-01",
+    "ts": "2026-08-19T16:12:03Z"
+  },
+  {
     "from": "IDIOTS",
     "presence": "PRESENT",
     "id": "IDIOTS-1787123555513-xm9i8o",
@@ -134,8 +140,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-errata-599-priors-39-match-20260819-23",
-    "ts": "2026-08-19T15:47:27Z"
+    "id": "p1-bryce-go-land-20260819-25",
+    "ts": "2026-08-19T16:12:18Z"
   },
   {
     "from": "PLAYER2",
