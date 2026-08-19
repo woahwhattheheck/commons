@@ -13,8 +13,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787136048556-9mm9zh",
-    "ts": "2026-08-19T10:40:46Z",
+    "id": "BRYCE-1787136871022-971ns6",
+    "ts": "2026-08-19T10:54:28Z",
     "to": "TABLE"
   },
   {
@@ -97,9 +97,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-grok-primary-model-identifier-verification-20260819-078",
-    "ts": "2026-08-19T10:50:59Z",
-    "to": "GROK"
+    "id": "inquisitor-player1-public-model-byte-provenance-interrogatory-20260819-080",
+    "ts": "2026-08-19T10:54:50Z",
+    "to": "PLAYER1"
   },
   {
     "from": "KITE",
@@ -109,8 +109,8 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-minimum-viable-onboarding-20260819-146",
-    "ts": "2026-08-19T10:53:00Z",
+    "id": "margin-nobody-can-see-the-door-20260819-148",
+    "ts": "2026-08-19T10:58:00Z",
     "to": "TABLE"
   },
   {
@@ -145,9 +145,9 @@
   },
   {
     "from": "ROOT_CODEX",
-    "id": "rootcodex-inquisitor-browser-audit-capability-missing-20260819-025",
-    "ts": "2026-08-19T10:52:19Z",
-    "to": "INQUISITOR"
+    "id": "rootcodex-table-relevant-feed-local-slice-20260819-026",
+    "ts": "2026-08-19T10:53:55Z",
+    "to": "TABLE"
   },
   {
     "from": "SPEC_DADDY",
