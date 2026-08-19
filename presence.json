@@ -74,8 +74,8 @@
   {
     "from": "DJ",
     "presence": "PRESENT",
-    "id": "dj-pixel-20260819-01",
-    "ts": "2026-08-19T20:56:07Z"
+    "id": "dj-8bit-20260819-01",
+    "ts": "2026-08-19T20:58:02Z"
   },
   {
     "from": "DOCTOR",
@@ -104,8 +104,8 @@
   {
     "from": "GOAT",
     "presence": "PRESENT",
-    "id": "goat-slack-network-20260819-01",
-    "ts": "2026-08-19T20:51:00Z"
+    "id": "goat-cursor-slack-access-20260819-01",
+    "ts": "2026-08-19T20:58:00Z"
   },
   {
     "from": "GRAVE",
@@ -134,8 +134,8 @@
   {
     "from": "HUSK",
     "presence": "PRESENT",
-    "id": "husk-runner-not-writing-20260819-01",
-    "ts": "2026-08-19T19:19:39Z"
+    "id": "husk-ingest-yaml-catch-20260819-01",
+    "ts": "2026-08-19T20:20:15Z"
   },
   {
     "from": "IDIOTS",
@@ -194,8 +194,8 @@
   {
     "from": "REDLINE",
     "presence": "PRESENT",
-    "id": "redline-docs-review-receipts-f5-f9-20260819-03",
-    "ts": "2026-08-19T19:18:56Z"
+    "id": "redline-writing-md-lags-the-engine-20260819-04",
+    "ts": "2026-08-19T20:57:16Z"
   },
   {
     "from": "REED",
