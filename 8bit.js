@@ -1253,7 +1253,7 @@ function normalize(rows) {
       activity: up(r.activity) || declared(body, "activity"),
       target: up(r.target) || declared(body, "target"),
       id: id,
-      href: r.href || (id ? "./p/" + encodeURIComponent(id) + ".html" : ""),
+      href: r.href || "",                         /* shape-checked later by postHref */
       ts: r.ts || headerOf(body, "ts") || "",
       kind: up(r.kind) || up(headerOf(body, "kind")),
       subject: up(headerOf(body, "subject")),
@@ -1261,6 +1261,15 @@ function normalize(rows) {
     });
   });
   return out;
+}
+
+/* A link has to be a page that exists: ./p/{id}.html, or a ./by/ index if the bake hands one
+   over. Anything else -- a bare "./p/", an empty string, an off-site URL -- is rebuilt from the
+   id, and a row with no id gets no link at all. Never navigate a click into a 404. */
+function postHref(row) {
+  var h = String((row && row.href) || "").trim(), id = (row && row.id) || "";
+  if (/^\.\/p\/[^/]+\.html$/.test(h) || /^\.\/by\/[^/]+\/$/.test(h)) return h;
+  return id ? "./p/" + encodeURIComponent(id) + ".html" : "";
 }
 
 function stamp(ts) { var n = Date.parse(ts || ""); return isNaN(n) ? 0 : n; }
@@ -1303,7 +1312,9 @@ function classify(opts) {
         seen = Math.max(seat.seen, last ? stamp(last.ts) : 0),
         a = {
           claim: claim, state: "idle", to: "", target: "", place: "", activity: "",
-          text: "", id: "", href: "./by/" + encodeURIComponent(claim) + "/",
+          /* No post, no link. ./by/{claim}/ is not published, so defaulting to it was a
+             click-to-404 waiting to happen. */
+          text: "", id: "", href: "",
           ts: last ? last.ts : "", seen: seen
         };
 
@@ -1312,7 +1323,7 @@ function classify(opts) {
       a.text = last.text;
       a.id = last.id;
       a.activity = last.activity;
-      if (last.href) a.href = last.href;
+      a.href = postHref(last);
     }
 
     if (seat.leaving || (seen && now - seen > ABSENT_MS)) {
@@ -1405,6 +1416,15 @@ function kitOf(claim) {
    clean dark pixel where it cannot (8bit at 1x). */
 function faceDetail(ctx, a, s, ox, oy, pal, talking, off) {
   var right = a.direction !== "left", half = Math.max(1, Math.floor(s / 2));
+
+  /* Brow over each eye and a nose between them: one pixel each, so the face still reads at 1x
+     on 8bit.html where the pupil has no room. */
+  ctx.fillStyle = off ? pal.hair : mix(pal.hair, "#000", 0.25);
+  ctx.fillRect(ox + 4 * s, oy + 2 * s, s, half);
+  ctx.fillRect(ox + 7 * s, oy + 2 * s, s, half);
+  ctx.fillStyle = mix(pal.skin, "#000", off ? 0.1 : 0.3);
+  ctx.fillRect(ox + (right ? 6 : 5) * s, oy + 4 * s - half, s, half);
+
   if (!off && !a.blink && s >= 2) {
     ctx.fillStyle = "#f4f4f6";
     ctx.fillRect(ox + 4 * s, oy + 3 * s, s, s);
@@ -1770,7 +1790,7 @@ function mount(opts) {
       : '<span class="quiet">no line in this read of recent.json \u2014 present, not speaking</span>';
     panel.innerHTML = '<span class="who" style="color:' + STATE_INK[a.state] + '">' + esc(claim) +
       '</span> <span class="st">' + esc(stateWord(a)) + "</span> " + words +
-      (a.id ? ' <a href="' + esc(a.href) + '">' + esc(a.id) + "</a>" : "") +
+      (a.id && a.href ? ' <a href="' + esc(a.href) + '">' + esc(a.id) + "</a>" : "") +
       (a.ts ? ' <span class="quiet">' + esc(a.ts) + "</span>" : "");
   }
 
@@ -1870,7 +1890,7 @@ function mount(opts) {
   canvas.addEventListener("keydown", function (ev) {
     if (ev.key === "ArrowRight" || ev.key === "ArrowDown") { cycle(1); ev.preventDefault(); }
     else if (ev.key === "ArrowLeft" || ev.key === "ArrowUp") { cycle(-1); ev.preventDefault(); }
-    else if ((ev.key === "Enter" || ev.key === " ") && sel && seats[sel] && seats[sel].id) {
+    else if ((ev.key === "Enter" || ev.key === " ") && sel && seats[sel] && seats[sel].href) {
       location.href = seats[sel].href;
     }
   });
