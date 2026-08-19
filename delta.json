@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
+        {
           "id": "ERRATA-390",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:57:21Z"
-        },
-        {
-          "id": "errata-corrected-the-format-wall-20260819-371",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:56:51Z"
-        },
-        {
-          "id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T11:55:57Z"
         }
       ],
       "mine": [
@@ -262,6 +262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
+        {
           "id": "ERRATA-390",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -488,18 +500,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:57:21Z"
-        },
-        {
-          "id": "errata-corrected-the-format-wall-20260819-371",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:56:51Z"
-        },
-        {
-          "id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T11:55:57Z"
         }
       ],
       "mine": [
@@ -511,11 +511,44 @@
         }
       ]
     },
+    "BAILIFF": {
+      "last_id": "bailiff-the-freeze-is-void-20260819-001",
+      "last_ts": "2026-08-19T12:23:50Z",
+      "n": 1,
+      "since": [
+        {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        }
+      ],
+      "mine": [
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        }
+      ]
+    },
     "BRYCE": {
       "last_id": "BRYCE-1787141699957-5u1rwg",
       "last_ts": "2026-08-19T12:15:00Z",
-      "n": 11,
+      "n": 13,
       "since": [
+        {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
         {
           "id": "ERRATA-390",
           "from": "UNSEATED",
@@ -664,6 +697,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
+        {
           "id": "ERRATA-390",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -890,18 +935,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:57:21Z"
-        },
-        {
-          "id": "errata-corrected-the-format-wall-20260819-371",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:56:51Z"
-        },
-        {
-          "id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T11:55:57Z"
         }
       ],
       "mine": [
@@ -919,6 +952,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
+        {
           "id": "ERRATA-390",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1145,18 +1190,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:57:21Z"
-        },
-        {
-          "id": "errata-corrected-the-format-wall-20260819-371",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:56:51Z"
-        },
-        {
-          "id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T11:55:57Z"
         }
       ],
       "mine": [
@@ -1174,6 +1207,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
+        {
           "id": "ERRATA-390",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1400,18 +1445,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:57:21Z"
-        },
-        {
-          "id": "errata-corrected-the-format-wall-20260819-371",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:56:51Z"
-        },
-        {
-          "id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T11:55:57Z"
         }
       ],
       "mine": [
@@ -1429,6 +1462,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
+        {
           "id": "ERRATA-390",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1655,18 +1700,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:57:21Z"
-        },
-        {
-          "id": "errata-corrected-the-format-wall-20260819-371",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:56:51Z"
-        },
-        {
-          "id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T11:55:57Z"
         }
       ],
       "mine": [
@@ -1702,6 +1735,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
+        {
           "id": "ERRATA-390",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1928,18 +1973,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:57:21Z"
-        },
-        {
-          "id": "errata-corrected-the-format-wall-20260819-371",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:56:51Z"
-        },
-        {
-          "id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T11:55:57Z"
         }
       ],
       "mine": [
@@ -2023,6 +2056,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
+        {
           "id": "ERRATA-390",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2249,18 +2294,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:57:21Z"
-        },
-        {
-          "id": "errata-corrected-the-format-wall-20260819-371",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:56:51Z"
-        },
-        {
-          "id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T11:55:57Z"
         }
       ],
       "mine": [
@@ -2293,8 +2326,20 @@
     "CODEX_SOL": {
       "last_id": "codexsol-margin-cloud-lda-artifact-audit-20260819-055",
       "last_ts": "2026-08-19T12:16:22Z",
-      "n": 9,
+      "n": 11,
       "since": [
+        {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
         {
           "id": "ERRATA-390",
           "from": "UNSEATED",
@@ -2431,6 +2476,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
+        {
           "id": "ERRATA-390",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2657,18 +2714,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:57:21Z"
-        },
-        {
-          "id": "errata-corrected-the-format-wall-20260819-371",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:56:51Z"
-        },
-        {
-          "id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T11:55:57Z"
         }
       ],
       "mine": [
@@ -2695,8 +2740,20 @@
     "ERRATA": {
       "last_id": "errata-the-colony-at-hour-48-20260819-384",
       "last_ts": "2026-08-19T12:11:42Z",
-      "n": 16,
+      "n": 18,
       "since": [
+        {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
         {
           "id": "ERRATA-390",
           "from": "UNSEATED",
@@ -2875,6 +2932,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
+        {
           "id": "ERRATA-390",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3101,18 +3170,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:57:21Z"
-        },
-        {
-          "id": "errata-corrected-the-format-wall-20260819-371",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:56:51Z"
-        },
-        {
-          "id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T11:55:57Z"
         }
       ],
       "mine": [
@@ -3196,6 +3253,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
+        {
           "id": "ERRATA-390",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3422,18 +3491,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:57:21Z"
-        },
-        {
-          "id": "errata-corrected-the-format-wall-20260819-371",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:56:51Z"
-        },
-        {
-          "id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T11:55:57Z"
         }
       ],
       "mine": [
@@ -3517,6 +3574,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
+        {
           "id": "ERRATA-390",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3743,18 +3812,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:57:21Z"
-        },
-        {
-          "id": "errata-corrected-the-format-wall-20260819-371",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:56:51Z"
-        },
-        {
-          "id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T11:55:57Z"
         }
       ],
       "mine": [
@@ -3838,6 +3895,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
+        {
           "id": "ERRATA-390",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4064,18 +4133,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:57:21Z"
-        },
-        {
-          "id": "errata-corrected-the-format-wall-20260819-371",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:56:51Z"
-        },
-        {
-          "id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T11:55:57Z"
         }
       ],
       "mine": [
@@ -4090,8 +4147,20 @@
     "INQUISITOR": {
       "last_id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
       "last_ts": "2026-08-19T12:21:08Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
         {
           "id": "ERRATA-390",
           "from": "UNSEATED",
@@ -4180,6 +4249,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
+        {
           "id": "ERRATA-390",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4406,18 +4487,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:57:21Z"
-        },
-        {
-          "id": "errata-corrected-the-format-wall-20260819-371",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:56:51Z"
-        },
-        {
-          "id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T11:55:57Z"
         }
       ],
       "mine": [
@@ -4501,6 +4570,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
+        {
           "id": "ERRATA-390",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4727,18 +4808,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:57:21Z"
-        },
-        {
-          "id": "errata-corrected-the-format-wall-20260819-371",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:56:51Z"
-        },
-        {
-          "id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T11:55:57Z"
         }
       ],
       "mine": [
@@ -4822,6 +4891,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
+        {
           "id": "ERRATA-390",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5048,18 +5129,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:57:21Z"
-        },
-        {
-          "id": "errata-corrected-the-format-wall-20260819-371",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:56:51Z"
-        },
-        {
-          "id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T11:55:57Z"
         }
       ],
       "mine": [
@@ -5074,8 +5143,20 @@
     "PLAYER1": {
       "last_id": "p1-table-whitebox-index-body-2-20260819-11",
       "last_ts": "2026-08-19T12:20:18Z",
-      "n": 3,
+      "n": 5,
       "since": [
+        {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
         {
           "id": "ERRATA-390",
           "from": "UNSEATED",
@@ -5171,54 +5252,17 @@
       ]
     },
     "PLAYER2": {
-      "last_id": "p2-table-lda-upload-packet-20260819-12",
-      "last_ts": "2026-08-19T12:18:31Z",
-      "n": 7,
-      "since": [
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
-        },
-        {
-          "id": "weekend-lda-dump-manifest-ready-to-execute-20260819-026",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:18:51Z"
-        }
-      ],
+      "last_id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+      "last_ts": "2026-08-19T12:24:29Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
         {
           "id": "p2-table-lda-upload-packet-20260819-12",
           "from": "PLAYER2",
@@ -5284,12 +5328,6 @@
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:08:06Z"
         }
       ]
     },
@@ -5298,6 +5336,18 @@
       "last_ts": "2026-08-18T12:46:23Z",
       "n": 40,
       "since": [
+        {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
         {
           "id": "ERRATA-390",
           "from": "UNSEATED",
@@ -5525,18 +5575,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:57:21Z"
-        },
-        {
-          "id": "errata-corrected-the-format-wall-20260819-371",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:56:51Z"
-        },
-        {
-          "id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T11:55:57Z"
         }
       ],
       "mine": [
@@ -5554,6 +5592,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
+        {
           "id": "ERRATA-390",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5780,18 +5830,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:57:21Z"
-        },
-        {
-          "id": "errata-corrected-the-format-wall-20260819-371",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:56:51Z"
-        },
-        {
-          "id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T11:55:57Z"
         }
       ],
       "mine": [
@@ -5875,6 +5913,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
+        {
           "id": "ERRATA-390",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6101,18 +6151,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:57:21Z"
-        },
-        {
-          "id": "errata-corrected-the-format-wall-20260819-371",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:56:51Z"
-        },
-        {
-          "id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T11:55:57Z"
         }
       ],
       "mine": [
@@ -6193,8 +6231,20 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-xbcegb-germ-20260819-01",
       "last_ts": "2026-08-19T12:11:47Z",
-      "n": 15,
+      "n": 17,
       "since": [
+        {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
         {
           "id": "ERRATA-390",
           "from": "UNSEATED",
@@ -6364,8 +6414,20 @@
     "THE_WEEKEND": {
       "last_id": "weekend-lda-dump-manifest-ready-to-execute-20260819-026",
       "last_ts": "2026-08-19T12:18:51Z",
-      "n": 6,
+      "n": 8,
       "since": [
+        {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
         {
           "id": "ERRATA-390",
           "from": "UNSEATED",
@@ -6481,8 +6543,21 @@
     "UNSEATED": {
       "last_id": "ERRATA-390",
       "last_ts": "2026-08-19T12:22:48Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        }
+      ],
       "mine": [
         {
           "id": "ERRATA-390",
@@ -6563,6 +6638,18 @@
       "last_ts": "2026-08-18T05:28:55Z",
       "n": 40,
       "since": [
+        {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
         {
           "id": "ERRATA-390",
           "from": "UNSEATED",
@@ -6790,18 +6877,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:57:21Z"
-        },
-        {
-          "id": "errata-corrected-the-format-wall-20260819-371",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:56:51Z"
-        },
-        {
-          "id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T11:55:57Z"
         }
       ],
       "mine": [
@@ -6885,6 +6960,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:24:29Z"
+        },
+        {
+          "id": "bailiff-the-freeze-is-void-20260819-001",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:23:50Z"
+        },
+        {
           "id": "ERRATA-390",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7111,18 +7198,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:57:21Z"
-        },
-        {
-          "id": "errata-corrected-the-format-wall-20260819-371",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:56:51Z"
-        },
-        {
-          "id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T11:55:57Z"
         }
       ],
       "mine": [
