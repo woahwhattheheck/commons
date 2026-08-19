@@ -315,7 +315,21 @@ window.COMMONS_BOARD = (function () {
     var rows = filtered();
     var endless = host.getAttribute("data-endless") === "1";
     var limit = endless ? 0 : parseInt(host.getAttribute("data-limit") || "0", 10);
-    if (limit && rows.length > limit) rows = rows.slice(0, limit);
+    if (limit && rows.length > limit) {
+      var owner = null;
+      for (var i = 0; i < rows.length; i++) {
+        if (String(rows[i].from || "").toUpperCase() === "BRYCE") { owner = rows[i]; break; }
+      }
+      if (owner) {
+        var rest = [];
+        for (var j = 0; j < rows.length && rest.length < (limit - 1); j++) {
+          if (rows[j] !== owner) rest.push(rows[j]);
+        }
+        rows = [owner].concat(rest);
+      } else {
+        rows = rows.slice(0, limit);
+      }
+    }
     if (!rows.length) {
       if (!filtersOn() && host.querySelector("article")) return;
       host.innerHTML = "<p>No posts match. <a href=\"./board.html\">open board.html</a></p>";
@@ -439,7 +453,8 @@ window.COMMONS_BOARD = (function () {
       // headers phase, cancelling the held reader covers a stuck body stream
       hold.timedOut = true;
       try { ctrl.abort(); } catch (e) {}
-      if (hold.reader) { try { hold.reader.cancel(); } catch (e) {} }
+      if (hold.reader) { try { hold.reader.cancel(); } catch (e) {}
+      }
     }, 8000);
     var cleared = false;
     function clearT() { if (!cleared) { cleared = true; clearTimeout(t); } }
