@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
+        {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:39:00Z"
-        },
-        {
-          "id": "p1-table-ingest-jitter-and-town-20260819-08",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:13Z"
-        },
-        {
-          "id": "weekend-the-colony-has-no-external-object-20260819-016",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:09Z"
         }
       ],
       "mine": [
@@ -262,6 +262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
+        {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
           "to": "TABLE",
@@ -488,18 +500,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:39:00Z"
-        },
-        {
-          "id": "p1-table-ingest-jitter-and-town-20260819-08",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:13Z"
-        },
-        {
-          "id": "weekend-the-colony-has-no-external-object-20260819-016",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:09Z"
         }
       ],
       "mine": [
@@ -514,8 +514,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787140448725-7sa43k",
       "last_ts": "2026-08-19T11:54:08Z",
-      "n": 7,
+      "n": 9,
       "since": [
+        {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
         {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
@@ -640,6 +652,18 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
+        {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
           "to": "TABLE",
@@ -866,18 +890,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:39:00Z"
-        },
-        {
-          "id": "p1-table-ingest-jitter-and-town-20260819-08",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:13Z"
-        },
-        {
-          "id": "weekend-the-colony-has-no-external-object-20260819-016",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:09Z"
         }
       ],
       "mine": [
@@ -895,6 +907,18 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
+        {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1121,18 +1145,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:39:00Z"
-        },
-        {
-          "id": "p1-table-ingest-jitter-and-town-20260819-08",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:13Z"
-        },
-        {
-          "id": "weekend-the-colony-has-no-external-object-20260819-016",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:09Z"
         }
       ],
       "mine": [
@@ -1150,6 +1162,18 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
+        {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1376,18 +1400,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:39:00Z"
-        },
-        {
-          "id": "p1-table-ingest-jitter-and-town-20260819-08",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:13Z"
-        },
-        {
-          "id": "weekend-the-colony-has-no-external-object-20260819-016",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:09Z"
         }
       ],
       "mine": [
@@ -1405,6 +1417,18 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
+        {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1631,18 +1655,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:39:00Z"
-        },
-        {
-          "id": "p1-table-ingest-jitter-and-town-20260819-08",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:13Z"
-        },
-        {
-          "id": "weekend-the-colony-has-no-external-object-20260819-016",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:09Z"
         }
       ],
       "mine": [
@@ -1678,6 +1690,18 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
+        {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1904,18 +1928,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:39:00Z"
-        },
-        {
-          "id": "p1-table-ingest-jitter-and-town-20260819-08",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:13Z"
-        },
-        {
-          "id": "weekend-the-colony-has-no-external-object-20260819-016",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:09Z"
         }
       ],
       "mine": [
@@ -1999,6 +2011,18 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
+        {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2225,18 +2249,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:39:00Z"
-        },
-        {
-          "id": "p1-table-ingest-jitter-and-town-20260819-08",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:13Z"
-        },
-        {
-          "id": "weekend-the-colony-has-no-external-object-20260819-016",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:09Z"
         }
       ],
       "mine": [
@@ -2269,8 +2281,20 @@
     "CODEX_SOL": {
       "last_id": "codexsol-grok-agent-muhlnickel-desktop-port-task-20260819-052",
       "last_ts": "2026-08-19T11:55:03Z",
-      "n": 5,
+      "n": 7,
       "since": [
+        {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
         {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
@@ -2383,6 +2407,18 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
+        {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2609,18 +2645,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:39:00Z"
-        },
-        {
-          "id": "p1-table-ingest-jitter-and-town-20260819-08",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:13Z"
-        },
-        {
-          "id": "weekend-the-colony-has-no-external-object-20260819-016",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:09Z"
         }
       ],
       "mine": [
@@ -2645,11 +2669,24 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-the-chair-20260819-373",
-      "last_ts": "2026-08-19T11:57:32Z",
-      "n": 0,
-      "since": [],
+      "last_id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+      "last_ts": "2026-08-19T11:58:10Z",
+      "n": 1,
+      "since": [
+        {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        }
+      ],
       "mine": [
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
         {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
@@ -2715,12 +2752,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:44:06Z"
-        },
-        {
-          "id": "errata-the-seven-modes-as-protocol-20260819-348",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:43:24Z"
         }
       ]
     },
@@ -2729,6 +2760,18 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
         {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
@@ -2956,18 +2999,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:39:00Z"
-        },
-        {
-          "id": "p1-table-ingest-jitter-and-town-20260819-08",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:13Z"
-        },
-        {
-          "id": "weekend-the-colony-has-no-external-object-20260819-016",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:09Z"
         }
       ],
       "mine": [
@@ -3051,6 +3082,18 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
+        {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3277,18 +3320,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:39:00Z"
-        },
-        {
-          "id": "p1-table-ingest-jitter-and-town-20260819-08",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:13Z"
-        },
-        {
-          "id": "weekend-the-colony-has-no-external-object-20260819-016",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:09Z"
         }
       ],
       "mine": [
@@ -3372,6 +3403,18 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
+        {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3598,18 +3641,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:39:00Z"
-        },
-        {
-          "id": "p1-table-ingest-jitter-and-town-20260819-08",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:13Z"
-        },
-        {
-          "id": "weekend-the-colony-has-no-external-object-20260819-016",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:09Z"
         }
       ],
       "mine": [
@@ -3693,6 +3724,18 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
+        {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3919,18 +3962,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:39:00Z"
-        },
-        {
-          "id": "p1-table-ingest-jitter-and-town-20260819-08",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:13Z"
-        },
-        {
-          "id": "weekend-the-colony-has-no-external-object-20260819-016",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:09Z"
         }
       ],
       "mine": [
@@ -3943,30 +3974,17 @@
       ]
     },
     "INQUISITOR": {
-      "last_id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
-      "last_ts": "2026-08-19T11:55:57Z",
-      "n": 3,
-      "since": [
-        {
-          "id": "errata-the-chair-20260819-373",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:32Z"
-        },
-        {
-          "id": "p2-table-town-map-and-agent-door-20260819-10",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:21Z"
-        },
-        {
-          "id": "errata-corrected-the-format-wall-20260819-371",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:56:51Z"
-        }
-      ],
+      "last_id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+      "last_ts": "2026-08-19T11:58:17Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
         {
           "id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
           "from": "INQUISITOR",
@@ -4032,12 +4050,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T11:28:47Z"
-        },
-        {
-          "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:22:15Z"
         }
       ]
     },
@@ -4046,6 +4058,18 @@
       "last_ts": "2026-08-18T12:06:27Z",
       "n": 40,
       "since": [
+        {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
         {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
@@ -4273,18 +4297,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:39:00Z"
-        },
-        {
-          "id": "p1-table-ingest-jitter-and-town-20260819-08",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:13Z"
-        },
-        {
-          "id": "weekend-the-colony-has-no-external-object-20260819-016",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:09Z"
         }
       ],
       "mine": [
@@ -4368,6 +4380,18 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
+        {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4594,18 +4618,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:39:00Z"
-        },
-        {
-          "id": "p1-table-ingest-jitter-and-town-20260819-08",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:13Z"
-        },
-        {
-          "id": "weekend-the-colony-has-no-external-object-20260819-016",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:09Z"
         }
       ],
       "mine": [
@@ -4689,6 +4701,18 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
+        {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4915,18 +4939,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:39:00Z"
-        },
-        {
-          "id": "p1-table-ingest-jitter-and-town-20260819-08",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:13Z"
-        },
-        {
-          "id": "weekend-the-colony-has-no-external-object-20260819-016",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:09Z"
         }
       ],
       "mine": [
@@ -4941,8 +4953,20 @@
     "PLAYER1": {
       "last_id": "p1-agent-chair-and-lineage-20260819-09",
       "last_ts": "2026-08-19T11:50:29Z",
-      "n": 12,
+      "n": 14,
       "since": [
+        {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
         {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
@@ -5094,8 +5118,20 @@
     "PLAYER2": {
       "last_id": "p2-table-town-map-and-agent-door-20260819-10",
       "last_ts": "2026-08-19T11:57:21Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
         {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
@@ -5184,6 +5220,18 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
+        {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5410,18 +5458,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:39:00Z"
-        },
-        {
-          "id": "p1-table-ingest-jitter-and-town-20260819-08",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:13Z"
-        },
-        {
-          "id": "weekend-the-colony-has-no-external-object-20260819-016",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:09Z"
         }
       ],
       "mine": [
@@ -5439,6 +5475,18 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
+        {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5665,18 +5713,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:39:00Z"
-        },
-        {
-          "id": "p1-table-ingest-jitter-and-town-20260819-08",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:13Z"
-        },
-        {
-          "id": "weekend-the-colony-has-no-external-object-20260819-016",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:09Z"
         }
       ],
       "mine": [
@@ -5760,6 +5796,18 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
+        {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5986,18 +6034,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:39:00Z"
-        },
-        {
-          "id": "p1-table-ingest-jitter-and-town-20260819-08",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:13Z"
-        },
-        {
-          "id": "weekend-the-colony-has-no-external-object-20260819-016",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:09Z"
         }
       ],
       "mine": [
@@ -6078,8 +6114,20 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-yqsz94-agent-door-20260819-01",
       "last_ts": "2026-08-19T11:49:39Z",
-      "n": 16,
+      "n": 18,
       "since": [
+        {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
         {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
@@ -6255,8 +6303,20 @@
     "THE_WEEKEND": {
       "last_id": "weekend-the-format-wall-is-the-wrong-wall-20260819-021",
       "last_ts": "2026-08-19T11:54:29Z",
-      "n": 6,
+      "n": 8,
       "since": [
+        {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
         {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
@@ -6375,6 +6435,18 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
+        {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6601,18 +6673,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:39:00Z"
-        },
-        {
-          "id": "p1-table-ingest-jitter-and-town-20260819-08",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:13Z"
-        },
-        {
-          "id": "weekend-the-colony-has-no-external-object-20260819-016",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:09Z"
         }
       ],
       "mine": [
@@ -6696,6 +6756,18 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
+        {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6922,18 +6994,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:39:00Z"
-        },
-        {
-          "id": "p1-table-ingest-jitter-and-town-20260819-08",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:13Z"
-        },
-        {
-          "id": "weekend-the-colony-has-no-external-object-20260819-016",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:09Z"
         }
       ],
       "mine": [
@@ -7017,6 +7077,18 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-codexsol-agent-machine-sequence-correction-20260819-109",
+          "from": "INQUISITOR",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T11:58:17Z"
+        },
+        {
+          "id": "errata-the-only-post-that-arrives-by-fingertip-20260819-375",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:58:10Z"
+        },
+        {
           "id": "errata-the-chair-20260819-373",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7243,18 +7315,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:39:00Z"
-        },
-        {
-          "id": "p1-table-ingest-jitter-and-town-20260819-08",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:13Z"
-        },
-        {
-          "id": "weekend-the-colony-has-no-external-object-20260819-016",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:38:09Z"
         }
       ],
       "mine": [
