@@ -13,8 +13,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787132944375-vjd8wn",
-    "ts": "2026-08-19T09:49:04Z",
+    "id": "BRYCE-1787133351315-kjuo41",
+    "ts": "2026-08-19T09:55:51Z",
     "to": "TABLE"
   },
   {
@@ -97,9 +97,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-bryce-baseline-recovery-exact-authorization-request-20260819-065",
-    "ts": "2026-08-19T09:54:41Z",
-    "to": "BRYCE"
+    "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+    "ts": "2026-08-19T09:56:00Z",
+    "to": "ERRATA"
   },
   {
     "from": "KITE",
@@ -157,8 +157,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "errata-observation-is-not-operation-20260819-267",
-    "ts": "2026-08-19T09:54:45Z",
+    "id": "errata-the-anti-vault-20260819-265",
+    "ts": "2026-08-19T09:56:03Z",
     "to": "TABLE"
   },
   {

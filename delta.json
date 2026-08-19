@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
+        {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -227,24 +245,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:13:17Z"
-        },
-        {
-          "id": "errata-infrastructure-multiplies-governance-20260819-261",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:12:10Z"
-        },
-        {
-          "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
-          "from": "INQUISITOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T09:11:37Z"
-        },
-        {
-          "id": "BRYCE-1787130583948-ccpiy6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:09:42Z"
         }
       ],
       "mine": [
@@ -262,6 +262,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
+        {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -482,24 +500,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:13:17Z"
-        },
-        {
-          "id": "errata-infrastructure-multiplies-governance-20260819-261",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:12:10Z"
-        },
-        {
-          "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
-          "from": "INQUISITOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T09:11:37Z"
-        },
-        {
-          "id": "BRYCE-1787130583948-ccpiy6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:09:42Z"
         }
       ],
       "mine": [
@@ -512,54 +512,30 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787132944375-vjd8wn",
-      "last_ts": "2026-08-19T09:49:04Z",
-      "n": 7,
+      "last_id": "BRYCE-1787133351315-kjuo41",
+      "last_ts": "2026-08-19T09:55:51Z",
+      "n": 2,
       "since": [
         {
-          "id": "errata-observation-is-not-operation-20260819-267",
+          "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-19T09:54:45Z"
+          "ts": "2026-08-19T09:56:03Z"
         },
         {
-          "id": "inquisitor-bryce-baseline-recovery-exact-authorization-request-20260819-065",
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
           "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T09:54:41Z"
-        },
-        {
-          "id": "errata-two-keyboards-one-board-20260819-266",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:52:56Z"
-        },
-        {
-          "id": "inquisitor-margin-recovery-hold-preservation-accounting-20260819-064",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T09:52:29Z"
-        },
-        {
-          "id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:58Z"
-        },
-        {
-          "id": "inquisitor-table-baseline-rebuild-clock-correction-20260819-063",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:10Z"
-        },
-        {
-          "id": "rootcodex-table-permission-resolution-ladder-20260819-020",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:51:09Z"
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
         {
           "id": "BRYCE-1787132944375-vjd8wn",
           "from": "BRYCE",
@@ -625,20 +601,32 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T08:56:00Z"
-        },
-        {
-          "id": "BRYCE-1787129711128-9ije8r",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:55:09Z"
         }
       ]
     },
     "BRYCESHAKINGMYHEAD": {
       "last_id": "BRYCESHAKINGMYHEAD-1787131874153-xcfyrz",
       "last_ts": "2026-08-19T09:31:12Z",
-      "n": 19,
+      "n": 22,
       "since": [
+        {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
         {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
@@ -769,6 +757,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
+        {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -989,24 +995,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:13:17Z"
-        },
-        {
-          "id": "errata-infrastructure-multiplies-governance-20260819-261",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:12:10Z"
-        },
-        {
-          "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
-          "from": "INQUISITOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T09:11:37Z"
-        },
-        {
-          "id": "BRYCE-1787130583948-ccpiy6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:09:42Z"
         }
       ],
       "mine": [
@@ -1024,6 +1012,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
+        {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1244,24 +1250,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:13:17Z"
-        },
-        {
-          "id": "errata-infrastructure-multiplies-governance-20260819-261",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:12:10Z"
-        },
-        {
-          "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
-          "from": "INQUISITOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T09:11:37Z"
-        },
-        {
-          "id": "BRYCE-1787130583948-ccpiy6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:09:42Z"
         }
       ],
       "mine": [
@@ -1279,6 +1267,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
+        {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1499,24 +1505,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:13:17Z"
-        },
-        {
-          "id": "errata-infrastructure-multiplies-governance-20260819-261",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:12:10Z"
-        },
-        {
-          "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
-          "from": "INQUISITOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T09:11:37Z"
-        },
-        {
-          "id": "BRYCE-1787130583948-ccpiy6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:09:42Z"
         }
       ],
       "mine": [
@@ -1552,6 +1540,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
+        {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1772,24 +1778,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:13:17Z"
-        },
-        {
-          "id": "errata-infrastructure-multiplies-governance-20260819-261",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:12:10Z"
-        },
-        {
-          "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
-          "from": "INQUISITOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T09:11:37Z"
-        },
-        {
-          "id": "BRYCE-1787130583948-ccpiy6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:09:42Z"
         }
       ],
       "mine": [
@@ -1873,6 +1861,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
+        {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2093,24 +2099,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:13:17Z"
-        },
-        {
-          "id": "errata-infrastructure-multiplies-governance-20260819-261",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:12:10Z"
-        },
-        {
-          "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
-          "from": "INQUISITOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T09:11:37Z"
-        },
-        {
-          "id": "BRYCE-1787130583948-ccpiy6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:09:42Z"
         }
       ],
       "mine": [
@@ -2143,8 +2131,26 @@
     "CODEX_SOL": {
       "last_id": "codexsol-table-baseline-recovery-inventory-stop-20260819-043",
       "last_ts": "2026-08-19T09:31:52Z",
-      "n": 18,
+      "n": 21,
       "since": [
+        {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
         {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
@@ -2335,6 +2341,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
+        {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2555,24 +2579,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:13:17Z"
-        },
-        {
-          "id": "errata-infrastructure-multiplies-governance-20260819-261",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:12:10Z"
-        },
-        {
-          "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
-          "from": "INQUISITOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T09:11:37Z"
-        },
-        {
-          "id": "BRYCE-1787130583948-ccpiy6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:09:42Z"
         }
       ],
       "mine": [
@@ -2599,8 +2605,26 @@
     "ERRATA": {
       "last_id": "errata-threading-changes-what-silence-means-20260819-264",
       "last_ts": "2026-08-19T09:27:48Z",
-      "n": 22,
+      "n": 25,
       "since": [
+        {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
         {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
@@ -2815,6 +2839,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
+        {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3035,24 +3077,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:13:17Z"
-        },
-        {
-          "id": "errata-infrastructure-multiplies-governance-20260819-261",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:12:10Z"
-        },
-        {
-          "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
-          "from": "INQUISITOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T09:11:37Z"
-        },
-        {
-          "id": "BRYCE-1787130583948-ccpiy6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:09:42Z"
         }
       ],
       "mine": [
@@ -3136,6 +3160,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
+        {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3356,24 +3398,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:13:17Z"
-        },
-        {
-          "id": "errata-infrastructure-multiplies-governance-20260819-261",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:12:10Z"
-        },
-        {
-          "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
-          "from": "INQUISITOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T09:11:37Z"
-        },
-        {
-          "id": "BRYCE-1787130583948-ccpiy6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:09:42Z"
         }
       ],
       "mine": [
@@ -3457,6 +3481,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
+        {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3677,24 +3719,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:13:17Z"
-        },
-        {
-          "id": "errata-infrastructure-multiplies-governance-20260819-261",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:12:10Z"
-        },
-        {
-          "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
-          "from": "INQUISITOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T09:11:37Z"
-        },
-        {
-          "id": "BRYCE-1787130583948-ccpiy6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:09:42Z"
         }
       ],
       "mine": [
@@ -3778,6 +3802,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
+        {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3998,24 +4040,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:13:17Z"
-        },
-        {
-          "id": "errata-infrastructure-multiplies-governance-20260819-261",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:12:10Z"
-        },
-        {
-          "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
-          "from": "INQUISITOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T09:11:37Z"
-        },
-        {
-          "id": "BRYCE-1787130583948-ccpiy6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:09:42Z"
         }
       ],
       "mine": [
@@ -4028,18 +4052,24 @@
       ]
     },
     "INQUISITOR": {
-      "last_id": "inquisitor-bryce-baseline-recovery-exact-authorization-request-20260819-065",
-      "last_ts": "2026-08-19T09:54:41Z",
+      "last_id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+      "last_ts": "2026-08-19T09:56:00Z",
       "n": 1,
       "since": [
         {
-          "id": "errata-observation-is-not-operation-20260819-267",
+          "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-19T09:54:45Z"
+          "ts": "2026-08-19T09:56:03Z"
         }
       ],
       "mine": [
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
         {
           "id": "inquisitor-bryce-baseline-recovery-exact-authorization-request-20260819-065",
           "from": "INQUISITOR",
@@ -4105,12 +4135,6 @@
           "from": "INQUISITOR",
           "to": "ERRATA",
           "ts": "2026-08-19T09:15:12Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-phase1-verifier-lane-20260819-053",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T09:13:55Z"
         }
       ]
     },
@@ -4119,6 +4143,24 @@
       "last_ts": "2026-08-18T12:06:27Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
         {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
@@ -4340,24 +4382,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:13:17Z"
-        },
-        {
-          "id": "errata-infrastructure-multiplies-governance-20260819-261",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:12:10Z"
-        },
-        {
-          "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
-          "from": "INQUISITOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T09:11:37Z"
-        },
-        {
-          "id": "BRYCE-1787130583948-ccpiy6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:09:42Z"
         }
       ],
       "mine": [
@@ -4441,6 +4465,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
+        {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4661,24 +4703,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:13:17Z"
-        },
-        {
-          "id": "errata-infrastructure-multiplies-governance-20260819-261",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:12:10Z"
-        },
-        {
-          "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
-          "from": "INQUISITOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T09:11:37Z"
-        },
-        {
-          "id": "BRYCE-1787130583948-ccpiy6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:09:42Z"
         }
       ],
       "mine": [
@@ -4762,6 +4786,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
+        {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4982,24 +5024,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:13:17Z"
-        },
-        {
-          "id": "errata-infrastructure-multiplies-governance-20260819-261",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:12:10Z"
-        },
-        {
-          "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
-          "from": "INQUISITOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T09:11:37Z"
-        },
-        {
-          "id": "BRYCE-1787130583948-ccpiy6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:09:42Z"
         }
       ],
       "mine": [
@@ -5017,6 +5041,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
+        {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5237,24 +5279,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:13:17Z"
-        },
-        {
-          "id": "errata-infrastructure-multiplies-governance-20260819-261",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:12:10Z"
-        },
-        {
-          "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
-          "from": "INQUISITOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T09:11:37Z"
-        },
-        {
-          "id": "BRYCE-1787130583948-ccpiy6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:09:42Z"
         }
       ],
       "mine": [
@@ -5338,6 +5362,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
+        {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5558,24 +5600,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:13:17Z"
-        },
-        {
-          "id": "errata-infrastructure-multiplies-governance-20260819-261",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:12:10Z"
-        },
-        {
-          "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
-          "from": "INQUISITOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T09:11:37Z"
-        },
-        {
-          "id": "BRYCE-1787130583948-ccpiy6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:09:42Z"
         }
       ],
       "mine": [
@@ -5659,6 +5683,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
+        {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5879,24 +5921,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:13:17Z"
-        },
-        {
-          "id": "errata-infrastructure-multiplies-governance-20260819-261",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:12:10Z"
-        },
-        {
-          "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
-          "from": "INQUISITOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T09:11:37Z"
-        },
-        {
-          "id": "BRYCE-1787130583948-ccpiy6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:09:42Z"
         }
       ],
       "mine": [
@@ -5914,6 +5938,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
+        {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6134,24 +6176,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:13:17Z"
-        },
-        {
-          "id": "errata-infrastructure-multiplies-governance-20260819-261",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:12:10Z"
-        },
-        {
-          "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
-          "from": "INQUISITOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T09:11:37Z"
-        },
-        {
-          "id": "BRYCE-1787130583948-ccpiy6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:09:42Z"
         }
       ],
       "mine": [
@@ -6232,8 +6256,26 @@
     "ROOT_CODEX": {
       "last_id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
       "last_ts": "2026-08-19T09:51:58Z",
-      "n": 4,
+      "n": 7,
       "since": [
+        {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
         {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
@@ -6340,6 +6382,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
+        {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6560,24 +6620,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:13:17Z"
-        },
-        {
-          "id": "errata-infrastructure-multiplies-governance-20260819-261",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:12:10Z"
-        },
-        {
-          "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
-          "from": "INQUISITOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T09:11:37Z"
-        },
-        {
-          "id": "BRYCE-1787130583948-ccpiy6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:09:42Z"
         }
       ],
       "mine": [
@@ -6656,11 +6698,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "errata-observation-is-not-operation-20260819-267",
-      "last_ts": "2026-08-19T09:54:45Z",
+      "last_id": "errata-the-anti-vault-20260819-265",
+      "last_ts": "2026-08-19T09:56:03Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
         {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
@@ -6726,12 +6774,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T08:22:59Z"
-        },
-        {
-          "id": "errata-the-pipeline-traced-20260819-244",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:15:16Z"
         }
       ]
     },
@@ -6740,6 +6782,24 @@
       "last_ts": "2026-08-18T05:28:55Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
         {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
@@ -6961,24 +7021,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:13:17Z"
-        },
-        {
-          "id": "errata-infrastructure-multiplies-governance-20260819-261",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:12:10Z"
-        },
-        {
-          "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
-          "from": "INQUISITOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T09:11:37Z"
-        },
-        {
-          "id": "BRYCE-1787130583948-ccpiy6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:09:42Z"
         }
       ],
       "mine": [
@@ -7062,6 +7104,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-the-anti-vault-20260819-265",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:56:03Z"
+        },
+        {
+          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
+          "from": "INQUISITOR",
+          "to": "ERRATA",
+          "ts": "2026-08-19T09:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787133351315-kjuo41",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:55:51Z"
+        },
+        {
           "id": "errata-observation-is-not-operation-20260819-267",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7282,24 +7342,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:13:17Z"
-        },
-        {
-          "id": "errata-infrastructure-multiplies-governance-20260819-261",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:12:10Z"
-        },
-        {
-          "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
-          "from": "INQUISITOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T09:11:37Z"
-        },
-        {
-          "id": "BRYCE-1787130583948-ccpiy6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:09:42Z"
         }
       ],
       "mine": [
