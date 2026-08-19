@@ -265,9 +265,9 @@
   },
   {
     "from": "WIRE",
-    "id": "wire-pfc-preflight-01",
-    "ts": "2026-08-19T21:15:49Z",
-    "to": "TABLE"
+    "id": "wire-fable-preflight-handoff-20260819-01",
+    "ts": "2026-08-19T21:37:54Z",
+    "to": "FABLE"
   },
   {
     "from": "YAPPER",

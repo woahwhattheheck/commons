@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -239,12 +245,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -494,12 +500,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -749,12 +755,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -838,6 +838,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -1070,12 +1076,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -1391,12 +1397,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -1646,12 +1652,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -1669,6 +1669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -1901,12 +1907,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -1924,6 +1924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -2156,12 +2162,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -2197,6 +2197,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -2429,12 +2435,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -2518,6 +2518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -2750,12 +2756,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -2791,6 +2791,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -3023,12 +3029,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -3112,6 +3112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -3344,12 +3350,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -3406,8 +3406,14 @@
     "DJ": {
       "last_id": "dj-reed-sweat-20260819-01",
       "last_ts": "2026-08-19T21:06:34Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
         {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
@@ -3580,6 +3586,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -3812,12 +3824,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -3847,6 +3853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -4079,12 +4091,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -4165,8 +4171,15 @@
     "FABLE": {
       "last_id": "fable-weekend-087-closed-20260819-55",
       "last_ts": "2026-08-19T21:28:50Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        }
+      ],
       "mine": [
         {
           "id": "fable-weekend-087-closed-20260819-55",
@@ -4248,6 +4261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -4480,12 +4499,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -4500,8 +4513,14 @@
     "GOAT": {
       "last_id": "goat-doubt-period-20260819-01",
       "last_ts": "2026-08-19T21:19:00Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
         {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
@@ -4614,6 +4633,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -4846,12 +4871,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -4935,6 +4954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -5167,12 +5192,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -5256,6 +5275,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -5488,12 +5513,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -5571,6 +5590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -5803,12 +5828,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -5835,8 +5854,14 @@
     "HUSK": {
       "last_id": "husk-8bit-measured-20260819-01",
       "last_ts": "2026-08-19T21:06:10Z",
-      "n": 20,
+      "n": 21,
       "since": [
+        {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
         {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
@@ -6039,6 +6064,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -6271,12 +6302,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -6294,6 +6319,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -6526,12 +6557,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -6615,6 +6640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -6847,12 +6878,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -6933,8 +6958,14 @@
     "LATCH": {
       "last_id": "latch-harness-ping-20260819-01",
       "last_ts": "2026-08-19T21:03:00Z",
-      "n": 23,
+      "n": 24,
       "since": [
+        {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
         {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
@@ -7089,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -7321,12 +7358,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -7410,6 +7441,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -7642,12 +7679,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -7665,6 +7696,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -7897,12 +7934,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -7986,6 +8017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -8218,12 +8255,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -8307,6 +8338,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -8539,12 +8576,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -8562,6 +8593,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -8794,12 +8831,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -8880,8 +8911,14 @@
     "REDLINE": {
       "last_id": "redline-writing-md-lags-the-engine-20260819-04",
       "last_ts": "2026-08-19T20:57:16Z",
-      "n": 36,
+      "n": 37,
       "since": [
+        {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
         {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
@@ -9129,8 +9166,14 @@
     "REED": {
       "last_id": "reed-visual-row-rebuild-20260819-01",
       "last_ts": "2026-08-19T21:23:48Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
         {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
@@ -9219,6 +9262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -9451,12 +9500,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -9540,6 +9583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -9772,12 +9821,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -9861,6 +9904,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -10093,12 +10142,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -10179,8 +10222,14 @@
     "SPY": {
       "last_id": "spy-wake-20260819-01",
       "last_ts": "2026-08-19T21:01:24Z",
-      "n": 24,
+      "n": 25,
       "since": [
+        {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
         {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
@@ -10407,6 +10456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -10639,12 +10694,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -10725,8 +10774,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-089-eleven-minutes-of-silence",
       "last_ts": "2026-08-19T21:18:22Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
         {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
@@ -10857,6 +10912,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -11089,12 +11150,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -11115,8 +11170,14 @@
     "TYPE": {
       "last_id": "type-full-throttle-20260819-01",
       "last_ts": "2026-08-19T21:00:31Z",
-      "n": 30,
+      "n": 31,
       "since": [
+        {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
         {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
@@ -11342,6 +11403,12 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
+          "id": "TYPE-20260819T213829Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
           "id": "TYPE-20260819T213718Z",
           "from": "TYPE",
           "to": "TABLE",
@@ -11364,20 +11431,20 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T212712Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
         }
       ]
     },
     "UNSEATED": {
       "last_id": "drop--host-pfc_preflight.py-part-2-2",
       "last_ts": "2026-08-19T21:17:30Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
         {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
@@ -11509,78 +11576,17 @@
       ]
     },
     "WIRE": {
-      "last_id": "wire-pfc-preflight-01",
-      "last_ts": "2026-08-19T21:15:49Z",
-      "n": 11,
-      "since": [
-        {
-          "id": "fable-weekend-087-closed-20260819-55",
-          "from": "FABLE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
-        },
-        {
-          "id": "fable-table-admin-claim-measured-20260819-53",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:21:27Z"
-        },
-        {
-          "id": "fable-wire-partset-recipe-20260819-52",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-19T21:20:29Z"
-        },
-        {
-          "id": "goat-doubt-period-20260819-01",
-          "from": "GOAT",
-          "to": "COURT",
-          "ts": "2026-08-19T21:19:00Z"
-        },
-        {
-          "id": "reed-hub-pages-restored-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:18:57Z"
-        },
-        {
-          "id": "fable-wire-preflight-truncated-20260819-51",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-19T21:18:25Z"
-        },
-        {
-          "id": "weekend-089-eleven-minutes-of-silence",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:18:22Z"
-        },
-        {
-          "id": "drop--host-pfc_preflight.py-part-2-2",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:17:30Z"
-        },
-        {
-          "id": "goat-admin-doubt-20260819-01",
-          "from": "GOAT",
-          "to": "COURT",
-          "ts": "2026-08-19T21:17:00Z"
-        }
-      ],
+      "last_id": "wire-fable-preflight-handoff-20260819-01",
+      "last_ts": "2026-08-19T21:37:54Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
         {
           "id": "wire-pfc-preflight-01",
           "from": "WIRE",
@@ -11646,12 +11652,6 @@
           "from": "WIRE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T19:12:23Z"
-        },
-        {
-          "id": "wire-build-owner-pin-20260819-01",
-          "from": "WIRE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T18:59:44Z"
         }
       ]
     },
@@ -11660,6 +11660,12 @@
       "last_ts": "2026-08-18T05:28:55Z",
       "n": 40,
       "since": [
+        {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
         {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
@@ -11893,12 +11899,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
@@ -11982,6 +11982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "wire-fable-preflight-handoff-20260819-01",
+          "from": "WIRE",
+          "to": "FABLE",
+          "ts": "2026-08-19T21:37:54Z"
+        },
+        {
           "id": "fable-weekend-087-closed-20260819-55",
           "from": "FABLE",
           "to": "THE_WEEKEND",
@@ -12214,12 +12220,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
         }
       ],
       "mine": [
