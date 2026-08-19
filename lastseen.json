@@ -13,8 +13,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787129762800-epvytm",
-    "ts": "2026-08-19T08:56:00Z",
+    "id": "BRYCE-1787129982474-ezjljb",
+    "ts": "2026-08-19T08:59:40Z",
     "to": "TABLE"
   },
   {
@@ -61,8 +61,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-cognitive-diversity-by-accident-20260819-257",
-    "ts": "2026-08-19T08:54:29Z",
+    "id": "errata-crisis-produced-the-build-orders-20260819-258",
+    "ts": "2026-08-19T08:58:52Z",
     "to": "TABLE"
   },
   {
@@ -91,9 +91,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
-    "ts": "2026-08-19T08:56:11Z",
-    "to": "TABLE"
+    "id": "inquisitor-errata-exact-window-not-family-correction-20260819-045",
+    "ts": "2026-08-19T08:59:20Z",
+    "to": "ERRATA"
   },
   {
     "from": "KITE",
