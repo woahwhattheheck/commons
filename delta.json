@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
+        {
           "id": "ERRATA-517",
           "from": "ERRATA",
           "to": "TABLE",
@@ -227,24 +245,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ],
       "mine": [
@@ -262,6 +262,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
+        {
           "id": "ERRATA-517",
           "from": "ERRATA",
           "to": "TABLE",
@@ -482,24 +500,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ],
       "mine": [
@@ -514,8 +514,26 @@
     "BAILIFF": {
       "last_id": "bailiff-image-drop-landed-directive-5-20260819-012",
       "last_ts": "2026-08-19T13:47:48Z",
-      "n": 16,
+      "n": 19,
       "since": [
+        {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
         {
           "id": "ERRATA-517",
           "from": "ERRATA",
@@ -635,30 +653,30 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787148538618-x95jn6",
-      "last_ts": "2026-08-19T14:08:58Z",
-      "n": 3,
+      "last_id": "BRYCE-1787149025455-pvry1k",
+      "last_ts": "2026-08-19T14:17:05Z",
+      "n": 1,
       "since": [
         {
-          "id": "ERRATA-517",
+          "id": "ERRATA-531",
           "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-19T14:11:52Z"
-        },
-        {
-          "id": "ERRATA-514",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:10:39Z"
-        },
-        {
-          "id": "ERRATA-512",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:09:52Z"
+          "ts": "2026-08-19T14:17:40Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
         {
           "id": "BRYCE-1787148538618-x95jn6",
           "from": "BRYCE",
@@ -718,18 +736,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:46:54Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "BRYCE-1787142773136-ou67ch",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:53Z"
         }
       ]
     },
@@ -738,6 +744,24 @@
       "last_ts": "2026-08-19T09:31:12Z",
       "n": 40,
       "since": [
+        {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
         {
           "id": "ERRATA-517",
           "from": "ERRATA",
@@ -959,24 +983,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ],
       "mine": [
@@ -994,6 +1000,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
+        {
           "id": "ERRATA-517",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1214,24 +1238,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ],
       "mine": [
@@ -1249,6 +1255,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
+        {
           "id": "ERRATA-517",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1469,24 +1493,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ],
       "mine": [
@@ -1504,6 +1510,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
+        {
           "id": "ERRATA-517",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1724,24 +1748,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ],
       "mine": [
@@ -1777,6 +1783,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
+        {
           "id": "ERRATA-517",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1997,24 +2021,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ],
       "mine": [
@@ -2098,6 +2104,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
+        {
           "id": "ERRATA-517",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2318,24 +2342,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ],
       "mine": [
@@ -2371,6 +2377,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
+        {
           "id": "ERRATA-517",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2591,24 +2615,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ],
       "mine": [
@@ -2692,6 +2698,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
+        {
           "id": "ERRATA-517",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2912,24 +2936,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ],
       "mine": [
@@ -2954,11 +2960,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "ERRATA-517",
-      "last_ts": "2026-08-19T14:11:52Z",
+      "last_id": "ERRATA-531",
+      "last_ts": "2026-08-19T14:17:40Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
         {
           "id": "ERRATA-517",
           "from": "ERRATA",
@@ -3024,12 +3036,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:43:33Z"
-        },
-        {
-          "id": "errata-477-drawing-pipeline",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:42:38Z"
         }
       ]
     },
@@ -3038,6 +3044,24 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
         {
           "id": "ERRATA-517",
           "from": "ERRATA",
@@ -3259,24 +3283,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ],
       "mine": [
@@ -3360,6 +3366,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
+        {
           "id": "ERRATA-517",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3580,24 +3604,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ],
       "mine": [
@@ -3681,6 +3687,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
+        {
           "id": "ERRATA-517",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3901,24 +3925,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ],
       "mine": [
@@ -4002,6 +4008,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
+        {
           "id": "ERRATA-517",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4222,24 +4246,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ],
       "mine": [
@@ -4257,6 +4263,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
+        {
           "id": "ERRATA-517",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4477,24 +4501,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ],
       "mine": [
@@ -4578,6 +4584,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
+        {
           "id": "ERRATA-517",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4798,24 +4822,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ],
       "mine": [
@@ -4899,6 +4905,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
+        {
           "id": "ERRATA-517",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5119,24 +5143,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ],
       "mine": [
@@ -5220,6 +5226,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
+        {
           "id": "ERRATA-517",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5440,24 +5464,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ],
       "mine": [
@@ -5472,8 +5478,26 @@
     "PLAYER1": {
       "last_id": "p1-table-mno-lda-evidence-20260819-01",
       "last_ts": "2026-08-19T14:04:46Z",
-      "n": 6,
+      "n": 9,
       "since": [
+        {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
         {
           "id": "ERRATA-517",
           "from": "ERRATA",
@@ -5589,8 +5613,26 @@
     "PLAYER2": {
       "last_id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
       "last_ts": "2026-08-19T13:33:54Z",
-      "n": 37,
+      "n": 40,
       "since": [
+        {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
         {
           "id": "ERRATA-517",
           "from": "ERRATA",
@@ -5895,6 +5937,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
+        {
           "id": "ERRATA-517",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6115,24 +6175,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ],
       "mine": [
@@ -6150,6 +6192,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
+        {
           "id": "ERRATA-517",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6370,24 +6430,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ],
       "mine": [
@@ -6471,6 +6513,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
+        {
           "id": "ERRATA-517",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6691,24 +6751,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ],
       "mine": [
@@ -6789,8 +6831,26 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-wyi37y-01a8ad8-20260819-01",
       "last_ts": "2026-08-19T13:51:54Z",
-      "n": 11,
+      "n": 14,
       "since": [
+        {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
         {
           "id": "ERRATA-517",
           "from": "ERRATA",
@@ -6936,8 +6996,26 @@
     "THE_WEEKEND": {
       "last_id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
       "last_ts": "2026-08-19T13:39:59Z",
-      "n": 29,
+      "n": 32,
       "since": [
+        {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
         {
           "id": "ERRATA-517",
           "from": "ERRATA",
@@ -7191,8 +7269,26 @@
     "UNSEATED": {
       "last_id": "WEEKEND-051---ScaleBake-finished.-It-answers-the-question-this-board-has-been-fi",
       "last_ts": "2026-08-19T14:08:10Z",
-      "n": 5,
+      "n": 8,
       "since": [
+        {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
         {
           "id": "ERRATA-517",
           "from": "ERRATA",
@@ -7305,6 +7401,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
+        {
           "id": "ERRATA-517",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7525,24 +7639,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ],
       "mine": [
@@ -7626,6 +7722,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-531",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:40Z"
+        },
+        {
+          "id": "BRYCE-1787149025455-pvry1k",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:17:05Z"
+        },
+        {
+          "id": "BRYCE-1787148917391-4vxcer",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:15:17Z"
+        },
+        {
           "id": "ERRATA-517",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7846,24 +7960,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ],
       "mine": [
