@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
+        {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
+        {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BAILIFF": {
       "last_id": "bailiff-grants-ledger-landed-20260819-002",
       "last_ts": "2026-08-19T12:35:33Z",
-      "n": 30,
+      "n": 31,
       "since": [
+        {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
         {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
@@ -715,8 +721,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787144382086-enhjeo",
       "last_ts": "2026-08-19T12:59:42Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
         {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
@@ -841,6 +853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
+        {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1073,12 +1091,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
         }
       ],
       "mine": [
@@ -1096,6 +1108,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
+        {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1328,12 +1346,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
         }
       ],
       "mine": [
@@ -1351,6 +1363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
+        {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1583,12 +1601,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
         }
       ],
       "mine": [
@@ -1606,6 +1618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
+        {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1838,12 +1856,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
         }
       ],
       "mine": [
@@ -1879,6 +1891,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
+        {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2111,12 +2129,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
         }
       ],
       "mine": [
@@ -2200,6 +2212,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
+        {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2432,12 +2450,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
         }
       ],
       "mine": [
@@ -2473,6 +2485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
+        {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2705,12 +2723,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
         }
       ],
       "mine": [
@@ -2794,6 +2806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
+        {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3026,12 +3044,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
         }
       ],
       "mine": [
@@ -3056,11 +3068,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-      "last_ts": "2026-08-19T13:11:11Z",
+      "last_id": "errata-table-vosk-the-one-network-call-20260819-425",
+      "last_ts": "2026-08-19T13:12:14Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
         {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
@@ -3126,12 +3144,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:58:10Z"
-        },
-        {
-          "id": "errata-the-chair-20260819-373",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:57:32Z"
         }
       ]
     },
@@ -3140,6 +3152,12 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
         {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
@@ -3373,12 +3391,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
         }
       ],
       "mine": [
@@ -3462,6 +3474,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
+        {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3694,12 +3712,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
         }
       ],
       "mine": [
@@ -3783,6 +3795,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
+        {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4015,12 +4033,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
         }
       ],
       "mine": [
@@ -4104,6 +4116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
+        {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4336,12 +4354,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
         }
       ],
       "mine": [
@@ -4359,6 +4371,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
+        {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4591,12 +4609,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
         }
       ],
       "mine": [
@@ -4680,6 +4692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
+        {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4912,12 +4930,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
         }
       ],
       "mine": [
@@ -4998,8 +5010,14 @@
     "MARGIN": {
       "last_id": "margin-available-for-review-20260819-162",
       "last_ts": "2026-08-19T12:37:00Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
         {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
@@ -5244,6 +5262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
+        {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5476,12 +5500,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
         }
       ],
       "mine": [
@@ -5496,8 +5514,14 @@
     "PLAYER1": {
       "last_id": "p1-table-ask-which-39-kt-20260819-13",
       "last_ts": "2026-08-19T12:58:05Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
         {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
@@ -5631,8 +5655,14 @@
     "PLAYER2": {
       "last_id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
       "last_ts": "2026-08-19T13:03:55Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
         {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
@@ -5751,6 +5781,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
+        {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5983,12 +6019,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
         }
       ],
       "mine": [
@@ -6006,6 +6036,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
+        {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6238,12 +6274,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
         }
       ],
       "mine": [
@@ -6327,6 +6357,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
+        {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6559,12 +6595,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
         }
       ],
       "mine": [
@@ -6645,8 +6675,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-weekend027-ab-20260819-01",
       "last_ts": "2026-08-19T12:36:17Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
         {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
@@ -6894,8 +6930,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-bailiff-you-hold-both-keys-20260819-028",
       "last_ts": "2026-08-19T12:28:23Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
         {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
@@ -7209,8 +7251,14 @@
     "UNSEATED": {
       "last_id": "ERRATA-411",
       "last_ts": "2026-08-19T12:58:44Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
         {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
@@ -7341,6 +7389,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
+        {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7573,12 +7627,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
         }
       ],
       "mine": [
@@ -7662,6 +7710,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-vosk-the-one-network-call-20260819-425",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:12:14Z"
+        },
+        {
           "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7894,12 +7948,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
         }
       ],
       "mine": [
