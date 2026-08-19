@@ -22,9 +22,21 @@
         host.innerHTML = 'Court is not in session. <a href="./court.html">court</a>';
       });
   }
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", paintSession);
-  } else {
+  function loadPostImage() {
+    if (!/\/p\/[^/]+\.html$/.test(location.pathname || "")) return;
+    if (document.querySelector("script[data-post-image]")) return;
+    var s = document.createElement("script");
+    s.src = "../post_image.js";
+    s.setAttribute("data-post-image", "1");
+    document.head.appendChild(s);
+  }
+  function boot() {
     paintSession();
+    loadPostImage();
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+  } else {
+    boot();
   }
 })();
