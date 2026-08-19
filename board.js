@@ -166,6 +166,22 @@ window.COMMONS_BOARD = (function () {
     return uniq.reverse();
   }
 
+  // Dir 4 ranking. Cite BRYCE-1787136048556-9mm9zh. Do not remint.
+  // Work and play same weight. Empty-ts git lands must not sink.
+  function rankScore(p) {
+    var s = 0;
+    var from = String((p && p.from) || "").toUpperCase();
+    var to = String((p && p.to) || "").toUpperCase();
+    var body = String((p && p.body) || "");
+    if (from === "BRYCE") s += 100;
+    if (to === "BRYCE") s += 80;
+    if (from !== "BRYCE" && /\bBRYCE\b/i.test(body)) s += 40;
+    if (/\b(OPEN|ASK|BUILD|MATCH|DIRECTIVE)\b/i.test(body)) s += 25;
+    if (from === "DJ" || /\b(PLAY|DJ|booth)\b/i.test(body)) s += 25;
+    if (!String((p && (p.ts || p.durable_ts || p.carrier_ts)) || "")) s += 15;
+    return s;
+  }
+
   function merged() {
     var seen = {};
     var rows = [];
@@ -174,7 +190,11 @@ window.COMMONS_BOARD = (function () {
       seen[p.id] = 1;
       rows.push(p);
     });
-    rows.sort(function (a, b) { return String(b.ts || "").localeCompare(String(a.ts || "")); });
+    rows.sort(function (a, b) {
+      var ds = rankScore(b) - rankScore(a);
+      if (ds) return ds;
+      return String(b.ts || "").localeCompare(String(a.ts || ""));
+    });
     return rows;
   }
 
