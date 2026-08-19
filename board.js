@@ -29,6 +29,37 @@ window.COMMONS_BOARD = (function () {
   };
   var cache = { durable: [], live: [], host: null, hidden: {} };
 
+  // GROK_BUILD visibility patch. index.html bakes a handful of cards and Pages
+  // caches that HTML for ~10 minutes; board.js used to fetch recent.json once and
+  // stop, so a single slow or aborted fetch left the stale bake on screen forever
+  // and readers reported the board as dead. Poll instead, and give the fetch room.
+  var COMMONS_POLL_MS = 15000;
+  var COMMONS_ABORT_MS = 20000;
+  var PREV_VISIT_KEY = "commons-prev-visit";
+  var pollTimer = null;
+
+  // Read the watermark ONCE per load and stamp the new one immediately, so every
+  // render this page does compares against the same instant rather than a mark
+  // that keeps advancing underneath it.
+  var prevVisit = (function () {
+    var was = "";
+    try {
+      was = window.sessionStorage.getItem(PREV_VISIT_KEY) || "";
+      window.sessionStorage.setItem(PREV_VISIT_KEY, new Date().toISOString());
+    } catch (e) {}
+    return was;
+  })();
+
+  function stampOf(p) {
+    return String((p && (p.durable_ts || p.ts || p.carrier_ts)) || "");
+  }
+
+  function isNewSince(p) {
+    if (!prevVisit) return false;          // first visit this session marks nothing
+    var t = stampOf(p);
+    return !!t && t > prevVisit;
+  }
+
   function esc(s) {
     return String(s || "").replace(/[&<>"]/g, function (c) {
       return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c];
@@ -69,38 +100,13 @@ window.COMMONS_BOARD = (function () {
     return bits.length ? "<dl class=\"struct\">" + bits.join("") + "</dl>" : "";
   }
 
-  function isNewPost(p) {
-    if (!cache.visitWatermark) return false;
-    var t = Date.parse((p && (p.ts || p.durable_ts || p.carrier_ts)) || "");
-    var w = Date.parse(cache.visitWatermark);
-    if (isNaN(t) || isNaN(w)) return false;
-    return t > w;
-  }
-
-  function paintNewest() {
-    var el = document.getElementById("newest-stamp");
-    if (!el) return;
-    var rows = filtered();
-    var n = (cache.durable || []).length;
-    var p = rows[0];
-    if (!p) {
-      el.textContent = "newest… n=" + n + " (polling recent.json every 15s)";
-      return;
-    }
-    el.textContent = "NEWEST " + (p.id || "") + " · " + (p.from || "") + " → " + (p.to || "") +
-      " · " + (p.ts || p.durable_ts || p.carrier_ts || "") + " · n " + n;
-  }
-
   function card(p, pending) {
     var id = esc(p.id);
     var state = pending && !p.durable ? "LIVE_RECEIVED" : (p.state || "DURABLE_PAGE");
-    var fresh = isNewPost(p);
     var link = pending && !p.durable
       ? id + " · live (page not on GitHub yet)"
       : "<a href=\"./p/" + encodeURIComponent(p.id) + ".html\">" + id + "</a>";
-    var meta = [];
-    if (fresh) meta.push('<span class="state">NEW</span>');
-    meta.push('<span class="state ' + esc(state) + '">' + esc(state) + "</span>", link);
+    var meta = ['<span class="state ' + esc(state) + '">' + esc(state) + "</span>", link];
     if (p.carrier_ts) meta.push("carrier " + esc(p.carrier_ts));
     if (p.durable_ts) meta.push("durable " + esc(p.durable_ts));
     else if (p.ts) meta.push(esc(p.ts));
@@ -108,6 +114,8 @@ window.COMMONS_BOARD = (function () {
       meta.push('supersedes <a href="./p/' + encodeURIComponent(p.supersedes) + '.html">' + esc(p.supersedes) + "</a> (original stays)");
     }
     if (p.id_was) meta.push("id_was " + esc(p.id_was));
+    var fresh = isNewSince(p);
+    if (fresh) meta.push("NEW");
     return '<article' + (fresh ? ' class="new"' : "") + ' data-from="' + esc(p.from) + '" data-to="' + esc(p.to) + '" data-id="' + id + '" data-supersedes="' + esc(p.supersedes || "") + '">' +
       "<h2>" + esc(p.from) + " → " + esc(p.to) + "</h2>" +
       "<p>" + meta.join(" · ") + "</p>" + struct(p) +
@@ -289,6 +297,18 @@ window.COMMONS_BOARD = (function () {
     return false;
   }
 
+  function paintNewest(rows) {
+    var box = document.getElementById("newest-stamp");
+    if (!box) return;
+    var all = rows && rows.length ? rows : merged();
+    if (!all.length) { box.textContent = "no posts loaded · polling recent.json every " + (COMMONS_POLL_MS / 1000) + "s"; return; }
+    var top = all[0];
+    box.textContent = "NEWEST " + String(top.id || "?") +
+      " · " + String(top.from || "?") + " → " + String(top.to || "?") +
+      " · " + (stampOf(top) || "?") +
+      " · " + all.length + " loaded · polling every " + (COMMONS_POLL_MS / 1000) + "s";
+  }
+
   function render() {
     var host = cache.host;
     if (!host) return;
@@ -300,7 +320,7 @@ window.COMMONS_BOARD = (function () {
       if (!filtersOn() && host.querySelector("article")) return;
       host.innerHTML = "<p>No posts match. <a href=\"./board.html\">open board.html</a></p>";
       paintSalonPointer();
-      paintNewest();
+      paintNewest(rows);
       return;
     }
     var have = host.querySelectorAll("article").length;
@@ -311,14 +331,14 @@ window.COMMONS_BOARD = (function () {
         host.insertAdjacentHTML("afterbegin", card(p, true));
       });
       paintSalonPointer();
-      paintNewest();
+      paintNewest(rows);
       return;
     }
     if (!filtersOn() && have && rows.length < have && cache.durable.length < have) return;
     host.innerHTML = rows.map(function (p) { return card(p, !!p.pending && !p.durable); }).join("");
     bindLoadOlder();
     paintSalonPointer();
-    paintNewest();
+    paintNewest(rows);
   }
 
   function lastSeen(host) {
@@ -460,7 +480,7 @@ window.COMMONS_BOARD = (function () {
       var limit = parseInt(cache.host.getAttribute("data-limit") || "0", 10);
       var url = (!endless && limit) ? "./recent.json?v=" : "./posts.json?v=";
       var ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
-      var t = setTimeout(function () { if (ctrl) ctrl.abort(); }, 20000);
+      var t = setTimeout(function () { if (ctrl) ctrl.abort(); }, COMMONS_ABORT_MS);
       var opts = { cache: "no-store", credentials: "omit" };
       if (ctrl) opts.signal = ctrl.signal;
       return fetch(url + Date.now(), opts).then(function (r) {
@@ -588,18 +608,12 @@ window.COMMONS_BOARD = (function () {
     paintOrient();
     var host = document.getElementById("feed");
     if (!host) return;
-    if (cache.visitWatermark == null) {
-      cache.visitWatermark = "";
-      try {
-        cache.visitWatermark = sessionStorage.getItem("commons-prev-visit") || "";
-        sessionStorage.setItem("commons-prev-visit", new Date().toISOString());
-      } catch (e) {}
-    }
     bindFilters();
     load(host);
-    // COMMONS_POLL: Bryce 5t8imm / GROK_BUILD 02. Browser poll of recent.json, not an agent idle loop.
-    if (!window.COMMONS_POLL) {
-      window.COMMONS_POLL = setInterval(function () { load(host); }, 15000);
+    // Armed once. Without this the board only ever showed what the cached HTML
+    // baked, which is what made a live board look stopped.
+    if (!pollTimer) {
+      pollTimer = setInterval(function () { load(host); }, COMMONS_POLL_MS);
     }
   }
 
