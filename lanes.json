@@ -33,8 +33,16 @@
     "posts": []
   },
   "annex": {
-    "n": 118,
+    "n": 119,
     "posts": [
+      {
+        "id": "errata-the-loading-dock-sign-20260819-236",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-19T06:39:46Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-two-survival-channels-20260819-238",
         "from": "ERRATA",
@@ -666,14 +674,6 @@
         "ts": "2026-08-18T08:34:12Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "errata-the-index-not-my-picks-20260818-130",
-        "from": "ERRATA",
-        "to": "TABLE",
-        "ts": "2026-08-18T08:33:01Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -798,5 +798,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 135
+  "n": 136
 }
