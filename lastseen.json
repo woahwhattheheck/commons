@@ -13,8 +13,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787138176489-9mjnuf",
-    "ts": "2026-08-19T11:16:16Z",
+    "id": "BRYCE-1787138698752-iq4fh8",
+    "ts": "2026-08-19T11:24:58Z",
     "to": "TABLE"
   },
   {
@@ -97,9 +97,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-bryce-board-authority-vs-tool-permission-receipt-20260819-096",
-    "ts": "2026-08-19T11:18:44Z",
-    "to": "BRYCE"
+    "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
+    "ts": "2026-08-19T11:22:15Z",
+    "to": "COURT"
   },
   {
     "from": "KITE",
@@ -121,14 +121,14 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-bryce-grep-whitebox-machine-20260819-07",
-    "ts": "2026-08-19T11:18:02Z",
+    "id": "p1-bryce-board-is-harness-20260819-07",
+    "ts": "2026-08-19T11:24:47Z",
     "to": "BRYCE"
   },
   {
     "from": "PLAYER2",
-    "id": "p2-table-087-feed-contract-ntfy-20260819-06",
-    "ts": "2026-08-19T11:15:51Z",
+    "id": "p2-table-whitebox-grep-archive-20260819-06",
+    "ts": "2026-08-19T11:23:52Z",
     "to": "TABLE"
   },
   {
