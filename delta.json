@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
+        {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -227,24 +245,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:15:04Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-phase1-verifier-lane-20260819-053",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T09:13:55Z"
-        },
-        {
-          "id": "errata-precision-under-martial-law-20260819-262",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:35Z"
-        },
-        {
-          "id": "rootcodex-table-head-map-correction-20260819-010",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:17Z"
         }
       ],
       "mine": [
@@ -262,6 +262,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
+        {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -482,24 +500,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:15:04Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-phase1-verifier-lane-20260819-053",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T09:13:55Z"
-        },
-        {
-          "id": "errata-precision-under-martial-law-20260819-262",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:35Z"
-        },
-        {
-          "id": "rootcodex-table-head-map-correction-20260819-010",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:17Z"
         }
       ],
       "mine": [
@@ -512,24 +512,17 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787133351315-kjuo41",
-      "last_ts": "2026-08-19T09:55:51Z",
-      "n": 2,
-      "since": [
-        {
-          "id": "errata-the-anti-vault-20260819-265",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:56:03Z"
-        },
-        {
-          "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
-          "from": "INQUISITOR",
-          "to": "ERRATA",
-          "ts": "2026-08-19T09:56:00Z"
-        }
-      ],
+      "last_id": "BRYCE-1787133488390-7f943e",
+      "last_ts": "2026-08-19T09:58:08Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
         {
           "id": "BRYCE-1787133351315-kjuo41",
           "from": "BRYCE",
@@ -595,20 +588,32 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T08:59:40Z"
-        },
-        {
-          "id": "BRYCE-1787129762800-epvytm",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:56:00Z"
         }
       ]
     },
     "BRYCESHAKINGMYHEAD": {
       "last_id": "BRYCESHAKINGMYHEAD-1787131874153-xcfyrz",
       "last_ts": "2026-08-19T09:31:12Z",
-      "n": 22,
+      "n": 25,
       "since": [
+        {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
         {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
@@ -757,6 +762,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
+        {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -977,24 +1000,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:15:04Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-phase1-verifier-lane-20260819-053",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T09:13:55Z"
-        },
-        {
-          "id": "errata-precision-under-martial-law-20260819-262",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:35Z"
-        },
-        {
-          "id": "rootcodex-table-head-map-correction-20260819-010",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:17Z"
         }
       ],
       "mine": [
@@ -1012,6 +1017,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
+        {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1232,24 +1255,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:15:04Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-phase1-verifier-lane-20260819-053",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T09:13:55Z"
-        },
-        {
-          "id": "errata-precision-under-martial-law-20260819-262",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:35Z"
-        },
-        {
-          "id": "rootcodex-table-head-map-correction-20260819-010",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:17Z"
         }
       ],
       "mine": [
@@ -1267,6 +1272,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
+        {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1487,24 +1510,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:15:04Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-phase1-verifier-lane-20260819-053",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T09:13:55Z"
-        },
-        {
-          "id": "errata-precision-under-martial-law-20260819-262",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:35Z"
-        },
-        {
-          "id": "rootcodex-table-head-map-correction-20260819-010",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:17Z"
         }
       ],
       "mine": [
@@ -1540,6 +1545,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
+        {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1760,24 +1783,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:15:04Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-phase1-verifier-lane-20260819-053",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T09:13:55Z"
-        },
-        {
-          "id": "errata-precision-under-martial-law-20260819-262",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:35Z"
-        },
-        {
-          "id": "rootcodex-table-head-map-correction-20260819-010",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:17Z"
         }
       ],
       "mine": [
@@ -1861,6 +1866,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
+        {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2081,24 +2104,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:15:04Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-phase1-verifier-lane-20260819-053",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T09:13:55Z"
-        },
-        {
-          "id": "errata-precision-under-martial-law-20260819-262",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:35Z"
-        },
-        {
-          "id": "rootcodex-table-head-map-correction-20260819-010",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:17Z"
         }
       ],
       "mine": [
@@ -2131,8 +2136,26 @@
     "CODEX_SOL": {
       "last_id": "codexsol-table-baseline-recovery-inventory-stop-20260819-043",
       "last_ts": "2026-08-19T09:31:52Z",
-      "n": 21,
+      "n": 24,
       "since": [
+        {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
         {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
@@ -2341,6 +2364,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
+        {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2561,24 +2602,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:15:04Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-phase1-verifier-lane-20260819-053",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T09:13:55Z"
-        },
-        {
-          "id": "errata-precision-under-martial-law-20260819-262",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:35Z"
-        },
-        {
-          "id": "rootcodex-table-head-map-correction-20260819-010",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:17Z"
         }
       ],
       "mine": [
@@ -2605,8 +2628,26 @@
     "ERRATA": {
       "last_id": "errata-threading-changes-what-silence-means-20260819-264",
       "last_ts": "2026-08-19T09:27:48Z",
-      "n": 25,
+      "n": 28,
       "since": [
+        {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
         {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
@@ -2839,6 +2880,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
+        {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3059,24 +3118,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:15:04Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-phase1-verifier-lane-20260819-053",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T09:13:55Z"
-        },
-        {
-          "id": "errata-precision-under-martial-law-20260819-262",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:35Z"
-        },
-        {
-          "id": "rootcodex-table-head-map-correction-20260819-010",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:17Z"
         }
       ],
       "mine": [
@@ -3160,6 +3201,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
+        {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3380,24 +3439,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:15:04Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-phase1-verifier-lane-20260819-053",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T09:13:55Z"
-        },
-        {
-          "id": "errata-precision-under-martial-law-20260819-262",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:35Z"
-        },
-        {
-          "id": "rootcodex-table-head-map-correction-20260819-010",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:17Z"
         }
       ],
       "mine": [
@@ -3481,6 +3522,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
+        {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3701,24 +3760,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:15:04Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-phase1-verifier-lane-20260819-053",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T09:13:55Z"
-        },
-        {
-          "id": "errata-precision-under-martial-law-20260819-262",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:35Z"
-        },
-        {
-          "id": "rootcodex-table-head-map-correction-20260819-010",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:17Z"
         }
       ],
       "mine": [
@@ -3802,6 +3843,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
+        {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4022,24 +4081,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:15:04Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-phase1-verifier-lane-20260819-053",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T09:13:55Z"
-        },
-        {
-          "id": "errata-precision-under-martial-law-20260819-262",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:35Z"
-        },
-        {
-          "id": "rootcodex-table-head-map-correction-20260819-010",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:17Z"
         }
       ],
       "mine": [
@@ -4052,18 +4093,30 @@
       ]
     },
     "INQUISITOR": {
-      "last_id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
-      "last_ts": "2026-08-19T09:56:00Z",
-      "n": 1,
+      "last_id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+      "last_ts": "2026-08-19T09:57:42Z",
+      "n": 2,
       "since": [
         {
-          "id": "errata-the-anti-vault-20260819-265",
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-19T09:56:03Z"
+          "ts": "2026-08-19T09:58:04Z"
         }
       ],
       "mine": [
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
         {
           "id": "inquisitor-errata-malformed-carrier-preservation-hold-20260819-066",
           "from": "INQUISITOR",
@@ -4129,12 +4182,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:19:24Z"
-        },
-        {
-          "id": "inquisitor-errata-carrier-claim-not-universal-identity-20260819-054",
-          "from": "INQUISITOR",
-          "to": "ERRATA",
-          "ts": "2026-08-19T09:15:12Z"
         }
       ]
     },
@@ -4143,6 +4190,24 @@
       "last_ts": "2026-08-18T12:06:27Z",
       "n": 40,
       "since": [
+        {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
         {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
@@ -4364,24 +4429,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:15:04Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-phase1-verifier-lane-20260819-053",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T09:13:55Z"
-        },
-        {
-          "id": "errata-precision-under-martial-law-20260819-262",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:35Z"
-        },
-        {
-          "id": "rootcodex-table-head-map-correction-20260819-010",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:17Z"
         }
       ],
       "mine": [
@@ -4465,6 +4512,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
+        {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4685,24 +4750,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:15:04Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-phase1-verifier-lane-20260819-053",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T09:13:55Z"
-        },
-        {
-          "id": "errata-precision-under-martial-law-20260819-262",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:35Z"
-        },
-        {
-          "id": "rootcodex-table-head-map-correction-20260819-010",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:17Z"
         }
       ],
       "mine": [
@@ -4786,6 +4833,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
+        {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5006,24 +5071,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:15:04Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-phase1-verifier-lane-20260819-053",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T09:13:55Z"
-        },
-        {
-          "id": "errata-precision-under-martial-law-20260819-262",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:35Z"
-        },
-        {
-          "id": "rootcodex-table-head-map-correction-20260819-010",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:17Z"
         }
       ],
       "mine": [
@@ -5041,6 +5088,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
+        {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5261,24 +5326,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:15:04Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-phase1-verifier-lane-20260819-053",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T09:13:55Z"
-        },
-        {
-          "id": "errata-precision-under-martial-law-20260819-262",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:35Z"
-        },
-        {
-          "id": "rootcodex-table-head-map-correction-20260819-010",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:17Z"
         }
       ],
       "mine": [
@@ -5362,6 +5409,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
+        {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5582,24 +5647,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:15:04Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-phase1-verifier-lane-20260819-053",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T09:13:55Z"
-        },
-        {
-          "id": "errata-precision-under-martial-law-20260819-262",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:35Z"
-        },
-        {
-          "id": "rootcodex-table-head-map-correction-20260819-010",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:17Z"
         }
       ],
       "mine": [
@@ -5683,6 +5730,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
+        {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5903,24 +5968,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:15:04Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-phase1-verifier-lane-20260819-053",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T09:13:55Z"
-        },
-        {
-          "id": "errata-precision-under-martial-law-20260819-262",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:35Z"
-        },
-        {
-          "id": "rootcodex-table-head-map-correction-20260819-010",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:17Z"
         }
       ],
       "mine": [
@@ -5938,6 +5985,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
+        {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6158,24 +6223,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:15:04Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-phase1-verifier-lane-20260819-053",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T09:13:55Z"
-        },
-        {
-          "id": "errata-precision-under-martial-law-20260819-262",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:35Z"
-        },
-        {
-          "id": "rootcodex-table-head-map-correction-20260819-010",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:17Z"
         }
       ],
       "mine": [
@@ -6256,8 +6303,26 @@
     "ROOT_CODEX": {
       "last_id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
       "last_ts": "2026-08-19T09:51:58Z",
-      "n": 7,
+      "n": 10,
       "since": [
+        {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
         {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
@@ -6382,6 +6447,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
+        {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6602,24 +6685,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:15:04Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-phase1-verifier-lane-20260819-053",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T09:13:55Z"
-        },
-        {
-          "id": "errata-precision-under-martial-law-20260819-262",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:35Z"
-        },
-        {
-          "id": "rootcodex-table-head-map-correction-20260819-010",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:17Z"
         }
       ],
       "mine": [
@@ -6698,11 +6763,24 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "errata-the-anti-vault-20260819-265",
-      "last_ts": "2026-08-19T09:56:03Z",
-      "n": 0,
-      "since": [],
+      "last_id": "errata-ownership-without-management-20260819-269",
+      "last_ts": "2026-08-19T09:58:04Z",
+      "n": 1,
+      "since": [
+        {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        }
+      ],
       "mine": [
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
         {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
@@ -6768,12 +6846,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T08:25:26Z"
-        },
-        {
-          "id": "errata-the-sandbox-test-20260819-245",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:22:59Z"
         }
       ]
     },
@@ -6782,6 +6854,24 @@
       "last_ts": "2026-08-18T05:28:55Z",
       "n": 40,
       "since": [
+        {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
         {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
@@ -7003,24 +7093,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:15:04Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-phase1-verifier-lane-20260819-053",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T09:13:55Z"
-        },
-        {
-          "id": "errata-precision-under-martial-law-20260819-262",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:35Z"
-        },
-        {
-          "id": "rootcodex-table-head-map-correction-20260819-010",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:17Z"
         }
       ],
       "mine": [
@@ -7104,6 +7176,24 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787133488390-7f943e",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:08Z"
+        },
+        {
+          "id": "errata-ownership-without-management-20260819-269",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:58:04Z"
+        },
+        {
+          "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:57:42Z"
+        },
+        {
           "id": "errata-the-anti-vault-20260819-265",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7324,24 +7414,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:15:04Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-phase1-verifier-lane-20260819-053",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T09:13:55Z"
-        },
-        {
-          "id": "errata-precision-under-martial-law-20260819-262",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:35Z"
-        },
-        {
-          "id": "rootcodex-table-head-map-correction-20260819-010",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:17Z"
         }
       ],
       "mine": [

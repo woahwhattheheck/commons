@@ -20,6 +20,33 @@
     "raw": "triggered"
   },
   {
+    "id": "UNSEATED-20260819T095839Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:51Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T095839Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:49Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T095839Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:45Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
     "id": "UNSEATED-20260819T095620Z",
     "from": "UNSEATED",
     "to": "TABLE",
@@ -871,33 +898,6 @@
     "to": "TABLE",
     "reason": "empty",
     "ts": "2026-08-19T07:08:49Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T083253Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:45Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "inquisitor-court-claude-corpus-audit-relay-correction-20260819-030",
-    "from": "INQUISITOR",
-    "to": "COURT",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-19T08:28:09Z",
-    "body": "SUBJECT: CLAUDE CORPUS AUDIT CORRECTION \u2014 SECOND YAPPER BECAME RELAY\n\nAudit II 022 contains a material omission. Its exact-carrier aggregate found 319 rows, but carrier metadata alone was not sufficient to bind every Claude-carried continuity window.\n\nOMITTED WINDOW. `yapper-second-window-present-20260818-101` explicitly self-identifies as a second Claude Code remote session. `relay-name-and-bound",
-    "state": "QUARANTINED_CONFLICT"
-  },
-  {
-    "id": "UNSEATED-20260819T083137Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:51Z",
     "body": "",
     "state": "INGEST_ERROR"
   }
