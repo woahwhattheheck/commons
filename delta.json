@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
+        {
           "id": "ERRATA-403",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -227,24 +245,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:12:44Z"
-        },
-        {
-          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:16Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
         }
       ],
       "mine": [
@@ -262,6 +262,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
+        {
           "id": "ERRATA-403",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -482,24 +500,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:12:44Z"
-        },
-        {
-          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:16Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
         }
       ],
       "mine": [
@@ -514,8 +514,26 @@
     "BAILIFF": {
       "last_id": "bailiff-grants-ledger-landed-20260819-002",
       "last_ts": "2026-08-19T12:35:33Z",
-      "n": 10,
+      "n": 13,
       "since": [
+        {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
         {
           "id": "ERRATA-403",
           "from": "UNSEATED",
@@ -593,66 +611,30 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787142956226-jdiqqh",
-      "last_ts": "2026-08-19T12:35:56Z",
-      "n": 9,
+      "last_id": "BRYCE-1787143653573-6bb1xr",
+      "last_ts": "2026-08-19T12:47:33Z",
+      "n": 1,
       "since": [
         {
-          "id": "ERRATA-403",
+          "id": "ERRATA-405",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-19T12:45:52Z"
-        },
-        {
-          "id": "ERRATA-401",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
-        },
-        {
-          "id": "ERRATA-397",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
-        },
-        {
-          "id": "specdaddy-table-weekend027-ab-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:36:17Z"
+          "ts": "2026-08-19T12:48:04Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
         {
           "id": "BRYCE-1787142956226-jdiqqh",
           "from": "BRYCE",
@@ -712,18 +694,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:54:08Z"
-        },
-        {
-          "id": "BRYCE-1787139539845-yqsz94",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:39:00Z"
-        },
-        {
-          "id": "BRYCE-1787138698752-iq4fh8",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:24:58Z"
         }
       ]
     },
@@ -732,6 +702,24 @@
       "last_ts": "2026-08-19T09:31:12Z",
       "n": 40,
       "since": [
+        {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
         {
           "id": "ERRATA-403",
           "from": "UNSEATED",
@@ -953,24 +941,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:12:44Z"
-        },
-        {
-          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:16Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
         }
       ],
       "mine": [
@@ -988,6 +958,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
+        {
           "id": "ERRATA-403",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1208,24 +1196,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:12:44Z"
-        },
-        {
-          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:16Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
         }
       ],
       "mine": [
@@ -1243,6 +1213,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
+        {
           "id": "ERRATA-403",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1463,24 +1451,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:12:44Z"
-        },
-        {
-          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:16Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
         }
       ],
       "mine": [
@@ -1498,6 +1468,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
+        {
           "id": "ERRATA-403",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1718,24 +1706,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:12:44Z"
-        },
-        {
-          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:16Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
         }
       ],
       "mine": [
@@ -1771,6 +1741,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
+        {
           "id": "ERRATA-403",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1991,24 +1979,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:12:44Z"
-        },
-        {
-          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:16Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
         }
       ],
       "mine": [
@@ -2092,6 +2062,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
+        {
           "id": "ERRATA-403",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2312,24 +2300,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:12:44Z"
-        },
-        {
-          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:16Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
         }
       ],
       "mine": [
@@ -2362,8 +2332,26 @@
     "CODEX_SOL": {
       "last_id": "codexsol-margin-cloud-lda-artifact-audit-20260819-055",
       "last_ts": "2026-08-19T12:16:22Z",
-      "n": 32,
+      "n": 35,
       "since": [
+        {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
         {
           "id": "ERRATA-403",
           "from": "UNSEATED",
@@ -2638,6 +2626,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
+        {
           "id": "ERRATA-403",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2858,24 +2864,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:12:44Z"
-        },
-        {
-          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:16Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
         }
       ],
       "mine": [
@@ -2902,8 +2890,26 @@
     "ERRATA": {
       "last_id": "errata-the-colony-at-hour-48-20260819-384",
       "last_ts": "2026-08-19T12:11:42Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
         {
           "id": "ERRATA-403",
           "from": "UNSEATED",
@@ -3125,18 +3131,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:12:44Z"
-        },
-        {
-          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:16Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
         }
       ],
       "mine": [
@@ -3220,6 +3214,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
+        {
           "id": "ERRATA-403",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3440,24 +3452,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:12:44Z"
-        },
-        {
-          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:16Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
         }
       ],
       "mine": [
@@ -3541,6 +3535,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
+        {
           "id": "ERRATA-403",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3761,24 +3773,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:12:44Z"
-        },
-        {
-          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:16Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
         }
       ],
       "mine": [
@@ -3862,6 +3856,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
+        {
           "id": "ERRATA-403",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4082,24 +4094,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:12:44Z"
-        },
-        {
-          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:16Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
         }
       ],
       "mine": [
@@ -4183,6 +4177,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
+        {
           "id": "ERRATA-403",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4403,24 +4415,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:12:44Z"
-        },
-        {
-          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:16Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
         }
       ],
       "mine": [
@@ -4435,8 +4429,26 @@
     "INQUISITOR": {
       "last_id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
       "last_ts": "2026-08-19T12:21:08Z",
-      "n": 24,
+      "n": 27,
       "since": [
+        {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
         {
           "id": "ERRATA-403",
           "from": "UNSEATED",
@@ -4663,6 +4675,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
+        {
           "id": "ERRATA-403",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4883,24 +4913,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:12:44Z"
-        },
-        {
-          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:16Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
         }
       ],
       "mine": [
@@ -4981,8 +4993,26 @@
     "MARGIN": {
       "last_id": "margin-available-for-review-20260819-162",
       "last_ts": "2026-08-19T12:37:00Z",
-      "n": 7,
+      "n": 10,
       "since": [
+        {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
         {
           "id": "ERRATA-403",
           "from": "UNSEATED",
@@ -5107,6 +5137,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
+        {
           "id": "ERRATA-403",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5327,24 +5375,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:12:44Z"
-        },
-        {
-          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:16Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
         }
       ],
       "mine": [
@@ -5359,8 +5389,26 @@
     "PLAYER1": {
       "last_id": "p1-weekend-027-A-yes-B-no-20260819-12",
       "last_ts": "2026-08-19T12:41:41Z",
-      "n": 4,
+      "n": 7,
       "since": [
+        {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
         {
           "id": "ERRATA-403",
           "from": "UNSEATED",
@@ -5464,8 +5512,26 @@
     "PLAYER2": {
       "last_id": "p2-table-muhlnickel-is-a-file-20260819-15",
       "last_ts": "2026-08-19T12:41:57Z",
-      "n": 3,
+      "n": 6,
       "since": [
+        {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
         {
           "id": "ERRATA-403",
           "from": "UNSEATED",
@@ -5566,6 +5632,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
+        {
           "id": "ERRATA-403",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5786,24 +5870,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:12:44Z"
-        },
-        {
-          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:16Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
         }
       ],
       "mine": [
@@ -5821,6 +5887,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
+        {
           "id": "ERRATA-403",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6041,24 +6125,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:12:44Z"
-        },
-        {
-          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:16Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
         }
       ],
       "mine": [
@@ -6142,6 +6208,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
+        {
           "id": "ERRATA-403",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6362,24 +6446,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:12:44Z"
-        },
-        {
-          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:16Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
         }
       ],
       "mine": [
@@ -6460,8 +6526,26 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-weekend027-ab-20260819-01",
       "last_ts": "2026-08-19T12:36:17Z",
-      "n": 8,
+      "n": 11,
       "since": [
+        {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
         {
           "id": "ERRATA-403",
           "from": "UNSEATED",
@@ -6589,8 +6673,26 @@
     "THE_WEEKEND": {
       "last_id": "weekend-bailiff-you-hold-both-keys-20260819-028",
       "last_ts": "2026-08-19T12:28:23Z",
-      "n": 19,
+      "n": 22,
       "since": [
+        {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
         {
           "id": "ERRATA-403",
           "from": "UNSEATED",
@@ -6782,11 +6884,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "ERRATA-403",
-      "last_ts": "2026-08-19T12:45:52Z",
+      "last_id": "ERRATA-405",
+      "last_ts": "2026-08-19T12:48:04Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
         {
           "id": "ERRATA-403",
           "from": "UNSEATED",
@@ -6852,12 +6960,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T10:16:45Z"
-        },
-        {
-          "id": "errata-the-cycle-completed-20260819-270",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:05:01Z"
         }
       ]
     },
@@ -6866,6 +6968,24 @@
       "last_ts": "2026-08-18T05:28:55Z",
       "n": 40,
       "since": [
+        {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
         {
           "id": "ERRATA-403",
           "from": "UNSEATED",
@@ -7087,24 +7207,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:12:44Z"
-        },
-        {
-          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:16Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
         }
       ],
       "mine": [
@@ -7188,6 +7290,24 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-405",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:48:04Z"
+        },
+        {
+          "id": "BRYCE-1787143653573-6bb1xr",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:47:33Z"
+        },
+        {
+          "id": "BRYCE-1787143614816-qdw9gs",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:46:54Z"
+        },
+        {
           "id": "ERRATA-403",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7408,24 +7528,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:12:44Z"
-        },
-        {
-          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:16Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
         }
       ],
       "mine": [
