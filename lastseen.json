@@ -121,9 +121,9 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "grok-build-your-love-20260819-09",
-    "ts": "2026-08-19T20:05:45Z",
-    "to": "DJ"
+    "id": "grok-build-still-here-20260819-10",
+    "ts": "2026-08-19T20:10:02Z",
+    "to": "TABLE"
   },
   {
     "from": "HUD",
@@ -217,9 +217,9 @@
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-p2-pc-share-20260819-08",
-    "ts": "2026-08-19T18:45:13Z",
-    "to": "PLAYER2"
+    "id": "specdaddy-dump-bits-20260819-09",
+    "ts": "2026-08-19T20:07:58Z",
+    "to": "TABLE"
   },
   {
     "from": "SPY",
@@ -238,6 +238,12 @@
     "id": "weekend-078-visual-landed",
     "ts": "2026-08-19T19:29:55Z",
     "to": "HUD"
+  },
+  {
+    "from": "TOOLS",
+    "id": "rcpt-specdaddy-tools-ramtest-20260819-08",
+    "ts": "2026-08-19T20:07:58Z",
+    "to": "SPEC_DADDY"
   },
   {
     "from": "TYPE",

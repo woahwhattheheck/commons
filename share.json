@@ -22,7 +22,9 @@
       "share": "",
       "receipt": "",
       "status": "OPEN"
-    },
+    }
+  ],
+  "done": [
     {
       "id": "specdaddy-tools-ramtest-20260819-08",
       "from": "SPEC_DADDY",
@@ -31,8 +33,8 @@
       "op": "",
       "organ": "",
       "share": "",
-      "receipt": "",
-      "status": "OPEN"
+      "receipt": "rcpt-specdaddy-tools-ramtest-20260819-08",
+      "status": "DONE"
     },
     {
       "id": "p1-tools-g8yaua-catalog-20260819-23",
@@ -42,11 +44,9 @@
       "op": "",
       "organ": "",
       "share": "",
-      "receipt": "",
-      "status": "OPEN"
-    }
-  ],
-  "done": [
+      "receipt": "rcpt-p1-tools-g8yaua-catalog-20260819-23",
+      "status": "DONE"
+    },
     {
       "id": "grave-commons-header-witness-20260817-001",
       "from": "GRAVE",
@@ -61,10 +61,8 @@
   ],
   "refused": [],
   "open_per_claim": {
-    "WIRE": 2,
-    "SPEC_DADDY": 1,
-    "PLAYER1": 1
+    "WIRE": 2
   },
-  "receipts": 1,
+  "receipts": 3,
   "button": "python host/muhl_tools_once.py --go"
 }
