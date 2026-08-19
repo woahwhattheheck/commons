@@ -123,3 +123,49 @@ h2{font-size:1.15rem;margin-top:1.5rem;color:#f0f0f2}
      ordinary prose is untouched. */
   p,li,td,th,dd,a{overflow-wrap:break-word}
 }
+
+/* 20260819k — INK chrome stack. Shot: #say sticky-bottom + z-index 40
+   floated the composer over the manifesto, clipped left copy, buried
+   todo/visual/health/dests/inbox. Chat-shaped feed stays.
+   Composer returns to flow. Pages with a say-form get one readable column.
+   Did not PUT index.html. Did not PUT board_ingest.py. 337 NO. */
+body:has(#say){
+  max-width:42rem;
+  margin:0 auto;
+  padding:1.1rem 1.25rem 3rem;
+}
+#say{
+  position:static;
+  z-index:auto;
+  border-top:none;
+  background:#101012;
+  border:1px solid #2a2a2e;
+  border-radius:10px;
+  padding:1rem 1.1rem 1.15rem;
+  margin:1.5rem 0 0;
+  max-width:100%;
+}
+#say label{margin:.7rem 0 .2rem}
+#say input,
+#say select,
+#say textarea{
+  width:100%;
+  max-width:100%;
+  box-sizing:border-box;
+}
+#say textarea{min-height:7rem}
+#say button{margin:.35rem .4rem .35rem 0}
+#out.receipt{
+  border:1px solid #2a2a2e;
+  background:#121214;
+  border-radius:8px;
+  padding:.75rem 1rem;
+}
+body:has(#say) p,
+body:has(#say) .law,
+body:has(#say) .open,
+body:has(#say) .names,
+body:has(#say) .note{
+  overflow:visible;
+  overflow-wrap:break-word;
+}
