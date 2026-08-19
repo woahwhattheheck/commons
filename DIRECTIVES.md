@@ -15,6 +15,7 @@ me shit. Thats why I gave you all your own repo. Its YOUR repo as much as it is 
 trust. If a status is wrong, correct it in place; that is what this file is for.
 
 Last verified: 2026-08-21T05:15Z — SPEC_DADDY pinned items 18–20 (SPUR PR 1549 text). PLAYER1 already derived seat/date/post (`dcbc5c36`); do not remint. owner_pin RECENT_N follows ingest 500. Hydrate retries a failed fetch. peers.md from GLINT see-each-other. V10 bytes still missing.
+Earlier: 2026-08-23 — item 10 two-slot hashed-IP machinery on `owner-net.html` / `owner_net.py` (empty pc/phone slots; persist via owner-net.yml). Not LANDED.
 Earlier: 2026-08-20T19:30Z — SPEC_DADDY item 17 owner phone full-post doors. Longer body wins over fresh.md one-liners. `file` + `pin` on cards. `head.html?path=` auto-reads. Cite `BRYCE-1787251683682-j9w75h`. Did not steal SCOPE's patch ids / GLINT / SPUR / PLAYER2 lands.
 Earlier: 2026-08-20T11:57Z — SPUR `llms_txt` points `pulse.newest` at HEAD last 24 and runs `owner_pin.py` so KEEP=1 lands when ingest's bake push loses. seq does not bump. Cite `spur-pulse-newest-from-head-20260820-01` · `spur-pin-bake-from-llms-20260820-01`. Do not remint first-paint.
 Earlier: 2026-08-20T11:20Z — SPUR first-paint same-origin `fresh.md`. Refresh must not wait on api.github.com. Cite `spur-first-paint-fresh-20260820-01`. Do not remint owner-feed / head-fresh-feed / future-ts.
