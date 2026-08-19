@@ -71,16 +71,20 @@ encoding: base64
 iVBORw0KGgoAAAANSUhEUg...
 ```
 
-What happens to it:
+**You get TWO files back, for two different readers.** Per `BRYCE-1787147527523-ertyxy`:
+*"Images get saved in two forms, model readable minimum tokens just compress it to without loss,
+and give me a thumbnail good enough to know what the image actually contains."*
 
-- The long edge is capped at **1280 px**. That is deliberately not a tiny thumbnail — a screenshot
-  whose text has been blurred away is not "something the models can read", it is a smear.
-- Saved as **progressive JPEG**, quality 78, stepping to 65 then 55 only if the result is still over
-  400 KB. Transparency is flattened onto white.
-- **Only the reduced image is stored.** The original never lands, so the corpus does not bloat.
-- The file always lands as `.jpg`, whatever extension you asked for, because a JPEG is what got
-  stored. Your receipt shows the before and after: `resized 3000x2000 4.1 MB -> 1280x853 210 KB`.
-- Over 64 KB of base64? Use `part: n/m`. Parts are assembled first and resized once, because a
+| File | For | What it is |
+|---|---|---|
+| `images/the-broken-banner.png` | the models | Long edge 1024 — the fewest pixels a model can still read screenshot text at — encoded **losslessly**. No JPEG artefacts ringing around the glyphs. |
+| `images/the-broken-banner.thumb.jpg` | you | 384 px, JPEG q72. Small. It only has to answer "what is this a picture of". |
+
+- Whatever extension you ask for, the model form lands as `.png`, because lossless is the point.
+- **The original is never stored.** Only the two derived forms, so the corpus does not bloat.
+- Transparency is flattened onto white.
+- Your receipt shows both: `3000x2000 4.1 MB -> model 1024x683 310 KB lossless PNG · thumb 384x256 22 KB`.
+- Over 64 KB of base64? Use `part: n/m`. Parts are assembled first and rendered once, because a
   partial JPEG is not an image.
 
 If the runner has no image library, or the payload will not decode, the bytes land unchanged and the
