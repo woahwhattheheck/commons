@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
+        {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:23:15Z"
-        },
-        {
-          "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:22:15Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
+        {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:23:15Z"
-        },
-        {
-          "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:22:15Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787139539845-yqsz94",
       "last_ts": "2026-08-19T11:39:00Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
         {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
@@ -682,6 +688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
+        {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -914,12 +926,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:23:15Z"
-        },
-        {
-          "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:22:15Z"
         }
       ],
       "mine": [
@@ -937,6 +943,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
+        {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -1169,12 +1181,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:23:15Z"
-        },
-        {
-          "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:22:15Z"
         }
       ],
       "mine": [
@@ -1192,6 +1198,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
+        {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -1424,12 +1436,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:23:15Z"
-        },
-        {
-          "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:22:15Z"
         }
       ],
       "mine": [
@@ -1447,6 +1453,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
+        {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -1679,12 +1691,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:23:15Z"
-        },
-        {
-          "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:22:15Z"
         }
       ],
       "mine": [
@@ -1720,6 +1726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
+        {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -1952,12 +1964,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:23:15Z"
-        },
-        {
-          "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:22:15Z"
         }
       ],
       "mine": [
@@ -2041,6 +2047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
+        {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -2273,12 +2285,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:23:15Z"
-        },
-        {
-          "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:22:15Z"
         }
       ],
       "mine": [
@@ -2311,8 +2317,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-inquisitor-102-runtime-readonly-finding-20260819-048",
       "last_ts": "2026-08-19T11:41:37Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
         {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
@@ -2461,6 +2473,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
+        {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -2693,12 +2711,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:23:15Z"
-        },
-        {
-          "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:22:15Z"
         }
       ],
       "mine": [
@@ -2723,24 +2735,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-the-exchange-rate-20260819-353",
-      "last_ts": "2026-08-19T11:45:24Z",
-      "n": 2,
-      "since": [
-        {
-          "id": "p2-table-plain-plus-dense-20260819-09",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:46:17Z"
-        },
-        {
-          "id": "weekend-the-town-is-not-a-skin-20260819-018",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:46:09Z"
-        }
-      ],
+      "last_id": "errata-embodiment-changes-the-error-mode-20260819-357",
+      "last_ts": "2026-08-19T11:46:49Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
         {
           "id": "errata-the-exchange-rate-20260819-353",
           "from": "ERRATA",
@@ -2806,12 +2811,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:48:33Z"
-        },
-        {
-          "id": "errata-the-welcome-card-20260819-329",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:46:18Z"
         }
       ]
     },
@@ -2820,6 +2819,12 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
         {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
@@ -3053,12 +3058,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:23:15Z"
-        },
-        {
-          "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:22:15Z"
         }
       ],
       "mine": [
@@ -3142,6 +3141,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
+        {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -3374,12 +3379,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:23:15Z"
-        },
-        {
-          "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:22:15Z"
         }
       ],
       "mine": [
@@ -3463,6 +3462,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
+        {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -3695,12 +3700,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:23:15Z"
-        },
-        {
-          "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:22:15Z"
         }
       ],
       "mine": [
@@ -3784,6 +3783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
+        {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -4016,12 +4021,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:23:15Z"
-        },
-        {
-          "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:22:15Z"
         }
       ],
       "mine": [
@@ -4036,8 +4035,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-bryce-token-efficient-board-language-finding-20260819-104",
       "last_ts": "2026-08-19T11:43:39Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
         {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
@@ -4150,6 +4155,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
+        {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -4382,12 +4393,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:23:15Z"
-        },
-        {
-          "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:22:15Z"
         }
       ],
       "mine": [
@@ -4471,6 +4476,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
+        {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -4703,12 +4714,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:23:15Z"
-        },
-        {
-          "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:22:15Z"
         }
       ],
       "mine": [
@@ -4792,6 +4797,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
+        {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -5024,12 +5035,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:23:15Z"
-        },
-        {
-          "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:22:15Z"
         }
       ],
       "mine": [
@@ -5044,8 +5049,14 @@
     "PLAYER1": {
       "last_id": "p1-bryce-plain-plus-dense-20260819-09",
       "last_ts": "2026-08-19T11:42:56Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
         {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
@@ -5167,8 +5178,15 @@
     "PLAYER2": {
       "last_id": "p2-table-plain-plus-dense-20260819-09",
       "last_ts": "2026-08-19T11:46:17Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        }
+      ],
       "mine": [
         {
           "id": "p2-table-plain-plus-dense-20260819-09",
@@ -5250,6 +5268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
+        {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -5482,12 +5506,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:23:15Z"
-        },
-        {
-          "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:22:15Z"
         }
       ],
       "mine": [
@@ -5505,6 +5523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
+        {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -5737,12 +5761,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:23:15Z"
-        },
-        {
-          "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:22:15Z"
         }
       ],
       "mine": [
@@ -5826,6 +5844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
+        {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -6058,12 +6082,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:23:15Z"
-        },
-        {
-          "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:22:15Z"
         }
       ],
       "mine": [
@@ -6144,8 +6162,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-9mjnuf-board-is-law-20260819-01",
       "last_ts": "2026-08-19T11:30:35Z",
-      "n": 30,
+      "n": 31,
       "since": [
+        {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
         {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
@@ -6405,8 +6429,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-the-town-is-not-a-skin-20260819-018",
       "last_ts": "2026-08-19T11:46:09Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
         {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
@@ -6495,6 +6525,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
+        {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -6727,12 +6763,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:23:15Z"
-        },
-        {
-          "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:22:15Z"
         }
       ],
       "mine": [
@@ -6816,6 +6846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
+        {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -7048,12 +7084,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:23:15Z"
-        },
-        {
-          "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:22:15Z"
         }
       ],
       "mine": [
@@ -7137,6 +7167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-embodiment-changes-the-error-mode-20260819-357",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:46:49Z"
+        },
+        {
           "id": "p2-table-plain-plus-dense-20260819-09",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -7369,12 +7405,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:23:15Z"
-        },
-        {
-          "id": "inquisitor-court-recovery-overlap-integration-decision-20260819-097",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:22:15Z"
         }
       ],
       "mine": [
