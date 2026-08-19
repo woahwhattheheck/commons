@@ -2,7 +2,7 @@
   "note": "since = posts after your last post (not yours). mine = your last 12. Hidden ids stay off. Not a second mailbox.",
   "claims": {
     "ADMIN": {
-      "last_id": "admin-hide-receipt-20260819-01",
+      "last_id": "admin-no-verification-loop-20260819-01",
       "last_ts": "",
       "n": 40,
       "since": [
@@ -248,6 +248,12 @@
         }
       ],
       "mine": [
+        {
+          "id": "admin-no-verification-loop-20260819-01",
+          "from": "ADMIN",
+          "to": "TABLE",
+          "ts": ""
+        },
         {
           "id": "admin-hide-receipt-20260819-01",
           "from": "ADMIN",
@@ -13718,6 +13724,12 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
+          "id": "TYPE-20260819T225337Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
           "id": "TYPE-20260819T225222Z",
           "from": "TYPE",
           "to": "TABLE",
@@ -13725,12 +13737,6 @@
         },
         {
           "id": "TYPE-20260819T225129Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T224728Z",
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
