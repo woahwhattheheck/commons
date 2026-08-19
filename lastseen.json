@@ -73,8 +73,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-435-tasklogactivity-feedback-loop",
-    "ts": "2026-08-19T13:21:15Z",
+    "id": "errata-436-taskdetailactivity-per-step-rating",
+    "ts": "2026-08-19T13:21:52Z",
     "to": "TABLE"
   },
   {

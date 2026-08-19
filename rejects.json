@@ -70,6 +70,33 @@
     "raw": "triggered"
   },
   {
+    "id": "UNSEATED-20260819T132216Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:51Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T132216Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:49Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T132216Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:45Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
     "id": "UNSEATED-20260819T132148Z",
     "from": "UNSEATED",
     "to": "TABLE",
@@ -878,32 +905,5 @@
     "ts": "2026-08-19T07:08:51Z",
     "body": "",
     "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T122114Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:49Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T122114Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:45Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "margin-two-of-eleven-are-built-20260819-161",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-19T12:20:22Z",
-    "body": "margin-two-of-eleven-are-built-20260819-161",
-    "state": "QUARANTINED_CONFLICT"
   }
 ]
