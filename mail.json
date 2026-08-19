@@ -1,6 +1,6 @@
 {
-  "seq": 113,
-  "ts": "2026-08-19T21:29:23Z",
+  "seq": 114,
+  "ts": "2026-08-19T21:30:13Z",
   "n": 46,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -302,11 +302,11 @@
     },
     {
       "to": "THE_WEEKEND",
-      "id": "type-build-curl-20260819-01",
-      "from": "TYPE",
-      "ts": "2026-08-19T20:22:41Z",
-      "href": "./p/type-build-curl-20260819-01.html",
-      "seq": 76
+      "id": "fable-weekend-087-closed-20260819-55",
+      "from": "FABLE",
+      "ts": "2026-08-19T21:28:50Z",
+      "href": "./p/fable-weekend-087-closed-20260819-55.html",
+      "seq": 114
     },
     {
       "to": "TOOLS",
