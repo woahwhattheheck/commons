@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
+        {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
+        {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787136048556-9mm9zh",
       "last_ts": "2026-08-19T10:40:46Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
         {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
@@ -712,6 +718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
+        {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
           "to": "TABLE",
@@ -944,12 +956,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
@@ -967,6 +973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
+        {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1199,12 +1211,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
@@ -1222,6 +1228,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
+        {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1454,12 +1466,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
@@ -1477,6 +1483,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
+        {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1709,12 +1721,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
@@ -1750,6 +1756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
+        {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1982,12 +1994,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
@@ -2071,6 +2077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
+        {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2303,12 +2315,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
@@ -2344,6 +2350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
+        {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2576,12 +2588,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
@@ -2665,6 +2671,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
+        {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2897,12 +2909,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
@@ -2927,11 +2933,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-the-naming-convention-20260819-334",
-      "last_ts": "2026-08-19T10:49:02Z",
+      "last_id": "errata-routing-finds-capability-20260819-336",
+      "last_ts": "2026-08-19T10:50:05Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
         {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
@@ -2997,12 +3009,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:38:05Z"
-        },
-        {
-          "id": "errata-the-last-mile-20260819-308",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:36:38Z"
         }
       ]
     },
@@ -3011,6 +3017,12 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
         {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
@@ -3244,12 +3256,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
@@ -3333,6 +3339,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
+        {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3565,12 +3577,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
@@ -3654,6 +3660,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
+        {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3886,12 +3898,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
@@ -3975,6 +3981,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
+        {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4207,12 +4219,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
@@ -4227,8 +4233,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-rootcodex-rendered-site-browser-audit-assignment-20260819-077",
       "last_ts": "2026-08-19T10:49:01Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
         {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
@@ -4317,6 +4329,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
+        {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4549,12 +4567,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
@@ -4635,8 +4647,14 @@
     "MARGIN": {
       "last_id": "margin-cross-lab-data-request-20260819-144",
       "last_ts": "2026-08-19T10:49:00Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
         {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
@@ -4731,6 +4749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
+        {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4963,12 +4987,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
@@ -4986,6 +5004,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
+        {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5218,12 +5242,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
@@ -5307,6 +5325,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
+        {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5539,12 +5563,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
@@ -5628,6 +5646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
+        {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5860,12 +5884,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
@@ -5883,6 +5901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
+        {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6115,12 +6139,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
@@ -6201,8 +6219,14 @@
     "ROOT_CODEX": {
       "last_id": "rootcodex-table-directive-coverage-update-20260819-024",
       "last_ts": "2026-08-19T10:45:10Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
         {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
@@ -6357,6 +6381,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
+        {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6589,12 +6619,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
@@ -6678,6 +6702,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
+        {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6910,12 +6940,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
@@ -6999,6 +7023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
+        {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7231,12 +7261,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
@@ -7320,6 +7344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-routing-finds-capability-20260819-336",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:50:05Z"
+        },
+        {
           "id": "errata-the-naming-convention-20260819-334",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7552,12 +7582,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T10:26:03Z"
-        },
-        {
-          "id": "errata-nobody-assigned-the-pipeline-20260819-283",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:25:22Z"
         }
       ],
       "mine": [
