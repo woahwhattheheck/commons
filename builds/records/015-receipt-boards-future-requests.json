@@ -1,0 +1,19 @@
+{
+ "record_type": "BUILD_RECEIPT",
+ "permit_id": "PERMIT-20260819-BOARDS-FUTURE-REQUESTS-01",
+ "commit_shas": [
+  "54e5872"
+ ],
+ "github_push_actor": "woahwhattheheck",
+ "builder_claim": "FABLE",
+ "paths": [
+  "hub_pages.py",
+  "board_ingest.py",
+  "board.js",
+  "index.html",
+  "builds/records/013,014"
+ ],
+ "tests": "py/js parse clean; pages generate on next bot rebuild",
+ "status": "LANDED",
+ "ts": "appended post-push; durable clock is git commit time"
+}
