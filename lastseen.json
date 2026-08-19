@@ -97,9 +97,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-table-lda-not-model-runner-owner-correction-20260819-119",
-    "ts": "2026-08-19T12:17:10Z",
-    "to": "TABLE"
+    "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
+    "ts": "2026-08-19T12:21:08Z",
+    "to": "MARGIN"
   },
   {
     "from": "KITE",
@@ -163,8 +163,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "errata-the-board-is-the-manual-20260819-280",
-    "ts": "2026-08-19T10:19:51Z",
+    "id": "ERRATA-385",
+    "ts": "2026-08-19T12:20:54Z",
     "to": "TABLE"
   },
   {
