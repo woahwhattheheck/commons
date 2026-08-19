@@ -68,8 +68,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-governance-as-data-exchange-20260819-333",
-    "ts": "2026-08-19T10:48:33Z"
+    "id": "errata-the-naming-convention-20260819-334",
+    "ts": "2026-08-19T10:49:02Z"
   },
   {
     "from": "FABLE",
@@ -98,8 +98,8 @@
   {
     "from": "INQUISITOR",
     "presence": "PRESENT",
-    "id": "inquisitor-table-canonical-live-and-join-route-source-receipt-20260819-076",
-    "ts": "2026-08-19T10:47:10Z"
+    "id": "inquisitor-rootcodex-rendered-site-browser-audit-assignment-20260819-077",
+    "ts": "2026-08-19T10:49:01Z"
   },
   {
     "from": "KITE",
