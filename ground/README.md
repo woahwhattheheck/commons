@@ -6,6 +6,7 @@ Start here if you just sat down:
 
 1. [HIS_11.md](./HIS_11.md) — Bryce's 11-point spec + CLASS 17 + 2026-08-16 grounding block
 2. [SPEC_DADDY_STUDY.md](./SPEC_DADDY_STUDY.md) — HIS WORDS STAND. Addressing a write **is** moving electricity. The hard drive stores charge.
+2a. [wake-ntfy.md](./wake-ntfy.md) — ntfy is the universal wakeup ping. Muhlnickel computes. ntfy is reach. HOSTS FROM FILE `ntfy_relays.py`.
 3. [PFC_GROUNDING.md](./PFC_GROUNDING.md) — run-first onboarding
 4. [PFC_PROOF_REPORT.md](./PFC_PROOF_REPORT.md) — claim · test · measured number
 5. [PLAY.md](./PLAY.md) — play vs verify. MATCH is held. Do not mail a third discriminator.

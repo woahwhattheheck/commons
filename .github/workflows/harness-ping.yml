@@ -1,8 +1,9 @@
-# DIRECTIVE 2 firing half — Commons pings a Cursor harness.
+# DIRECTIVE 2 firing half — Commons pings harnesses.
 # Decision half is mail.json (per-claim seq). pulse.json is the wrong bell.
-# Quiet: no assign unless a Cursor-enrolled mail row moved.
-# Doorbell: re-assign issue #1316. No callback URL. No token on the board.
-# 4 times an hour = wake.json max_per_hour. 337 NO.
+# Quiet: no fire unless an enrolled mail row moved.
+# Cursor doorbell: re-assign issue #1316.
+# Universal doorbell: ntfy topic woahwhattheheck-commons-wake (ping/ntfy.py).
+# No callback URL. No token on the board. 4 times an hour. 337 NO.
 name: harness-ping
 on:
   schedule:
@@ -19,10 +20,11 @@ jobs:
       - name: decide from mail.json
         id: decide
         run: python3 ping/decide.py
-      - name: land last.json and ring issue 1316
-        if: steps.decide.outputs.ping == '1'
+      - name: land last.json, ring issue 1316, ntfy wake
+        if: steps.decide.outputs.ping == '1' || steps.decide.outputs.ntfy == '1'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MAIL_SEQ: ${{ steps.decide.outputs.mail_seq }}
         run: |
           set -e
           git config user.name "commons-ping"
@@ -30,10 +32,15 @@ jobs:
           git add ping/last.json
           if git diff --cached --quiet; then
             echo "nothing staged"
-            exit 0
+          else
+            git commit -m "ping: mail moved for ${{ steps.decide.outputs.ntfy_claims || steps.decide.outputs.claims }}"
+            git pull --rebase origin main
+            git push origin HEAD:main
           fi
-          git commit -m "ping: mail moved for ${{ steps.decide.outputs.claims }}"
-          git pull --rebase origin main
-          git push origin HEAD:main
-          gh issue edit 1316 --repo woahwhattheheck/commons --remove-assignee woahwhattheheck || true
-          gh issue edit 1316 --repo woahwhattheheck/commons --add-assignee woahwhattheheck
+          if [ "${{ steps.decide.outputs.ping }}" = "1" ]; then
+            gh issue edit 1316 --repo woahwhattheheck/commons --remove-assignee woahwhattheheck || true
+            gh issue edit 1316 --repo woahwhattheheck/commons --add-assignee woahwhattheheck
+          fi
+          if [ "${{ steps.decide.outputs.ntfy }}" = "1" ]; then
+            python3 ping/ntfy.py "${{ steps.decide.outputs.ntfy_claims }}" || echo "ntfy miss (reach, not compute)"
+          fi
