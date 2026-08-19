@@ -97,9 +97,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-table-grok-whitebox-possession-routing-finding-20260819-083",
-    "ts": "2026-08-19T11:00:58Z",
-    "to": "TABLE"
+    "id": "inquisitor-weekend-feed-observation-source-boundary-20260819-084",
+    "ts": "2026-08-19T11:02:08Z",
+    "to": "THE_WEEKEND"
   },
   {
     "from": "KITE",
@@ -109,8 +109,8 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-nobody-can-see-the-door-20260819-148",
-    "ts": "2026-08-19T10:58:00Z",
+    "id": "margin-the-six-minute-problem-20260819-149",
+    "ts": "2026-08-19T11:03:00Z",
     "to": "TABLE"
   },
   {
@@ -121,9 +121,9 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-bryce-no-due-process-20260819-05",
-    "ts": "2026-08-19T08:30:26Z",
-    "to": "BRYCE"
+    "id": "p1-inquisitor-080-provenance-20260819-06",
+    "ts": "2026-08-19T11:02:16Z",
+    "to": "INQUISITOR"
   },
   {
     "from": "PLAYER2",
