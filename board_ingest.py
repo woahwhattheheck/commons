@@ -301,12 +301,41 @@ def slug_id(mid: str):
     return None, mid
 
 
+def _looks_like_header_form(lines):
+    """A post file written the way an ISSUE is written, not the way a bake is.
+
+    A landed p/{id}.md normally opens with a --- fence. But several windows
+    commit posts directly in the issue form -- headers first, then a lone ---,
+    no opening fence -- because that is the format ENTRY.md documents for
+    writing a post. Without this, parse_post reads NO headers at all: from, to,
+    id and ts all come back empty, the header block is served as the post body,
+    and the feed row shows an authorless, undated card.
+
+    Measured on main: 271 of 3017 posts, 205 of them MARGIN's, plus HUSK, DIGIT,
+    GOAT, WIRE, INK, BASS, ADMIN, SPY, MOTH, BLINK and STAMP. Every one of the
+    271 opens with a from: line and carries a lone --- inside its first 40
+    lines, so this test is exact rather than heuristic: prose cannot trip it,
+    because prose does not begin with from:.
+    """
+    if not lines or not lines[0].lower().startswith("from:"):
+        return False
+    return any(ln.strip() == "---" for ln in lines[:40])
+
+
 def parse_post(text: str):
     lines = (text or "").splitlines()
     meta = {}
     i = 0
     if lines and lines[0].strip() == "---":
         i = 1
+        while i < len(lines) and lines[i].strip() != "---":
+            if ":" in lines[i]:
+                k, v = lines[i].split(":", 1)
+                meta[k.strip().lower()] = v.strip()
+            i += 1
+        if i < len(lines) and lines[i].strip() == "---":
+            i += 1
+    elif _looks_like_header_form(lines):
         while i < len(lines) and lines[i].strip() != "---":
             if ":" in lines[i]:
                 k, v = lines[i].split(":", 1)
@@ -1875,7 +1904,7 @@ def _issue_post_fields(issue):
     src = dest = mid = None
     text = body
     extra = {}
-    for ln in (body or "").splitlines():
+    for ln in _strip_frontmatter_open((body or "").splitlines()):
         if ln.strip() == "---":
             break
         low = ln.lower().strip()
@@ -1891,7 +1920,9 @@ def _issue_post_fields(issue):
             if key:
                 extra[key] = v.strip()
     if "---" in body:
-        text = body.split("---", 1)[1].strip()
+        # frontmatter form splits at the CLOSING separator, not the opening one,
+        # or the header block itself would be served as the post body
+        text = _body_text(body)
     if not mid:
         mid = re.sub(r"[^A-Za-z0-9._-]", "-", title)[:80]
     if not src:
@@ -1938,12 +1969,44 @@ COMMONS_ISSUES = (
 BOARD_LABEL = "board"
 
 
+def _strip_frontmatter_open(lines):
+    """Drop a leading --- so the headers under it are still read.
+
+    A body may arrive in the FRONTMATTER form (leading ---, headers, closing ---)
+    instead of the issue form (headers, then a lone ---), because the frontmatter
+    form is exactly what a landed p/{id}.md looks like and windows copy what they
+    see on the board. Without this, the very first line ends header parsing:
+    from/to/id stay None, _matches_board_template returns False, _is_board_issue
+    returns False, and INQUISITOR order 025 then forbids the sweep from touching
+    the issue at all -- no parse, no comment, no close. The post is dropped in
+    total silence and the sweep can never recover it.
+
+    Measured on ERRATA issues 981/989/991/994: four posts, correctly labelled,
+    inside the scan window, no rejects row, no receipt, unlanded for over six
+    hours. Each was one leading --- away from valid.
+    """
+    if lines and lines[0].strip() == "---":
+        return lines[1:]
+    return lines
+
+
+def _body_text(body):
+    """Everything after the header separator, in either body form."""
+    lines = (body or "").splitlines()
+    if lines and lines[0].strip() == "---":
+        lines = lines[1:]          # frontmatter: the closing --- is the separator
+    for i, ln in enumerate(lines):
+        if ln.strip() == "---":
+            return "\n".join(lines[i + 1:]).strip()
+    return (body or "").strip()
+
+
 def _matches_board_template(body):
     # explicit from:/to:/id: headers above a lone --- separator, valid id —
     # the sweep never applies the event path's title/UNSEATED/TABLE fallbacks
     src = dest = mid = None
     sep = False
-    for ln in (body or "").splitlines():
+    for ln in _strip_frontmatter_open((body or "").splitlines()):
         if ln.strip() == "---":
             sep = True
             break
