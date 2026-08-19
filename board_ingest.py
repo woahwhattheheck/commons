@@ -7,6 +7,7 @@ import hashlib
 import html
 import json
 import os
+import random
 import re
 import subprocess
 import sys
@@ -25,7 +26,8 @@ TO = os.path.join(ROOT, "to")
 LOCK_PATH = os.path.join(ROOT, ".ingest.lock")
 LOCK_WAIT = 120
 LOCK_STALE = 180
-PUSH_TRIES = 5
+PUSH_TRIES = 10
+PUSH_DEADLINE_S = 240
 LAST_WROTE = []
 ISSUE_TOUCHED = []
 SCRATCH_RESET = (
@@ -716,25 +718,35 @@ def _resolve_rebase(env, extra_paths=None):
     return _git(["rebase", "--continue"], env, timeout=90)
 
 
+def _push_backoff(i):
+    return random.uniform(0, min(i * 2, 8))
+
+
 def push_origin_main(env=None, extra_paths=None, fail_meta=None, tries=PUSH_TRIES):
     env = git_env(env)
     last_err = ""
+    deadline = time.monotonic() + PUSH_DEADLINE_S
     for i in range(1, tries + 1):
         p = _git(["push", "origin", "HEAD:main"], env, timeout=90)
         if p.returncode == 0:
             return "pushed"
         last_err = ((p.stderr or "") + "\n" + (p.stdout or "")).strip()
         print("push retry %s" % i, flush=True)
+        if time.monotonic() >= deadline:
+            print("push deadline reached after %s tries" % i, flush=True)
+            break
         f = _git(["fetch", "origin", "main"], env, timeout=90)
         if f.returncode != 0:
-            time.sleep(min(i * 2, 8))
+            time.sleep(_push_backoff(i))
             continue
         r = _git(["rebase", "origin/main"], env, timeout=90)
         if r.returncode != 0:
             rc = _resolve_rebase(env, extra_paths)
             if rc.returncode != 0:
                 _git(["rebase", "--abort"], env)
-        time.sleep(min(i * 2, 8))
+                last_err = last_err or "rebase conflict could not be resolved"
+                break
+        time.sleep(_push_backoff(i))
     reason = "non-fast-forward after %s retries" % tries
     if last_err:
         low = last_err.lower()
