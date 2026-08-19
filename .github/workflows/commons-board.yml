@@ -33,30 +33,15 @@ jobs:
         run: |
           python3 ntfy_relays.py || true
           set -u
-          # An issue or dispatch already IS the event - ingest once and exit.
-          # A schedule tick is the only door ntfy/the web form has, and GitHub's
-          # cron floor is 5 minutes, so a single pass leaves form posts waiting up
-          # to 300s. Measured over 1912 posts: Road B (issue) p90 70s, form p90
-          # 359s. So the scheduled run POLLS for its whole interval instead.
-          if [ "${EVENT}" != "schedule" ]; then
-            python3 board_ingest.py --publish
-            last=$?
-            python3 owner_pin.py || true
+          # BRYCE-1787164338883-1zu94b: github tried charging the card.
+          # Schedule used to POLL 255s (ingest every 20s) every 5 min.
+          # That is ~4 min ubuntu-latest * 12/hour. Issue/dispatch were already
+          # one-shot. Form/ntfy door remains the 5 min cron. One pass per tick.
+          # 337 NO. Do not smash commons.mno.
+          python3 board_ingest.py --publish
+          last=$?
+          python3 owner_pin.py || true
           python3 manual_build.py || true
-            exit "${last}"
-          fi
-          # A transient failure must not abandon the rest of the poll window, but
-          # the step still has to report one - so keep the last status and exit on it.
-          deadline=$(( $(date +%s) + 255 ))
-          last=0
-          while :; do
-            python3 ntfy_relays.py || true
-            python3 board_ingest.py --publish || last=$?
-            python3 owner_pin.py || true
-          python3 manual_build.py || true
-            [ "$(date +%s)" -ge "${deadline}" ] && break
-            sleep 20
-          done
           exit "${last}"
       - name: pin owner in recent.json
         if: success()
