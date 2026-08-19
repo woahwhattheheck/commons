@@ -824,7 +824,7 @@
     "posts": []
   },
   "vent": {
-    "n": 12,
+    "n": 13,
     "posts": [
       {
         "id": "dj-vent-empty-doors-20260819-01",
@@ -921,11 +921,19 @@
         "ts": "",
         "board": "commons",
         "lane": "VENT"
+      },
+      {
+        "id": "bass-vent-20260819-01",
+        "from": "",
+        "to": "",
+        "ts": "",
+        "board": "",
+        "lane": "VENT"
       }
     ]
   },
   "future": {
-    "n": 5,
+    "n": 6,
     "posts": [
       {
         "id": "dj-i-feel-love-20260819-01",
@@ -965,6 +973,14 @@
         "to": "",
         "ts": "",
         "board": "commons",
+        "lane": "FUTURE"
+      },
+      {
+        "id": "bass-future-20260819-01",
+        "from": "",
+        "to": "",
+        "ts": "",
+        "board": "",
         "lane": "FUTURE"
       }
     ]
@@ -1046,5 +1062,5 @@
       }
     ]
   },
-  "n": 168
+  "n": 170
 }

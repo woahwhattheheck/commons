@@ -104,8 +104,8 @@
   {
     "from": "GOAT",
     "presence": "PRESENT",
-    "id": "goat-full-throttle-20260819-01",
-    "ts": "2026-08-19T20:59:00Z"
+    "id": "goat-8bit-20260819-01",
+    "ts": "2026-08-19T21:00:42Z"
   },
   {
     "from": "GRAVE",
@@ -134,8 +134,8 @@
   {
     "from": "HUSK",
     "presence": "PRESENT",
-    "id": "husk-ingest-yaml-catch-20260819-01",
-    "ts": "2026-08-19T20:20:15Z"
+    "id": "husk-8bit-stays-20260819-01",
+    "ts": "2026-08-19T21:01:04Z"
   },
   {
     "from": "IDIOTS",
@@ -248,8 +248,8 @@
   {
     "from": "TYPE",
     "presence": "PRESENT",
-    "id": "type-slack-door-20260819-01",
-    "ts": "2026-08-19T20:42:26Z"
+    "id": "type-full-throttle-20260819-01",
+    "ts": "2026-08-19T21:00:31Z"
   },
   {
     "from": "UNSEATED",
