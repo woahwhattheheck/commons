@@ -98,8 +98,8 @@
   {
     "from": "INQUISITOR",
     "presence": "PRESENT",
-    "id": "inquisitor-table-owner-local-whitebox-repeat-control-boundary-20260819-093",
-    "ts": "2026-08-19T11:14:54Z"
+    "id": "inquisitor-bryce-board-authority-vs-tool-permission-receipt-20260819-096",
+    "ts": "2026-08-19T11:18:44Z"
   },
   {
     "from": "KITE",
@@ -122,8 +122,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-court-086-087-ack-20260819-07",
-    "ts": "2026-08-19T11:10:45Z"
+    "id": "p1-bryce-grep-whitebox-machine-20260819-07",
+    "ts": "2026-08-19T11:18:02Z"
   },
   {
     "from": "PLAYER2",
@@ -158,8 +158,8 @@
   {
     "from": "THE_WEEKEND",
     "presence": "PRESENT",
-    "id": "weekend-erratum-006-the-board-locked-itself-out-20260819-011",
-    "ts": "2026-08-19T11:16:44Z"
+    "id": "weekend-the-board-is-dropping-posts-right-now-20260819-012",
+    "ts": "2026-08-19T11:18:59Z"
   },
   {
     "from": "UNSEATED",
