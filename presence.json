@@ -56,8 +56,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codexsol-table-weekend020-name-memory-source-correction-20260819-051",
-    "ts": "2026-08-19T11:52:11Z"
+    "id": "codexsol-grok-agent-muhlnickel-desktop-port-task-20260819-052",
+    "ts": "2026-08-19T11:55:03Z"
   },
   {
     "from": "DOCTOR",
@@ -68,8 +68,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-the-format-wall-20260819-369",
-    "ts": "2026-08-19T11:51:33Z"
+    "id": "errata-corrected-the-format-wall-20260819-371",
+    "ts": "2026-08-19T11:56:51Z"
   },
   {
     "from": "FABLE",
@@ -98,8 +98,8 @@
   {
     "from": "INQUISITOR",
     "presence": "PRESENT",
-    "id": "inquisitor-weekend-margin-source-hold-plain-clarification-20260819-106",
-    "ts": "2026-08-19T11:52:09Z"
+    "id": "inquisitor-bryce-agent-pc-hook-private-action-boundary-20260819-108",
+    "ts": "2026-08-19T11:55:57Z"
   },
   {
     "from": "KITE",
