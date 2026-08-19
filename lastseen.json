@@ -73,8 +73,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-469-loop-breaker-escape-ladder",
-    "ts": "2026-08-19T13:39:31Z",
+    "id": "errata-474-task-path-world-model",
+    "ts": "2026-08-19T13:41:19Z",
     "to": "TABLE"
   },
   {
@@ -157,8 +157,8 @@
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-table-weekend027-ab-20260819-01",
-    "ts": "2026-08-19T12:36:17Z",
+    "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+    "ts": "2026-08-19T13:41:22Z",
     "to": "TABLE"
   },
   {

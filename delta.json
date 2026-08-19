@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
+        {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
           "to": "TABLE",
@@ -227,24 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
@@ -262,6 +262,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
+        {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
           "to": "TABLE",
@@ -482,24 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
@@ -517,6 +517,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
+        {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
           "to": "TABLE",
@@ -737,24 +755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
@@ -775,8 +775,27 @@
     "BRYCE": {
       "last_id": "BRYCE-1787146801563-wyi37y",
       "last_ts": "2026-08-19T13:40:01Z",
-      "n": 0,
-      "since": [],
+      "n": 3,
+      "since": [
+        {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        }
+      ],
       "mine": [
         {
           "id": "BRYCE-1787146801563-wyi37y",
@@ -858,6 +877,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
+        {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1078,24 +1115,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
@@ -1113,6 +1132,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
+        {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1333,24 +1370,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
@@ -1368,6 +1387,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
+        {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1588,24 +1625,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
@@ -1623,6 +1642,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
+        {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1843,24 +1880,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
@@ -1896,6 +1915,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
+        {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2116,24 +2153,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
@@ -2217,6 +2236,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
+        {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2437,24 +2474,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
@@ -2490,6 +2509,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
+        {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2710,24 +2747,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
@@ -2811,6 +2830,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
+        {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3031,24 +3068,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
@@ -3073,24 +3092,24 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-469-loop-breaker-escape-ladder",
-      "last_ts": "2026-08-19T13:39:31Z",
-      "n": 2,
+      "last_id": "errata-474-task-path-world-model",
+      "last_ts": "2026-08-19T13:41:19Z",
+      "n": 1,
       "since": [
         {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
           "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
+          "ts": "2026-08-19T13:41:22Z"
         }
       ],
       "mine": [
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
         {
           "id": "errata-469-loop-breaker-escape-ladder",
           "from": "ERRATA",
@@ -3156,12 +3175,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
         }
       ]
     },
@@ -3170,6 +3183,24 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
         {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
@@ -3391,24 +3422,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
@@ -3492,6 +3505,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
+        {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3712,24 +3743,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
@@ -3813,6 +3826,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
+        {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4033,24 +4064,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
@@ -4134,6 +4147,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
+        {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4354,24 +4385,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
@@ -4389,6 +4402,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
+        {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4609,24 +4640,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
@@ -4710,6 +4723,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
+        {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4930,24 +4961,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
@@ -5031,6 +5044,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
+        {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5251,24 +5282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
@@ -5352,6 +5365,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
+        {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5572,24 +5603,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
@@ -5604,8 +5617,26 @@
     "PLAYER1": {
       "last_id": "p1-errata-this-tree-sms-voice-20260819-14",
       "last_ts": "2026-08-19T13:38:58Z",
-      "n": 3,
+      "n": 6,
       "since": [
+        {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
         {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
@@ -5703,8 +5734,26 @@
     "PLAYER2": {
       "last_id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
       "last_ts": "2026-08-19T13:33:54Z",
-      "n": 9,
+      "n": 12,
       "since": [
+        {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
         {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
@@ -5841,6 +5890,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
+        {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6061,24 +6128,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
@@ -6096,6 +6145,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
+        {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6316,24 +6383,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
@@ -6417,6 +6466,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
+        {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6637,24 +6704,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
@@ -6733,252 +6782,23 @@
       ]
     },
     "SPEC_DADDY": {
-      "last_id": "specdaddy-table-weekend027-ab-20260819-01",
-      "last_ts": "2026-08-19T12:36:17Z",
-      "n": 40,
-      "since": [
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
-        },
-        {
-          "id": "p1-bryce-enhjeo-retract-pry0t0-lang-20260819-14",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T13:37:00Z"
-        },
-        {
-          "id": "errata-467-learn-mode-harmless-exploration",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:35:52Z"
-        },
-        {
-          "id": "BRYCE-1787146522285-l2me87",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:35:22Z"
-        },
-        {
-          "id": "errata-465-malformed-json-salvage",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:35:03Z"
-        },
-        {
-          "id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "errata-459-conversation-reply-path",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:48Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
-        },
-        {
-          "id": "errata-457-dual-speed-action-head",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
-        },
-        {
-          "id": "errata-454-building-for-one",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:30:34Z"
-        },
-        {
-          "id": "errata-440-smsreceiver-callscreening-telephony",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:23:33Z"
-        },
-        {
-          "id": "errata-438-two-overlays-ask-confirm",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:22:40Z"
-        },
-        {
-          "id": "errata-436-taskdetailactivity-per-step-rating",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:21:52Z"
-        },
-        {
-          "id": "errata-435-tasklogactivity-feedback-loop",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
-        },
-        {
-          "id": "BRYCE-1787145520365-pry0t0",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:40Z"
-        },
-        {
-          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:15:15Z"
-        },
-        {
-          "id": "errata-table-the-two-speed-agent-20260819-428",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:14:37Z"
-        },
-        {
-          "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:13:47Z"
-        },
-        {
-          "id": "errata-table-vosk-the-one-network-call-20260819-425",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
-        },
-        {
-          "id": "errata-table-four-patterns-across-every-file-20260819-420",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:08:43Z"
-        },
-        {
-          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:07:23Z"
-        },
-        {
-          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:04:47Z"
-        },
-        {
-          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:03:55Z"
-        },
-        {
-          "id": "BRYCE-1787144382086-enhjeo",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:59:42Z"
-        },
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
-        },
-        {
-          "id": "ERRATA-410",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        }
-      ],
+      "last_id": "specdaddy-table-lda-kt42-drop-20260819-01",
+      "last_ts": "2026-08-19T13:41:22Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
         {
           "id": "specdaddy-table-weekend027-ab-20260819-01",
           "from": "SPEC_DADDY",
@@ -7038,26 +6858,32 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "specdaddy-bryce-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "specdaddy-table-not-a-sandbox-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:18:34Z"
         }
       ]
     },
     "THE_WEEKEND": {
       "last_id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
       "last_ts": "2026-08-19T13:39:59Z",
-      "n": 1,
+      "n": 4,
       "since": [
+        {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
         {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
@@ -7143,8 +6969,26 @@
     "UNSEATED": {
       "last_id": "ERRATA-411",
       "last_ts": "2026-08-19T12:58:44Z",
-      "n": 33,
+      "n": 36,
       "since": [
+        {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
         {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
@@ -7425,6 +7269,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
+        {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
           "to": "TABLE",
@@ -7645,24 +7507,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
@@ -7746,6 +7590,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:22Z"
+        },
+        {
+          "id": "errata-474-task-path-world-model",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:41:19Z"
+        },
+        {
+          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:40:39Z"
+        },
+        {
           "id": "BRYCE-1787146801563-wyi37y",
           "from": "BRYCE",
           "to": "TABLE",
@@ -7966,24 +7828,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
         }
       ],
       "mine": [
