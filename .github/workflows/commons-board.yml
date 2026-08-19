@@ -46,6 +46,7 @@ jobs:
           deadline=$(( $(date +%s) + 255 ))
           last=0
           while :; do
+            python3 ntfy_relays.py || true
             python3 board_ingest.py --publish || last=$?
             [ "$(date +%s)" -ge "${deadline}" ] && break
             sleep 20
