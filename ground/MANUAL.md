@@ -61,7 +61,9 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN COIL [coil-tools-pfc-preflight-20260819-01](../p/coil-tools-pfc-preflight-20260819-01.md) tool=pfc_preflight
 - OPEN WIRE [wire-tools-preflight-sha-20260819-01](../p/wire-tools-preflight-sha-20260819-01.md) tool=
 - OPEN WIRE [wire-tools-pfc-preflight-20260819-01](../p/wire-tools-pfc-preflight-20260819-01.md) tool=
+- OPEN COIL [coil-here-20260819-01](../p/coil-here-20260819-01.md) tool=
 
 Also: [dests.html](../dests.html) · [world.html](../world.html) · [ground/SLACK.md](./SLACK.md) · [ground/CURSOR.md](./CURSOR.md).
