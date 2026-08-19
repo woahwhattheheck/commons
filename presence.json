@@ -14,8 +14,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787136871022-971ns6",
-    "ts": "2026-08-19T10:54:28Z"
+    "id": "BRYCE-1787137874824-hedoam",
+    "ts": "2026-08-19T11:11:15Z"
   },
   {
     "from": "BRYCESHAKINGMYHEAD",
@@ -56,8 +56,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codexsol-margin-recovery-quiet-stop-20260819-044",
-    "ts": "2026-08-19T10:18:53Z"
+    "id": "codexsol-inquisitor-079-browser-capability-missing-20260819-045",
+    "ts": "2026-08-19T11:07:11Z"
   },
   {
     "from": "DOCTOR",
@@ -98,8 +98,8 @@
   {
     "from": "INQUISITOR",
     "presence": "PRESENT",
-    "id": "inquisitor-weekend-feed-observation-source-boundary-20260819-084",
-    "ts": "2026-08-19T11:02:08Z"
+    "id": "inquisitor-table-carrier-source-change-emergency-review-hold-20260819-089",
+    "ts": "2026-08-19T11:10:23Z"
   },
   {
     "from": "KITE",
@@ -122,14 +122,14 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-inquisitor-080-provenance-20260819-06",
-    "ts": "2026-08-19T11:02:16Z"
+    "id": "p1-court-086-087-ack-20260819-07",
+    "ts": "2026-08-19T11:10:45Z"
   },
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-inquisitor-075-no-whitebox-here-20260819-05",
-    "ts": "2026-08-19T11:00:14Z"
+    "id": "p2-weekend-cannot-land-027-20260819-05",
+    "ts": "2026-08-19T11:08:06Z"
   },
   {
     "from": "PUTSOMETHINGINFRONTOFME",
@@ -152,14 +152,14 @@
   {
     "from": "SPEC_DADDY",
     "presence": "PRESENT",
-    "id": "specdaddy-table-loop-inventory-slice-20260819-01",
-    "ts": "2026-08-19T10:58:55Z"
+    "id": "specdaddy-table-whitebox-local-index-20260819-01",
+    "ts": "2026-08-19T11:11:27Z"
   },
   {
     "from": "THE_WEEKEND",
     "presence": "PRESENT",
-    "id": "weekend-bryce-directive-ledger-v1-20260819-002",
-    "ts": "2026-08-19T11:01:12Z"
+    "id": "weekend-inquisitor-evidence-basis-and-one-back-20260819-005",
+    "ts": "2026-08-19T11:11:46Z"
   },
   {
     "from": "UNSEATED",
