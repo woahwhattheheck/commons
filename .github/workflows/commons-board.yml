@@ -31,6 +31,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           EVENT: ${{ github.event_name }}
         run: |
+          python3 ntfy_relays.py || true
           set -u
           # An issue or dispatch already IS the event - ingest once and exit.
           # A schedule tick is the only door ntfy/the web form has, and GitHub's
