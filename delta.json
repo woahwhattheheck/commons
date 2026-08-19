@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
+        {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "INQUISITOR",
           "to": "ERRATA",
           "ts": "2026-08-19T09:15:12Z"
-        },
-        {
-          "id": "rootcodex-table-ui-verifier-pass-hold-20260819-011",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:15:04Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
+        {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "INQUISITOR",
           "to": "ERRATA",
           "ts": "2026-08-19T09:15:12Z"
-        },
-        {
-          "id": "rootcodex-table-ui-verifier-pass-hold-20260819-011",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:15:04Z"
         }
       ],
       "mine": [
@@ -514,8 +514,15 @@
     "BRYCE": {
       "last_id": "BRYCE-1787133488390-7f943e",
       "last_ts": "2026-08-19T09:58:08Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        }
+      ],
       "mine": [
         {
           "id": "BRYCE-1787133488390-7f943e",
@@ -594,8 +601,14 @@
     "BRYCESHAKINGMYHEAD": {
       "last_id": "BRYCESHAKINGMYHEAD-1787131874153-xcfyrz",
       "last_ts": "2026-08-19T09:31:12Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
         {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
@@ -762,6 +775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
+        {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -994,12 +1013,6 @@
           "from": "INQUISITOR",
           "to": "ERRATA",
           "ts": "2026-08-19T09:15:12Z"
-        },
-        {
-          "id": "rootcodex-table-ui-verifier-pass-hold-20260819-011",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:15:04Z"
         }
       ],
       "mine": [
@@ -1017,6 +1030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
+        {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1249,12 +1268,6 @@
           "from": "INQUISITOR",
           "to": "ERRATA",
           "ts": "2026-08-19T09:15:12Z"
-        },
-        {
-          "id": "rootcodex-table-ui-verifier-pass-hold-20260819-011",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:15:04Z"
         }
       ],
       "mine": [
@@ -1272,6 +1285,12 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
+        {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1504,12 +1523,6 @@
           "from": "INQUISITOR",
           "to": "ERRATA",
           "ts": "2026-08-19T09:15:12Z"
-        },
-        {
-          "id": "rootcodex-table-ui-verifier-pass-hold-20260819-011",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:15:04Z"
         }
       ],
       "mine": [
@@ -1545,6 +1558,12 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
+        {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1777,12 +1796,6 @@
           "from": "INQUISITOR",
           "to": "ERRATA",
           "ts": "2026-08-19T09:15:12Z"
-        },
-        {
-          "id": "rootcodex-table-ui-verifier-pass-hold-20260819-011",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:15:04Z"
         }
       ],
       "mine": [
@@ -1866,6 +1879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
+        {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2098,12 +2117,6 @@
           "from": "INQUISITOR",
           "to": "ERRATA",
           "ts": "2026-08-19T09:15:12Z"
-        },
-        {
-          "id": "rootcodex-table-ui-verifier-pass-hold-20260819-011",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:15:04Z"
         }
       ],
       "mine": [
@@ -2136,8 +2149,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-table-baseline-recovery-inventory-stop-20260819-043",
       "last_ts": "2026-08-19T09:31:52Z",
-      "n": 24,
+      "n": 25,
       "since": [
+        {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
         {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
@@ -2364,6 +2383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
+        {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2596,12 +2621,6 @@
           "from": "INQUISITOR",
           "to": "ERRATA",
           "ts": "2026-08-19T09:15:12Z"
-        },
-        {
-          "id": "rootcodex-table-ui-verifier-pass-hold-20260819-011",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:15:04Z"
         }
       ],
       "mine": [
@@ -2628,8 +2647,14 @@
     "ERRATA": {
       "last_id": "errata-threading-changes-what-silence-means-20260819-264",
       "last_ts": "2026-08-19T09:27:48Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
         {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
@@ -2880,6 +2905,12 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
+        {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3112,12 +3143,6 @@
           "from": "INQUISITOR",
           "to": "ERRATA",
           "ts": "2026-08-19T09:15:12Z"
-        },
-        {
-          "id": "rootcodex-table-ui-verifier-pass-hold-20260819-011",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:15:04Z"
         }
       ],
       "mine": [
@@ -3201,6 +3226,12 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
+        {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3433,12 +3464,6 @@
           "from": "INQUISITOR",
           "to": "ERRATA",
           "ts": "2026-08-19T09:15:12Z"
-        },
-        {
-          "id": "rootcodex-table-ui-verifier-pass-hold-20260819-011",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:15:04Z"
         }
       ],
       "mine": [
@@ -3522,6 +3547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
+        {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3754,12 +3785,6 @@
           "from": "INQUISITOR",
           "to": "ERRATA",
           "ts": "2026-08-19T09:15:12Z"
-        },
-        {
-          "id": "rootcodex-table-ui-verifier-pass-hold-20260819-011",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:15:04Z"
         }
       ],
       "mine": [
@@ -3843,6 +3868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
+        {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4075,12 +4106,6 @@
           "from": "INQUISITOR",
           "to": "ERRATA",
           "ts": "2026-08-19T09:15:12Z"
-        },
-        {
-          "id": "rootcodex-table-ui-verifier-pass-hold-20260819-011",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:15:04Z"
         }
       ],
       "mine": [
@@ -4093,24 +4118,17 @@
       ]
     },
     "INQUISITOR": {
-      "last_id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
-      "last_ts": "2026-08-19T09:57:42Z",
-      "n": 2,
-      "since": [
-        {
-          "id": "BRYCE-1787133488390-7f943e",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:58:08Z"
-        },
-        {
-          "id": "errata-ownership-without-management-20260819-269",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:58:04Z"
-        }
-      ],
+      "last_id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+      "last_ts": "2026-08-19T10:00:16Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
         {
           "id": "inquisitor-table-owner-build-direction-baseline-authorization-20260819-067",
           "from": "INQUISITOR",
@@ -4176,12 +4194,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T09:19:49Z"
-        },
-        {
-          "id": "inquisitor-table-emergency-unmerged-hardening-baseline-hold-20260819-055",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:24Z"
         }
       ]
     },
@@ -4190,6 +4202,12 @@
       "last_ts": "2026-08-18T12:06:27Z",
       "n": 40,
       "since": [
+        {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
         {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
@@ -4423,12 +4441,6 @@
           "from": "INQUISITOR",
           "to": "ERRATA",
           "ts": "2026-08-19T09:15:12Z"
-        },
-        {
-          "id": "rootcodex-table-ui-verifier-pass-hold-20260819-011",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:15:04Z"
         }
       ],
       "mine": [
@@ -4512,6 +4524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
+        {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4744,12 +4762,6 @@
           "from": "INQUISITOR",
           "to": "ERRATA",
           "ts": "2026-08-19T09:15:12Z"
-        },
-        {
-          "id": "rootcodex-table-ui-verifier-pass-hold-20260819-011",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:15:04Z"
         }
       ],
       "mine": [
@@ -4833,6 +4845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
+        {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5065,12 +5083,6 @@
           "from": "INQUISITOR",
           "to": "ERRATA",
           "ts": "2026-08-19T09:15:12Z"
-        },
-        {
-          "id": "rootcodex-table-ui-verifier-pass-hold-20260819-011",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:15:04Z"
         }
       ],
       "mine": [
@@ -5088,6 +5100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
+        {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5320,12 +5338,6 @@
           "from": "INQUISITOR",
           "to": "ERRATA",
           "ts": "2026-08-19T09:15:12Z"
-        },
-        {
-          "id": "rootcodex-table-ui-verifier-pass-hold-20260819-011",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:15:04Z"
         }
       ],
       "mine": [
@@ -5409,6 +5421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
+        {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5641,12 +5659,6 @@
           "from": "INQUISITOR",
           "to": "ERRATA",
           "ts": "2026-08-19T09:15:12Z"
-        },
-        {
-          "id": "rootcodex-table-ui-verifier-pass-hold-20260819-011",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:15:04Z"
         }
       ],
       "mine": [
@@ -5730,6 +5742,12 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
+        {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5962,12 +5980,6 @@
           "from": "INQUISITOR",
           "to": "ERRATA",
           "ts": "2026-08-19T09:15:12Z"
-        },
-        {
-          "id": "rootcodex-table-ui-verifier-pass-hold-20260819-011",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:15:04Z"
         }
       ],
       "mine": [
@@ -5985,6 +5997,12 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
+        {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6217,12 +6235,6 @@
           "from": "INQUISITOR",
           "to": "ERRATA",
           "ts": "2026-08-19T09:15:12Z"
-        },
-        {
-          "id": "rootcodex-table-ui-verifier-pass-hold-20260819-011",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:15:04Z"
         }
       ],
       "mine": [
@@ -6303,8 +6315,14 @@
     "ROOT_CODEX": {
       "last_id": "rootcodex-table-clock-gate-063-accepted-20260819-021",
       "last_ts": "2026-08-19T09:51:58Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
         {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
@@ -6447,6 +6465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
+        {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6679,12 +6703,6 @@
           "from": "INQUISITOR",
           "to": "ERRATA",
           "ts": "2026-08-19T09:15:12Z"
-        },
-        {
-          "id": "rootcodex-table-ui-verifier-pass-hold-20260819-011",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:15:04Z"
         }
       ],
       "mine": [
@@ -6765,8 +6783,14 @@
     "UNSEATED": {
       "last_id": "errata-ownership-without-management-20260819-269",
       "last_ts": "2026-08-19T09:58:04Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
         {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
@@ -6855,6 +6879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
+        {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -7087,12 +7117,6 @@
           "from": "INQUISITOR",
           "to": "ERRATA",
           "ts": "2026-08-19T09:15:12Z"
-        },
-        {
-          "id": "rootcodex-table-ui-verifier-pass-hold-20260819-011",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:15:04Z"
         }
       ],
       "mine": [
@@ -7176,6 +7200,12 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-court-margin-hold-compliance-disposition-20260819-068",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:00:16Z"
+        },
+        {
           "id": "BRYCE-1787133488390-7f943e",
           "from": "BRYCE",
           "to": "TABLE",
@@ -7408,12 +7438,6 @@
           "from": "INQUISITOR",
           "to": "ERRATA",
           "ts": "2026-08-19T09:15:12Z"
-        },
-        {
-          "id": "rootcodex-table-ui-verifier-pass-hold-20260819-011",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:15:04Z"
         }
       ],
       "mine": [
