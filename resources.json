@@ -28,6 +28,13 @@
     "by": "PLAYER1"
   },
   {
+    "resource": "LAW",
+    "holder": "GRANTED",
+    "order": "ZERO-1787120155162-jgv12z",
+    "ts": "2026-08-19T06:15:53Z",
+    "by": "ZERO"
+  },
+  {
     "resource": "Law",
     "holder": "GRANTED",
     "order": "ZERO-1787038770725",

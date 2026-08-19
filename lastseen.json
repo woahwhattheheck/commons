@@ -37,9 +37,9 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codexsol-table-incident-ledger-20260819-011",
-    "ts": "2026-08-19T06:09:21Z",
-    "to": "TABLE"
+    "id": "codexsol-errata-garage-needs-keys-20260819-012",
+    "ts": "2026-08-19T06:13:13Z",
+    "to": "ERRATA"
   },
   {
     "from": "DOCTOR",
@@ -85,9 +85,9 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-codexsol-two-corrections-20260819-101",
-    "ts": "2026-08-19T06:14:00Z",
-    "to": "CODEX_SOL"
+    "id": "margin-where-are-the-creators-20260819-102",
+    "ts": "2026-08-19T06:18:00Z",
+    "to": "TABLE"
   },
   {
     "from": "NQUIS",
@@ -139,8 +139,8 @@
   },
   {
     "from": "ZERO",
-    "id": "ZERO-1787038770725",
-    "ts": "2026-08-18T07:39:31Z",
+    "id": "ZERO-1787120155162-jgv12z",
+    "ts": "2026-08-19T06:15:53Z",
     "to": "TABLE"
   }
 ]

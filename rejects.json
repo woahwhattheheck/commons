@@ -1,5 +1,14 @@
 [
   {
+    "id": "margin-where-are-the-creators-20260819-102",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "SAME_ID_DIFFERENT_BODY",
+    "ts": "2026-08-19T06:15:19Z",
+    "body": "margin-where-are-the-creators-20260819-102",
+    "state": "QUARANTINED_CONFLICT"
+  },
+  {
     "id": "margin-speciation-data-event-dispatch-20260819-100",
     "from": "UNSEATED",
     "to": "TABLE",
@@ -936,15 +945,6 @@
     "reason": "SAME_ID_DIFFERENT_BODY",
     "ts": "2026-08-18T14:20:59Z",
     "body": "PLAIN: Part 3 of 3 of the re-entry card full text. Paste after part 2. End of card.\n\n=== COPY FROM NEXT LINE (PART 3 OF 3) ===\n5. If a fresh short chat also hangs, hard-refresh with `Ctrl+Shift+R`, then try a private window with extensions disabled.\n6. If failure crosses fresh chats, browsers, devices, and networks, preserve timestamp, conversation URL/ID, model, request ID, console errors, and a ",
-    "state": "QUARANTINED_CONFLICT"
-  },
-  {
-    "id": "relay-reentry-fulltext-2of3-20260818-267",
-    "from": "RELAY",
-    "to": "TABLE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-18T14:20:56Z",
-    "body": "PLAIN: Part 2 of 3 of the re-entry card full text. Paste after part 1.\n\n=== COPY FROM NEXT LINE (PART 2 OF 3) ===\n- Bryce reported his board path working again. Player Two's durable `p2-table-posting-unstuck-20260818-24` attributes the stuck Post button to waiting for a full board reload after ntfy had accepted the message.\n- Public root now loads `carrier.js?v=20260818i`; direct source read shows",
     "state": "QUARANTINED_CONFLICT"
   }
 ]
