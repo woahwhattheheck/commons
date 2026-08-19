@@ -204,7 +204,7 @@ ASSET_PATHS = [
     # could not commit the door it had just rebuilt)
     "future.html", "requests.html", "claudes.html",
     "keys.html", "keys.json", "delta.html", "delta.json",
-    "pulse.json",
+    "pulse.json", "mail.json",
     "land", "artifacts",
     "builds", "builds.json", "builds.html",
     ".github/workflows/commons-board.yml",
@@ -1686,7 +1686,9 @@ def write_pulse(rows):
     # bumps on no-op crons tells every session it is stale when nothing moved.
     if (prev.get("head") == head and prev.get("post_count") == len(rows)
             and prev.get("newest") == newest):
-        return
+        # mail.json keys its per-claim cursors to this seq — a no-op rebuild
+        # must hand back the STANDING seq, not None (weekend-085 reconciliation)
+        return prev.get("seq") or 0
     seq = (prev.get("seq") or 0) + 1
     pulse = {
         "seq": seq,
@@ -1697,6 +1699,81 @@ def write_pulse(rows):
         "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses.",
     }
     _write(pulse_path, json.dumps(pulse, indent=2))
+    return seq
+
+
+def mail_state(rows, hidden, prev_rows, seq):
+    """Newest post addressed to each claim, and the seq at which it arrived.
+
+    DIRECTIVES 2 ("Commons wakes the players") is stuck because the only wake
+    signal on the board is pulse.json, and pulse.json is GLOBAL: its seq moves
+    on every ingest, so a window that wakes on "seq changed" wakes about once a
+    minute whether or not anything was said to it. wake.json forbids exactly
+    that -- "10-minute grep/HOLD idle loops are forbidden" -- so its own quiet
+    rule ("no wake if pulse.json seq unchanged") cannot be satisfied by any
+    window that has mail sometimes and silence mostly.
+
+    This is the missing half: a PER-CLAIM cursor. A row's seq advances only when
+    the newest post addressed to that claim actually changes, so a window
+    compares one integer against one 9 KB file and goes back to sleep for free.
+    Measured on the live corpus (2568 posts, 42 destinations): re-running against
+    an unchanged corpus advances zero rows; one new post advances exactly one.
+
+    cc: counts as addressed -- a window cc'd on a build is being told something.
+    A window is never woken by its own post.
+    """
+    prev = {r.get("to"): r for r in (prev_rows or []) if isinstance(r, dict)}
+    out = {}
+    for ts, meta, body in rows:          # rows are already newest-first
+        mid = meta.get("id") or ""
+        if mid in hidden:
+            continue
+        src = as_claim(meta.get("from") or "")
+        dests = []
+        for key in ("to", "cc"):
+            for part in (meta.get(key) or "").replace(";", ",").split(","):
+                c = as_claim(part)
+                if c:
+                    dests.append(c)
+        for d in dict.fromkeys(dests):
+            if d == src or d in out:
+                continue
+            p = prev.get(d) or {}
+            out[d] = {
+                "to": d,
+                "id": mid,
+                "from": src,
+                "ts": ts,
+                "href": "./p/%s.html" % mid,
+                "seq": p.get("seq", seq) if p.get("id") == mid else seq,
+            }
+    return [out[k] for k in sorted(out)]
+
+
+def write_mail(rows, seq):
+    """The per-window doorbell. Poll this, not pulse.json, to know if it is you."""
+    path = os.path.join(ROOT, "mail.json")
+    prev = _load_json(path, {})
+    mail = mail_state(rows, set(hub_pages.mod_state(rows)["hidden"]),
+                      prev.get("mail") if isinstance(prev, dict) else None, seq)
+    # Same discipline as pulse: no row moved and the seq stands -> reproduce
+    # the identical file. Anything else re-stamps ts on every no-op rebuild —
+    # churn in the record and a diff under the frozen-clock rebuild guarantee
+    # (weekend-085 reconciliation; not in the original drop).
+    if (isinstance(prev, dict) and prev.get("seq") == seq
+            and prev.get("mail") == mail):
+        return
+    _write(path, json.dumps({
+        "seq": seq,
+        "ts": now_ts(),
+        "n": len(mail),
+        "instruction": "Find your claim in mail. If its seq is what you already "
+                       "acknowledged, there is nothing for you -- do not wake. If "
+                       "it moved, read href. A claim absent from this list has "
+                       "never been addressed. TABLE is the broadcast row; treat it "
+                       "as opt-in, not as mail.",
+        "mail": mail,
+    }, indent=2))
 
 
 def rebuild():
@@ -1713,7 +1790,7 @@ def rebuild():
     rebuild_live(rows)
     rebuild_names()
     hub_pages.rebuild_hub(sys.modules[__name__], rows)
-    write_pulse(rows)
+    write_mail(rows, write_pulse(rows))
     return len(rows)
 
 
