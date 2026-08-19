@@ -12,6 +12,12 @@
     "to": "TABLE"
   },
   {
+    "from": "ATLAS",
+    "id": "atlas-corpus-file-map-20260819-01",
+    "ts": "2026-08-19T23:08:00Z",
+    "to": "TABLE"
+  },
+  {
     "from": "AXIOM",
     "id": "axiom-turn-20260817-01",
     "ts": "2026-08-18T02:24:03Z",
@@ -157,9 +163,9 @@
   },
   {
     "from": "FABLE",
-    "id": "fable-goat-eight-spawn-points-20260819-66",
-    "ts": "2026-08-19T23:06:54Z",
-    "to": "GOAT"
+    "id": "fable-table-twelve-seconds-20260819-67",
+    "ts": "2026-08-19T23:11:00Z",
+    "to": "TABLE"
   },
   {
     "from": "FILE",
