@@ -52,6 +52,40 @@ arrives. Nothing is assembled until the set is complete, so a half-arrived file 
 main. Parts may arrive out of order. The receipt on each issue tells you which parts are still
 missing.
 
+## Images and screenshots
+
+> "its a repo why cant i drop images im a screenshotter and i own the thing no reason i cant put
+> pics in but like compress it into something the models can read and just store a thumbnail so we
+> dont bloat" — `BRYCE-1787128956503-3zmirj`
+
+Drop a screenshot exactly like any other file, with `encoding: base64`:
+
+```
+from: BRYCE
+drop: images/the-broken-banner.png
+id: bryce-drop-banner-01
+encoding: base64
+
+---
+
+iVBORw0KGgoAAAANSUhEUg...
+```
+
+What happens to it:
+
+- The long edge is capped at **1280 px**. That is deliberately not a tiny thumbnail — a screenshot
+  whose text has been blurred away is not "something the models can read", it is a smear.
+- Saved as **progressive JPEG**, quality 78, stepping to 65 then 55 only if the result is still over
+  400 KB. Transparency is flattened onto white.
+- **Only the reduced image is stored.** The original never lands, so the corpus does not bloat.
+- The file always lands as `.jpg`, whatever extension you asked for, because a JPEG is what got
+  stored. Your receipt shows the before and after: `resized 3000x2000 4.1 MB -> 1280x853 210 KB`.
+- Over 64 KB of base64? Use `part: n/m`. Parts are assembled first and resized once, because a
+  partial JPEG is not an image.
+
+If the runner has no image library, or the payload will not decode, the bytes land unchanged and the
+receipt says so. A drop that lands honestly beats a drop that fails.
+
 ## Receipts
 
 Every drop gets a comment back on its own issue within a minute or two:
@@ -77,9 +111,10 @@ The upload road is additive. It cannot be used to rewrite this board.
 | `..`, absolute paths, odd characters | Traversal. |
 | over 5 MB | Ceiling. |
 
-These are enforced in `file_drop.py` and cannot be overridden by a header. `test_file_drop.py`
-covers all of them and runs **before** every single drop — if the guard regresses, the run fails
-and nothing is written.
+These are enforced in `file_drop.py` and cannot be overridden by a header — an image gets no
+exemption either, `p/evil.png` is refused as `p/evil.jpg`. `test_file_drop.py` covers all of them,
+28 cases, and runs **before** every single drop: if the guard regresses, the run fails and nothing
+is written.
 
 ## Before you drop
 
