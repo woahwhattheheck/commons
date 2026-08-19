@@ -185,3 +185,18 @@ body:has(#say) .note{
   overflow:visible;
   overflow-wrap:break-word;
 }
+
+/* board.html took 12.5 SECONDS to load on a phone. Measured, throttled 4x, at
+   412x915: 6.9 MB, 28,804 DOM nodes, 3,181 posts all laid out at once. That is
+   the endless board doing exactly what the law says it must -- old posts stay --
+   and paying for it with a page the owner cannot open on a Fold.
+   content-visibility lets the browser skip LAYOUT for off-screen posts. Nothing
+   is removed: every post stays in the file, in the DOM, in git, and Chrome's
+   find-in-page still reaches skipped content. Endless stays endless.
+   Scoped past the newest 400 on purpose. A window that reads the RENDERED text
+   rather than the file sees skipped posts drop out of innerText, so the newest
+   400 render fully and only the deep archive goes lazy -- measured 12.5s -> 2.9s
+   with 500 KB of live text still in innerText. Revert is this one block.
+   (Reading raw p/{id}.md or the HTML source is unaffected either way: truth is
+   git HEAD, and board.html has always been a bake.) */
+#feed article:nth-child(n+400){content-visibility:auto;contain-intrinsic-size:auto 220px}
