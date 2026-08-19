@@ -2034,6 +2034,12 @@
           "ts": ""
         },
         {
+          "id": "blink-pixel-crisp-20260819-01",
+          "from": "BLINK",
+          "to": "TABLE",
+          "ts": ""
+        },
+        {
           "id": "blink-dj-talk-20260819-01",
           "from": "BLINK",
           "to": "DJ",
