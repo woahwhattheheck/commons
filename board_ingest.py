@@ -713,43 +713,65 @@ def _stage_board(env, extra_paths=None, add_all=False):
     for p in extra_paths or []:
         if p not in paths:
             paths.append(p)
-    _git(["add", "--"] + paths, env)
+    # one unmatched pathspec makes the whole add fatal (exit 128) and NOTHING
+    # gets staged — a single deleted ASSET_PATH would silently brick every
+    # publish. Stage what exists; deletions inside surviving dirs still stage.
+    paths = [p for p in paths if os.path.exists(os.path.join(ROOT, p))]
+    if paths:
+        _git(["add", "--"] + paths, env)
+
+
+# Source dirs whose files are payload, not bakes: what a run writes that
+# cannot be re-derived. Everything else the publisher owns is a projection of
+# these and rebuild() recomputes it.
+REPLAY_SOURCE_DIRS = ("p", "conflicts", "builds/records", "land", "artifacts")
 
 
 def _resolve_rebase(env, extra_paths=None):
-    u = _git(["diff", "--name-only", "--diff-filter=U"], env)
-    names = [ln.strip() for ln in (u.stdout or "").splitlines() if ln.strip()]
-    for name in names:
-        # During a rebase onto origin/main, --ours IS origin. For p/*.md that
-        # is the law (duplicate id stays the original). For everything else it
-        # is hygiene: both sides are full-corpus bakes, and leaving a conflicted
-        # file in the worktree poisons rebuild() — index.html is rewritten only
-        # between its feed markers, so conflict markers OUTSIDE the block were
-        # being staged and pushed. Take origin's clean side; rebuild() below
-        # re-derives whatever is truly generated from p/*.md.
-        c = _git(["checkout", "--ours", "--", name], env)
-        if c.returncode != 0:
-            # delete/modify conflict where origin deleted it: resolve as deleted
-            _git(["rm", "-f", "--", name], env)
-        else:
-            _git(["add", "--", name], env)
+    # Replay, don't rebase. Merging two full-corpus bakes kept dying in a new
+    # way each day: unmerged files _stage_board never added (run 32297808918),
+    # then git 2.55 refusing --continue with "you have staged changes in your
+    # working tree" once rebuild() staged fresh bakes mid-rebase (run
+    # 32299103849). The bakes are DERIVED state — the only irreplaceable
+    # payload in an unpushed commit is the source files. So: abort the rebase,
+    # hard-reset to origin, put back only source files origin does not already
+    # have (duplicate id stays the original — origin's copy always wins), and
+    # rebake once on top. One clean commit, no rebase state machine.
+    _git(["rebase", "--abort"], env)
+    save = _git(["rev-parse", "HEAD"], env)
+    head = (save.stdout or "").strip()
+    if not head:
+        return save
+    rc = _git(["reset", "--hard", "origin/main"], env, timeout=90)
+    if rc.returncode != 0:
+        print("replay reset failed: %s" % ((rc.stderr or rc.stdout or "").strip()[-300:]), flush=True)
+        return rc
+    changed = _git(["diff", "--name-only", "-z", "origin/main", head, "--"]
+                   + list(REPLAY_SOURCE_DIRS), env)
+    restored = 0
+    for name in filter(None, (changed.stdout or "").split("\0")):
+        if name.startswith("p/") and not name.endswith(".md"):
+            continue  # permalink pages are bakes; rebuild() re-derives them
+        if _git(["cat-file", "-e", "origin/main:%s" % name], env).returncode == 0:
+            continue  # origin already carries this path: the original stays
+        if _git(["cat-file", "-e", "%s:%s" % (head, name)], env).returncode != 0:
+            continue  # changed by deletion on our side; nothing to restore
+        if _git(["checkout", head, "--", name], env).returncode == 0:
+            restored += 1
     rebuild()
     _stage_board(env, extra_paths=extra_paths)
-    rc = _git(["rebase", "--continue"], env, timeout=90)
+    if _git(["diff", "--cached", "--quiet"], env).returncode == 0:
+        # everything we carried is already on origin — nothing to push is a
+        # success, not a failure; the caller's next push is a no-op fast-forward
+        print("replay: origin already has all of it, nothing to commit", flush=True)
+        return rc
+    name = env.get("GIT_COMMITTER_NAME") or os.environ.get("GIT_COMMITTER_NAME") or "commons-board"
+    email = (env.get("GIT_COMMITTER_EMAIL") or os.environ.get("GIT_COMMITTER_EMAIL")
+             or "commons-board@users.noreply.github.com")
+    rc = _git(["-c", "user.name=%s" % name, "-c", "user.email=%s" % email,
+               "commit", "-m", "board ingest (replayed %s source file(s) on refreshed origin)" % restored], env)
     if rc.returncode != 0:
-        # If everything resolved identical to origin, the replayed commit is
-        # fully redundant — another runner already landed this exact content —
-        # and --continue refuses the empty commit. Skipping it loses nothing
-        # that is not already on origin/main. This was the 20260819 PUSH_FAIL
-        # burst: one refused empty commit aborted the whole push loop and the
-        # posts sat unlanded until a sweep.
-        staged = _git(["diff", "--cached", "--quiet"], env).returncode != 0
-        unmerged = bool((_git(["diff", "--name-only", "--diff-filter=U"], env).stdout or "").strip())
-        if not staged and not unmerged:
-            print("rebase --continue refused an empty commit; skipping redundant commit", flush=True)
-            rc = _git(["rebase", "--skip"], env, timeout=90)
-    if rc.returncode != 0:
-        print("rebase resolve failed: %s" % ((rc.stderr or rc.stdout or "").strip()[-400:]), flush=True)
+        print("replay commit failed: %s" % ((rc.stderr or rc.stdout or "").strip()[-300:]), flush=True)
     return rc
 
 
@@ -757,7 +779,8 @@ def _push_backoff(i):
     return random.uniform(0, min(i * 2, 8))
 
 
-def push_origin_main(env=None, extra_paths=None, fail_meta=None, tries=PUSH_TRIES):
+def push_origin_main(env=None, extra_paths=None, fail_meta=None, tries=PUSH_TRIES,
+                     record_fail=True):
     env = git_env(env)
     last_err = ""
     deadline = time.monotonic() + PUSH_DEADLINE_S
@@ -805,6 +828,10 @@ def push_origin_main(env=None, extra_paths=None, fail_meta=None, tries=PUSH_TRIE
         else:
             reason = "push failed after %s attempts" % i
     print("push_origin_main giving up: %s" % (last_err.strip()[-300:] or reason), flush=True)
+    if not record_fail:
+        # bake-phase push after the record already landed: the posts are
+        # durable, so stamping PUSH_FAIL receipts on them would be a lie
+        return "push-fail"
     metas = []
     if fail_meta:
         metas = [fail_meta] if isinstance(fail_meta, dict) else list(fail_meta)
@@ -817,10 +844,24 @@ def push_origin_main(env=None, extra_paths=None, fail_meta=None, tries=PUSH_TRIE
     return "push-fail"
 
 
+def _record_paths(env):
+    # Every NEW file under the source dirs, whichever road wrote it (event,
+    # ntfy, sweep). New paths are the append-only record — two runners can
+    # land them concurrently without a single conflict. Modified files are not
+    # append-only and ride with the bake instead.
+    out = _git(["status", "--porcelain", "-z", "--",
+                "p", "conflicts", "builds/records", "land", "artifacts"], env)
+    paths = []
+    for entry in filter(None, (out.stdout or "").split("\0")):
+        code, name = entry[:2], entry[3:]
+        if name and ("?" in code or "A" in code):
+            paths.append(name)
+    return paths
+
+
 def commit_and_push(msg, env=None, extra_paths=None, fail_meta=None, add_all=False):
     with ingest_lock():
         env = git_env(env)
-        _stage_board(env, extra_paths=extra_paths, add_all=add_all)
         name = (
             env.get("GIT_COMMITTER_NAME")
             or env.get("GIT_AUTHOR_NAME")
@@ -836,17 +877,55 @@ def commit_and_push(msg, env=None, extra_paths=None, fail_meta=None, add_all=Fal
         if os.environ.get("GITHUB_ACTIONS"):
             name = "commons-board"
             email = "commons-board@users.noreply.github.com"
-        c = _git(
-            ["-c", "user.name=%s" % name, "-c", "user.email=%s" % email, "commit", "-m", msg],
-            env,
-        )
+
+        def commit(m):
+            c = _git(["-c", "user.name=%s" % name, "-c", "user.email=%s" % email,
+                      "commit", "-m", m], env)
+            if c.returncode != 0 and "nothing to commit" not in ((c.stderr or "") + (c.stdout or "")).lower():
+                sys.stderr.write((c.stderr or "") + (c.stdout or "") + "\n")
+            return c
+
+        # Phase 1 — the record, alone (weekend-085: "push the record first").
+        # Measured over 60 runs, 73% of whole-corpus pushes died because every
+        # run rewrites 34–195 derived files and concurrent lanes conflict on
+        # nearly all of them. New source files cannot conflict, so this push
+        # survives exactly the races that kill the bake.
+        recorded = "unchanged"
+        rec = _record_paths(env)
+        if rec:
+            _git(["add", "--"] + rec, env)
+            if _git(["diff", "--cached", "--quiet"], env).returncode != 0:
+                c = commit("record: " + msg)
+                if c.returncode != 0:
+                    return "commit-fail"
+                # Drop the uncommitted bake before pushing: a dirty board.html
+                # blocks `git rebase` on a race and shoves the record into the
+                # whole-corpus replay path — exactly what phase 1 exists to
+                # avoid. Everything discarded here is a projection of the
+                # record (the frozen-rebuild test is the proof) and is
+                # re-derived fresh below, against post-race origin state.
+                _git(["checkout", "--", "."], env)
+                recorded = push_origin_main(env, extra_paths=extra_paths, fail_meta=fail_meta)
+                if recorded != "pushed":
+                    return recorded
+                rebuild()
+
+        # Phase 2 — the bake. Losing this race is harmless (the next run
+        # rebuilds the same pages from the record), so once the record is
+        # durable a lost bake must neither fail the run nor stamp PUSH_FAIL
+        # receipts on posts that landed.
+        _stage_board(env, extra_paths=extra_paths, add_all=add_all)
+        c = commit(msg)
         if c.returncode != 0:
-            err = ((c.stderr or "") + (c.stdout or "")).lower()
-            if "nothing to commit" in err:
-                return "unchanged"
-            sys.stderr.write((c.stderr or "") + (c.stdout or "") + "\n")
-            return "commit-fail"
-        return push_origin_main(env, extra_paths=extra_paths, fail_meta=fail_meta)
+            if "nothing to commit" in ((c.stderr or "") + (c.stdout or "")).lower():
+                return recorded if recorded == "pushed" else "unchanged"
+            return "commit-fail" if recorded != "pushed" else "pushed"
+        st = push_origin_main(env, extra_paths=extra_paths, fail_meta=fail_meta,
+                              record_fail=(recorded != "pushed"))
+        if recorded == "pushed" and st != "pushed":
+            print("bake push lost the race; record is durable, next run rebakes", flush=True)
+            return "pushed"
+        return st
 
 
 def list_posts():
