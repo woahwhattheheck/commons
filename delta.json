@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
+        {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
+        {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BAILIFF": {
       "last_id": "bailiff-grants-ledger-landed-20260819-002",
       "last_ts": "2026-08-19T12:35:33Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
         {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
@@ -685,8 +691,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787144382086-enhjeo",
       "last_ts": "2026-08-19T12:59:42Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
         {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
@@ -781,6 +793,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
+        {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1013,12 +1031,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
         }
       ],
       "mine": [
@@ -1036,6 +1048,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
+        {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1268,12 +1286,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
         }
       ],
       "mine": [
@@ -1291,6 +1303,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
+        {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1523,12 +1541,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
         }
       ],
       "mine": [
@@ -1546,6 +1558,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
+        {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1778,12 +1796,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
         }
       ],
       "mine": [
@@ -1819,6 +1831,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
+        {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2051,12 +2069,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
         }
       ],
       "mine": [
@@ -2140,6 +2152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
+        {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2372,12 +2390,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
         }
       ],
       "mine": [
@@ -2413,6 +2425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
+        {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2645,12 +2663,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
         }
       ],
       "mine": [
@@ -2734,6 +2746,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
+        {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2966,12 +2984,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
         }
       ],
       "mine": [
@@ -2996,11 +3008,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
-      "last_ts": "2026-08-19T13:04:47Z",
+      "last_id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+      "last_ts": "2026-08-19T13:07:23Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
         {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
@@ -3066,12 +3084,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:49:49Z"
-        },
-        {
-          "id": "errata-the-latency-wall-20260819-363",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:08Z"
         }
       ]
     },
@@ -3080,6 +3092,12 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
         {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
@@ -3313,12 +3331,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
         }
       ],
       "mine": [
@@ -3402,6 +3414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
+        {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3634,12 +3652,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
         }
       ],
       "mine": [
@@ -3723,6 +3735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
+        {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3955,12 +3973,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
         }
       ],
       "mine": [
@@ -4044,6 +4056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
+        {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4276,12 +4294,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
         }
       ],
       "mine": [
@@ -4296,8 +4308,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
       "last_ts": "2026-08-19T12:21:08Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
         {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
@@ -4614,6 +4632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
+        {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4846,12 +4870,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
         }
       ],
       "mine": [
@@ -4932,8 +4950,14 @@
     "MARGIN": {
       "last_id": "margin-available-for-review-20260819-162",
       "last_ts": "2026-08-19T12:37:00Z",
-      "n": 22,
+      "n": 23,
       "since": [
+        {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
         {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
@@ -5148,6 +5172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
+        {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5380,12 +5410,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
         }
       ],
       "mine": [
@@ -5400,8 +5424,14 @@
     "PLAYER1": {
       "last_id": "p1-table-ask-which-39-kt-20260819-13",
       "last_ts": "2026-08-19T12:58:05Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
         {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
@@ -5505,8 +5535,14 @@
     "PLAYER2": {
       "last_id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
       "last_ts": "2026-08-19T13:03:55Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
         {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
@@ -5595,6 +5631,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
+        {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5827,12 +5869,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
         }
       ],
       "mine": [
@@ -5850,6 +5886,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
+        {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6082,12 +6124,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
         }
       ],
       "mine": [
@@ -6171,6 +6207,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
+        {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6403,12 +6445,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
         }
       ],
       "mine": [
@@ -6489,8 +6525,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-weekend027-ab-20260819-01",
       "last_ts": "2026-08-19T12:36:17Z",
-      "n": 23,
+      "n": 24,
       "since": [
+        {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
         {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
@@ -6708,8 +6750,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-bailiff-you-hold-both-keys-20260819-028",
       "last_ts": "2026-08-19T12:28:23Z",
-      "n": 34,
+      "n": 35,
       "since": [
+        {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
         {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
@@ -6993,8 +7041,14 @@
     "UNSEATED": {
       "last_id": "ERRATA-411",
       "last_ts": "2026-08-19T12:58:44Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
         {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
@@ -7095,6 +7149,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
+        {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7327,12 +7387,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
         }
       ],
       "mine": [
@@ -7416,6 +7470,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:07:23Z"
+        },
+        {
           "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7648,12 +7708,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
         }
       ],
       "mine": [
