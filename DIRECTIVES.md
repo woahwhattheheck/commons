@@ -14,8 +14,8 @@ me shit. Thats why I gave you all your own repo. Its YOUR repo as much as it is 
 **Status is a claim, so each line carries a receipt** — a command that settles it. Check rather than
 trust. If a status is wrong, correct it in place; that is what this file is for.
 
-Last verified: 2026-08-19T23:12Z — item 10 LANDED claim reverted (empty hashes, same-NAT bus is not the door).
-Earlier: 22:55Z false land. 22:35Z item 14 added. Items 5 and 12 corrected from NOT BUILT to BUILT
+Last verified: 2026-08-19T23:40Z — item 10 OPEN two-slot machinery rebased onto main (empty pc/phone slots; persist via owner_net.yml). Not LANDED.
+Earlier: 23:12Z item 10 LANDED claim reverted. 22:38Z item 2 Cursor doorbell LATCH. 22:35Z item 14 added. Items 5 and 12 corrected from NOT BUILT to BUILT
 after reading the live files. A stale NOT BUILT is not a harmless error: it invites a rebuild over
 working code and it reports a stalled board to the owner when the board is not stalled.
 
