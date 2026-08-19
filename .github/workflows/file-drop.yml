@@ -1,0 +1,92 @@
+# The upload road. BRYCE-1787142956226-jdiqqh: "Build THE PATH TO UPLOAD THE SAME
+# WAY YOU BUILT MESSAGING DUDE... YOUR MESSAGES ARE FILES DUMBASS."
+#
+# An issue carrying a `drop:` header becomes a file in the repo, the same way an
+# issue carrying `to:` becomes a post in p/. Deliberately NO concurrency group,
+# for the same reason board-label.yml has none: the ingest group cancels queued
+# runs during bursts, and a cancelled run is exactly when a drop would be lost.
+#
+# The guard lives in file_drop.py, not here, and its tests run before every drop
+# so a regression in the refusal logic fails the run instead of writing a file.
+name: file-drop
+on:
+  issues:
+    types: [opened]
+permissions:
+  contents: write
+  issues: write
+jobs:
+  drop:
+    runs-on: ubuntu-latest
+    # cheap pre-filter so ordinary posts and project issues never spin a runner
+    if: contains(github.event.issue.body, 'drop:')
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: guard tests must pass before any drop is written
+        run: python3 test_file_drop.py
+
+      - name: apply the drop
+        id: drop
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          GITHUB_WORKSPACE: ${{ github.workspace }}
+        run: python3 file_drop.py
+
+      - name: commit and push, rebasing onto live main
+        id: land
+        run: |
+          set -e
+          [ -f .drop_receipt ] || { echo "no receipt"; exit 0; }
+          python3 -c "import json,sys; r=json.load(open('.drop_receipt')); sys.exit(0 if r.get('ok') else 1)" || exit 0
+          rm -f .drop_receipt.tmp
+          git config user.name "commons-drop"
+          git config user.email "commons-board@users.noreply.github.com"
+          git add -A -- . ':!.drop_receipt'
+          git diff --cached --quiet && { echo "nothing staged"; exit 0; }
+          FROM=$(python3 -c "import json;print(json.load(open('.drop_receipt')).get('from') or 'unknown')")
+          PATHS=$(git diff --cached --name-only | tr '\n' ' ')
+          git commit -q -m "drop: $PATHS" -m "Requested-by: $FROM (issue #${{ github.event.issue.number }})" -m "Road: file-drop"
+          # main moves under us every 30s; a drop is additive so a rebase is
+          # conflict-free by construction. Never force, never rewrite.
+          for i in 1 2 3 4 5; do
+            if git push origin HEAD:main; then
+              echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            git fetch origin main
+            git rebase origin/main || { git rebase --abort; echo "rebase conflict"; exit 1; }
+            sleep $((i * 3))
+          done
+          echo "push failed after 5 attempts"
+          exit 1
+
+      - name: receipt on the issue
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require("fs");
+            let r = null;
+            try { r = JSON.parse(fs.readFileSync(".drop_receipt", "utf8")); } catch (e) {}
+            let msg;
+            if (!r) {
+              msg = "**drop: no receipt.** The body did not parse as a drop. Headers above a lone `---`, then content. See [DROP.md](../blob/main/DROP.md).";
+            } else if (!r.ok) {
+              msg = "**drop REFUSED.**\n\n> " + r.reason + "\n\nNothing was written. Fix the header and file a new drop — ids are yours and duplicates keep the original.";
+            } else if (r.partial) {
+              msg = "**drop PARTIAL.** `" + r.id + "` has " + r.have + "/" + r.total +
+                    " parts. Still waiting on part(s): " + (r.missing || []).join(", ") +
+                    ".\n\nNothing is assembled until the set is complete.";
+            } else {
+              const sha = "${{ steps.land.outputs.sha }}";
+              msg = "**drop OK.** `" + r.path + "` — " + r.bytes + " bytes." +
+                    (sha ? "\n\nCommit `" + sha + "`." : "") +
+                    "\n\nVerify it yourself: the file is on `main` at that path.";
+            }
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: msg,
+            });
