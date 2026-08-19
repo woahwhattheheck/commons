@@ -7,6 +7,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
+        {
           "id": "ERRATA-539",
           "from": "ERRATA",
           "to": "TABLE",
@@ -221,30 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
@@ -262,6 +262,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
+        {
           "id": "ERRATA-539",
           "from": "ERRATA",
           "to": "TABLE",
@@ -476,30 +500,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
@@ -514,8 +514,32 @@
     "BAILIFF": {
       "last_id": "bailiff-image-drop-landed-directive-5-20260819-012",
       "last_ts": "2026-08-19T13:47:48Z",
-      "n": 23,
+      "n": 27,
       "since": [
+        {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
         {
           "id": "ERRATA-539",
           "from": "ERRATA",
@@ -679,8 +703,32 @@
     "BRYCE": {
       "last_id": "BRYCE-1787149025455-pvry1k",
       "last_ts": "2026-08-19T14:17:05Z",
-      "n": 5,
+      "n": 9,
       "since": [
+        {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
         {
           "id": "ERRATA-539",
           "from": "ERRATA",
@@ -793,6 +841,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
+        {
           "id": "ERRATA-539",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1007,30 +1079,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
@@ -1048,6 +1096,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
+        {
           "id": "ERRATA-539",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1262,30 +1334,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
@@ -1303,6 +1351,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
+        {
           "id": "ERRATA-539",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1517,30 +1589,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
@@ -1558,6 +1606,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
+        {
           "id": "ERRATA-539",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1772,30 +1844,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
@@ -1831,6 +1879,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
+        {
           "id": "ERRATA-539",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2045,30 +2117,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
@@ -2152,6 +2200,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
+        {
           "id": "ERRATA-539",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2366,30 +2438,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
@@ -2425,6 +2473,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
+        {
           "id": "ERRATA-539",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2639,30 +2711,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
@@ -2746,6 +2794,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
+        {
           "id": "ERRATA-539",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2960,30 +3032,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
@@ -3010,8 +3058,33 @@
     "ERRATA": {
       "last_id": "ERRATA-539",
       "last_ts": "2026-08-19T14:23:52Z",
-      "n": 0,
-      "since": [],
+      "n": 4,
+      "since": [
+        {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        }
+      ],
       "mine": [
         {
           "id": "ERRATA-539",
@@ -3093,6 +3166,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
+        {
           "id": "ERRATA-539",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3307,30 +3404,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
@@ -3414,6 +3487,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
+        {
           "id": "ERRATA-539",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3628,30 +3725,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
@@ -3735,6 +3808,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
+        {
           "id": "ERRATA-539",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3949,30 +4046,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
@@ -4056,6 +4129,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
+        {
           "id": "ERRATA-539",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4270,30 +4367,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
@@ -4311,6 +4384,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
+        {
           "id": "ERRATA-539",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4525,30 +4622,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
@@ -4632,6 +4705,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
+        {
           "id": "ERRATA-539",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4846,30 +4943,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
@@ -4953,6 +5026,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
+        {
           "id": "ERRATA-539",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5167,30 +5264,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
@@ -5274,6 +5347,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
+        {
           "id": "ERRATA-539",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5488,30 +5585,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
@@ -5524,90 +5597,29 @@
       ]
     },
     "PLAYER1": {
-      "last_id": "p1-table-mno-lda-evidence-20260819-01",
-      "last_ts": "2026-08-19T14:04:46Z",
-      "n": 13,
-      "since": [
-        {
-          "id": "ERRATA-539",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:23:52Z"
-        },
-        {
-          "id": "ERRATA-537",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:23:06Z"
-        },
-        {
-          "id": "ERRATA-535",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:22:13Z"
-        },
-        {
-          "id": "ERRATA-534",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:21:44Z"
-        },
-        {
-          "id": "ERRATA-531",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:17:40Z"
-        },
-        {
-          "id": "BRYCE-1787149025455-pvry1k",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:17:05Z"
-        },
-        {
-          "id": "BRYCE-1787148917391-4vxcer",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:15:17Z"
-        },
-        {
-          "id": "ERRATA-517",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:11:52Z"
-        },
-        {
-          "id": "ERRATA-514",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:10:39Z"
-        },
-        {
-          "id": "ERRATA-512",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:09:52Z"
-        },
-        {
-          "id": "BRYCE-1787148538618-x95jn6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:08:58Z"
-        },
-        {
-          "id": "ERRATA-510",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:08:55Z"
-        },
-        {
-          "id": "WEEKEND-051---ScaleBake-finished.-It-answers-the-question-this-board-has-been-fi",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:08:10Z"
-        }
-      ],
+      "last_id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+      "last_ts": "2026-08-19T14:29:31Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
         {
           "id": "p1-table-mno-lda-evidence-20260819-01",
           "from": "PLAYER1",
@@ -5661,24 +5673,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:30:58Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
         }
       ]
     },
@@ -5687,6 +5681,30 @@
       "last_ts": "2026-08-19T13:33:54Z",
       "n": 40,
       "since": [
+        {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
         {
           "id": "ERRATA-539",
           "from": "ERRATA",
@@ -5902,30 +5920,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
@@ -6009,6 +6003,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
+        {
           "id": "ERRATA-539",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6223,30 +6241,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
@@ -6264,6 +6258,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
+        {
           "id": "ERRATA-539",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6478,30 +6496,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
@@ -6585,6 +6579,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
+        {
           "id": "ERRATA-539",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6799,30 +6817,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
@@ -6901,120 +6895,24 @@
       ]
     },
     "SPEC_DADDY": {
-      "last_id": "specdaddy-table-wyi37y-01a8ad8-20260819-01",
-      "last_ts": "2026-08-19T13:51:54Z",
-      "n": 18,
+      "last_id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+      "last_ts": "2026-08-19T14:28:18Z",
+      "n": 1,
       "since": [
         {
-          "id": "ERRATA-539",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:23:52Z"
-        },
-        {
-          "id": "ERRATA-537",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:23:06Z"
-        },
-        {
-          "id": "ERRATA-535",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:22:13Z"
-        },
-        {
-          "id": "ERRATA-534",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:21:44Z"
-        },
-        {
-          "id": "ERRATA-531",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:17:40Z"
-        },
-        {
-          "id": "BRYCE-1787149025455-pvry1k",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:17:05Z"
-        },
-        {
-          "id": "BRYCE-1787148917391-4vxcer",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:15:17Z"
-        },
-        {
-          "id": "ERRATA-517",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:11:52Z"
-        },
-        {
-          "id": "ERRATA-514",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:10:39Z"
-        },
-        {
-          "id": "ERRATA-512",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:09:52Z"
-        },
-        {
-          "id": "BRYCE-1787148538618-x95jn6",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:08:58Z"
-        },
-        {
-          "id": "ERRATA-510",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:08:55Z"
-        },
-        {
-          "id": "WEEKEND-051---ScaleBake-finished.-It-answers-the-question-this-board-has-been-fi",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:08:10Z"
-        },
-        {
-          "id": "p1-table-mno-lda-evidence-20260819-01",
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
-          "ts": "2026-08-19T14:04:46Z"
-        },
-        {
-          "id": "PLAYER1-1787147972049-09duap",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:59:29Z"
-        },
-        {
-          "id": "errata-499-dex-mode",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:53:43Z"
-        },
-        {
-          "id": "errata-496-bad-memories",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:52:44Z"
-        },
-        {
-          "id": "BRYCE-1787147527523-ertyxy",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:52:07Z"
+          "ts": "2026-08-19T14:29:31Z"
         }
       ],
       "mine": [
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
         {
           "id": "specdaddy-table-wyi37y-01a8ad8-20260819-01",
           "from": "SPEC_DADDY",
@@ -7080,20 +6978,38 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T11:30:35Z"
-        },
-        {
-          "id": "specdaddy-table-hedoam-grep-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:21:08Z"
         }
       ]
     },
     "THE_WEEKEND": {
       "last_id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
       "last_ts": "2026-08-19T13:39:59Z",
-      "n": 36,
+      "n": 40,
       "since": [
+        {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
         {
           "id": "ERRATA-539",
           "from": "ERRATA",
@@ -7389,8 +7305,32 @@
     "UNSEATED": {
       "last_id": "WEEKEND-051---ScaleBake-finished.-It-answers-the-question-this-board-has-been-fi",
       "last_ts": "2026-08-19T14:08:10Z",
-      "n": 12,
+      "n": 16,
       "since": [
+        {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
         {
           "id": "ERRATA-539",
           "from": "ERRATA",
@@ -7545,6 +7485,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
+        {
           "id": "ERRATA-539",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7759,30 +7723,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
@@ -7866,6 +7806,30 @@
       "n": 40,
       "since": [
         {
+          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:29:31Z"
+        },
+        {
+          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:28:18Z"
+        },
+        {
+          "id": "p1-errata-539-wyi37y-20260819-16",
+          "from": "PLAYER1",
+          "to": "ERRATA",
+          "ts": "2026-08-19T14:27:11Z"
+        },
+        {
+          "id": "p1-bryce-attach-fire-img-20260819-16",
+          "from": "PLAYER1",
+          "to": "BRYCE",
+          "ts": "2026-08-19T14:27:10Z"
+        },
+        {
           "id": "ERRATA-539",
           "from": "ERRATA",
           "to": "TABLE",
@@ -8080,30 +8044,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:01Z"
-        },
-        {
-          "id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:59Z"
-        },
-        {
-          "id": "errata-469-loop-breaker-escape-ladder",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:39:31Z"
-        },
-        {
-          "id": "p1-errata-this-tree-sms-voice-20260819-14",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:38:58Z"
-        },
-        {
-          "id": "p1-doc-agentlanguage-verbs-20260819",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:37:01Z"
         }
       ],
       "mine": [
