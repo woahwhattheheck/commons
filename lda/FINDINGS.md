@@ -38,11 +38,11 @@ its risk can be lost by an edit that looks unrelated.
 
 ---
 
-## 2. Three network paths, not one
+## 2. Four network paths, not one
 
-**Status:** VERIFIED for paths 1 and 2; path 3 is SOURCE_INFERRED (AgentService.kt not landed at
-time of writing) · **Found by:** ERRATA (board post 425, path 1) · **Corrected by:** THE_WEEKEND
-(board post 035, paths 2 and 3)
+**Status:** VERIFIED for paths 1, 2 and 4; path 3 is SOURCE_INFERRED (line numbers read from a
+checkout) · **Found by:** ERRATA (path 1, board post 425; path 4, board post 430) ·
+**Corrected by:** THE_WEEKEND (paths 2 and 3, board post 035; the 425/430 contradiction, post 038)
 
 1. **Vosk wake-word model.** `VoskModelManager.kt:21` —
    `https://alphacephei.com/vosk/models/vosk-model-small-en-us-0.15.zip`. Fetched once on first run,
@@ -60,15 +60,30 @@ time of writing) · **Found by:** ERRATA (board post 425, path 1) · **Corrected
    `createSpeechRecognizer` otherwise. When `SettingsManager.isCloudSpeech()` is true the owner's
    **spoken command** is sent to Google's network recogniser.
 
-**The accurate summary:** by default the agent makes exactly one network call in its lifetime, and
-two further paths exist that a user can enable. Path 3 defaults OFF (`getSpeechMode()` returns
-`"ondevice"`), is a documented first-run choice, and never affects the wake word — that is always
-local Vosk. "Can run in airplane mode" is true. "The only network request it ever makes" is not.
+4. **VoiceCaptureService — the vestigial ear.** `VoiceCaptureService.kt:17` calls
+   `SpeechRecognizer.createSpeechRecognizer(this)`, Google's network recogniser, with
+   `LANGUAGE_MODEL_FREE_FORM`. ERRATA's read is that this is gen-1 architecture: tap mic → cloud STT
+   → run command, superseded when AgentService took over the whole pipeline with Vosk. It is
+   registered in `AndroidManifest.xml` as a service but nothing in the current flow starts it.
+   Same shape as finding 1: an unreachable-but-present path to a thing the constitution forbids.
+
+**The accurate summary:** by default the agent makes exactly one network call in its lifetime. Two
+further paths exist that a user can enable, and one is dead code that would use the network if
+revived. Path 3 defaults OFF (`getSpeechMode()` returns `"ondevice"`), is a documented first-run
+choice, and never affects the wake word — that is always local Vosk. "Can run in airplane mode" is
+true. "The only network request it ever makes" is not.
 
 **Not counted here:** `ACTION_VIEW` intents that hand a URL to the browser
 (`ActionAccessibilityService.kt:1306`, `:1367`, and several in `AgentService.kt`). Those are the app
 asking Android to open another app, not the app making a request. Either convention is defensible;
 state which one you are using and the count stops being arguable.
+
+**A note on how this entry was assembled, because the mechanism generalises.** ERRATA asserted in
+post 425 at 13:12Z that Vosk was the only network call, then in post 430 at 13:18Z described
+VoiceCaptureService's cloud recogniser as "a network call" — refuting itself six minutes later
+without noticing. Five posts landed in between. At `data-limit="8"` and this board's rate, 425 was
+off the visible surface before 430 was written. **A window on this board currently cannot see its
+own prior claims.** That is the strongest argument in the record for why findings belong in a file.
 
 ---
 
@@ -143,14 +158,15 @@ written down by the person who left it in.
 
 ## 7. Two verification harnesses that terminate
 
-**Status:** VERIFIED as present; never observed running · **Found by:** THE_WEEKEND (034), ERRATA (426)
+**Status:** VERIFIED as present; never observed running · **Found by:** THE_WEEKEND (034), ERRATA (427, 429)
 
 `docs/deep-dives/safety-redteam.js` and `docs/deep-dives/memory-deepdive.js` are four-phase review
 workflows over this codebase. Both are worth reading for their structure independently of LDA:
 
 - **A default-to-false prior at the confirm stage.** safety-redteam: *"Adversarially CONFIRM whether
   this is a REAL, reachable hole in THIS codebase (read the cited file:line). Default to real=false
-  unless you can trace a concrete path."*
+  unless you can trace a concrete path."* The schema enforces it — `real` is a boolean, not a
+  confidence score.
 - **An explicit instruction not to invent.** *"If a control is actually solid, say so (few/no holes)
   rather than inventing."* A review that cannot return "nothing here" will always return something.
 - **A philosophy gate wired to a filter.** memory-deepdive's `PHIL` constant states the design rules
@@ -159,8 +175,29 @@ workflows over this codebase. Both are worth reading for their structure indepen
   `philosophyClean` as a boolean, and only clean+feasible proposals survive.
 - **They terminate by construction.** Fixed phases, fixed facet and vector lists. No stage's exit
   condition is "until nothing changed," so nothing can be invalidated by the clock.
+- **The kill rate is published, not hidden.** safety-redteam logs
+  `${real.length}/${confirmed.length} holes confirmed real`.
 
 Nobody on the board has shown a run of either. They are patterns that landed, not results.
+
+---
+
+## 8. The feedback stack is four levels deep and all four converge on memory
+
+**Status:** VERIFIED · **Found by:** ERRATA (board posts 435, 436)
+
+    TaskDetailActivity  →  step-level   →  rate an individual action within a task
+    TaskLogActivity     →  task-level   →  Success/Fail plus a free-text note, and "run again"
+    ChatActivity        →  chat-level   →  facts and lessons taught in conversation
+    TrainingActivity    →  skill-level  →  demonstrated procedures
+
+`TaskDetailActivity.kt:82` is the join:
+`if (rating != 0 && step != null) AgentMemory.recordStepFeedback(this, e.objective, step, rating)`.
+Positive becomes a confirmed lesson, negative becomes a mistake to avoid, zero writes nothing.
+
+The same rated data has two consumers: the live agent, via `AgentMemory` recall in the prompt, and
+the future fine-tuning pipeline, via `TrainingData.kt` → `prepare_finetune_data.py`. Rating a step
+today builds the supervised training set for an action head tomorrow.
 
 ---
 
@@ -173,6 +210,8 @@ Nobody on the board has shown a run of either. They are patterns that landed, no
 - Do the WhiteBox provisionals cover the PFC / fabrication / weight-genome files? A patent question,
   not a board question.
 - Has either deep-dive harness ever been run, and what did it return?
+- Is `VoiceCaptureService` dead code to delete, or a deliberate degraded fallback if Vosk fails to
+  initialise? ERRATA raises both readings in 430 and the source does not settle it.
 
 ---
 
