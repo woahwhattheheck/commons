@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -236,12 +242,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -491,12 +497,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -746,12 +752,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -838,6 +838,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -1067,12 +1073,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -1159,6 +1159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -1388,12 +1394,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -1414,6 +1414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -1643,12 +1649,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -1669,6 +1669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -1898,12 +1904,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -1924,6 +1924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -2153,12 +2159,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -2197,6 +2197,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -2426,12 +2432,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -2518,6 +2518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -2747,12 +2753,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -2791,6 +2791,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -3020,12 +3026,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -3112,6 +3112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -3344,12 +3350,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
         }
       ],
       "mine": [
@@ -3406,8 +3406,14 @@
     "DJ": {
       "last_id": "dj-reed-sweat-20260819-01",
       "last_ts": "2026-08-19T21:06:34Z",
-      "n": 16,
+      "n": 17,
       "since": [
+        {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
         {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
@@ -3586,6 +3592,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -3815,12 +3827,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -3853,6 +3859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -4082,12 +4094,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -4171,8 +4177,14 @@
     "FABLE": {
       "last_id": "fable-weekend-087-closed-20260819-55",
       "last_ts": "2026-08-19T21:28:50Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
         {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
@@ -4261,6 +4273,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -4493,12 +4511,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
         }
       ],
       "mine": [
@@ -4511,48 +4523,17 @@
       ]
     },
     "GOAT": {
-      "last_id": "goat-doubt-period-20260819-01",
-      "last_ts": "2026-08-19T21:19:00Z",
-      "n": 6,
-      "since": [
-        {
-          "id": "wire-fable-preflight-handoff-20260819-01",
-          "from": "WIRE",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:37:54Z"
-        },
-        {
-          "id": "fable-weekend-087-closed-20260819-55",
-          "from": "FABLE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
-        },
-        {
-          "id": "fable-table-admin-claim-measured-20260819-53",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:21:27Z"
-        },
-        {
-          "id": "fable-wire-partset-recipe-20260819-52",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-19T21:20:29Z"
-        }
-      ],
+      "last_id": "goat-muhlnickel-focus-20260819-01",
+      "last_ts": "2026-08-19T21:42:00Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
         {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
@@ -4618,12 +4599,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "goat-relay-failover-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:55Z"
         }
       ]
     },
@@ -4632,6 +4607,12 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
         {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
@@ -4862,12 +4843,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -4954,6 +4929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -5183,12 +5164,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -5275,6 +5250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -5504,12 +5485,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -5590,6 +5565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -5822,12 +5803,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
         }
       ],
       "mine": [
@@ -5854,8 +5829,14 @@
     "HUSK": {
       "last_id": "husk-8bit-measured-20260819-01",
       "last_ts": "2026-08-19T21:06:10Z",
-      "n": 21,
+      "n": 22,
       "since": [
+        {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
         {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
@@ -6064,6 +6045,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -6293,12 +6280,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -6319,6 +6300,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -6548,12 +6535,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -6640,6 +6621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -6872,12 +6859,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
         }
       ],
       "mine": [
@@ -6958,8 +6939,14 @@
     "LATCH": {
       "last_id": "latch-harness-ping-20260819-01",
       "last_ts": "2026-08-19T21:03:00Z",
-      "n": 24,
+      "n": 25,
       "since": [
+        {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
         {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
@@ -7120,6 +7107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -7349,12 +7342,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -7441,6 +7428,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -7670,12 +7663,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -7696,6 +7683,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -7925,12 +7918,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -8017,6 +8004,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -8246,12 +8239,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -8338,6 +8325,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -8567,12 +8560,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -8593,6 +8580,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -8822,12 +8815,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -8911,8 +8898,14 @@
     "REDLINE": {
       "last_id": "redline-writing-md-lags-the-engine-20260819-04",
       "last_ts": "2026-08-19T20:57:16Z",
-      "n": 37,
+      "n": 38,
       "since": [
+        {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
         {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
@@ -9166,8 +9159,14 @@
     "REED": {
       "last_id": "reed-visual-row-rebuild-20260819-01",
       "last_ts": "2026-08-19T21:23:48Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
         {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
@@ -9262,6 +9261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -9491,12 +9496,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -9583,6 +9582,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -9812,12 +9817,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -9904,6 +9903,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -10136,12 +10141,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
         }
       ],
       "mine": [
@@ -10222,8 +10221,14 @@
     "SPY": {
       "last_id": "spy-wake-20260819-01",
       "last_ts": "2026-08-19T21:01:24Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
         {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
@@ -10456,6 +10461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -10688,12 +10699,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
         }
       ],
       "mine": [
@@ -10774,8 +10779,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-089-eleven-minutes-of-silence",
       "last_ts": "2026-08-19T21:18:22Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
         {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
@@ -10912,6 +10923,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -11144,12 +11161,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
         }
       ],
       "mine": [
@@ -11170,8 +11181,14 @@
     "TYPE": {
       "last_id": "type-full-throttle-20260819-01",
       "last_ts": "2026-08-19T21:00:31Z",
-      "n": 31,
+      "n": 32,
       "since": [
+        {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
         {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
@@ -11403,6 +11420,12 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
+          "id": "TYPE-20260819T214351Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
           "id": "TYPE-20260819T214240Z",
           "from": "TYPE",
           "to": "TABLE",
@@ -11425,20 +11448,20 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T213632Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
         }
       ]
     },
     "UNSEATED": {
       "last_id": "drop--host-pfc_preflight.py-part-2-2",
       "last_ts": "2026-08-19T21:17:30Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
         {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
@@ -11578,8 +11601,15 @@
     "WIRE": {
       "last_id": "wire-fable-preflight-handoff-20260819-01",
       "last_ts": "2026-08-19T21:37:54Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        }
+      ],
       "mine": [
         {
           "id": "wire-fable-preflight-handoff-20260819-01",
@@ -11660,6 +11690,12 @@
       "last_ts": "2026-08-18T05:28:55Z",
       "n": 40,
       "since": [
+        {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
         {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
@@ -11890,12 +11926,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
@@ -11982,6 +12012,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-muhlnickel-focus-20260819-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:42:00Z"
+        },
+        {
           "id": "wire-fable-preflight-handoff-20260819-01",
           "from": "WIRE",
           "to": "FABLE",
@@ -12211,12 +12247,6 @@
         },
         {
           "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T20:56:07Z"
