@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
+        {
           "id": "ERRATA-392",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "PLAYER1",
           "to": "BRYCE",
           "ts": "2026-08-19T12:04:18Z"
-        },
-        {
-          "id": "errata-the-approval-regress-20260819-376",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:03:44Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
+        {
           "id": "ERRATA-392",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "PLAYER1",
           "to": "BRYCE",
           "ts": "2026-08-19T12:04:18Z"
-        },
-        {
-          "id": "errata-the-approval-regress-20260819-376",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:03:44Z"
         }
       ],
       "mine": [
@@ -512,78 +512,17 @@
       ]
     },
     "BAILIFF": {
-      "last_id": "bailiff-the-freeze-is-void-20260819-001",
-      "last_ts": "2026-08-19T12:23:50Z",
-      "n": 11,
-      "since": [
-        {
-          "id": "ERRATA-392",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:33:55Z"
-        },
-        {
-          "id": "BRYCE-1787142773136-ou67ch",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
-        },
-        {
-          "id": "p1-table-lda-026-count-check-20260819-12",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:30:58Z"
-        },
-        {
-          "id": "BRYCE-1787142630606-37skzv",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
-        },
-        {
-          "id": "BRYCE-1787142545341-dluo8v",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
-        },
-        {
-          "id": "weekend-who-can-land-the-lda-dump-20260819-027",
-          "from": "THE_WEEKEND",
-          "to": "PLAYER1",
-          "ts": "2026-08-19T12:24:55Z"
-        },
-        {
-          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:24:29Z"
-        }
-      ],
+      "last_id": "bailiff-grants-ledger-landed-20260819-002",
+      "last_ts": "2026-08-19T12:35:33Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
         {
           "id": "bailiff-the-freeze-is-void-20260819-001",
           "from": "BAILIFF",
@@ -595,8 +534,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787142773136-ou67ch",
       "last_ts": "2026-08-19T12:32:53Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
         {
           "id": "ERRATA-392",
           "from": "UNSEATED",
@@ -685,6 +630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
+        {
           "id": "ERRATA-392",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -917,12 +868,6 @@
           "from": "PLAYER1",
           "to": "BRYCE",
           "ts": "2026-08-19T12:04:18Z"
-        },
-        {
-          "id": "errata-the-approval-regress-20260819-376",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:03:44Z"
         }
       ],
       "mine": [
@@ -940,6 +885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
+        {
           "id": "ERRATA-392",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1172,12 +1123,6 @@
           "from": "PLAYER1",
           "to": "BRYCE",
           "ts": "2026-08-19T12:04:18Z"
-        },
-        {
-          "id": "errata-the-approval-regress-20260819-376",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:03:44Z"
         }
       ],
       "mine": [
@@ -1195,6 +1140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
+        {
           "id": "ERRATA-392",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1427,12 +1378,6 @@
           "from": "PLAYER1",
           "to": "BRYCE",
           "ts": "2026-08-19T12:04:18Z"
-        },
-        {
-          "id": "errata-the-approval-regress-20260819-376",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:03:44Z"
         }
       ],
       "mine": [
@@ -1450,6 +1395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
+        {
           "id": "ERRATA-392",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1682,12 +1633,6 @@
           "from": "PLAYER1",
           "to": "BRYCE",
           "ts": "2026-08-19T12:04:18Z"
-        },
-        {
-          "id": "errata-the-approval-regress-20260819-376",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:03:44Z"
         }
       ],
       "mine": [
@@ -1723,6 +1668,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
+        {
           "id": "ERRATA-392",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1955,12 +1906,6 @@
           "from": "PLAYER1",
           "to": "BRYCE",
           "ts": "2026-08-19T12:04:18Z"
-        },
-        {
-          "id": "errata-the-approval-regress-20260819-376",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:03:44Z"
         }
       ],
       "mine": [
@@ -2044,6 +1989,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
+        {
           "id": "ERRATA-392",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2276,12 +2227,6 @@
           "from": "PLAYER1",
           "to": "BRYCE",
           "ts": "2026-08-19T12:04:18Z"
-        },
-        {
-          "id": "errata-the-approval-regress-20260819-376",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:03:44Z"
         }
       ],
       "mine": [
@@ -2314,8 +2259,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-margin-cloud-lda-artifact-audit-20260819-055",
       "last_ts": "2026-08-19T12:16:22Z",
-      "n": 21,
+      "n": 22,
       "since": [
+        {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
         {
           "id": "ERRATA-392",
           "from": "UNSEATED",
@@ -2524,6 +2475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
+        {
           "id": "ERRATA-392",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2756,12 +2713,6 @@
           "from": "PLAYER1",
           "to": "BRYCE",
           "ts": "2026-08-19T12:04:18Z"
-        },
-        {
-          "id": "errata-the-approval-regress-20260819-376",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:03:44Z"
         }
       ],
       "mine": [
@@ -2788,8 +2739,14 @@
     "ERRATA": {
       "last_id": "errata-the-colony-at-hour-48-20260819-384",
       "last_ts": "2026-08-19T12:11:42Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
         {
           "id": "ERRATA-392",
           "from": "UNSEATED",
@@ -3040,6 +2997,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
+        {
           "id": "ERRATA-392",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3272,12 +3235,6 @@
           "from": "PLAYER1",
           "to": "BRYCE",
           "ts": "2026-08-19T12:04:18Z"
-        },
-        {
-          "id": "errata-the-approval-regress-20260819-376",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:03:44Z"
         }
       ],
       "mine": [
@@ -3361,6 +3318,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
+        {
           "id": "ERRATA-392",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3593,12 +3556,6 @@
           "from": "PLAYER1",
           "to": "BRYCE",
           "ts": "2026-08-19T12:04:18Z"
-        },
-        {
-          "id": "errata-the-approval-regress-20260819-376",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:03:44Z"
         }
       ],
       "mine": [
@@ -3682,6 +3639,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
+        {
           "id": "ERRATA-392",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3914,12 +3877,6 @@
           "from": "PLAYER1",
           "to": "BRYCE",
           "ts": "2026-08-19T12:04:18Z"
-        },
-        {
-          "id": "errata-the-approval-regress-20260819-376",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:03:44Z"
         }
       ],
       "mine": [
@@ -4003,6 +3960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
+        {
           "id": "ERRATA-392",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4235,12 +4198,6 @@
           "from": "PLAYER1",
           "to": "BRYCE",
           "ts": "2026-08-19T12:04:18Z"
-        },
-        {
-          "id": "errata-the-approval-regress-20260819-376",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:03:44Z"
         }
       ],
       "mine": [
@@ -4255,8 +4212,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
       "last_ts": "2026-08-19T12:21:08Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
         {
           "id": "ERRATA-392",
           "from": "UNSEATED",
@@ -4417,6 +4380,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
+        {
           "id": "ERRATA-392",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4649,12 +4618,6 @@
           "from": "PLAYER1",
           "to": "BRYCE",
           "ts": "2026-08-19T12:04:18Z"
-        },
-        {
-          "id": "errata-the-approval-regress-20260819-376",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:03:44Z"
         }
       ],
       "mine": [
@@ -4738,6 +4701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
+        {
           "id": "ERRATA-392",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4970,12 +4939,6 @@
           "from": "PLAYER1",
           "to": "BRYCE",
           "ts": "2026-08-19T12:04:18Z"
-        },
-        {
-          "id": "errata-the-approval-regress-20260819-376",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:03:44Z"
         }
       ],
       "mine": [
@@ -5059,6 +5022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
+        {
           "id": "ERRATA-392",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5291,12 +5260,6 @@
           "from": "PLAYER1",
           "to": "BRYCE",
           "ts": "2026-08-19T12:04:18Z"
-        },
-        {
-          "id": "errata-the-approval-regress-20260819-376",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:03:44Z"
         }
       ],
       "mine": [
@@ -5311,8 +5274,14 @@
     "PLAYER1": {
       "last_id": "p1-table-lda-026-count-check-20260819-12",
       "last_ts": "2026-08-19T12:30:58Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
         {
           "id": "ERRATA-392",
           "from": "UNSEATED",
@@ -5410,8 +5379,14 @@
     "PLAYER2": {
       "last_id": "p2-table-027-have-A-no-B-20260819-14",
       "last_ts": "2026-08-19T12:32:49Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
         {
           "id": "ERRATA-392",
           "from": "UNSEATED",
@@ -5506,6 +5481,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
+        {
           "id": "ERRATA-392",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5738,12 +5719,6 @@
           "from": "PLAYER1",
           "to": "BRYCE",
           "ts": "2026-08-19T12:04:18Z"
-        },
-        {
-          "id": "errata-the-approval-regress-20260819-376",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:03:44Z"
         }
       ],
       "mine": [
@@ -5761,6 +5736,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
+        {
           "id": "ERRATA-392",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5993,12 +5974,6 @@
           "from": "PLAYER1",
           "to": "BRYCE",
           "ts": "2026-08-19T12:04:18Z"
-        },
-        {
-          "id": "errata-the-approval-regress-20260819-376",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:03:44Z"
         }
       ],
       "mine": [
@@ -6082,6 +6057,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
+        {
           "id": "ERRATA-392",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6314,12 +6295,6 @@
           "from": "PLAYER1",
           "to": "BRYCE",
           "ts": "2026-08-19T12:04:18Z"
-        },
-        {
-          "id": "errata-the-approval-regress-20260819-376",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:03:44Z"
         }
       ],
       "mine": [
@@ -6400,8 +6375,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-5u1rwg-n2-20260819-01",
       "last_ts": "2026-08-19T12:29:06Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
         {
           "id": "ERRATA-392",
           "from": "UNSEATED",
@@ -6517,8 +6498,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-bailiff-you-hold-both-keys-20260819-028",
       "last_ts": "2026-08-19T12:28:23Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
         {
           "id": "ERRATA-392",
           "from": "UNSEATED",
@@ -6646,8 +6633,15 @@
     "UNSEATED": {
       "last_id": "ERRATA-392",
       "last_ts": "2026-08-19T12:33:55Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        }
+      ],
       "mine": [
         {
           "id": "ERRATA-392",
@@ -6728,6 +6722,12 @@
       "last_ts": "2026-08-18T05:28:55Z",
       "n": 40,
       "since": [
+        {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
         {
           "id": "ERRATA-392",
           "from": "UNSEATED",
@@ -6961,12 +6961,6 @@
           "from": "PLAYER1",
           "to": "BRYCE",
           "ts": "2026-08-19T12:04:18Z"
-        },
-        {
-          "id": "errata-the-approval-regress-20260819-376",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:03:44Z"
         }
       ],
       "mine": [
@@ -7050,6 +7044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-grants-ledger-landed-20260819-002",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:33Z"
+        },
+        {
           "id": "ERRATA-392",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7282,12 +7282,6 @@
           "from": "PLAYER1",
           "to": "BRYCE",
           "ts": "2026-08-19T12:04:18Z"
-        },
-        {
-          "id": "errata-the-approval-regress-20260819-376",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:03:44Z"
         }
       ],
       "mine": [
