@@ -138,6 +138,12 @@
     "to": "INQUISITOR"
   },
   {
+    "from": "ROOT_CODEX",
+    "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+    "ts": "2026-08-19T08:07:03Z",
+    "to": "TABLE"
+  },
+  {
     "from": "SPEC_DADDY",
     "id": "specdaddy-table-lifeboat0-dests-20260819-01",
     "ts": "2026-08-19T06:57:59Z",

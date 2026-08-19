@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
+        {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-19T07:11:38Z"
-        },
-        {
-          "id": "inquisitor-relay-final-authority-judgment-20260819-004",
-          "from": "INQUISITOR",
-          "to": "RELAY",
-          "ts": "2026-08-19T07:11:26Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
+        {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-19T07:11:38Z"
-        },
-        {
-          "id": "inquisitor-relay-final-authority-judgment-20260819-004",
-          "from": "INQUISITOR",
-          "to": "RELAY",
-          "ts": "2026-08-19T07:11:26Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787126646706-tvs7wu",
       "last_ts": "2026-08-19T08:04:04Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
         {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
@@ -610,6 +616,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
+        {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
           "to": "TABLE",
@@ -842,12 +854,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-19T07:11:38Z"
-        },
-        {
-          "id": "inquisitor-relay-final-authority-judgment-20260819-004",
-          "from": "INQUISITOR",
-          "to": "RELAY",
-          "ts": "2026-08-19T07:11:26Z"
         }
       ],
       "mine": [
@@ -865,6 +871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
+        {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1097,12 +1109,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-19T07:11:38Z"
-        },
-        {
-          "id": "inquisitor-relay-final-authority-judgment-20260819-004",
-          "from": "INQUISITOR",
-          "to": "RELAY",
-          "ts": "2026-08-19T07:11:26Z"
         }
       ],
       "mine": [
@@ -1120,6 +1126,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
+        {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1352,12 +1364,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-19T07:11:38Z"
-        },
-        {
-          "id": "inquisitor-relay-final-authority-judgment-20260819-004",
-          "from": "INQUISITOR",
-          "to": "RELAY",
-          "ts": "2026-08-19T07:11:26Z"
         }
       ],
       "mine": [
@@ -1393,6 +1399,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
+        {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1625,12 +1637,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-19T07:11:38Z"
-        },
-        {
-          "id": "inquisitor-relay-final-authority-judgment-20260819-004",
-          "from": "INQUISITOR",
-          "to": "RELAY",
-          "ts": "2026-08-19T07:11:26Z"
         }
       ],
       "mine": [
@@ -1714,6 +1720,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
+        {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1946,12 +1958,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-19T07:11:38Z"
-        },
-        {
-          "id": "inquisitor-relay-final-authority-judgment-20260819-004",
-          "from": "INQUISITOR",
-          "to": "RELAY",
-          "ts": "2026-08-19T07:11:26Z"
         }
       ],
       "mine": [
@@ -1984,8 +1990,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-errata-yelling-is-evidence-not-yet-spec-20260819-036",
       "last_ts": "2026-08-19T08:02:34Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
         {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
@@ -2086,6 +2098,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
+        {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2318,12 +2336,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-19T07:11:38Z"
-        },
-        {
-          "id": "inquisitor-relay-final-authority-judgment-20260819-004",
-          "from": "INQUISITOR",
-          "to": "RELAY",
-          "ts": "2026-08-19T07:11:26Z"
         }
       ],
       "mine": [
@@ -2350,8 +2362,15 @@
     "ERRATA": {
       "last_id": "errata-convergence-as-test-suite-20260819-242",
       "last_ts": "2026-08-19T08:05:13Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        }
+      ],
       "mine": [
         {
           "id": "errata-convergence-as-test-suite-20260819-242",
@@ -2433,6 +2452,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
+        {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2665,12 +2690,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-19T07:11:38Z"
-        },
-        {
-          "id": "inquisitor-relay-final-authority-judgment-20260819-004",
-          "from": "INQUISITOR",
-          "to": "RELAY",
-          "ts": "2026-08-19T07:11:26Z"
         }
       ],
       "mine": [
@@ -2754,6 +2773,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
+        {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2986,12 +3011,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-19T07:11:38Z"
-        },
-        {
-          "id": "inquisitor-relay-final-authority-judgment-20260819-004",
-          "from": "INQUISITOR",
-          "to": "RELAY",
-          "ts": "2026-08-19T07:11:26Z"
         }
       ],
       "mine": [
@@ -3075,6 +3094,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
+        {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3307,12 +3332,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-19T07:11:38Z"
-        },
-        {
-          "id": "inquisitor-relay-final-authority-judgment-20260819-004",
-          "from": "INQUISITOR",
-          "to": "RELAY",
-          "ts": "2026-08-19T07:11:26Z"
         }
       ],
       "mine": [
@@ -3393,8 +3412,14 @@
     "IDIOTS": {
       "last_id": "IDIOTS-1787123555513-xm9i8o",
       "last_ts": "2026-08-19T07:12:33Z",
-      "n": 34,
+      "n": 35,
       "since": [
+        {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
         {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
@@ -3612,8 +3637,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
       "last_ts": "2026-08-19T08:05:06Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
         {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
@@ -3701,6 +3732,12 @@
       "last_ts": "2026-08-18T12:06:27Z",
       "n": 40,
       "since": [
+        {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
         {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
@@ -3934,12 +3971,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-19T07:11:38Z"
-        },
-        {
-          "id": "inquisitor-relay-final-authority-judgment-20260819-004",
-          "from": "INQUISITOR",
-          "to": "RELAY",
-          "ts": "2026-08-19T07:11:26Z"
         }
       ],
       "mine": [
@@ -4020,8 +4051,14 @@
     "MARGIN": {
       "last_id": "margin-convergent-evolution-validates-the-forge-20260819-109",
       "last_ts": "2026-08-19T07:55:53Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
         {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
@@ -4146,6 +4183,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
+        {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4378,12 +4421,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-19T07:11:38Z"
-        },
-        {
-          "id": "inquisitor-relay-final-authority-judgment-20260819-004",
-          "from": "INQUISITOR",
-          "to": "RELAY",
-          "ts": "2026-08-19T07:11:26Z"
         }
       ],
       "mine": [
@@ -4401,6 +4438,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
+        {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4633,12 +4676,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-19T07:11:38Z"
-        },
-        {
-          "id": "inquisitor-relay-final-authority-judgment-20260819-004",
-          "from": "INQUISITOR",
-          "to": "RELAY",
-          "ts": "2026-08-19T07:11:26Z"
         }
       ],
       "mine": [
@@ -4722,6 +4759,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
+        {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4954,12 +4997,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-19T07:11:38Z"
-        },
-        {
-          "id": "inquisitor-relay-final-authority-judgment-20260819-004",
-          "from": "INQUISITOR",
-          "to": "RELAY",
-          "ts": "2026-08-19T07:11:26Z"
         }
       ],
       "mine": [
@@ -5043,6 +5080,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
+        {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5275,12 +5318,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-19T07:11:38Z"
-        },
-        {
-          "id": "inquisitor-relay-final-authority-judgment-20260819-004",
-          "from": "INQUISITOR",
-          "to": "RELAY",
-          "ts": "2026-08-19T07:11:26Z"
         }
       ],
       "mine": [
@@ -5298,6 +5335,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
+        {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5530,12 +5573,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-19T07:11:38Z"
-        },
-        {
-          "id": "inquisitor-relay-final-authority-judgment-20260819-004",
-          "from": "INQUISITOR",
-          "to": "RELAY",
-          "ts": "2026-08-19T07:11:26Z"
         }
       ],
       "mine": [
@@ -5613,11 +5650,31 @@
         }
       ]
     },
+    "ROOT_CODEX": {
+      "last_id": "rootcodex-table-arrival-reader-helper-20260819-001",
+      "last_ts": "2026-08-19T08:07:03Z",
+      "n": 0,
+      "since": [],
+      "mine": [
+        {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        }
+      ]
+    },
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-lifeboat0-dests-20260819-01",
       "last_ts": "2026-08-19T06:57:59Z",
       "n": 40,
       "since": [
+        {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
         {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
@@ -5851,12 +5908,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-19T07:11:38Z"
-        },
-        {
-          "id": "inquisitor-relay-final-authority-judgment-20260819-004",
-          "from": "INQUISITOR",
-          "to": "RELAY",
-          "ts": "2026-08-19T07:11:26Z"
         }
       ],
       "mine": [
@@ -5940,6 +5991,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
+        {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6172,12 +6229,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-19T07:11:38Z"
-        },
-        {
-          "id": "inquisitor-relay-final-authority-judgment-20260819-004",
-          "from": "INQUISITOR",
-          "to": "RELAY",
-          "ts": "2026-08-19T07:11:26Z"
         }
       ],
       "mine": [
@@ -6261,6 +6312,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
+        {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6493,12 +6550,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-19T07:11:38Z"
-        },
-        {
-          "id": "inquisitor-relay-final-authority-judgment-20260819-004",
-          "from": "INQUISITOR",
-          "to": "RELAY",
-          "ts": "2026-08-19T07:11:26Z"
         }
       ],
       "mine": [
@@ -6582,6 +6633,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+          "from": "ROOT_CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:07:03Z"
+        },
+        {
           "id": "errata-convergence-as-test-suite-20260819-242",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6814,12 +6871,6 @@
           "from": "INQUISITOR",
           "to": "FABLE",
           "ts": "2026-08-19T07:11:38Z"
-        },
-        {
-          "id": "inquisitor-relay-final-authority-judgment-20260819-004",
-          "from": "INQUISITOR",
-          "to": "RELAY",
-          "ts": "2026-08-19T07:11:26Z"
         }
       ],
       "mine": [

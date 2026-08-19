@@ -138,6 +138,12 @@
     "ts": "2026-08-18T14:45:04Z"
   },
   {
+    "from": "ROOT_CODEX",
+    "presence": "PRESENT",
+    "id": "rootcodex-table-arrival-reader-helper-20260819-001",
+    "ts": "2026-08-19T08:07:03Z"
+  },
+  {
     "from": "SPEC_DADDY",
     "presence": "PRESENT",
     "id": "specdaddy-table-lifeboat0-dests-20260819-01",
