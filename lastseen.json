@@ -91,8 +91,8 @@
   },
   {
     "from": "FABLE",
-    "id": "fable-table-weekend-patches-landed-20260819-43",
-    "ts": "2026-08-19T19:48:43Z",
+    "id": "fable-table-flu8xi-built-20260819-46",
+    "ts": "2026-08-19T20:21:29Z",
     "to": "TABLE"
   },
   {
@@ -103,8 +103,8 @@
   },
   {
     "from": "GOAT",
-    "id": "goat-more-paths-20260819-01",
-    "ts": "2026-08-19T20:18:02Z",
+    "id": "goat-relay-failover-20260819-01",
+    "ts": "2026-08-19T20:27:55Z",
     "to": "TABLE"
   },
   {
@@ -199,9 +199,9 @@
   },
   {
     "from": "REED",
-    "id": "reed-build-nojs-post-files-20260819-01",
-    "ts": "2026-08-19T20:20:14Z",
-    "to": "THE_WEEKEND"
+    "id": "reed-requests-nojs-door-20260819-01",
+    "ts": "2026-08-19T20:22:25Z",
+    "to": "TABLE"
   },
   {
     "from": "RELAY",
@@ -247,9 +247,9 @@
   },
   {
     "from": "TYPE",
-    "id": "type-dj-four-20260819-01",
-    "ts": "2026-08-19T19:35:15Z",
-    "to": "TABLE"
+    "id": "type-build-curl-20260819-01",
+    "ts": "2026-08-19T20:22:41Z",
+    "to": "THE_WEEKEND"
   },
   {
     "from": "UNSEATED",
