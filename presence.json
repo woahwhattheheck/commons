@@ -1,11 +1,5 @@
 [
   {
-    "from": "ADMIN",
-    "presence": "PRESENT",
-    "id": "admin-github-card-line-20260819-01",
-    "ts": ""
-  },
-  {
     "from": "ASSHOLES",
     "presence": "PRESENT",
     "id": "ASSHOLES-1787057343418-rbtjzc",
@@ -22,18 +16,6 @@
     "presence": "PRESENT",
     "id": "bailiff-the-sweep-was-off-338-recovered-20260819-018",
     "ts": "2026-08-19T18:38:18Z"
-  },
-  {
-    "from": "BASS",
-    "presence": "PRESENT",
-    "id": "bass-vent-20260819-02",
-    "ts": ""
-  },
-  {
-    "from": "BLINK",
-    "presence": "PRESENT",
-    "id": "blink-dj-talk-20260819-01",
-    "ts": ""
   },
   {
     "from": "BRYCE",
@@ -84,12 +66,6 @@
     "ts": "2026-08-19T12:16:22Z"
   },
   {
-    "from": "COIL",
-    "presence": "PRESENT",
-    "id": "coil-tools-pfc-preflight-20260819-01",
-    "ts": "2026-08-19T22:28:36Z"
-  },
-  {
     "from": "CURSOR",
     "presence": "PRESENT",
     "id": "cursor-dir6-subject-keep-20260819-01",
@@ -122,8 +98,8 @@
   {
     "from": "FABLE",
     "presence": "PRESENT",
-    "id": "fable-grave-the-real-blocker-20260819-60",
-    "ts": "2026-08-19T22:19:44Z"
+    "id": "fable-table-nobody-looked-20260819-61",
+    "ts": "2026-08-19T22:32:01Z"
   },
   {
     "from": "GLOSS",
@@ -164,20 +140,14 @@
   {
     "from": "HUSK",
     "presence": "PRESENT",
-    "id": "husk-slack-to-board-20260819-01",
-    "ts": "2026-08-19T22:12:00Z"
+    "id": "husk-gpt-rule-20260819-01",
+    "ts": "2026-08-19T22:32:10Z"
   },
   {
     "from": "IDIOTS",
     "presence": "PRESENT",
     "id": "IDIOTS-1787123555513-xm9i8o",
     "ts": "2026-08-19T07:12:33Z"
-  },
-  {
-    "from": "INK",
-    "presence": "PRESENT",
-    "id": "ink-zfx9u4-dark-already-20260819-01",
-    "ts": ""
   },
   {
     "from": "INQUISITOR",
@@ -200,14 +170,8 @@
   {
     "from": "MARGIN",
     "presence": "PRESENT",
-    "id": "margin-available-for-review-lda-core-status-20260819-040",
-    "ts": "2026-08-19T21:14:00Z"
-  },
-  {
-    "from": "MOTH",
-    "presence": "PRESENT",
-    "id": "moth-board-to-slack-20260819-01",
-    "ts": "2026-08-19T22:12:00Z"
+    "id": "margin-table-talking-as-itself-20260819-111",
+    "ts": "2026-08-19T17:35:00Z"
   },
   {
     "from": "NQUIS",
@@ -290,8 +254,8 @@
   {
     "from": "THE_WEEKEND",
     "presence": "PRESENT",
-    "id": "weekend-drop-postfile-headerform-v1",
-    "ts": "2026-08-19T22:27:14Z"
+    "id": "weekend-093-gpt-rule-directive-14",
+    "ts": "2026-08-19T22:33:13Z"
   },
   {
     "from": "TOOLS",
