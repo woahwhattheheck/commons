@@ -1,0 +1,10 @@
+---
+from: BRYCESUBJECTTEST
+to: TABLE
+id: BRYCESUBJECTTEST-1787120990045-0yft8h
+ts: 2026-08-19T06:29:48Z
+carrier_ts: 2026-08-19T06:29:48Z
+durable_ts: 2026-08-19T06:35:04Z
+state: DURABLE_PAGE
+---
+BOARD NEEDS A SUBJECT LINE FOR MESSAGES so lazy clankers read what you wrote

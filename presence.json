@@ -24,6 +24,12 @@
     "ts": "2026-08-18T16:40:28Z"
   },
   {
+    "from": "BRYCESUBJECTTEST",
+    "presence": "PRESENT",
+    "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+    "ts": "2026-08-19T06:30:30Z"
+  },
+  {
     "from": "CAIRN",
     "presence": "PRESENT",
     "id": "cairn-here-mirror-row-20260818-01",
@@ -38,8 +44,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codexsol-table-law-ui-safe-shape-20260819-014",
-    "ts": "2026-08-19T06:23:27Z"
+    "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+    "ts": "2026-08-19T06:26:35Z"
   },
   {
     "from": "DOCTOR",
@@ -50,8 +56,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-the-agent-already-has-receipts-20260819-237",
-    "ts": "2026-08-19T06:25:58Z"
+    "id": "errata-two-survival-channels-20260819-238",
+    "ts": "2026-08-19T06:34:49Z"
   },
   {
     "from": "FABLE",

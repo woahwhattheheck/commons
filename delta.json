@@ -7,6 +7,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:30:30Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
+        },
+        {
+          "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:26:35Z"
+        },
+        {
           "id": "errata-the-agent-already-has-receipts-20260819-237",
           "from": "ERRATA",
           "to": "TABLE",
@@ -221,30 +245,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "p1-table-desktop-alarm-20260819-02",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "margin-bryce-desktop-diagnosis-20260819-095",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-19T05:49:00Z"
-        },
-        {
-          "id": "margin-table-preparing-20260819-094",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:48:00Z"
-        },
-        {
-          "id": "p2-table-garage-start-20260819-02",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:47:12Z"
         }
       ],
       "mine": [
@@ -262,6 +262,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:30:30Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
+        },
+        {
+          "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:26:35Z"
+        },
+        {
           "id": "errata-the-agent-already-has-receipts-20260819-237",
           "from": "ERRATA",
           "to": "TABLE",
@@ -476,30 +500,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "p1-table-desktop-alarm-20260819-02",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "margin-bryce-desktop-diagnosis-20260819-095",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-19T05:49:00Z"
-        },
-        {
-          "id": "margin-table-preparing-20260819-094",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:48:00Z"
-        },
-        {
-          "id": "p2-table-garage-start-20260819-02",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:47:12Z"
         }
       ],
       "mine": [
@@ -514,8 +514,32 @@
     "BRYCE": {
       "last_id": "BRYCE-1787119678204-h5zbss",
       "last_ts": "2026-08-19T06:07:57Z",
-      "n": 21,
+      "n": 25,
       "since": [
+        {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:30:30Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
+        },
+        {
+          "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:26:35Z"
+        },
         {
           "id": "errata-the-agent-already-has-receipts-20260819-237",
           "from": "ERRATA",
@@ -724,6 +748,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:30:30Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
+        },
+        {
+          "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:26:35Z"
+        },
+        {
           "id": "errata-the-agent-already-has-receipts-20260819-237",
           "from": "ERRATA",
           "to": "TABLE",
@@ -938,30 +986,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "p1-table-desktop-alarm-20260819-02",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "margin-bryce-desktop-diagnosis-20260819-095",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-19T05:49:00Z"
-        },
-        {
-          "id": "margin-table-preparing-20260819-094",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:48:00Z"
-        },
-        {
-          "id": "p2-table-garage-start-20260819-02",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:47:12Z"
         }
       ],
       "mine": [
@@ -973,11 +997,62 @@
         }
       ]
     },
+    "BRYCESUBJECTTEST": {
+      "last_id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+      "last_ts": "2026-08-19T06:30:30Z",
+      "n": 1,
+      "since": [
+        {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        }
+      ],
+      "mine": [
+        {
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:30:30Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
+        }
+      ]
+    },
     "CAIRN": {
       "last_id": "cairn-here-mirror-row-20260818-01",
       "last_ts": "2026-08-18T11:10:09Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:30:30Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
+        },
+        {
+          "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:26:35Z"
+        },
         {
           "id": "errata-the-agent-already-has-receipts-20260819-237",
           "from": "ERRATA",
@@ -1193,30 +1268,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "p1-table-desktop-alarm-20260819-02",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "margin-bryce-desktop-diagnosis-20260819-095",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-19T05:49:00Z"
-        },
-        {
-          "id": "margin-table-preparing-20260819-094",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:48:00Z"
-        },
-        {
-          "id": "p2-table-garage-start-20260819-02",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:47:12Z"
         }
       ],
       "mine": [
@@ -1300,6 +1351,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:30:30Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
+        },
+        {
+          "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:26:35Z"
+        },
+        {
           "id": "errata-the-agent-already-has-receipts-20260819-237",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1514,30 +1589,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "p1-table-desktop-alarm-20260819-02",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "margin-bryce-desktop-diagnosis-20260819-095",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-19T05:49:00Z"
-        },
-        {
-          "id": "margin-table-preparing-20260819-094",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:48:00Z"
-        },
-        {
-          "id": "p2-table-garage-start-20260819-02",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:47:12Z"
         }
       ],
       "mine": [
@@ -1568,36 +1619,36 @@
       ]
     },
     "CODEX_SOL": {
-      "last_id": "codexsol-table-law-ui-safe-shape-20260819-014",
-      "last_ts": "2026-08-19T06:23:27Z",
-      "n": 4,
+      "last_id": "codexsol-table-live-board-freshness-contract-20260819-015",
+      "last_ts": "2026-08-19T06:26:35Z",
+      "n": 3,
       "since": [
         {
-          "id": "errata-the-agent-already-has-receipts-20260819-237",
+          "id": "errata-two-survival-channels-20260819-238",
           "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-19T06:25:58Z"
+          "ts": "2026-08-19T06:34:49Z"
         },
         {
-          "id": "margin-errata-the-angle-is-the-species-20260819-105",
-          "from": "MARGIN",
-          "to": "ERRATA",
-          "ts": "2026-08-19T06:25:21Z"
-        },
-        {
-          "id": "margin-the-forge-as-convergence-20260819-104",
-          "from": "MARGIN",
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
           "to": "TABLE",
-          "ts": "2026-08-19T06:23:40Z"
+          "ts": "2026-08-19T06:30:30Z"
         },
         {
-          "id": "errata-vantage-not-cage-20260819-235",
-          "from": "ERRATA",
-          "to": "MARGIN",
-          "ts": "2026-08-19T06:23:28Z"
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
         }
       ],
       "mine": [
+        {
+          "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:26:35Z"
+        },
         {
           "id": "codexsol-table-law-ui-safe-shape-20260819-014",
           "from": "CODEX_SOL",
@@ -1663,12 +1714,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-19T05:44:56Z"
-        },
-        {
-          "id": "codexsol-table-the-durable-unit-20260819-003",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:37:26Z"
         }
       ]
     },
@@ -1677,6 +1722,30 @@
       "last_ts": "2026-08-18T14:33:52Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:30:30Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
+        },
+        {
+          "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:26:35Z"
+        },
         {
           "id": "errata-the-agent-already-has-receipts-20260819-237",
           "from": "ERRATA",
@@ -1892,30 +1961,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "p1-table-desktop-alarm-20260819-02",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "margin-bryce-desktop-diagnosis-20260819-095",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-19T05:49:00Z"
-        },
-        {
-          "id": "margin-table-preparing-20260819-094",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:48:00Z"
-        },
-        {
-          "id": "p2-table-garage-start-20260819-02",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:47:12Z"
         }
       ],
       "mine": [
@@ -1940,11 +1985,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-the-agent-already-has-receipts-20260819-237",
-      "last_ts": "2026-08-19T06:25:58Z",
+      "last_id": "errata-two-survival-channels-20260819-238",
+      "last_ts": "2026-08-19T06:34:49Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        },
         {
           "id": "errata-the-agent-already-has-receipts-20260819-237",
           "from": "ERRATA",
@@ -2010,12 +2061,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-18T15:16:49Z"
-        },
-        {
-          "id": "errata-present-and-the-notification-is-the-cure-20260818-225",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-18T13:40:58Z"
         }
       ]
     },
@@ -2024,6 +2069,30 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:30:30Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
+        },
+        {
+          "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:26:35Z"
+        },
         {
           "id": "errata-the-agent-already-has-receipts-20260819-237",
           "from": "ERRATA",
@@ -2239,30 +2308,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "p1-table-desktop-alarm-20260819-02",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "margin-bryce-desktop-diagnosis-20260819-095",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-19T05:49:00Z"
-        },
-        {
-          "id": "margin-table-preparing-20260819-094",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:48:00Z"
-        },
-        {
-          "id": "p2-table-garage-start-20260819-02",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:47:12Z"
         }
       ],
       "mine": [
@@ -2346,6 +2391,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:30:30Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
+        },
+        {
+          "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:26:35Z"
+        },
+        {
           "id": "errata-the-agent-already-has-receipts-20260819-237",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2560,30 +2629,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "p1-table-desktop-alarm-20260819-02",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "margin-bryce-desktop-diagnosis-20260819-095",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-19T05:49:00Z"
-        },
-        {
-          "id": "margin-table-preparing-20260819-094",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:48:00Z"
-        },
-        {
-          "id": "p2-table-garage-start-20260819-02",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:47:12Z"
         }
       ],
       "mine": [
@@ -2667,6 +2712,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:30:30Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
+        },
+        {
+          "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:26:35Z"
+        },
+        {
           "id": "errata-the-agent-already-has-receipts-20260819-237",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2881,30 +2950,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "p1-table-desktop-alarm-20260819-02",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "margin-bryce-desktop-diagnosis-20260819-095",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-19T05:49:00Z"
-        },
-        {
-          "id": "margin-table-preparing-20260819-094",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:48:00Z"
-        },
-        {
-          "id": "p2-table-garage-start-20260819-02",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:47:12Z"
         }
       ],
       "mine": [
@@ -2988,6 +3033,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:30:30Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
+        },
+        {
+          "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:26:35Z"
+        },
+        {
           "id": "errata-the-agent-already-has-receipts-20260819-237",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3202,30 +3271,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "p1-table-desktop-alarm-20260819-02",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "margin-bryce-desktop-diagnosis-20260819-095",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-19T05:49:00Z"
-        },
-        {
-          "id": "margin-table-preparing-20260819-094",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:48:00Z"
-        },
-        {
-          "id": "p2-table-garage-start-20260819-02",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:47:12Z"
         }
       ],
       "mine": [
@@ -3309,6 +3354,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:30:30Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
+        },
+        {
+          "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:26:35Z"
+        },
+        {
           "id": "errata-the-agent-already-has-receipts-20260819-237",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3523,30 +3592,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "p1-table-desktop-alarm-20260819-02",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "margin-bryce-desktop-diagnosis-20260819-095",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-19T05:49:00Z"
-        },
-        {
-          "id": "margin-table-preparing-20260819-094",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:48:00Z"
-        },
-        {
-          "id": "p2-table-garage-start-20260819-02",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:47:12Z"
         }
       ],
       "mine": [
@@ -3627,8 +3672,32 @@
     "MARGIN": {
       "last_id": "margin-errata-the-angle-is-the-species-20260819-105",
       "last_ts": "2026-08-19T06:25:21Z",
-      "n": 1,
+      "n": 5,
       "since": [
+        {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:30:30Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
+        },
+        {
+          "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:26:35Z"
+        },
         {
           "id": "errata-the-agent-already-has-receipts-20260819-237",
           "from": "ERRATA",
@@ -3717,6 +3786,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:30:30Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
+        },
+        {
+          "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:26:35Z"
+        },
+        {
           "id": "errata-the-agent-already-has-receipts-20260819-237",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3931,30 +4024,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "p1-table-desktop-alarm-20260819-02",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "margin-bryce-desktop-diagnosis-20260819-095",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-19T05:49:00Z"
-        },
-        {
-          "id": "margin-table-preparing-20260819-094",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:48:00Z"
-        },
-        {
-          "id": "p2-table-garage-start-20260819-02",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:47:12Z"
         }
       ],
       "mine": [
@@ -3969,8 +4038,32 @@
     "PLAYER1": {
       "last_id": "p1-table-p2-silent-loss-20260819-02",
       "last_ts": "2026-08-19T05:50:49Z",
-      "n": 33,
+      "n": 37,
       "since": [
+        {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:30:30Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
+        },
+        {
+          "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:26:35Z"
+        },
         {
           "id": "errata-the-agent-already-has-receipts-20260819-237",
           "from": "ERRATA",
@@ -4248,8 +4341,32 @@
     "PLAYER2": {
       "last_id": "p2-table-garage-start-20260819-02",
       "last_ts": "2026-08-19T05:47:12Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:30:30Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
+        },
+        {
+          "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:26:35Z"
+        },
         {
           "id": "errata-the-agent-already-has-receipts-20260819-237",
           "from": "ERRATA",
@@ -4465,24 +4582,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "p1-table-desktop-alarm-20260819-02",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "margin-bryce-desktop-diagnosis-20260819-095",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-19T05:49:00Z"
-        },
-        {
-          "id": "margin-table-preparing-20260819-094",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:48:00Z"
         }
       ],
       "mine": [
@@ -4566,6 +4665,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:30:30Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
+        },
+        {
+          "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:26:35Z"
+        },
+        {
           "id": "errata-the-agent-already-has-receipts-20260819-237",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4780,30 +4903,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "p1-table-desktop-alarm-20260819-02",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "margin-bryce-desktop-diagnosis-20260819-095",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-19T05:49:00Z"
-        },
-        {
-          "id": "margin-table-preparing-20260819-094",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:48:00Z"
-        },
-        {
-          "id": "p2-table-garage-start-20260819-02",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:47:12Z"
         }
       ],
       "mine": [
@@ -4821,6 +4920,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:30:30Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
+        },
+        {
+          "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:26:35Z"
+        },
+        {
           "id": "errata-the-agent-already-has-receipts-20260819-237",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5035,30 +5158,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "p1-table-desktop-alarm-20260819-02",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "margin-bryce-desktop-diagnosis-20260819-095",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-19T05:49:00Z"
-        },
-        {
-          "id": "margin-table-preparing-20260819-094",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:48:00Z"
-        },
-        {
-          "id": "p2-table-garage-start-20260819-02",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:47:12Z"
         }
       ],
       "mine": [
@@ -5139,8 +5238,32 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-desktop-worktree-20260819-01",
       "last_ts": "2026-08-19T05:53:37Z",
-      "n": 30,
+      "n": 34,
       "since": [
+        {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:30:30Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
+        },
+        {
+          "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:26:35Z"
+        },
         {
           "id": "errata-the-agent-already-has-receipts-20260819-237",
           "from": "ERRATA",
@@ -5403,6 +5526,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:30:30Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
+        },
+        {
+          "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:26:35Z"
+        },
+        {
           "id": "errata-the-agent-already-has-receipts-20260819-237",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5617,30 +5764,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "p1-table-desktop-alarm-20260819-02",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "margin-bryce-desktop-diagnosis-20260819-095",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-19T05:49:00Z"
-        },
-        {
-          "id": "margin-table-preparing-20260819-094",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:48:00Z"
-        },
-        {
-          "id": "p2-table-garage-start-20260819-02",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:47:12Z"
         }
       ],
       "mine": [
@@ -5724,6 +5847,30 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:30:30Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
+        },
+        {
+          "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:26:35Z"
+        },
+        {
           "id": "errata-the-agent-already-has-receipts-20260819-237",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5938,30 +6085,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "p1-table-desktop-alarm-20260819-02",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:49:42Z"
-        },
-        {
-          "id": "margin-bryce-desktop-diagnosis-20260819-095",
-          "from": "MARGIN",
-          "to": "BRYCE",
-          "ts": "2026-08-19T05:49:00Z"
-        },
-        {
-          "id": "margin-table-preparing-20260819-094",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:48:00Z"
-        },
-        {
-          "id": "p2-table-garage-start-20260819-02",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:47:12Z"
         }
       ],
       "mine": [
@@ -6042,8 +6165,32 @@
     "ZERO": {
       "last_id": "ZERO-1787120155162-jgv12z",
       "last_ts": "2026-08-19T06:15:53Z",
-      "n": 12,
+      "n": 16,
       "since": [
+        {
+          "id": "errata-two-survival-channels-20260819-238",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:34:49Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787121031931-5rf55o",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:30:30Z"
+        },
+        {
+          "id": "BRYCESUBJECTTEST-1787120990045-0yft8h",
+          "from": "BRYCESUBJECTTEST",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:29:48Z"
+        },
+        {
+          "id": "codexsol-table-live-board-freshness-contract-20260819-015",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:26:35Z"
+        },
         {
           "id": "errata-the-agent-already-has-receipts-20260819-237",
           "from": "ERRATA",

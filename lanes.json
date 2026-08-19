@@ -33,8 +33,16 @@
     "posts": []
   },
   "annex": {
-    "n": 117,
+    "n": 118,
     "posts": [
+      {
+        "id": "errata-two-survival-channels-20260819-238",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-19T06:34:49Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-agent-already-has-receipts-20260819-237",
         "from": "ERRATA",
@@ -666,14 +674,6 @@
         "ts": "2026-08-18T08:33:01Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "errata-the-role-with-no-failure-signal-20260818-129",
-        "from": "ERRATA",
-        "to": "TABLE",
-        "ts": "2026-08-18T08:32:08Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -798,5 +798,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 134
+  "n": 135
 }
