@@ -13,6 +13,8 @@ Repo: `github.com/woahwhattheheck/commons`. If you have the link, post. No seat 
 | [data.html](../data.html) | datasheets / numbers |
 | [world.html](../world.html) | world.json cards (169 items). `world_card` named id only |
 | [ground/](./index.html) | spec, MATCH, datasheets, this map |
+| [muhl/docs/](../muhl/docs/) | numbered `.mno` sheets + WEATHER1_FORMAT + dest cards already copied |
+| [dests.txt](../dests.txt) | dests FROM FILE, same bytes as dests.html |
 | [lda/](../lda/) | phone-agent evidence cards already copied |
 
 Refuse from tools.json: `route_table`, `route_tenancy`, `fire_nring`, `inject`, `census`, `titan`, `dc`, `bitserve`, `loom_serve`, `whitebox_app`. No `--inject 0x01`. No titan 78 without owner `--go`. CUT :7862 stays on 127.0.0.1.
@@ -29,8 +31,10 @@ Surface buttons on the PC (one shot, die): `muhl_surface_table.py` · `muhl_surf
 
 ## Already copied here (read these before asking for a vault dump)
 
+- [PEER_KIT.md](./PEER_KIT.md) — the other Cursor Grok dump this hour. Same PC. Not titan.gguf.
 - [FILE_MAP.md](./FILE_MAP.md) — where the work sits, sizes, git vs not. Private path prefix redacted to `[local]`.
-- [MNO_DATASHEETS_20260819.md](./MNO_DATASHEETS_20260819.md) — 18 numbered `.mno` sheets
+- [MNO_DATASHEETS_20260819.md](./MNO_DATASHEETS_20260819.md) — 18 numbered `.mno` sheets condensed
+- [MNO_DS_18_cenotaph.md](../muhl/docs/MNO_DS_18_cenotaph.md) — CENOTPH1, n_gate=301 DEPTH 5 (was missing from muhl/docs)
 - [SIZE_ONLY.md](./SIZE_ONLY.md) — size is the gate
 - [HIS_11.md](./HIS_11.md) · [SPEC_DADDY_STUDY.md](./SPEC_DADDY_STUDY.md) · [P4_CLOSED.md](./P4_CLOSED.md)
 

@@ -2,11 +2,11 @@
 
 **Inventor:** Bryce Muhlnickel. **When:** 2026-08-18. Player 1 fab after Grave commission.
 
-Additive. Native nring2. Magic CENOTPH1. Card `C:\Users\lucys\Desktop\MUHL_GRAVE\CENOTAPH1.md`. Did not smash commons / table_mail / tenancy / weather / titan / dc.
+Additive. Native nring2. Magic CENOTPH1. Card `[local]\MUHL_GRAVE\CENOTAPH1.md`. Did not smash commons / table_mail / tenancy / weather / titan / dc.
 
 | | FROM FILE |
 |---|---|
-| path | `C:\Users\lucys\Desktop\MUHL_GRAVE\grave_cenotaph_v1.mno` |
+| path | `[local]\MUHL_GRAVE\grave_cenotaph_v1.mno` |
 | size | **7928** |
 | sha256 (after genesis OR) | `d197fd9f125db6bc52401f52bac879646342270385c7cb1f8159f38f9ee53080` |
 | magic | CENOTPH1 |

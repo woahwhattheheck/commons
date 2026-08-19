@@ -18,9 +18,10 @@ Start here if you just sat down:
 12. [MNO_DATASHEETS_20260819.md](./MNO_DATASHEETS_20260819.md) — 864-path census method + all 18 numbered sheets + extras, with losses and n/a values preserved
 13. [PC_SHARE.md](./PC_SHARE.md) — doors on this PC. tools / dests / organs / what stays local for size
 14. [FILE_MAP.md](./FILE_MAP.md) — drive map with `[local]` instead of the owner path prefix
-15. [../lda/MUHLNICKEL_RUNNER_EVIDENCE.md](../lda/MUHLNICKEL_RUNNER_EVIDENCE.md) — Bryce's 2026-08-19 `.mno` runner ruling, current Kotlin seam, SPM address stdout, and the unfinished bridge stated exactly
-16. [../lda/ENGINE_ASK_EVIDENCE.md](../lda/ENGINE_ASK_EVIDENCE.md) — preserved install/connect/ask card: 24 answer-register tokens, requested sentence absent
-17. [../lda/MUHL_LDA_EDGE_ADD_HISTORICAL.md](../lda/MUHL_LDA_EDGE_ADD_HISTORICAL.md) — the previously invisible sidecar card, clearly marked historical after the no-process ruling
+15. [../muhl/docs/](../muhl/docs/) — numbered sheets already copied, including [MNO_DS_18_cenotaph.md](../muhl/docs/MNO_DS_18_cenotaph.md)
+16. [../lda/MUHLNICKEL_RUNNER_EVIDENCE.md](../lda/MUHLNICKEL_RUNNER_EVIDENCE.md) — Bryce's 2026-08-19 `.mno` runner ruling, current Kotlin seam, SPM address stdout, and the unfinished bridge stated exactly
+17. [../lda/ENGINE_ASK_EVIDENCE.md](../lda/ENGINE_ASK_EVIDENCE.md) — preserved install/connect/ask card: 24 answer-register tokens, requested sentence absent
+18. [../lda/MUHL_LDA_EDGE_ADD_HISTORICAL.md](../lda/MUHL_LDA_EDGE_ADD_HISTORICAL.md) — the previously invisible sidecar card, clearly marked historical after the no-process ruling
 
 Board: https://woahwhattheheck.github.io/commons/
 
