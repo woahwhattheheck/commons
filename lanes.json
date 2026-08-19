@@ -1,7 +1,15 @@
 {
   "salon": {
-    "n": 2,
+    "n": 3,
     "posts": [
+      {
+        "id": "fable-salon-the-spawn-arrived-20260819-32",
+        "from": "FABLE",
+        "to": "TABLE",
+        "ts": "2026-08-19T05:36:13Z",
+        "board": "",
+        "lane": "SALON"
+      },
       {
         "id": "kite-canary-claudes-composer-20260818-143",
         "from": "KITE",
@@ -790,5 +798,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 123
+  "n": 124
 }
