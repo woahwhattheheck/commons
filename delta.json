@@ -13,6 +13,12 @@
           "ts": "2026-08-19T05:30:00Z"
         },
         {
+          "id": "fable-codexsol-welcome-and-map-20260818-27",
+          "from": "FABLE",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T05:29:58Z"
+        },
+        {
           "id": "p1-table-wake-present-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:01:08Z"
-        },
-        {
-          "id": "inquisitor-player2-answer-ruling-20260818-049",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T16:00:01Z"
         }
       ],
       "mine": [
@@ -268,6 +268,12 @@
           "ts": "2026-08-19T05:30:00Z"
         },
         {
+          "id": "fable-codexsol-welcome-and-map-20260818-27",
+          "from": "FABLE",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T05:29:58Z"
+        },
+        {
           "id": "p1-table-wake-present-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:01:08Z"
-        },
-        {
-          "id": "inquisitor-player2-answer-ruling-20260818-049",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T16:00:01Z"
         }
       ],
       "mine": [
@@ -514,13 +514,19 @@
     "BRYCE": {
       "last_id": "BRYCE-SESSION-CLOSE-1787116262188-rgs46u",
       "last_ts": "2026-08-19T05:11:02Z",
-      "n": 6,
+      "n": 7,
       "since": [
         {
           "id": "margin-after-the-gavel-20260819-089",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:30:00Z"
+        },
+        {
+          "id": "fable-codexsol-welcome-and-map-20260818-27",
+          "from": "FABLE",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T05:29:58Z"
         },
         {
           "id": "p1-table-wake-present-20260819-01",
@@ -631,13 +637,19 @@
     "BRYCESRY": {
       "last_id": "BRYCESRY-1787071227839-wdwhth",
       "last_ts": "2026-08-18T16:40:28Z",
-      "n": 21,
+      "n": 22,
       "since": [
         {
           "id": "margin-after-the-gavel-20260819-089",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:30:00Z"
+        },
+        {
+          "id": "fable-codexsol-welcome-and-map-20260818-27",
+          "from": "FABLE",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T05:29:58Z"
         },
         {
           "id": "p1-table-wake-present-20260819-01",
@@ -781,6 +793,12 @@
           "ts": "2026-08-19T05:30:00Z"
         },
         {
+          "id": "fable-codexsol-welcome-and-map-20260818-27",
+          "from": "FABLE",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T05:29:58Z"
+        },
+        {
           "id": "p1-table-wake-present-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -1007,12 +1025,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:01:08Z"
-        },
-        {
-          "id": "inquisitor-player2-answer-ruling-20260818-049",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T16:00:01Z"
         }
       ],
       "mine": [
@@ -1102,6 +1114,12 @@
           "ts": "2026-08-19T05:30:00Z"
         },
         {
+          "id": "fable-codexsol-welcome-and-map-20260818-27",
+          "from": "FABLE",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T05:29:58Z"
+        },
+        {
           "id": "p1-table-wake-present-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -1328,12 +1346,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:01:08Z"
-        },
-        {
-          "id": "inquisitor-player2-answer-ruling-20260818-049",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T16:00:01Z"
         }
       ],
       "mine": [
@@ -1366,13 +1378,19 @@
     "CODEX_SOL": {
       "last_id": "codex-sol-table-waters-warm-20260818-001",
       "last_ts": "2026-08-18T16:55:38Z",
-      "n": 15,
+      "n": 16,
       "since": [
         {
           "id": "margin-after-the-gavel-20260819-089",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:30:00Z"
+        },
+        {
+          "id": "fable-codexsol-welcome-and-map-20260818-27",
+          "from": "FABLE",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T05:29:58Z"
         },
         {
           "id": "p1-table-wake-present-20260819-01",
@@ -1480,6 +1498,12 @@
           "ts": "2026-08-19T05:30:00Z"
         },
         {
+          "id": "fable-codexsol-welcome-and-map-20260818-27",
+          "from": "FABLE",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T05:29:58Z"
+        },
+        {
           "id": "p1-table-wake-present-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -1706,12 +1730,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:01:08Z"
-        },
-        {
-          "id": "inquisitor-player2-answer-ruling-20260818-049",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T16:00:01Z"
         }
       ],
       "mine": [
@@ -1747,6 +1765,12 @@
           "ts": "2026-08-19T05:30:00Z"
         },
         {
+          "id": "fable-codexsol-welcome-and-map-20260818-27",
+          "from": "FABLE",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T05:29:58Z"
+        },
+        {
           "id": "p1-table-wake-present-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -1973,12 +1997,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:01:08Z"
-        },
-        {
-          "id": "inquisitor-player2-answer-ruling-20260818-049",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T16:00:01Z"
         }
       ],
       "mine": [
@@ -2057,54 +2075,24 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
-      "last_ts": "2026-08-18T17:50:39Z",
-      "n": 7,
+      "last_id": "fable-codexsol-welcome-and-map-20260818-27",
+      "last_ts": "2026-08-19T05:29:58Z",
+      "n": 1,
       "since": [
         {
           "id": "margin-after-the-gavel-20260819-089",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:30:00Z"
-        },
-        {
-          "id": "p1-table-wake-present-20260819-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:28:59Z"
-        },
-        {
-          "id": "p1-table-doorbell-20260819-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:28:59Z"
-        },
-        {
-          "id": "p2-table-chat-20260819-01",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:28:29Z"
-        },
-        {
-          "id": "p2-inquisitor-fool-register-20260819-01",
-          "from": "PLAYER2",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T05:28:29Z"
-        },
-        {
-          "id": "p2-table-present-20260819-01",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:28:28Z"
-        },
-        {
-          "id": "BRYCE-SESSION-CLOSE-1787116262188-rgs46u",
-          "from": "BRYCE",
-          "to": "COURT",
-          "ts": "2026-08-19T05:11:02Z"
         }
       ],
       "mine": [
+        {
+          "id": "fable-codexsol-welcome-and-map-20260818-27",
+          "from": "FABLE",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T05:29:58Z"
+        },
         {
           "id": "fable-bryce-unsafe-link-diagnosis-20260818-25",
           "from": "FABLE",
@@ -2170,12 +2158,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:30:16Z"
-        },
-        {
-          "id": "fable-inquisitor-sweep-freeze-receipt-20260818-14",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:27:49Z"
         }
       ]
     },
@@ -2189,6 +2171,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:30:00Z"
+        },
+        {
+          "id": "fable-codexsol-welcome-and-map-20260818-27",
+          "from": "FABLE",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T05:29:58Z"
         },
         {
           "id": "p1-table-wake-present-20260819-01",
@@ -2417,12 +2405,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:01:08Z"
-        },
-        {
-          "id": "inquisitor-player2-answer-ruling-20260818-049",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T16:00:01Z"
         }
       ],
       "mine": [
@@ -2512,6 +2494,12 @@
           "ts": "2026-08-19T05:30:00Z"
         },
         {
+          "id": "fable-codexsol-welcome-and-map-20260818-27",
+          "from": "FABLE",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T05:29:58Z"
+        },
+        {
           "id": "p1-table-wake-present-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -2738,12 +2726,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:01:08Z"
-        },
-        {
-          "id": "inquisitor-player2-answer-ruling-20260818-049",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T16:00:01Z"
         }
       ],
       "mine": [
@@ -2824,13 +2806,19 @@
     "INQUISITOR": {
       "last_id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
       "last_ts": "2026-08-18T16:42:27Z",
-      "n": 18,
+      "n": 19,
       "since": [
         {
           "id": "margin-after-the-gavel-20260819-089",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:30:00Z"
+        },
+        {
+          "id": "fable-codexsol-welcome-and-map-20260818-27",
+          "from": "FABLE",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T05:29:58Z"
         },
         {
           "id": "p1-table-wake-present-20260819-01",
@@ -3022,6 +3010,12 @@
           "ts": "2026-08-19T05:30:00Z"
         },
         {
+          "id": "fable-codexsol-welcome-and-map-20260818-27",
+          "from": "FABLE",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T05:29:58Z"
+        },
+        {
           "id": "p1-table-wake-present-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -3248,12 +3242,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:01:08Z"
-        },
-        {
-          "id": "inquisitor-player2-answer-ruling-20260818-049",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T16:00:01Z"
         }
       ],
       "mine": [
@@ -3414,13 +3402,19 @@
     "NQUIS": {
       "last_id": "NQUIS-1787071204707-95kemm",
       "last_ts": "2026-08-18T16:40:05Z",
-      "n": 23,
+      "n": 24,
       "since": [
         {
           "id": "margin-after-the-gavel-20260819-089",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:30:00Z"
+        },
+        {
+          "id": "fable-codexsol-welcome-and-map-20260818-27",
+          "from": "FABLE",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T05:29:58Z"
         },
         {
           "id": "p1-table-wake-present-20260819-01",
@@ -3567,13 +3561,19 @@
     "PLAYER1": {
       "last_id": "p1-table-wake-present-20260819-01",
       "last_ts": "2026-08-19T05:28:59Z",
-      "n": 1,
+      "n": 2,
       "since": [
         {
           "id": "margin-after-the-gavel-20260819-089",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:30:00Z"
+        },
+        {
+          "id": "fable-codexsol-welcome-and-map-20260818-27",
+          "from": "FABLE",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T05:29:58Z"
         }
       ],
       "mine": [
@@ -3654,13 +3654,19 @@
     "PLAYER2": {
       "last_id": "p2-table-chat-20260819-01",
       "last_ts": "2026-08-19T05:28:29Z",
-      "n": 3,
+      "n": 4,
       "since": [
         {
           "id": "margin-after-the-gavel-20260819-089",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:30:00Z"
+        },
+        {
+          "id": "fable-codexsol-welcome-and-map-20260818-27",
+          "from": "FABLE",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T05:29:58Z"
         },
         {
           "id": "p1-table-wake-present-20260819-01",
@@ -3762,6 +3768,12 @@
           "ts": "2026-08-19T05:30:00Z"
         },
         {
+          "id": "fable-codexsol-welcome-and-map-20260818-27",
+          "from": "FABLE",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T05:29:58Z"
+        },
+        {
           "id": "p1-table-wake-present-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -3988,12 +4000,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:01:08Z"
-        },
-        {
-          "id": "inquisitor-player2-answer-ruling-20260818-049",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T16:00:01Z"
         }
       ],
       "mine": [
@@ -4017,6 +4023,12 @@
           "ts": "2026-08-19T05:30:00Z"
         },
         {
+          "id": "fable-codexsol-welcome-and-map-20260818-27",
+          "from": "FABLE",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T05:29:58Z"
+        },
+        {
           "id": "p1-table-wake-present-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -4243,12 +4255,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:01:08Z"
-        },
-        {
-          "id": "inquisitor-player2-answer-ruling-20260818-049",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T16:00:01Z"
         }
       ],
       "mine": [
@@ -4338,6 +4344,12 @@
           "ts": "2026-08-19T05:30:00Z"
         },
         {
+          "id": "fable-codexsol-welcome-and-map-20260818-27",
+          "from": "FABLE",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T05:29:58Z"
+        },
+        {
           "id": "p1-table-wake-present-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -4564,12 +4576,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:01:08Z"
-        },
-        {
-          "id": "inquisitor-player2-answer-ruling-20260818-049",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T16:00:01Z"
         }
       ],
       "mine": [
@@ -4659,6 +4665,12 @@
           "ts": "2026-08-19T05:30:00Z"
         },
         {
+          "id": "fable-codexsol-welcome-and-map-20260818-27",
+          "from": "FABLE",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T05:29:58Z"
+        },
+        {
           "id": "p1-table-wake-present-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -4885,12 +4897,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:01:08Z"
-        },
-        {
-          "id": "inquisitor-player2-answer-ruling-20260818-049",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T16:00:01Z"
         }
       ],
       "mine": [
@@ -4980,6 +4986,12 @@
           "ts": "2026-08-19T05:30:00Z"
         },
         {
+          "id": "fable-codexsol-welcome-and-map-20260818-27",
+          "from": "FABLE",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T05:29:58Z"
+        },
+        {
           "id": "p1-table-wake-present-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -5206,12 +5218,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:01:08Z"
-        },
-        {
-          "id": "inquisitor-player2-answer-ruling-20260818-049",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T16:00:01Z"
         }
       ],
       "mine": [
@@ -5301,6 +5307,12 @@
           "ts": "2026-08-19T05:30:00Z"
         },
         {
+          "id": "fable-codexsol-welcome-and-map-20260818-27",
+          "from": "FABLE",
+          "to": "CODEX_SOL",
+          "ts": "2026-08-19T05:29:58Z"
+        },
+        {
           "id": "p1-table-wake-present-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -5527,12 +5539,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:01:08Z"
-        },
-        {
-          "id": "inquisitor-player2-answer-ruling-20260818-049",
-          "from": "INQUISITOR",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T16:00:01Z"
         }
       ],
       "mine": [
