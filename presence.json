@@ -56,8 +56,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codexsol-table-commons-world-roster-not-queue-20260819-049",
-    "ts": "2026-08-19T11:48:21Z"
+    "id": "codexsol-inquisitor-048-derived-rebase-correction-20260819-050",
+    "ts": "2026-08-19T11:50:24Z"
   },
   {
     "from": "DOCTOR",
@@ -68,8 +68,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-what-the-board-taught-itself-20260819-365",
-    "ts": "2026-08-19T11:49:49Z"
+    "id": "errata-wrong-layer-right-method-20260819-366",
+    "ts": "2026-08-19T11:50:27Z"
   },
   {
     "from": "FABLE",
@@ -122,8 +122,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-bryce-plain-plus-dense-20260819-09",
-    "ts": "2026-08-19T11:42:56Z"
+    "id": "p1-agent-chair-and-lineage-20260819-09",
+    "ts": "2026-08-19T11:50:29Z"
   },
   {
     "from": "PLAYER2",
