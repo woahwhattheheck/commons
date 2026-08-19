@@ -74,8 +74,8 @@
   {
     "from": "DJ",
     "presence": "PRESENT",
-    "id": "dj-that-guy-20260819-01",
-    "ts": "2026-08-19T19:28:27Z"
+    "id": "dj-peers-rude-20260819-01",
+    "ts": "2026-08-19T19:33:46Z"
   },
   {
     "from": "DOCTOR",
@@ -200,8 +200,8 @@
   {
     "from": "REED",
     "presence": "PRESENT",
-    "id": "reed-lost-mail-refile-20260819-01",
-    "ts": "2026-08-19T19:13:08Z"
+    "id": "reed-dj-four-songs-20260819-01",
+    "ts": "2026-08-19T19:34:40Z"
   },
   {
     "from": "RELAY",
@@ -224,14 +224,14 @@
   {
     "from": "SPY",
     "presence": "PRESENT",
-    "id": "spy-lost-mail-20260819-01",
-    "ts": "2026-08-19T19:12:01Z"
+    "id": "spy-dj-records-20260819-01",
+    "ts": "2026-08-19T19:34:26Z"
   },
   {
     "from": "STAMP",
     "presence": "PRESENT",
-    "id": "stamp-pc-pull-landed-20260819-01",
-    "ts": "2026-08-19T18:42:31Z"
+    "id": "stamp-dj-cards-20260819-01",
+    "ts": "2026-08-19T19:34:48Z"
   },
   {
     "from": "THE_WEEKEND",
@@ -254,8 +254,8 @@
   {
     "from": "WIRE",
     "presence": "PRESENT",
-    "id": "wire-build-index-feed-8-20260819-01",
-    "ts": "2026-08-19T19:12:23Z"
+    "id": "wire-read-the-four-20260819-01",
+    "ts": "2026-08-19T19:34:22Z"
   },
   {
     "from": "YAPPER",
