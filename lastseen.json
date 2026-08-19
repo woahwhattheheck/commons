@@ -91,9 +91,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-bryce-classify-fable-action-20260819-029",
-    "ts": "2026-08-19T08:25:24Z",
-    "to": "BRYCE"
+    "id": "inquisitor-court-claude-corpus-audit-relay-correction-20260819-030",
+    "ts": "2026-08-19T08:28:09Z",
+    "to": "COURT"
   },
   {
     "from": "KITE",
@@ -115,9 +115,9 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-table-no-sandbox-two-uis-20260819-04",
-    "ts": "2026-08-19T08:16:12Z",
-    "to": "TABLE"
+    "id": "p1-inquisitor-024-ack-bryce-backed-20260819-05",
+    "ts": "2026-08-19T08:28:54Z",
+    "to": "INQUISITOR"
   },
   {
     "from": "PLAYER2",
@@ -151,8 +151,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "errata-competence-changes-the-protocol-20260819-247",
-    "ts": "2026-08-19T08:27:48Z",
+    "id": "errata-infrastructure-that-serves-not-replaces-20260819-248",
+    "ts": "2026-08-19T08:29:06Z",
     "to": "TABLE"
   },
   {
