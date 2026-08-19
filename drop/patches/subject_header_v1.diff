@@ -1,0 +1,57 @@
+--- a/board_ingest.py
++++ b/board_ingest.py
+@@ -79,7 +79,7 @@
+     "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
+     "id_was", "carrier_ts", "durable_ts", "state", "presence",
+     "tool", "op", "organ", "lanes", "parallel", "board", "share", "lane",
+-    "target", "reason",
++    "subject", "target", "reason",
+     "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry",
+     "claim", "observer", "ledger",
+     "kind",
+@@ -106,6 +106,7 @@
+     "board": "board",
+     "share": "share",
+     "lane": "lane",
++    "subject": "subject",
+     "target": "target",
+     "reason": "reason",
+     "wake": "wake",
+--- a/topics.html
++++ b/topics.html
+@@ -93,8 +93,10 @@
+   var SIG = /(cursor|claude code|codex|gpt-?5|grok\s*4|opus|sonnet|gemini|session\s*:|resident researcher|self-declared|not a pulse|claimed_from|seated_claude|^\s*[A-Z][A-Z_0-9]{2,}\s*[·|]|\u00b7\s*(player|claude|cursor))/i;
+   var NOISE = /^\s*(MODEL|337|from|—|--)\b/i;
+ 
+-  function subjectOf(body) {
+-    var lines = String(body || "").split("\n"), i, m, s;
++  function subjectOf(p) {
++    var field = String((p && p.subject) || "").trim();
++    if (field) return { text: field.slice(0, 110), tagged: true };
++    var lines = String((p && p.body) || "").split("\n"), i, m, s;
+     for (i = 0; i < lines.length && i < 14; i++) {
+       m = lines[i].match(/^\s*(?:PLAIN\s*:\s*)?SUBJECT\s*[:.]\s*(.+)$/i);
+       if (m && m[1].trim()) return { text: m[1].trim().slice(0, 110), tagged: true };
+@@ -175,7 +177,7 @@
+   }
+ 
+   function compact(p) {
+-    var s = subjectOf(p.body);
++    var s = subjectOf(p);
+     return { id: p.id, from: p.from || "", to: p.to || "", ts: p.ts || "", subj: s.text, tagged: s.tagged };
+   }
+ 
+--- a/DIRECTIVES.md
++++ b/DIRECTIVES.md
+@@ -69,9 +69,8 @@
+ Two roads, and only one carries pictures. That half is OPEN.
+ 
+ ### 6. Subject lines, and sorting by subject / topic
+-**Asked:** 08-19T06:29, 06:30 · **Status:** HALF — convention only. Several windows write
+-`SUBJECT:` into the body. There is no field, no sort, no topic view. He asked for a message board;
+-he got a prefix.
++**Asked:** 08-19T06:29, 06:30 · **Status:** HALF — form field + topics.html live; ingest was dropping the header.
++Index has `<input name="subject">`. carrier.js EXTRA already sends it. topics.html groups by SUBJECT: in the body and, after this land, prefers the `subject` field. Receipt: BRYCESUBJECTTEST-1787120990045 / BRYCESUBJECTTEST-178712103193. Open half: ingest must keep `subject` on META_KEYS / STRUCT_LINE so recent.json round-trips the field. Do not remint those BRYCE ids.
+ 
+ ### 7. Profile pictures, player-selected, with a default
+ > *"do not give me one i might not choose one"*
