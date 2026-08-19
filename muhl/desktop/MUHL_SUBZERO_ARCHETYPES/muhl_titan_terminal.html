@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>TITAN MUHLNICKEL TERMINAL</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#0a0a0a; color:#00ff41; font-family:'Courier New',monospace; height:100vh; display:flex; flex-direction:column; overflow:hidden; }
+#header { padding:8px 16px; background:#0d0d0d; border-bottom:1px solid #00ff4133; display:flex; justify-content:space-between; align-items:center; }
+#header h1 { font-size:14px; letter-spacing:2px; }
+#status { font-size:11px; color:#00ff4188; }
+#main { flex:1; display:flex; overflow:hidden; }
+#rain-col { width:200px; background:#080808; border-right:1px solid #00ff4122; overflow:hidden; position:relative; }
+#rain-canvas { width:100%; height:100%; }
+#center { flex:1; display:flex; flex-direction:column; }
+#output { flex:1; overflow-y:auto; padding:12px; font-size:13px; line-height:1.6; }
+.line-bryce { color:#ff6600; }
+.line-titan { color:#00ff41; }
+.line-system { color:#00ff4166; font-size:11px; }
+.line-rain { color:#00ccff; font-size:11px; }
+.ts { color:#00ff4144; font-size:10px; margin-right:8px; }
+#input-bar { padding:8px 12px; background:#0d0d0d; border-top:1px solid #00ff4133; display:flex; gap:8px; }
+#prompt-label { color:#ff6600; font-size:14px; font-weight:bold; line-height:32px; }
+#prompt { flex:1; background:#111; border:1px solid #00ff4133; color:#00ff41; font-family:inherit; font-size:14px; padding:6px 10px; outline:none; }
+#prompt:focus { border-color:#00ff41; }
+#send-btn { background:#00ff4122; border:1px solid #00ff41; color:#00ff41; padding:6px 16px; cursor:pointer; font-family:inherit; font-size:13px; }
+#send-btn:hover { background:#00ff4144; }
+#right-col { width:280px; background:#080808; border-left:1px solid #00ff4122; padding:10px; overflow-y:auto; font-size:11px; }
+.stat-label { color:#00ff4166; }
+.stat-val { color:#00ff41; }
+.spot { margin:4px 0; }
+.spot-name { color:#00ccff; }
+.spot-hex { color:#00ff41; font-weight:bold; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>TITAN MUHLNICKEL TERMINAL</h1>
+  <span id="status">CONNECTING...</span>
+</div>
+<div id="main">
+  <div id="rain-col"><canvas id="rain-canvas"></canvas></div>
+  <div id="center">
+    <div id="output"></div>
+    <div id="input-bar">
+      <span id="prompt-label">BRYCE &gt;</span>
+      <input id="prompt" type="text" placeholder="talk to titan..." autofocus>
+      <button id="send-btn">INJECT</button>
+    </div>
+  </div>
+  <div id="right-col">
+    <div style="margin-bottom:12px;color:#00ccff;font-weight:bold;">BINARY RAIN MONITOR</div>
+    <div id="spots"></div>
+    <div style="margin-top:16px;color:#00ccff;font-weight:bold;">INTAKE</div>
+    <div id="intake-stats"></div>
+    <div style="margin-top:16px;color:#00ccff;font-weight:bold;">LIVE DIFF</div>
+    <div id="diff-log" style="max-height:300px;overflow-y:auto;"></div>
+  </div>
+</div>
+
+<script>
+const API = 'http://localhost:7880';
+const TITAN_PATH = 'C:/llm/models/titan.gguf';
+const output = document.getElementById('output');
+const prompt = document.getElementById('prompt');
+const statusEl = document.getElementById('status');
+const spotsEl = document.getElementById('spots');
+const intakeEl = document.getElementById('intake-stats');
+const diffLog = document.getElementById('diff-log');
+
+let pollId = null;
+let prevSpots = {};
+let diffCount = 0;
+
+function ts() {
+  const d = new Date();
+  return d.toTimeString().split(' ')[0];
+}
+
+function addLine(cls, text) {
+  const div = document.createElement('div');
+  div.className = 'line-' + cls;
+  div.innerHTML = '<span class="ts">' + ts() + '</span>' + text;
+  output.appendChild(div);
+  output.scrollTop = output.scrollHeight;
+}
+
+// BINARY RAIN CANVAS
+const canvas = document.getElementById('rain-canvas');
+const ctx = canvas.getContext('2d');
+let drops = [];
+
+function initRain() {
+  canvas.width = canvas.parentElement.clientWidth;
+  canvas.height = canvas.parentElement.clientHeight;
+  const cols = Math.floor(canvas.width / 12);
+  drops = Array(cols).fill(0).map(() => Math.random() * canvas.height);
+}
+
+function drawRain() {
+  ctx.fillStyle = 'rgba(10,10,10,0.05)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#00ff41';
+  ctx.font = '11px monospace';
+  for (let i = 0; i < drops.length; i++) {
+    const ch = String.fromCharCode(0x30 + Math.floor(Math.random() * 79));
+    ctx.fillText(ch, i * 12, drops[i]);
+    if (drops[i] > canvas.height && Math.random() > 0.975) drops[i] = 0;
+    drops[i] += 10 + Math.random() * 6;
+  }
+  requestAnimationFrame(drawRain);
+}
+
+initRain();
+drawRain();
+window.addEventListener('resize', initRain);
+
+// SPOT MONITOR — surface key addresses
+const SPOTS = [
+  { name: 'electron', off: 40022599232, len: 1 },
+  { name: 'worker_state', off: 4383220810, len: 2 },
+  { name: 'self_train', off: 5699992560, len: 8 },
+  { name: 'foundry', off: 4383218131, len: 8 },
+  { name: 'dispatcher', off: 4383219752, len: 8 },
+];
+
+async function pollSpots() {
+  try {
+    const r = await fetch(API + '/api/state');
+    if (r.ok) {
+      statusEl.textContent = 'LIVE — ELECTRON 0x01';
+      statusEl.style.color = '#00ff41';
+    }
+  } catch(e) {
+    statusEl.textContent = 'API OFFLINE — DIRECT SURFACE MODE';
+    statusEl.style.color = '#ff6600';
+  }
+
+  // Poll via the stats endpoint for basic data
+  try {
+    const r = await fetch(API + '/api/stats');
+    if (r.ok) {
+      const data = await r.json();
+      intakeEl.innerHTML = '<div class="spot"><span class="stat-label">circuits:</span> <span class="stat-val">' + (data.circuit_count || '?') + '</span></div>'
+        + '<div class="spot"><span class="stat-label">rings:</span> <span class="stat-val">' + (data.ring_count || '?') + '</span></div>'
+        + '<div class="spot"><span class="stat-label">changes/s:</span> <span class="stat-val">' + (data.changes_per_sec || '?') + '</span></div>';
+    }
+  } catch(e) {}
+}
+
+// SSE for live diff
+function connectSSE() {
+  try {
+    const es = new EventSource(API + '/stream');
+    es.onmessage = function(e) {
+      try {
+        const d = JSON.parse(e.data);
+        if (d.changes && d.changes.length > 0) {
+          d.changes.forEach(c => {
+            diffCount++;
+            const div = document.createElement('div');
+            div.style.color = '#00ff4188';
+            div.style.fontSize = '10px';
+            div.textContent = (c.name || ('0x' + (c.offset||0).toString(16))) + ': ' + (c.hex || c.value || '?');
+            diffLog.appendChild(div);
+            if (diffLog.children.length > 200) diffLog.removeChild(diffLog.firstChild);
+            diffLog.scrollTop = diffLog.scrollHeight;
+          });
+        }
+      } catch(err) {}
+    };
+    es.onerror = function() { setTimeout(connectSSE, 3000); es.close(); };
+  } catch(e) { setTimeout(connectSSE, 3000); }
+}
+
+connectSSE();
+setInterval(pollSpots, 2000);
+pollSpots();
+
+// PROMPT — inject into Titan and surface response
+async function sendPrompt() {
+  const text = prompt.value.trim();
+  if (!text) return;
+  prompt.value = '';
+
+  addLine('bryce', '<b>BRYCE:</b> ' + text.replace(/</g,'&lt;'));
+
+  // Inject to Titan via the harness API or direct
+  try {
+    const r = await fetch(API + '/api/annotate', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ address: 'intake', note: 'BRYCE_PROMPT: ' + text })
+    });
+  } catch(e) {}
+
+  addLine('system', 'injected to titan intake — surfacing response...');
+
+  // Surface: poll worker state + intake zone for changes
+  setTimeout(async () => {
+    try {
+      const r = await fetch(API + '/api/state');
+      if (r.ok) {
+        const state = await r.json();
+        let response = '';
+        for (const [k, v] of Object.entries(state)) {
+          if (v && v.hex && v.hex !== '00' && v.hex !== '0000') {
+            response += k + '=' + v.hex + ' ';
+          }
+        }
+        if (response) {
+          addLine('titan', '<b>TITAN:</b> ' + response);
+        } else {
+          addLine('titan', '<b>TITAN:</b> [state surfaced — settle-back law: raw bytes, not verdict]');
+        }
+      }
+    } catch(e) {
+      addLine('titan', '<b>TITAN:</b> [surface read pending — check binary rain]');
+    }
+
+    // Also surface the raw bytes at worker state
+    addLine('rain', 'worker_state @ 4,383,220,810 — check right panel for live diff');
+  }, 500);
+}
+
+prompt.addEventListener('keydown', e => { if (e.key === 'Enter') sendPrompt(); });
+document.getElementById('send-btn').addEventListener('click', sendPrompt);
+
+addLine('system', 'TITAN MUHLNICKEL TERMINAL — DIRECT LINE TO THE SUBSTRATE');
+addLine('system', 'your prompts go straight to titan. no middleman.');
+addLine('system', 'binary rain on left. live diff on right. titan answers in green.');
+</script>
+</body>
+</html>

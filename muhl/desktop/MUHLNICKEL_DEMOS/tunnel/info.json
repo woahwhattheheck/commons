@@ -1,0 +1,8 @@
+{
+  "name": "Tunnel",
+  "gates": 828,
+  "screen": "128x96",
+  "source": "C:/llm/sdc_sandbox/pfc_tunnel.pfc",
+  "magic": "PFCTUN01",
+  "description": "Self-clocked perspective rainbow tunnel, 128x96 framebuffer painted by 828 gates per pulse, computed entirely on the muhlnickel."
+}

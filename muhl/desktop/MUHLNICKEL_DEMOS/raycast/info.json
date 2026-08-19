@@ -1,0 +1,9 @@
+{
+  "name": "Raycaster 3D",
+  "gates": 384396,
+  "screen": "80x60",
+  "map": "8x8",
+  "source": "C:/llm/sdc_sandbox/pfc_raycast.pfc",
+  "magic": "PFCRAY01",
+  "description": "First-person 3D raycaster with ray marching, wall projection, distance shading, and multi-colour walls, computed entirely on the muhlnickel."
+}

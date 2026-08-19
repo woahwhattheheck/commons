@@ -1,0 +1,460 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HRDST-v7 — Muhlnickel Architecture Portfolio</title>
+<style>
+:root{
+  --paper:#0C1016;--surface:#141A24;--surface2:#1B2330;--ink:#E8ECF3;--ink2:#A4AFC0;--ink3:#7B8698;
+  --rule:#28313F;--ruleS:#1E2632;--copper:#D98A4F;--copperS:#2A1D13;--ok:#5FC397;--okS:#13241C;
+  --blue:#7FB0E0;--purple:#A99BEE;--bad:#E8806F;--badS:#2A1512;
+  --mono:ui-monospace,"Cascadia Mono","SF Mono",Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --serif:Georgia,"Iowan Old Style",serif;
+}
+@media(prefers-color-scheme:light){:root{
+  --paper:#ECEFF3;--surface:#F7F9FC;--surface2:#E0E5EE;--ink:#141A24;--ink2:#48566A;--ink3:#6B7686;
+  --rule:#C6CEDA;--ruleS:#DBE0EA;--copper:#A85A26;--copperS:#F0E2D6;--ok:#1F6B4C;--okS:#DDEDE4;
+  --blue:#2C5B8A;--purple:#57499F;--bad:#B23A2E;--badS:#F2DED9;}}
+:root[data-theme="light"]{
+  --paper:#ECEFF3;--surface:#F7F9FC;--surface2:#E0E5EE;--ink:#141A24;--ink2:#48566A;--ink3:#6B7686;
+  --rule:#C6CEDA;--ruleS:#DBE0EA;--copper:#A85A26;--copperS:#F0E2D6;--ok:#1F6B4C;--okS:#DDEDE4;
+  --blue:#2C5B8A;--purple:#57499F;--bad:#B23A2E;--badS:#F2DED9;}
+:root[data-theme="dark"]{
+  --paper:#0C1016;--surface:#141A24;--surface2:#1B2330;--ink:#E8ECF3;--ink2:#A4AFC0;--ink3:#7B8698;
+  --rule:#28313F;--ruleS:#1E2632;--copper:#D98A4F;--copperS:#2A1D13;--ok:#5FC397;--okS:#13241C;
+  --blue:#7FB0E0;--purple:#A99BEE;--bad:#E8806F;--badS:#2A1512;}
+*{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55}
+.wrap{max-width:1200px;margin:0 auto;padding:clamp(20px,4vw,50px) clamp(14px,3vw,32px) 80px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3)}
+h1{font-weight:850;letter-spacing:-.03em;line-height:1.05;font-size:clamp(34px,7vw,72px);margin:.15em 0 .1em}
+h1 span{color:var(--copper)}
+header{border-bottom:2px solid var(--ink);padding-bottom:22px}
+.tag{font-family:var(--serif);color:var(--ink2);max-width:70ch;font-size:17px;line-height:1.6}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--rule);
+  border:1px solid var(--rule);margin:24px 0 6px}
+.kpi{background:var(--surface);padding:14px 16px}
+.kpi .k{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink3)}
+.kpi .v{font-weight:850;font-size:clamp(20px,3vw,28px);letter-spacing:-.02em;margin-top:3px;
+  font-variant-numeric:tabular-nums;line-height:1}
+.kpi .s{font-family:var(--mono);font-size:10px;color:var(--ink3);margin-top:3px}
+section{margin-top:40px}
+.cat{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:16px}
+.cat h2{font-weight:750;font-size:18px;margin:0}
+.cat .n{font-family:var(--mono);font-size:11px;color:var(--copper)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.card{border:1px solid var(--rule);background:var(--surface);padding:16px 18px;display:flex;flex-direction:column;gap:8px;
+  transition:border-color .15s}
+.card:hover{border-color:var(--copper)}
+.card .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.card h3{font-weight:700;font-size:15px;margin:0;letter-spacing:-.01em}
+.card h3 .id{color:var(--copper);font-family:var(--mono);font-size:12px;margin-right:6px}
+.card p{margin:0;color:var(--ink2);font-size:13.5px;line-height:1.5}
+.pill{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;
+  white-space:nowrap;background:var(--okS);color:var(--ok);border:1px solid var(--ok)}
+.pill.fab{background:var(--copperS);color:var(--copper);border-color:var(--copper)}
+.meta{display:flex;gap:6px 14px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink3);
+  font-variant-numeric:tabular-nums;margin-top:2px}
+.meta b{color:var(--ink2);font-weight:600}
+.bar-wrap{margin-top:6px}
+.bar{height:6px;background:var(--surface2);border-radius:3px;overflow:hidden;position:relative}
+.bar .fill{height:100%;border-radius:3px;transition:width .3s}
+.bar-label{font-family:var(--mono);font-size:10px;color:var(--ink3);margin-top:2px;display:flex;justify-content:space-between}
+
+/* Chart section */
+.chart-section{margin-top:40px;border:1px solid var(--rule);background:var(--surface);padding:20px}
+.chart-title{font-weight:750;font-size:16px;margin:0 0 16px}
+.hbar{display:flex;align-items:center;gap:8px;margin:3px 0;font-family:var(--mono);font-size:11px}
+.hbar .lbl{width:110px;text-align:right;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink2)}
+.hbar .track{flex:1;height:16px;background:var(--surface2);border-radius:2px;overflow:hidden;position:relative}
+.hbar .fill{height:100%;border-radius:2px}
+.hbar .val{width:70px;flex-shrink:0;color:var(--ink3);font-variant-numeric:tabular-nums}
+.gradient-copper{background:linear-gradient(90deg,var(--copper),#E8B86D)}
+.gradient-ok{background:linear-gradient(90deg,var(--ok),#8DDDB8)}
+.gradient-blue{background:linear-gradient(90deg,var(--blue),#B4D4F0)}
+.gradient-purple{background:linear-gradient(90deg,var(--purple),#C9BEF5)}
+
+.depth-chart .hbar .track{height:12px}
+.depth-chart .hbar .lbl{width:110px;font-size:10px}
+.depth-chart .hbar .val{width:60px;font-size:10px}
+
+.selfclock{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ok);margin-right:4px;vertical-align:middle}
+.noselfclock{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--surface2);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+
+footer{margin-top:44px;padding-top:16px;border-top:2px solid var(--ink);font-family:var(--mono);font-size:11px;
+  color:var(--ink3);line-height:1.9}
+a{color:var(--copper);text-decoration:none}a:hover{text-decoration:underline}
+.back{display:inline-block;margin-bottom:12px;font-family:var(--mono);font-size:12px}
+</style></head><body>
+<div class="wrap">
+<a href="../index.html" class="back">&larr; back to dashboard</a>
+
+<header>
+  <div class="eyebrow">37 verified deliverables &middot; all byte-exact &middot; Lane B Muhlnickel-native</div>
+  <h1>HRDST-v7 <span>Portfolio</span></h1>
+  <div class="tag">Every architecture below was fabricated as physical NAND gates on the titan.gguf substrate,
+  verified byte-exact against an independent Python reference, and is ready to store. Nothing here ran on a GPU.
+  Nothing here used floating point. Every circuit is logic gates addressed in a 40 GB file.</div>
+  <div class="kpis">
+    <div class="kpi"><div class="k">Deliverables</div><div class="v">37</div><div class="s">all verified</div></div>
+    <div class="kpi"><div class="k">Total gates</div><div class="v">448,378</div><div class="s">across all circuits</div></div>
+    <div class="kpi"><div class="k">Substrate</div><div class="v">40 GB</div><div class="s">titan.gguf</div></div>
+    <div class="kpi"><div class="k">Lane</div><div class="v">B</div><div class="s">Muhlnickel-native</div></div>
+    <div class="kpi"><div class="k">Baseline</div><div class="v">13/13</div><div class="s">quick proof battery</div></div>
+    <div class="kpi"><div class="k">Fab-only</div><div class="v">2</div><div class="s">foundry fitness</div></div>
+  </div>
+</header>
+
+<!-- GATE COUNT CHART -->
+<div class="chart-section">
+  <h3 class="chart-title">Gate Count by Circuit (log scale comparison)</h3>
+  <div id="gate-chart"></div>
+</div>
+
+<!-- DEPTH CHART -->
+<div class="chart-section depth-chart" style="margin-top:14px">
+  <h3 class="chart-title">Critical-Path Depth (ticks)</h3>
+  <div id="depth-chart"></div>
+</div>
+
+<!-- SHARED PRIMITIVES -->
+<section>
+  <div class="cat"><span class="n">PRIM</span><h2>Shared Primitives</h2></div>
+  <div class="cards">
+    <div class="card">
+      <div class="top"><h3><span class="id">PRIM-01</span>muhl_tanh8</h3><span class="pill">256/256</span></div>
+      <p>8-bit hyperbolic tangent approximation as NAND gates. Shared infrastructure for all circuits needing tanh activation.</p>
+      <div class="meta"><span><b>16,320</b> gates</span><span>depth <b>33</b> ticks</span><span>256/256 byte-exact</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-purple" style="width:21.2%"></div></div>
+        <div class="bar-label"><span>gates</span><span>16,320</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">PRIM-02</span>muhl_sigmoid8</h3><span class="pill">256/256</span></div>
+      <p>8-bit sigmoid function as NAND gates. Shared activation primitive for neural and gating circuits.</p>
+      <div class="meta"><span><b>16,320</b> gates</span><span>depth <b>33</b> ticks</span><span>256/256 byte-exact</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-purple" style="width:21.2%"></div></div>
+        <div class="bar-label"><span>gates</span><span>16,320</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">PRIM-03</span>muhl_log8</h3><span class="pill">256/256</span></div>
+      <p>8-bit logarithm approximation as NAND gates. Shared primitive for entropy and information-theoretic circuits.</p>
+      <div class="meta"><span><b>16,320</b> gates</span><span>depth <b>33</b> ticks</span><span>256/256 byte-exact</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-purple" style="width:21.2%"></div></div>
+        <div class="bar-label"><span>gates</span><span>16,320</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">PRIM-04</span>muhl_cos8</h3><span class="pill">256/256</span></div>
+      <p>8-bit cosine approximation as NAND gates. Shared primitive for phase and spectral circuits.</p>
+      <div class="meta"><span><b>16,320</b> gates</span><span>depth <b>33</b> ticks</span><span>256/256 byte-exact</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-purple" style="width:21.2%"></div></div>
+        <div class="bar-label"><span>gates</span><span>16,320</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BATCH 1 -->
+<section>
+  <div class="cat"><span class="n">BATCH 1</span><h2>First Fabrication Wave</h2></div>
+  <div class="cards">
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-26</span>PIDTG</h3><span class="pill">715/715</span></div>
+      <p>PID-Controller Transformer Gate. Classical control theory (proportional-integral-derivative) as self-clocked NAND gates with feedback accumulator.</p>
+      <div class="meta"><span><b>1,587</b> gates</span><span>depth <b>71</b> ticks</span><span><span class="selfclock"></span>24 feedback pairs</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-copper" style="width:2.1%"></div></div>
+        <div class="bar-label"><span>gates</span><span>1,587</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-17</span>EMLD</h3><span class="pill">513/513</span></div>
+      <p>Energy-Minimizing Latent Descent. Gradient-free optimization via ring-cycling descent loops with convergence detection.</p>
+      <div class="meta"><span><b>44,307</b> gates</span><span>depth <b>143</b> ticks</span><span><span class="selfclock"></span>72 feedback pairs</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-copper" style="width:57.6%"></div></div>
+        <div class="bar-label"><span>gates</span><span>44,307</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-25</span>LRSG</h3><span class="pill">543/543</span></div>
+      <p>Liquid Residual State Governor. Adaptive blending of residual and computed paths with self-clocked alpha state.</p>
+      <div class="meta"><span><b>5,584</b> gates</span><span>depth <b>96</b> ticks</span><span><span class="selfclock"></span>8 feedback pairs</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-copper" style="width:7.3%"></div></div>
+        <div class="bar-label"><span>gates</span><span>5,584</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-21</span>MSHC</h3><span class="pill">1,100/1,100</span></div>
+      <p>Multi-Scale Hierarchical Cache. Precision-aware key-value lookup across 16 cache entries with selectable resolution.</p>
+      <div class="meta"><span><b>6,006</b> gates</span><span>depth <b>70</b> ticks</span><span>prefix winner</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-copper" style="width:7.8%"></div></div>
+        <div class="bar-label"><span>gates</span><span>6,006</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-03</span>DWBSC</h3><span class="pill">518/518</span></div>
+      <p>Dynamic Write-Back Scratchpad Cache. Addressable 4-slot scratchpad with self-clocked state persistence.</p>
+      <div class="meta"><span><b>424</b> gates</span><span>depth <b>~15</b> ticks</span><span><span class="selfclock"></span>32 feedback pairs</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-copper" style="width:0.6%"></div></div>
+        <div class="bar-label"><span>gates</span><span>424</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-13</span>PCIL</h3><span class="pill">554/554</span></div>
+      <p>Predictive Cache Innovation Loop. Hardware prefetch predictor with saturating counters and mutant-tested feedback.</p>
+      <div class="meta"><span><b>1,201</b> gates</span><span>depth <b>54</b> ticks</span><span><span class="selfclock"></span>16 feedback pairs</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-copper" style="width:1.6%"></div></div>
+        <div class="bar-label"><span>gates</span><span>1,201</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-06</span>PBCS</h3><span class="pill">550/550</span></div>
+      <p>Progressive Bottleneck Compression Stages. Information bottleneck: compress 16 bits through 8-wire neck, reconstruct.</p>
+      <div class="meta"><span><b>2,058</b> gates</span><span>2:1 bottleneck</span><span>lossy by design</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-copper" style="width:2.7%"></div></div>
+        <div class="bar-label"><span>gates</span><span>2,058</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-19</span>GSPE</h3><span class="pill">520/520</span></div>
+      <p>Gated Synaptic Plasticity Expert. Hebbian-style learning with self-clocked weight updates and competitive expert selection.</p>
+      <div class="meta"><span><b>2,720</b> gates</span><span>depth <b>82</b> ticks</span><span><span class="selfclock"></span>16 feedback pairs</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-copper" style="width:3.5%"></div></div>
+        <div class="bar-label"><span>gates</span><span>2,720</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BATCH 2 -->
+<section>
+  <div class="cat"><span class="n">BATCH 2</span><h2>Second Fabrication Wave</h2></div>
+  <div class="cards">
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-01</span>CDLC</h3><span class="pill">600/600</span></div>
+      <p>Continuous Diffusion-Like Computation. Iterative denoising via ring-cycling integration over 64-bit state with residual norm tracking.</p>
+      <div class="meta"><span><b>40,878</b> gates</span><span>depth <b>96</b> ticks</span><span><span class="selfclock"></span>80 feedback pairs</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-blue" style="width:53.1%"></div></div>
+        <div class="bar-label"><span>gates</span><span>40,878</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-02</span>ARCSE</h3><span class="pill">548/548</span></div>
+      <p>Attentive Recurrent Cross-State Encoding. XNOR similarity attention with gated hidden-state blending and self-clocked recurrence.</p>
+      <div class="meta"><span><b>3,027</b> gates</span><span>depth <b>47</b> ticks</span><span><span class="selfclock"></span>72 feedback pairs</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-blue" style="width:3.9%"></div></div>
+        <div class="bar-label"><span>gates</span><span>3,027</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-07</span>STM</h3><span class="pill">500/500</span></div>
+      <p>Sparse Token Merger. Threshold-gated pairwise merging of 4 tokens with similarity scoring and active-mask output.</p>
+      <div class="meta"><span><b>6,090</b> gates</span><span>depth <b>50</b> ticks</span><span>prefix winner</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-blue" style="width:7.9%"></div></div>
+        <div class="bar-label"><span>gates</span><span>6,090</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-09</span>HLCP</h3><span class="pill">64/64</span></div>
+      <p>Hypernetwork Layer-Conditional Projections. Dynamic weight selection by layer index with exhaustively verified decode-select-project pipeline.</p>
+      <div class="meta"><span><b>259</b> gates</span><span>exhaustive 2^6</span><span><span class="noselfclock"></span>combinational</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-blue" style="width:0.3%"></div></div>
+        <div class="bar-label"><span>gates</span><span>259</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-10</span>KAEI</h3><span class="pill">600/600</span></div>
+      <p>KAN-Augmented Expert Interpolation. Spline-based activation (Kolmogorov-Arnold) via 256-entry LUT mux trees with 80.7% constant propagation.</p>
+      <div class="meta"><span><b>19,663</b> gates</span><span>6 LUT functions</span><span><span class="noselfclock"></span>combinational</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-blue" style="width:25.5%"></div></div>
+        <div class="bar-label"><span>gates</span><span>19,663</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-12</span>CVPA</h3><span class="pill">520/520</span></div>
+      <p>Complex-Valued Phase Attention. Full complex-number dot product with magnitude and quadrant output. Signed 8-bit across 4 dimensions.</p>
+      <div class="meta"><span><b>67,522</b> gates</span><span>depth <b>180</b> ticks</span><span>prefix/wallace</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-blue" style="width:87.7%"></div></div>
+        <div class="bar-label"><span>gates</span><span>67,522</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-14</span>SDLE</h3><span class="pill">530/530</span></div>
+      <p>Spectral Depth via Learned Eigenfilters. Forward Hadamard transform, spectral filtering with baked coefficients, inverse Hadamard.</p>
+      <div class="meta"><span><b>76,940</b> gates</span><span>depth <b>202</b> ticks</span><span>3 butterfly stages</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-blue" style="width:100%"></div></div>
+        <div class="bar-label"><span>gates (max)</span><span>76,940</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-16</span>AFWR</h3><span class="pill">527/527</span></div>
+      <p>Attentive Fast-Weight Recurrence. Outer-product accumulation with XNOR-popcount attention retrieval and self-clocked fast weights.</p>
+      <div class="meta"><span><b>895</b> gates</span><span>depth <b>62</b> ticks</span><span><span class="selfclock"></span>16 feedback pairs</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-blue" style="width:1.2%"></div></div>
+        <div class="bar-label"><span>gates</span><span>895</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRE-BATCH / AGENT BUILDS -->
+<section>
+  <div class="cat"><span class="n">AGENT</span><h2>Pre-Batch Agent Builds</h2></div>
+  <div class="cards">
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-04</span>EMSSC</h3><span class="pill">500/500</span></div>
+      <p>Entropy-Modulated Sparse Skip Connection. Variance and mean computation over 4 scores with threshold-gated skip signal.</p>
+      <div class="meta"><span><b>19,686</b> gates</span><span>48-bit input</span><span>18-bit variance + 8-bit mean + skip</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-ok" style="width:25.6%"></div></div>
+        <div class="bar-label"><span>gates</span><span>19,686</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-05</span>SISA</h3><span class="pill">4/4 candidates</span></div>
+      <p>Surprise-Induced Skip Allocation. Route-or-skip decision from 16-bit model state. Pareto-searched across 4 adder/multiplier combos.</p>
+      <div class="meta"><span><b>26,631</b> gates</span><span>depth <b>185</b> ticks</span><span>ripple/wallace winner</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-ok" style="width:34.6%"></div></div>
+        <div class="bar-label"><span>gates</span><span>26,631</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-24</span>LHEA</h3><span class="pill">546/546</span></div>
+      <p>Local Hebbian Expert Allocator. Competitive expert selection with correlation-based learning and self-repairing argmax.</p>
+      <div class="meta"><span><b>2,155</b> gates</span><span>depth <b>72</b> ticks</span><span><span class="selfclock"></span>16 feedback pairs</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-ok" style="width:2.8%"></div></div>
+        <div class="bar-label"><span>gates</span><span>2,155</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-08</span>SHR</h3><span class="pill">65,736/65,736</span></div>
+      <p>Sparse Head Routing. Top-2 attention head selector with ring-driven control. Exhaustively verified over all 65,536 inputs + 200 ring patterns.</p>
+      <div class="meta"><span><b>10,496</b> gates</span><span>depth <b>75</b> ticks</span><span>exhaustive</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-ok" style="width:13.6%"></div></div>
+        <div class="bar-label"><span>gates</span><span>10,496</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-15</span>CADT</h3><span class="pill">2,000/2,000</span></div>
+      <p>Cellular Automata Decoder Topology. Rule 110 (Turing-complete, 289 gates, depth 5) + linear decoder (1,441 gates, depth 30) with self-clock.</p>
+      <div class="meta"><span><b>289</b> gates (Rule 110)</span><span>depth <b>5</b> ticks</span><span><span class="selfclock"></span>feedback pairs</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-ok" style="width:0.4%"></div></div>
+        <div class="bar-label"><span>gates (Rule 110)</span><span>289</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BATCH 3 -->
+<section>
+  <div class="cat"><span class="n">BATCH 3</span><h2>Third Fabrication Wave (recovered)</h2></div>
+  <div class="cards">
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-18</span>NVMTC</h3><span class="pill">550/550</span></div>
+      <p>Non-Volatile Micro-Task Controller. Priority-scheduled task queue with self-clocked 44-bit state persistence across power cycles.</p>
+      <div class="meta"><span><b>1,974</b> gates</span><span>depth <b>35</b> ticks</span><span><span class="selfclock"></span>44-bit queue</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-copper" style="width:2.6%"></div></div>
+        <div class="bar-label"><span>gates</span><span>1,974</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-20</span>TPTP</h3><span class="pill">256/256</span></div>
+      <p>Tree-Pruned Token Predictor. 4-level decision tree with 15 internal nodes classifying 8-bit features into 12 classes with confidence.</p>
+      <div class="meta"><span><b>3,465</b> gates</span><span>depth <b>66</b> ticks</span><span>exhaustive 2^8</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-copper" style="width:4.5%"></div></div>
+        <div class="bar-label"><span>gates</span><span>3,465</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-23</span>SPSN</h3><span class="pill">256/256</span></div>
+      <p>Sparse Pattern Similarity Network. XNOR-popcount similarity across 4 orthogonal reference patterns with argmax tournament.</p>
+      <div class="meta"><span><b>1,603</b> gates</span><span>depth <b>60</b> ticks</span><span>exhaustive 2^8</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-copper" style="width:2.1%"></div></div>
+        <div class="bar-label"><span>gates</span><span>1,603</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH DISCOVERIES -->
+<section>
+  <div class="cat"><span class="n">RESEARCH</span><h2>Research-Discovered Architectures</h2></div>
+  <div class="cards">
+    <div class="card">
+      <div class="top"><h3>ISSM</h3><span class="pill">2,000/2,000</span></div>
+      <p>Iterated State-Space Multiply (Mamba-like). State-space model as self-clocked NAND gates: A*x + B*u with 32-bit state feedback.</p>
+      <div class="meta"><span><b>31,385</b> gates</span><span>depth <b>72</b> ticks</span><span><span class="selfclock"></span>state x feeds back</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-purple" style="width:40.8%"></div></div>
+        <div class="bar-label"><span>gates</span><span>31,385</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3>HRBF</h3><span class="pill">539/539</span></div>
+      <p>Hypercube Ring Fold. 4-stage logarithmic reduction over 16 taps with selectable fold operation (XOR/OR/AND/ADD-sat).</p>
+      <div class="meta"><span><b>3,585</b> gates</span><span>depth <b>140</b> ticks</span><span>4-op selectable</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-purple" style="width:4.7%"></div></div>
+        <div class="bar-label"><span>gates</span><span>3,585</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3>CATT</h3><span class="pill">1,000/1,000</span></div>
+      <p>Collision Attention. Counter-rotating beam intersection detector with XNOR equality, popcount collision scoring, and priority encoder.</p>
+      <div class="meta"><span><b>565</b> gates</span><span>64-bit dual beam</span><span>15-bit output</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-purple" style="width:0.7%"></div></div>
+        <div class="bar-label"><span>gates</span><span>565</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3>BTHA</h3><span class="pill">1,589/1,589</span></div>
+      <p>Binary Threshold Activation. 4-neuron threshold network with baked orthogonal weights and diagnostic popcount outputs.</p>
+      <div class="meta"><span><b>636</b> gates</span><span>depth <b>27</b> ticks</span><span>prefix winner</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-purple" style="width:0.8%"></div></div>
+        <div class="bar-label"><span>gates</span><span>636</span></div></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3>RBA</h3><span class="pill">256/256</span></div>
+      <p>Reflection-Based Attention. Signal bounces through 4 co-designed filters (XOR=0xFF), with ascending/descending paths and apex interference.</p>
+      <div class="meta"><span><b>1,467</b> gates</span><span>exhaustive 2^8</span><span>4 co-designed filters</span></div>
+      <div class="bar-wrap"><div class="bar"><div class="fill gradient-purple" style="width:1.9%"></div></div>
+        <div class="bar-label"><span>gates</span><span>1,467</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAB-ONLY -->
+<section>
+  <div class="cat"><span class="n">FOUNDRY</span><h2>Fabrication-Only Fitness Functions</h2></div>
+  <div class="cards">
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-11</span>LWCD</h3><span class="pill fab">fab-only</span></div>
+      <p>Layer-Wise Contrastive Diversity. Foundry fitness function scoring cosine dissimilarity between adjacent layers. Discrimination gap: 0.774.</p>
+      <div class="meta"><span><b>0</b> runtime gates</span><span>stagnant: 0.078</span><span>diverse: 0.852</span></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3><span class="id">HRDST-22</span>ECRDB</h3><span class="pill fab">fab-only</span></div>
+      <p>Entropy-Constrained Rate-Distortion Bottleneck. Foundry fitness function scoring rate (wire count) vs distortion tradeoff.</p>
+      <div class="meta"><span><b>0</b> runtime gates</span><span>wide: rate 32</span><span>narrow: rate 20</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  All inventions, mechanisms, and measurements are Bryce Muhlnickel's. Every circuit was fabricated on his substrate
+  and verified byte-exact against an independent Python reference. Nothing here ran on a GPU. Nothing here used
+  floating point. Lane B: Muhlnickel-native fabrication only.<br>
+  HRDST-v7 Portfolio &middot; 2026-08-03 &middot; 37 verified deliverables &middot; press <b>d</b> to toggle theme
+</footer>
+</div>
+
+<script>
+"use strict";
+// Chart data
+const circuits=[
+  {name:"SDLE",gates:76940,depth:202},{name:"CVPA",gates:67522,depth:180},
+  {name:"EMLD",gates:44307,depth:143},{name:"CDLC",gates:40878,depth:96},
+  {name:"ISSM",gates:31385,depth:72},{name:"SISA",gates:26631,depth:185},
+  {name:"EMSSC",gates:19686,depth:null},{name:"KAEI",gates:19663,depth:null},
+  {name:"tanh8",gates:16320,depth:33},{name:"sigmoid8",gates:16320,depth:33},
+  {name:"log8",gates:16320,depth:33},{name:"cos8",gates:16320,depth:33},
+  {name:"SHR",gates:10496,depth:75},{name:"STM",gates:6090,depth:50},
+  {name:"MSHC",gates:6006,depth:70},{name:"LRSG",gates:5584,depth:96},
+  {name:"HRBF",gates:3585,depth:140},{name:"TPTP",gates:3465,depth:66},
+  {name:"ARCSE",gates:3027,depth:47},{name:"GSPE",gates:2720,depth:82},
+  {name:"LHEA",gates:2155,depth:72},{name:"PBCS",gates:2058,depth:null},
+  {name:"NVMTC",gates:1974,depth:35},{name:"SPSN",gates:1603,depth:60},
+  {name:"PIDTG",gates:1587,depth:71},{name:"RBA",gates:1467,depth:null},
+  {name:"PCIL",gates:1201,depth:54},{name:"AFWR",gates:895,depth:62},
+  {name:"BTHA",gates:636,depth:27},{name:"CATT",gates:565,depth:null},
+  {name:"DWBSC",gates:424,depth:15},{name:"CADT",gates:289,depth:5},
+  {name:"HLCP",gates:259,depth:null}
+];
+const maxGates=circuits[0].gates;
+const gc=document.getElementById("gate-chart");
+circuits.forEach(c=>{
+  const pct=Math.max(1,(c.gates/maxGates)*100);
+  const colors=["gradient-copper","gradient-blue","gradient-ok","gradient-purple"];
+  const ci=Math.floor((c.gates/maxGates)*3);
+  const cls=c.gates>30000?"gradient-copper":c.gates>10000?"gradient-blue":c.gates>2000?"gradient-ok":"gradient-purple";
+  gc.innerHTML+=`<div class="hbar"><span class="lbl">${c.name}</span><div class="track"><div class="fill ${cls}" style="width:${pct}%"></div></div><span class="val">${c.gates.toLocaleString()}</span></div>`;
+});
+const depthData=circuits.filter(c=>c.depth!==null).sort((a,b)=>b.depth-a.depth);
+const maxDepth=depthData[0].depth;
+const dc=document.getElementById("depth-chart");
+depthData.forEach(c=>{
+  const pct=Math.max(1,(c.depth/maxDepth)*100);
+  const cls=c.depth>100?"gradient-copper":c.depth>60?"gradient-blue":c.depth>30?"gradient-ok":"gradient-purple";
+  dc.innerHTML+=`<div class="hbar"><span class="lbl">${c.name}</span><div class="track"><div class="fill ${cls}" style="width:${pct}%"></div></div><span class="val">${c.depth} ticks</span></div>`;
+});
+// Theme toggle
+const t=document.documentElement,m=matchMedia("(prefers-color-scheme:dark)");
+addEventListener("keydown",e=>{if(e.key==="d"){t.setAttribute("data-theme",(t.getAttribute("data-theme")||(m.matches?"dark":"light"))==="dark"?"light":"dark")}});
+</script>
+</body></html>

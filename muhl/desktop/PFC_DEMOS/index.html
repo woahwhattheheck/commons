@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Computed on the pfc — demos</title>
+<style>
+:root{--bg:#0a0e13;--surf:#111923;--ink:#e9eef4;--muted:#8996a6;--line:#1c2732;--accent:#39efc9;--mono:ui-monospace,Consolas,monospace}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,Segoe UI,Roboto,sans-serif;line-height:1.6}
+.wrap{max-width:60rem;margin:0 auto;padding:3rem 1.5rem}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+h1{font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:-.02em;margin:.6rem 0 0;text-wrap:balance}
+.lede{color:var(--muted);max-width:54ch;margin:1rem 0 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem;margin-top:2.4rem}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.card img{display:block;width:100%;height:auto;image-rendering:pixelated;background:#000;aspect-ratio:4/3;object-fit:cover}
+.cap{padding:1rem 1.1rem 1.2rem;display:flex;flex-direction:column;gap:.3rem}
+.nm{font-weight:600}.sub{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+.meta{font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);margin-top:.3rem}
+code{font-family:var(--mono);font-size:.8rem;background:#0c1219;border:1px solid var(--line);border-radius:6px;padding:.15em .5em;color:var(--ink)}
+.foot{margin-top:2.6rem;color:var(--muted);max-width:60ch}.foot b{color:var(--ink)}
+</style></head><body><div class="wrap">
+<span class="eyebrow">Prefabricated software-based computation · sandboxed in storage</span>
+<h1>Five things running on the pfc.</h1>
+<p class="lede">Each demo is one logic-gate netlist baked into a storage file. The host does nothing but <b>pulse the clock</b>
+(one bounded ripple) and <b>blit the framebuffer the pfc paints</b> — no game logic, no 3D math, no rendering on the host.
+Every one is verified byte-exact against a reference. Run them from <code>host\</code> in the repo.</p>
+<div class="grid">
+<figure class="card"><img src="frames/tetris.png" alt="Tetris"><figcaption class="cap"><span class="nm">Tetris</span><span class="sub">the challenge — full game logic as gates</span><span class="meta">46,353 gates · byte-exact</span><code>python host/pfc_tetris.py</code></figcaption></figure>
+<figure class="card"><img src="frames/raycaster.png" alt="Raycaster"><figcaption class="cap"><span class="nm">Raycaster (3D)</span><span class="sub">first-person maze · WASD</span><span class="meta">~555,000 gates · byte-exact</span><code>python host/pfc_raycast.py</code></figcaption></figure>
+<figure class="card"><img src="frames/tunnel.png" alt="Tunnel"><figcaption class="cap"><span class="nm">Perspective tunnel</span><span class="sub">flying-forward rainbow vortex</span><span class="meta">828 gates · byte-exact</span><code>python host/pfc_tunnel.py</code></figcaption></figure>
+<figure class="card"><img src="frames/life.png" alt="Game of Life"><figcaption class="cap"><span class="nm">Conway's Life</span><span class="sub">click to seed cells</span><span class="meta">270,336 gates · byte-exact</span><code>python host/pfc_game.py life</code></figcaption></figure>
+<figure class="card"><img src="frames/brain.png" alt="Brian's Brain"><figcaption class="cap"><span class="nm">Brian's Brain</span><span class="sub">3-state cellular automaton</span><span class="meta">208,896 gates · byte-exact</span><code>python host/pfc_game.py brain</code></figcaption></figure>
+<figure class="card"><img src="frames/operator.png" alt="Operator" style="aspect-ratio:auto;padding:1.5rem 1rem;object-fit:contain"><figcaption class="cap"><span class="nm">Operator (a neural forward pass)</span><span class="sub">draw a digit → the pfc classifies it</span><span class="meta">2,734 gates · byte-exact · 10/10</span><code>python host/pfc_operator.py</code></figcaption></figure>
+</div>
+<p class="foot">These images are frames the <b>pfc</b> produced — the host only laid out the addresses and copied the pixels.
+Each demo has a <code>--test</code> mode that prints the byte-exact proof. The mechanism: stored logic, computing nothing
+until a routed signal (the clock pulse) runs it. Owner &amp; inventor: <b>Bryce Muhlnickel</b>.</p>
+</div></body></html>

@@ -1,0 +1,35 @@
+{
+  "width": 8,
+  "domain": "EXHAUSTIVE all 65536 cases",
+  "parts": {
+    "ripple": {
+      "gates": 120,
+      "depth_ticks": 35,
+      "verified_exhaustive": true,
+      "fails": 0
+    },
+    "kogge_stone": {
+      "gates": 199,
+      "depth_ticks": 16,
+      "verified_exhaustive": true,
+      "fails": 0
+    }
+  },
+  "mutants": {
+    "ripple/drop_carry": true,
+    "kogge_stone/swap_operand": true
+  },
+  "pareto": [
+    {
+      "kind": "kogge_stone",
+      "depth": 16,
+      "gates": 199
+    },
+    {
+      "kind": "ripple",
+      "depth": 35,
+      "gates": 120
+    }
+  ],
+  "note": "Both points kept (Pareto). kogge_stone buys depth with gates - the shape-not-area lever, measured not asserted. All parts NAND-composed per loom netlist law. HIS header order when emitting: <IIIII> n_in, n_wire, n_gate, n_out, depth."
+}

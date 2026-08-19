@@ -1,0 +1,266 @@
+<!doctype html><html><head><meta charset="utf-8"><title>MUHLNICKEL</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;background:#05080d;color:#e7ecf5;font:13px ui-monospace,Consolas,monospace;overflow:hidden;cursor:default}
+#intro{position:fixed;inset:0;z-index:100;background:#05080d;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s ease-out}
+#intro.gone{opacity:0;pointer-events:none}
+#intro .big{font-size:clamp(60px,12vw,140px);font-weight:900;color:#39efc9;letter-spacing:-.02em;opacity:0;animation:fadeUp .8s .3s forwards}
+#intro .sub{font-size:clamp(16px,2.4vw,28px);color:#8996a6;margin-top:8px;opacity:0;animation:fadeUp .8s .9s forwards}
+#intro .sub2{font-size:clamp(18px,2.6vw,32px);color:#c98b3f;margin-top:24px;opacity:0;animation:fadeUp .8s 1.5s forwards;font-weight:700}
+#intro .hint{font-size:13px;color:#3a4a5c;position:absolute;bottom:40px;opacity:0;animation:fadeUp .6s 2.2s forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+#wrap{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .4s}
+#wrap.show{opacity:1}
+canvas#c{border-radius:6px;max-width:96vw;max-height:78vh;image-rendering:pixelated;cursor:crosshair}
+#hud{position:fixed;bottom:0;left:0;right:0;padding:10px 20px;background:linear-gradient(transparent,rgba(5,8,13,.92));display:flex;justify-content:space-between;align-items:flex-end;pointer-events:none;z-index:10}
+#hud .left{display:flex;flex-direction:column;gap:2px}
+#hud .tag{font-size:11px;color:#39efc9;letter-spacing:.08em;font-weight:700}
+#hud .stat{font-size:12px;color:#8996a6}
+#hud .stat b{color:#c98b3f}
+#hud .right{text-align:right}
+#hud .gatect{font-size:28px;font-weight:900;color:#39efc9;line-height:1}
+#hud .gatelbl{font-size:11px;color:#576270;letter-spacing:.06em}
+#viz-wrap{position:fixed;bottom:52px;right:16px;z-index:10;opacity:.85;transition:opacity .2s}
+#viz-wrap:hover{opacity:1}
+canvas#viz{border-radius:4px;border:1px solid #1a2333}
+#viz-label{font-size:10px;color:#3a4a5c;text-align:center;margin-top:2px}
+#info{position:fixed;top:0;right:-420px;width:400px;height:100%;background:rgba(8,12,20,.96);border-left:1px solid #1a2333;z-index:50;padding:32px 24px;transition:right .35s ease;overflow-y:auto}
+#info.open{right:0}
+#info h2{font-size:18px;color:#39efc9;margin-bottom:16px;font-weight:700}
+#info h3{font-size:13px;color:#c98b3f;margin:18px 0 6px;font-weight:700}
+#info p{font-size:12px;color:#8996a6;line-height:1.6;margin-bottom:8px}
+#info .num{color:#39efc9;font-weight:700}
+#info .close{position:absolute;top:12px;right:16px;color:#576270;cursor:pointer;font-size:18px}
+#info .close:hover{color:#e7ecf5}
+#title-bar{position:fixed;top:0;left:0;right:0;padding:10px 20px;display:flex;justify-content:space-between;align-items:center;pointer-events:none;z-index:10}
+#title-bar .name{font-size:14px;letter-spacing:.12em;font-weight:700;color:#1e2a3a}
+#title-bar .btn{pointer-events:auto;font-size:11px;color:#3a4a5c;cursor:pointer;padding:4px 10px;border:1px solid #1a2333;border-radius:4px;background:transparent;transition:all .2s}
+#title-bar .btn:hover{color:#39efc9;border-color:#39efc9}
+#minimap{position:fixed;top:16px;right:16px;z-index:10;opacity:.7}
+canvas#mm{border-radius:3px;border:1px solid #1a2333}
+</style></head><body>
+<div id="intro">
+ <div class="big">1,391</div>
+ <div class="sub">NAND gates stored inside a 40 GB file</div>
+ <div class="sub2">They are a game.</div>
+ <div class="hint">press any key</div>
+</div>
+<div id="wrap">
+ <canvas id="c" width="960" height="600" tabindex="0"></canvas>
+</div>
+<div id="title-bar">
+ <span class="name">MUHLNICKEL</span>
+ <button class="btn" onclick="toggleInfo()">TAB &middot; how is this possible?</button>
+</div>
+<div id="hud">
+ <div class="left">
+  <span class="tag">RUNNING ON STORED CIRCUITS</span>
+  <span class="stat" id="pos"></span>
+  <span class="stat">every move = <b>736</b> NAND gates &middot; every wall = <b>655</b> NAND gates</span>
+ </div>
+ <div class="right">
+  <div class="gatect" id="gatect">0</div>
+  <div class="gatelbl">GATES EVALUATED</div>
+ </div>
+</div>
+<div id="viz-wrap">
+ <canvas id="viz" width="184" height="106"></canvas>
+ <div id="viz-label">circuit activity</div>
+</div>
+<div id="minimap"><canvas id="mm" width="72" height="72"></canvas></div>
+<div id="info">
+ <span class="close" onclick="toggleInfo()">&times;</span>
+ <h2>How is this possible?</h2>
+ <p>What you're playing is a first-person 3D game. The entire game — movement, collision, turning,
+ the world itself — runs on <span class="num">1,391 NAND gates</span>.</p>
+ <h3>What is a NAND gate?</h3>
+ <p>The simplest possible logic element. Two inputs, one output:<br>
+ <span class="num">output = NOT(input_A AND input_B)</span><br>
+ That's it. Every computer ever built is made of these.</p>
+ <h3>Where do the gates live?</h3>
+ <p>They are stored as bytes inside <span class="num">titan.gguf</span> — a 40,028,316,800-byte file.
+ The same file format that stores neural network weights. The gates occupy
+ <span class="num">11,320 bytes</span> of that 40 GB space.</p>
+ <h3>What the circuits do</h3>
+ <p><span class="num">736 gates</span> — the <b>movement circuit</b>. Takes your position (x, y),
+ your direction, your key inputs, and two collision bits. Outputs your new position and angle.
+ Every move you make flows through these gates.</p>
+ <p><span class="num">655 gates</span> — the <b>world circuit</b>. Encodes the entire map. Given a
+ coordinate, it returns wall-or-empty. Every ray the renderer casts reads the world through this circuit.</p>
+ <h3>What the host does</h3>
+ <p>The host (your browser) does exactly two things:</p>
+ <p>1. <b>Shoots input in</b> — your keyboard presses become input bits<br>
+ 2. <b>Reads the output</b> — new position, angle, wall/empty</p>
+ <p>The rendering (the 3D raycaster) is the only thing running on your CPU. The game <i>logic</i> —
+ what happens when you move, where the walls are, collision — that's all gates.</p>
+ <h3>The bottom-right visualization</h3>
+ <p>Each dot is one NAND gate. Bright = outputting 1. Dark = outputting 0.
+ Watch it ripple when you move — that's the computation happening.</p>
+ <p style="color:#39efc9;margin-top:24px;font-size:14px;font-weight:700">No game engine. No CPU game logic. Just 1,391 switches in a file.</p>
+</div>
+
+<script>
+"use strict";
+
+// ── CIRCUIT DATA (extracted from titan.gguf — 736 + 655 NAND gates) ──
+const CFG={"TURN":6,"SPEED":5,"CELL":32,"MAP":["########","#......#","#.##.#.#","#.#..#.#","#.#.##.#","#....#.#","#.####.#","########"],"MOVE":{"nin":44,"nw":782,"ga":[2,2,18,47,49,49,0,51,2,54,49,56,55,57,58,3,3,19,62,64,64,60,66,3,69,64,71,70,72,73,4,4,20,77,79,79,75,81,4,84,79,86,85,87,88,5,5,21,92,94,94,90,96,5,99,94,101,100,102,103,6,6,22,107,109,109,105,111,6,114,109,116,115,117,118,7,7,23,122,124,124,120,126,7,129,124,131,130,132,133,8,8,24,137,139,139,135,141,8,144,139,146,145,147,148,9,9,25,152,154,154,150,156,9,159,154,161,160,162,163,10,10,26,167,169,169,0,171,10,174,169,176,175,177,178,11,11,27,182,184,184,180,186,11,189,184,191,190,192,193,12,12,28,197,199,199,195,201,12,204,199,206,205,207,208,13,13,29,212,214,214,210,216,13,219,214,221,220,222,223,14,14,30,227,229,229,225,231,14,234,229,236,235,237,238,15,15,31,242,244,244,240,246,15,249,244,251,250,252,253,16,16,32,257,259,259,255,261,16,264,259,266,265,267,268,17,17,33,272,274,274,270,276,17,279,274,281,280,282,283,34,286,287,34,289,288,290,291,34,294,295,34,297,296,298,299,34,302,303,34,305,304,306,307,34,310,311,34,313,312,314,315,34,318,319,34,321,320,322,323,34,326,327,34,329,328,330,331,34,334,335,34,337,336,338,339,34,342,343,34,345,344,346,347,35,350,351,35,353,352,354,355,35,358,359,35,361,360,362,363,35,366,367,35,369,368,370,371,35,374,375,35,377,376,378,379,35,382,383,35,385,384,386,387,35,390,391,35,393,392,394,395,35,398,399,35,401,400,402,403,35,406,407,35,409,408,410,411,36,36,0,415,417,417,0,419,36,422,417,424,423,425,426,37,37,1,430,432,432,428,434,37,437,432,439,438,440,441,38,38,1,445,447,447,443,449,38,452,447,454,453,455,456,39,39,0,460,462,462,458,464,39,467,462,469,468,470,471,40,40,0,475,477,477,473,479,40,482,477,484,483,485,486,41,41,0,490,492,492,488,494,41,497,492,499,498,500,501,42,42,0,505,507,507,503,509,42,512,507,514,513,515,516,43,43,0,520,522,522,518,524,43,527,522,529,528,530,531,45,534,535,45,537,536,538,539,45,542,543,45,545,544,546,547,45,550,551,45,553,552,554,555,45,558,559,45,561,560,562,563,45,566,567,45,569,568,570,571,45,574,575,45,577,576,578,579,45,582,583,45,585,584,586,587,45,590,591,45,593,592,594,595,541,541,0,599,601,601,0,603,541,606,601,608,607,609,610,549,549,1,614,616,616,612,618,549,621,616,623,622,624,625,557,557,0,629,631,631,627,633,557,636,631,638,637,639,640,565,565,1,644,646,646,642,648,565,651,646,653,652,654,655,573,573,1,659,661,661,657,663,573,666,661,668,667,669,670,581,581,1,674,676,676,672,678,581,681,676,683,682,684,685,589,589,1,689,691,691,687,693,589,696,691,698,697,699,700,597,597,1,704,706,706,702,708,597,711,706,713,712,714,715,44,718,719,44,721,720,722,723,44,726,727,44,729,728,730,731,44,734,735,44,737,736,738,739,44,742,743,44,745,744,746,747,44,750,751,44,753,752,754,755,44,758,759,44,761,760,762,763,44,766,767,44,769,768,770,771,44,774,775,44,777,776,778,779],"gb":[18,46,46,48,0,50,50,52,18,54,0,56,55,57,59,19,61,61,63,60,65,65,67,19,69,60,71,70,72,74,20,76,76,78,75,80,80,82,20,84,75,86,85,87,89,21,91,91,93,90,95,95,97,21,99,90,101,100,102,104,22,106,106,108,105,110,110,112,22,114,105,116,115,117,119,23,121,121,123,120,125,125,127,23,129,120,131,130,132,134,24,136,136,138,135,140,140,142,24,144,135,146,145,147,149,25,151,151,153,150,155,155,157,25,159,150,161,160,162,164,26,166,166,168,0,170,170,172,26,174,0,176,175,177,179,27,181,181,183,180,185,185,187,27,189,180,191,190,192,194,28,196,196,198,195,200,200,202,28,204,195,206,205,207,209,29,211,211,213,210,215,215,217,29,219,210,221,220,222,224,30,226,226,228,225,230,230,232,30,234,225,236,235,237,239,31,241,241,243,240,245,245,247,31,249,240,251,250,252,254,32,256,256,258,255,260,260,262,32,264,255,266,265,267,269,33,271,271,273,270,275,275,277,33,279,270,281,280,282,284,34,53,287,2,289,288,290,292,34,68,295,3,297,296,298,300,34,83,303,4,305,304,306,308,34,98,311,5,313,312,314,316,34,113,319,6,321,320,322,324,34,128,327,7,329,328,330,332,34,143,335,8,337,336,338,340,34,158,343,9,345,344,346,348,35,173,351,10,353,352,354,356,35,188,359,11,361,360,362,364,35,203,367,12,369,368,370,372,35,218,375,13,377,376,378,380,35,233,383,14,385,384,386,388,35,248,391,15,393,392,394,396,35,263,399,16,401,400,402,404,35,278,407,17,409,408,410,412,0,414,414,416,0,418,418,420,0,422,0,424,423,425,427,1,429,429,431,428,433,433,435,1,437,428,439,438,440,442,1,444,444,446,443,448,448,450,1,452,443,454,453,455,457,0,459,459,461,458,463,463,465,0,467,458,469,468,470,472,0,474,474,476,473,478,478,480,0,482,473,484,483,485,487,0,489,489,491,488,493,493,495,0,497,488,499,498,500,502,0,504,504,506,503,508,508,510,0,512,503,514,513,515,517,0,519,519,521,518,523,523,525,0,527,518,529,528,530,532,45,36,535,421,537,536,538,540,45,37,543,436,545,544,546,548,45,38,551,451,553,552,554,556,45,39,559,466,561,560,562,564,45,40,567,481,569,568,570,572,45,41,575,496,577,576,578,580,45,42,583,511,585,584,586,588,45,43,591,526,593,592,594,596,0,598,598,600,0,602,602,604,0,606,0,608,607,609,611,1,613,613,615,612,617,617,619,1,621,612,623,622,624,626,0,628,628,630,627,632,632,634,0,636,627,638,637,639,641,1,643,643,645,642,647,647,649,1,651,642,653,652,654,656,1,658,658,660,657,662,662,664,1,666,657,668,667,669,671,1,673,673,675,672,677,677,679,1,681,672,683,682,684,686,1,688,688,690,687,692,692,694,1,696,687,698,697,699,701,1,703,703,705,702,707,707,709,1,711,702,713,712,714,716,44,541,719,605,721,720,722,724,44,549,727,620,729,728,730,732,44,557,735,635,737,736,738,740,44,565,743,650,745,744,746,748,44,573,751,665,753,752,754,756,44,581,759,680,761,760,762,764,44,589,767,695,769,768,770,772,44,597,775,710,777,776,778,780],"outs":[293,301,309,317,325,333,341,349,357,365,373,381,389,397,405,413,725,733,741,749,757,765,773,781]},"MAP_CIR":{"nin":6,"nw":663,"ga":[2,3,4,5,6,7,8,14,10,16,12,18,15,20,21,22,0,23,24,3,4,5,6,7,2,32,28,34,30,36,33,38,39,40,26,41,42,2,4,5,6,7,45,50,46,52,48,54,51,56,57,58,44,59,60,4,5,6,7,2,67,63,69,65,71,68,73,74,75,62,76,77,2,3,5,6,7,80,85,4,87,83,89,86,91,92,93,79,94,95,3,5,6,7,2,102,4,104,100,106,103,108,109,110,97,111,112,2,5,6,7,115,119,4,121,117,123,120,125,126,127,114,128,129,5,6,7,2,135,4,137,133,139,136,141,142,143,131,144,145,2,3,4,6,7,148,153,150,155,151,157,154,159,160,161,147,162,163,6,7,2,168,4,170,166,172,169,174,175,176,165,177,178,2,3,4,5,7,181,186,183,188,6,190,187,192,193,194,180,195,196,2,4,5,7,199,203,200,205,6,207,204,209,210,211,198,212,213,4,5,7,2,219,216,221,6,223,220,225,226,227,215,228,229,3,5,7,2,235,4,237,6,239,236,241,242,243,231,244,245,5,7,2,250,4,252,6,254,251,256,257,258,247,259,260,2,3,4,7,263,267,265,269,6,271,268,273,274,275,262,276,277,2,4,7,280,283,281,285,6,287,284,289,290,291,279,292,293,3,7,2,298,4,300,6,302,299,304,305,306,295,307,308,7,2,312,4,314,6,316,313,318,319,320,310,321,322,2,3,4,5,6,325,330,327,332,329,334,331,336,337,338,324,339,340,2,4,5,6,343,347,344,349,346,351,348,353,354,355,342,356,357,2,3,5,6,360,364,4,366,363,368,365,370,371,372,359,373,374,3,5,6,2,380,4,382,379,384,381,386,387,388,376,389,390,5,6,2,395,4,397,394,399,396,401,402,403,392,404,405,2,3,4,6,408,412,410,414,411,416,413,418,419,420,407,421,422,3,6,2,427,4,429,426,431,428,433,434,435,424,436,437,6,2,441,4,443,440,445,442,447,448,449,439,450,451,2,3,4,5,454,458,456,460,6,462,459,464,465,466,453,467,468,2,4,5,471,474,472,476,6,478,475,480,481,482,470,483,484,4,5,2,489,487,491,6,493,490,495,496,497,486,498,499,2,3,5,502,505,4,507,6,509,506,511,512,513,501,514,515,3,5,2,520,4,522,6,524,521,526,527,528,517,529,530,5,2,534,4,536,6,538,535,540,541,542,532,543,544,2,3,4,547,550,549,552,6,554,551,556,557,558,546,559,560,3,4,2,565,564,567,6,569,566,571,572,573,562,574,575,2,4,578,580,579,582,6,584,581,586,587,588,577,589,590,4,2,594,593,596,6,598,595,600,601,602,592,603,604,2,3,607,609,4,611,6,613,610,615,616,617,606,618,619,3,2,623,4,625,6,627,624,629,630,631,621,632,633,2,636,637,4,639,6,641,638,643,644,645,635,646,647,2,650,4,652,6,654,651,656,657,658,649,659,660],"gb":[2,3,4,5,6,7,9,14,11,16,13,18,17,20,19,22,0,23,25,3,4,5,6,7,27,32,29,34,31,36,35,38,37,40,26,41,43,2,4,5,6,7,3,50,47,52,49,54,53,56,55,58,44,59,61,4,5,6,7,3,67,64,69,66,71,70,73,72,75,62,76,78,2,3,5,6,7,81,85,82,87,84,89,88,91,90,93,79,94,96,3,5,6,7,98,102,99,104,101,106,105,108,107,110,97,111,113,2,5,6,7,3,119,116,121,118,123,122,125,124,127,114,128,130,5,6,7,3,135,132,137,134,139,138,141,140,143,131,144,146,2,3,4,6,7,149,153,5,155,152,157,156,159,158,161,147,162,164,6,7,3,168,5,170,167,172,171,174,173,176,165,177,179,2,3,4,5,7,182,186,184,188,185,190,189,192,191,194,180,195,197,2,4,5,7,3,203,201,205,202,207,206,209,208,211,198,212,214,4,5,7,3,219,217,221,218,223,222,225,224,227,215,228,230,3,5,7,232,235,233,237,234,239,238,241,240,243,231,244,246,5,7,3,250,248,252,249,254,253,256,255,258,247,259,261,2,3,4,7,264,267,5,269,266,271,270,273,272,275,262,276,278,2,4,7,3,283,5,285,282,287,286,289,288,291,279,292,294,3,7,296,298,5,300,297,302,301,304,303,306,295,307,309,7,3,312,5,314,311,316,315,318,317,320,310,321,323,2,3,4,5,6,326,330,328,332,7,334,333,336,335,338,324,339,341,2,4,5,6,3,347,345,349,7,351,350,353,352,355,342,356,358,2,3,5,6,361,364,362,366,7,368,367,370,369,372,359,373,375,3,5,6,377,380,378,382,7,384,383,386,385,388,376,389,391,5,6,3,395,393,397,7,399,398,401,400,403,392,404,406,2,3,4,6,409,412,5,414,7,416,415,418,417,420,407,421,423,3,6,425,427,5,429,7,431,430,433,432,435,424,436,438,6,3,441,5,443,7,445,444,447,446,449,439,450,452,2,3,4,5,455,458,457,460,7,462,461,464,463,466,453,467,469,2,4,5,3,474,473,476,7,478,477,480,479,482,470,483,485,4,5,3,489,488,491,7,493,492,495,494,497,486,498,500,2,3,5,503,505,504,507,7,509,508,511,510,513,501,514,516,3,5,518,520,519,522,7,524,523,526,525,528,517,529,531,5,3,534,533,536,7,538,537,540,539,542,532,543,545,2,3,4,548,550,5,552,7,554,553,556,555,558,546,559,561,3,4,563,565,5,567,7,569,568,571,570,573,562,574,576,2,4,3,580,5,582,7,584,583,586,585,588,577,589,591,4,3,594,5,596,7,598,597,600,599,602,592,603,605,2,3,608,609,5,611,7,613,612,615,614,617,606,618,620,3,622,623,5,625,7,627,626,629,628,631,621,632,634,2,3,637,5,639,7,641,640,643,642,645,635,646,648,3,650,5,652,7,654,653,656,655,658,649,659,661],"outs":[662]},"moveGates":736,"mapGates":655};
+const MOVE = CFG.MOVE, MAP_CIR = CFG.MAP_CIR;
+MOVE.outs = MOVE.outs || [];
+MAP_CIR.outs = MAP_CIR.outs || [];
+
+// ── NAND GATE ENGINE (identical to titan_circuit.ripple) ──
+let lastMoveWires = null, lastMapWires = null;
+function ripple(cir, inbits, saveWires){
+  const v = new Uint8Array(cir.nw); v[1] = 1;
+  for(let i=0;i<cir.nin;i++) v[2+i] = inbits[i]&1;
+  const base=2+cir.nin, ga=cir.ga, gb=cir.gb, ng=ga.length;
+  for(let i=0;i<ng;i++) v[base+i] = 1-(v[ga[i]]&v[gb[i]]);
+  if(saveWires==='move') lastMoveWires=v.slice(2+cir.nin);
+  if(saveWires==='map') lastMapWires=v.slice(2+cir.nin);
+  return cir.outs.map(o=>o===0?0:o===1?1:v[o]);
+}
+const bits=(val,n)=>{const a=[];for(let j=0;j<n;j++)a.push((val>>j)&1);return a};
+const frombits=a=>a.reduce((s,b,i)=>s+(b<<i),0);
+
+// ── WORLD (read from stored MAP circuit — 64 evaluations at load) ──
+const GRID=[];
+let totalGates=64*655; // 64 MAP circuit evaluations to build the world at startup
+for(let cy=0;cy<8;cy++){const row=[];for(let cx=0;cx<8;cx++)row.push(ripple(MAP_CIR,bits(((cy<<3)|cx),6),'map')[0]);GRID.push(row)}
+function wallAt(wx,wy){const cx=((wx&0xff)/CFG.CELL)|0,cy=((wy&0xff)/CFG.CELL)|0;return GRID[cy]?GRID[cy][cx]:1}
+const st={px:48,py:48,angle:32,keys:{}};
+
+function step(px,py,angle,keys){
+  const mv=(keys.fwd?1:0)-(keys.back?1:0);
+  const rad=angle/256*2*Math.PI;
+  const dx=Math.round(Math.cos(rad)*CFG.SPEED)*mv;
+  const dy=Math.round(Math.sin(rad)*CFG.SPEED)*mv;
+  const wallx=wallAt(px+dx,py),wally=wallAt(px,py+dy);
+  const turnL=keys.left?1:0,turnR=keys.right?1:0;
+  const inb=bits(px&0xff,8).concat(bits(py&0xff,8),bits(dx&0xff,8),bits(dy&0xff,8),
+              [wallx,wally],bits(angle&0xff,8),[turnL,turnR]);
+  const o=ripple(MOVE,inb,'move');
+  totalGates+=736;
+  return[frombits(o.slice(0,8)),frombits(o.slice(8,16)),frombits(o.slice(16,24))];
+}
+
+// ── 3D RAYCASTER ──
+const cv=document.getElementById("c"),ctx=cv.getContext("2d");
+const W=cv.width,H=cv.height,COLS=320,CW=W/COLS,FOV=60*Math.PI/180;
+const PAL=['#0a3d2a','#0f5e3f','#14804f','#1aad62','#22d97a','#39efc9'];
+
+function render(){
+  // sky gradient
+  const sky=ctx.createLinearGradient(0,0,0,H/2);
+  sky.addColorStop(0,'#050810');sky.addColorStop(1,'#0c1628');
+  ctx.fillStyle=sky;ctx.fillRect(0,0,W,H/2);
+  // floor gradient
+  const flr=ctx.createLinearGradient(0,H/2,0,H);
+  flr.addColorStop(0,'#0c1118');flr.addColorStop(1,'#060a10');
+  ctx.fillStyle=flr;ctx.fillRect(0,H/2,W,H/2);
+
+  const rad=st.angle/256*2*Math.PI;
+  for(let x=0;x<COLS;x++){
+    const ra=rad-FOV/2+FOV*x/COLS,sx=Math.cos(ra),sy=Math.sin(ra);
+    let dist=0;
+    while(dist<400){dist+=2;if(wallAt((st.px+sx*dist)|0,(st.py+sy*dist)|0))break;}
+    dist*=Math.cos(ra-rad);
+    const h=Math.min(H,(CFG.CELL*H/(dist+1))|0);
+    const bright=Math.max(0,Math.min(1,1-dist/350));
+    const r=(bright*20)|0,g=(bright*220)|0,b=(bright*100)|0;
+    ctx.fillStyle=`rgb(${r},${g},${b})`;
+    ctx.fillRect(x*CW,(H-h)/2,CW+1,h);
+    // wall edge highlight
+    if(h>10){
+      ctx.fillStyle=`rgba(57,239,201,${bright*0.15})`;
+      ctx.fillRect(x*CW,(H-h)/2,1,h);
+    }
+  }
+  // vignette
+  const vig=ctx.createRadialGradient(W/2,H/2,W*0.3,W/2,H/2,W*0.7);
+  vig.addColorStop(0,'transparent');vig.addColorStop(1,'rgba(5,8,13,0.5)');
+  ctx.fillStyle=vig;ctx.fillRect(0,0,W,H);
+}
+
+// ── MINIMAP ──
+function drawMinimap(){
+  const mc=document.getElementById("mm"),mx=mc.getContext("2d");
+  const s=9;
+  mx.fillStyle='#080c14';mx.fillRect(0,0,72,72);
+  for(let y=0;y<8;y++)for(let x=0;x<8;x++){
+    mx.fillStyle=GRID[y][x]?'#1a2333':'#0e151f';
+    mx.fillRect(x*s,y*s,s-1,s-1);
+  }
+  const ppx=(st.px/256*8)*s,ppy=(st.py/256*8)*s;
+  mx.fillStyle='#39efc9';mx.beginPath();mx.arc(ppx,ppy,2.5,0,7);mx.fill();
+  const rad=st.angle/256*2*Math.PI;
+  mx.strokeStyle='rgba(57,239,201,0.5)';mx.lineWidth=1;
+  mx.beginPath();mx.moveTo(ppx,ppy);mx.lineTo(ppx+Math.cos(rad)*10,ppy+Math.sin(rad)*10);mx.stroke();
+}
+
+// ── CIRCUIT VISUALIZATION ──
+function drawViz(){
+  const vc=document.getElementById("viz"),vx=vc.getContext("2d");
+  vx.fillStyle='#080c14';vx.fillRect(0,0,184,106);
+  if(!lastMoveWires)return;
+  // MOVE circuit: 736 gates as a 32x23 grid
+  const cols=32,sz=5,gap=1,ox=4,oy=4;
+  for(let i=0;i<736;i++){
+    const gx=i%cols,gy=(i/cols)|0;
+    const val=lastMoveWires[i];
+    if(val){
+      vx.fillStyle='rgba(57,239,201,0.8)';
+    }else{
+      vx.fillStyle='rgba(26,35,51,0.6)';
+    }
+    vx.fillRect(ox+gx*(sz+gap),oy+gy*(sz+gap),sz,sz);
+  }
+  // Label
+  vx.fillStyle='#3a4a5c';vx.font='9px monospace';
+  vx.fillText('MOVE: 736 gates',ox,102);
+}
+
+// ── HUD ──
+function updateHUD(){
+  document.getElementById("pos").textContent=`x=${st.px} y=${st.py} angle=${st.angle}`;
+  document.getElementById("gatect").textContent=totalGates.toLocaleString();
+}
+
+// ── INFO PANEL ──
+function toggleInfo(){
+  document.getElementById("info").classList.toggle("open");
+}
+
+// ── GAME LOOP ──
+let started=false;
+function tick(){
+  if(!started)return requestAnimationFrame(tick);
+  [st.px,st.py,st.angle]=step(st.px,st.py,st.angle,st.keys);
+  render();drawMinimap();drawViz();updateHUD();
+  requestAnimationFrame(tick);
+}
+
+// ── INPUT ──
+const KM={KeyW:"fwd",KeyS:"back",KeyA:"left",KeyD:"right",ArrowUp:"fwd",ArrowDown:"back",ArrowLeft:"left",ArrowRight:"right"};
+addEventListener("keydown",e=>{
+  if(e.code==="Tab"){e.preventDefault();toggleInfo();return}
+  if(!started){startGame();return}
+  if(KM[e.code]){st.keys[KM[e.code]]=true;e.preventDefault()}
+});
+addEventListener("keyup",e=>{if(KM[e.code])st.keys[KM[e.code]]=false});
+
+// ── INTRO → GAME TRANSITION ──
+function startGame(){
+  if(started)return;started=true;
+  document.getElementById("intro").classList.add("gone");
+  document.getElementById("wrap").classList.add("show");
+  cv.focus();
+  setTimeout(()=>{document.getElementById("intro").style.display="none"},700);
+  requestAnimationFrame(tick);
+}
+document.getElementById("intro").addEventListener("click",startGame);
+cv.addEventListener("click",()=>cv.focus());
+
+// initial render so something shows behind intro
+render();drawMinimap();
+requestAnimationFrame(tick);
+</script></body></html>

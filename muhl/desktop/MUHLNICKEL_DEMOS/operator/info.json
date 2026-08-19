@@ -1,0 +1,9 @@
+{
+  "name": "Operator (Neural Forward Pass)",
+  "gates": 2734,
+  "input": "64 pixels (8x8)",
+  "output": "predicted digit (0-9) + confidence score",
+  "source": "C:/llm/sdc_sandbox/pfc_operator.pfc",
+  "magic": "PFCOPR01",
+  "description": "Neural forward pass as gates: 8x8 input dotted against 10 learned digit templates, argmax selects the winner, computed entirely on the muhlnickel."
+}

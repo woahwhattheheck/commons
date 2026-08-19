@@ -1,0 +1,10 @@
+claim: FIXTURE
+claim_source: MUHL_LIFEBOAT/SPEC.md
+last_act: synthetic first fire
+unfinished: none
+write_boundary: LIFEBOAT0.mno only
+wound: none
+declared_status: FIXTURE
+declarant: PLAYER2
+continuity: NOT_RULED
+source_ids: p1-p2-lifeboat-spec-still-ready-20260818-01

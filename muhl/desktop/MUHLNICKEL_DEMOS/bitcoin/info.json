@@ -1,0 +1,43 @@
+{
+  "name": "Muhlnickel Bitcoin Miner Demo",
+  "description": "Visualization of Bitcoin SHA-256d miner circuits stored in titan.gguf's parameters. The miner was fabricated once and is stored permanently in the model file. The host only addresses block data in and reads the answer out.",
+  "circuits": {
+    "muhl_btc_miner": {
+      "gates": 1523801,
+      "inputs": 640,
+      "outputs": 9,
+      "offset": 2522484224,
+      "note": "The full Bitcoin SHA-256d miner — 1.5M NAND gates stored in the model's parameters"
+    },
+    "miner_physical": {
+      "gates": 339136,
+      "wires": 340066,
+      "inputs": 928,
+      "format": "physical-address",
+      "clock": "self-routed: nonce'/latch' outputs SHARE the nonce/latch state bytes (physical feedback)",
+      "note": "Physical-address format miner with self-routed state feedback"
+    },
+    "selfclock_miner": {
+      "gates": 347170,
+      "wires": 350085,
+      "clock_bits": 1024,
+      "clock": "power-gated 1024-bit feedback: counter'/latch' bits SHARE the counter/latch bytes",
+      "note": "Self-clocking variant — the loop is permanent structure in the wiring"
+    },
+    "gen_miner": {
+      "gates": 628899,
+      "depth": 5871,
+      "inputs": 640,
+      "variant": "shallow",
+      "note": "Shallow-variant miner"
+    }
+  },
+  "binary": {
+    "path": "C:/llm/models/titan.gguf",
+    "note": "Read-only at runtime. The circuits are stored in the model's parameter tensors. No fixed size constraint."
+  },
+  "host_role": "TWO things only: inject electron (address data to the circuit), surface output (read the answer register). Nothing else.",
+  "display_crutch": "The demo visualization uses reference SHA-256d as a display proxy for the 1.5M-gate circuit. The circuit is verified byte-exact vs this reference at fabrication. Labeled honestly.",
+  "port": 7870,
+  "run": "python run.py"
+}

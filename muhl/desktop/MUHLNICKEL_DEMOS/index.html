@@ -1,0 +1,233 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MUHLNICKEL — A Computer Inside a Model File</title>
+<style>
+:root{
+  --paper:#0C1016;--surface:#141A24;--surface2:#1B2330;--ink:#E8ECF3;--ink2:#A4AFC0;--ink3:#7B8698;
+  --rule:#28313F;--ruleS:#1E2632;--copper:#D98A4F;--copperS:#2A1D13;--ok:#5FC397;--okS:#13241C;
+  --blue:#7FB0E0;--purple:#A99BEE;--bad:#E8806F;
+  --mono:ui-monospace,"Cascadia Mono","SF Mono",Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --serif:Georgia,"Iowan Old Style",serif;
+}
+@media(prefers-color-scheme:light){:root{
+  --paper:#ECEFF3;--surface:#F7F9FC;--surface2:#E0E5EE;--ink:#141A24;--ink2:#48566A;--ink3:#6B7686;
+  --rule:#C6CEDA;--ruleS:#DBE0EA;--copper:#A85A26;--copperS:#F0E2D6;--ok:#1F6B4C;--okS:#DDEDE4;
+  --blue:#2C5B8A;--purple:#57499F;--bad:#B23A2E;}}
+:root[data-theme="light"]{
+  --paper:#ECEFF3;--surface:#F7F9FC;--surface2:#E0E5EE;--ink:#141A24;--ink2:#48566A;--ink3:#6B7686;
+  --rule:#C6CEDA;--ruleS:#DBE0EA;--copper:#A85A26;--copperS:#F0E2D6;--ok:#1F6B4C;--okS:#DDEDE4;
+  --blue:#2C5B8A;--purple:#57499F;--bad:#B23A2E;}
+:root[data-theme="dark"]{
+  --paper:#0C1016;--surface:#141A24;--surface2:#1B2330;--ink:#E8ECF3;--ink2:#A4AFC0;--ink3:#7B8698;
+  --rule:#28313F;--ruleS:#1E2632;--copper:#D98A4F;--copperS:#2A1D13;--ok:#5FC397;--okS:#13241C;
+  --blue:#7FB0E0;--purple:#A99BEE;--bad:#E8806F;}
+*{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55}
+.wrap{max-width:1200px;margin:0 auto;padding:clamp(22px,4vw,56px) clamp(14px,3.5vw,36px) 80px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3)}
+h1{font-weight:850;letter-spacing:-.035em;line-height:1;font-size:clamp(36px,8vw,80px);margin:.15em 0 .08em}
+h1 span{color:var(--copper)}
+.sub{font-family:var(--serif);font-size:clamp(16px,2.2vw,20px);color:var(--ink2);max-width:66ch;line-height:1.5}
+.thesis{font-family:var(--serif);color:var(--ink2);max-width:70ch;margin:16px 0 0;font-size:16px;line-height:1.65}
+header{border-bottom:2px solid var(--ink);padding-bottom:24px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--rule);
+  border:1px solid var(--rule);margin:28px 0 6px}
+.kpi{background:var(--surface);padding:14px 16px}
+.kpi .k{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink3)}
+.kpi .v{font-weight:850;font-size:clamp(22px,3.3vw,30px);letter-spacing:-.02em;margin-top:3px;
+  font-variant-numeric:tabular-nums;line-height:1}
+.kpi .s{font-family:var(--mono);font-size:10px;color:var(--ink3);margin-top:3px}
+
+/* Demo grid */
+section{margin-top:42px}
+.cat{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:16px}
+.cat h2{font-weight:750;font-size:18px;margin:0}
+.cat .n{font-family:var(--mono);font-size:11px;color:var(--copper)}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.card{border:1px solid var(--rule);background:var(--surface);padding:18px 20px;display:flex;flex-direction:column;gap:10px;
+  transition:border-color .15s,transform .1s}
+.card:hover{border-color:var(--copper);transform:translateY(-2px)}
+.card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.card h3{font-weight:700;font-size:17px;margin:0;letter-spacing:-.01em}
+.card .icon{font-size:28px;line-height:1;flex-shrink:0;filter:grayscale(.2)}
+.card p{margin:0;color:var(--ink2);font-size:13.5px;line-height:1.5;flex:1}
+.meta{display:flex;gap:6px 14px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink3);
+  font-variant-numeric:tabular-nums;margin-top:auto;padding-top:4px}
+.meta b{color:var(--ink2);font-weight:600}
+.pill{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;
+  white-space:nowrap;background:var(--okS);color:var(--ok);border:1px solid var(--ok)}
+.pill.copper{background:var(--copperS);color:var(--copper);border-color:var(--copper)}
+
+.launch{display:inline-block;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--copper);
+  background:var(--copperS);border:1px solid var(--copper);padding:7px 14px;text-decoration:none;
+  cursor:pointer;transition:background .12s,color .12s;text-align:center;margin-top:6px}
+.launch:hover{background:var(--copper);color:#fff}
+
+/* Standalone dashboards section */
+.standalone{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:16px}
+.scard{border:2px solid var(--copper);background:var(--surface);padding:18px 20px;display:flex;flex-direction:column;gap:8px}
+.scard h3{font-weight:750;font-size:17px;margin:0}
+.scard p{margin:0;color:var(--ink2);font-size:13.5px;line-height:1.5}
+
+/* Stats strip */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--rule);
+  border:2px solid var(--ink);margin-top:42px}
+.stat{background:var(--surface);padding:20px 22px;text-align:center}
+.stat .v{font-weight:850;font-size:clamp(26px,4vw,40px);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-top:4px}
+
+footer{margin-top:44px;padding-top:16px;border-top:2px solid var(--ink);font-family:var(--mono);font-size:11px;
+  color:var(--ink3);line-height:1.9}
+a.plain{color:var(--copper);text-decoration:none}a.plain:hover{text-decoration:underline}
+</style></head><body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">Built by Bryce Muhlnickel &middot; every circuit fabricated and byte-exact verified</div>
+  <h1>MUHLNICKEL</h1>
+  <div class="sub">A Computer Inside a Model File</div>
+  <p class="thesis">40 GB substrate. 4,954 circuits. 1,024 rings. Survives power loss.
+  The logic lives in storage, addressed in place. The host shoots an electron in and reads the answer out.
+  Everything between those two acts is the machine, not the host.</p>
+  <div class="kpis">
+    <div class="kpi"><div class="k">Substrate</div><div class="v">40 GB</div><div class="s">titan.gguf</div></div>
+    <div class="kpi"><div class="k">Circuits</div><div class="v">4,954</div><div class="s">fabricated</div></div>
+    <div class="kpi"><div class="k">Rings</div><div class="v">1,024</div><div class="s">nring2_* clock</div></div>
+    <div class="kpi"><div class="k">Resident RAM</div><div class="v">+0.86 MB</div><div class="s">measured</div></div>
+    <div class="kpi"><div class="k">Power loss</div><div class="v">3/3</div><div class="s">survived</div></div>
+  </div>
+</header>
+
+<!-- DEMOS -->
+<section>
+  <div class="cat"><span class="n">DEMOS</span><h2>Fabricated Applications</h2></div>
+  <div class="cards">
+
+    <div class="card">
+      <div class="top"><h3>Conway's Life</h3><div class="icon">&#x1F9EC;</div></div>
+      <p>Conway's Life with 4-bit cells (alive + 3-bit heat trail), 64x64 toroidal grid, computed entirely on the muhlnickel.</p>
+      <div class="meta"><span><b>270,336</b> gates</span><span>depth <b>67</b></span><span>64x64 grid</span></div>
+      <a class="launch" href="life/run.bat">Launch</a>
+    </div>
+
+    <div class="card">
+      <div class="top"><h3>Tetris</h3><div class="icon">&#x1F9F1;</div></div>
+      <p>Full Tetris with 7 tetrominoes, rotation, gravity, line-clear compaction, LFSR spawning, and game-over, all as one gate netlist.</p>
+      <div class="meta"><span><b>46,353</b> gates</span><span>10x20 board</span><span>642 state bits</span></div>
+      <a class="launch" href="tetris/run.bat">Launch</a>
+    </div>
+
+    <div class="card">
+      <div class="top"><h3>Raycast 3D</h3><div class="icon">&#x1F3AE;</div></div>
+      <p>First-person 3D raycaster with ray marching, wall projection, distance shading, and multi-colour walls on the substrate.</p>
+      <div class="meta"><span><b>384,396</b> gates</span><span>80x60 screen</span><span>8x8 map</span></div>
+      <a class="launch" href="raycast/run.bat">Launch</a>
+    </div>
+
+    <div class="card">
+      <div class="top"><h3>Tunnel</h3><div class="icon">&#x1F300;</div></div>
+      <p>Self-clocked perspective rainbow tunnel, 128x96 framebuffer painted by 828 gates per pulse on the muhlnickel.</p>
+      <div class="meta"><span><b>828</b> gates</span><span>128x96 screen</span><span>self-clocked</span></div>
+      <a class="launch" href="tunnel/run.bat">Launch</a>
+    </div>
+
+    <div class="card">
+      <div class="top"><h3>Operator</h3><div class="icon">&#x2699;&#xFE0F;</div></div>
+      <p>Neural forward pass as gates: 8x8 input dotted against 10 learned digit templates, argmax selects the winner. Digit classifier on the substrate.</p>
+      <div class="meta"><span><b>2,734</b> gates</span><span>8x8 input</span><span>10-class output</span></div>
+      <a class="launch" href="operator/run.bat">Launch</a>
+    </div>
+
+    <div class="card">
+      <div class="top"><h3>Brain</h3><div class="icon">&#x1F9E0;</div></div>
+      <p>Brian's Brain 3-state cellular automaton (ON/DYING/OFF), 64x64 toroidal grid, computed entirely on the muhlnickel.</p>
+      <div class="meta"><span><b>208,896</b> gates</span><span>64x64 grid</span><span>2 bits/cell</span></div>
+      <a class="launch" href="brain/run.bat">Launch</a>
+    </div>
+
+    <div class="card">
+      <div class="top"><h3>DOOM</h3><div class="icon">&#x1F480;</div></div>
+      <p>First-person DOOM-style game. Movement, turning, collision, map lookup, and a full 190K-gate raycast circuit stored in titan.gguf.</p>
+      <div class="meta"><span><b>194,040</b> gates</span><span>depth <b>446</b></span><span>16x16 map</span></div>
+      <a class="launch" href="doom/run.bat">Launch</a>
+    </div>
+
+    <div class="card">
+      <div class="top"><h3>Bitcoin Miner</h3><div class="icon">&#x26CF;&#xFE0F;</div></div>
+      <p>Full SHA-256d mining pipeline as NAND gates. 1.5M-gate miner with self-clocked nonce feedback. Fabricated once, runs by electron.</p>
+      <div class="meta"><span><b>1,523,801</b> gates</span><span>self-clocked</span><span>640 inputs</span></div>
+      <a class="launch" href="bitcoin/run.bat">Launch</a>
+    </div>
+
+    <div class="card">
+      <div class="top"><h3>32-bit CPU</h3><div class="icon">&#x1F4BB;</div></div>
+      <p>Stored-program processor: 15-operation ISA (HALT through LDI), 16 memory words, fetch-decode-execute as NAND gates. Runs Fibonacci, multiply, bitwise.</p>
+      <div class="meta"><span><b>411,665</b> gates</span><span>depth <b>202</b></span><span>15-op ISA</span></div>
+      <a class="launch" href="cpu/run.bat">Launch</a>
+    </div>
+
+    <div class="card" style="border-color:var(--copper)">
+      <div class="top"><h3>HRDST-v7 Showcase</h3><span class="pill copper">37 circuits</span></div>
+      <p>The full architecture research portfolio. 37 verified circuits spanning attention, caching, compression,
+      spectral processing, control theory, and neural plasticity — all as NAND gates on the substrate.</p>
+      <div class="meta"><span><b>448,378</b> total gates</span><span>all byte-exact</span></div>
+      <a class="launch" href="hrdst_showcase/showcase.html">View Showcase</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- STANDALONE DASHBOARDS -->
+<section>
+  <div class="cat"><span class="n">DASHBOARDS</span><h2>Standalone Control Surfaces</h2></div>
+  <div class="standalone">
+
+    <div class="scard">
+      <h3>Titan Dashboard</h3>
+      <p>The original engine showcase: 14 fabricated engines spanning cryptography, data operations, neural inference
+      and training, constraint solving, and verification proofs. Every one byte-exact, every one at flat RAM.</p>
+      <div class="meta"><span><b>14</b> engines</span><span>byte-exact</span><span>+0.86 MB resident</span></div>
+      <a class="launch" href="../Titan/titan.html">Open Titan</a>
+    </div>
+
+    <div class="scard">
+      <h3>Muhlnickel Control</h3>
+      <p>Live control surface for the resident machine. Fire electrons into rings, read answer registers, inspect
+      junction state, dump diagnostics. One button — the host evaluates no gate.</p>
+      <div class="meta"><span><b>1,024</b> rings</span><span>journaled writes</span><span>revertible</span></div>
+      <a class="launch" href="../Titan/muhl_control.html">Open Control</a>
+    </div>
+
+    <div class="scard">
+      <h3>Muhlnickel Game Studio</h3>
+      <p>A universal game engine built from stored circuits. Describe tile rules and a map; the engine generates
+      move, collision, and rotate circuits from NAND gates and runs your game. No game is built in — it runs your rules.</p>
+      <div class="meta"><span>universal engine</span><span>NAND kernel</span><span>self-verified</span></div>
+      <a class="launch" href="../SDC Game Studio.html">Open Game Studio</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- TOTAL STATS -->
+<div class="stats">
+  <div class="stat"><div class="v">4,954</div><div class="k">Total Circuits</div></div>
+  <div class="stat"><div class="v">1,024</div><div class="k">Rings</div></div>
+  <div class="stat"><div class="v">40,028,316,800</div><div class="k">Substrate Bytes</div></div>
+  <div class="stat"><div class="v">+0.86 MB</div><div class="k">Resident RAM</div></div>
+</div>
+
+<footer>
+  All inventions, mechanisms, and measurements are Bryce Muhlnickel's. The muhlnickel is a computer whose logic
+  is data — fabricated once, run by a signal, invisible to the operating system as an inert file even while it
+  computes. Nothing on this page was made by an AI. Press <b>d</b> to toggle theme.
+</footer>
+</div>
+
+<script>
+const t=document.documentElement,m=matchMedia("(prefers-color-scheme:dark)");
+addEventListener("keydown",e=>{if(e.key==="d"){t.setAttribute("data-theme",(t.getAttribute("data-theme")||(m.matches?"dark":"light"))==="dark"?"light":"dark")}});
+</script>
+</body></html>

@@ -1,0 +1,558 @@
+<!-- PRESERVED COPY of claude.ai artifact b98f8130-1a07-4402-9e77-02be8fa10f7d
+     "Perigee"  ·  Published 2026-07-27  ·  Preserved locally 2026-08-04
+     IP audit result: NO protected facts present. No model files, no GGUF, no
+     tensors, no weights, no model names, no container sizes, no addressing-as-
+     computation. This is a canvas orbit game. Taken down at owner request only
+     because the instruction was to take everything down, not because of exposure.
+     Vault law: preserved, never deleted. -->
+<title>Perigee</title>
+
+<style>
+  /* ── Design plan ───────────────────────────────────────────────────────────
+     Subject world: a brass-and-glass orrery, rendered in light. Not neon-arcade.
+     Color   ground  #090B16 indigo-black · star #FFB347→#FF6B35 amber
+             craft   #7DF9FF pale cyan · hazard #FF4D6D coral · mote #FFD782 gold
+             neutral #A8AEC9 — grey biased blue-violet toward the ground, chosen
+     Type    Display: system sans, uppercase, wide tracking — instrument panel
+             Data:    monospace, tabular figures — an observatory readout
+     Layout  The canvas IS the page. A hairline instrument bar floats on top;
+             overlays are centered viewfinder cards. Deliberately single-theme:
+             this is a night sky, and inverting it would destroy the subject.
+     ─────────────────────────────────────────────────────────────────────────── */
+
+  :root {
+    --ground:  #090B16;
+    --ground-2:#11142A;
+    --star-hi: #FFB347;
+    --star-lo: #FF6B35;
+    --craft:   #7DF9FF;
+    --hazard:  #FF4D6D;
+    --mote:    #FFD782;
+    --ink:     #E6E9F5;
+    --ink-dim: #A8AEC9;
+    --hairline:rgba(168,174,201,.22);
+
+    --display: ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+    --data: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Menlo, monospace;
+  }
+
+  html, body { height: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--display);
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+
+  #stage { position: fixed; inset: 0; }
+  canvas { display: block; width: 100%; height: 100%; }
+
+  /* ── Instrument bar ─────────────────────────────────────────────────────── */
+  .hud {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem clamp(1rem, 4vw, 2rem);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .readout { display: flex; align-items: baseline; gap: .55rem; }
+
+  .label {
+    font-size: .625rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+
+  .value {
+    font-family: var(--data);
+    font-variant-numeric: tabular-nums;
+    font-size: 1.35rem;
+    line-height: 1;
+    color: var(--ink);
+  }
+
+  .value.best { font-size: .95rem; color: var(--ink-dim); }
+
+  /* ── Viewfinder overlay ─────────────────────────────────────────────────── */
+  .veil {
+    position: fixed;
+    inset: 0;
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    padding: 1.5rem;
+    background: radial-gradient(circle at 50% 50%, rgba(9,11,22,.55) 0%, rgba(9,11,22,.92) 70%);
+    backdrop-filter: blur(2px);
+  }
+
+  .veil[hidden] { display: none; }
+
+  .card {
+    width: min(30rem, 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.15rem;
+    padding: clamp(1.75rem, 6vw, 2.75rem);
+    text-align: center;
+    border: 1px solid var(--hairline);
+    background: linear-gradient(180deg, rgba(17,20,42,.82), rgba(9,11,22,.82));
+  }
+
+  /* corner ticks — a viewfinder, not a rounded card */
+  .card { position: relative; }
+  .card::before, .card::after {
+    content: "";
+    position: absolute;
+    width: 14px; height: 14px;
+    border: 1px solid var(--star-hi);
+    opacity: .7;
+  }
+  .card::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+  .card::after  { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(2.5rem, 11vw, 4rem);
+    font-weight: 300;
+    letter-spacing: .34em;
+    text-indent: .34em; /* optical: cancel trailing tracking */
+    text-transform: uppercase;
+    text-wrap: balance;
+    background: linear-gradient(180deg, var(--star-hi), var(--star-lo));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .tagline {
+    margin: 0;
+    max-width: 26ch;
+    font-size: .95rem;
+    line-height: 1.6;
+    color: var(--ink-dim);
+    text-wrap: balance;
+  }
+
+  .keycap {
+    display: inline-block;
+    padding: .1em .45em;
+    margin: 0 .1em;
+    border: 1px solid var(--hairline);
+    border-bottom-width: 2px;
+    font-family: var(--data);
+    font-size: .85em;
+    color: var(--ink);
+  }
+
+  .score-final {
+    display: flex;
+    align-items: baseline;
+    gap: .6rem;
+    font-family: var(--data);
+    font-variant-numeric: tabular-nums;
+  }
+  .score-final .n { font-size: 3rem; line-height: 1; color: var(--mote); }
+  .score-final .u { font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-dim); }
+
+  .newbest {
+    font-size: .7rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--star-hi);
+  }
+  .newbest[hidden] { display: none; }
+
+  button {
+    pointer-events: auto;
+    padding: .8rem 2.2rem;
+    border: 1px solid var(--star-hi);
+    background: transparent;
+    color: var(--star-hi);
+    font-family: var(--display);
+    font-size: .72rem;
+    font-weight: 500;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color .18s ease, color .18s ease;
+  }
+  button:hover { background: var(--star-hi); color: var(--ground); }
+  button:focus-visible { outline: 2px solid var(--craft); outline-offset: 3px; }
+
+  .hint {
+    position: fixed;
+    bottom: 1.25rem; left: 0; right: 0;
+    text-align: center;
+    font-size: .625rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    opacity: .55;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .hint[hidden] { display: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    button { transition: none; }
+  }
+</style>
+
+<div id="stage"><canvas id="c"></canvas></div>
+
+<div class="hud">
+  <div class="readout">
+    <span class="label">Collected</span>
+    <span class="value" id="score">0</span>
+  </div>
+  <div class="readout">
+    <span class="label">Best</span>
+    <span class="value best" id="best">0</span>
+  </div>
+</div>
+
+<p class="hint" id="hint" hidden>Press to reverse orbit</p>
+
+<div class="veil" id="veil">
+  <div class="card">
+    <h1 id="title">Perigee</h1>
+    <p class="tagline" id="tagline">
+      You are in orbit. Comets are falling toward the star.
+      Press <span class="keycap">space</span> — or tap anywhere — to reverse
+      your direction, and gather the gold.
+    </p>
+    <div class="score-final" id="final" hidden>
+      <span class="n" id="finalN">0</span>
+      <span class="u">gathered</span>
+    </div>
+    <p class="newbest" id="newbest" hidden>★ New best</p>
+    <button id="go" type="button">Launch</button>
+  </div>
+</div>
+
+<script>
+(() => {
+  "use strict";
+
+  const cv = document.getElementById("c");
+  const ctx = cv.getContext("2d", { alpha: false });
+  const elScore = document.getElementById("score");
+  const elBest  = document.getElementById("best");
+  const elVeil  = document.getElementById("veil");
+  const elTitle = document.getElementById("title");
+  const elTag   = document.getElementById("tagline");
+  const elFinal = document.getElementById("final");
+  const elFinalN= document.getElementById("finalN");
+  const elNew   = document.getElementById("newbest");
+  const elGo    = document.getElementById("go");
+  const elHint  = document.getElementById("hint");
+
+  const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const C = {
+    ground: "#090B16",
+    starHi: "#FFB347",
+    starLo: "#FF6B35",
+    craft:  "#7DF9FF",
+    hazard: "#FF4D6D",
+    mote:   "#FFD782",
+    ring:   "rgba(168,174,201,.16)"
+  };
+
+  let W = 0, H = 0, cx = 0, cy = 0, R = 0, dpr = 1;
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = Math.round(W * dpr);
+    cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    cx = W / 2; cy = H / 2;
+    R = Math.min(W, H) * 0.29;
+    ctx.fillStyle = C.ground;
+    ctx.fillRect(0, 0, W, H);
+  }
+  addEventListener("resize", resize, { passive: true });
+
+  // ── state ──────────────────────────────────────────────────────────────────
+  let running = false;
+  let angle = 0, dir = 1, speed = 1.55;   // radians/sec
+  let comets = [], motes = [], sparks = [];
+  let score = 0, elapsed = 0, nextComet = 0, nextMote = 0;
+  let shake = 0, pulse = 0;
+
+  let best = 0;
+  try { best = parseInt(localStorage.getItem("perigee.best") || "0", 10) || 0; } catch (e) { best = 0; }
+  elBest.textContent = best;
+
+  const SHIP_HIT = 13;
+
+  function reset() {
+    angle = -Math.PI / 2; dir = 1; speed = 1.55;
+    comets = []; motes = []; sparks = [];
+    score = 0; elapsed = 0;
+    nextComet = 0.9; nextMote = 0.45;
+    shake = 0; pulse = 0;
+    elScore.textContent = "0";
+    ctx.fillStyle = C.ground;
+    ctx.fillRect(0, 0, W, H);
+  }
+
+  function start() {
+    reset();
+    running = true;
+    elVeil.hidden = true;
+    elHint.hidden = false;
+    last = performance.now();
+    requestAnimationFrame(frame);
+  }
+
+  function over() {
+    running = false;
+    elHint.hidden = true;
+    const record = score > best;
+    if (record) {
+      best = score;
+      elBest.textContent = best;
+      try { localStorage.setItem("perigee.best", String(best)); } catch (e) { /* private mode */ }
+    }
+    elTitle.textContent = "Impact";
+    elTag.textContent = record
+      ? "A comet found you — but nobody has gone further."
+      : "A comet found you. The star keeps burning.";
+    elFinal.hidden = false;
+    elFinalN.textContent = score;
+    elNew.hidden = !record;
+    elGo.textContent = "Again";
+    elVeil.hidden = false;
+    elGo.focus();
+  }
+
+  function flip() {
+    if (!running) return;
+    dir *= -1;
+    pulse = 1;
+    const sx = cx + Math.cos(angle) * R, sy = cy + Math.sin(angle) * R;
+    for (let i = 0; i < 8; i++) burst(sx, sy, C.craft, 90);
+  }
+
+  function burst(x, y, color, spread) {
+    const a = Math.random() * Math.PI * 2;
+    const v = 40 + Math.random() * spread;
+    sparks.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, life: 1, color });
+  }
+
+  // ── input ──────────────────────────────────────────────────────────────────
+  function press(e) {
+    if (e.target.closest("button")) return;
+    if (!running) return;
+    e.preventDefault();
+    flip();
+  }
+  addEventListener("pointerdown", press);
+  addEventListener("keydown", (e) => {
+    if (e.code === "Space" || e.code === "ArrowLeft" || e.code === "ArrowRight") {
+      if (!running) return;
+      e.preventDefault();
+      flip();
+    }
+  });
+  elGo.addEventListener("click", start);
+
+  // ── loop ───────────────────────────────────────────────────────────────────
+  let last = 0;
+
+  function frame(now) {
+    const dt = Math.min((now - last) / 1000, 0.05);
+    last = now;
+    if (running) { update(dt); }
+    draw(dt);
+    if (running) requestAnimationFrame(frame);
+  }
+
+  function update(dt) {
+    elapsed += dt;
+    angle += dir * speed * dt;
+    speed = 1.55 + Math.min(elapsed * 0.035, 1.1);
+    if (pulse > 0) pulse = Math.max(0, pulse - dt * 3.5);
+    if (shake > 0) shake = Math.max(0, shake - dt * 4);
+
+    // spawn comets, tightening with time
+    nextComet -= dt;
+    if (nextComet <= 0) {
+      const gap = Math.max(0.34, 1.05 - elapsed * 0.022);
+      nextComet = gap * (0.7 + Math.random() * 0.6);
+      const a = Math.random() * Math.PI * 2;
+      const far = Math.hypot(W, H) * 0.58;
+      comets.push({
+        x: cx + Math.cos(a) * far,
+        y: cy + Math.sin(a) * far,
+        a,
+        v: 130 + Math.random() * 60 + Math.min(elapsed * 4, 130),
+        r: 4.5 + Math.random() * 2.5,
+        trail: []
+      });
+    }
+
+    // spawn motes on the orbit ring
+    nextMote -= dt;
+    if (nextMote <= 0 && motes.length < 3) {
+      nextMote = 1.1 + Math.random() * 1.2;
+      motes.push({ a: Math.random() * Math.PI * 2, born: elapsed, taken: false });
+    }
+
+    // advance comets
+    const shipX = cx + Math.cos(angle) * R;
+    const shipY = cy + Math.sin(angle) * R;
+
+    for (let i = comets.length - 1; i >= 0; i--) {
+      const k = comets[i];
+      k.trail.push(k.x, k.y);
+      if (k.trail.length > 16) k.trail.splice(0, 2);
+      k.x -= Math.cos(k.a) * k.v * dt;
+      k.y -= Math.sin(k.a) * k.v * dt;
+
+      if (Math.hypot(k.x - shipX, k.y - shipY) < SHIP_HIT + k.r) {
+        for (let j = 0; j < 34; j++) burst(shipX, shipY, j % 3 ? C.hazard : C.craft, 240);
+        shake = 1;
+        draw(0);
+        over();
+        return;
+      }
+      // consumed by the star
+      if (Math.hypot(k.x - cx, k.y - cy) < 18) {
+        for (let j = 0; j < 5; j++) burst(k.x, k.y, C.starHi, 60);
+        comets.splice(i, 1);
+      }
+    }
+
+    // collect motes
+    for (let i = motes.length - 1; i >= 0; i--) {
+      const m = motes[i];
+      const mx = cx + Math.cos(m.a) * R, my = cy + Math.sin(m.a) * R;
+      if (Math.hypot(mx - shipX, my - shipY) < 20) {
+        score++;
+        elScore.textContent = score;
+        for (let j = 0; j < 14; j++) burst(mx, my, C.mote, 120);
+        motes.splice(i, 1);
+      } else if (elapsed - m.born > 7) {
+        motes.splice(i, 1);
+      }
+    }
+
+    // sparks
+    for (let i = sparks.length - 1; i >= 0; i--) {
+      const s = sparks[i];
+      s.x += s.vx * dt; s.y += s.vy * dt;
+      s.vx *= 0.93; s.vy *= 0.93;
+      s.life -= dt * 1.7;
+      if (s.life <= 0) sparks.splice(i, 1);
+    }
+  }
+
+  function draw() {
+    ctx.save();
+    if (shake > 0 && !REDUCED) {
+      ctx.translate((Math.random() - 0.5) * shake * 14, (Math.random() - 0.5) * shake * 14);
+    }
+
+    // motion trails: fade rather than clear — the signature of the piece
+    ctx.fillStyle = "rgba(9,11,22,.26)";
+    ctx.fillRect(-20, -20, W + 40, H + 40);
+
+    // orbit ring
+    ctx.strokeStyle = C.ring;
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.stroke();
+
+    // star
+    const t = performance.now() / 1000;
+    const rad = 15 + Math.sin(t * 1.6) * 1.6;
+    const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, rad * 5.5);
+    g.addColorStop(0, C.starHi);
+    g.addColorStop(0.28, C.starLo);
+    g.addColorStop(1, "rgba(255,107,53,0)");
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(cx, cy, rad * 5.5, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = "#FFF3D6";
+    ctx.beginPath(); ctx.arc(cx, cy, rad * 0.62, 0, Math.PI * 2); ctx.fill();
+
+    // motes
+    for (const m of motes) {
+      const mx = cx + Math.cos(m.a) * R, my = cy + Math.sin(m.a) * R;
+      const tw = 0.65 + Math.sin(t * 5 + m.a * 4) * 0.35;
+      ctx.fillStyle = C.mote;
+      ctx.globalAlpha = tw;
+      ctx.beginPath(); ctx.arc(mx, my, 5.5, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = tw * 0.22;
+      ctx.beginPath(); ctx.arc(mx, my, 13, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+
+    // comets
+    for (const k of comets) {
+      if (k.trail.length >= 4) {
+        ctx.strokeStyle = "rgba(255,77,109,.34)";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(k.trail[0], k.trail[1]);
+        for (let i = 2; i < k.trail.length; i += 2) ctx.lineTo(k.trail[i], k.trail[i + 1]);
+        ctx.stroke();
+      }
+      ctx.fillStyle = C.hazard;
+      ctx.beginPath(); ctx.arc(k.x, k.y, k.r, 0, Math.PI * 2); ctx.fill();
+    }
+
+    // sparks
+    for (const s of sparks) {
+      ctx.globalAlpha = Math.max(s.life, 0);
+      ctx.fillStyle = s.color;
+      ctx.fillRect(s.x - 1.5, s.y - 1.5, 3, 3);
+    }
+    ctx.globalAlpha = 1;
+
+    // craft
+    if (running) {
+      const sx = cx + Math.cos(angle) * R, sy = cy + Math.sin(angle) * R;
+      const heading = angle + dir * Math.PI / 2;
+      ctx.save();
+      ctx.translate(sx, sy);
+      ctx.rotate(heading);
+      const flash = 1 + pulse * 0.9;
+      ctx.fillStyle = C.craft;
+      ctx.beginPath();
+      ctx.moveTo(9 * flash, 0);
+      ctx.lineTo(-6 * flash, 5.5 * flash);
+      ctx.lineTo(-3 * flash, 0);
+      ctx.lineTo(-6 * flash, -5.5 * flash);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+
+      ctx.globalAlpha = 0.16 + pulse * 0.3;
+      ctx.fillStyle = C.craft;
+      ctx.beginPath(); ctx.arc(sx, sy, 15, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+
+    ctx.restore();
+  }
+
+  resize();
+  // idle backdrop behind the opening card
+  (function idle() {
+    if (!running) { draw(0); requestAnimationFrame(idle); }
+  })();
+})();
+</script>

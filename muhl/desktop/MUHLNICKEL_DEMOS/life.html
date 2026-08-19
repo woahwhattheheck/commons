@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MUHLNICKEL — Conway's Game of Life</title>
+<style>
+:root {
+  --ground: #050808;
+  --surface: #0a120e;
+  --surface-raised: #0f1a14;
+  --border: #1a2e22;
+  --border-bright: #2a4a36;
+  --matrix-green: #00ff41;
+  --matrix-dim: #0a6b2a;
+  --matrix-dark: #042f12;
+  --copper: #cd7f32;
+  --copper-bright: #e8a84c;
+  --life-cell: #39efc9;
+  --life-cell-dim: #1a7a64;
+  --life-born: #7dffdb;
+  --life-dying: #8b4513;
+  --text: #c8d0c0;
+  --text-dim: #5a6b58;
+  --text-muted: #384038;
+  --mono: 'Cascadia Mono', Consolas, 'Courier New', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100%; height: 100%;
+  background: var(--ground);
+  color: var(--text);
+  font-family: var(--mono);
+  overflow: hidden;
+}
+
+#top-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background: rgba(5,8,8,0.94);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+  z-index: 50;
+}
+
+#top-bar .title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--copper-bright);
+  text-transform: uppercase;
+}
+
+#top-bar .circuit-stats {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+#top-bar .circuit-stats span.val {
+  color: var(--matrix-green);
+  font-variant-numeric: tabular-nums;
+}
+
+.status-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+.status-dot.live {
+  background: var(--matrix-green);
+  box-shadow: 0 0 6px var(--matrix-green), 0 0 12px rgba(0,255,65,0.3);
+}
+
+#main {
+  position: fixed;
+  top: 38px; left: 0; right: 0; bottom: 32px;
+  display: flex;
+}
+
+#game-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#life-glow {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(57,239,201,0.05) 0%, transparent 70%);
+  width: 110%; height: 110%;
+  z-index: 0;
+}
+
+canvas#life-canvas {
+  position: relative;
+  z-index: 1;
+  image-rendering: pixelated;
+  border: 1px solid var(--border-bright);
+  box-shadow: 0 0 30px rgba(57,239,201,0.06);
+}
+
+#sidebar {
+  width: 260px;
+  min-width: 260px;
+  height: 100%;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sb-section {
+  border: 1px solid var(--border);
+  background: var(--surface-raised);
+  padding: 10px;
+}
+
+.sb-section .sb-title {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--copper);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sb-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 2px 0;
+  font-size: 10px;
+}
+
+.sb-row .label {
+  color: var(--text-dim);
+  letter-spacing: 0.5px;
+}
+
+.sb-row .value {
+  color: var(--life-cell);
+  font-variant-numeric: tabular-nums;
+}
+
+.sb-row .value.copper {
+  color: var(--copper-bright);
+}
+
+.sb-row .value.green {
+  color: var(--matrix-green);
+}
+
+.substrate-label {
+  font-size: 9px;
+  color: var(--matrix-dim);
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+  word-break: break-all;
+}
+
+.byte-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 2px;
+  margin-top: 6px;
+}
+
+.byte-cell {
+  background: var(--ground);
+  border: 1px solid var(--border);
+  font-size: 8px;
+  text-align: center;
+  padding: 2px 0;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  transition: color 0.2s, background 0.2s;
+}
+
+.byte-cell.active {
+  color: var(--matrix-green);
+  background: var(--matrix-dark);
+  border-color: var(--matrix-dim);
+}
+
+#bottom-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  font-size: 9px;
+  color: var(--text-dim);
+  letter-spacing: 0.5px;
+}
+
+#bottom-bar .substrate-tag {
+  color: var(--matrix-dim);
+  font-size: 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+#bottom-bar .fps {
+  font-variant-numeric: tabular-nums;
+}
+
+#bottom-bar .fps span {
+  color: var(--life-cell);
+}
+
+#controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.ctrl-btn {
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  padding: 3px 8px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.ctrl-btn:hover {
+  color: var(--copper-bright);
+  border-color: var(--copper);
+}
+
+.ctrl-btn.active {
+  color: var(--matrix-green);
+  border-color: var(--matrix-dim);
+}
+</style>
+</head>
+<body>
+
+<div id="top-bar">
+  <div class="title">Conway's Game of Life</div>
+  <div class="circuit-stats">
+    <div style="display:flex;align-items:center;gap:5px;">
+      <div class="status-dot" id="conn-dot"></div>
+      <span id="conn-label">OFFLINE</span>
+    </div>
+    <span>circuit: <span class="val">life_step</span></span>
+    <span>gates: <span class="val">518,144</span></span>
+    <span>depth: <span class="val">67</span></span>
+    <span>ring: <span class="val">67</span></span>
+  </div>
+</div>
+
+<div id="main">
+  <div id="game-area">
+    <div id="life-glow"></div>
+    <canvas id="life-canvas" width="512" height="512"></canvas>
+  </div>
+  <div id="sidebar">
+    <div class="sb-section">
+      <div class="sb-title">Circuit</div>
+      <div class="sb-row"><span class="label">Name</span><span class="value copper">life_step</span></div>
+      <div class="sb-row"><span class="label">Offset</span><span class="value">2,367,589,103</span></div>
+      <div class="sb-row"><span class="label">Length</span><span class="value">4,149,272 B</span></div>
+      <div class="sb-row"><span class="label">Gates</span><span class="value green">518,144</span></div>
+      <div class="sb-row"><span class="label">Depth</span><span class="value">67 ticks</span></div>
+      <div class="sb-row"><span class="label">I/O</span><span class="value">1024 / 1024</span></div>
+      <div class="sb-row"><span class="label">Ring</span><span class="value copper">nring2_067</span></div>
+      <div class="sb-row"><span class="label">Recv</span><span class="value">0xA5862F09</span></div>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-title">Live State</div>
+      <div class="sb-row"><span class="label">Tick</span><span class="value green" id="sb-tick">0</span></div>
+      <div class="sb-row"><span class="label">Alive</span><span class="value" id="sb-alive">0</span></div>
+      <div class="sb-row"><span class="label">Born</span><span class="value" style="color:var(--life-born)" id="sb-born">0</span></div>
+      <div class="sb-row"><span class="label">Died</span><span class="value" style="color:var(--life-dying)" id="sb-died">0</span></div>
+      <div class="sb-row"><span class="label">Source</span><span class="value" id="sb-source">LOCAL SIM</span></div>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-title">Output Bytes (sample)</div>
+      <div class="byte-grid" id="byte-grid"></div>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-title">Substrate Address</div>
+      <div class="substrate-label">
+        SUBSTRATE: life_step<br>
+        @ offset 2,367,589,103<br>
+        tensor: blk.1.ffn_gate_up_exps.weight<br>
+        recv: 2,776,454,521<br>
+        gate_off: 2,776,463,124
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="bottom-bar">
+  <div class="substrate-tag">SUBSTRATE: life_step @ offset 2,367,589,103 &middot; 518,144 gates &middot; depth 67 ticks</div>
+  <div id="controls">
+    <button class="ctrl-btn active" id="btn-play" onclick="togglePause()">RUNNING</button>
+    <button class="ctrl-btn" onclick="stepOnce()">STEP</button>
+    <button class="ctrl-btn" onclick="randomize()">RANDOM</button>
+    <button class="ctrl-btn" onclick="clearGrid()">CLEAR</button>
+  </div>
+  <div class="fps">tick <span id="tick-count">0</span> &middot; <span id="fps-val">0</span> fps</div>
+</div>
+
+<script>
+const API = 'http://localhost:7880';
+const GRID = 32;
+const CELL_PX = 16;
+let connected = false;
+let paused = false;
+let tick = 0;
+let grid = new Uint8Array(GRID * GRID);
+let prevGrid = new Uint8Array(GRID * GRID);
+let born = new Uint8Array(GRID * GRID);
+let died = new Uint8Array(GRID * GRID);
+let lastFrame = performance.now();
+let fps = 0;
+let frameCount = 0;
+let fpsTimer = 0;
+
+const canvas = document.getElementById('life-canvas');
+const ctx = canvas.getContext('2d');
+canvas.width = GRID * CELL_PX;
+canvas.height = GRID * CELL_PX;
+canvas.style.width = Math.min(GRID * CELL_PX, 512) + 'px';
+canvas.style.height = Math.min(GRID * CELL_PX, 512) + 'px';
+
+// Build byte grid display
+const byteGridEl = document.getElementById('byte-grid');
+const byteCells = [];
+for (let i = 0; i < 64; i++) {
+  const el = document.createElement('div');
+  el.className = 'byte-cell';
+  el.textContent = '00';
+  byteGridEl.appendChild(el);
+  byteCells.push(el);
+}
+
+function randomize() {
+  for (let i = 0; i < GRID * GRID; i++) {
+    grid[i] = Math.random() < 0.3 ? 1 : 0;
+  }
+  tick = 0;
+}
+
+function clearGrid() {
+  grid.fill(0);
+  born.fill(0);
+  died.fill(0);
+  tick = 0;
+}
+
+function togglePause() {
+  paused = !paused;
+  const btn = document.getElementById('btn-play');
+  btn.textContent = paused ? 'PAUSED' : 'RUNNING';
+  btn.classList.toggle('active', !paused);
+}
+
+function stepOnce() {
+  if (!paused) togglePause();
+  stepLife();
+}
+
+// Glider gun seed
+function seedGliderGun() {
+  randomize();
+  // Place a glider at (2,2)
+  const pts = [[2,3],[3,3],[2,4],[3,4],[12,3],[12,4],[12,5],[13,2],[13,6],[14,1],[14,7],[15,1],[15,7],[16,4],[17,2],[17,6],[18,3],[18,4],[18,5],[19,4],[22,1],[22,2],[22,3],[23,1],[23,2],[23,3],[24,0],[24,4],[26,0],[26,4],[26,5]];
+  // Scale down to fit 32x32
+  pts.forEach(([r,c]) => { if(r<GRID && c<GRID) grid[r*GRID+c] = 1; });
+}
+
+function countNeighbors(x, y) {
+  let count = 0;
+  for (let dy = -1; dy <= 1; dy++) {
+    for (let dx = -1; dx <= 1; dx++) {
+      if (dx === 0 && dy === 0) continue;
+      const nx = (x + dx + GRID) % GRID;
+      const ny = (y + dy + GRID) % GRID;
+      count += prevGrid[ny * GRID + nx];
+    }
+  }
+  return count;
+}
+
+function stepLife() {
+  prevGrid.set(grid);
+  let bornCount = 0, diedCount = 0;
+  for (let y = 0; y < GRID; y++) {
+    for (let x = 0; x < GRID; x++) {
+      const idx = y * GRID + x;
+      const n = countNeighbors(x, y);
+      const alive = prevGrid[idx];
+      if (alive) {
+        grid[idx] = (n === 2 || n === 3) ? 1 : 0;
+      } else {
+        grid[idx] = (n === 3) ? 1 : 0;
+      }
+      born[idx] = (!alive && grid[idx]) ? 1 : 0;
+      died[idx] = (alive && !grid[idx]) ? 1 : 0;
+      if (born[idx]) bornCount++;
+      if (died[idx]) diedCount++;
+    }
+  }
+  tick++;
+  document.getElementById('sb-born').textContent = bornCount;
+  document.getElementById('sb-died').textContent = diedCount;
+}
+
+function draw() {
+  ctx.fillStyle = '#050808';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  let aliveCount = 0;
+  for (let y = 0; y < GRID; y++) {
+    for (let x = 0; x < GRID; x++) {
+      const idx = y * GRID + x;
+      const px = x * CELL_PX;
+      const py = y * CELL_PX;
+
+      if (grid[idx]) {
+        aliveCount++;
+        if (born[idx]) {
+          ctx.fillStyle = '#7dffdb';
+        } else {
+          ctx.fillStyle = '#39efc9';
+        }
+        ctx.fillRect(px + 1, py + 1, CELL_PX - 2, CELL_PX - 2);
+        // subtle inner glow
+        ctx.fillStyle = 'rgba(57,239,201,0.15)';
+        ctx.fillRect(px, py, CELL_PX, CELL_PX);
+      } else if (died[idx]) {
+        ctx.fillStyle = '#8b4513';
+        ctx.fillRect(px + 1, py + 1, CELL_PX - 2, CELL_PX - 2);
+      }
+    }
+  }
+
+  // grid lines
+  ctx.strokeStyle = 'rgba(26,46,34,0.4)';
+  ctx.lineWidth = 0.5;
+  for (let i = 0; i <= GRID; i++) {
+    ctx.beginPath();
+    ctx.moveTo(i * CELL_PX, 0);
+    ctx.lineTo(i * CELL_PX, canvas.height);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(0, i * CELL_PX);
+    ctx.lineTo(canvas.width, i * CELL_PX);
+    ctx.stroke();
+  }
+
+  document.getElementById('sb-alive').textContent = aliveCount;
+  document.getElementById('sb-tick').textContent = tick;
+  document.getElementById('tick-count').textContent = tick;
+
+  // Update byte grid sample
+  for (let i = 0; i < 64; i++) {
+    const byteVal = grid[i] ? 0x01 : 0x00;
+    byteCells[i].textContent = byteVal.toString(16).padStart(2, '0');
+    byteCells[i].classList.toggle('active', grid[i] === 1);
+  }
+}
+
+// Click to toggle cells
+canvas.addEventListener('click', (e) => {
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width;
+  const scaleY = canvas.height / rect.height;
+  const cx = Math.floor((e.clientX - rect.left) * scaleX / CELL_PX);
+  const cy = Math.floor((e.clientY - rect.top) * scaleY / CELL_PX);
+  if (cx >= 0 && cx < GRID && cy >= 0 && cy < GRID) {
+    const idx = cy * GRID + cx;
+    grid[idx] = grid[idx] ? 0 : 1;
+    draw();
+  }
+});
+
+// Connection
+async function fetchCircuit(name) {
+  try {
+    const r = await fetch(API + '/api/circuit/' + name);
+    if (r.ok) { connected = true; return await r.json(); }
+  } catch(e) {}
+  connected = false;
+  return null;
+}
+
+function updateStatus() {
+  const dot = document.getElementById('conn-dot');
+  const label = document.getElementById('conn-label');
+  const src = document.getElementById('sb-source');
+  dot.classList.toggle('live', connected);
+  label.textContent = connected ? 'LIVE' : 'OFFLINE';
+  label.style.color = connected ? '#00ff41' : '';
+  src.textContent = connected ? 'SUBSTRATE' : 'LOCAL SIM';
+  src.style.color = connected ? '#00ff41' : '';
+}
+
+function connectSSE() {
+  try {
+    const es = new EventSource(API + '/stream');
+    es.onopen = () => { connected = true; updateStatus(); };
+    es.onmessage = (e) => {
+      try {
+        const data = JSON.parse(e.data);
+        if (data.circuit === 'life_step' && data.bytes) {
+          for (let i = 0; i < Math.min(data.bytes.length, GRID*GRID); i++) {
+            grid[i] = data.bytes[i] ? 1 : 0;
+          }
+        }
+      } catch(err) {}
+    };
+    es.onerror = () => {
+      connected = false;
+      updateStatus();
+      es.close();
+      setTimeout(connectSSE, 3000);
+    };
+  } catch(e) {
+    setTimeout(connectSSE, 3000);
+  }
+}
+
+// Main loop
+let simInterval = 150; // ms between life steps
+let lastSim = 0;
+
+function loop(now) {
+  frameCount++;
+  if (now - fpsTimer >= 1000) {
+    fps = frameCount;
+    frameCount = 0;
+    fpsTimer = now;
+    document.getElementById('fps-val').textContent = fps;
+  }
+
+  if (!paused && now - lastSim >= simInterval) {
+    stepLife();
+    lastSim = now;
+  }
+
+  draw();
+  requestAnimationFrame(loop);
+}
+
+// Init
+seedGliderGun();
+updateStatus();
+fetchCircuit('life_step').then(() => updateStatus());
+connectSSE();
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>

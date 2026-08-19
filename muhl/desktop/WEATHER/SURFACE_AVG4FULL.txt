@@ -1,0 +1,23 @@
+WEATHER AVG4FULL SURFACE — 1s/0s FROM THE FILE (no host settle)
+sha256 a9b8c5d9bcda93c797326ab71cfbcc6046610df5940c61d4e346b464f07b6072 MATCH
+size 2606416  +8 n_in=2048 n_wire=100244 n_gate=100243 n_out=2048  depth 36
+cell_base=500 next_base=2548 ring0=104 clock=98 gate_base=100340 growth_pad=98
+
+== RINGS (file bytes) ==
+NW fwd0@104=1 rev0@136=1 carry@168=1 pub@169=1  fwd[0:8]=10000000 rev[0:8]=10000000
+NE fwd0@170=1 rev0@202=1 carry@234=1 pub@235=1  fwd[0:8]=10000000 rev[0:8]=10000000
+SW fwd0@236=1 rev0@268=1 carry@300=1 pub@301=1  fwd[0:8]=10000000 rev[0:8]=10000000
+SE fwd0@302=1 rev0@334=1 carry@366=1 pub@367=1  fwd[0:8]=10000000 rev[0:8]=10000000
+GROWTH fwd0@368=1 rev0@400=1 carry@432=1 pub@433=1  fwd[0:8]=10000000 rev[0:8]=10000000
+WITNESS fwd0@434=1 rev0@466=1 carry@498=1 pub@499=1  fwd[0:8]=10000000 rev[0:8]=10000000
+clock_bank 000000
+growth_pad@98=0
+
+field_ones 891 / 2048
+next_ones 891 / 2048
+
+== STORED OPS (records, not a ripple) ==
+NAND 78592 AND 21261 OR 6 XOR 384 other 0
+ring_XOR_outs 384  growth_OUTs_into_gate_records 0  growth_OUTs_into_pad 1
+xor_rotate_walked N
+autofab0_growth_into_gate_records N

@@ -1,0 +1,9 @@
+{
+  "name": "Tetris",
+  "gates": 46353,
+  "board": "10x20",
+  "state_bits": 642,
+  "source": "C:/llm/sdc_sandbox/pfc_tetris.pfc",
+  "magic": "PFCTET01",
+  "description": "Full Tetris with 7 tetrominoes, rotation, gravity, line-clear compaction, LFSR spawning, and game-over, all as one gate netlist on the muhlnickel."
+}

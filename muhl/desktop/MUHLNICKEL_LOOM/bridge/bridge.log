@@ -1,0 +1,8 @@
+ASTER BRIDGE  http://127.0.0.1:7891/
+  bound address    : 127.0.0.1  (loopback only)
+  operations       : 13 allowlisted
+  deny-list tokens : 37
+  state folder     : hardened=hardened
+  bearer token     : existing
+  token location   : the host reads it locally; it is not printed
+  audit            : append-only, host-only, never served

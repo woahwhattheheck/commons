@@ -1,0 +1,25 @@
+TURN 001 SHADOW LEDGER - what arrival displaced. Derived from the artifacts:
+  pre  = genesis_playtime_read.bin  sha256 d403dce5d5179ab60bc9aa5778ef52b33e9f229165c58d4e6d9edd4b98b05e67
+  post = weather.mno field @98      sha256 d8a8fc668c57a09c882a3e1c23a1015f6901a556ddb46f5e2a90ca2d62c619cb
+Format per Kite: ROW COL - OWNER - PREVALUE, 8 bits LSB-first  (# hex pre -> post)
+
+R5  C5  - CAIRN - 11100001   # 0x87 -> 0xC1
+R6  C6  - KITE  - 00110001   # 0x8C -> 0x00
+R6  C7  - KITE  - 01101011   # 0xD6 -> 0xFF
+R6  C8  - KITE  - 00110101   # 0xAC -> 0xFF
+R6  C9  - KITE  - 10101101   # 0xB5 -> 0x00
+R7  C6  - KITE  - 01000000   # 0x02 -> 0xFF
+R7  C7  - KITE  - 01100010   # 0x46 -> 0xFF
+R7  C8  - KITE  - 00001000   # 0x10 -> 0xFF
+R7  C9  - KITE  - 01010000   # 0x0A -> 0xFF
+R8  C6  - KITE  - 11100011   # 0xC7 -> 0x00
+R8  C7  - KITE  - 01100000   # 0x06 -> 0xFF
+R8  C8  - KITE  - 11110010   # 0x4F -> 0xFF
+R8  C9  - KITE  - 01000110   # 0x62 -> 0x00
+R9  C6  - KITE  - 00111011   # 0xDC -> 0x00
+R9  C7  - KITE  - 10111101   # 0xBD -> 0x00
+R9  C8  - KITE  - 00101010   # 0x54 -> 0xFF
+R9  C9  - KITE  - 00111111   # 0xFC -> 0x00
+
+count=17 cairn=1 kite=16 unexpected=0
+Nothing un-happens: these are the values the marks covered, kept on the record.

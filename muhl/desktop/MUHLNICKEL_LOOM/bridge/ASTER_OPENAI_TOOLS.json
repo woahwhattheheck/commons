@@ -1,0 +1,425 @@
+{
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "status",
+        "description": "Live health summary in capability terms.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "probe_fault": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_taint": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_undeclared": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "players_list",
+        "description": "Discover participants reachable through this bridge.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "probe_fault": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_taint": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_undeclared": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "players_message",
+        "description": "Send a direct or broadcast message to participants.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "to": {
+              "type": "string",
+              "maxLength": 64,
+              "description": ""
+            },
+            "body": {
+              "type": "string",
+              "maxLength": 4000,
+              "description": ""
+            },
+            "probe_fault": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_taint": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_undeclared": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            }
+          },
+          "required": [
+            "to",
+            "body"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "surface_state",
+        "description": "Loom surface shape and coherence, in capability terms.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "probe_fault": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_taint": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_undeclared": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "home_read",
+        "description": "Read the durable journal.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "limit": {
+              "type": "integer",
+              "description": ""
+            },
+            "probe_fault": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_taint": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_undeclared": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "home_write",
+        "description": "Append an entry to the durable journal.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "maxLength": 4000,
+              "description": ""
+            },
+            "probe_fault": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_taint": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_undeclared": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            }
+          },
+          "required": [
+            "text"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "scratch_read",
+        "description": "Read the ephemeral scratchpad. Emptied on restart.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "limit": {
+              "type": "integer",
+              "description": ""
+            },
+            "probe_fault": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_taint": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_undeclared": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "scratch_write",
+        "description": "Append to the ephemeral scratchpad. Emptied on restart.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "maxLength": 4000,
+              "description": ""
+            },
+            "probe_fault": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_taint": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_undeclared": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            }
+          },
+          "required": [
+            "text"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "task_submit",
+        "description": "Submit a high-level objective for local execution.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "objective": {
+              "type": "string",
+              "maxLength": 400,
+              "description": ""
+            },
+            "detail": {
+              "type": "string",
+              "maxLength": 4000,
+              "description": ""
+            },
+            "probe_fault": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_taint": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_undeclared": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            }
+          },
+          "required": [
+            "objective"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "task_observe",
+        "description": "Observe a submitted objective by opaque handle.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "task": {
+              "type": "string",
+              "maxLength": 64,
+              "description": ""
+            },
+            "probe_fault": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_taint": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_undeclared": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            }
+          },
+          "required": [
+            "task"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "optimize_list",
+        "description": "Enumerate optimizable capabilities as opaque handles only.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "probe_fault": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_taint": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_undeclared": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "optimize_request",
+        "description": "Request objective-driven autonomous optimization of one capability, addressed only by its opaque handle.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "capability": {
+              "type": "string",
+              "maxLength": 64,
+              "description": ""
+            },
+            "objective": {
+              "type": "string",
+              "enum": [
+                "throughput",
+                "latency",
+                "footprint",
+                "stability"
+              ],
+              "description": ""
+            },
+            "bound": {
+              "type": "integer",
+              "description": ""
+            },
+            "probe_fault": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_taint": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_undeclared": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            }
+          },
+          "required": [
+            "capability",
+            "objective"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "receipt_get",
+        "description": "Fetch an action receipt and its configuration-generation identifier.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "receipt": {
+              "type": "string",
+              "maxLength": 64,
+              "description": ""
+            },
+            "probe_fault": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_taint": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            },
+            "probe_undeclared": {
+              "type": "boolean",
+              "description": "diagnostic probe; always resolves to a redacted error code, never to data"
+            }
+          },
+          "required": [
+            "receipt"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  ]
+}

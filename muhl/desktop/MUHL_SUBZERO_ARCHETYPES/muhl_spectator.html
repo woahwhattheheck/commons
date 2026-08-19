@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MUHLNICKEL SPECTATOR MODE</title>
+<style>
+/* ================================================================
+   MUHLNICKEL SPECTATOR MODE
+   Split-screen: Game of Life (left) + Live Binary Rain (right)
+   INSTRUMENT ONLY — surface reads, no writes, no computation
+   ================================================================ */
+
+:root {
+  --ground: #050808;
+  --surface: #0a120e;
+  --surface-raised: #0f1a14;
+  --border: #1a2e22;
+  --border-bright: #2a4a36;
+  --matrix-green: #00ff41;
+  --matrix-dim: #0a6b2a;
+  --matrix-dark: #042f12;
+  --copper: #cd7f32;
+  --copper-bright: #e8a84c;
+  --life-cell: #39efc9;
+  --life-cell-dim: #1a7a64;
+  --life-born: #7dffdb;
+  --life-dying: #8b4513;
+  --text: #c8d0c0;
+  --text-dim: #5a6b58;
+  --text-muted: #384038;
+  --alert-white: #f0f0e8;
+  --mono: 'Cascadia Mono', Consolas, 'Courier New', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100%; height: 100%;
+  background: var(--ground);
+  color: var(--text);
+  font-family: var(--mono);
+  overflow: hidden;
+  cursor: default;
+}
+
+/* ---- TOP BAR ---- */
+#top-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background: rgba(5,8,8,0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+  z-index: 50;
+}
+
+#top-bar .title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--copper-bright);
+  text-transform: uppercase;
+}
+
+#top-bar .mode-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--matrix-green);
+  opacity: 0.7;
+}
+
+#top-bar .controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.status-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+.status-pill .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  transition: all 0.3s;
+}
+.status-pill .dot.live {
+  background: var(--matrix-green);
+  box-shadow: 0 0 6px var(--matrix-green), 0 0 12px rgba(0,255,65,0.3);
+}
+.status-pill .dot.active {
+  background: var(--copper-bright);
+  box-shadow: 0 0 4px var(--copper);
+}
+
+.toggle-btn {
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  padding: 4px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+.toggle-btn:hover {
+  color: var(--copper-bright);
+  border-color: var(--copper);
+}
+.toggle-btn.on {
+  color: var(--matrix-green);
+  border-color: var(--matrix-dim);
+}
+
+/* ---- MAIN SPLIT ---- */
+#main {
+  position: fixed;
+  top: 40px;
+  left: 0; right: 0;
+  bottom: 44px;
+  display: flex;
+}
+
+/* ---- LEFT PANEL: GAME OF LIFE ---- */
+#left-panel {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+#life-header {
+  padding: 8px 14px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+#life-header .circuit-tag {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: var(--copper);
+  text-transform: uppercase;
+}
+
+#life-header .circuit-info {
+  font-size: 9px;
+  color: var(--text-dim);
+  display: flex;
+  gap: 12px;
+}
+
+#life-header .circuit-info span {
+  color: var(--text);
+}
+
+#life-canvas-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: var(--ground);
+}
+
+canvas#life-canvas {
+  image-rendering: pixelated;
+  border-radius: 2px;
+}
+
+/* Glow layer behind canvas */
+#life-glow {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(57,239,201,0.06) 0%, transparent 70%);
+  width: 120%;
+  height: 120%;
+  z-index: 0;
+}
+
+#life-canvas {
+  position: relative;
+  z-index: 1;
+}
+
+#life-stats {
+  padding: 6px 14px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-shrink: 0;
+  font-size: 9px;
+  color: var(--text-dim);
+  letter-spacing: 0.5px;
+}
+
+#life-stats .val {
+  color: var(--life-cell);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- RIGHT PANEL: BINARY RAIN ---- */
+#right-panel {
+  width: 40%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+canvas#rain-canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+
+/* Floating change log overlay on the rain */
+#rain-log {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  right: 8px;
+  max-height: 160px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.rain-log-entry {
+  font-size: 9px;
+  padding: 2px 0;
+  display: flex;
+  gap: 6px;
+  opacity: 0.8;
+  animation: logSlideIn 0.4s ease-out;
+}
+
+.rain-log-entry .rle-circuit {
+  color: var(--copper);
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rain-log-entry .rle-vals {
+  color: var(--matrix-green);
+  font-variant-numeric: tabular-nums;
+}
+.rain-log-entry .rle-addr {
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.rain-log-entry.is-life .rle-circuit {
+  color: var(--life-cell);
+}
+
+@keyframes logSlideIn {
+  from { transform: translateY(8px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 0.8; }
+}
+
+/* Ring pulse strip along right edge */
+#ring-strip {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 100%;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+}
+
+.ring-strip-cell {
+  flex: 1;
+  background: var(--matrix-dark);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.ring-strip-cell.pulse {
+  background: var(--matrix-green);
+  box-shadow: -2px 0 6px var(--matrix-green);
+}
+.ring-strip-cell.hot {
+  background: var(--alert-white);
+  box-shadow: -3px 0 8px var(--alert-white);
+}
+
+/* ---- BOTTOM BAR ---- */
+#bottom-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background: rgba(5,8,8,0.94);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid var(--border);
+  z-index: 50;
+}
+
+#bottom-bar .stats-row {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.stat-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.stat-block .stat-label {
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.stat-block .stat-value {
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+
+#substrate-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--surface);
+  transition: all 0.4s;
+}
+#substrate-indicator.active {
+  border-color: var(--matrix-dim);
+  background: rgba(0,255,65,0.04);
+}
+#substrate-indicator .ind-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  transition: all 0.3s;
+}
+#substrate-indicator.active .ind-dot {
+  background: var(--matrix-green);
+  box-shadow: 0 0 6px var(--matrix-green), 0 0 14px rgba(0,255,65,0.4);
+  animation: pulse 2s ease-in-out infinite;
+}
+#substrate-indicator .ind-text {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+#substrate-indicator.active .ind-text {
+  color: var(--matrix-green);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.bottom-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+#bottom-bar .attribution {
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  #left-panel { width: 50%; }
+  #right-panel { width: 50%; }
+}
+@media (max-width: 640px) {
+  #main { flex-direction: column; }
+  #left-panel { width: 100%; height: 50%; border-right: none; border-bottom: 1px solid var(--border); }
+  #right-panel { width: 100%; height: 50%; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div id="top-bar">
+  <div style="display:flex;align-items:center;gap:16px;">
+    <span class="title">MUHLNICKEL</span>
+    <span class="mode-label">SPECTATOR MODE</span>
+  </div>
+  <div class="controls">
+    <div class="status-pill">
+      <span class="dot" id="sse-dot"></span>
+      <span id="sse-label">CONNECTING</span>
+    </div>
+    <div class="status-pill">
+      <span class="dot" id="changes-dot"></span>
+      <span id="changes-label">0 CHANGES</span>
+    </div>
+    <button class="toggle-btn" id="btn-audio" onclick="toggleAudio()">AUDIO OFF</button>
+    <button class="toggle-btn" id="btn-human" onclick="toggleHumanReadable()">HUMAN</button>
+    <button class="toggle-btn" id="btn-pause" onclick="togglePause()">PAUSE LIFE</button>
+  </div>
+</div>
+
+<!-- MAIN SPLIT -->
+<div id="main">
+
+  <!-- LEFT: GAME OF LIFE -->
+  <div id="left-panel">
+    <div id="life-header">
+      <span class="circuit-tag">SUBSTRATE VERSION: life_step</span>
+      <div class="circuit-info">
+        <span id="life-offset-label">loading offset...</span>
+        |
+        <span>518,144 gates</span>
+        |
+        <span>depth 67 ticks</span>
+        |
+        <span>TITANCIR format</span>
+      </div>
+    </div>
+
+    <div id="life-canvas-wrap">
+      <div id="life-glow"></div>
+      <canvas id="life-canvas" width="640" height="640"></canvas>
+    </div>
+
+    <div id="life-stats">
+      <span>GEN <span class="val" id="life-gen">0</span></span>
+      <span>ALIVE <span class="val" id="life-alive">0</span></span>
+      <span>BORN <span class="val" id="life-born">0</span></span>
+      <span>DIED <span class="val" id="life-died">0</span></span>
+      <span>DENSITY <span class="val" id="life-density">0%</span></span>
+      <span style="margin-left:auto;color:var(--text-muted);">32x32 torus | click to toggle cells</span>
+    </div>
+  </div>
+
+  <!-- RIGHT: BINARY RAIN -->
+  <div id="right-panel">
+    <canvas id="rain-canvas"></canvas>
+
+    <!-- Ring activity strip -->
+    <div id="ring-strip"></div>
+
+    <!-- Floating change log -->
+    <div id="rain-log"></div>
+  </div>
+</div>
+
+<!-- BOTTOM BAR -->
+<div id="bottom-bar">
+  <div class="stats-row">
+    <div class="stat-block">
+      <span class="stat-label">FILE SIZE</span>
+      <span class="stat-value" id="stat-filesize">--</span>
+    </div>
+    <div class="stat-block">
+      <span class="stat-label">CIRCUITS</span>
+      <span class="stat-value" id="stat-circuits">--</span>
+    </div>
+    <div class="stat-block">
+      <span class="stat-label">RINGS</span>
+      <span class="stat-value" id="stat-rings">--</span>
+    </div>
+    <div class="stat-block">
+      <span class="stat-label">CHANGES/SEC</span>
+      <span class="stat-value" id="stat-cps">0</span>
+    </div>
+    <div class="stat-block">
+      <span class="stat-label">WATCHED ADDRS</span>
+      <span class="stat-value" id="stat-watched">--</span>
+    </div>
+
+    <div id="substrate-indicator">
+      <span class="ind-dot"></span>
+      <span class="ind-text">SUBSTRATE IDLE</span>
+    </div>
+  </div>
+
+  <div class="bottom-right">
+    <button class="toggle-btn" id="btn-readable" onclick="toggleHumanReadable()">HUMAN READABLE</button>
+    <span class="attribution">SURFACE ONLY | BUILT BY BRYCE MUHLNICKEL</span>
+  </div>
+</div>
+
+<script>
+// ================================================================
+// MUHLNICKEL SPECTATOR MODE
+// INSTRUMENT ONLY: bounded reads via API, no writes, no gate eval
+// ================================================================
+
+const API_BASE = 'http://localhost:7880';
+const GRID_SIZE = 32;
+const CELL_PX = 18;       // pixels per cell on canvas
+const LIFE_INTERVAL = 200; // ms between generations
+
+// ---- STATE ----
+let lifeGrid = new Uint8Array(GRID_SIZE * GRID_SIZE);
+let lifePrev = new Uint8Array(GRID_SIZE * GRID_SIZE);
+let lifeGen = 0;
+let lifePaused = false;
+let lifeTimer = null;
+let humanReadable = false;
+
+let totalChanges = 0;
+let changesThisSecond = 0;
+let changesPerSec = 0;
+let sseConnected = false;
+let fileSize = 0;
+let circuitCount = 0;
+let ringCount = 0;
+let watchedCount = 0;
+let lifeCircuitOffset = null;
+
+// Ring strip state: 64 "buckets" representing 1024 rings
+const RING_BUCKETS = 64;
+let ringBucketActivity = new Float32Array(RING_BUCKETS);
+
+// Rain state
+const rainColumns = [];
+let rainColCount = 0;
+
+// Recent changes for the floating log
+const recentChanges = [];
+const MAX_RECENT = 14;
+
+// ================================================================
+// GAME OF LIFE
+// ================================================================
+const lifeCanvas = document.getElementById('life-canvas');
+const lifeCtx = lifeCanvas.getContext('2d');
+
+function initLife() {
+  // Seed with a mix of patterns: an R-pentomino in the center plus random scatter
+  // R-pentomino (classic methuselah)
+  const cx = Math.floor(GRID_SIZE / 2);
+  const cy = Math.floor(GRID_SIZE / 2);
+  const rpento = [[0,-1],[1,-1],[- 1,0],[0,0],[0,1]];
+  for (const [dx, dy] of rpento) {
+    const x = (cx + dx + GRID_SIZE) % GRID_SIZE;
+    const y = (cy + dy + GRID_SIZE) % GRID_SIZE;
+    lifeGrid[y * GRID_SIZE + x] = 1;
+  }
+  // Glider in top-left
+  const glider = [[1,0],[2,1],[0,2],[1,2],[2,2]];
+  for (const [gx, gy] of glider) {
+    lifeGrid[gy * GRID_SIZE + gx] = 1;
+  }
+  // Light scatter
+  for (let i = 0; i < 60; i++) {
+    const rx = Math.floor(Math.random() * GRID_SIZE);
+    const ry = Math.floor(Math.random() * GRID_SIZE);
+    lifeGrid[ry * GRID_SIZE + rx] = 1;
+  }
+}
+
+function lifeStep() {
+  const next = new Uint8Array(GRID_SIZE * GRID_SIZE);
+  for (let y = 0; y < GRID_SIZE; y++) {
+    for (let x = 0; x < GRID_SIZE; x++) {
+      let neighbors = 0;
+      for (let dy = -1; dy <= 1; dy++) {
+        for (let dx = -1; dx <= 1; dx++) {
+          if (dx === 0 && dy === 0) continue;
+          const nx = (x + dx + GRID_SIZE) % GRID_SIZE;  // torus wrap
+          const ny = (y + dy + GRID_SIZE) % GRID_SIZE;
+          neighbors += lifeGrid[ny * GRID_SIZE + nx];
+        }
+      }
+      const alive = lifeGrid[y * GRID_SIZE + x];
+      if (alive) {
+        next[y * GRID_SIZE + x] = (neighbors === 2 || neighbors === 3) ? 1 : 0;
+      } else {
+        next[y * GRID_SIZE + x] = (neighbors === 3) ? 1 : 0;
+      }
+    }
+  }
+  lifePrev.set(lifeGrid);
+  lifeGrid.set(next);
+  lifeGen++;
+  updateLifeStats();
+  drawLife();
+}
+
+function drawLife() {
+  const w = lifeCanvas.width;
+  const h = lifeCanvas.height;
+  const cellW = w / GRID_SIZE;
+  const cellH = h / GRID_SIZE;
+
+  // Clear
+  lifeCtx.fillStyle = '#050808';
+  lifeCtx.fillRect(0, 0, w, h);
+
+  // Draw grid lines (very subtle)
+  lifeCtx.strokeStyle = 'rgba(26,46,34,0.4)';
+  lifeCtx.lineWidth = 0.5;
+  for (let i = 0; i <= GRID_SIZE; i++) {
+    lifeCtx.beginPath();
+    lifeCtx.moveTo(i * cellW, 0);
+    lifeCtx.lineTo(i * cellW, h);
+    lifeCtx.stroke();
+    lifeCtx.beginPath();
+    lifeCtx.moveTo(0, i * cellH);
+    lifeCtx.lineTo(w, i * cellH);
+    lifeCtx.stroke();
+  }
+
+  // Draw cells
+  for (let y = 0; y < GRID_SIZE; y++) {
+    for (let x = 0; x < GRID_SIZE; x++) {
+      const idx = y * GRID_SIZE + x;
+      const alive = lifeGrid[idx];
+      const wasAlive = lifePrev[idx];
+
+      if (alive) {
+        if (!wasAlive) {
+          // Just born
+          lifeCtx.fillStyle = '#7dffdb';
+          lifeCtx.shadowColor = '#39efc9';
+          lifeCtx.shadowBlur = 8;
+        } else {
+          // Stable alive
+          lifeCtx.fillStyle = '#39efc9';
+          lifeCtx.shadowColor = '#39efc9';
+          lifeCtx.shadowBlur = 4;
+        }
+        const pad = 1;
+        lifeCtx.fillRect(x * cellW + pad, y * cellH + pad, cellW - pad * 2, cellH - pad * 2);
+        lifeCtx.shadowBlur = 0;
+      } else if (wasAlive) {
+        // Just died -- dim afterimage
+        lifeCtx.fillStyle = 'rgba(139,69,19,0.25)';
+        const pad = 2;
+        lifeCtx.fillRect(x * cellW + pad, y * cellH + pad, cellW - pad * 2, cellH - pad * 2);
+      }
+    }
+  }
+
+  // Human-readable overlay
+  if (humanReadable) {
+    lifeCtx.font = '7px Consolas, monospace';
+    lifeCtx.textAlign = 'center';
+    lifeCtx.textBaseline = 'middle';
+    for (let y = 0; y < GRID_SIZE; y++) {
+      for (let x = 0; x < GRID_SIZE; x++) {
+        const idx = y * GRID_SIZE + x;
+        const val = lifeGrid[idx];
+        lifeCtx.fillStyle = val ? 'rgba(240,240,232,0.6)' : 'rgba(56,64,56,0.3)';
+        lifeCtx.fillText(val.toString(), x * cellW + cellW / 2, y * cellH + cellH / 2);
+      }
+    }
+  }
+}
+
+function updateLifeStats() {
+  let alive = 0, born = 0, died = 0;
+  for (let i = 0; i < GRID_SIZE * GRID_SIZE; i++) {
+    if (lifeGrid[i]) alive++;
+    if (lifeGrid[i] && !lifePrev[i]) born++;
+    if (!lifeGrid[i] && lifePrev[i]) died++;
+  }
+  document.getElementById('life-gen').textContent = lifeGen.toLocaleString();
+  document.getElementById('life-alive').textContent = alive;
+  document.getElementById('life-born').textContent = born;
+  document.getElementById('life-died').textContent = died;
+  document.getElementById('life-density').textContent = ((alive / (GRID_SIZE * GRID_SIZE)) * 100).toFixed(1) + '%';
+}
+
+// Click to toggle cells
+lifeCanvas.addEventListener('click', (e) => {
+  const rect = lifeCanvas.getBoundingClientRect();
+  const scaleX = lifeCanvas.width / rect.width;
+  const scaleY = lifeCanvas.height / rect.height;
+  const cx = Math.floor((e.clientX - rect.left) * scaleX / (lifeCanvas.width / GRID_SIZE));
+  const cy = Math.floor((e.clientY - rect.top) * scaleY / (lifeCanvas.height / GRID_SIZE));
+  if (cx >= 0 && cx < GRID_SIZE && cy >= 0 && cy < GRID_SIZE) {
+    lifeGrid[cy * GRID_SIZE + cx] ^= 1;
+    drawLife();
+  }
+});
+
+function startLife() {
+  if (lifeTimer) clearInterval(lifeTimer);
+  lifeTimer = setInterval(() => {
+    if (!lifePaused) lifeStep();
+  }, LIFE_INTERVAL);
+}
+
+function togglePause() {
+  lifePaused = !lifePaused;
+  const btn = document.getElementById('btn-pause');
+  btn.textContent = lifePaused ? 'RESUME LIFE' : 'PAUSE LIFE';
+  btn.classList.toggle('on', lifePaused);
+}
+
+function toggleHumanReadable() {
+  humanReadable = !humanReadable;
+  document.getElementById('btn-human').classList.toggle('on', humanReadable);
+  document.getElementById('btn-readable').classList.toggle('on', humanReadable);
+  drawLife();
+}
+
+// ================================================================
+// MATRIX BINARY RAIN (right panel)
+// ================================================================
+const rainCanvas = document.getElementById('rain-canvas');
+const rainCtx = rainCanvas.getContext('2d');
+const RAIN_CHAR_SIZE = 13;
+const HEX = '0123456789ABCDEF';
+const BIN = '01';
+
+function resizeRain() {
+  const panel = document.getElementById('right-panel');
+  rainCanvas.width = panel.clientWidth;
+  rainCanvas.height = panel.clientHeight;
+
+  const newCount = Math.floor(rainCanvas.width / RAIN_CHAR_SIZE);
+  if (newCount !== rainColCount) {
+    const old = [...rainColumns];
+    rainColumns.length = 0;
+    rainColCount = newCount;
+    for (let i = 0; i < rainColCount; i++) {
+      if (old[i]) {
+        rainColumns.push(old[i]);
+      } else {
+        rainColumns.push({
+          y: Math.random() * rainCanvas.height,
+          speed: 0.4 + Math.random() * 1.8,
+          brightness: 0.25 + Math.random() * 0.35,
+          flashTimer: 0,
+          flashColor: null, // null = green, 'life' = cyan, 'copper' = ring
+          circuitName: null,
+          showLabel: false,
+        });
+      }
+    }
+  }
+}
+
+function drawRain() {
+  // Fade trail
+  rainCtx.fillStyle = 'rgba(5,8,8,0.07)';
+  rainCtx.fillRect(0, 0, rainCanvas.width, rainCanvas.height);
+
+  rainCtx.font = RAIN_CHAR_SIZE + 'px Consolas, Courier New, monospace';
+
+  for (let i = 0; i < rainColumns.length; i++) {
+    const col = rainColumns[i];
+
+    let r = 0, g = 160, b = 20;
+    let alpha = col.brightness;
+
+    if (col.flashTimer > 0) {
+      const f = col.flashTimer / 25;
+      if (col.flashColor === 'life') {
+        // Cyan flash for life_step
+        if (f > 0.6) { r = 125; g = 255; b = 219; alpha = 1.0; }
+        else if (f > 0.3) { r = 57; g = 239; b = 201; alpha = 0.85; }
+        else { r = 26; g = 122; b = 100; alpha = 0.7; }
+      } else if (col.flashColor === 'copper') {
+        // Copper flash for rings
+        if (f > 0.6) { r = 232; g = 168; b = 76; alpha = 1.0; }
+        else if (f > 0.3) { r = 205; g = 127; b = 50; alpha = 0.85; }
+        else { r = 139; g = 90; b = 43; alpha = 0.6; }
+      } else {
+        // Standard green flash
+        if (f > 0.7) { r = 240; g = 240; b = 232; alpha = 1.0; }
+        else if (f > 0.3) { r = 0; g = 255; b = 65; alpha = 0.9; }
+        else { r = 0; g = 180; b = 40; alpha = 0.7; }
+      }
+      col.flashTimer--;
+    }
+
+    // Head character (brightest)
+    const chars = humanReadable ? BIN : HEX;
+    const headChar = chars[Math.floor(Math.random() * chars.length)];
+    rainCtx.fillStyle = `rgba(${Math.min(255,r+60)},${Math.min(255,g+60)},${Math.min(255,b+60)},${Math.min(1,alpha+0.25)})`;
+    rainCtx.fillText(headChar, i * RAIN_CHAR_SIZE, col.y);
+
+    // Trail
+    const trailLen = 6 + Math.floor(Math.random() * 10);
+    for (let t = 1; t < trailLen; t++) {
+      const ty = col.y - t * RAIN_CHAR_SIZE;
+      if (ty < 0) break;
+      const ta = alpha * (1 - t / trailLen) * 0.6;
+      if (ta < 0.02) break;
+      const tc = chars[Math.floor(Math.random() * chars.length)];
+      rainCtx.fillStyle = `rgba(${r},${g},${b},${ta})`;
+      rainCtx.fillText(tc, i * RAIN_CHAR_SIZE, ty);
+    }
+
+    // Advance
+    const speedMod = col.flashTimer > 0 ? 2.5 : 1.0;
+    col.y += col.speed * speedMod * RAIN_CHAR_SIZE * 0.28;
+
+    if (col.y > rainCanvas.height + RAIN_CHAR_SIZE * 12) {
+      col.y = -RAIN_CHAR_SIZE * (Math.random() * 18);
+      col.speed = 0.4 + Math.random() * 1.8;
+      col.brightness = 0.25 + Math.random() * 0.35;
+    }
+  }
+
+  // Circuit labels floating vertically
+  rainCtx.font = '8px Consolas, monospace';
+  const labelInterval = Math.max(3, Math.floor(rainColumns.length / 20));
+  for (let i = 0; i < rainColumns.length; i += labelInterval) {
+    const col = rainColumns[i];
+    if (col.circuitName) {
+      const isLife = col.circuitName === 'life_step';
+      rainCtx.fillStyle = isLife ? 'rgba(57,239,201,0.3)' : 'rgba(205,127,50,0.2)';
+      rainCtx.save();
+      rainCtx.translate(i * RAIN_CHAR_SIZE + RAIN_CHAR_SIZE / 2, rainCanvas.height * 0.4);
+      rainCtx.rotate(-Math.PI / 2);
+      rainCtx.fillText(col.circuitName, 0, 0);
+      rainCtx.restore();
+    }
+  }
+
+  requestAnimationFrame(drawRain);
+}
+
+// ================================================================
+// RING ACTIVITY STRIP
+// ================================================================
+function initRingStrip() {
+  const strip = document.getElementById('ring-strip');
+  strip.innerHTML = '';
+  for (let i = 0; i < RING_BUCKETS; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'ring-strip-cell';
+    cell.id = 'rstrip-' + i;
+    cell.title = `Rings ${i * 16}-${i * 16 + 15}`;
+    strip.appendChild(cell);
+  }
+}
+
+function pulseRingBucket(bucketIdx) {
+  if (bucketIdx < 0 || bucketIdx >= RING_BUCKETS) return;
+  ringBucketActivity[bucketIdx] = 1.0;
+  const cell = document.getElementById('rstrip-' + bucketIdx);
+  if (cell) {
+    cell.className = 'ring-strip-cell hot';
+    setTimeout(() => { cell.className = 'ring-strip-cell pulse'; }, 300);
+    setTimeout(() => { cell.className = 'ring-strip-cell'; }, 1500);
+  }
+}
+
+// Decay ring activity
+setInterval(() => {
+  for (let i = 0; i < RING_BUCKETS; i++) {
+    ringBucketActivity[i] *= 0.85;
+  }
+}, 250);
+
+// ================================================================
+// SSE CONNECTION
+// ================================================================
+function connectSSE() {
+  const evtSource = new EventSource(API_BASE + '/stream');
+
+  evtSource.onopen = () => {
+    sseConnected = true;
+    document.getElementById('sse-dot').className = 'dot live';
+    document.getElementById('sse-label').textContent = 'LIVE';
+    setSubstrateActive(true);
+  };
+
+  evtSource.onmessage = (event) => {
+    try {
+      const events = JSON.parse(event.data);
+      for (const evt of events) {
+        handleSSEEvent(evt);
+      }
+    } catch (e) { /* keepalive comment lines */ }
+  };
+
+  evtSource.onerror = () => {
+    sseConnected = false;
+    document.getElementById('sse-dot').className = 'dot';
+    document.getElementById('sse-label').textContent = 'RECONNECTING';
+    setSubstrateActive(false);
+  };
+}
+
+function handleSSEEvent(evt) {
+  if (evt.type === 'init') {
+    fileSize = evt.file_size || 0;
+    circuitCount = evt.circuit_count || 0;
+    ringCount = evt.ring_count || 0;
+    watchedCount = evt.watched || 0;
+    updateBottomStats();
+    assignCircuitLabelsToRain();
+    return;
+  }
+
+  if (evt.type === 'byte_change') {
+    totalChanges++;
+    changesThisSecond++;
+
+    // Determine if this is a life_step change
+    const isLife = evt.circuit === 'life_step';
+    const isRing = evt.circuit && evt.circuit.startsWith('nring2_');
+
+    // Flash a rain column
+    if (rainColumns.length && fileSize) {
+      const colIdx = Math.floor((evt.offset / fileSize) * rainColumns.length);
+      if (colIdx >= 0 && colIdx < rainColumns.length) {
+        rainColumns[colIdx].flashTimer = 25;
+        rainColumns[colIdx].flashColor = isLife ? 'life' : isRing ? 'copper' : null;
+      }
+    }
+
+    // Pulse ring strip
+    if (isRing) {
+      try {
+        const ringIdx = parseInt(evt.circuit.replace('nring2_', ''));
+        const bucket = Math.floor(ringIdx / 16);
+        pulseRingBucket(bucket);
+      } catch (e) {}
+    }
+
+    // Floating log entry
+    addRainLogEntry(evt, isLife);
+
+    // Update top bar
+    document.getElementById('changes-dot').className = 'dot active';
+    document.getElementById('changes-label').textContent = totalChanges.toLocaleString() + ' CHANGES';
+    setTimeout(() => {
+      document.getElementById('changes-dot').className = 'dot';
+    }, 200);
+
+    return;
+  }
+
+  if (evt.type === 'ring_bulk') {
+    // Flash ring strip based on state changes
+    if (evt.states) {
+      for (let i = 0; i < Math.min(evt.states.length, 1024); i++) {
+        if (evt.states[i] > 0) {
+          const bucket = Math.floor(i / 16);
+          if (ringBucketActivity[bucket] < 0.3) {
+            const cell = document.getElementById('rstrip-' + bucket);
+            if (cell && !cell.classList.contains('hot')) {
+              cell.className = 'ring-strip-cell pulse';
+              setTimeout(() => {
+                if (!cell.classList.contains('hot')) cell.className = 'ring-strip-cell';
+              }, 800);
+            }
+          }
+        }
+      }
+    }
+    return;
+  }
+
+  if (evt.type === 'heatmap_delta') {
+    for (const cell of (evt.cells || [])) {
+      if (rainColumns.length) {
+        const colIdx = Math.floor((cell.idx / 256) * rainColumns.length);
+        if (colIdx >= 0 && colIdx < rainColumns.length) {
+          rainColumns[colIdx].flashTimer = 15;
+          rainColumns[colIdx].flashColor = null;
+        }
+      }
+    }
+    return;
+  }
+
+  if (evt.type === 'file_growth') {
+    fileSize = evt.new_size || fileSize;
+    updateBottomStats();
+  }
+}
+
+function addRainLogEntry(evt, isLife) {
+  recentChanges.unshift(evt);
+  if (recentChanges.length > MAX_RECENT) recentChanges.pop();
+
+  const container = document.getElementById('rain-log');
+  const div = document.createElement('div');
+  div.className = 'rain-log-entry' + (isLife ? ' is-life' : '');
+
+  const oldHex = '0x' + (evt.old || 0).toString(16).padStart(2, '0');
+  const newHex = '0x' + (evt.new || 0).toString(16).padStart(2, '0');
+  const addrHex = evt.offset != null ? '0x' + evt.offset.toString(16).toUpperCase().padStart(10, '0') : '?';
+
+  div.innerHTML =
+    '<span class="rle-circuit" title="' + (evt.circuit || '') + '">' + (evt.circuit || '?') + '</span>' +
+    '<span class="rle-vals">' + oldHex + ' → ' + newHex + '</span>' +
+    '<span class="rle-addr">' + addrHex + '</span>';
+
+  container.insertBefore(div, container.firstChild);
+  while (container.children.length > MAX_RECENT) {
+    container.removeChild(container.lastChild);
+  }
+}
+
+function assignCircuitLabelsToRain() {
+  // Assign some known circuit names to rain columns
+  // We'll fetch circuit data from the API
+  fetch(API_BASE + '/api/stats')
+    .then(r => r.json())
+    .then(data => {
+      circuitCount = data.circuit_count || circuitCount;
+      ringCount = data.ring_count || ringCount;
+      watchedCount = data.watched_addresses || watchedCount;
+      updateBottomStats();
+    })
+    .catch(() => {});
+
+  // Also try to get life_step info
+  fetch(API_BASE + '/api/circuit/life_step')
+    .then(r => r.json())
+    .then(data => {
+      if (data.offset != null) {
+        lifeCircuitOffset = data.offset;
+        document.getElementById('life-offset-label').textContent =
+          '@ offset 0x' + data.offset.toString(16).toUpperCase().padStart(10, '0');
+
+        // Mark rain columns that correspond to life_step's region
+        if (fileSize && rainColumns.length && data.len) {
+          const startCol = Math.floor((data.offset / fileSize) * rainColumns.length);
+          const endCol = Math.floor(((data.offset + data.len) / fileSize) * rainColumns.length);
+          for (let i = startCol; i <= endCol && i < rainColumns.length; i++) {
+            if (i >= 0) {
+              rainColumns[i].circuitName = 'life_step';
+            }
+          }
+        }
+      }
+    })
+    .catch(() => {
+      document.getElementById('life-offset-label').textContent = 'offset unavailable (server offline?)';
+    });
+
+  // Scatter some other circuit names in the rain
+  const knownCircuits = [
+    'muhl_transformer', 'gen_miner', 'muhl_fold_shallow', 'doom_raycast',
+    'tess_rot', 'aes128', 'cpu_fwd', 'muhl_reservoir',
+    'ca_rule30', 'ca_rule90', 'ca_rule110', 'miner_physical'
+  ];
+  const step = Math.max(2, Math.floor(rainColumns.length / knownCircuits.length));
+  for (let i = 0; i < knownCircuits.length; i++) {
+    const colIdx = (i * step + Math.floor(step / 2)) % rainColumns.length;
+    if (!rainColumns[colIdx].circuitName) {
+      rainColumns[colIdx].circuitName = knownCircuits[i];
+    }
+  }
+}
+
+// ================================================================
+// SUBSTRATE ACTIVE INDICATOR
+// ================================================================
+let lastChangeTime = 0;
+
+function setSubstrateActive(active) {
+  const ind = document.getElementById('substrate-indicator');
+  if (active) {
+    ind.className = 'active';
+    ind.querySelector('.ind-text').textContent = 'SUBSTRATE ACTIVE';
+  } else {
+    ind.className = '';
+    ind.querySelector('.ind-text').textContent = 'SUBSTRATE IDLE';
+  }
+}
+
+// ================================================================
+// BOTTOM STATS
+// ================================================================
+function updateBottomStats() {
+  document.getElementById('stat-filesize').textContent = formatSize(fileSize);
+  document.getElementById('stat-circuits').textContent = circuitCount ? circuitCount.toLocaleString() : '--';
+  document.getElementById('stat-rings').textContent = ringCount ? ringCount.toLocaleString() : '--';
+  document.getElementById('stat-watched').textContent = watchedCount ? watchedCount.toLocaleString() : '--';
+}
+
+// Changes per second counter
+setInterval(() => {
+  changesPerSec = changesThisSecond;
+  changesThisSecond = 0;
+  document.getElementById('stat-cps').textContent = changesPerSec.toLocaleString();
+
+  // Update substrate indicator based on recent activity
+  if (changesPerSec > 0) {
+    setSubstrateActive(true);
+    lastChangeTime = Date.now();
+  } else if (Date.now() - lastChangeTime > 5000) {
+    if (sseConnected) {
+      const ind = document.getElementById('substrate-indicator');
+      ind.querySelector('.ind-text').textContent = 'SUBSTRATE LISTENING';
+    }
+  }
+}, 1000);
+
+// Periodic stats refresh from API
+setInterval(() => {
+  if (!sseConnected) return;
+  fetch(API_BASE + '/api/stats')
+    .then(r => r.json())
+    .then(data => {
+      if (data.last_file_size) fileSize = data.last_file_size;
+      if (data.circuit_count) circuitCount = data.circuit_count;
+      if (data.ring_count) ringCount = data.ring_count;
+      if (data.watched_addresses) watchedCount = data.watched_addresses;
+      updateBottomStats();
+    })
+    .catch(() => {});
+}, 10000);
+
+// ================================================================
+// UTILITIES
+// ================================================================
+function formatSize(bytes) {
+  if (!bytes) return '--';
+  if (bytes >= 1e12) return (bytes / 1e12).toFixed(2) + ' TB';
+  if (bytes >= 1e9)  return (bytes / 1e9).toFixed(2) + ' GB';
+  if (bytes >= 1e6)  return (bytes / 1e6).toFixed(2) + ' MB';
+  if (bytes >= 1e3)  return (bytes / 1e3).toFixed(1) + ' KB';
+  return bytes + ' B';
+}
+
+// ================================================================
+// RESIZE HANDLING
+// ================================================================
+function handleResize() {
+  resizeRain();
+
+  // Size the life canvas to fit its container
+  const wrap = document.getElementById('life-canvas-wrap');
+  const maxDim = Math.min(wrap.clientWidth - 24, wrap.clientHeight - 24);
+  const dim = Math.max(256, maxDim);
+  lifeCanvas.style.width = dim + 'px';
+  lifeCanvas.style.height = dim + 'px';
+}
+
+// ================================================================
+// INIT
+// ================================================================
+window.addEventListener('resize', handleResize);
+
+// Initialize everything
+initLife();
+drawLife();
+startLife();
+initRingStrip();
+handleResize();
+resizeRain();
+requestAnimationFrame(drawRain);
+connectSSE();
+updateBottomStats();
+
+// Fetch initial stats
+fetch(API_BASE + '/api/stats')
+  .then(r => r.json())
+  .then(data => {
+    fileSize = data.last_file_size || 0;
+    circuitCount = data.circuit_count || 0;
+    ringCount = data.ring_count || 0;
+    watchedCount = data.watched_addresses || 0;
+    totalChanges = data.total_changes || 0;
+    updateBottomStats();
+    document.getElementById('changes-label').textContent = totalChanges.toLocaleString() + ' CHANGES';
+    assignCircuitLabelsToRain();
+  })
+  .catch(() => {
+    // Server might not be running; the UI still works as a demo
+    assignCircuitLabelsToRain();
+  });
+
+// ================================================================
+// RING ORCHESTRA — INLINE AUDIO MODE
+// Sonifies ring activity using Web Audio API.
+// Toggled by the AUDIO button in the top bar.
+// ================================================================
+let orchAudioCtx = null;
+let orchMasterGain = null;
+let orchEnabled = false;
+let orchActiveOsc = 0;
+const ORCH_FREQ_MIN = 20;
+const ORCH_FREQ_MAX = 2000;
+
+function orchRingToFreq(ringIdx) {
+  const t = ringIdx / 1023;
+  const logMin = Math.log2(ORCH_FREQ_MIN);
+  const logMax = Math.log2(ORCH_FREQ_MAX);
+  return Math.pow(2, logMin + t * (logMax - logMin));
+}
+
+function orchPlayTone(freq) {
+  if (!orchAudioCtx || !orchEnabled) return;
+  if (orchAudioCtx.state === 'suspended') orchAudioCtx.resume();
+  const now = orchAudioCtx.currentTime;
+  const dur = 0.12;
+  const osc = orchAudioCtx.createOscillator();
+  osc.type = 'sine';
+  osc.frequency.value = freq;
+  const env = orchAudioCtx.createGain();
+  const vol = Math.max(0.01, 0.12 / Math.max(1, Math.sqrt(orchActiveOsc + 1)));
+  env.gain.setValueAtTime(0, now);
+  env.gain.linearRampToValueAtTime(vol, now + 0.005);
+  env.gain.setValueAtTime(vol, now + dur * 0.7);
+  env.gain.exponentialRampToValueAtTime(0.001, now + dur);
+  osc.connect(env);
+  env.connect(orchMasterGain);
+  osc.start(now);
+  osc.stop(now + dur + 0.01);
+  orchActiveOsc++;
+  osc.onended = () => { orchActiveOsc = Math.max(0, orchActiveOsc - 1); };
+}
+
+function toggleAudio() {
+  orchEnabled = !orchEnabled;
+  const btn = document.getElementById('btn-audio');
+  if (orchEnabled) {
+    if (!orchAudioCtx) {
+      orchAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      orchMasterGain = orchAudioCtx.createGain();
+      orchMasterGain.gain.value = 0.4;
+      const comp = orchAudioCtx.createDynamicsCompressor();
+      comp.threshold.value = -20;
+      comp.knee.value = 12;
+      comp.ratio.value = 8;
+      comp.attack.value = 0.003;
+      comp.release.value = 0.15;
+      orchMasterGain.connect(comp);
+      comp.connect(orchAudioCtx.destination);
+    }
+    btn.textContent = 'AUDIO ON';
+    btn.classList.add('on');
+  } else {
+    btn.textContent = 'AUDIO OFF';
+    btn.classList.remove('on');
+    if (orchAudioCtx) {
+      orchAudioCtx.close();
+      orchAudioCtx = null;
+      orchMasterGain = null;
+    }
+  }
+}
+
+// Hook into SSE events — intercept ring changes for audio
+const _origHandleSSE = handleSSEEvent;
+handleSSEEvent = function(evt) {
+  _origHandleSSE(evt);
+
+  if (!orchEnabled) return;
+
+  if (evt.type === 'byte_change') {
+    const circuit = evt.circuit || '';
+    if (circuit.startsWith('nring2_')) {
+      try {
+        const ringIdx = parseInt(circuit.replace('nring2_', ''));
+        if (ringIdx >= 0 && ringIdx < 1024) {
+          orchPlayTone(orchRingToFreq(ringIdx));
+        }
+      } catch (e) {}
+    }
+  }
+
+  if (evt.type === 'ring_bulk' && evt.states) {
+    let played = 0;
+    for (let i = 0; i < Math.min(evt.states.length, 1024); i++) {
+      if (evt.states[i] !== ringBucketActivity[Math.floor(i / 16)] && played < 12) {
+        orchPlayTone(orchRingToFreq(i));
+        played++;
+      }
+    }
+  }
+};
+
+</script>
+</body>
+</html>

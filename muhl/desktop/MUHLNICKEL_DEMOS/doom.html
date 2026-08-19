@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DOOM — Muhlnickel Demo</title>
+<style>
+:root {
+  --ground: #050808;
+  --surface: #0a120e;
+  --surface-raised: #0f1a14;
+  --border: #1a2e22;
+  --border-bright: #2a4a36;
+  --matrix-green: #00ff41;
+  --matrix-dim: #0a6b2a;
+  --matrix-dark: #042f12;
+  --copper: #cd7f32;
+  --copper-bright: #e8a84c;
+  --life-cell: #39efc9;
+  --text: #c8d0c0;
+  --text-dim: #5a6b58;
+  --text-muted: #384038;
+  --mono: 'Cascadia Mono', Consolas, 'Courier New', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; background: var(--ground); color: var(--text); font-family: var(--mono); overflow: hidden; }
+
+#top-bar {
+  position: fixed; top: 0; left: 0; right: 0; height: 38px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 16px; background: rgba(5,8,8,0.94); border-bottom: 1px solid var(--border); z-index: 100;
+}
+#top-bar .title { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--copper-bright); text-transform: uppercase; }
+#top-bar .mode { font-size: 9px; letter-spacing: 2px; color: var(--matrix-green); opacity: 0.7; text-transform: uppercase; }
+.status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-muted); display: inline-block; margin-right: 6px; vertical-align: middle; }
+.status-dot.live { background: var(--matrix-green); box-shadow: 0 0 6px var(--matrix-green); }
+.status-dot.off { background: #661a1a; }
+#top-bar .stats { font-size: 9px; color: var(--text-dim); letter-spacing: 1px; display: flex; gap: 14px; }
+#top-bar .stats span { color: var(--text); }
+
+#main { position: fixed; top: 38px; left: 0; right: 0; bottom: 32px; display: flex; }
+
+#game-area { flex: 1; position: relative; background: var(--ground); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+#game-canvas { image-rendering: pixelated; }
+
+#minimap-wrap {
+  position: absolute; bottom: 12px; left: 12px; z-index: 10;
+  background: rgba(10,18,14,0.85); border: 1px solid var(--border-bright); padding: 4px;
+}
+#minimap { image-rendering: pixelated; }
+
+#hud {
+  position: absolute; top: 10px; left: 10px; z-index: 10;
+  font-size: 10px; color: var(--matrix-green); line-height: 1.6; letter-spacing: 0.5px;
+  text-shadow: 0 0 4px rgba(0,255,65,0.4);
+}
+
+#controls-hint {
+  position: absolute; bottom: 12px; right: 12px; z-index: 10;
+  font-size: 9px; color: var(--text-muted); letter-spacing: 0.5px; text-align: right; line-height: 1.5;
+}
+
+#sidebar {
+  width: 280px; min-width: 280px; background: var(--surface); border-left: 1px solid var(--border);
+  overflow-y: auto; padding: 12px; display: flex; flex-direction: column; gap: 10px;
+}
+.sb-title { font-size: 9px; letter-spacing: 2px; color: var(--copper); text-transform: uppercase; margin-bottom: 4px; }
+.sb-circuit { background: var(--surface-raised); border: 1px solid var(--border); padding: 8px 10px; }
+.sb-circuit .name { font-size: 10px; color: var(--copper-bright); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.sb-circuit .row { font-size: 9px; color: var(--text-dim); margin-top: 3px; display: flex; justify-content: space-between; }
+.sb-circuit .row .val { color: var(--text); font-variant-numeric: tabular-nums; }
+.sb-section { margin-top: 6px; }
+.sb-label { font-size: 8px; letter-spacing: 1.5px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px; }
+.sb-bytes { font-size: 9px; color: var(--matrix-green); font-variant-numeric: tabular-nums; word-break: break-all; line-height: 1.6; }
+
+#bottom-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; height: 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 16px; background: rgba(5,8,8,0.94); border-top: 1px solid var(--border); z-index: 100;
+  font-size: 9px; color: var(--text-dim); letter-spacing: 0.5px;
+}
+#bottom-bar .substrate { color: var(--matrix-dim); }
+#bottom-bar .substrate b { color: var(--matrix-green); font-weight: 400; }
+#bottom-bar .right { display: flex; gap: 16px; }
+#bottom-bar .right span { color: var(--text); }
+</style>
+</head>
+<body>
+
+<div id="top-bar">
+  <div style="display:flex;align-items:center;gap:14px">
+    <div class="title">DOOM</div>
+    <div class="mode"><span class="status-dot" id="conn-dot"></span>INSTRUMENT</div>
+  </div>
+  <div class="stats">
+    doom_raycast: <span>190,360 gates</span> &middot;
+    doom_move16: <span>1,104 gates</span> &middot;
+    doom_map16: <span>2,576 gates</span>
+  </div>
+</div>
+
+<div id="main">
+  <div id="game-area">
+    <canvas id="game-canvas" width="640" height="400"></canvas>
+    <div id="minimap-wrap"><canvas id="minimap" width="128" height="128"></canvas></div>
+    <div id="hud">
+      <div id="hud-pos">POS: 3.50, 3.50</div>
+      <div id="hud-angle">ANG: 0.00</div>
+      <div id="hud-fps">FPS: --</div>
+    </div>
+    <div id="controls-hint">WASD move &middot; ←→ turn<br>SHIFT run</div>
+  </div>
+
+  <div id="sidebar">
+    <div class="sb-title">DOOM CIRCUITS</div>
+
+    <div class="sb-circuit">
+      <div class="name">doom_raycast</div>
+      <div class="row"><span>Offset</span><span class="val">2,216,556,372</span></div>
+      <div class="row"><span>Gates</span><span class="val">190,360</span></div>
+      <div class="row"><span>Depth</span><span class="val">446 ticks</span></div>
+      <div class="row"><span>Ring</span><span class="val">#24</span></div>
+      <div class="row"><span>Recv</span><span class="val">0xA5786B5E</span></div>
+      <div class="sb-section">
+        <div class="sb-label">Live State</div>
+        <div class="sb-bytes" id="bytes-raycast">connecting...</div>
+      </div>
+    </div>
+
+    <div class="sb-circuit">
+      <div class="name">doom_move16</div>
+      <div class="row"><span>Offset</span><span class="val">2,208,523,324</span></div>
+      <div class="row"><span>Gates</span><span class="val">1,104</span></div>
+      <div class="row"><span>Depth</span><span class="val">70 ticks</span></div>
+      <div class="row"><span>Ring</span><span class="val">#22</span></div>
+      <div class="row"><span>Recv</span><span class="val">0xA578657C</span></div>
+      <div class="sb-section">
+        <div class="sb-label">Live State</div>
+        <div class="sb-bytes" id="bytes-move16">connecting...</div>
+      </div>
+    </div>
+
+    <div class="sb-circuit">
+      <div class="name">doom_map16</div>
+      <div class="row"><span>Offset</span><span class="val">2,208,532,340</span></div>
+      <div class="row"><span>Gates</span><span class="val">2,576</span></div>
+      <div class="row"><span>Depth</span><span class="val">241 ticks</span></div>
+      <div class="row"><span>Ring</span><span class="val">#20</span></div>
+      <div class="row"><span>Recv</span><span class="val">0xA578657A</span></div>
+      <div class="sb-section">
+        <div class="sb-label">Live State</div>
+        <div class="sb-bytes" id="bytes-map16">connecting...</div>
+      </div>
+    </div>
+
+    <div class="sb-circuit">
+      <div class="name">doom_move16b</div>
+      <div class="row"><span>Offset</span><span class="val">2,218,079,328</span></div>
+      <div class="row"><span>Gates</span><span class="val">1,104</span></div>
+      <div class="row"><span>Depth</span><span class="val">70 ticks</span></div>
+      <div class="row"><span>Ring</span><span class="val">#23</span></div>
+      <div class="row"><span>Recv</span><span class="val">0xA578657D</span></div>
+      <div class="sb-section">
+        <div class="sb-label">Live State</div>
+        <div class="sb-bytes" id="bytes-move16b">connecting...</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="bottom-bar">
+  <div class="substrate">
+    SUBSTRATE: <b>doom_raycast</b> @ 2,216,556,372 | <b>190,360</b> gates |
+    <b>doom_move16</b> @ 2,208,523,324 | <b>1,104</b> gates |
+    <b>doom_map16</b> @ 2,208,532,340 | <b>2,576</b> gates
+  </div>
+  <div class="right">
+    TICKS: <span id="tick-count">0</span> &middot;
+    FPS: <span id="fps-count">--</span>
+  </div>
+</div>
+
+<script>
+const API = 'http://localhost:7880';
+let connected = false;
+let ticks = 0;
+
+function updateStatus() {
+  const dot = document.getElementById('conn-dot');
+  dot.className = 'status-dot ' + (connected ? 'live' : 'off');
+}
+
+async function fetchCircuit(name) {
+  try {
+    const r = await fetch(API + '/api/circuit/' + name);
+    if (r.ok) { connected = true; updateStatus(); return await r.json(); }
+  } catch(e) {}
+  connected = false; updateStatus();
+  return null;
+}
+
+function connectSSE() {
+  try {
+    const es = new EventSource(API + '/stream');
+    es.onopen = () => { connected = true; updateStatus(); };
+    es.onmessage = (e) => {
+      try {
+        const d = JSON.parse(e.data);
+        if (d.circuit && d.circuit.startsWith('doom')) {
+          ticks++;
+          document.getElementById('tick-count').textContent = ticks;
+          const el = document.getElementById('bytes-' + d.circuit.replace('doom_',''));
+          if (el && d.bytes) el.textContent = d.bytes;
+        }
+      } catch(ex) {}
+    };
+    es.onerror = () => { connected = false; updateStatus(); es.close(); setTimeout(connectSSE, 3000); };
+  } catch(e) { setTimeout(connectSSE, 3000); }
+}
+
+async function loadInitialState() {
+  const circuits = ['doom_raycast', 'doom_move16', 'doom_map16', 'doom_move16b'];
+  for (const c of circuits) {
+    const data = await fetchCircuit(c);
+    const key = c.replace('doom_','');
+    const el = document.getElementById('bytes-' + key);
+    if (data && el) {
+      el.textContent = data.state ? data.state.slice(0,64) : 'surfaced';
+    } else if (el) {
+      el.textContent = 'offline';
+    }
+  }
+}
+
+// -- DDA Raycaster (display only, no gate eval) --
+const MAP_W = 16, MAP_H = 16;
+const MAP = [
+  1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+  1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+  1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+  1,0,0,1,1,0,0,0,0,0,1,1,0,0,0,1,
+  1,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,
+  1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+  1,0,0,0,0,0,1,1,1,0,0,0,0,0,0,1,
+  1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,1,
+  1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,1,
+  1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+  1,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,
+  1,0,0,1,1,0,0,0,0,0,1,1,0,0,0,1,
+  1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+  1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+  1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+  1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+];
+
+let px = 3.5, py = 3.5, pa = 0;
+const FOV = Math.PI / 3;
+const SCREEN_W = 640, SCREEN_H = 400;
+const canvas = document.getElementById('game-canvas');
+const ctx = canvas.getContext('2d');
+const mmCanvas = document.getElementById('minimap');
+const mmCtx = mmCanvas.getContext('2d');
+
+const keys = {};
+document.addEventListener('keydown', e => { keys[e.key.toLowerCase()] = true; });
+document.addEventListener('keyup', e => { keys[e.key.toLowerCase()] = false; });
+
+function mapAt(x, y) {
+  const mx = Math.floor(x), my = Math.floor(y);
+  if (mx < 0 || mx >= MAP_W || my < 0 || my >= MAP_H) return 1;
+  return MAP[my * MAP_W + mx];
+}
+
+function castRay(ox, oy, angle) {
+  const dx = Math.cos(angle), dy = Math.sin(angle);
+  let t = 0;
+  for (let i = 0; i < 300; i++) {
+    t += 0.02;
+    const cx = ox + dx * t, cy = oy + dy * t;
+    if (mapAt(cx, cy)) return { dist: t, side: Math.abs(cx - Math.round(cx)) < Math.abs(cy - Math.round(cy)) ? 0 : 1 };
+  }
+  return { dist: 20, side: 0 };
+}
+
+function movePlayer(dt) {
+  const spd = keys['shift'] ? 4 : 2;
+  let mx = 0, my = 0;
+  if (keys['w']) { mx += Math.cos(pa) * spd * dt; my += Math.sin(pa) * spd * dt; }
+  if (keys['s']) { mx -= Math.cos(pa) * spd * dt; my -= Math.sin(pa) * spd * dt; }
+  if (keys['a']) { mx += Math.cos(pa - Math.PI/2) * spd * dt; my += Math.sin(pa - Math.PI/2) * spd * dt; }
+  if (keys['d']) { mx += Math.cos(pa + Math.PI/2) * spd * dt; my += Math.sin(pa + Math.PI/2) * spd * dt; }
+  if (keys['arrowleft']) pa -= 2.5 * dt;
+  if (keys['arrowright']) pa += 2.5 * dt;
+  const nx = px + mx, ny = py + my;
+  if (!mapAt(nx, py)) px = nx;
+  if (!mapAt(px, ny)) py = ny;
+}
+
+function render() {
+  ctx.fillStyle = '#020504';
+  ctx.fillRect(0, 0, SCREEN_W, SCREEN_H);
+
+  // ceiling
+  const grdC = ctx.createLinearGradient(0, 0, 0, SCREEN_H / 2);
+  grdC.addColorStop(0, '#040808');
+  grdC.addColorStop(1, '#081410');
+  ctx.fillStyle = grdC;
+  ctx.fillRect(0, 0, SCREEN_W, SCREEN_H / 2);
+
+  // floor
+  const grdF = ctx.createLinearGradient(0, SCREEN_H / 2, 0, SCREEN_H);
+  grdF.addColorStop(0, '#081410');
+  grdF.addColorStop(1, '#030606');
+  ctx.fillStyle = grdF;
+  ctx.fillRect(0, SCREEN_H / 2, SCREEN_W, SCREEN_H / 2);
+
+  // walls
+  for (let col = 0; col < SCREEN_W; col++) {
+    const rayAngle = pa - FOV / 2 + (col / SCREEN_W) * FOV;
+    const hit = castRay(px, py, rayAngle);
+    const perpDist = hit.dist * Math.cos(rayAngle - pa);
+    const wallH = Math.min(SCREEN_H * 1.2, SCREEN_H / perpDist);
+    const top = (SCREEN_H - wallH) / 2;
+    const bright = Math.max(0.08, 1 - perpDist / 12);
+    const g = Math.floor(255 * bright);
+    const rb = hit.side ? Math.floor(20 * bright) : 0;
+    ctx.fillStyle = `rgb(${rb},${g},${rb + Math.floor(15 * bright)})`;
+    ctx.fillRect(col, top, 1, wallH);
+  }
+
+  // minimap
+  const mmScale = 8;
+  mmCtx.fillStyle = '#050808';
+  mmCtx.fillRect(0, 0, 128, 128);
+  for (let y = 0; y < MAP_H; y++) {
+    for (let x = 0; x < MAP_W; x++) {
+      if (MAP[y * MAP_W + x]) {
+        mmCtx.fillStyle = '#0a6b2a';
+        mmCtx.fillRect(x * mmScale, y * mmScale, mmScale - 1, mmScale - 1);
+      }
+    }
+  }
+  // player
+  mmCtx.fillStyle = '#e8a84c';
+  mmCtx.beginPath();
+  mmCtx.arc(px * mmScale, py * mmScale, 3, 0, Math.PI * 2);
+  mmCtx.fill();
+  // FOV cone
+  mmCtx.strokeStyle = 'rgba(0,255,65,0.4)';
+  mmCtx.lineWidth = 1;
+  mmCtx.beginPath();
+  mmCtx.moveTo(px * mmScale, py * mmScale);
+  mmCtx.lineTo(px * mmScale + Math.cos(pa - FOV/2) * 30, py * mmScale + Math.sin(pa - FOV/2) * 30);
+  mmCtx.moveTo(px * mmScale, py * mmScale);
+  mmCtx.lineTo(px * mmScale + Math.cos(pa + FOV/2) * 30, py * mmScale + Math.sin(pa + FOV/2) * 30);
+  mmCtx.stroke();
+}
+
+let lastTime = performance.now();
+let frameCount = 0, fpsTime = 0, fps = 0;
+
+function loop(now) {
+  const dt = Math.min((now - lastTime) / 1000, 0.05);
+  lastTime = now;
+  frameCount++;
+  fpsTime += dt;
+  if (fpsTime >= 1) { fps = Math.round(frameCount / fpsTime); frameCount = 0; fpsTime = 0; }
+
+  movePlayer(dt);
+  render();
+
+  document.getElementById('hud-pos').textContent = 'POS: ' + px.toFixed(2) + ', ' + py.toFixed(2);
+  document.getElementById('hud-angle').textContent = 'ANG: ' + (pa * 180 / Math.PI).toFixed(1) + '°';
+  document.getElementById('hud-fps').textContent = 'FPS: ' + fps;
+  document.getElementById('fps-count').textContent = fps;
+
+  requestAnimationFrame(loop);
+}
+
+loadInitialState();
+connectSSE();
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>

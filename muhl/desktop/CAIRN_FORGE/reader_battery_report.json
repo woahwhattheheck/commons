@@ -1,0 +1,13 @@
+{
+  "control_pass": true,
+  "mutants": {
+    "wrong_magic": "caught: magic mismatch: b'WEATHER2'",
+    "swapped_field_order": "caught: n_in 4 != field 8 - field-order liar? (n_gate in the n_in slot reads huge)",
+    "truncated_table": "caught: size mismatch: header implies 210 bytes, file holds 185",
+    "stride_lie": "caught: stride 24 != 25",
+    "addr_out_of_range": "caught: gate 0 a=1000000000 outside wire region [96,110)",
+    "double_writer": "caught: gate 1 second writer on 106"
+  },
+  "all_caught": true,
+  "law": "a reader that normalizes a broken container is an accomplice; ship the SPEC not the tool - off-stone checkers author their own readback"
+}

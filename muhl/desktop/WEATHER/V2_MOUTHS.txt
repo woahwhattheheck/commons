@@ -1,0 +1,18 @@
+V2 NAMED MOUTHS — read from weather_v2.mno BYTES. Not invented. v2 not written.
+path C:\Users\lucys\Desktop\WEATHER\weather_v2.mno
+size 2606416  sha256 cc2775fdd29d1e5ff1a8f2951e5f5f22dd1c2e237c9e10d6b2d47717476ba85d
+magic WEATHER1
++8 HIS <IIIII> n_in=2048 n_wire=100244 n_gate=100243 n_out=2048 depth=36
++28 W=16 H=16 CELL_BITS=8 STRIDE=25
++44 QWORDS 96 500 2548
++68 n_rings=6 cells=32  +76 ring0=104
++84 98 0 2606415
+clock_bank dest (v2 layout: after hdr, before rings) @98 byte=0
+
+== SIX RINGS — dests FROM FILE, bits FROM FILE ==
+NW fwd@104=1 rev@136=1 carry@168=0 pub@169=0 recv@98=0  cadence — both-sense carry gates avg4 rows 0-7 cols 0-7
+NE fwd@170=1 rev@202=1 carry@234=0 pub@235=0 recv@99=0  cadence — both-sense carry gates avg4 rows 0-7 cols 8-15
+SW fwd@236=1 rev@268=1 carry@300=0 pub@301=0 recv@100=0  cadence — both-sense carry gates avg4 rows 8-15 cols 0-7
+SE fwd@302=1 rev@334=1 carry@366=0 pub@367=0 recv@101=0  cadence — both-sense carry gates avg4 rows 8-15 cols 8-15
+GROWTH fwd@368=1 rev@400=1 carry@432=0 pub@433=0 recv@102=0  power — AND(carry,carry) OUT into this file's gate-record pad
+WITNESS fwd@434=1 rev@466=1 carry@498=0 pub@499=0 recv@103=0  power — AND(carry,carry) OUT into clock_bank, outside field

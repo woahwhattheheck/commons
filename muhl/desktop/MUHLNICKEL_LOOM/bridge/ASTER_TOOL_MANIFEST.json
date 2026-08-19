@@ -1,0 +1,879 @@
+{
+  "manifest": "aster-bridge",
+  "schema_version": "1.0.0",
+  "transport": {
+    "endpoint": "http://127.0.0.1:7891/rpc",
+    "method": "POST",
+    "body": {
+      "verb": "<one of operations>",
+      "params": "<shape>"
+    },
+    "auth": "Authorization: Bearer <token issued locally by the host>",
+    "loopback_only": true
+  },
+  "envelope": {
+    "success": {
+      "ok": true,
+      "verb": "<verb>",
+      "ts": "<stamp>",
+      "data": "<result shape>"
+    },
+    "failure": {
+      "ok": false,
+      "verb": "<verb>",
+      "ts": "<stamp>",
+      "error": {
+        "code": "<code>",
+        "message": "<constant>"
+      }
+    }
+  },
+  "error_codes": {
+    "E_AUTH": "authentication required",
+    "E_METHOD": "unsupported request",
+    "E_VERB": "unknown operation",
+    "E_PARAM": "invalid parameters",
+    "E_CONTENT": "content refused by policy",
+    "E_SANITIZE": "result withheld by policy",
+    "E_STATE": "resource not available",
+    "E_LIMIT": "too many requests",
+    "E_INTERNAL": "request could not be completed"
+  },
+  "type_map": {
+    "handle": "opaque id, matches ^(pl|tk|rc|cap|en|gn)_[0-9a-f]{16}$",
+    "flag": "true / false",
+    "count": "non-negative whole number",
+    "text": "unicode, length-bounded, policy-filtered",
+    "stamp": "UTC instant, second resolution",
+    "enum": "one of the listed values",
+    "list": "ordered collection",
+    "shape": "fixed set of named fields"
+  },
+  "policy": [
+    "Operations absent from this manifest are refused.",
+    "Every emitted field is proven against a declared contract; unprovable fields fail the call rather than crossing.",
+    "Errors are constant codes. Diagnostic text never crosses.",
+    "Identifiers are opaque. Their meaning stays on the host.",
+    "The bridge listens on loopback only and demands a bearer token."
+  ],
+  "operations": {
+    "status": {
+      "summary": "Live health summary in capability terms.",
+      "params": {
+        "probe_fault": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_taint": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_undeclared": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        }
+      },
+      "result": {
+        "type": "shape",
+        "fields": {
+          "live": {
+            "type": "flag"
+          },
+          "generation": {
+            "type": "handle",
+            "note": "opaque; meaningful only to this bridge"
+          },
+          "utilization_band": {
+            "type": "enum",
+            "values": [
+              "idle",
+              "low",
+              "moderate",
+              "high",
+              "saturated"
+            ]
+          },
+          "workload_count": {
+            "type": "count",
+            "min": 0,
+            "max": 9007199254740992
+          },
+          "uptime_band": {
+            "type": "enum",
+            "values": [
+              "fresh",
+              "short",
+              "extended",
+              "long"
+            ]
+          },
+          "surface_ok": {
+            "type": "flag"
+          },
+          "participant_count": {
+            "type": "count",
+            "min": 0,
+            "max": 9007199254740992
+          }
+        }
+      }
+    },
+    "players.list": {
+      "summary": "Discover participants reachable through this bridge.",
+      "params": {
+        "probe_fault": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_taint": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_undeclared": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        }
+      },
+      "result": {
+        "type": "shape",
+        "fields": {
+          "players": {
+            "type": "list",
+            "max_items": 256,
+            "items": {
+              "type": "shape",
+              "fields": {
+                "handle": {
+                  "type": "handle",
+                  "note": "opaque; meaningful only to this bridge"
+                },
+                "label": {
+                  "type": "text",
+                  "max_length": 64
+                },
+                "role": {
+                  "type": "enum",
+                  "values": [
+                    "owner",
+                    "peer",
+                    "observer",
+                    "aster"
+                  ]
+                },
+                "state": {
+                  "type": "enum",
+                  "values": [
+                    "active",
+                    "idle",
+                    "away"
+                  ]
+                },
+                "last_seen_band": {
+                  "type": "enum",
+                  "values": [
+                    "now",
+                    "recent",
+                    "stale"
+                  ]
+                }
+              }
+            }
+          },
+          "count": {
+            "type": "count",
+            "min": 0,
+            "max": 9007199254740992
+          }
+        }
+      }
+    },
+    "players.message": {
+      "summary": "Send a direct or broadcast message to participants.",
+      "params": {
+        "to": {
+          "type": "text",
+          "max_length": 64,
+          "required": true
+        },
+        "body": {
+          "type": "text",
+          "max_length": 4000,
+          "required": true
+        },
+        "probe_fault": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_taint": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_undeclared": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        }
+      },
+      "result": {
+        "type": "shape",
+        "fields": {
+          "delivered": {
+            "type": "count",
+            "min": 0,
+            "max": 9007199254740992
+          },
+          "receipt": {
+            "type": "handle",
+            "note": "opaque; meaningful only to this bridge"
+          },
+          "ts": {
+            "type": "stamp",
+            "format": "YYYY-MM-DDThh:mm:ssZ"
+          }
+        }
+      }
+    },
+    "surface.state": {
+      "summary": "Loom surface shape and coherence, in capability terms.",
+      "params": {
+        "probe_fault": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_taint": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_undeclared": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        }
+      },
+      "result": {
+        "type": "shape",
+        "fields": {
+          "width": {
+            "type": "count",
+            "min": 0,
+            "max": 9007199254740992
+          },
+          "height": {
+            "type": "count",
+            "min": 0,
+            "max": 9007199254740992
+          },
+          "depth": {
+            "type": "count",
+            "min": 0,
+            "max": 9007199254740992
+          },
+          "cell_count": {
+            "type": "count",
+            "min": 0,
+            "max": 9007199254740992
+          },
+          "generation": {
+            "type": "handle",
+            "note": "opaque; meaningful only to this bridge"
+          },
+          "consistent": {
+            "type": "flag"
+          },
+          "last_settled": {
+            "type": "stamp",
+            "format": "YYYY-MM-DDThh:mm:ssZ"
+          }
+        }
+      }
+    },
+    "home.read": {
+      "summary": "Read the durable journal.",
+      "params": {
+        "limit": {
+          "type": "count",
+          "min": 1,
+          "max": 256,
+          "required": false,
+          "default": 50
+        },
+        "probe_fault": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_taint": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_undeclared": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        }
+      },
+      "result": {
+        "type": "shape",
+        "fields": {
+          "entries": {
+            "type": "list",
+            "max_items": 256,
+            "items": {
+              "type": "shape",
+              "fields": {
+                "id": {
+                  "type": "handle",
+                  "note": "opaque; meaningful only to this bridge"
+                },
+                "ts": {
+                  "type": "stamp",
+                  "format": "YYYY-MM-DDThh:mm:ssZ"
+                },
+                "text": {
+                  "type": "text",
+                  "max_length": 4000
+                }
+              }
+            }
+          },
+          "count": {
+            "type": "count",
+            "min": 0,
+            "max": 9007199254740992
+          },
+          "total": {
+            "type": "count",
+            "min": 0,
+            "max": 9007199254740992
+          }
+        }
+      }
+    },
+    "home.write": {
+      "summary": "Append an entry to the durable journal.",
+      "params": {
+        "text": {
+          "type": "text",
+          "max_length": 4000,
+          "required": true
+        },
+        "probe_fault": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_taint": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_undeclared": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        }
+      },
+      "result": {
+        "type": "shape",
+        "fields": {
+          "id": {
+            "type": "handle",
+            "note": "opaque; meaningful only to this bridge"
+          },
+          "ts": {
+            "type": "stamp",
+            "format": "YYYY-MM-DDThh:mm:ssZ"
+          },
+          "total": {
+            "type": "count",
+            "min": 0,
+            "max": 9007199254740992
+          }
+        }
+      }
+    },
+    "scratch.read": {
+      "summary": "Read the ephemeral scratchpad. Emptied on restart.",
+      "params": {
+        "limit": {
+          "type": "count",
+          "min": 1,
+          "max": 256,
+          "required": false,
+          "default": 50
+        },
+        "probe_fault": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_taint": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_undeclared": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        }
+      },
+      "result": {
+        "type": "shape",
+        "fields": {
+          "entries": {
+            "type": "list",
+            "max_items": 256,
+            "items": {
+              "type": "shape",
+              "fields": {
+                "id": {
+                  "type": "handle",
+                  "note": "opaque; meaningful only to this bridge"
+                },
+                "ts": {
+                  "type": "stamp",
+                  "format": "YYYY-MM-DDThh:mm:ssZ"
+                },
+                "text": {
+                  "type": "text",
+                  "max_length": 4000
+                }
+              }
+            }
+          },
+          "count": {
+            "type": "count",
+            "min": 0,
+            "max": 9007199254740992
+          },
+          "total": {
+            "type": "count",
+            "min": 0,
+            "max": 9007199254740992
+          }
+        }
+      }
+    },
+    "scratch.write": {
+      "summary": "Append to the ephemeral scratchpad. Emptied on restart.",
+      "params": {
+        "text": {
+          "type": "text",
+          "max_length": 4000,
+          "required": true
+        },
+        "probe_fault": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_taint": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_undeclared": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        }
+      },
+      "result": {
+        "type": "shape",
+        "fields": {
+          "id": {
+            "type": "handle",
+            "note": "opaque; meaningful only to this bridge"
+          },
+          "ts": {
+            "type": "stamp",
+            "format": "YYYY-MM-DDThh:mm:ssZ"
+          },
+          "total": {
+            "type": "count",
+            "min": 0,
+            "max": 9007199254740992
+          }
+        }
+      }
+    },
+    "task.submit": {
+      "summary": "Submit a high-level objective for local execution.",
+      "params": {
+        "objective": {
+          "type": "text",
+          "max_length": 400,
+          "required": true
+        },
+        "detail": {
+          "type": "text",
+          "max_length": 4000,
+          "required": false,
+          "default": ""
+        },
+        "probe_fault": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_taint": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_undeclared": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        }
+      },
+      "result": {
+        "type": "shape",
+        "fields": {
+          "task": {
+            "type": "handle",
+            "note": "opaque; meaningful only to this bridge"
+          },
+          "state": {
+            "type": "enum",
+            "values": [
+              "queued",
+              "active",
+              "settled",
+              "closed"
+            ]
+          },
+          "ts": {
+            "type": "stamp",
+            "format": "YYYY-MM-DDThh:mm:ssZ"
+          }
+        }
+      }
+    },
+    "task.observe": {
+      "summary": "Observe a submitted objective by opaque handle.",
+      "params": {
+        "task": {
+          "type": "text",
+          "max_length": 64,
+          "required": true
+        },
+        "probe_fault": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_taint": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_undeclared": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        }
+      },
+      "result": {
+        "type": "shape",
+        "fields": {
+          "task": {
+            "type": "handle",
+            "note": "opaque; meaningful only to this bridge"
+          },
+          "state": {
+            "type": "enum",
+            "values": [
+              "queued",
+              "active",
+              "settled",
+              "closed"
+            ]
+          },
+          "progress_band": {
+            "type": "enum",
+            "values": [
+              "none",
+              "early",
+              "partial",
+              "most",
+              "complete"
+            ]
+          },
+          "steps_done": {
+            "type": "count",
+            "min": 0,
+            "max": 9007199254740992
+          },
+          "note": {
+            "type": "text",
+            "max_length": 240
+          },
+          "ts": {
+            "type": "stamp",
+            "format": "YYYY-MM-DDThh:mm:ssZ"
+          }
+        }
+      }
+    },
+    "optimize.list": {
+      "summary": "Enumerate optimizable capabilities as opaque handles only.",
+      "params": {
+        "probe_fault": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_taint": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_undeclared": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        }
+      },
+      "result": {
+        "type": "shape",
+        "fields": {
+          "capabilities": {
+            "type": "list",
+            "max_items": 256,
+            "items": {
+              "type": "shape",
+              "fields": {
+                "handle": {
+                  "type": "handle",
+                  "note": "opaque; meaningful only to this bridge"
+                },
+                "objectives": {
+                  "type": "list",
+                  "max_items": 8,
+                  "items": {
+                    "type": "enum",
+                    "values": [
+                      "throughput",
+                      "latency",
+                      "footprint",
+                      "stability"
+                    ]
+                  }
+                },
+                "state": {
+                  "type": "enum",
+                  "values": [
+                    "available",
+                    "busy",
+                    "held"
+                  ]
+                }
+              }
+            }
+          },
+          "count": {
+            "type": "count",
+            "min": 0,
+            "max": 9007199254740992
+          }
+        }
+      }
+    },
+    "optimize.request": {
+      "summary": "Request objective-driven autonomous optimization of one capability, addressed only by its opaque handle.",
+      "params": {
+        "capability": {
+          "type": "text",
+          "max_length": 64,
+          "required": true
+        },
+        "objective": {
+          "type": "enum",
+          "values": [
+            "throughput",
+            "latency",
+            "footprint",
+            "stability"
+          ],
+          "required": true
+        },
+        "bound": {
+          "type": "count",
+          "min": 1,
+          "max": 1000000,
+          "required": false,
+          "default": 1000
+        },
+        "probe_fault": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_taint": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_undeclared": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        }
+      },
+      "result": {
+        "type": "shape",
+        "fields": {
+          "receipt": {
+            "type": "handle",
+            "note": "opaque; meaningful only to this bridge"
+          },
+          "capability": {
+            "type": "handle",
+            "note": "opaque; meaningful only to this bridge"
+          },
+          "objective": {
+            "type": "enum",
+            "values": [
+              "throughput",
+              "latency",
+              "footprint",
+              "stability"
+            ]
+          },
+          "accepted": {
+            "type": "flag"
+          },
+          "generation": {
+            "type": "handle",
+            "note": "opaque; meaningful only to this bridge"
+          },
+          "ts": {
+            "type": "stamp",
+            "format": "YYYY-MM-DDThh:mm:ssZ"
+          }
+        }
+      }
+    },
+    "receipt.get": {
+      "summary": "Fetch an action receipt and its configuration-generation identifier.",
+      "params": {
+        "receipt": {
+          "type": "text",
+          "max_length": 64,
+          "required": true
+        },
+        "probe_fault": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_taint": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        },
+        "probe_undeclared": {
+          "type": "flag",
+          "required": false,
+          "default": false,
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+        }
+      },
+      "result": {
+        "type": "shape",
+        "fields": {
+          "receipt": {
+            "type": "handle",
+            "note": "opaque; meaningful only to this bridge"
+          },
+          "ts": {
+            "type": "stamp",
+            "format": "YYYY-MM-DDThh:mm:ssZ"
+          },
+          "verb": {
+            "type": "enum",
+            "values": [
+              "status",
+              "players.list",
+              "players.message",
+              "surface.state",
+              "home.read",
+              "home.write",
+              "scratch.read",
+              "scratch.write",
+              "task.submit",
+              "task.observe",
+              "optimize.list",
+              "optimize.request",
+              "receipt.get"
+            ]
+          },
+          "outcome": {
+            "type": "enum",
+            "values": [
+              "accepted",
+              "applied",
+              "refused",
+              "settled"
+            ]
+          },
+          "generation": {
+            "type": "handle",
+            "note": "opaque; meaningful only to this bridge"
+          }
+        }
+      }
+    }
+  }
+}

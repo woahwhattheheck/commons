@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BRAIN — Muhlnickel Demo</title>
+<style>
+:root {
+  --ground: #050808;
+  --surface: #0a120e;
+  --surface-raised: #0f1a14;
+  --border: #1a2e22;
+  --border-bright: #2a4a36;
+  --matrix-green: #00ff41;
+  --matrix-dim: #0a6b2a;
+  --matrix-dark: #042f12;
+  --copper: #cd7f32;
+  --copper-bright: #e8a84c;
+  --life-cell: #39efc9;
+  --text: #c8d0c0;
+  --text-dim: #5a6b58;
+  --text-muted: #384038;
+  --mono: 'Cascadia Mono', Consolas, 'Courier New', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: var(--ground); color: var(--text); font-family: var(--mono); }
+
+#top-bar {
+  position: fixed; top: 0; left: 0; right: 0; height: 38px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 16px; background: rgba(5,8,8,0.94); backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border); z-index: 50;
+}
+#top-bar .title { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--copper-bright); text-transform: uppercase; }
+#top-bar .circuit-tag { font-size: 9px; letter-spacing: 1.5px; color: var(--text-dim); text-transform: uppercase; }
+#top-bar .circuit-tag b { color: var(--life-cell); font-weight: 600; }
+.status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--text-muted); display: inline-block; margin-right: 6px; vertical-align: middle; transition: all 0.3s; }
+.status-dot.live { background: var(--matrix-green); box-shadow: 0 0 6px var(--matrix-green); }
+
+#main { position: fixed; top: 38px; left: 0; right: 0; bottom: 32px; display: flex; }
+
+#canvas-wrap {
+  flex: 1; position: relative; background: var(--ground); overflow: hidden;
+}
+canvas#brain-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+#sidebar {
+  width: 280px; min-width: 280px; background: var(--surface); border-left: 1px solid var(--border);
+  overflow-y: auto; padding: 12px 14px; font-size: 10px; display: flex; flex-direction: column; gap: 12px;
+}
+.sb-section { border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+.sb-section:last-child { border-bottom: none; }
+.sb-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--copper); margin-bottom: 6px; }
+.sb-row { display: flex; justify-content: space-between; padding: 2px 0; color: var(--text-dim); }
+.sb-row .val { color: var(--life-cell); font-variant-numeric: tabular-nums; }
+.sb-row .addr { color: var(--matrix-dim); font-variant-numeric: tabular-nums; font-size: 9px; }
+.sb-note { font-size: 9px; color: var(--text-muted); line-height: 1.5; margin-top: 4px; }
+
+.depth-bar {
+  display: flex; align-items: flex-end; gap: 1px; height: 60px; margin-top: 6px;
+}
+.depth-col {
+  flex: 1; background: var(--matrix-dark); min-width: 2px; transition: background 0.3s;
+}
+.depth-col.active { background: var(--matrix-green); box-shadow: 0 0 3px var(--matrix-green); }
+
+.output-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 6px;
+}
+.out-cell {
+  height: 22px; display: flex; align-items: center; justify-content: center;
+  background: var(--surface-raised); border: 1px solid var(--border); font-size: 9px;
+  color: var(--text-dim); font-variant-numeric: tabular-nums; transition: all 0.3s;
+}
+.out-cell.hot { background: var(--matrix-dark); color: var(--matrix-green); border-color: var(--matrix-dim); }
+
+#bottom-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; height: 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 16px; background: rgba(5,8,8,0.94); border-top: 1px solid var(--border);
+  font-size: 9px; color: var(--text-dim); letter-spacing: 0.5px; z-index: 50;
+}
+#bottom-bar .val { color: var(--life-cell); font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+
+<div id="top-bar">
+  <div style="display:flex;align-items:center;gap:14px">
+    <span class="title">Brain</span>
+    <span class="circuit-tag">SUBSTRATE: wb_fwd @ offset <b>2,208,471,988</b> &middot; <b>2,448</b> gates &middot; depth <b>66</b> ticks</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <span class="status-dot" id="conn-dot"></span>
+    <span class="circuit-tag" id="conn-label">OFFLINE</span>
+  </div>
+</div>
+
+<div id="main">
+  <div id="canvas-wrap">
+    <canvas id="brain-canvas"></canvas>
+  </div>
+  <div id="sidebar">
+    <div class="sb-section">
+      <div class="sb-label">Circuit</div>
+      <div class="sb-row"><span>Name</span><span class="val">wb_fwd</span></div>
+      <div class="sb-row"><span>Offset</span><span class="addr">0x83A37B34</span></div>
+      <div class="sb-row"><span>Length</span><span class="val">19,672 B</span></div>
+      <div class="sb-row"><span>Gates</span><span class="val">2,448</span></div>
+      <div class="sb-row"><span>Depth</span><span class="val">66 ticks</span></div>
+      <div class="sb-row"><span>Rating</span><span class="val">37.091</span></div>
+      <div class="sb-row"><span>Inputs</span><span class="val">27 wires</span></div>
+      <div class="sb-row"><span>Outputs</span><span class="val">16 wires</span></div>
+      <div class="sb-row"><span>Ring</span><span class="val">#280</span></div>
+      <div class="sb-row"><span>Recv</span><span class="addr">0xA58768EA</span></div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-label">Depth Histogram</div>
+      <div class="sb-note">Gate distribution across 66 tick levels</div>
+      <div class="depth-bar" id="depth-bar"></div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-label">Inputs (27)</div>
+      <div id="input-list" style="max-height:120px;overflow-y:auto"></div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-label">Outputs (16)</div>
+      <div class="output-grid" id="output-grid"></div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-label">Live State</div>
+      <div class="sb-note" id="live-bytes" style="color:var(--matrix-green)">Waiting for surface...</div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-label">Network Role</div>
+      <div class="sb-note">Whitebox forward pass — 27 model-byte inputs propagate through 2,448 NAND gates across 66 depth levels to produce 16 output bits. The entire forward pass is fabricated structure, not host computation.</div>
+    </div>
+  </div>
+</div>
+
+<div id="bottom-bar">
+  <div>WAVE TICK <span class="val" id="tick-count">0</span></div>
+  <div>FPS <span class="val" id="fps-val">0</span></div>
+  <div>MUHLNICKEL INSTRUMENT &middot; SURFACE ONLY</div>
+</div>
+
+<script>
+const API = 'http://localhost:7880';
+const canvas = document.getElementById('brain-canvas');
+const ctx = canvas.getContext('2d');
+const connDot = document.getElementById('conn-dot');
+const connLabel = document.getElementById('conn-label');
+const tickEl = document.getElementById('tick-count');
+const fpsEl = document.getElementById('fps-val');
+
+let connected = false;
+let waveTick = 0;
+let frameCount = 0;
+let lastFpsTime = performance.now();
+let lastFpsFrames = 0;
+
+const N_IN = 27, N_OUT = 16, DEPTH = 66, N_GATE = 2448;
+
+function updateStatus() {
+  connDot.classList.toggle('live', connected);
+  connLabel.textContent = connected ? 'LIVE' : 'OFFLINE';
+}
+
+async function fetchCircuit(name) {
+  try {
+    const r = await fetch(API + '/api/circuit/' + name);
+    if (r.ok) { connected = true; updateStatus(); return await r.json(); }
+  } catch(e) {}
+  connected = false; updateStatus();
+  return null;
+}
+
+function connectSSE() {
+  try {
+    const es = new EventSource(API + '/stream');
+    es.onopen = () => { connected = true; updateStatus(); };
+    es.onmessage = (e) => {
+      try {
+        const d = JSON.parse(e.data);
+        if (d.circuit === 'wb_fwd') {
+          document.getElementById('live-bytes').textContent = 'Change @ 0x' + (d.addr||0).toString(16) + ': ' + (d.old_val||0) + ' → ' + (d.new_val||0);
+        }
+      } catch(ex) {}
+    };
+    es.onerror = () => { connected = false; updateStatus(); es.close(); setTimeout(connectSSE, 3000); };
+  } catch(e) { setTimeout(connectSSE, 3000); }
+}
+
+// Build depth distribution (approximation of a bell curve spread across 66 levels)
+const depthGates = [];
+(function() {
+  let total = 0;
+  for (let d = 0; d < DEPTH; d++) {
+    const x = (d - DEPTH / 2) / (DEPTH / 4);
+    const v = Math.exp(-x * x / 2);
+    depthGates.push(v);
+    total += v;
+  }
+  const scale = N_GATE / total;
+  for (let d = 0; d < DEPTH; d++) depthGates[d] = Math.round(depthGates[d] * scale);
+})();
+
+function buildDepthBar() {
+  const bar = document.getElementById('depth-bar');
+  const maxG = Math.max(...depthGates);
+  for (let d = 0; d < DEPTH; d++) {
+    const col = document.createElement('div');
+    col.className = 'depth-col';
+    col.style.height = (depthGates[d] / maxG * 100) + '%';
+    col.dataset.d = d;
+    bar.appendChild(col);
+  }
+}
+
+function buildInputList() {
+  const el = document.getElementById('input-list');
+  const base = 2208471988;
+  for (let i = 0; i < N_IN; i++) {
+    const row = document.createElement('div');
+    row.className = 'sb-row';
+    row.innerHTML = '<span>in[' + i + ']</span><span class="addr">0x' + (base + 24 + i).toString(16).toUpperCase() + '</span>';
+    el.appendChild(row);
+  }
+}
+
+function buildOutputGrid() {
+  const grid = document.getElementById('output-grid');
+  for (let i = 0; i < N_OUT; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'out-cell';
+    cell.id = 'ocel-' + i;
+    cell.textContent = '—';
+    grid.appendChild(cell);
+  }
+}
+
+// Network layout: precompute node positions
+const nodes = [];
+const layerSizes = [];
+(function() {
+  // Input layer
+  layerSizes.push(N_IN);
+  // Distribute gates into ~10 visual hidden layers
+  const nHidden = 10;
+  const gatesPerHidden = Math.ceil(N_GATE / nHidden);
+  for (let i = 0; i < nHidden; i++) layerSizes.push(Math.min(gatesPerHidden, 80));
+  // Output layer
+  layerSizes.push(N_OUT);
+})();
+
+function resize() {
+  canvas.width = canvas.parentElement.clientWidth;
+  canvas.height = canvas.parentElement.clientHeight;
+}
+
+function drawNetwork() {
+  const w = canvas.width, h = canvas.height;
+  ctx.fillStyle = '#050808';
+  ctx.fillRect(0, 0, w, h);
+
+  const nLayers = layerSizes.length;
+  const marginX = 50, marginY = 30;
+  const areaW = w - marginX * 2;
+  const areaH = h - marginY * 2;
+  const layerSpacing = areaW / (nLayers - 1);
+
+  const waveProgress = (waveTick % 180) / 180;
+  const waveLayer = waveProgress * (nLayers - 1);
+
+  // Draw connections first (faint)
+  for (let l = 0; l < nLayers - 1; l++) {
+    const x1 = marginX + l * layerSpacing;
+    const x2 = marginX + (l + 1) * layerSpacing;
+    const n1 = Math.min(layerSizes[l], 30);
+    const n2 = Math.min(layerSizes[l + 1], 30);
+    const s1 = areaH / (n1 + 1);
+    const s2 = areaH / (n2 + 1);
+
+    const distFromWave = Math.abs(l - waveLayer);
+    if (distFromWave > 3) continue;
+
+    const alpha = Math.max(0.01, 0.08 * (1 - distFromWave / 3));
+    ctx.strokeStyle = distFromWave < 1.5
+      ? 'rgba(57,239,201,' + alpha * 2 + ')'
+      : 'rgba(26,46,34,' + alpha + ')';
+    ctx.lineWidth = 0.5;
+
+    const step1 = Math.max(1, Math.floor(n1 / 8));
+    const step2 = Math.max(1, Math.floor(n2 / 8));
+    for (let i = 0; i < n1; i += step1) {
+      for (let j = 0; j < n2; j += step2) {
+        ctx.beginPath();
+        ctx.moveTo(x1, marginY + s1 * (i + 1));
+        ctx.lineTo(x2, marginY + s2 * (j + 1));
+        ctx.stroke();
+      }
+    }
+  }
+
+  // Draw nodes
+  for (let l = 0; l < nLayers; l++) {
+    const x = marginX + l * layerSpacing;
+    const nVis = Math.min(layerSizes[l], 30);
+    const spacing = areaH / (nVis + 1);
+    const distFromWave = Math.abs(l - waveLayer);
+    const glow = Math.max(0, 1 - distFromWave * 0.5);
+
+    const isInput = l === 0;
+    const isOutput = l === nLayers - 1;
+
+    for (let i = 0; i < nVis; i++) {
+      const y = marginY + spacing * (i + 1);
+      const r = isInput || isOutput ? 5 : 3;
+
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, Math.PI * 2);
+
+      if (distFromWave < 1.5) {
+        if (isInput) {
+          ctx.fillStyle = 'hsl(160, 80%, ' + (25 + glow * 40) + '%)';
+        } else if (isOutput) {
+          ctx.fillStyle = 'hsl(30, 70%, ' + (20 + glow * 45) + '%)';
+        } else {
+          ctx.fillStyle = 'hsl(130, 75%, ' + (15 + glow * 45) + '%)';
+        }
+        ctx.fill();
+
+        if (glow > 0.5) {
+          ctx.strokeStyle = isOutput
+            ? 'rgba(205,127,50,' + glow * 0.5 + ')'
+            : 'rgba(0,255,65,' + glow * 0.4 + ')';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        }
+      } else {
+        ctx.fillStyle = isInput ? '#1a7a64' : (isOutput ? '#2a1d13' : '#0a120e');
+        ctx.fill();
+        ctx.strokeStyle = '#1a2e22';
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+
+    // Layer labels
+    if (isInput) {
+      ctx.fillStyle = '#5a6b58';
+      ctx.font = '8px Consolas, monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('27 IN', x, h - 8);
+    } else if (isOutput) {
+      ctx.fillStyle = '#5a6b58';
+      ctx.font = '8px Consolas, monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('16 OUT', x, h - 8);
+    } else {
+      const dStart = Math.floor((l - 1) * (DEPTH / (nLayers - 2)));
+      const dEnd = Math.floor(l * (DEPTH / (nLayers - 2)));
+      ctx.fillStyle = '#384038';
+      ctx.font = '7px Consolas, monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('d' + dStart + '-' + dEnd, x, h - 8);
+    }
+  }
+
+  // Depth bar highlight
+  const depthCols = document.querySelectorAll('.depth-col');
+  const activeDepth = Math.floor(waveProgress * DEPTH);
+  depthCols.forEach((col, i) => {
+    col.classList.toggle('active', Math.abs(i - activeDepth) < 3);
+  });
+
+  // Output cells
+  const outputActive = waveProgress > 0.9;
+  for (let i = 0; i < N_OUT; i++) {
+    const cel = document.getElementById('ocel-' + i);
+    cel.classList.toggle('hot', outputActive);
+    cel.textContent = outputActive ? ((Math.sin(i * 1.7 + waveTick * 0.05) > 0) ? '1' : '0') : '—';
+  }
+}
+
+function loop() {
+  waveTick++;
+  frameCount++;
+  drawNetwork();
+  tickEl.textContent = Math.floor(waveTick / 180 * DEPTH) % DEPTH;
+
+  const now = performance.now();
+  if (now - lastFpsTime >= 1000) {
+    fpsEl.textContent = frameCount - lastFpsFrames;
+    lastFpsFrames = frameCount;
+    lastFpsTime = now;
+  }
+  requestAnimationFrame(loop);
+}
+
+window.addEventListener('resize', resize);
+buildDepthBar();
+buildInputList();
+buildOutputGrid();
+resize();
+fetchCircuit('wb_fwd');
+connectSSE();
+loop();
+</script>
+</body>
+</html>

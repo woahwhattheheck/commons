@@ -1,0 +1,15 @@
+# White Box — the complete dependency list. Two packages, both pure-Python/numpy readers.
+#
+# There is no torch, no transformers, no llama.cpp, no CUDA and no server here: White Box reads .gguf parameter
+# BYTES directly (memmap + chunked numpy), so the install is small and it runs on an 8 GB machine.
+#
+#   python -m pip install -r requirements.txt
+
+# reads the .gguf container: header, KV metadata, tensor index, and block dequantization.
+gguf>=0.9.0
+
+# the array math for every read (memmap views, per-tensor statistics, cosine similarity).
+numpy>=1.24
+
+# Python itself: 3.9 or newer (developed and smoke-tested on 3.12).
+# Everything else the app uses — http.server, json, mmap, struct, subprocess, threading — is in the standard library.

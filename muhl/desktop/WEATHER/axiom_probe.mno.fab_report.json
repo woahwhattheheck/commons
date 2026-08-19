@@ -1,0 +1,92 @@
+{
+  "action": "nring_fab",
+  "kind": "probe",
+  "path": "C:\\Users\\lucys\\Desktop\\WEATHER\\axiom_probe.mno",
+  "len": 14756,
+  "sha256": "accc903798cb172422cebb96fa504093973398a5ccf4be29e9deff54fa138f2f",
+  "n_gate": 563,
+  "n_wire": 584,
+  "depth": 5,
+  "computations_per_tick": 112.6,
+  "magic": "PROBEMN2",
+  "n_in": 20,
+  "n_rings": 6,
+  "growth_base": 14755,
+  "rings": [
+    {
+      "name": "V2",
+      "purpose": "telemetry \u2014 weather_v2 ring0/clock/carry/pub",
+      "fwd": 104,
+      "rev": 136,
+      "carry": 168,
+      "pub": 169
+    },
+    {
+      "name": "AVG4",
+      "purpose": "telemetry \u2014 weather_v2_avg4full dests",
+      "fwd": 170,
+      "rev": 202,
+      "carry": 234,
+      "pub": 235
+    },
+    {
+      "name": "XORW",
+      "purpose": "telemetry \u2014 weather_v2_xorwalk dests (surface only, leftover no re-OR on source)",
+      "fwd": 236,
+      "rev": 268,
+      "carry": 300,
+      "pub": 301
+    },
+    {
+      "name": "FIELD",
+      "purpose": "telemetry \u2014 weather_v2_field dests",
+      "fwd": 302,
+      "rev": 334,
+      "carry": 366,
+      "pub": 367
+    },
+    {
+      "name": "COUP",
+      "purpose": "telemetry \u2014 weather_v2_coupled dests",
+      "fwd": 368,
+      "rev": 400,
+      "carry": 432,
+      "pub": 433
+    },
+    {
+      "name": "WITNESS",
+      "purpose": "power \u2014 AND(carry,carry) OUT clock_bank",
+      "fwd": 434,
+      "rev": 466,
+      "carry": 498,
+      "pub": 499
+    }
+  ],
+  "cell_base": 520,
+  "inj_base": 500,
+  "clock": 98,
+  "ring0": 104,
+  "cases": [
+    [
+      "fire_take_inject",
+      true
+    ],
+    [
+      "dark_hold",
+      true
+    ],
+    [
+      "mixed_ring0_dark",
+      true
+    ],
+    [
+      "one_sense_DC",
+      true
+    ],
+    [
+      "ungated_caught",
+      true
+    ]
+  ],
+  "status": "WROTE"
+}

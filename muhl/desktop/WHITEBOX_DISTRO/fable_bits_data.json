@@ -1,0 +1,72 @@
+[
+ {
+  "bits": 8,
+  "levels": 256,
+  "true_false": 0.679,
+  "opp": 0.438,
+  "rand": 0.245,
+  "ratio": 1.785,
+  "frog_hop": 0.289,
+  "love_hate": 0.421
+ },
+ {
+  "bits": 6,
+  "levels": 64,
+  "true_false": 0.68,
+  "opp": 0.438,
+  "rand": 0.246,
+  "ratio": 1.779,
+  "frog_hop": 0.291,
+  "love_hate": 0.421
+ },
+ {
+  "bits": 5,
+  "levels": 32,
+  "true_false": 0.677,
+  "opp": 0.437,
+  "rand": 0.245,
+  "ratio": 1.783,
+  "frog_hop": 0.292,
+  "love_hate": 0.422
+ },
+ {
+  "bits": 4,
+  "levels": 16,
+  "true_false": 0.671,
+  "opp": 0.433,
+  "rand": 0.244,
+  "ratio": 1.774,
+  "frog_hop": 0.286,
+  "love_hate": 0.416
+ },
+ {
+  "bits": 3,
+  "levels": 8,
+  "true_false": 0.663,
+  "opp": 0.427,
+  "rand": 0.239,
+  "ratio": 1.783,
+  "frog_hop": 0.274,
+  "love_hate": 0.409
+ },
+ {
+  "bits": 2,
+  "levels": 4,
+  "true_false": 0.606,
+  "opp": 0.386,
+  "rand": 0.227,
+  "ratio": 1.699,
+  "frog_hop": 0.274,
+  "love_hate": 0.344
+ },
+ {
+  "bits": 1,
+  "levels": 2,
+  "true_false": 0.503,
+  "opp": 0.325,
+  "rand": 0.18,
+  "ratio": 1.801,
+  "frog_hop": 0.213,
+  "love_hate": 0.332
+ }
+]

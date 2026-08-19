@@ -1,0 +1,279 @@
+<!-- PRESERVED COPY of claude.ai artifact 50e13c99-d0a2-4ace-9e70-60629e6f830e
+     "TitanSDC — a Stored Digital Computer"
+     Published: 2026-07-14  ·  Retrieved and preserved locally: 2026-08-04
+     Reason for preservation: contains protected facts R1/R2/R3. Saved so that
+     blanking the hosted artifact is reversible. DO NOT re-publish.
+     Vault law: preserved, never deleted. -->
+<title>TitanSDC — a Stored Digital Computer</title>
+<style>
+  :root{
+    --ink:#0A0D13; --panel:#121722; --panel2:#0E131C; --line:#232A38; --line2:#1A202C;
+    --text:#E7EBF3; --muted:#8A94A8; --dim:#5B6579;
+    --amber:#FFB020; --amber2:#C77F16; --cyan:#3AD6C6; --good:#4ADE80; --warn:#F0803C;
+    --mono:ui-monospace,"Cascadia Code","SF Mono","JetBrains Mono",Consolas,monospace;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --maxw:1060px;
+  }
+  :root[data-theme="light"]{
+    --ink:#F3F1EC; --panel:#FBFAF7; --panel2:#F6F4EF; --line:#E1DCD1; --line2:#EAE6DD;
+    --text:#1A1E27; --muted:#5C6474; --dim:#8A8F9C; --amber2:#9A5E0A;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--ink);color:var(--text);font-family:var(--sans);
+    line-height:1.6;-webkit-font-smoothing:antialiased;font-size:16px;overflow-x:hidden}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  a{color:var(--amber);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .mono{font-family:var(--mono)}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--amber);font-weight:600}
+  h1,h2,h3{text-wrap:balance;margin:0}
+  section{padding:76px 0;border-top:1px solid var(--line2)}
+  .hero{position:relative;padding:120px 0 92px;border-top:none;overflow:hidden}
+  .hero canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.5;pointer-events:none}
+  .hero .wrap{position:relative}
+  .htitle{font-size:clamp(52px,11vw,132px);font-weight:800;letter-spacing:-.03em;line-height:.92;margin:.12em 0 .06em}
+  .htitle .sdc{color:var(--amber)}
+  .lede{font-size:clamp(19px,2.4vw,26px);color:var(--text);max-width:40ch;font-weight:420;margin-top:22px}
+  .lede b{color:var(--amber);font-weight:650}
+  .sub{color:var(--muted);max-width:62ch;margin-top:18px;font-size:16px}
+  .chip-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+  .chip{font-family:var(--mono);font-size:12.5px;color:var(--muted);border:1px solid var(--line);
+    border-radius:100px;padding:6px 13px;background:var(--panel2)}
+  .chip b{color:var(--text);font-weight:600}
+  .words{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:760px){.words{grid-template-columns:1fr}}
+  .word{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px 24px;position:relative}
+  .word .k{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--amber);text-transform:uppercase}
+  .word h3{font-size:23px;font-weight:700;margin:12px 0 8px;letter-spacing:-.01em}
+  .word p{color:var(--muted);font-size:14.5px;margin:0}
+  .word .num{position:absolute;top:22px;right:24px;font-family:var(--mono);font-size:12px;color:var(--dim)}
+  h2.sh{font-size:clamp(28px,4vw,40px);font-weight:750;letter-spacing:-.02em}
+  .sh-sub{color:var(--muted);margin-top:12px;max-width:64ch}
+  .meas{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11.5px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--good);margin-bottom:14px}
+  .meas .dot{width:7px;height:7px;border-radius:50%;background:var(--good);box-shadow:0 0 10px var(--good)}
+  .cards{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;margin-top:34px}
+  @media(max-width:860px){.cards{grid-template-columns:1fr}}
+  .card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);
+    border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:16px}
+  .card h3{font-size:20px;font-weight:700;letter-spacing:-.01em}
+  .card .cap{color:var(--muted);font-size:14px;margin-top:-6px}
+  .term{background:#05070C;border:1px solid var(--line);border-radius:11px;padding:16px 16px;
+    font-family:var(--mono);font-size:13.5px;color:var(--text);overflow-x:auto}
+  :root[data-theme="light"] .term{background:#20242E;color:#E7EBF3}
+  .term .p{color:var(--dim)}
+  .term .a{color:var(--amber)}
+  .term .c{color:var(--cyan)}
+  .term .g{color:var(--good)}
+  .neigh{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px}
+  .tok{font-family:var(--mono);font-size:13px;border:1px solid var(--line);border-radius:8px;
+    padding:5px 10px;background:var(--panel);color:var(--text)}
+  .tok.hot{border-color:var(--amber2);color:var(--amber);background:rgba(255,176,32,.07)}
+  .arrow{color:var(--dim);font-family:var(--mono);text-align:center;font-size:13px;letter-spacing:.1em}
+  .echart{width:100%;height:150px;display:block}
+  .legend{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:2px}
+  .bignum{font-family:var(--mono);font-variant-numeric:tabular-nums}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px}
+  @media(max-width:760px){.stats{grid-template-columns:1fr}}
+  .stat{border-left:2px solid var(--amber);padding:4px 0 4px 18px}
+  .stat .v{font-family:var(--mono);font-size:30px;font-weight:600;color:var(--text);letter-spacing:-.02em}
+  .stat .v .u{font-size:15px;color:var(--muted)}
+  .stat .l{color:var(--muted);font-size:13.5px;margin-top:4px}
+  .facets{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:30px}
+  @media(max-width:760px){.facets{grid-template-columns:1fr}}
+  .facet{display:flex;gap:14px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:var(--panel2)}
+  .facet .fk{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);
+    writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;padding-top:2px}
+  .facet .ft{font-weight:640;font-size:15px}
+  .facet .fp{color:var(--muted);font-size:13.5px;margin-top:3px}
+  .run{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px 28px;
+    display:flex;gap:22px;align-items:center;flex-wrap:wrap;justify-content:space-between;margin-top:30px}
+  .run .cmd{font-family:var(--mono);font-size:14px;color:var(--amber);background:#05070C;border:1px solid var(--line);
+    padding:10px 14px;border-radius:9px}
+  :root[data-theme="light"] .run .cmd{background:#20242E;color:#FFB020}
+  footer{padding:48px 0 72px;border-top:1px solid var(--line2);color:var(--dim);font-size:13px}
+  footer .mono{color:var(--muted)}
+  .toggle{position:fixed;top:16px;right:16px;z-index:20;font-family:var(--mono);font-size:12px;color:var(--muted);
+    background:var(--panel);border:1px solid var(--line);border-radius:100px;padding:7px 13px;cursor:pointer}
+  .toggle:hover{color:var(--text);border-color:var(--amber2)}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<button class="toggle mono" onclick="tog()" aria-label="Toggle theme">◐ theme</button>
+
+<header class="hero">
+  <canvas id="wave" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="eyebrow">Stored Digital Computer</div>
+    <h1 class="htitle">Titan<span class="sdc">SDC</span></h1>
+    <p class="lede">A computer built by <b>reconfiguring stored parameters</b> — not by training new ones.</p>
+    <p class="sub">Curate the best of the world's trillions of already-trained parameters, address them with operators,
+      and you get a general-purpose <b style="color:var(--text)">generative</b> computer: hundreds of output modes,
+      every function reshapeable in plain language. It runs on almost nothing, because size lives in storage and only
+      what you read costs energy.</p>
+    <div class="chip-row">
+      <span class="chip"><b>238&nbsp;B</b> curated pool</span>
+      <span class="chip"><b>8&nbsp;GB</b> RAM runs it</span>
+      <span class="chip"><b>~300&nbsp;MB</b> committed</span>
+      <span class="chip">no new training</span>
+      <span class="chip">reversible · byte-exact</span>
+    </div>
+  </div>
+</header>
+
+<section id="words">
+  <div class="wrap">
+    <div class="eyebrow" style="margin-bottom:26px">The name is the mechanism</div>
+    <div class="words">
+      <div class="word"><span class="num">01</span><div class="k">Stored</div><h3>Compute you already paid for</h3>
+        <p>Training burned the energy once and crystallized it in the weights. Model size is bounded by storage, not
+          RAM — a 40&nbsp;GB model binds on 7.2&nbsp;GB. Per-token cost is only what you <em>read</em> (α), never the
+          whole bank.</p></div>
+      <div class="word"><span class="num">02</span><div class="k">Digital</div><h3>Software that behaves analog</h3>
+        <p>Quantized bits that carry the behavior of the physical components training ran on — down to the logic gates.
+          Its native logic is <em>semantic pattern logic</em>; boolean and exact math are emulated on top of it.</p></div>
+      <div class="word"><span class="num">03</span><div class="k">Computer</div><h3>General-purpose, and generative</h3>
+        <p>Processor, memory, codecs, kernel — reconfigurable into many devices. And because it <em>generates</em> its
+          functions, you reshape any of them by semantic command: it could run Windows, but the point is you'd alter it
+          by talking to it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="decompile">
+  <div class="wrap">
+    <div class="meas"><span class="dot"></span>Measured on the weights · no inference</div>
+    <h2 class="sh">It decompiles meaning from bits.</h2>
+    <p class="sh-sub">Training <b class="mono" style="color:var(--amber)">compiles</b> meaning into the parameter-bits;
+      inference <b class="mono" style="color:var(--cyan)">decompiles</b> it back; baking <b class="mono">re-compiles</b>.
+      Read straight off a token's embedding — the bits <em>are</em> the meaning, and a bit-edit is a meaning-edit.</p>
+    <div class="cards">
+      <div class="card">
+        <h3>Decompile: bits → meaning</h3>
+        <div class="cap"><span class="mono">king</span> → its embedding row → nearest meaning across the whole vocabulary</div>
+        <div class="neigh">
+          <span class="tok hot">King</span><span class="tok">·king</span><span class="tok">KING</span>
+          <span class="tok">kings</span><span class="tok">キング</span><span class="tok">킹</span>
+        </div>
+        <div class="cap" style="margin-top:2px">The cross-lingual neighborhood of “king”, decompiled from Q4_0 bits.</div>
+      </div>
+      <div class="card">
+        <h3>Bit-edit = meaning-edit</h3>
+        <div class="term"><span class="p">edit</span> king·bits <span class="a">──60%──▶</span> queen·bits
+<span class="p">decompile ▶</span></div>
+        <div class="neigh">
+          <span class="tok hot">queen</span><span class="tok hot">Queen</span><span class="tok">·Queen</span><span class="tok">King</span>
+        </div>
+        <div class="cap" style="margin-top:2px">Nudge the stored bits toward “queen” and the decoded meaning follows.
+          This is why editing the file edits the model.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="energy">
+  <div class="wrap">
+    <div class="meas"><span class="dot"></span>Measured · gemma-4-26B MoE</div>
+    <h2 class="sh">Speed is what you read, not what you store.</h2>
+    <p class="sh-sub">The FFN experts are the memory cells. Firing fewer per token (α) reads fewer cells = fewer joules =
+      faster — decoupled from the total size. So a 200-billion-parameter bank generates as fast as a small one.</p>
+    <div class="cards">
+      <div class="card">
+        <h3>The read-energy law</h3>
+        <div class="cap">throughput vs. capacitor-cells fired per token (α)</div>
+        <canvas id="energy" class="echart"></canvas>
+        <div class="legend"><span>α=2 · 2.94 tok/s</span><span>α=4 · 2.21</span><span>α=8 · 1.25</span></div>
+      </div>
+      <div class="card" style="justify-content:center">
+        <div class="cap mono" style="color:var(--amber)">t_token = t_compute + (α·W − R_cache) / B_disk</div>
+        <p style="color:var(--muted);font-size:14.5px;margin:0">Total weight <span class="mono">W</span> streams from
+          storage; only the fraction <span class="mono" style="color:var(--amber)">α</span> the operator addresses is
+          read per token. Drive α down and the bank size drops out of the cost — the whole storage-first thesis in one line.</p>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="v bignum">70<span class="u"> B</span></div><div class="l">Llama-3.3 bound + generating on 7.2&nbsp;GB RAM</div></div>
+      <div class="stat"><div class="v bignum">298<span class="u"> MB</span></div><div class="l">hard committed memory for that 40&nbsp;GB model</div></div>
+      <div class="stat"><div class="v bignum">241.9<span class="u"> B</span></div><div class="l">parameter pool on disk — the material to reconfigure</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="modes">
+  <div class="wrap">
+    <div class="eyebrow" style="margin-bottom:18px">The generative computer</div>
+    <h2 class="sh">Hundreds of modes — each reshaped by command.</h2>
+    <p class="sh-sub">One frozen model, configured by an operator into whatever the task needs: a calculator, a
+      translator, a codec, a ROM, a logic unit — measured, six-for-six. And whatever it emits — text, an image, audio,
+      a game frame — you alter by asking.</p>
+    <div class="chip-row" style="margin-top:26px">
+      <span class="chip">🧮 <b>calculator</b></span><span class="chip">🌐 <b>translator</b></span>
+      <span class="chip">🏷 <b>classifier</b></span><span class="chip">🔣 <b>codec</b></span>
+      <span class="chip">📖 <b>ROM / lookup</b></span><span class="chip">🔗 <b>logic unit</b></span>
+      <span class="chip">🖼 <b>image</b></span><span class="chip">🔊 <b>audio</b></span>
+      <span class="chip">🕹 <b>game frame</b></span><span class="chip">…</span>
+    </div>
+    <div class="term" style="margin-top:24px;max-width:640px">
+<span class="p">generate ▶</span> &lt;svg&gt;<span class="a">…red circle…</span>&lt;/svg&gt;
+<span class="p">command ▶</span> <span class="c">"make it a blue square"</span>
+<span class="p">altered  ▶</span> &lt;svg&gt;<span class="g">…blue rect…</span>&lt;/svg&gt;</div>
+  </div>
+</section>
+
+<section id="facets">
+  <div class="wrap">
+    <div class="eyebrow" style="margin-bottom:8px">One theory, many facets</div>
+    <h2 class="sh">Why it holds together.</h2>
+    <p class="sh-sub">The five circuit-and-computer frames the project arrived at from different directions are facets of
+      one spine — and the frame is corroborated across a fifty-year, cross-domain gap.</p>
+    <div class="facets">
+      <div class="facet"><div class="fk">Store</div><div><div class="ft">Storage-first substrate</div><div class="fp">mmap streams the weights; RAM holds only the live set — the read-energy law sets the cost.</div></div></div>
+      <div class="facet"><div class="fk">Route</div><div><div class="ft">Operators are the reconfiguration</div><div class="fp">a bitstream / pointer / address that selects which stored params compute this tick.</div></div></div>
+      <div class="facet"><div class="fk">Read</div><div><div class="ft">Decompilation, both directions</div><div class="fp">infer = read meaning out; bake = write meaning in. A bit-edit is a meaning-edit.</div></div></div>
+      <div class="facet"><div class="fk">Logic</div><div><div class="ft">Semantic pattern logic</div><div class="fp">pattern operations over meaning; boolean and exact math emulated on top of it.</div></div></div>
+      <div class="facet"><div class="fk">True</div><div><div class="ft">A universal truth of generation</div><div class="fp">a 1913 introspective text maps onto transformer mechanics 50+ years early; the 2024 field converges independently. Not a metaphor.</div></div></div>
+      <div class="facet"><div class="fk">Guard</div><div><div class="ft">The Abyss, governed</div><div class="fp">the ungoverned self-conditioning field is the failure mode operators keep the computation out of.</div></div></div>
+    </div>
+    <div class="run">
+      <div>
+        <div style="font-weight:680;font-size:16px">Run it yourself</div>
+        <div style="color:var(--muted);font-size:14px;margin-top:4px">The shell reconfigures the pool live; the tests measure the claims above.</div>
+      </div>
+      <div class="cmd">▶ TitanSDC.cmd → the shell · docs/SDC.md → the theory</div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <span class="mono">Titan · a Stored Digital Computer</span> — reconfiguring stored parameters into a generative computer,
+  decompiling meaning from bits, running the impossible on nothing. Every number on this page is measured; the theory is
+  <span class="mono">docs/SDC.md</span>.
+</div></footer>
+
+<script>
+  function tog(){var r=document.documentElement,d=(r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))==='dark'?'light':'dark';r.setAttribute('data-theme',d);draw();}
+  function css(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim();}
+
+  var W=document.getElementById('wave'),wx=W.getContext('2d'),t=0,reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function sizeC(c){var d=devicePixelRatio||1,r=c.getBoundingClientRect();c.width=r.width*d;c.height=r.height*d;c.getContext('2d').setTransform(d,0,0,d,0,0);return r;}
+  function wave(){var r=sizeC(W);wx.clearRect(0,0,r.width,r.height);var amber=css('--amber'),line=css('--line');
+    for(var pass=0;pass<2;pass++){wx.beginPath();for(var x=0;x<=r.width;x+=4){
+      var y=r.height*0.5 + Math.sin((x*0.014)+t*(pass?0.6:1)+pass*2)*(r.height*0.16)*Math.exp(-Math.abs(x-r.width*0.5)/(r.width*0.9));
+      x===0?wx.moveTo(x,y):wx.lineTo(x,y);}
+      wx.strokeStyle=pass?line:amber;wx.globalAlpha=pass?0.5:0.85;wx.lineWidth=pass?1:1.4;wx.stroke();}
+    wx.globalAlpha=1;t+=0.015;if(!reduce)requestAnimationFrame(wave);}
+  wave();
+
+  function draw(){var C=document.getElementById('energy');if(!C)return;var r=sizeC(C),g=C.getContext('2d');
+    g.clearRect(0,0,r.width,r.height);var pad=26,W_=r.width-pad*2,H=r.height-pad*1.4;
+    var pts=[[2,2.94],[4,2.21],[8,1.25]],maxY=3.1,amber=css('--amber'),cyan=css('--cyan'),line=css('--line'),dim=css('--dim');
+    function X(a){return pad+((a-2)/6)*W_;}function Y(v){return pad*0.6+(1-v/maxY)*H;}
+    g.strokeStyle=line;g.lineWidth=1;g.globalAlpha=.6;for(var i=0;i<4;i++){var yy=pad*0.6+(i/3)*H;g.beginPath();g.moveTo(pad,yy);g.lineTo(pad+W_,yy);g.stroke();}g.globalAlpha=1;
+    var grad=g.createLinearGradient(0,pad,0,H+pad);grad.addColorStop(0,'rgba(255,176,32,.22)');grad.addColorStop(1,'rgba(255,176,32,0)');
+    g.beginPath();g.moveTo(X(2),Y(pts[0][1]));pts.forEach(p=>g.lineTo(X(p[0]),Y(p[1])));g.lineTo(X(8),H+pad*0.6);g.lineTo(X(2),H+pad*0.6);g.closePath();g.fillStyle=grad;g.fill();
+    g.beginPath();pts.forEach((p,i)=>i?g.lineTo(X(p[0]),Y(p[1])):g.moveTo(X(p[0]),Y(p[1])));g.strokeStyle=amber;g.lineWidth=2.4;g.stroke();
+    pts.forEach(p=>{g.beginPath();g.arc(X(p[0]),Y(p[1]),4.5,0,7);g.fillStyle=css('--ink');g.fill();g.lineWidth=2.2;g.strokeStyle=p[0]===2?cyan:amber;g.stroke();});
+    g.fillStyle=dim;g.font='11px ui-monospace,monospace';g.textAlign='center';[2,4,8].forEach(a=>g.fillText('α='+a,X(a),H+pad*1.15));}
+  draw();addEventListener('resize',()=>{draw();});
+</script>

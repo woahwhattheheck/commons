@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LOOM SURFACE</title>
+<style>
+  :root{
+    --bg:#05070c; --ink:#c9d6e6; --dim:#5d6f88; --hi:#7fe3c0;
+    --warn:#ffb454; --bad:#ff5f6d; --good:#6ee7a8; --line:#16202e;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;height:100%;background:var(--bg);color:var(--ink);
+    font:11px/1.45 ui-monospace,"Cascadia Mono",Consolas,"DejaVu Sans Mono",monospace;
+    overflow:hidden;}
+  /* The raster gets its own reserved rectangle. No panel ever sits on top of
+     the whole-file overview -- HUD and dock occupy space, they do not overlay. */
+  #stage{position:fixed;left:0;right:0;top:44px;bottom:152px;
+    display:flex;align-items:center;justify-content:center;background:#03050a;}
+  #raster{image-rendering:pixelated;image-rendering:crisp-edges;
+    box-shadow:0 0 0 1px #16202e, 0 0 60px #000 inset;cursor:crosshair;display:block;}
+  .panel{position:fixed;background:rgba(5,9,16,.88);border:1px solid var(--line);
+    backdrop-filter:blur(3px);padding:7px 9px;border-radius:3px;pointer-events:none;}
+  #hud{top:0;left:0;right:0;height:44px;overflow:hidden;
+    border-left:0;border-right:0;border-top:0;
+    display:flex;flex-wrap:wrap;gap:0 16px;align-items:baseline;pointer-events:auto;}
+  #hud .kv{white-space:nowrap}
+  #dock{position:fixed;left:0;right:0;bottom:0;height:152px;display:flex;gap:0;
+    border-top:1px solid var(--line);background:rgba(5,9,16,.94);}
+  #hud .k{color:var(--dim)}
+  #hud .v{color:var(--ink)}
+  .ok{color:var(--good)} .no{color:var(--bad)} .wa{color:var(--warn)} .hi{color:var(--hi)}
+  #assert{font-weight:700}
+  #insp{position:static;border:0;background:none;flex:1 1 auto;min-width:0;overflow:hidden;}
+  #insp table{border-collapse:collapse;width:100%}
+  #insp td{padding:0 4px 0 0;vertical-align:top;white-space:nowrap}
+  #insp td.k{color:var(--dim);width:104px}
+  #hexwin{white-space:pre;color:var(--hi);font-size:10.5px;line-height:1.35;margin-top:4px}
+  #lenswrap{position:static;border:0;background:none;flex:0 0 auto;}
+  #lens{image-rendering:pixelated;display:block;background:#03050a;border:1px solid var(--line)}
+  #verify{left:50%;transform:translateX(-50%);top:40px;width:600px;
+    max-height:calc(100vh - 210px);overflow:auto;pointer-events:auto;display:none;z-index:20;}
+  #verify pre{margin:0;white-space:pre-wrap;font-size:10.5px;line-height:1.4}
+  #err{position:fixed;inset:0;display:none;align-items:center;justify-content:center;
+    padding:40px;text-align:left;background:#03050a;z-index:50;}
+  #err div{max-width:1100px}
+  #err h1{font-size:15px;margin:0 0 10px;color:var(--bad);letter-spacing:.14em}
+  #err pre{white-space:pre-wrap;color:var(--warn);font-size:12px;margin:0 0 14px}
+  #err p{color:var(--dim);margin:4px 0}
+  button{font:inherit;background:#0d1622;color:var(--ink);border:1px solid var(--line);
+    padding:2px 8px;border-radius:2px;cursor:pointer}
+  button:hover{border-color:var(--hi);color:var(--hi)}
+  .sep{color:var(--line)}
+</style>
+</head>
+<body>
+
+<div id="stage"><canvas id="raster"></canvas></div>
+
+<div class="panel" id="hud">
+  <span class="kv"><span class="hi">LOOM</span></span>
+  <span class="kv"><span class="k">file</span> <span class="v" id="h_file">-</span></span>
+  <span class="kv"><span class="k">bytes</span> <span class="v" id="h_size">-</span></span>
+  <span class="kv"><span class="k">represented</span> <span class="v" id="h_rep">-</span></span>
+  <span class="kv" id="assert"><span class="k">assert rep==size</span> <span id="h_assert">-</span></span>
+  <span class="kv"><span class="k">gen</span> <span class="v" id="h_gen">-</span></span>
+  <span class="kv"><span class="k">frame</span> <span class="v" id="h_frame">-</span></span>
+  <span class="kv"><span class="k">rate</span> <span class="v" id="h_rate">-</span></span>
+  <span class="kv"><span class="k">layout</span> <span class="v" id="h_layout">-</span></span>
+  <span class="kv"><span class="k">enc</span> <span class="v" id="h_enc">-</span></span>
+  <span class="kv"><span class="k">dirty</span> <span class="v" id="h_dirty">-</span></span>
+  <span class="kv"><button id="btnVerify">VERIFY</button>
+    <button id="btnAudit">AUDIT COVERAGE</button>
+    <button id="btnHide">hide panel</button></span>
+</div>
+
+<div id="dock">
+<div class="panel" id="lenswrap"><canvas id="lens" width="148" height="148"></canvas></div>
+
+<div class="panel" id="insp">
+  <table>
+    <tr><td class="k">cell</td><td id="i_cell">-</td></tr>
+    <tr><td class="k">byte offset</td><td id="i_off">-</td></tr>
+    <tr><td class="k">value</td><td id="i_val">-</td></tr>
+    <tr><td class="k">colour</td><td id="i_col">-</td></tr>
+    <tr><td class="k">decode(colour)</td><td id="i_dec">-</td></tr>
+  </table>
+  <div id="hexwin">move the cursor over the raster</div>
+</div>
+</div>
+
+<div class="panel" id="verify"><pre id="v_out">VERIFY not yet run.</pre></div>
+
+<div id="err"><div>
+  <h1>CONTAINER NOT SURFACED</h1>
+  <pre id="err_msg"></pre>
+  <p id="err_path"></p>
+  <p>Nothing is rendered. No substitute data is generated.</p>
+  <p>Polling continues; the surface will populate the instant the container appears.</p>
+</div></div>
+
+<!-- ===================================================================== -->
+<!-- LOOM CORE: pure, DOM-free. Extracted verbatim by the verifier.        -->
+<!-- ===================================================================== -->
+<script id="loom-core">
+(function(root){
+"use strict";
+var LOOM = {};
+
+/* ---- CRC-32 (ISO-HDLC, identical to python zlib.crc32) ---------------- */
+var CRCT = (function(){
+  var t = new Uint32Array(256), c, n, k;
+  for(n=0;n<256;n++){ c=n; for(k=0;k<8;k++) c = (c&1)?(0xEDB88320^(c>>>1)):(c>>>1); t[n]=c>>>0; }
+  return t;
+})();
+LOOM.crc32 = function(u8, start, end){
+  start = start|0; end = (end===undefined)? u8.length : end|0;
+  var c = 0xFFFFFFFF;
+  for(var i=start;i<end;i++) c = CRCT[(c ^ u8[i]) & 0xFF] ^ (c>>>8);
+  return (c ^ 0xFFFFFFFF)>>>0;
+};
+LOOM.chunkCrcs = function(u8, cs){
+  var out=[], n=u8.length, i=0;
+  while(i<n){ out.push(LOOM.crc32(u8, i, Math.min(n, i+cs))); i+=cs; }
+  return out;
+};
+
+/* ---- Palette: deterministic, INJECTIVE byte -> RGB, exactly invertible - */
+function hsv(h,s,v){
+  h=((h%360)+360)%360; var c=v*s, x=c*(1-Math.abs(((h/60)%2)-1)), m=v-c, r,g,b;
+  if(h<60){r=c;g=x;b=0}else if(h<120){r=x;g=c;b=0}else if(h<180){r=0;g=c;b=x}
+  else if(h<240){r=0;g=x;b=c}else if(h<300){r=x;g=0;b=c}else{r=c;g=0;b=x}
+  return [Math.round((r+m)*255),Math.round((g+m)*255),Math.round((b+m)*255)];
+}
+LOOM.buildPalette = function(){
+  var pal = new Uint8Array(768), used = Object.create(null), inv = Object.create(null);
+  for(var b=0;b<256;b++){
+    var t=b/255;
+    /* Every byte value must be VISIBLE and TELLABLE APART, including the low
+       end -- a long run of 0x01 must not read as empty space. Hue carries the
+       value across the whole range; brightness never drops into the floor; the
+       low bit adds a small deterministic luminance step so adjacent values
+       separate. */
+    var c = hsv(268 - 268*t, 0.94 - 0.36*t,
+                Math.min(1, 0.40 + 0.58*Math.pow(t,0.70) + (b&1)*0.022));
+    var r=c[0], g=c[1], bl=c[2], key;
+    /* deterministic injectivity fixup: nudge blue until the triple is unique */
+    for(var guard=0; guard<256; guard++){
+      key = (r<<16)|(g<<8)|bl;
+      if(used[key]===undefined) break;
+      bl = (bl+1)&255;
+    }
+    used[key]=b; inv[key]=b;
+    pal[b*3]=r; pal[b*3+1]=g; pal[b*3+2]=bl;
+  }
+  return {pal:pal, inv:inv};
+};
+LOOM.verifyPalette = function(p){
+  var seen=Object.create(null), dup=0, rt=0;
+  for(var b=0;b<256;b++){
+    var key=(p.pal[b*3]<<16)|(p.pal[b*3+1]<<8)|p.pal[b*3+2];
+    if(seen[key]!==undefined) dup++;
+    seen[key]=b;
+    if(p.inv[key]===b) rt++;
+  }
+  return {injective: dup===0, duplicates: dup, roundTrip: rt, total:256,
+          reversible: dup===0 && rt===256};
+};
+
+/* ---- Layout: every byte -> exactly one raster cell --------------------- */
+LOOM.planLayout = function(n, vw, vh, o){
+  o = o||{};
+  var MAX_CELLS   = o.maxCells   || 16000000;
+  var MAX_RASTER  = o.maxRasterPx|| 12000000;
+  var MAX_DIM     = o.maxDim     || 8192;
+  n = n|0;
+  var k = 1;
+  while(Math.ceil(n/k) > MAX_CELLS) k++;
+  var cells = (n===0) ? 0 : Math.ceil(n/k);
+  var aspect = (vw>0 && vh>0) ? (vw/vh) : (16/9);
+  var cols = Math.max(1, Math.round(Math.sqrt(Math.max(1,cells)*aspect)));
+  if(cells>0) cols = Math.min(cols, cells);
+  var rows = (cells===0) ? 1 : Math.ceil(cells/cols);
+  var s = 1;
+  if(vw>0 && vh>0){
+    s = Math.max(1, Math.min(Math.floor(vw/cols), Math.floor(vh/rows)));
+    while(s>1 && (cols*s>MAX_DIM || rows*s>MAX_DIM || cols*s*rows*s>MAX_RASTER)) s--;
+  }
+  return {
+    n:n, k:k, cells:cells, cols:cols, rows:rows, cell:s,
+    rasterW: cols*s, rasterH: rows*s,
+    voidCells: cols*rows - cells,       /* trailing cells that hold no byte  */
+    tailLanes: cells*k - n,             /* unused lanes inside the last cell */
+    encoding: (k===1?"PAL8":(k===2?"RG16":(k===3?"RGB24":"FOLD"+k))),
+    reversibleColour: (k<=3)
+  };
+};
+LOOM.cellOfByte  = function(i,k){ return (i/k)|0; };
+LOOM.bytesOfCell = function(c,k,n){ var a=c*k; return [a, Math.min(n, a+k)]; };
+LOOM.cellToXY    = function(c, cols){ return [c%cols, (c/cols)|0]; };
+LOOM.xyToCell    = function(x,y,cols){ return y*cols + x; };
+
+/* ---- Coverage audit: proves the map is a bijection onto the used cells - */
+LOOM.auditCoverage = function(plan){
+  var n=plan.n, k=plan.k, cells=plan.cells, cols=plan.cols, rows=plan.rows;
+  var cov = new Uint8Array(n);
+  var cellHits = new Uint8Array(cells);
+  var outOfRange=0, i, c, sp, b, x, y;
+  for(c=0;c<cells;c++){
+    sp = LOOM.bytesOfCell(c,k,n);
+    x = c%cols; y=(c/cols)|0;
+    if(x>=cols || y>=rows) outOfRange++;
+    for(b=sp[0]; b<sp[1]; b++){
+      if(b<0||b>=n){ outOfRange++; continue; }
+      if(cov[b]<255) cov[b]++;
+      cellHits[c]=1;
+    }
+  }
+  var represented=0, gaps=0, overlaps=0;
+  for(i=0;i<n;i++){ if(cov[i]===0) gaps++; else { represented++; if(cov[i]>1) overlaps++; } }
+  /* forward check: every byte's computed cell really contains it */
+  var fwdBad=0;
+  for(i=0;i<n;i++){
+    c = LOOM.cellOfByte(i,k);
+    if(c<0||c>=cells){ fwdBad++; continue; }
+    sp = LOOM.bytesOfCell(c,k,n);
+    if(!(i>=sp[0] && i<sp[1])) fwdBad++;
+  }
+  var usedCells=0; for(c=0;c<cells;c++) if(cellHits[c]) usedCells++;
+  return {
+    fileBytes:n, represented:represented, gaps:gaps, overlaps:overlaps,
+    outOfRange:outOfRange, forwardMismatch:fwdBad,
+    cells:cells, cellsHoldingBytes:usedCells, emptyCells:cells-usedCells,
+    rasterCells: cols*rows, voidCells: cols*rows-cells,
+    bijective: (gaps===0 && overlaps===0 && outOfRange===0 && fwdBad===0 &&
+                represented===n)
+  };
+};
+
+/* ---- Dirty range detection from chunk CRC vectors ---------------------- */
+LOOM.diffChunks = function(oldC, newC, cs, newSize){
+  var ranges=[], i=0, j, changed;
+  while(i<newC.length){
+    changed = (!oldC || i>=oldC.length || (oldC[i]>>>0)!==(newC[i]>>>0));
+    if(changed){
+      j=i;
+      while(j<newC.length && (!oldC || j>=oldC.length || (oldC[j]>>>0)!==(newC[j]>>>0))) j++;
+      ranges.push([i*cs, Math.min(newSize, j*cs)]);
+      i=j;
+    } else i++;
+  }
+  return ranges;
+};
+
+/* ---- Frame integrity: local buffer vs the server's coherent snapshot --- */
+LOOM.verifyBuffer = function(u8, cs, serverCrcs, serverSize){
+  if(u8.length !== serverSize) return {ok:false, reason:"size", local:u8.length, server:serverSize,
+                                       matched:0, total:(serverCrcs||[]).length};
+  var local = LOOM.chunkCrcs(u8, cs), m=0, bad=[];
+  if(local.length !== serverCrcs.length)
+    return {ok:false, reason:"chunkcount", local:local.length, server:serverCrcs.length,
+            matched:0, total:serverCrcs.length};
+  for(var i=0;i<local.length;i++){
+    if((local[i]>>>0)===(serverCrcs[i]>>>0)) m++; else bad.push(i);
+  }
+  return {ok: m===local.length, reason: m===local.length?"":"crc", matched:m,
+          total:local.length, badChunks:bad.slice(0,16)};
+};
+
+LOOM.fmt = function(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " "); };
+
+if(typeof module!=="undefined" && module.exports) module.exports = LOOM;
+root.LOOM = LOOM;
+})(typeof globalThis!=="undefined"?globalThis:this);
+</script>
+
+<!-- ===================================================================== -->
+<!-- LOOM UI                                                                -->
+<!-- ===================================================================== -->
+<script id="loom-ui">
+"use strict";
+(function(){
+var L = window.LOOM;
+
+var qs        = new URLSearchParams(location.search);
+var FILE      = qs.get("file") || "";
+var POLL_MS   = Math.max(60, parseInt(qs.get("poll")||"200",10));
+
+var cv   = document.getElementById("raster");
+var ctx  = cv.getContext("2d", {alpha:false, willReadFrequently:false});
+var lens = document.getElementById("lens");
+var lctx = lens.getContext("2d", {alpha:false});
+
+var PAL   = L.buildPalette();
+var PALCHK= L.verifyPalette(PAL);
+
+/* ---------------- state ------------------------------------------------ */
+var buf        = null;   /* COMPLETE backing buffer of the file            */
+var plan       = null;
+var img        = null;   /* raster ImageData                                */
+var gen        = null;
+var chunkSize  = 0;
+var chunkCrcs  = null;
+var lastAudit  = null;
+var lastVerify = null;
+var frameConsistent = false;
+var forceFull  = true;
+var updates    = [];     /* timestamps of applied updates                    */
+var polls      = [];     /* timestamps of completed state polls              */
+var updateCount= 0;
+var lastDirty  = "-";
+var lastState  = null;
+var errShown   = false;
+var hoverCell  = -1;
+var busy       = false;
+
+var $ = function(id){ return document.getElementById(id); };
+
+/* ---------------- painting -------------------------------------------- */
+function colourOfCell(c){
+  var k=plan.k, n=plan.n, a=c*k, r,g,b;
+  if(k===1){ var v=buf[a]; return [PAL.pal[v*3],PAL.pal[v*3+1],PAL.pal[v*3+2]]; }
+  if(k===2){ return [buf[a]|0, (a+1<n?buf[a+1]:0), 0]; }
+  if(k===3){ return [buf[a]|0, (a+1<n?buf[a+1]:0), (a+2<n?buf[a+2]:0)]; }
+  /* k>3: deterministic fold (inspector still shows the exact bytes) */
+  r=0;g=0;b=0;
+  for(var i=0;i<k && a+i<n;i++){ var x=buf[a+i]; r=(r+x*7)&255; g=(g^x)&255; b=(b+x)&255; }
+  return [r,g,b];
+}
+function paintCell(c){
+  var s=plan.cell, cols=plan.cols, W=plan.rasterW;
+  var x=(c%cols)*s, y=((c/cols)|0)*s;
+  var col=colourOfCell(c), d=img.data;
+  for(var dy=0;dy<s;dy++){
+    var p=((y+dy)*W + x)*4;
+    for(var dx=0;dx<s;dx++){ d[p]=col[0]; d[p+1]=col[1]; d[p+2]=col[2]; d[p+3]=255; p+=4; }
+  }
+}
+function paintVoid(){
+  /* trailing cells beyond the last byte: drawn as void, never given a value */
+  var d=img.data, s=plan.cell, cols=plan.cols, W=plan.rasterW;
+  for(var c=plan.cells; c<cols*plan.rows; c++){
+    var x=(c%cols)*s, y=((c/cols)|0)*s;
+    for(var dy=0;dy<s;dy++){
+      var p=((y+dy)*W + x)*4;
+      for(var dx=0;dx<s;dx++){ d[p]=10; d[p+1]=12; d[p+2]=18; d[p+3]=255; p+=4; }
+    }
+  }
+}
+function paintAll(){
+  for(var c=0;c<plan.cells;c++) paintCell(c);
+  paintVoid();
+  ctx.putImageData(img,0,0);
+}
+function paintRange(a,b){                 /* dirty-tile update              */
+  if(b<=a) return;
+  var k=plan.k, c0=(a/k)|0, c1=Math.min(plan.cells-1, ((b-1)/k)|0);
+  for(var c=c0;c<=c1;c++) paintCell(c);
+  var s=plan.cell, cols=plan.cols;
+  var y0=((c0/cols)|0)*s, y1=(((c1/cols)|0)+1)*s;
+  ctx.putImageData(img, 0,0, 0, y0, plan.rasterW, Math.max(s, y1-y0));
+}
+
+/* ---------------- layout ---------------------------------------------- */
+function stageBox(){
+  var s=document.getElementById("stage");
+  return [Math.max(16, s.clientWidth), Math.max(16, s.clientHeight)];
+}
+function fitCanvasCSS(){
+  var b=stageBox();
+  var sc=Math.min(b[0]/plan.rasterW, b[1]/plan.rasterH);
+  cv.style.width  = Math.max(1, Math.floor(plan.rasterW*sc))+"px";
+  cv.style.height = Math.max(1, Math.floor(plan.rasterH*sc))+"px";
+}
+function rebuildLayout(){
+  var b=stageBox();
+  plan = L.planLayout(buf.length, b[0], b[1]);
+  cv.width  = Math.max(1, plan.rasterW);
+  cv.height = Math.max(1, plan.rasterH);
+  img = ctx.createImageData(cv.width, cv.height);
+  fitCanvasCSS();
+  lastAudit = L.auditCoverage(plan);
+  paintAll();
+}
+
+/* ---------------- network --------------------------------------------- */
+function api(p){ return "/api/"+p+(FILE? ((p.indexOf("?")<0?"?":"&")+"file="+encodeURIComponent(FILE)) : ""); }
+function getState(){ return fetch(api("state"),{cache:"no-store"}).then(function(r){return r.json();}); }
+function getRange(off,len,g){
+  var u = api("range")+"&off="+off+"&len="+len+"&gen="+encodeURIComponent(g);
+  if(u.indexOf("?")<0) u=u.replace("&","?");
+  return fetch(u,{cache:"no-store"}).then(function(r){
+    if(r.status===409) return {conflict:true};
+    if(!r.ok) throw new Error("range HTTP "+r.status);
+    return r.arrayBuffer().then(function(ab){ return {conflict:false, u8:new Uint8Array(ab)}; });
+  });
+}
+
+/* ---------------- error surface --------------------------------------- */
+function showError(msg, path){
+  errShown=true;
+  $("err").style.display="flex";
+  $("err_msg").textContent = msg;
+  $("err_path").textContent = "target: " + (path || FILE || "(default) loom.mno");
+  ctx.clearRect(0,0,cv.width,cv.height);
+  buf=null; gen=null; chunkCrcs=null; frameConsistent=false; forceFull=true;
+  $("h_assert").textContent="NO DATA"; $("h_assert").className="wa";
+  $("h_size").textContent="-"; $("h_rep").textContent="-";
+}
+function hideError(){ if(errShown){ errShown=false; $("err").style.display="none"; } }
+
+/* ---------------- the poll loop --------------------------------------- */
+function tick(){
+  if(busy) return;
+  busy=true;
+  polls.push(performance.now()); while(polls.length>40) polls.shift();
+  getState().then(function(st){
+    lastState=st;
+    if(!st.ok){ showError(st.error||"unknown error", st.path); return null; }
+    hideError();
+    if(st.gen===gen && buf && !forceFull){ return null; }   /* nothing moved */
+
+    var needFull = forceFull || !buf || buf.length!==st.size || chunkSize!==st.chunk_size;
+    if(needFull){
+      return getRange(0, st.size, st.gen).then(function(res){
+        if(res.conflict){ forceFull=true; return null; }
+        if(res.u8.length !== st.size) throw new Error("short read "+res.u8.length+"/"+st.size);
+        buf = res.u8;
+        chunkSize = st.chunk_size; chunkCrcs = st.chunk_crcs.slice();
+        gen = st.gen; forceFull=false;
+        lastDirty = "FULL REBUILD "+L.fmt(st.size)+" B";
+        rebuildLayout();
+        return st;
+      });
+    }
+    /* incremental: dirty ranges only, backing state never discarded */
+    var ranges = L.diffChunks(chunkCrcs, st.chunk_crcs, st.chunk_size, st.size);
+    if(!ranges.length){ gen=st.gen; chunkCrcs=st.chunk_crcs.slice(); return st; }
+    var jobs = ranges.map(function(r){ return getRange(r[0], r[1]-r[0], st.gen); });
+    return Promise.all(jobs).then(function(reses){
+      for(var i=0;i<reses.length;i++) if(reses[i].conflict){ forceFull=true; return null; }
+      var bytes=0;
+      for(i=0;i<reses.length;i++){
+        buf.set(reses[i].u8, ranges[i][0]);
+        paintRange(ranges[i][0], ranges[i][0]+reses[i].u8.length);
+        bytes += reses[i].u8.length;
+      }
+      gen=st.gen; chunkCrcs=st.chunk_crcs.slice();
+      lastDirty = ranges.length+" range(s) / "+L.fmt(bytes)+" B  ["+
+        ranges.slice(0,3).map(function(r){return r[0]+".."+r[1];}).join(", ")+
+        (ranges.length>3?", ...":"")+"]";
+      return st;
+    });
+  }).then(function(st){
+    if(st){ afterUpdate(st); }
+    hud();
+  }).catch(function(e){
+    showError("client: "+e.message, lastState&&lastState.path);
+    hud();
+  }).then(function(){ busy=false; });
+}
+
+function afterUpdate(st){
+  updates.push(performance.now());
+  while(updates.length>40) updates.shift();
+  updateCount++;
+  lastVerify = L.verifyBuffer(buf, chunkSize, st.chunk_crcs, st.size);
+  frameConsistent = !!(lastVerify.ok && st.consistent);
+}
+
+/* ---------------- HUD -------------------------------------------------- */
+function hud(){
+  var st=lastState;
+  $("h_file").textContent = st&&st.path ? st.path.split(/[\\\/]/).pop() : (FILE||"loom.mno");
+  if(!buf||!plan){ $("h_gen").textContent = st? (st.gen||"-") : "-"; return; }
+  var rep = lastAudit ? lastAudit.represented : 0;
+  var size= buf.length;
+  $("h_size").textContent = L.fmt(size);
+  $("h_rep").textContent  = L.fmt(rep);
+  var pass = (rep===size) && (st && st.size===size) &&
+             lastAudit && lastAudit.bijective;
+  $("h_assert").textContent = pass ? ("PASS  "+L.fmt(rep)+" == "+L.fmt(size))
+                                   : ("FAIL  "+L.fmt(rep)+" != "+L.fmt(size));
+  $("h_assert").className = pass ? "ok" : "no";
+  $("h_gen").textContent = gen || "-";
+  var fc = frameConsistent;
+  $("h_frame").innerHTML = "<span class='"+(fc?"ok":"no")+"'>"+
+    (fc?"CONSISTENT":"UNVERIFIED")+"</span> "+
+    (lastVerify? (lastVerify.matched+"/"+lastVerify.total+" chunk CRC"):"");
+  function rateOf(a){
+    if(a.length<2) return "0.00";
+    var dt=(a[a.length-1]-a[0])/1000;
+    return dt>0 ? ((a.length-1)/dt).toFixed(2) : "0.00";
+  }
+  $("h_rate").textContent =
+    "poll "+rateOf(polls)+" Hz  frame "+rateOf(updates)+" Hz  ("+
+    updateCount+" update"+(updateCount===1?"":"s")+")"+
+    (st? ("  read "+st.read_ms+" ms  poll "+st.poll_ms+" ms"):"");
+  $("h_layout").textContent = plan.cols+"x"+plan.rows+" cells  cell="+plan.cell+"px  raster "+
+    plan.rasterW+"x"+plan.rasterH+"  void="+plan.voidCells;
+  $("h_enc").textContent = plan.encoding+" k="+plan.k+
+    (plan.reversibleColour&&PALCHK.reversible? "  reversible" : "  fold");
+  $("h_dirty").textContent = lastDirty;
+}
+
+/* ---------------- inspector ------------------------------------------- */
+function hex(v,w){ var s=v.toString(16).toUpperCase(); while(s.length<(w||2))s="0"+s; return s; }
+function inspectAt(clientX, clientY){
+  if(!buf||!plan) return;
+  var r=cv.getBoundingClientRect();
+  var x=Math.floor((clientX-r.left)/r.width  * plan.rasterW / plan.cell);
+  var y=Math.floor((clientY-r.top )/r.height * plan.rasterH / plan.cell);
+  if(x<0||y<0||x>=plan.cols||y>=plan.rows) return;
+  var c=L.xyToCell(x,y,plan.cols);
+  hoverCell=c;
+  if(c>=plan.cells){
+    $("i_cell").textContent=c+"  (col "+x+", row "+y+")  VOID - beyond last byte";
+    $("i_off").textContent="-"; $("i_val").textContent="-";
+    $("i_col").textContent="-"; $("i_dec").textContent="-";
+    $("hexwin").textContent="no byte is mapped to this cell";
+    drawLens(x,y); return;
+  }
+  var sp=L.bytesOfCell(c,plan.k,plan.n);
+  var vals=[]; for(var i=sp[0];i<sp[1];i++) vals.push(hex(buf[i]));
+  var col=colourOfCell(c);
+  var key=(col[0]<<16)|(col[1]<<8)|col[2];
+  $("i_cell").textContent = c+"  (col "+x+", row "+y+")";
+  $("i_off").textContent  = sp[0]+"  0x"+hex(sp[0],8)+"   span "+sp[0]+".."+(sp[1]-1);
+  $("i_val").textContent  = vals.join(" ")+"   dec "+buf[sp[0]]+"   bin "+
+                            buf[sp[0]].toString(2).padStart(8,"0");
+  $("i_col").textContent  = "rgb("+col.join(",")+")  #"+hex(col[0])+hex(col[1])+hex(col[2]);
+  if(plan.k===1){
+    var back = PAL.inv[key];
+    $("i_dec").innerHTML = (back===buf[sp[0]])
+      ? "<span class='ok'>0x"+hex(back)+" == stored byte (colour is reversible)</span>"
+      : "<span class='no'>mismatch</span>";
+  } else if(plan.k<=3){
+    $("i_dec").innerHTML = "<span class='ok'>channels are the raw bytes (reversible)</span>";
+  } else {
+    $("i_dec").innerHTML = "<span class='wa'>fold k="+plan.k+" - exact bytes shown above</span>";
+  }
+  /* 64-byte context window straight out of the backing buffer */
+  var base=Math.max(0, (sp[0] - (sp[0]%16)) - 16), lines=[];
+  for(var ln=0; ln<5; ln++){
+    var o=base+ln*16; if(o>=plan.n) break;
+    var hx="", as="";
+    for(var j=0;j<16;j++){
+      if(o+j<plan.n){ var b=buf[o+j];
+        hx += (o+j>=sp[0]&&o+j<sp[1]?"[":" ")+hex(b)+(o+j>=sp[0]&&o+j<sp[1]?"]":"");
+        as += (b>=32&&b<127)?String.fromCharCode(b):".";
+      } else { hx+="   "; as+=" "; }
+    }
+    lines.push("0x"+hex(o,8)+"  "+hx+"  |"+as+"|");
+  }
+  $("hexwin").textContent = lines.join("\n");
+  drawLens(x,y);
+}
+function drawLens(cx,cy){
+  var R=18, S=Math.max(1, Math.floor(lens.width/(2*R+1)));
+  lctx.fillStyle="#03050a"; lctx.fillRect(0,0,lens.width,lens.height);
+  for(var dy=-R;dy<=R;dy++) for(var dx=-R;dx<=R;dx++){
+    var x=cx+dx, y=cy+dy;
+    if(x<0||y<0||x>=plan.cols||y>=plan.rows) continue;
+    var c=L.xyToCell(x,y,plan.cols);
+    if(c>=plan.cells){ lctx.fillStyle="#0a0c12"; }
+    else { var col=colourOfCell(c); lctx.fillStyle="rgb("+col[0]+","+col[1]+","+col[2]+")"; }
+    lctx.fillRect((dx+R)*S,(dy+R)*S,S,S);
+  }
+  lctx.strokeStyle="#7fe3c0"; lctx.lineWidth=1;
+  lctx.strokeRect(R*S+0.5, R*S+0.5, S-1, S-1);
+}
+cv.addEventListener("mousemove", function(e){ inspectAt(e.clientX,e.clientY); });
+
+/* ---------------- verification panel ---------------------------------- */
+function runVerify(){
+  var out=[];
+  out.push("LOOM VERIFICATION   "+new Date().toISOString());
+  out.push("target: "+(lastState&&lastState.path?lastState.path:(FILE||"loom.mno")));
+  if(!buf||!plan){ out.push("NO BUFFER - container not surfaced yet."); $("v_out").textContent=out.join("\n"); return; }
+  var a = L.auditCoverage(plan); lastAudit=a;
+  var srvSize = lastState? lastState.size : -1;
+  out.push("");
+  out.push("[1] represented bytes == file bytes");
+  out.push("    file bytes (server stat/read) : "+L.fmt(srvSize));
+  out.push("    backing buffer length        : "+L.fmt(buf.length));
+  out.push("    represented in raster        : "+L.fmt(a.represented));
+  out.push("    ASSERT  rep==buf==server     : "+
+           ((a.represented===buf.length && buf.length===srvSize)?"PASS":"FAIL"));
+  out.push("");
+  out.push("[2] every byte -> exactly one raster cell");
+  out.push("    gaps (bytes with no cell)    : "+a.gaps);
+  out.push("    overlaps (byte in >1 cell)   : "+a.overlaps);
+  out.push("    out-of-range writes          : "+a.outOfRange);
+  out.push("    forward map mismatches       : "+a.forwardMismatch);
+  out.push("    cells holding bytes          : "+L.fmt(a.cellsHoldingBytes)+
+           " / "+L.fmt(a.cells)+"   raster cells "+L.fmt(a.rasterCells)+
+           "   void "+L.fmt(a.voidCells));
+  out.push("    BIJECTIVE                    : "+(a.bijective?"PASS":"FAIL"));
+  out.push("");
+  out.push("[frame] internal consistency");
+  out.push("    server snapshot coherent     : "+(lastState&&lastState.consistent?"YES":"NO")+
+           "  (read attempts "+(lastState?lastState.read_attempts:"-")+")");
+  var vb = L.verifyBuffer(buf, chunkSize, lastState.chunk_crcs, lastState.size);
+  out.push("    local vs server chunk CRC    : "+vb.matched+"/"+vb.total+
+           (vb.ok?"  PASS":"  FAIL "+vb.reason));
+  out.push("    whole-buffer CRC32           : "+
+           ("00000000"+L.crc32(buf).toString(16)).slice(-8)+
+           "   server "+(lastState?lastState.crc32:"-"));
+  out.push("    generation                   : "+gen);
+  out.push("");
+  out.push("[colour] deterministic reversible encoding");
+  out.push("    palette injective            : "+(PALCHK.injective?"PASS":"FAIL")+
+           "  duplicates="+PALCHK.duplicates);
+  out.push("    round-trip byte->rgb->byte   : "+PALCHK.roundTrip+"/"+PALCHK.total+
+           (PALCHK.reversible?"  PASS":"  FAIL"));
+  out.push("    active encoding              : "+plan.encoding+" (k="+plan.k+" byte/cell)");
+  out.push("");
+  out.push("[layout] "+plan.cols+" x "+plan.rows+" cells, cell="+plan.cell+
+           "px, raster "+plan.rasterW+"x"+plan.rasterH+", no truncation, no pagination");
+  $("v_out").textContent = out.join("\n");
+  window.__LOOM_VERIFY__ = {audit:a, buffer:vb, palette:PALCHK, plan:plan,
+                            serverSize:srvSize, bufLen:buf.length, gen:gen,
+                            text:out.join("\n")};
+  hud();
+}
+$("btnVerify").onclick = function(){ $("verify").style.display="block"; runVerify(); };
+$("btnAudit").onclick  = function(){ if(plan){ lastAudit=L.auditCoverage(plan); hud();
+  $("verify").style.display="block";
+  $("v_out").textContent = "COVERAGE AUDIT\n"+JSON.stringify(lastAudit,null,2); } };
+$("btnHide").onclick   = function(){ $("verify").style.display="none"; };
+
+window.addEventListener("resize", function(){
+  if(buf){ rebuildLayout(); hud(); }
+});
+
+/* headless hooks for the verifier */
+window.LOOM_STATE = function(){
+  return {size: buf?buf.length:0, gen:gen, plan:plan, audit:lastAudit,
+          verify:lastVerify, consistent:frameConsistent, dirty:lastDirty,
+          server:lastState, palette:PALCHK};
+};
+window.LOOM_TICK = tick;
+window.LOOM_VERIFY = runVerify;
+
+setInterval(tick, POLL_MS);
+tick();
+setTimeout(function(){ if(buf) runVerify(); }, 900);
+})();
+</script>
+</body>
+</html>

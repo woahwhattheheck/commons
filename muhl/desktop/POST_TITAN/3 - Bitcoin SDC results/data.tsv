@@ -1,0 +1,15 @@
+section	label	circuit_size	throughput_Hs	tax_vs_native	nonces	frontier_zerobits	ram_mb	byte_exact	notes
+levers	baseline_single_lane	682000	12.68	45491	NA	NA	NA	yes	titan_spec.py
+levers	prior_peak_numpy_W4096	623000	5229	110	NA	NA	NA	yes	previous session
+levers	one_skin_bitslice_W16384	623000	9331	61.8	NA	NA	0	yes	1.78x old peak
+levers	plus_cpython_compile	623000	10626	54.3	NA	NA	0	yes	bytecode
+levers	typed_gates	247869	36549	15.8	NA	NA	0	yes	circuit maker as compiler
+levers	full_pipeline_fold_cse_dce	213069	39922	14.4	NA	NA	0	yes	optimizing passes
+levers	expression_fusion	121172	58527	9.9	NA	NA	0	yes	inline single-use gates
+levers	fabric_compact_reuse_sweep	121016	120000	4.8	NA	NA	0	yes	live-run peak
+native_reference	cpu_native_sha_hashlib	NA	576810	1	NA	NA	NA	yes	the chip's SHA silicon
+live	run1	NA	52000	11.1	4685824	22	850	yes	job 6a56988200001895 90s; miner bit-slice buffer (model=0); logs mislabeled 0
+live	run2	NA	76000	7.6	22806528	25	850	yes	job 6a569882000018ad 300s; miner bit-slice buffer (model=0)
+live	run3	NA	120000	4.8	35651584	26	585	yes	job 6a569882000018c7 300s; compacted buffer W=32768 (model=0)
+live	run4	NA	117800	4.9	212008960	28	585	yes	job 6a569882000018e6 1800s complete; no block; frontier 28
+note	ram_column_meaning	NA	NA	NA	NA	NA	NA	NA	ram_mb = miner bit-slice buffer measured from OS; the MODEL is ~0 (mmap/not opened); earlier log "0 MB" was a buggy probe

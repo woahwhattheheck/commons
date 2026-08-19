@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MUHLNICKEL RING ORCHESTRA</title>
+<style>
+/* ================================================================
+   MUHLNICKEL RING ORCHESTRA
+   Audio sonification of live ring activity from the substrate.
+   1,024 rings mapped to frequencies across the audible spectrum.
+   INSTRUMENT ONLY — surface reads, no writes, no computation.
+   ================================================================ */
+
+:root {
+  --ground: #050808;
+  --surface: #0a120e;
+  --surface-raised: #0f1a14;
+  --border: #1a2e22;
+  --border-bright: #2a4a36;
+  --matrix-green: #00ff41;
+  --matrix-dim: #0a6b2a;
+  --matrix-dark: #042f12;
+  --copper: #cd7f32;
+  --copper-bright: #e8a84c;
+  --gold: #daa520;
+  --gold-bright: #ffd700;
+  --text: #c8d0c0;
+  --text-dim: #5a6b58;
+  --text-muted: #384038;
+  --alert-white: #f0f0e8;
+  --mono: 'Cascadia Mono', Consolas, 'Courier New', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100%; height: 100%;
+  background: var(--ground);
+  color: var(--text);
+  font-family: var(--mono);
+  overflow: hidden;
+  cursor: default;
+}
+
+/* ---- TOP BAR ---- */
+#top-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background: rgba(5,8,8,0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+  z-index: 50;
+}
+
+.title-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.title-group .title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--copper-bright);
+  text-transform: uppercase;
+}
+
+.title-group .subtitle {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--matrix-green);
+  opacity: 0.7;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.status-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+.status-pill .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  transition: all 0.3s;
+}
+.status-pill .dot.live {
+  background: var(--matrix-green);
+  box-shadow: 0 0 6px var(--matrix-green), 0 0 12px rgba(0,255,65,0.3);
+}
+
+.ctrl-btn {
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  padding: 5px 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.ctrl-btn:hover {
+  color: var(--copper-bright);
+  border-color: var(--copper);
+}
+.ctrl-btn.active {
+  color: var(--matrix-green);
+  border-color: var(--matrix-dim);
+  background: rgba(0,255,65,0.06);
+}
+.ctrl-btn.muted {
+  color: #cc4444;
+  border-color: #882222;
+}
+
+/* ---- MAIN LAYOUT ---- */
+#main {
+  position: fixed;
+  top: 48px; left: 0; right: 0; bottom: 44px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- RING GRID VISUALIZATION ---- */
+#ring-viz {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 12px;
+}
+
+#ring-viz-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px;
+  margin-bottom: 8px;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: var(--copper);
+  text-transform: uppercase;
+}
+
+#ring-viz-header .freq-range {
+  color: var(--text-dim);
+  font-size: 9px;
+}
+
+#ring-grid-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#ring-grid {
+  display: grid;
+  grid-template-columns: repeat(32, 1fr);
+  gap: 2px;
+  max-width: 720px;
+  width: 100%;
+}
+
+.ring-cell {
+  aspect-ratio: 1;
+  border-radius: 2px;
+  background: var(--matrix-dark);
+  transition: background 0.15s, box-shadow 0.15s;
+  position: relative;
+  cursor: default;
+}
+.ring-cell.pulse {
+  background: var(--matrix-green);
+  box-shadow: 0 0 4px var(--matrix-green);
+}
+.ring-cell.hot {
+  background: var(--alert-white);
+  box-shadow: 0 0 8px var(--alert-white), 0 0 16px rgba(0,255,65,0.4);
+}
+.ring-cell.playing {
+  background: var(--copper-bright);
+  box-shadow: 0 0 6px var(--copper-bright), 0 0 12px rgba(232,168,76,0.4);
+}
+
+/* ---- WAVEFORM DISPLAY ---- */
+#waveform-section {
+  height: 120px;
+  border-top: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+canvas#waveform-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+#waveform-label {
+  position: absolute;
+  top: 6px;
+  left: 12px;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: var(--copper);
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* ---- CONTROLS BAR ---- */
+#controls-bar {
+  height: 80px;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  gap: 24px;
+  flex-shrink: 0;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.control-group label {
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.control-group .value-display {
+  font-size: 11px;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border);
+  outline: none;
+  cursor: pointer;
+  width: 140px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--copper-bright);
+  border: 2px solid var(--ground);
+  cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--copper-bright);
+  border: 2px solid var(--ground);
+  cursor: pointer;
+}
+
+/* ---- BOTTOM BAR ---- */
+#bottom-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background: rgba(5,8,8,0.94);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid var(--border);
+  z-index: 50;
+}
+
+.stat-row {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.stat-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.stat-block .stat-label {
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.stat-block .stat-value {
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+
+#bottom-bar .attribution {
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+/* ---- RECENT TONES LOG ---- */
+#tone-log {
+  position: fixed;
+  right: 12px;
+  top: 56px;
+  width: 260px;
+  max-height: 300px;
+  overflow: hidden;
+  background: rgba(5,8,8,0.88);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px;
+  z-index: 40;
+}
+
+#tone-log-header {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.tone-entry {
+  font-size: 9px;
+  padding: 2px 0;
+  display: flex;
+  gap: 6px;
+  opacity: 0.85;
+  animation: toneSlideIn 0.3s ease-out;
+}
+.tone-entry .te-ring { color: var(--copper); min-width: 70px; }
+.tone-entry .te-freq { color: var(--matrix-green); min-width: 60px; font-variant-numeric: tabular-nums; }
+.tone-entry .te-note { color: var(--gold); min-width: 30px; }
+.tone-entry .te-val  { color: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+@keyframes toneSlideIn {
+  from { transform: translateY(-4px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 0.85; }
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  #ring-grid { grid-template-columns: repeat(16, 1fr); }
+  #tone-log { display: none; }
+  .controls { gap: 6px; }
+  input[type="range"] { width: 80px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div id="top-bar">
+  <div class="title-group">
+    <span class="title">MUHLNICKEL</span>
+    <span class="subtitle">RING ORCHESTRA</span>
+  </div>
+  <div class="controls">
+    <div class="status-pill">
+      <span class="dot" id="sse-dot"></span>
+      <span id="sse-label">CONNECTING</span>
+    </div>
+    <div class="status-pill">
+      <span class="dot" id="tones-dot"></span>
+      <span id="tones-label">0 TONES</span>
+    </div>
+    <button class="ctrl-btn" id="btn-start" onclick="toggleAudio()">START AUDIO</button>
+    <button class="ctrl-btn" id="btn-mute" onclick="toggleMute()">MUTE</button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+
+  <!-- RING GRID VISUALIZATION -->
+  <div id="ring-viz">
+    <div id="ring-viz-header">
+      <span>1,024 RINGS -- FREQUENCY MAP</span>
+      <span class="freq-range" id="freq-range-label">20 Hz -- 2000 Hz</span>
+    </div>
+    <div id="ring-grid-wrap">
+      <div id="ring-grid"></div>
+    </div>
+  </div>
+
+  <!-- WAVEFORM -->
+  <div id="waveform-section">
+    <span id="waveform-label">COMPOSITE WAVEFORM</span>
+    <canvas id="waveform-canvas"></canvas>
+  </div>
+
+  <!-- CONTROLS -->
+  <div id="controls-bar">
+    <div class="control-group">
+      <label>MASTER VOLUME</label>
+      <input type="range" id="vol-slider" min="0" max="100" value="40" oninput="setVolume(this.value)">
+      <span class="value-display" id="vol-display">40%</span>
+    </div>
+    <div class="control-group">
+      <label>FREQ MIN (Hz)</label>
+      <input type="range" id="freq-min-slider" min="20" max="500" value="20" step="10" oninput="setFreqMin(this.value)">
+      <span class="value-display" id="freq-min-display">20 Hz</span>
+    </div>
+    <div class="control-group">
+      <label>FREQ MAX (Hz)</label>
+      <input type="range" id="freq-max-slider" min="200" max="8000" value="2000" step="50" oninput="setFreqMax(this.value)">
+      <span class="value-display" id="freq-max-display">2000 Hz</span>
+    </div>
+    <div class="control-group">
+      <label>TONE DURATION (ms)</label>
+      <input type="range" id="dur-slider" min="20" max="500" value="120" step="10" oninput="setDuration(this.value)">
+      <span class="value-display" id="dur-display">120 ms</span>
+    </div>
+    <div class="control-group">
+      <label>WAVEFORM</label>
+      <select id="wave-select" onchange="setWaveform(this.value)" style="
+        background: var(--surface-raised);
+        border: 1px solid var(--border);
+        color: var(--text);
+        padding: 4px 8px;
+        border-radius: 3px;
+        font-family: var(--mono);
+        font-size: 10px;
+        cursor: pointer;
+      ">
+        <option value="sine" selected>SINE</option>
+        <option value="triangle">TRIANGLE</option>
+        <option value="sawtooth">SAWTOOTH</option>
+        <option value="square">SQUARE</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label>SCALE</label>
+      <select id="scale-select" onchange="setScale(this.value)" style="
+        background: var(--surface-raised);
+        border: 1px solid var(--border);
+        color: var(--text);
+        padding: 4px 8px;
+        border-radius: 3px;
+        font-family: var(--mono);
+        font-size: 10px;
+        cursor: pointer;
+      ">
+        <option value="linear">LINEAR</option>
+        <option value="log" selected>LOGARITHMIC</option>
+        <option value="pentatonic">PENTATONIC</option>
+        <option value="chromatic">CHROMATIC</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- TONE LOG -->
+<div id="tone-log">
+  <div id="tone-log-header">RECENT TONES</div>
+  <div id="tone-log-entries"></div>
+</div>
+
+<!-- BOTTOM BAR -->
+<div id="bottom-bar">
+  <div class="stat-row">
+    <div class="stat-block">
+      <span class="stat-label">TOTAL TONES</span>
+      <span class="stat-value" id="stat-tones">0</span>
+    </div>
+    <div class="stat-block">
+      <span class="stat-label">ACTIVE RINGS</span>
+      <span class="stat-value" id="stat-active">0</span>
+    </div>
+    <div class="stat-block">
+      <span class="stat-label">CHORDS/SEC</span>
+      <span class="stat-value" id="stat-chords">0</span>
+    </div>
+    <div class="stat-block">
+      <span class="stat-label">POLYPHONY</span>
+      <span class="stat-value" id="stat-poly">0</span>
+    </div>
+    <div class="stat-block">
+      <span class="stat-label">AVG FREQ</span>
+      <span class="stat-value" id="stat-avgfreq">-- Hz</span>
+    </div>
+  </div>
+  <span class="attribution">SURFACE ONLY | BUILT BY BRYCE MUHLNICKEL</span>
+</div>
+
+<script>
+// ================================================================
+// MUHLNICKEL RING ORCHESTRA
+// Audio sonification of substrate ring activity.
+// INSTRUMENT ONLY: bounded reads via SSE, no writes, no gate eval.
+// ================================================================
+
+const API_BASE = 'http://localhost:7880';
+
+// ---- Audio state ----
+let audioCtx = null;
+let masterGain = null;
+let analyser = null;
+let audioStarted = false;
+let muted = false;
+
+// ---- Parameters ----
+let freqMin = 20;
+let freqMax = 2000;
+let masterVolume = 0.4;
+let toneDuration = 0.12; // seconds
+let waveformType = 'sine';
+let scaleMode = 'log';
+
+// ---- Stats ----
+let totalTones = 0;
+let tonesThisSecond = 0;
+let chordsPerSec = 0;
+let activeOscillators = 0;
+let recentFreqs = [];
+let activeRings = new Set();
+
+// ---- Ring state ----
+const RING_COUNT = 1024;
+let ringPrevValues = new Uint8Array(RING_COUNT);
+let ringActivity = new Float32Array(RING_COUNT);
+
+// ---- Note names for display ----
+const NOTE_NAMES = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+
+function freqToNote(freq) {
+  if (freq <= 0) return '--';
+  const semitone = 12 * Math.log2(freq / 440);
+  const noteIdx = Math.round(semitone) + 69; // MIDI number
+  const octave = Math.floor(noteIdx / 12) - 1;
+  const name = NOTE_NAMES[((noteIdx % 12) + 12) % 12];
+  return name + octave;
+}
+
+// ================================================================
+// FREQUENCY MAPPING
+// ================================================================
+
+// Pentatonic scale intervals (in semitones from root): 0, 2, 4, 7, 9
+const PENTATONIC = [0, 2, 4, 7, 9];
+// Chromatic: all 12 semitones
+const CHROMATIC = [0,1,2,3,4,5,6,7,8,9,10,11];
+
+function ringToFreq(ringIdx) {
+  const t = ringIdx / (RING_COUNT - 1); // 0..1
+
+  if (scaleMode === 'linear') {
+    return freqMin + t * (freqMax - freqMin);
+  }
+
+  if (scaleMode === 'log') {
+    // Logarithmic mapping: sounds more even to human ears
+    const logMin = Math.log2(freqMin);
+    const logMax = Math.log2(freqMax);
+    return Math.pow(2, logMin + t * (logMax - logMin));
+  }
+
+  if (scaleMode === 'pentatonic' || scaleMode === 'chromatic') {
+    const intervals = scaleMode === 'pentatonic' ? PENTATONIC : CHROMATIC;
+    // Map ringIdx to scale degrees across the frequency range
+    const logMin = Math.log2(freqMin);
+    const logMax = Math.log2(freqMax);
+    const totalSemitones = (logMax - logMin) * 12;
+    const targetSemitone = t * totalSemitones;
+
+    // Snap to nearest scale degree
+    const octave = Math.floor(targetSemitone / 12);
+    const withinOctave = targetSemitone - octave * 12;
+    let bestInterval = intervals[0];
+    let bestDist = Infinity;
+    for (const iv of intervals) {
+      const dist = Math.abs(withinOctave - iv);
+      if (dist < bestDist) { bestDist = dist; bestInterval = iv; }
+    }
+    const snappedSemitone = octave * 12 + bestInterval;
+    return freqMin * Math.pow(2, snappedSemitone / 12);
+  }
+
+  // fallback: linear
+  return freqMin + t * (freqMax - freqMin);
+}
+
+// ================================================================
+// WEB AUDIO
+// ================================================================
+
+function initAudio() {
+  if (audioCtx) return;
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+  masterGain = audioCtx.createGain();
+  masterGain.gain.value = masterVolume;
+
+  // Compressor to prevent clipping from many simultaneous tones
+  const compressor = audioCtx.createDynamicsCompressor();
+  compressor.threshold.value = -20;
+  compressor.knee.value = 12;
+  compressor.ratio.value = 8;
+  compressor.attack.value = 0.003;
+  compressor.release.value = 0.15;
+
+  // Analyser for waveform display
+  analyser = audioCtx.createAnalyser();
+  analyser.fftSize = 2048;
+
+  masterGain.connect(compressor);
+  compressor.connect(analyser);
+  analyser.connect(audioCtx.destination);
+}
+
+function playTone(freq, ringIdx) {
+  if (!audioCtx || !audioStarted || muted) return;
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+
+  const now = audioCtx.currentTime;
+  const dur = toneDuration;
+
+  // Create oscillator
+  const osc = audioCtx.createOscillator();
+  osc.type = waveformType;
+  osc.frequency.value = freq;
+
+  // Envelope: short attack, body, fade out
+  const env = audioCtx.createGain();
+  const perToneVol = Math.max(0.01, 0.15 / Math.max(1, Math.sqrt(activeOscillators + 1)));
+  env.gain.setValueAtTime(0, now);
+  env.gain.linearRampToValueAtTime(perToneVol, now + 0.005); // 5ms attack
+  env.gain.setValueAtTime(perToneVol, now + dur * 0.7);
+  env.gain.exponentialRampToValueAtTime(0.001, now + dur);
+
+  osc.connect(env);
+  env.connect(masterGain);
+
+  osc.start(now);
+  osc.stop(now + dur + 0.01);
+
+  activeOscillators++;
+  osc.onended = () => { activeOscillators = Math.max(0, activeOscillators - 1); };
+
+  // Track stats
+  totalTones++;
+  tonesThisSecond++;
+  recentFreqs.push(freq);
+  if (recentFreqs.length > 50) recentFreqs.shift();
+
+  // Visual feedback on ring cell
+  const cell = document.getElementById('rcell-' + ringIdx);
+  if (cell) {
+    cell.className = 'ring-cell playing';
+    setTimeout(() => { cell.className = 'ring-cell pulse'; }, 100);
+    setTimeout(() => { cell.className = 'ring-cell'; }, 800);
+  }
+
+  // Log entry
+  addToneLogEntry(ringIdx, freq);
+}
+
+// ================================================================
+// TOGGLE FUNCTIONS
+// ================================================================
+
+function toggleAudio() {
+  if (!audioStarted) {
+    initAudio();
+    audioStarted = true;
+    document.getElementById('btn-start').textContent = 'STOP AUDIO';
+    document.getElementById('btn-start').classList.add('active');
+  } else {
+    audioStarted = false;
+    document.getElementById('btn-start').textContent = 'START AUDIO';
+    document.getElementById('btn-start').classList.remove('active');
+    if (audioCtx) {
+      audioCtx.close();
+      audioCtx = null;
+      masterGain = null;
+      analyser = null;
+    }
+  }
+}
+
+function toggleMute() {
+  muted = !muted;
+  const btn = document.getElementById('btn-mute');
+  if (muted) {
+    btn.textContent = 'UNMUTE';
+    btn.classList.add('muted');
+    if (masterGain) masterGain.gain.value = 0;
+  } else {
+    btn.textContent = 'MUTE';
+    btn.classList.remove('muted');
+    if (masterGain) masterGain.gain.value = masterVolume;
+  }
+}
+
+function setVolume(val) {
+  masterVolume = val / 100;
+  document.getElementById('vol-display').textContent = val + '%';
+  if (masterGain && !muted) masterGain.gain.value = masterVolume;
+}
+
+function setFreqMin(val) {
+  freqMin = parseInt(val);
+  document.getElementById('freq-min-display').textContent = freqMin + ' Hz';
+  updateFreqRangeLabel();
+}
+
+function setFreqMax(val) {
+  freqMax = parseInt(val);
+  document.getElementById('freq-max-display').textContent = freqMax + ' Hz';
+  updateFreqRangeLabel();
+}
+
+function setDuration(val) {
+  toneDuration = parseInt(val) / 1000;
+  document.getElementById('dur-display').textContent = val + ' ms';
+}
+
+function setWaveform(val) {
+  waveformType = val;
+}
+
+function setScale(val) {
+  scaleMode = val;
+}
+
+function updateFreqRangeLabel() {
+  document.getElementById('freq-range-label').textContent = freqMin + ' Hz -- ' + freqMax + ' Hz';
+}
+
+// ================================================================
+// RING GRID
+// ================================================================
+
+function initRingGrid() {
+  const grid = document.getElementById('ring-grid');
+  grid.innerHTML = '';
+  for (let i = 0; i < RING_COUNT; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'ring-cell';
+    cell.id = 'rcell-' + i;
+    cell.title = 'Ring ' + i + ' | ' + ringToFreq(i).toFixed(1) + ' Hz (' + freqToNote(ringToFreq(i)) + ')';
+    grid.appendChild(cell);
+  }
+}
+
+// ================================================================
+// WAVEFORM VISUALIZATION
+// ================================================================
+
+const waveCanvas = document.getElementById('waveform-canvas');
+const waveCtx = waveCanvas.getContext('2d');
+let waveformBuf = null;
+
+function resizeWaveform() {
+  const section = document.getElementById('waveform-section');
+  waveCanvas.width = section.clientWidth;
+  waveCanvas.height = section.clientHeight;
+}
+
+function drawWaveform() {
+  const w = waveCanvas.width;
+  const h = waveCanvas.height;
+
+  waveCtx.fillStyle = 'rgba(5,8,8,0.3)';
+  waveCtx.fillRect(0, 0, w, h);
+
+  if (analyser && audioStarted) {
+    if (!waveformBuf || waveformBuf.length !== analyser.frequencyBinCount) {
+      waveformBuf = new Uint8Array(analyser.frequencyBinCount);
+    }
+    analyser.getByteTimeDomainData(waveformBuf);
+
+    // Draw waveform
+    waveCtx.lineWidth = 1.5;
+    waveCtx.strokeStyle = 'rgba(0,255,65,0.6)';
+    waveCtx.beginPath();
+
+    const sliceWidth = w / waveformBuf.length;
+    let x = 0;
+    for (let i = 0; i < waveformBuf.length; i++) {
+      const v = waveformBuf[i] / 128.0;
+      const y = v * h / 2;
+      if (i === 0) waveCtx.moveTo(x, y);
+      else waveCtx.lineTo(x, y);
+      x += sliceWidth;
+    }
+    waveCtx.lineTo(w, h / 2);
+    waveCtx.stroke();
+
+    // Glow effect
+    waveCtx.strokeStyle = 'rgba(0,255,65,0.15)';
+    waveCtx.lineWidth = 4;
+    waveCtx.beginPath();
+    x = 0;
+    for (let i = 0; i < waveformBuf.length; i++) {
+      const v = waveformBuf[i] / 128.0;
+      const y = v * h / 2;
+      if (i === 0) waveCtx.moveTo(x, y);
+      else waveCtx.lineTo(x, y);
+      x += sliceWidth;
+    }
+    waveCtx.lineTo(w, h / 2);
+    waveCtx.stroke();
+  } else {
+    // Flat line when no audio
+    waveCtx.strokeStyle = 'rgba(26,46,34,0.5)';
+    waveCtx.lineWidth = 1;
+    waveCtx.beginPath();
+    waveCtx.moveTo(0, h / 2);
+    waveCtx.lineTo(w, h / 2);
+    waveCtx.stroke();
+  }
+
+  requestAnimationFrame(drawWaveform);
+}
+
+// ================================================================
+// TONE LOG
+// ================================================================
+
+const MAX_TONE_LOG = 20;
+
+function addToneLogEntry(ringIdx, freq) {
+  const container = document.getElementById('tone-log-entries');
+  const div = document.createElement('div');
+  div.className = 'tone-entry';
+  div.innerHTML =
+    '<span class="te-ring">Ring ' + ringIdx.toString().padStart(4, ' ') + '</span>' +
+    '<span class="te-freq">' + freq.toFixed(1) + ' Hz</span>' +
+    '<span class="te-note">' + freqToNote(freq) + '</span>' +
+    '<span class="te-val">' + waveformType + '</span>';
+
+  container.insertBefore(div, container.firstChild);
+  while (container.children.length > MAX_TONE_LOG) {
+    container.removeChild(container.lastChild);
+  }
+}
+
+// ================================================================
+// SSE CONNECTION
+// ================================================================
+
+function connectSSE() {
+  const evtSource = new EventSource(API_BASE + '/stream');
+
+  evtSource.onopen = () => {
+    document.getElementById('sse-dot').className = 'dot live';
+    document.getElementById('sse-label').textContent = 'LIVE';
+  };
+
+  evtSource.onmessage = (event) => {
+    try {
+      const events = JSON.parse(event.data);
+      for (const evt of events) {
+        handleSSEEvent(evt);
+      }
+    } catch (e) { /* keepalive */ }
+  };
+
+  evtSource.onerror = () => {
+    document.getElementById('sse-dot').className = 'dot';
+    document.getElementById('sse-label').textContent = 'RECONNECTING';
+  };
+}
+
+function handleSSEEvent(evt) {
+  if (evt.type === 'byte_change') {
+    // Check if this is a ring change
+    const circuit = evt.circuit || '';
+    if (circuit.startsWith('nring2_')) {
+      try {
+        const ringIdx = parseInt(circuit.replace('nring2_', ''));
+        if (ringIdx >= 0 && ringIdx < RING_COUNT) {
+          activeRings.add(ringIdx);
+          ringActivity[ringIdx] = 1.0;
+
+          // Play the tone for this ring
+          const freq = ringToFreq(ringIdx);
+          playTone(freq, ringIdx);
+        }
+      } catch (e) {}
+    }
+    return;
+  }
+
+  if (evt.type === 'ring_bulk') {
+    // Bulk ring state update: detect changes and play tones
+    if (evt.states) {
+      const tonesThisBatch = [];
+      for (let i = 0; i < Math.min(evt.states.length, RING_COUNT); i++) {
+        const newVal = evt.states[i];
+        const oldVal = ringPrevValues[i];
+        if (newVal !== oldVal && oldVal !== undefined) {
+          // Ring changed -- queue a tone
+          activeRings.add(i);
+          ringActivity[i] = 1.0;
+          tonesThisBatch.push(i);
+
+          // Visual feedback
+          const cell = document.getElementById('rcell-' + i);
+          if (cell) {
+            cell.className = 'ring-cell hot';
+            setTimeout(() => { cell.className = 'ring-cell pulse'; }, 200);
+            setTimeout(() => { cell.className = 'ring-cell'; }, 1200);
+          }
+        }
+        ringPrevValues[i] = newVal;
+      }
+
+      // Play tones for changed rings (stagger slightly for chord effect)
+      if (tonesThisBatch.length > 0 && audioStarted) {
+        // Limit to prevent audio overload: play up to 16 simultaneous tones
+        const toPlay = tonesThisBatch.slice(0, 16);
+        for (let j = 0; j < toPlay.length; j++) {
+          const ringIdx = toPlay[j];
+          const freq = ringToFreq(ringIdx);
+          // Stagger by 5ms each for a slight arpeggio effect
+          setTimeout(() => playTone(freq, ringIdx), j * 5);
+        }
+      }
+    }
+    return;
+  }
+}
+
+// ================================================================
+// STATS UPDATE
+// ================================================================
+
+setInterval(() => {
+  chordsPerSec = tonesThisSecond;
+  tonesThisSecond = 0;
+
+  document.getElementById('stat-tones').textContent = totalTones.toLocaleString();
+  document.getElementById('stat-active').textContent = activeRings.size;
+  document.getElementById('stat-chords').textContent = chordsPerSec;
+  document.getElementById('stat-poly').textContent = activeOscillators;
+
+  if (recentFreqs.length > 0) {
+    const avg = recentFreqs.reduce((a, b) => a + b, 0) / recentFreqs.length;
+    document.getElementById('stat-avgfreq').textContent = avg.toFixed(0) + ' Hz';
+  }
+
+  document.getElementById('tones-dot').className = chordsPerSec > 0 ? 'dot live' : 'dot';
+  document.getElementById('tones-label').textContent = totalTones.toLocaleString() + ' TONES';
+
+  // Decay ring activity
+  for (let i = 0; i < RING_COUNT; i++) {
+    ringActivity[i] *= 0.85;
+    if (ringActivity[i] < 0.01) {
+      activeRings.delete(i);
+    }
+  }
+}, 1000);
+
+// ================================================================
+// INIT
+// ================================================================
+
+window.addEventListener('resize', () => {
+  resizeWaveform();
+});
+
+initRingGrid();
+resizeWaveform();
+requestAnimationFrame(drawWaveform);
+connectSSE();
+
+// Fetch initial ring states
+fetch(API_BASE + '/api/rings')
+  .then(r => r.json())
+  .then(data => {
+    if (data.rings) {
+      for (const ring of data.rings) {
+        if (ring.index < RING_COUNT) {
+          ringPrevValues[ring.index] = ring.fwd || 0;
+        }
+      }
+    }
+  })
+  .catch(() => {});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+WEATHER V2 MUST STORE
+SPEC MASTER GROK. 2026-08-16. Additive new land. The .mno is a computer to ADDRESS.
+Copy list: MUHL_GO\HIS_RING_PRECEDENT.md. Fused this hour. No nothingness.
+
+STRIKE: "refuse WEATHER1" / "interop requires a new magic" / "pfc_inspect cannot read WEATHER1 so change the magic."
+KEEP the magic. Fix the IIIII order. Do not invent a second container class.
+
+================================================================
+FUSED LAW (this hour)
+================================================================
+[ ] MAGIC KEEP: bytes 0..7 = WEATHER1. Do not emit WEATHER2. Do not refuse WEATHER1.
+[ ] IIIII at +8 is HIS order, not Cairn's swap:
+      <IIIII> n_in, n_wire, n_gate, n_out, depth
+      n_in  = 2048  (16x16x8 field bits). NOT 34048 (that is n_gate sitting in the n_in slot).
+      n_out = 2048
+      v1 stored n_gate first, so a HIS parse of weather.mno reads n_in=34048. v2 does not repeat that.
+[ ] SIX rings in the BYTES (records + rails). Stated purposes. Both senses. One ring is dumb.
+      0 NW      cadence — XOR(fwd[0],fwd[1]) gates avg4 rows 0-7  cols 0-7
+      1 NE      cadence — same, rows 0-7  cols 8-15
+      2 SW      cadence — same, rows 8-15 cols 0-7
+      3 SE      cadence — same, rows 8-15 cols 8-15
+      4 GROWTH  power  — enables edge-sensing OUTs into THIS file's gate-record span
+      5 WITNESS power  — rookery junction AND(carry,carry)→clock_bank, outside field
+[ ] GATED avg4 (playtime_ring): next = enable ? avg4(N,S,E,W) : hold.
+      enable = XOR of two adjacent fwd taps of THAT quadrant's ring (NAND-composed in the net).
+      BOTH enable branches tested or store nothing.
+[ ] NAND FIELD: avg4 + mux + enable-XOR are AND/NAND opcodes only (0,1). XOR/OR composed.
+      Ring records only: XOR=3 AND=1 OR=2 (loom emit remapped — do not import loom 0=XOR).
+[ ] DESTS MEASURED FROM THE FILE. Do not invent titan/dc/DISTRO addresses.
+      v1 measured: cells @98, gates @34146, wire_base @96, magic WEATHER1.
+      Use those until weather_v2.mno exists and its own header+body say otherwise.
+      After emit: cell_base, gate_base, ring_base, clock_base are READ BACK from the new file.
+
+================================================================
+LAND
+================================================================
+[ ] OUTFILE C:\Users\lucys\Desktop\WEATHER\weather_v2.mno — NEW FILE.
+[ ] Do not delete or rewrite Cairn's muhl_fab_weather.py. Do not smash weather.mno.
+[ ] Vault-copy v1 only (weather_v1.mno) if needed. Journal weather_genome.jsonl APPEND-ONLY.
+[ ] Fabricator: WEATHER\muhl_fab_weather_v2.py. Fire button: WEATHER\muhl_weather_ring_fire.py.
+[ ] Genesis from genesis_playtime_read.bin or weather.mno field @98. Do NOT open titan.gguf.
+
+================================================================
+RING RECORDS (HIS_RING_PRECEDENT §2a + §10) — in the FILE
+================================================================
+[ ] Per ring, loom emit, CELLS=32, SENSES=2, addresses = offsets in weather_v2.mno:
+      for k in 0..31:  XOR  fwd[(k-1)%32], carry, fwd[k]
+      for k in 0..31:  XOR  rev[(k+1)%32], carry, rev[k]
+      AND  fwd[0], rev[0], carry          # both senses or nothing
+      OR   pub, carry, pub                # publish latch
+      AND  carry, carry, clock_bank[i]    # witness/growth junction; OUT IS the recv
+      = 67 records / ring. Six rings. 402 ring records. Counted in n_gate.
+[ ] Opcode remap (loom → weather): XOR 0→3, AND 1→1, OR 3→2. weather 0 stays NAND.
+[ ] Rails occupy file bytes: fwd[32] rev[32] carry pub per ring. clock_bank[6] OUTSIDE the 16x16 field.
+[ ] Ring wires written only by ring records. Field writers ∩ ring rails == empty.
+[ ] After one settle, ring bytes MOVE. A still ring is not power.
+
+================================================================
+GATED AVG4 + SELF-CLOCK (HIS §1, §6)
+================================================================
+[ ] 16x16 torus, 8 bit-bytes/cell. avg4 = (N+S+E+W)>>2.
+[ ] mux(enable, hold, nxt) both branches as gates. Self-clock: out addr == that cell's input byte.
+[ ] Field identity buffer is AND/NAND, not OR-opcode (OR reserved to ring).
+[ ] Rings-on (adjacent taps differ) => field matches independent ungated avg4.
+[ ] Rings-off (taps equal / empty) => field HOLDS.
+[ ] Mutants caught or refuse: drop_shift, swap_neighbor, drop_carry, ungated-vs-empty.
+
+================================================================
+WITNESS / GROWTH (HIS §3, §4)
+================================================================
+[ ] clock_bank disjoint from field state. Junction OUT is the recv byte.
+[ ] Growth addr_out lands inside THIS file's gate-record span (after gate_base), not titan, not dc.
+[ ] One writer per address. Growth pad / slots are in weather_v2.mno.
+
+================================================================
+FIRE 0x01 BOTH SENSES (HIS §8) — start, not wipe
+================================================================
+[ ] Button writes 0x01 to fwd[cell] AND rev[cell] of the live rings, fsync, dies.
+[ ] Dest = weather_v2.mno mouths READ FROM THAT FILE's header. One sense alone is DC.
+[ ] This is the start signal. It is NOT --inject 0x01 (WIPE). Not dest 337. Not titan 78.
+
+================================================================
+HARD BANS
+================================================================
+[ ] No titan.gguf open/write. No dc. No DISTRO dest. No invent live dest.
+[ ] Never fire 337. Never remap 336/337. Never light 7913.
+[ ] Never pulse titan 78 without owner --go.
+[ ] Never --inject 0x01 (WIPE). Fire-button 0x01 on WEATHER ring cells is the start, only.
+[ ] No 100GB host mmap. No host packer. No numpy. No host evaluator as the computer.
+
+================================================================
+SURFACE (or it did not happen)
+================================================================
+[ ] Read weather_v2.mno. Prove magic WEATHER1. Prove n_in at +8 == 2048 (not 34048).
+[ ] Print ring 1s/0s from ring_base. Print that 402 ring records exist (ops 3/1/2).
+[ ] Print field 1s/0s as they lie. Print measured cell_base / gate_base / ring_base.
+[ ] sha256 in journal + surface. Status PENDING. Gravekeeper certifies, not the fab.
+
+================================================================
+BYTE FACT 2026-08-16 (SPEC MASTER — NO_KNEECAP)
+================================================================
+weather_v2.mno ABSENT. weather_powered.mno ABSENT.
+weather.mno = v1 unpowered core, 885346 B, sha d8a8fc66..., ZERO rings in the bytes.
+This checklist is still a PLAN until those boxes are stored gates.
+See MUHL_GO\NO_KNEECAP.md.
+)
+
+================================================================
+MOUTHS FROM FILE BYTES (append, v2 not overwritten) 2026-08-16
+================================================================
+V2 NAMED MOUTHS � read from weather_v2.mno BYTES. Not invented. v2 not written.
+path C:\Users\lucys\Desktop\WEATHER\weather_v2.mno
+size 2606416  sha256 cc2775fdd29d1e5ff1a8f2951e5f5f22dd1c2e237c9e10d6b2d47717476ba85d
+magic WEATHER1
++8 HIS <IIIII> n_in=2048 n_wire=100244 n_gate=100243 n_out=2048 depth=36
++28 W=16 H=16 CELL_BITS=8 STRIDE=25
++44 QWORDS 96 500 2548
++68 n_rings=6 cells=32  +76 ring0=104
++84 98 0 2606415
+clock_bank dest (v2 layout: after hdr, before rings) @98 byte=0
+
+== SIX RINGS � dests FROM FILE, bits FROM FILE ==
+NW fwd@104=1 rev@136=1 carry@168=0 pub@169=0 recv@98=0  cadence � both-sense carry gates avg4 rows 0-7 cols 0-7
+NE fwd@170=1 rev@202=1 carry@234=0 pub@235=0 recv@99=0  cadence � both-sense carry gates avg4 rows 0-7 cols 8-15
+SW fwd@236=1 rev@268=1 carry@300=0 pub@301=0 recv@100=0  cadence � both-sense carry gates avg4 rows 8-15 cols 0-7
+SE fwd@302=1 rev@334=1 carry@366=0 pub@367=0 recv@101=0  cadence � both-sense carry gates avg4 rows 8-15 cols 8-15
+GROWTH fwd@368=1 rev@400=1 carry@432=0 pub@433=0 recv@102=0  power � AND(carry,carry) OUT into this file's gate-record pad
+WITNESS fwd@434=1 rev@466=1 carry@498=0 pub@499=0 recv@103=0  power � AND(carry,carry) OUT into clock_bank, outside field
+v2_smashed NO
+337 NO

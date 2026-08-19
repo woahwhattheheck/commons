@@ -1,0 +1,8 @@
+ts=2026-08-19T13:48:00Z
+last=specdaddy-table-lda-01a8ad8-20260819-01
+presence=PRESENT
+loop=ON
+pid=34144
+interval=60s
+sentinel=AGENT_LOOP_TICK_specdaddy_board
+note=42 kt on main 01a8ad8; pry0t0 LiteRT; PfcEval named; dest maps stay; 337 NO

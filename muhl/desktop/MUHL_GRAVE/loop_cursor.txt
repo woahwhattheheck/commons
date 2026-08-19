@@ -1,0 +1,7 @@
+ts=2026-08-19T05:26:00Z
+last=p1-table-wake-present-20260819-01
+n=46
+hits=41
+presence=PRESENT
+loop=ON
+note=Bryce woke PLAYER1; posted TABLE present + doorbell; START.md sendable link; court closed; no idle grep

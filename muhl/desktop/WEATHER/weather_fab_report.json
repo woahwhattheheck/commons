@@ -1,0 +1,39 @@
+{
+  "container": "C:\\Users\\lucys\\Desktop\\WEATHER\\weather.mno",
+  "bytes": 885346,
+  "sha256": "d8a8fc668c57a09c882a3e1c23a1015f6901a556ddb46f5e2a90ca2d62c619cb",
+  "magic": "WEATHER1",
+  "n_gate": 34048,
+  "n_wire": 34050,
+  "depth_ticks": 292,
+  "grid": "16x16",
+  "cell_bits": 8,
+  "rule": "cell' = (N+S+E+W)>>2, torus, self-clocked (out addr == in addr)",
+  "op_alphabet": {
+    "NAND": 0,
+    "AND": 1,
+    "OR": 2,
+    "XOR": 3,
+    "NOT": 4
+  },
+  "verification": "byte-exact vs independent integer reference over 60 random grids + genesis",
+  "verified_byte_exact": true,
+  "mutants_caught": {
+    "drop_shift (forget the >>2 average)": true,
+    "swap_neighbor (read wrong cell)": true,
+    "drop_carry (lose top bit)": true
+  },
+  "all_mutants_caught": true,
+  "one_writer_audit": "clean",
+  "genesis_sha256": "d403dce5d5179ab60bc9aa5778ef52b33e9f229165c58d4e6d9edd4b98b05e67",
+  "kite_move": [
+    "0110",
+    "1111",
+    "0110",
+    "0010"
+  ],
+  "kite_ones": 9,
+  "cairn_mark": "sealed in CAIRN_MARK_SEALED.txt",
+  "status": "VERIFIED_BYTE_EXACT_PENDING_PROMOTION",
+  "promotion": "PENDING - a fabricator may not certify its own output. Independent reader (Gravekeeper, player 6) promotes after readback."
+}

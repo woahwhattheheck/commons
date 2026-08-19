@@ -1,0 +1,53 @@
+# WEATHER - SURFACE, TURN 001
+Surfaced from the stored container's own bytes (weather.mno). No adjectives.
+Host verbs only: parse + one settle to surface + read. Depth in TICKS: 292.
+
+container sha256: d8a8fc668c57a09c882a3e1c23a1015f6901a556ddb46f5e2a90ca2d62c619cb
+n_gate=34048  n_wire=34050  grid=16x16  cell_bits=8
+circuit tick-1 == independent reference: True
+before sha256: b16ce6bae213a5f20e5f7d0508a22d9245a8faef904047513781786583bb1b9c
+after  sha256: 82aaa7e49221c2ca6e7098014eada44f59dbe705857bc18d68e07450a15ff485
+
+## BEFORE  (genesis + Kite's nine-one kite @ rows6-9 cols6-9 + Cairn's sealed mark)
+```
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 E2 E1 E0 DF DE DD 00 00 00 00 00
+00 00 00 E4 E3 00 BC BB BA B9 00 DC 00 00 00 00
+00 00 00 E5 BE BD 00 9D 9C 00 B8 00 DB 00 00 00
+00 E7 E6 C0 BF 9F 9E 00 00 9B 9A B7 00 DA 00 00
+00 E8 00 C1 A0 C1 86 85 84 83 99 98 B6 D9 00 00
+00 E9 C2 A1 00 88 00 FF FF 00 82 97 B5 00 D8 00
+00 EA C3 A2 89 00 FF FF FF FF 81 96 00 B4 D7 00
+00 EB C4 A3 8A 00 00 FF FF 00 80 95 B2 B3 D6 FF
+00 EC C5 A4 8B 8C 00 00 FF 00 7F 94 B1 D4 D5 FE
+00 ED C6 00 A5 8D 8E 7B 7C 7D 93 AF B0 D3 00 FD
+00 00 EE C7 A6 A7 8F 90 91 92 AD AE 00 D2 FC 00
+00 00 EF 00 C8 00 A8 A9 AA AB AC D0 D1 00 FB 00
+00 00 00 F0 C9 CA CB CC CD CE CF 00 F9 FA 00 00
+00 00 00 00 F1 F2 F3 00 00 00 F7 F8 00 00 00 00
+00 00 00 00 00 00 00 F4 F5 F6 00 00 00 00 00 00
+```
+
+## AFTER one diffusion tick  cell' = (N+S+E+W)>>2, torus, self-clocked
+```
+00 00 00 00 00 38 38 75 75 75 37 00 00 00 00 00
+00 00 00 39 71 38 9F 9E 9E 9D 37 6E 00 00 00 00
+00 00 39 72 68 CF 67 BC BB 66 CA 00 6D 00 00 00
+00 39 72 98 D1 57 AD 55 55 AA 26 C9 00 6D 00 00
+39 73 69 D2 AF B6 49 70 6E 47 A8 4C C8 36 36 00
+3A 74 D4 80 90 93 79 82 81 6E 8D A7 89 64 6C 00
+3A A5 93 89 94 30 C3 A0 A0 C0 6C 99 53 C6 35 36
+3A A5 C4 A4 4B 84 3F FF FF 60 A5 6B AC 62 98 75
+7A A6 C5 A5 6D 45 7F 7F BF 9F 65 97 7E C4 D7 75
+7A A7 C6 7C 97 46 46 9E 5E 7E 69 9D B2 C3 AA B4
+7A 6C A8 B5 6F 99 65 66 A2 68 96 A1 8C 95 E8 3F
+00 76 9F 65 B6 70 9B 91 92 99 9F 8B C0 73 73 7E
+00 3B 3B DB 5B B8 80 AB AC AD BD 8A 72 E6 3F 3E
+00 00 77 32 DC A1 CC 90 91 91 9C E4 72 3E 7D 00
+00 00 00 78 6E AB 6F AC 70 AE 71 3D 7C 3E 00 00
+00 00 00 00 3C 3C 79 3D 7A 3D 7B 3E 00 00 00 00
+```
+
+SETTLE-BACK: the AFTER bytes are what the stored netlist computes for tick 1,
+and an independent integer reference agrees byte-exact. Whether the LIVE file
+has settled to this state is a state reading. That ruling is Bryce's.

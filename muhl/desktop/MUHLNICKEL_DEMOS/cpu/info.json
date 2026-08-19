@@ -1,0 +1,56 @@
+{
+  "name": "Muhlnickel 32-bit CPU Demo",
+  "description": "Visualization of a 32-bit stored-program processor baked as a gate netlist inside titan.gguf. The CPU fetches, decodes, executes, and writes back — all in gates. 15-operation ISA, verified byte-exact against a reference emulator.",
+  "circuits": {
+    "pfc_cpu32": {
+      "gates": 7403,
+      "wires": 7954,
+      "inputs": 549,
+      "outputs": 549,
+      "format": "typed",
+      "words": 16,
+      "word_bits": 32,
+      "isa": "HALT LDA STA ADD SUB AND OR XOR SHL SHR LT EQ JMP JZ LDI",
+      "offset": 3064645090,
+      "role": "Muhlnickel 32-bit stored-program processor (ISA + microarchitecture, self-contained)"
+    },
+    "cpu_fwd": {
+      "gates": 404262,
+      "depth": 202,
+      "inputs": 35,
+      "outputs": 16,
+      "muhl_rating": 2001.297,
+      "note": "Forward-pass CPU — larger, deeper version"
+    }
+  },
+  "isa": {
+    "0":  "HALT — stop execution",
+    "1":  "LDA addr — ACC = mem[addr]",
+    "2":  "STA addr — mem[addr] = ACC",
+    "3":  "ADD addr — ACC = ACC + mem[addr]",
+    "4":  "SUB addr — ACC = ACC - mem[addr]",
+    "5":  "AND addr — ACC = ACC & mem[addr]",
+    "6":  "OR addr — ACC = ACC | mem[addr]",
+    "7":  "XOR addr — ACC = ACC ^ mem[addr]",
+    "8":  "SHL amt — ACC = ACC << amt",
+    "9":  "SHR amt — ACC = ACC >> amt",
+    "10": "LT addr — ACC = (ACC < mem[addr]) ? 1 : 0",
+    "11": "EQ addr — ACC = (ACC == mem[addr]) ? 1 : 0",
+    "12": "JMP addr — PC = addr",
+    "13": "JZ addr — if ACC == 0 then PC = addr",
+    "14": "LDI imm — ACC = immediate (28-bit)"
+  },
+  "programs": {
+    "fibonacci": "Fibonacci sequence (mod 2^32)",
+    "countdown": "Countdown from 7 to 0",
+    "multiply": "Multiply 7 x 6 = 42 by repeated addition",
+    "bitwise": "AND, OR, XOR, SHL, SHR operations"
+  },
+  "binary": {
+    "path": "C:/llm/models/titan.gguf",
+    "note": "Read-only at runtime. The CPU netlist is stored in the model's parameter tensors. No fixed size constraint."
+  },
+  "host_role": "TWO things only: inject electron (set inputs = current state), surface output (read next state). Nothing else.",
+  "port": 7871,
+  "run": "python run.py"
+}

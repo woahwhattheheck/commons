@@ -1,0 +1,238 @@
+<!-- PRESERVED COPY of claude.ai artifact 7438f3ff-662d-4c8f-911c-764b75251745
+     "lda_redesign"  ·  Published 2026-07-22  ·  Preserved locally 2026-08-04
+     IP audit result: PARTIAL R2 surface. Mentions ".gguf" ("load a .gguf yourself")
+     and a model chip "Gemma E4B - Q4", but in the context of the Local Device Agent
+     phone app running an on-device LLM — NOT the muhlnickel substrate. No gate
+     records, no container sizes, no addressing-as-computation. Also carries the
+     string "on-device - patent pending".
+     Vault law: preserved, never deleted. -->
+<title>lda_redesign</title>
+<style>
+  :root{
+    --bg:#06090d; --frame:#0a0e13; --surface:#111923; --raised:#16202c; --border:#1c2732;
+    --accent:#39efc9; --accent-dim:#2bb89b; --accent-ghost:rgba(57,239,201,.10);
+    --text:#e9eef4; --muted:#8996a6; --faint:#576270;
+    --danger:#ff6b6b; --danger-ghost:rgba(255,107,107,.10);
+    --mono:"SF Mono","JetBrains Mono",Consolas,ui-monospace,monospace;
+    --sans:-apple-system,"Segoe UI",system-ui,Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(120% 90% at 50% 0%,#0b1118 0%,#06090d 60%);
+       color:var(--text);font-family:var(--sans);min-height:100vh;
+       display:flex;flex-direction:column;align-items:center;gap:22px;padding:34px 16px 60px}
+
+  .lead{max-width:390px;text-align:center}
+  .lead .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-dim)}
+  .lead h1{font-size:19px;margin:8px 0 4px;font-weight:600;letter-spacing:-.01em}
+  .lead p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+
+  /* phone */
+  .phone{width:390px;max-width:100%;background:var(--frame);border:1px solid var(--border);
+         border-radius:30px;padding:12px;box-shadow:0 30px 80px -30px #000, inset 0 1px 0 #ffffff08}
+  .screen{background:var(--frame);border-radius:20px;overflow:hidden}
+  .notch{height:22px;display:flex;justify-content:center;align-items:center}
+  .notch::before{content:"";width:78px;height:5px;border-radius:3px;background:#000;opacity:.6}
+  .app{padding:4px 16px 20px;display:flex;flex-direction:column;gap:14px}
+
+  /* header */
+  .top{display:flex;align-items:center;justify-content:space-between;padding-top:6px}
+  .brand{display:flex;align-items:center;gap:10px}
+  .mark{width:30px;height:30px;border-radius:9px;background:var(--accent-ghost);
+        border:1px solid #39efc933;display:grid;place-items:center;color:var(--accent);font-family:var(--mono);font-size:15px;font-weight:700}
+  .brand h2{margin:0;font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+  .brand span{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--faint);text-transform:uppercase;margin-top:2px}
+  .state{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+         padding:6px 11px;border-radius:999px;background:var(--accent-ghost);color:var(--accent);border:1px solid #39efc92e}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px #39efc925}
+  @media (prefers-reduced-motion:no-preference){.dot{animation:pulse 2.4s ease-in-out infinite}}
+  @keyframes pulse{50%{box-shadow:0 0 0 5px #39efc915}}
+
+  /* primary */
+  .hero{display:flex;flex-direction:column;gap:10px}
+  .chat{display:flex;align-items:center;gap:13px;padding:16px;border-radius:15px;cursor:pointer;
+        background:linear-gradient(180deg,#12303099,#0e2020aa);border:1px solid #39efc93b}
+  .chat:hover{border-color:#39efc975;background:linear-gradient(180deg,#143838aa,#0e2222cc)}
+  .chat .ic{width:38px;height:38px;border-radius:11px;background:var(--accent);color:#04120e;display:grid;place-items:center;flex:0 0 auto}
+  .chat b{font-size:16px;font-weight:600;letter-spacing:-.01em}
+  .chat small{display:block;color:var(--muted);font-size:12px;margin-top:1px}
+  .chat .go{margin-left:auto;color:var(--accent)}
+
+  .cmd{display:flex;gap:8px}
+  .cmd input{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:12px;color:var(--text);
+             font-family:var(--sans);font-size:13.5px;padding:12px 14px}
+  .cmd input::placeholder{color:var(--faint)}
+  .cmd input:focus{outline:none;border-color:#39efc966}
+  .cmd .send{background:var(--accent);color:#04120e;border:none;border-radius:12px;padding:0 18px;font-family:var(--mono);
+             font-size:12px;font-weight:700;letter-spacing:.08em;cursor:pointer}
+
+  /* power segment */
+  .power{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;background:var(--surface);border:1px solid var(--border);
+         border-radius:13px;padding:5px}
+  .seg{display:flex;align-items:center;justify-content:center;gap:7px;padding:10px 6px;border-radius:9px;cursor:pointer;
+       font-size:12.5px;font-weight:500;color:var(--muted);border:1px solid transparent;background:transparent}
+  .seg:hover{background:var(--raised)}
+  .seg.on{background:var(--accent-ghost);color:var(--accent);border-color:#39efc933}
+  .seg.stop{color:#ff8f8f}
+  .seg.stop:hover{background:var(--danger-ghost)}
+  .seg .d{width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.9}
+
+  /* section cards */
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:15px;overflow:hidden}
+  .card > .lbl{display:flex;align-items:center;justify-content:space-between;padding:12px 15px 8px}
+  .lbl span{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+  .lbl .chip{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--accent-dim);
+             background:var(--accent-ghost);padding:3px 8px;border-radius:6px;text-transform:none}
+  .row{display:flex;align-items:center;gap:12px;padding:13px 15px;cursor:pointer;border-top:1px solid #ffffff06}
+  .row:hover{background:var(--raised)}
+  .row .ic{width:20px;color:var(--muted);flex:0 0 auto;display:grid;place-items:center}
+  .row b{font-weight:500;font-size:14px}
+  .row small{display:block;color:var(--faint);font-size:11.5px;margin-top:1px}
+  .row .chev{margin-left:auto;color:var(--faint)}
+
+  /* collapsible setup */
+  .setup .head{display:flex;align-items:center;gap:11px;padding:13px 15px;cursor:pointer}
+  .setup .ok{width:22px;height:22px;border-radius:50%;background:var(--accent-ghost);border:1px solid #39efc94d;
+             color:var(--accent);display:grid;place-items:center;flex:0 0 auto}
+  .setup .head b{font-weight:500;font-size:14px}
+  .setup .head small{display:block;color:var(--faint);font-size:11.5px;margin-top:1px}
+  .setup .head .chev{margin-left:auto;color:var(--faint);transition:transform .2s}
+  .setup.open .head .chev{transform:rotate(90deg)}
+  .setup .body{display:none;padding:0 15px 8px}
+  .setup.open .body{display:block}
+  .perm{display:flex;align-items:center;gap:11px;padding:11px 0;border-top:1px solid #ffffff08;font-size:13.5px}
+  .perm .g{margin-left:auto;font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--accent);
+           background:var(--accent-ghost);border:1px solid #39efc933;padding:4px 9px;border-radius:7px}
+  .perm .done{margin-left:auto;color:var(--accent)}
+
+  .foot{display:flex;gap:8px}
+  .foot a{flex:1;text-align:center;padding:12px;border-radius:12px;background:var(--surface);border:1px solid var(--border);
+          color:var(--muted);font-size:13px;text-decoration:none;cursor:pointer}
+  .foot a:hover{background:var(--raised);color:var(--text)}
+  svg{stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+  /* legend */
+  .legend{width:390px;max-width:100%;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px}
+  .legend h3{margin:0 0 4px;font-size:13px;font-family:var(--mono);letter-spacing:.06em;color:var(--accent-dim)}
+  .legend p{margin:0 0 12px;color:var(--muted);font-size:12.5px}
+  .legend ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+  .legend li{display:flex;gap:9px;font-size:12.5px;color:var(--muted);line-height:1.4}
+  .legend li b{color:var(--text);font-weight:500;font-family:var(--mono);font-size:11px;letter-spacing:.04em;white-space:nowrap;padding-top:1px}
+  .legend .arrow{color:var(--faint)}
+</style>
+
+<div class="lead">
+  <div class="eyebrow">Local Agent · home redesign</div>
+  <h1>Same 18 functions. None removed. One calm screen.</h1>
+  <p>The old menu wasn't too <em>many</em> buttons — it was zero hierarchy. Here everything's grouped: state at the top, the 3 things you actually do up front, permissions folded away once granted, the rest in labeled cards.</p>
+</div>
+
+<div class="phone">
+ <div class="screen">
+  <div class="notch"></div>
+  <div class="app">
+
+    <!-- header: identity + live state -->
+    <div class="top">
+      <div class="brand">
+        <div class="mark">◈</div>
+        <div>
+          <h2>Local Agent</h2>
+          <span>on-device · patent pending</span>
+        </div>
+      </div>
+      <div class="state"><span class="dot"></span>READY</div>
+    </div>
+
+    <!-- primary zone -->
+    <div class="hero">
+      <div class="chat">
+        <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></svg></div>
+        <div><b>Open Chat</b><small>talk to the agent · tap or hold to speak</small></div>
+        <div class="go"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></div>
+      </div>
+
+      <div class="cmd">
+        <input placeholder="Type a command…">
+        <button class="send">GO</button>
+      </div>
+
+      <div class="power">
+        <div class="seg on"><span class="d"></span>Wake</div>
+        <div class="seg"><span class="d"></span>Sleep</div>
+        <div class="seg stop"><span class="d"></span>Stop</div>
+      </div>
+    </div>
+
+    <!-- setup, folded once granted -->
+    <div class="card setup" id="setup">
+      <div class="head" onclick="document.getElementById('setup').classList.toggle('open')">
+        <div class="ok"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></div>
+        <div><b>Setup &amp; permissions</b><small>All 5 granted · tap to review</small></div>
+        <div class="chev"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></div>
+      </div>
+      <div class="body">
+        <div class="perm">Agent Device Mode <span class="done"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span></div>
+        <div class="perm">Microphone <span class="done"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span></div>
+        <div class="perm">Accessibility Service <span class="done"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span></div>
+        <div class="perm">Draw over other apps <span class="done"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span></div>
+        <div class="perm">Scan my phone <span class="g">RE-SCAN</span></div>
+      </div>
+    </div>
+
+    <!-- model -->
+    <div class="card">
+      <div class="lbl"><span>Model</span><span class="chip">Gemma E4B · Q4</span></div>
+      <div class="row"><div class="ic"><svg width="17" height="17" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div><div><b>Model setup</b><small>brain, context size, calibration</small></div><div class="chev"><svg width="15" height="15" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></div></div>
+      <div class="row"><div class="ic"><svg width="17" height="17" viewBox="0 0 24 24"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg></div><div><b>Download model</b><small>automatic, over Wi-Fi</small></div><div class="chev"><svg width="15" height="15" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></div></div>
+      <div class="row"><div class="ic"><svg width="17" height="17" viewBox="0 0 24 24"><path d="M5 4h9l5 5v11H5z"/><path d="M14 4v5h5"/></svg></div><div><b>Import / replace file</b><small>load a .gguf yourself</small></div><div class="chev"><svg width="15" height="15" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></div></div>
+    </div>
+
+    <!-- mind -->
+    <div class="card">
+      <div class="lbl"><span>The agent's mind</span></div>
+      <div class="row"><div class="ic"><svg width="17" height="17" viewBox="0 0 24 24"><path d="M12 4a4 4 0 00-4 4 3 3 0 00-1 5 3 3 0 003 4 3 3 0 006 0 3 3 0 003-4 3 3 0 00-1-5 4 4 0 00-4-4z"/></svg></div><div><b>Agent memory</b><small>what it remembers &amp; has learned</small></div><div class="chev"><svg width="15" height="15" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></div></div>
+      <div class="row"><div class="ic"><svg width="17" height="17" viewBox="0 0 24 24"><path d="M12 3l8 4-8 4-8-4z"/><path d="M6 10v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg></div><div><b>Learn mode</b><small>explore &amp; improve navigation</small></div><div class="chev"><svg width="15" height="15" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></div></div>
+    </div>
+
+    <!-- diagnostics -->
+    <div class="card">
+      <div class="lbl"><span>Diagnostics</span></div>
+      <div class="row"><div class="ic"><svg width="17" height="17" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div><div><b>Task log</b><small>what it did, step by step</small></div><div class="chev"><svg width="15" height="15" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></div></div>
+      <div class="row"><div class="ic"><svg width="17" height="17" viewBox="0 0 24 24"><path d="M8 4l8 0M12 4v4M6 10h12l-1 9a2 2 0 01-2 2H9a2 2 0 01-2-2z"/></svg></div><div><b>Debug log</b><small>raw diagnostics</small></div><div class="chev"><svg width="15" height="15" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></div></div>
+    </div>
+
+    <!-- footer -->
+    <div class="foot">
+      <a>Settings</a>
+      <a>How it works</a>
+    </div>
+
+  </div>
+ </div>
+</div>
+
+<div class="legend">
+  <h3>Nothing lost — where every button went</h3>
+  <p>Your 18 controls, re-homed into 6 groups. Tap the folded "Setup &amp; permissions" row in the mockup to see the tucked-away ones.</p>
+  <ul>
+    <li><b>Wake / Sleep / Stop</b><span class="arrow">→</span><span>power segment (top)</span></li>
+    <li><b>Open chat + command bar</b><span class="arrow">→</span><span>primary zone</span></li>
+    <li><b>5 permission buttons</b><span class="arrow">→</span><span>folded "Setup" row</span></li>
+    <li><b>Model setup / download / import</b><span class="arrow">→</span><span>Model card</span></li>
+    <li><b>Memory · Learn mode</b><span class="arrow">→</span><span>Mind card</span></li>
+    <li><b>Task log · Debug log</b><span class="arrow">→</span><span>Diagnostics card</span></li>
+    <li><b>Settings · How it works</b><span class="arrow">→</span><span>footer</span></li>
+  </ul>
+</div>
+
+<script>
+  document.querySelectorAll('.seg').forEach(function(s){
+    s.addEventListener('click',function(){
+      document.querySelectorAll('.power .seg').forEach(function(x){x.classList.remove('on')});
+      s.classList.add('on');
+      var st=document.querySelector('.state');
+      var t=s.textContent.trim().toUpperCase();
+      st.innerHTML='<span class="dot"></span>'+(t==='WAKE'?'READY':t==='SLEEP'?'SLEEPING':'STOPPED');
+    });
+  });
+</script>

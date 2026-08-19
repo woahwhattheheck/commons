@@ -1,0 +1,24 @@
+{
+  "_comment": "Copy this file to whitebox.config.json and edit. EVERY KEY IS OPTIONAL - delete the ones you do not need. An environment variable of the same name (see README) overrides the value here. If you have no config file at all, White Box auto-discovers a models folder and the UI's 'Set folder' button writes this file for you.",
+
+  "models_dir": "D:/ai/models",
+
+  "_out_dir": "where the Export tab writes whitebox_<model>.json and .md (default: <app>/whitebox_out)",
+  "out_dir": "D:/ai/whitebox_out",
+
+  "_archive_dir": "where the Researcher Archive writes weights + all analysis (default: <out_dir>/research_archive)",
+  "archive_dir": "D:/ai/whitebox_out/research_archive",
+
+  "_default_model": "prefills the tool argument boxes. A bare filename resolves inside models_dir. Default: the first .gguf found.",
+  "default_model": "SmolLM2-360M-Instruct-Q8_0.gguf",
+
+  "_clean_model": "the small 'known-clean control' the fable_* security tools default to.",
+  "clean_model": "SmolLM2-360M-Instruct-Q8_0.gguf",
+
+  "_titan_model": "the model the pfc_*/wf_* circuit tools were originally written against. Set it to any .gguf you want those tools to scan.",
+  "titan_model": "SmolLM2-360M-Instruct-Q8_0.gguf",
+
+  "_ports": "the two UIs. Change these if 7862/7864 are already in use.",
+  "port": 7862,
+  "port_v2": 7864
+}

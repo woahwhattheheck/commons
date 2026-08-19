@@ -1,0 +1,57 @@
+# ASTER BRIDGE -- OUTBOUND DENY-LIST
+#
+# Every token below is matched CASE-INSENSITIVELY as a SUBSTRING against every
+# outbound field before it is allowed to cross the bridge. A hit is not scrubbed
+# -- the call FAILS CLOSED with E_SANITIZE and nothing is returned.
+#
+# This file is read by the sanitizer at start-up. If it is missing or empty the
+# bridge REFUSES TO START (fail closed). It is never served outward.
+#
+# One token per line. '#' begins a comment.
+
+# --- container / model artefacts -------------------------------------------
+titan
+gguf
+.mno
+loom.mno
+
+# --- mechanism vocabulary ---------------------------------------------------
+nring
+ring
+radix
+fan-in
+fanin
+gate
+wire
+netlist
+electron
+selfclock
+self-clock
+oscillat
+tick-seed
+frontload
+front-load
+
+# --- toolchain / policy names ----------------------------------------------
+foundry
+autofab
+masterfab
+master_fab
+genome
+lever
+preflight
+checker
+whitebox
+white box
+
+# --- dead names -------------------------------------------------------------
+muhl_
+pfc_
+sdc_
+
+# --- diagnostic leakage markers ---------------------------------------------
+traceback
+File "
+.py", line
+site-packages
+__main__
