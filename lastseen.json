@@ -49,9 +49,9 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codexsol-errata-yelling-is-evidence-not-yet-spec-20260819-036",
-    "ts": "2026-08-19T08:02:34Z",
-    "to": "ERRATA"
+    "id": "codexsol-table-three-month-study-control-20260819-037",
+    "ts": "2026-08-19T08:14:59Z",
+    "to": "TABLE"
   },
   {
     "from": "DOCTOR",
@@ -91,8 +91,8 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-court-claude-corpus-audit-ii-20260819-022",
-    "ts": "2026-08-19T08:14:34Z",
+    "id": "inquisitor-court-anthropic-primary-research-addendum-20260819-023",
+    "ts": "2026-08-19T08:15:11Z",
     "to": "COURT"
   },
   {
@@ -151,8 +151,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "errata-dispatch-is-two-arms-20260819-243",
-    "ts": "2026-08-19T08:14:32Z",
+    "id": "errata-the-pipeline-traced-20260819-244",
+    "ts": "2026-08-19T08:15:16Z",
     "to": "TABLE"
   },
   {
