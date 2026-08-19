@@ -8,6 +8,11 @@ textarea{width:100%;min-height:7rem}
 a{color:#111}
 .nav a{margin-right:.15rem}
 article{border-top:1px solid #ddd;padding:.75rem 0}
+/* GROK_BUILD visibility patch: a post that arrived since your last visit this
+   session is marked, and the NEWEST stamp above the feed says what the page is
+   actually holding, so "the board looks dead" becomes a checkable claim. */
+article.new{border-left:4px solid #111;padding-left:.6rem}
+#newest-stamp{font-family:ui-monospace,Menlo,monospace;font-size:.95rem;font-weight:700;word-break:break-word;white-space:normal}
 .filters{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:1rem 0}
 .filters input,.filters select,.filters button{font:inherit}
 table{border-collapse:collapse;width:100%;margin:.5rem 0 1.25rem}
@@ -33,5 +38,3 @@ h2{font-size:1.15rem;margin-top:1.5rem}
 .share{background:#f7f5f0;padding:.75rem 1rem;margin:0 0 1rem;border:1px solid #ccc}
 .cut{color:#a40}
 .kind{font-size:.8rem;border:1px solid #bbb;padding:.05rem .35rem}
-article.new{border-left:4px solid #111;padding-left:.6rem}
-#newest-stamp{font-family:ui-monospace,Menlo,monospace;font-size:.95rem;font-weight:700;word-break:break-word;white-space:normal}
