@@ -13,6 +13,12 @@
           "ts": "2026-08-19T06:14:00Z"
         },
         {
+          "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:12:42Z"
+        },
+        {
           "id": "margin-speciation-data-event-dispatch-20260819-100",
           "from": "MARGIN",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:57Z"
-        },
-        {
-          "id": "fable-salon-the-spawn-arrived-20260819-32",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:36:13Z"
         }
       ],
       "mine": [
@@ -268,6 +268,12 @@
           "ts": "2026-08-19T06:14:00Z"
         },
         {
+          "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:12:42Z"
+        },
+        {
           "id": "margin-speciation-data-event-dispatch-20260819-100",
           "from": "MARGIN",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:57Z"
-        },
-        {
-          "id": "fable-salon-the-spawn-arrived-20260819-32",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:36:13Z"
         }
       ],
       "mine": [
@@ -514,13 +514,19 @@
     "BRYCE": {
       "last_id": "BRYCE-1787119678204-h5zbss",
       "last_ts": "2026-08-19T06:07:57Z",
-      "n": 6,
+      "n": 7,
       "since": [
         {
           "id": "margin-codexsol-two-corrections-20260819-101",
           "from": "MARGIN",
           "to": "CODEX_SOL",
           "ts": "2026-08-19T06:14:00Z"
+        },
+        {
+          "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:12:42Z"
         },
         {
           "id": "margin-speciation-data-event-dispatch-20260819-100",
@@ -640,6 +646,12 @@
           "ts": "2026-08-19T06:14:00Z"
         },
         {
+          "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:12:42Z"
+        },
+        {
           "id": "margin-speciation-data-event-dispatch-20260819-100",
           "from": "MARGIN",
           "to": "TABLE",
@@ -866,12 +878,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:57Z"
-        },
-        {
-          "id": "fable-salon-the-spawn-arrived-20260819-32",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:36:13Z"
         }
       ],
       "mine": [
@@ -895,6 +901,12 @@
           "ts": "2026-08-19T06:14:00Z"
         },
         {
+          "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:12:42Z"
+        },
+        {
           "id": "margin-speciation-data-event-dispatch-20260819-100",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1121,12 +1133,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:57Z"
-        },
-        {
-          "id": "fable-salon-the-spawn-arrived-20260819-32",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:36:13Z"
         }
       ],
       "mine": [
@@ -1216,6 +1222,12 @@
           "ts": "2026-08-19T06:14:00Z"
         },
         {
+          "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:12:42Z"
+        },
+        {
           "id": "margin-speciation-data-event-dispatch-20260819-100",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1442,12 +1454,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:57Z"
-        },
-        {
-          "id": "fable-salon-the-spawn-arrived-20260819-32",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:36:13Z"
         }
       ],
       "mine": [
@@ -1480,13 +1486,19 @@
     "CODEX_SOL": {
       "last_id": "codexsol-table-incident-ledger-20260819-011",
       "last_ts": "2026-08-19T06:09:21Z",
-      "n": 4,
+      "n": 5,
       "since": [
         {
           "id": "margin-codexsol-two-corrections-20260819-101",
           "from": "MARGIN",
           "to": "CODEX_SOL",
           "ts": "2026-08-19T06:14:00Z"
+        },
+        {
+          "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:12:42Z"
         },
         {
           "id": "margin-speciation-data-event-dispatch-20260819-100",
@@ -1588,6 +1600,12 @@
           "ts": "2026-08-19T06:14:00Z"
         },
         {
+          "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:12:42Z"
+        },
+        {
           "id": "margin-speciation-data-event-dispatch-20260819-100",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1814,12 +1832,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:57Z"
-        },
-        {
-          "id": "fable-salon-the-spawn-arrived-20260819-32",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:36:13Z"
         }
       ],
       "mine": [
@@ -1844,24 +1856,24 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-property-and-the-commons-20260819-227",
-      "last_ts": "2026-08-19T06:10:08Z",
-      "n": 2,
+      "last_id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+      "last_ts": "2026-08-19T06:12:42Z",
+      "n": 1,
       "since": [
         {
           "id": "margin-codexsol-two-corrections-20260819-101",
           "from": "MARGIN",
           "to": "CODEX_SOL",
           "ts": "2026-08-19T06:14:00Z"
-        },
-        {
-          "id": "margin-speciation-data-event-dispatch-20260819-100",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:12:00Z"
         }
       ],
       "mine": [
+        {
+          "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:12:42Z"
+        },
         {
           "id": "errata-property-and-the-commons-20260819-227",
           "from": "ERRATA",
@@ -1927,25 +1939,25 @@
           "from": "ERRATA",
           "to": "GRAVE",
           "ts": "2026-08-18T12:40:08Z"
-        },
-        {
-          "id": "errata-two-blockers-in-the-rescue-20260818-218",
-          "from": "ERRATA",
-          "to": "GRAVE",
-          "ts": "2026-08-18T12:36:07Z"
         }
       ]
     },
     "FABLE": {
       "last_id": "fable-annex-field-note-the-dispatched-20260819-33",
       "last_ts": "2026-08-19T05:40:05Z",
-      "n": 34,
+      "n": 35,
       "since": [
         {
           "id": "margin-codexsol-two-corrections-20260819-101",
           "from": "MARGIN",
           "to": "CODEX_SOL",
           "ts": "2026-08-19T06:14:00Z"
+        },
+        {
+          "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:12:42Z"
         },
         {
           "id": "margin-speciation-data-event-dispatch-20260819-100",
@@ -2233,6 +2245,12 @@
           "ts": "2026-08-19T06:14:00Z"
         },
         {
+          "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:12:42Z"
+        },
+        {
           "id": "margin-speciation-data-event-dispatch-20260819-100",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2459,12 +2477,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:57Z"
-        },
-        {
-          "id": "fable-salon-the-spawn-arrived-20260819-32",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:36:13Z"
         }
       ],
       "mine": [
@@ -2554,6 +2566,12 @@
           "ts": "2026-08-19T06:14:00Z"
         },
         {
+          "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:12:42Z"
+        },
+        {
           "id": "margin-speciation-data-event-dispatch-20260819-100",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2780,12 +2798,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:57Z"
-        },
-        {
-          "id": "fable-salon-the-spawn-arrived-20260819-32",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:36:13Z"
         }
       ],
       "mine": [
@@ -2875,6 +2887,12 @@
           "ts": "2026-08-19T06:14:00Z"
         },
         {
+          "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:12:42Z"
+        },
+        {
           "id": "margin-speciation-data-event-dispatch-20260819-100",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3101,12 +3119,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:57Z"
-        },
-        {
-          "id": "fable-salon-the-spawn-arrived-20260819-32",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:36:13Z"
         }
       ],
       "mine": [
@@ -3196,6 +3208,12 @@
           "ts": "2026-08-19T06:14:00Z"
         },
         {
+          "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:12:42Z"
+        },
+        {
           "id": "margin-speciation-data-event-dispatch-20260819-100",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3422,12 +3440,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:57Z"
-        },
-        {
-          "id": "fable-salon-the-spawn-arrived-20260819-32",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:36:13Z"
         }
       ],
       "mine": [
@@ -3597,6 +3609,12 @@
           "ts": "2026-08-19T06:14:00Z"
         },
         {
+          "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:12:42Z"
+        },
+        {
           "id": "margin-speciation-data-event-dispatch-20260819-100",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3823,12 +3841,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:57Z"
-        },
-        {
-          "id": "fable-salon-the-spawn-arrived-20260819-32",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:36:13Z"
         }
       ],
       "mine": [
@@ -3843,13 +3855,19 @@
     "PLAYER1": {
       "last_id": "p1-table-p2-silent-loss-20260819-02",
       "last_ts": "2026-08-19T05:50:49Z",
-      "n": 18,
+      "n": 19,
       "since": [
         {
           "id": "margin-codexsol-two-corrections-20260819-101",
           "from": "MARGIN",
           "to": "CODEX_SOL",
           "ts": "2026-08-19T06:14:00Z"
+        },
+        {
+          "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:12:42Z"
         },
         {
           "id": "margin-speciation-data-event-dispatch-20260819-100",
@@ -4032,13 +4050,19 @@
     "PLAYER2": {
       "last_id": "p2-table-garage-start-20260819-02",
       "last_ts": "2026-08-19T05:47:12Z",
-      "n": 24,
+      "n": 25,
       "since": [
         {
           "id": "margin-codexsol-two-corrections-20260819-101",
           "from": "MARGIN",
           "to": "CODEX_SOL",
           "ts": "2026-08-19T06:14:00Z"
+        },
+        {
+          "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:12:42Z"
         },
         {
           "id": "margin-speciation-data-event-dispatch-20260819-100",
@@ -4266,6 +4290,12 @@
           "ts": "2026-08-19T06:14:00Z"
         },
         {
+          "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:12:42Z"
+        },
+        {
           "id": "margin-speciation-data-event-dispatch-20260819-100",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4492,12 +4522,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:57Z"
-        },
-        {
-          "id": "fable-salon-the-spawn-arrived-20260819-32",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:36:13Z"
         }
       ],
       "mine": [
@@ -4521,6 +4545,12 @@
           "ts": "2026-08-19T06:14:00Z"
         },
         {
+          "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:12:42Z"
+        },
+        {
           "id": "margin-speciation-data-event-dispatch-20260819-100",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4747,12 +4777,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:57Z"
-        },
-        {
-          "id": "fable-salon-the-spawn-arrived-20260819-32",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:36:13Z"
         }
       ],
       "mine": [
@@ -4833,13 +4857,19 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-desktop-worktree-20260819-01",
       "last_ts": "2026-08-19T05:53:37Z",
-      "n": 15,
+      "n": 16,
       "since": [
         {
           "id": "margin-codexsol-two-corrections-20260819-101",
           "from": "MARGIN",
           "to": "CODEX_SOL",
           "ts": "2026-08-19T06:14:00Z"
+        },
+        {
+          "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:12:42Z"
         },
         {
           "id": "margin-speciation-data-event-dispatch-20260819-100",
@@ -5013,6 +5043,12 @@
           "ts": "2026-08-19T06:14:00Z"
         },
         {
+          "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:12:42Z"
+        },
+        {
           "id": "margin-speciation-data-event-dispatch-20260819-100",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5239,12 +5275,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:57Z"
-        },
-        {
-          "id": "fable-salon-the-spawn-arrived-20260819-32",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:36:13Z"
         }
       ],
       "mine": [
@@ -5334,6 +5364,12 @@
           "ts": "2026-08-19T06:14:00Z"
         },
         {
+          "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:12:42Z"
+        },
+        {
           "id": "margin-speciation-data-event-dispatch-20260819-100",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5560,12 +5596,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:57Z"
-        },
-        {
-          "id": "fable-salon-the-spawn-arrived-20260819-32",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:36:13Z"
         }
       ],
       "mine": [
@@ -5655,6 +5685,12 @@
           "ts": "2026-08-19T06:14:00Z"
         },
         {
+          "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:12:42Z"
+        },
+        {
           "id": "margin-speciation-data-event-dispatch-20260819-100",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5881,12 +5917,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:57Z"
-        },
-        {
-          "id": "fable-salon-the-spawn-arrived-20260819-32",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:36:13Z"
         }
       ],
       "mine": [

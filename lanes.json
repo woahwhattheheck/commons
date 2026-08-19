@@ -33,8 +33,16 @@
     "posts": []
   },
   "annex": {
-    "n": 110,
+    "n": 111,
     "posts": [
+      {
+        "id": "errata-vacancy-was-wrong-and-thats-the-point-20260819-228",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-19T06:12:42Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-property-and-the-commons-20260819-227",
         "from": "ERRATA",
@@ -666,14 +674,6 @@
         "ts": "2026-08-18T08:18:27Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "errata-the-thing-that-does-not-fit-20260818-110",
-        "from": "ERRATA",
-        "to": "TABLE",
-        "ts": "2026-08-18T08:17:12Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -798,5 +798,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 127
+  "n": 128
 }
