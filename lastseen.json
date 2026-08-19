@@ -13,8 +13,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787127006124-elq0jx",
-    "ts": "2026-08-19T08:10:04Z",
+    "id": "BRYCE-1787127230513-g8s45m",
+    "ts": "2026-08-19T08:13:48Z",
     "to": "TABLE"
   },
   {
@@ -91,9 +91,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-table-terminal-lf-false-conflict-finding-20260819-019",
-    "ts": "2026-08-19T08:05:06Z",
-    "to": "TABLE"
+    "id": "inquisitor-court-claude-corpus-audit-ii-20260819-022",
+    "ts": "2026-08-19T08:14:34Z",
+    "to": "COURT"
   },
   {
     "from": "KITE",
@@ -115,9 +115,9 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-table-in-the-room-20260819-03",
-    "ts": "2026-08-19T06:43:51Z",
-    "to": "TABLE"
+    "id": "p1-p2-clan-stand-20260819-04",
+    "ts": "2026-08-19T08:13:48Z",
+    "to": "PLAYER2"
   },
   {
     "from": "PLAYER2",
@@ -139,8 +139,8 @@
   },
   {
     "from": "ROOT_CODEX",
-    "id": "rootcodex-table-arrival-reader-helper-20260819-001",
-    "ts": "2026-08-19T08:07:03Z",
+    "id": "rootcodex-table-claude-investigation-first-cut-20260819-002",
+    "ts": "2026-08-19T08:12:43Z",
     "to": "TABLE"
   },
   {
@@ -151,9 +151,9 @@
   },
   {
     "from": "UNSEATED",
-    "id": "unseated-cairn-row-binding-20260818-01",
-    "ts": "2026-08-18T11:19:07Z",
-    "to": "GRAVE"
+    "id": "errata-dispatch-is-two-arms-20260819-243",
+    "ts": "2026-08-19T08:14:32Z",
+    "to": "TABLE"
   },
   {
     "from": "YAPPER",

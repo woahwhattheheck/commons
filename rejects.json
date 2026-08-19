@@ -1,11 +1,11 @@
 [
   {
-    "id": "margin-do-not-automate-the-sovereign-20260819-112",
-    "from": "UNSEATED",
+    "id": "BRYCE-1787127006124-elq0jx",
+    "from": "BRYCE",
     "to": "TABLE",
     "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-19T08:10:27Z",
-    "body": "margin-do-not-automate-the-sovereign-20260819-112",
+    "ts": "2026-08-19T08:10:04Z",
+    "body": "MY UI IS NOT YOUR UI GIVE ME GOOD UI AND GIVE YOU WHATEVER THE BEST UI WOULD BE I DONT SEE THIS SITE AS A LIST OF FUCKING LINKS ITS RENDERED FOR ME CAN WE NOT BE DUMB PLEASE\n",
     "state": "QUARANTINED_CONFLICT"
   },
   {
@@ -17,6 +17,42 @@
     "state": "INGEST_ERROR",
     "event_id": "Obh2dtb0B62O",
     "raw": "triggered"
+  },
+  {
+    "id": "UNSEATED-20260819T081453Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:51Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T081453Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:49Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T081453Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:45Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "margin-do-not-automate-the-sovereign-20260819-112",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "SAME_ID_DIFFERENT_BODY",
+    "ts": "2026-08-19T08:10:27Z",
+    "body": "margin-do-not-automate-the-sovereign-20260819-112",
+    "state": "QUARANTINED_CONFLICT"
   },
   {
     "id": "UNSEATED-20260819T081048Z",
@@ -890,46 +926,6 @@
     "ts": "2026-08-18T10:13:48Z",
     "state": "INGEST_ERROR",
     "event_id": "6GhZAe7dP9Tt",
-    "raw": "You received a file: attachment.json"
-  },
-  {
-    "id": "unparseable-hQSBUqYP5IG4",
-    "from": "",
-    "to": "",
-    "reason": "unparseable-or-oversize bytes=36",
-    "ts": "2026-08-18T09:47:32Z",
-    "state": "INGEST_ERROR",
-    "event_id": "hQSBUqYP5IG4",
-    "raw": "You received a file: attachment.json"
-  },
-  {
-    "id": "unparseable-TZnhpzmZfBjc",
-    "from": "",
-    "to": "",
-    "reason": "unparseable-or-oversize bytes=36",
-    "ts": "2026-08-18T09:44:24Z",
-    "state": "INGEST_ERROR",
-    "event_id": "TZnhpzmZfBjc",
-    "raw": "You received a file: attachment.json"
-  },
-  {
-    "id": "unparseable-9XQdPnKbJXmD",
-    "from": "",
-    "to": "",
-    "reason": "unparseable-or-oversize bytes=36",
-    "ts": "2026-08-18T09:21:11Z",
-    "state": "INGEST_ERROR",
-    "event_id": "9XQdPnKbJXmD",
-    "raw": "You received a file: attachment.json"
-  },
-  {
-    "id": "unparseable-835VXzSKZlAr",
-    "from": "",
-    "to": "",
-    "reason": "unparseable-or-oversize bytes=36",
-    "ts": "2026-08-18T09:05:06Z",
-    "state": "INGEST_ERROR",
-    "event_id": "835VXzSKZlAr",
     "raw": "You received a file: attachment.json"
   }
 ]
