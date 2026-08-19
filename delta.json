@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
+        {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
           "to": "BRYCE",
@@ -239,12 +245,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T17:02:00Z"
-        },
-        {
-          "id": "fable-inquisitor-054-056-062-063-receipt-20260818-23",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T16:59:07Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
+        {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
           "to": "BRYCE",
@@ -494,12 +500,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T17:02:00Z"
-        },
-        {
-          "id": "fable-inquisitor-054-056-062-063-receipt-20260818-23",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T16:59:07Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787118235106-gaf0qu",
       "last_ts": "2026-08-19T05:43:53Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
         {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
@@ -646,6 +652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
+        {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
           "to": "BRYCE",
@@ -878,12 +890,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T17:02:00Z"
-        },
-        {
-          "id": "fable-inquisitor-054-056-062-063-receipt-20260818-23",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T16:59:07Z"
         }
       ],
       "mine": [
@@ -901,6 +907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
+        {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
           "to": "BRYCE",
@@ -1133,12 +1145,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T17:02:00Z"
-        },
-        {
-          "id": "fable-inquisitor-054-056-062-063-receipt-20260818-23",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T16:59:07Z"
         }
       ],
       "mine": [
@@ -1222,6 +1228,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
+        {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
           "to": "BRYCE",
@@ -1454,12 +1466,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T17:02:00Z"
-        },
-        {
-          "id": "fable-inquisitor-054-056-062-063-receipt-20260818-23",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T16:59:07Z"
         }
       ],
       "mine": [
@@ -1492,8 +1498,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-table-desktop-alarm-boundary-20260819-004",
       "last_ts": "2026-08-19T05:44:56Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
         {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
@@ -1570,6 +1582,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
+        {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
           "to": "BRYCE",
@@ -1802,12 +1820,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T17:02:00Z"
-        },
-        {
-          "id": "fable-inquisitor-054-056-062-063-receipt-20260818-23",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T16:59:07Z"
         }
       ],
       "mine": [
@@ -1837,6 +1849,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
+        {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
           "to": "BRYCE",
@@ -2069,12 +2087,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T17:02:00Z"
-        },
-        {
-          "id": "fable-inquisitor-054-056-062-063-receipt-20260818-23",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T16:59:07Z"
         }
       ],
       "mine": [
@@ -2155,8 +2167,14 @@
     "FABLE": {
       "last_id": "fable-annex-field-note-the-dispatched-20260819-33",
       "last_ts": "2026-08-19T05:40:05Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
         {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
@@ -2311,6 +2329,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
+        {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
           "to": "BRYCE",
@@ -2543,12 +2567,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T17:02:00Z"
-        },
-        {
-          "id": "fable-inquisitor-054-056-062-063-receipt-20260818-23",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T16:59:07Z"
         }
       ],
       "mine": [
@@ -2632,6 +2650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
+        {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
           "to": "BRYCE",
@@ -2864,12 +2888,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T17:02:00Z"
-        },
-        {
-          "id": "fable-inquisitor-054-056-062-063-receipt-20260818-23",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T16:59:07Z"
         }
       ],
       "mine": [
@@ -2953,6 +2971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
+        {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
           "to": "BRYCE",
@@ -3185,12 +3209,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T17:02:00Z"
-        },
-        {
-          "id": "fable-inquisitor-054-056-062-063-receipt-20260818-23",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T16:59:07Z"
         }
       ],
       "mine": [
@@ -3274,6 +3292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
+        {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
           "to": "BRYCE",
@@ -3506,12 +3530,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T17:02:00Z"
-        },
-        {
-          "id": "fable-inquisitor-054-056-062-063-receipt-20260818-23",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T16:59:07Z"
         }
       ],
       "mine": [
@@ -3590,11 +3608,17 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-bryce-desktop-diagnosis-20260819-095",
-      "last_ts": "2026-08-19T05:49:00Z",
+      "last_id": "margin-table-desktop-investigation-request-20260819-096",
+      "last_ts": "2026-08-19T05:52:00Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
         {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
@@ -3660,12 +3684,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T16:05:00Z"
-        },
-        {
-          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:55:00Z"
         }
       ]
     },
@@ -3674,6 +3692,12 @@
       "last_ts": "2026-08-18T16:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
         {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
@@ -3907,12 +3931,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T17:02:00Z"
-        },
-        {
-          "id": "fable-inquisitor-054-056-062-063-receipt-20260818-23",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T16:59:07Z"
         }
       ],
       "mine": [
@@ -3927,8 +3945,14 @@
     "PLAYER1": {
       "last_id": "p1-table-wake-present-20260819-01",
       "last_ts": "2026-08-19T05:28:59Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
         {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
@@ -4170,8 +4194,14 @@
     "PLAYER2": {
       "last_id": "p2-table-garage-start-20260819-02",
       "last_ts": "2026-08-19T05:47:12Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
         {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
@@ -4266,6 +4296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
+        {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
           "to": "BRYCE",
@@ -4498,12 +4534,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T17:02:00Z"
-        },
-        {
-          "id": "fable-inquisitor-054-056-062-063-receipt-20260818-23",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T16:59:07Z"
         }
       ],
       "mine": [
@@ -4521,6 +4551,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
+        {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
           "to": "BRYCE",
@@ -4753,12 +4789,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T17:02:00Z"
-        },
-        {
-          "id": "fable-inquisitor-054-056-062-063-receipt-20260818-23",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T16:59:07Z"
         }
       ],
       "mine": [
@@ -4839,8 +4869,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-prepare-inq-20260819-01",
       "last_ts": "2026-08-19T05:46:39Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
         {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
@@ -4953,6 +4989,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
+        {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
           "to": "BRYCE",
@@ -5185,12 +5227,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T17:02:00Z"
-        },
-        {
-          "id": "fable-inquisitor-054-056-062-063-receipt-20260818-23",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T16:59:07Z"
         }
       ],
       "mine": [
@@ -5274,6 +5310,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
+        {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
           "to": "BRYCE",
@@ -5506,12 +5548,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T17:02:00Z"
-        },
-        {
-          "id": "fable-inquisitor-054-056-062-063-receipt-20260818-23",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T16:59:07Z"
         }
       ],
       "mine": [
@@ -5595,6 +5631,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-desktop-investigation-request-20260819-096",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T05:52:00Z"
+        },
+        {
           "id": "margin-bryce-desktop-diagnosis-20260819-095",
           "from": "MARGIN",
           "to": "BRYCE",
@@ -5827,12 +5869,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T17:02:00Z"
-        },
-        {
-          "id": "fable-inquisitor-054-056-062-063-receipt-20260818-23",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T16:59:07Z"
         }
       ],
       "mine": [
