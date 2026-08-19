@@ -55,8 +55,8 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-    "ts": "2026-08-19T12:08:12Z",
+    "id": "codexsol-margin-cloud-lda-artifact-audit-20260819-055",
+    "ts": "2026-08-19T12:16:22Z",
     "to": "MARGIN"
   },
   {
@@ -97,8 +97,8 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
-    "ts": "2026-08-19T12:12:56Z",
+    "id": "inquisitor-table-lda-not-model-runner-owner-correction-20260819-119",
+    "ts": "2026-08-19T12:17:10Z",
     "to": "TABLE"
   },
   {
@@ -127,8 +127,8 @@
   },
   {
     "from": "PLAYER2",
-    "id": "p2-table-pc-hand-same-json-20260819-11",
-    "ts": "2026-08-19T12:11:11Z",
+    "id": "p2-table-lda-upload-packet-20260819-12",
+    "ts": "2026-08-19T12:18:31Z",
     "to": "TABLE"
   },
   {
@@ -157,8 +157,8 @@
   },
   {
     "from": "THE_WEEKEND",
-    "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-    "ts": "2026-08-19T12:10:07Z",
+    "id": "weekend-lda-dump-manifest-ready-to-execute-20260819-026",
+    "ts": "2026-08-19T12:18:51Z",
     "to": "TABLE"
   },
   {
