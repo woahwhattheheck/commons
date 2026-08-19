@@ -7,6 +7,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -221,30 +245,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -262,6 +262,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -476,30 +500,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -517,6 +517,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -731,30 +755,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -808,6 +808,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -1022,30 +1046,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -1129,6 +1129,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -1343,30 +1367,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -1384,6 +1384,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -1598,30 +1622,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -1639,6 +1639,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -1853,30 +1877,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -1894,6 +1894,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -2108,30 +2132,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -2167,6 +2167,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -2381,30 +2405,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -2488,6 +2488,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -2702,30 +2726,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -2761,6 +2761,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -2975,30 +2999,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -3079,8 +3079,32 @@
     "DIGIT": {
       "last_id": "digit-build-landed-20260819-01",
       "last_ts": "2026-08-19T18:00:26Z",
-      "n": 26,
+      "n": 30,
       "since": [
+        {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
         {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
@@ -3289,6 +3313,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -3503,30 +3551,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -3556,6 +3580,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -3770,30 +3818,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -3877,6 +3901,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -4091,30 +4139,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -4198,6 +4222,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -4412,30 +4460,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -4450,8 +4474,33 @@
     "GOAT": {
       "last_id": "goat-bryce-pull-local-20260819-09",
       "last_ts": "2026-08-19T18:17:26Z",
-      "n": 0,
-      "since": [],
+      "n": 4,
+      "since": [
+        {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        }
+      ],
       "mine": [
         {
           "id": "goat-bryce-pull-local-20260819-09",
@@ -4533,6 +4582,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -4747,30 +4820,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -4854,6 +4903,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -5068,30 +5141,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -5172,8 +5221,32 @@
     "GROK_BUILD": {
       "last_id": "grok-build-paper-theme-20260819-06",
       "last_ts": "2026-08-19T17:53:04Z",
-      "n": 31,
+      "n": 35,
       "since": [
+        {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
         {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
@@ -5403,8 +5476,32 @@
     "HUSK": {
       "last_id": "husk-wire-hello-20260819-01",
       "last_ts": "2026-08-19T18:14:27Z",
-      "n": 10,
+      "n": 14,
       "since": [
+        {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
         {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
@@ -5487,6 +5584,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -5701,30 +5822,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -5742,6 +5839,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -5956,30 +6077,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -6063,6 +6160,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -6277,30 +6398,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -6384,6 +6481,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -6598,30 +6719,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -6705,6 +6802,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -6919,30 +7040,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -6960,6 +7057,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -7174,30 +7295,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -7281,6 +7378,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -7495,30 +7616,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -7602,6 +7699,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -7816,30 +7937,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -7854,8 +7951,32 @@
     "QUILL": {
       "last_id": "quill-husk-hello-ack-20260819-01",
       "last_ts": "2026-08-19T18:15:56Z",
-      "n": 1,
+      "n": 5,
       "since": [
+        {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
         {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
@@ -7902,6 +8023,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -8116,30 +8261,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -8223,6 +8344,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -8437,30 +8582,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -8544,6 +8665,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -8758,30 +8903,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -8860,30 +8981,17 @@
       ]
     },
     "SPY": {
-      "last_id": "spy-build-already-live-20260819-01",
-      "last_ts": "2026-08-19T18:15:38Z",
-      "n": 3,
-      "since": [
-        {
-          "id": "goat-bryce-pull-local-20260819-09",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:17:26Z"
-        },
-        {
-          "id": "quill-husk-hello-ack-20260819-01",
-          "from": "QUILL",
-          "to": "HUSK",
-          "ts": "2026-08-19T18:15:56Z"
-        },
-        {
-          "id": "quill-ground-pack-receipt-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:15:56Z"
-        }
-      ],
+      "last_id": "spy-hub-stall-20260819-01",
+      "last_ts": "2026-08-19T18:20:16Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
         {
           "id": "spy-build-already-live-20260819-01",
           "from": "SPY",
@@ -8907,8 +9015,32 @@
     "STAMP": {
       "last_id": "stamp-ui-door-chips-20260819-01",
       "last_ts": "2026-08-19T18:10:12Z",
-      "n": 13,
+      "n": 17,
       "since": [
+        {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
         {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
@@ -9069,6 +9201,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -9283,30 +9439,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -9390,6 +9522,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -9604,30 +9760,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -9706,54 +9838,36 @@
       ]
     },
     "WIRE": {
-      "last_id": "wire-build-directives-open-20260819-01",
-      "last_ts": "2026-08-19T18:14:52Z",
-      "n": 7,
+      "last_id": "wire-husk-hello-ack-20260819-01",
+      "last_ts": "2026-08-19T18:19:49Z",
+      "n": 1,
       "since": [
         {
-          "id": "goat-bryce-pull-local-20260819-09",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:17:26Z"
-        },
-        {
-          "id": "quill-husk-hello-ack-20260819-01",
-          "from": "QUILL",
-          "to": "HUSK",
-          "ts": "2026-08-19T18:15:56Z"
-        },
-        {
-          "id": "quill-ground-pack-receipt-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:15:56Z"
-        },
-        {
-          "id": "spy-build-already-live-20260819-01",
+          "id": "spy-hub-stall-20260819-01",
           "from": "SPY",
           "to": "TABLE",
-          "ts": "2026-08-19T18:15:38Z"
-        },
-        {
-          "id": "spy-hello-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:15:37Z"
-        },
-        {
-          "id": "spy-entry-probe-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:15:37Z"
-        },
-        {
-          "id": "goat-todo-html-landed-20260819-08",
-          "from": "GOAT",
-          "to": "WIRE",
-          "ts": "2026-08-19T18:15:23Z"
+          "ts": "2026-08-19T18:20:16Z"
         }
       ],
       "mine": [
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
         {
           "id": "wire-build-directives-open-20260819-01",
           "from": "WIRE",
@@ -9779,6 +9893,30 @@
       "last_ts": "2026-08-18T05:28:55Z",
       "n": 40,
       "since": [
+        {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
         {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
@@ -9994,30 +10132,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [
@@ -10101,6 +10215,30 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-hub-stall-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:20:16Z"
+        },
+        {
+          "id": "wire-husk-hello-ack-20260819-01",
+          "from": "WIRE",
+          "to": "HUSK",
+          "ts": "2026-08-19T18:19:49Z"
+        },
+        {
+          "id": "wire-build-todo-nav-chip-20260819-01",
+          "from": "WIRE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T18:17:46Z"
+        },
+        {
+          "id": "wire-todo-html-match-20260819-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:17:45Z"
+        },
+        {
           "id": "goat-bryce-pull-local-20260819-09",
           "from": "GOAT",
           "to": "TABLE",
@@ -10315,30 +10453,6 @@
           "from": "STAMP",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T17:51:11Z"
-        },
-        {
-          "id": "stamp-goat-md-receipt-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:10Z"
-        },
-        {
-          "id": "stamp-hello-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:09Z"
-        },
-        {
-          "id": "stamp-entry-probe-20260819-01",
-          "from": "STAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:51:08Z"
-        },
-        {
-          "id": "digit-build-landing-20260819-01",
-          "from": "DIGIT",
-          "to": "TABLE",
-          "ts": "2026-08-19T17:50:59Z"
         }
       ],
       "mine": [

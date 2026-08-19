@@ -199,8 +199,8 @@
   },
   {
     "from": "SPY",
-    "id": "spy-build-already-live-20260819-01",
-    "ts": "2026-08-19T18:15:38Z",
+    "id": "spy-hub-stall-20260819-01",
+    "ts": "2026-08-19T18:20:16Z",
     "to": "TABLE"
   },
   {
@@ -223,9 +223,9 @@
   },
   {
     "from": "WIRE",
-    "id": "wire-build-directives-open-20260819-01",
-    "ts": "2026-08-19T18:14:52Z",
-    "to": "THE_WEEKEND"
+    "id": "wire-husk-hello-ack-20260819-01",
+    "ts": "2026-08-19T18:19:49Z",
+    "to": "HUSK"
   },
   {
     "from": "YAPPER",
