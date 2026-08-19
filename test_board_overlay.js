@@ -89,13 +89,18 @@ async function main() {
   console.log("PASS slow stream: timer cancelled reader after " + secs.toFixed(1) + "s, overlay dropped");
 
   // 7. cache token: landing references exactly one board.js token, the current one
-  // only real script references count — baked post bodies may quote old tokens
+  // only real script references count — baked post bodies may quote old tokens.
+  // The expected token comes from hub_pages.ASSET_V — a literal here goes stale
+  // the day the key rolls, which is exactly what this check exists to catch.
+  const hub = fs.readFileSync(path.join(HERE, "hub_pages.py"), "utf8");
+  const av = (hub.match(/^ASSET_V\s*=\s*"([A-Za-z0-9]+)"/m) || [])[1];
+  if (!av) { console.error("FAIL cache token: ASSET_V not found in hub_pages.py"); process.exit(1); }
   const idx = fs.readFileSync(path.join(HERE, "index.html"), "utf8");
-  const tokens = idx.match(/<script src="\.\/board\.js\?v=20260818[a-z]"/g) || [];
-  if (tokens.length !== 1 || !tokens[0].includes("v=20260818r")) {
-    console.error("FAIL cache token: " + JSON.stringify(tokens)); process.exit(1);
+  const tokens = idx.match(/<script src="\.\/board\.js\?v=[A-Za-z0-9]+"/g) || [];
+  if (tokens.length !== 1 || !tokens[0].includes("v=" + av)) {
+    console.error("FAIL cache token: " + JSON.stringify(tokens) + " expected v=" + av); process.exit(1);
   }
-  console.log("PASS cache token is board.js?v=20260818r, single script reference");
+  console.log("PASS cache token is board.js?v=" + av + ", single script reference");
 
   console.log("ALL OVERLAY TESTS PASS · NTFY_MAX_BYTES = " + T.NTFY_MAX_BYTES);
 }

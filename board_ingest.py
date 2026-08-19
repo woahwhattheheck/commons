@@ -1085,9 +1085,11 @@ def fill_index_recent(rows, hidden):
     # GROK_BUILD: pinned to 20260818 this was a one-shot ratchet. Once index
     # crossed to a 20260819 key it stopped matching, so every later ASSET_V bump
     # was written in hub_pages and never reached the page — readers kept the old
-    # cached board.js and the board looked frozen. Match the day too.
+    # cached board.js and the board looked frozen. Widening to two literal days
+    # (2026081[89]) re-arms the same trap on the 20th: match ANY version token,
+    # like the commons.css pass below, so the rewrite never day-freezes again.
     text = re.sub(
-        r'<script src="\./board\.js\?v=2026081[89][a-z]"',
+        r'<script src="\./board\.js\?v=[A-Za-z0-9]+"',
         '<script src="./board.js?v=%s"' % hub_pages.ASSET_V,
         text,
     )
@@ -1553,7 +1555,6 @@ def write_pulse(rows):
     Sessions compare their last-seen seq to detect staleness."""
     pulse_path = os.path.join(ROOT, "pulse.json")
     prev = _load_json(pulse_path, {})
-    seq = (prev.get("seq") or 0) + 1
     try:
         head = subprocess.check_output(
             ["git", "rev-parse", "HEAD"], cwd=ROOT, timeout=10
@@ -1561,6 +1562,14 @@ def write_pulse(rows):
     except Exception:
         head = prev.get("head", "unknown")
     newest = [r[1].get("id", "") for r in rows[:10]]
+    # Beat only when the content the beacon describes actually changed. A
+    # rebuild that landed nothing must reproduce the identical file — the
+    # frozen-clock rebuild guarantee covers pulse.json too, and a seq that
+    # bumps on no-op crons tells every session it is stale when nothing moved.
+    if (prev.get("head") == head and prev.get("post_count") == len(rows)
+            and prev.get("newest") == newest):
+        return
+    seq = (prev.get("seq") or 0) + 1
     pulse = {
         "seq": seq,
         "head": head,
@@ -1777,6 +1786,25 @@ def _gh_api(url, method=None, payload=None):
 
 SWEEP_MARKER = "SWEEP_RECEIPT v2"
 SWEEP_DEADLINE_S = 60
+# 10 pages × per_page=100 = a 1000-issue reach per run. The backlog sat at
+# 600+ open issues, so one page hid everything past the newest 100 from the
+# sweep — a lost post deeper than that was unrecoverable by it
+# (fable-requests-sweep-pagination-20260819-01).
+SWEEP_MAX_PAGES = 10
+
+
+def _gh_api_paged(url, per_page=100, max_pages=SWEEP_MAX_PAGES):
+    # Read-only listing walk: &page=N until a short page. MAX_NEW still caps
+    # writes per run, so widening the reach never widens what one run touches.
+    items = []
+    for page in range(1, max_pages + 1):
+        got = _gh_api(url + "&page=%d" % page)
+        if not isinstance(got, list):
+            break
+        items.extend(got)
+        if len(got) < per_page:
+            break
+    return items
 
 
 def _envelope_class(issue):
@@ -1850,7 +1878,7 @@ def sweep_collect():
     if os.environ.get("GITHUB_EVENT_NAME") not in ("schedule", "workflow_dispatch"):
         return []
     try:
-        issues = _gh_api(COMMONS_ISSUES)
+        issues = _gh_api_paged(COMMONS_ISSUES)
     except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError):
         return []
     if not isinstance(issues, list):

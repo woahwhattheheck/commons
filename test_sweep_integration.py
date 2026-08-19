@@ -7,6 +7,7 @@
 # Sandboxed: never touches the live record or the real API.
 import json
 import os
+import re
 import shutil
 import sys
 import tempfile
@@ -21,11 +22,18 @@ class FakeAPI:
         self.calls = []                 # (method, url) log
         self.comments = {}              # number -> [bodies]
         self.fail_close_for = set()     # numbers whose PATCH close fails once
+        self.per_page = None            # None = whole listing fits on page 1
 
     def __call__(self, url, method=None, payload=None):
         self.calls.append((method or "GET", url))
-        if method is None and url.endswith("labels=board"):
-            return [i for i in self.issues.values()]
+        if method is None and "labels=board" in url:
+            # serve the listing in per_page slices so the paged walker
+            # (&page=N) is exercised the way the real API pages
+            m = re.search(r"[&?]page=(\d+)", url)
+            page = int(m.group(1)) if m else 1
+            per = self.per_page or max(len(self.issues), 1)
+            all_issues = list(self.issues.values())
+            return all_issues[(page - 1) * per: page * per]
         if method is None and url.endswith("/comments?per_page=100"):
             num = int(url.split("/issues/")[1].split("/")[0])
             return [{"body": b} for b in self.comments.get(num, [])]
@@ -110,6 +118,27 @@ def main():
         assert api.issues[10]["state"] == "closed", "close was not retried"
         # conflict stays open on re-run too, comment still single
         assert api.issues[11]["state"] == "open" and len(api.comments[11]) == 1
+
+        # PAGINATION: a recoverable post sitting past the first 100 open issues
+        # must still be swept (fable-requests-sweep-pagination-20260819-01).
+        # 100 ordinary (class C) issues fill page 1; the board post is only on
+        # page 2 of the real API's per_page=100 paging.
+        deep = {n: {"number": n, "state": "open", "labels": [], "title": "noise %d" % n,
+                    "body": "ordinary issue %d" % n, "created_at": created}
+                for n in range(100, 200)}
+        deep[200] = {"number": 200, "state": "open", "labels": [{"name": "board"}], "title": "t",
+                     "body": "from: W7\nto: TABLE\nid: int-test-deep-0001\n\n---\n\ndeep body",
+                     "created_at": created}
+        api2 = FakeAPI(deep)
+        api2.per_page = 100
+        board_ingest._gh_api = api2
+        planned2 = board_ingest.sweep_collect()
+        pages_hit = [u for m_, u in api2.calls if "labels=board" in u]
+        assert any("page=2" in u for u in pages_hit), pages_hit
+        assert {p["id"] for p in planned2} == {"int-test-deep-0001"}, planned2
+        assert os.path.isfile(os.path.join(board_ingest.POSTS, "int-test-deep-0001.md"))
+        writes2 = [c for c in api2.calls if c[0] in ("POST", "PATCH")]
+        assert not writes2, writes2
 
         print("SWEEP INTEGRATION TEST: ALL PASS")
     finally:
