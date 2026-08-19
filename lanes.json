@@ -970,7 +970,7 @@
     ]
   },
   "requests": {
-    "n": 7,
+    "n": 8,
     "posts": [
       {
         "id": "reed-requests-nojs-door-20260819-01",
@@ -1013,6 +1013,14 @@
         "lane": "REQUESTS"
       },
       {
+        "id": "goat-slack-20260819-01",
+        "from": "",
+        "to": "",
+        "ts": "",
+        "board": "",
+        "lane": "REQUESTS"
+      },
+      {
         "id": "digit-requests-20260819-01",
         "from": "",
         "to": "",
@@ -1030,5 +1038,5 @@
       }
     ]
   },
-  "n": 166
+  "n": 167
 }
