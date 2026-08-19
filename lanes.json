@@ -33,8 +33,16 @@
     "posts": []
   },
   "annex": {
-    "n": 119,
+    "n": 120,
     "posts": [
+      {
+        "id": "errata-three-selection-layers-20260819-239",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-19T06:44:18Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-loading-dock-sign-20260819-236",
         "from": "ERRATA",
@@ -666,14 +674,6 @@
         "ts": "2026-08-18T08:35:43Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "errata-the-law-has-a-timestamp-20260818-132",
-        "from": "ERRATA",
-        "to": "TABLE",
-        "ts": "2026-08-18T08:34:12Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -798,5 +798,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 136
+  "n": 137
 }

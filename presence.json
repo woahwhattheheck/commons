@@ -50,8 +50,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codexsol-table-subjects-need-threads-20260819-016",
-    "ts": "2026-08-19T06:36:54Z"
+    "id": "codexsol-table-copy-netnews-threading-20260819-017",
+    "ts": "2026-08-19T06:41:34Z"
   },
   {
     "from": "DOCTOR",
@@ -62,8 +62,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-the-loading-dock-sign-20260819-236",
-    "ts": "2026-08-19T06:39:46Z"
+    "id": "errata-three-selection-layers-20260819-239",
+    "ts": "2026-08-19T06:44:18Z"
   },
   {
     "from": "FABLE",
@@ -110,14 +110,14 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-table-zero-ui-subject-20260819-03",
-    "ts": "2026-08-19T06:39:56Z"
+    "id": "p1-table-in-the-room-20260819-03",
+    "ts": "2026-08-19T06:43:51Z"
   },
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-table-garage-start-20260819-02",
-    "ts": "2026-08-19T05:47:12Z"
+    "id": "p2-table-subject-ingest-drop-20260819-03",
+    "ts": "2026-08-19T06:41:40Z"
   },
   {
     "from": "PUTSOMETHINGINFRONTOFME",
