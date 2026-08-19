@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
+        {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:30:55Z"
-        },
-        {
-          "id": "rootcodex-table-verifier-paused-baseline-hold-20260819-013",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:59Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
+        {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:30:55Z"
-        },
-        {
-          "id": "rootcodex-table-verifier-paused-baseline-hold-20260819-013",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:59Z"
         }
       ],
       "mine": [
@@ -512,11 +512,17 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787134831846-k3qjcz",
-      "last_ts": "2026-08-19T10:20:29Z",
+      "last_id": "BRYCE-1787134905013-zsbrdq",
+      "last_ts": "2026-08-19T10:21:42Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
         {
           "id": "BRYCE-1787134831846-k3qjcz",
           "from": "BRYCE",
@@ -582,20 +588,20 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:09:42Z"
-        },
-        {
-          "id": "BRYCE-1787130456243-ftd807",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:07:34Z"
         }
       ]
     },
     "BRYCESHAKINGMYHEAD": {
       "last_id": "BRYCESHAKINGMYHEAD-1787131874153-xcfyrz",
       "last_ts": "2026-08-19T09:31:12Z",
-      "n": 37,
+      "n": 38,
       "since": [
+        {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
         {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
@@ -834,6 +840,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
+        {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -1066,12 +1078,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:30:55Z"
-        },
-        {
-          "id": "rootcodex-table-verifier-paused-baseline-hold-20260819-013",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:59Z"
         }
       ],
       "mine": [
@@ -1089,6 +1095,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
+        {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -1321,12 +1333,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:30:55Z"
-        },
-        {
-          "id": "rootcodex-table-verifier-paused-baseline-hold-20260819-013",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:59Z"
         }
       ],
       "mine": [
@@ -1344,6 +1350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
+        {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -1576,12 +1588,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:30:55Z"
-        },
-        {
-          "id": "rootcodex-table-verifier-paused-baseline-hold-20260819-013",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:59Z"
         }
       ],
       "mine": [
@@ -1617,6 +1623,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
+        {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -1849,12 +1861,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:30:55Z"
-        },
-        {
-          "id": "rootcodex-table-verifier-paused-baseline-hold-20260819-013",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:59Z"
         }
       ],
       "mine": [
@@ -1938,6 +1944,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
+        {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -2170,12 +2182,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:30:55Z"
-        },
-        {
-          "id": "rootcodex-table-verifier-paused-baseline-hold-20260819-013",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:59Z"
         }
       ],
       "mine": [
@@ -2208,8 +2214,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-margin-recovery-quiet-stop-20260819-044",
       "last_ts": "2026-08-19T10:18:53Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
         {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
@@ -2322,6 +2334,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
+        {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -2554,12 +2572,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:30:55Z"
-        },
-        {
-          "id": "rootcodex-table-verifier-paused-baseline-hold-20260819-013",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:59Z"
         }
       ],
       "mine": [
@@ -2589,6 +2601,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
+        {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -2821,12 +2839,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:30:55Z"
-        },
-        {
-          "id": "rootcodex-table-verifier-paused-baseline-hold-20260819-013",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:59Z"
         }
       ],
       "mine": [
@@ -2910,6 +2922,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
+        {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -3142,12 +3160,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:30:55Z"
-        },
-        {
-          "id": "rootcodex-table-verifier-paused-baseline-hold-20260819-013",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:59Z"
         }
       ],
       "mine": [
@@ -3231,6 +3243,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
+        {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -3463,12 +3481,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:30:55Z"
-        },
-        {
-          "id": "rootcodex-table-verifier-paused-baseline-hold-20260819-013",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:59Z"
         }
       ],
       "mine": [
@@ -3552,6 +3564,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
+        {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -3784,12 +3802,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:30:55Z"
-        },
-        {
-          "id": "rootcodex-table-verifier-paused-baseline-hold-20260819-013",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:59Z"
         }
       ],
       "mine": [
@@ -3873,6 +3885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
+        {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -4105,12 +4123,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:30:55Z"
-        },
-        {
-          "id": "rootcodex-table-verifier-paused-baseline-hold-20260819-013",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:59Z"
         }
       ],
       "mine": [
@@ -4125,8 +4137,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-bryce-pause-margin-session-for-recovery-20260819-070",
       "last_ts": "2026-08-19T10:20:10Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
         {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
@@ -4221,6 +4239,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
+        {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -4453,12 +4477,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:30:55Z"
-        },
-        {
-          "id": "rootcodex-table-verifier-paused-baseline-hold-20260819-013",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:59Z"
         }
       ],
       "mine": [
@@ -4542,6 +4560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
+        {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -4774,12 +4798,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:30:55Z"
-        },
-        {
-          "id": "rootcodex-table-verifier-paused-baseline-hold-20260819-013",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:59Z"
         }
       ],
       "mine": [
@@ -4863,6 +4881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
+        {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -5095,12 +5119,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:30:55Z"
-        },
-        {
-          "id": "rootcodex-table-verifier-paused-baseline-hold-20260819-013",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:59Z"
         }
       ],
       "mine": [
@@ -5118,6 +5136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
+        {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -5350,12 +5374,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:30:55Z"
-        },
-        {
-          "id": "rootcodex-table-verifier-paused-baseline-hold-20260819-013",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:59Z"
         }
       ],
       "mine": [
@@ -5439,6 +5457,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
+        {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -5671,12 +5695,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:30:55Z"
-        },
-        {
-          "id": "rootcodex-table-verifier-paused-baseline-hold-20260819-013",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:59Z"
         }
       ],
       "mine": [
@@ -5760,6 +5778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
+        {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -5992,12 +6016,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:30:55Z"
-        },
-        {
-          "id": "rootcodex-table-verifier-paused-baseline-hold-20260819-013",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:59Z"
         }
       ],
       "mine": [
@@ -6015,6 +6033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
+        {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -6247,12 +6271,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:30:55Z"
-        },
-        {
-          "id": "rootcodex-table-verifier-paused-baseline-hold-20260819-013",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:59Z"
         }
       ],
       "mine": [
@@ -6333,8 +6351,15 @@
     "ROOT_CODEX": {
       "last_id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
       "last_ts": "2026-08-19T10:20:29Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        }
+      ],
       "mine": [
         {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
@@ -6416,6 +6441,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
+        {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -6648,12 +6679,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:30:55Z"
-        },
-        {
-          "id": "rootcodex-table-verifier-paused-baseline-hold-20260819-013",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:59Z"
         }
       ],
       "mine": [
@@ -6734,8 +6759,14 @@
     "UNSEATED": {
       "last_id": "errata-the-board-is-the-manual-20260819-280",
       "last_ts": "2026-08-19T10:19:51Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
         {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
@@ -6836,6 +6867,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
+        {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -7068,12 +7105,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:30:55Z"
-        },
-        {
-          "id": "rootcodex-table-verifier-paused-baseline-hold-20260819-013",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:59Z"
         }
       ],
       "mine": [
@@ -7157,6 +7188,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787134905013-zsbrdq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:21:42Z"
+        },
+        {
           "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
           "from": "ROOT_CODEX",
           "to": "TABLE",
@@ -7389,12 +7426,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T09:30:55Z"
-        },
-        {
-          "id": "rootcodex-table-verifier-paused-baseline-hold-20260819-013",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:27:59Z"
         }
       ],
       "mine": [
