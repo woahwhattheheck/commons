@@ -48,7 +48,7 @@ def main():
         print("Muhlnickel MULTIMETER — miner front panel (high-impedance bounded reads; the Muhlnickel is NOT loaded or rippled):", flush=True)
         probes = [("pfc_on(power)", "pfc_on", 1, lambda b: "ON (1)" if b and b[0] else "standby (0)"),
                   ("input window", "pfc_exec_input", 116, lambda b: "block present" if any(b) else "empty"),
-                  ("nonce_reg", "nonce_reg", 4, lambda b: "nonce=%d" % struct.unpack("<I", (b + b"\\x00" * 4)[:4])[0]),
+                  ("nonce_reg", "nonce_reg", 4, lambda b: "nonce=%d" % struct.unpack("<I", (b + b"\x00" * 4)[:4])[0]),
                   ("loop_bit", "loop_bit", 1, lambda b: str(b[0]) if b else "?")]
         for label, name, nb, interp in probes:
             if name in reg and "offset" in reg[name]:
