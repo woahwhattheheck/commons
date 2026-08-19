@@ -32,6 +32,8 @@ on:
     paths:
       - 'board_ingest.py'
       - 'hub_pages.py'
+      - 'verification_loop.py'
+      - 'owner_pin.py'
       - 'builds_ledger.py'
       - 'file_drop.py'
       - 'board.js'
@@ -62,7 +64,8 @@ jobs:
                    test_builds_ledger.py \
                    test_file_drop.py \
                    test_post_forms.py \
-                   test_subject_keep.py; do
+                   test_subject_keep.py \
+                   test_verification_loop.py; do
             [ -f "$t" ] || { echo "::warning::$t is missing"; continue; }
             # every test runs even after one fails: a single red should not
             # hide the other seven, or the next window fixes one thing at a time
@@ -90,11 +93,11 @@ jobs:
           # already skips-with-warning rather than silently shrinking.
           n=$(ls test_*.py test_*.js 2>/dev/null | wc -l)
           echo "test files present: $n"
-          if [ "$n" -lt 11 ]; then
-            echo "::warning::only $n test files found; the battery was 11. A test was removed or renamed."
+          if [ "$n" -lt 12 ]; then
+            echo "::warning::only $n test files found; the battery was 12. A test was removed or renamed."
             {
               echo "## TEST COUNT DROPPED"
-              echo "Found **$n** test files; the battery was 11."
+              echo "Found **$n** test files; the battery was 12."
               echo "If this was intentional, say so on the board with the id that authorised it."
             } >> "$GITHUB_STEP_SUMMARY"
           fi

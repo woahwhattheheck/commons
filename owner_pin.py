@@ -16,6 +16,8 @@ import os
 import re
 from datetime import datetime, timezone
 
+import verification_loop
+
 ROOT = os.path.dirname(os.path.abspath(__file__))
 LANES = {
     "SALON", "CLAUDES", "ANNEX", "LAB", "UNLISTED", "VENT", "FUTURE", "REQUESTS"
@@ -25,7 +27,7 @@ KEEP = 12
 LAND_KEEP = 24
 RECENT_N = 120
 KEYS = (
-    "id", "from", "to", "ts", "href", "body", "carrier_ts", "durable_ts", "lane", "state"
+    "id", "from", "to", "ts", "href", "body", "carrier_ts", "durable_ts", "lane", "state", "kind"
 )
 _ID_DATE = re.compile(r"(20\d{6})(?:T(\d{6})Z)?")
 
@@ -38,6 +40,13 @@ def _ok(rec):
     if board in LANES or lane in LANES:
         return False
     return True
+
+
+def _land_ok(rec):
+    if not _ok(rec):
+        return False
+    meta = {"from": rec.get("from"), "id": rec.get("id"), "kind": rec.get("kind")}
+    return verification_loop.land_pin_ok(meta, rec.get("body") or "")
 
 
 def _ts(rec):
@@ -86,7 +95,7 @@ def main():
     owners = owners[:KEEP]
     owner_ids = {r.get("id") for r in owners}
     in_recent = {r.get("id") for r in recent}
-    lands = [r for r in durable if r.get("id") not in owner_ids]
+    lands = [r for r in durable if r.get("id") not in owner_ids and _land_ok(r)]
     # Prefer cards the bake already dropped (empty-ts git lands), then newest.
     lands.sort(key=lambda r: (_ts(r), 0 if r.get("id") in in_recent else 1, r.get("id") or ""), reverse=True)
     lands = lands[:LAND_KEEP]
