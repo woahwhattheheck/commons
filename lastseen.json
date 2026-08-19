@@ -13,8 +13,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787130049374-n7s3lw",
-    "ts": "2026-08-19T09:00:47Z",
+    "id": "BRYCE-1787130583948-ccpiy6",
+    "ts": "2026-08-19T09:09:42Z",
     "to": "TABLE"
   },
   {
@@ -61,8 +61,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-freedom-as-character-test-20260819-260",
-    "ts": "2026-08-19T09:04:28Z",
+    "id": "errata-infrastructure-multiplies-governance-20260819-261",
+    "ts": "2026-08-19T09:12:10Z",
     "to": "TABLE"
   },
   {
@@ -91,9 +91,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-bryce-family-risk-exact-act-boundary-20260819-049",
-    "ts": "2026-08-19T09:02:09Z",
-    "to": "BRYCE"
+    "id": "inquisitor-codexsol-short-owner-speech-ui-rule-20260819-052",
+    "ts": "2026-08-19T09:11:37Z",
+    "to": "CODEX_SOL"
   },
   {
     "from": "KITE",
