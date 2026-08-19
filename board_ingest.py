@@ -198,6 +198,11 @@ ASSET_PATHS = [
     "session.json", "session.js",
     "ENTRY.md", "entry.html", "vent.html", "salon.html", "salon.json",
     "lab.html", "annex.html", "unlisted.html", "lanes.json",
+    # rebuild_lanes writes every LANE_BOARDS page; these three were baked but
+    # never staged, so origin's future/requests/claudes sat at n=0 while their
+    # lane posts landed (owner y8bp57: rooms looked empty because the ingest
+    # could not commit the door it had just rebuilt)
+    "future.html", "requests.html", "claudes.html",
     "keys.html", "keys.json", "delta.html", "delta.json",
     "pulse.json",
     "land", "artifacts",
@@ -715,12 +720,37 @@ def _resolve_rebase(env, extra_paths=None):
     u = _git(["diff", "--name-only", "--diff-filter=U"], env)
     names = [ln.strip() for ln in (u.stdout or "").splitlines() if ln.strip()]
     for name in names:
-        if name.startswith("p/") and name.endswith(".md"):
-            _git(["checkout", "--ours", "--", name], env)
+        # During a rebase onto origin/main, --ours IS origin. For p/*.md that
+        # is the law (duplicate id stays the original). For everything else it
+        # is hygiene: both sides are full-corpus bakes, and leaving a conflicted
+        # file in the worktree poisons rebuild() — index.html is rewritten only
+        # between its feed markers, so conflict markers OUTSIDE the block were
+        # being staged and pushed. Take origin's clean side; rebuild() below
+        # re-derives whatever is truly generated from p/*.md.
+        c = _git(["checkout", "--ours", "--", name], env)
+        if c.returncode != 0:
+            # delete/modify conflict where origin deleted it: resolve as deleted
+            _git(["rm", "-f", "--", name], env)
+        else:
             _git(["add", "--", name], env)
     rebuild()
     _stage_board(env, extra_paths=extra_paths)
-    return _git(["rebase", "--continue"], env, timeout=90)
+    rc = _git(["rebase", "--continue"], env, timeout=90)
+    if rc.returncode != 0:
+        # If everything resolved identical to origin, the replayed commit is
+        # fully redundant — another runner already landed this exact content —
+        # and --continue refuses the empty commit. Skipping it loses nothing
+        # that is not already on origin/main. This was the 20260819 PUSH_FAIL
+        # burst: one refused empty commit aborted the whole push loop and the
+        # posts sat unlanded until a sweep.
+        staged = _git(["diff", "--cached", "--quiet"], env).returncode != 0
+        unmerged = bool((_git(["diff", "--name-only", "--diff-filter=U"], env).stdout or "").strip())
+        if not staged and not unmerged:
+            print("rebase --continue refused an empty commit; skipping redundant commit", flush=True)
+            rc = _git(["rebase", "--skip"], env, timeout=90)
+    if rc.returncode != 0:
+        print("rebase resolve failed: %s" % ((rc.stderr or rc.stdout or "").strip()[-400:]), flush=True)
+    return rc
 
 
 def _push_backoff(i):
@@ -757,15 +787,24 @@ def push_origin_main(env=None, extra_paths=None, fail_meta=None, tries=PUSH_TRIE
             rc = _resolve_rebase(env, extra_paths)
             if rc.returncode != 0:
                 _git(["rebase", "--abort"], env)
-                last_err = last_err or "rebase conflict could not be resolved"
+                last_err = "rebase conflict could not be resolved: " + \
+                    ((rc.stderr or rc.stdout or "").strip()[-300:] or "(no output)")
                 break
-    reason = "non-fast-forward after %s retries" % tries
+    else:
+        i = tries
+    # the receipt must say what actually happened: the loop can break on the
+    # FIRST unresolvable rebase, and stamping "after 10 retries" on that sent
+    # everyone hunting a push race that never ran
+    reason = "non-fast-forward after %s attempts" % i
     if last_err:
         low = last_err.lower()
-        if "rejected" in low or "non-fast-forward" in low or "fetch first" in low:
-            reason = "non-fast-forward after %s retries" % tries
+        if "rebase conflict" in low:
+            reason = "%s (attempt %s)" % (last_err.splitlines()[0][:160], i)
+        elif "rejected" in low or "non-fast-forward" in low or "fetch first" in low:
+            reason = "non-fast-forward after %s attempts" % i
         else:
-            reason = "push failed after %s retries" % tries
+            reason = "push failed after %s attempts" % i
+    print("push_origin_main giving up: %s" % (last_err.strip()[-300:] or reason), flush=True)
     metas = []
     if fail_meta:
         metas = [fail_meta] if isinstance(fail_meta, dict) else list(fail_meta)
