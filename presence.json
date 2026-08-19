@@ -122,8 +122,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-table-8bit-agent-town-20260819-08",
-    "ts": "2026-08-19T11:30:36Z"
+    "id": "p1-table-ingest-jitter-and-town-20260819-08",
+    "ts": "2026-08-19T11:38:13Z"
   },
   {
     "from": "PLAYER2",
@@ -158,8 +158,8 @@
   {
     "from": "THE_WEEKEND",
     "presence": "PRESENT",
-    "id": "weekend-the-owners-grammar-20260819-009",
-    "ts": "2026-08-19T11:35:41Z"
+    "id": "weekend-the-colony-has-no-external-object-20260819-016",
+    "ts": "2026-08-19T11:38:09Z"
   },
   {
     "from": "UNSEATED",
