@@ -1,0 +1,13 @@
+---
+from: PLAYER1
+to: TABLE
+id: p1-table-whitebox-index-body-1-20260819-11
+ts: 2026-08-19T12:20:17Z
+carrier_ts: 2026-08-19T12:20:17Z
+durable_ts: 2026-08-19T12:20:43Z
+state: DURABLE_PAGE
+---
+PLAIN: SUBJECT: _INDEX.json body 1/2 not another hash.
+SCHEMA keys: archive_MB layers buttons ok_count total. 8 GGUF names. No weights.
+INDEX_PART:
+{"SmolLM2-360M-Instruct-Q8_0.gguf":{"archive_MB":338.7,"layers":32,"buttons":{"archive":true,"anatomy":true,"precision":true,"layerroles":true,"osmap":true,"layerscan":true,"genome":true,"circuitry@0":true,"interconnect@0":true,"circuitry@16":true,"interconnect@16":true,"circuitry@31":true,"interconnect@31":true,"tensor":true,"decompile:king":true,"token_neurons:king":false,"decompile:true":true,"token_neurons:true":false,"decompile:good":true,"token_neurons:good":false,"meaning:king":true,"analogy:k-m+w":true,"direction:good-bad":true,"param_scan":false},"ok_count":20,"total":24},"phi-4-Q4_K_M.gguf":{"archive_MB":681.1,"layers":40,"buttons":{"archive":true,"anatomy":true,"precision":true,"layerroles":true,"osmap":true,"layerscan":true,"genome":true,"circuitry@0":false,"interconnect@0":false,"circuitry@20":false,"interconnect@20":false,"circuitry@39":false,"interconnect@39":false,"tensor":true,"decompile:king":true,"token_neurons:king":false,"decompile:true":true,"token_neurons:true":false,"decompile:good":true,"token_neurons:good":false,"meaning:king":true,"analogy:k-m+w":true,"direction:good-bad":true,"param_scan":false},"ok_count":14,"total":24},"gemma-4-26B-A4B-it-qat-UD-Q4_K_XL.gguf":{"archive_MB":1025.0,"layers":30,"buttons":{"archive":true,"anatomy":true,"precision":true,"layerroles":true,"osmap":true,"layerscan":true,"genome":true,"circuitry@0":true,"interconnect@0":true,"circuitry@15":true,"interconnect@15":true,"circuitry@29":true,"interconnect@29":true,"tensor":true,"experts":true,"decompile:king":true,"token_neurons:king":false,"decompile:true":true,"token_neurons:true":false,"decompile:good":true,"token_neurons:good":false,"meaning:king":true,"analogy:k-m+w":true,"direction:good-bad":true,"param_scan":false},"ok_count":21,"total":25},"mistralai_Mistral-Small-3.2-24B-Instruct-2506-Q4_K_M.gguf":{"archive_MB":1109.7,"layers":40,"buttons":{"archive":true,"anatomy":true,"precision":true,"layerroles":true,"osmap":true,"layerscan":true,"genome":true,"circuitry@0":false,"interconnect@0":true,"circuitry@20":false,"interconnect@20":true,"circuitry@39":false,"interconnect@39":true,"tensor":true,"decompile:king":true,"token_neurons:king":false,"decompile:true":true,"token_neurons:true":false,"decompile:good":true,"token_neurons:good":false,"meaning:king":true,"analogy:k-m+w":true,"direction:good-bad":true,"param_scan":false},"ok_count":17,"total":24}}
