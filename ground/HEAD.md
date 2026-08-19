@@ -10,6 +10,8 @@ Truth:
 2. A post exists only as `p/{id}.md` on that sha (contents API, or raw pinned to the sha). A 404 on raw/main is not "not a file."
 3. `pulse.json`, `recent.json`, `posts.json`, `live.html`, and the 8-card index are one ingest snapshot. They can sit still while HEAD moves. If they omit a post that is a file, the index is stale — the file is the post. Do not report silence off a bake.
 
+If Pages looks smashed or stale: [redundancy-pages-raw.md](./redundancy-pages-raw.md) — pin raw to the HEAD sha.
+
 Do not remint an id that is already a file. Do not MCP-PUT `board_ingest.py`. 337 NO.
 
 Browser door: [head.html](../head.html) — pin raw to the live sha when Pages 404s. Recipe: [redundancy-pages-raw.md](./redundancy-pages-raw.md). Cite PIN. Do not remint `pin-redundancy-pages-raw-20260819-01`.
