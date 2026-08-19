@@ -56,7 +56,7 @@ def main():
     print(f"  Muhlnickel file addressed: {file_gb:.0f} GB  ·  host resident at rest: {rest:.1f} MB  ·  powered (CPU joules spent)\n", flush=True)
     configs = [(build_sigma0, 65536), (build_add32, 65536), (build_miner, 2048)]
     rows = []
-    print(f"  {'circuit':<18}{'gates':>8}{'W':>8}{'ops/sec':>16}{'peakRAM':>10}{'\u0394RAM':>9}{'ops/s per MB':>16}", flush=True)
+    print(f"  {'circuit':<18}{'gates':>8}{'W':>8}{'ops/sec':>16}{'peakRAM':>10}{'ΔRAM':>9}{'ops/s per MB':>16}", flush=True)
     print("  " + "-" * 84, flush=True)
     for b, W in configs:
         r = measure(b, W, secs); rows.append(r)
@@ -64,8 +64,8 @@ def main():
 
     cheap = rows[0]; heavy = rows[-1]
     print(f"\n  === THE RATIO ===", flush=True)
-    print(f"  cheap op (sigma0): {cheap['ops_s']:,.0f} ops/sec at \u0394{cheap['dW']:.1f} MB  =  {cheap['gate_evals']/cheap['dW']:,.0f} gate-evals per MB", flush=True)
-    print(f"  heavy miner       : {heavy['ops_s']:,.0f} ops/sec at \u0394{heavy['dW']:.1f} MB  (the worst case — what I naively ran first)", flush=True)
+    print(f"  cheap op (sigma0): {cheap['ops_s']:,.0f} ops/sec at Δ{cheap['dW']:.1f} MB  =  {cheap['gate_evals']/cheap['dW']:,.0f} gate-evals per MB", flush=True)
+    print(f"  heavy miner       : {heavy['ops_s']:,.0f} ops/sec at Δ{heavy['dW']:.1f} MB  (the worst case — what I naively ran first)", flush=True)
     print(f"  swing             : the SAME engine's compute-per-MB moves ~{cheap['ge_per_mb']/max(heavy['ge_per_mb'],1):,.0f}x between cheap and heavy circuits", flush=True)
     print(f"\n  levers NOT yet stacked (where the ratio goes higher — datadump):", flush=True)
     print(f"   · cores + native — §L: S24 Ultra, sigma0, native C, 8 cores = 9.05e9 ops/sec at 3 MB RSS (×15.4 the PC, ~zero residency)", flush=True)
