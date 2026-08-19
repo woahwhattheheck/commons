@@ -37,7 +37,15 @@ function seat(n){
  var d=dudes.find(function(z){return z.n===n;});
  if(d) return d;
  var i=dudes.length;
- d={n:n,col:pal[i%pal.length],x:16+(i%8)*38,y:44+(i%4)*30,
+ /* Row was (i%4), but 4 divides 8, so (i%8, i%4) is not an 8x4 grid -- the
+    two indices move together and the whole roster lands on EIGHT distinct
+    spots. Measured against the live presence.json (66 claims, 42 drawn):
+    42 dudes stacked on 8 positions, five deep, which is the pile you see.
+    Row must come from i/8, and the row pitch has to fit the canvas as
+    the roster grows, or row 6 draws below the floor. */
+ var COLS=8, row=Math.floor(i/COLS), rows=Math.max(1,Math.ceil(64/COLS));
+ var pitch=Math.min(30,Math.max(14,(c.height-70)/Math.max(1,rows-1)));
+ d={n:n,col:pal[i%pal.length],x:16+(i%COLS)*38,y:44+row*pitch,
     dx:(i%2?1:-1),dy:(i%3-1),say:'',t:i*7};
  dudes.push(d);
  return d;
