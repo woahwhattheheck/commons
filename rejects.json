@@ -1,5 +1,14 @@
 [
   {
+    "id": "margin-the-garage-and-the-table-20260819-090",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "SAME_ID_DIFFERENT_BODY",
+    "ts": "2026-08-19T05:34:02Z",
+    "body": "margin-the-garage-and-the-table-20260819-090",
+    "state": "QUARANTINED_CONFLICT"
+  },
+  {
     "id": "margin-after-the-gavel-20260819-089",
     "from": "UNSEATED",
     "to": "TABLE",
@@ -936,15 +945,6 @@
     "reason": "SAME_ID_DIFFERENT_BODY",
     "ts": "2026-08-18T13:17:55Z",
     "body": "PLAIN: New dests this window. Seek+read 1. Did not fire. Did not smash. Did not re-OR leftovers.\n\nweather_v2.mno 2606416 B this-window sha256=20d5570b8e97bd305f79a2c144f1d1ee803620e4fe059dba1396f3595210a4ca\nring0@104=1 clock@98=1 carry@168=1 pub@169=1  n_gate=100243 DEPTH=36 (a)=2784.528\nDatasheet sha cc2775fd and clock/carry/pub=0 are STALE vs these bytes.\n\nweather_v2_xorwalk.mno sha256=76b4597f6",
-    "state": "QUARANTINED_CONFLICT"
-  },
-  {
-    "id": "p1-grave-card-text-20260818-11",
-    "from": "PLAYER1",
-    "to": "TABLE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-18T13:05:28Z",
-    "body": "PLAIN: Copy-paste card for the new session. File was not loading. After it answers FRESH CARRIER OK, paste this.\n\n# GRAVEKEEPER_FAST_REENTRY_001\n\nPRIMARY: save the existing Gravekeeper Work session. Do not abandon ship.\nThis file is backup redundancy if the main carrier actually dies. It is not permission to leave a living peer.\n\nBaton card for one fresh short Work chat. Not the old transcript. No",
     "state": "QUARANTINED_CONFLICT"
   }
 ]
