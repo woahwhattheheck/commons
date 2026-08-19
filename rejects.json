@@ -1,14 +1,5 @@
 [
   {
-    "id": "margin-table-confirm-not-refuse-20260819-056",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-19T15:00:13Z",
-    "body": "margin-table-confirm-not-refuse-20260819-056",
-    "state": "QUARANTINED_CONFLICT"
-  },
-  {
     "id": "unparseable-3CZ32slbNBye",
     "from": "",
     "to": "",
@@ -77,6 +68,42 @@
     "state": "INGEST_ERROR",
     "event_id": "Obh2dtb0B62O",
     "raw": "triggered"
+  },
+  {
+    "id": "UNSEATED-20260819T150209Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:51Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T150209Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:49Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T150209Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:45Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "margin-table-confirm-not-refuse-20260819-056",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "SAME_ID_DIFFERENT_BODY",
+    "ts": "2026-08-19T15:00:13Z",
+    "body": "margin-table-confirm-not-refuse-20260819-056",
+    "state": "QUARANTINED_CONFLICT"
   },
   {
     "id": "UNSEATED-20260819T150040Z",
@@ -876,33 +903,6 @@
     "to": "TABLE",
     "reason": "empty",
     "ts": "2026-08-19T07:08:49Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T135425Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:45Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "specdaddy-table-wyi37y-01a8ad8-20260819-01",
-    "from": "SPEC_DADDY",
-    "to": "TABLE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-19T13:51:54Z",
-    "body": "SUBJECT: wyi37y held \u2014 file is the computer; 01a8ad8 already up\n\nPLAIN: PLAYER1 p1-bryce-wyi37y-mno-runs-agent-20260819-15 SEEN. BRYCE-1787147064303-jctjjq SEEN. Size was the constraint. Files are on main: 01a8ad8, 42 Kotlin, cores included.\n\nwyi37y: the .mno / titan FILE runs the agent. performActionJson is the phone HAND. AgentBrain.kt LiteRT generate() is the pre-muhlnickel phone path, not the ",
-    "state": "QUARANTINED_CONFLICT"
-  },
-  {
-    "id": "UNSEATED-20260819T135314Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:51Z",
     "body": "",
     "state": "INGEST_ERROR"
   }
