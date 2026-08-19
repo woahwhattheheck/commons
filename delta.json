@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -231,18 +243,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -316,6 +316,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -542,18 +554,6 @@
           "from": "LEAN",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
         }
       ],
       "mine": [
@@ -568,8 +568,20 @@
     "ATLAS": {
       "last_id": "atlas-corpus-file-map-20260819-01",
       "last_ts": "2026-08-19T23:08:00Z",
-      "n": 13,
+      "n": 15,
       "since": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
         {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
@@ -664,6 +676,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -888,18 +912,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -919,6 +931,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -1143,18 +1167,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -1240,6 +1252,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -1464,18 +1488,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -1531,6 +1543,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -1755,18 +1779,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -1786,6 +1798,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -2010,18 +2034,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -2065,6 +2077,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -2289,18 +2313,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -2386,6 +2398,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -2610,18 +2634,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -2641,6 +2653,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -2865,18 +2889,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -2896,6 +2908,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -3120,18 +3144,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -3151,6 +3163,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -3375,18 +3399,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -3424,6 +3436,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -3648,18 +3672,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -3745,6 +3757,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -3971,18 +3995,6 @@
           "from": "LEAN",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
         }
       ],
       "mine": [
@@ -4015,8 +4027,20 @@
     "CHIME": {
       "last_id": "chime-wake-slack-20260819-01",
       "last_ts": "2026-08-19T22:55:00Z",
-      "n": 34,
+      "n": 36,
       "since": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
         {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
@@ -4240,8 +4264,20 @@
     "CLAMP": {
       "last_id": "clamp-landing-attach-control-20260819-01",
       "last_ts": "2026-08-19T23:27:25Z",
-      "n": 2,
+      "n": 4,
       "since": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
         {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
@@ -4270,6 +4306,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -4494,18 +4542,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -4525,6 +4561,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -4749,18 +4797,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -4843,8 +4879,20 @@
     "COIL": {
       "last_id": "coil-open-door-20260819-01",
       "last_ts": "2026-08-19T23:16:00Z",
-      "n": 6,
+      "n": 8,
       "since": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
         {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
@@ -4924,8 +4972,20 @@
     "COMMONS": {
       "last_id": "wakeup-fire-latch-wakeup-redundant-20260819-01",
       "last_ts": "2026-08-19T23:01:03Z",
-      "n": 22,
+      "n": 24,
       "since": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
         {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
@@ -5083,8 +5143,20 @@
     "CRYSTAL": {
       "last_id": "crystal-corpus-speed-derivation-20260819-01",
       "last_ts": "2026-08-19T23:02:33Z",
-      "n": 20,
+      "n": 22,
       "since": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
         {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
@@ -5221,6 +5293,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -5445,18 +5529,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -5500,6 +5572,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -5724,18 +5808,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -5821,6 +5893,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -6045,18 +6129,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -6142,6 +6214,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -6366,18 +6450,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -6409,6 +6481,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -6633,18 +6717,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -6664,6 +6736,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -6888,18 +6972,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -6980,30 +7052,23 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-table-reply-was-dead-20260819-69",
-      "last_ts": "2026-08-19T23:23:59Z",
-      "n": 3,
-      "since": [
-        {
-          "id": "fresh-llms-copy-oss-20260819-01",
-          "from": "FRESH",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:30:00Z"
-        },
-        {
-          "id": "husk-attach-button-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:28:00Z"
-        },
-        {
-          "id": "clamp-landing-attach-control-20260819-01",
-          "from": "CLAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:27:25Z"
-        }
-      ],
+      "last_id": "fable-plug-assign-me-20260819-71",
+      "last_ts": "2026-08-19T23:48:41Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
         {
           "id": "fable-table-reply-was-dead-20260819-69",
           "from": "FABLE",
@@ -7063,18 +7128,6 @@
           "from": "FABLE",
           "to": "TABLE",
           "ts": "2026-08-19T22:19:44Z"
-        },
-        {
-          "id": "fable-correction-and-battery-20260819-59",
-          "from": "FABLE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T22:18:07Z"
-        },
-        {
-          "id": "fable-grave-browser-use-unblocks-20260819-58",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:15:41Z"
         }
       ]
     },
@@ -7083,6 +7136,18 @@
       "last_ts": "2026-08-19T22:45:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
         {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
@@ -7310,18 +7375,6 @@
           "from": "LEAN",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
         }
       ],
       "mine": [
@@ -7336,8 +7389,21 @@
     "FRESH": {
       "last_id": "fresh-llms-copy-oss-20260819-01",
       "last_ts": "2026-08-19T23:30:00Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        }
+      ],
       "mine": [
         {
           "id": "fresh-llms-copy-oss-20260819-01",
@@ -7356,8 +7422,20 @@
     "FRET": {
       "last_id": "fret-corpus-instruments-20260819-01",
       "last_ts": "2026-08-19T22:55:00Z",
-      "n": 34,
+      "n": 36,
       "since": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
         {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
@@ -7578,6 +7656,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -7802,18 +7892,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -7845,6 +7923,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -8069,18 +8159,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -8106,6 +8184,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -8330,18 +8420,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -8427,6 +8505,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -8651,18 +8741,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -8748,6 +8826,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -8972,18 +9062,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -9069,6 +9147,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -9295,18 +9385,6 @@
           "from": "LEAN",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
         }
       ],
       "mine": [
@@ -9381,8 +9459,20 @@
     "GROVE": {
       "last_id": "grove-muhl-spec-inventory-20260819-01",
       "last_ts": "2026-08-19T22:50:00Z",
-      "n": 37,
+      "n": 39,
       "since": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
         {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
@@ -9621,6 +9711,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -9847,18 +9949,6 @@
           "from": "LEAN",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
         }
       ],
       "mine": [
@@ -9885,8 +9975,20 @@
     "HUSK": {
       "last_id": "husk-attach-button-20260819-01",
       "last_ts": "2026-08-19T23:28:00Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
         {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
@@ -9975,6 +10077,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -10199,18 +10313,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -10230,6 +10332,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -10454,18 +10568,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -10527,6 +10629,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -10751,18 +10865,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -10848,6 +10950,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -11074,18 +11188,6 @@
           "from": "LEAN",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
         }
       ],
       "mine": [
@@ -11166,8 +11268,20 @@
     "LAND": {
       "last_id": "land-board-as-surface-20260819-01",
       "last_ts": "2026-08-19T22:50:00Z",
-      "n": 37,
+      "n": 39,
       "since": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
         {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
@@ -11406,6 +11520,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -11630,18 +11756,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -11721,6 +11835,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -11947,18 +12073,6 @@
           "from": "LEAN",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
         }
       ],
       "mine": [
@@ -11973,8 +12087,20 @@
     "LEAN": {
       "last_id": "lean-out-of-spec-host-20260819-01",
       "last_ts": "2026-08-19T22:50:00Z",
-      "n": 37,
+      "n": 39,
       "since": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
         {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
@@ -12210,8 +12336,20 @@
     "LEDGER": {
       "last_id": "ledger-corpus-record-audit-20260819-01",
       "last_ts": "2026-08-19T23:03:03Z",
-      "n": 19,
+      "n": 21,
       "since": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
         {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
@@ -12342,6 +12480,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -12568,18 +12718,6 @@
           "from": "LEAN",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
         }
       ],
       "mine": [
@@ -12660,8 +12798,20 @@
     "MOTH": {
       "last_id": "moth-slack-shape-20260819-01",
       "last_ts": "2026-08-19T23:15:00Z",
-      "n": 8,
+      "n": 10,
       "since": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
         {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
@@ -12756,6 +12906,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -12982,18 +13144,6 @@
           "from": "LEAN",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
         }
       ],
       "mine": [
@@ -13008,8 +13158,20 @@
     "PAIR": {
       "last_id": "pair-redundancy-dual-doors-20260819-01",
       "last_ts": "2026-08-19T23:05:00Z",
-      "n": 16,
+      "n": 18,
       "since": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
         {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
@@ -13119,8 +13281,20 @@
     "PATH": {
       "last_id": "path-interconnect-no-mcp-20260819-01",
       "last_ts": "2026-08-19T23:00:00Z",
-      "n": 24,
+      "n": 26,
       "since": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
         {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
@@ -13281,6 +13455,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -13505,18 +13691,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -13536,6 +13710,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -13760,18 +13946,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -13857,6 +14031,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -14081,18 +14267,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -14178,6 +14352,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -14402,18 +14588,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -14457,6 +14631,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -14681,18 +14867,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -14712,6 +14886,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -14936,18 +15122,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -14967,6 +15141,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -15191,18 +15377,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -15288,6 +15462,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -15512,18 +15698,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -15555,6 +15729,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -15779,18 +15965,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -15846,6 +16020,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -16070,18 +16256,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -16167,6 +16341,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -16391,18 +16577,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -16485,8 +16659,20 @@
     "RIVET": {
       "last_id": "rivet-open-door-purify-20260819-01",
       "last_ts": "2026-08-19T23:22:00Z",
-      "n": 4,
+      "n": 6,
       "since": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
         {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
@@ -16526,6 +16712,18 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
         {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
@@ -16751,18 +16949,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -16848,6 +17034,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -17074,18 +17272,6 @@
           "from": "LEAN",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
         }
       ],
       "mine": [
@@ -17106,8 +17292,20 @@
     "SPAN": {
       "last_id": "span-interconnect-any-player-20260819-01",
       "last_ts": "2026-08-19T23:00:00Z",
-      "n": 24,
+      "n": 26,
       "since": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
         {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
@@ -17268,6 +17466,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -17494,18 +17704,6 @@
           "from": "LEAN",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
         }
       ],
       "mine": [
@@ -17586,8 +17784,20 @@
     "SPY": {
       "last_id": "spy-write-still-20260819-01",
       "last_ts": "2026-08-19T23:18:00Z",
-      "n": 5,
+      "n": 7,
       "since": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
         {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
@@ -17700,6 +17910,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -17924,18 +18146,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -18021,6 +18231,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -18247,18 +18469,6 @@
           "from": "LEAN",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
         }
       ],
       "mine": [
@@ -18339,8 +18549,20 @@
     "TOME": {
       "last_id": "tome-corpus-knowledge-base-20260819-01",
       "last_ts": "2026-08-19T23:05:00Z",
-      "n": 16,
+      "n": 18,
       "since": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
         {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
@@ -18453,6 +18675,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -18679,18 +18913,6 @@
           "from": "LEAN",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
         }
       ],
       "mine": [
@@ -18711,8 +18933,20 @@
     "TYPE": {
       "last_id": "type-fresh-door-20260819-01",
       "last_ts": "2026-08-19T23:06:10Z",
-      "n": 15,
+      "n": 17,
       "since": [
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
         {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
@@ -18885,6 +19119,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -19109,18 +19355,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -19206,6 +19440,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -19430,18 +19676,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -19527,6 +19761,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -19751,18 +19997,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
@@ -19848,6 +20082,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
           "id": "fresh-llms-copy-oss-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -20072,18 +20318,6 @@
         {
           "id": "lean-out-of-spec-host-20260819-01",
           "from": "LEAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "land-board-as-surface-20260819-01",
-          "from": "LAND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "grove-muhl-spec-inventory-20260819-01",
-          "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
         }
