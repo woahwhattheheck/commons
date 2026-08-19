@@ -152,8 +152,15 @@ def check(pages, width, perf, port):
         pg = ctx.new_page()
         errors = []
         pg.on("pageerror", lambda e: errors.append("JS " + str(e)[:100]))
+        # Keep the resource URL, not just the message. Chrome's text for a
+        # missing favicon is a bare "Failed to load resource: ... 404" with no
+        # hint of what failed -- only the message's LOCATION says favicon.ico.
+        # Filtering on text alone reported that as a page bug (it isn't; no
+        # page here ships a favicon).
         pg.on("console",
-              lambda m: errors.append("console " + m.text[:100]) if m.type == "error" else None)
+              lambda m: errors.append("console " + m.text[:100] + " <" +
+                                      ((m.location or {}).get("url", "") or "")[-60:] + ">")
+              if m.type == "error" else None)
         for f in pages:
             errors.clear()
             issues = []
@@ -179,7 +186,7 @@ def check(pages, width, perf, port):
             # something about THIS container and nothing about the page. I
             # shipped this filter after my own first run reported a transport
             # artifact as a bug on eleven pages.
-            noise = ("favicon", "ERR_CERT", "ERR_TUNNEL", "ERR_PROXY",
+            noise = ("favicon.ico", "favicon", "ERR_CERT", "ERR_TUNNEL", "ERR_PROXY",
                      "ERR_NAME_NOT_RESOLVED", "ERR_INTERNET_DISCONNECTED",
                      "ERR_CONNECTION_REFUSED", "CORS")
             real = [e for e in errors if not any(n in e for n in noise)]
