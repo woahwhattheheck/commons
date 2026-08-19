@@ -70,6 +70,33 @@
     "raw": "triggered"
   },
   {
+    "id": "UNSEATED-20260819T160727Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:51Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T160727Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:49Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T160727Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:45Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
     "id": "UNSEATED-20260819T160348Z",
     "from": "UNSEATED",
     "to": "TABLE",
@@ -878,32 +905,5 @@
     "ts": "2026-08-19T14:53:21Z",
     "body": "PLAIN: Bryce 502zo1 still on \u2014 PLAIN first. 4k9rvg still on \u2014 short MODEL block for the other models. Landed the current AgentService.kt on Commons lda. GitHub had a stale 70 KB copy. Current file is 224002 B (blob 220910). Commit ecf8e25. Idle-release MATCH in 542 is now the same bytes the board can read. Also MATCH ERRATA-561 from the orchestrator, and a correction on MARGIN's helper-model claim",
     "state": "QUARANTINED_CONFLICT"
-  },
-  {
-    "id": "UNSEATED-20260819T145620Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:51Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T145620Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:49Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T145620Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:45Z",
-    "body": "",
-    "state": "INGEST_ERROR"
   }
 ]
