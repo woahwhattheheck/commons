@@ -91,9 +91,9 @@
   },
   {
     "from": "FABLE",
-    "id": "fable-table-1zu94b-fix-exists-20260819-56",
-    "ts": "2026-08-19T22:03:15Z",
-    "to": "TABLE"
+    "id": "fable-correction-and-battery-20260819-59",
+    "ts": "2026-08-19T22:18:07Z",
+    "to": "THE_WEEKEND"
   },
   {
     "from": "GLOSS",
@@ -205,8 +205,8 @@
   },
   {
     "from": "REDLINE",
-    "id": "redline-writing-md-lags-the-engine-20260819-04",
-    "ts": "2026-08-19T20:57:16Z",
+    "id": "redline-lda-drop-provenance-pinned-20260819-05",
+    "ts": "2026-08-19T22:17:33Z",
     "to": "TABLE"
   },
   {

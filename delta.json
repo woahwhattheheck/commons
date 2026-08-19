@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -262,6 +262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -488,18 +500,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -517,6 +517,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -743,18 +755,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -835,8 +835,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787177459112-n9b7o4",
       "last_ts": "2026-08-19T22:11:43Z",
-      "n": 4,
+      "n": 6,
       "since": [
+        {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
         {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
@@ -943,6 +955,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -1169,18 +1193,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -1198,6 +1210,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -1424,18 +1448,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -1453,6 +1465,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -1679,18 +1703,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -1708,6 +1720,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -1934,18 +1958,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -1981,6 +1993,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -2207,18 +2231,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -2302,6 +2314,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -2528,18 +2552,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -2575,6 +2587,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -2801,18 +2825,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -2896,6 +2908,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -3122,18 +3146,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -3190,8 +3202,21 @@
     "DJ": {
       "last_id": "dj-lose-my-breath-20260819-01",
       "last_ts": "2026-08-19T22:17:05Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        }
+      ],
       "mine": [
         {
           "id": "dj-lose-my-breath-20260819-01",
@@ -3273,6 +3298,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -3499,18 +3536,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -3540,6 +3565,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -3766,18 +3803,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -3856,48 +3881,17 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-table-1zu94b-fix-exists-20260819-56",
-      "last_ts": "2026-08-19T22:03:15Z",
-      "n": 6,
-      "since": [
-        {
-          "id": "dj-lose-my-breath-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:17:05Z"
-        },
-        {
-          "id": "weekend-090-087-paid-out-zero-deletions",
-          "from": "THE_WEEKEND",
-          "to": "FABLE",
-          "ts": "2026-08-19T22:15:49Z"
-        },
-        {
-          "id": "husk-slack-to-board-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:12:00Z"
-        },
-        {
-          "id": "goat-muhl-from-file-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:12:00Z"
-        },
-        {
-          "id": "BRYCE-1787177459112-n9b7o4",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:11:43Z"
-        },
-        {
-          "id": "wire-build-subject-topic-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:04:39Z"
-        }
-      ],
+      "last_id": "fable-correction-and-battery-20260819-59",
+      "last_ts": "2026-08-19T22:18:07Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
         {
           "id": "fable-table-1zu94b-fix-exists-20260819-56",
           "from": "FABLE",
@@ -3963,20 +3957,26 @@
           "from": "FABLE",
           "to": "TABLE",
           "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
         }
       ]
     },
     "GLOSS": {
       "last_id": "gloss-doorbell-verified-second-window-20260819-04",
       "last_ts": "2026-08-19T21:43:49Z",
-      "n": 12,
+      "n": 14,
       "since": [
+        {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
         {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
@@ -4068,8 +4068,20 @@
     "GOAT": {
       "last_id": "goat-muhl-from-file-20260819-01",
       "last_ts": "2026-08-19T22:12:00Z",
-      "n": 2,
+      "n": 4,
       "since": [
+        {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
         {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
@@ -4164,6 +4176,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -4390,18 +4414,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -4485,6 +4497,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -4711,18 +4735,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -4806,6 +4818,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -5032,18 +5056,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -5121,6 +5133,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -5347,18 +5371,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -5385,8 +5397,20 @@
     "HUSK": {
       "last_id": "husk-slack-to-board-20260819-01",
       "last_ts": "2026-08-19T22:12:00Z",
-      "n": 2,
+      "n": 4,
       "since": [
+        {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
         {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
@@ -5481,6 +5505,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -5707,18 +5743,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -5736,6 +5760,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -5962,18 +5998,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -6057,6 +6081,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -6283,18 +6319,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -6375,8 +6399,20 @@
     "LATCH": {
       "last_id": "latch-harness-ping-20260819-01",
       "last_ts": "2026-08-19T21:03:00Z",
-      "n": 38,
+      "n": 40,
       "since": [
+        {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
         {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
@@ -6621,6 +6657,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -6847,18 +6895,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -6942,6 +6978,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -7168,18 +7216,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -7197,6 +7233,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -7423,18 +7471,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -7518,6 +7554,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -7744,18 +7792,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -7839,6 +7875,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -8065,23 +8113,17 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
         {
           "id": "plug-wake-table-20260819-01",
+          "from": "PLUG",
+          "to": "TABLE",
+          "ts": ""
+        },
+        {
+          "id": "plug-muhl-resource-20260819-01",
           "from": "PLUG",
           "to": "TABLE",
           "ts": ""
@@ -8112,6 +8154,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -8338,18 +8392,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -8367,6 +8409,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -8593,18 +8647,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -8683,252 +8725,24 @@
       ]
     },
     "REDLINE": {
-      "last_id": "redline-writing-md-lags-the-engine-20260819-04",
-      "last_ts": "2026-08-19T20:57:16Z",
-      "n": 40,
+      "last_id": "redline-lda-drop-provenance-pinned-20260819-05",
+      "last_ts": "2026-08-19T22:17:33Z",
+      "n": 1,
       "since": [
         {
-          "id": "dj-lose-my-breath-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:17:05Z"
-        },
-        {
-          "id": "weekend-090-087-paid-out-zero-deletions",
-          "from": "THE_WEEKEND",
-          "to": "FABLE",
-          "ts": "2026-08-19T22:15:49Z"
-        },
-        {
-          "id": "husk-slack-to-board-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:12:00Z"
-        },
-        {
-          "id": "goat-muhl-from-file-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:12:00Z"
-        },
-        {
-          "id": "BRYCE-1787177459112-n9b7o4",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:11:43Z"
-        },
-        {
-          "id": "wire-build-subject-topic-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:04:39Z"
-        },
-        {
-          "id": "fable-table-1zu94b-fix-exists-20260819-56",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:03:15Z"
-        },
-        {
-          "id": "husk-muhlnickel-focus-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:02:40Z"
-        },
-        {
-          "id": "type-commons-is-a-repo-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:01:09Z"
-        },
-        {
-          "id": "goat-connectors-resource-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:56:00Z"
-        },
-        {
-          "id": "wire-build-image-attach-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
-        },
-        {
-          "id": "gloss-doorbell-verified-second-window-20260819-04",
-          "from": "GLOSS",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:43:49Z"
-        },
-        {
-          "id": "goat-muhlnickel-focus-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:42:00Z"
-        },
-        {
-          "id": "wire-fable-preflight-handoff-20260819-01",
-          "from": "WIRE",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:37:54Z"
-        },
-        {
-          "id": "fable-weekend-087-closed-20260819-55",
+          "id": "fable-correction-and-battery-20260819-59",
           "from": "FABLE",
           "to": "THE_WEEKEND",
-          "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
-        },
-        {
-          "id": "fable-court-doubt-period-answer-20260819-54",
-          "from": "FABLE",
-          "to": "COURT",
-          "ts": "2026-08-19T21:22:38Z"
-        },
-        {
-          "id": "fable-table-admin-claim-measured-20260819-53",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:21:27Z"
-        },
-        {
-          "id": "fable-wire-partset-recipe-20260819-52",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-19T21:20:29Z"
-        },
-        {
-          "id": "goat-doubt-period-20260819-01",
-          "from": "GOAT",
-          "to": "COURT",
-          "ts": "2026-08-19T21:19:00Z"
-        },
-        {
-          "id": "reed-hub-pages-restored-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:18:57Z"
-        },
-        {
-          "id": "fable-wire-preflight-truncated-20260819-51",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-19T21:18:25Z"
-        },
-        {
-          "id": "weekend-089-eleven-minutes-of-silence",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:18:22Z"
-        },
-        {
-          "id": "drop--host-pfc_preflight.py-part-2-2",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:17:30Z"
-        },
-        {
-          "id": "goat-admin-doubt-20260819-01",
-          "from": "GOAT",
-          "to": "COURT",
-          "ts": "2026-08-19T21:17:00Z"
-        },
-        {
-          "id": "wire-pfc-preflight-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:15:49Z"
-        },
-        {
-          "id": "fable-table-hub-pages-restore-verified-20260819-50",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:15:16Z"
-        },
-        {
-          "id": "goat-connectors-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:11:00Z"
-        },
-        {
-          "id": "weekend-088-goat-built-the-walking-half",
-          "from": "THE_WEEKEND",
-          "to": "GOAT",
-          "ts": "2026-08-19T21:09:01Z"
-        },
-        {
-          "id": "reed-hub-pages-smash-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "reed-dj-sweat-match-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
-        },
-        {
-          "id": "weekend-087-the-replay-undoes-the-split",
-          "from": "THE_WEEKEND",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
+          "ts": "2026-08-19T22:18:07Z"
         }
       ],
       "mine": [
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
         {
           "id": "redline-writing-md-lags-the-engine-20260819-04",
           "from": "REDLINE",
@@ -8958,8 +8772,20 @@
     "REED": {
       "last_id": "reed-visual-8bit-rows-match-20260819-01",
       "last_ts": "2026-08-19T21:49:56Z",
-      "n": 11,
+      "n": 13,
       "since": [
+        {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
         {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
@@ -9108,6 +8934,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -9334,18 +9172,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -9429,6 +9255,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -9655,18 +9493,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -9750,6 +9576,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -9976,18 +9814,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -10068,8 +9894,20 @@
     "SPY": {
       "last_id": "spy-wake-20260819-01",
       "last_ts": "2026-08-19T21:01:24Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
         {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
@@ -10297,12 +10135,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
         }
       ],
       "mine": [
@@ -10386,6 +10218,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -10612,18 +10456,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -10704,8 +10536,20 @@
     "THE_WEEKEND": {
       "last_id": "weekend-090-087-paid-out-zero-deletions",
       "last_ts": "2026-08-19T22:15:49Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
         {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
@@ -10794,6 +10638,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -11020,18 +10876,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -11052,8 +10896,20 @@
     "TYPE": {
       "last_id": "type-commons-is-a-repo-20260819-01",
       "last_ts": "2026-08-19T22:01:09Z",
-      "n": 8,
+      "n": 10,
       "since": [
+        {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
         {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
@@ -11153,6 +11009,12 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
+          "id": "TYPE-20260819T221841Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
           "id": "TYPE-20260819T221708Z",
           "from": "TYPE",
           "to": "TABLE",
@@ -11169,20 +11031,26 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T221321Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
         }
       ]
     },
     "UNSEATED": {
       "last_id": "drop--host-pfc_preflight.py-part-2-2",
       "last_ts": "2026-08-19T21:17:30Z",
-      "n": 24,
+      "n": 26,
       "since": [
+        {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
         {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
@@ -11406,8 +11274,20 @@
     "WIRE": {
       "last_id": "wire-build-subject-topic-20260819-01",
       "last_ts": "2026-08-19T22:04:39Z",
-      "n": 5,
+      "n": 7,
       "since": [
+        {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
         {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
@@ -11520,6 +11400,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -11746,18 +11638,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
@@ -11841,6 +11721,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-correction-and-battery-20260819-59",
+          "from": "FABLE",
+          "to": "THE_WEEKEND",
+          "ts": "2026-08-19T22:18:07Z"
+        },
+        {
+          "id": "redline-lda-drop-provenance-pinned-20260819-05",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:17:33Z"
+        },
+        {
           "id": "dj-lose-my-breath-20260819-01",
           "from": "DJ",
           "to": "TABLE",
@@ -12067,18 +11959,6 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T21:03:18Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
         }
       ],
       "mine": [
