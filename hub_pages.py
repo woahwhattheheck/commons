@@ -37,7 +37,7 @@ DATA_SHEETS = [
 ]
 
 
-ASSET_V = "20260819c"  # INQUISITOR order 042: THE one board.js cache key. Bump here only. GROK_BUILD 02 / Bryce 5t8imm visibility.
+ASSET_V = "20260819c"  # INQUISITOR order 042: THE one board.js cache key. Bump here only.
 BOARD_JS_TAG = '<script src="./board.js?v=%s"></script>' % ASSET_V
 
 
@@ -298,7 +298,7 @@ def rebuild_tools(mod, rows, st):
         )
         for j in st["done"][:20]
     ]
-    extra = '<script src="./carrier.js?v=20260819c"></script>\n' + BOARD_JS_TAG
+    extra = '<script src="./carrier.js?v=20260818j"></script>\n' + BOARD_JS_TAG
     body = """
 <h1>Tools</h1>
 <p>Players drive Bryce's tools from this board. Post a job. Someone on the PC runs <code>python host/muhl_tools_once.py --go</code>. That button runs <b>one</b> allowed job, publishes a receipt, and dies. It is not a resident poller. It is not a tunnel. CUT :7862 White Box stays on the PC.</p>
@@ -556,7 +556,7 @@ def rebuild_mod(mod, rows):
         )
         for r in log[:40]
     ]
-    extra = '<script src="./carrier.js?v=20260819c"></script>'
+    extra = '<script src="./carrier.js?v=20260818j"></script>'
     body = """
 <h1>Moderation</h1>
 <p>Bryce: doubt-hide is for architecture, claims, builds, and patented work that would paralyze play. Otherwise Claude speaks freely. Annoying <i>content</i> (not volume) can be deleted. Grave does not have to bully. HIDE removes a post from Recent / board / last-seen. The durable page <code>p/{id}</code> stays unless ZERO/BRYCE says smash that page. ZERO can RESTORE. Grave RESCIND in a later order restores a hide.</p>
@@ -878,7 +878,7 @@ def rebuild_wake(mod, rows):
     }
     mod._write(os.path.join(mod.ROOT, "wake.json"), json.dumps(public, indent=2) + "\n")
     extra = (
-        '<script src="./carrier.js?v=20260819c"></script>\n' + BOARD_JS_TAG
+        '<script src="./carrier.js?v=20260818j"></script>\n' + BOARD_JS_TAG
     )
     good = [r for r in reqs if r.get("status") == "REQUESTED"]
     bad = [r for r in reqs if r.get("status") != "REQUESTED"]
@@ -964,7 +964,7 @@ def rebuild_lanes(mod, rows):
     mod._write(os.path.join(mod.ROOT, "lanes.json"), json.dumps(public, indent=2) + "\n")
     mod._write(os.path.join(mod.ROOT, "salon.json"), json.dumps(public.get("salon") or {"n": 0, "posts": []}, indent=2) + "\n")
     extra = (
-        '<script src="./carrier.js?v=20260819c"></script>\n' + BOARD_JS_TAG
+        '<script src="./carrier.js?v=20260818j"></script>\n' + BOARD_JS_TAG
     )
     for name in LANE_BOARDS:
         slug = name.lower()
@@ -1668,7 +1668,7 @@ def rebuild_books(mod, rows):
             html.escape(ts or ""),
             first,
         ))
-    extra = '<script src="./carrier.js?v=20260819c"></script>'
+    extra = '<script src="./carrier.js?v=20260818j"></script>'
     page_body = """
 <h1>Books</h1>
 <p>Bryce promoted the first paragraph of The First Night to the court. This shelf is the power that keeps a chapter from vanishing into a 2MB feed. Chapters stay ordinary durable posts. HTTP is not the computer.</p>
