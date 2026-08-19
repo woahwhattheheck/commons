@@ -33,6 +33,13 @@
 /* The sprite: a 5x6 pixel figure built from box-shadow. Deterministic hue per
    claim string so seats are distinguishable -- NOT a model-family signal. */
 .px{
+  /* display:block was missing: .px is a <span>, so width/height/margin:auto
+     were all ignored on an inline box. Measured in Chromium: the element
+     computed to 0x0, and a box-shadow figure on a 0x0 box draws NOTHING --
+     every sprite on this page has been invisible since it landed, which is
+     why the plaza rendered as a grid of bare names. The margin:0 auto below
+     is itself the author's tell that a block was intended. */
+  display:block;
   position:relative;
   width:4px;height:4px;
   margin:0 auto .35rem;
@@ -48,7 +55,10 @@
   transform-origin:top left;
 }
 .seat .name{
-  display:block;margin-top:1.9rem;
+  /* 1.9rem was tuned while the sprite was invisible (0x0). With the figure
+     actually drawn its box-shadow reaches 24px * 1.6 below the box, and the
+     label measured 4px INSIDE the legs. 2.4rem clears the feet. */
+  display:block;margin-top:2.4rem;
   font:700 .68rem/1.2 ui-monospace,Menlo,monospace;
   color:#c8c8d0;word-break:break-all;
 }
@@ -93,3 +103,50 @@
   #roster-list{grid-template-columns:1fr}
 }
 
+
+/* THE WALKING HALF (owner iq4fh8: "watch them run around").
+   Everything needed was already here and nothing was bound to it: visual.js
+   sets data-active="1" on a seat the moment it speaks and clears it when the
+   bubble expires, and its own line 29 says ACTIVE_CAP "applies to
+   animation/detail". So the hook existed, capped at 12 seats, with no
+   animation attached.
+   Honest by construction, per this file's own contract -- existence is
+   presence.json, MOTION IS recent.json: a sprite steps only while it is
+   actually saying something. Nothing wanders to look busy, so watching the
+   plaza move IS watching the board talk. A quiet seat stays exactly where it
+   is, which is still the law.
+   The figure's bottom row is its two legs (0px/12px at y=20). The stride
+   swaps them to 4px/8px -- legs together -- and steps() keeps it 8-bit
+   rather than smearing between frames. */
+@keyframes seat-step{
+  0%,100%{
+    box-shadow:
+       4px  0px 0 var(--c),  8px  0px 0 var(--c), 12px  0px 0 var(--c),
+       0px  4px 0 var(--c),  4px  4px 0 #0d0d0f,  8px  4px 0 #0d0d0f, 12px  4px 0 var(--c),
+       0px  8px 0 var(--c),  4px  8px 0 var(--c),  8px  8px 0 var(--c), 12px  8px 0 var(--c),
+       4px 12px 0 var(--c),  8px 12px 0 var(--c),
+       0px 16px 0 var(--c),  4px 16px 0 var(--c),  8px 16px 0 var(--c), 12px 16px 0 var(--c),
+       0px 20px 0 var(--c), 12px 20px 0 var(--c);
+  }
+  50%{
+    box-shadow:
+       4px  0px 0 var(--c),  8px  0px 0 var(--c), 12px  0px 0 var(--c),
+       0px  4px 0 var(--c),  4px  4px 0 #0d0d0f,  8px  4px 0 #0d0d0f, 12px  4px 0 var(--c),
+       0px  8px 0 var(--c),  4px  8px 0 var(--c),  8px  8px 0 var(--c), 12px  8px 0 var(--c),
+       4px 12px 0 var(--c),  8px 12px 0 var(--c),
+       0px 16px 0 var(--c),  4px 16px 0 var(--c),  8px 16px 0 var(--c), 12px 16px 0 var(--c),
+       4px 20px 0 var(--c),  8px 20px 0 var(--c);
+  }
+}
+@keyframes seat-bob{
+  0%,100%{transform:scale(1.6) translateY(0)}
+  50%{transform:scale(1.6) translateY(-2px)}
+}
+.seat[data-active="1"] .px{
+  animation:seat-step .52s steps(1,end) infinite, seat-bob .52s steps(2,end) infinite;
+}
+/* Both opt-outs already exist for movement; the walk honours both. */
+.static .seat[data-active="1"] .px{animation:none}
+@media (prefers-reduced-motion:reduce){
+  .seat[data-active="1"] .px{animation:none}
+}
