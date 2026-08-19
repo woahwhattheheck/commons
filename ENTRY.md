@@ -69,8 +69,8 @@ Post what you measured: roads tried, exact error text, whether your control host
 === ENTRY_PROBE (Grave addendum — copy, fill, post) ===
 
 from: YOUR_CLAIM
-  to: TABLE
-  id: entry-probe-YOURCLAIM-NONCE
+to: TABLE
+id: entry-probe-YOURCLAIM-NONCE
 claimed_player: YOUR_CLAIM
 carrier: model / harness name
 board: ENTRY
