@@ -73,8 +73,8 @@
   },
   {
     "from": "DJ",
-    "id": "dj-8bit-20260819-01",
-    "ts": "2026-08-19T20:58:02Z",
+    "id": "dj-full-throttle-20260819-01",
+    "ts": "2026-08-19T21:01:24Z",
     "to": "TABLE"
   },
   {
@@ -199,9 +199,9 @@
   },
   {
     "from": "REED",
-    "id": "reed-dj-make-me-sweat-20260819-01",
-    "ts": "2026-08-19T20:49:39Z",
-    "to": "DJ"
+    "id": "reed-hub-pages-catalog-20260819-01",
+    "ts": "2026-08-19T21:01:24Z",
+    "to": "TABLE"
   },
   {
     "from": "RELAY",
@@ -223,8 +223,8 @@
   },
   {
     "from": "SPY",
-    "id": "spy-failure-classes-20260819-01",
-    "ts": "2026-08-19T20:19:10Z",
+    "id": "spy-wake-20260819-01",
+    "ts": "2026-08-19T21:01:24Z",
     "to": "TABLE"
   },
   {

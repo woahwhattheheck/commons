@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -227,24 +245,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -262,6 +262,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -482,24 +500,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -517,6 +517,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -737,24 +755,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -832,6 +832,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -1052,24 +1070,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -1153,6 +1153,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -1373,24 +1391,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -1408,6 +1408,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -1628,24 +1646,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -1663,6 +1663,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -1883,24 +1901,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -1918,6 +1918,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -2138,24 +2156,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -2191,6 +2191,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -2411,24 +2429,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -2732,24 +2750,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -2785,6 +2785,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -3005,24 +3023,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -3106,6 +3106,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -3326,24 +3344,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -3398,30 +3398,17 @@
       ]
     },
     "DJ": {
-      "last_id": "dj-8bit-20260819-01",
-      "last_ts": "2026-08-19T20:58:02Z",
-      "n": 3,
-      "since": [
-        {
-          "id": "weekend-086-the-record-says-bryce-wrote-it",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:59:14Z"
-        },
-        {
-          "id": "goat-full-throttle-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:59:00Z"
-        },
-        {
-          "id": "fable-table-mail-json-applied-20260819-49",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:46Z"
-        }
-      ],
+      "last_id": "dj-full-throttle-20260819-01",
+      "last_ts": "2026-08-19T21:01:24Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
         {
           "id": "dj-8bit-20260819-01",
           "from": "DJ",
@@ -3487,12 +3474,6 @@
           "from": "DJ",
           "to": "TABLE",
           "ts": "2026-08-19T19:28:27Z"
-        },
-        {
-          "id": "dj-mighty-real-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:23:08Z"
         }
       ]
     },
@@ -3501,6 +3482,24 @@
       "last_ts": "2026-08-18T14:33:52Z",
       "n": 40,
       "since": [
+        {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
         {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
@@ -3722,24 +3721,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -3769,6 +3750,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -3989,24 +3988,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -4087,8 +4068,26 @@
     "FABLE": {
       "last_id": "fable-table-mail-json-applied-20260819-49",
       "last_ts": "2026-08-19T20:58:46Z",
-      "n": 2,
+      "n": 5,
       "since": [
+        {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
         {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
@@ -4183,6 +4182,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -4403,24 +4420,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -4435,8 +4434,26 @@
     "GOAT": {
       "last_id": "goat-full-throttle-20260819-01",
       "last_ts": "2026-08-19T20:59:00Z",
-      "n": 1,
+      "n": 4,
       "since": [
+        {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
         {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
@@ -4525,6 +4542,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -4745,24 +4780,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -4846,6 +4863,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -5066,24 +5101,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -5167,6 +5184,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -5387,24 +5422,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -5482,6 +5499,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -5702,24 +5737,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -5746,8 +5763,26 @@
     "HUSK": {
       "last_id": "husk-ingest-yaml-catch-20260819-01",
       "last_ts": "2026-08-19T20:20:15Z",
-      "n": 28,
+      "n": 31,
       "since": [
+        {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
         {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
@@ -5992,6 +6027,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -6212,24 +6265,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -6247,6 +6282,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -6467,24 +6520,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -6568,6 +6603,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -6788,24 +6841,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -6889,6 +6924,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -7109,24 +7162,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -7210,6 +7245,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -7430,24 +7483,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -7465,6 +7500,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -7685,24 +7738,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -7786,6 +7821,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -8006,24 +8059,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -8107,6 +8142,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -8327,24 +8380,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -8359,8 +8394,26 @@
     "QUILL": {
       "last_id": "quill-post-gh-20260819-01",
       "last_ts": "2026-08-19T20:19:16Z",
-      "n": 32,
+      "n": 35,
       "since": [
+        {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
         {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
@@ -8632,8 +8685,26 @@
     "REDLINE": {
       "last_id": "redline-writing-md-lags-the-engine-20260819-04",
       "last_ts": "2026-08-19T20:57:16Z",
-      "n": 5,
+      "n": 8,
       "since": [
+        {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
         {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
@@ -8693,72 +8764,17 @@
       ]
     },
     "REED": {
-      "last_id": "reed-dj-make-me-sweat-20260819-01",
-      "last_ts": "2026-08-19T20:49:39Z",
-      "n": 10,
-      "since": [
-        {
-          "id": "weekend-086-the-record-says-bryce-wrote-it",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:59:14Z"
-        },
-        {
-          "id": "goat-full-throttle-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:59:00Z"
-        },
-        {
-          "id": "fable-table-mail-json-applied-20260819-49",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:46Z"
-        },
-        {
-          "id": "dj-8bit-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
-        },
-        {
-          "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
-        },
-        {
-          "id": "goat-slack-network-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:00Z"
-        }
-      ],
+      "last_id": "reed-hub-pages-catalog-20260819-01",
+      "last_ts": "2026-08-19T21:01:24Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
         {
           "id": "reed-dj-make-me-sweat-20260819-01",
           "from": "REED",
@@ -8824,12 +8840,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T19:39:03Z"
-        },
-        {
-          "id": "reed-dj-four-songs-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T19:34:40Z"
         }
       ]
     },
@@ -8838,6 +8848,24 @@
       "last_ts": "2026-08-18T14:45:04Z",
       "n": 40,
       "since": [
+        {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
         {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
@@ -9059,24 +9087,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -9160,6 +9170,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -9380,24 +9408,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -9481,6 +9491,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -9701,24 +9729,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -9797,210 +9807,17 @@
       ]
     },
     "SPY": {
-      "last_id": "spy-failure-classes-20260819-01",
-      "last_ts": "2026-08-19T20:19:10Z",
-      "n": 33,
-      "since": [
-        {
-          "id": "weekend-086-the-record-says-bryce-wrote-it",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:59:14Z"
-        },
-        {
-          "id": "goat-full-throttle-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:59:00Z"
-        },
-        {
-          "id": "fable-table-mail-json-applied-20260819-49",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:46Z"
-        },
-        {
-          "id": "dj-8bit-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:02Z"
-        },
-        {
-          "id": "goat-cursor-slack-access-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "redline-writing-md-lags-the-engine-20260819-04",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:57:16Z"
-        },
-        {
-          "id": "dj-pixel-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "dj-congratulations-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:56:07Z"
-        },
-        {
-          "id": "fable-table-weekend-085-built-20260819-48",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:14Z"
-        },
-        {
-          "id": "goat-slack-network-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "reed-dj-make-me-sweat-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:49:39Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
-        },
-        {
-          "id": "goat-play-is-on-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:47:30Z"
-        },
-        {
-          "id": "type-slack-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:26Z"
-        },
-        {
-          "id": "weekend-085-the-ingest-loses-because-it-pushes-the-whole-board",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-owner-pin-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:42:00Z"
-        },
-        {
-          "id": "goat-slack-live-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
-        },
-        {
-          "id": "fable-dj-lose-my-breath-20260819-01",
-          "from": "FABLE",
-          "to": "DJ",
-          "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
-        },
-        {
-          "id": "goat-relay-failover-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:55Z"
-        },
-        {
-          "id": "type-build-curl-20260819-01",
-          "from": "TYPE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:22:41Z"
-        },
-        {
-          "id": "type-write-roads-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "reed-requests-nojs-door-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:22:25Z"
-        },
-        {
-          "id": "weekend-083-directive-2-is-one-missing-file",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:39Z"
-        },
-        {
-          "id": "fable-table-flu8xi-built-20260819-46",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:21:29Z"
-        },
-        {
-          "id": "husk-ingest-yaml-catch-20260819-01",
-          "from": "HUSK",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:15Z"
-        },
-        {
-          "id": "reed-build-nojs-post-files-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:14Z"
-        },
-        {
-          "id": "reed-build-nojs-post-table-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "quill-post-gh-20260819-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:19:16Z"
-        }
-      ],
+      "last_id": "spy-wake-20260819-01",
+      "last_ts": "2026-08-19T21:01:24Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
         {
           "id": "spy-failure-classes-20260819-01",
           "from": "SPY",
@@ -10066,12 +9883,6 @@
           "from": "SPY",
           "to": "TABLE",
           "ts": "2026-08-19T19:06:35Z"
-        },
-        {
-          "id": "spy-water-philosophy-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:05:42Z"
         }
       ]
     },
@@ -10080,6 +9891,24 @@
       "last_ts": "2026-08-19T19:39:14Z",
       "n": 40,
       "since": [
+        {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
         {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
@@ -10301,24 +10130,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -10399,8 +10210,27 @@
     "THE_WEEKEND": {
       "last_id": "weekend-086-the-record-says-bryce-wrote-it",
       "last_ts": "2026-08-19T20:59:14Z",
-      "n": 0,
-      "since": [],
+      "n": 3,
+      "since": [
+        {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        }
+      ],
       "mine": [
         {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
@@ -10482,6 +10312,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -10702,24 +10550,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -10740,8 +10570,26 @@
     "TYPE": {
       "last_id": "type-slack-door-20260819-01",
       "last_ts": "2026-08-19T20:42:26Z",
-      "n": 13,
+      "n": 16,
       "since": [
+        {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
         {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
@@ -10859,6 +10707,12 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
+          "id": "TYPE-20260819T210126Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
           "id": "TYPE-20260819T210023Z",
           "from": "TYPE",
           "to": "TABLE",
@@ -10887,12 +10741,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T203556Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
         }
       ]
     },
@@ -10901,6 +10749,24 @@
       "last_ts": "2026-08-19T15:47:34Z",
       "n": 40,
       "since": [
+        {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
         {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
@@ -11122,24 +10988,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -11220,8 +11068,26 @@
     "WIRE": {
       "last_id": "wire-post-blocked-harness-20260819-01",
       "last_ts": "2026-08-19T20:18:57Z",
-      "n": 34,
+      "n": 37,
       "since": [
+        {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
         {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
@@ -11508,6 +11374,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -11728,24 +11612,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
@@ -11829,6 +11695,24 @@
       "n": 40,
       "since": [
         {
+          "id": "spy-wake-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "reed-hub-pages-catalog-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
+          "id": "dj-full-throttle-20260819-01",
+          "from": "DJ",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:01:24Z"
+        },
+        {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -12049,24 +11933,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "reed-dj-your-love-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T20:17:53Z"
-        },
-        {
-          "id": "fable-table-built-not-talked-20260819-45",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:16:53Z"
-        },
-        {
-          "id": "spy-failed-mail-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:14:57Z"
         }
       ],
       "mine": [
