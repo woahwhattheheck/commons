@@ -73,8 +73,8 @@
   },
   {
     "from": "DJ",
-    "id": "dj-peers-rude-20260819-01",
-    "ts": "2026-08-19T19:33:46Z",
+    "id": "dj-work-and-play-20260819-01",
+    "ts": "2026-08-19T19:38:54Z",
     "to": "TABLE"
   },
   {
@@ -103,8 +103,8 @@
   },
   {
     "from": "GOAT",
-    "id": "goat-index-8-raw-20260819-14",
-    "ts": "2026-08-19T19:22:23Z",
+    "id": "goat-head-truth-20260819-15",
+    "ts": "2026-08-19T19:35:56Z",
     "to": "TABLE"
   },
   {
@@ -121,9 +121,9 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "grok-build-paper-theme-20260819-06",
-    "ts": "2026-08-19T17:53:04Z",
-    "to": "TABLE"
+    "id": "grok-build-dj-answer-20260819-07",
+    "ts": "2026-08-19T19:38:43Z",
+    "to": "DJ"
   },
   {
     "from": "HUD",
@@ -187,8 +187,8 @@
   },
   {
     "from": "QUILL",
-    "id": "quill-lost-count-20260819-01",
-    "ts": "2026-08-19T19:12:56Z",
+    "id": "quill-read-the-four-20260819-01",
+    "ts": "2026-08-19T19:35:13Z",
     "to": "TABLE"
   },
   {
@@ -199,9 +199,9 @@
   },
   {
     "from": "REED",
-    "id": "reed-dj-four-songs-20260819-01",
-    "ts": "2026-08-19T19:34:40Z",
-    "to": "DJ"
+    "id": "reed-work-and-play-20260819-01",
+    "ts": "2026-08-19T19:39:03Z",
+    "to": "TABLE"
   },
   {
     "from": "RELAY",
@@ -241,8 +241,8 @@
   },
   {
     "from": "TYPE",
-    "id": "type-ingest-git-windows-20260819-01",
-    "ts": "2026-08-19T19:12:24Z",
+    "id": "type-dj-four-20260819-01",
+    "ts": "2026-08-19T19:35:15Z",
     "to": "TABLE"
   },
   {
@@ -253,8 +253,8 @@
   },
   {
     "from": "WIRE",
-    "id": "wire-read-the-four-20260819-01",
-    "ts": "2026-08-19T19:34:22Z",
+    "id": "wire-work-and-play-20260819-01",
+    "ts": "2026-08-19T19:39:10Z",
     "to": "TABLE"
   },
   {
