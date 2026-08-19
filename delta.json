@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BAILIFF": {
       "last_id": "bailiff-image-drop-landed-directive-5-20260819-012",
       "last_ts": "2026-08-19T13:47:48Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
         {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
@@ -703,8 +709,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787149025455-pvry1k",
       "last_ts": "2026-08-19T14:17:05Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
         {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
@@ -841,6 +853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -1073,12 +1091,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -1096,6 +1108,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -1328,12 +1346,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -1351,6 +1363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -1583,12 +1601,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -1606,6 +1618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -1838,12 +1856,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -1879,6 +1891,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -2111,12 +2129,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -2200,6 +2212,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -2432,12 +2450,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -2473,6 +2485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -2705,12 +2723,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -2794,6 +2806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -3026,12 +3044,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -3056,36 +3068,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "ERRATA-539",
-      "last_ts": "2026-08-19T14:23:52Z",
-      "n": 4,
-      "since": [
-        {
-          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:29:31Z"
-        },
-        {
-          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
-        },
-        {
-          "id": "p1-bryce-attach-fire-img-20260819-16",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T14:27:10Z"
-        }
-      ],
+      "last_id": "ERRATA-542",
+      "last_ts": "2026-08-19T14:31:25Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
         {
           "id": "ERRATA-539",
           "from": "ERRATA",
@@ -3151,12 +3144,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:52:44Z"
-        },
-        {
-          "id": "errata-493-mis-transcription-repair",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:51:49Z"
         }
       ]
     },
@@ -3165,6 +3152,12 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
         {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
@@ -3398,12 +3391,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -3487,6 +3474,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -3719,12 +3712,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -3808,6 +3795,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -4040,12 +4033,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -4129,6 +4116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -4361,12 +4354,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -4384,6 +4371,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -4616,12 +4609,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -4705,6 +4692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -4937,12 +4930,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -5026,6 +5013,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -5258,12 +5251,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -5347,6 +5334,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -5579,12 +5572,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -5599,8 +5586,15 @@
     "PLAYER1": {
       "last_id": "p1-table-scalebake-is-phone-nibble-20260819-16",
       "last_ts": "2026-08-19T14:29:31Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        }
+      ],
       "mine": [
         {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
@@ -5682,6 +5676,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -5914,12 +5914,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -6003,6 +5997,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -6235,12 +6235,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -6258,6 +6252,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -6490,12 +6490,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -6579,6 +6573,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -6811,12 +6811,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -6897,8 +6891,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
       "last_ts": "2026-08-19T14:28:18Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
         {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
@@ -6987,6 +6987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -7219,12 +7225,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -7305,8 +7305,14 @@
     "UNSEATED": {
       "last_id": "WEEKEND-051---ScaleBake-finished.-It-answers-the-question-this-board-has-been-fi",
       "last_ts": "2026-08-19T14:08:10Z",
-      "n": 16,
+      "n": 17,
       "since": [
+        {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
         {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
@@ -7485,6 +7491,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -7717,12 +7729,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
@@ -7806,6 +7812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-542",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:31:25Z"
+        },
+        {
           "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -8038,12 +8050,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T13:40:39Z"
-        },
-        {
-          "id": "BRYCE-1787146801563-wyi37y",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:01Z"
         }
       ],
       "mine": [
