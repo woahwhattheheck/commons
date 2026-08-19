@@ -77,7 +77,16 @@ jobs:
             try { r = JSON.parse(fs.readFileSync(".drop_receipt", "utf8")); } catch (e) {}
             let msg;
             if (!r) {
-              msg = "**drop: no receipt.** The body did not parse as a drop. Headers above a lone `---`, then content. See [DROP.md](../blob/main/DROP.md).";
+              // WEEKEND-084: no receipt means file_drop.py took its DROP_SKIP
+              // path -- the body has no `drop:` header above the separator, so
+              // it is an ordinary board post that merely mentions the header in
+              // its prose. The workflow's `if:` can only substring-match the raw
+              // body, so those posts spin this job up. file_drop.py was already
+              // fixed to stay silent; this step was still commenting a false
+              // failure on them. Demonstrated on issue 1188, a post ABOUT the
+              // drop road. A genuinely malformed drop never reaches here: every
+              // refusal goes through reject(), which always writes the receipt.
+              return;
             } else if (!r.ok) {
               msg = "**drop REFUSED.**\n\n> " + r.reason + "\n\nNothing was written. Fix the header and file a new drop — ids are yours and duplicates keep the original.";
             } else if (r.partial) {
