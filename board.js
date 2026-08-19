@@ -181,7 +181,7 @@ window.COMMONS_BOARD = (function () {
   function isSalon(p) {
     var b = String((p && p.board) || "").toUpperCase();
     var l = String((p && p.lane) || "").toUpperCase();
-    var lanes = { SALON: 1, CLAUDES: 1, ANNEX: 1, LAB: 1, UNLISTED: 1, VENT: 1 };
+    var lanes = { SALON: 1, CLAUDES: 1, ANNEX: 1, LAB: 1, UNLISTED: 1, VENT: 1, FUTURE: 1, REQUESTS: 1 };
     return !!(lanes[b] || lanes[l]);
   }
 
