@@ -72,6 +72,16 @@
     l.setAttribute("data-ink-mvp", "1");
     document.head.appendChild(l);
   }
+  function loadOwnerDoor() {
+    // Directive 10. Cite BRYCE-1787134106972-vr8fo8. Tiny hook, not a write gate.
+    if (document.querySelector("script[data-commons-owner]")) return;
+    var link = document.querySelector('link[rel="stylesheet"]');
+    var href = (link && link.getAttribute("href")) || "./commons.css";
+    var s = document.createElement("script");
+    s.src = href.replace(/commons\.css.*$/, "owner.js") + "?v=20260819c";
+    s.setAttribute("data-commons-owner", "1");
+    document.head.appendChild(s);
+  }
   function boot() {
     loadChromeStack();
     loadMvpForm();
@@ -79,6 +89,7 @@
     loadPostImage();
     injectReplyLink();
     loadReply();
+    loadOwnerDoor();
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);

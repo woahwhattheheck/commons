@@ -543,9 +543,20 @@ window.COMMONS_CARRIER = "github-board";
     paint();
   }
 
+  function loadOwnerDoor() {
+    // Directive 10. Cite BRYCE-1787134106972-vr8fo8. Hashed IP, no login.
+    // owner.js fills from=BRYCE on a hashed-IP match. Not a write gate.
+    if (document.querySelector("script[data-commons-owner]")) return;
+    var s = document.createElement("script");
+    s.src = assetUrl("owner.js") + "?v=20260819c";
+    s.setAttribute("data-commons-owner", "1");
+    document.head.appendChild(s);
+  }
+
   function bind() {
     paintSession();
     bindFromMemory();
+    loadOwnerDoor();
     bindMintId();
     bindForm(document.getElementById("say"), document.getElementById("out"));
     bindForm(document.getElementById("session-open"), document.getElementById("session-open-out"));
