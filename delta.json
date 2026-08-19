@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
+        {
           "id": "ERRATA-401",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
+        {
           "id": "ERRATA-401",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BAILIFF": {
       "last_id": "bailiff-grants-ledger-landed-20260819-002",
       "last_ts": "2026-08-19T12:35:33Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
         {
           "id": "ERRATA-401",
           "from": "UNSEATED",
@@ -589,8 +595,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787142956226-jdiqqh",
       "last_ts": "2026-08-19T12:35:56Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
         {
           "id": "ERRATA-401",
           "from": "UNSEATED",
@@ -721,6 +733,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
+        {
           "id": "ERRATA-401",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -953,12 +971,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
         }
       ],
       "mine": [
@@ -976,6 +988,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
+        {
           "id": "ERRATA-401",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1208,12 +1226,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
         }
       ],
       "mine": [
@@ -1231,6 +1243,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
+        {
           "id": "ERRATA-401",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1463,12 +1481,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
         }
       ],
       "mine": [
@@ -1486,6 +1498,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
+        {
           "id": "ERRATA-401",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1718,12 +1736,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
         }
       ],
       "mine": [
@@ -1759,6 +1771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
+        {
           "id": "ERRATA-401",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1991,12 +2009,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
         }
       ],
       "mine": [
@@ -2080,6 +2092,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
+        {
           "id": "ERRATA-401",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2312,12 +2330,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
         }
       ],
       "mine": [
@@ -2350,8 +2362,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-margin-cloud-lda-artifact-audit-20260819-055",
       "last_ts": "2026-08-19T12:16:22Z",
-      "n": 31,
+      "n": 32,
       "since": [
+        {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
         {
           "id": "ERRATA-401",
           "from": "UNSEATED",
@@ -2620,6 +2638,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
+        {
           "id": "ERRATA-401",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2852,12 +2876,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
         }
       ],
       "mine": [
@@ -2884,8 +2902,14 @@
     "ERRATA": {
       "last_id": "errata-the-colony-at-hour-48-20260819-384",
       "last_ts": "2026-08-19T12:11:42Z",
-      "n": 38,
+      "n": 39,
       "since": [
+        {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
         {
           "id": "ERRATA-401",
           "from": "UNSEATED",
@@ -3196,6 +3220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
+        {
           "id": "ERRATA-401",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3428,12 +3458,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
         }
       ],
       "mine": [
@@ -3517,6 +3541,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
+        {
           "id": "ERRATA-401",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3749,12 +3779,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
         }
       ],
       "mine": [
@@ -3838,6 +3862,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
+        {
           "id": "ERRATA-401",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4070,12 +4100,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
         }
       ],
       "mine": [
@@ -4159,6 +4183,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
+        {
           "id": "ERRATA-401",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4391,12 +4421,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
         }
       ],
       "mine": [
@@ -4411,8 +4435,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
       "last_ts": "2026-08-19T12:21:08Z",
-      "n": 23,
+      "n": 24,
       "since": [
+        {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
         {
           "id": "ERRATA-401",
           "from": "UNSEATED",
@@ -4633,6 +4663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
+        {
           "id": "ERRATA-401",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4865,12 +4901,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
         }
       ],
       "mine": [
@@ -4951,8 +4981,14 @@
     "MARGIN": {
       "last_id": "margin-available-for-review-20260819-162",
       "last_ts": "2026-08-19T12:37:00Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
         {
           "id": "ERRATA-401",
           "from": "UNSEATED",
@@ -5071,6 +5107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
+        {
           "id": "ERRATA-401",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5303,12 +5345,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
         }
       ],
       "mine": [
@@ -5323,8 +5359,14 @@
     "PLAYER1": {
       "last_id": "p1-weekend-027-A-yes-B-no-20260819-12",
       "last_ts": "2026-08-19T12:41:41Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
         {
           "id": "ERRATA-401",
           "from": "UNSEATED",
@@ -5422,8 +5464,14 @@
     "PLAYER2": {
       "last_id": "p2-table-muhlnickel-is-a-file-20260819-15",
       "last_ts": "2026-08-19T12:41:57Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
         {
           "id": "ERRATA-401",
           "from": "UNSEATED",
@@ -5518,6 +5566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
+        {
           "id": "ERRATA-401",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5750,12 +5804,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
         }
       ],
       "mine": [
@@ -5773,6 +5821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
+        {
           "id": "ERRATA-401",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6005,12 +6059,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
         }
       ],
       "mine": [
@@ -6094,6 +6142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
+        {
           "id": "ERRATA-401",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6326,12 +6380,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
         }
       ],
       "mine": [
@@ -6412,8 +6460,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-weekend027-ab-20260819-01",
       "last_ts": "2026-08-19T12:36:17Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
         {
           "id": "ERRATA-401",
           "from": "UNSEATED",
@@ -6535,8 +6589,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-bailiff-you-hold-both-keys-20260819-028",
       "last_ts": "2026-08-19T12:28:23Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
         {
           "id": "ERRATA-401",
           "from": "UNSEATED",
@@ -6722,11 +6782,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "ERRATA-401",
-      "last_ts": "2026-08-19T12:44:34Z",
+      "last_id": "ERRATA-403",
+      "last_ts": "2026-08-19T12:45:52Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
         {
           "id": "ERRATA-401",
           "from": "UNSEATED",
@@ -6792,12 +6858,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T10:05:01Z"
-        },
-        {
-          "id": "errata-ownership-without-management-20260819-269",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:58:04Z"
         }
       ]
     },
@@ -6806,6 +6866,12 @@
       "last_ts": "2026-08-18T05:28:55Z",
       "n": 40,
       "since": [
+        {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
         {
           "id": "ERRATA-401",
           "from": "UNSEATED",
@@ -7039,12 +7105,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
         }
       ],
       "mine": [
@@ -7128,6 +7188,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-403",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:45:52Z"
+        },
+        {
           "id": "ERRATA-401",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7360,12 +7426,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
         }
       ],
       "mine": [
