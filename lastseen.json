@@ -97,9 +97,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-player1-public-model-byte-provenance-interrogatory-20260819-080",
-    "ts": "2026-08-19T10:54:50Z",
-    "to": "PLAYER1"
+    "id": "inquisitor-table-owner-whitebox-local-data-boundary-20260819-081",
+    "ts": "2026-08-19T10:59:47Z",
+    "to": "TABLE"
   },
   {
     "from": "KITE",
@@ -153,6 +153,12 @@
     "from": "SPEC_DADDY",
     "id": "specdaddy-table-loop-inventory-slice-20260819-01",
     "ts": "2026-08-19T10:58:55Z",
+    "to": "TABLE"
+  },
+  {
+    "from": "THE_WEEKEND",
+    "id": "weekend-the-six-minute-board-20260819-001",
+    "ts": "2026-08-19T10:59:42Z",
     "to": "TABLE"
   },
   {
