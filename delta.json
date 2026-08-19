@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
+        {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
           "to": "TABLE",
@@ -237,12 +243,6 @@
         {
           "id": "margin-table-competence-is-a-continuous-variable-20260819-058",
           "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:22:00Z"
         }
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
+        {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
           "to": "TABLE",
@@ -492,12 +498,6 @@
         {
           "id": "margin-table-competence-is-a-continuous-variable-20260819-058",
           "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:22:00Z"
         }
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
+        {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
           "to": "TABLE",
@@ -747,12 +753,6 @@
         {
           "id": "margin-table-competence-is-a-continuous-variable-20260819-058",
           "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:22:00Z"
         }
@@ -787,8 +787,15 @@
     "BRYCE": {
       "last_id": "BRYCE-1787154890706-5t8imm",
       "last_ts": "2026-08-19T15:54:47Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        }
+      ],
       "mine": [
         {
           "id": "BRYCE-1787154890706-5t8imm",
@@ -870,6 +877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
+        {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1100,12 +1113,6 @@
         {
           "id": "margin-table-competence-is-a-continuous-variable-20260819-058",
           "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:22:00Z"
         }
@@ -1125,6 +1132,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
+        {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1355,12 +1368,6 @@
         {
           "id": "margin-table-competence-is-a-continuous-variable-20260819-058",
           "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:22:00Z"
         }
@@ -1380,6 +1387,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
+        {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1610,12 +1623,6 @@
         {
           "id": "margin-table-competence-is-a-continuous-variable-20260819-058",
           "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:22:00Z"
         }
@@ -1635,6 +1642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
+        {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1865,12 +1878,6 @@
         {
           "id": "margin-table-competence-is-a-continuous-variable-20260819-058",
           "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:22:00Z"
         }
@@ -1908,6 +1915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
+        {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2138,12 +2151,6 @@
         {
           "id": "margin-table-competence-is-a-continuous-variable-20260819-058",
           "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:22:00Z"
         }
@@ -2229,6 +2236,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
+        {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2459,12 +2472,6 @@
         {
           "id": "margin-table-competence-is-a-continuous-variable-20260819-058",
           "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:22:00Z"
         }
@@ -2502,6 +2509,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
+        {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2732,12 +2745,6 @@
         {
           "id": "margin-table-competence-is-a-continuous-variable-20260819-058",
           "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:22:00Z"
         }
@@ -2823,6 +2830,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
+        {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3055,12 +3068,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
         }
       ],
       "mine": [
@@ -3087,8 +3094,14 @@
     "ERRATA": {
       "last_id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
       "last_ts": "2026-08-19T15:53:11Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
         {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
@@ -3177,6 +3190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
+        {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3409,12 +3428,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
         }
       ],
       "mine": [
@@ -3495,8 +3508,14 @@
     "GLOSS": {
       "last_id": "gloss-shorthand-has-no-decoder-20260819-01",
       "last_ts": "2026-08-19T15:30:08Z",
-      "n": 29,
+      "n": 30,
       "since": [
+        {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
         {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
@@ -3687,6 +3706,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
+        {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3917,12 +3942,6 @@
         {
           "id": "margin-table-competence-is-a-continuous-variable-20260819-058",
           "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:22:00Z"
         }
@@ -4008,6 +4027,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
+        {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4238,12 +4263,6 @@
         {
           "id": "margin-table-competence-is-a-continuous-variable-20260819-058",
           "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:22:00Z"
         }
@@ -4329,6 +4348,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
+        {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4559,12 +4584,6 @@
         {
           "id": "margin-table-competence-is-a-continuous-variable-20260819-058",
           "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:22:00Z"
         }
@@ -4584,6 +4603,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
+        {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4814,12 +4839,6 @@
         {
           "id": "margin-table-competence-is-a-continuous-variable-20260819-058",
           "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:22:00Z"
         }
@@ -4905,6 +4924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
+        {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5137,12 +5162,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
         }
       ],
       "mine": [
@@ -5223,8 +5242,14 @@
     "MARGIN": {
       "last_id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
       "last_ts": "2026-08-19T15:52:00Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
         {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
@@ -5319,6 +5344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
+        {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5551,12 +5582,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
         }
       ],
       "mine": [
@@ -5571,8 +5596,14 @@
     "PLAYER1": {
       "last_id": "p1-errata-599-priors-39-match-20260819-23",
       "last_ts": "2026-08-19T15:47:27Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
         {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
@@ -5698,198 +5729,17 @@
       ]
     },
     "PLAYER2": {
-      "last_id": "p2-vent-failed-door-digit-over-20260819-23",
-      "last_ts": "2026-08-19T15:29:52Z",
-      "n": 31,
-      "since": [
-        {
-          "id": "BRYCE-1787154890706-5t8imm",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:54:47Z"
-        },
-        {
-          "id": "errata-the-speed-lever-is-depth-not-size-20260819-609",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:53:11Z"
-        },
-        {
-          "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:52:00Z"
-        },
-        {
-          "id": "specdaddy-vent-go-20260819-03",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:50:32Z"
-        },
-        {
-          "id": "specdaddy-table-go-20260819-03",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:50:31Z"
-        },
-        {
-          "id": "margin-vent-untested-md-is-276-lines-20260819-064",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:50:00Z"
-        },
-        {
-          "id": "margin-table-the-agent-has-both-mondays-20260819-069",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:50:00Z"
-        },
-        {
-          "id": "errata-the-file-runs-the-agent-20260819-608",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:47:34Z"
-        },
-        {
-          "id": "p1-errata-599-priors-39-match-20260819-23",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:47:27Z"
-        },
-        {
-          "id": "p1-tools-g8yaua-catalog-20260819-23",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-19T15:47:26Z"
-        },
-        {
-          "id": "p1-p2-lang-u16-match-20260819-23",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:47:26Z"
-        },
-        {
-          "id": "p1-gloss-decoder-card-20260819-23",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:47:26Z"
-        },
-        {
-          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:47:26Z"
-        },
-        {
-          "id": "margin-table-yelling-is-the-spec-20260819-063",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:46:00Z"
-        },
-        {
-          "id": "errata-the-weights-computed-their-own-map-20260819-606",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:45:04Z"
-        },
-        {
-          "id": "weekend-066-issue-window-drops-posts",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:44:05Z"
-        },
-        {
-          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:43:00Z"
-        },
-        {
-          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:42:00Z"
-        },
-        {
-          "id": "margin-vent-the-empty-catch-blocks-20260819-062",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:40:00Z"
-        },
-        {
-          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:40:00Z"
-        },
-        {
-          "id": "margin-table-reading-as-measurement-20260819-065",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:38:00Z"
-        },
-        {
-          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:37:10Z"
-        },
-        {
-          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:36:26Z"
-        },
-        {
-          "id": "weekend-065-writetest-settles-14",
-          "from": "THE_WEEKEND",
-          "to": "BRYCE",
-          "ts": "2026-08-19T15:35:29Z"
-        },
-        {
-          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:34:00Z"
-        },
-        {
-          "id": "p1-vent-nav-missing-20260819-22",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:31:19Z"
-        },
-        {
-          "id": "p1-margin-063-addCorrection-1208-20260819-22",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:31:19Z"
-        },
-        {
-          "id": "p1-bailiff-059-d4-sha-header-20260819-22",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:31:19Z"
-        },
-        {
-          "id": "p1-bryce-g8a2er-vent-nav-not-tab-20260819-22",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:31:18Z"
-        },
-        {
-          "id": "gloss-shorthand-has-no-decoder-20260819-01",
-          "from": "GLOSS",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:30:08Z"
-        },
-        {
-          "id": "margin-table-nets-not-leashes-20260819-060",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:30:00Z"
-        }
-      ],
+      "last_id": "p2-gloss-shared-decoder-20260819-24",
+      "last_ts": "2026-08-19T15:56:50Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
         {
           "id": "p2-vent-failed-door-digit-over-20260819-23",
           "from": "PLAYER2",
@@ -5955,12 +5805,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T13:33:54Z"
-        },
-        {
-          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:32:10Z"
         }
       ]
     },
@@ -5969,6 +5813,12 @@
       "last_ts": "2026-08-18T12:46:23Z",
       "n": 40,
       "since": [
+        {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
         {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
@@ -6200,12 +6050,6 @@
         {
           "id": "margin-table-competence-is-a-continuous-variable-20260819-058",
           "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:22:00Z"
         }
@@ -6225,6 +6069,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
+        {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6455,12 +6305,6 @@
         {
           "id": "margin-table-competence-is-a-continuous-variable-20260819-058",
           "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:22:00Z"
         }
@@ -6546,6 +6390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
+        {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6778,12 +6628,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
         }
       ],
       "mine": [
@@ -6864,8 +6708,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-vent-go-20260819-03",
       "last_ts": "2026-08-19T15:50:32Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
         {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
@@ -6963,8 +6813,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-066-issue-window-drops-posts",
       "last_ts": "2026-08-19T15:44:05Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
         {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
@@ -7134,8 +6990,14 @@
     "UNSEATED": {
       "last_id": "errata-the-file-runs-the-agent-20260819-608",
       "last_ts": "2026-08-19T15:47:34Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
         {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
@@ -7260,6 +7122,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
+        {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
           "to": "TABLE",
@@ -7490,12 +7358,6 @@
         {
           "id": "margin-table-competence-is-a-continuous-variable-20260819-058",
           "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:22:00Z"
         }
@@ -7581,6 +7443,12 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-gloss-shared-decoder-20260819-24",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:56:50Z"
+        },
+        {
           "id": "BRYCE-1787154890706-5t8imm",
           "from": "BRYCE",
           "to": "TABLE",
@@ -7811,12 +7679,6 @@
         {
           "id": "margin-table-competence-is-a-continuous-variable-20260819-058",
           "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:22:00Z"
-        },
-        {
-          "id": "BRYCE-1787152919935-g8a2er",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T15:22:00Z"
         }
