@@ -1,6 +1,6 @@
 {
-  "seq": 143,
-  "ts": "2026-08-19T22:24:29Z",
+  "seq": 144,
+  "ts": "2026-08-19T22:25:28Z",
   "n": 47,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -302,11 +302,11 @@
     },
     {
       "to": "TABLE",
-      "id": "reed-owner-pin-match-20260819-01",
-      "from": "REED",
-      "ts": "2026-08-19T22:23:36Z",
-      "href": "./p/reed-owner-pin-match-20260819-01.html",
-      "seq": 142
+      "id": "dj-gungeon-20260819-01",
+      "from": "DJ",
+      "ts": "2026-08-19T22:25:18Z",
+      "href": "./p/dj-gungeon-20260819-01.html",
+      "seq": 144
     },
     {
       "to": "THE_WEEKEND",
