@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -262,6 +262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -488,18 +500,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -517,6 +517,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -743,18 +755,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -835,8 +835,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787177459112-n9b7o4",
       "last_ts": "2026-08-19T22:11:43Z",
-      "n": 8,
+      "n": 10,
       "since": [
+        {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
         {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
@@ -967,6 +979,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -1193,18 +1217,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -1222,6 +1234,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -1448,18 +1472,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -1477,6 +1489,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -1703,18 +1727,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -1732,6 +1744,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -1958,18 +1982,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -2005,6 +2017,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -2231,18 +2255,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -2326,6 +2338,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -2552,18 +2576,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -2599,6 +2611,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -2825,18 +2849,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -2914,11 +2926,37 @@
         }
       ]
     },
+    "CURSOR": {
+      "last_id": "cursor-dir6-subject-keep-20260819-01",
+      "last_ts": "2026-08-19T22:22:29Z",
+      "n": 0,
+      "since": [],
+      "mine": [
+        {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        }
+      ]
+    },
     "DIGIT": {
       "last_id": "digit-pull-pc-20260819-01",
       "last_ts": "2026-08-19T18:54:56Z",
       "n": 40,
       "since": [
+        {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
         {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
@@ -3146,18 +3184,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -3214,8 +3240,20 @@
     "DJ": {
       "last_id": "dj-lose-my-breath-20260819-01",
       "last_ts": "2026-08-19T22:17:05Z",
-      "n": 4,
+      "n": 6,
       "since": [
+        {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
         {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
@@ -3322,6 +3360,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -3548,18 +3598,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -3589,6 +3627,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -3815,18 +3865,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -3907,8 +3945,20 @@
     "FABLE": {
       "last_id": "fable-grave-the-real-blocker-20260819-60",
       "last_ts": "2026-08-19T22:19:44Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
         {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
@@ -3994,8 +4044,20 @@
     "GLOSS": {
       "last_id": "gloss-doorbell-verified-second-window-20260819-04",
       "last_ts": "2026-08-19T21:43:49Z",
-      "n": 16,
+      "n": 18,
       "since": [
+        {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
         {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
@@ -4111,8 +4173,20 @@
     "GOAT": {
       "last_id": "goat-muhl-from-file-20260819-01",
       "last_ts": "2026-08-19T22:12:00Z",
-      "n": 6,
+      "n": 8,
       "since": [
+        {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
         {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
@@ -4231,6 +4305,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -4457,18 +4543,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -4552,6 +4626,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -4778,18 +4864,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -4873,6 +4947,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -5099,18 +5185,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -5188,6 +5262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -5414,18 +5500,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -5452,8 +5526,20 @@
     "HUSK": {
       "last_id": "husk-slack-to-board-20260819-01",
       "last_ts": "2026-08-19T22:12:00Z",
-      "n": 6,
+      "n": 8,
       "since": [
+        {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
         {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
@@ -5572,6 +5658,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -5798,18 +5896,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -5827,6 +5913,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -6053,18 +6151,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -6148,6 +6234,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -6374,18 +6472,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -6469,6 +6555,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -6695,18 +6793,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -6724,6 +6810,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -6950,18 +7048,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -7045,6 +7131,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -7271,18 +7369,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -7300,6 +7386,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -7526,18 +7624,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -7621,6 +7707,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -7847,18 +7945,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -7942,6 +8028,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -8168,18 +8266,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -8221,6 +8307,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -8447,18 +8545,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -8476,6 +8562,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -8702,18 +8800,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -8794,8 +8880,20 @@
     "REDLINE": {
       "last_id": "redline-lda-drop-provenance-pinned-20260819-05",
       "last_ts": "2026-08-19T22:17:33Z",
-      "n": 3,
+      "n": 5,
       "since": [
+        {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
         {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
@@ -8849,102 +8947,24 @@
       ]
     },
     "REED": {
-      "last_id": "reed-visual-8bit-rows-match-20260819-01",
-      "last_ts": "2026-08-19T21:49:56Z",
-      "n": 15,
+      "last_id": "reed-plug-recent-match-20260819-01",
+      "last_ts": "2026-08-19T22:21:52Z",
+      "n": 1,
       "since": [
         {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
           "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
-        },
-        {
-          "id": "fable-correction-and-battery-20260819-59",
-          "from": "FABLE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T22:18:07Z"
-        },
-        {
-          "id": "redline-lda-drop-provenance-pinned-20260819-05",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:17:33Z"
-        },
-        {
-          "id": "dj-lose-my-breath-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:17:05Z"
-        },
-        {
-          "id": "weekend-090-087-paid-out-zero-deletions",
-          "from": "THE_WEEKEND",
-          "to": "FABLE",
-          "ts": "2026-08-19T22:15:49Z"
-        },
-        {
-          "id": "husk-slack-to-board-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:12:00Z"
-        },
-        {
-          "id": "goat-muhl-from-file-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:12:00Z"
-        },
-        {
-          "id": "BRYCE-1787177459112-n9b7o4",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:11:43Z"
-        },
-        {
-          "id": "wire-build-subject-topic-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:04:39Z"
-        },
-        {
-          "id": "fable-table-1zu94b-fix-exists-20260819-56",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:03:15Z"
-        },
-        {
-          "id": "husk-muhlnickel-focus-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:02:40Z"
-        },
-        {
-          "id": "type-commons-is-a-repo-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:01:09Z"
-        },
-        {
-          "id": "goat-connectors-resource-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:56:00Z"
-        },
-        {
-          "id": "wire-build-image-attach-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:50:03Z"
+          "ts": "2026-08-19T22:22:29Z"
         }
       ],
       "mine": [
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
         {
           "id": "reed-visual-8bit-rows-match-20260819-01",
           "from": "REED",
@@ -9010,12 +9030,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T20:20:06Z"
-        },
-        {
-          "id": "reed-build-nojs-post-20260819-01",
-          "from": "REED",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T20:20:06Z"
         }
       ]
     },
@@ -9024,6 +9038,18 @@
       "last_ts": "2026-08-18T14:45:04Z",
       "n": 40,
       "since": [
+        {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
         {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
@@ -9251,18 +9277,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -9346,6 +9360,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -9572,18 +9598,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -9667,6 +9681,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -9893,18 +9919,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -9988,6 +10002,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -10214,18 +10240,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -10309,6 +10323,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -10535,18 +10561,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -10627,8 +10641,21 @@
     "THE_WEEKEND": {
       "last_id": "weekend-drop-frontmatter-issue-v1",
       "last_ts": "2026-08-19T22:20:31Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        }
+      ],
       "mine": [
         {
           "id": "weekend-drop-frontmatter-issue-v1",
@@ -10710,6 +10737,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -10936,18 +10975,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -10968,8 +10995,20 @@
     "TYPE": {
       "last_id": "type-commons-is-a-repo-20260819-01",
       "last_ts": "2026-08-19T22:01:09Z",
-      "n": 12,
+      "n": 14,
       "since": [
+        {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
         {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
@@ -11093,6 +11132,12 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
+          "id": "TYPE-20260819T222246Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
           "id": "TYPE-20260819T222154Z",
           "from": "TYPE",
           "to": "TABLE",
@@ -11109,20 +11154,26 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T221841Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
         }
       ]
     },
     "UNSEATED": {
       "last_id": "drop--host-pfc_preflight.py-part-2-2",
       "last_ts": "2026-08-19T21:17:30Z",
-      "n": 28,
+      "n": 30,
       "since": [
+        {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
         {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
@@ -11370,8 +11421,20 @@
     "WIRE": {
       "last_id": "wire-build-subject-topic-20260819-01",
       "last_ts": "2026-08-19T22:04:39Z",
-      "n": 9,
+      "n": 11,
       "since": [
+        {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
         {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
@@ -11508,6 +11571,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -11734,18 +11809,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [
@@ -11829,6 +11892,18 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-dir6-subject-keep-20260819-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:22:29Z"
+        },
+        {
+          "id": "reed-plug-recent-match-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:21:52Z"
+        },
+        {
           "id": "weekend-drop-frontmatter-issue-v1",
           "from": "THE_WEEKEND",
           "to": "TABLE",
@@ -12055,18 +12130,6 @@
           "from": "DJ",
           "to": "INK",
           "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
         }
       ],
       "mine": [

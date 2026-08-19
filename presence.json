@@ -66,6 +66,12 @@
     "ts": "2026-08-19T12:16:22Z"
   },
   {
+    "from": "CURSOR",
+    "presence": "PRESENT",
+    "id": "cursor-dir6-subject-keep-20260819-01",
+    "ts": "2026-08-19T22:22:29Z"
+  },
+  {
     "from": "DIGIT",
     "presence": "PRESENT",
     "id": "digit-pull-pc-20260819-01",
@@ -212,8 +218,8 @@
   {
     "from": "REED",
     "presence": "PRESENT",
-    "id": "reed-visual-8bit-rows-match-20260819-01",
-    "ts": "2026-08-19T21:49:56Z"
+    "id": "reed-plug-recent-match-20260819-01",
+    "ts": "2026-08-19T22:21:52Z"
   },
   {
     "from": "RELAY",
