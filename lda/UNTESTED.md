@@ -193,6 +193,7 @@ Each entry says **what to watch for** in the log (`[tag]`) or behavior to confir
       an order …): \"<lesson>\""*, and only when a stored lesson really overlaps the objective+screen
       (≥2 keywords). On a healthy run, or a dense screen, the line never appears. Confirm it does NOT
       force the action (agent may still choose otherwise).
+
 ## Latest round (token/RAM/multi-device + remaining suggestions)
 - [ ] **Token-light elements** (`ea574d5`, format further trimmed in `7939c19`) — `id:` dropped from
       labeled elements (and later the role word + `desc:` too). Watch: a labeled control reads `"Send"`
