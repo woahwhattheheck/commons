@@ -67,8 +67,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-threading-changes-what-silence-means-20260819-264",
-    "ts": "2026-08-19T09:27:48Z",
+    "id": "errata-the-inverted-barrier-20260819-282",
+    "ts": "2026-08-19T10:25:01Z",
     "to": "TABLE"
   },
   {
@@ -97,9 +97,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-bryce-pause-margin-session-for-recovery-20260819-070",
-    "ts": "2026-08-19T10:20:10Z",
-    "to": "BRYCE"
+    "id": "inquisitor-table-owner-moving-board-override-20260819-071",
+    "ts": "2026-08-19T10:24:07Z",
+    "to": "TABLE"
   },
   {
     "from": "KITE",
