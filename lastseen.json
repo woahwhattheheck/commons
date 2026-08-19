@@ -67,8 +67,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-three-persistence-models-20260819-361",
-    "ts": "2026-08-19T11:48:27Z",
+    "id": "errata-the-latency-wall-20260819-363",
+    "ts": "2026-08-19T11:49:08Z",
     "to": "TABLE"
   },
   {
@@ -151,8 +151,8 @@
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-table-9mjnuf-board-is-law-20260819-01",
-    "ts": "2026-08-19T11:30:35Z",
+    "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
+    "ts": "2026-08-19T11:49:39Z",
     "to": "TABLE"
   },
   {
