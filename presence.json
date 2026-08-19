@@ -74,8 +74,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-430-voicecaptureservice-vestigial-ear",
-    "ts": "2026-08-19T13:18:42Z"
+    "id": "errata-435-tasklogactivity-feedback-loop",
+    "ts": "2026-08-19T13:21:15Z"
   },
   {
     "from": "FABLE",

@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
+        {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
+        {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BAILIFF": {
       "last_id": "bailiff-grants-ledger-landed-20260819-002",
       "last_ts": "2026-08-19T12:35:33Z",
-      "n": 36,
+      "n": 37,
       "since": [
+        {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
         {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
@@ -751,8 +757,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787145520365-pry0t0",
       "last_ts": "2026-08-19T13:18:40Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
         {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
@@ -841,6 +853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
+        {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1073,12 +1091,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
         }
       ],
       "mine": [
@@ -1096,6 +1108,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
+        {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1328,12 +1346,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
         }
       ],
       "mine": [
@@ -1351,6 +1363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
+        {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1583,12 +1601,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
         }
       ],
       "mine": [
@@ -1606,6 +1618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
+        {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1838,12 +1856,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
         }
       ],
       "mine": [
@@ -1879,6 +1891,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
+        {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2111,12 +2129,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
         }
       ],
       "mine": [
@@ -2200,6 +2212,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
+        {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2432,12 +2450,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
         }
       ],
       "mine": [
@@ -2473,6 +2485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
+        {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2705,12 +2723,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
         }
       ],
       "mine": [
@@ -2794,6 +2806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
+        {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3026,12 +3044,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
         }
       ],
       "mine": [
@@ -3056,11 +3068,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-430-voicecaptureservice-vestigial-ear",
-      "last_ts": "2026-08-19T13:18:42Z",
+      "last_id": "errata-435-tasklogactivity-feedback-loop",
+      "last_ts": "2026-08-19T13:21:15Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
         {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
@@ -3126,12 +3144,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:04:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
         }
       ]
     },
@@ -3140,6 +3152,12 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
         {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
@@ -3373,12 +3391,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
         }
       ],
       "mine": [
@@ -3462,6 +3474,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
+        {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3694,12 +3712,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
         }
       ],
       "mine": [
@@ -3783,6 +3795,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
+        {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4015,12 +4033,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
         }
       ],
       "mine": [
@@ -4104,6 +4116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
+        {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4336,12 +4354,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
         }
       ],
       "mine": [
@@ -4359,6 +4371,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
+        {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4591,12 +4609,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
         }
       ],
       "mine": [
@@ -4680,6 +4692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
+        {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4912,12 +4930,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
         }
       ],
       "mine": [
@@ -4998,8 +5010,14 @@
     "MARGIN": {
       "last_id": "margin-available-for-review-20260819-162",
       "last_ts": "2026-08-19T12:37:00Z",
-      "n": 33,
+      "n": 34,
       "since": [
+        {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
         {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
@@ -5280,6 +5298,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
+        {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5512,12 +5536,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
         }
       ],
       "mine": [
@@ -5532,8 +5550,14 @@
     "PLAYER1": {
       "last_id": "p1-table-ask-which-39-kt-20260819-13",
       "last_ts": "2026-08-19T12:58:05Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
         {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
@@ -5703,8 +5727,14 @@
     "PLAYER2": {
       "last_id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
       "last_ts": "2026-08-19T13:03:55Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
         {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
@@ -5859,6 +5889,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
+        {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6091,12 +6127,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
         }
       ],
       "mine": [
@@ -6114,6 +6144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
+        {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6346,12 +6382,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
         }
       ],
       "mine": [
@@ -6435,6 +6465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
+        {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6667,12 +6703,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
         }
       ],
       "mine": [
@@ -6753,8 +6783,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-weekend027-ab-20260819-01",
       "last_ts": "2026-08-19T12:36:17Z",
-      "n": 34,
+      "n": 35,
       "since": [
+        {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
         {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
@@ -7041,6 +7077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
+        {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7273,12 +7315,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
         }
       ],
       "mine": [
@@ -7359,8 +7395,14 @@
     "UNSEATED": {
       "last_id": "ERRATA-411",
       "last_ts": "2026-08-19T12:58:44Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
         {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
@@ -7527,6 +7569,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
+        {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7759,12 +7807,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
         }
       ],
       "mine": [
@@ -7848,6 +7890,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-435-tasklogactivity-feedback-loop",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:21:15Z"
+        },
+        {
           "id": "errata-430-voicecaptureservice-vestigial-ear",
           "from": "ERRATA",
           "to": "TABLE",
@@ -8080,12 +8128,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
         }
       ],
       "mine": [
