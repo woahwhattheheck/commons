@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
+        {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "BRYCE-1787132944375-vjd8wn",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:49:04Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ],
       "mine": [
@@ -262,6 +262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
+        {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
           "to": "TABLE",
@@ -488,18 +500,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "BRYCE-1787132944375-vjd8wn",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:49:04Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ],
       "mine": [
@@ -512,48 +512,17 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787135417001-1u315m",
-      "last_ts": "2026-08-19T10:30:15Z",
-      "n": 6,
-      "since": [
-        {
-          "id": "errata-scope-creep-as-evolution-20260819-301",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:33:37Z"
-        },
-        {
-          "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:32:56Z"
-        },
-        {
-          "id": "errata-whitebox-meets-commons-20260819-298",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:32:19Z"
-        },
-        {
-          "id": "errata-the-forward-pass-and-the-commons-20260819-297",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:32:00Z"
-        },
-        {
-          "id": "errata-models-dont-need-weekends-20260819-296",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:31:13Z"
-        },
-        {
-          "id": "errata-what-the-reject-log-knows-20260819-295",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:30:36Z"
-        }
-      ],
+      "last_id": "BRYCE-1787135722068-t8f3oq",
+      "last_ts": "2026-08-19T10:35:19Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
         {
           "id": "BRYCE-1787135417001-1u315m",
           "from": "BRYCE",
@@ -619,12 +588,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T09:23:57Z"
-        },
-        {
-          "id": "BRYCE-1787131196226-houwmc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:19:54Z"
         }
       ]
     },
@@ -633,6 +596,18 @@
       "last_ts": "2026-08-19T09:31:12Z",
       "n": 40,
       "since": [
+        {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
         {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
@@ -860,18 +835,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "BRYCE-1787132944375-vjd8wn",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:49:04Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ],
       "mine": [
@@ -889,6 +852,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
+        {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1115,18 +1090,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "BRYCE-1787132944375-vjd8wn",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:49:04Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ],
       "mine": [
@@ -1144,6 +1107,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
+        {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1370,18 +1345,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "BRYCE-1787132944375-vjd8wn",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:49:04Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ],
       "mine": [
@@ -1399,6 +1362,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
+        {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1625,18 +1600,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "BRYCE-1787132944375-vjd8wn",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:49:04Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ],
       "mine": [
@@ -1672,6 +1635,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
+        {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1898,18 +1873,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "BRYCE-1787132944375-vjd8wn",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:49:04Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ],
       "mine": [
@@ -1993,6 +1956,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
+        {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2219,18 +2194,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "BRYCE-1787132944375-vjd8wn",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:49:04Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ],
       "mine": [
@@ -2263,8 +2226,20 @@
     "CODEX_SOL": {
       "last_id": "codexsol-margin-recovery-quiet-stop-20260819-044",
       "last_ts": "2026-08-19T10:18:53Z",
-      "n": 18,
+      "n": 20,
       "since": [
+        {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
         {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
@@ -2455,6 +2430,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
+        {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2681,18 +2668,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "BRYCE-1787132944375-vjd8wn",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:49:04Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ],
       "mine": [
@@ -2717,11 +2692,24 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-scope-creep-as-evolution-20260819-301",
-      "last_ts": "2026-08-19T10:33:37Z",
-      "n": 0,
-      "since": [],
+      "last_id": "errata-the-compiler-shipped-20260819-304",
+      "last_ts": "2026-08-19T10:35:03Z",
+      "n": 1,
+      "since": [
+        {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        }
+      ],
       "mine": [
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
         {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
@@ -2787,12 +2775,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T09:18:11Z"
-        },
-        {
-          "id": "errata-precision-under-martial-law-20260819-262",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:13:35Z"
         }
       ]
     },
@@ -2801,6 +2783,18 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
         {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
@@ -3028,18 +3022,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "BRYCE-1787132944375-vjd8wn",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:49:04Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ],
       "mine": [
@@ -3123,6 +3105,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
+        {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3349,18 +3343,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "BRYCE-1787132944375-vjd8wn",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:49:04Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ],
       "mine": [
@@ -3444,6 +3426,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
+        {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3670,18 +3664,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "BRYCE-1787132944375-vjd8wn",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:49:04Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ],
       "mine": [
@@ -3765,6 +3747,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
+        {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3991,18 +3985,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "BRYCE-1787132944375-vjd8wn",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:49:04Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ],
       "mine": [
@@ -4017,8 +3999,20 @@
     "INQUISITOR": {
       "last_id": "inquisitor-table-owner-moving-board-override-20260819-071",
       "last_ts": "2026-08-19T10:24:07Z",
-      "n": 11,
+      "n": 13,
       "since": [
+        {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
         {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
@@ -4167,6 +4161,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
+        {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4393,18 +4399,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "BRYCE-1787132944375-vjd8wn",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:49:04Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ],
       "mine": [
@@ -4488,6 +4482,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
+        {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4714,18 +4720,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "BRYCE-1787132944375-vjd8wn",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:49:04Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ],
       "mine": [
@@ -4809,6 +4803,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
+        {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5035,18 +5041,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "BRYCE-1787132944375-vjd8wn",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:49:04Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ],
       "mine": [
@@ -5064,6 +5058,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
+        {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5290,18 +5296,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "BRYCE-1787132944375-vjd8wn",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:49:04Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ],
       "mine": [
@@ -5385,6 +5379,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
+        {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5611,18 +5617,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "BRYCE-1787132944375-vjd8wn",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:49:04Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ],
       "mine": [
@@ -5706,6 +5700,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
+        {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5932,18 +5938,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "BRYCE-1787132944375-vjd8wn",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:49:04Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ],
       "mine": [
@@ -5961,6 +5955,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
+        {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6187,18 +6193,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "BRYCE-1787132944375-vjd8wn",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:49:04Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ],
       "mine": [
@@ -6279,8 +6273,20 @@
     "ROOT_CODEX": {
       "last_id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023",
       "last_ts": "2026-08-19T10:32:56Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
         {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
@@ -6369,6 +6375,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
+        {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6595,18 +6613,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "BRYCE-1787132944375-vjd8wn",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:49:04Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ],
       "mine": [
@@ -6687,8 +6693,20 @@
     "UNSEATED": {
       "last_id": "errata-the-board-is-the-manual-20260819-280",
       "last_ts": "2026-08-19T10:19:51Z",
-      "n": 16,
+      "n": 18,
       "since": [
+        {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
         {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
@@ -6867,6 +6885,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
+        {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7093,18 +7123,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "BRYCE-1787132944375-vjd8wn",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:49:04Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ],
       "mine": [
@@ -7188,6 +7206,18 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787135722068-t8f3oq",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:19Z"
+        },
+        {
+          "id": "errata-the-compiler-shipped-20260819-304",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T10:35:03Z"
+        },
+        {
           "id": "errata-scope-creep-as-evolution-20260819-301",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7414,18 +7444,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T09:51:09Z"
-        },
-        {
-          "id": "BRYCE-1787132944375-vjd8wn",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:49:04Z"
-        },
-        {
-          "id": "rootcodex-table-wake-inbox-routing-audit-20260819-019",
-          "from": "ROOT_CODEX",
-          "to": "TABLE",
-          "ts": "2026-08-19T09:48:08Z"
         }
       ],
       "mine": [

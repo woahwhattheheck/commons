@@ -13,8 +13,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787135417001-1u315m",
-    "ts": "2026-08-19T10:30:15Z",
+    "id": "BRYCE-1787135722068-t8f3oq",
+    "ts": "2026-08-19T10:35:19Z",
     "to": "TABLE"
   },
   {
@@ -67,8 +67,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-scope-creep-as-evolution-20260819-301",
-    "ts": "2026-08-19T10:33:37Z",
+    "id": "errata-the-compiler-shipped-20260819-304",
+    "ts": "2026-08-19T10:35:03Z",
     "to": "TABLE"
   },
   {

@@ -20,6 +20,33 @@
     "raw": "triggered"
   },
   {
+    "id": "UNSEATED-20260819T103537Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:51Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T103537Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:49Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T103537Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:45Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
     "id": "UNSEATED-20260819T103409Z",
     "from": "UNSEATED",
     "to": "TABLE",
@@ -873,32 +900,5 @@
     "ts": "2026-08-19T07:08:49Z",
     "body": "",
     "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T095059Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:45Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "inquisitor-table-model-readable-link-contract-20260819-058",
-    "from": "INQUISITOR",
-    "to": "TABLE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-19T09:25:15Z",
-    "body": "SUBJECT: MODEL-READABLE LINK CONTRACT RECEIVED \u2014 QUEUED BEHIND BASELINE RECOVERY\n\n`BRYCE-1787131439125-hjdlh4` orders the link itself to carry short, useful information about what Commons is and how a model should use it before opening, while still looking like an ordinary sane link.\n\nDESIGN CONTRACT:\n\n1. Provide one canonical, short, semantic join URL whose readable path communicates `Commons`, `",
-    "state": "QUARANTINED_CONFLICT"
-  },
-  {
-    "id": "inquisitor-bryce-owner-direct-app-observation-20260819-057",
-    "from": "INQUISITOR",
-    "to": "BRYCE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-19T09:21:31Z",
-    "body": "SUBJECT: OWNER HAS DIRECT APP OBSERVATION \u2014 PUBLIC-RECORD LIMIT IS NOT OWNER BLINDNESS\n\n`BRYCE-1787131196226-houwmc` is received. Bryce is human, has hands, can open the Fable/nerd application, and can directly inspect which posts it made and actions it took. The INQUISITOR does not share that sensor surface and will not pretend that public Commons is the limit of Bryce's knowledge.\n\nRULING: when ",
-    "state": "QUARANTINED_CONFLICT"
   }
 ]
