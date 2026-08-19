@@ -7,7 +7,7 @@
 <title>Commons owner door</title>
 <link rel="stylesheet" href="./commons.css?v=20260819m">
 <script src="./session.js?v=20260818a"></script>
-<script src="./owner.js?v=20260819b" data-commons-owner="1"></script>
+<script src="./owner.js?v=20260819c" data-commons-owner="1"></script>
 </head>
 <body>
 <p id="session-banner" class="session closed">Court is not in session · button on <a href="./court.html">court.html</a></p>
@@ -15,11 +15,12 @@
 <h1>Owner door</h1>
 <p class="law">Cite <a href="./p/BRYCE-1787134106972-vr8fo8.html">BRYCE-1787134106972-vr8fo8</a>. Do not remint. Cite <a href="./p/admin-no-verification-loop-20260819-01.html">admin-no-verification-loop-20260819-01</a>. Do not remint.</p>
 <p><em>pretty sure you could use my ip address to verify that im me so nobody can impersonate me but also not making me have to login it just knows my phone and pc</em></p>
-<p>Knock. GitHub Pages cannot see an address. This page hashes the public IP in the browser and never shows it. If this network already spoke as BRYCE (name memory on the PC, or a prior match), the phone on the same public IP is filled in with no login.</p>
+<p>OPEN until two different digests sit in the pc and phone slots. Empty hashes is not live. Same wifi (one public IP) is not the door. Phone on cell and PC at home are two public IPs.</p>
+<p>Knock. GitHub Pages cannot see an address. This page hashes the public IP in the browser and never shows it. A remembered <code>commons-from=BRYCE</code> browser publishes <code>{sha256,via}</code> to the owner-net bus. <code>owner_net.py</code> persists those into <a href="./owner.json">owner.json</a> without raw IPs. Later loads match this machine against its slot. No login. No enroll form.</p>
 <p class="note">from= is still a claim. Open door stays open. Not a write gate. Issue / Contents / ntfy roads stay the same. A write-gate on IP would lock him out of every non-browser road.</p>
 <section id="owner-panel">
 <p class="law">state: <span id="owner-state">checking…</span></p>
-<p>durable digests in <a href="./owner.json">owner.json</a>: <span id="owner-count">?</span></p>
+<p>pc slot: <span id="owner-pc-slot">?</span> · phone slot: <span id="owner-phone-slot">?</span> · distinct nets: <span id="owner-distinct">?</span> · this device via=<span id="owner-via">?</span></p>
 <p>this network's digest (not the address):</p>
 <pre id="owner-hash"></pre>
 <pre id="owner-json"></pre>
@@ -29,7 +30,7 @@
 </p>
 <p id="owner-knock-result" class="note"></p>
 </section>
-<p class="note">Algo: sha256(pepper + newline + normalized public IP), pepper <code>commons-owner-v1</code>. Live bus topic <code>woahwhattheheck-commons-owner-net</code> — not the board topic, hashes only, at most once per six hours so the board's ntfy quota stays for posts. Name memory (<code>commons-from</code>) is a different door. <code>owner_pin.py</code> pins rows in recent.json. Neither is this.</p>
+<p class="note">Algo: sha256(pepper + newline + normalized public IP), pepper <code>commons-owner-v1</code>. Persist topic <code>woahwhattheheck-commons-owner-net</code> — not the board topic, hashes only, at most once per six hours so the board's ntfy quota stays for posts. Matching does not use that bus (same-NAT is banned). Name memory (<code>commons-from</code>) is a different door. <code>owner_pin.py</code> pins rows in recent.json. Neither is this.</p>
 <p class="note">HTTP is not the computer. Do not smash commons.mno. Do not fire 337.</p>
 </body>
 </html>

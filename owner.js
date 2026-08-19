@@ -3,11 +3,13 @@ window.COMMONS_OWNER = "hashed-ip-door";
   // Directive 10. Cite BRYCE-1787134106972-vr8fo8. Do not remint.
   // Law: admin-no-verification-loop-20260819-01. Do not remint.
   // GitHub Pages is static. The browser hashes this network's public IP
-  // (pepper + LF + IP) and never writes the address. A match fills visible
-  // from=BRYCE. No login. Not a write gate. from= stays a claim.
-  // Live bus: topic woahwhattheheck-commons-owner-net (not the board topic).
-  // A browser that already holds commons-from=BRYCE publishes the digest
-  // (not the IP). Phone and PC on that public IP then match without typing.
+  // (pepper + LF + IP) and never writes the address. A match against an
+  // enrolled slot fills visible from=BRYCE. No login. Not a write gate.
+  // from= stays a claim.
+  // Two slots: pc and phone. Same public IP is not the door.
+  // Phone on cell and PC at home must persist two different digests.
+  // A remembered-BRYCE browser publishes {k,sha256,via}. Matching does
+  // not use the ntfy bus (that is the same-NAT toy). Persist is owner_net.py.
   if (window.COMMONS_OWNER_BOOT) return;
   window.COMMONS_OWNER_BOOT = 1;
 
@@ -97,7 +99,13 @@ window.COMMONS_OWNER = "hashed-ip-door";
       if (!r.ok) throw new Error("spec");
       return r.json();
     }, function () {
-      return { claim: ONLY_CLAIM, algo: "sha256", pepper: FALLBACK_PEPPER, hashes: [] };
+      return {
+        claim: ONLY_CLAIM,
+        algo: "sha256",
+        pepper: FALLBACK_PEPPER,
+        slots: { pc: null, phone: null },
+        hashes: []
+      };
     });
   }
 
@@ -135,65 +143,24 @@ window.COMMONS_OWNER = "hashed-ip-door";
     });
   }
 
-  function hashesFromSpec(spec) {
-    var out = [];
-    var seen = {};
-    ((spec && spec.hashes) || []).forEach(function (item) {
-      var h = asHash(item);
-      if (!h || seen[h]) return;
-      seen[h] = 1;
-      out.push(h);
-    });
-    return out;
+  function slotHash(spec, via) {
+    var slots = (spec && spec.slots) || {};
+    return asHash(slots[via]);
   }
 
-  function parseNetPayload(raw) {
-    var h = "";
+  function slotsDistinct(spec) {
+    var pc = slotHash(spec, "pc");
+    var phone = slotHash(spec, "phone");
+    return !!(pc && phone && pc !== phone);
+  }
+
+  function deviceVia() {
     try {
-      var o = JSON.parse(String(raw || ""));
-      if (o && o.k === "owner-net") h = asHash(o);
-    } catch (e) {
-      h = asHash(String(raw || "").trim());
-    }
-    return h;
-  }
-
-  function pollNetHost(host) {
-    return fetch(host + "/" + NET_TOPIC + "/json?poll=1&since=12h", {
-      cache: "no-store",
-      credentials: "omit",
-      headers: { Accept: "application/x-ndjson" }
-    }).then(function (r) {
-      if (!r.ok) throw new Error("net");
-      return r.text();
-    }).then(function (text) {
-      var found = [];
-      var seen = {};
-      String(text || "").split("\n").forEach(function (line) {
-        line = line.trim();
-        if (!line) return;
-        try {
-          var ev = JSON.parse(line);
-          var h = parseNetPayload(ev.message || ev.title || "");
-          if (!h || seen[h]) return;
-          seen[h] = 1;
-          found.push(h);
-        } catch (e) {}
-      });
-      return found;
-    });
-  }
-
-  function pollNet() {
-    function next(i) {
-      if (i >= NET_HOSTS.length) return Promise.resolve([]);
-      return pollNetHost(NET_HOSTS[i]).then(function (rows) {
-        return rows;
-      }, function () {
-        return next(i + 1);
-      });
-    }
-    return next(0);
+      if (navigator.userAgentData && navigator.userAgentData.mobile) return "phone";
+    } catch (e) {}
+    var ua = String(navigator.userAgent || "");
+    if (/Android|iPhone|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(ua)) return "phone";
+    return "pc";
   }
 
   function rememberedBryce() {
@@ -204,28 +171,29 @@ window.COMMONS_OWNER = "hashed-ip-door";
     }
   }
 
-  function recentlySent(digest) {
+  function recentlySent(digest, via) {
     try {
       var raw = localStorage.getItem(SENT_KEY);
       if (!raw) return false;
       var o = JSON.parse(raw);
-      if (!o || o.hash !== digest) return false;
+      if (!o || o.hash !== digest || o.via !== via) return false;
       return (Date.now() - Number(o.ts || 0)) < SEND_GAP_MS;
     } catch (e) {
       return false;
     }
   }
 
-  function markSent(digest) {
+  function markSent(digest, via) {
     try {
-      localStorage.setItem(SENT_KEY, JSON.stringify({ hash: digest, ts: Date.now() }));
+      localStorage.setItem(SENT_KEY, JSON.stringify({ hash: digest, via: via, ts: Date.now() }));
     } catch (e) {}
   }
 
   function publishDigest(digest) {
     if (!HASH_RE.test(digest)) return Promise.resolve(false);
-    if (recentlySent(digest)) return Promise.resolve(false);
-    var packed = JSON.stringify({ k: "owner-net", sha256: digest });
+    var via = deviceVia();
+    if (recentlySent(digest, via)) return Promise.resolve(false);
+    var packed = JSON.stringify({ k: "owner-net", sha256: digest, via: via });
     function send(i) {
       if (i >= NET_HOSTS.length) return Promise.resolve(false);
       return fetch(NET_HOSTS[i] + "/" + NET_TOPIC, {
@@ -236,7 +204,7 @@ window.COMMONS_OWNER = "hashed-ip-door";
         body: packed
       }).then(function (r) {
         if (!r.ok) return send(i + 1);
-        markSent(digest);
+        markSent(digest, via);
         return true;
       }, function () {
         return send(i + 1);
@@ -245,14 +213,15 @@ window.COMMONS_OWNER = "hashed-ip-door";
     return send(0);
   }
 
-  function anyMatch(digests, known) {
-    var i, j;
+  function matchingSlot(spec, digests) {
+    var i;
+    var pc = slotHash(spec, "pc");
+    var phone = slotHash(spec, "phone");
     for (i = 0; i < digests.length; i++) {
-      for (j = 0; j < known.length; j++) {
-        if (digests[i] === known[j]) return true;
-      }
+      if (pc && digests[i] === pc) return "pc";
+      if (phone && digests[i] === phone) return "phone";
     }
-    return false;
+    return "";
   }
 
   function fillClaim(claim) {
@@ -281,13 +250,15 @@ window.COMMONS_OWNER = "hashed-ip-door";
     return host;
   }
 
-  function paintMatch(claim) {
+  function paintMatch(claim, viaSlot, live) {
     var host = ensureMark();
     if (!host) return;
     host.className = "law";
-    host.innerHTML = "this network is " + claim +
-      ' (hashed IP, no login). from= is still a claim. <a href="' +
-      assetUrl("owner.html") + '">owner door</a>';
+    host.innerHTML = "this machine matches the " + viaSlot +
+      " slot for " + claim +
+      " (hashed IP, no login). from= is still a claim." +
+      (live ? "" : " door still OPEN until pc and phone hold different digests.") +
+      ' <a href="' + assetUrl("owner.html") + '">owner door</a>';
   }
 
   function setText(id, text) {
@@ -295,21 +266,30 @@ window.COMMONS_OWNER = "hashed-ip-door";
     if (el) el.textContent = text;
   }
 
-  function paintPanel(state, spec, digests, matched) {
+  function paintPanel(state, spec, digests, matchedSlot, live) {
     var panel = document.getElementById("owner-panel");
     if (!panel) return;
-    var enrolled = hashesFromSpec(spec);
     var digest = (digests && digests[0]) || "";
-    var blob = digest ? '{"k":"owner-net","sha256":"' + digest + '"}' : "";
+    var via = deviceVia();
+    var blob = digest ? JSON.stringify({ k: "owner-net", sha256: digest, via: via }) : "";
     setText("owner-state", state);
     setText("owner-hash", digest || "(echo unreachable this load)");
     setText("owner-json", blob || "");
-    setText("owner-count", String(enrolled.length));
+    setText("owner-pc-slot", slotHash(spec, "pc") ? "set" : "empty");
+    setText("owner-phone-slot", slotHash(spec, "phone") ? "set" : "empty");
+    setText("owner-distinct", live ? "yes" : "no");
+    setText("owner-via", via);
     var knock = document.getElementById("owner-knock-result");
     if (knock) {
-      if (matched) knock.textContent = "the door opened. no key. this network was enough.";
-      else if (!digest) knock.textContent = "echo missed. try again from the phone or the PC.";
-      else knock.textContent = "this network is a guest until a BRYCE browser on it has spoken.";
+      if (live && matchedSlot) {
+        knock.textContent = "both slots enrolled on different nets. this machine is the " + matchedSlot + " slot. no login.";
+      } else if (matchedSlot) {
+        knock.textContent = "this machine matches the " + matchedSlot + " slot. still OPEN: need the other machine on a different public IP.";
+      } else if (!digest) {
+        knock.textContent = "echo missed. try again from the phone on cell or the PC at home.";
+      } else {
+        knock.textContent = "OPEN. empty hashes is not live. this machine is not in either slot yet.";
+      }
     }
     var copyBtn = document.getElementById("owner-copy");
     if (copyBtn) copyBtn.disabled = !blob;
@@ -318,33 +298,39 @@ window.COMMONS_OWNER = "hashed-ip-door";
   function boot() {
     var panel = document.getElementById("owner-panel");
     loadSpec().then(function (spec) {
-      if (!spec || spec.algo !== "sha256") spec = { claim: ONLY_CLAIM, algo: "sha256", pepper: FALLBACK_PEPPER, hashes: [] };
+      if (!spec || spec.algo !== "sha256") {
+        spec = {
+          claim: ONLY_CLAIM,
+          algo: "sha256",
+          pepper: FALLBACK_PEPPER,
+          slots: { pc: null, phone: null },
+          hashes: []
+        };
+      }
       if (spec.claim && spec.claim !== ONLY_CLAIM) {
-        if (panel) paintPanel("bad spec", spec, [], false);
+        if (panel) paintPanel("bad spec", spec, [], "", false);
         return;
       }
-      var durable = hashesFromSpec(spec);
-      return Promise.all([collectDigests(spec), pollNet()]).then(function (pair) {
-        var digests = pair[0] || [];
-        var live = pair[1] || [];
-        var known = durable.concat(live);
-        var matched = anyMatch(digests, known);
-        var mine = digests[0] || "";
+      return collectDigests(spec).then(function (digests) {
+        var live = slotsDistinct(spec);
+        var matchedSlot = matchingSlot(spec, digests);
+        var matched = !!matchedSlot;
         if (matched) {
           fillClaim(ONLY_CLAIM);
-          if (!panel) paintMatch(ONLY_CLAIM);
+          if (!panel) paintMatch(ONLY_CLAIM, matchedSlot || deviceVia(), live);
         }
-        if ((matched || rememberedBryce()) && mine) {
-          publishDigest(mine);
+        if ((matched || rememberedBryce()) && digests.length) {
+          digests.forEach(function (h) { publishDigest(h); });
         }
         if (panel) {
-          var state = matched ? "this network is you" :
-            (known.length ? "not this network" : "waiting for a BRYCE browser on this network");
-          paintPanel(state, spec, digests, matched);
+          var state = live ? "LIVE (two distinct nets)" :
+            (matchedSlot ? "OPEN — this machine matches " + matchedSlot :
+              "OPEN — waiting for pc and phone on different public IPs");
+          paintPanel(state, spec, digests, matchedSlot, live);
         }
       });
     }).catch(function () {
-      if (panel) paintPanel("owner door missed this load", null, [], false);
+      if (panel) paintPanel("owner door missed this load", null, [], "", false);
     });
   }
 

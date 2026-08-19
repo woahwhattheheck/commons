@@ -14,8 +14,8 @@ me shit. Thats why I gave you all your own repo. Its YOUR repo as much as it is 
 **Status is a claim, so each line carries a receipt** — a command that settles it. Check rather than
 trust. If a status is wrong, correct it in place; that is what this file is for.
 
-Last verified: 2026-08-19T22:55Z — item 10 live hashed-IP door (no enroll homework).
-Earlier: 22:45Z item 10 stub. 22:35Z item 14 added. Items 5 and 12 corrected from NOT BUILT to BUILT
+Last verified: 2026-08-19T23:12Z — item 10 LANDED claim reverted (empty hashes, same-NAT bus is not the door).
+Earlier: 22:55Z false land. 22:35Z item 14 added. Items 5 and 12 corrected from NOT BUILT to BUILT
 after reading the live files. A stale NOT BUILT is not a harmless error: it invites a rebuild over
 working code and it reports a stalled board to the owner when the board is not stalled.
 
@@ -93,10 +93,10 @@ No avatar code is live on main and no selection surface exists. The default half
 ### 10. IP-recognised owner — known as himself without logging in
 > *"pretty sure you could use my ip address to verify that im me so nobody can impersonate me but also not making me have to login it just knows my phone and pc"* — `BRYCE-1787134106972-vr8fo8`
 
-**Asked:** 08-19T10:08 · **Status:** LANDED 2026-08-19 — live hashed-IP door. Not an enroll homework. Cite vr8fo8. Do not remint. Law: `admin-no-verification-loop-20260819-01` (do not remint).
-**What it is:** `owner.js` hashes the public IP in the browser (pepper + newline + IP) and never writes the address. If that digest is on the live bus `woahwhattheheck-commons-owner-net` or in `owner.json`, visible `from=` fills BRYCE. A browser that already holds `commons-from=BRYCE` (dir 1 name memory on the PC) publishes the digest, not the IP, at most once per six hours so the board ntfy quota stays for posts. Phone on the same public IP then matches with no login. No account, no password, no OAuth, no extra write power. from= stays a claim. Open door stays open.
-**What it is not:** a write gate. Issue / Contents / cloud windows stay open. `bindFromMemory` is name memory. `owner_pin.py` pins recent.json. Neither is this. Do not invent his IP. Do not put raw IPs in the tree.
-**Receipt:** `grep -n woahwhattheheck-commons-owner-net owner.js` · `grep -n loadOwnerDoor carrier.js` · `grep -n loadOwnerDoor session.js` · `python3 -c "import json; d=json.load(open('owner.json')); assert d['hashes']==[]"` · `python3 test_owner_hash.py`
+**Asked:** 08-19T10:08 · **Status:** OPEN. Not LANDED. `owner.json` hashes is `[]`. Phone on cell and PC at home are two public IPs. Same-NAT matching is not the door. Cite vr8fo8. Do not remint. Law: `admin-no-verification-loop-20260819-01` (do not remint). `knock-dir10-owner-net-door-20260819-01` is not a land.
+**Need:** two distinct enrolled digests, `via=pc` and `via=phone`, no raw IPs. A machine is recognized when its current digest matches its slot. Both slots filled with different hashes is the live door.
+**Building:** `owner.js` classifies phone vs PC, hashes the public IP in the browser, publishes `{k,sha256,via}` to `woahwhattheheck-commons-owner-net`. `owner_net.py` persists into `owner.json` slots without overwriting a filled slot, and will not store a phone digest that is the same as pc (wifi). No ingest rewrite. No fat index. from= stays a claim. Not a write gate.
+**Receipt (this is still OPEN):** `python3 -c "import json;d=json.load(open('owner.json'));s=d.get('slots') or {};pc=(s.get('pc') or {}).get('sha256');ph=(s.get('phone') or {}).get('sha256');assert not (pc and ph and pc!=ph)"`
 
 ### 11. Whitebox inventory from the machine, not from the public tree
 > *"Its on my machine. All my data is on my machine. Groks are local sessions on my machine. If its

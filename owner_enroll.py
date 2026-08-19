@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
-"""Optional durability helper for owner.json hashes. The live door is owner.js.
+"""Optional hash helper for tests. Not the enroll homework. Not the live persist.
 
 Cite: BRYCE-1787134106972-vr8fo8. Do not remint.
 Law: admin-no-verification-loop-20260819-01. Do not remint.
 
-GitHub Pages is static. owner.js hashes the public IP in the browser and
-publishes the digest (never the IP) to woahwhattheheck-commons-owner-net
-when commons-from is already BRYCE. This script is only if you want a
-durable owner.json row. It never prints the IP.
+The live persist is owner_net.py writing slots.pc / slots.phone from
+via-tagged owner-net sightings. This script never prints the IP.
 """
 from __future__ import annotations
 

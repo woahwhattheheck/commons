@@ -78,7 +78,7 @@
     var link = document.querySelector('link[rel="stylesheet"]');
     var href = (link && link.getAttribute("href")) || "./commons.css";
     var s = document.createElement("script");
-    s.src = href.replace(/commons\.css.*$/, "owner.js") + "?v=20260819b";
+    s.src = href.replace(/commons\.css.*$/, "owner.js") + "?v=20260819c";
     s.setAttribute("data-commons-owner", "1");
     document.head.appendChild(s);
   }
