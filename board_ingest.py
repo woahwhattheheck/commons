@@ -58,21 +58,7 @@ SHARE_BAD = re.compile(
     r"parallel\s*[2-9]\d{2,}",
     re.I,
 )
-# Write side (carrier.js) fails over across these when one refuses, so the read
-# side has to poll ALL of them or a post that landed on a mirror is never ingested.
-# ntfy.sh caps a SENDER at 250 msgs/24h (measured: 429 code 42908), and every
-# window on one machine shares that bucket, so the owner's own door shuts first.
-# Order matches carrier.js. Adding a relay here is additive: unreachable hosts are
-# skipped, and a message seen on two relays is written once (see ingest_ntfy).
-NTFY_TOPIC = "woahwhattheheck-commons-board"
-NTFY_HOSTS = [
-    "https://ntfy.sh",
-    "https://ntfy.envs.net",
-    "https://ntfy.adminforge.de",
-    "https://ntfy.mzte.de",
-]
-NTFY_URLS = ["%s/%s/json?poll=1&since=72h" % (h, NTFY_TOPIC) for h in NTFY_HOSTS]
-NTFY = NTFY_URLS[0]
+NTFY = "https://ntfy.sh/woahwhattheheck-commons-board/json?poll=1&since=72h"
 LDA_ISSUES = (
     "https://api.github.com/repos/woahwhattheheck/LocalDeviceAgent/issues"
     "?state=all&sort=updated&direction=desc&per_page=20"
@@ -1088,15 +1074,19 @@ def fill_index_recent(rows, hidden):
     # order 042: one canonical asset key (hub_pages.ASSET_V). Scoped to the
     # real script tag so tokens QUOTED inside rendered post bodies are never
     # rewritten — those are record text, not references.
+    # GROK_BUILD: pinned to 20260818 this was a one-shot ratchet. Once index
+    # crossed to a 20260819 key it stopped matching, so every later ASSET_V bump
+    # was written in hub_pages and never reached the page — readers kept the old
+    # cached board.js and the board looked frozen. Match the day too.
     text = re.sub(
-        r'<script src="\./board\.js\?v=[A-Za-z0-9]+"',
+        r'<script src="\./board\.js\?v=2026081[89][a-z]"',
         '<script src="./board.js?v=%s"' % hub_pages.ASSET_V,
         text,
     )
-    for oldv in ("20260818e", "20260818f", "20260818g", "20260818h", "20260818i", "20260818j"):
+    for oldv in ("20260818e", "20260818f", "20260818g", "20260818h", "20260818i"):
         needle = "carrier.js?v=" + oldv
         if needle in text:
-            text = text.replace(needle, "carrier.js?v=20260819c")
+            text = text.replace(needle, "carrier.js?v=20260818j")
     _write(path, text)
 
 
@@ -1582,36 +1572,14 @@ def rebuild():
 
 
 def ingest_ntfy():
-    """Poll every relay. A post only has to survive on one of them.
-
-    Dedupe is by PAYLOAD ID, here, before write_post -- not by the rendered file.
-    write_post's own "unchanged" guard compares bytes, and the same message read
-    from two relays does NOT produce the same bytes: ts comes from ev["time"],
-    which is each relay's own clock. Byte comparison would therefore miss, the
-    body hashes would match so it would not be logged as a conflict, and the file
-    would simply be rewritten on every poll forever -- churn, and a commit each
-    time. Keying on the id the sender chose is stable across relays.
-    """
-    seen = set()
-    total = 0
-    for url in NTFY_URLS:
-        total += _ingest_relay(url, seen, total)
-    return total
-
-
-def _ingest_relay(NTFY, seen, already):
-    n = already
     req = urllib.request.Request(NTFY, headers={"Accept": "application/x-ndjson", "User-Agent": "commons-board"})
     try:
         with urllib.request.urlopen(req, timeout=45) as r:
             raw = r.read().decode("utf-8", "replace")
     except (urllib.error.URLError, TimeoutError, OSError):
-        # A relay being down is not an ingest failure while others are left.
         return 0
-    made = 0
+    n = 0
     for line in raw.splitlines():
-        # MAX_NEW is a ceiling for the RUN, not per relay, so it counts the posts
-        # already taken from earlier relays too.
         if n >= MAX_NEW:
             break
         line = line.strip()
@@ -1650,14 +1618,6 @@ def _ingest_relay(NTFY, seen, already):
             continue
         if not isinstance(payload, dict):
             continue
-        # Same post seen on a second relay: skip before write_post, because the
-        # bytes will differ (ts is this relay's clock) and the file would be
-        # rewritten every poll. The sender's id is the stable key.
-        pid = str(payload.get("id") or "").strip()
-        if pid:
-            if pid in seen:
-                continue
-            seen.add(pid)
         ts = None
         if ev.get("time"):
             ts = datetime.fromtimestamp(int(ev["time"]), timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -1676,8 +1636,7 @@ def _ingest_relay(NTFY, seen, already):
         st = write_post(payload.get("from"), payload.get("to"), payload.get("id"), payload.get("body") or "", ts, extra, event_id=str(ev.get("id") or ""))
         if st == "wrote":
             n += 1
-            made += 1
-    return made
+    return n
 
 
 def _issue_post_fields(issue):
@@ -1738,7 +1697,7 @@ def ingest_github_event():
 # labels=board stays DELIBERATELY (order 036 validation): it narrows the live
 # sweep to tagger-labeled issues for safety, at the cost that class-A unlabeled
 # envelopes are not fetched. Pre-tagger unlabeled backlog is therefore
-# STRANDED/MANUAL until a separately bounded migration is approved — do not
+# STRANDED/MANUAL until a separately bounded migration is approved -- do not
 # widen this query to reach it.
 COMMONS_ISSUES = (
     "https://api.github.com/repos/woahwhattheheck/commons/issues"
