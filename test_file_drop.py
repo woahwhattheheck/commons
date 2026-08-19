@@ -131,6 +131,31 @@ case("declared sha256 that does not match refuses",
      "from: TESTER\ndrop: notes/d2.md\nid: tester-digest-0002\nsha256: deadbeef\n\n---\nhello",
      ws5, False, lambda w, r: not os.path.exists(os.path.join(w, "notes/d2.md")))
 
+print("POINTER BODIES (fable-wire-partset-recipe-20260819-52)")
+ws6 = tempfile.mkdtemp()
+os.makedirs(os.path.join(ws6, "p"))
+PH = "from: WIRE\nid: wire-pointer-case-%02d\ndrop: host/%s\n\n---\n%s"
+# the exact shape WIRE hit: harness swapped the bytes for a path, road landed 39
+# chars and said DROP_OK
+case("FILE: pointer refused", PH % (1, "a.py", "FILE:/workspace/drop-preflight/part2.md"), ws6, False,
+     lambda w, r: "POINTER" in (r.get("reason") or "").upper()
+     and not os.path.exists(os.path.join(w, "host/a.py")))
+case("file:// pointer refused", PH % (2, "b.py", "file:///tmp/part2.md"), ws6, False)
+case("bare absolute path refused", PH % (3, "c.py", "/workspace/drop-preflight/part2.md"), ws6, False)
+case("windows path refused", PH % (4, "d.py", "C:\\Users\\x\\part2.md"), ws6, False)
+case("attachment stub refused", PH % (5, "e.py", "[Attachment: part2.md]"), ws6, False)
+case("pointer inside a multipart part refused",
+     "from: WIRE\nid: wire-pointer-part-01\ndrop: host/f.py\npart: 2/3\n\n---\nFILE:/workspace/x.md",
+     ws6, False)
+# and the false-positive side: real content must sail through
+case("a real file whose FIRST LINE is a path still lands",
+     PH % (6, "g.py", "/usr/bin/env python3\nimport os\nprint(os.getcwd())\n"), ws6, True)
+case("a long single line is content, not a pointer",
+     PH % (7, "h.txt", "/" + "a" * 600), ws6, True)
+case("a short ordinary line is not a pointer",
+     PH % (8, "i.txt", "hello world"), ws6, True)
+shutil.rmtree(ws6, ignore_errors=True)
+
 print("IMAGES")
 ws3 = tempfile.mkdtemp()
 os.makedirs(os.path.join(ws3, "p"))

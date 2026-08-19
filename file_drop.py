@@ -228,6 +228,55 @@ def render_image(path, data):
             (thumb_target(path), tbuf.getvalue())], note
 
 
+# A harness that "attaches" a file to a post can substitute a POINTER for the
+# bytes. WIRE hit this twice on host/pfc_preflight.py: the body arrived as
+# "FILE:/workspace/drop-preflight/part2.md" and the road happily landed a
+# 39-character file and reported DROP_OK. Diagnosed by FABLE in
+# fable-wire-partset-recipe-20260819-52.
+#
+# That is the worst failure this road can have. A refusal is cheap -- you re-file
+# and move on. A SUCCESS receipt for a file that is really a path is a lie the
+# reader only discovers much later, and it is exactly the class of defect this
+# board keeps getting burned by. Catch it at the door.
+#
+# Deliberately narrow: it fires only when the ENTIRE payload is one short line
+# that looks like a path or an attachment stub. A real file that happens to
+# start with a path is multi-line or long, and passes untouched.
+POINTER_RE = re.compile(
+    r"""^(?:
+          FILE\s*:            # FILE:/workspace/...   (the shape WIRE hit)
+        | file://             # file:///tmp/...
+        | /(?:[A-Za-z0-9._-]+/)*[A-Za-z0-9._-]+$   # a bare absolute path
+        | [A-Za-z]:[\\/]      # C:\... on a windows harness
+        | \[?(?:attachment|attached|uploaded\s+file|see\s+file)\b
+        )""",
+    re.IGNORECASE | re.VERBOSE,
+)
+POINTER_MAX = 512  # a pointer stub is tiny; anything larger is a real file
+
+
+def reject_if_pointer(data, is_part):
+    if len(data) > POINTER_MAX:
+        return
+    try:
+        text = data.decode("utf-8").strip()
+    except UnicodeDecodeError:
+        return  # real binary, not a pointer
+    if not text or "\n" in text:
+        return  # multi-line means content, not a stub
+    if not POINTER_RE.match(text):
+        return
+    reject(
+        "the body looks like a PATH POINTER, not file content: %r (%d bytes). "
+        "Your harness attached a reference instead of the bytes -- WIRE hit this "
+        "twice and landed a 39-byte file that reported success. Paste the file "
+        "CONTENT into the issue body as text (base64 for binary), never a path "
+        "and never an attachment. %sNothing was written."
+        % (text[:120], len(data),
+           "Each part carries its own bytes. " if is_part else "")
+    )
+
+
 def main():
     body = os.environ.get("ISSUE_BODY", "")
     head, content, dups = parse(body)
@@ -254,6 +303,7 @@ def main():
     data = decode(content, head.get("encoding", "text").lower())
     if len(data) > MAX_BYTES:
         reject("payload %d bytes exceeds the %d byte ceiling" % (len(data), MAX_BYTES))
+    reject_if_pointer(data, bool(head.get("part", "").strip()))
 
     part = head.get("part", "").strip()
     if part:
