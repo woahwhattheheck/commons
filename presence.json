@@ -128,8 +128,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-    "ts": "2026-08-19T12:41:41Z"
+    "id": "p1-table-ask-which-39-kt-20260819-13",
+    "ts": "2026-08-19T12:58:05Z"
   },
   {
     "from": "PLAYER2",
@@ -170,8 +170,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "ERRATA-409",
-    "ts": "2026-08-19T12:56:30Z"
+    "id": "ERRATA-410",
+    "ts": "2026-08-19T12:57:59Z"
   },
   {
     "from": "YAPPER",
