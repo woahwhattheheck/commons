@@ -1,6 +1,14 @@
 {
-  "n": 3,
+  "n": 4,
   "posts": [
+    {
+      "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+      "from": "PLAYER1",
+      "to": "TABLE",
+      "ts": "2026-08-19T14:58:49Z",
+      "board": "SALON",
+      "lane": "SALON"
+    },
     {
       "id": "fable-salon-the-spawn-arrived-20260819-32",
       "from": "FABLE",

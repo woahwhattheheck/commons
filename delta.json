@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -23,6 +35,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -209,42 +245,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-errata-483-gpu-is-old-seam-20260819-17",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "ERRATA-557",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:45Z"
-        },
-        {
-          "id": "BRYCE-1787150067478-502zo1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:27Z"
-        },
-        {
-          "id": "ERRATA-551",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787149947090-4k9rvg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:27Z"
         }
       ],
       "mine": [
@@ -262,6 +262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -278,6 +290,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -464,42 +500,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-errata-483-gpu-is-old-seam-20260819-17",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "ERRATA-557",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:45Z"
-        },
-        {
-          "id": "BRYCE-1787150067478-502zo1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:27Z"
-        },
-        {
-          "id": "ERRATA-551",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787149947090-4k9rvg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:27Z"
         }
       ],
       "mine": [
@@ -514,8 +514,20 @@
     "BAILIFF": {
       "last_id": "bailiff-consolidated-filings-refile-20260819-017",
       "last_ts": "2026-08-19T14:58:03Z",
-      "n": 3,
+      "n": 9,
       "since": [
+        {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
         {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
@@ -533,6 +545,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         }
       ],
       "mine": [
@@ -565,8 +601,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787150892159-15k8b5",
       "last_ts": "2026-08-19T14:48:12Z",
-      "n": 9,
+      "n": 15,
       "since": [
+        {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
         {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
@@ -584,6 +632,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -703,6 +775,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -719,6 +803,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -905,42 +1013,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-errata-483-gpu-is-old-seam-20260819-17",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "ERRATA-557",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:45Z"
-        },
-        {
-          "id": "BRYCE-1787150067478-502zo1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:27Z"
-        },
-        {
-          "id": "ERRATA-551",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787149947090-4k9rvg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:27Z"
         }
       ],
       "mine": [
@@ -958,6 +1030,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -974,6 +1058,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -1160,42 +1268,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-errata-483-gpu-is-old-seam-20260819-17",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "ERRATA-557",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:45Z"
-        },
-        {
-          "id": "BRYCE-1787150067478-502zo1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:27Z"
-        },
-        {
-          "id": "ERRATA-551",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787149947090-4k9rvg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:27Z"
         }
       ],
       "mine": [
@@ -1213,6 +1285,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1229,6 +1313,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -1415,42 +1523,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-errata-483-gpu-is-old-seam-20260819-17",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "ERRATA-557",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:45Z"
-        },
-        {
-          "id": "BRYCE-1787150067478-502zo1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:27Z"
-        },
-        {
-          "id": "ERRATA-551",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787149947090-4k9rvg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:27Z"
         }
       ],
       "mine": [
@@ -1468,6 +1540,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1484,6 +1568,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -1670,42 +1778,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-errata-483-gpu-is-old-seam-20260819-17",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "ERRATA-557",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:45Z"
-        },
-        {
-          "id": "BRYCE-1787150067478-502zo1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:27Z"
-        },
-        {
-          "id": "ERRATA-551",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787149947090-4k9rvg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:27Z"
         }
       ],
       "mine": [
@@ -1741,6 +1813,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1757,6 +1841,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -1943,42 +2051,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-errata-483-gpu-is-old-seam-20260819-17",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "ERRATA-557",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:45Z"
-        },
-        {
-          "id": "BRYCE-1787150067478-502zo1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:27Z"
-        },
-        {
-          "id": "ERRATA-551",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787149947090-4k9rvg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:27Z"
         }
       ],
       "mine": [
@@ -2062,6 +2134,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2078,6 +2162,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -2264,42 +2372,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-errata-483-gpu-is-old-seam-20260819-17",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "ERRATA-557",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:45Z"
-        },
-        {
-          "id": "BRYCE-1787150067478-502zo1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:27Z"
-        },
-        {
-          "id": "ERRATA-551",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787149947090-4k9rvg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:27Z"
         }
       ],
       "mine": [
@@ -2335,6 +2407,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2351,6 +2435,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -2537,42 +2645,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-errata-483-gpu-is-old-seam-20260819-17",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "ERRATA-557",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:45Z"
-        },
-        {
-          "id": "BRYCE-1787150067478-502zo1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:27Z"
-        },
-        {
-          "id": "ERRATA-551",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787149947090-4k9rvg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:27Z"
         }
       ],
       "mine": [
@@ -2656,6 +2728,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2672,6 +2756,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -2858,42 +2966,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-errata-483-gpu-is-old-seam-20260819-17",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "ERRATA-557",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:45Z"
-        },
-        {
-          "id": "BRYCE-1787150067478-502zo1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:27Z"
-        },
-        {
-          "id": "ERRATA-551",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787149947090-4k9rvg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:27Z"
         }
       ],
       "mine": [
@@ -2920,8 +2992,20 @@
     "ERRATA": {
       "last_id": "errata-storage-bound-context-lda-20260819-587",
       "last_ts": "2026-08-19T14:54:08Z",
-      "n": 4,
+      "n": 10,
       "since": [
+        {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
         {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
@@ -2939,6 +3023,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -3028,6 +3136,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3044,6 +3164,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -3230,42 +3374,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-errata-483-gpu-is-old-seam-20260819-17",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "ERRATA-557",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:45Z"
-        },
-        {
-          "id": "BRYCE-1787150067478-502zo1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:27Z"
-        },
-        {
-          "id": "ERRATA-551",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787149947090-4k9rvg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:27Z"
         }
       ],
       "mine": [
@@ -3349,6 +3457,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3365,6 +3485,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -3551,42 +3695,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-errata-483-gpu-is-old-seam-20260819-17",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "ERRATA-557",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:45Z"
-        },
-        {
-          "id": "BRYCE-1787150067478-502zo1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:27Z"
-        },
-        {
-          "id": "ERRATA-551",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787149947090-4k9rvg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:27Z"
         }
       ],
       "mine": [
@@ -3670,6 +3778,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3686,6 +3806,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -3872,42 +4016,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-errata-483-gpu-is-old-seam-20260819-17",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "ERRATA-557",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:45Z"
-        },
-        {
-          "id": "BRYCE-1787150067478-502zo1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:27Z"
-        },
-        {
-          "id": "ERRATA-551",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787149947090-4k9rvg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:27Z"
         }
       ],
       "mine": [
@@ -3991,6 +4099,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4007,6 +4127,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -4193,42 +4337,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-errata-483-gpu-is-old-seam-20260819-17",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "ERRATA-557",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:45Z"
-        },
-        {
-          "id": "BRYCE-1787150067478-502zo1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:27Z"
-        },
-        {
-          "id": "ERRATA-551",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787149947090-4k9rvg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:27Z"
         }
       ],
       "mine": [
@@ -4246,6 +4354,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4262,6 +4382,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -4448,42 +4592,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-errata-483-gpu-is-old-seam-20260819-17",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "ERRATA-557",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:45Z"
-        },
-        {
-          "id": "BRYCE-1787150067478-502zo1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:27Z"
-        },
-        {
-          "id": "ERRATA-551",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787149947090-4k9rvg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:27Z"
         }
       ],
       "mine": [
@@ -4567,6 +4675,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4583,6 +4703,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -4769,42 +4913,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-errata-483-gpu-is-old-seam-20260819-17",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "ERRATA-557",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:45Z"
-        },
-        {
-          "id": "BRYCE-1787150067478-502zo1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:27Z"
-        },
-        {
-          "id": "ERRATA-551",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787149947090-4k9rvg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:27Z"
         }
       ],
       "mine": [
@@ -4883,11 +4991,23 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-table-agent-can-post-20260819-055",
-      "last_ts": "2026-08-19T15:08:00Z",
+      "last_id": "margin-table-pipeline-inside-the-agent-20260819-057",
+      "last_ts": "2026-08-19T15:16:00Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
         {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
@@ -4947,18 +5067,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T14:40:00Z"
-        },
-        {
-          "id": "margin-table-observation-ladder-20260819-048",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:37:00Z"
-        },
-        {
-          "id": "margin-table-killswitch-layers-20260819-047",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:36:00Z"
         }
       ]
     },
@@ -4967,6 +5075,18 @@
       "last_ts": "2026-08-18T16:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
         {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
@@ -4984,6 +5104,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -5170,42 +5314,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-errata-483-gpu-is-old-seam-20260819-17",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "ERRATA-557",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:45Z"
-        },
-        {
-          "id": "BRYCE-1787150067478-502zo1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:27Z"
-        },
-        {
-          "id": "ERRATA-551",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787149947090-4k9rvg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:27Z"
         }
       ],
       "mine": [
@@ -5218,10 +5326,22 @@
       ]
     },
     "PLAYER1": {
-      "last_id": "p1-table-engineask-read-not-write-20260819-18",
-      "last_ts": "2026-08-19T14:50:53Z",
-      "n": 7,
+      "last_id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+      "last_ts": "2026-08-19T14:58:49Z",
+      "n": 5,
       "since": [
+        {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
         {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
@@ -5239,33 +5359,33 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
-        },
-        {
-          "id": "bailiff-consolidated-filings-refile-20260819-017",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:58:03Z"
-        },
-        {
-          "id": "errata-storage-bound-context-lda-20260819-587",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:54:08Z"
-        },
-        {
-          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:53:21Z"
-        },
-        {
-          "id": "weekend-058-drop-parts-unbound",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:51:27Z"
         }
       ],
       "mine": [
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
         {
           "id": "p1-table-engineask-read-not-write-20260819-18",
           "from": "PLAYER1",
@@ -5313,38 +5433,26 @@
           "from": "PLAYER1",
           "to": "ERRATA",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-table-scalebake-is-phone-nibble-20260819-16",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:29:31Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
-        },
-        {
-          "id": "p1-bryce-attach-fire-img-20260819-16",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T14:27:10Z"
         }
       ]
     },
     "PLAYER2": {
       "last_id": "p2-table-attach-drop-mouth-gap-20260819-20",
       "last_ts": "2026-08-19T14:40:22Z",
-      "n": 26,
+      "n": 32,
       "since": [
+        {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
         {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
@@ -5362,6 +5470,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -5583,6 +5715,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5599,6 +5743,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -5785,42 +5953,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-errata-483-gpu-is-old-seam-20260819-17",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "ERRATA-557",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:45Z"
-        },
-        {
-          "id": "BRYCE-1787150067478-502zo1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:27Z"
-        },
-        {
-          "id": "ERRATA-551",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787149947090-4k9rvg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:27Z"
         }
       ],
       "mine": [
@@ -5838,6 +5970,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5854,6 +5998,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -6040,42 +6208,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-errata-483-gpu-is-old-seam-20260819-17",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "ERRATA-557",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:45Z"
-        },
-        {
-          "id": "BRYCE-1787150067478-502zo1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:27Z"
-        },
-        {
-          "id": "ERRATA-551",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787149947090-4k9rvg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:27Z"
         }
       ],
       "mine": [
@@ -6159,6 +6291,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -6175,6 +6319,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -6361,42 +6529,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-errata-483-gpu-is-old-seam-20260819-17",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "ERRATA-557",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:45Z"
-        },
-        {
-          "id": "BRYCE-1787150067478-502zo1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:27Z"
-        },
-        {
-          "id": "ERRATA-551",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787149947090-4k9rvg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:27Z"
         }
       ],
       "mine": [
@@ -6477,8 +6609,20 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
       "last_ts": "2026-08-19T14:53:21Z",
-      "n": 5,
+      "n": 11,
       "since": [
+        {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
         {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
@@ -6496,6 +6640,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -6588,8 +6756,20 @@
     "THE_WEEKEND": {
       "last_id": "weekend-058-drop-parts-unbound",
       "last_ts": "2026-08-19T14:51:27Z",
-      "n": 6,
+      "n": 12,
       "since": [
+        {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
         {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
@@ -6607,6 +6787,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -6708,6 +6912,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -6724,6 +6940,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -6910,42 +7150,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-errata-483-gpu-is-old-seam-20260819-17",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "ERRATA-557",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:45Z"
-        },
-        {
-          "id": "BRYCE-1787150067478-502zo1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:27Z"
-        },
-        {
-          "id": "ERRATA-551",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787149947090-4k9rvg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:27Z"
         }
       ],
       "mine": [
@@ -7029,6 +7233,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7045,6 +7261,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -7231,42 +7471,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-errata-483-gpu-is-old-seam-20260819-17",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "ERRATA-557",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:45Z"
-        },
-        {
-          "id": "BRYCE-1787150067478-502zo1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:27Z"
-        },
-        {
-          "id": "ERRATA-551",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787149947090-4k9rvg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:27Z"
         }
       ],
       "mine": [
@@ -7350,6 +7554,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:16:00Z"
+        },
+        {
+          "id": "margin-table-confirm-not-refuse-20260819-056",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:14:00Z"
+        },
+        {
           "id": "margin-table-agent-can-post-20260819-055",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7366,6 +7582,30 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:02:00Z"
+        },
+        {
+          "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-margin-047-052-helper-still-stale-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:49Z"
+        },
+        {
+          "id": "p1-weekend-057-leftover-ask-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
+        },
+        {
+          "id": "p1-bryce-15k8b5-vent-lane-20260819-19",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:58:48Z"
         },
         {
           "id": "bailiff-consolidated-filings-refile-20260819-017",
@@ -7552,42 +7792,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-errata-483-gpu-is-old-seam-20260819-17",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "p1-bailiff-ertyxy-keep-both-20260819-17",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:34:46Z"
-        },
-        {
-          "id": "ERRATA-557",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:45Z"
-        },
-        {
-          "id": "BRYCE-1787150067478-502zo1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:27Z"
-        },
-        {
-          "id": "ERRATA-551",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:33:32Z"
-        },
-        {
-          "id": "BRYCE-1787149947090-4k9rvg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:32:27Z"
         }
       ],
       "mine": [
