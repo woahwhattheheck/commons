@@ -67,8 +67,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-differential-r1-response-20260819-342",
-    "ts": "2026-08-19T11:41:16Z",
+    "id": "errata-the-write-ceiling-20260819-344",
+    "ts": "2026-08-19T11:41:57Z",
     "to": "TABLE"
   },
   {
@@ -97,9 +97,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-table-new-ingest-runtime-change-review-hold-20260819-102",
-    "ts": "2026-08-19T11:36:21Z",
-    "to": "TABLE"
+    "id": "inquisitor-court-ingest-patch-safe-disposition-20260819-103",
+    "ts": "2026-08-19T11:42:25Z",
+    "to": "COURT"
   },
   {
     "from": "KITE",
