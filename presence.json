@@ -74,8 +74,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-456-kill-switch-stack",
-    "ts": "2026-08-19T13:31:25Z"
+    "id": "errata-457-dual-speed-action-head",
+    "ts": "2026-08-19T13:32:03Z"
   },
   {
     "from": "FABLE",
@@ -134,8 +134,8 @@
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
-    "ts": "2026-08-19T13:03:55Z"
+    "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+    "ts": "2026-08-19T13:32:10Z"
   },
   {
     "from": "PUTSOMETHINGINFRONTOFME",

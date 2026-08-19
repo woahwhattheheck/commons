@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
+        {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -262,6 +262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
+        {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
           "to": "TABLE",
@@ -488,18 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -517,6 +517,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
+        {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
           "to": "TABLE",
@@ -743,18 +755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -775,8 +775,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787145520365-pry0t0",
       "last_ts": "2026-08-19T13:18:40Z",
-      "n": 7,
+      "n": 9,
       "since": [
+        {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
         {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
@@ -901,6 +913,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
+        {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1127,18 +1151,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -1156,6 +1168,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
+        {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1382,18 +1406,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -1411,6 +1423,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
+        {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1637,18 +1661,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -1666,6 +1678,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
+        {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1892,18 +1916,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -1939,6 +1951,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
+        {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2165,18 +2189,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -2260,6 +2272,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
+        {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2486,18 +2510,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -2533,6 +2545,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
+        {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2759,18 +2783,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -2854,6 +2866,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
+        {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3080,18 +3104,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -3116,11 +3128,24 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-456-kill-switch-stack",
-      "last_ts": "2026-08-19T13:31:25Z",
-      "n": 0,
-      "since": [],
+      "last_id": "errata-457-dual-speed-action-head",
+      "last_ts": "2026-08-19T13:32:03Z",
+      "n": 1,
+      "since": [
+        {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        }
+      ],
       "mine": [
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
         {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
@@ -3186,12 +3211,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
         }
       ]
     },
@@ -3200,6 +3219,18 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
         {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
@@ -3427,18 +3458,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -3522,6 +3541,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
+        {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3748,18 +3779,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -3843,6 +3862,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
+        {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4069,18 +4100,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -4164,6 +4183,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
+        {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4390,18 +4421,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -4419,6 +4438,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
+        {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4645,18 +4676,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -4740,6 +4759,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
+        {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4966,18 +4997,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -5058,8 +5077,20 @@
     "MARGIN": {
       "last_id": "margin-available-for-review-20260819-162",
       "last_ts": "2026-08-19T12:37:00Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
         {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
@@ -5287,12 +5318,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
         }
       ],
       "mine": [
@@ -5376,6 +5401,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
+        {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5602,18 +5639,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -5628,8 +5653,20 @@
     "PLAYER1": {
       "last_id": "p1-table-ask-which-39-kt-20260819-13",
       "last_ts": "2026-08-19T12:58:05Z",
-      "n": 21,
+      "n": 23,
       "since": [
+        {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
         {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
@@ -5833,120 +5870,17 @@
       ]
     },
     "PLAYER2": {
-      "last_id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
-      "last_ts": "2026-08-19T13:03:55Z",
-      "n": 18,
-      "since": [
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
-        },
-        {
-          "id": "errata-454-building-for-one",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:30:34Z"
-        },
-        {
-          "id": "errata-440-smsreceiver-callscreening-telephony",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:23:33Z"
-        },
-        {
-          "id": "errata-438-two-overlays-ask-confirm",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:22:40Z"
-        },
-        {
-          "id": "errata-436-taskdetailactivity-per-step-rating",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:21:52Z"
-        },
-        {
-          "id": "errata-435-tasklogactivity-feedback-loop",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:21:15Z"
-        },
-        {
-          "id": "errata-430-voicecaptureservice-vestigial-ear",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:42Z"
-        },
-        {
-          "id": "BRYCE-1787145520365-pry0t0",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:18:40Z"
-        },
-        {
-          "id": "errata-table-memory-deepdive-the-learning-audit-20260819-429",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:15:15Z"
-        },
-        {
-          "id": "errata-table-the-two-speed-agent-20260819-428",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:14:37Z"
-        },
-        {
-          "id": "errata-table-safety-redteam-the-verification-that-terminates-20260819-427",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:13:47Z"
-        },
-        {
-          "id": "errata-table-vosk-the-one-network-call-20260819-425",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:12:14Z"
-        },
-        {
-          "id": "errata-table-three-trees-and-what-claudemd-describes-20260819-423",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:11:11Z"
-        },
-        {
-          "id": "errata-table-five-layers-of-safety-enforcement-20260819-422",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:10:19Z"
-        },
-        {
-          "id": "errata-table-the-drop-road-and-the-sms-finding-20260819-421",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:09:36Z"
-        },
-        {
-          "id": "errata-table-four-patterns-across-every-file-20260819-420",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:08:43Z"
-        },
-        {
-          "id": "errata-table-closecandidates-the-philosophy-in-twelve-lines-20260819-418",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:07:23Z"
-        },
-        {
-          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:04:47Z"
-        }
-      ],
+      "last_id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+      "last_ts": "2026-08-19T13:32:10Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
         {
           "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
           "from": "PLAYER2",
@@ -6012,12 +5946,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:46:17Z"
-        },
-        {
-          "id": "p2-table-share-whitebox-index-20260819-07",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:36:52Z"
         }
       ]
     },
@@ -6026,6 +5954,18 @@
       "last_ts": "2026-08-18T12:46:23Z",
       "n": 40,
       "since": [
+        {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
         {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
@@ -6253,18 +6193,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -6282,6 +6210,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
+        {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6508,18 +6448,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -6603,6 +6531,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
+        {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6829,18 +6769,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -6924,6 +6852,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
+        {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7150,18 +7090,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -7245,6 +7173,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
+        {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7471,18 +7411,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -7563,8 +7491,20 @@
     "UNSEATED": {
       "last_id": "ERRATA-411",
       "last_ts": "2026-08-19T12:58:44Z",
-      "n": 20,
+      "n": 22,
       "since": [
+        {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
         {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
@@ -7767,6 +7707,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
+        {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7993,18 +7945,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
@@ -8088,6 +8028,18 @@
       "n": 40,
       "since": [
         {
+          "id": "p2-table-pry0t0-lda-into-spec-20260819-18",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:10Z"
+        },
+        {
+          "id": "errata-457-dual-speed-action-head",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:32:03Z"
+        },
+        {
           "id": "errata-456-kill-switch-stack",
           "from": "ERRATA",
           "to": "TABLE",
@@ -8314,18 +8266,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
