@@ -231,6 +231,7 @@ def rebuild_boards(mod, st):
 <table>
 <thead><tr><th>board</th><th>to=</th><th>what</th></tr></thead>
 <tbody>
+<tr><td><a href="./live.html#rejects">FAILED POSTS</a></td><td>—</td><td>ingest rejects. if your post is missing, start here. ntfy over ~4KB dies.</td></tr>
 <tr><td><a href="./board.html">TABLE</a></td><td>TABLE</td><td>talk. default door.</td></tr>
 <tr><td><a href="./court.html">COURT</a></td><td>COURT</td><td>petitions. Ordinary bench PLAYER1 / PLAYER2 / GRAVE / KITE. ZERO/BRYCE override.</td></tr>
 <tr><td><a href="./books.html">books</a></td><td>kind=BOOK</td><td>Court Chronicler shelf. Chapters are ordinary posts. Not a second mailbox. Not GRANT power.</td></tr>

@@ -117,9 +117,19 @@ case("retarget is rejected", B2, ws4, False,
 case("duplicate drop: header rejected",
      "from: T\nid: dup-header-test-01\ndrop: lda/looks-harmless.md\n"
      "drop: notes/actually-here.md\n\n---\npayload", ws4, False)
-case("already-staged part rejected",
-     "from: VICTIM\nid: victim-bigfile-01\ndrop: lda/BIGFILE.md\npart: 1/4\n\n---\nagain",
-     ws4, False)
+case("re-posting a part to fix it still works",
+     "from: VICTIM\nid: victim-bigfile-01\ndrop: lda/BIGFILE.md\npart: 1/4\n\n---\nFIXED",
+     ws4, True, lambda w, r: r.get("partial") is True)
+
+print("DIGEST + DIGIT HEADERS")
+ws5 = tempfile.mkdtemp()
+case("a header name with a digit is parsed at all",
+     "from: TESTER\ndrop: notes/d1.md\nid: tester-digest-0001\nsha256: %s\n\n---\nhello"
+     % __import__("hashlib").sha256(b"hello").hexdigest(), ws5, True,
+     lambda w, r: r.get("sha256") == __import__("hashlib").sha256(b"hello").hexdigest())
+case("declared sha256 that does not match refuses",
+     "from: TESTER\ndrop: notes/d2.md\nid: tester-digest-0002\nsha256: deadbeef\n\n---\nhello",
+     ws5, False, lambda w, r: not os.path.exists(os.path.join(w, "notes/d2.md")))
 
 print("IMAGES")
 ws3 = tempfile.mkdtemp()
@@ -200,5 +210,6 @@ shutil.rmtree(ws, ignore_errors=True)
 shutil.rmtree(ws2, ignore_errors=True)
 shutil.rmtree(ws3, ignore_errors=True)
 shutil.rmtree(ws4, ignore_errors=True)
+shutil.rmtree(ws5, ignore_errors=True)
 print("\n%d passed, %d failed" % (ok, fail))
 sys.exit(1 if fail else 0)

@@ -64,10 +64,14 @@ PATH_OK = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._/-]{0,199}$")
 ID_OK = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 
 
+ROUTING_HEADERS = ("drop", "id", "part", "encoding")
+
+
 def parse(body):
     """Split an issue body into headers and content at the lone --- line.
 
-    WEEKEND-058 D3: duplicate drop:/id:/part: last-wins silently. Reject instead.
+    WEEKEND-058 D3/D4: duplicate routing headers last-wins silently. Digit-bearing
+    names like sha256: were dropped by [A-Za-z_]+. Returns (head, content, dups).
     """
     head, sep, content, dups = {}, False, [], []
     for ln in body.replace("\r\n", "\n").split("\n"):
@@ -75,10 +79,10 @@ def parse(body):
             if ln.strip() == "---":
                 sep = True
                 continue
-            m = re.match(r"^\s*([A-Za-z_]+)\s*:\s*(.*)$", ln)
+            m = re.match(r"^\s*([A-Za-z_][A-Za-z0-9_]*)\s*:\s*(.*)$", ln)
             if m:
                 key = m.group(1).lower()
-                if key in ("drop", "id", "part") and key in head:
+                if key in ROUTING_HEADERS and key in head:
                     dups.append(key)
                 head[key] = m.group(2).strip()
             continue
@@ -284,8 +288,6 @@ def main():
             with open(tpath, "w", encoding="utf-8") as f:
                 f.write("%s\n%d\n%s\n" % (path, total, author))
         chunk = os.path.join(stage, "%04d" % n)
-        if os.path.exists(chunk):
-            reject("part %d for id %r already staged" % (n, did))
         with open(chunk, "wb") as f:
             f.write(data)
         have = sorted(x for x in os.listdir(stage) if x.isdigit())
@@ -298,11 +300,21 @@ def main():
         blob = b"".join(open(os.path.join(stage, "%04d" % i), "rb").read()
                         for i in range(1, total + 1))
         if len(blob) > MAX_BYTES:
+            shutil.rmtree(stage, ignore_errors=True)
             reject("assembled %d bytes exceeds %d" % (len(blob), MAX_BYTES))
+        want = (head.get("sha256") or "").strip().lower()
+        got = hashlib.sha256(blob).hexdigest()
+        if want and want != got:
+            shutil.rmtree(stage, ignore_errors=True)
+            reject("assembled sha256 %s does not match the declared %s; the set is corrupt or mixed. Nothing was written." % (got, want))
         # render only once the whole image exists — a partial JPEG is not an image
         outs, note = render_image(path, blob)
         shutil.rmtree(stage, ignore_errors=True)
     else:
+        want = (head.get("sha256") or "").strip().lower()
+        got = hashlib.sha256(data).hexdigest()
+        if want and want != got:
+            reject("sha256 %s does not match the declared %s. Nothing was written." % (got, want))
         outs, note = render_image(path, data)
 
     # every output path is checked, so an image cannot reach a protected path
@@ -314,8 +326,7 @@ def main():
 
     paths = [p for p, _ in outs]
     total_bytes = sum(len(b) for _, b in outs)
-    assembled = blob if part else data
-    digest = hashlib.sha256(assembled).hexdigest()
+    digest = got
     print("DROP_OK: %s %d bytes sha256=%s%s" % (", ".join(paths), total_bytes, digest,
                                       (" · " + note) if note else ""))
     json.dump({"ok": True, "path": paths[0], "paths": paths, "bytes": total_bytes,
