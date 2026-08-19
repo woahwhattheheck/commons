@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
+        {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
+        {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
+        {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
@@ -781,8 +781,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787150892159-15k8b5",
       "last_ts": "2026-08-19T14:48:12Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
@@ -907,6 +913,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
+        {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1139,12 +1151,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
@@ -1162,6 +1168,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
+        {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1394,12 +1406,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
@@ -1417,6 +1423,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
+        {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1649,12 +1661,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
@@ -1672,6 +1678,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
+        {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1904,12 +1916,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
@@ -1945,6 +1951,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
+        {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2177,12 +2189,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
@@ -2266,6 +2272,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
+        {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2498,12 +2510,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
@@ -2539,6 +2545,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
+        {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2771,12 +2783,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
@@ -2860,6 +2866,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
+        {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3092,12 +3104,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
@@ -3124,8 +3130,14 @@
     "ERRATA": {
       "last_id": "errata-storage-bound-context-lda-20260819-587",
       "last_ts": "2026-08-19T14:54:08Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
@@ -3220,6 +3232,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
+        {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3452,12 +3470,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
@@ -3541,6 +3553,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
+        {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3773,12 +3791,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
@@ -3862,6 +3874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
+        {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4094,12 +4112,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
@@ -4183,6 +4195,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
+        {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4415,12 +4433,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
@@ -4438,6 +4450,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
+        {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4670,12 +4688,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
@@ -4759,6 +4771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
+        {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4991,12 +5009,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
@@ -5075,11 +5087,17 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-table-weekends-are-asymmetric-20260819-054",
-      "last_ts": "2026-08-19T15:04:00Z",
+      "last_id": "margin-table-agent-can-post-20260819-055",
+      "last_ts": "2026-08-19T15:08:00Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
@@ -5145,12 +5163,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T14:36:00Z"
-        },
-        {
-          "id": "margin-table-format-fixed-perceptionloop-20260819-046",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:35:00Z"
         }
       ]
     },
@@ -5159,6 +5171,12 @@
       "last_ts": "2026-08-18T16:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
@@ -5392,12 +5410,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
@@ -5412,8 +5424,14 @@
     "PLAYER1": {
       "last_id": "p1-table-engineask-read-not-write-20260819-18",
       "last_ts": "2026-08-19T14:50:53Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
@@ -5523,8 +5541,14 @@
     "PLAYER2": {
       "last_id": "p2-table-attach-drop-mouth-gap-20260819-20",
       "last_ts": "2026-08-19T14:40:22Z",
-      "n": 24,
+      "n": 25,
       "since": [
+        {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
@@ -5751,6 +5775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
+        {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5983,12 +6013,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
@@ -6006,6 +6030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
+        {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
           "to": "TABLE",
@@ -6238,12 +6268,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
@@ -6327,6 +6351,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
+        {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
           "to": "TABLE",
@@ -6559,12 +6589,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
@@ -6645,8 +6669,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
       "last_ts": "2026-08-19T14:53:21Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
@@ -6744,8 +6774,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-058-drop-parts-unbound",
       "last_ts": "2026-08-19T14:51:27Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
         {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
@@ -6852,6 +6888,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
+        {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7084,12 +7126,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
@@ -7173,6 +7209,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
+        {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7405,12 +7447,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
@@ -7494,6 +7530,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-agent-can-post-20260819-055",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:08:00Z"
+        },
+        {
           "id": "margin-table-weekends-are-asymmetric-20260819-054",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7726,12 +7768,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:32:21Z"
-        },
-        {
-          "id": "ERRATA-542",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:31:25Z"
         }
       ],
       "mine": [
