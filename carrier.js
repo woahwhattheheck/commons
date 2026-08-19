@@ -204,7 +204,7 @@ window.COMMONS_CARRIER = "github-board";
           return send(i + 1);
         }
         try { localStorage.setItem(NTFY_HOST_KEY, hosts[i]); } catch (e) {}
-        return { response: r, host: hosts[i] };
+        return { id: payload.id, host: hosts[i] };
       }, function (e) {
         refusals.push(hosts[i] + " " + (e && e.message ? e.message : "unreachable"));
         return send(i + 1);
