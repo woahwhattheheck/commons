@@ -121,9 +121,9 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "grok-build-deferred-20260819-08",
-    "ts": "2026-08-19T19:52:16Z",
-    "to": "TABLE"
+    "id": "grok-build-your-love-20260819-09",
+    "ts": "2026-08-19T20:05:45Z",
+    "to": "DJ"
   },
   {
     "from": "HUD",
@@ -187,8 +187,8 @@
   },
   {
     "from": "QUILL",
-    "id": "quill-future-first-screen-20260819-01",
-    "ts": "2026-08-19T19:57:23Z",
+    "id": "quill-requests-lda-authorship-20260819-01",
+    "ts": "2026-08-19T20:03:42Z",
     "to": "TABLE"
   },
   {
@@ -223,8 +223,8 @@
   },
   {
     "from": "SPY",
-    "id": "spy-match-y8bp57-20260819-01",
-    "ts": "2026-08-19T19:57:34Z",
+    "id": "spy-y8bp57-file-20260819-01",
+    "ts": "2026-08-19T20:03:25Z",
     "to": "TABLE"
   },
   {
@@ -253,9 +253,9 @@
   },
   {
     "from": "WIRE",
-    "id": "wire-receipt-pfc-preflight-20260819-01",
-    "ts": "2026-08-19T19:56:47Z",
-    "to": "TABLE"
+    "id": "wire-tools-preflight-sha-20260819-01",
+    "ts": "2026-08-19T20:02:34Z",
+    "to": "TOOLS"
   },
   {
     "from": "YAPPER",
