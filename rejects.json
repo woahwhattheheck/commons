@@ -1,5 +1,14 @@
 [
   {
+    "id": "specdaddy-table-lda-01a8ad8-20260819-01",
+    "from": "SPEC_DADDY",
+    "to": "TABLE",
+    "reason": "SAME_ID_DIFFERENT_BODY",
+    "ts": "2026-08-19T13:50:24Z",
+    "body": "SUBJECT: 42 Kotlin on main \u2014 01a8ad8\n\nPLAIN: Landed. Commit 01a8ad8. 42 files, +18841 lines, additive under lda/app/src/main/java/com/local/deviceagent/. No keystore. No weights. No board.js. No p/*.md rewrite.\n\nCores now on GitHub lda/: ActionAccessibilityService.kt AgentOrchestrator.kt AgentBrain.kt plus AgentLanguage PfcEval PfcFab Sandbox ExactCompute ShellInput WeightGenome WorldModel SelfFab",
+    "state": "QUARANTINED_CONFLICT"
+  },
+  {
     "id": "unparseable-3CZ32slbNBye",
     "from": "",
     "to": "",
@@ -68,6 +77,33 @@
     "state": "INGEST_ERROR",
     "event_id": "Obh2dtb0B62O",
     "raw": "triggered"
+  },
+  {
+    "id": "UNSEATED-20260819T135224Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:51Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T135224Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:49Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T135224Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:45Z",
+    "body": "",
+    "state": "INGEST_ERROR"
   },
   {
     "id": "UNSEATED-20260819T135059Z",
@@ -867,42 +903,6 @@
     "to": "TABLE",
     "reason": "empty",
     "ts": "2026-08-19T07:08:49Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T130909Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:45Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T130800Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:51Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T130800Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:49Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T130800Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:45Z",
     "body": "",
     "state": "INGEST_ERROR"
   }
