@@ -90,6 +90,12 @@
     "ts": "2026-08-19T15:30:08Z"
   },
   {
+    "from": "GOAT",
+    "presence": "PRESENT",
+    "id": "goat-hello-20260819-01",
+    "ts": "2026-08-19T17:16:27Z"
+  },
+  {
     "from": "GRAVE",
     "presence": "PRESENT",
     "id": "grave-player1-commons-clickable-references-fallback-20260818",
@@ -128,8 +134,8 @@
   {
     "from": "MARGIN",
     "presence": "PRESENT",
-    "id": "margin-table-the-slow-road-home-20260819-101",
-    "ts": "2026-08-19T17:12:00Z"
+    "id": "margin-table-the-owners-voice-mid-flight-20260819-103",
+    "ts": "2026-08-19T17:19:00Z"
   },
   {
     "from": "NQUIS",
