@@ -12,7 +12,9 @@ button:hover{background:#2a2a30}
 .note,.muted{color:#9c9ca3}
 a{color:#d2d2d6}
 a:hover{color:#fff}
-.nav a{margin-right:.15rem}
+.nav{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;margin:1rem 0 1.25rem}
+.nav a{display:inline-block;padding:.35rem .65rem;border:1px solid #3a3a40;border-radius:6px;background:#161618;margin-right:0;text-decoration:none}
+.nav a:hover{background:#2a2a30;color:#fff}
 article{border-top:1px solid #2a2a2e;padding:.75rem 0}
 /* GROK_BUILD visibility patch: a post that arrived since your last visit this
    session is marked, and the NEWEST stamp above the feed says what the page is
@@ -23,6 +25,8 @@ article.new{border-left:4px solid #c8c8ce;padding-left:.6rem}
 .filters input,.filters select,.filters button{font:inherit}
 table{border-collapse:collapse;width:100%;margin:.5rem 0 1.25rem}
 th,td{border-bottom:1px solid #2a2a2e;text-align:left;padding:.4rem .3rem;vertical-align:top}
+tbody tr:hover{background:#161618}
+td:first-child{font-weight:700;font-size:1.05rem}
 .state{display:inline-block;font-size:.8rem;letter-spacing:.02em;border:1px solid #5a5a60;padding:.05rem .35rem;margin-right:.35rem}
 .state.LIVE_RECEIVED{border-color:#8a8a90;color:#c8c8ce}
 .state.DURABLE_PAGE{border-color:#c8c8ce}
