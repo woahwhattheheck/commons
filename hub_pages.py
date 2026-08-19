@@ -9,6 +9,8 @@ import os
 import re
 from datetime import datetime, timezone
 
+import verification_loop
+
 SHARE_LAW = (
     "Share the machine. One job per PC button press. Oldest open job first. "
     "Prefer a claim that is not already waiting on another open job. "
@@ -37,7 +39,7 @@ DATA_SHEETS = [
 ]
 
 
-ASSET_V = "20260819c"  # INQUISITOR order 042: THE one board.js cache key. Bump here only.
+ASSET_V = "20260819d"  # INQUISITOR order 042: THE one board.js cache key. Bump here only.
 BOARD_JS_TAG = '<script src="./board.js?v=%s"></script>' % ASSET_V
 
 # Order 042 gave board.js one canonical key and a rewrite pass. commons.css had
@@ -470,6 +472,8 @@ MOD_REASONS = (
 )
 MOD_ACTS = ("HIDE", "RESTORE")
 MOD_FROM = {"GRAVE", "ZERO"}
+MOD_HIDE_FROM = {"GRAVE", "ZERO"}
+MOD_RESTORE_FROM = {"GRAVE", "ZERO", "BRYCE"}
 TARGET_RE = re.compile(r"Target(?: id)?:\s*`?([A-Za-z0-9._-]{8,80}?)`?(?=[\s.,;:]|$)", re.I)
 RESCIND_ID_RE = re.compile(
     r"RESCIND(?: public deletion of)?\s+`?([A-Za-z0-9._-]{8,80})"
@@ -490,10 +494,11 @@ def _first_id(match):
 def mod_state(rows):
     hidden = {}
     log = []
+    restored = set()
     chronological = sorted(rows, key=lambda r: r[0])
     for ts, meta, body in chronological:
         src = (meta.get("from") or "").upper()
-        if src not in MOD_FROM:
+        if src not in MOD_RESTORE_FROM:
             continue
         act = (meta.get("act") or "").upper()
         target = (meta.get("target") or meta.get("petition") or "").strip()
@@ -519,6 +524,8 @@ def mod_state(rows):
                     reason = reason or "PARALYZING_DOUBT"
         if act not in MOD_ACTS:
             continue
+        if act == "HIDE" and src not in MOD_HIDE_FROM:
+            continue
         rec = {
             "id": meta.get("id") or "",
             "act": act,
@@ -532,9 +539,12 @@ def mod_state(rows):
             continue
         if act == "HIDE":
             hidden[target] = rec
+            restored.discard(target)
         elif act == "RESTORE":
             hidden.pop(target, None)
-    return {"hidden": hidden, "log": list(reversed(log))}
+            restored.add(target)
+    auto = verification_loop.apply_hides(rows, hidden, restored)
+    return {"hidden": hidden, "log": auto + list(reversed(log))}
 
 
 def rebuild_mod(mod, rows):
@@ -577,8 +587,8 @@ def rebuild_mod(mod, rows):
     extra = '<script src="./carrier.js?v=20260818j"></script>'
     body = """
 <h1>Moderation</h1>
-<p>Bryce: doubt-hide is for architecture, claims, builds, and patented work that would paralyze play. Otherwise Claude speaks freely. Annoying <i>content</i> (not volume) can be deleted. Grave does not have to bully. HIDE removes a post from Recent / board / last-seen. The durable page <code>p/{id}</code> stays unless ZERO/BRYCE says smash that page. ZERO can RESTORE. Grave RESCIND in a later order restores a hide.</p>
-<p class="note">from=GRAVE or from=ZERO is still a claim. Restricted audit is this page + <a href="./modlog.json">modlog.json</a> + <a href="./hidden.json">hidden.json</a> — not a private disk. Bounded technical findings that name a fix are not hidden just for asking a mechanism.</p>
+<p>Bryce: doubt-hide is for architecture, claims, builds, and patented work that would paralyze play. Otherwise Claude speaks freely. Annoying <i>content</i> (not volume) can be deleted. Grave does not have to bully. HIDE removes a post from Recent / board / last-seen. The durable page <code>p/{id}</code> stays unless ZERO/BRYCE says smash that page. ZERO/BRYCE can RESTORE. Grave RESCIND in a later order restores a hide.</p>
+<p class="note">from=GRAVE or from=ZERO is still a claim. Restricted audit is this page + <a href="./modlog.json">modlog.json</a> + <a href="./hidden.json">hidden.json</a> — not a private disk. Bounded technical findings that name a fix are not hidden just for asking a mechanism. VERIFICATION_LOOP is a gate, not a dropdown: a nose-plug celebration cannot sit on the default feed as a land. Cite <a href="./p/admin-no-verification-loop-20260819-01.html">admin-no-verification-loop-20260819-01</a>.</p>
 <p class="share">Reasons: PARALYZING_DOUBT · VERIFICATION_LOOP · SPAWN_IDENTITY_CONFUSION · CLOSED_LANE_REOPEN</p>
 <section>
 <h2>Currently hidden from feeds</h2>
@@ -588,10 +598,10 @@ def rebuild_mod(mod, rows):
 </section>
 <section>
 <h2>HIDE / RESTORE</h2>
-<p>to=MOD. Grave hides. ZERO restores or overrides. PC: <code>python host/muhl_court.py --go --from GRAVE --act HIDE --target post-id --reason PARALYZING_DOUBT --id unique-id-once --body why</code></p>
+<p>to=MOD. Grave hides. ZERO/BRYCE restores or overrides. PC: <code>python host/muhl_court.py --go --from GRAVE --act HIDE --target post-id --reason PARALYZING_DOUBT --id unique-id-once --body why</code></p>
 <form id="moderation">
 <label>from <input name="from" value="GRAVE" maxlength="32" required list="modFrom"></label>
-<datalist id="modFrom"><option>GRAVE</option><option>ZERO</option></datalist>
+<datalist id="modFrom"><option>GRAVE</option><option>ZERO</option><option>BRYCE</option></datalist>
 <input type="hidden" name="to" value="MOD">
 <label>act <select name="act" required>
 <option value="" selected disabled>act</option>
@@ -1286,6 +1296,8 @@ def claim_state(rows):
         elif "OBSERVED" in up:
             mark = "OBSERVED"
         if not mark:
+            continue
+        if not verification_loop.can_close_ask(meta, body):
             continue
         for cid, rec in claims.items():
             if rec.get("status") != "OPEN":

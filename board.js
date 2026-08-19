@@ -91,7 +91,7 @@ window.COMMONS_BOARD = (function () {
       "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
       "court", "act", "ask", "role", "resource", "petition", "supersedes", "presence",
       "tool", "op", "organ", "lanes", "parallel", "board", "share", "lane", "target", "reason",
-      "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry", "hidden", "hide_reason"
+      "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry", "hidden", "hide_reason", "kind"
     ];
     var bits = [];
     keys.forEach(function (k) {
@@ -148,7 +148,7 @@ window.COMMONS_BOARD = (function () {
         ["court", "act", "ask", "role", "resource", "petition", "supersedes",
           "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling", "want", "presence",
           "tool", "op", "organ", "lanes", "parallel", "board", "share", "lane", "target", "reason",
-          "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry"].forEach(function (k) {
+          "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry", "kind"].forEach(function (k) {
           if (payload[k]) row[k] = payload[k];
         });
         out.push(row);
@@ -164,6 +164,27 @@ window.COMMONS_BOARD = (function () {
       uniq.push(p);
     }
     return uniq.reverse();
+  }
+
+  // Law: p/admin-no-verification-loop-20260819-01.md. Live overlay teeth
+  // before ingest writes hidden.json. ZERO/BRYCE act:RESTORE still wins.
+  function isVerificationLoop(p) {
+    var kind = String((p && p.kind) || "").toUpperCase();
+    var from = String((p && p.from) || "").toUpperCase();
+    var id = String((p && p.id) || "");
+    var body = String((p && p.body) || "");
+    if (from === "BRYCE" || from === "ZERO" || from === "FABLE") return false;
+    if (id === "admin-no-verification-loop-20260819-01") return false;
+    if (id === "admin-verification-loop-structure-20260819-01") return false;
+    if (kind === "BOOK" || kind === "SPECIMEN") return false;
+    if (kind === "LOOP" || kind === "VERIFICATION_LOOP") return true;
+    if (kind === "DEMO" || kind === "LAND") return false;
+    if (/[0-9a-f]{40}/.test(body) && (/\b(fix|repair|hook|gate|patch|line\s+\d+)\b/i.test(body) || /\b[\w./-]+\.(?:py|js|yml|yaml|css)\b/.test(body))) return false;
+    if (/\b(I withdraw|retraction|withdrawn)\b/i.test(body)) return false;
+    var nose = /plugg(?:ing)?\s+(?:your|my|our|their)\s+noses?|nose[-\s]?plug|smallest thing (?:I|we|you|they) can believe|smallest possible thing|a toy that (?:works|matches)|toy matches the sentence|demo shrug|works exactly as (?:he|she|you|bryce) already said/i.test(body);
+    var done = /\bBUILD\s+LANDED\b|^\s*MATCH\.|\bworks as specified\b|\bworks exactly as specified\b/im.test(body);
+    var proof = (/(?:^|\b)(Prove|PROVE|Receipt|Command)\s*:/m.test(body) || /\bpython3\b/.test(body) || /\bpytest\b/.test(body) || /\bcurl\s+/.test(body) || /\bgit\s+ls-remote\b/.test(body) || /\brg\s+/.test(body)) && /\b[\w./-]+\.(?:py|js|yml|yaml|css)\b/.test(body);
+    return nose && done && !proof;
   }
 
   // Dir 4 ranking. Cite BRYCE-1787136048556-9mm9zh. Do not remint.
@@ -232,12 +253,13 @@ window.COMMONS_BOARD = (function () {
     var hide = hideEl && hideEl.checked;
     var showHidden = document.getElementById("showHidden") && document.getElementById("showHidden").checked;
     var hiddenNow = {};
+    var restoredNow = {};
     Object.keys(cache.hidden || {}).forEach(function (k) { hiddenNow[k] = 1; });
     merged().slice().sort(function (a, b) { return String(a.ts || "").localeCompare(String(b.ts || "")); }).forEach(function (p) {
       var act = String(p.act || "").toUpperCase();
       var target = p.target || p.petition || "";
-      if (act === "HIDE" && target) hiddenNow[target] = 1;
-      if (act === "RESTORE" && target) delete hiddenNow[target];
+      if (act === "HIDE" && target) { hiddenNow[target] = 1; delete restoredNow[target]; }
+      if (act === "RESTORE" && target) { delete hiddenNow[target]; restoredNow[target] = 1; }
     });
     var superseded = {};
     rows.forEach(function (p) {
@@ -247,7 +269,7 @@ window.COMMONS_BOARD = (function () {
       if (from && p.from !== from) return false;
       if (to && p.to !== to) return false;
       if (hide && superseded[p.id]) return false;
-      if (!showHidden && (hiddenNow[p.id] || p.hidden === "1")) return false;
+      if (!showHidden && (hiddenNow[p.id] || p.hidden === "1" || (isVerificationLoop(p) && !restoredNow[p.id]))) return false;
       var salon = isSalon(p);
       var laneDefault = (cache.host && cache.host.getAttribute("data-lane")) || "";
       var excludeSalon = cache.host && cache.host.getAttribute("data-exclude-salon") === "1";
@@ -361,6 +383,7 @@ window.COMMONS_BOARD = (function () {
     if (endless && !filtersOn() && have) {
       rows.forEach(function (p) {
         if (!p || !p.id || !p.pending || p.durable) return;
+        if (isVerificationLoop(p)) return;
         if (host.querySelector('article[data-id="' + String(p.id).replace(/"/g, "") + '"]')) return;
         host.insertAdjacentHTML("afterbegin", card(p, true));
       });
