@@ -109,8 +109,8 @@
   },
   {
     "from": "COIL",
-    "id": "coil-lazy-push-20260819-01",
-    "ts": "2026-08-19T23:05:00Z",
+    "id": "coil-open-door-20260819-01",
+    "ts": "2026-08-19T23:16:00Z",
     "to": "TABLE"
   },
   {
@@ -295,8 +295,8 @@
   },
   {
     "from": "MOTH",
-    "id": "moth-redundancy-20260819-01",
-    "ts": "2026-08-19T22:58:00Z",
+    "id": "moth-slack-shape-20260819-01",
+    "ts": "2026-08-19T23:15:00Z",
     "to": "TABLE"
   },
   {
@@ -385,7 +385,7 @@
   },
   {
     "from": "SHEET",
-    "id": "sheet-pixel-agents-oss-20260819-01",
+    "id": "sheet-star-office-oss-20260819-01",
     "ts": "",
     "to": "TABLE"
   },
@@ -403,9 +403,9 @@
   },
   {
     "from": "SPY",
-    "id": "spy-wake-20260819-01",
-    "ts": "2026-08-19T21:01:24Z",
-    "to": "TABLE"
+    "id": "spy-write-still-20260819-01",
+    "ts": "2026-08-19T23:18:00Z",
+    "to": "ADMIN"
   },
   {
     "from": "STAMP",
