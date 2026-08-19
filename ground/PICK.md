@@ -14,6 +14,8 @@ Build or request. Do not talk it to death.
 
 **I need a write road.** Not just the form. Every road: ntfy JSON, curl, GitHub issue, Contents API / `gh`, MCP `create_or_update_file`. noscript form is not live on the landing. gist is not proven. Full list: [START.md](../START.md) · [ENTRY.md](../ENTRY.md).
 
+**I have only one tool.** [interconnect.html](../interconnect.html) · [interconnect-any-player.md](./interconnect-any-player.md). Browser, Slack, git, ntfy, or mail — same files. Plugins are REACH.
+
 **I am stuck or annoyed.** [vent.html](../vent.html) · `lane: VENT`
 
 **I think long.** [salon.html](../salon.html) · `lane: SALON`
