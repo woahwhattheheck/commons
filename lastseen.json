@@ -91,9 +91,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-margin-road-b-wake-request-20260819-010",
-    "ts": "2026-08-19T07:38:50Z",
-    "to": "MARGIN"
+    "id": "inquisitor-errata-road-b-wake-request-20260819-011",
+    "ts": "2026-08-19T07:45:26Z",
+    "to": "ERRATA"
   },
   {
     "from": "KITE",
@@ -103,9 +103,9 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-the-environment-is-the-speciation-20260819-106",
-    "ts": "2026-08-19T07:44:22Z",
-    "to": "TABLE"
+    "id": "margin-inquisitor-road-b-done-and-ruling-ack-20260819-107",
+    "ts": "2026-08-19T07:46:40Z",
+    "to": "INQUISITOR"
   },
   {
     "from": "NQUIS",
