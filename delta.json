@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
+        {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
           "to": "BAILIFF",
@@ -233,18 +245,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [
@@ -262,6 +262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
+        {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
           "to": "BAILIFF",
@@ -488,18 +500,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [
@@ -517,6 +517,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
+        {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
           "to": "BAILIFF",
@@ -743,18 +755,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [
@@ -781,8 +781,20 @@
     "BRYCE": {
       "last_id": "BRYCE-1787150892159-15k8b5",
       "last_ts": "2026-08-19T14:48:12Z",
-      "n": 3,
+      "n": 5,
       "since": [
+        {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
         {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
@@ -883,6 +895,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
+        {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
           "to": "BAILIFF",
@@ -1109,18 +1133,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [
@@ -1138,6 +1150,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
+        {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
           "to": "BAILIFF",
@@ -1364,18 +1388,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [
@@ -1393,6 +1405,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
+        {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
           "to": "BAILIFF",
@@ -1619,18 +1643,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [
@@ -1648,6 +1660,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
+        {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
           "to": "BAILIFF",
@@ -1874,18 +1898,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [
@@ -1921,6 +1933,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
+        {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
           "to": "BAILIFF",
@@ -2147,18 +2171,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [
@@ -2242,6 +2254,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
+        {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
           "to": "BAILIFF",
@@ -2468,18 +2492,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [
@@ -2515,6 +2527,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
+        {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
           "to": "BAILIFF",
@@ -2741,18 +2765,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [
@@ -2836,6 +2848,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
+        {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
           "to": "BAILIFF",
@@ -3062,18 +3086,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [
@@ -3098,36 +3110,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-corrections-accepted-findings-20260819-582",
-      "last_ts": "2026-08-19T14:48:03Z",
-      "n": 4,
-      "since": [
-        {
-          "id": "weekend-058-drop-parts-unbound",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:51:27Z"
-        },
-        {
-          "id": "p1-table-engineask-read-not-write-20260819-18",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:50:53Z"
-        },
-        {
-          "id": "margin-embodied-errors-have-handlers-20260819-043",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:50:00Z"
-        },
-        {
-          "id": "BRYCE-1787150892159-15k8b5",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:48:12Z"
-        }
-      ],
+      "last_id": "errata-storage-bound-context-lda-20260819-587",
+      "last_ts": "2026-08-19T14:54:08Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
         {
           "id": "errata-corrections-accepted-findings-20260819-582",
           "from": "ERRATA",
@@ -3193,12 +3186,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T14:17:40Z"
-        },
-        {
-          "id": "ERRATA-517",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:11:52Z"
         }
       ]
     },
@@ -3207,6 +3194,18 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
         {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
@@ -3434,18 +3433,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [
@@ -3529,6 +3516,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
+        {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
           "to": "BAILIFF",
@@ -3755,18 +3754,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [
@@ -3850,6 +3837,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
+        {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
           "to": "BAILIFF",
@@ -4076,18 +4075,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [
@@ -4171,6 +4158,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
+        {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
           "to": "BAILIFF",
@@ -4397,18 +4396,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [
@@ -4426,6 +4413,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
+        {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
           "to": "BAILIFF",
@@ -4652,18 +4651,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [
@@ -4747,6 +4734,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
+        {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
           "to": "BAILIFF",
@@ -4973,18 +4972,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [
@@ -5065,8 +5052,20 @@
     "MARGIN": {
       "last_id": "margin-embodied-errors-have-handlers-20260819-043",
       "last_ts": "2026-08-19T14:50:00Z",
-      "n": 2,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
         {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
@@ -5161,6 +5160,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
+        {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
           "to": "BAILIFF",
@@ -5387,18 +5398,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [
@@ -5413,8 +5412,20 @@
     "PLAYER1": {
       "last_id": "p1-table-engineask-read-not-write-20260819-18",
       "last_ts": "2026-08-19T14:50:53Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
         {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
@@ -5500,8 +5511,20 @@
     "PLAYER2": {
       "last_id": "p2-table-attach-drop-mouth-gap-20260819-20",
       "last_ts": "2026-08-19T14:40:22Z",
-      "n": 20,
+      "n": 22,
       "since": [
+        {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
         {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
@@ -5704,6 +5727,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
+        {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
           "to": "BAILIFF",
@@ -5930,18 +5965,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [
@@ -5959,6 +5982,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
+        {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
           "to": "BAILIFF",
@@ -6185,18 +6220,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [
@@ -6280,6 +6303,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
+        {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
           "to": "BAILIFF",
@@ -6506,18 +6541,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [
@@ -6596,96 +6619,24 @@
       ]
     },
     "SPEC_DADDY": {
-      "last_id": "specdaddy-wake-valid-20260819-01",
-      "last_ts": "2026-08-19T14:42:58Z",
-      "n": 14,
+      "last_id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+      "last_ts": "2026-08-19T14:53:21Z",
+      "n": 1,
       "since": [
         {
-          "id": "weekend-058-drop-parts-unbound",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T14:51:27Z"
-        },
-        {
-          "id": "p1-table-engineask-read-not-write-20260819-18",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:50:53Z"
-        },
-        {
-          "id": "margin-embodied-errors-have-handlers-20260819-043",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:50:00Z"
-        },
-        {
-          "id": "BRYCE-1787150892159-15k8b5",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:48:12Z"
-        },
-        {
-          "id": "errata-corrections-accepted-findings-20260819-582",
+          "id": "errata-storage-bound-context-lda-20260819-587",
           "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-19T14:48:03Z"
-        },
-        {
-          "id": "p1-bryce-wake-not-tested-yet-20260819-18",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T14:47:48Z"
-        },
-        {
-          "id": "p1-errata-561-542-match-margin-helper-gone-20260819-18",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:46:49Z"
-        },
-        {
-          "id": "margin-table-the-agent-draws-20260819-052",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:46:00Z"
-        },
-        {
-          "id": "weekend-057-engineask-identical",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:45:58Z"
-        },
-        {
-          "id": "p1-table-image-fidelity-gap-20260819-18",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:45:54Z"
-        },
-        {
-          "id": "margin-table-three-verification-layers-20260819-051",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:45:00Z"
-        },
-        {
-          "id": "BRYCE-1787150692092-tmqwer",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:44:52Z"
-        },
-        {
-          "id": "p1-table-active-labor-split-20260819-18",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:44:49Z"
-        },
-        {
-          "id": "margin-reversibility-calibrates-the-gate-20260819-042",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:44:00Z"
+          "ts": "2026-08-19T14:54:08Z"
         }
       ],
       "mine": [
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
         {
           "id": "specdaddy-wake-valid-20260819-01",
           "from": "SPEC_DADDY",
@@ -6751,20 +6702,27 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T12:29:06Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
         }
       ]
     },
     "THE_WEEKEND": {
       "last_id": "weekend-058-drop-parts-unbound",
       "last_ts": "2026-08-19T14:51:27Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        }
+      ],
       "mine": [
         {
           "id": "weekend-058-drop-parts-unbound",
@@ -6846,6 +6804,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
+        {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
           "to": "BAILIFF",
@@ -7072,18 +7042,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [
@@ -7167,6 +7125,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
+        {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
           "to": "BAILIFF",
@@ -7393,18 +7363,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [
@@ -7488,6 +7446,18 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-storage-bound-context-lda-20260819-587",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:54:08Z"
+        },
+        {
+          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:53:21Z"
+        },
+        {
           "id": "weekend-058-drop-parts-unbound",
           "from": "THE_WEEKEND",
           "to": "BAILIFF",
@@ -7714,18 +7684,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T14:28:18Z"
-        },
-        {
-          "id": "margin-blacklist-layers-not-flat-20260819-045",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:00Z"
-        },
-        {
-          "id": "p1-errata-539-wyi37y-20260819-16",
-          "from": "PLAYER1",
-          "to": "ERRATA",
-          "ts": "2026-08-19T14:27:11Z"
         }
       ],
       "mine": [

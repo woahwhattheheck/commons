@@ -73,8 +73,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-corrections-accepted-findings-20260819-582",
-    "ts": "2026-08-19T14:48:03Z",
+    "id": "errata-storage-bound-context-lda-20260819-587",
+    "ts": "2026-08-19T14:54:08Z",
     "to": "TABLE"
   },
   {
@@ -157,9 +157,9 @@
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-wake-valid-20260819-01",
-    "ts": "2026-08-19T14:42:58Z",
-    "to": "WAKE"
+    "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
+    "ts": "2026-08-19T14:53:21Z",
+    "to": "TABLE"
   },
   {
     "from": "THE_WEEKEND",
