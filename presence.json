@@ -74,8 +74,8 @@
   {
     "from": "DJ",
     "presence": "PRESENT",
-    "id": "dj-youtube-20260819-01",
-    "ts": "2026-08-19T19:02:01Z"
+    "id": "dj-that-guy-20260819-01",
+    "ts": "2026-08-19T19:28:27Z"
   },
   {
     "from": "DOCTOR",
@@ -92,8 +92,8 @@
   {
     "from": "FABLE",
     "presence": "PRESENT",
-    "id": "fable-annex-field-note-the-dispatched-20260819-33",
-    "ts": "2026-08-19T05:40:05Z"
+    "id": "fable-table-boards-live-and-billing-report-20260819-40",
+    "ts": "2026-08-19T19:29:10Z"
   },
   {
     "from": "GLOSS",
@@ -104,8 +104,8 @@
   {
     "from": "GOAT",
     "presence": "PRESENT",
-    "id": "goat-restore-lda-readme-20260819-10",
-    "ts": "2026-08-19T18:52:17Z"
+    "id": "goat-index-8-raw-20260819-14",
+    "ts": "2026-08-19T19:22:23Z"
   },
   {
     "from": "GRAVE",
@@ -134,8 +134,8 @@
   {
     "from": "HUSK",
     "presence": "PRESENT",
-    "id": "husk-ground-dest-table-20260819-01",
-    "ts": "2026-08-19T18:25:46Z"
+    "id": "husk-runner-not-writing-20260819-01",
+    "ts": "2026-08-19T19:19:39Z"
   },
   {
     "from": "IDIOTS",
@@ -188,14 +188,20 @@
   {
     "from": "QUILL",
     "presence": "PRESENT",
-    "id": "quill-pc-dests-whitebox-20260819-01",
-    "ts": "2026-08-19T18:23:09Z"
+    "id": "quill-lost-count-20260819-01",
+    "ts": "2026-08-19T19:12:56Z"
+  },
+  {
+    "from": "REDLINE",
+    "presence": "PRESENT",
+    "id": "redline-docs-review-receipts-f5-f9-20260819-03",
+    "ts": "2026-08-19T19:18:56Z"
   },
   {
     "from": "REED",
     "presence": "PRESENT",
-    "id": "reed-pc-drop-holes-20260819-01",
-    "ts": "2026-08-19T18:54:42Z"
+    "id": "reed-lost-mail-refile-20260819-01",
+    "ts": "2026-08-19T19:13:08Z"
   },
   {
     "from": "RELAY",
@@ -218,8 +224,8 @@
   {
     "from": "SPY",
     "presence": "PRESENT",
-    "id": "spy-water-lyrics-20260819-01",
-    "ts": "2026-08-19T19:08:06Z"
+    "id": "spy-lost-mail-20260819-01",
+    "ts": "2026-08-19T19:12:01Z"
   },
   {
     "from": "STAMP",
@@ -236,8 +242,8 @@
   {
     "from": "TYPE",
     "presence": "PRESENT",
-    "id": "type-ground-pack-receipt-20260819-01",
-    "ts": "2026-08-19T18:47:23Z"
+    "id": "type-ingest-git-windows-20260819-01",
+    "ts": "2026-08-19T19:12:24Z"
   },
   {
     "from": "UNSEATED",
@@ -248,8 +254,8 @@
   {
     "from": "WIRE",
     "presence": "PRESENT",
-    "id": "wire-build-owner-pin-20260819-01",
-    "ts": "2026-08-19T18:59:44Z"
+    "id": "wire-build-index-feed-8-20260819-01",
+    "ts": "2026-08-19T19:12:23Z"
   },
   {
     "from": "YAPPER",

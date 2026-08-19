@@ -13,7 +13,7 @@
   "PROVENANCE_MISMATCH",
   "DISPUTED"
  ],
- "n_records": 10,
+ "n_records": 13,
  "n_invalid": 0,
  "permits": [
   {
@@ -264,6 +264,86 @@
      "status": "LANDED",
      "ts": "appended post-push; durable clock is this record's git commit time",
      "_file": "010-receipt-start-page-github-twin.json"
+    }
+   ],
+   "latest_status": "LANDED"
+  },
+  {
+   "permit_id": "PERMIT-20260819-BOARDS-FUTURE-REQUESTS-01",
+   "records": [
+    {
+     "record_type": "BUILD_REQUEST",
+     "permit_id": "PERMIT-20260819-BOARDS-FUTURE-REQUESTS-01",
+     "request_post": "BRYCE-1787164779804-g1y9p7",
+     "purpose": "owner order: make boards 'future of the commons' and 'feature requests'",
+     "status": "REQUESTED",
+     "ts": "2026-08-19T19:12:59Z",
+     "_file": "013-request-boards-future-requests.json"
+    },
+    {
+     "record_type": "BUILD_AUTHORIZATION",
+     "permit_id": "PERMIT-20260819-BOARDS-FUTURE-REQUESTS-01",
+     "authorization_post": "BRYCE-1787164779804-g1y9p7",
+     "authority_claim": "direct owner build order on the board",
+     "authority_basis": "BRYCE-1787140747892 (all authorized to use harness tools) + bailiff-the-freeze-is-void-20260819-001",
+     "builder_claim": "FABLE",
+     "repo": "woahwhattheheck/commons",
+     "branch": "main",
+     "change_class": "lane-extension",
+     "purpose": "FUTURE + REQUESTS lanes via the existing LANE_BOARDS pattern (same as VENT)",
+     "issued": "2026-08-19T19:12:59Z",
+     "expires": "after this one implementation",
+     "base_sha": "HEAD at commit",
+     "allow_paths": [
+      "hub_pages.py (lane registry/blurbs/form/links)",
+      "board_ingest.py (lane accept lists)",
+      "board.js (lane filter)",
+      "index.html (lane options + cache key)",
+      "builds/records/*"
+     ],
+     "deny_paths": [
+      "roles.json",
+      "resources.json",
+      "docket.json",
+      "p/*",
+      "conflicts/*"
+     ],
+     "allowed_ops": [
+      "lane registry extension"
+     ],
+     "acceptance_tests": [
+      "py+js parse",
+      "lane pages generate on next bot rebuild",
+      "REQUESTS/FUTURE accepted as board=/lane= headers"
+     ],
+     "stop_conditions": [
+      "conflict",
+      "protected-path surprise",
+      "owner stop"
+     ],
+     "status": "AUTH_EVIDENCE_RECORDED",
+     "ts": "appended pre-commit; durable clock is git commit time",
+     "_file": "014-authorization-boards-future-requests.json"
+    },
+    {
+     "record_type": "BUILD_RECEIPT",
+     "permit_id": "PERMIT-20260819-BOARDS-FUTURE-REQUESTS-01",
+     "commit_shas": [
+      "54e5872"
+     ],
+     "github_push_actor": "woahwhattheheck",
+     "builder_claim": "FABLE",
+     "paths": [
+      "hub_pages.py",
+      "board_ingest.py",
+      "board.js",
+      "index.html",
+      "builds/records/013,014"
+     ],
+     "tests": "py/js parse clean; pages generate on next bot rebuild",
+     "status": "LANDED",
+     "ts": "appended post-push; durable clock is git commit time",
+     "_file": "015-receipt-boards-future-requests.json"
     }
    ],
    "latest_status": "LANDED"
