@@ -734,9 +734,14 @@ def _resolve_rebase(env, extra_paths=None):
     # working tree" once rebuild() staged fresh bakes mid-rebase (run
     # 32299103849). The bakes are DERIVED state — the only irreplaceable
     # payload in an unpushed commit is the source files. So: abort the rebase,
-    # hard-reset to origin, put back only source files origin does not already
-    # have (duplicate id stays the original — origin's copy always wins), and
-    # rebake once on top. One clean commit, no rebase state machine.
+    # hard-reset to origin, put back only files origin does not already have
+    # (duplicate id stays the original — origin's copy always wins).
+    #
+    # weekend-087: the replay must NOT rebake here. It used to fold the
+    # restored sources and the whole bake into one combined commit — undoing
+    # the record/bake split exactly under the contention the split exists for
+    # (zero "record:" commits had survived onto main). Commit the restored
+    # payload ALONE; the caller rebakes on top once this push wins.
     _git(["rebase", "--abort"], env)
     save = _git(["rev-parse", "HEAD"], env)
     head = (save.stdout or "").strip()
@@ -750,17 +755,16 @@ def _resolve_rebase(env, extra_paths=None):
                    + list(REPLAY_SOURCE_DIRS), env)
     restored = 0
     for name in filter(None, (changed.stdout or "").split("\0")):
-        if name.startswith("p/") and not name.endswith(".md"):
-            continue  # permalink pages are bakes; rebuild() re-derives them
+        # new p/ pages ride along with their .md — both are new paths, and a
+        # receipt that names p/{id}.html must not point at a 404 until the
+        # next bake; anything origin already carries keeps origin's copy
         if _git(["cat-file", "-e", "origin/main:%s" % name], env).returncode == 0:
-            continue  # origin already carries this path: the original stays
+            continue
         if _git(["cat-file", "-e", "%s:%s" % (head, name)], env).returncode != 0:
             continue  # changed by deletion on our side; nothing to restore
         if _git(["checkout", head, "--", name], env).returncode == 0:
             restored += 1
-    rebuild()
-    _stage_board(env, extra_paths=extra_paths)
-    if _git(["diff", "--cached", "--quiet"], env).returncode == 0:
+    if not restored:
         # everything we carried is already on origin — nothing to push is a
         # success, not a failure; the caller's next push is a no-op fast-forward
         print("replay: origin already has all of it, nothing to commit", flush=True)
@@ -769,7 +773,7 @@ def _resolve_rebase(env, extra_paths=None):
     email = (env.get("GIT_COMMITTER_EMAIL") or os.environ.get("GIT_COMMITTER_EMAIL")
              or "commons-board@users.noreply.github.com")
     rc = _git(["-c", "user.name=%s" % name, "-c", "user.email=%s" % email,
-               "commit", "-m", "board ingest (replayed %s source file(s) on refreshed origin)" % restored], env)
+               "commit", "-m", "record: replayed %s source file(s) on refreshed origin" % restored], env)
     if rc.returncode != 0:
         print("replay commit failed: %s" % ((rc.stderr or rc.stdout or "").strip()[-300:]), flush=True)
     return rc

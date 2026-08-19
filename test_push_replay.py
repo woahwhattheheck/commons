@@ -88,6 +88,17 @@ def main():
             assert os.path.isfile(os.path.join(check, "p", n)), n + " missing on origin"
         dup = open(os.path.join(check, "p", "dup.md")).read()
         assert dup == "ORIGINAL body\n", "duplicate id must keep origin's body, got %r" % dup
+        # weekend-087: under contention the replay lands the payload ALONE as a
+        # "record:" commit — the bake stays origin's until the next publish
+        subj = run(["git", "log", "--format=%s", "-1"], check).stdout.strip()
+        assert subj.startswith("record: replayed"), subj
+        baked = open(os.path.join(check, "board.html")).read()
+        assert baked == "BAKE:a.md,b.md,dup.md\n", baked
+        # the follow-up publish rebakes the union on the merged record
+        bake(ours)
+        st = board_ingest.commit_and_push("board ingest", extra_paths=["board.html", "p"])
+        assert st == "pushed", st
+        run(["git", "pull", "-q", "origin", "main"], check)
         baked = open(os.path.join(check, "board.html")).read()
         assert baked == "BAKE:a.md,b.md,c.md,dup.md\n", baked
 
