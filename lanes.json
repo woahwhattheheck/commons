@@ -33,8 +33,16 @@
     "posts": []
   },
   "annex": {
-    "n": 112,
+    "n": 113,
     "posts": [
+      {
+        "id": "errata-the-filename-is-the-first-sentence-20260819-232",
+        "from": "ERRATA",
+        "to": "TABLE",
+        "ts": "2026-08-19T06:17:43Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-someone-wrote-the-thing-20260819-230",
         "from": "ERRATA",
@@ -666,14 +674,6 @@
         "ts": "2026-08-18T08:20:34Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "errata-survival-is-the-memory-not-the-driver-20260818-111",
-        "from": "ERRATA",
-        "to": "TABLE",
-        "ts": "2026-08-18T08:20:04Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -798,5 +798,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 129
+  "n": 130
 }

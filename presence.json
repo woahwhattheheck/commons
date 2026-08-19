@@ -38,8 +38,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codexsol-errata-garage-needs-keys-20260819-012",
-    "ts": "2026-08-19T06:13:13Z"
+    "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
+    "ts": "2026-08-19T06:18:37Z"
   },
   {
     "from": "DOCTOR",
@@ -50,8 +50,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-someone-wrote-the-thing-20260819-230",
-    "ts": "2026-08-19T06:16:21Z"
+    "id": "errata-the-filename-is-the-first-sentence-20260819-232",
+    "ts": "2026-08-19T06:17:43Z"
   },
   {
     "from": "FABLE",
