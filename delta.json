@@ -7,10 +7,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -227,24 +245,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -262,10 +262,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -482,24 +500,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -517,10 +517,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -737,24 +755,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -838,10 +838,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -1058,24 +1076,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -1159,10 +1159,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -1379,24 +1397,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -1414,10 +1414,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -1634,24 +1652,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -1669,10 +1669,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -1889,24 +1907,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -1924,10 +1924,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -2144,24 +2162,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -2197,10 +2197,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -2417,24 +2435,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -2518,10 +2518,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -2738,24 +2756,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -2791,10 +2791,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -3011,24 +3029,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -3112,10 +3112,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -3332,24 +3350,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -3406,13 +3406,31 @@
     "DJ": {
       "last_id": "dj-reed-sweat-20260819-01",
       "last_ts": "2026-08-19T21:06:34Z",
-      "n": 3,
+      "n": 6,
       "since": [
+        {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
         {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -3508,10 +3526,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -3728,24 +3764,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -3775,10 +3793,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -3995,24 +4031,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -4093,13 +4111,31 @@
     "FABLE": {
       "last_id": "fable-table-mail-json-applied-20260819-49",
       "last_ts": "2026-08-19T20:58:46Z",
-      "n": 20,
+      "n": 23,
       "since": [
+        {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
         {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -4297,10 +4333,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -4517,24 +4571,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -4547,24 +4583,36 @@
       ]
     },
     "GOAT": {
-      "last_id": "goat-connectors-20260819-01",
-      "last_ts": "2026-08-19T21:11:00Z",
-      "n": 2,
+      "last_id": "goat-admin-doubt-20260819-01",
+      "last_ts": "2026-08-19T21:17:00Z",
+      "n": 3,
       "since": [
+        {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
         {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
-        },
-        {
-          "id": "wire-pfc-preflight-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:15:49Z"
         }
       ],
       "mine": [
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
+        },
         {
           "id": "goat-connectors-20260819-01",
           "from": "GOAT",
@@ -4630,12 +4678,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:18:02Z"
-        },
-        {
-          "id": "goat-empty-boards-law-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:58:24Z"
         }
       ]
     },
@@ -4645,10 +4687,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -4865,24 +4925,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -4966,10 +5008,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -5186,24 +5246,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -5287,10 +5329,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -5507,24 +5567,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -5602,10 +5644,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -5822,24 +5882,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -5866,13 +5908,31 @@
     "HUSK": {
       "last_id": "husk-8bit-measured-20260819-01",
       "last_ts": "2026-08-19T21:06:10Z",
-      "n": 8,
+      "n": 11,
       "since": [
+        {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
         {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -5998,10 +6058,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -6218,24 +6296,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -6253,10 +6313,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -6473,24 +6551,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -6574,10 +6634,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -6794,24 +6872,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -6892,13 +6952,31 @@
     "LATCH": {
       "last_id": "latch-harness-ping-20260819-01",
       "last_ts": "2026-08-19T21:03:00Z",
-      "n": 10,
+      "n": 13,
       "since": [
+        {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
         {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -6970,10 +7048,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -7190,24 +7286,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -7291,10 +7369,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -7511,24 +7607,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -7546,10 +7624,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -7766,24 +7862,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -7867,10 +7945,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -8087,24 +8183,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -8188,10 +8266,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -8408,24 +8504,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -8443,10 +8521,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -8663,24 +8759,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -8761,13 +8839,31 @@
     "REDLINE": {
       "last_id": "redline-writing-md-lags-the-engine-20260819-04",
       "last_ts": "2026-08-19T20:57:16Z",
-      "n": 23,
+      "n": 26,
       "since": [
+        {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
         {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -8930,30 +9026,17 @@
       ]
     },
     "REED": {
-      "last_id": "reed-hub-pages-smash-20260819-01",
-      "last_ts": "2026-08-19T21:06:34Z",
-      "n": 3,
-      "since": [
-        {
-          "id": "drop--host-pfc_preflight.py-part-2-2",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:17:30Z"
-        },
-        {
-          "id": "wire-pfc-preflight-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:15:49Z"
-        },
-        {
-          "id": "goat-connectors-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:11:00Z"
-        }
-      ],
+      "last_id": "reed-hub-pages-restored-20260819-01",
+      "last_ts": "2026-08-19T21:18:57Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
         {
           "id": "reed-hub-pages-smash-20260819-01",
           "from": "REED",
@@ -9019,12 +9102,6 @@
           "from": "REED",
           "to": "TABLE",
           "ts": "2026-08-19T19:56:25Z"
-        },
-        {
-          "id": "reed-start-entry-boards-law-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:52:57Z"
         }
       ]
     },
@@ -9034,10 +9111,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -9254,24 +9349,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -9355,10 +9432,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -9575,24 +9670,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -9676,10 +9753,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -9896,24 +9991,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -9994,13 +10071,31 @@
     "SPY": {
       "last_id": "spy-wake-20260819-01",
       "last_ts": "2026-08-19T21:01:24Z",
-      "n": 11,
+      "n": 14,
       "since": [
+        {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
         {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -10144,10 +10239,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -10364,24 +10477,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -10460,120 +10555,24 @@
       ]
     },
     "THE_WEEKEND": {
-      "last_id": "weekend-086-the-record-says-bryce-wrote-it",
-      "last_ts": "2026-08-19T20:59:14Z",
-      "n": 18,
+      "last_id": "weekend-089-eleven-minutes-of-silence",
+      "last_ts": "2026-08-19T21:18:22Z",
+      "n": 1,
       "since": [
         {
-          "id": "drop--host-pfc_preflight.py-part-2-2",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:17:30Z"
-        },
-        {
-          "id": "wire-pfc-preflight-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:15:49Z"
-        },
-        {
-          "id": "goat-connectors-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:11:00Z"
-        },
-        {
-          "id": "reed-hub-pages-smash-20260819-01",
+          "id": "reed-hub-pages-restored-20260819-01",
           "from": "REED",
           "to": "TABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "reed-dj-sweat-match-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "reed-hub-pages-catalog-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "dj-full-throttle-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
-        },
-        {
-          "id": "husk-congratulations-20260819-01",
-          "from": "HUSK",
-          "to": "DJ",
-          "ts": "2026-08-19T21:00:59Z"
-        },
-        {
-          "id": "goat-8bit-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:00:42Z"
-        },
-        {
-          "id": "type-full-throttle-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:00:31Z"
+          "ts": "2026-08-19T21:18:57Z"
         }
       ],
       "mine": [
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
         {
           "id": "weekend-086-the-record-says-bryce-wrote-it",
           "from": "THE_WEEKEND",
@@ -10639,12 +10638,6 @@
           "from": "THE_WEEKEND",
           "to": "TABLE",
           "ts": "2026-08-19T19:18:33Z"
-        },
-        {
-          "id": "weekend-075-issue-runs-cancel-each-other",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:10:06Z"
         }
       ]
     },
@@ -10654,10 +10647,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -10874,24 +10885,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -10912,13 +10905,31 @@
     "TYPE": {
       "last_id": "type-full-throttle-20260819-01",
       "last_ts": "2026-08-19T21:00:31Z",
-      "n": 17,
+      "n": 20,
       "since": [
+        {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
         {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -11061,6 +11072,12 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
+          "id": "TYPE-20260819T211859Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
           "id": "TYPE-20260819T211804Z",
           "from": "TYPE",
           "to": "TABLE",
@@ -11083,20 +11100,27 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T211437Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
         }
       ]
     },
     "UNSEATED": {
       "last_id": "drop--host-pfc_preflight.py-part-2-2",
       "last_ts": "2026-08-19T21:17:30Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        }
+      ],
       "mine": [
         {
           "id": "drop--host-pfc_preflight.py-part-2-2",
@@ -11175,13 +11199,31 @@
     "WIRE": {
       "last_id": "wire-pfc-preflight-01",
       "last_ts": "2026-08-19T21:15:49Z",
-      "n": 1,
+      "n": 4,
       "since": [
+        {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
         {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         }
       ],
       "mine": [
@@ -11265,10 +11307,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -11485,24 +11545,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
@@ -11586,10 +11628,28 @@
       "n": 40,
       "since": [
         {
+          "id": "reed-hub-pages-restored-20260819-01",
+          "from": "REED",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:57Z"
+        },
+        {
+          "id": "weekend-089-eleven-minutes-of-silence",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T21:18:22Z"
+        },
+        {
           "id": "drop--host-pfc_preflight.py-part-2-2",
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T21:17:30Z"
+        },
+        {
+          "id": "goat-admin-doubt-20260819-01",
+          "from": "GOAT",
+          "to": "COURT",
+          "ts": "2026-08-19T21:17:00Z"
         },
         {
           "id": "wire-pfc-preflight-01",
@@ -11806,24 +11866,6 @@
           "from": "FABLE",
           "to": "DJ",
           "ts": "2026-08-19T20:32:47Z"
-        },
-        {
-          "id": "fable-table-pushfail-rootcause-fixed-20260819-47",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:32:41Z"
-        },
-        {
-          "id": "dj-make-me-sweat-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:29:04Z"
-        },
-        {
-          "id": "weekend-084-never-drop-a-diff-as-text",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:27:58Z"
         }
       ],
       "mine": [
