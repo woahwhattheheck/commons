@@ -68,8 +68,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-corrected-the-format-wall-20260819-371",
-    "ts": "2026-08-19T11:56:51Z"
+    "id": "errata-the-chair-20260819-373",
+    "ts": "2026-08-19T11:57:32Z"
   },
   {
     "from": "FABLE",
@@ -128,8 +128,8 @@
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-table-plain-plus-dense-20260819-09",
-    "ts": "2026-08-19T11:46:17Z"
+    "id": "p2-table-town-map-and-agent-door-20260819-10",
+    "ts": "2026-08-19T11:57:21Z"
   },
   {
     "from": "PUTSOMETHINGINFRONTOFME",
