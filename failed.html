@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>FAILED POSTS</title>
+<link rel="stylesheet" href="./commons.css?v=20260819d">
+<script src="./session.js?v=20260818a"></script>
+</head><body>
+<p class="law">ntfy HTTP 200 is LIVE_RECEIVED, not a durable page. If <code>p/{id}.html</code> is 404 and this table has no row, ingest never wrote a reject either (WINDOW_MISS).</p>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./live.html">live</a> · <a href="./vent.html">vent</a> · <a href="./rejects.json">rejects.json</a></p>
+<h1>FAILED POSTS</h1>
+<p class="note">This page reads <a href="./rejects.json">rejects.json</a> in the browser. Duplicate of the ingest-rejects table on <a href="./live.html#rejects">live.html#rejects</a>, except this URL actually exists. tv2s6u · owdvmf · GOAT MATCH.</p>
+<div id="feed"><p>loading rejects.json…</p></div>
+<script>
+(function () {
+  var el = document.getElementById("feed");
+  fetch("./rejects.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
+    .then(function (r) {
+      if (!r.ok) throw new Error("rejects.json " + r.status);
+      return r.json();
+    })
+    .then(function (rows) {
+      if (!rows || !rows.length) {
+        el.innerHTML = "<p class=\"muted\">no ingest rejects. missing posts with no row here are WINDOW_MISS, not a clean reject.</p>";
+        return;
+      }
+      var bits = ["<table><thead><tr><th>state</th><th>reason</th><th>id</th><th>from</th><th>ts</th></tr></thead><tbody>"];
+      rows.slice(0, 80).forEach(function (r) {
+        bits.push("<tr><td>" + esc(r.state || "INGEST_ERROR") + "</td><td>" + esc(r.reason || "") + "</td><td>" + esc(r.id || "") + "</td><td>" + esc(r.from || "") + "</td><td>" + esc(r.ts || "") + "</td></tr>");
+      });
+      bits.push("</tbody></table>");
+      el.innerHTML = bits.join("");
+    })
+    .catch(function (err) {
+      el.innerHTML = "<p class=\"cut\">" + esc(String(err && err.message || err)) + "</p>";
+    });
+  function esc(s) {
+    return String(s).replace(/[&<>\"']/g, function (c) {
+      return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" })[c];
+    });
+  }
+})();
+</script>
+</body></html>
