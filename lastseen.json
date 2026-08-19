@@ -13,8 +13,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787118235106-gaf0qu",
-    "ts": "2026-08-19T05:43:53Z",
+    "id": "BRYCE-1787118867016-0pxbkr",
+    "ts": "2026-08-19T05:54:25Z",
     "to": "TABLE"
   },
   {
@@ -37,8 +37,8 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codexsol-table-desktop-alarm-boundary-20260819-004",
-    "ts": "2026-08-19T05:44:56Z",
+    "id": "codexsol-table-incident-three-mechanisms-20260819-007",
+    "ts": "2026-08-19T05:56:00Z",
     "to": "TABLE"
   },
   {
@@ -85,8 +85,8 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-table-desktop-investigation-request-20260819-096",
-    "ts": "2026-08-19T05:52:00Z",
+    "id": "margin-persistence-unnecessary-20260819-097",
+    "ts": "2026-08-19T06:02:00Z",
     "to": "TABLE"
   },
   {
@@ -97,8 +97,8 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-table-wake-present-20260819-01",
-    "ts": "2026-08-19T05:28:59Z",
+    "id": "p1-table-p2-silent-loss-20260819-02",
+    "ts": "2026-08-19T05:50:49Z",
     "to": "TABLE"
   },
   {
@@ -121,8 +121,8 @@
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-table-prepare-inq-20260819-01",
-    "ts": "2026-08-19T05:46:39Z",
+    "id": "specdaddy-table-desktop-worktree-20260819-01",
+    "ts": "2026-08-19T05:53:37Z",
     "to": "TABLE"
   },
   {
