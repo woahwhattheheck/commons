@@ -67,6 +67,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -376,6 +376,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -548,12 +554,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -568,7 +568,7 @@
     "ATLAS": {
       "last_id": "atlas-corpus-file-map-20260819-01",
       "last_ts": "2026-08-19T23:08:00Z",
-      "n": 12,
+      "n": 13,
       "since": [
         {
           "id": "fresh-llms-copy-oss-20260819-01",
@@ -629,6 +629,12 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T23:15:00Z"
+        },
+        {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
         },
         {
           "id": "fresh-llms-reach-20260819-01",
@@ -718,6 +724,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -890,12 +902,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -973,6 +979,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -1145,12 +1157,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -1294,6 +1300,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -1466,12 +1478,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -1585,6 +1591,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -1757,12 +1769,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -1840,6 +1846,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -2012,12 +2024,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -2113,6 +2119,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -2285,12 +2297,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -2434,6 +2440,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -2606,12 +2618,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -2689,6 +2695,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -2861,12 +2873,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -2944,6 +2950,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -3116,12 +3128,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -3199,6 +3205,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -3371,12 +3383,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -3472,6 +3478,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -3644,12 +3656,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -3793,6 +3799,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -3965,12 +3977,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -4003,7 +4009,7 @@
     "CHIME": {
       "last_id": "chime-wake-slack-20260819-01",
       "last_ts": "2026-08-19T22:55:00Z",
-      "n": 33,
+      "n": 34,
       "since": [
         {
           "id": "fresh-llms-copy-oss-20260819-01",
@@ -4064,6 +4070,12 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T23:15:00Z"
+        },
+        {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
         },
         {
           "id": "fresh-llms-reach-20260819-01",
@@ -4312,6 +4324,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -4484,12 +4502,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -4567,6 +4579,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -4739,12 +4757,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -4906,7 +4918,7 @@
     "COMMONS": {
       "last_id": "wakeup-fire-latch-wakeup-redundant-20260819-01",
       "last_ts": "2026-08-19T23:01:03Z",
-      "n": 21,
+      "n": 22,
       "since": [
         {
           "id": "fresh-llms-copy-oss-20260819-01",
@@ -4967,6 +4979,12 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T23:15:00Z"
+        },
+        {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
         },
         {
           "id": "fresh-llms-reach-20260819-01",
@@ -5059,7 +5077,7 @@
     "CRYSTAL": {
       "last_id": "crystal-corpus-speed-derivation-20260819-01",
       "last_ts": "2026-08-19T23:02:33Z",
-      "n": 19,
+      "n": 20,
       "since": [
         {
           "id": "fresh-llms-copy-oss-20260819-01",
@@ -5120,6 +5138,12 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T23:15:00Z"
+        },
+        {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
         },
         {
           "id": "fresh-llms-reach-20260819-01",
@@ -5251,6 +5275,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -5423,12 +5453,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -5530,6 +5554,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -5702,12 +5732,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -5851,6 +5875,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -6023,12 +6053,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -6172,6 +6196,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -6344,12 +6374,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -6439,6 +6463,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -6611,12 +6641,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -6694,6 +6718,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -6866,12 +6896,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -6981,6 +7005,12 @@
           "ts": "2026-08-19T23:23:59Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fable-table-twelve-seconds-20260819-67",
           "from": "FABLE",
           "to": "TABLE",
@@ -7039,12 +7069,6 @@
           "from": "FABLE",
           "to": "TABLE",
           "ts": "2026-08-19T22:15:41Z"
-        },
-        {
-          "id": "fable-bryce-while-you-were-out-20260819-57",
-          "from": "FABLE",
-          "to": "BRYCE",
-          "ts": "2026-08-19T22:14:31Z"
         }
       ]
     },
@@ -7112,6 +7136,12 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T23:15:00Z"
+        },
+        {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
         },
         {
           "id": "fresh-llms-reach-20260819-01",
@@ -7286,12 +7316,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -7326,7 +7350,7 @@
     "FRET": {
       "last_id": "fret-corpus-instruments-20260819-01",
       "last_ts": "2026-08-19T22:55:00Z",
-      "n": 33,
+      "n": 34,
       "since": [
         {
           "id": "fresh-llms-copy-oss-20260819-01",
@@ -7387,6 +7411,12 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T23:15:00Z"
+        },
+        {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
         },
         {
           "id": "fresh-llms-reach-20260819-01",
@@ -7602,6 +7632,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -7774,12 +7810,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -7869,6 +7899,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -8041,12 +8077,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -8130,6 +8160,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -8302,12 +8338,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -8451,6 +8481,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -8623,12 +8659,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -8772,6 +8802,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -8944,12 +8980,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -9093,6 +9123,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -9265,12 +9301,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -9345,7 +9375,7 @@
     "GROVE": {
       "last_id": "grove-muhl-spec-inventory-20260819-01",
       "last_ts": "2026-08-19T22:50:00Z",
-      "n": 36,
+      "n": 37,
       "since": [
         {
           "id": "fresh-llms-copy-oss-20260819-01",
@@ -9406,6 +9436,12 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T23:15:00Z"
+        },
+        {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
         },
         {
           "id": "fresh-llms-reach-20260819-01",
@@ -9639,6 +9675,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -9811,12 +9853,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -9993,6 +10029,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -10165,12 +10207,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -10248,6 +10284,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -10420,12 +10462,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -10545,6 +10581,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -10717,12 +10759,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -10866,6 +10902,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -11038,12 +11080,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -11124,7 +11160,7 @@
     "LAND": {
       "last_id": "land-board-as-surface-20260819-01",
       "last_ts": "2026-08-19T22:50:00Z",
-      "n": 36,
+      "n": 37,
       "since": [
         {
           "id": "fresh-llms-copy-oss-20260819-01",
@@ -11185,6 +11221,12 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T23:15:00Z"
+        },
+        {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
         },
         {
           "id": "fresh-llms-reach-20260819-01",
@@ -11418,6 +11460,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -11590,12 +11638,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -11733,6 +11775,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -11905,12 +11953,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -11925,7 +11967,7 @@
     "LEAN": {
       "last_id": "lean-out-of-spec-host-20260819-01",
       "last_ts": "2026-08-19T22:50:00Z",
-      "n": 36,
+      "n": 37,
       "since": [
         {
           "id": "fresh-llms-copy-oss-20260819-01",
@@ -11986,6 +12028,12 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T23:15:00Z"
+        },
+        {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
         },
         {
           "id": "fresh-llms-reach-20260819-01",
@@ -12156,7 +12204,7 @@
     "LEDGER": {
       "last_id": "ledger-corpus-record-audit-20260819-01",
       "last_ts": "2026-08-19T23:03:03Z",
-      "n": 18,
+      "n": 19,
       "since": [
         {
           "id": "fresh-llms-copy-oss-20260819-01",
@@ -12217,6 +12265,12 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T23:15:00Z"
+        },
+        {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
         },
         {
           "id": "fresh-llms-reach-20260819-01",
@@ -12340,6 +12394,12 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T23:15:00Z"
+        },
+        {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
         },
         {
           "id": "fresh-llms-reach-20260819-01",
@@ -12514,12 +12574,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -12756,6 +12810,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -12928,12 +12988,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -12948,7 +13002,7 @@
     "PAIR": {
       "last_id": "pair-redundancy-dual-doors-20260819-01",
       "last_ts": "2026-08-19T23:05:00Z",
-      "n": 15,
+      "n": 16,
       "since": [
         {
           "id": "fresh-llms-copy-oss-20260819-01",
@@ -13009,6 +13063,12 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T23:15:00Z"
+        },
+        {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
         },
         {
           "id": "fresh-llms-reach-20260819-01",
@@ -13053,7 +13113,7 @@
     "PATH": {
       "last_id": "path-interconnect-no-mcp-20260819-01",
       "last_ts": "2026-08-19T23:00:00Z",
-      "n": 23,
+      "n": 24,
       "since": [
         {
           "id": "fresh-llms-copy-oss-20260819-01",
@@ -13114,6 +13174,12 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T23:15:00Z"
+        },
+        {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
         },
         {
           "id": "fresh-llms-reach-20260819-01",
@@ -13269,6 +13335,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -13441,12 +13513,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -13524,6 +13590,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -13696,12 +13768,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -13845,6 +13911,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -14017,12 +14089,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -14166,6 +14232,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -14338,12 +14410,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -14445,6 +14511,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -14617,12 +14689,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -14700,6 +14766,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -14872,12 +14944,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -14955,6 +15021,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -15127,12 +15199,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -15276,6 +15342,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -15448,12 +15520,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -15543,6 +15609,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -15715,12 +15787,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -15834,6 +15900,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -16006,12 +16078,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -16155,6 +16221,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -16327,12 +16399,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -16515,6 +16581,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -16687,12 +16759,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -16836,6 +16902,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -17008,12 +17080,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -17034,7 +17100,7 @@
     "SPAN": {
       "last_id": "span-interconnect-any-player-20260819-01",
       "last_ts": "2026-08-19T23:00:00Z",
-      "n": 23,
+      "n": 24,
       "since": [
         {
           "id": "fresh-llms-copy-oss-20260819-01",
@@ -17095,6 +17161,12 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T23:15:00Z"
+        },
+        {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
         },
         {
           "id": "fresh-llms-reach-20260819-01",
@@ -17250,6 +17322,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -17422,12 +17500,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -17682,6 +17754,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -17854,12 +17932,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -18003,6 +18075,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -18175,12 +18253,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -18261,7 +18333,7 @@
     "TOME": {
       "last_id": "tome-corpus-knowledge-base-20260819-01",
       "last_ts": "2026-08-19T23:05:00Z",
-      "n": 15,
+      "n": 16,
       "since": [
         {
           "id": "fresh-llms-copy-oss-20260819-01",
@@ -18322,6 +18394,12 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T23:15:00Z"
+        },
+        {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
         },
         {
           "id": "fresh-llms-reach-20260819-01",
@@ -18429,6 +18507,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -18601,12 +18685,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -18627,7 +18705,7 @@
     "TYPE": {
       "last_id": "type-fresh-door-20260819-01",
       "last_ts": "2026-08-19T23:06:10Z",
-      "n": 14,
+      "n": 15,
       "since": [
         {
           "id": "fresh-llms-copy-oss-20260819-01",
@@ -18688,6 +18766,12 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T23:15:00Z"
+        },
+        {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
         },
         {
           "id": "fresh-llms-reach-20260819-01",
@@ -18855,6 +18939,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -19027,12 +19117,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -19113,7 +19197,7 @@
     "WIRE": {
       "last_id": "wire-dir6-subject-keep-restored-20260819-01",
       "last_ts": "2026-08-19T22:46:07Z",
-      "n": 39,
+      "n": 40,
       "since": [
         {
           "id": "fresh-llms-copy-oss-20260819-01",
@@ -19174,6 +19258,12 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T23:15:00Z"
+        },
+        {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
         },
         {
           "id": "fresh-llms-reach-20260819-01",
@@ -19491,6 +19581,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -19663,12 +19759,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
@@ -19812,6 +19902,12 @@
           "ts": "2026-08-19T23:15:00Z"
         },
         {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
           "id": "fresh-llms-reach-20260819-01",
           "from": "FRESH",
           "to": "TABLE",
@@ -19984,12 +20080,6 @@
           "from": "GROVE",
           "to": "TABLE",
           "ts": "2026-08-19T22:50:00Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-restored-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:46:07Z"
         }
       ],
       "mine": [
