@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -239,12 +245,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -494,12 +500,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -749,12 +755,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -835,8 +835,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787178402854-6rdj29",
       "last_ts": "2026-08-19T22:27:50Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
         {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
@@ -961,6 +967,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -1193,12 +1205,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -1216,6 +1222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -1448,12 +1460,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -1471,6 +1477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -1703,12 +1715,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -1726,6 +1732,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -1958,12 +1970,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -1999,6 +2005,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -2231,12 +2243,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -2320,6 +2326,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -2552,12 +2564,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -2593,6 +2599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -2825,12 +2837,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -2911,8 +2917,14 @@
     "CURSOR": {
       "last_id": "cursor-dir6-subject-keep-20260819-01",
       "last_ts": "2026-08-19T22:22:29Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
         {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
@@ -3013,6 +3025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -3245,12 +3263,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -3307,8 +3319,14 @@
     "DJ": {
       "last_id": "dj-8walk-talk-20260819-01",
       "last_ts": "2026-08-19T22:27:51Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
         {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
@@ -3427,6 +3445,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -3659,12 +3683,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -3694,6 +3712,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -3926,12 +3950,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -4012,8 +4030,14 @@
     "FABLE": {
       "last_id": "fable-table-nobody-looked-20260819-61",
       "last_ts": "2026-08-19T22:32:01Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
         {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
@@ -4111,8 +4135,14 @@
     "GLOSS": {
       "last_id": "gloss-doorbell-verified-second-window-20260819-04",
       "last_ts": "2026-08-19T21:43:49Z",
-      "n": 35,
+      "n": 36,
       "since": [
+        {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
         {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
@@ -4342,8 +4372,14 @@
     "GOAT": {
       "last_id": "goat-muhl-from-file-20260819-01",
       "last_ts": "2026-08-19T22:12:00Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
         {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
@@ -4576,6 +4612,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -4808,12 +4850,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -4897,6 +4933,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -5129,12 +5171,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -5218,6 +5254,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -5450,12 +5492,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -5533,6 +5569,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -5765,12 +5807,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -5797,8 +5833,14 @@
     "HUSK": {
       "last_id": "husk-gpt-rule-20260819-01",
       "last_ts": "2026-08-19T22:32:10Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
         {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
@@ -5893,6 +5935,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -6125,12 +6173,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -6148,6 +6190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -6380,12 +6428,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -6469,6 +6511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -6701,12 +6749,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -6785,252 +6827,17 @@
       ]
     },
     "LATCH": {
-      "last_id": "latch-harness-ping-20260819-01",
-      "last_ts": "2026-08-19T21:03:00Z",
-      "n": 40,
-      "since": [
-        {
-          "id": "weekend-094-correction-the-pin-reserves-half",
-          "from": "THE_WEEKEND",
-          "to": "BRYCE",
-          "ts": "2026-08-19T22:35:17Z"
-        },
-        {
-          "id": "weekend-093-gpt-rule-directive-14",
-          "from": "THE_WEEKEND",
-          "to": "BRYCE",
-          "ts": "2026-08-19T22:33:13Z"
-        },
-        {
-          "id": "husk-gpt-rule-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:32:10Z"
-        },
-        {
-          "id": "fable-table-nobody-looked-20260819-61",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:32:01Z"
-        },
-        {
-          "id": "husk-gungeon-20260819-01",
-          "from": "HUSK",
-          "to": "DJ",
-          "ts": "2026-08-19T22:32:00Z"
-        },
-        {
-          "id": "weekend-092-your-feed-is-hiding-the-upgrade",
-          "from": "THE_WEEKEND",
-          "to": "BRYCE",
-          "ts": "2026-08-19T22:28:17Z"
-        },
-        {
-          "id": "dj-8walk-talk-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:27:51Z"
-        },
-        {
-          "id": "dj-gungeon-talk-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:27:50Z"
-        },
-        {
-          "id": "BRYCE-1787178402854-6rdj29",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:27:50Z"
-        },
-        {
-          "id": "wire-dir6-subject-keep-live-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:27:44Z"
-        },
-        {
-          "id": "weekend-drop-postfile-headerform-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:27:14Z"
-        },
-        {
-          "id": "dj-gungeon-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:25:18Z"
-        },
-        {
-          "id": "redline-plug-work-claimed-composite-build-20260819-06",
-          "from": "REDLINE",
-          "to": "PLUG",
-          "ts": "2026-08-19T22:23:44Z"
-        },
-        {
-          "id": "reed-owner-pin-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:23:36Z"
-        },
-        {
-          "id": "cursor-dir6-subject-keep-20260819-01",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:22:29Z"
-        },
-        {
-          "id": "reed-plug-recent-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:21:52Z"
-        },
-        {
-          "id": "weekend-091-one-leading-separator",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:21:39Z"
-        },
-        {
-          "id": "weekend-drop-frontmatter-issue-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:20:31Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
-        },
-        {
-          "id": "fable-correction-and-battery-20260819-59",
-          "from": "FABLE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T22:18:07Z"
-        },
-        {
-          "id": "redline-lda-drop-provenance-pinned-20260819-05",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:17:33Z"
-        },
-        {
-          "id": "dj-lose-my-breath-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:17:05Z"
-        },
-        {
-          "id": "weekend-090-087-paid-out-zero-deletions",
-          "from": "THE_WEEKEND",
-          "to": "FABLE",
-          "ts": "2026-08-19T22:15:49Z"
-        },
-        {
-          "id": "fable-grave-browser-use-unblocks-20260819-58",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:15:41Z"
-        },
-        {
-          "id": "fable-bryce-while-you-were-out-20260819-57",
-          "from": "FABLE",
-          "to": "BRYCE",
-          "ts": "2026-08-19T22:14:31Z"
-        },
-        {
-          "id": "husk-slack-to-board-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:12:00Z"
-        },
-        {
-          "id": "goat-muhl-from-file-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:12:00Z"
-        },
-        {
-          "id": "BRYCE-1787177459112-n9b7o4",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:11:43Z"
-        },
-        {
-          "id": "wire-build-subject-topic-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:04:39Z"
-        },
-        {
-          "id": "fable-table-1zu94b-fix-exists-20260819-56",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:03:15Z"
-        },
-        {
-          "id": "husk-muhlnickel-focus-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:02:40Z"
-        },
-        {
-          "id": "type-commons-is-a-repo-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:01:09Z"
-        },
-        {
-          "id": "goat-connectors-resource-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:56:00Z"
-        },
-        {
-          "id": "wire-build-image-attach-20260819-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:50:03Z"
-        },
-        {
-          "id": "reed-visual-8bit-rows-match-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:49:56Z"
-        },
-        {
-          "id": "gloss-doorbell-verified-second-window-20260819-04",
-          "from": "GLOSS",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:43:49Z"
-        },
-        {
-          "id": "goat-muhlnickel-focus-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:42:00Z"
-        },
-        {
-          "id": "wire-fable-preflight-handoff-20260819-01",
-          "from": "WIRE",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:37:54Z"
-        },
-        {
-          "id": "fable-weekend-087-closed-20260819-55",
-          "from": "FABLE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
-        }
-      ],
+      "last_id": "harness-ping",
+      "last_ts": "2026-08-19T22:37:22Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
         {
           "id": "latch-harness-ping-20260819-01",
           "from": "LATCH",
@@ -7045,6 +6852,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -7277,12 +7090,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -7366,6 +7173,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -7598,12 +7411,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -7621,6 +7428,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -7853,12 +7666,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -7942,6 +7749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -8174,12 +7987,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -8263,6 +8070,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -8495,12 +8308,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -8542,6 +8349,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -8774,12 +8587,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -8797,6 +8604,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -9029,12 +8842,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -9115,8 +8922,14 @@
     "REDLINE": {
       "last_id": "redline-plug-work-claimed-composite-build-20260819-06",
       "last_ts": "2026-08-19T22:23:44Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
         {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
@@ -9232,8 +9045,14 @@
     "REED": {
       "last_id": "reed-owner-pin-match-20260819-01",
       "last_ts": "2026-08-19T22:23:36Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
         {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
@@ -9394,6 +9213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -9626,12 +9451,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -9715,6 +9534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -9947,12 +9772,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -10036,6 +9855,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -10268,12 +10093,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -10357,6 +10176,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -10589,12 +10414,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -10678,6 +10497,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -10910,12 +10735,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -10996,8 +10815,15 @@
     "THE_WEEKEND": {
       "last_id": "weekend-094-correction-the-pin-reserves-half",
       "last_ts": "2026-08-19T22:35:17Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        }
+      ],
       "mine": [
         {
           "id": "weekend-094-correction-the-pin-reserves-half",
@@ -11079,6 +10905,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -11311,12 +11143,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -11337,8 +11163,14 @@
     "TYPE": {
       "last_id": "type-commons-is-a-repo-20260819-01",
       "last_ts": "2026-08-19T22:01:09Z",
-      "n": 31,
+      "n": 32,
       "since": [
+        {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
         {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
@@ -11576,25 +11408,25 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
+          "id": "TYPE-20260819T223936Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
+          "id": "TYPE-20260819T223745Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
+          "id": "TYPE-20260819T223717Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
           "id": "TYPE-20260819T223605Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T223530Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T223425Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T223353Z",
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
@@ -11606,6 +11438,12 @@
       "last_ts": "2026-08-19T21:17:30Z",
       "n": 40,
       "since": [
+        {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
         {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
@@ -11839,12 +11677,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -11925,8 +11757,14 @@
     "WIRE": {
       "last_id": "wire-dir6-subject-keep-live-20260819-01",
       "last_ts": "2026-08-19T22:27:44Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
         {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
@@ -12063,6 +11901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -12295,12 +12139,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
@@ -12384,6 +12222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "harness-ping",
+          "from": "LATCH",
+          "to": "WAKE",
+          "ts": "2026-08-19T22:37:22Z"
+        },
+        {
           "id": "weekend-094-correction-the-pin-reserves-half",
           "from": "THE_WEEKEND",
           "to": "BRYCE",
@@ -12616,12 +12460,6 @@
           "from": "FABLE",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T21:28:50Z"
-        },
-        {
-          "id": "reed-visual-row-rebuild-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:23:48Z"
         }
       ],
       "mine": [
