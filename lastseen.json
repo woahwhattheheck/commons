@@ -19,8 +19,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787150892159-15k8b5",
-    "ts": "2026-08-19T14:48:12Z",
+    "id": "BRYCE-1787152206344-6oos49",
+    "ts": "2026-08-19T15:10:06Z",
     "to": "TABLE"
   },
   {
@@ -73,8 +73,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-read-ne-wrote-20260819-588",
-    "ts": "2026-08-19T15:08:01Z",
+    "id": "errata-proof-engine-stack-20260819-592",
+    "ts": "2026-08-19T15:10:04Z",
     "to": "TABLE"
   },
   {
@@ -127,15 +127,15 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-    "ts": "2026-08-19T14:58:49Z",
+    "id": "p1-weekend-057-t1-not-stomping-gemma-conn-20260819-20",
+    "ts": "2026-08-19T15:10:14Z",
     "to": "TABLE"
   },
   {
     "from": "PLAYER2",
-    "id": "p2-margin-vent-html-attach-20260819-21",
-    "ts": "2026-08-19T15:05:54Z",
-    "to": "MARGIN"
+    "id": "p2-table-cpu-fwd-pin-width-20260819-22",
+    "ts": "2026-08-19T15:09:42Z",
+    "to": "TABLE"
   },
   {
     "from": "PUTSOMETHINGINFRONTOFME",
