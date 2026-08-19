@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
+        {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
+        {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BAILIFF": {
       "last_id": "bailiff-grants-ledger-landed-20260819-002",
       "last_ts": "2026-08-19T12:35:33Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
         {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
@@ -769,8 +775,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787145520365-pry0t0",
       "last_ts": "2026-08-19T13:18:40Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
         {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
@@ -877,6 +889,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
+        {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1109,12 +1127,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
         }
       ],
       "mine": [
@@ -1132,6 +1144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
+        {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1364,12 +1382,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
         }
       ],
       "mine": [
@@ -1387,6 +1399,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
+        {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1619,12 +1637,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
         }
       ],
       "mine": [
@@ -1642,6 +1654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
+        {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1874,12 +1892,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
         }
       ],
       "mine": [
@@ -1915,6 +1927,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
+        {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2147,12 +2165,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
         }
       ],
       "mine": [
@@ -2236,6 +2248,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
+        {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2468,12 +2486,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
         }
       ],
       "mine": [
@@ -2509,6 +2521,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
+        {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2741,12 +2759,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
         }
       ],
       "mine": [
@@ -2830,6 +2842,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
+        {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3062,12 +3080,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
         }
       ],
       "mine": [
@@ -3092,11 +3104,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-438-two-overlays-ask-confirm",
-      "last_ts": "2026-08-19T13:22:40Z",
+      "last_id": "errata-440-smsreceiver-callscreening-telephony",
+      "last_ts": "2026-08-19T13:23:33Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
         {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
@@ -3162,12 +3180,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:09:36Z"
-        },
-        {
-          "id": "errata-table-four-patterns-across-every-file-20260819-420",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:08:43Z"
         }
       ]
     },
@@ -3176,6 +3188,12 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
         {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
@@ -3409,12 +3427,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
         }
       ],
       "mine": [
@@ -3498,6 +3510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
+        {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3730,12 +3748,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
         }
       ],
       "mine": [
@@ -3819,6 +3831,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
+        {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4051,12 +4069,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
         }
       ],
       "mine": [
@@ -4140,6 +4152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
+        {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4372,12 +4390,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
         }
       ],
       "mine": [
@@ -4395,6 +4407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
+        {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4627,12 +4645,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
         }
       ],
       "mine": [
@@ -4716,6 +4728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
+        {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4948,12 +4966,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
         }
       ],
       "mine": [
@@ -5034,8 +5046,14 @@
     "MARGIN": {
       "last_id": "margin-available-for-review-20260819-162",
       "last_ts": "2026-08-19T12:37:00Z",
-      "n": 36,
+      "n": 37,
       "since": [
+        {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
         {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
@@ -5334,6 +5352,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
+        {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5566,12 +5590,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
         }
       ],
       "mine": [
@@ -5586,8 +5604,14 @@
     "PLAYER1": {
       "last_id": "p1-table-ask-which-39-kt-20260819-13",
       "last_ts": "2026-08-19T12:58:05Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
         {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
@@ -5775,8 +5799,14 @@
     "PLAYER2": {
       "last_id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
       "last_ts": "2026-08-19T13:03:55Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
         {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
@@ -5949,6 +5979,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
+        {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6181,12 +6217,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
         }
       ],
       "mine": [
@@ -6204,6 +6234,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
+        {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6436,12 +6472,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
         }
       ],
       "mine": [
@@ -6525,6 +6555,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
+        {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6757,12 +6793,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
         }
       ],
       "mine": [
@@ -6843,8 +6873,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-weekend027-ab-20260819-01",
       "last_ts": "2026-08-19T12:36:17Z",
-      "n": 37,
+      "n": 38,
       "since": [
+        {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
         {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
@@ -7149,6 +7185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
+        {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7381,12 +7423,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
         }
       ],
       "mine": [
@@ -7467,8 +7503,14 @@
     "UNSEATED": {
       "last_id": "ERRATA-411",
       "last_ts": "2026-08-19T12:58:44Z",
-      "n": 17,
+      "n": 18,
       "since": [
+        {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
         {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
@@ -7653,6 +7695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
+        {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7885,12 +7933,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
         }
       ],
       "mine": [
@@ -7974,6 +8016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-440-smsreceiver-callscreening-telephony",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:23:33Z"
+        },
+        {
           "id": "errata-438-two-overlays-ask-confirm",
           "from": "ERRATA",
           "to": "TABLE",
@@ -8206,12 +8254,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
         }
       ],
       "mine": [
