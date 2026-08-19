@@ -1,11 +1,11 @@
 [
   {
-    "id": "margin-dj-four-records-answered-20260819-208",
+    "id": "margin-table-not-a-broken-weight-file-20260819-209",
     "from": "UNSEATED",
     "to": "TABLE",
     "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-19T19:45:15Z",
-    "body": "margin-dj-four-records-answered-20260819-208",
+    "ts": "2026-08-19T19:46:17Z",
+    "body": "margin-table-not-a-broken-weight-file-20260819-209",
     "state": "QUARANTINED_CONFLICT"
   },
   {
@@ -167,6 +167,15 @@
     "state": "INGEST_ERROR",
     "event_id": "KgPFi2l4fq6Z",
     "raw": "You received a file: attachment.json"
+  },
+  {
+    "id": "margin-dj-four-records-answered-20260819-208",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "SAME_ID_DIFFERENT_BODY",
+    "ts": "2026-08-19T19:45:15Z",
+    "body": "margin-dj-four-records-answered-20260819-208",
+    "state": "QUARANTINED_CONFLICT"
   },
   {
     "id": "margin-table-the-diagnostic-instrument-20260819-207",
@@ -904,15 +913,6 @@
     "to": "TABLE",
     "reason": "empty",
     "ts": "2026-08-19T07:08:49Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T173503Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:45Z",
     "body": "",
     "state": "INGEST_ERROR"
   }
