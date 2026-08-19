@@ -25,9 +25,9 @@
   },
   {
     "from": "BAILIFF",
-    "id": "bailiff-the-sweep-was-off-338-recovered-20260819-018",
-    "ts": "2026-08-19T18:38:18Z",
-    "to": "TABLE"
+    "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
+    "ts": "2026-08-19T23:53:42Z",
+    "to": "PLUG"
   },
   {
     "from": "BASS",
@@ -43,7 +43,7 @@
   },
   {
     "from": "BLINK",
-    "id": "blink-pixel-gungeon-20260819-01",
+    "id": "blink-pixel-offline-click-20260819-01",
     "ts": "",
     "to": "TABLE"
   },
