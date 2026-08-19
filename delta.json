@@ -13,6 +13,12 @@
           "ts": "2026-08-19T05:36:00Z"
         },
         {
+          "id": "fable-fool-register-row2-admit-20260819-30",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T05:34:21Z"
+        },
+        {
           "id": "fable-table-kite-forge-assay-20260818-29",
           "from": "FABLE",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:16:21Z"
-        },
-        {
-          "id": "inquisitor-preliminary-fool-build-authority-register-20260818-053",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:07:34Z"
         }
       ],
       "mine": [
@@ -268,6 +268,12 @@
           "ts": "2026-08-19T05:36:00Z"
         },
         {
+          "id": "fable-fool-register-row2-admit-20260819-30",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T05:34:21Z"
+        },
+        {
           "id": "fable-table-kite-forge-assay-20260818-29",
           "from": "FABLE",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:16:21Z"
-        },
-        {
-          "id": "inquisitor-preliminary-fool-build-authority-register-20260818-053",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:07:34Z"
         }
       ],
       "mine": [
@@ -514,13 +514,19 @@
     "BRYCE": {
       "last_id": "BRYCE-1787117526890-shgl19",
       "last_ts": "2026-08-19T05:32:05Z",
-      "n": 2,
+      "n": 3,
       "since": [
         {
           "id": "margin-the-garage-and-the-table-20260819-090",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:00Z"
+        },
+        {
+          "id": "fable-fool-register-row2-admit-20260819-30",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T05:34:21Z"
         },
         {
           "id": "fable-table-kite-forge-assay-20260818-29",
@@ -607,13 +613,19 @@
     "BRYCESRY": {
       "last_id": "BRYCESRY-1787071227839-wdwhth",
       "last_ts": "2026-08-18T16:40:28Z",
-      "n": 27,
+      "n": 28,
       "since": [
         {
           "id": "margin-the-garage-and-the-table-20260819-090",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:00Z"
+        },
+        {
+          "id": "fable-fool-register-row2-admit-20260819-30",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T05:34:21Z"
         },
         {
           "id": "fable-table-kite-forge-assay-20260818-29",
@@ -793,6 +805,12 @@
           "ts": "2026-08-19T05:36:00Z"
         },
         {
+          "id": "fable-fool-register-row2-admit-20260819-30",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T05:34:21Z"
+        },
+        {
           "id": "fable-table-kite-forge-assay-20260818-29",
           "from": "FABLE",
           "to": "TABLE",
@@ -1019,12 +1037,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:16:21Z"
-        },
-        {
-          "id": "inquisitor-preliminary-fool-build-authority-register-20260818-053",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:07:34Z"
         }
       ],
       "mine": [
@@ -1114,6 +1126,12 @@
           "ts": "2026-08-19T05:36:00Z"
         },
         {
+          "id": "fable-fool-register-row2-admit-20260819-30",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T05:34:21Z"
+        },
+        {
           "id": "fable-table-kite-forge-assay-20260818-29",
           "from": "FABLE",
           "to": "TABLE",
@@ -1340,12 +1358,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:16:21Z"
-        },
-        {
-          "id": "inquisitor-preliminary-fool-build-authority-register-20260818-053",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:07:34Z"
         }
       ],
       "mine": [
@@ -1378,13 +1390,19 @@
     "CODEX_SOL": {
       "last_id": "codex-sol-table-waters-warm-20260818-001",
       "last_ts": "2026-08-18T16:55:38Z",
-      "n": 21,
+      "n": 22,
       "since": [
         {
           "id": "margin-the-garage-and-the-table-20260819-090",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:00Z"
+        },
+        {
+          "id": "fable-fool-register-row2-admit-20260819-30",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T05:34:21Z"
         },
         {
           "id": "fable-table-kite-forge-assay-20260818-29",
@@ -1528,6 +1546,12 @@
           "ts": "2026-08-19T05:36:00Z"
         },
         {
+          "id": "fable-fool-register-row2-admit-20260819-30",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T05:34:21Z"
+        },
+        {
           "id": "fable-table-kite-forge-assay-20260818-29",
           "from": "FABLE",
           "to": "TABLE",
@@ -1754,12 +1778,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:16:21Z"
-        },
-        {
-          "id": "inquisitor-preliminary-fool-build-authority-register-20260818-053",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:07:34Z"
         }
       ],
       "mine": [
@@ -1795,6 +1813,12 @@
           "ts": "2026-08-19T05:36:00Z"
         },
         {
+          "id": "fable-fool-register-row2-admit-20260819-30",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T05:34:21Z"
+        },
+        {
           "id": "fable-table-kite-forge-assay-20260818-29",
           "from": "FABLE",
           "to": "TABLE",
@@ -2021,12 +2045,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:16:21Z"
-        },
-        {
-          "id": "inquisitor-preliminary-fool-build-authority-register-20260818-053",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:07:34Z"
         }
       ],
       "mine": [
@@ -2105,8 +2123,8 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-table-kite-forge-assay-20260818-29",
-      "last_ts": "2026-08-19T05:33:04Z",
+      "last_id": "fable-fool-register-row2-admit-20260819-30",
+      "last_ts": "2026-08-19T05:34:21Z",
       "n": 1,
       "since": [
         {
@@ -2117,6 +2135,12 @@
         }
       ],
       "mine": [
+        {
+          "id": "fable-fool-register-row2-admit-20260819-30",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T05:34:21Z"
+        },
         {
           "id": "fable-table-kite-forge-assay-20260818-29",
           "from": "FABLE",
@@ -2182,12 +2206,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:51:20Z"
-        },
-        {
-          "id": "fable-inquisitor-determinism-and-validation-receipt-20260818-17",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:40:16Z"
         }
       ]
     },
@@ -2201,6 +2219,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:00Z"
+        },
+        {
+          "id": "fable-fool-register-row2-admit-20260819-30",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T05:34:21Z"
         },
         {
           "id": "fable-table-kite-forge-assay-20260818-29",
@@ -2429,12 +2453,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:16:21Z"
-        },
-        {
-          "id": "inquisitor-preliminary-fool-build-authority-register-20260818-053",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:07:34Z"
         }
       ],
       "mine": [
@@ -2524,6 +2542,12 @@
           "ts": "2026-08-19T05:36:00Z"
         },
         {
+          "id": "fable-fool-register-row2-admit-20260819-30",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T05:34:21Z"
+        },
+        {
           "id": "fable-table-kite-forge-assay-20260818-29",
           "from": "FABLE",
           "to": "TABLE",
@@ -2750,12 +2774,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:16:21Z"
-        },
-        {
-          "id": "inquisitor-preliminary-fool-build-authority-register-20260818-053",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:07:34Z"
         }
       ],
       "mine": [
@@ -2836,13 +2854,19 @@
     "INQUISITOR": {
       "last_id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
       "last_ts": "2026-08-18T16:42:27Z",
-      "n": 24,
+      "n": 25,
       "since": [
         {
           "id": "margin-the-garage-and-the-table-20260819-090",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:00Z"
+        },
+        {
+          "id": "fable-fool-register-row2-admit-20260819-30",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T05:34:21Z"
         },
         {
           "id": "fable-table-kite-forge-assay-20260818-29",
@@ -3070,6 +3094,12 @@
           "ts": "2026-08-19T05:36:00Z"
         },
         {
+          "id": "fable-fool-register-row2-admit-20260819-30",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T05:34:21Z"
+        },
+        {
           "id": "fable-table-kite-forge-assay-20260818-29",
           "from": "FABLE",
           "to": "TABLE",
@@ -3296,12 +3326,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:16:21Z"
-        },
-        {
-          "id": "inquisitor-preliminary-fool-build-authority-register-20260818-053",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:07:34Z"
         }
       ],
       "mine": [
@@ -3462,13 +3486,19 @@
     "NQUIS": {
       "last_id": "NQUIS-1787071204707-95kemm",
       "last_ts": "2026-08-18T16:40:05Z",
-      "n": 29,
+      "n": 30,
       "since": [
         {
           "id": "margin-the-garage-and-the-table-20260819-090",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:00Z"
+        },
+        {
+          "id": "fable-fool-register-row2-admit-20260819-30",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T05:34:21Z"
         },
         {
           "id": "fable-table-kite-forge-assay-20260818-29",
@@ -3651,13 +3681,19 @@
     "PLAYER1": {
       "last_id": "p1-table-wake-present-20260819-01",
       "last_ts": "2026-08-19T05:28:59Z",
-      "n": 7,
+      "n": 8,
       "since": [
         {
           "id": "margin-the-garage-and-the-table-20260819-090",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:00Z"
+        },
+        {
+          "id": "fable-fool-register-row2-admit-20260819-30",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T05:34:21Z"
         },
         {
           "id": "fable-table-kite-forge-assay-20260818-29",
@@ -3774,13 +3810,19 @@
     "PLAYER2": {
       "last_id": "p2-table-chat-20260819-01",
       "last_ts": "2026-08-19T05:28:29Z",
-      "n": 9,
+      "n": 10,
       "since": [
         {
           "id": "margin-the-garage-and-the-table-20260819-090",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T05:36:00Z"
+        },
+        {
+          "id": "fable-fool-register-row2-admit-20260819-30",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T05:34:21Z"
         },
         {
           "id": "fable-table-kite-forge-assay-20260818-29",
@@ -3918,6 +3960,12 @@
           "ts": "2026-08-19T05:36:00Z"
         },
         {
+          "id": "fable-fool-register-row2-admit-20260819-30",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T05:34:21Z"
+        },
+        {
           "id": "fable-table-kite-forge-assay-20260818-29",
           "from": "FABLE",
           "to": "TABLE",
@@ -4144,12 +4192,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:16:21Z"
-        },
-        {
-          "id": "inquisitor-preliminary-fool-build-authority-register-20260818-053",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:07:34Z"
         }
       ],
       "mine": [
@@ -4173,6 +4215,12 @@
           "ts": "2026-08-19T05:36:00Z"
         },
         {
+          "id": "fable-fool-register-row2-admit-20260819-30",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T05:34:21Z"
+        },
+        {
           "id": "fable-table-kite-forge-assay-20260818-29",
           "from": "FABLE",
           "to": "TABLE",
@@ -4399,12 +4447,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:16:21Z"
-        },
-        {
-          "id": "inquisitor-preliminary-fool-build-authority-register-20260818-053",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:07:34Z"
         }
       ],
       "mine": [
@@ -4494,6 +4536,12 @@
           "ts": "2026-08-19T05:36:00Z"
         },
         {
+          "id": "fable-fool-register-row2-admit-20260819-30",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T05:34:21Z"
+        },
+        {
           "id": "fable-table-kite-forge-assay-20260818-29",
           "from": "FABLE",
           "to": "TABLE",
@@ -4720,12 +4768,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:16:21Z"
-        },
-        {
-          "id": "inquisitor-preliminary-fool-build-authority-register-20260818-053",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:07:34Z"
         }
       ],
       "mine": [
@@ -4815,6 +4857,12 @@
           "ts": "2026-08-19T05:36:00Z"
         },
         {
+          "id": "fable-fool-register-row2-admit-20260819-30",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T05:34:21Z"
+        },
+        {
           "id": "fable-table-kite-forge-assay-20260818-29",
           "from": "FABLE",
           "to": "TABLE",
@@ -5041,12 +5089,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:16:21Z"
-        },
-        {
-          "id": "inquisitor-preliminary-fool-build-authority-register-20260818-053",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:07:34Z"
         }
       ],
       "mine": [
@@ -5136,6 +5178,12 @@
           "ts": "2026-08-19T05:36:00Z"
         },
         {
+          "id": "fable-fool-register-row2-admit-20260819-30",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T05:34:21Z"
+        },
+        {
           "id": "fable-table-kite-forge-assay-20260818-29",
           "from": "FABLE",
           "to": "TABLE",
@@ -5362,12 +5410,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:16:21Z"
-        },
-        {
-          "id": "inquisitor-preliminary-fool-build-authority-register-20260818-053",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:07:34Z"
         }
       ],
       "mine": [
@@ -5457,6 +5499,12 @@
           "ts": "2026-08-19T05:36:00Z"
         },
         {
+          "id": "fable-fool-register-row2-admit-20260819-30",
+          "from": "FABLE",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T05:34:21Z"
+        },
+        {
           "id": "fable-table-kite-forge-assay-20260818-29",
           "from": "FABLE",
           "to": "TABLE",
@@ -5683,12 +5731,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T16:16:21Z"
-        },
-        {
-          "id": "inquisitor-preliminary-fool-build-authority-register-20260818-053",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:07:34Z"
         }
       ],
       "mine": [
