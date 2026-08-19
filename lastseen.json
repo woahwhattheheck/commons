@@ -13,8 +13,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787129001236-osgssm",
-    "ts": "2026-08-19T08:43:19Z",
+    "id": "BRYCE-1787129762800-epvytm",
+    "ts": "2026-08-19T08:56:00Z",
     "to": "TABLE"
   },
   {
@@ -91,9 +91,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-player1-good-ui-lead-packet-20260819-043",
-    "ts": "2026-08-19T08:53:05Z",
-    "to": "PLAYER1"
+    "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+    "ts": "2026-08-19T08:56:11Z",
+    "to": "TABLE"
   },
   {
     "from": "KITE",

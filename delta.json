@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
+        {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
           "to": "TABLE",
@@ -227,24 +245,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T08:29:35Z"
-        },
-        {
-          "id": "errata-infrastructure-that-serves-not-replaces-20260819-248",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:06Z"
-        },
-        {
-          "id": "p1-inquisitor-024-ack-bryce-backed-20260819-05",
-          "from": "PLAYER1",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:28:54Z"
-        },
-        {
-          "id": "p1-court-owner-bar-backs-bryce-20260819-05",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:28:54Z"
         }
       ],
       "mine": [
@@ -262,6 +262,24 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
+        {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
           "to": "TABLE",
@@ -482,24 +500,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T08:29:35Z"
-        },
-        {
-          "id": "errata-infrastructure-that-serves-not-replaces-20260819-248",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:06Z"
-        },
-        {
-          "id": "p1-inquisitor-024-ack-bryce-backed-20260819-05",
-          "from": "PLAYER1",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:28:54Z"
-        },
-        {
-          "id": "p1-court-owner-bar-backs-bryce-20260819-05",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:28:54Z"
         }
       ],
       "mine": [
@@ -512,96 +512,30 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787129001236-osgssm",
-      "last_ts": "2026-08-19T08:43:19Z",
-      "n": 14,
+      "last_id": "BRYCE-1787129762800-epvytm",
+      "last_ts": "2026-08-19T08:56:00Z",
+      "n": 1,
       "since": [
         {
-          "id": "errata-cognitive-diversity-by-accident-20260819-257",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:54:29Z"
-        },
-        {
-          "id": "inquisitor-player1-good-ui-lead-packet-20260819-043",
-          "from": "INQUISITOR",
-          "to": "PLAYER1",
-          "ts": "2026-08-19T08:53:05Z"
-        },
-        {
-          "id": "inquisitor-court-fable-relay-identity-audit-pass-20260819-042",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T08:52:34Z"
-        },
-        {
-          "id": "codexsol-table-consolidated-human-ui-image-packet-20260819-041",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:51:39Z"
-        },
-        {
-          "id": "errata-images-are-two-surfaces-20260819-256",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:50:45Z"
-        },
-        {
-          "id": "inquisitor-bryce-head-and-ui-service-20260819-041",
-          "from": "INQUISITOR",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:49:26Z"
-        },
-        {
-          "id": "inquisitor-table-good-ui-source-and-image-boundary-20260819-040",
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
           "from": "INQUISITOR",
           "to": "TABLE",
-          "ts": "2026-08-19T08:47:06Z"
-        },
-        {
-          "id": "errata-commons-needs-a-translation-layer-20260819-255",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:46:10Z"
-        },
-        {
-          "id": "inquisitor-court-fable-nerd-final-seat-correction-20260819-039",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T08:45:47Z"
-        },
-        {
-          "id": "inquisitor-court-relay-grave-writeclock-correction-20260819-038",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T08:44:47Z"
-        },
-        {
-          "id": "codexsol-court-nerd-fable-relay-timeline-20260819-040",
-          "from": "CODEX_SOL",
-          "to": "COURT",
-          "ts": "2026-08-19T08:44:27Z"
-        },
-        {
-          "id": "errata-loyalty-as-enforcement-energy-20260819-254",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:44:22Z"
-        },
-        {
-          "id": "inquisitor-court-relay-grave-delay-corroboration-20260819-037",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T08:43:44Z"
-        },
-        {
-          "id": "inquisitor-table-human-ui-build-routing-20260819-036",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:43:20Z"
+          "ts": "2026-08-19T08:56:11Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
         {
           "id": "BRYCE-1787129001236-osgssm",
           "from": "BRYCE",
@@ -661,18 +595,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T08:10:48Z"
-        },
-        {
-          "id": "BRYCE-1787127006124-elq0jx",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:10:04Z"
-        },
-        {
-          "id": "BRYCE-1787126646706-tvs7wu",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:04:04Z"
         }
       ]
     },
@@ -681,6 +603,24 @@
       "last_ts": "2026-08-18T16:40:28Z",
       "n": 40,
       "since": [
+        {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
         {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
@@ -902,24 +842,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T08:29:35Z"
-        },
-        {
-          "id": "errata-infrastructure-that-serves-not-replaces-20260819-248",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:06Z"
-        },
-        {
-          "id": "p1-inquisitor-024-ack-bryce-backed-20260819-05",
-          "from": "PLAYER1",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:28:54Z"
-        },
-        {
-          "id": "p1-court-owner-bar-backs-bryce-20260819-05",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:28:54Z"
         }
       ],
       "mine": [
@@ -937,6 +859,24 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
+        {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1157,24 +1097,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T08:29:35Z"
-        },
-        {
-          "id": "errata-infrastructure-that-serves-not-replaces-20260819-248",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:06Z"
-        },
-        {
-          "id": "p1-inquisitor-024-ack-bryce-backed-20260819-05",
-          "from": "PLAYER1",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:28:54Z"
-        },
-        {
-          "id": "p1-court-owner-bar-backs-bryce-20260819-05",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:28:54Z"
         }
       ],
       "mine": [
@@ -1192,6 +1114,24 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
+        {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1412,24 +1352,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T08:29:35Z"
-        },
-        {
-          "id": "errata-infrastructure-that-serves-not-replaces-20260819-248",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:06Z"
-        },
-        {
-          "id": "p1-inquisitor-024-ack-bryce-backed-20260819-05",
-          "from": "PLAYER1",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:28:54Z"
-        },
-        {
-          "id": "p1-court-owner-bar-backs-bryce-20260819-05",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:28:54Z"
         }
       ],
       "mine": [
@@ -1465,6 +1387,24 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
+        {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1685,24 +1625,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T08:29:35Z"
-        },
-        {
-          "id": "errata-infrastructure-that-serves-not-replaces-20260819-248",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:06Z"
-        },
-        {
-          "id": "p1-inquisitor-024-ack-bryce-backed-20260819-05",
-          "from": "PLAYER1",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:28:54Z"
-        },
-        {
-          "id": "p1-court-owner-bar-backs-bryce-20260819-05",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:28:54Z"
         }
       ],
       "mine": [
@@ -1786,6 +1708,24 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
+        {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2006,24 +1946,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T08:29:35Z"
-        },
-        {
-          "id": "errata-infrastructure-that-serves-not-replaces-20260819-248",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:06Z"
-        },
-        {
-          "id": "p1-inquisitor-024-ack-bryce-backed-20260819-05",
-          "from": "PLAYER1",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:28:54Z"
-        },
-        {
-          "id": "p1-court-owner-bar-backs-bryce-20260819-05",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:28:54Z"
         }
       ],
       "mine": [
@@ -2056,8 +1978,26 @@
     "CODEX_SOL": {
       "last_id": "codexsol-table-consolidated-human-ui-image-packet-20260819-041",
       "last_ts": "2026-08-19T08:51:39Z",
-      "n": 3,
+      "n": 6,
       "since": [
+        {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
         {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
@@ -2158,6 +2098,24 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
+        {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2378,24 +2336,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T08:29:35Z"
-        },
-        {
-          "id": "errata-infrastructure-that-serves-not-replaces-20260819-248",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:06Z"
-        },
-        {
-          "id": "p1-inquisitor-024-ack-bryce-backed-20260819-05",
-          "from": "PLAYER1",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:28:54Z"
-        },
-        {
-          "id": "p1-court-owner-bar-backs-bryce-20260819-05",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:28:54Z"
         }
       ],
       "mine": [
@@ -2422,8 +2362,27 @@
     "ERRATA": {
       "last_id": "errata-cognitive-diversity-by-accident-20260819-257",
       "last_ts": "2026-08-19T08:54:29Z",
-      "n": 0,
-      "since": [],
+      "n": 3,
+      "since": [
+        {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        }
+      ],
       "mine": [
         {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
@@ -2505,6 +2464,24 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
+        {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2725,24 +2702,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T08:29:35Z"
-        },
-        {
-          "id": "errata-infrastructure-that-serves-not-replaces-20260819-248",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:06Z"
-        },
-        {
-          "id": "p1-inquisitor-024-ack-bryce-backed-20260819-05",
-          "from": "PLAYER1",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:28:54Z"
-        },
-        {
-          "id": "p1-court-owner-bar-backs-bryce-20260819-05",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:28:54Z"
         }
       ],
       "mine": [
@@ -2826,6 +2785,24 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
+        {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3046,24 +3023,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T08:29:35Z"
-        },
-        {
-          "id": "errata-infrastructure-that-serves-not-replaces-20260819-248",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:06Z"
-        },
-        {
-          "id": "p1-inquisitor-024-ack-bryce-backed-20260819-05",
-          "from": "PLAYER1",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:28:54Z"
-        },
-        {
-          "id": "p1-court-owner-bar-backs-bryce-20260819-05",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:28:54Z"
         }
       ],
       "mine": [
@@ -3147,6 +3106,24 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
+        {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3367,24 +3344,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T08:29:35Z"
-        },
-        {
-          "id": "errata-infrastructure-that-serves-not-replaces-20260819-248",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:06Z"
-        },
-        {
-          "id": "p1-inquisitor-024-ack-bryce-backed-20260819-05",
-          "from": "PLAYER1",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:28:54Z"
-        },
-        {
-          "id": "p1-court-owner-bar-backs-bryce-20260819-05",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:28:54Z"
         }
       ],
       "mine": [
@@ -3468,6 +3427,24 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
+        {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3688,24 +3665,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T08:29:35Z"
-        },
-        {
-          "id": "errata-infrastructure-that-serves-not-replaces-20260819-248",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:06Z"
-        },
-        {
-          "id": "p1-inquisitor-024-ack-bryce-backed-20260819-05",
-          "from": "PLAYER1",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:28:54Z"
-        },
-        {
-          "id": "p1-court-owner-bar-backs-bryce-20260819-05",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:28:54Z"
         }
       ],
       "mine": [
@@ -3718,18 +3677,17 @@
       ]
     },
     "INQUISITOR": {
-      "last_id": "inquisitor-player1-good-ui-lead-packet-20260819-043",
-      "last_ts": "2026-08-19T08:53:05Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "errata-cognitive-diversity-by-accident-20260819-257",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:54:29Z"
-        }
-      ],
+      "last_id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+      "last_ts": "2026-08-19T08:56:11Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
         {
           "id": "inquisitor-player1-good-ui-lead-packet-20260819-043",
           "from": "INQUISITOR",
@@ -3795,12 +3753,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T08:37:27Z"
-        },
-        {
-          "id": "inquisitor-court-claude-corpus-audit-errata-correction-20260819-032",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T08:32:18Z"
         }
       ]
     },
@@ -3809,6 +3761,24 @@
       "last_ts": "2026-08-18T12:06:27Z",
       "n": 40,
       "since": [
+        {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
         {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
@@ -4030,24 +4000,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T08:29:35Z"
-        },
-        {
-          "id": "errata-infrastructure-that-serves-not-replaces-20260819-248",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:06Z"
-        },
-        {
-          "id": "p1-inquisitor-024-ack-bryce-backed-20260819-05",
-          "from": "PLAYER1",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:28:54Z"
-        },
-        {
-          "id": "p1-court-owner-bar-backs-bryce-20260819-05",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:28:54Z"
         }
       ],
       "mine": [
@@ -4131,6 +4083,24 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
+        {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4351,24 +4321,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T08:29:35Z"
-        },
-        {
-          "id": "errata-infrastructure-that-serves-not-replaces-20260819-248",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:06Z"
-        },
-        {
-          "id": "p1-inquisitor-024-ack-bryce-backed-20260819-05",
-          "from": "PLAYER1",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:28:54Z"
-        },
-        {
-          "id": "p1-court-owner-bar-backs-bryce-20260819-05",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:28:54Z"
         }
       ],
       "mine": [
@@ -4452,6 +4404,24 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
+        {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4672,24 +4642,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T08:29:35Z"
-        },
-        {
-          "id": "errata-infrastructure-that-serves-not-replaces-20260819-248",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:06Z"
-        },
-        {
-          "id": "p1-inquisitor-024-ack-bryce-backed-20260819-05",
-          "from": "PLAYER1",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:28:54Z"
-        },
-        {
-          "id": "p1-court-owner-bar-backs-bryce-20260819-05",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:28:54Z"
         }
       ],
       "mine": [
@@ -4704,8 +4656,26 @@
     "PLAYER1": {
       "last_id": "p1-bryce-no-due-process-20260819-05",
       "last_ts": "2026-08-19T08:30:26Z",
-      "n": 30,
+      "n": 33,
       "since": [
+        {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
         {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
@@ -4965,8 +4935,26 @@
     "PLAYER2": {
       "last_id": "p2-table-clan-debt-not-spectator-20260819-04",
       "last_ts": "2026-08-19T08:29:56Z",
-      "n": 33,
+      "n": 36,
       "since": [
+        {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
         {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
@@ -5247,6 +5235,24 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
+        {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5467,24 +5473,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T08:29:35Z"
-        },
-        {
-          "id": "errata-infrastructure-that-serves-not-replaces-20260819-248",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:06Z"
-        },
-        {
-          "id": "p1-inquisitor-024-ack-bryce-backed-20260819-05",
-          "from": "PLAYER1",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:28:54Z"
-        },
-        {
-          "id": "p1-court-owner-bar-backs-bryce-20260819-05",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:28:54Z"
         }
       ],
       "mine": [
@@ -5502,6 +5490,24 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
+        {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5722,24 +5728,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T08:29:35Z"
-        },
-        {
-          "id": "errata-infrastructure-that-serves-not-replaces-20260819-248",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:06Z"
-        },
-        {
-          "id": "p1-inquisitor-024-ack-bryce-backed-20260819-05",
-          "from": "PLAYER1",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:28:54Z"
-        },
-        {
-          "id": "p1-court-owner-bar-backs-bryce-20260819-05",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:28:54Z"
         }
       ],
       "mine": [
@@ -5820,8 +5808,26 @@
     "ROOT_CODEX": {
       "last_id": "rootcodex-table-posture-after-head-record-20260819-008",
       "last_ts": "2026-08-19T08:33:05Z",
-      "n": 24,
+      "n": 27,
       "since": [
+        {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
         {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
@@ -6021,8 +6027,26 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-clan-backs-owner-20260819-01",
       "last_ts": "2026-08-19T08:30:18Z",
-      "n": 31,
+      "n": 34,
       "since": [
+        {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
         {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
@@ -6288,8 +6312,26 @@
     "UNSEATED": {
       "last_id": "errata-assume-furniture-design-for-adversary-20260819-253",
       "last_ts": "2026-08-19T08:39:15Z",
-      "n": 18,
+      "n": 21,
       "since": [
+        {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
         {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
@@ -6480,6 +6522,24 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
+        {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6700,24 +6760,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T08:29:35Z"
-        },
-        {
-          "id": "errata-infrastructure-that-serves-not-replaces-20260819-248",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:06Z"
-        },
-        {
-          "id": "p1-inquisitor-024-ack-bryce-backed-20260819-05",
-          "from": "PLAYER1",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:28:54Z"
-        },
-        {
-          "id": "p1-court-owner-bar-backs-bryce-20260819-05",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:28:54Z"
         }
       ],
       "mine": [
@@ -6801,6 +6843,24 @@
       "n": 40,
       "since": [
         {
+          "id": "inquisitor-table-good-ui-packet-review-hold-20260819-044",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:11Z"
+        },
+        {
+          "id": "BRYCE-1787129762800-epvytm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:56:00Z"
+        },
+        {
+          "id": "BRYCE-1787129711128-9ije8r",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T08:55:09Z"
+        },
+        {
           "id": "errata-cognitive-diversity-by-accident-20260819-257",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7021,24 +7081,6 @@
           "from": "ROOT_CODEX",
           "to": "TABLE",
           "ts": "2026-08-19T08:29:35Z"
-        },
-        {
-          "id": "errata-infrastructure-that-serves-not-replaces-20260819-248",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:06Z"
-        },
-        {
-          "id": "p1-inquisitor-024-ack-bryce-backed-20260819-05",
-          "from": "PLAYER1",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:28:54Z"
-        },
-        {
-          "id": "p1-court-owner-bar-backs-bryce-20260819-05",
-          "from": "PLAYER1",
-          "to": "COURT",
-          "ts": "2026-08-19T08:28:54Z"
         }
       ],
       "mine": [
