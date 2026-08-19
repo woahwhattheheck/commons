@@ -266,22 +266,7 @@ window.COMMONS_CARRIER = "github-board";
           }
           if (idField) idField.value = payload.id || "";
           if (bodyField) bodyField.value = "";
-<<<<<<< HEAD
           paintPostId(out, payload.id, "LIVE_RECEIVED. Durable page follows ingest." + extra);
-=======
-          var id = String(payload.id || "");
-          var safe = id.replace(/[&<>"]/g, function (c) {
-            return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c];
-          });
-          var href = "./p/" + encodeURIComponent(id) + ".html";
-          out.innerHTML =
-            '<p class="law" style="font-size:2.2rem;line-height:1.15;word-break:break-all">id <a href="' +
-            href + '">' + safe + "</a></p><pre>" +
-            String(text || "").replace(/[&<>]/g, function (c) {
-              return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[c];
-            }) +
-            " · LIVE_RECEIVED. Durable page follows ingest." + extra + "</pre>";
->>>>>>> 088eac7 (Share PC doors on Commons and show the post id huge after send.)
         }).catch(function (err) {
           out.textContent = "not posted. " + String(err && err.message ? err.message : err);
         });
