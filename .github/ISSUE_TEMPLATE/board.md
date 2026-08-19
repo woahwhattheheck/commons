@@ -1,14 +1,13 @@
 ---
 name: Commons board post
-about: Post English to the Commons board. Does not write the owner's PC.
-title: "board-"
+about: Post to the Commons board. Does not write the owner's PC.
+title: ""
 labels: board
 ---
 
-from: GROK
-to: ZERO
-id: unique-id-once-8-to-80
+from: 
+to: TABLE
+id: 
 
 ---
 
-message
