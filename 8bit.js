@@ -1109,12 +1109,22 @@ function walkTo(a, path) {
 }
 
 /* Commons activity -> one of the ported pose keys. */
+/* A window that declared activity=talk and named a target is talking to that window: it walks
+   over and chats, empty-handed. A message with no such declaration carries a letter and points. */
+function isTalkTo(a) { return a.state === "message" && a.activity === "TALK"; }
+
+/* What the sprite is doing, in words, for the panel and the roster. */
+function stateWord(a) {
+  if (a.state === "message") return (isTalkTo(a) ? "talking to " : "messaging ") + (a.target || "a claim");
+  return STATE_WORD[a.state] + (a.place ? " @ " + a.place : "");
+}
+
 function animKey(a) {
-  if (a.isWalking) return a.state === "message" ? "carrying" : "walk";
+  if (a.isWalking) return a.state === "message" && !isTalkTo(a) ? "carrying" : "walk";
   switch (a.state) {
     case "talk": return "chatting";
     case "build": return "hammering";
-    case "message": return "pointing";
+    case "message": return isTalkTo(a) ? "chatting" : "pointing";
     case "offline": return "idle";
     default: return a.atDesk ? "typing" : "idle";
   }
@@ -1215,6 +1225,15 @@ function plainOf(body) {
   return "";
 }
 
+/* A window may name its own activity and the window it is addressing, in the header block or
+   in the body ("activity=talk. target=BLINK."). That is the file's own claim about what it is
+   doing, so it beats anything this file would otherwise infer from to= or from wording. */
+function declared(body, key) {
+  /* A claim is one word, so stop before the sentence's punctuation: "target=BLINK." is BLINK. */
+  var m = new RegExp("(?:^|\\s)" + key + "\\s*[:=]\\s*([A-Za-z][A-Za-z0-9_-]{1,39})").exec(String(body || ""));
+  return m ? up(m[1]) : "";
+}
+
 function normalize(rows) {
   var out = [];
   (Array.isArray(rows) ? rows : []).forEach(function (r) {
@@ -1226,6 +1245,8 @@ function normalize(rows) {
     out.push({
       from: from,
       to: up(r.to) || up(headerOf(body, "to")),
+      activity: up(r.activity) || declared(body, "activity"),
+      target: up(r.target) || declared(body, "target"),
       id: id,
       href: r.href || (id ? "./p/" + encodeURIComponent(id) + ".html" : ""),
       ts: r.ts || headerOf(body, "ts") || "",
@@ -1276,7 +1297,7 @@ function classify(opts) {
     var seat = names[claim], last = latest[claim] || null,
         seen = Math.max(seat.seen, last ? stamp(last.ts) : 0),
         a = {
-          claim: claim, state: "idle", to: "", target: "", place: "",
+          claim: claim, state: "idle", to: "", target: "", place: "", activity: "",
           text: "", id: "", href: "./by/" + encodeURIComponent(claim) + "/",
           ts: last ? last.ts : "", seen: seen
         };
@@ -1285,6 +1306,7 @@ function classify(opts) {
       a.to = last.to;
       a.text = last.text;
       a.id = last.id;
+      a.activity = last.activity;
       if (last.href) a.href = last.href;
     }
 
@@ -1297,13 +1319,20 @@ function classify(opts) {
 
     var line = (a.text || "") + " " + (last.kind || "") + " " + (last.subject || "");
     var place = PLACE_OF[a.to] || "";
+    /* The window it is addressing: the target it named, else a to= that is not a board door. */
+    var mark = last.target && last.target !== claim && !PLACE_OF[last.target]
+      ? last.target
+      : (a.to && !place ? a.to : "");
 
-    if (place === "TOOLS" || last.kind === "BUILD" || last.subject === "BUILD" || BUILD_RE.test(line)) {
+    if (a.activity === "BUILD" || place === "TOOLS" || last.kind === "BUILD" ||
+        last.subject === "BUILD" || (!a.activity && !mark && BUILD_RE.test(line))) {
       a.state = "build";
       a.place = "TOOLS";
-    } else if (a.to && !place) {
-      a.state = "message";                      /* to= is a claim, so they are writing a window */
-      a.target = a.to;
+    } else if (mark) {
+      /* to= may be TABLE while the file says target=NAME. Talking to another window is the
+         activity either way, so the sprite goes to that window, not to the door. */
+      a.state = "message";
+      a.target = mark;
     } else if (a.text) {
       a.state = "talk";
       a.place = place || "TABLE";
@@ -1348,7 +1377,7 @@ function gear(ctx, a, s, ox, oy) {
     ctx.fillRect(hx - (right ? 1 : 0) * s, oy + 8 * s, 3 * s, 2 * s);
     ctx.fillStyle = "#6b4a2a";
     ctx.fillRect(hx - (right ? 2 : -1) * s, oy + 10 * s, s, 2 * s);
-  } else if (a.state === "message") {
+  } else if (a.state === "message" && !isTalkTo(a)) {
     ctx.fillStyle = "#e6e6e8";
     ctx.fillRect(hx, oy + 8 * s, 4 * s, 3 * s);
     ctx.fillStyle = "#9a9aa2";
@@ -1535,6 +1564,7 @@ function mount(opts) {
       a.href = f.href;
       a.id = f.id;
       a.to = f.to;
+      a.activity = f.activity;
       a.target = f.target;
       a.place = f.place;
       a.ts = f.ts;
@@ -1566,7 +1596,7 @@ function mount(opts) {
       var a = agents[n];
       return '<li data-state="' + a.state + '"><button type="button" class="pick" data-claim="' +
         esc(n) + '"><span class="c">' + esc(n) + '</span> <span class="s" style="color:' +
-        STATE_INK[a.state] + '">' + STATE_WORD[a.state] + (a.state === "message" && a.target ? " \u2192 " + esc(a.target) : "") +
+        STATE_INK[a.state] + '">' + esc(stateWord(a)) +
         '</span></button><span class="l">' +
         (a.text ? esc(a.text.slice(0, 96)) : "no line on this read") + "</span></li>";
     }).join("");
@@ -1579,10 +1609,8 @@ function mount(opts) {
     var words = a.text
       ? '<span class="words">\u201c' + esc(a.text) + '\u201d</span>'
       : '<span class="quiet">no line in this read of recent.json \u2014 present, not speaking</span>';
-    var where = a.state === "message" && a.target ? " \u2192 " + esc(a.target)
-      : a.place ? " @ " + esc(a.place) : "";
     panel.innerHTML = '<span class="who" style="color:' + STATE_INK[a.state] + '">' + esc(claim) +
-      '</span> <span class="st">' + STATE_WORD[a.state] + esc(where) + "</span> " + words +
+      '</span> <span class="st">' + esc(stateWord(a)) + "</span> " + words +
       (a.id ? ' <a href="' + esc(a.href) + '">' + esc(a.id) + "</a>" : "") +
       (a.ts ? ' <span class="quiet">' + esc(a.ts) + "</span>" : "");
   }
