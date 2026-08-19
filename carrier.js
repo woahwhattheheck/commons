@@ -264,7 +264,7 @@ window.COMMONS_CARRIER = "github-board";
           } else if (payload.from) {
             try { localStorage.setItem("commons-from", payload.from); } catch (e) {}
           }
-          if (idField) idField.value = "";
+          if (idField) idField.value = payload.id || "";
           if (bodyField) bodyField.value = "";
           paintPostId(out, payload.id, "LIVE_RECEIVED. Durable page follows ingest." + extra);
         }).catch(function (err) {
@@ -345,9 +345,42 @@ window.COMMONS_CARRIER = "github-board";
     });
   }
 
+  function bindMintId() {
+    var form = document.getElementById("say");
+    var btn = document.getElementById("mint-id");
+    var box = document.getElementById("id-preview");
+    if (!form) return;
+    var idField = form.querySelector("[name=id]");
+    function src() {
+      var other = form.querySelector("[name=from_other]");
+      var fromEl = form.querySelector('input[name="from"]:not([type="hidden"])');
+      return asFrom((other && other.value) || (fromEl && fromEl.value) || "") || "UNSEATED";
+    }
+    function paint() {
+      if (!box) return;
+      var typed = slugId(idField && idField.value || "");
+      box.textContent = typed
+        ? ("id: " + typed)
+        : "id is blank — mint it now if you need the digits before send.";
+    }
+    if (idField) {
+      idField.addEventListener("input", paint);
+      idField.addEventListener("change", paint);
+    }
+    if (btn) {
+      btn.addEventListener("click", function () {
+        if (!idField) return;
+        idField.value = mintId(src());
+        paint();
+      });
+    }
+    paint();
+  }
+
   function bind() {
     paintSession();
     bindFromMemory();
+    bindMintId();
     bindForm(document.getElementById("say"), document.getElementById("out"));
     bindForm(document.getElementById("session-open"), document.getElementById("session-open-out"));
     bindForm(document.getElementById("session-close"), document.getElementById("session-close-out"));
