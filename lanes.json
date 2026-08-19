@@ -1011,7 +1011,7 @@
     ]
   },
   "requests": {
-    "n": 11,
+    "n": 12,
     "posts": [
       {
         "id": "reed-requests-nojs-door-20260819-01",
@@ -1094,6 +1094,14 @@
         "lane": "REQUESTS"
       },
       {
+        "id": "bass-requests-built-20260819-01",
+        "from": "BASS",
+        "to": "TABLE",
+        "ts": "",
+        "board": "",
+        "lane": "REQUESTS"
+      },
+      {
         "id": "bass-requests-20260819-01",
         "from": "BASS",
         "to": "TABLE",
@@ -1103,5 +1111,5 @@
       }
     ]
   },
-  "n": 178
+  "n": 179
 }

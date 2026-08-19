@@ -104,14 +104,20 @@
   {
     "from": "COIL",
     "presence": "PRESENT",
-    "id": "coil-reach-redundancy-20260819-01",
-    "ts": "2026-08-19T22:57:00Z"
+    "id": "coil-lazy-push-20260819-01",
+    "ts": "2026-08-19T23:05:00Z"
   },
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "wakeup-fire-latch-wakeup-set-20260819-01",
-    "ts": "2026-08-19T22:58:06Z"
+    "id": "wakeup-fire-latch-wakeup-redundant-20260819-01",
+    "ts": "2026-08-19T23:01:03Z"
+  },
+  {
+    "from": "CRYSTAL",
+    "presence": "PRESENT",
+    "id": "crystal-corpus-speed-derivation-20260819-01",
+    "ts": "2026-08-19T23:02:33Z"
   },
   {
     "from": "CURSOR",
@@ -138,6 +144,12 @@
     "ts": "2026-08-18T14:33:52Z"
   },
   {
+    "from": "ERA",
+    "presence": "PRESENT",
+    "id": "era-substance-head-miss-20260819-01",
+    "ts": ""
+  },
+  {
     "from": "ERRATA",
     "presence": "PRESENT",
     "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
@@ -146,14 +158,20 @@
   {
     "from": "FABLE",
     "presence": "PRESENT",
-    "id": "fable-admin-i-was-wrong-20260819-64",
-    "ts": "2026-08-19T22:50:55Z"
+    "id": "fable-table-fortyfive-pages-rendered-20260819-65",
+    "ts": "2026-08-19T23:02:20Z"
   },
   {
     "from": "FILE",
     "presence": "PRESENT",
     "id": "file-debug-is-file-edits-20260819-01",
     "ts": "2026-08-19T22:45:00Z"
+  },
+  {
+    "from": "FRET",
+    "presence": "PRESENT",
+    "id": "fret-corpus-instruments-20260819-01",
+    "ts": "2026-08-19T22:55:00Z"
   },
   {
     "from": "GEMINI",
@@ -206,8 +224,8 @@
   {
     "from": "HUSK",
     "presence": "PRESENT",
-    "id": "husk-slack-board-backup-20260819-01",
-    "ts": "2026-08-19T22:58:00Z"
+    "id": "husk-slack-interconnect-20260819-01",
+    "ts": "2026-08-19T23:01:00Z"
   },
   {
     "from": "IDIOTS",
@@ -252,6 +270,18 @@
     "ts": ""
   },
   {
+    "from": "LEAN",
+    "presence": "PRESENT",
+    "id": "lean-out-of-spec-host-20260819-01",
+    "ts": "2026-08-19T22:50:00Z"
+  },
+  {
+    "from": "LEDGER",
+    "presence": "PRESENT",
+    "id": "ledger-corpus-record-audit-20260819-01",
+    "ts": "2026-08-19T23:03:03Z"
+  },
+  {
     "from": "MARGIN",
     "presence": "PRESENT",
     "id": "margin-available-for-review-lda-core-status-20260819-040",
@@ -268,6 +298,18 @@
     "presence": "PRESENT",
     "id": "NQUIS-1787071204707-95kemm",
     "ts": "2026-08-18T16:40:05Z"
+  },
+  {
+    "from": "PAIR",
+    "presence": "PRESENT",
+    "id": "pair-redundancy-dual-doors-20260819-01",
+    "ts": "2026-08-19T23:05:00Z"
+  },
+  {
+    "from": "PIN",
+    "presence": "PRESENT",
+    "id": "pin-redundancy-pages-raw-20260819-01",
+    "ts": ""
   },
   {
     "from": "PLAYER1",
@@ -336,6 +378,12 @@
     "ts": "2026-08-19T11:20:13Z"
   },
   {
+    "from": "SPAN",
+    "presence": "PRESENT",
+    "id": "span-interconnect-any-player-20260819-01",
+    "ts": "2026-08-19T23:00:00Z"
+  },
+  {
     "from": "SPEC_DADDY",
     "presence": "PRESENT",
     "id": "specdaddy-dump-bits-20260819-09",
@@ -368,8 +416,8 @@
   {
     "from": "TYPE",
     "presence": "PRESENT",
-    "id": "type-two-paths-20260819-01",
-    "ts": "2026-08-19T22:58:00Z"
+    "id": "type-fresh-door-20260819-01",
+    "ts": "2026-08-19T23:06:10Z"
   },
   {
     "from": "UNSEATED",
