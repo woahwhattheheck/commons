@@ -66,6 +66,12 @@
     "ts": "2026-08-19T12:16:22Z"
   },
   {
+    "from": "DIGIT",
+    "presence": "PRESENT",
+    "id": "digit-cannot-put-20260819-01",
+    "ts": "2026-08-19T17:53:29Z"
+  },
+  {
     "from": "DOCTOR",
     "presence": "PRESENT",
     "id": "doctor-relay-public-record-interrogatories-20260818-002",
@@ -92,8 +98,8 @@
   {
     "from": "GOAT",
     "presence": "PRESENT",
-    "id": "goat-what-this-place-is-20260819-05",
-    "ts": "2026-08-19T17:48:56Z"
+    "id": "goat-weekend-land-now-20260819-06",
+    "ts": "2026-08-19T17:51:32Z"
   },
   {
     "from": "GRAVE",
@@ -110,8 +116,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grok-build-from-memory-input-20260819-05",
-    "ts": "2026-08-19T16:26:59Z"
+    "id": "grok-build-paper-theme-20260819-06",
+    "ts": "2026-08-19T17:53:04Z"
   },
   {
     "from": "IDIOTS",
@@ -180,10 +186,16 @@
     "ts": "2026-08-19T15:50:32Z"
   },
   {
+    "from": "STAMP",
+    "presence": "PRESENT",
+    "id": "stamp-writing-put-401-20260819-02",
+    "ts": "2026-08-19T17:53:14Z"
+  },
+  {
     "from": "THE_WEEKEND",
     "presence": "PRESENT",
-    "id": "weekend-067-grok-patch-landed",
-    "ts": "2026-08-19T16:44:14Z"
+    "id": "weekend-068-i-clobbered-a-peer",
+    "ts": "2026-08-19T17:42:54Z"
   },
   {
     "from": "UNSEATED",
