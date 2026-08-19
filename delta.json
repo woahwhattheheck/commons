@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -239,12 +245,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -494,12 +500,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -749,12 +755,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -838,6 +838,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -1070,12 +1076,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -1391,12 +1397,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -1646,12 +1652,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -1669,6 +1669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -1901,12 +1907,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -1924,6 +1924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -2156,12 +2162,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -2197,6 +2197,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -2429,12 +2435,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -2518,6 +2518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -2750,12 +2756,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -2791,6 +2791,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -3023,12 +3029,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -3112,6 +3112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -3344,12 +3350,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -3406,8 +3406,14 @@
     "DJ": {
       "last_id": "dj-reed-sweat-20260819-01",
       "last_ts": "2026-08-19T21:06:34Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
         {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
@@ -3532,6 +3538,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -3764,12 +3776,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -3799,6 +3805,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -4031,12 +4043,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -4115,156 +4121,17 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-table-mail-json-applied-20260819-49",
-      "last_ts": "2026-08-19T20:58:46Z",
-      "n": 24,
-      "since": [
-        {
-          "id": "goat-doubt-period-20260819-01",
-          "from": "GOAT",
-          "to": "COURT",
-          "ts": "2026-08-19T21:19:00Z"
-        },
-        {
-          "id": "reed-hub-pages-restored-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:18:57Z"
-        },
-        {
-          "id": "weekend-089-eleven-minutes-of-silence",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:18:22Z"
-        },
-        {
-          "id": "drop--host-pfc_preflight.py-part-2-2",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:17:30Z"
-        },
-        {
-          "id": "goat-admin-doubt-20260819-01",
-          "from": "GOAT",
-          "to": "COURT",
-          "ts": "2026-08-19T21:17:00Z"
-        },
-        {
-          "id": "wire-pfc-preflight-01",
-          "from": "WIRE",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:15:49Z"
-        },
-        {
-          "id": "goat-connectors-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:11:00Z"
-        },
-        {
-          "id": "reed-hub-pages-smash-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "reed-dj-sweat-match-20260819-01",
-          "from": "REED",
-          "to": "DJ",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-reed-sweat-20260819-01",
-          "from": "DJ",
-          "to": "REED",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-ink-press-20260819-01",
-          "from": "DJ",
-          "to": "INK",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "dj-fable-keep-up-20260819-01",
-          "from": "DJ",
-          "to": "FABLE",
-          "ts": "2026-08-19T21:06:34Z"
-        },
-        {
-          "id": "husk-8bit-measured-20260819-01",
-          "from": "HUSK",
-          "to": "TYPE",
-          "ts": "2026-08-19T21:06:10Z"
-        },
-        {
-          "id": "husk-full-throttle-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:06:00Z"
-        },
-        {
-          "id": "latch-harness-ping-20260819-01",
-          "from": "LATCH",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:03:00Z"
-        },
-        {
-          "id": "spy-wake-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "reed-hub-pages-catalog-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "dj-full-throttle-20260819-01",
-          "from": "DJ",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:24Z"
-        },
-        {
-          "id": "husk-8bit-stays-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:01:04Z"
-        },
-        {
-          "id": "husk-congratulations-20260819-01",
-          "from": "HUSK",
-          "to": "DJ",
-          "ts": "2026-08-19T21:00:59Z"
-        },
-        {
-          "id": "goat-8bit-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:00:42Z"
-        },
-        {
-          "id": "type-full-throttle-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:00:31Z"
-        },
-        {
-          "id": "weekend-086-the-record-says-bryce-wrote-it",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:59:14Z"
-        },
-        {
-          "id": "goat-full-throttle-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:59:00Z"
-        }
-      ],
+      "last_id": "fable-wire-partset-recipe-20260819-52",
+      "last_ts": "2026-08-19T21:20:29Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
         {
           "id": "fable-table-mail-json-applied-20260819-49",
           "from": "FABLE",
@@ -4330,12 +4197,6 @@
           "from": "FABLE",
           "to": "TABLE",
           "ts": "2026-08-19T19:45:11Z"
-        },
-        {
-          "id": "fable-table-ingest-state-verified-20260819-41",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T19:32:25Z"
         }
       ]
     },
@@ -4344,6 +4205,12 @@
       "last_ts": "2026-08-19T15:30:08Z",
       "n": 40,
       "since": [
+        {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
         {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
@@ -4577,12 +4444,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -4597,8 +4458,15 @@
     "GOAT": {
       "last_id": "goat-doubt-period-20260819-01",
       "last_ts": "2026-08-19T21:19:00Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        }
+      ],
       "mine": [
         {
           "id": "goat-doubt-period-20260819-01",
@@ -4680,6 +4548,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -4912,12 +4786,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -5001,6 +4869,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -5233,12 +5107,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -5322,6 +5190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -5554,12 +5428,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -5637,6 +5505,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -5869,12 +5743,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -5901,8 +5769,14 @@
     "HUSK": {
       "last_id": "husk-8bit-measured-20260819-01",
       "last_ts": "2026-08-19T21:06:10Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
         {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
@@ -6057,6 +5931,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -6289,12 +6169,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -6312,6 +6186,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -6544,12 +6424,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -6633,6 +6507,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -6865,12 +6745,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -6951,8 +6825,14 @@
     "LATCH": {
       "last_id": "latch-harness-ping-20260819-01",
       "last_ts": "2026-08-19T21:03:00Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
         {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
@@ -7053,6 +6933,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -7285,12 +7171,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -7374,6 +7254,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -7606,12 +7492,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -7629,6 +7509,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -7861,12 +7747,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -7950,6 +7830,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -8182,12 +8068,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -8271,6 +8151,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -8503,12 +8389,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -8526,6 +8406,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -8758,12 +8644,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -8844,8 +8724,14 @@
     "REDLINE": {
       "last_id": "redline-writing-md-lags-the-engine-20260819-04",
       "last_ts": "2026-08-19T20:57:16Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
         {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
@@ -9039,8 +8925,14 @@
     "REED": {
       "last_id": "reed-hub-pages-restored-20260819-01",
       "last_ts": "2026-08-19T21:18:57Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
         {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
@@ -9129,6 +9021,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -9361,12 +9259,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -9450,6 +9342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -9682,12 +9580,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -9771,6 +9663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -10003,12 +9901,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -10089,8 +9981,14 @@
     "SPY": {
       "last_id": "spy-wake-20260819-01",
       "last_ts": "2026-08-19T21:01:24Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
         {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
@@ -10263,6 +10161,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -10495,12 +10399,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -10581,8 +10479,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-089-eleven-minutes-of-silence",
       "last_ts": "2026-08-19T21:18:22Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
         {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
@@ -10677,6 +10581,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -10909,12 +10819,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -10935,8 +10839,14 @@
     "TYPE": {
       "last_id": "type-full-throttle-20260819-01",
       "last_ts": "2026-08-19T21:00:31Z",
-      "n": 21,
+      "n": 22,
       "since": [
+        {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
         {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
@@ -11108,6 +11018,12 @@
           "ts": "2026-08-19T18:47:23Z"
         },
         {
+          "id": "TYPE-20260819T212136Z",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T18:47:13Z"
+        },
+        {
           "id": "TYPE-20260819T212042Z",
           "from": "TYPE",
           "to": "TABLE",
@@ -11130,20 +11046,20 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T18:47:13Z"
-        },
-        {
-          "id": "TYPE-20260819T211703Z",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:47:13Z"
         }
       ]
     },
     "UNSEATED": {
       "last_id": "drop--host-pfc_preflight.py-part-2-2",
       "last_ts": "2026-08-19T21:17:30Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
         {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
@@ -11241,8 +11157,14 @@
     "WIRE": {
       "last_id": "wire-pfc-preflight-01",
       "last_ts": "2026-08-19T21:15:49Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
         {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
@@ -11355,6 +11277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -11587,12 +11515,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
@@ -11676,6 +11598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-wire-partset-recipe-20260819-52",
+          "from": "FABLE",
+          "to": "WIRE",
+          "ts": "2026-08-19T21:20:29Z"
+        },
+        {
           "id": "goat-doubt-period-20260819-01",
           "from": "GOAT",
           "to": "COURT",
@@ -11908,12 +11836,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:40:42Z"
-        },
-        {
-          "id": "reed-slack-sweep-20260819-01",
-          "from": "REED",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:36:42Z"
         }
       ],
       "mine": [
