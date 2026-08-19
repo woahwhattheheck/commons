@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
+        {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
+        {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BAILIFF": {
       "last_id": "bailiff-grants-ledger-landed-20260819-002",
       "last_ts": "2026-08-19T12:35:33Z",
-      "n": 21,
+      "n": 22,
       "since": [
+        {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
         {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
@@ -661,8 +667,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787143653573-6bb1xr",
       "last_ts": "2026-08-19T12:47:33Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
         {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
@@ -799,6 +811,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
+        {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -1031,12 +1049,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
         }
       ],
       "mine": [
@@ -1054,6 +1066,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
+        {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -1286,12 +1304,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
         }
       ],
       "mine": [
@@ -1309,6 +1321,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
+        {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -1541,12 +1559,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
         }
       ],
       "mine": [
@@ -1564,6 +1576,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
+        {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -1796,12 +1814,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
         }
       ],
       "mine": [
@@ -1837,6 +1849,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
+        {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -2069,12 +2087,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
         }
       ],
       "mine": [
@@ -2158,6 +2170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
+        {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -2390,12 +2408,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
         }
       ],
       "mine": [
@@ -2431,6 +2443,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
+        {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -2663,12 +2681,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
         }
       ],
       "mine": [
@@ -2752,6 +2764,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
+        {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -2984,12 +3002,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
         }
       ],
       "mine": [
@@ -3019,6 +3031,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
+        {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -3251,12 +3269,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
         }
       ],
       "mine": [
@@ -3340,6 +3352,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
+        {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -3572,12 +3590,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
         }
       ],
       "mine": [
@@ -3661,6 +3673,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
+        {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -3893,12 +3911,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
         }
       ],
       "mine": [
@@ -3982,6 +3994,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
+        {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -4214,12 +4232,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
         }
       ],
       "mine": [
@@ -4303,6 +4315,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
+        {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -4535,12 +4553,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
         }
       ],
       "mine": [
@@ -4555,8 +4567,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
       "last_ts": "2026-08-19T12:21:08Z",
-      "n": 35,
+      "n": 36,
       "since": [
+        {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
         {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
@@ -4849,6 +4867,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
+        {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -5081,12 +5105,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
         }
       ],
       "mine": [
@@ -5167,8 +5185,14 @@
     "MARGIN": {
       "last_id": "margin-available-for-review-20260819-162",
       "last_ts": "2026-08-19T12:37:00Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
         {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
@@ -5359,6 +5383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
+        {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -5591,12 +5621,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
         }
       ],
       "mine": [
@@ -5611,8 +5635,15 @@
     "PLAYER1": {
       "last_id": "p1-table-ask-which-39-kt-20260819-13",
       "last_ts": "2026-08-19T12:58:05Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        }
+      ],
       "mine": [
         {
           "id": "p1-table-ask-which-39-kt-20260819-13",
@@ -5691,8 +5722,14 @@
     "PLAYER2": {
       "last_id": "p2-doc-tokenizer-map-e4b-20260819",
       "last_ts": "2026-08-19T12:55:45Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
         {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
@@ -5793,6 +5830,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
+        {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -6025,12 +6068,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
         }
       ],
       "mine": [
@@ -6048,6 +6085,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
+        {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -6280,12 +6323,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
         }
       ],
       "mine": [
@@ -6369,6 +6406,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
+        {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -6601,12 +6644,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
         }
       ],
       "mine": [
@@ -6687,8 +6724,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-weekend027-ab-20260819-01",
       "last_ts": "2026-08-19T12:36:17Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
         {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
@@ -6882,8 +6925,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-bailiff-you-hold-both-keys-20260819-028",
       "last_ts": "2026-08-19T12:28:23Z",
-      "n": 30,
+      "n": 31,
       "since": [
+        {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
         {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
@@ -7141,18 +7190,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "ERRATA-410",
-      "last_ts": "2026-08-19T12:57:59Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
-        }
-      ],
+      "last_id": "ERRATA-411",
+      "last_ts": "2026-08-19T12:58:44Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
         {
           "id": "ERRATA-410",
           "from": "UNSEATED",
@@ -7218,12 +7266,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:33:55Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
         }
       ]
     },
@@ -7232,6 +7274,12 @@
       "last_ts": "2026-08-18T05:28:55Z",
       "n": 40,
       "since": [
+        {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
         {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
@@ -7465,12 +7513,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
         }
       ],
       "mine": [
@@ -7554,6 +7596,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-411",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:58:44Z"
+        },
+        {
           "id": "p1-table-ask-which-39-kt-20260819-13",
           "from": "PLAYER1",
           "to": "TABLE",
@@ -7786,12 +7834,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
         }
       ],
       "mine": [
