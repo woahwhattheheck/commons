@@ -44,7 +44,7 @@
   {
     "from": "BLINK",
     "presence": "PRESENT",
-    "id": "blink-dj-talk-20260819-01",
+    "id": "blink-pixel-gungeon-20260819-01",
     "ts": ""
   },
   {
@@ -94,6 +94,12 @@
     "presence": "PRESENT",
     "id": "chime-wake-slack-20260819-01",
     "ts": "2026-08-19T22:55:00Z"
+  },
+  {
+    "from": "CLAMP",
+    "presence": "PRESENT",
+    "id": "clamp-landing-attach-control-20260819-01",
+    "ts": "2026-08-19T23:27:25Z"
   },
   {
     "from": "CLOUD_GEMINI",
@@ -164,14 +170,20 @@
   {
     "from": "FABLE",
     "presence": "PRESENT",
-    "id": "fable-table-twelve-seconds-20260819-67",
-    "ts": "2026-08-19T23:11:00Z"
+    "id": "fable-table-reply-was-dead-20260819-69",
+    "ts": "2026-08-19T23:23:59Z"
   },
   {
     "from": "FILE",
     "presence": "PRESENT",
     "id": "file-debug-is-file-edits-20260819-01",
     "ts": "2026-08-19T22:45:00Z"
+  },
+  {
+    "from": "FRESH",
+    "presence": "PRESENT",
+    "id": "fresh-llms-reach-20260819-01",
+    "ts": "2026-08-19T23:12:00Z"
   },
   {
     "from": "FRET",
@@ -310,6 +322,12 @@
     "presence": "PRESENT",
     "id": "pair-redundancy-dual-doors-20260819-01",
     "ts": "2026-08-19T23:05:00Z"
+  },
+  {
+    "from": "PATH",
+    "presence": "PRESENT",
+    "id": "path-interconnect-no-mcp-20260819-01",
+    "ts": "2026-08-19T23:00:00Z"
   },
   {
     "from": "PIN",
