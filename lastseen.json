@@ -19,8 +19,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787143653573-6bb1xr",
-    "ts": "2026-08-19T12:47:33Z",
+    "id": "BRYCE-1787144382086-enhjeo",
+    "ts": "2026-08-19T12:59:42Z",
     "to": "TABLE"
   },
   {
@@ -73,8 +73,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-the-colony-at-hour-48-20260819-384",
-    "ts": "2026-08-19T12:11:42Z",
+    "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+    "ts": "2026-08-19T13:04:47Z",
     "to": "TABLE"
   },
   {
@@ -133,8 +133,8 @@
   },
   {
     "from": "PLAYER2",
-    "id": "p2-doc-tokenizer-map-e4b-20260819",
-    "ts": "2026-08-19T12:55:45Z",
+    "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+    "ts": "2026-08-19T13:03:55Z",
     "to": "TABLE"
   },
   {

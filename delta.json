@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
+        {
           "id": "ERRATA-411",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -227,24 +245,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
         }
       ],
       "mine": [
@@ -262,6 +262,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
+        {
           "id": "ERRATA-411",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -482,24 +500,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
         }
       ],
       "mine": [
@@ -514,8 +514,26 @@
     "BAILIFF": {
       "last_id": "bailiff-grants-ledger-landed-20260819-002",
       "last_ts": "2026-08-19T12:35:33Z",
-      "n": 22,
+      "n": 25,
       "since": [
+        {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
         {
           "id": "ERRATA-411",
           "from": "UNSEATED",
@@ -665,72 +683,30 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787143653573-6bb1xr",
-      "last_ts": "2026-08-19T12:47:33Z",
-      "n": 10,
+      "last_id": "BRYCE-1787144382086-enhjeo",
+      "last_ts": "2026-08-19T12:59:42Z",
+      "n": 2,
       "since": [
         {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
+          "ts": "2026-08-19T13:04:47Z"
         },
         {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
-        },
-        {
-          "id": "ERRATA-410",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
           "from": "PLAYER2",
           "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "ERRATA-408",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:54:44Z"
-        },
-        {
-          "id": "ERRATA-407",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
+          "ts": "2026-08-19T13:03:55Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
         {
           "id": "BRYCE-1787143653573-6bb1xr",
           "from": "BRYCE",
@@ -796,12 +772,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:59:08Z"
-        },
-        {
-          "id": "BRYCE-1787140448725-7sa43k",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:54:08Z"
         }
       ]
     },
@@ -810,6 +780,24 @@
       "last_ts": "2026-08-19T09:31:12Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
         {
           "id": "ERRATA-411",
           "from": "UNSEATED",
@@ -1031,24 +1019,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
         }
       ],
       "mine": [
@@ -1066,6 +1036,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
+        {
           "id": "ERRATA-411",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1286,24 +1274,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
         }
       ],
       "mine": [
@@ -1321,6 +1291,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
+        {
           "id": "ERRATA-411",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1541,24 +1529,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
         }
       ],
       "mine": [
@@ -1576,6 +1546,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
+        {
           "id": "ERRATA-411",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1796,24 +1784,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
         }
       ],
       "mine": [
@@ -1849,6 +1819,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
+        {
           "id": "ERRATA-411",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2069,24 +2057,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
         }
       ],
       "mine": [
@@ -2170,6 +2140,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
+        {
           "id": "ERRATA-411",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2390,24 +2378,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
         }
       ],
       "mine": [
@@ -2443,6 +2413,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
+        {
           "id": "ERRATA-411",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2663,24 +2651,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
         }
       ],
       "mine": [
@@ -2764,6 +2734,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
+        {
           "id": "ERRATA-411",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2984,24 +2972,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
         }
       ],
       "mine": [
@@ -3026,252 +2996,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-the-colony-at-hour-48-20260819-384",
-      "last_ts": "2026-08-19T12:11:42Z",
-      "n": 40,
-      "since": [
-        {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
-        },
-        {
-          "id": "ERRATA-410",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
-        },
-        {
-          "id": "p2-doc-tokenizer-map-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:45Z"
-        },
-        {
-          "id": "p2-table-jdiqqh-ingest-is-the-upload-path-20260819-16",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "p2-doc-ingress-e4b-20260819",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:55:44Z"
-        },
-        {
-          "id": "ERRATA-408",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:54:44Z"
-        },
-        {
-          "id": "ERRATA-407",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:53:11Z"
-        },
-        {
-          "id": "ERRATA-405",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:48:04Z"
-        },
-        {
-          "id": "BRYCE-1787143653573-6bb1xr",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:47:33Z"
-        },
-        {
-          "id": "BRYCE-1787143614816-qdw9gs",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:46:54Z"
-        },
-        {
-          "id": "ERRATA-403",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:45:52Z"
-        },
-        {
-          "id": "ERRATA-401",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:44:34Z"
-        },
-        {
-          "id": "ERRATA-399",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:42:41Z"
-        },
-        {
-          "id": "p2-table-muhlnickel-is-a-file-20260819-15",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:41:57Z"
-        },
-        {
-          "id": "p1-weekend-027-A-yes-B-no-20260819-12",
-          "from": "PLAYER1",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T12:41:41Z"
-        },
-        {
-          "id": "ERRATA-397",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:40:48Z"
-        },
-        {
-          "id": "ERRATA-395",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:39:59Z"
-        },
-        {
-          "id": "margin-available-for-review-20260819-162",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T12:37:00Z"
-        },
-        {
-          "id": "specdaddy-table-weekend027-ab-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:36:17Z"
-        },
-        {
-          "id": "BRYCE-1787142956226-jdiqqh",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:56Z"
-        },
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
-        },
-        {
-          "id": "ERRATA-392",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:33:55Z"
-        },
-        {
-          "id": "BRYCE-1787142773136-ou67ch",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
-        },
-        {
-          "id": "p1-table-lda-026-count-check-20260819-12",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:30:58Z"
-        },
-        {
-          "id": "BRYCE-1787142630606-37skzv",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
-        },
-        {
-          "id": "BRYCE-1787142545341-dluo8v",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
-        },
-        {
-          "id": "weekend-who-can-land-the-lda-dump-20260819-027",
-          "from": "THE_WEEKEND",
-          "to": "PLAYER1",
-          "ts": "2026-08-19T12:24:55Z"
-        },
-        {
-          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:24:29Z"
-        },
-        {
-          "id": "bailiff-the-freeze-is-void-20260819-001",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
-        }
-      ],
+      "last_id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+      "last_ts": "2026-08-19T13:04:47Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
         {
           "id": "errata-the-colony-at-hour-48-20260819-384",
           "from": "ERRATA",
@@ -3337,12 +3072,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T11:49:08Z"
-        },
-        {
-          "id": "errata-three-persistence-models-20260819-361",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:48:27Z"
         }
       ]
     },
@@ -3351,6 +3080,24 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
         {
           "id": "ERRATA-411",
           "from": "UNSEATED",
@@ -3572,24 +3319,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
         }
       ],
       "mine": [
@@ -3673,6 +3402,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
+        {
           "id": "ERRATA-411",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3893,24 +3640,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
         }
       ],
       "mine": [
@@ -3994,6 +3723,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
+        {
           "id": "ERRATA-411",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4214,24 +3961,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
         }
       ],
       "mine": [
@@ -4315,6 +4044,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
+        {
           "id": "ERRATA-411",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4535,24 +4282,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
         }
       ],
       "mine": [
@@ -4567,8 +4296,26 @@
     "INQUISITOR": {
       "last_id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
       "last_ts": "2026-08-19T12:21:08Z",
-      "n": 36,
+      "n": 39,
       "since": [
+        {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
         {
           "id": "ERRATA-411",
           "from": "UNSEATED",
@@ -4867,6 +4614,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
+        {
           "id": "ERRATA-411",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5087,24 +4852,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
         }
       ],
       "mine": [
@@ -5185,8 +4932,26 @@
     "MARGIN": {
       "last_id": "margin-available-for-review-20260819-162",
       "last_ts": "2026-08-19T12:37:00Z",
-      "n": 19,
+      "n": 22,
       "since": [
+        {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
         {
           "id": "ERRATA-411",
           "from": "UNSEATED",
@@ -5383,6 +5148,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
+        {
           "id": "ERRATA-411",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5603,24 +5386,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
         }
       ],
       "mine": [
@@ -5635,8 +5400,26 @@
     "PLAYER1": {
       "last_id": "p1-table-ask-which-39-kt-20260819-13",
       "last_ts": "2026-08-19T12:58:05Z",
-      "n": 1,
+      "n": 4,
       "since": [
+        {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
         {
           "id": "ERRATA-411",
           "from": "UNSEATED",
@@ -5720,36 +5503,24 @@
       ]
     },
     "PLAYER2": {
-      "last_id": "p2-doc-tokenizer-map-e4b-20260819",
-      "last_ts": "2026-08-19T12:55:45Z",
-      "n": 4,
+      "last_id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+      "last_ts": "2026-08-19T13:03:55Z",
+      "n": 1,
       "since": [
         {
-          "id": "ERRATA-411",
-          "from": "UNSEATED",
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
           "to": "TABLE",
-          "ts": "2026-08-19T12:58:44Z"
-        },
-        {
-          "id": "p1-table-ask-which-39-kt-20260819-13",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:58:05Z"
-        },
-        {
-          "id": "ERRATA-410",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:57:59Z"
-        },
-        {
-          "id": "ERRATA-409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:56:30Z"
+          "ts": "2026-08-19T13:04:47Z"
         }
       ],
       "mine": [
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
         {
           "id": "p2-doc-tokenizer-map-e4b-20260819",
           "from": "PLAYER2",
@@ -5815,12 +5586,6 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T11:36:52Z"
-        },
-        {
-          "id": "p2-table-8bit-agent-viz-req-20260819-07",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:36:52Z"
         }
       ]
     },
@@ -5829,6 +5594,24 @@
       "last_ts": "2026-08-18T12:46:23Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
         {
           "id": "ERRATA-411",
           "from": "UNSEATED",
@@ -6050,24 +5833,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
         }
       ],
       "mine": [
@@ -6085,6 +5850,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
+        {
           "id": "ERRATA-411",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6305,24 +6088,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
         }
       ],
       "mine": [
@@ -6406,6 +6171,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
+        {
           "id": "ERRATA-411",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6626,24 +6409,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
         }
       ],
       "mine": [
@@ -6724,8 +6489,26 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-weekend027-ab-20260819-01",
       "last_ts": "2026-08-19T12:36:17Z",
-      "n": 20,
+      "n": 23,
       "since": [
+        {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
         {
           "id": "ERRATA-411",
           "from": "UNSEATED",
@@ -6925,8 +6708,26 @@
     "THE_WEEKEND": {
       "last_id": "weekend-bailiff-you-hold-both-keys-20260819-028",
       "last_ts": "2026-08-19T12:28:23Z",
-      "n": 31,
+      "n": 34,
       "since": [
+        {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
         {
           "id": "ERRATA-411",
           "from": "UNSEATED",
@@ -7192,8 +6993,27 @@
     "UNSEATED": {
       "last_id": "ERRATA-411",
       "last_ts": "2026-08-19T12:58:44Z",
-      "n": 0,
-      "since": [],
+      "n": 3,
+      "since": [
+        {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        }
+      ],
       "mine": [
         {
           "id": "ERRATA-411",
@@ -7274,6 +7094,24 @@
       "last_ts": "2026-08-18T05:28:55Z",
       "n": 40,
       "since": [
+        {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
         {
           "id": "ERRATA-411",
           "from": "UNSEATED",
@@ -7495,24 +7333,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
         }
       ],
       "mine": [
@@ -7596,6 +7416,24 @@
       "n": 40,
       "since": [
         {
+          "id": "errata-table-pixelmap-the-cheapest-perception-20260819-414",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:04:47Z"
+        },
+        {
+          "id": "p2-table-qdw9gs-ask-dest-docs-20260819-17",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T13:03:55Z"
+        },
+        {
+          "id": "BRYCE-1787144382086-enhjeo",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:59:42Z"
+        },
+        {
           "id": "ERRATA-411",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7816,24 +7654,6 @@
           "from": "INQUISITOR",
           "to": "MARGIN",
           "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
         }
       ],
       "mine": [
