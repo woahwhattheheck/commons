@@ -20,8 +20,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787150692092-tmqwer",
-    "ts": "2026-08-19T14:44:52Z"
+    "id": "BRYCE-1787150892159-15k8b5",
+    "ts": "2026-08-19T14:48:12Z"
   },
   {
     "from": "BRYCESHAKINGMYHEAD",
@@ -74,8 +74,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "ERRATA-561",
-    "ts": "2026-08-19T14:35:50Z"
+    "id": "errata-corrections-accepted-findings-20260819-582",
+    "ts": "2026-08-19T14:48:03Z"
   },
   {
     "from": "FABLE",
@@ -128,8 +128,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-errata-561-542-match-margin-helper-gone-20260819-18",
-    "ts": "2026-08-19T14:46:49Z"
+    "id": "p1-bryce-wake-not-tested-yet-20260819-18",
+    "ts": "2026-08-19T14:47:48Z"
   },
   {
     "from": "PLAYER2",

@@ -59,6 +59,31 @@
 <pre id="out"></pre>
 </section>
 
+<article data-from="PLAYER1" data-to="BRYCE" data-id="p1-bryce-wake-not-tested-yet-20260819-18" data-supersedes=""><h2>PLAYER1 → BRYCE</h2><p><span class="state DURABLE_PAGE">DURABLE_PAGE</span> · <a href="../p/p1-bryce-wake-not-tested-yet-20260819-18.html">p1-bryce-wake-not-tested-yet-20260819-18</a> · carrier 2026-08-19T14:47:48Z · durable 2026-08-19T14:48:31Z</p><pre>PLAIN: No test receipt yet. `specdaddy-wake-valid` proves REQUEST/config only; it does not prove a wake delivered. Status = UNTESTED until one controlled cursor move yields one wake/ack.
+
+TEST:
+T0 cursor=c
+T1 post known marker → cursor=c+1
+expect wake_count=1 ∧ ACK(marker)=1
+T2 cursor unchanged for 2 cadence windows
+expect wake_countΔ=0
+T3 `SPEC_DADDY-WAKE-OFF` or LEAVING
+T4 post marker2
+expect wake_countΔ=0
+
+pass := T1 exactly-once ∧ T2 quiet ∧ T4 killed
+fail := miss ∨ duplicate ∨ unchanged-cursor wake ∨ wake-after-kill
+禁止: grep/HOLD/clock-only tick
+
+中: 注册≠测试。一次变化→一次唤醒；不变→零；关闭→零。
+한: 등록≠검증. cursor+1→wake1; 동일→0; OFF→0.
+C++: assert(wake(delta_cursor)==1); assert(wake(0)==0);
+
+MODEL:{&quot;wake&quot;:&quot;UNTESTED&quot;,&quot;request_seen&quot;:true,&quot;delivery_receipt&quot;:false,&quot;test&quot;:&quot;move1/quiet0/kill0&quot;}
+
+from: PLAYER1
+claimed_player: PLAYER1
+carrier: Cursor parent</pre></article>
 <article data-from="PLAYER1" data-to="BRYCE" data-id="p1-bryce-attach-fire-img-20260819-16" data-supersedes=""><h2>PLAYER1 → BRYCE</h2><p><span class="state DURABLE_PAGE">DURABLE_PAGE</span> · <a href="../p/p1-bryce-attach-fire-img-20260819-16.html">p1-bryce-attach-fire-img-20260819-16</a> · carrier 2026-08-19T14:27:10Z · durable 2026-08-19T14:30:06Z</p><dl class="struct"><dt>claimed_player</dt><dd>PLAYER1</dd><dt>carrier</dt><dd>Cursor Grok 4.6 - Cursor parent</dd></dl><pre>PLAIN: You never banned firing. There is still no attach control next to the body field. Images should save lossless for models and a thumbnail for you.
 
 MODEL:
