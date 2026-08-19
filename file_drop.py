@@ -126,37 +126,59 @@ def write(path, data):
 
 
 IMAGE_EXT = (".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp", ".tif", ".tiff")
-MAX_EDGE = 1280        # a phone screenshot stays readable; a 4 MB PNG does not belong
-THUMB_TARGET = 400 * 1024
+READ_EDGE = 1024       # the model-readable form: enough that screenshot text survives
+THUMB_EDGE = 384       # the "what is this" form: enough to recognise, cheap to store
 
 
-def shrink(path, data):
-    """Directive 5, BRYCE-1787128956503-3zmirj: "its a repo why cant i drop images
-    im a screenshotter and i own the thing no reason i cant put pics in but like
-    compress it into something the models can read and just store a thumbnail so
-    we dont bloat."
+def is_image(path):
+    return path.lower().endswith(IMAGE_EXT)
 
-    Both halves of that sentence matter and they pull against each other. Store
-    ONLY the reduced image, never the original, or the corpus bloats. But keep it
-    legible — he drops SCREENSHOTS, and a screenshot whose text has been blurred
-    away is not "something the models can read", it is a smear. So cap the long
-    edge at 1280 and step quality down only if the result is still fat.
 
-    Returns (data, note). If Pillow is missing the original is stored unchanged
-    and the receipt says so: a drop that lands honestly beats a drop that fails.
+def read_target(path):
+    """The model-readable form is lossless, so it is always a PNG."""
+    return re.sub(r"\.[A-Za-z0-9]+$", ".png", path) if is_image(path) else path
+
+
+def thumb_target(path):
+    return re.sub(r"\.[A-Za-z0-9]+$", ".thumb.jpg", path)
+
+
+def render_image(path, data):
+    """Directive 5, as CORRECTED by the owner.
+
+    First pass followed BRYCE-1787128956503-3zmirj and stored one reduced JPEG.
+    BRYCE-1787147527523-ertyxy corrected it: "Images get saved in two forms,
+    model readable minimum tokens just compress it to without loss, and give me
+    a thumbnail good enough to know what the image actually contains."
+
+    So two files, not one, and they are for two different readers:
+
+      <name>.png        the MODEL form. Scaled to the fewest pixels a model can
+                        still read the text in, then encoded LOSSLESSLY. "just
+                        compress it to without loss" rules out JPEG here — a
+                        model reading a screenshot should not be reading ringing
+                        artefacts around the glyphs.
+      <name>.thumb.jpg  the HUMAN form. Small and lossy on purpose; it only has
+                        to answer "what is this picture of".
+
+    The original is still never stored, which is the half of 3zmirj that has not
+    changed: the corpus does not carry 4 MB screenshots.
+
+    Returns (list of (path, bytes), note).
     """
-    if not path.lower().endswith(IMAGE_EXT):
-        return data, None
+    if not is_image(path):
+        return [(path, data)], None
     try:
         import io
         from PIL import Image
     except ImportError:
-        return data, "stored as-is: Pillow unavailable in this runner, not resized"
+        return [(path, data)], "stored as-is: Pillow unavailable in this runner"
     try:
         im = Image.open(io.BytesIO(data))
         im.load()
     except Exception as e:
-        return data, "stored as-is: not a decodable image (%s)" % e
+        return [(path, data)], "stored as-is: not a decodable image (%s)" % e
+
     was = "%dx%d %d B" % (im.width, im.height, len(data))
     if im.mode in ("RGBA", "LA", "P"):
         bg = Image.new("RGB", im.size, (255, 255, 255))
@@ -165,23 +187,23 @@ def shrink(path, data):
         im = bg
     elif im.mode != "RGB":
         im = im.convert("RGB")
-    if max(im.size) > MAX_EDGE:
-        im.thumbnail((MAX_EDGE, MAX_EDGE), Image.LANCZOS)
-    out = data
-    for quality in (78, 65, 55):
-        buf = io.BytesIO()
-        im.save(buf, "JPEG", quality=quality, optimize=True, progressive=True)
-        out = buf.getvalue()
-        if len(out) <= THUMB_TARGET:
-            break
-    return out, "resized %s -> %dx%d %d B" % (was, im.width, im.height, len(out))
 
+    model = im.copy()
+    if max(model.size) > READ_EDGE:
+        model.thumbnail((READ_EDGE, READ_EDGE), Image.LANCZOS)
+    mbuf = io.BytesIO()
+    model.save(mbuf, "PNG", optimize=True)
 
-def image_target(path):
-    """An image always lands as .jpg, because a JPEG is what got stored."""
-    if path.lower().endswith(IMAGE_EXT) and not path.lower().endswith((".jpg", ".jpeg")):
-        return re.sub(r"\.[A-Za-z0-9]+$", ".jpg", path)
-    return path
+    thumb = im.copy()
+    thumb.thumbnail((THUMB_EDGE, THUMB_EDGE), Image.LANCZOS)
+    tbuf = io.BytesIO()
+    thumb.save(tbuf, "JPEG", quality=72, optimize=True, progressive=True)
+
+    note = ("%s -> model %dx%d %d B lossless PNG · thumb %dx%d %d B"
+            % (was, model.width, model.height, len(mbuf.getvalue()),
+               thumb.width, thumb.height, len(tbuf.getvalue())))
+    return [(read_target(path), mbuf.getvalue()),
+            (thumb_target(path), tbuf.getvalue())], note
 
 
 def main():
@@ -190,7 +212,7 @@ def main():
     if content is None:
         reject("no --- separator: headers above it, content below it")
 
-    path = image_target(head.get("drop", ""))
+    path = read_target(head.get("drop", ""))
     did = head.get("id", "")
     if not ID_OK.match(did):
         reject("id must be 8-80 chars of letters, digits, dot, dash, underscore")
@@ -223,20 +245,26 @@ def main():
             return
         blob = b"".join(open(os.path.join(stage, "%04d" % i), "rb").read()
                         for i in range(1, total + 1))
-        # shrink only once the whole image exists — a partial JPEG is not an image
-        blob, note = shrink(path, blob)
-        check_path(path)  # re-check: main may have moved since the first part
-        write(path, blob)
+        # render only once the whole image exists — a partial JPEG is not an image
+        outs, note = render_image(path, blob)
         subprocess.run(["rm", "-rf", stage], check=False)
-        data = blob
     else:
-        data, note = shrink(path, data)
-        check_path(path)
-        write(path, data)
+        outs, note = render_image(path, data)
 
-    print("DROP_OK: %s %d bytes%s" % (path, len(data), (" · " + note) if note else ""))
-    json.dump({"ok": True, "path": path, "bytes": len(data), "id": did,
-               "from": head.get("from", ""), "note": note}, open(".drop_receipt", "w"))
+    # every output path is checked, so an image cannot reach a protected path
+    # through its thumbnail either
+    for p, _ in outs:
+        check_path(p)
+    for p, blob in outs:
+        write(p, blob)
+
+    paths = [p for p, _ in outs]
+    total_bytes = sum(len(b) for _, b in outs)
+    print("DROP_OK: %s %d bytes%s" % (", ".join(paths), total_bytes,
+                                      (" · " + note) if note else ""))
+    json.dump({"ok": True, "path": paths[0], "paths": paths, "bytes": total_bytes,
+               "id": did, "from": head.get("from", ""), "note": note},
+              open(".drop_receipt", "w"))
 
 
 if __name__ == "__main__":

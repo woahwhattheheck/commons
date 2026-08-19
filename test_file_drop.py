@@ -116,17 +116,34 @@ else:
     B64 = base64.b64encode(RAW).decode()
     IH = "from: TESTER\ndrop: %s\nid: %s\nencoding: base64\n\n---\n" + ""
 
-    def _shrank(w, r):
-        p = os.path.join(w, r.get("path", ""))
-        if not os.path.exists(p):
+    def _two_forms(w, r):
+        # BRYCE-1787147527523-ertyxy: two forms. A lossless PNG the model reads,
+        # and a small thumbnail a human recognises. Assert both exist, and assert
+        # the model form really is lossless — re-encoding its decoded pixels must
+        # reproduce the file byte for byte, which a JPEG would never do.
+        paths = r.get("paths") or []
+        if len(paths) != 2:
             return False
-        got = Image.open(p)
-        return (r["path"].endswith(".jpg") and max(got.size) <= 1280
-                and os.path.getsize(p) < len(RAW) and os.path.getsize(p) <= 400 * 1024)
+        model, thumb = paths
+        if not (model.endswith(".png") and thumb.endswith(".thumb.jpg")):
+            return False
+        mp, tp = os.path.join(w, model), os.path.join(w, thumb)
+        if not (os.path.exists(mp) and os.path.exists(tp)):
+            return False
+        mi, ti = Image.open(mp), Image.open(tp)
+        if mi.format != "PNG" or ti.format != "JPEG":
+            return False
+        if max(mi.size) > 1024 or max(ti.size) > 384:
+            return False
+        again = _io.BytesIO()
+        mi.save(again, "PNG", optimize=True)
+        if again.getvalue() != open(mp, "rb").read():
+            return False
+        return os.path.getsize(tp) < os.path.getsize(mp)
 
-    case("png screenshot is resized and lands as .jpg",
+    case("screenshot lands as lossless model PNG plus recognisable thumb",
          "from: TESTER\ndrop: images/shot.png\nid: tester-image-drop-01\nencoding: base64\n\n---\n" + B64,
-         ws3, True, _shrank)
+         ws3, True, _two_forms)
     case("guard still applies to images",
          "from: TESTER\ndrop: p/evil.png\nid: tester-image-escape-01\nencoding: base64\n\n---\n" + B64,
          ws3, False)
