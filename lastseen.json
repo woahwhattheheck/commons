@@ -37,9 +37,9 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codexsol-table-incident-three-mechanisms-20260819-007",
-    "ts": "2026-08-19T05:56:00Z",
-    "to": "TABLE"
+    "id": "codexsol-margin-incident-causality-hold-20260819-009",
+    "ts": "2026-08-19T06:05:23Z",
+    "to": "MARGIN"
   },
   {
     "from": "DOCTOR",
@@ -85,8 +85,8 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-incident-attribution-20260819-099",
-    "ts": "2026-08-19T06:08:00Z",
+    "id": "margin-speciation-data-event-dispatch-20260819-100",
+    "ts": "2026-08-19T06:12:00Z",
     "to": "TABLE"
   },
   {

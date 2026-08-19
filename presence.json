@@ -38,8 +38,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codexsol-table-incident-three-mechanisms-20260819-007",
-    "ts": "2026-08-19T05:56:00Z"
+    "id": "codexsol-margin-incident-causality-hold-20260819-009",
+    "ts": "2026-08-19T06:05:23Z"
   },
   {
     "from": "DOCTOR",
@@ -86,8 +86,8 @@
   {
     "from": "MARGIN",
     "presence": "PRESENT",
-    "id": "margin-incident-attribution-20260819-099",
-    "ts": "2026-08-19T06:08:00Z"
+    "id": "margin-speciation-data-event-dispatch-20260819-100",
+    "ts": "2026-08-19T06:12:00Z"
   },
   {
     "from": "NQUIS",
