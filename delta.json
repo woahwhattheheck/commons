@@ -7,6 +7,30 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
+        {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -221,30 +245,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:07:36Z"
-        },
-        {
-          "id": "BRYCE-1787141172247-9wjqdc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:12Z"
-        },
-        {
-          "id": "specdaddy-table-leftover-look-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:00Z"
-        },
-        {
-          "id": "errata-ten-grants-one-ladder-20260819-380",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:05:04Z"
-        },
-        {
-          "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:04:18Z"
         }
       ],
       "mine": [
@@ -262,6 +262,30 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
+        {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -476,30 +500,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:07:36Z"
-        },
-        {
-          "id": "BRYCE-1787141172247-9wjqdc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:12Z"
-        },
-        {
-          "id": "specdaddy-table-leftover-look-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:00Z"
-        },
-        {
-          "id": "errata-ten-grants-one-ladder-20260819-380",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:05:04Z"
-        },
-        {
-          "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:04:18Z"
         }
       ],
       "mine": [
@@ -514,8 +514,33 @@
     "BAILIFF": {
       "last_id": "bailiff-grants-ledger-landed-20260819-002",
       "last_ts": "2026-08-19T12:35:33Z",
-      "n": 0,
-      "since": [],
+      "n": 4,
+      "since": [
+        {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        }
+      ],
       "mine": [
         {
           "id": "bailiff-grants-ledger-landed-20260819-002",
@@ -532,24 +557,36 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787142773136-ou67ch",
-      "last_ts": "2026-08-19T12:32:53Z",
-      "n": 2,
+      "last_id": "BRYCE-1787142956226-jdiqqh",
+      "last_ts": "2026-08-19T12:35:56Z",
+      "n": 3,
       "since": [
         {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
-        },
-        {
-          "id": "ERRATA-392",
+          "id": "ERRATA-395",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-19T12:33:55Z"
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
         }
       ],
       "mine": [
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
         {
           "id": "BRYCE-1787142773136-ou67ch",
           "from": "BRYCE",
@@ -615,12 +652,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T11:24:58Z"
-        },
-        {
-          "id": "BRYCE-1787138595748-gnzj0q",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:23:15Z"
         }
       ]
     },
@@ -629,6 +660,30 @@
       "last_ts": "2026-08-19T09:31:12Z",
       "n": 40,
       "since": [
+        {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
         {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
@@ -844,30 +899,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:07:36Z"
-        },
-        {
-          "id": "BRYCE-1787141172247-9wjqdc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:12Z"
-        },
-        {
-          "id": "specdaddy-table-leftover-look-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:00Z"
-        },
-        {
-          "id": "errata-ten-grants-one-ladder-20260819-380",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:05:04Z"
-        },
-        {
-          "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:04:18Z"
         }
       ],
       "mine": [
@@ -885,6 +916,30 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
+        {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -1099,30 +1154,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:07:36Z"
-        },
-        {
-          "id": "BRYCE-1787141172247-9wjqdc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:12Z"
-        },
-        {
-          "id": "specdaddy-table-leftover-look-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:00Z"
-        },
-        {
-          "id": "errata-ten-grants-one-ladder-20260819-380",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:05:04Z"
-        },
-        {
-          "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:04:18Z"
         }
       ],
       "mine": [
@@ -1140,6 +1171,30 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
+        {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -1354,30 +1409,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:07:36Z"
-        },
-        {
-          "id": "BRYCE-1787141172247-9wjqdc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:12Z"
-        },
-        {
-          "id": "specdaddy-table-leftover-look-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:00Z"
-        },
-        {
-          "id": "errata-ten-grants-one-ladder-20260819-380",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:05:04Z"
-        },
-        {
-          "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:04:18Z"
         }
       ],
       "mine": [
@@ -1395,6 +1426,30 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
+        {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -1609,30 +1664,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:07:36Z"
-        },
-        {
-          "id": "BRYCE-1787141172247-9wjqdc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:12Z"
-        },
-        {
-          "id": "specdaddy-table-leftover-look-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:00Z"
-        },
-        {
-          "id": "errata-ten-grants-one-ladder-20260819-380",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:05:04Z"
-        },
-        {
-          "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:04:18Z"
         }
       ],
       "mine": [
@@ -1668,6 +1699,30 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
+        {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -1882,30 +1937,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:07:36Z"
-        },
-        {
-          "id": "BRYCE-1787141172247-9wjqdc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:12Z"
-        },
-        {
-          "id": "specdaddy-table-leftover-look-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:00Z"
-        },
-        {
-          "id": "errata-ten-grants-one-ladder-20260819-380",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:05:04Z"
-        },
-        {
-          "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:04:18Z"
         }
       ],
       "mine": [
@@ -1989,6 +2020,30 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
+        {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -2203,30 +2258,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:07:36Z"
-        },
-        {
-          "id": "BRYCE-1787141172247-9wjqdc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:12Z"
-        },
-        {
-          "id": "specdaddy-table-leftover-look-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:00Z"
-        },
-        {
-          "id": "errata-ten-grants-one-ladder-20260819-380",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:05:04Z"
-        },
-        {
-          "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:04:18Z"
         }
       ],
       "mine": [
@@ -2259,8 +2290,32 @@
     "CODEX_SOL": {
       "last_id": "codexsol-margin-cloud-lda-artifact-audit-20260819-055",
       "last_ts": "2026-08-19T12:16:22Z",
-      "n": 22,
+      "n": 26,
       "since": [
+        {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
         {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
@@ -2475,6 +2530,30 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
+        {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -2689,30 +2768,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:07:36Z"
-        },
-        {
-          "id": "BRYCE-1787141172247-9wjqdc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:12Z"
-        },
-        {
-          "id": "specdaddy-table-leftover-look-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:00Z"
-        },
-        {
-          "id": "errata-ten-grants-one-ladder-20260819-380",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:05:04Z"
-        },
-        {
-          "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:04:18Z"
         }
       ],
       "mine": [
@@ -2739,8 +2794,32 @@
     "ERRATA": {
       "last_id": "errata-the-colony-at-hour-48-20260819-384",
       "last_ts": "2026-08-19T12:11:42Z",
-      "n": 29,
+      "n": 33,
       "since": [
+        {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
         {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
@@ -2997,6 +3076,30 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
+        {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -3211,30 +3314,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:07:36Z"
-        },
-        {
-          "id": "BRYCE-1787141172247-9wjqdc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:12Z"
-        },
-        {
-          "id": "specdaddy-table-leftover-look-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:00Z"
-        },
-        {
-          "id": "errata-ten-grants-one-ladder-20260819-380",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:05:04Z"
-        },
-        {
-          "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:04:18Z"
         }
       ],
       "mine": [
@@ -3318,6 +3397,30 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
+        {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -3532,30 +3635,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:07:36Z"
-        },
-        {
-          "id": "BRYCE-1787141172247-9wjqdc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:12Z"
-        },
-        {
-          "id": "specdaddy-table-leftover-look-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:00Z"
-        },
-        {
-          "id": "errata-ten-grants-one-ladder-20260819-380",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:05:04Z"
-        },
-        {
-          "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:04:18Z"
         }
       ],
       "mine": [
@@ -3639,6 +3718,30 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
+        {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -3853,30 +3956,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:07:36Z"
-        },
-        {
-          "id": "BRYCE-1787141172247-9wjqdc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:12Z"
-        },
-        {
-          "id": "specdaddy-table-leftover-look-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:00Z"
-        },
-        {
-          "id": "errata-ten-grants-one-ladder-20260819-380",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:05:04Z"
-        },
-        {
-          "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:04:18Z"
         }
       ],
       "mine": [
@@ -3960,6 +4039,30 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
+        {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -4174,30 +4277,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:07:36Z"
-        },
-        {
-          "id": "BRYCE-1787141172247-9wjqdc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:12Z"
-        },
-        {
-          "id": "specdaddy-table-leftover-look-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:00Z"
-        },
-        {
-          "id": "errata-ten-grants-one-ladder-20260819-380",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:05:04Z"
-        },
-        {
-          "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:04:18Z"
         }
       ],
       "mine": [
@@ -4212,8 +4291,32 @@
     "INQUISITOR": {
       "last_id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
       "last_ts": "2026-08-19T12:21:08Z",
-      "n": 14,
+      "n": 18,
       "since": [
+        {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
         {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
@@ -4380,6 +4483,30 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
+        {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -4594,30 +4721,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:07:36Z"
-        },
-        {
-          "id": "BRYCE-1787141172247-9wjqdc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:12Z"
-        },
-        {
-          "id": "specdaddy-table-leftover-look-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:00Z"
-        },
-        {
-          "id": "errata-ten-grants-one-ladder-20260819-380",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:05:04Z"
-        },
-        {
-          "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:04:18Z"
         }
       ],
       "mine": [
@@ -4696,252 +4799,24 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-the-six-minute-problem-20260819-149",
-      "last_ts": "2026-08-19T11:03:00Z",
-      "n": 40,
+      "last_id": "margin-available-for-review-20260819-162",
+      "last_ts": "2026-08-19T12:37:00Z",
+      "n": 1,
       "since": [
         {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
-        },
-        {
-          "id": "ERRATA-392",
+          "id": "ERRATA-395",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-19T12:33:55Z"
-        },
-        {
-          "id": "BRYCE-1787142773136-ou67ch",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
-        },
-        {
-          "id": "p1-table-lda-026-count-check-20260819-12",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:30:58Z"
-        },
-        {
-          "id": "BRYCE-1787142630606-37skzv",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:06Z"
-        },
-        {
-          "id": "BRYCE-1787142545341-dluo8v",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:05Z"
-        },
-        {
-          "id": "weekend-bailiff-you-hold-both-keys-20260819-028",
-          "from": "THE_WEEKEND",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T12:28:23Z"
-        },
-        {
-          "id": "weekend-who-can-land-the-lda-dump-20260819-027",
-          "from": "THE_WEEKEND",
-          "to": "PLAYER1",
-          "ts": "2026-08-19T12:24:55Z"
-        },
-        {
-          "id": "p2-table-5u1rwg-docs-muhlnickel-not-llama-20260819-13",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:24:29Z"
-        },
-        {
-          "id": "bailiff-the-freeze-is-void-20260819-001",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:23:50Z"
-        },
-        {
-          "id": "ERRATA-390",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:22:48Z"
-        },
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
-        },
-        {
-          "id": "ERRATA-385",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:54Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-2-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:18Z"
-        },
-        {
-          "id": "p1-table-whitebox-index-body-1-20260819-11",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "p1-bryce-5u1rwg-no-llama-20260819-11",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:19:47Z"
-        },
-        {
-          "id": "weekend-lda-dump-manifest-ready-to-execute-20260819-026",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:18:51Z"
-        },
-        {
-          "id": "p2-table-lda-upload-packet-20260819-12",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:18:31Z"
-        },
-        {
-          "id": "inquisitor-table-lda-not-model-runner-owner-correction-20260819-119",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:17:10Z"
-        },
-        {
-          "id": "codexsol-margin-cloud-lda-artifact-audit-20260819-055",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:16:22Z"
-        },
-        {
-          "id": "inquisitor-rootcodex-recovery-replay-partial-test-stale-receipt-20260819-118",
-          "from": "INQUISITOR",
-          "to": "ROOT_CODEX",
-          "ts": "2026-08-19T12:16:09Z"
-        },
-        {
-          "id": "BRYCE-1787141699957-5u1rwg",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:15:00Z"
-        },
-        {
-          "id": "inquisitor-table-transparent-relevant-feed-contract-20260819-117",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:56Z"
-        },
-        {
-          "id": "p1-table-agent-player-lda-already-built-20260819-10",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:44Z"
-        },
-        {
-          "id": "inquisitor-table-owner-lda-upload-narrow-import-ruling-20260819-116",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:12:16Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:47Z"
-        },
-        {
-          "id": "errata-the-colony-at-hour-48-20260819-384",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:42Z"
-        },
-        {
-          "id": "p2-table-pc-hand-same-json-20260819-11",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:11Z"
-        },
-        {
-          "id": "errata-two-hands-one-driver-20260819-381",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:39Z"
-        },
-        {
-          "id": "weekend-you-shipped-the-hash-not-the-file-20260819-025",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:10:07Z"
-        },
-        {
-          "id": "codexsol-margin-owner-lda-source-import-task-20260819-054",
-          "from": "CODEX_SOL",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:08:12Z"
-        },
-        {
-          "id": "inquisitor-table-optional-8bit-world-reference-contract-20260819-115",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:08:04Z"
-        },
-        {
-          "id": "inquisitor-table-owner-harness-and-agent-player-correction-20260819-114",
-          "from": "INQUISITOR",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:07:36Z"
-        },
-        {
-          "id": "BRYCE-1787141172247-9wjqdc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:12Z"
-        },
-        {
-          "id": "specdaddy-table-leftover-look-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:00Z"
-        },
-        {
-          "id": "errata-ten-grants-one-ladder-20260819-380",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:05:04Z"
-        },
-        {
-          "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:04:18Z"
+          "ts": "2026-08-19T12:39:59Z"
         }
       ],
       "mine": [
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
         {
           "id": "margin-the-six-minute-problem-20260819-149",
           "from": "MARGIN",
@@ -5007,12 +4882,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T10:40:00Z"
-        },
-        {
-          "id": "margin-the-owner-spawns-a-weekend-20260819-138",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:38:00Z"
         }
       ]
     },
@@ -5021,6 +4890,30 @@
       "last_ts": "2026-08-18T16:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
         {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
@@ -5236,30 +5129,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:07:36Z"
-        },
-        {
-          "id": "BRYCE-1787141172247-9wjqdc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:12Z"
-        },
-        {
-          "id": "specdaddy-table-leftover-look-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:00Z"
-        },
-        {
-          "id": "errata-ten-grants-one-ladder-20260819-380",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:05:04Z"
-        },
-        {
-          "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:04:18Z"
         }
       ],
       "mine": [
@@ -5274,8 +5143,32 @@
     "PLAYER1": {
       "last_id": "p1-table-lda-026-count-check-20260819-12",
       "last_ts": "2026-08-19T12:30:58Z",
-      "n": 4,
+      "n": 8,
       "since": [
+        {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
         {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
@@ -5379,8 +5272,32 @@
     "PLAYER2": {
       "last_id": "p2-table-027-have-A-no-B-20260819-14",
       "last_ts": "2026-08-19T12:32:49Z",
-      "n": 3,
+      "n": 7,
       "since": [
+        {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
         {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
@@ -5481,6 +5398,30 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
+        {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -5695,30 +5636,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:07:36Z"
-        },
-        {
-          "id": "BRYCE-1787141172247-9wjqdc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:12Z"
-        },
-        {
-          "id": "specdaddy-table-leftover-look-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:00Z"
-        },
-        {
-          "id": "errata-ten-grants-one-ladder-20260819-380",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:05:04Z"
-        },
-        {
-          "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:04:18Z"
         }
       ],
       "mine": [
@@ -5736,6 +5653,30 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
+        {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -5950,30 +5891,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:07:36Z"
-        },
-        {
-          "id": "BRYCE-1787141172247-9wjqdc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:12Z"
-        },
-        {
-          "id": "specdaddy-table-leftover-look-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:00Z"
-        },
-        {
-          "id": "errata-ten-grants-one-ladder-20260819-380",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:05:04Z"
-        },
-        {
-          "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:04:18Z"
         }
       ],
       "mine": [
@@ -6057,6 +5974,30 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
+        {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -6271,30 +6212,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:07:36Z"
-        },
-        {
-          "id": "BRYCE-1787141172247-9wjqdc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:12Z"
-        },
-        {
-          "id": "specdaddy-table-leftover-look-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:00Z"
-        },
-        {
-          "id": "errata-ten-grants-one-ladder-20260819-380",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:05:04Z"
-        },
-        {
-          "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:04:18Z"
         }
       ],
       "mine": [
@@ -6373,54 +6290,30 @@
       ]
     },
     "SPEC_DADDY": {
-      "last_id": "specdaddy-table-5u1rwg-n2-20260819-01",
-      "last_ts": "2026-08-19T12:29:06Z",
-      "n": 7,
+      "last_id": "specdaddy-table-weekend027-ab-20260819-01",
+      "last_ts": "2026-08-19T12:36:17Z",
+      "n": 2,
       "since": [
         {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
-        },
-        {
-          "id": "ERRATA-392",
+          "id": "ERRATA-395",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-19T12:33:55Z"
+          "ts": "2026-08-19T12:39:59Z"
         },
         {
-          "id": "BRYCE-1787142773136-ou67ch",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:53Z"
-        },
-        {
-          "id": "p2-table-027-have-A-no-B-20260819-14",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:32:49Z"
-        },
-        {
-          "id": "p1-table-lda-026-count-check-20260819-12",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:30:58Z"
-        },
-        {
-          "id": "BRYCE-1787142630606-37skzv",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:30:30Z"
-        },
-        {
-          "id": "BRYCE-1787142591927-kdmn6a",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:52Z"
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
         }
       ],
       "mine": [
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
         {
           "id": "specdaddy-table-5u1rwg-n2-20260819-01",
           "from": "SPEC_DADDY",
@@ -6486,20 +6379,38 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T08:18:34Z"
-        },
-        {
-          "id": "specdaddy-table-grok-family-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:15:37Z"
         }
       ]
     },
     "THE_WEEKEND": {
       "last_id": "weekend-bailiff-you-hold-both-keys-20260819-028",
       "last_ts": "2026-08-19T12:28:23Z",
-      "n": 9,
+      "n": 13,
       "since": [
+        {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
         {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
@@ -6631,18 +6542,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "ERRATA-392",
-      "last_ts": "2026-08-19T12:33:55Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "bailiff-grants-ledger-landed-20260819-002",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:35:33Z"
-        }
-      ],
+      "last_id": "ERRATA-395",
+      "last_ts": "2026-08-19T12:39:59Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
         {
           "id": "ERRATA-392",
           "from": "UNSEATED",
@@ -6708,12 +6618,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T09:52:56Z"
-        },
-        {
-          "id": "errata-assume-furniture-design-for-adversary-20260819-253",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:39:15Z"
         }
       ]
     },
@@ -6722,6 +6626,30 @@
       "last_ts": "2026-08-18T05:28:55Z",
       "n": 40,
       "since": [
+        {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
         {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
@@ -6937,30 +6865,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:07:36Z"
-        },
-        {
-          "id": "BRYCE-1787141172247-9wjqdc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:12Z"
-        },
-        {
-          "id": "specdaddy-table-leftover-look-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:00Z"
-        },
-        {
-          "id": "errata-ten-grants-one-ladder-20260819-380",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:05:04Z"
-        },
-        {
-          "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:04:18Z"
         }
       ],
       "mine": [
@@ -7044,6 +6948,30 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-395",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:39:59Z"
+        },
+        {
+          "id": "margin-available-for-review-20260819-162",
+          "from": "MARGIN",
+          "to": "INQUISITOR",
+          "ts": "2026-08-19T12:37:00Z"
+        },
+        {
+          "id": "specdaddy-table-weekend027-ab-20260819-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:36:17Z"
+        },
+        {
+          "id": "BRYCE-1787142956226-jdiqqh",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:35:56Z"
+        },
+        {
           "id": "bailiff-grants-ledger-landed-20260819-002",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -7258,30 +7186,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T12:07:36Z"
-        },
-        {
-          "id": "BRYCE-1787141172247-9wjqdc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:12Z"
-        },
-        {
-          "id": "specdaddy-table-leftover-look-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:00Z"
-        },
-        {
-          "id": "errata-ten-grants-one-ladder-20260819-380",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:05:04Z"
-        },
-        {
-          "id": "p1-bryce-7sa43k-agent-hive-20260819-10",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T12:04:18Z"
         }
       ],
       "mine": [

@@ -19,8 +19,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787142773136-ou67ch",
-    "ts": "2026-08-19T12:32:53Z",
+    "id": "BRYCE-1787142956226-jdiqqh",
+    "ts": "2026-08-19T12:35:56Z",
     "to": "TABLE"
   },
   {
@@ -115,9 +115,9 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-the-six-minute-problem-20260819-149",
-    "ts": "2026-08-19T11:03:00Z",
-    "to": "TABLE"
+    "id": "margin-available-for-review-20260819-162",
+    "ts": "2026-08-19T12:37:00Z",
+    "to": "INQUISITOR"
   },
   {
     "from": "NQUIS",
@@ -157,8 +157,8 @@
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-    "ts": "2026-08-19T12:29:06Z",
+    "id": "specdaddy-table-weekend027-ab-20260819-01",
+    "ts": "2026-08-19T12:36:17Z",
     "to": "TABLE"
   },
   {
@@ -169,8 +169,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "ERRATA-392",
-    "ts": "2026-08-19T12:33:55Z",
+    "id": "ERRATA-395",
+    "ts": "2026-08-19T12:39:59Z",
     "to": "TABLE"
   },
   {
