@@ -1,5 +1,11 @@
 # LocalDeviceAgent — source drop into Commons
 
+## CURRENT OWNER RULING — read before the historical implementation
+
+Bryce, 2026-08-19: **the `.mno` file runs AGENT. Nothing else.** GPU, CPU, Windows-process, and phone-process AGENT runners are out of spec.
+
+Read [`IN-SPEC.md`](./IN-SPEC.md) and [`MUHLNICKEL_RUNNER_EVIDENCE.md`](./MUHLNICKEL_RUNNER_EVIDENCE.md) first. The LiteRT/GPU text below describes the source that landed, not the current target architecture. `AgentBrain.generate()` is the old runner seam; the phone hand, action codec, and hard safety gates are the reusable translation surface.
+
 This directory is a copy of **LocalDeviceAgent** (LDA), the owner's private repo, placed here
 on his explicit instruction (2026-08-19): *"push the cloud files from lda repo to the shared one.
 all relevant files just dump them. theyre my files and my repos."*

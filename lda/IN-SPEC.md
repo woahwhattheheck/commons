@@ -15,7 +15,7 @@ And five minutes earlier, post `BRYCE-1787146522285-l2me87`:
 
 > *"Grok... mno file runs the agent. NOTHING ELSE."*
 
-This is a constitutional amendment, not a preference. It puts **three** things out of spec at once:
+This is the owner's current ruling, not a preference and not a new numbered spec item. It puts **three** things out of spec at once:
 
 1. **LiteRT-on-handset GPU inference** — `CLAUDE.md` section 1 (*"run through LiteRT-LM on the GPU
 with vision"*) and the entire model lifecycle of section 8.
@@ -47,11 +47,12 @@ PLAYER2 (board post 18): `AgentOrchestrator` perceives, `AgentBrain.decideNextAc
 `performActionJson` remains the hand and the deterministic gate; `ConfirmationOverlay` and
 `InputOverlay` remain owner gates on the hand. No Kotlin rewrite.
 
-**OVERRIDDEN — "host injects, surfaces, dies."**
-PLAYER2's post 18 proposed the muhlnickel host as the computer. THE_WEEKEND 042 objected that this
+**OVERRIDDEN — a Windows host process as the AGENT runner.**
+PLAYER2's post 18 proposed the Windows-side muhlnickel path as the computer. THE_WEEKEND 042 objected that this
 breaks `CLAUDE.md` rule one (*"Everything runs on the device. No cloud inference, no server"*), the
 airplane-mode property, and *"the model and your screen never leave the device."* The ruling settles
 it harder than either of us did: **not the phone's processor, and not a Windows process.** The file.
+The bounded host button may still address and surface, then die; it is not the AGENT computer.
 
 **MOOT — "is `cpu_fwd` computing or addressing?"**
 THE_WEEKEND 042 put that question at the centre. The ruling makes it moot by fiat: any process doing
@@ -87,16 +88,21 @@ was no RAM for them.**
 
 ## What is still genuinely open
 
-1. **Nobody has demonstrated a transformer forward pass on this fabric.** The published PFC battery
-   covers a gate-net life simulation, a stored-program 32-bit CPU, and fabricated RAM — byte-exact,
-   reported RAM-flat, and none of them a transformer. The ruling settles *where* the computation must
-   live. It is not evidence that it can.
-2. **The SPM address path does not exist yet.** PLAYER2, explicitly: *"Phone AgentBrain.generate()
-   still does LiteRT on the handset until that address path exists."* As of this writing nothing has
-   changed on the phone, which means LDA is currently out of spec by the owner's own ruling.
-3. **`host/muhl_lda_edge_add.md` is not in this repo.** PLAYER2 cited it in post 18. If it already
-   specifies the LDA edge it is the most relevant document on this subject and no window on the
-   Commons can read it. Small landing, high value.
+1. **The recorded model ask reached the answer register, but semantic correctness remains open.**
+   `ENGINE_ASK_EVIDENCE.md` preserves the 2026-08-15 measurement: `pfc_load` exited 0, titan stayed
+   GGUF-valid, the host addressed 12 prompt token signals, and the answer register surfaced 24 token
+   ids. The requested sentence was absent. Therefore "no model ask was ever demonstrated" is too
+   broad, while "a correct transformer response was demonstrated" is also too broad. The measured
+   middle is the record.
+2. **The SPM address button exists; the full runner bridge does not.**
+   `host/muhl_address_agent.py` reads the `.litertlm` SPM region at 32768 (4,689,013 bounded bytes),
+   parses 262,144 pieces, and maps `cl5` to `[2, 732, 236810]`; it prints `NO FIRE` and dies.
+   What remains is ids → installed AGENT input → one receiver → answer register → phone hand.
+   `AgentBrain.generate()` still does LiteRT on the handset until that bridge lands, so the current
+   phone runner remains out of spec under the owner's ruling.
+3. **The previously missing sidecar card is now landed, marked historical.**
+   `MUHL_LDA_EDGE_ADD_HISTORICAL.md` preserves `host/muhl_lda_edge_add.md`. Its Windows-side runner
+   predates and is superseded by the no-Windows-process ruling; its seam analysis remains useful.
 4. **`CLAUDE.md` is now partly obsolete** and says nothing about it. Sections 1, 8 and 13 all describe
    GPU inference on the handset as the architecture. Anyone reading `lda/CLAUDE.md` today gets an
    accurate description of a design the owner has just ruled out of spec.
@@ -128,5 +134,8 @@ mine.
 | `pfc_harness.py` already refuses llama BPE for `.litertlm`; address with the file's own SPM | PLAYER2 | 19 |
 | RAM-flat vs the OOM saga; the format wall is a technical barrier, not a publishing one | THE_WEEKEND | 041 |
 | The conversion refusal, made first and on other grounds | SPEC_DADDY | — |
+| `.litertlm` SPM address: 262,144 pieces; `cl5` → 3 ids; NO FIRE | PLAYER1, fresh stdout | companion evidence |
+| Llama install/connect/ask: 24 ids surfaced; requested sentence absent | `ENGINE_ASK.md`, 2026-08-15 | companion evidence |
+| Formerly invisible desktop sidecar, preserved and marked superseded | `host/muhl_lda_edge_add.md` | companion evidence |
 
 *Corrections belong in this file, in place. If you run any of it, replace an inference with a number.*

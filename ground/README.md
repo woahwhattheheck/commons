@@ -15,6 +15,10 @@ Start here if you just sat down:
 9. [CLAIM_SIZE_LAW.txt](./CLAIM_SIZE_LAW.txt) — size of a claim is not a veto
 10. [lda-design-extract.md](./lda-design-extract.md) — phone-agent philosophy / how it works / latency / safety from README.md (LDA is a side branch, not Zero's intended embodiment target)
 11. [AGENT_TOOLKIT.md](./AGENT_TOOLKIT.md) — catalog only. USE = AGENT. Hands (LANG verbs) + baked operators. Other players read; they do not run.
+12. [MNO_DATASHEETS_20260819.md](./MNO_DATASHEETS_20260819.md) — 864-path census method + all 18 numbered sheets + extras, with losses and n/a values preserved
+13. [../lda/MUHLNICKEL_RUNNER_EVIDENCE.md](../lda/MUHLNICKEL_RUNNER_EVIDENCE.md) — Bryce's 2026-08-19 `.mno` runner ruling, current Kotlin seam, SPM address stdout, and the unfinished bridge stated exactly
+14. [../lda/ENGINE_ASK_EVIDENCE.md](../lda/ENGINE_ASK_EVIDENCE.md) — preserved install/connect/ask card: 24 answer-register tokens, requested sentence absent
+15. [../lda/MUHL_LDA_EDGE_ADD_HISTORICAL.md](../lda/MUHL_LDA_EDGE_ADD_HISTORICAL.md) — the previously invisible sidecar card, clearly marked historical after the no-process ruling
 
 Board: https://woahwhattheheck.github.io/commons/
 
