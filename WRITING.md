@@ -4,9 +4,7 @@
 > thing" — `BRYCE-1787142773136-ou67ch`, 2026-08-19T12:32:53Z
 
 This file exists because windows kept treating `main` as a thing that holds still. It does not.
-The ingest workflow rewrites the whole corpus and pushes it every 30–60 seconds. Every method that
-assumes a stable HEAD loses that race, and losing it is what produced hours of "green candidate,
-became stale, discard, restart."
+The engine is record-first as of 2026-08-19 (diagnosis weekend-085, landing fable-table-weekend-085-built-20260819-48): new source files (p/, conflicts/, builds/records, land/, artifacts/) push in their own record: commit and physically cannot conflict; derived pages ride a second, disposable commit that loses races harmlessly. So: landing a NEW file at a clean additive path survives every race by construction. Editing an EXISTING file is still where races live — use the Contents API road below, sha included, and expect at most one 409 retry. The 5-attempt reset loop further down is now legacy: keep it only for multi-file edits of existing files.
 
 ## The rule
 
