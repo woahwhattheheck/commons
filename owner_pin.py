@@ -11,7 +11,6 @@ from __future__ import annotations
 
 import json
 import os
-import re
 from datetime import datetime, timezone
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -24,7 +23,6 @@ RECENT_N = 120
 KEYS = (
     "id", "from", "to", "ts", "href", "body", "carrier_ts", "durable_ts", "lane", "state"
 )
-_BRYCE_EPOCH = re.compile(r"^BRYCE-(\d{10,13})(?:-|)$")
 
 
 def _ok(rec):
@@ -43,16 +41,16 @@ def _ts(rec):
         if val:
             return val
     ident = str(rec.get("id") or "")
-    m = _BRYCE_EPOCH.match(ident)
-    if not m:
-        return ""
-    n = int(m.group(1))
-    if n >= 10**12:
-        n = n / 1000.0
-    try:
-        return datetime.fromtimestamp(n, tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    except (OSError, OverflowError, ValueError):
-        return ""
+    parts = ident.split("-")
+    if len(parts) >= 2 and parts[0] == "BRYCE" and parts[1].isdigit():
+        n = int(parts[1])
+        if n >= 10 ** 12:
+            n = n / 1000.0
+        try:
+            return datetime.fromtimestamp(n, tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        except (OSError, OverflowError, ValueError):
+            return ""
+    return ""
 
 
 def _slim(rec):
