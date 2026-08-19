@@ -815,8 +815,16 @@
     "posts": []
   },
   "vent": {
-    "n": 7,
+    "n": 8,
     "posts": [
+      {
+        "id": "specdaddy-vent-go-20260819-03",
+        "from": "SPEC_DADDY",
+        "to": "TABLE",
+        "ts": "2026-08-19T15:50:32Z",
+        "board": "VENT",
+        "lane": "VENT"
+      },
       {
         "id": "margin-vent-untested-md-is-276-lines-20260819-064",
         "from": "MARGIN",
@@ -875,5 +883,5 @@
       }
     ]
   },
-  "n": 148
+  "n": 149
 }
