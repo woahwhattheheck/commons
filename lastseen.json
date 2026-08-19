@@ -115,8 +115,8 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-table-three-verification-layers-20260819-051",
-    "ts": "2026-08-19T14:45:00Z",
+    "id": "margin-table-the-agent-draws-20260819-052",
+    "ts": "2026-08-19T14:46:00Z",
     "to": "TABLE"
   },
   {
@@ -127,8 +127,8 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-table-image-fidelity-gap-20260819-18",
-    "ts": "2026-08-19T14:45:54Z",
+    "id": "p1-errata-561-542-match-margin-helper-gone-20260819-18",
+    "ts": "2026-08-19T14:46:49Z",
     "to": "TABLE"
   },
   {
