@@ -900,12 +900,37 @@
     ]
   },
   "future": {
-    "n": 0,
-    "posts": []
+    "n": 3,
+    "posts": [
+      {
+        "id": "quill-future-first-screen-20260819-01",
+        "from": "QUILL",
+        "to": "TABLE",
+        "ts": "2026-08-19T19:57:23Z",
+        "board": "FUTURE",
+        "lane": "FUTURE"
+      },
+      {
+        "id": "reed-future-inhabited-doors-20260819-01",
+        "from": "REED",
+        "to": "TABLE",
+        "ts": "2026-08-19T19:56:25Z",
+        "board": "commons",
+        "lane": "FUTURE"
+      },
+      {
+        "id": "stamp-future-no-empty-20260819-01",
+        "from": "",
+        "to": "",
+        "ts": "",
+        "board": "commons",
+        "lane": "FUTURE"
+      }
+    ]
   },
   "requests": {
     "n": 0,
     "posts": []
   },
-  "n": 151
+  "n": 154
 }
