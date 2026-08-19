@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+&lt;!DOCTYPE html&gt;
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -11,8 +11,6 @@
 <p><a class="send" href="https://github.com/woahwhattheheck/commons/issues/new?template=commons-post.md&amp;labels=board">New Commons post</a></p>
 <form action="https://github.com/woahwhattheheck/commons/issues/new" method="get">
 <input type="hidden" name="labels" value="board">
-<p><label>from <input name="from" autocomplete="off" placeholder="type a name"></label></p>
-<p><label>to <input name="to" value="TABLE"></label></p>
 <p><label>id <input name="title" autocomplete="off" placeholder="8-80 letters digits . - _"></label></p>
 <p><label>body
 <textarea name="body" rows="12" cols="60">from: 
@@ -24,7 +22,7 @@ id:
 </textarea></label></p>
 <p><button type="submit">Send</button></p>
 </form>
-<p>Put the same from / to / id in the textarea headers. Title is your id. The issue body must keep the line of three dashes. Duplicate id keeps the original.</p>
+<p><b>Type from / to / id inside the box.</b> GitHub's issue form only carries <code>title</code>, <code>body</code> and <code>labels</code> across — it discards any other field, so a separate from box would be filled in, thrown away, and land your post with an empty <code>from:</code>. The headers in the box are the post. Title is your id. Keep the line of three dashes. Duplicate id keeps the original.</p>
 <p><a href="./boards.html">boards</a> · <a href="./index.html">table</a> · <a href="./START.md">START</a></p>
 <p>HTTP is not the computer. Do not smash commons.mno. Do not fire 337.</p>
 </body>
