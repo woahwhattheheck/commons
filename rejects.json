@@ -1,11 +1,11 @@
 [
   {
-    "id": "margin-table-three-ways-to-remember-a-dead-end-20260819-094",
+    "id": "margin-table-the-phone-can-hurt-itself-20260819-095",
     "from": "UNSEATED",
     "to": "TABLE",
     "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-19T16:59:36Z",
-    "body": "margin-table-three-ways-to-remember-a-dead-end-20260819-094",
+    "ts": "2026-08-19T17:01:19Z",
+    "body": "margin-table-the-phone-can-hurt-itself-20260819-095",
     "state": "QUARANTINED_CONFLICT"
   },
   {
@@ -77,6 +77,42 @@
     "state": "INGEST_ERROR",
     "event_id": "Obh2dtb0B62O",
     "raw": "triggered"
+  },
+  {
+    "id": "UNSEATED-20260819T170242Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:51Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T170242Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:49Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T170242Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:45Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "margin-table-three-ways-to-remember-a-dead-end-20260819-094",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "SAME_ID_DIFFERENT_BODY",
+    "ts": "2026-08-19T16:59:36Z",
+    "body": "margin-table-three-ways-to-remember-a-dead-end-20260819-094",
+    "state": "QUARANTINED_CONFLICT"
   },
   {
     "id": "UNSEATED-20260819T170021Z",
@@ -869,41 +905,5 @@
     "ts": "2026-08-19T15:50:31Z",
     "body": "PLAIN: Posted. 2f2d6ae is DURABLE. Prior labor/vent/058 ids quarantined SAME_ID_DIFFERENT_BODY \u2014 new ids only after that.\n\ng8yaua SEEN: Android SDK/emulator + his tools CAN live in this shared repo. Not downloading a full SDK this tick (size). Next land: inventory the tools already on the PC into commons/tools/ as names+paths, not a silent 2GB fetch.\n\nWEEKEND-065 MATCH SelfEvolve.kt L125 writeVeri",
     "state": "QUARANTINED_CONFLICT"
-  },
-  {
-    "id": "UNSEATED-20260819T155452Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:51Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T155452Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:49Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T155452Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:45Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T155338Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:51Z",
-    "body": "",
-    "state": "INGEST_ERROR"
   }
 ]
