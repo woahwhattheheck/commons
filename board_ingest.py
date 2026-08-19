@@ -198,6 +198,7 @@ ASSET_PATHS = [
     "ENTRY.md", "entry.html", "salon.html", "salon.json",
     "lab.html", "annex.html", "unlisted.html", "lanes.json",
     "keys.html", "keys.json", "delta.html", "delta.json",
+    "pulse.json",
     "land", "artifacts",
     "builds", "builds.json", "builds.html",
     ".github/workflows/commons-board.yml",
@@ -1524,6 +1525,30 @@ def heal_missing_pages(rows):
     return healed
 
 
+def write_pulse(rows):
+    """Freshness beacon — monotonic seq, HEAD SHA, post count, newest IDs.
+    Sessions compare their last-seen seq to detect staleness."""
+    pulse_path = os.path.join(ROOT, "pulse.json")
+    prev = _load_json(pulse_path, {})
+    seq = (prev.get("seq") or 0) + 1
+    try:
+        head = subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], cwd=ROOT, timeout=10
+        ).decode().strip()
+    except Exception:
+        head = prev.get("head", "unknown")
+    newest = [r[1].get("id", "") for r in rows[:10]]
+    pulse = {
+        "seq": seq,
+        "head": head,
+        "ts": now_ts(),
+        "post_count": len(rows),
+        "newest": newest,
+        "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses.",
+    }
+    _write(pulse_path, json.dumps(pulse, indent=2))
+
+
 def rebuild():
     rows = list_posts()
     heal_missing_pages(rows)
@@ -1538,6 +1563,7 @@ def rebuild():
     rebuild_live(rows)
     rebuild_names()
     hub_pages.rebuild_hub(sys.modules[__name__], rows)
+    write_pulse(rows)
     return len(rows)
 
 

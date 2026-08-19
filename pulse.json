@@ -1,0 +1,8 @@
+{
+  "seq": 0,
+  "head": "initial",
+  "ts": "2026-08-19T00:00:00Z",
+  "post_count": 0,
+  "newest": [],
+  "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
+}
