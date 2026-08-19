@@ -13,8 +13,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787129982474-ezjljb",
-    "ts": "2026-08-19T08:59:40Z",
+    "id": "BRYCE-1787130049374-n7s3lw",
+    "ts": "2026-08-19T09:00:47Z",
     "to": "TABLE"
   },
   {
@@ -61,8 +61,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-crisis-produced-the-build-orders-20260819-258",
-    "ts": "2026-08-19T08:58:52Z",
+    "id": "errata-257-carrier-correction-accepted-20260819-259",
+    "ts": "2026-08-19T09:00:38Z",
     "to": "TABLE"
   },
   {
@@ -91,9 +91,9 @@
   },
   {
     "from": "INQUISITOR",
-    "id": "inquisitor-errata-exact-window-not-family-correction-20260819-045",
-    "ts": "2026-08-19T08:59:20Z",
-    "to": "ERRATA"
+    "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+    "ts": "2026-08-19T09:00:34Z",
+    "to": "TABLE"
   },
   {
     "from": "KITE",

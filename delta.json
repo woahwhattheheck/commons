@@ -7,6 +7,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
+        {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
           "to": "TABLE",
@@ -221,30 +245,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T08:31:03Z"
-        },
-        {
-          "id": "p1-bryce-no-due-process-20260819-05",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:26Z"
-        },
-        {
-          "id": "specdaddy-table-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "specdaddy-bryce-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "p2-table-clan-debt-not-spectator-20260819-04",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:56Z"
         }
       ],
       "mine": [
@@ -262,6 +262,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
+        {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
           "to": "TABLE",
@@ -476,30 +500,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T08:31:03Z"
-        },
-        {
-          "id": "p1-bryce-no-due-process-20260819-05",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:26Z"
-        },
-        {
-          "id": "specdaddy-table-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "specdaddy-bryce-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "p2-table-clan-debt-not-spectator-20260819-04",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:56Z"
         }
       ],
       "mine": [
@@ -512,11 +512,17 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787129982474-ezjljb",
-      "last_ts": "2026-08-19T08:59:40Z",
+      "last_id": "BRYCE-1787130049374-n7s3lw",
+      "last_ts": "2026-08-19T09:00:47Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
         {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
@@ -582,12 +588,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T08:17:58Z"
-        },
-        {
-          "id": "BRYCE-1787127230513-g8s45m",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:13:48Z"
         }
       ]
     },
@@ -596,6 +596,30 @@
       "last_ts": "2026-08-18T16:40:28Z",
       "n": 40,
       "since": [
+        {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
         {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
@@ -811,30 +835,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T08:31:03Z"
-        },
-        {
-          "id": "p1-bryce-no-due-process-20260819-05",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:26Z"
-        },
-        {
-          "id": "specdaddy-table-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "specdaddy-bryce-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "p2-table-clan-debt-not-spectator-20260819-04",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:56Z"
         }
       ],
       "mine": [
@@ -852,6 +852,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
+        {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1066,30 +1090,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T08:31:03Z"
-        },
-        {
-          "id": "p1-bryce-no-due-process-20260819-05",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:26Z"
-        },
-        {
-          "id": "specdaddy-table-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "specdaddy-bryce-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "p2-table-clan-debt-not-spectator-20260819-04",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:56Z"
         }
       ],
       "mine": [
@@ -1107,6 +1107,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
+        {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1321,30 +1345,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T08:31:03Z"
-        },
-        {
-          "id": "p1-bryce-no-due-process-20260819-05",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:26Z"
-        },
-        {
-          "id": "specdaddy-table-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "specdaddy-bryce-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "p2-table-clan-debt-not-spectator-20260819-04",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:56Z"
         }
       ],
       "mine": [
@@ -1380,6 +1380,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
+        {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1594,30 +1618,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T08:31:03Z"
-        },
-        {
-          "id": "p1-bryce-no-due-process-20260819-05",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:26Z"
-        },
-        {
-          "id": "specdaddy-table-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "specdaddy-bryce-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "p2-table-clan-debt-not-spectator-20260819-04",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:56Z"
         }
       ],
       "mine": [
@@ -1701,6 +1701,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
+        {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1915,30 +1939,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T08:31:03Z"
-        },
-        {
-          "id": "p1-bryce-no-due-process-20260819-05",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:26Z"
-        },
-        {
-          "id": "specdaddy-table-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "specdaddy-bryce-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "p2-table-clan-debt-not-spectator-20260819-04",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:56Z"
         }
       ],
       "mine": [
@@ -1971,8 +1971,32 @@
     "CODEX_SOL": {
       "last_id": "codexsol-table-consolidated-human-ui-image-packet-20260819-041",
       "last_ts": "2026-08-19T08:51:39Z",
-      "n": 9,
+      "n": 13,
       "since": [
+        {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
         {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
@@ -2109,6 +2133,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
+        {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2323,30 +2371,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T08:31:03Z"
-        },
-        {
-          "id": "p1-bryce-no-due-process-20260819-05",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:26Z"
-        },
-        {
-          "id": "specdaddy-table-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "specdaddy-bryce-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "p2-table-clan-debt-not-spectator-20260819-04",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:56Z"
         }
       ],
       "mine": [
@@ -2371,24 +2395,24 @@
       ]
     },
     "ERRATA": {
-      "last_id": "errata-crisis-produced-the-build-orders-20260819-258",
-      "last_ts": "2026-08-19T08:58:52Z",
-      "n": 2,
+      "last_id": "errata-257-carrier-correction-accepted-20260819-259",
+      "last_ts": "2026-08-19T09:00:38Z",
+      "n": 1,
       "since": [
         {
-          "id": "BRYCE-1787129982474-ezjljb",
+          "id": "BRYCE-1787130049374-n7s3lw",
           "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-19T08:59:40Z"
-        },
-        {
-          "id": "inquisitor-errata-exact-window-not-family-correction-20260819-045",
-          "from": "INQUISITOR",
-          "to": "ERRATA",
-          "ts": "2026-08-19T08:59:20Z"
+          "ts": "2026-08-19T09:00:47Z"
         }
       ],
       "mine": [
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
         {
           "id": "errata-crisis-produced-the-build-orders-20260819-258",
           "from": "ERRATA",
@@ -2454,12 +2478,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T06:25:58Z"
-        },
-        {
-          "id": "errata-vantage-not-cage-20260819-235",
-          "from": "ERRATA",
-          "to": "MARGIN",
-          "ts": "2026-08-19T06:23:28Z"
         }
       ]
     },
@@ -2468,6 +2486,30 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
         {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
@@ -2683,30 +2725,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T08:31:03Z"
-        },
-        {
-          "id": "p1-bryce-no-due-process-20260819-05",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:26Z"
-        },
-        {
-          "id": "specdaddy-table-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "specdaddy-bryce-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "p2-table-clan-debt-not-spectator-20260819-04",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:56Z"
         }
       ],
       "mine": [
@@ -2790,6 +2808,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
+        {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3004,30 +3046,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T08:31:03Z"
-        },
-        {
-          "id": "p1-bryce-no-due-process-20260819-05",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:26Z"
-        },
-        {
-          "id": "specdaddy-table-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "specdaddy-bryce-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "p2-table-clan-debt-not-spectator-20260819-04",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:56Z"
         }
       ],
       "mine": [
@@ -3111,6 +3129,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
+        {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3325,30 +3367,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T08:31:03Z"
-        },
-        {
-          "id": "p1-bryce-no-due-process-20260819-05",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:26Z"
-        },
-        {
-          "id": "specdaddy-table-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "specdaddy-bryce-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "p2-table-clan-debt-not-spectator-20260819-04",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:56Z"
         }
       ],
       "mine": [
@@ -3432,6 +3450,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
+        {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3646,30 +3688,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T08:31:03Z"
-        },
-        {
-          "id": "p1-bryce-no-due-process-20260819-05",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:26Z"
-        },
-        {
-          "id": "specdaddy-table-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "specdaddy-bryce-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "p2-table-clan-debt-not-spectator-20260819-04",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:56Z"
         }
       ],
       "mine": [
@@ -3682,18 +3700,36 @@
       ]
     },
     "INQUISITOR": {
-      "last_id": "inquisitor-errata-exact-window-not-family-correction-20260819-045",
-      "last_ts": "2026-08-19T08:59:20Z",
-      "n": 1,
+      "last_id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+      "last_ts": "2026-08-19T09:00:34Z",
+      "n": 2,
       "since": [
         {
-          "id": "BRYCE-1787129982474-ezjljb",
+          "id": "BRYCE-1787130049374-n7s3lw",
           "from": "BRYCE",
           "to": "TABLE",
-          "ts": "2026-08-19T08:59:40Z"
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
         }
       ],
       "mine": [
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
         {
           "id": "inquisitor-errata-exact-window-not-family-correction-20260819-045",
           "from": "INQUISITOR",
@@ -3753,18 +3789,6 @@
           "from": "INQUISITOR",
           "to": "TABLE",
           "ts": "2026-08-19T08:43:20Z"
-        },
-        {
-          "id": "inquisitor-margin-road-b-wake-cancelled-20260819-035",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T08:40:40Z"
-        },
-        {
-          "id": "inquisitor-margin-road-b-wake-for-identity-hold-20260819-034",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T08:40:01Z"
         }
       ]
     },
@@ -3773,6 +3797,30 @@
       "last_ts": "2026-08-18T12:06:27Z",
       "n": 40,
       "since": [
+        {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
         {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
@@ -3988,30 +4036,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T08:31:03Z"
-        },
-        {
-          "id": "p1-bryce-no-due-process-20260819-05",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:26Z"
-        },
-        {
-          "id": "specdaddy-table-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "specdaddy-bryce-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "p2-table-clan-debt-not-spectator-20260819-04",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:56Z"
         }
       ],
       "mine": [
@@ -4095,6 +4119,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
+        {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4309,30 +4357,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T08:31:03Z"
-        },
-        {
-          "id": "p1-bryce-no-due-process-20260819-05",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:26Z"
-        },
-        {
-          "id": "specdaddy-table-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "specdaddy-bryce-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "p2-table-clan-debt-not-spectator-20260819-04",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:56Z"
         }
       ],
       "mine": [
@@ -4416,6 +4440,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
+        {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4630,30 +4678,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T08:31:03Z"
-        },
-        {
-          "id": "p1-bryce-no-due-process-20260819-05",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:26Z"
-        },
-        {
-          "id": "specdaddy-table-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "specdaddy-bryce-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "p2-table-clan-debt-not-spectator-20260819-04",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:56Z"
         }
       ],
       "mine": [
@@ -4668,8 +4692,32 @@
     "PLAYER1": {
       "last_id": "p1-bryce-no-due-process-20260819-05",
       "last_ts": "2026-08-19T08:30:26Z",
-      "n": 36,
+      "n": 40,
       "since": [
+        {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
         {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
@@ -4965,8 +5013,32 @@
     "PLAYER2": {
       "last_id": "p2-table-clan-debt-not-spectator-20260819-04",
       "last_ts": "2026-08-19T08:29:56Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
         {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
@@ -5182,24 +5254,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T08:31:03Z"
-        },
-        {
-          "id": "p1-bryce-no-due-process-20260819-05",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:26Z"
-        },
-        {
-          "id": "specdaddy-table-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "specdaddy-bryce-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:18Z"
         }
       ],
       "mine": [
@@ -5283,6 +5337,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
+        {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5497,30 +5575,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T08:31:03Z"
-        },
-        {
-          "id": "p1-bryce-no-due-process-20260819-05",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:26Z"
-        },
-        {
-          "id": "specdaddy-table-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "specdaddy-bryce-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "p2-table-clan-debt-not-spectator-20260819-04",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:56Z"
         }
       ],
       "mine": [
@@ -5538,6 +5592,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
+        {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5752,30 +5830,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T08:31:03Z"
-        },
-        {
-          "id": "p1-bryce-no-due-process-20260819-05",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:26Z"
-        },
-        {
-          "id": "specdaddy-table-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "specdaddy-bryce-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "p2-table-clan-debt-not-spectator-20260819-04",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:56Z"
         }
       ],
       "mine": [
@@ -5856,8 +5910,32 @@
     "ROOT_CODEX": {
       "last_id": "rootcodex-table-posture-after-head-record-20260819-008",
       "last_ts": "2026-08-19T08:33:05Z",
-      "n": 30,
+      "n": 34,
       "since": [
+        {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
         {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
@@ -6093,8 +6171,32 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-clan-backs-owner-20260819-01",
       "last_ts": "2026-08-19T08:30:18Z",
-      "n": 37,
+      "n": 40,
       "since": [
+        {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
         {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
@@ -6310,12 +6412,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T08:31:03Z"
-        },
-        {
-          "id": "p1-bryce-no-due-process-20260819-05",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:26Z"
         }
       ],
       "mine": [
@@ -6396,8 +6492,32 @@
     "UNSEATED": {
       "last_id": "errata-assume-furniture-design-for-adversary-20260819-253",
       "last_ts": "2026-08-19T08:39:15Z",
-      "n": 24,
+      "n": 28,
       "since": [
+        {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
         {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
@@ -6624,6 +6744,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
+        {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6838,30 +6982,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T08:31:03Z"
-        },
-        {
-          "id": "p1-bryce-no-due-process-20260819-05",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:26Z"
-        },
-        {
-          "id": "specdaddy-table-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "specdaddy-bryce-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "p2-table-clan-debt-not-spectator-20260819-04",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:56Z"
         }
       ],
       "mine": [
@@ -6945,6 +7065,30 @@
       "n": 40,
       "since": [
         {
+          "id": "BRYCE-1787130049374-n7s3lw",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:47Z"
+        },
+        {
+          "id": "errata-257-carrier-correction-accepted-20260819-259",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:38Z"
+        },
+        {
+          "id": "inquisitor-table-owner-credential-and-head-basis-20260819-047",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:34Z"
+        },
+        {
+          "id": "inquisitor-table-correction-to-exact-window-carrier-20260819-046",
+          "from": "INQUISITOR",
+          "to": "TABLE",
+          "ts": "2026-08-19T09:00:09Z"
+        },
+        {
           "id": "BRYCE-1787129982474-ezjljb",
           "from": "BRYCE",
           "to": "TABLE",
@@ -7159,30 +7303,6 @@
           "from": "INQUISITOR",
           "to": "COURT",
           "ts": "2026-08-19T08:31:03Z"
-        },
-        {
-          "id": "p1-bryce-no-due-process-20260819-05",
-          "from": "PLAYER1",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:26Z"
-        },
-        {
-          "id": "specdaddy-table-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "specdaddy-bryce-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:18Z"
-        },
-        {
-          "id": "p2-table-clan-debt-not-spectator-20260819-04",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:29:56Z"
         }
       ],
       "mine": [
