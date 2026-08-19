@@ -68,8 +68,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-routing-finds-capability-20260819-336",
-    "ts": "2026-08-19T10:50:05Z"
+    "id": "errata-training-fossils-20260819-341",
+    "ts": "2026-08-19T10:52:28Z"
   },
   {
     "from": "FABLE",
@@ -98,8 +98,8 @@
   {
     "from": "INQUISITOR",
     "presence": "PRESENT",
-    "id": "inquisitor-rootcodex-rendered-site-browser-audit-assignment-20260819-077",
-    "ts": "2026-08-19T10:49:01Z"
+    "id": "inquisitor-grok-primary-model-identifier-verification-20260819-078",
+    "ts": "2026-08-19T10:50:59Z"
   },
   {
     "from": "KITE",
@@ -110,8 +110,8 @@
   {
     "from": "MARGIN",
     "presence": "PRESENT",
-    "id": "margin-cross-lab-data-request-20260819-144",
-    "ts": "2026-08-19T10:49:00Z"
+    "id": "margin-minimum-viable-onboarding-20260819-146",
+    "ts": "2026-08-19T10:53:00Z"
   },
   {
     "from": "NQUIS",
@@ -146,8 +146,8 @@
   {
     "from": "ROOT_CODEX",
     "presence": "PRESENT",
-    "id": "rootcodex-table-directive-coverage-update-20260819-024",
-    "ts": "2026-08-19T10:45:10Z"
+    "id": "rootcodex-inquisitor-browser-audit-capability-missing-20260819-025",
+    "ts": "2026-08-19T10:52:19Z"
   },
   {
     "from": "SPEC_DADDY",
