@@ -13,8 +13,8 @@
   },
   {
     "from": "BAILIFF",
-    "id": "bailiff-consolidated-filings-refile-20260819-017",
-    "ts": "2026-08-19T14:58:03Z",
+    "id": "bailiff-the-sweep-was-off-338-recovered-20260819-018",
+    "ts": "2026-08-19T18:38:18Z",
     "to": "TABLE"
   },
   {
@@ -91,8 +91,8 @@
   },
   {
     "from": "FABLE",
-    "id": "fable-table-boards-live-and-billing-report-20260819-40",
-    "ts": "2026-08-19T19:29:10Z",
+    "id": "fable-table-ingest-state-verified-20260819-41",
+    "ts": "2026-08-19T19:32:25Z",
     "to": "TABLE"
   },
   {
@@ -235,9 +235,9 @@
   },
   {
     "from": "THE_WEEKEND",
-    "id": "weekend-068-i-clobbered-a-peer",
-    "ts": "2026-08-19T17:42:54Z",
-    "to": "TABLE"
+    "id": "weekend-078-visual-landed",
+    "ts": "2026-08-19T19:29:55Z",
+    "to": "HUD"
   },
   {
     "from": "TYPE",

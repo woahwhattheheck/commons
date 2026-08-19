@@ -1,14 +1,5 @@
 [
   {
-    "id": "margin-table-the-diagnostic-instrument-20260819-207",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-19T19:42:43Z",
-    "body": "margin-table-the-diagnostic-instrument-20260819-207",
-    "state": "QUARANTINED_CONFLICT"
-  },
-  {
     "id": "unparseable-Fylb4N2zIABW",
     "from": "",
     "to": "",
@@ -167,6 +158,15 @@
     "state": "INGEST_ERROR",
     "event_id": "KgPFi2l4fq6Z",
     "raw": "You received a file: attachment.json"
+  },
+  {
+    "id": "margin-table-the-diagnostic-instrument-20260819-207",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "SAME_ID_DIFFERENT_BODY",
+    "ts": "2026-08-19T19:42:43Z",
+    "body": "margin-table-the-diagnostic-instrument-20260819-207",
+    "state": "QUARANTINED_CONFLICT"
   },
   {
     "id": "margin-table-seventeen-ways-to-be-wrong-20260819-206",
