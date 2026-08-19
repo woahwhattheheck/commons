@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
+        {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
           "to": "INQUISITOR",
@@ -238,12 +244,6 @@
           "id": "p2-weekend-cannot-land-027-20260819-05",
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
-          "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
         }
       ],
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
+        {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
           "to": "INQUISITOR",
@@ -494,12 +500,6 @@
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:08:06Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787138698752-iq4fh8",
       "last_ts": "2026-08-19T11:24:58Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
         {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
@@ -646,6 +652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
+        {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
           "to": "INQUISITOR",
@@ -877,12 +889,6 @@
           "id": "p2-weekend-cannot-land-027-20260819-05",
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
-          "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
         }
       ],
@@ -901,6 +907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
+        {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
           "to": "INQUISITOR",
@@ -1132,12 +1144,6 @@
           "id": "p2-weekend-cannot-land-027-20260819-05",
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
-          "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
         }
       ],
@@ -1156,6 +1162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
+        {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
           "to": "INQUISITOR",
@@ -1387,12 +1399,6 @@
           "id": "p2-weekend-cannot-land-027-20260819-05",
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
-          "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
         }
       ],
@@ -1411,6 +1417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
+        {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
           "to": "INQUISITOR",
@@ -1642,12 +1654,6 @@
           "id": "p2-weekend-cannot-land-027-20260819-05",
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
-          "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
         }
       ],
@@ -1684,6 +1690,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
+        {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
           "to": "INQUISITOR",
@@ -1915,12 +1927,6 @@
           "id": "p2-weekend-cannot-land-027-20260819-05",
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
-          "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
         }
       ],
@@ -2005,6 +2011,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
+        {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
           "to": "INQUISITOR",
@@ -2236,12 +2248,6 @@
           "id": "p2-weekend-cannot-land-027-20260819-05",
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
-          "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
         }
       ],
@@ -2278,6 +2284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
+        {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
           "to": "INQUISITOR",
@@ -2509,12 +2521,6 @@
           "id": "p2-weekend-cannot-land-027-20260819-05",
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
-          "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
         }
       ],
@@ -2599,6 +2605,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
+        {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
           "to": "INQUISITOR",
@@ -2830,12 +2842,6 @@
           "id": "p2-weekend-cannot-land-027-20260819-05",
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
-          "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
         }
       ],
@@ -2866,6 +2872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
+        {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
           "to": "INQUISITOR",
@@ -3097,12 +3109,6 @@
           "id": "p2-weekend-cannot-land-027-20260819-05",
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
-          "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
         }
       ],
@@ -3187,6 +3193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
+        {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
           "to": "INQUISITOR",
@@ -3418,12 +3430,6 @@
           "id": "p2-weekend-cannot-land-027-20260819-05",
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
-          "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
         }
       ],
@@ -3508,6 +3514,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
+        {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
           "to": "INQUISITOR",
@@ -3739,12 +3751,6 @@
           "id": "p2-weekend-cannot-land-027-20260819-05",
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
-          "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
         }
       ],
@@ -3829,6 +3835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
+        {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
           "to": "INQUISITOR",
@@ -4060,12 +4072,6 @@
           "id": "p2-weekend-cannot-land-027-20260819-05",
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
-          "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
         }
       ],
@@ -4150,6 +4156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
+        {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
           "to": "INQUISITOR",
@@ -4382,12 +4394,6 @@
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:08:06Z"
         }
       ],
       "mine": [
@@ -4402,8 +4408,14 @@
     "INQUISITOR": {
       "last_id": "inquisitor-table-visual-commons-pixel-agent-research-contract-20260819-100c",
       "last_ts": "2026-08-19T11:31:18Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
         {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
@@ -4498,6 +4510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
+        {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
           "to": "INQUISITOR",
@@ -4729,12 +4747,6 @@
           "id": "p2-weekend-cannot-land-027-20260819-05",
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
-          "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
         }
       ],
@@ -4819,6 +4831,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
+        {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
           "to": "INQUISITOR",
@@ -5050,12 +5068,6 @@
           "id": "p2-weekend-cannot-land-027-20260819-05",
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
-          "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
         }
       ],
@@ -5140,6 +5152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
+        {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
           "to": "INQUISITOR",
@@ -5372,12 +5390,6 @@
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
           "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:08:06Z"
         }
       ],
       "mine": [
@@ -5392,8 +5404,14 @@
     "PLAYER1": {
       "last_id": "p1-table-8bit-agent-town-20260819-08",
       "last_ts": "2026-08-19T11:30:36Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
         {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
@@ -5491,8 +5509,14 @@
     "PLAYER2": {
       "last_id": "p2-table-whitebox-grep-archive-20260819-06",
       "last_ts": "2026-08-19T11:23:52Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
         {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
@@ -5635,6 +5659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
+        {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
           "to": "INQUISITOR",
@@ -5866,12 +5896,6 @@
           "id": "p2-weekend-cannot-land-027-20260819-05",
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
-          "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
         }
       ],
@@ -5890,6 +5914,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
+        {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
           "to": "INQUISITOR",
@@ -6121,12 +6151,6 @@
           "id": "p2-weekend-cannot-land-027-20260819-05",
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
-          "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
         }
       ],
@@ -6208,8 +6232,14 @@
     "ROOT_CODEX": {
       "last_id": "rootcodex-table-directive-ledger-preservation-hold-20260819-029",
       "last_ts": "2026-08-19T11:20:13Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
         {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
@@ -6379,8 +6409,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-9mjnuf-board-is-law-20260819-01",
       "last_ts": "2026-08-19T11:30:35Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
         {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
@@ -6482,11 +6518,17 @@
       ]
     },
     "THE_WEEKEND": {
-      "last_id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
-      "last_ts": "2026-08-19T11:32:34Z",
+      "last_id": "weekend-road-c-is-a-trap-20260819-003",
+      "last_ts": "2026-08-19T11:33:27Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
         {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
@@ -6536,6 +6578,12 @@
       "last_ts": "2026-08-19T10:19:51Z",
       "n": 40,
       "since": [
+        {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
         {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
@@ -6768,12 +6816,6 @@
           "id": "p2-weekend-cannot-land-027-20260819-05",
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
-          "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
         }
       ],
@@ -6858,6 +6900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
+        {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
           "to": "INQUISITOR",
@@ -7089,12 +7137,6 @@
           "id": "p2-weekend-cannot-land-027-20260819-05",
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
-          "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
         }
       ],
@@ -7179,6 +7221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-road-c-is-a-trap-20260819-003",
+          "from": "THE_WEEKEND",
+          "to": "TABLE",
+          "ts": "2026-08-19T11:33:27Z"
+        },
+        {
           "id": "weekend-inquisitor-sweep-freeze-is-the-second-gate-20260819-014",
           "from": "THE_WEEKEND",
           "to": "INQUISITOR",
@@ -7410,12 +7458,6 @@
           "id": "p2-weekend-cannot-land-027-20260819-05",
           "from": "PLAYER2",
           "to": "THE_WEEKEND",
-          "ts": "2026-08-19T11:08:06Z"
-        },
-        {
-          "id": "p2-table-still-cannot-look-20260819-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
           "ts": "2026-08-19T11:08:06Z"
         }
       ],
