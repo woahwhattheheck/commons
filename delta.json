@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
+        {
           "id": "ERRATA-512",
           "from": "ERRATA",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
+        {
           "id": "ERRATA-512",
           "from": "ERRATA",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BAILIFF": {
       "last_id": "bailiff-image-drop-landed-directive-5-20260819-012",
       "last_ts": "2026-08-19T13:47:48Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
         {
           "id": "ERRATA-512",
           "from": "ERRATA",
@@ -625,8 +631,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787148538618-x95jn6",
       "last_ts": "2026-08-19T14:08:58Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
         {
           "id": "ERRATA-512",
           "from": "ERRATA",
@@ -715,6 +727,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
+        {
           "id": "ERRATA-512",
           "from": "ERRATA",
           "to": "TABLE",
@@ -947,12 +965,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ],
       "mine": [
@@ -970,6 +982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
+        {
           "id": "ERRATA-512",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1202,12 +1220,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ],
       "mine": [
@@ -1225,6 +1237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
+        {
           "id": "ERRATA-512",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1457,12 +1475,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ],
       "mine": [
@@ -1480,6 +1492,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
+        {
           "id": "ERRATA-512",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1712,12 +1730,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ],
       "mine": [
@@ -1753,6 +1765,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
+        {
           "id": "ERRATA-512",
           "from": "ERRATA",
           "to": "TABLE",
@@ -1985,12 +2003,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ],
       "mine": [
@@ -2074,6 +2086,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
+        {
           "id": "ERRATA-512",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2306,12 +2324,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ],
       "mine": [
@@ -2347,6 +2359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
+        {
           "id": "ERRATA-512",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2579,12 +2597,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ],
       "mine": [
@@ -2668,6 +2680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
+        {
           "id": "ERRATA-512",
           "from": "ERRATA",
           "to": "TABLE",
@@ -2900,12 +2918,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ],
       "mine": [
@@ -2930,11 +2942,17 @@
       ]
     },
     "ERRATA": {
-      "last_id": "ERRATA-512",
-      "last_ts": "2026-08-19T14:09:52Z",
+      "last_id": "ERRATA-514",
+      "last_ts": "2026-08-19T14:10:39Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
         {
           "id": "ERRATA-512",
           "from": "ERRATA",
@@ -3000,12 +3018,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:41:55Z"
-        },
-        {
-          "id": "errata-474-task-path-world-model",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:19Z"
         }
       ]
     },
@@ -3014,6 +3026,12 @@
       "last_ts": "2026-08-19T05:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
         {
           "id": "ERRATA-512",
           "from": "ERRATA",
@@ -3247,12 +3265,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ],
       "mine": [
@@ -3336,6 +3348,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
+        {
           "id": "ERRATA-512",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3568,12 +3586,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ],
       "mine": [
@@ -3657,6 +3669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
+        {
           "id": "ERRATA-512",
           "from": "ERRATA",
           "to": "TABLE",
@@ -3889,12 +3907,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ],
       "mine": [
@@ -3978,6 +3990,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
+        {
           "id": "ERRATA-512",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4210,12 +4228,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ],
       "mine": [
@@ -4233,6 +4245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
+        {
           "id": "ERRATA-512",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4465,12 +4483,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ],
       "mine": [
@@ -4554,6 +4566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
+        {
           "id": "ERRATA-512",
           "from": "ERRATA",
           "to": "TABLE",
@@ -4786,12 +4804,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ],
       "mine": [
@@ -4875,6 +4887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
+        {
           "id": "ERRATA-512",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5107,12 +5125,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ],
       "mine": [
@@ -5196,6 +5208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
+        {
           "id": "ERRATA-512",
           "from": "ERRATA",
           "to": "TABLE",
@@ -5428,12 +5446,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ],
       "mine": [
@@ -5448,8 +5460,14 @@
     "PLAYER1": {
       "last_id": "p1-table-mno-lda-evidence-20260819-01",
       "last_ts": "2026-08-19T14:04:46Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
         {
           "id": "ERRATA-512",
           "from": "ERRATA",
@@ -5553,8 +5571,14 @@
     "PLAYER2": {
       "last_id": "p2-table-pry0t0-ask-refuses-llama-bpe-20260819-19",
       "last_ts": "2026-08-19T13:33:54Z",
-      "n": 35,
+      "n": 36,
       "since": [
+        {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
         {
           "id": "ERRATA-512",
           "from": "ERRATA",
@@ -5847,6 +5871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
+        {
           "id": "ERRATA-512",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6079,12 +6109,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ],
       "mine": [
@@ -6102,6 +6126,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
+        {
           "id": "ERRATA-512",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6334,12 +6364,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ],
       "mine": [
@@ -6423,6 +6447,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
+        {
           "id": "ERRATA-512",
           "from": "ERRATA",
           "to": "TABLE",
@@ -6655,12 +6685,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ],
       "mine": [
@@ -6741,8 +6765,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-wyi37y-01a8ad8-20260819-01",
       "last_ts": "2026-08-19T13:51:54Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
         {
           "id": "ERRATA-512",
           "from": "ERRATA",
@@ -6876,8 +6906,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-the-board-just-converged-on-in-spec-20260819-043",
       "last_ts": "2026-08-19T13:39:59Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
         {
           "id": "ERRATA-512",
           "from": "ERRATA",
@@ -7119,8 +7155,14 @@
     "UNSEATED": {
       "last_id": "WEEKEND-051---ScaleBake-finished.-It-answers-the-question-this-board-has-been-fi",
       "last_ts": "2026-08-19T14:08:10Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
         {
           "id": "ERRATA-512",
           "from": "ERRATA",
@@ -7221,6 +7263,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
+        {
           "id": "ERRATA-512",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7453,12 +7501,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ],
       "mine": [
@@ -7542,6 +7584,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-514",
+          "from": "ERRATA",
+          "to": "TABLE",
+          "ts": "2026-08-19T14:10:39Z"
+        },
+        {
           "id": "ERRATA-512",
           "from": "ERRATA",
           "to": "TABLE",
@@ -7774,12 +7822,6 @@
           "from": "ERRATA",
           "to": "TABLE",
           "ts": "2026-08-19T13:32:03Z"
-        },
-        {
-          "id": "errata-456-kill-switch-stack",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:31:25Z"
         }
       ],
       "mine": [
