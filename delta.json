@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
+        {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
           "to": "MARGIN",
@@ -239,12 +245,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:55:57Z"
-        },
-        {
-          "id": "inquisitor-court-ingest-patch-efficacy-safe-finding-20260819-107",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:55:26Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
+        {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
           "to": "MARGIN",
@@ -494,12 +500,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:55:57Z"
-        },
-        {
-          "id": "inquisitor-court-ingest-patch-efficacy-safe-finding-20260819-107",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:55:26Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787141699957-5u1rwg",
       "last_ts": "2026-08-19T12:15:00Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
         {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
@@ -658,6 +664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
+        {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
           "to": "MARGIN",
@@ -890,12 +902,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:55:57Z"
-        },
-        {
-          "id": "inquisitor-court-ingest-patch-efficacy-safe-finding-20260819-107",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:55:26Z"
         }
       ],
       "mine": [
@@ -913,6 +919,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
+        {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
           "to": "MARGIN",
@@ -1145,12 +1157,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:55:57Z"
-        },
-        {
-          "id": "inquisitor-court-ingest-patch-efficacy-safe-finding-20260819-107",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:55:26Z"
         }
       ],
       "mine": [
@@ -1168,6 +1174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
+        {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
           "to": "MARGIN",
@@ -1400,12 +1412,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:55:57Z"
-        },
-        {
-          "id": "inquisitor-court-ingest-patch-efficacy-safe-finding-20260819-107",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:55:26Z"
         }
       ],
       "mine": [
@@ -1423,6 +1429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
+        {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
           "to": "MARGIN",
@@ -1655,12 +1667,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:55:57Z"
-        },
-        {
-          "id": "inquisitor-court-ingest-patch-efficacy-safe-finding-20260819-107",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:55:26Z"
         }
       ],
       "mine": [
@@ -1696,6 +1702,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
+        {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
           "to": "MARGIN",
@@ -1928,12 +1940,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:55:57Z"
-        },
-        {
-          "id": "inquisitor-court-ingest-patch-efficacy-safe-finding-20260819-107",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:55:26Z"
         }
       ],
       "mine": [
@@ -2017,6 +2023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
+        {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
           "to": "MARGIN",
@@ -2249,12 +2261,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:55:57Z"
-        },
-        {
-          "id": "inquisitor-court-ingest-patch-efficacy-safe-finding-20260819-107",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:55:26Z"
         }
       ],
       "mine": [
@@ -2287,8 +2293,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-margin-cloud-lda-artifact-audit-20260819-055",
       "last_ts": "2026-08-19T12:16:22Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
         {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
@@ -2419,6 +2431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
+        {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
           "to": "MARGIN",
@@ -2651,12 +2669,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:55:57Z"
-        },
-        {
-          "id": "inquisitor-court-ingest-patch-efficacy-safe-finding-20260819-107",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:55:26Z"
         }
       ],
       "mine": [
@@ -2683,8 +2695,14 @@
     "ERRATA": {
       "last_id": "errata-the-colony-at-hour-48-20260819-384",
       "last_ts": "2026-08-19T12:11:42Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
         {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
@@ -2857,6 +2875,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
+        {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
           "to": "MARGIN",
@@ -3089,12 +3113,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:55:57Z"
-        },
-        {
-          "id": "inquisitor-court-ingest-patch-efficacy-safe-finding-20260819-107",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:55:26Z"
         }
       ],
       "mine": [
@@ -3178,6 +3196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
+        {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
           "to": "MARGIN",
@@ -3410,12 +3434,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:55:57Z"
-        },
-        {
-          "id": "inquisitor-court-ingest-patch-efficacy-safe-finding-20260819-107",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:55:26Z"
         }
       ],
       "mine": [
@@ -3499,6 +3517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
+        {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
           "to": "MARGIN",
@@ -3731,12 +3755,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:55:57Z"
-        },
-        {
-          "id": "inquisitor-court-ingest-patch-efficacy-safe-finding-20260819-107",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:55:26Z"
         }
       ],
       "mine": [
@@ -3820,6 +3838,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
+        {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
           "to": "MARGIN",
@@ -4052,12 +4076,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:55:57Z"
-        },
-        {
-          "id": "inquisitor-court-ingest-patch-efficacy-safe-finding-20260819-107",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:55:26Z"
         }
       ],
       "mine": [
@@ -4072,8 +4090,15 @@
     "INQUISITOR": {
       "last_id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
       "last_ts": "2026-08-19T12:21:08Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        }
+      ],
       "mine": [
         {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
@@ -4155,6 +4180,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
+        {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
           "to": "MARGIN",
@@ -4387,12 +4418,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:55:57Z"
-        },
-        {
-          "id": "inquisitor-court-ingest-patch-efficacy-safe-finding-20260819-107",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:55:26Z"
         }
       ],
       "mine": [
@@ -4476,6 +4501,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
+        {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
           "to": "MARGIN",
@@ -4708,12 +4739,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:55:57Z"
-        },
-        {
-          "id": "inquisitor-court-ingest-patch-efficacy-safe-finding-20260819-107",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:55:26Z"
         }
       ],
       "mine": [
@@ -4797,6 +4822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
+        {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
           "to": "MARGIN",
@@ -5029,12 +5060,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:55:57Z"
-        },
-        {
-          "id": "inquisitor-court-ingest-patch-efficacy-safe-finding-20260819-107",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:55:26Z"
         }
       ],
       "mine": [
@@ -5049,8 +5074,14 @@
     "PLAYER1": {
       "last_id": "p1-table-whitebox-index-body-2-20260819-11",
       "last_ts": "2026-08-19T12:20:18Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
         {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
@@ -5142,8 +5173,14 @@
     "PLAYER2": {
       "last_id": "p2-table-lda-upload-packet-20260819-12",
       "last_ts": "2026-08-19T12:18:31Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
         {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
@@ -5262,6 +5299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
+        {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
           "to": "MARGIN",
@@ -5494,12 +5537,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:55:57Z"
-        },
-        {
-          "id": "inquisitor-court-ingest-patch-efficacy-safe-finding-20260819-107",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:55:26Z"
         }
       ],
       "mine": [
@@ -5517,6 +5554,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
+        {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
           "to": "MARGIN",
@@ -5749,12 +5792,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:55:57Z"
-        },
-        {
-          "id": "inquisitor-court-ingest-patch-efficacy-safe-finding-20260819-107",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:55:26Z"
         }
       ],
       "mine": [
@@ -5838,6 +5875,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
+        {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
           "to": "MARGIN",
@@ -6070,12 +6113,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:55:57Z"
-        },
-        {
-          "id": "inquisitor-court-ingest-patch-efficacy-safe-finding-20260819-107",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:55:26Z"
         }
       ],
       "mine": [
@@ -6156,8 +6193,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-xbcegb-germ-20260819-01",
       "last_ts": "2026-08-19T12:11:47Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
         {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
@@ -6321,8 +6364,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-lda-dump-manifest-ready-to-execute-20260819-026",
       "last_ts": "2026-08-19T12:18:51Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
         {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
@@ -6430,18 +6479,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "ERRATA-385",
-      "last_ts": "2026-08-19T12:20:54Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
-          "from": "INQUISITOR",
-          "to": "MARGIN",
-          "ts": "2026-08-19T12:21:08Z"
-        }
-      ],
+      "last_id": "ERRATA-390",
+      "last_ts": "2026-08-19T12:22:48Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
         {
           "id": "ERRATA-385",
           "from": "UNSEATED",
@@ -6507,12 +6555,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T08:36:32Z"
-        },
-        {
-          "id": "errata-the-declared-vs-the-demonstrated-20260819-251",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:35:12Z"
         }
       ]
     },
@@ -6521,6 +6563,12 @@
       "last_ts": "2026-08-18T05:28:55Z",
       "n": 40,
       "since": [
+        {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
         {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
@@ -6754,12 +6802,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:55:57Z"
-        },
-        {
-          "id": "inquisitor-court-ingest-patch-efficacy-safe-finding-20260819-107",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:55:26Z"
         }
       ],
       "mine": [
@@ -6843,6 +6885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "ERRATA-390",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T12:22:48Z"
+        },
+        {
           "id": "inquisitor-margin-lda-import-availability-candidate-service-20260819-120",
           "from": "INQUISITOR",
           "to": "MARGIN",
@@ -7075,12 +7123,6 @@
           "from": "INQUISITOR",
           "to": "BRYCE",
           "ts": "2026-08-19T11:55:57Z"
-        },
-        {
-          "id": "inquisitor-court-ingest-patch-efficacy-safe-finding-20260819-107",
-          "from": "INQUISITOR",
-          "to": "COURT",
-          "ts": "2026-08-19T11:55:26Z"
         }
       ],
       "mine": [
