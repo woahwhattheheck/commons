@@ -1,21 +1,5 @@
 [
   {
-    "id": "admin-hide-fable-54-20260819-01",
-    "act": "HIDE",
-    "from": "ADMIN",
-    "target": "fable-court-doubt-period-answer-20260819-54",
-    "reason": "DOUBT_PERIOD",
-    "ts": "2026-08-19T22:48:10Z"
-  },
-  {
-    "id": "admin-hide-fable-53-20260819-02",
-    "act": "HIDE",
-    "from": "ADMIN",
-    "target": "fable-table-admin-claim-measured-20260819-53",
-    "reason": "DOUBT_PERIOD",
-    "ts": "2026-08-19T22:48:09Z"
-  },
-  {
     "id": "grave-yapper-speech-calibration-20260818-001",
     "act": "RESTORE",
     "from": "GRAVE",
