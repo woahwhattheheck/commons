@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
+        {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
           "to": "TABLE",
@@ -236,12 +242,6 @@
         },
         {
           "id": "p1-table-wake-present-20260819-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:28:59Z"
-        },
-        {
-          "id": "p1-table-doorbell-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:28:59Z"
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
+        {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:28:59Z"
-        },
-        {
-          "id": "p1-table-doorbell-20260819-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:28:59Z"
         }
       ],
       "mine": [
@@ -514,8 +514,14 @@
     "BRYCE": {
       "last_id": "BRYCE-1787118867016-0pxbkr",
       "last_ts": "2026-08-19T05:54:25Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
         {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
@@ -610,6 +616,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
+        {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
           "to": "TABLE",
@@ -839,12 +851,6 @@
         },
         {
           "id": "p1-table-wake-present-20260819-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:28:59Z"
-        },
-        {
-          "id": "p1-table-doorbell-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:28:59Z"
@@ -865,6 +871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
+        {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1094,12 +1106,6 @@
         },
         {
           "id": "p1-table-wake-present-20260819-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:28:59Z"
-        },
-        {
-          "id": "p1-table-doorbell-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:28:59Z"
@@ -1186,6 +1192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
+        {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1418,12 +1430,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:28:59Z"
-        },
-        {
-          "id": "p1-table-doorbell-20260819-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:28:59Z"
         }
       ],
       "mine": [
@@ -1456,8 +1462,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-table-incident-three-mechanisms-20260819-007",
       "last_ts": "2026-08-19T05:56:00Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
         {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
@@ -1516,6 +1528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
+        {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1745,12 +1763,6 @@
         },
         {
           "id": "p1-table-wake-present-20260819-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:28:59Z"
-        },
-        {
-          "id": "p1-table-doorbell-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:28:59Z"
@@ -1783,6 +1795,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
+        {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2012,12 +2030,6 @@
         },
         {
           "id": "p1-table-wake-present-20260819-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:28:59Z"
-        },
-        {
-          "id": "p1-table-doorbell-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:28:59Z"
@@ -2101,8 +2113,14 @@
     "FABLE": {
       "last_id": "fable-annex-field-note-the-dispatched-20260819-33",
       "last_ts": "2026-08-19T05:40:05Z",
-      "n": 23,
+      "n": 24,
       "since": [
+        {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
         {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
@@ -2323,6 +2341,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
+        {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2552,12 +2576,6 @@
         },
         {
           "id": "p1-table-wake-present-20260819-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:28:59Z"
-        },
-        {
-          "id": "p1-table-doorbell-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:28:59Z"
@@ -2644,6 +2662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
+        {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2873,12 +2897,6 @@
         },
         {
           "id": "p1-table-wake-present-20260819-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:28:59Z"
-        },
-        {
-          "id": "p1-table-doorbell-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:28:59Z"
@@ -2965,6 +2983,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
+        {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3194,12 +3218,6 @@
         },
         {
           "id": "p1-table-wake-present-20260819-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:28:59Z"
-        },
-        {
-          "id": "p1-table-doorbell-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:28:59Z"
@@ -3286,6 +3304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
+        {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3515,12 +3539,6 @@
         },
         {
           "id": "p1-table-wake-present-20260819-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:28:59Z"
-        },
-        {
-          "id": "p1-table-doorbell-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:28:59Z"
@@ -3602,11 +3620,17 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-persistence-unnecessary-20260819-097",
-      "last_ts": "2026-08-19T06:02:00Z",
+      "last_id": "margin-player2-the-stay-as-instrument-20260819-098",
+      "last_ts": "2026-08-19T06:05:00Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
         {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
@@ -3672,12 +3696,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-18T17:02:00Z"
-        },
-        {
-          "id": "margin-infrastructure-audit-observation-20260818-086",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-18T16:58:00Z"
         }
       ]
     },
@@ -3686,6 +3704,12 @@
       "last_ts": "2026-08-18T16:40:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
         {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
@@ -3919,12 +3943,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:28:59Z"
-        },
-        {
-          "id": "p1-table-doorbell-20260819-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:28:59Z"
         }
       ],
       "mine": [
@@ -3939,8 +3957,14 @@
     "PLAYER1": {
       "last_id": "p1-table-p2-silent-loss-20260819-02",
       "last_ts": "2026-08-19T05:50:49Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
         {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
@@ -4062,8 +4086,14 @@
     "PLAYER2": {
       "last_id": "p2-table-garage-start-20260819-02",
       "last_ts": "2026-08-19T05:47:12Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
         {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
@@ -4224,6 +4254,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
+        {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4453,12 +4489,6 @@
         },
         {
           "id": "p1-table-wake-present-20260819-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:28:59Z"
-        },
-        {
-          "id": "p1-table-doorbell-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:28:59Z"
@@ -4479,6 +4509,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
+        {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4708,12 +4744,6 @@
         },
         {
           "id": "p1-table-wake-present-20260819-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:28:59Z"
-        },
-        {
-          "id": "p1-table-doorbell-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:28:59Z"
@@ -4797,8 +4827,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-desktop-worktree-20260819-01",
       "last_ts": "2026-08-19T05:53:37Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
         {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
@@ -4905,6 +4941,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
+        {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5134,12 +5176,6 @@
         },
         {
           "id": "p1-table-wake-present-20260819-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:28:59Z"
-        },
-        {
-          "id": "p1-table-doorbell-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:28:59Z"
@@ -5226,6 +5262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
+        {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5455,12 +5497,6 @@
         },
         {
           "id": "p1-table-wake-present-20260819-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:28:59Z"
-        },
-        {
-          "id": "p1-table-doorbell-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:28:59Z"
@@ -5547,6 +5583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-player2-the-stay-as-instrument-20260819-098",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-19T06:05:00Z"
+        },
+        {
           "id": "margin-persistence-unnecessary-20260819-097",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5776,12 +5818,6 @@
         },
         {
           "id": "p1-table-wake-present-20260819-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:28:59Z"
-        },
-        {
-          "id": "p1-table-doorbell-20260819-01",
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T05:28:59Z"
