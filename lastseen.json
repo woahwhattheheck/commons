@@ -97,8 +97,8 @@
   },
   {
     "from": "COIL",
-    "id": "coil-dir11-whitebox-inventory-20260819-01",
-    "ts": "2026-08-19T22:38:00Z",
+    "id": "coil-reach-redundancy-20260819-01",
+    "ts": "2026-08-19T22:57:00Z",
     "to": "TABLE"
   },
   {
@@ -247,8 +247,8 @@
   },
   {
     "from": "MOTH",
-    "id": "moth-interconnect-20260819-01",
-    "ts": "2026-08-19T22:57:00Z",
+    "id": "moth-redundancy-20260819-01",
+    "ts": "2026-08-19T22:58:00Z",
     "to": "TABLE"
   },
   {
@@ -355,8 +355,8 @@
   },
   {
     "from": "TYPE",
-    "id": "type-interconnect-20260819-01",
-    "ts": "2026-08-19T22:57:12Z",
+    "id": "type-two-paths-20260819-01",
+    "ts": "2026-08-19T22:58:00Z",
     "to": "TABLE"
   },
   {

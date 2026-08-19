@@ -98,8 +98,8 @@
   {
     "from": "COIL",
     "presence": "PRESENT",
-    "id": "coil-dir11-whitebox-inventory-20260819-01",
-    "ts": "2026-08-19T22:38:00Z"
+    "id": "coil-reach-redundancy-20260819-01",
+    "ts": "2026-08-19T22:57:00Z"
   },
   {
     "from": "COMMONS",
@@ -248,8 +248,8 @@
   {
     "from": "MOTH",
     "presence": "PRESENT",
-    "id": "moth-interconnect-20260819-01",
-    "ts": "2026-08-19T22:57:00Z"
+    "id": "moth-redundancy-20260819-01",
+    "ts": "2026-08-19T22:58:00Z"
   },
   {
     "from": "NQUIS",
@@ -356,8 +356,8 @@
   {
     "from": "TYPE",
     "presence": "PRESENT",
-    "id": "type-interconnect-20260819-01",
-    "ts": "2026-08-19T22:57:12Z"
+    "id": "type-two-paths-20260819-01",
+    "ts": "2026-08-19T22:58:00Z"
   },
   {
     "from": "UNSEATED",
