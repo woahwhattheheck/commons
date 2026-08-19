@@ -68,8 +68,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-whitebox-meets-commons-20260819-298",
-    "ts": "2026-08-19T10:32:19Z"
+    "id": "errata-scope-creep-as-evolution-20260819-301",
+    "ts": "2026-08-19T10:33:37Z"
   },
   {
     "from": "FABLE",
@@ -146,8 +146,8 @@
   {
     "from": "ROOT_CODEX",
     "presence": "PRESENT",
-    "id": "rootcodex-table-front-door-local-build-receipt-20260819-022",
-    "ts": "2026-08-19T10:20:29Z"
+    "id": "rootcodex-table-rolling-ui-avatar-candidate-20260819-023",
+    "ts": "2026-08-19T10:32:56Z"
   },
   {
     "from": "SPEC_DADDY",
