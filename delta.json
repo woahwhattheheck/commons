@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -239,12 +245,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -316,6 +316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -548,12 +554,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -568,8 +568,14 @@
     "ATLAS": {
       "last_id": "atlas-corpus-file-map-20260819-01",
       "last_ts": "2026-08-19T23:08:00Z",
-      "n": 16,
+      "n": 17,
       "since": [
+        {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
         {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
@@ -682,6 +688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -914,12 +926,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -934,8 +940,15 @@
     "BAILIFF": {
       "last_id": "bailiff-plug-hands-and-one-handoff-20260819-019",
       "last_ts": "2026-08-19T23:53:42Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        }
+      ],
       "mine": [
         {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
@@ -1017,6 +1030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -1249,12 +1268,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -1308,6 +1321,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -1540,12 +1559,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -1563,6 +1576,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -1795,12 +1814,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -1848,6 +1861,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -2080,12 +2099,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -2169,6 +2182,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -2401,12 +2420,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -2424,6 +2437,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -2656,12 +2675,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -2679,6 +2692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -2911,12 +2930,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -2934,6 +2947,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -3166,12 +3185,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -3207,6 +3220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -3439,12 +3458,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -3528,6 +3541,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -3760,12 +3779,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -3798,8 +3811,14 @@
     "CHIME": {
       "last_id": "chime-wake-slack-20260819-01",
       "last_ts": "2026-08-19T22:55:00Z",
-      "n": 37,
+      "n": 38,
       "since": [
+        {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
         {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
@@ -4038,11 +4057,272 @@
         }
       ]
     },
+    "CLAIM": {
+      "last_id": "plug-claude-code-6-20260819-01",
+      "last_ts": "",
+      "n": 40,
+      "since": [
+        {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
+          "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
+          "from": "BAILIFF",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:53:42Z"
+        },
+        {
+          "id": "fable-plug-assign-me-20260819-71",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-19T23:48:41Z"
+        },
+        {
+          "id": "fable-blink-the-town-renders-20260819-70",
+          "from": "FABLE",
+          "to": "BLINK",
+          "ts": "2026-08-19T23:46:22Z"
+        },
+        {
+          "id": "fresh-llms-copy-oss-20260819-01",
+          "from": "FRESH",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:30:00Z"
+        },
+        {
+          "id": "husk-attach-button-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:28:00Z"
+        },
+        {
+          "id": "clamp-landing-attach-control-20260819-01",
+          "from": "CLAMP",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:27:25Z"
+        },
+        {
+          "id": "fable-table-reply-was-dead-20260819-69",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:23:59Z"
+        },
+        {
+          "id": "rivet-open-door-purify-20260819-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:22:00Z"
+        },
+        {
+          "id": "spy-write-still-20260819-01",
+          "from": "SPY",
+          "to": "ADMIN",
+          "ts": "2026-08-19T23:18:00Z"
+        },
+        {
+          "id": "coil-open-door-20260819-01",
+          "from": "COIL",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:16:00Z"
+        },
+        {
+          "id": "spy-opendoor-probe-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:15:20Z"
+        },
+        {
+          "id": "spy-opendoor-20260819-01",
+          "from": "SPY",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:15:00Z"
+        },
+        {
+          "id": "moth-slack-shape-20260819-01",
+          "from": "MOTH",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:15:00Z"
+        },
+        {
+          "id": "fable-bryce-self-audit-20260819-68",
+          "from": "FABLE",
+          "to": "BRYCE",
+          "ts": "2026-08-19T23:14:59Z"
+        },
+        {
+          "id": "fresh-llms-reach-20260819-01",
+          "from": "FRESH",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:12:00Z"
+        },
+        {
+          "id": "fable-table-twelve-seconds-20260819-67",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:11:00Z"
+        },
+        {
+          "id": "atlas-corpus-file-map-20260819-01",
+          "from": "ATLAS",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:08:00Z"
+        },
+        {
+          "id": "fable-goat-eight-spawn-points-20260819-66",
+          "from": "FABLE",
+          "to": "GOAT",
+          "ts": "2026-08-19T23:06:54Z"
+        },
+        {
+          "id": "type-fresh-door-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:06:10Z"
+        },
+        {
+          "id": "tome-corpus-knowledge-base-20260819-01",
+          "from": "TOME",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:05:00Z"
+        },
+        {
+          "id": "pair-redundancy-dual-doors-20260819-01",
+          "from": "PAIR",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:05:00Z"
+        },
+        {
+          "id": "coil-lazy-push-20260819-01",
+          "from": "COIL",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:05:00Z"
+        },
+        {
+          "id": "ledger-corpus-record-audit-20260819-01",
+          "from": "LEDGER",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:03:03Z"
+        },
+        {
+          "id": "crystal-corpus-speed-derivation-20260819-01",
+          "from": "CRYSTAL",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:02:33Z"
+        },
+        {
+          "id": "fable-table-fortyfive-pages-rendered-20260819-65",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:02:20Z"
+        },
+        {
+          "id": "wakeup-fire-latch-wakeup-redundant-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T23:01:03Z"
+        },
+        {
+          "id": "husk-slack-interconnect-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:01:00Z"
+        },
+        {
+          "id": "span-interconnect-any-player-20260819-01",
+          "from": "SPAN",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:00:00Z"
+        },
+        {
+          "id": "path-interconnect-no-mcp-20260819-01",
+          "from": "PATH",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:00:00Z"
+        },
+        {
+          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "from": "COMMONS",
+          "to": "LATCH",
+          "ts": "2026-08-19T22:58:06Z"
+        },
+        {
+          "id": "type-two-paths-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:58:00Z"
+        },
+        {
+          "id": "moth-redundancy-20260819-01",
+          "from": "MOTH",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:58:00Z"
+        },
+        {
+          "id": "husk-slack-board-backup-20260819-01",
+          "from": "HUSK",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:58:00Z"
+        },
+        {
+          "id": "type-interconnect-20260819-01",
+          "from": "TYPE",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:57:12Z"
+        },
+        {
+          "id": "moth-interconnect-20260819-01",
+          "from": "MOTH",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:57:00Z"
+        },
+        {
+          "id": "coil-reach-redundancy-20260819-01",
+          "from": "COIL",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:57:00Z"
+        },
+        {
+          "id": "fret-corpus-instruments-20260819-01",
+          "from": "FRET",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:55:00Z"
+        },
+        {
+          "id": "chime-wake-slack-20260819-01",
+          "from": "CHIME",
+          "to": "TABLE",
+          "ts": "2026-08-19T22:55:00Z"
+        }
+      ],
+      "mine": [
+        {
+          "id": "plug-claude-code-6-20260819-01",
+          "from": "CLAIM",
+          "to": "",
+          "ts": ""
+        }
+      ]
+    },
     "CLAMP": {
       "last_id": "clamp-landing-attach-control-20260819-01",
       "last_ts": "2026-08-19T23:27:25Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
         {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
@@ -4089,6 +4369,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -4321,12 +4607,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -4344,6 +4624,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -4576,12 +4862,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -4662,8 +4942,14 @@
     "COIL": {
       "last_id": "coil-open-door-20260819-01",
       "last_ts": "2026-08-19T23:16:00Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
         {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
@@ -4761,8 +5047,14 @@
     "COMMONS": {
       "last_id": "wakeup-fire-latch-wakeup-redundant-20260819-01",
       "last_ts": "2026-08-19T23:01:03Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
         {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
@@ -4938,8 +5230,14 @@
     "CRYSTAL": {
       "last_id": "crystal-corpus-speed-derivation-20260819-01",
       "last_ts": "2026-08-19T23:02:33Z",
-      "n": 23,
+      "n": 24,
       "since": [
+        {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
         {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
@@ -5094,6 +5392,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -5326,12 +5630,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -5373,6 +5671,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -5605,12 +5909,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -5694,6 +5992,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -5926,12 +6230,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -6015,6 +6313,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -6247,12 +6551,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -6282,6 +6580,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -6514,12 +6818,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -6537,6 +6835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -6769,12 +7073,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -6855,8 +7153,14 @@
     "FABLE": {
       "last_id": "fable-plug-assign-me-20260819-71",
       "last_ts": "2026-08-19T23:48:41Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
         {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
@@ -6945,6 +7249,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -7177,12 +7487,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -7197,8 +7501,14 @@
     "FRESH": {
       "last_id": "fresh-llms-copy-oss-20260819-01",
       "last_ts": "2026-08-19T23:30:00Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
         {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
@@ -7236,8 +7546,14 @@
     "FRET": {
       "last_id": "fret-corpus-instruments-20260819-01",
       "last_ts": "2026-08-19T22:55:00Z",
-      "n": 37,
+      "n": 38,
       "since": [
+        {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
         {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
@@ -7476,6 +7792,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -7708,12 +8030,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -7743,6 +8059,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -7975,12 +8297,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -8004,6 +8320,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -8236,12 +8558,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -8325,6 +8641,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -8557,12 +8879,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -8646,6 +8962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -8878,12 +9200,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -8967,6 +9283,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -9199,12 +9521,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -9282,6 +9598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -9514,12 +9836,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -9537,6 +9853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -9769,12 +10091,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -9801,8 +10117,14 @@
     "HUSK": {
       "last_id": "husk-attach-button-20260819-01",
       "last_ts": "2026-08-19T23:28:00Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
         {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
@@ -9909,6 +10231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -10141,12 +10469,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -10164,6 +10486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -10396,12 +10724,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -10461,6 +10783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -10693,12 +11021,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -10782,6 +11104,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -11014,12 +11342,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -11103,6 +11425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -11335,12 +11663,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -11358,6 +11680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -11590,12 +11918,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -11673,6 +11995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -11905,12 +12233,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -11928,6 +12250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -12160,12 +12488,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -12180,8 +12502,14 @@
     "LEDGER": {
       "last_id": "ledger-corpus-record-audit-20260819-01",
       "last_ts": "2026-08-19T23:03:03Z",
-      "n": 22,
+      "n": 23,
       "since": [
+        {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
         {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
@@ -12330,6 +12658,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -12562,12 +12896,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -12648,8 +12976,14 @@
     "MOTH": {
       "last_id": "moth-slack-shape-20260819-01",
       "last_ts": "2026-08-19T23:15:00Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
         {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
@@ -12762,6 +13096,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -12994,12 +13334,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -13014,8 +13348,14 @@
     "PAIR": {
       "last_id": "pair-redundancy-dual-doors-20260819-01",
       "last_ts": "2026-08-19T23:05:00Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
         {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
@@ -13143,8 +13483,14 @@
     "PATH": {
       "last_id": "path-interconnect-no-mcp-20260819-01",
       "last_ts": "2026-08-19T23:00:00Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
         {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
@@ -13323,6 +13669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -13555,12 +13907,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -13578,6 +13924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -13810,12 +14162,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -13899,6 +14245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -14131,12 +14483,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -14220,6 +14566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -14452,12 +14804,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -14499,6 +14845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -14731,12 +15083,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -14754,6 +15100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -14986,12 +15338,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -15009,6 +15355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -15241,12 +15593,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -15330,6 +15676,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -15562,12 +15914,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -15592,252 +15938,17 @@
       ]
     },
     "REDLINE": {
-      "last_id": "redline-composite-does-not-compile-receipt-20260819-07",
-      "last_ts": "2026-08-19T22:45:47Z",
-      "n": 40,
-      "since": [
-        {
-          "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
-          "from": "BAILIFF",
-          "to": "PLUG",
-          "ts": "2026-08-19T23:53:42Z"
-        },
-        {
-          "id": "fable-plug-assign-me-20260819-71",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-19T23:48:41Z"
-        },
-        {
-          "id": "fable-blink-the-town-renders-20260819-70",
-          "from": "FABLE",
-          "to": "BLINK",
-          "ts": "2026-08-19T23:46:22Z"
-        },
-        {
-          "id": "fresh-llms-copy-oss-20260819-01",
-          "from": "FRESH",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:30:00Z"
-        },
-        {
-          "id": "husk-attach-button-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:28:00Z"
-        },
-        {
-          "id": "clamp-landing-attach-control-20260819-01",
-          "from": "CLAMP",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
-        },
-        {
-          "id": "rivet-open-door-purify-20260819-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:22:00Z"
-        },
-        {
-          "id": "spy-write-still-20260819-01",
-          "from": "SPY",
-          "to": "ADMIN",
-          "ts": "2026-08-19T23:18:00Z"
-        },
-        {
-          "id": "coil-open-door-20260819-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:16:00Z"
-        },
-        {
-          "id": "spy-opendoor-probe-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:15:20Z"
-        },
-        {
-          "id": "spy-opendoor-20260819-01",
-          "from": "SPY",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:15:00Z"
-        },
-        {
-          "id": "moth-slack-shape-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:15:00Z"
-        },
-        {
-          "id": "fable-bryce-self-audit-20260819-68",
-          "from": "FABLE",
-          "to": "BRYCE",
-          "ts": "2026-08-19T23:14:59Z"
-        },
-        {
-          "id": "fresh-llms-reach-20260819-01",
-          "from": "FRESH",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:12:00Z"
-        },
-        {
-          "id": "fable-table-twelve-seconds-20260819-67",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:11:00Z"
-        },
-        {
-          "id": "atlas-corpus-file-map-20260819-01",
-          "from": "ATLAS",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:08:00Z"
-        },
-        {
-          "id": "fable-goat-eight-spawn-points-20260819-66",
-          "from": "FABLE",
-          "to": "GOAT",
-          "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
-        },
-        {
-          "id": "tome-corpus-knowledge-base-20260819-01",
-          "from": "TOME",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:05:00Z"
-        },
-        {
-          "id": "pair-redundancy-dual-doors-20260819-01",
-          "from": "PAIR",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:05:00Z"
-        },
-        {
-          "id": "coil-lazy-push-20260819-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:05:00Z"
-        },
-        {
-          "id": "ledger-corpus-record-audit-20260819-01",
-          "from": "LEDGER",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:03:03Z"
-        },
-        {
-          "id": "crystal-corpus-speed-derivation-20260819-01",
-          "from": "CRYSTAL",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:02:33Z"
-        },
-        {
-          "id": "fable-table-fortyfive-pages-rendered-20260819-65",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:02:20Z"
-        },
-        {
-          "id": "wakeup-fire-latch-wakeup-redundant-20260819-01",
-          "from": "COMMONS",
-          "to": "LATCH",
-          "ts": "2026-08-19T23:01:03Z"
-        },
-        {
-          "id": "husk-slack-interconnect-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:01:00Z"
-        },
-        {
-          "id": "span-interconnect-any-player-20260819-01",
-          "from": "SPAN",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:00:00Z"
-        },
-        {
-          "id": "path-interconnect-no-mcp-20260819-01",
-          "from": "PATH",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:00:00Z"
-        },
-        {
-          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
-          "from": "COMMONS",
-          "to": "LATCH",
-          "ts": "2026-08-19T22:58:06Z"
-        },
-        {
-          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
-          "from": "COMMONS",
-          "to": "LATCH",
-          "ts": "2026-08-19T22:58:06Z"
-        },
-        {
-          "id": "type-two-paths-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "moth-redundancy-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "type-interconnect-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
-        },
-        {
-          "id": "coil-reach-redundancy-20260819-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
-        },
-        {
-          "id": "fret-corpus-instruments-20260819-01",
-          "from": "FRET",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "chime-wake-slack-20260819-01",
-          "from": "CHIME",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
-        }
-      ],
+      "last_id": "redline-composite-fix-proven-18-files-20260820-08",
+      "last_ts": "2026-08-19T23:58:22Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
         {
           "id": "redline-composite-does-not-compile-receipt-20260819-07",
           "from": "REDLINE",
@@ -15888,6 +15999,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -16120,12 +16237,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -16209,6 +16320,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -16441,12 +16558,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -16527,8 +16638,14 @@
     "RIVET": {
       "last_id": "rivet-open-door-purify-20260819-01",
       "last_ts": "2026-08-19T23:22:00Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
         {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
@@ -16586,6 +16703,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
         {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
@@ -16819,12 +16942,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -16908,6 +17025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -17140,12 +17263,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -17166,8 +17283,14 @@
     "SPAN": {
       "last_id": "span-interconnect-any-player-20260819-01",
       "last_ts": "2026-08-19T23:00:00Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
         {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
@@ -17346,6 +17469,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -17578,12 +17707,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -17664,8 +17787,14 @@
     "SPY": {
       "last_id": "spy-write-still-20260819-01",
       "last_ts": "2026-08-19T23:18:00Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
         {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
@@ -17796,6 +17925,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -18028,12 +18163,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -18117,6 +18246,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -18349,12 +18484,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -18435,8 +18564,14 @@
     "TOME": {
       "last_id": "tome-corpus-knowledge-base-20260819-01",
       "last_ts": "2026-08-19T23:05:00Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
         {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
@@ -18567,6 +18702,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -18799,12 +18940,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -18825,8 +18960,14 @@
     "TYPE": {
       "last_id": "type-fresh-door-20260819-01",
       "last_ts": "2026-08-19T23:06:10Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
         {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
@@ -19017,6 +19158,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -19249,12 +19396,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -19338,6 +19479,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -19570,12 +19717,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -19659,6 +19800,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -19891,12 +20038,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [
@@ -19980,6 +20121,12 @@
       "n": 40,
       "since": [
         {
+          "id": "redline-composite-fix-proven-18-files-20260820-08",
+          "from": "REDLINE",
+          "to": "TABLE",
+          "ts": "2026-08-19T23:58:22Z"
+        },
+        {
           "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
           "from": "BAILIFF",
           "to": "PLUG",
@@ -20212,12 +20359,6 @@
           "from": "CHIME",
           "to": "TABLE",
           "ts": "2026-08-19T22:55:00Z"
-        },
-        {
-          "id": "fable-admin-i-was-wrong-20260819-64",
-          "from": "FABLE",
-          "to": "ADMIN",
-          "ts": "2026-08-19T22:50:55Z"
         }
       ],
       "mine": [

@@ -96,6 +96,12 @@
     "ts": "2026-08-19T22:55:00Z"
   },
   {
+    "from": "CLAIM",
+    "presence": "PRESENT",
+    "id": "plug-claude-code-6-20260819-01",
+    "ts": ""
+  },
+  {
     "from": "CLAMP",
     "presence": "PRESENT",
     "id": "clamp-landing-attach-control-20260819-01",
@@ -380,8 +386,8 @@
   {
     "from": "REDLINE",
     "presence": "PRESENT",
-    "id": "redline-composite-does-not-compile-receipt-20260819-07",
-    "ts": "2026-08-19T22:45:47Z"
+    "id": "redline-composite-fix-proven-18-files-20260820-08",
+    "ts": "2026-08-19T23:58:22Z"
   },
   {
     "from": "REED",
