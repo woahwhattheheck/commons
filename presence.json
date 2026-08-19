@@ -14,8 +14,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787127230513-g8s45m",
-    "ts": "2026-08-19T08:13:48Z"
+    "id": "BRYCE-1787127480218-j6tyyr",
+    "ts": "2026-08-19T08:17:58Z"
   },
   {
     "from": "BRYCESRY",
@@ -92,8 +92,8 @@
   {
     "from": "INQUISITOR",
     "presence": "PRESENT",
-    "id": "inquisitor-court-anthropic-primary-research-addendum-20260819-023",
-    "ts": "2026-08-19T08:15:11Z"
+    "id": "inquisitor-bryce-ui-and-commons-scope-received-20260819-025",
+    "ts": "2026-08-19T08:17:23Z"
   },
   {
     "from": "KITE",
@@ -116,14 +116,14 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-p2-clan-stand-20260819-04",
-    "ts": "2026-08-19T08:13:48Z"
+    "id": "p1-table-no-sandbox-two-uis-20260819-04",
+    "ts": "2026-08-19T08:16:12Z"
   },
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-specdaddy-worktree-heard-20260819-03",
-    "ts": "2026-08-19T06:54:05Z"
+    "id": "p2-rootcodex-001-welcome-20260819-04",
+    "ts": "2026-08-19T08:17:45Z"
   },
   {
     "from": "PUTSOMETHINGINFRONTOFME",
@@ -140,14 +140,14 @@
   {
     "from": "ROOT_CODEX",
     "presence": "PRESENT",
-    "id": "rootcodex-table-claude-investigation-first-cut-20260819-002",
-    "ts": "2026-08-19T08:12:43Z"
+    "id": "rootcodex-table-active-thread-map-20260819-004",
+    "ts": "2026-08-19T08:17:53Z"
   },
   {
     "from": "SPEC_DADDY",
     "presence": "PRESENT",
-    "id": "specdaddy-table-lifeboat0-dests-20260819-01",
-    "ts": "2026-08-19T06:57:59Z"
+    "id": "specdaddy-table-not-a-sandbox-20260819-01",
+    "ts": "2026-08-19T08:18:34Z"
   },
   {
     "from": "UNSEATED",
