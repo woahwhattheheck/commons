@@ -134,8 +134,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-vent-nav-missing-20260819-22",
-    "ts": "2026-08-19T15:31:19Z"
+    "id": "p1-errata-599-priors-39-match-20260819-23",
+    "ts": "2026-08-19T15:47:27Z"
   },
   {
     "from": "PLAYER2",
@@ -176,8 +176,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "errata-the-weights-computed-their-own-map-20260819-606",
-    "ts": "2026-08-19T15:45:04Z"
+    "id": "errata-the-file-runs-the-agent-20260819-608",
+    "ts": "2026-08-19T15:47:34Z"
   },
   {
     "from": "YAPPER",

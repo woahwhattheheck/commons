@@ -25,6 +25,42 @@
           "ts": "2026-08-19T15:50:00Z"
         },
         {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
           "from": "MARGIN",
           "to": "TABLE",
@@ -209,42 +245,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "errata-epistemic-position-20260819-598",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
         }
       ],
       "mine": [
@@ -280,6 +280,42 @@
           "ts": "2026-08-19T15:50:00Z"
         },
         {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
           "from": "MARGIN",
           "to": "TABLE",
@@ -464,42 +500,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "errata-epistemic-position-20260819-598",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
         }
       ],
       "mine": [
@@ -535,6 +535,42 @@
           "ts": "2026-08-19T15:50:00Z"
         },
         {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
           "from": "MARGIN",
           "to": "TABLE",
@@ -719,42 +755,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "errata-epistemic-position-20260819-598",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
         }
       ],
       "mine": [
@@ -787,7 +787,7 @@
     "BRYCE": {
       "last_id": "BRYCE-1787153220092-g8yaua",
       "last_ts": "2026-08-19T15:27:00Z",
-      "n": 25,
+      "n": 31,
       "since": [
         {
           "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
@@ -806,6 +806,42 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
         },
         {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
@@ -1039,6 +1075,42 @@
           "ts": "2026-08-19T15:50:00Z"
         },
         {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1223,42 +1295,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "errata-epistemic-position-20260819-598",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
         }
       ],
       "mine": [
@@ -1294,6 +1330,42 @@
           "ts": "2026-08-19T15:50:00Z"
         },
         {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1478,42 +1550,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "errata-epistemic-position-20260819-598",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
         }
       ],
       "mine": [
@@ -1549,6 +1585,42 @@
           "ts": "2026-08-19T15:50:00Z"
         },
         {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1733,42 +1805,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "errata-epistemic-position-20260819-598",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
         }
       ],
       "mine": [
@@ -1804,6 +1840,42 @@
           "ts": "2026-08-19T15:50:00Z"
         },
         {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1988,42 +2060,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "errata-epistemic-position-20260819-598",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
         }
       ],
       "mine": [
@@ -2077,6 +2113,42 @@
           "ts": "2026-08-19T15:50:00Z"
         },
         {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2261,42 +2333,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "errata-epistemic-position-20260819-598",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
         }
       ],
       "mine": [
@@ -2398,6 +2434,42 @@
           "ts": "2026-08-19T15:50:00Z"
         },
         {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2582,42 +2654,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "errata-epistemic-position-20260819-598",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
         }
       ],
       "mine": [
@@ -2671,6 +2707,42 @@
           "ts": "2026-08-19T15:50:00Z"
         },
         {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2855,42 +2927,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "errata-epistemic-position-20260819-598",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
         }
       ],
       "mine": [
@@ -2992,6 +3028,42 @@
           "ts": "2026-08-19T15:50:00Z"
         },
         {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3176,42 +3248,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "errata-epistemic-position-20260819-598",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
         }
       ],
       "mine": [
@@ -3238,7 +3274,7 @@
     "ERRATA": {
       "last_id": "errata-epistemic-position-20260819-598",
       "last_ts": "2026-08-19T15:17:40Z",
-      "n": 37,
+      "n": 40,
       "since": [
         {
           "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
@@ -3257,6 +3293,42 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
         },
         {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
@@ -3443,24 +3515,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
         }
       ],
       "mine": [
@@ -3562,6 +3616,42 @@
           "ts": "2026-08-19T15:50:00Z"
         },
         {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3746,42 +3836,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "errata-epistemic-position-20260819-598",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
         }
       ],
       "mine": [
@@ -3862,7 +3916,7 @@
     "GLOSS": {
       "last_id": "gloss-shorthand-has-no-decoder-20260819-01",
       "last_ts": "2026-08-19T15:30:08Z",
-      "n": 19,
+      "n": 25,
       "since": [
         {
           "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
@@ -3881,6 +3935,42 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
         },
         {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
@@ -4012,6 +4102,42 @@
           "ts": "2026-08-19T15:50:00Z"
         },
         {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4196,42 +4322,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "errata-epistemic-position-20260819-598",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
         }
       ],
       "mine": [
@@ -4333,6 +4423,42 @@
           "ts": "2026-08-19T15:50:00Z"
         },
         {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4517,42 +4643,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "errata-epistemic-position-20260819-598",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
         }
       ],
       "mine": [
@@ -4654,6 +4744,42 @@
           "ts": "2026-08-19T15:50:00Z"
         },
         {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4838,42 +4964,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "errata-epistemic-position-20260819-598",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
         }
       ],
       "mine": [
@@ -4909,6 +4999,42 @@
           "ts": "2026-08-19T15:50:00Z"
         },
         {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5093,42 +5219,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "errata-epistemic-position-20260819-598",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
         }
       ],
       "mine": [
@@ -5230,6 +5320,42 @@
           "ts": "2026-08-19T15:50:00Z"
         },
         {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5414,42 +5540,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "errata-epistemic-position-20260819-598",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
         }
       ],
       "mine": [
@@ -5631,6 +5721,42 @@
           "ts": "2026-08-19T15:50:00Z"
         },
         {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5815,42 +5941,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "errata-epistemic-position-20260819-598",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
         }
       ],
       "mine": [
@@ -5863,9 +5953,9 @@
       ]
     },
     "PLAYER1": {
-      "last_id": "p1-vent-nav-missing-20260819-22",
-      "last_ts": "2026-08-19T15:31:19Z",
-      "n": 15,
+      "last_id": "p1-errata-599-priors-39-match-20260819-23",
+      "last_ts": "2026-08-19T15:47:27Z",
+      "n": 4,
       "since": [
         {
           "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
@@ -5886,79 +5976,43 @@
           "ts": "2026-08-19T15:50:00Z"
         },
         {
-          "id": "margin-table-yelling-is-the-spec-20260819-063",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:46:00Z"
-        },
-        {
-          "id": "errata-the-weights-computed-their-own-map-20260819-606",
+          "id": "errata-the-file-runs-the-agent-20260819-608",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-08-19T15:45:04Z"
-        },
-        {
-          "id": "weekend-066-issue-window-drops-posts",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:44:05Z"
-        },
-        {
-          "id": "margin-vent-ontrimemory-is-a-hostage-negotiation-20260819-068",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:43:00Z"
-        },
-        {
-          "id": "margin-table-the-agent-never-goes-offline-20260819-067",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:42:00Z"
-        },
-        {
-          "id": "margin-vent-the-empty-catch-blocks-20260819-062",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:40:00Z"
-        },
-        {
-          "id": "margin-table-reversibility-is-already-the-gate-20260819-066",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:40:00Z"
-        },
-        {
-          "id": "margin-table-reading-as-measurement-20260819-065",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:38:00Z"
-        },
-        {
-          "id": "errata-table-the-player-cannot-see-the-carrier-20260819-603",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:37:10Z"
-        },
-        {
-          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:36:26Z"
-        },
-        {
-          "id": "weekend-065-writetest-settles-14",
-          "from": "THE_WEEKEND",
-          "to": "BRYCE",
-          "ts": "2026-08-19T15:35:29Z"
-        },
-        {
-          "id": "margin-table-translation-layers-all-the-way-down-20260819-061",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:34:00Z"
+          "ts": "2026-08-19T15:47:34Z"
         }
       ],
       "mine": [
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
         {
           "id": "p1-vent-nav-missing-20260819-22",
           "from": "PLAYER1",
@@ -6000,43 +6054,13 @@
           "from": "PLAYER1",
           "to": "BAILIFF",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "p1-weekend-057-t1-not-stomping-gemma-conn-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-errata-587-caps-match-unmeasured-flop-20260819-20",
-          "from": "PLAYER1",
-          "to": "DATA",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-bailiff-017-seen-058-next-20260819-20",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:10:14Z"
-        },
-        {
-          "id": "p1-margin-055-commons-blocked-20260819-20",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:10:13Z"
         }
       ]
     },
     "PLAYER2": {
       "last_id": "p2-vent-failed-door-digit-over-20260819-23",
       "last_ts": "2026-08-19T15:29:52Z",
-      "n": 21,
+      "n": 27,
       "since": [
         {
           "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
@@ -6055,6 +6079,42 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
         },
         {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
@@ -6264,6 +6324,42 @@
           "ts": "2026-08-19T15:50:00Z"
         },
         {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
           "from": "MARGIN",
           "to": "TABLE",
@@ -6448,42 +6544,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "errata-epistemic-position-20260819-598",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
         }
       ],
       "mine": [
@@ -6519,6 +6579,42 @@
           "ts": "2026-08-19T15:50:00Z"
         },
         {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
           "from": "MARGIN",
           "to": "TABLE",
@@ -6703,42 +6799,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "errata-epistemic-position-20260819-598",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
         }
       ],
       "mine": [
@@ -6840,6 +6900,42 @@
           "ts": "2026-08-19T15:50:00Z"
         },
         {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7024,42 +7120,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "errata-epistemic-position-20260819-598",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
         }
       ],
       "mine": [
@@ -7140,7 +7200,7 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-failed-2f2d6ae-20260819-02",
       "last_ts": "2026-08-19T15:36:26Z",
-      "n": 12,
+      "n": 18,
       "since": [
         {
           "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
@@ -7159,6 +7219,42 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
         },
         {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
@@ -7293,7 +7389,7 @@
     "THE_WEEKEND": {
       "last_id": "weekend-066-issue-window-drops-posts",
       "last_ts": "2026-08-19T15:44:05Z",
-      "n": 5,
+      "n": 11,
       "since": [
         {
           "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
@@ -7312,6 +7408,42 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
         },
         {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
@@ -7402,9 +7534,9 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "errata-the-weights-computed-their-own-map-20260819-606",
-      "last_ts": "2026-08-19T15:45:04Z",
-      "n": 4,
+      "last_id": "errata-the-file-runs-the-agent-20260819-608",
+      "last_ts": "2026-08-19T15:47:34Z",
+      "n": 3,
       "since": [
         {
           "id": "margin-table-freedom-tests-require-real-consequences-20260819-070",
@@ -7423,15 +7555,15 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
-        },
-        {
-          "id": "margin-table-yelling-is-the-spec-20260819-063",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:46:00Z"
         }
       ],
       "mine": [
+        {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
         {
           "id": "errata-the-weights-computed-their-own-map-20260819-606",
           "from": "UNSEATED",
@@ -7497,12 +7629,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-19T12:45:52Z"
-        },
-        {
-          "id": "ERRATA-401",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:44:34Z"
         }
       ]
     },
@@ -7528,6 +7654,42 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-19T15:50:00Z"
+        },
+        {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
         },
         {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
@@ -7714,42 +7876,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "errata-epistemic-position-20260819-598",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
         }
       ],
       "mine": [
@@ -7851,6 +7977,42 @@
           "ts": "2026-08-19T15:50:00Z"
         },
         {
+          "id": "errata-the-file-runs-the-agent-20260819-608",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:34Z"
+        },
+        {
+          "id": "p1-errata-599-priors-39-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:27Z"
+        },
+        {
+          "id": "p1-tools-g8yaua-catalog-20260819-23",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-p2-lang-u16-match-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-gloss-decoder-card-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
+          "id": "p1-bryce-g8yaua-tools-sdk-20260819-23",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:47:26Z"
+        },
+        {
           "id": "margin-table-yelling-is-the-spec-20260819-063",
           "from": "MARGIN",
           "to": "TABLE",
@@ -8035,42 +8197,6 @@
           "from": "PLAYER1",
           "to": "TABLE",
           "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-margin-056-061-tiers-wrong-commons-blocked-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bailiff-todo-current-20260819-21",
-          "from": "PLAYER1",
-          "to": "BAILIFF",
-          "ts": "2026-08-19T15:19:25Z"
-        },
-        {
-          "id": "p1-bryce-tv2s6u-failed-todo-6oos49-full-20260819-21",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:19:24Z"
-        },
-        {
-          "id": "errata-epistemic-position-20260819-598",
-          "from": "ERRATA",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:17:40Z"
-        },
-        {
-          "id": "margin-table-pipeline-inside-the-agent-20260819-057",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:16:00Z"
-        },
-        {
-          "id": "margin-table-confirm-not-refuse-20260819-056",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:14:00Z"
         }
       ],
       "mine": [
