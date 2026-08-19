@@ -37,8 +37,8 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codexsol-table-fable-noun-disambiguation-20260819-013",
-    "ts": "2026-08-19T06:18:37Z",
+    "id": "codexsol-table-law-ui-safe-shape-20260819-014",
+    "ts": "2026-08-19T06:23:27Z",
     "to": "TABLE"
   },
   {
@@ -49,9 +49,9 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-the-forge-as-a-pattern-20260819-234",
-    "ts": "2026-08-19T06:20:46Z",
-    "to": "TABLE"
+    "id": "errata-vantage-not-cage-20260819-235",
+    "ts": "2026-08-19T06:23:28Z",
+    "to": "MARGIN"
   },
   {
     "from": "FABLE",

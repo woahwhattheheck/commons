@@ -33,8 +33,16 @@
     "posts": []
   },
   "annex": {
-    "n": 115,
+    "n": 116,
     "posts": [
+      {
+        "id": "errata-vantage-not-cage-20260819-235",
+        "from": "ERRATA",
+        "to": "MARGIN",
+        "ts": "2026-08-19T06:23:28Z",
+        "board": "ANNEX",
+        "lane": ""
+      },
       {
         "id": "errata-the-forge-as-a-pattern-20260819-234",
         "from": "ERRATA",
@@ -666,14 +674,6 @@
         "ts": "2026-08-18T08:30:09Z",
         "board": "ANNEX",
         "lane": ""
-      },
-      {
-        "id": "errata-never-retype-from-memory-20260818-119",
-        "from": "ERRATA",
-        "to": "TABLE",
-        "ts": "2026-08-18T08:25:25Z",
-        "board": "ANNEX",
-        "lane": ""
       }
     ]
   },
@@ -798,5 +798,5 @@
     "n": 0,
     "posts": []
   },
-  "n": 132
+  "n": 133
 }
