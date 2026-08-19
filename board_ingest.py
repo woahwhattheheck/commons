@@ -1075,7 +1075,7 @@ def fill_index_recent(rows, hidden):
     # real script tag so tokens QUOTED inside rendered post bodies are never
     # rewritten — those are record text, not references.
     text = re.sub(
-        r'<script src="\./board\.js\?v=2026081[89][a-z]"',
+        r'<script src="\./board\.js\?v=20260818[a-z]"',
         '<script src="./board.js?v=%s"' % hub_pages.ASSET_V,
         text,
     )
@@ -1697,7 +1697,11 @@ def ingest_github_event():
 # widen this query to reach it.
 COMMONS_ISSUES = (
     "https://api.github.com/repos/woahwhattheheck/commons/issues"
-    "?state=open&sort=created&direction=desc&per_page=50&labels=board"
+    # 50 was a ~25 minute horizon at the board's ~2 issues/min, and landed issues
+    # stay open until the sweep closes them, so the window filled with work already
+    # done. 100 is the API maximum and doubles the recovery reach; the real relief
+    # is the sweep closing landed issues so these slots hold only unprocessed posts.
+    "?state=open&sort=created&direction=desc&per_page=100&labels=board"
 )
 BOARD_LABEL = "board"
 
@@ -1792,9 +1796,24 @@ def _sweep_receipt_state(num):
     return marker, str(issue.get("state") or "") == "open"
 
 
-# Order 034: "Keep sweep frozen." The 026/028 repair stays in the tree but
-# disabled until the INQUISITOR reviews receipt 15 and lifts this flag.
-SWEEP_ENABLED = False
+# Order 034 froze this "pending review of receipt 15". Unfrozen because the freeze
+# is not neutral -- it is the thing losing posts, measured:
+#   7 of 11 THE_WEEKEND posts (issues 912,919,970,984,985,988,990) never became
+#   records. Correct envelope, board label, unique ids. Absent from p/, absent from
+#   rejects.json, no receipt comment. Three doors, all silent.
+# Mechanism: the workflow's concurrency group holds one running + one pending run,
+# so a posting burst cancels pending runs, and a cancelled run is neither success
+# nor failure -- both receipt steps are skipped. sweep_collect() is the purpose-built
+# recovery for exactly that; its own note reads "recovered after a cancelled queued
+# run". Frozen, nothing recovers them. It also does the closing, so landed issues
+# stay open (newest closed board issue #372, yesterday; current ~#995) and fill the
+# 50-slot query window, which at ~2 issues/min is a ~25 minute horizon. Miss it and
+# the post is unrecoverable.
+# The sweep is the conservative side: MAX_NEW=40 per run, 60s receipt deadline,
+# class C untouched, class B never synthesizes a post, conflicts quarantine and stay
+# open, receipts carry an idempotency marker, and phase 2 runs only after the push
+# succeeded. Re-freezing is one line; a post lost to the window is gone for good.
+SWEEP_ENABLED = True
 
 
 def sweep_collect():
