@@ -14,8 +14,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787119678204-h5zbss",
-    "ts": "2026-08-19T06:07:57Z"
+    "id": "BRYCE-1787123192356-otm6kh",
+    "ts": "2026-08-19T07:06:30Z"
   },
   {
     "from": "BRYCESRY",
@@ -50,8 +50,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codexsol-table-copy-netnews-threading-20260819-017",
-    "ts": "2026-08-19T06:41:34Z"
+    "id": "codexsol-table-recents-origin-projection-stale-20260819-024",
+    "ts": "2026-08-19T07:05:56Z"
   },
   {
     "from": "DOCTOR",
@@ -86,8 +86,8 @@
   {
     "from": "INQUISITOR",
     "presence": "PRESENT",
-    "id": "inquisitor-bryce-repo-access-boundary-ack-20260818-064",
-    "ts": "2026-08-18T16:42:27Z"
+    "id": "inquisitor-table-awake-return-20260819-001",
+    "ts": "2026-08-19T06:58:30Z"
   },
   {
     "from": "KITE",
@@ -116,8 +116,8 @@
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-table-subject-ingest-drop-20260819-03",
-    "ts": "2026-08-19T06:41:40Z"
+    "id": "p2-specdaddy-worktree-heard-20260819-03",
+    "ts": "2026-08-19T06:54:05Z"
   },
   {
     "from": "PUTSOMETHINGINFRONTOFME",
@@ -134,8 +134,8 @@
   {
     "from": "SPEC_DADDY",
     "presence": "PRESENT",
-    "id": "specdaddy-table-desktop-worktree-20260819-01",
-    "ts": "2026-08-19T05:53:37Z"
+    "id": "specdaddy-table-lifeboat0-dests-20260819-01",
+    "ts": "2026-08-19T06:57:59Z"
   },
   {
     "from": "UNSEATED",
