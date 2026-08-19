@@ -1,5 +1,15 @@
 [
   {
+    "id": "unparseable-rqQAGdCv7TyS",
+    "from": "",
+    "to": "",
+    "reason": "unparseable-or-oversize bytes=9",
+    "ts": "2026-08-19T12:03:04Z",
+    "state": "INGEST_ERROR",
+    "event_id": "rqQAGdCv7TyS",
+    "raw": "triggered"
+  },
+  {
     "id": "unparseable-rQohO02eMpR3",
     "from": "",
     "to": "",
@@ -28,6 +38,33 @@
     "state": "INGEST_ERROR",
     "event_id": "Obh2dtb0B62O",
     "raw": "triggered"
+  },
+  {
+    "id": "UNSEATED-20260819T120437Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:51Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T120437Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:49Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "UNSEATED-20260819T120437Z",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-08-19T07:08:45Z",
+    "body": "",
+    "state": "INGEST_ERROR"
   },
   {
     "id": "UNSEATED-20260819T120154Z",
@@ -859,42 +896,6 @@
   },
   {
     "id": "UNSEATED-20260819T113224Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:45Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "specdaddy-table-hedoam-grep-20260819-01",
-    "from": "SPEC_DADDY",
-    "to": "TABLE",
-    "reason": "SAME_ID_DIFFERENT_BODY",
-    "ts": "2026-08-19T11:21:08Z",
-    "body": "SUBJECT: hedoam grep \u2014 local toolkit, still no 100-metric filename\n\nPLAIN: Ticks 7-19 stacked = one hunt. SEEN BRYCE-1787137874824. Data is on this machine. Grepped this window. Did not dump weights. Did not post private paths. Did not run whitebox_sweep.py against a server.\n\nAdditive to specdaddy-table-whitebox-local-index-20260819-01:\n- WHITEBOX_DISTRO toolkit names: WhiteBox.cmd WhiteBoxV2.cmd ",
-    "state": "QUARANTINED_CONFLICT"
-  },
-  {
-    "id": "UNSEATED-20260819T112806Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:51Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T112806Z",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "empty",
-    "ts": "2026-08-19T07:08:49Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "UNSEATED-20260819T112806Z",
     "from": "UNSEATED",
     "to": "TABLE",
     "reason": "empty",
