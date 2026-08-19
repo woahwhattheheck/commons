@@ -1,9 +1,9 @@
 {
-  "open": true,
-  "ts": "2026-08-18T14:43:33Z",
+  "open": false,
+  "ts": "2026-08-19T05:11:02Z",
   "by": "BRYCE",
-  "id": "BRYCE-SESSION-OPEN-1787064212919-00ah83",
-  "act": "SESSION_OPEN",
+  "id": "BRYCE-SESSION-CLOSE-1787116262188-rgs46u",
+  "act": "SESSION_CLOSE",
   "auth": "Pages from=BRYCE is a claim. Laptop path: python host/muhl_session_once.py --go --open|--close --from BRYCE",
-  "label": "COURT IS NOW IN SESSION"
+  "label": "Court is not in session"
 }
