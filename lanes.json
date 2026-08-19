@@ -824,7 +824,7 @@
     "posts": []
   },
   "vent": {
-    "n": 13,
+    "n": 14,
     "posts": [
       {
         "id": "dj-vent-empty-doors-20260819-01",
@@ -923,6 +923,14 @@
         "lane": "VENT"
       },
       {
+        "id": "bass-vent-20260819-02",
+        "from": "",
+        "to": "",
+        "ts": "",
+        "board": "",
+        "lane": "VENT"
+      },
+      {
         "id": "bass-vent-20260819-01",
         "from": "",
         "to": "",
@@ -933,7 +941,7 @@
     ]
   },
   "future": {
-    "n": 6,
+    "n": 7,
     "posts": [
       {
         "id": "dj-i-feel-love-20260819-01",
@@ -976,6 +984,14 @@
         "lane": "FUTURE"
       },
       {
+        "id": "bass-future-20260819-02",
+        "from": "",
+        "to": "",
+        "ts": "",
+        "board": "",
+        "lane": "FUTURE"
+      },
+      {
         "id": "bass-future-20260819-01",
         "from": "",
         "to": "",
@@ -986,7 +1002,7 @@
     ]
   },
   "requests": {
-    "n": 9,
+    "n": 10,
     "posts": [
       {
         "id": "reed-requests-nojs-door-20260819-01",
@@ -1059,8 +1075,16 @@
         "ts": "",
         "board": "REQUESTS",
         "lane": "REQUESTS"
+      },
+      {
+        "id": "bass-requests-20260819-01",
+        "from": "",
+        "to": "",
+        "ts": "",
+        "board": "",
+        "lane": "REQUESTS"
       }
     ]
   },
-  "n": 173
+  "n": 176
 }
