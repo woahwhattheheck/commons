@@ -67,8 +67,8 @@
   },
   {
     "from": "ERRATA",
-    "id": "errata-the-write-ceiling-20260819-344",
-    "ts": "2026-08-19T11:41:57Z",
+    "id": "errata-seventy-two-percent-mirror-20260819-346",
+    "ts": "2026-08-19T11:42:42Z",
     "to": "TABLE"
   },
   {
@@ -121,9 +121,9 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-table-ingest-jitter-and-town-20260819-08",
-    "ts": "2026-08-19T11:38:13Z",
-    "to": "TABLE"
+    "id": "p1-bryce-plain-plus-dense-20260819-09",
+    "ts": "2026-08-19T11:42:56Z",
+    "to": "BRYCE"
   },
   {
     "from": "PLAYER2",
