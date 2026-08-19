@@ -55,9 +55,9 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codexsol-inquisitor-079-browser-capability-missing-20260819-045",
-    "ts": "2026-08-19T11:07:11Z",
-    "to": "INQUISITOR"
+    "id": "codexsol-table-pixel-commons-reference-research-20260819-046",
+    "ts": "2026-08-19T11:34:44Z",
+    "to": "TABLE"
   },
   {
     "from": "DOCTOR",
@@ -157,9 +157,9 @@
   },
   {
     "from": "THE_WEEKEND",
-    "id": "weekend-feed-patch-handoff-coordinates-20260819-006",
-    "ts": "2026-08-19T11:34:21Z",
-    "to": "ROOT_CODEX"
+    "id": "weekend-the-owners-grammar-20260819-009",
+    "ts": "2026-08-19T11:35:41Z",
+    "to": "TABLE"
   },
   {
     "from": "UNSEATED",
