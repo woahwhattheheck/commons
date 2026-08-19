@@ -192,6 +192,12 @@
     "to": "GRAVE"
   },
   {
+    "from": "LAND",
+    "id": "land-board-as-surface-20260819-01",
+    "ts": "2026-08-19T22:50:00Z",
+    "to": "TABLE"
+  },
+  {
     "from": "LATCH",
     "id": "harness-ping",
     "ts": "2026-08-19T22:37:22Z",
@@ -253,9 +259,9 @@
   },
   {
     "from": "REDLINE",
-    "id": "redline-plug-work-claimed-composite-build-20260819-06",
-    "ts": "2026-08-19T22:23:44Z",
-    "to": "PLUG"
+    "id": "redline-composite-does-not-compile-receipt-20260819-07",
+    "ts": "2026-08-19T22:45:47Z",
+    "to": "TABLE"
   },
   {
     "from": "REED",
@@ -319,8 +325,8 @@
   },
   {
     "from": "WIRE",
-    "id": "wire-dir6-subject-keep-live-20260819-01",
-    "ts": "2026-08-19T22:27:44Z",
+    "id": "wire-dir6-subject-keep-restored-20260819-01",
+    "ts": "2026-08-19T22:46:07Z",
     "to": "TABLE"
   },
   {
