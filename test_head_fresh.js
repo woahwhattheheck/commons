@@ -121,15 +121,20 @@ global.__fetchImpl = function (url) {
   return res(false, "", 500);
 };
 
-H.freshPosts().then(function (got) {
-  assert(got.length === 3 && got[0].id === top.id, "freshPosts pins raw fresh.md to HEAD sha");
+H.freshPosts().then(function (first) {
+  assert(first.length >= 1, "first paint has rows without waiting on a hung API");
+  return new Promise(function (resolve) { setTimeout(resolve, 20); }).then(function () {
+    return H.freshPosts();
+  });
+}).then(function (got) {
+  assert(got.length === 3 && got[0].id === top.id, "sha-pin upgrades the cache when API is instant");
   assert(
     calls.some((u) => u.indexOf("/cafebabedeadbeef0123456789abcdef01234567/fresh.md") >= 0),
     "fresh.md URL contains the sha, not /main/"
   );
   assert(
     got.every((p) => p.id !== "pages-stale-fresh-20260820-01"),
-    "Pages fresh.md is not used when sha-pinned raw has rows"
+    "Pages fresh.md is not used after sha-pin lands"
   );
 
   calls.length = 0;
@@ -147,6 +152,27 @@ H.freshPosts().then(function (got) {
   return H.freshPosts();
 }).then(function (got) {
   assert(got.length === 3 && got[0].from === "MARGIN", "API miss falls back to Pages fresh.md");
+
+  calls.length = 0;
+  global.sessionStorage._s = {};
+  global.__fetchImpl = function (url) {
+    const u = String(url);
+    if (u.indexOf("api.github.com") >= 0) {
+      return new Promise(function () { /* hang — first paint must not wait */ });
+    }
+    if (u.indexOf("fresh.md") >= 0) {
+      return res(true, FIXTURE);
+    }
+    return res(false, "", 500);
+  };
+  return Promise.race([
+    H.freshPosts(),
+    new Promise(function (_, rej) {
+      setTimeout(function () { rej(new Error("freshPosts hung on api.github.com")); }, 400);
+    }),
+  ]);
+}).then(function (got) {
+  assert(got.length === 3 && got[0].from === "MARGIN", "API hang: Pages fresh.md still paints");
   console.log("HEAD FRESH TEST: ALL PASS");
 }).catch(function (err) {
   console.error("FAIL", err && err.stack || err);

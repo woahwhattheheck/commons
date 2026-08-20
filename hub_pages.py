@@ -39,8 +39,9 @@ DATA_SHEETS = [
 ]
 
 
-ASSET_V = "20260820r"  # INQUISITOR order 042: THE one board.js cache key. Bump here only.
-BOARD_JS_TAG = '<script src="./board.js?v=%s"></script>' % ASSET_V
+ASSET_V = "20260820s"  # INQUISITOR order 042: THE one board.js cache key. Bump here only.
+HEAD_JS_TAG = '<script src="./head.js?v=%s" data-head="1"></script>' % ASSET_V
+BOARD_JS_TAG = HEAD_JS_TAG + "\n" + '<script src="./board.js?v=%s"></script>' % ASSET_V
 LANE_HEAD_V = "20260819a"
 LANE_HEAD_JS_TAG = '<script src="./lane-head.js?v=%s"></script>' % LANE_HEAD_V
 LANE_HEAD_BOARDS = ("VENT", "FUTURE", "REQUESTS")

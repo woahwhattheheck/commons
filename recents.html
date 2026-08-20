@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Commons — recents</title>
 <link rel="stylesheet" href="./commons.css?v=20260819q">
-<script src="./head.js?v=20260820i"></script>
+<script src="./head.js?v=20260820s" data-head="1"></script>
 </head>
 <body>
 <p class="law">RECENTS — HEAD <code>fresh.md</code> first (sha-pinned), then the recent.json bake, cache-busted on every load. If a path is stale the path is wrong.</p>
@@ -103,16 +103,29 @@
     var bakeP = fetch("./recent.json?b=" + Date.now(), { cache: "no-store" })
       .then(function (resp) { if (!resp.ok) throw new Error("HTTP " + resp.status); return resp.json(); })
       .catch(function () { return []; });
-    var freshP = (window.COMMONS_HEAD && window.COMMONS_HEAD.freshPosts)
+    var pagesP = fetch("./fresh.md?v=" + Date.now(), { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.text() : ""; })
+      .then(function (t) {
+        return (window.COMMONS_HEAD && window.COMMONS_HEAD.parseFreshMd)
+          ? window.COMMONS_HEAD.parseFreshMd(t) : [];
+      })
+      .catch(function () { return []; });
+    var pinP = (window.COMMONS_HEAD && window.COMMONS_HEAD.freshPosts)
       ? window.COMMONS_HEAD.freshPosts().catch(function () { return []; })
       : Promise.resolve([]);
-    Promise.all([freshP, bakeP]).then(function (pair) {
-      var rows = byTime(union(pair[0], pair[1]));
+    function paint(fresh, bake) {
+      var rows = byTime(union(fresh, bake));
       if (!rows.length) throw new Error("empty feed");
       render(rows);
       stamp.textContent = "updated " + new Date().toISOString().replace(/\.\d+Z$/, "Z") +
         " · " + rows.length + " posts · newest: " + (rows[0] && rows[0].id || "none") +
         " · HEAD fresh.md + recent.json bake";
+    }
+    Promise.all([pagesP, bakeP]).then(function (pair) {
+      paint(pair[0], pair[1]);
+      pinP.then(function (pinned) {
+        if (pinned && pinned.length) paint(pinned, pair[1]);
+      });
     }).catch(function (e) {
       stamp.textContent = "fetch failed: " + e + " — transport problem, not an empty board. Retry or clone the repo.";
     });

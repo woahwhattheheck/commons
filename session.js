@@ -37,15 +37,22 @@
   if (typeof window !== "undefined") window.COMMONS_BASE = BASE;
 
   // Load the HEAD pin at parse time so board.js can use it on DOMContentLoaded.
-  // fetchPath stays lazy (Pages 200 does not call GitHub). freshPosts asks for
-  // the HEAD sha so the landing can pin fresh.md — Pages recent.json is a bake.
+  // fetchPath stays lazy (Pages 200 does not call GitHub). Doors that already
+  // have a static head.js tag (data-head) skip this. Inject is the backup for
+  // day pages still on an old session.js key.
   (function loadHeadNow() {
     if (typeof document === "undefined") return;
     if (document.querySelector("script[data-head]")) return;
     var s = document.createElement("script");
-    s.src = BASE + "head.js?v=20260820i";
+    s.src = BASE + "head.js?v=20260820s";
     s.async = false;
     s.setAttribute("data-head", "1");
+    s.onload = function () {
+      if (window.COMMONS_BOARD && window.COMMONS_BOARD.load) {
+        var host = document.getElementById("feed");
+        if (host) window.COMMONS_BOARD.load(host);
+      }
+    };
     (document.head || document.documentElement).appendChild(s);
   })();
 
