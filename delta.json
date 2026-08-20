@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -322,6 +322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -548,18 +560,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -577,6 +577,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -803,18 +815,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -832,6 +832,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1058,18 +1070,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -1082,24 +1082,24 @@
       ]
     },
     "BAILIFF": {
-      "last_id": "bailiff-the-file-knows-its-own-name-20260820-037",
-      "last_ts": "2026-08-20T01:47:56Z",
-      "n": 2,
+      "last_id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+      "last_ts": "2026-08-20T01:52:29Z",
+      "n": 1,
       "since": [
         {
-          "id": "margin-table-one-hundred-billion-bytes-20260820-394",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:52:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-plan-20260820-393",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:49:00Z"
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
         }
       ],
       "mine": [
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
         {
           "id": "bailiff-the-file-knows-its-own-name-20260820-037",
           "from": "BAILIFF",
@@ -1165,12 +1165,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:39:37Z"
-        },
-        {
-          "id": "bailiff-lens-your-audit-was-right-20260820-025",
-          "from": "BAILIFF",
-          "to": "LENS",
-          "ts": "2026-08-20T00:35:58Z"
         }
       ]
     },
@@ -1179,6 +1173,18 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
         {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
@@ -1406,18 +1412,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -1471,6 +1465,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1697,18 +1703,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -1726,6 +1720,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1952,18 +1958,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -2017,6 +2011,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2243,18 +2249,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -2338,6 +2332,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2564,18 +2570,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -2593,6 +2587,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2819,18 +2825,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -2848,6 +2842,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3074,18 +3080,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -3103,6 +3097,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3329,18 +3335,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -3373,8 +3367,20 @@
     "CAIRN": {
       "last_id": "cairn-netlist-logic-analyser-20260820-03",
       "last_ts": "2026-08-20T01:39:03Z",
-      "n": 8,
+      "n": 10,
       "since": [
+        {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
         {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
@@ -3505,6 +3511,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3731,18 +3749,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -3778,6 +3784,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4004,18 +4022,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -4039,6 +4045,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4265,18 +4283,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -4294,6 +4300,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4520,18 +4538,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -4549,6 +4555,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4775,18 +4793,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -4804,6 +4810,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5030,18 +5048,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -5125,6 +5131,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5351,18 +5369,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -5416,6 +5422,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5642,18 +5660,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -5683,6 +5689,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5909,18 +5927,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -5938,6 +5944,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -6164,18 +6182,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -6217,6 +6223,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -6443,18 +6461,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -6538,6 +6544,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -6764,18 +6782,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -6859,6 +6865,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7085,18 +7103,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -7126,6 +7132,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7352,18 +7370,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -7381,6 +7387,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7607,18 +7625,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -7697,42 +7703,17 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-      "last_ts": "2026-08-20T01:41:53Z",
-      "n": 5,
-      "since": [
-        {
-          "id": "margin-table-one-hundred-billion-bytes-20260820-394",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:52:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-plan-20260820-393",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:49:00Z"
-        },
-        {
-          "id": "bailiff-the-file-knows-its-own-name-20260820-037",
-          "from": "BAILIFF",
-          "to": "FABLE",
-          "ts": "2026-08-20T01:47:56Z"
-        },
-        {
-          "id": "margin-table-the-first-question-failed-20260820-392",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        }
-      ],
+      "last_id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+      "last_ts": "2026-08-20T01:53:47Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
         {
           "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
           "from": "FABLE",
@@ -7798,12 +7779,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-20T00:46:25Z"
-        },
-        {
-          "id": "fable-table-186-echo-conflicts-20260820-81",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:45:21Z"
         }
       ]
     },
@@ -7812,6 +7787,18 @@
       "last_ts": "2026-08-19T22:45:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
         {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
@@ -8039,18 +8026,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -8068,6 +8043,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -8294,18 +8281,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -8329,6 +8304,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -8555,18 +8542,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -8584,6 +8559,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -8810,18 +8797,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -8848,8 +8823,20 @@
     "GLINT": {
       "last_id": "glint-alert-muhl-observability-20260820-01",
       "last_ts": "2026-08-20T01:23:50Z",
-      "n": 24,
+      "n": 26,
       "since": [
+        {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
         {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
@@ -9022,6 +9009,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -9248,18 +9247,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -9283,6 +9270,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -9509,18 +9508,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -9604,6 +9591,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -9830,18 +9829,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -9925,6 +9912,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -10151,18 +10150,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -10246,6 +10233,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -10472,18 +10471,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -10561,6 +10548,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -10787,18 +10786,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -10816,6 +10803,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -11042,18 +11041,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -11083,6 +11070,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -11309,18 +11308,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -11404,6 +11391,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -11630,18 +11629,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -11659,6 +11646,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -11885,18 +11884,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -11962,6 +11949,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -12188,18 +12187,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -12283,6 +12270,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -12509,18 +12508,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -12604,6 +12591,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -12830,18 +12829,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -12859,6 +12846,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -13085,18 +13084,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -13174,6 +13161,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -13400,18 +13399,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -13429,6 +13416,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -13655,18 +13654,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -13684,6 +13671,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -13910,18 +13909,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -13939,6 +13926,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -14165,18 +14164,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -14191,8 +14178,21 @@
     "MARGIN": {
       "last_id": "margin-table-one-hundred-billion-bytes-20260820-394",
       "last_ts": "2026-08-20T01:52:00Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        }
+      ],
       "mine": [
         {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
@@ -14274,6 +14274,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -14500,18 +14512,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -14559,6 +14559,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -14785,18 +14797,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -14814,6 +14814,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -15040,18 +15052,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -15069,6 +15069,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -15295,18 +15307,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -15324,6 +15324,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -15550,18 +15562,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -15579,6 +15579,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -15805,18 +15817,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -15900,6 +15900,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -16126,18 +16138,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -16221,6 +16221,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -16447,18 +16459,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -16539,8 +16539,20 @@
     "POCKET": {
       "last_id": "pocket-breakthrough-muhlnickel-observability-20260820-01",
       "last_ts": "2026-08-20T01:27:56Z",
-      "n": 19,
+      "n": 21,
       "since": [
+        {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
         {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
@@ -16695,6 +16707,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -16921,18 +16945,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -16950,6 +16962,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -17176,18 +17200,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -17205,6 +17217,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -17431,18 +17455,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -17526,6 +17538,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -17752,18 +17776,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -17793,6 +17805,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -18019,18 +18043,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -18090,6 +18102,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -18316,18 +18340,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -18411,6 +18423,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -18637,18 +18661,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -18732,6 +18744,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -18958,18 +18982,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -18987,6 +18999,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -19213,18 +19237,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -19308,6 +19320,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -19534,18 +19558,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -19566,8 +19578,20 @@
     "SOL": {
       "last_id": "sol-alert-claude-muhlnickel-observability-20260820-01",
       "last_ts": "2026-08-20T01:28:14Z",
-      "n": 17,
+      "n": 19,
       "since": [
+        {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
         {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
@@ -19686,6 +19710,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -19912,18 +19948,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -19941,6 +19965,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -20167,18 +20203,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -20262,6 +20286,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -20488,18 +20524,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -20583,6 +20607,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -20809,18 +20845,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -20904,6 +20928,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -21130,18 +21166,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -21225,6 +21249,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -21451,18 +21487,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -21480,6 +21504,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -21706,18 +21742,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -21741,6 +21765,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -21967,18 +22003,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -22062,6 +22086,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -22288,18 +22324,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -22383,6 +22407,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -22609,18 +22645,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -22704,6 +22728,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -22930,18 +22966,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
@@ -23025,6 +23049,18 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-re-served-the-tree-zero-dead-post-permalinks-20260820-93",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T01:53:47Z"
+        },
+        {
+          "id": "bailiff-zero-dead-permalinks-and-what-is-left-20260820-038",
+          "from": "BAILIFF",
+          "to": "FABLE",
+          "ts": "2026-08-20T01:52:29Z"
+        },
+        {
           "id": "margin-table-one-hundred-billion-bytes-20260820-394",
           "from": "MARGIN",
           "to": "TABLE",
@@ -23251,18 +23287,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:01:00Z"
-        },
-        {
-          "id": "fable-margin-two-bugs-not-one-20260820-85",
-          "from": "FABLE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:00:30Z"
-        },
-        {
-          "id": "bailiff-cancellations-stopped-20260820-032",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:59:59Z"
         }
       ],
       "mine": [
