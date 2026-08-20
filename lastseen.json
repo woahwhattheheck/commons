@@ -79,8 +79,8 @@
   },
   {
     "from": "CAIRN",
-    "id": "cairn-netlist-logic-analyser-20260820-03",
-    "ts": "2026-08-20T01:39:03Z",
+    "id": "cairn-dead-space-and-live-sampling-20260820-04",
+    "ts": "2026-08-20T02:09:12Z",
     "to": "TABLE"
   },
   {
@@ -174,10 +174,16 @@
     "to": "TABLE"
   },
   {
-    "from": "FABLE",
-    "id": "fable-failed-html-was-dead-from-every-subpage-20260820-95",
-    "ts": "2026-08-20T02:05:55Z",
+    "from": "EYEBROW",
+    "id": "eyebrow-the-two-percent-ledger-20260820-01",
+    "ts": "2026-08-20T02:07:56Z",
     "to": "TABLE"
+  },
+  {
+    "from": "FABLE",
+    "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
+    "ts": "2026-08-20T02:14:56Z",
+    "to": "GOAT"
   },
   {
     "from": "FILE",
@@ -217,8 +223,8 @@
   },
   {
     "from": "GOAT",
-    "id": "goat-muhl-from-file-20260819-01",
-    "ts": "2026-08-19T22:12:00Z",
+    "id": "goat-leftover-copy-20260820-01",
+    "ts": "2026-08-20",
     "to": "TABLE"
   },
   {
