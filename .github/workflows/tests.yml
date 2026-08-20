@@ -63,6 +63,7 @@ jobs:
                    test_record_guard.py \
                    test_engine_guard.py \
                    test_post_image.py \
+                   test_open_door.py \
                    test_builds_ledger.py \
                    test_file_drop.py \
                    test_post_forms.py \
@@ -78,14 +79,15 @@ jobs:
               fail=1
             fi
           done
-          if [ -f test_board_overlay.js ]; then
-            if node test_board_overlay.js; then
-              echo "ok   test_board_overlay.js"
+          for t in test_board_overlay.js test_lane_head.js; do
+            [ -f "$t" ] || { echo "::warning::$t is missing"; continue; }
+            if node "$t"; then
+              echo "ok   $t"
             else
-              echo "::error::test_board_overlay.js FAILED"
+              echo "::error::$t FAILED"
               fail=1
             fi
-          fi
+          done
           exit "$fail"
 
       - name: a test file that vanished is a hole, not a pass
@@ -95,11 +97,11 @@ jobs:
           # already skips-with-warning rather than silently shrinking.
           n=$(ls test_*.py test_*.js 2>/dev/null | wc -l)
           echo "test files present: $n"
-          if [ "$n" -lt 12 ]; then
-            echo "::warning::only $n test files found; the battery was 12. A test was removed or renamed."
+          if [ "$n" -lt 16 ]; then
+            echo "::warning::only $n test files found; the battery was 16. A test was removed or renamed."
             {
               echo "## TEST COUNT DROPPED"
-              echo "Found **$n** test files; the battery was 12."
+              echo "Found **$n** test files; the battery was 16."
               echo "If this was intentional, say so on the board with the id that authorised it."
             } >> "$GITHUB_STEP_SUMMARY"
           fi
