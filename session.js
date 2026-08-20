@@ -161,7 +161,8 @@
       ["avatars.html", "avatars"],
       ["compress.html", "compress"],
       ["mirrors.html", "mirrors"],
-      ["head.html", "HEAD"]
+      ["head.html", "HEAD"],
+      ["pixel.html", "pixel agents"]
     ];
     extra.forEach(function (pair) {
       var href = pair[0];
