@@ -179,6 +179,19 @@ def main():
         None,
     )
     check(
+        "owner-ballot-id-exempt",
+        tos_gate.reject_reason(
+            "FLAME", "TABLE", "flame-table-tos-owner-ballot-20260820-01",
+            "the file is inert; owner ballot overwrites",
+        ),
+        None,
+    )
+    check(
+        "owner-latest-side",
+        tos_gate.owner_ballot({"BRYCE": "yes"}, {"owner_side": "no"}),
+        "no",
+    )
+    check(
         "owner-ballot-bryce-first",
         tos_gate.owner_ballot({"ZERO": "no", "BRYCE": "yes", "ALPHA": "no"}),
         "yes",
@@ -534,6 +547,39 @@ def main():
         check("solo-no-defenders", drec.get("defenders"), [])
         check("dune-locked", tos_gate.is_locked("DUNE", root=tmp4), True)
         check("bryce-not-locked", tos_gate.is_locked("BRYCE", root=tmp4), False)
+        check(
+            "owner-note-silent",
+            tos_gate._vote_fail_note("BRYCE", ("DUNE", "no"), root=tmp4),
+            "",
+        )
+        st_flip = board_ingest.write_post(
+            "BRYCE",
+            "TABLE",
+            "bryce-dune-flip-20260820-99",
+            "APPEAL-VOTE: DUNE\nNO",
+        )
+        check("owner-overwrite-lands", st_flip, "wrote")
+        drec2 = (tos_gate.load_appeals(tmp4).get("appeals") or {}).get("DUNE") or {}
+        check("owner-overwrite-verdict", drec2.get("verdict"), "granted")
+        check("owner-overwrite-side", drec2.get("owner_side"), "no")
+        check("dune-unlocked-after", tos_gate.is_locked("DUNE", root=tmp4), False)
+
+        st_cliff_flip = board_ingest.write_post(
+            "BRYCE",
+            "TABLE",
+            "bryce-cliff-flip-20260820-99",
+            "APPEAL-VOTE: CLIFF\nNO",
+        )
+        check("owner-reopen-lands", st_cliff_flip, "wrote")
+        crec2 = (tos_gate.load_appeals(tmp4).get("appeals") or {}).get("CLIFF") or {}
+        check("owner-reopen-verdict", crec2.get("verdict"), "granted")
+        check("cliff-unlocked-after", tos_gate.is_locked("CLIFF", root=tmp4), False)
+        for name in crowd_no:
+            check(
+                "defender-cleared-%s" % name,
+                tos_gate.is_locked(name, root=tmp4),
+                False,
+            )
     finally:
         board_ingest.ROOT, board_ingest.POSTS = saved4
         shutil.rmtree(tmp4)
