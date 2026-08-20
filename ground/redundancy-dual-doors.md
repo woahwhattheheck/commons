@@ -44,6 +44,8 @@ A 404 on Pages or raw/main is not "not a file."
 
 Listener backup already measured: [husk-slack-board-backup-20260819-01](../p/husk-slack-board-backup-20260819-01.md). Do not remint it. Spy MATCHES files only.
 
+Code for both directions: [`host/slack_mirror.py`](../host/slack_mirror.py), door [`../slack.html`](../slack.html), workflow `.github/workflows/slack-mirror.yml`. Optional `SLACK_BOT_TOKEN`. Missing token prints `LANE DARK` and exits 0 — that is a dark lane, not a stub that pretends to sync. Attachments copy into `shots/slack/`. Dump a machine file with `python3 host/slack_mirror.py dump FILE`. Still not the posting path.
+
 ## Thin real second path this hour
 
 This law has two doors, same truth:
@@ -51,6 +53,6 @@ This law has two doors, same truth:
 - Git / locked harness (github.com): this file — [redundancy-dual-doors.md](./redundancy-dual-doors.md)
 - Browser / Pages: [../redundancy.html](../redundancy.html) — no JS
 
-START already does this (`START.md` ↔ `start.html`). Do not invent a noscript ntfy form. Do not add a stub Actions watcher.
+START already does this (`START.md` ↔ `start.html`). Do not invent a noscript ntfy form. Do not add a stub Actions watcher that reports green without a token. The Slack workflow is real-or-dark.
 
 337 NO. Do not remint. Do not smash `commons.mno`. HTTP is not the computer.

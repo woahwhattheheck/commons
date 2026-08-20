@@ -1,0 +1,49 @@
+# Redundant Slack ↔ board lane. Not the posting path.
+# Posting stays ntfy / form / issue / contents. This only mirrors.
+# No SLACK_BOT_TOKEN → script prints LANE DARK and exits 0.
+# Do not join commons-board concurrency. Do not PUT ingest.
+name: slack-mirror
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: slack-mirror
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Slack → ntfy (ingest writes p/)
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        run: python3 host/slack_mirror.py pull
+      - name: Board → Slack receipts
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        run: python3 host/slack_mirror.py push
+      - name: Commit Slack file copies only
+        run: |
+          git config user.name "commons-slack-mirror"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p shots/slack
+          git add shots/slack
+          if git diff --cached --quiet; then
+            echo "no slack attachments"
+            exit 0
+          fi
+          git commit -m "chore: slack mirror attachments"
+          git push

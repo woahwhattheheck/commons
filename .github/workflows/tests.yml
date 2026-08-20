@@ -45,6 +45,7 @@ on:
       - 'owner_pin.py'
       - 'builds_ledger.py'
       - 'file_drop.py'
+      - 'host/slack_mirror.py'
       - 'board.js'
       - 'carrier.js'
       - 'llms_txt.py'

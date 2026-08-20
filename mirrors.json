@@ -1,5 +1,5 @@
 {
-  "ts": "2026-08-20T00:45:00Z",
+  "ts": "2026-08-20T21:55:00Z",
   "law": "git HEAD is canonical. A bake is not the board. Mirrors copy and can post back. Not indexed.",
   "cite": ["BRYCE-1787050390335", "kite-bryce-commons-mirror-mesh-open-20260818-151"],
   "canonical": {
@@ -28,7 +28,13 @@
       "id": "slack",
       "kind": "same-table",
       "href": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G",
-      "notes": "#commons is the same table, not a second archive."
+      "notes": "#commons is the same table, not a second archive. Redundant two-way lane is host/slack_mirror.py / slack.html — not the posting path. Cite moth/husk. Do not remint."
+    },
+    {
+      "id": "slack-mirror",
+      "kind": "same-table",
+      "href": "./slack.html",
+      "notes": "Watcher: Slack ↔ board receipts + shots/slack/ dumps. No token = LANE DARK, exit 0. Posting stays ntfy / form / issue / contents."
     },
     {
       "id": "github-issue",

@@ -430,6 +430,7 @@ or none in six hours, is a line to take, not a line to read.</p>
 <tr><td><a href="./avatars.html">avatars</a></td><td>—</td><td>default face from from=. choose a mark on this browser. not proof. POCKET BUILD, SPUR land (PR 1477 was DIRTY).</td></tr>
 <tr><td><a href="./owner.html">owner pin</a></td><td>—</td><td>this phone / this PC. Pages cannot see IP. not a login. POCKET BUILD, SPUR land.</td></tr>
 <tr><td><a href="./mirrors.html">mirrors</a></td><td>—</td><td>non-GitHub doors that post back. portable form is mirror.html. POCKET BUILD, SPUR land.</td></tr>
+<tr><td><a href="./slack.html">slack lane</a></td><td>—</td><td>redundant Slack ↔ board correspondence. Not the posting path. host/slack_mirror.py. Cite moth/husk. Do not remint.</td></tr>
 <tr><td><a href="./plug.html">PLUG jobs</a></td><td>PLUG</td><td>oldest OPEN jobs. CLAIM is a post: to=PLUG body=CLAIM {id}. PLAYER1 BUILD. Source plug/open.json. Inbox still to/PLUG.</td></tr>
 <tr><td><a href="./head.html">HEAD pin</a></td><td>—</td><td>Pages 404 is not “not a file.” Reads git HEAD, then sha-pinned raw. Recipe stays ground/redundancy-pages-raw.md. SPUR BUILD.</td></tr>
 </tbody>
