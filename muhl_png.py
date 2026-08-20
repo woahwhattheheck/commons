@@ -554,6 +554,180 @@ def main():
                 format(o, ','), raw.hex()))
         return 0
 
+    # ---------------- v4 netlist modes ----------------
+    if mode in ('dag', 'levels', 'step'):
+        b = src_bytes(pos[0], OFF, LN)
+        nrec = len(b) // STR
+        print("ASSUMPTION: <BQQQ> records at stride %d. Not verified by this mode." % STR)
+        if len(b) % STR:
+            print("WARNING: length %s not divisible by %d. Stride is probably wrong."
+                  % (format(len(b), ','), STR))
+        recs = [struct.unpack_from('<BQQQ', b, r*STR) for r in range(nrec)]
+
+        # producer[net] = list of record indices writing that net
+        producer = {}
+        for r, (op, a, bb, o) in enumerate(recs):
+            producer.setdefault(o, []).append(r)
+        consumed = Counter()
+        for op, a, bb, o in recs:
+            consumed[a] += 1
+            consumed[bb] += 1
+
+        nets = set(producer) | set(consumed)
+        sources = sorted(n for n in consumed if n not in producer)   # inputs
+        sinks = sorted(n for n in producer if n not in consumed)     # outputs
+        multi = [n for n, v in producer.items() if len(v) > 1]
+
+        # depth over the record graph, with cycle detection.
+        # WHITE=0 unvisited, GREY=1 on stack, BLACK=2 done
+        colour = [0]*nrec
+        depth = [0]*nrec
+        in_cycle = [False]*nrec
+        cyc_edges = 0
+        sys.setrecursionlimit(10000)
+
+        def deps(r):
+            op, a, bb, o = recs[r]
+            out = []
+            for net in (a, bb):
+                for p in producer.get(net, ()):
+                    if p != r:
+                        out.append(p)
+            return out
+
+        # iterative DFS so a 1M-record file cannot blow the stack
+        for start in range(nrec):
+            if colour[start]:
+                continue
+            stack = [(start, iter(deps(start)))]
+            colour[start] = 1
+            while stack:
+                node, it = stack[-1]
+                advanced = False
+                for nxt in it:
+                    if colour[nxt] == 1:
+                        in_cycle[nxt] = True
+                        in_cycle[node] = True
+                        cyc_edges += 1
+                        continue
+                    if colour[nxt] == 0:
+                        colour[nxt] = 1
+                        stack.append((nxt, iter(deps(nxt))))
+                        advanced = True
+                        break
+                if not advanced:
+                    stack.pop()
+                    colour[node] = 2
+                    d = 0
+                    for p in deps(node):
+                        if colour[p] == 2 and not in_cycle[p]:
+                            if depth[p] + 1 > d:
+                                d = depth[p] + 1
+                    depth[node] = d
+
+        acyc = [i for i in range(nrec) if not in_cycle[i]]
+        maxd = max((depth[i] for i in acyc), default=0)
+
+        if mode == 'dag':
+            print("")
+            print("%s  %s records  %s distinct nets" % (
+                pos[0], format(nrec, ','), format(len(nets), ',')))
+            print("")
+            print("NETS")
+            print("   consumed but never produced (INPUTS)  %s" % format(len(sources), ','))
+            print("   produced but never consumed (OUTPUTS) %s" % format(len(sinks), ','))
+            print("   produced by more than one record      %s" % format(len(multi), ','))
+            if sources[:8]:
+                print("   input nets: %s%s" % (
+                    ", ".join(format(x, ',') for x in sources[:8]),
+                    " ..." if len(sources) > 8 else ""))
+            print("")
+            print("CYCLES  (a ring is a cycle. this is a measurement, not an error.)")
+            print("   records on a cycle        %s of %s (%.2f%%)" % (
+                format(sum(in_cycle), ','), format(nrec, ','),
+                100.0*sum(in_cycle)/max(nrec, 1)))
+            print("   back-edges seen           %s" % format(cyc_edges, ','))
+            print("   acyclic records           %s" % format(len(acyc), ','))
+            print("")
+            print("DEPTH  (over the acyclic records only)")
+            print("   max depth                 %s" % format(maxd, ','))
+            hist = Counter(depth[i] for i in acyc)
+            for d in sorted(hist)[:24]:
+                bar = '#' * min(int(60.0*hist[d]/max(hist.values())), 60)
+                print("   depth %-6d %8s  %s" % (d, format(hist[d], ','), bar))
+            if len(hist) > 24:
+                print("   ... %d more depth levels" % (len(hist)-24))
+            fan = Counter(consumed.values())
+            print("")
+            print("FANOUT  (times a net is used as an input)")
+            for k in sorted(fan)[:10]:
+                print("   used %-4d times  %s nets" % (k, format(fan[k], ',')))
+            mxf = max(consumed.values()) if consumed else 0
+            print("   max fanout %s on net %s" % (
+                format(mxf, ','),
+                format(max(consumed, key=lambda k: consumed[k]), ',') if consumed else '-'))
+            print("")
+            print("NOT MEASURED: whether <BQQQ>@%d is the right layout; what any op means;" % STR)
+            print("whether a cycle here is a ring, a loop, or an artefact. Numbers only.")
+            return 0
+
+        if mode == 'step':
+            at = opt('--at', 0)
+            sel = [i for i in acyc if depth[i] == at]
+            print("")
+            print("STEP %d - records whose inputs are all resolved by depth %d" % (at, at))
+            print("%s records at this depth (of %s acyclic, max depth %s)" % (
+                format(len(sel), ','), format(len(acyc), ','), format(maxd, ',')))
+            print("")
+            for r in sel[:opt('--count', 24)]:
+                op, a, bb, o = recs[r]
+                fo = consumed.get(o, 0)
+                print("   REC%06d  op=%s (%3d)  a=%-12s b=%-12s out=%-12s  fanout=%d" % (
+                    r, bin(op)[2:].zfill(8), op, format(a, ','), format(bb, ','),
+                    format(o, ','), fo))
+            if len(sel) > opt('--count', 24):
+                print("   ... %s more at this depth" % format(len(sel)-opt('--count', 24), ','))
+            return 0
+
+        # levels: layered render, y = depth, x = gate within depth, colour = op
+        byd = {}
+        for i in acyc:
+            byd.setdefault(depth[i], []).append(i)
+        for i in range(nrec):
+            if in_cycle[i]:
+                byd.setdefault(-1, []).append(i)
+        widest = max((len(v) for v in byd.values()), default=1)
+        levels = sorted(byd)
+        CW = max(1, min(4, max(1, W // max(widest, 1))))
+        RH = 6
+        Wt = min(widest*CW, 4096)
+        Ht = len(levels)*RH
+        buf = bytearray(b'\x08\x0c\x18' * (Wt*Ht))
+        opcols = {}
+        allops = sorted({recs[i][0] for i in range(nrec)})
+        for n, o in enumerate(allops):
+            opcols[o] = ramp(0.15 + 0.8*(n/float(max(len(allops)-1, 1))))
+        for li, d in enumerate(levels):
+            for gi, r in enumerate(byd[d]):
+                x = gi*CW
+                if x + CW > Wt:
+                    break
+                col = bytes(bytearray((200, 60, 60) if d == -1 else opcols[recs[r][0]]))
+                for y in range(li*RH, li*RH + RH - 1):
+                    for k in range(CW):
+                        o2 = (y*Wt + x + k)*3
+                        buf[o2:o2+3] = col
+        buf2, w, h = scale_up(bytes(buf), Wt, Ht, S, 3)
+        n = png(pos[1], w, h, buf2)
+        print("")
+        print("%s  %dx%d  %s B" % (pos[1], w, h, format(n, ',')))
+        print("%d rows = %d depth levels%s. widest level %s gates." % (
+            len(levels), len([x for x in levels if x >= 0]),
+            " (+1 red row = records on a cycle)" if -1 in byd else "",
+            format(widest, ',')))
+        print("colour = op. red row = cycle. row order = evaluation order.")
+        return 0
+
     print(__doc__)
     return 2
 

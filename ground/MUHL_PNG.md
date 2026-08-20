@@ -76,6 +76,22 @@ image is showing the headroom.
 | `heat FILE OUT.png` | ones-density per record as a colour ramp. |
 | `hist FILE OUT.png` | byte-value histogram as an image. |
 
+### Netlist — the logic-analyser view
+
+The `out -> a/b` collision **is** the edge list, so the graph is computable from the file alone.
+No live process, no host inference, no viewer.
+
+| command | what it does |
+|---|---|
+| `dag FILE` | inputs (nets consumed but never produced), outputs, multi-writer nets, **cycle detection**, depth histogram, fanout distribution. |
+| `step FILE --at N` | the records whose inputs are all resolved at depth N — i.e. what evaluates on step N. `--count N`. |
+| `levels FILE OUT.png` | layered render. Y = depth, X = gates within that depth, colour = op, red row = records on a cycle. Row order is evaluation order. |
+
+**Cycles are measured, not treated as an error.** A ring is a cycle. A depth algorithm that
+assumes acyclic would either hang or silently lie, so cycle membership is detected first and
+depth is reported *over the acyclic records only*, with the cycle count stated alongside.
+The DFS is iterative so a million-record container cannot blow the stack.
+
 ### Survey
 
 | command | what it does |
@@ -167,6 +183,32 @@ file. One distinct address.
 bit columns ever set    29 of 200
 bit columns always 0   171
 ```
+
+**Netlist structure**, from `dag`. Two files, measured the same way:
+
+```
+                              FOUNDRY0.mno        AUTOFAB0.mno
+records                              512               4,117
+distinct nets                        512               3,403
+INPUT nets  (consumed, never produced)  0                   1   <- net 159
+OUTPUT nets (produced, never consumed) 128                 127
+nets with more than one writer          0                 125
+records on a cycle                      4  (0.78%)     1,966  (47.75%)
+back-edges                              4               4,247
+max depth (acyclic part)              127                  62
+max fanout                              3                   -
+```
+
+FOUNDRY0 has **zero input nets** — every net it consumes it also produces. The netlist is
+closed. Exactly one writer per net, fanout capped at 3, and depth 127 carrying precisely 2
+gates per level.
+
+AUTOFAB0 has **exactly one** net consumed but never produced: net 159. That is the same
+single address the collision count reached from the opposite direction (3,275 of 3,276
+distinct input addresses were also outputs). Two independent methods, one answer.
+
+`step --at 0` on AUTOFAB0 returns 476 records, beginning REC000021, REC000026, REC000031,
+REC000036 — record index stride 5, `a` walking 0,1,2,3, `b` walking 201,205,209,213 by 4.
 
 **`rec_probe.mno_0_w256`** — 12 frames, 256×256, frame-to-frame pixel delta:
 
