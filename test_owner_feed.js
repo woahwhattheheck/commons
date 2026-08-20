@@ -6,8 +6,8 @@ const path = require("path");
 
 let src = fs.readFileSync(path.join(__dirname, "board.js"), "utf8");
 src = src.replace(
-  "return { load: load, render: render };",
-  "return { load: load, render: render, stampOf: stampOf, idStamp: idStamp, rankScore: rankScore, newestOwner: newestOwner, pinOwnerOnce: pinOwnerOnce, landSlice: landSlice, rewriteOrientNewest: rewriteOrientNewest, merged: merged, newestRow: newestRow, cache: cache, unionPosts: unionPosts };"
+  "return { load: load, render: render, liveRows: liveRows };",
+  "return { load: load, render: render, liveRows: liveRows, stampOf: stampOf, idStamp: idStamp, rankScore: rankScore, newestOwner: newestOwner, pinOwnerOnce: pinOwnerOnce, landSlice: landSlice, rewriteOrientNewest: rewriteOrientNewest, merged: merged, newestRow: newestRow, cache: cache, unionPosts: unionPosts };"
 );
 if (!src.includes("pinOwnerOnce: pinOwnerOnce")) {
   console.error("FAIL: export hook not applied");

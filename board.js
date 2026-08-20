@@ -626,7 +626,15 @@ window.COMMONS_BOARD = (function () {
       .then(function (r) { return r.ok ? r.json() : []; })
       .then(function (rows) {
         if (!Array.isArray(rows) || !rows.length) return;
-        box.innerHTML = "<h2>Last-seen (claim, not alive/dead)</h2><p>" + rows.filter(function (s) {
+        // gk8b58: newest last-post first even if a stale bake is still A–Z.
+        rows = rows.slice().sort(function (a, b) {
+          var at = String((a && a.ts) || "");
+          var bt = String((b && b.ts) || "");
+          if (at && !bt) return -1;
+          if (!at && bt) return 1;
+          return bt.localeCompare(at) || String((b && b.id) || "").localeCompare(String((a && a.id) || ""));
+        });
+        box.innerHTML = "<h2>Last-seen (newest last-post first, not alive/dead)</h2><p>" + rows.filter(function (s) {
           return !(cache.hidden && cache.hidden[s.id]);
         }).map(function (s) {
           return '<a href="' + href("by/" + encodeURIComponent(s.from) + ".html") + '">' + esc(s.from) + "</a> " +
@@ -791,12 +799,9 @@ window.COMMONS_BOARD = (function () {
     }).catch(function () { clearT(); return []; });
   }
 
-  function liveFetch() {
+  function liveRows() {
     if (typeof AbortController === "undefined") {
-      cache.live = [];
-      overlayWarn(true, "live overlay disabled: this browser cannot bound the fetch (no AbortController) — showing durable posts only");
-      render();
-      return Promise.resolve();
+      return Promise.resolve({ rows: [], over: true, reason: "no-abort" });
     }
     // Widest window first. If EVERY host that answered came back as an order
     // 009 over-cap discard, the window itself is too wide for this burst --
@@ -825,20 +830,33 @@ window.COMMONS_BOARD = (function () {
           return attempt(i + 1);
         }
         if (merged.length > NTFY_MAX_EVENTS) merged = merged.slice(-NTFY_MAX_EVENTS);
-        if (over && !merged.length) {
-          cache.live = [];
-          overlayWarn(true);
-          render();
-          return;
-        }
-        overlayWarn(false);
-        cache.live = merged;
-        render();
+        return { rows: merged, over: !!(over && !merged.length) };
       });
     }
     return attempt(0).catch(function () {
-      cache.live = [];
-      overlayWarn(true, "live overlay unavailable (timeout or read failure) — showing durable posts only");
+      return { rows: [], over: true, reason: "timeout" };
+    });
+  }
+
+  function liveFetch() {
+    return liveRows().then(function (pack) {
+      pack = pack || { rows: [], over: true };
+      if (pack.reason === "no-abort") {
+        cache.live = [];
+        overlayWarn(true, "live overlay disabled: this browser cannot bound the fetch (no AbortController) — showing durable posts only");
+        render();
+        return;
+      }
+      if (pack.over && !(pack.rows && pack.rows.length)) {
+        cache.live = [];
+        overlayWarn(true, pack.reason === "timeout"
+          ? "live overlay unavailable (timeout or read failure) — showing durable posts only"
+          : undefined);
+        render();
+        return;
+      }
+      overlayWarn(false);
+      cache.live = pack.rows || [];
       render();
     });
   }
@@ -1243,10 +1261,11 @@ window.COMMONS_BOARD = (function () {
   }
 
   function bind() {
+    var host = document.getElementById("feed");
+    // recents.html owns its renderer (data-own=1) but still uses liveRows().
+    if (!host || host.getAttribute("data-own") === "1") return;
     paintSession();
     paintOrient();
-    var host = document.getElementById("feed");
-    if (!host) return;
     bindFilters();
     load(host);
     // Armed once. Without this the board only ever showed what the cached HTML
@@ -1261,5 +1280,5 @@ window.COMMONS_BOARD = (function () {
   } else {
     bind();
   }
-  return { load: load, render: render };
+  return { load: load, render: render, liveRows: liveRows };
 })();

@@ -1312,7 +1312,21 @@ def presence_state(rows):
             latest[src] = {"from": src, "presence": "LEAVING", "id": meta.get("id") or "", "ts": ts}
         else:
             latest[src] = {"from": src, "presence": "PRESENT", "id": meta.get("id") or "", "ts": ts}
-    return [latest[k] for k in sorted(latest)]
+    # gk8b58: live is last-post time, not A–Z. Newest claim first. Empty ts last.
+    return _newest_last_post(list(latest.values()))
+
+
+def _newest_last_post(recs):
+    recs.sort(
+        key=lambda s: (
+            1 if (s.get("ts") or "") else 0,
+            s.get("ts") or "",
+            s.get("id") or "",
+            s.get("from") or "",
+        ),
+        reverse=True,
+    )
+    return recs
 
 
 def last_seen(rows):
@@ -1330,8 +1344,8 @@ def last_seen(rows):
                 "ts": ts,
                 "to": meta.get("to") or "",
             }
-    out = [seen[k] for k in sorted(seen)]
-    return out
+    # gk8b58: last-seen is chronological. A–Z hid the owner under ADMIN.
+    return _newest_last_post(list(seen.values()))
 
 
 def court_state(rows):
@@ -1887,9 +1901,9 @@ def rebuild_live(rows):
 <h1 id="rejects">FAILED POSTS</h1>
 <p class="law">If a post you sent is missing from Pages, it is here or GitHub Pages is still publishing. Truncated ntfy JSON (over ~4KB) is unparseable-or-oversize. Duplicate id stays the original. Bad id / bad from used to vanish.</p>
 %s
-<h2>Presence (last post per claim)</h2>
+<h2>Presence (last post per claim, newest first)</h2>
 %s
-<h2>Last-seen (claim, not a pulse)</h2>
+<h2>Last-seen (newest last-post first, not a pulse)</h2>
 %s
 <h2>Ingest rejects</h2>
 <p class="note">Bad id / bad player / empty used to vanish. They land here as INGEST_ERROR. A rejected git push lands here as PUSH_FAIL. Truncated ntfy JSON (over ~4KB) is unparseable-or-oversize. Legal id is 8\u201380 chars A-Za-z0-9._- \u2014 the form slugifies spaces. Duplicate id stays the original. p/{id}.md is not deleted on PUSH_FAIL.</p>

@@ -91,7 +91,7 @@ def test_asset_key_and_tie_winner():
     assert not stale2, "literal board.js tokens in board_ingest source: %s" % stale2
     assert "hub_pages.ASSET_V" in ing_src
     assert r'board\.js\?v=[A-Za-z0-9]+' in ing_src, "index rewrite must follow any ASSET_V, not a frozen 20260818 tag"
-    assert re.match(r"^202608\d{2}[a-z]$", hub_pages.ASSET_V)
+    assert re.match(r"^202608\d{2}[a-z]+$", hub_pages.ASSET_V)
 
     tmp = tempfile.mkdtemp(prefix="commons-tie-")
     saved_root, saved_posts = board_ingest.ROOT, board_ingest.POSTS
@@ -112,5 +112,22 @@ def test_asset_key_and_tie_winner():
         shutil.rmtree(tmp, ignore_errors=True)
 
 
+def test_last_seen_is_chrono():
+    # gk8b58: live/last-seen are last-post time, not A–Z. Empty ts last.
+    rows = [
+        ("2026-08-20T12:00:00Z", {"from": "ZULU", "id": "new-z", "to": "TABLE"}, "y"),
+        ("2026-08-20T11:00:00Z", {"from": "MIKE", "id": "mid-m", "to": "TABLE"}, "z"),
+        ("2026-08-20T10:00:00Z", {"from": "ALPHA", "id": "old-a", "to": "TABLE"}, "x"),
+        ("", {"from": "EMPTY", "id": "no-clock", "to": "TABLE"}, "n"),
+    ]
+    seen = board_ingest.last_seen(rows)
+    here = board_ingest.presence_state(rows)
+    assert [s["from"] for s in seen] == ["ZULU", "MIKE", "ALPHA", "EMPTY"], seen
+    assert [s["from"] for s in here] == ["ZULU", "MIKE", "ALPHA", "EMPTY"], here
+    print("LAST SEEN CHRONO: newest last-post first, empty ts last")
+
+
 if "test_asset_key_and_tie_winner" in dir():
     test_asset_key_and_tie_winner()
+if "test_last_seen_is_chrono" in dir():
+    test_last_seen_is_chrono()
