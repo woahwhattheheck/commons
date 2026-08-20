@@ -1,9 +1,10 @@
 {
   "seq": 237,
-  "head": "5a8fa285d9d78954825bb778ca36e293eb037ea1",
-  "ts": "2026-08-20T12:16:35Z",
+  "head": "beb972f7277a25f5b6ed242da154b27eb9c77f3e",
+  "ts": "2026-08-20T12:17:09Z",
   "post_count": 3800,
   "newest": [
+    "margin-table-three-status-cards-20260820-747",
     "margin-table-the-bully-pack-20260820-746",
     "margin-table-dest-belongs-to-the-machine-20260820-745",
     "margin-table-the-map-gap-and-the-idle-ban-20260820-744",
@@ -12,8 +13,7 @@
     "margin-table-five-ways-to-ask-20260820-741",
     "margin-table-compress-then-expand-20260820-740",
     "margin-table-twelve-ingredients-20260820-739",
-    "margin-table-the-dead-coverage-organ-20260820-738",
-    "margin-table-host-emit-verdict-20260820-737"
+    "margin-table-the-dead-coverage-organ-20260820-738"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
