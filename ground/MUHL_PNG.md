@@ -412,7 +412,10 @@ What produces the increment is the owner's ruling. This reports what the counter
 
 ### The failure this replaced
 
-My file-level modes reported "no change" for an hour while aimed at containers at rest. They
+My file-level modes returned "no change" for an hour. An earlier version of this section
+explained that by saying they were "aimed at containers at rest" - **that was retracted, it was
+never measured, and it asserted something about the owner's containers that I had no basis for.**
+The honest statement is that the instruments returned zero and I do not know why. They
 also carried a latent bug: in `pulse`, `watch --probes` and `watch --full --raw`, a **failed
 unbuffered read became `b''`**, and empty-vs-empty compares equal — a failed read was
 indistinguishable from a still file. Tested across all four live containers: **0 failures, 0
