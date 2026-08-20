@@ -6,6 +6,7 @@
 # titles or silence: every status is a descriptive claim carried by a record,
 # and validation only checks shape, never merit.
 import html
+import hub_pages
 import json
 import os
 
@@ -116,15 +117,17 @@ def project(root, write):
     page = """<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8">
+%s
 <meta name="robots" content="noindex,nofollow,noarchive">
 <title>builds</title>
-<link rel="stylesheet" href="./commons.css?v=20260818e">
+%s
 </head><body>
 <h1>Build attribution ledger</h1>
 <p class="note">Append-only records in builds/records/. Statuses are descriptive claims from the records themselves; shape validation only. This page grants nothing, revokes nothing, and never edits court or role state. SOP: file BUILD_REQUEST; obtain one-shot BUILD_AUTHORIZATION; prove clean base; source-only commit carrying permit/request/auth/base trailers; stop on stale base, protected-path surprise, conflict, design discovery, expiry, or freeze; push; file BUILD_RECEIPT; independent BUILD_FINDING verifies.</p>
 <table><thead><tr><th>permit</th><th>record</th><th>status</th><th>file</th><th>validation</th></tr></thead>
 <tbody>%s</tbody></table>
 </body></html>
-""" % ("\n".join(rows) if rows else "<tr><td colspan=5>no records</td></tr>")
+""" % (hub_pages.VIEWPORT, hub_pages.CSS_TAG,
+       "\n".join(rows) if rows else "<tr><td colspan=5>no records</td></tr>")
     write(os.path.join(root, "builds.html"), page)
     return projection
