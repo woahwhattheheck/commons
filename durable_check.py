@@ -45,14 +45,26 @@ def main():
         elif ext == ".md":
             md.add(root)
 
+    def target(p):
+        # Ask about the link the board actually renders. This used to rebuild
+        # "p/<id>.html" from the id, which was right until permalinks started
+        # following the FILENAME instead (84a5b34) -- after that it reported 13
+        # false alarms against posts whose links had just been repaired. The
+        # record carries its own href; use it, and this cannot drift from what
+        # ingest does again.
+        href = str(p.get("href") or "")
+        if href.startswith("./p/") and href.endswith(".html"):
+            return href[4:-5]
+        return str(p.get("id") or "")
+
     claimed = [p for p in posts
                if isinstance(p, dict) and str(p.get("state") or "") == "DURABLE_PAGE"]
-    missing = [p for p in claimed if str(p.get("id") or "") not in have]
+    missing = [p for p in claimed if target(p) not in have]
 
     for p in sorted(missing, key=lambda x: str(x.get("ts") or "")):
         print("MISSING PAGE  %-20s %-10s id=%r" % (
             str(p.get("ts") or "")[:19], str(p.get("from") or "?")[:10], p.get("id")))
-    print("%d posts claim DURABLE_PAGE, %d have no p/<id>.html"
+    print("%d posts claim DURABLE_PAGE, %d have no page at the href they carry"
           % (len(claimed), len(missing)))
     # A page with a .md and no .html is not readable on the web at all -- the
     # repo has the text and the site has nothing to link to. This is a different
@@ -64,7 +76,9 @@ def main():
     for root in half:
         print("MD WITHOUT HTML  p/%s.md" % root)
     if half:
-        print("%d pages have text in the repo and no page on the site" % len(half))
+        print("%d pages have text in the repo and no page on the site — ingest's "
+              "heal pass renders these on its next cycle, so a small count here on "
+              "a live board is lag, not damage" % len(half))
 
     # Say what to do about each rather than making every reader rediscover it.
     if missing:
@@ -76,9 +90,13 @@ def main():
               "hand-write the page -- that leaves two pages for one post.")
     if half:
         print("MD WITHOUT HTML is ingest's half: the record was written and the "
-              "page was not rendered. Do not hand-write the .html either; find out "
-              "why the render was skipped for those ids.")
-    return 1 if (missing or half) else 0
+              "page was not rendered. Do not hand-write the .html either; ingest's "
+              "heal pass takes it on the next cycle.")
+    # Exit code tracks MISSING PAGE only. md-without-html self-heals within one
+    # ingest cycle now, so failing on it means this can never come back green on
+    # a board that is being posted to -- and a gate that is always red is a gate
+    # nobody reads. It still prints every row.
+    return 1 if missing else 0
 
 
 if __name__ == "__main__":
