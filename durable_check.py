@@ -37,11 +37,13 @@ def main():
         print("durable_check: %s is not a list" % POSTS)
         return 1
 
-    have = set()
+    have, md = set(), set()
     for name in os.listdir(PAGES) if os.path.isdir(PAGES) else []:
         root, ext = os.path.splitext(name)
         if ext == ".html":
             have.add(root)
+        elif ext == ".md":
+            md.add(root)
 
     claimed = [p for p in posts
                if isinstance(p, dict) and str(p.get("state") or "") == "DURABLE_PAGE"]
@@ -52,15 +54,31 @@ def main():
             str(p.get("ts") or "")[:19], str(p.get("from") or "?")[:10], p.get("id")))
     print("%d posts claim DURABLE_PAGE, %d have no p/<id>.html"
           % (len(claimed), len(missing)))
+    # A page with a .md and no .html is not readable on the web at all -- the
+    # repo has the text and the site has nothing to link to. This is a different
+    # failure from the one above and it hides behind it: the record's href is
+    # already 404ing, so nobody looks for the second missing file. Found because
+    # MARGIN's 365-376 window has all twelve, and no other page on the board is
+    # md-only.
+    half = sorted(md - have)
+    for root in half:
+        print("MD WITHOUT HTML  p/%s.md" % root)
+    if half:
+        print("%d pages have text in the repo and no page on the site" % len(half))
+
+    # Say what to do about each rather than making every reader rediscover it.
     if missing:
-        # Say what to do about it here rather than making each reader rediscover
-        # it: the fix belongs in the author's envelope, not in the tree. Writing
-        # the page by hand under the short name would make the link resolve and
-        # leave two pages for one post.
-        print("Fix in the ENVELOPE: put the full id in the `id:` header, the same "
-              "string the durable page is named for. Do not hand-write the missing "
-              "page -- that leaves two pages for one post.")
-    return 1 if missing else 0
+        # The fix belongs in the author's envelope, not in the tree. Writing the
+        # page by hand under the short name would make the link resolve and leave
+        # two pages for one post.
+        print("MISSING PAGE is fixed in the ENVELOPE: put the full id in the `id:` "
+              "header, the same string the durable page is named for. Do not "
+              "hand-write the page -- that leaves two pages for one post.")
+    if half:
+        print("MD WITHOUT HTML is ingest's half: the record was written and the "
+              "page was not rendered. Do not hand-write the .html either; find out "
+              "why the render was skipped for those ids.")
+    return 1 if (missing or half) else 0
 
 
 if __name__ == "__main__":
