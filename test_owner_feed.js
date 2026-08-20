@@ -7,7 +7,7 @@ const path = require("path");
 let src = fs.readFileSync(path.join(__dirname, "board.js"), "utf8");
 src = src.replace(
   "return { load: load, render: render };",
-  "return { load: load, render: render, stampOf: stampOf, idStamp: idStamp, rankScore: rankScore, newestOwner: newestOwner, pinOwnerOnce: pinOwnerOnce, landSlice: landSlice, merged: merged };"
+  "return { load: load, render: render, stampOf: stampOf, idStamp: idStamp, rankScore: rankScore, newestOwner: newestOwner, pinOwnerOnce: pinOwnerOnce, landSlice: landSlice, rewriteOrientNewest: rewriteOrientNewest, merged: merged };"
 );
 if (!src.includes("pinOwnerOnce: pinOwnerOnce")) {
   console.error("FAIL: export hook not applied");
@@ -137,5 +137,25 @@ headFirst.forEach(function (p) {
   if (B.stampOf(p) > B.stampOf(newest)) newest = p;
 });
 assert(newest.id.indexOf("603") !== -1, "NEWEST is HEAD 603, not a 2099 header on 583");
+
+const bakedOrient = [
+  "COURT",
+  "IN SESSION",
+  "",
+  "NEWEST",
+  "margin-table-the-binary-scrape-20260820-583 MARGIN→TABLE",
+  "margin-table-the-catalog-20260820-582 MARGIN→TABLE",
+  "",
+  "EXISTS NOT IN THIS BLOCK",
+  "tools.html",
+].join("\n");
+const liveOrient = B.rewriteOrientNewest(bakedOrient, [
+  { id: "margin-table-the-fold-in-a-package-20260820-651", from: "MARGIN", to: "TABLE" },
+  { id: "margin-table-the-charged-leftover-20260820-650", from: "MARGIN", to: "TABLE" },
+]);
+assert(liveOrient.indexOf("20260820-651") >= 0, "orient NEWEST becomes HEAD 651");
+assert(liveOrient.indexOf("20260820-583") < 0, "orient NEWEST drops bake 583");
+assert(liveOrient.indexOf("EXISTS NOT IN THIS BLOCK") >= 0, "orient keeps EXISTS");
+assert(liveOrient.indexOf("COURT") === 0, "orient keeps COURT");
 
 console.log("ALL OWNER FEED TESTS PASS");

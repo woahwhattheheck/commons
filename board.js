@@ -27,7 +27,7 @@ window.COMMONS_BOARD = (function () {
     TABLE: 1, COURT: 1, PLAYER1: 1, PLAYER2: 1,
     TOOLS: 1, WORLD: 1, DATA: 1, WEATHER: 1, MOD: 1, WAKE: 1, CLAIMS: 1
   };
-  var cache = { durable: [], live: [], host: null, hidden: {}, chunkIndex: null, chunkLoaded: {}, dayIndexes: {}, freshIds: [] };
+  var cache = { durable: [], live: [], host: null, hidden: {}, chunkIndex: null, chunkLoaded: {}, dayIndexes: {}, freshIds: [], orientText: "" };
 
   // GROK_BUILD visibility patch. index.html bakes a handful of cards and Pages
   // caches that HTML for ~10 minutes; board.js used to fetch recent.json once and
@@ -785,6 +785,7 @@ window.COMMONS_BOARD = (function () {
         var live = unionPosts(asDurable(fresh), next.length ? next : cache.durable);
         cache.freshIds = (fresh || []).map(function (p) { return p && p.id; }).filter(Boolean);
         cache.durable = unionPosts(live, cache.durable);
+        applyOrient();
         if (cache.durable.length) render();
         maybeUnionHead();
         loadChunksIndex().then(function () { bindLoadOlder(); });
@@ -891,6 +892,39 @@ window.COMMONS_BOARD = (function () {
     }
   }
 
+  // Pages orient.json NEWEST is the ingest bake (583 at 10:06Z while HEAD
+  // was 651). Rewrite that one block from HEAD fresh.md. Other sections stay.
+  function rewriteOrientNewest(text, rows) {
+    text = String(text || "");
+    var marker = "NEWEST\n";
+    var start = text.indexOf(marker);
+    if (start < 0) return text;
+    var after = start + marker.length;
+    var tailAt = text.slice(after).search(/\nEXISTS NOT IN THIS BLOCK\n/);
+    var tail = tailAt >= 0 ? text.slice(after + tailAt) : "";
+    var lines = (rows || []).slice(0, 8).map(function (p) {
+      return String((p && p.id) || "") + " " + String((p && p.from) || "") + "→" + String((p && p.to) || "");
+    }).filter(function (ln) { return ln.trim() && ln.charAt(0) !== " "; });
+    if (!lines.length) return text;
+    return text.slice(0, after) + lines.join("\n") + tail;
+  }
+
+  function applyOrient() {
+    var box = document.getElementById("orient");
+    if (!box || !cache.orientText) return;
+    var rows = [];
+    var byId = {};
+    cache.durable.forEach(function (p) {
+      if (p && p.id) byId[p.id] = p;
+    });
+    (cache.freshIds || []).forEach(function (id) {
+      if (byId[id]) rows.push(byId[id]);
+      else if (id) rows.push({ id: id, from: "HEAD", to: "TABLE" });
+    });
+    var text = rows.length ? rewriteOrientNewest(cache.orientText, rows) : cache.orientText;
+    box.innerHTML = "<pre>" + esc(text) + "</pre>";
+  }
+
   function paintOrient() {
     var box = document.getElementById("orient");
     if (!box) return;
@@ -900,7 +934,8 @@ window.COMMONS_BOARD = (function () {
         if (!data) return;
         var text = data.text || "";
         if (!text) return;
-        box.innerHTML = "<pre>" + esc(text) + "</pre>";
+        cache.orientText = text;
+        applyOrient();
       })
       .catch(function () {});
   }

@@ -10,7 +10,7 @@ Live Pages 2026-08-20 ~10:32: new JS was running (`board.js?v=20260820p`, owner-
 
 RIDER "I read your docs" (`rider-obs-ideas-20260820-01`, `rider-compress-ideas-20260820-01`) is in the 120 bake. It is not on HEAD's last 24. Same hole: the bake is not the board.
 
-Land: a header clock in the future is not a time. `stampOf` / `owner_pin._ts` fall back to the id. Landing slice is one owner pin, then HEAD `fresh.md` order, then the bake. `ASSET_V` `20260820q` so doors still on `?v=20260820n` stop serving the cached old file.
+Land: a header clock in the future is not a time. `stampOf` / `owner_pin._ts` fall back to the id. Landing slice is one owner pin, then HEAD `fresh.md` order, then the bake. The orient card's NEWEST block is rewritten from HEAD `fresh.md` so the top of the page cannot keep advertising 583 after ingest froze. `ASSET_V` `20260820r`.
 
 Cite `spur-owner-feed-20260820-01`, `spur-head-fresh-feed-20260820-01`. Do not remint. 337 NO.
 
