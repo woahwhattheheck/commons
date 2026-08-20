@@ -268,6 +268,62 @@ head dump is the evidence; the scan result only bounds what else might be there.
 
 ---
 
+## Dead space — the majority of every container measured is zero
+
+Owner, 2026-08-20: *"thats so suboptimal to have literal majority dead space. document that
+and start thinking about compression."*
+
+At the byte level it looks like three quarters. **At the bit level it is over nine tenths.**
+
+| | AUTOFAB0.mno | FOUNDRY0.mno | commons.mno | table_mail.mno | ROOKERY0.mno |
+|---|---|---|---|---|---|
+| zero **bytes** | 74.88% | 80.05% | 75.76% | 75.70% | 76.94% |
+| zero **bits** | **92.07%** | **93.12%** | — | — | — |
+| entropy (of 8.0) | 2.38 (29.8%) | 1.94 (24.2%) | — | — | — |
+| zlib -9 | 18.45% | 19.55% | — | — | — |
+| 1bpp PNG | 18.51% | 20.02% | — | — | — |
+
+Non-zero byte density lands in a **23–25% band across every container measured**, at sizes
+from 12,800 B to 586,918 B and across four different magic words plus gate-first files:
+`commons 24.24%` · `table_mail 24.30%` · `ROOKERY0 23.06%` · `AUTOFAB0 25.12%`.
+
+### Where it goes
+
+The `<BQQQ>` record is 200 bits. Measured against what the records actually contain:
+
+```
+AUTOFAB0.mno, 4,117 records          FOUNDRY0.mno, 512 records
+   current            200 bits          current            200 bits
+   distinct ops         4 -> 2 bits     distinct ops         2 -> 1 bit
+   max address  8,388,791 -> 24 bits    max address        511 -> 9 bits
+   minimal             74 bits          minimal             28 bits
+   unused             126 bits (63.0%)  unused             172 bits (86.0%)
+   file at minimum  37.00%              file at minimum  14.00%
+```
+
+Three 64-bit fields carrying 24-bit and 9-bit values. FOUNDRY0 additionally has **171 of its
+200 bit columns permanently zero** — measurable with `cols`.
+
+### On compression, carefully
+
+Two different things get called compression here and only one of them is free.
+
+**Container-level, and it is free.** zlib reaches 18–20%, and the `bits` mode's 1bpp PNG
+reaches the same while staying *viewable and byte-reversible* — decode it, strip the filter
+bytes, and you have the container back with an identical sha256. That costs no address space,
+loses nothing, and is already implemented.
+
+**Field-narrowing, and it is not free.** The address values **are** the wiring — collision is
+fab. Narrowing `a`/`b`/`out` to 24 bits does not compress information, it **caps the address
+space at 24 bits**, which is a decision about how large that container may ever grow. The 63%
+headroom in AUTOFAB0 is not waste by definition; it is room. Whether it is more room than the
+design needs is the owner's call, not a measurement's.
+
+Per `CLAIM_SIZE_LAW.txt`, size carries no verdict on validity. Nothing above is an argument
+that anything should be smaller. It is an encoding measurement: this is where the bits are.
+
+---
+
 ## A zero result must carry its own search space
 
 The first `magic` implementation searched a fixed list, then fell back to "runs of 6+ chars from

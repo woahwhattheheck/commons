@@ -49,18 +49,34 @@ COMMON FLAGS
   --stride N   record size in bytes (default 25).
   --cols N     contact-sheet columns (default 4).  --gutter N (default 4).
 """
-import zlib, struct, sys, os, glob, math
+import zlib, struct, sys, os, glob, math, hashlib, time
 from collections import Counter
 
+# A file documented to change under you is SAMPLED, never "read". Every
+# measurement in this tool prints the digest of the exact bytes it saw, so a
+# number is attributable to one sample instead of to "the file".
+QUIET = False
+
 # ---------------- the entire PNG writer ----------------
-def png(path, w, h, data, gray=False):
-    stride = w * (1 if gray else 3)
+def png(path, w, h, data, gray=False, depth=8):
+    """
+    depth=8  : data is one byte per sample (gray) or three (rgb).
+    depth=1  : data is PACKED BITS, MSB first, each row padded to a byte
+               boundary. At a width that is a multiple of 8 the scanlines are
+               the source bytes verbatim - one bit of the file is one bit of
+               the image, no expansion.
+    """
+    if depth == 1:
+        stride = (w + 7) // 8
+    else:
+        stride = w * (1 if gray else 3)
     raw = b''.join(b'\x00' + data[y*stride:(y+1)*stride] for y in range(h))
     def chunk(tag, payload):
         return (struct.pack('>I', len(payload)) + tag + payload
                 + struct.pack('>I', zlib.crc32(tag + payload) & 0xffffffff))
     out = (b'\x89PNG\r\n\x1a\n'
-           + chunk(b'IHDR', struct.pack('>IIBBBBB', w, h, 8, 0 if gray else 2, 0, 0, 0))
+           + chunk(b'IHDR', struct.pack('>IIBBBBB', w, h, depth,
+                                        0 if (gray or depth == 1) else 2, 0, 0, 0))
            + chunk(b'IDAT', zlib.compress(raw, 9))
            + chunk(b'IEND', b''))
     with open(path, 'wb') as f:
@@ -106,9 +122,95 @@ def read_ppm(path):
     return w, h, d[i:i+w*h*3]
 
 
+def read_unbuffered(path, off, ln, sector=4096):
+    """
+    Read bypassing the Windows page cache (FILE_FLAG_NO_BUFFERING).
+
+    Why this exists: a buffered re-read of an unchanged mtime can be served
+    from the OS cache, so it cannot tell 'the platter did not change' from
+    'the cache handed me the same page'. This goes to the device.
+
+    Requires sector-aligned offset, length AND buffer address, so it reads an
+    aligned superset and slices. Read-only. Never mmap. Never writes.
+    Returns (bytes, None) on success or (None, reason) so the caller can fall back.
+    """
+    if os.name != 'nt':
+        return None, "not Windows"
+    try:
+        import ctypes
+        from ctypes import wintypes
+        GENERIC_READ = 0x80000000
+        FILE_SHARE_ALL = 0x00000007          # let the owner keep writing
+        OPEN_EXISTING = 3
+        FILE_FLAG_NO_BUFFERING = 0x20000000
+        INVALID = ctypes.c_void_p(-1).value
+
+        k32 = ctypes.WinDLL('kernel32', use_last_error=True)
+        k32.CreateFileW.restype = wintypes.HANDLE
+        k32.CreateFileW.argtypes = [wintypes.LPCWSTR, wintypes.DWORD, wintypes.DWORD,
+                                    ctypes.c_void_p, wintypes.DWORD, wintypes.DWORD,
+                                    wintypes.HANDLE]
+        h = k32.CreateFileW(path, GENERIC_READ, FILE_SHARE_ALL, None,
+                            OPEN_EXISTING, FILE_FLAG_NO_BUFFERING, None)
+        if h == INVALID or h is None:
+            return None, "CreateFileW failed err=%d" % ctypes.get_last_error()
+        try:
+            lo = (off // sector) * sector                 # aligned start
+            pad = off - lo
+            need = ((pad + ln + sector - 1) // sector) * sector
+
+            k32.SetFilePointerEx.argtypes = [wintypes.HANDLE, ctypes.c_longlong,
+                                             ctypes.POINTER(ctypes.c_longlong), wintypes.DWORD]
+            if not k32.SetFilePointerEx(h, ctypes.c_longlong(lo), None, 0):
+                return None, "seek failed err=%d" % ctypes.get_last_error()
+
+            # buffer address itself must be sector aligned: over-allocate, offset in
+            rawbuf = ctypes.create_string_buffer(need + sector)
+            addr = ctypes.addressof(rawbuf)
+            shift = (-addr) % sector
+            got = wintypes.DWORD(0)
+            k32.ReadFile.argtypes = [wintypes.HANDLE, ctypes.c_void_p, wintypes.DWORD,
+                                     ctypes.POINTER(wintypes.DWORD), ctypes.c_void_p]
+            ok = k32.ReadFile(h, ctypes.c_void_p(addr + shift), need,
+                              ctypes.byref(got), None)
+            if not ok:
+                return None, "ReadFile failed err=%d" % ctypes.get_last_error()
+            data = ctypes.string_at(addr + shift, got.value)
+            return data[pad:pad+ln], None
+        finally:
+            k32.CloseHandle(h)
+    except Exception as e:
+        return None, "%s: %s" % (type(e).__name__, e)
+
+
 def src_bytes(path, off, ln):
-    b = open(path, 'rb').read()
-    return b[off:] if ln is None else b[off:off+ln]
+    """One SAMPLE of a file that is documented to move. Prints its own receipt."""
+    t0 = time.time()
+    st_before = os.stat(path)
+    # seek, never read-all-then-slice: a 103 GB container must not be pulled
+    # into memory to look at 4 KB of it. plain file IO, never mmap.
+    with open(path, 'rb') as f:
+        f.seek(off)
+        b = f.read() if ln is None else f.read(ln)
+    st_after = os.stat(path)
+    if not QUIET:
+        sha = hashlib.sha256(b).hexdigest()
+        print("READ  %s" % path)
+        print("      sampled %s  window[%s:%s] = %s B  sha256 %s"
+              % (time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime(t0)),
+                 format(off, ','), 'end' if ln is None else format(off+ln, ','),
+                 format(len(b), ','), sha[:32]))
+        moved = []
+        if st_before.st_size != st_after.st_size:
+            moved.append("SIZE %s -> %s" % (st_before.st_size, st_after.st_size))
+        if st_before.st_mtime != st_after.st_mtime:
+            moved.append("MTIME changed during the read")
+        if moved:
+            print("      *** FILE MOVED WHILE BEING READ: %s ***" % "; ".join(moved))
+            print("      This sample may be torn. Re-sample before trusting it.")
+        print("      Numbers below describe THIS sample, not 'the file'.")
+        print("")
+    return b
 
 
 def ramp(t):
@@ -197,13 +299,26 @@ def main():
     if mode in ('bits', 'bytes', 'rgb'):
         b = src_bytes(pos[0], OFF, LN)
         if mode == 'bits':
-            buf, w, h = bits_to_gray(b, W)
-            buf, w, h = scale_up(buf, w, h, S, 1)
-            n = png(pos[1], w, h, buf, gray=True)
             ones = sum(bin(x).count('1') for x in b)
-            print("%s  %dx%d  %s B   bits=%s  ones=%s (%.2f%%)" % (
-                pos[1], w, h, format(n, ','), format(len(b)*8, ','), format(ones, ','),
-                100.0*ones/(len(b)*8)))
+            if S == 1 and W % 8 == 0:
+                # true 1 bit per pixel. the scanlines ARE the file's bytes.
+                stride = W // 8
+                h = (len(b) + stride - 1) // stride
+                pad = bytes(bytearray(b) + bytes(h*stride - len(b)))
+                n = png(pos[1], W, h, pad, depth=1)
+                print("%s  %dx%d  %s B   1 BIT PER PIXEL (depth=1)" % (
+                    pos[1], W, h, format(n, ',')))
+                print("   scanline = %d B = the file's bytes verbatim, %d rows" % (stride, h))
+                print("   bits=%s  ones=%s (%.2f%%)" % (
+                    format(len(b)*8, ','), format(ones, ','), 100.0*ones/(len(b)*8)))
+            else:
+                buf, w, h = bits_to_gray(b, W)
+                buf, w, h = scale_up(buf, w, h, S, 1)
+                n = png(pos[1], w, h, buf, gray=True)
+                print("%s  %dx%d  %s B   8-bit gray (scale>1 or width%%8) " % (
+                    pos[1], w, h, format(n, ',')))
+                print("   bits=%s  ones=%s (%.2f%%)" % (
+                    format(len(b)*8, ','), format(ones, ','), 100.0*ones/(len(b)*8)))
         elif mode == 'bytes':
             h = (len(b) + W - 1) // W
             buf = bytes(bytearray(b) + bytes(W*h - len(b)))
@@ -552,6 +667,379 @@ def main():
             print("REC%06d  op=%s (%3d)  a=%-12s b=%-12s out=%-12s  %s" % (
                 r, bin(op)[2:].zfill(8), op, format(a, ','), format(bb, ','),
                 format(o, ','), raw.hex()))
+        return 0
+
+    # ---------------- v5: the file moves ----------------
+    if mode == 'watch':
+        global QUIET
+        QUIET = True
+
+        if '--full' in sys.argv:
+            # ENTIRE SURFACE AREA. Sampling is invalid here: these containers are
+            # mostly dead space (AUTOFAB0 is 74.88% 0x00; FOUNDRY0 has 171 of 200
+            # bit columns permanently zero). A probe that lands in padding cannot
+            # change, so a sampled zero measures the padding, not the file.
+            # Stream every byte, chunk-hash it, compare passes. Bounded memory.
+            CH = opt('--chunk', 1 << 20)
+            N = opt('--samples', 2)
+            delay = opt('--delay', 500) / 1000.0
+            RAW = '--raw' in sys.argv
+            fsz = os.path.getsize(pos[0])
+            nch = (fsz + CH - 1) // CH
+            print("WATCH --full  %s" % pos[0])
+            print("ENTIRE surface: %s B in %s chunks of %s B. 100%% coverage."
+                  % (format(fsz, ','), format(nch, ','), format(CH, ',')))
+            print("%d passes, ~%.0f ms apart. Read-only. Never mmap, never write."
+                  % (N, delay*1000))
+            if RAW:
+                t, why = read_unbuffered(pos[0], 0, min(CH, 4096))
+                if t is None:
+                    print("--raw UNAVAILABLE (%s); using buffered." % why)
+                    RAW = False
+                else:
+                    print("READ PATH: UNBUFFERED, page cache bypassed.")
+            if not RAW:
+                print("READ PATH: buffered (page cache may serve repeats).")
+            print("")
+
+            passes = []
+            for p in range(N):
+                t0 = time.time()
+                hashes = []
+                dead = 0
+                live_bytes = 0
+                with open(pos[0], 'rb') as f:
+                    for c in range(nch):
+                        if RAW:
+                            blk, _w = read_unbuffered(pos[0], c*CH, min(CH, fsz-c*CH))
+                            if blk is None:
+                                blk = b''
+                        else:
+                            blk = f.read(CH)
+                        if not blk:
+                            break
+                        z = (blk.count(0) == len(blk))
+                        if z:
+                            dead += 1
+                        else:
+                            live_bytes += len(blk) - blk.count(0)
+                        hashes.append(hashlib.sha256(blk).digest())
+                el = time.time()-t0
+                passes.append((hashes, dead, live_bytes))
+                print("pass %d  %s chunks  dead(all-zero) %s  non-zero bytes %s  %.2f s  %.1f MB/s"
+                      % (p, format(len(hashes), ','), format(dead, ','),
+                         format(live_bytes, ','), el, (fsz/1048576.0)/max(el, 1e-9)))
+                if p < N-1:
+                    time.sleep(delay)
+
+            print("")
+            h0, dead0, live0 = passes[0]
+            print("SURFACE COMPOSITION (pass 0)")
+            print("   chunks total            %s" % format(len(h0), ','))
+            print("   chunks entirely 0x00    %s  (%.2f%%)  <- CANNOT change" % (
+                format(dead0, ','), 100.0*dead0/max(len(h0), 1)))
+            print("   chunks with any 1 bit   %s  (%.2f%%)  <- the only chunks that could" % (
+                format(len(h0)-dead0, ','), 100.0*(len(h0)-dead0)/max(len(h0), 1)))
+            print("   non-zero bytes          %s of %s (%.4f%% of the file)" % (
+                format(live0, ','), format(fsz, ','), 100.0*live0/max(fsz, 1)))
+            print("")
+            print("CHANGE ACROSS PASSES")
+            anymoved = 0
+            for p in range(1, len(passes)):
+                a = passes[p-1][0]
+                b2 = passes[p][0]
+                n = min(len(a), len(b2))
+                idx = [i for i in range(n) if a[i] != b2[i]]
+                anymoved += len(idx)
+                livech = len(h0)-dead0
+                print("   pass %d -> %d : %s of %s chunks differ  (%s of %s LIVE chunks, %.4f%%)"
+                      % (p-1, p, format(len(idx), ','), format(n, ','),
+                         format(len(idx), ','), format(livech, ','),
+                         100.0*len(idx)/max(livech, 1)))
+                if idx[:8]:
+                    print("      first changed chunk offsets: %s" % ", ".join(
+                        format(i*CH, ',') for i in idx[:8]))
+            print("")
+            if anymoved == 0:
+                print("VERDICT: NO CHUNK CHANGED across %d full passes of the ENTIRE file." % N)
+                print("   Coverage is 100%% of bytes - this is not a sampling artefact.")
+                print("   Bound: %d passes, ~%.1f s apart, %s B chunk granularity." % (
+                    N, delay, format(CH, ',')))
+                print("   A change that reverted between passes is still invisible.")
+                if not RAW:
+                    print("   Buffered path: a repeat read may come from the OS page cache.")
+                    print("   Re-run with --raw to bypass it.")
+            else:
+                print("VERDICT: THE FILE MOVED. %s chunk-changes across %d passes." % (
+                    format(anymoved, ','), N))
+            QUIET = False
+            return 0
+
+        N = opt('--samples', 12)
+        delay = opt('--delay', 250) / 1000.0
+        probes = opt('--probes', 1)
+        out = pos[1] if len(pos) > 1 else None
+        fsz = os.path.getsize(pos[0])
+        print("WATCH  %s" % pos[0])
+        print("%d samples, ~%.0f ms apart. Read-only. Never mmap, never write." % (N, delay*1000))
+        print("A file documented to move under you is sampled, not read.")
+
+        if probes > 1:
+            # stratified: N windows spread evenly across the whole file, so a
+            # 103 GB container is not judged by its first 64 KB.
+            plen = LN if LN else 65536
+            step = max((fsz - plen) // max(probes-1, 1), 1)
+            offs = [min(i*step, max(fsz-plen, 0)) for i in range(probes)]
+            covered = probes*plen
+            print("")
+            print("COVERAGE: %d probes x %s B = %s B of %s B  (%.6f%% of the file)" % (
+                probes, format(plen, ','), format(covered, ','), format(fsz, ','),
+                100.0*covered/max(fsz, 1)))
+            print("probe offsets span %s .. %s" % (format(offs[0], ','), format(offs[-1], ',')))
+            print("A change outside these %d windows is NOT visible to this test." % probes)
+            print("")
+            RAW = '--raw' in sys.argv
+            if RAW:
+                probe, why = read_unbuffered(pos[0], offs[0], plen)
+                if probe is None:
+                    print("--raw requested but UNAVAILABLE (%s). Falling back to buffered." % why)
+                    RAW = False
+                else:
+                    print("READ PATH: UNBUFFERED (FILE_FLAG_NO_BUFFERING). Page cache bypassed.")
+            if not RAW:
+                print("READ PATH: buffered. A repeat read may be served from the OS page cache.")
+            print("")
+            print("%-3s %-10s %-14s %s" % ('n', 'wall', 'combined-sha', 'probes changed vs prev'))
+            prevp = None
+            t_start = time.time()
+            movers = Counter()
+            distinct = set()
+            for i in range(N):
+                cur = []
+                for o in offs:
+                    if RAW:
+                        d, _why = read_unbuffered(pos[0], o, plen)
+                        cur.append(d if d is not None else b'')
+                        continue
+                    with open(pos[0], 'rb') as f:
+                        f.seek(o)
+                        cur.append(f.read(plen))
+                comb = hashlib.sha256(b''.join(hashlib.sha256(c).digest() for c in cur)).hexdigest()
+                distinct.add(comb)
+                if prevp is None:
+                    ch = 'base'
+                else:
+                    idx = [j for j in range(probes) if cur[j] != prevp[j]]
+                    for j in idx:
+                        movers[j] += 1
+                    ch = ('none' if not idx else
+                          "%d probes: %s" % (len(idx), ",".join(str(j) for j in idx[:10])))
+                print("%-3d %-10.3f %-14s %s" % (i, time.time()-t_start, comb[:12], ch))
+                prevp = cur
+                if i < N-1:
+                    time.sleep(delay)
+            print("")
+            print("VERDICT over %d samples across %.2f s, %d probes:" % (
+                N, time.time()-t_start, probes))
+            print("   distinct combined states  %d" % len(distinct))
+            print("   probes that ever moved    %d of %d" % (len(movers), probes))
+            if not movers:
+                print("   NO PROBE MOVED in this window at this rate.")
+                print("   Coverage bound: %.6f%% of the file, %.2f s span, %.0f ms resolution."
+                      % (100.0*covered/max(fsz, 1), time.time()-t_start, delay*1000))
+                print("   The other %.6f%% was never looked at." % (100.0-100.0*covered/max(fsz, 1)))
+                print("")
+                print("   READ-PATH LIMIT - this is a limit of the instrument, not a finding:")
+                print("   these samples go through the Windows buffered file API. Repeat reads")
+                print("   of an unchanged mtime can be served from the OS page cache, so this")
+                print("   tool cannot distinguish 'the bytes on the platter did not change'")
+                print("   from 'the cache handed me the same page each time'. Closing that gap")
+                print("   needs an unbuffered read (FILE_FLAG_NO_BUFFERING) which this tool does")
+                print("   not yet do. Until then a zero here bounds the OS's view, not the drive's.")
+            else:
+                for j, c in movers.most_common():
+                    print("   probe %d @ offset %s moved in %d of %d transitions" % (
+                        j, format(offs[j], ','), c, N-1))
+            QUIET = False
+            return 0
+        print("")
+        print("%-3s %-12s %-14s %-10s %-12s %s" % (
+            'n', 'wall', 'size', 'mtime', 'ones', 'sha256[:16]  bits vs prev'))
+        rows = []
+        prev = None
+        t_start = time.time()
+        for i in range(N):
+            st = os.stat(pos[0])
+            b = src_bytes(pos[0], OFF, LN)
+            sha = hashlib.sha256(b).hexdigest()
+            ones = sum(bin(x).count('1') for x in b)
+            if prev is None:
+                dbits = None
+                xor = b'\x00' * len(b)
+            else:
+                n = min(len(prev), len(b))
+                xor = bytes(bytearray(prev[j] ^ b[j] for j in range(n)))
+                dbits = sum(bin(v).count('1') for v in xor)
+            rows.append((b, sha, ones, dbits, xor))
+            print("%-3d %-12.3f %-14s %-10d %-12s %s  %s" % (
+                i, time.time()-t_start, format(len(b), ','), int(st.st_mtime),
+                format(ones, ','), sha[:16],
+                'base' if dbits is None else format(dbits, ',')))
+            prev = b
+            if i < N-1:
+                time.sleep(delay)
+
+        shas = set(r[1] for r in rows)
+        moved = sum(1 for r in rows if r[3])
+        total_changed = sum(r[3] or 0 for r in rows)
+        print("")
+        print("VERDICT over %d samples across %.2f s:" % (N, time.time()-t_start))
+        print("   distinct sha256          %d" % len(shas))
+        print("   samples differing from previous  %d of %d" % (moved, N-1))
+        print("   total bits changed       %s" % format(total_changed, ','))
+        if len(shas) == 1:
+            print("   THIS FILE DID NOT MOVE during this window, at this sampling rate.")
+            print("   That is not 'it never moves'. Coverage: %d samples, %.2f s span," % (N, time.time()-t_start))
+            print("   %.0f ms resolution. A change faster than that, or between windows," % (delay*1000))
+            print("   or requiring the container to be live rather than a checkout, is not ruled out.")
+        else:
+            print("   THIS FILE MOVED. %d distinct contents across the window." % len(shas))
+        if out:
+            # one row per sample-transition, bits that changed
+            wsz = min(W, 1024)
+            rowh = 4
+            H = max((len(rows)-1)*rowh, rowh)
+            buf = bytearray(b'\x08\x0c\x18' * (wsz*H))
+            for i in range(1, len(rows)):
+                xor = rows[i][4]
+                per = max(len(xor)//wsz, 1)
+                for x in range(wsz):
+                    ch = xor[x*per:(x+1)*per]
+                    d = sum(bin(v).count('1') for v in ch) / float(max(len(ch)*8, 1))
+                    col = bytes(bytearray(ramp(min(d*8, 1.0))))
+                    for y in range((i-1)*rowh, i*rowh):
+                        o = (y*wsz + x)*3
+                        buf[o:o+3] = col
+            buf2, w, h = scale_up(bytes(buf), wsz, H, S, 3)
+            n = png(out, w, h, buf2)
+            print("   %s  %dx%d  %s B   one row per transition, colour = bits changed" % (
+                out, w, h, format(n, ',')))
+        QUIET = False
+        return 0
+
+    if mode == 'compress':
+        # DEAD SPACE ACCOUNTING. How much of this container is carrying
+        # information, and what would a lossless re-encoding cost?
+        b = src_bytes(pos[0], OFF, LN)
+        n = len(b)
+        bits = n*8
+        ones = sum(bin(x).count('1') for x in b)
+        zbytes = b.count(0)
+        c = Counter(b)
+        ent = -sum((v/float(n))*math.log(v/float(n), 2) for v in c.values())
+        zl = len(zlib.compress(b, 9))
+        print("DEAD SPACE  %s  %s B" % (pos[0], format(n, ',')))
+        print("")
+        print("   zero BYTES      %s of %s   (%.2f%%)" % (
+            format(zbytes, ','), format(n, ','), 100.0*zbytes/n))
+        print("   zero BITS       %s of %s   (%.2f%%)  <- the real figure" % (
+            format(bits-ones, ','), format(bits, ','), 100.0*(bits-ones)/bits))
+        print("   set bits        %s              (%.2f%%)" % (
+            format(ones, ','), 100.0*ones/bits))
+        print("   entropy         %.4f bits/byte of 8.0  -> %.2f%% of capacity used" % (
+            ent, 100.0*ent/8.0))
+        print("   zlib -9         %s B  (%.2f%% of original)" % (
+            format(zl, ','), 100.0*zl/n))
+        print("   1bpp PNG        %s B  (%.2f%%)  lossless AND viewable" % (
+            format(zl + 60, ','), 100.0*(zl+60)/n))
+        if n % STR == 0 and n >= STR:
+            nrec = n//STR
+            A = []
+            B2 = []
+            O = []
+            ops = set()
+            for r in range(nrec):
+                op, a, bb, o = struct.unpack_from('<BQQQ', b, r*STR)
+                ops.add(op)
+                A.append(a)
+                B2.append(bb)
+                O.append(o)
+            mx = max(max(A), max(B2), max(O))
+            abits = max(mx.bit_length(), 1)
+            opbits = max((len(ops)-1).bit_length(), 1)
+            cur = STR*8
+            minimal = opbits + 3*abits
+            print("")
+            print("   RECORD WIDTH, measured over %s records" % format(nrec, ','))
+            print("      current                 %d bits (%d B) per record" % (cur, STR))
+            print("      distinct ops            %d  -> %d bits suffice" % (len(ops), opbits))
+            print("      max address seen        %s -> %d bits suffice" % (format(mx, ','), abits))
+            print("      information-minimal     %d bits (%.2f B) per record" % (
+                minimal, minimal/8.0))
+            print("      headroom unused         %d bits/record  (%.1f%% of the record)" % (
+                cur-minimal, 100.0*(cur-minimal)/cur))
+            print("      whole file at minimum   %s B  (%.2f%% of current)" % (
+                format(int(nrec*minimal/8.0), ','), 100.0*(nrec*minimal/8.0)/n))
+            print("")
+            print("   CAVEAT, and it matters: the address values ARE the wiring")
+            print("   (collision is fab). Narrowing a field does not compress data,")
+            print("   it CAPS THE ADDRESS SPACE at %d bits. That is a design decision" % abits)
+            print("   about how large this container may ever grow, not a free saving.")
+            print("   Container-level compression (zlib / 1bpp PNG) costs no address")
+            print("   space at all and is fully reversible. Per CLAIM_SIZE_LAW.txt,")
+            print("   size is not a verdict on validity - this is an encoding measurement.")
+        return 0
+
+    if mode == 'map':
+        # DEAD SPACE MAP. Streams the ENTIRE file - no sampling. One pixel per
+        # chunk, colour = fraction of non-zero bytes in that chunk. Black means
+        # the chunk is all 0x00 and therefore cannot change.
+        QUIET = True
+        fsz = os.path.getsize(pos[0])
+        px = opt('--pixels', 262144)
+        Wt = opt('--width', 512)
+        chunk = max(fsz // max(px, 1), 1)
+        nch = (fsz + chunk - 1) // chunk
+        Ht = (nch + Wt - 1) // Wt
+        buf = bytearray(Wt*Ht*3)
+        dead = 0
+        live_bytes = 0
+        dens = []
+        with open(pos[0], 'rb') as f:
+            for c in range(nch):
+                blk = f.read(chunk)
+                if not blk:
+                    break
+                nz = len(blk) - blk.count(0)
+                live_bytes += nz
+                if nz == 0:
+                    dead += 1
+                d = nz/float(len(blk))
+                dens.append(d)
+                col = bytes(bytearray((0, 0, 0) if nz == 0 else ramp(d)))
+                o = c*3
+                if o+3 <= len(buf):
+                    buf[o:o+3] = col
+        buf2, w, h = scale_up(bytes(buf), Wt, Ht, S, 3)
+        n = png(pos[1], w, h, buf2)
+        print("MAP  %s" % pos[0])
+        print("ENTIRE surface streamed: %s B in %s chunks of %s B. No sampling."
+              % (format(fsz, ','), format(nch, ','), format(chunk, ',')))
+        print("%s  %dx%d  %s B" % (pos[1], w, h, format(n, ',')))
+        print("")
+        print("   chunks entirely 0x00 (BLACK, cannot change)  %s  (%.2f%%)"
+              % (format(dead, ','), 100.0*dead/max(nch, 1)))
+        print("   chunks with at least one 1 bit               %s  (%.2f%%)"
+              % (format(nch-dead, ','), 100.0*(nch-dead)/max(nch, 1)))
+        print("   non-zero bytes                               %s of %s  (%.4f%%)"
+              % (format(live_bytes, ','), format(fsz, ','), 100.0*live_bytes/max(fsz, 1)))
+        if dens:
+            print("   per-chunk non-zero density  min %.4f  max %.4f  mean %.4f"
+                  % (min(dens), max(dens), sum(dens)/len(dens)))
+        print("")
+        print("   Only the non-black area can register a change. A watch that samples")
+        print("   uniformly will land in the black in proportion to how much there is.")
+        QUIET = False
         return 0
 
     # ---------------- v4 netlist modes ----------------
