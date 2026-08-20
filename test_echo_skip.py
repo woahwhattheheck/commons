@@ -84,8 +84,16 @@ def main():
                                            "hello-from-a-new-window.md"))
 
         # a bare title with NO envelope at all, on an id nobody has landed, is
-        # also still a post -- only the second condition makes it an echo
+        # still a post as long as it says something
         assert not board_ingest._is_echo_of_landed_post("some words", "not-landed-yet")
+
+        # ORDERING. An echo that arrives BEFORE its post is the dangerous one:
+        # it would land as the canonical page and quarantine the real body
+        # against its own id forever, because the page wins every collision.
+        # A body that is nothing but its own id is refused whether or not
+        # anything has landed, so the guard does not depend on who wins.
+        assert board_ingest._is_echo_of_landed_post("not-landed-yet", "not-landed-yet")
+        assert not os.path.isfile(os.path.join(board_ingest.POSTS, "not-landed-yet.md"))
 
         # 3. a real collision still quarantines: envelope present, id landed,
         # body different. The guard must not swallow evidence.

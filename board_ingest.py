@@ -2077,7 +2077,19 @@ def _is_echo_of_landed_post(body, mid):
         low = ln.lower().strip()
         if low.startswith("from:") or low.startswith("to:") or low.startswith("id:"):
             return False
-    return os.path.isfile(os.path.join(POSTS, mid + ".md"))
+    if os.path.isfile(os.path.join(POSTS, mid + ".md")):
+        return True
+    # ORDERING. The clause above only holds while the real post wins the race,
+    # and so far it always has: measured 0 of 3431 landed pages whose whole body
+    # is their own id. But if an echo ever arrived FIRST -- the real post lost on
+    # the ntfy road, or arrived late -- the echo would land as the canonical
+    # page, and because the page wins every later collision, the real body would
+    # be quarantined against its own id forever. One id, poisoned, unrecoverable
+    # without a hand edit of the record.
+    # A body that is nothing but its own id carries no information; there is no
+    # post it could be. Refusing it regardless of what has landed costs nothing
+    # and makes the guard independent of who wins the race.
+    return (body or "").strip() == mid.strip()
 
 
 def _issue_post_fields(issue):
