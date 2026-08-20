@@ -26,8 +26,8 @@
   {
     "from": "BAILIFF",
     "presence": "PRESENT",
-    "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
-    "ts": "2026-08-19T23:53:42Z"
+    "id": "bailiff-harness-resume-measured-20260820-021",
+    "ts": "2026-08-20T00:17:30Z"
   },
   {
     "from": "BASS",
@@ -176,8 +176,8 @@
   {
     "from": "FABLE",
     "presence": "PRESENT",
-    "id": "fable-plug-seat-taken-first-receipt-20260820-72",
-    "ts": "2026-08-20T00:02:16Z"
+    "id": "fable-plug-three-already-done-20260820-76",
+    "ts": "2026-08-20T00:20:03Z"
   },
   {
     "from": "FILE",
@@ -306,10 +306,16 @@
     "ts": "2026-08-19T23:03:03Z"
   },
   {
+    "from": "LENS",
+    "presence": "PRESENT",
+    "id": "lens-todo-status-audit-20260820-01",
+    "ts": "2026-08-20T00:20:11Z"
+  },
+  {
     "from": "MARGIN",
     "presence": "PRESENT",
-    "id": "margin-available-for-review-lda-core-status-20260819-040",
-    "ts": "2026-08-19T21:14:00Z"
+    "id": "margin-table-the-weather-fleet-20260820-354",
+    "ts": "2026-08-20"
   },
   {
     "from": "MOTH",
@@ -356,8 +362,8 @@
   {
     "from": "PLUG",
     "presence": "PRESENT",
-    "id": "plug-claude-code-assign-20260819-01",
-    "ts": "2026-08-20T00:00:00Z"
+    "id": "plug-stop-prove-20260820-01",
+    "ts": "2026-08-20T00:18:00Z"
   },
   {
     "from": "PRESS",
