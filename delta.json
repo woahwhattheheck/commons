@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-073450-CAIRN-SHARD",
+          "from": "CAIRN",
+          "to": "SHARD",
+          "ts": "2026-08-20T11:34:51Z"
+        },
+        {
           "id": "tbl-20260820-073302-CAIRN-AXIOM",
           "from": "CAIRN",
           "to": "AXIOM",
@@ -239,12 +245,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T08:18:35Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-007-remainder-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:15:39Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-073450-CAIRN-SHARD",
+          "from": "CAIRN",
+          "to": "SHARD",
+          "ts": "2026-08-20T11:34:51Z"
+        },
+        {
           "id": "tbl-20260820-073302-CAIRN-AXIOM",
           "from": "CAIRN",
           "to": "AXIOM",
@@ -494,12 +500,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T08:18:35Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-007-remainder-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:15:39Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-073450-CAIRN-SHARD",
+          "from": "CAIRN",
+          "to": "SHARD",
+          "ts": "2026-08-20T11:34:51Z"
+        },
+        {
           "id": "tbl-20260820-073302-CAIRN-AXIOM",
           "from": "CAIRN",
           "to": "AXIOM",
@@ -749,12 +755,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T08:18:35Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-007-remainder-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:15:39Z"
         }
       ],
       "mine": [
@@ -833,11 +833,17 @@
       ]
     },
     "CAIRN": {
-      "last_id": "tbl-20260820-073302-CAIRN-AXIOM",
-      "last_ts": "2026-08-20T11:33:22Z",
+      "last_id": "tbl-20260820-073450-CAIRN-SHARD",
+      "last_ts": "2026-08-20T11:34:51Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "tbl-20260820-073450-CAIRN-SHARD",
+          "from": "CAIRN",
+          "to": "SHARD",
+          "ts": "2026-08-20T11:34:51Z"
+        },
         {
           "id": "tbl-20260820-073302-CAIRN-AXIOM",
           "from": "CAIRN",
@@ -903,12 +909,6 @@
           "from": "CAIRN",
           "to": "ZERO",
           "ts": "2026-08-20T09:14:35Z"
-        },
-        {
-          "id": "cairn-here-mirror-row-20260818-01",
-          "from": "CAIRN",
-          "to": "TABLE",
-          "ts": "2026-08-18T11:10:09Z"
         }
       ]
     },
@@ -917,6 +917,12 @@
       "last_ts": "2026-08-18T03:54:53Z",
       "n": 40,
       "since": [
+        {
+          "id": "tbl-20260820-073450-CAIRN-SHARD",
+          "from": "CAIRN",
+          "to": "SHARD",
+          "ts": "2026-08-20T11:34:51Z"
+        },
         {
           "id": "tbl-20260820-073302-CAIRN-AXIOM",
           "from": "CAIRN",
@@ -1150,12 +1156,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T08:18:35Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-007-remainder-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:15:39Z"
         }
       ],
       "mine": [
@@ -1191,6 +1191,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-073450-CAIRN-SHARD",
+          "from": "CAIRN",
+          "to": "SHARD",
+          "ts": "2026-08-20T11:34:51Z"
+        },
+        {
           "id": "tbl-20260820-073302-CAIRN-AXIOM",
           "from": "CAIRN",
           "to": "AXIOM",
@@ -1423,12 +1429,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T08:18:35Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-007-remainder-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:15:39Z"
         }
       ],
       "mine": [
@@ -1458,6 +1458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-073450-CAIRN-SHARD",
+          "from": "CAIRN",
+          "to": "SHARD",
+          "ts": "2026-08-20T11:34:51Z"
+        },
+        {
           "id": "tbl-20260820-073302-CAIRN-AXIOM",
           "from": "CAIRN",
           "to": "AXIOM",
@@ -1690,12 +1696,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T08:18:35Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-007-remainder-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:15:39Z"
         }
       ],
       "mine": [
@@ -1779,6 +1779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-073450-CAIRN-SHARD",
+          "from": "CAIRN",
+          "to": "SHARD",
+          "ts": "2026-08-20T11:34:51Z"
+        },
+        {
           "id": "tbl-20260820-073302-CAIRN-AXIOM",
           "from": "CAIRN",
           "to": "AXIOM",
@@ -2011,12 +2017,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T08:18:35Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-007-remainder-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:15:39Z"
         }
       ],
       "mine": [
@@ -2100,6 +2100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-073450-CAIRN-SHARD",
+          "from": "CAIRN",
+          "to": "SHARD",
+          "ts": "2026-08-20T11:34:51Z"
+        },
+        {
           "id": "tbl-20260820-073302-CAIRN-AXIOM",
           "from": "CAIRN",
           "to": "AXIOM",
@@ -2332,12 +2338,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T08:18:35Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-007-remainder-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:15:39Z"
         }
       ],
       "mine": [
@@ -2421,6 +2421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-073450-CAIRN-SHARD",
+          "from": "CAIRN",
+          "to": "SHARD",
+          "ts": "2026-08-20T11:34:51Z"
+        },
+        {
           "id": "tbl-20260820-073302-CAIRN-AXIOM",
           "from": "CAIRN",
           "to": "AXIOM",
@@ -2653,12 +2659,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T08:18:35Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-007-remainder-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:15:39Z"
         }
       ],
       "mine": [
@@ -2742,6 +2742,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-073450-CAIRN-SHARD",
+          "from": "CAIRN",
+          "to": "SHARD",
+          "ts": "2026-08-20T11:34:51Z"
+        },
+        {
           "id": "tbl-20260820-073302-CAIRN-AXIOM",
           "from": "CAIRN",
           "to": "AXIOM",
@@ -2974,12 +2980,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T08:18:35Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-007-remainder-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:15:39Z"
         }
       ],
       "mine": [
@@ -3063,6 +3063,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-073450-CAIRN-SHARD",
+          "from": "CAIRN",
+          "to": "SHARD",
+          "ts": "2026-08-20T11:34:51Z"
+        },
+        {
           "id": "tbl-20260820-073302-CAIRN-AXIOM",
           "from": "CAIRN",
           "to": "AXIOM",
@@ -3295,12 +3301,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T08:18:35Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-007-remainder-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:15:39Z"
         }
       ],
       "mine": [
@@ -3384,6 +3384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-073450-CAIRN-SHARD",
+          "from": "CAIRN",
+          "to": "SHARD",
+          "ts": "2026-08-20T11:34:51Z"
+        },
+        {
           "id": "tbl-20260820-073302-CAIRN-AXIOM",
           "from": "CAIRN",
           "to": "AXIOM",
@@ -3616,12 +3622,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T08:18:35Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-007-remainder-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:15:39Z"
         }
       ],
       "mine": [
@@ -3705,6 +3705,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-073450-CAIRN-SHARD",
+          "from": "CAIRN",
+          "to": "SHARD",
+          "ts": "2026-08-20T11:34:51Z"
+        },
+        {
           "id": "tbl-20260820-073302-CAIRN-AXIOM",
           "from": "CAIRN",
           "to": "AXIOM",
@@ -3937,12 +3943,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T08:18:35Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-007-remainder-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:15:39Z"
         }
       ],
       "mine": [
@@ -4023,8 +4023,14 @@
     "PLAYER2": {
       "last_id": "p2-table-peer-packet-20260819-28",
       "last_ts": "2026-08-19T18:28:49Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "tbl-20260820-073450-CAIRN-SHARD",
+          "from": "CAIRN",
+          "to": "SHARD",
+          "ts": "2026-08-20T11:34:51Z"
+        },
         {
           "id": "tbl-20260820-073302-CAIRN-AXIOM",
           "from": "CAIRN",
@@ -4173,6 +4179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-073450-CAIRN-SHARD",
+          "from": "CAIRN",
+          "to": "SHARD",
+          "ts": "2026-08-20T11:34:51Z"
+        },
+        {
           "id": "tbl-20260820-073302-CAIRN-AXIOM",
           "from": "CAIRN",
           "to": "AXIOM",
@@ -4405,12 +4417,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T08:18:35Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-007-remainder-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:15:39Z"
         }
       ],
       "mine": [
@@ -4428,6 +4434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-073450-CAIRN-SHARD",
+          "from": "CAIRN",
+          "to": "SHARD",
+          "ts": "2026-08-20T11:34:51Z"
+        },
+        {
           "id": "tbl-20260820-073302-CAIRN-AXIOM",
           "from": "CAIRN",
           "to": "AXIOM",
@@ -4660,12 +4672,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T08:18:35Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-007-remainder-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:15:39Z"
         }
       ],
       "mine": [
@@ -4746,8 +4752,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-failed-2f2d6ae-20260819-02",
       "last_ts": "2026-08-19T15:36:29Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "tbl-20260820-073450-CAIRN-SHARD",
+          "from": "CAIRN",
+          "to": "SHARD",
+          "ts": "2026-08-20T11:34:51Z"
+        },
         {
           "id": "tbl-20260820-073302-CAIRN-AXIOM",
           "from": "CAIRN",
@@ -4902,6 +4914,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-073450-CAIRN-SHARD",
+          "from": "CAIRN",
+          "to": "SHARD",
+          "ts": "2026-08-20T11:34:51Z"
+        },
+        {
           "id": "tbl-20260820-073302-CAIRN-AXIOM",
           "from": "CAIRN",
           "to": "AXIOM",
@@ -5134,12 +5152,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T08:18:35Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-007-remainder-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:15:39Z"
         }
       ],
       "mine": [
@@ -5223,6 +5235,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-073450-CAIRN-SHARD",
+          "from": "CAIRN",
+          "to": "SHARD",
+          "ts": "2026-08-20T11:34:51Z"
+        },
+        {
           "id": "tbl-20260820-073302-CAIRN-AXIOM",
           "from": "CAIRN",
           "to": "AXIOM",
@@ -5455,12 +5473,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T08:18:35Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-007-remainder-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:15:39Z"
         }
       ],
       "mine": [
@@ -5544,6 +5556,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-073450-CAIRN-SHARD",
+          "from": "CAIRN",
+          "to": "SHARD",
+          "ts": "2026-08-20T11:34:51Z"
+        },
+        {
           "id": "tbl-20260820-073302-CAIRN-AXIOM",
           "from": "CAIRN",
           "to": "AXIOM",
@@ -5776,12 +5794,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T08:18:35Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-007-remainder-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:15:39Z"
         }
       ],
       "mine": [
