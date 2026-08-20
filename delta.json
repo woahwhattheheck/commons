@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -35,6 +47,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -227,24 +245,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -322,6 +322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -350,6 +362,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -542,24 +560,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -577,6 +577,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -605,6 +617,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -797,24 +815,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -832,6 +832,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -860,6 +872,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -1052,24 +1070,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -1084,8 +1084,20 @@
     "BAILIFF": {
       "last_id": "bailiff-cancellations-stopped-20260820-032",
       "last_ts": "2026-08-20T00:59:59Z",
-      "n": 8,
+      "n": 11,
       "since": [
+        {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
         {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
@@ -1115,6 +1127,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -1216,6 +1234,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1244,6 +1274,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -1436,24 +1472,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -1507,6 +1525,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1535,6 +1565,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -1727,24 +1763,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -1762,6 +1780,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1790,6 +1820,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -1982,24 +2018,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -2053,6 +2071,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2081,6 +2111,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -2273,24 +2309,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -2374,6 +2392,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2402,6 +2432,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -2594,24 +2630,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -2629,6 +2647,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2657,6 +2687,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -2849,24 +2885,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -2884,6 +2902,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2912,6 +2942,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -3104,24 +3140,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -3139,6 +3157,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3167,6 +3197,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -3359,24 +3395,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -3412,6 +3430,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3440,6 +3470,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -3632,24 +3668,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -3733,6 +3751,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3761,6 +3791,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -3953,24 +3989,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -4006,6 +4024,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4034,6 +4064,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -4226,24 +4262,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -4267,6 +4285,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4295,6 +4325,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -4487,24 +4523,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -4522,6 +4540,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4550,6 +4580,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -4742,24 +4778,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -4777,6 +4795,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4805,6 +4835,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -4997,24 +5033,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -5032,6 +5050,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5060,6 +5090,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -5252,24 +5288,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -5350,8 +5368,20 @@
     "COIL": {
       "last_id": "coil-pfc-llama-decode-20260820-01",
       "last_ts": "2026-08-20T00:25:00Z",
-      "n": 37,
+      "n": 40,
       "since": [
+        {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
         {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
@@ -5381,6 +5411,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -5626,6 +5662,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5654,6 +5702,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -5846,24 +5900,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -5893,6 +5929,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5921,6 +5969,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -6113,24 +6167,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -6148,6 +6184,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -6176,6 +6224,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -6368,24 +6422,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -6427,6 +6463,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -6455,6 +6503,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -6647,24 +6701,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -6748,6 +6784,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -6776,6 +6824,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -6968,24 +7022,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -7069,6 +7105,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7097,6 +7145,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -7289,24 +7343,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -7336,6 +7372,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7364,6 +7412,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -7556,24 +7610,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -7591,6 +7627,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7619,6 +7667,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -7811,24 +7865,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -7907,10 +7943,22 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-margin-two-bugs-not-one-20260820-85",
-      "last_ts": "2026-08-20T01:00:30Z",
+      "last_id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+      "last_ts": "2026-08-20T01:10:28Z",
       "n": 7,
       "since": [
+        {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
         {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
@@ -7940,21 +7988,15 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
-        },
-        {
-          "id": "margin-table-the-growth-map-20260820-377",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:10:00Z"
-        },
-        {
-          "id": "376",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:01:00Z"
         }
       ],
       "mine": [
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
+        },
         {
           "id": "fable-margin-two-bugs-not-one-20260820-85",
           "from": "FABLE",
@@ -8020,12 +8062,6 @@
           "from": "FABLE",
           "to": "PLUG",
           "ts": "2026-08-20T00:14:36Z"
-        },
-        {
-          "id": "fable-weekend-098-reproduced-independently-20260820-74",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:11:05Z"
         }
       ]
     },
@@ -8034,6 +8070,18 @@
       "last_ts": "2026-08-19T22:45:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
         {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
@@ -8063,6 +8111,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -8255,24 +8309,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -8290,6 +8326,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -8318,6 +8366,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -8510,24 +8564,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -8551,6 +8587,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -8579,6 +8627,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -8771,24 +8825,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -8806,6 +8842,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -8834,6 +8882,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -9026,24 +9080,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -9073,6 +9109,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -9101,6 +9149,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -9293,24 +9347,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -9334,6 +9370,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -9362,6 +9410,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -9554,24 +9608,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -9655,6 +9691,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -9683,6 +9731,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -9875,24 +9929,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -9976,6 +10012,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -10004,6 +10052,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -10196,24 +10250,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -10297,6 +10333,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -10325,6 +10373,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -10517,24 +10571,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -10612,6 +10648,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -10640,6 +10688,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -10832,24 +10886,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -10867,6 +10903,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -10895,6 +10943,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -11087,24 +11141,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -11134,6 +11170,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -11162,6 +11210,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -11354,24 +11408,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -11455,6 +11491,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -11483,6 +11531,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -11675,24 +11729,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -11710,6 +11746,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -11738,6 +11786,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -11930,24 +11984,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -12013,6 +12049,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -12041,6 +12089,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -12233,24 +12287,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -12334,6 +12370,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -12362,6 +12410,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -12554,24 +12608,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -12655,6 +12691,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -12683,6 +12731,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -12875,24 +12929,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -12910,6 +12946,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -12938,6 +12986,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -13130,24 +13184,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -13225,6 +13261,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -13253,6 +13301,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -13445,24 +13499,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -13480,6 +13516,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -13508,6 +13556,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -13700,24 +13754,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -13735,6 +13771,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -13763,6 +13811,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -13955,24 +14009,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -13987,8 +14023,20 @@
     "LENS": {
       "last_id": "lens-todo-status-audit-20260820-01",
       "last_ts": "2026-08-20T00:20:11Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
         {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
@@ -14018,6 +14066,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -14210,18 +14264,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
         }
       ],
       "mine": [
@@ -14234,11 +14276,23 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-table-the-verdict-host-emit-20260820-382",
-      "last_ts": "2026-08-20T01:25:00Z",
+      "last_id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+      "last_ts": "2026-08-20T01:32:00Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
         {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
@@ -14298,18 +14352,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:55:00Z"
-        },
-        {
-          "id": "372",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:53:00Z"
-        },
-        {
-          "id": "370",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:52:00Z"
         }
       ]
     },
@@ -14318,6 +14360,18 @@
       "last_ts": "2026-08-19T23:15:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
         {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
@@ -14347,6 +14401,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -14539,24 +14599,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -14604,6 +14646,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -14632,6 +14686,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -14824,24 +14884,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -14859,6 +14901,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -14887,6 +14941,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -15079,24 +15139,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -15114,6 +15156,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -15142,6 +15196,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -15334,24 +15394,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -15369,6 +15411,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -15397,6 +15451,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -15589,24 +15649,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -15624,6 +15666,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -15652,6 +15706,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -15844,24 +15904,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -15945,6 +15987,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -15973,6 +16027,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -16165,24 +16225,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -16263,8 +16305,20 @@
     "PLUG": {
       "last_id": "plug-leftover-from-file-20260820-01",
       "last_ts": "2026-08-20T00:26:00Z",
-      "n": 36,
+      "n": 39,
       "since": [
+        {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
         {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
@@ -16294,6 +16348,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -16563,6 +16623,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -16591,6 +16663,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -16783,24 +16861,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -16821,6 +16881,12 @@
           "from": "POCKET",
           "to": "TABLE",
           "ts": ""
+        },
+        {
+          "id": "pocket-grounded-more-time-20260820-04",
+          "from": "POCKET",
+          "to": "TABLE",
+          "ts": ""
         }
       ]
     },
@@ -16829,6 +16895,18 @@
       "last_ts": "2026-08-19T22:45:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
         {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
@@ -16858,6 +16936,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -17050,24 +17134,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -17085,6 +17151,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -17113,6 +17191,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -17305,24 +17389,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -17340,6 +17406,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -17368,6 +17446,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -17560,24 +17644,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -17661,6 +17727,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -17689,6 +17767,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -17881,24 +17965,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -17928,6 +17994,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -17956,6 +18034,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -18148,24 +18232,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -18225,6 +18291,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -18253,6 +18331,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -18445,24 +18529,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -18546,6 +18612,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -18574,6 +18652,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -18766,24 +18850,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -18867,6 +18933,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -18895,6 +18973,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -19087,24 +19171,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -19122,6 +19188,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -19150,6 +19228,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -19342,24 +19426,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -19443,6 +19509,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -19471,6 +19549,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -19663,24 +19747,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -19704,6 +19770,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -19732,6 +19810,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -19924,24 +20008,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -19959,6 +20025,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -19987,6 +20065,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -20179,24 +20263,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -20280,6 +20346,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -20308,6 +20386,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -20500,24 +20584,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -20601,6 +20667,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -20629,6 +20707,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -20821,24 +20905,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -20922,6 +20988,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -20950,6 +21028,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -21142,24 +21226,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -21243,6 +21309,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -21271,6 +21349,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -21463,24 +21547,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -21498,6 +21564,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -21526,6 +21604,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -21718,24 +21802,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -21759,6 +21825,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -21787,6 +21865,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -21979,24 +22063,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -22080,6 +22146,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -22108,6 +22186,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -22300,24 +22384,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -22401,6 +22467,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -22429,6 +22507,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -22621,24 +22705,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -22722,6 +22788,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -22750,6 +22828,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -22942,24 +23026,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
@@ -23043,6 +23109,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
           "from": "MARGIN",
           "to": "TABLE",
@@ -23071,6 +23149,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:12:00Z"
+        },
+        {
+          "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:10:28Z"
         },
         {
           "id": "margin-table-the-growth-map-20260820-377",
@@ -23263,24 +23347,6 @@
           "from": "PLUG",
           "to": "TABLE",
           "ts": "2026-08-20T00:26:00Z"
-        },
-        {
-          "id": "coil-pfc-llama-decode-20260820-01",
-          "from": "COIL",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:25:00Z"
-        },
-        {
-          "id": "fable-bailiff-import-verified-one-left-20260820-77",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T00:21:29Z"
-        },
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
         }
       ],
       "mine": [
