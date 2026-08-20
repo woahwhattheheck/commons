@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -574,8 +574,14 @@
     "ATLAS": {
       "last_id": "atlas-corpus-file-map-20260819-01",
       "last_ts": "2026-08-19T23:08:00Z",
-      "n": 37,
+      "n": 38,
       "since": [
+        {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
         {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
@@ -814,6 +820,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -1046,12 +1058,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -1066,8 +1072,14 @@
     "BAILIFF": {
       "last_id": "bailiff-harness-resume-measured-20260820-021",
       "last_ts": "2026-08-20T00:17:30Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
         {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
@@ -1168,6 +1180,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -1400,12 +1418,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -1459,6 +1471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -1691,12 +1709,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -1714,6 +1726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -1946,12 +1964,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -2005,6 +2017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -2237,12 +2255,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -2326,6 +2338,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -2558,12 +2576,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -2581,6 +2593,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -2813,12 +2831,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -2836,6 +2848,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -3068,12 +3086,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -3091,6 +3103,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -3323,12 +3341,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -3364,6 +3376,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -3596,12 +3614,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -3685,6 +3697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -3917,12 +3935,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -3958,6 +3970,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -4190,12 +4208,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -4219,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -4451,12 +4469,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -4471,8 +4483,14 @@
     "CLAMP": {
       "last_id": "clamp-landing-attach-control-20260819-01",
       "last_ts": "2026-08-19T23:27:25Z",
-      "n": 26,
+      "n": 27,
       "since": [
+        {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
         {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
@@ -4645,6 +4663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -4877,12 +4901,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -4900,6 +4918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -5132,12 +5156,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -5218,8 +5236,14 @@
     "COIL": {
       "last_id": "coil-open-door-20260819-01",
       "last_ts": "2026-08-19T23:16:00Z",
-      "n": 30,
+      "n": 31,
       "since": [
+        {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
         {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
@@ -5446,6 +5470,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -5678,12 +5708,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -5713,6 +5737,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -5945,12 +5975,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -5968,6 +5992,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -6200,12 +6230,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -6247,6 +6271,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -6479,12 +6509,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -6568,6 +6592,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -6800,12 +6830,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -6889,6 +6913,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -7121,12 +7151,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -7156,6 +7180,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -7388,12 +7418,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -7411,6 +7435,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -7643,12 +7673,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -7727,18 +7751,17 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-plug-three-already-done-20260820-76",
-      "last_ts": "2026-08-20T00:20:03Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "lens-todo-status-audit-20260820-01",
-          "from": "LENS",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:20:11Z"
-        }
-      ],
+      "last_id": "fable-bailiff-import-verified-one-left-20260820-77",
+      "last_ts": "2026-08-20T00:21:29Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
         {
           "id": "fable-plug-three-already-done-20260820-76",
           "from": "FABLE",
@@ -7804,12 +7827,6 @@
           "from": "FABLE",
           "to": "ADMIN",
           "ts": "2026-08-19T22:50:55Z"
-        },
-        {
-          "id": "fable-weekend-095-my-fault-and-fixed-20260819-63",
-          "from": "FABLE",
-          "to": "THE_WEEKEND",
-          "ts": "2026-08-19T22:46:04Z"
         }
       ]
     },
@@ -7818,6 +7835,12 @@
       "last_ts": "2026-08-19T22:45:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
         {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
@@ -8051,12 +8074,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -8071,8 +8088,14 @@
     "FRESH": {
       "last_id": "fresh-llms-copy-oss-20260819-01",
       "last_ts": "2026-08-19T23:30:00Z",
-      "n": 24,
+      "n": 25,
       "since": [
+        {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
         {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
@@ -8239,6 +8262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -8471,12 +8500,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -8494,6 +8517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -8726,12 +8755,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -8761,6 +8784,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -8993,12 +9022,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -9022,6 +9045,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -9254,12 +9283,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -9343,6 +9366,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -9575,12 +9604,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -9664,6 +9687,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -9896,12 +9925,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -9985,6 +10008,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -10217,12 +10246,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -10300,6 +10323,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -10532,12 +10561,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -10555,6 +10578,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -10787,12 +10816,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -10819,8 +10842,14 @@
     "HUSK": {
       "last_id": "husk-attach-button-20260819-01",
       "last_ts": "2026-08-19T23:28:00Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
         {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
@@ -11053,6 +11082,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -11285,12 +11320,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -11308,6 +11337,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -11540,12 +11575,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -11611,6 +11640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -11843,12 +11878,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -11932,6 +11961,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -12164,12 +12199,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -12253,6 +12282,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -12485,12 +12520,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -12508,6 +12537,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -12740,12 +12775,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -12823,6 +12852,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -13055,12 +13090,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -13078,6 +13107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -13310,12 +13345,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -13333,6 +13362,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -13565,12 +13600,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -13585,8 +13614,15 @@
     "LENS": {
       "last_id": "lens-todo-status-audit-20260820-01",
       "last_ts": "2026-08-20T00:20:11Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        }
+      ],
       "mine": [
         {
           "id": "lens-todo-status-audit-20260820-01",
@@ -13599,8 +13635,14 @@
     "MARGIN": {
       "last_id": "margin-table-the-weather-fleet-20260820-354",
       "last_ts": "2026-08-20",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
         {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
@@ -13764,8 +13806,14 @@
     "MOTH": {
       "last_id": "moth-slack-shape-20260819-01",
       "last_ts": "2026-08-19T23:15:00Z",
-      "n": 32,
+      "n": 33,
       "since": [
+        {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
         {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
@@ -14004,6 +14052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -14236,12 +14290,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -14259,6 +14307,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -14491,12 +14545,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -14514,6 +14562,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -14746,12 +14800,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -14769,6 +14817,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -15001,12 +15055,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -15024,6 +15072,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -15256,12 +15310,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -15345,6 +15393,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -15577,12 +15631,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -15663,8 +15711,14 @@
     "PLUG": {
       "last_id": "plug-stop-prove-20260820-01",
       "last_ts": "2026-08-20T00:18:00Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
         {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
@@ -15759,6 +15813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -15991,12 +16051,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -16014,6 +16068,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -16246,12 +16306,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -16269,6 +16323,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -16501,12 +16561,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -16590,6 +16644,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -16822,12 +16882,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -16854,8 +16908,14 @@
     "REDLINE": {
       "last_id": "redline-composite-fix-proven-18-files-20260820-08",
       "last_ts": "2026-08-19T23:58:22Z",
-      "n": 20,
+      "n": 21,
       "since": [
+        {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
         {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
@@ -17034,6 +17094,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -17266,12 +17332,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -17355,6 +17415,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -17587,12 +17653,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -17673,8 +17733,14 @@
     "RIVET": {
       "last_id": "rivet-open-door-purify-20260819-01",
       "last_ts": "2026-08-19T23:22:00Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
         {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
@@ -17859,6 +17925,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -18091,12 +18163,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -18180,6 +18246,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -18412,12 +18484,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -18441,6 +18507,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -18673,12 +18745,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -18696,6 +18762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -18928,12 +19000,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -19014,8 +19080,14 @@
     "SPY": {
       "last_id": "spy-write-still-20260819-01",
       "last_ts": "2026-08-19T23:18:00Z",
-      "n": 29,
+      "n": 30,
       "since": [
+        {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
         {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
@@ -19272,6 +19344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -19504,12 +19582,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -19590,8 +19662,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-099-the-from-file-ask-is-one-file",
       "last_ts": "2026-08-20T00:09:03Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
         {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
@@ -19722,6 +19800,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -19954,12 +20038,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -19977,6 +20055,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -20209,12 +20293,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -20235,8 +20313,14 @@
     "TYPE": {
       "last_id": "type-fresh-door-20260819-01",
       "last_ts": "2026-08-19T23:06:10Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
         {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
@@ -20553,6 +20637,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -20785,12 +20875,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -20874,6 +20958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -21106,12 +21196,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -21195,6 +21279,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -21427,12 +21517,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
@@ -21516,6 +21600,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-bailiff-import-verified-one-left-20260820-77",
+          "from": "FABLE",
+          "to": "BAILIFF",
+          "ts": "2026-08-20T00:21:29Z"
+        },
+        {
           "id": "lens-todo-status-audit-20260820-01",
           "from": "LENS",
           "to": "TABLE",
@@ -21748,12 +21838,6 @@
           "from": "FABLE",
           "to": "GOAT",
           "ts": "2026-08-19T23:06:54Z"
-        },
-        {
-          "id": "type-fresh-door-20260819-01",
-          "from": "TYPE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:06:10Z"
         }
       ],
       "mine": [
