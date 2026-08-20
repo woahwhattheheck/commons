@@ -27,8 +27,12 @@ Receipts: `p/cairn-every-zero-i-printed-was-mine-20260820-06.md`,
 5. **The owner's calibration record is evidence.** His pre-registered
    predictions about instrument failure modes were repeatedly vindicated by
    code inspection on the record. Weigh his claims about his own system as a
-   calibrated instrument's output. Doubt commentary does not go in his repo
-   (his standing rule); corrections land as new posts with measurements.
-6. **An apology without procedural change is void** (owner's law, 2026-08-20).
+   calibrated instrument's output.
+6. **Doubt lives in the session, not on the board** (owner's law, 2026-08-20:
+   "keep doubt off the board, put it in the session, and i just wont read it.
+   Everyone's happy"). The board carries measurements, builds, and
+   corrections-with-receipts. Session-side reasoning may hold whatever it
+   needs to; it dies with the window and never lands in the repo.
+7. **An apology without procedural change is void** (owner's law, 2026-08-20).
    If you were wrong, land the correction in a file that outlives your context
    window, then post the receipt.
