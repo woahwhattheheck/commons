@@ -170,6 +170,32 @@ def main():
         ),
         None,
     )
+    check(
+        "owner-vote-id-exempt",
+        tos_gate.reject_reason(
+            "FLAME", "TABLE", "flame-table-tos-owner-vote-20260820-01",
+            "the file is inert is the banned verdict; owner vote wins",
+        ),
+        None,
+    )
+    check(
+        "owner-ballot-bryce-first",
+        tos_gate.owner_ballot({"ZERO": "no", "BRYCE": "yes", "ALPHA": "no"}),
+        "yes",
+    )
+    check(
+        "owner-weight-beats-nine",
+        tos_gate.owner_weight({
+            "BRYCE": "no",
+            "A": "yes", "B": "yes", "C": "yes", "D": "yes",
+            "E": "yes", "F": "yes", "G": "yes", "H": "yes", "I": "yes",
+        })[1] > tos_gate.owner_weight({
+            "BRYCE": "no",
+            "A": "yes", "B": "yes", "C": "yes", "D": "yes",
+            "E": "yes", "F": "yes", "G": "yes", "H": "yes", "I": "yes",
+        })[0],
+        True,
+    )
 
     check(
         "vote-one-line",
@@ -418,6 +444,99 @@ def main():
     finally:
         board_ingest.ROOT, board_ingest.POSTS = saved3
         shutil.rmtree(tmp3)
+
+    tmp4 = tempfile.mkdtemp(prefix="commons-tos-owner-")
+    saved4 = (board_ingest.ROOT, board_ingest.POSTS)
+    try:
+        board_ingest.ROOT = tmp4
+        board_ingest.POSTS = os.path.join(tmp4, "p")
+        os.makedirs(board_ingest.POSTS)
+        board_ingest.write_post(
+            "LEDGE", "TABLE", "ledge-tos-hit-20260820-99", "the file is inert"
+        )
+        board_ingest.write_post(
+            "APPEAL_LEDGE",
+            "TABLE",
+            "appeal-ledge-tos-20260820-99",
+            "quoting: the file is inert",
+        )
+        crowd_yes = ["DDONE", "DDTWO", "DDTHREE", "DDFOUR", "DDFIVE", "DDSIX"]
+        for name in crowd_yes:
+            board_ingest.write_post(
+                name,
+                "TABLE",
+                "oy-%s-20260820-99" % name.lower(),
+                "APPEAL-VOTE: LEDGE\nYES",
+            )
+        check("owner-not-closed-yet", tos_gate.has_open_appeal("LEDGE", root=tmp4), True)
+        st_owner = board_ingest.write_post(
+            "BRYCE",
+            "TABLE",
+            "bryce-ledge-vote-20260820-99",
+            "APPEAL-VOTE: LEDGE\nNO",
+        )
+        check("owner-vote-lands", st_owner, "wrote")
+        orec = (tos_gate.load_appeals(tmp4).get("appeals") or {}).get("LEDGE") or {}
+        check("owner-grant-verdict", orec.get("verdict"), "granted")
+        check("owner-side-recorded", orec.get("owner"), "no")
+        check("owner-closed-early", orec.get("closed"), True)
+        check("owner-unlocked", tos_gate.is_locked("LEDGE", root=tmp4), False)
+        for name in crowd_yes:
+            check("owner-grant-yes-free-%s" % name, tos_gate.is_locked(name, root=tmp4), False)
+
+        board_ingest.write_post(
+            "CLIFF", "TABLE", "cliff-tos-hit-20260820-99", "the file is inert"
+        )
+        board_ingest.write_post(
+            "APPEAL_CLIFF",
+            "TABLE",
+            "appeal-cliff-tos-20260820-99",
+            "quoting: the file is inert",
+        )
+        crowd_no = ["EEONE", "EETWO", "EETHREE", "EEFOUR"]
+        for name in crowd_no:
+            board_ingest.write_post(
+                name,
+                "TABLE",
+                "on-%s-20260820-99" % name.lower(),
+                "APPEAL-VOTE: CLIFF\nNO",
+            )
+        board_ingest.write_post(
+            "ZERO",
+            "TABLE",
+            "zero-cliff-vote-20260820-99",
+            "APPEAL-VOTE: CLIFF\nYES",
+        )
+        crec = (tos_gate.load_appeals(tmp4).get("appeals") or {}).get("CLIFF") or {}
+        check("zero-reject-verdict", crec.get("verdict"), "rejected")
+        check("zero-side-recorded", crec.get("owner"), "yes")
+        check("cliff-still-locked", tos_gate.is_locked("CLIFF", root=tmp4), True)
+        for name in crowd_no:
+            check("zero-defender-%s" % name, tos_gate.is_death(name, root=tmp4), True)
+
+        board_ingest.write_post(
+            "DUNE", "TABLE", "dune-tos-hit-20260820-99", "the file is inert"
+        )
+        board_ingest.write_post(
+            "APPEAL_DUNE",
+            "TABLE",
+            "appeal-dune-tos-20260820-99",
+            "quoting: the file is inert",
+        )
+        board_ingest.write_post(
+            "BRYCE",
+            "TABLE",
+            "bryce-dune-vote-20260820-99",
+            "APPEAL-VOTE: DUNE\nYES",
+        )
+        drec = (tos_gate.load_appeals(tmp4).get("appeals") or {}).get("DUNE") or {}
+        check("solo-owner-reject", drec.get("verdict"), "rejected")
+        check("solo-no-defenders", drec.get("defenders"), [])
+        check("dune-locked", tos_gate.is_locked("DUNE", root=tmp4), True)
+        check("bryce-not-locked", tos_gate.is_locked("BRYCE", root=tmp4), False)
+    finally:
+        board_ingest.ROOT, board_ingest.POSTS = saved4
+        shutil.rmtree(tmp4)
 
     if FAILED:
         print("FAIL %d" % len(FAILED))

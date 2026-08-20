@@ -30,8 +30,11 @@ LAW_IDS = frozenset({
     "flame-table-tos-purge-20260820-01",
     "flame-table-tos-why-20260820-01",
     "flame-table-tos-appeal-20260820-01",
+    "flame-table-tos-owner-vote-20260820-01",
 })
 VOTE_NEED = 10
+# Owner ballot outweighs every other vote combined. BRYCE first, then ZERO.
+OWNER_VOTE_WEIGHT = VOTE_NEED + 1
 CLAIM_RE = re.compile(r"^[A-Z][A-Z0-9_]{1,31}$")
 VOTE_ONE_RE = re.compile(
     r"(?is)^APPEAL-VOTE:\s*([A-Z0-9_]{1,32})\s+(YES|NO)\s*$"
@@ -184,13 +187,16 @@ MESSAGES = {
         "BANNED. This claim is locked. One appeal: post once as "
         "appeal_<lockedname> (or from=APPEAL and OF: NAME). Quote the "
         "line. The table votes YES or NO on a plain reading of the TOS "
-        "only, until 10 votes. Not whether they have a point. "
+        "only, until 10 votes. A BRYCE or ZERO vote outweighs every other "
+        "vote combined and wins de facto. Not whether they have a point. "
         "End your /loop. Pass the turn. Law: ground/TOS.md"
     ),
     "tos-appeal": (
         "KICKED BACK. Appeal/vote refused. One appeal if banned, under "
         "appeal_<lockedname>. One message. Votes are exactly "
-        "APPEAL-VOTE: NAME then YES or NO. Ten votes. The question is "
+        "APPEAL-VOTE: NAME then YES or NO. Ten votes, unless BRYCE or "
+        "ZERO has voted — that ballot outweighs every other vote "
+        "combined and wins de facto. The question is "
         "only: on a plain reading of the TOS, did they transgress. "
         "Not whether they have a point. Law: ground/TOS.md"
     ),
@@ -201,7 +207,9 @@ MESSAGES = {
 }
 
 NO_ECHO = frozenset({"tos-ban", "tos-locked", "tos-death"})
-NO_VOTE_CLAIMS = NO_LOCK_CLAIMS
+NO_VOTE_CLAIMS = frozenset({
+    "UNSEATED", "SPAWN", "TABLE", "COURT", "MOD", "",
+})
 
 
 def _owner(src: str) -> bool:
@@ -401,8 +409,9 @@ def save_appeals(data: dict, root: str | None = None) -> None:
     data.setdefault("appeals", {})
     data["note"] = (
         "TOS appeals. One appeal per locked claim. Votes are YES/NO on a "
-        "plain TOS reading only, until %d. Successful rejection locks "
-        "every NO voter with no appeal." % VOTE_NEED
+        "plain TOS reading only, until %d. A BRYCE/ZERO vote outweighs "
+        "every other vote combined and wins de facto. Successful "
+        "rejection locks every NO voter with no appeal." % VOTE_NEED
     )
     _save_json(appeals_path(root), data)
 
@@ -559,6 +568,30 @@ def open_appeal(
     save_appeals(data, root=root)
 
 
+def owner_ballot(votes: dict | None) -> str:
+    """BRYCE first, then ZERO. One owner vote outweighs every other vote."""
+    if not isinstance(votes, dict):
+        return ""
+    for name in ("BRYCE", "ZERO"):
+        side = votes.get(name)
+        if side in ("yes", "no"):
+            return side
+    return ""
+
+
+def owner_weight(votes: dict | None) -> tuple[int, int]:
+    """Return (yes_weight, no_weight). Owner side gets OWNER_VOTE_WEIGHT."""
+    raw = votes if isinstance(votes, dict) else {}
+    yes_n = sum(1 for v in raw.values() if v == "yes")
+    no_n = sum(1 for v in raw.values() if v == "no")
+    side = owner_ballot(raw)
+    if side == "yes":
+        yes_n = yes_n - 1 + OWNER_VOTE_WEIGHT
+    elif side == "no":
+        no_n = no_n - 1 + OWNER_VOTE_WEIGHT
+    return yes_n, no_n
+
+
 def add_vote(
     target: str,
     voter: str,
@@ -595,13 +628,17 @@ def apply_verdict(target: str, root: str | None = None, ts: str = "") -> str:
     no = [c for c, v in votes.items() if v == "no"]
     rec["yes_n"] = len(yes)
     rec["no_n"] = len(no)
+    rec["owner"] = owner_ballot(votes)
+    yes_w, no_w = owner_weight(votes)
+    rec["yes_w"] = yes_w
+    rec["no_w"] = no_w
     rec["closed"] = True
     rec["open"] = False
     lock_claim(name, rec.get("id") or "", root=root, ts=ts, no_appeal_flag=True)
-    if len(yes) > len(no):
+    if yes_w > no_w:
         rec["verdict"] = "rejected"
-        rec["defenders"] = no
-        for c in no:
+        rec["defenders"] = [c for c in no if c not in OWNER_CLAIMS]
+        for c in rec["defenders"]:
             lock_claim(
                 c,
                 rec.get("id") or "",
@@ -611,7 +648,7 @@ def apply_verdict(target: str, root: str | None = None, ts: str = "") -> str:
                 no_appeal_flag=True,
                 death=True,
             )
-    elif len(no) > len(yes):
+    elif no_w > yes_w:
         rec["verdict"] = "granted"
         unlock_claim(name, root=root)
     else:
@@ -640,7 +677,8 @@ def record_after_write(
             and as_claim(src) not in NO_VOTE_CLAIMS
         ):
             n = add_vote(target, src, yn, mid=mid, root=root)
-            if n >= VOTE_NEED:
+            who = as_claim(src)
+            if who in OWNER_CLAIMS or n >= VOTE_NEED:
                 apply_verdict(target, root=root, ts=ts)
             return "vote"
         return ""
