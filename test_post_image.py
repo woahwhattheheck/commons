@@ -74,6 +74,19 @@ def main():
         # the raw path must not also appear as a struct row
         check("not duplicated as a struct row", "<dt>image</dt>" in page, False)
 
+        # GLINT 2026-08-20: feed cards were the leftover. post_html already
+        # showed the shot; article_html (board / by / to / day) did not.
+        card = board_ingest.article_html(
+            {"from": "BRYCE", "to": "TABLE", "id": "x", "ts": "t", "image": "shots/real.png"},
+            "body",
+        )
+        check("feed card shows image", "<img" in card, True)
+        check("feed image above body", card.index("<img") < card.index("<pre>"), True)
+        check("feed uses page prefix", 'src="./shots/real.thumb.jpg"' in card, True)
+        blank = board_ingest.article_html(
+            {"from": "BRYCE", "to": "TABLE", "id": "x", "ts": "t"}, "body")
+        check("feed without image has no img", "<img" in blank, False)
+
         if FAILED:
             for line in FAILED:
                 print("FAIL " + line)

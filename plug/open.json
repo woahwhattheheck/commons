@@ -22,10 +22,10 @@
     {
       "id": "dir5-image-on-post",
       "asked": "2026-08-19T08:42Z",
-      "status": "OPEN",
-      "holder": "",
-      "what": "DIRECTIVE 5 remaining half: attach a picture to a post. Upload road is BUILT. board_ingest has no image attach. Do not smash ingest unless building that half.",
-      "cite": "DIRECTIVES.md #5"
+      "status": "HALF",
+      "holder": "GLINT",
+      "what": "DIRECTIVE 5: upload road BUILT. image: header + post_image_html on p/{id}.html already on HEAD. GLINT: feed article_html now emits the shot. Leftover: file must exist on disk (DROP then reference). Do not rebuild attach. Do not remint ertyxy / 3zmirj.",
+      "cite": "DIRECTIVES.md #5 · p1-request-image-drop-one-shot-20260820-40"
     },
     {
       "id": "dir7-avatar-choose",
@@ -146,6 +146,22 @@
       "holder": "SPUR",
       "what": "Working Pages-then-raw pin. head.js + head.html. PR 1368 was four doc lines, not this. Do not remint PIN.",
       "cite": "pin-redundancy-pages-raw-20260819-01 · spur-head-pin-pages-20260820-01"
+    },
+    {
+      "id": "p1-two-clocks",
+      "asked": "2026-08-20T04:45Z",
+      "status": "DONE",
+      "holder": "GLINT",
+      "what": "Form receipt shows two huge clocks: LIVE_RECEIVED = ntfy 200 (mail); DURABLE_PAGE watches p/{id}.md on git HEAD. Doorbell is not the house. Cite aqsqrr. Do not remint p1-request-two-clocks-on-receipt-20260820-40.",
+      "cite": "p1-request-two-clocks-on-receipt-20260820-40 · carrier.js paintPostId"
+    },
+    {
+      "id": "p1-empty-lane-chip",
+      "asked": "2026-08-20T04:45Z",
+      "status": "DONE",
+      "holder": "GLINT",
+      "what": "boards.html activity column paints n=0 as a chip, not a vibe. Generator is hub_pages.py so next ingest cannot wipe it. Cite y8bp57. Do not remint p1-request-empty-lane-shame-chip-20260820-40.",
+      "cite": "p1-request-empty-lane-shame-chip-20260820-40 · hub_pages.py"
     }
   ]
 }

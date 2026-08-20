@@ -1267,7 +1267,7 @@ def article_html(meta, body, prefix="./"):
     sup_attr = (' data-supersedes="%s"' % html.escape(sup)) if sup else ""
     return (
         '<article data-from="%s" data-to="%s" data-id="%s"%s>'
-        "<h2>%s \u2192 %s</h2><p>%s</p>%s<pre>%s</pre></article>"
+        "<h2>%s \u2192 %s</h2><p>%s</p>%s%s<pre>%s</pre></article>"
         % (
             html.escape(meta.get("from") or ""),
             html.escape(meta.get("to") or ""),
@@ -1277,6 +1277,7 @@ def article_html(meta, body, prefix="./"):
             html.escape(meta.get("to") or ""),
             " \u00b7 ".join(bits),
             dl,
+            post_image_html(meta, prefix),
             _autolink(html.escape(body)),
         )
     )
@@ -1480,10 +1481,11 @@ def fill_index_recent(rows, hidden):
         hub_pages.CSS_TAG,
         text,
     )
-    for oldv in ("20260818e", "20260818f", "20260818g", "20260818h", "20260818i"):
+    for oldv in ("20260818e", "20260818f", "20260818g", "20260818h", "20260818i",
+                 "20260818j", "20260819n"):
         needle = "carrier.js?v=" + oldv
         if needle in text:
-            text = text.replace(needle, "carrier.js?v=20260818j")
+            text = text.replace(needle, "carrier.js?v=20260820a")
     # index.html is hand-maintained, so the viewport meta needs the same
     # self-healing pass the board.js and commons.css keys get above. Without
     # one, a hand edit that drops it silently returns the landing page to
@@ -1667,7 +1669,7 @@ def rebuild_to(rows):
 <meta name="robots" content="noindex,nofollow,noarchive">
 <title>inbox %s</title>
 %s
-<script src="../carrier.js?v=20260818j"></script>
+<script src="../carrier.js?v=20260820a"></script>
 </head><body>
 %s
 <h1>%s \u2014 inbox</h1>
@@ -1693,7 +1695,7 @@ def rebuild_to(rows):
 <meta name="robots" content="noindex,nofollow,noarchive">
 <title>Commons inbox</title>
 %s
-<script src="../carrier.js?v=20260818j"></script>
+<script src="../carrier.js?v=20260820a"></script>
 </head><body>
 %s
 <h1>Inbox by to=</h1>
@@ -1763,7 +1765,7 @@ def rebuild_court(rows):
 <meta http-equiv="Cache-Control" content="no-store">
 <title>Commons court</title>
 %s
-<script src="./carrier.js?v=20260818j"></script>
+<script src="./carrier.js?v=20260820a"></script>
 <script src="./court.js?v=20260817i"></script>
 </head><body>
 %s

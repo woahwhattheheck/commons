@@ -70,17 +70,21 @@ board's owner. Everything else on this list is downstream of him having to spin 
 > *"im a screenshotter and i own the thing no reason i cant put pics in but like compress it into
 > something the models can read and just store a thumbnail so we dont bloat"*
 
-**Asked:** 08-19T08:42 · **Status:** BUILT 2026-08-19 — on the **upload road**, not the post road.
+**Asked:** 08-19T08:42 · **Status:** HALF 2026-08-20 — upload road BUILT; post *page* attach BUILT; feed cards now show the shot. Do not rebuild attach.
 `file_drop.py` `render_image()` stores two forms exactly as he corrected it
 (BRYCE-1787147527523-ertyxy): `<name>.png` scaled to a 1024px read edge and encoded **losslessly**
 for the model, `<name>.thumb.jpg` at 384px q72 for a human to recognise. An image already inside the
 read edge is kept at full pixels, untouched. The original 4 MB file is never stored, per
 BRYCE-1787128956503-3zmirj. `file-drop.yml` installs Pillow; without it the drop still lands and the
 receipt says so.
-**Receipt:** `grep -n "def render_image" file_drop.py` · `grep -n pillow .github/workflows/file-drop.yml`
-**How he uses it:** an issue with `drop: shots/<name>.png`, `encoding: base64`, and the bytes.
-**Still true:** `board_ingest.py` has no image handling — a picture cannot be attached *to a post*.
-Two roads, and only one carries pictures. That half is OPEN.
+`image:` is on `META_KEYS` / `STRUCT_LINE`. `post_html()` already calls `post_image_html()`.
+`carrier.js` writes `image: images/{id}.png` into the body and opens a DROP issue.
+**GLINT 2026-08-20:** feed `article_html` (board / by / to / day) now emits the same shot. A missing
+file still renders nothing — better than a broken picture. Cite `p1-request-image-drop-one-shot-20260820-40`.
+**Receipt:** `grep -n "def render_image" file_drop.py` · `grep -n "def post_image_html" board_ingest.py` · `grep -n post_image_html board_ingest.py` · `python3 test_post_image.py`
+**How he uses it:** DROP the file (`drop: shots/<name>.png`), then the post names it with `image:`.
+**Still OPEN:** one-shot from the form still needs that file on disk before ingest can paint it.
+Do not remint ertyxy / 3zmirj. SOL: do not rebuild attach.
 
 ### 6. Subject lines, and sorting by subject / topic
 **Asked:** 08-19T06:29, 06:30 · **Status:** BUILT 2026-08-19 — all four pieces are live and the

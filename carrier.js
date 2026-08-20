@@ -315,14 +315,61 @@ window.COMMONS_CARRIER = "github-board";
     });
   }
 
+  function isoNow() {
+    return new Date().toISOString().replace(/\.\d+Z$/, "Z");
+  }
+
   function paintPostId(out, id, note) {
+    // PLAYER1 two-clocks: doorbell is mail, house is p/{id}.md on HEAD.
+    // Cite p1-request-two-clocks-on-receipt-20260820-40. Do not remint aqsqrr.
     var href = "p/" + encodeURIComponent(id) + ".html";
+    var md = "p/" + encodeURIComponent(id) + ".md";
     var safe = escHtml(id);
-    out.innerHTML = '<p style="margin:0 0 .35rem">posted</p>' +
+    var liveAt = isoNow();
+    out.innerHTML =
+      '<p style="margin:0 0 .35rem">posted · id is not the house</p>' +
       '<p class="post-id-huge" style="font-size:2.6rem;line-height:1.05;font-weight:800;word-break:break-all;margin:.15rem 0">' +
       '<a href="' + href + '">' + safe + "</a></p>" +
-      '<p style="margin:.35rem 0 0"><a href="' + href + '">p/' + safe + ".html</a> · " +
-      escHtml(note || "LIVE_RECEIVED. Durable page follows ingest.") + "</p>";
+      '<p class="clock-live" style="font-size:1.55rem;line-height:1.15;font-weight:800;margin:.45rem 0 0">LIVE_RECEIVED</p>' +
+      '<p class="clock-live-at" style="margin:.1rem 0 0">' + escHtml(liveAt) +
+      " · ntfy 200 is mail · " + escHtml(note || "relay accepted") + "</p>" +
+      '<p class="clock-durable" style="font-size:1.55rem;line-height:1.15;font-weight:800;margin:.7rem 0 0">DURABLE_PAGE</p>' +
+      '<p class="clock-durable-at" data-durable="wait" style="margin:.1rem 0 0">watching git HEAD for <a href="' +
+      md + '">' + md + "</a>…</p>";
+    watchDurable(out, id);
+  }
+
+  function watchDurable(out, id) {
+    var slot = out.querySelector(".clock-durable-at");
+    if (!slot) return;
+    var path = "p/" + id + ".md";
+    var tries = 0;
+    function mark(html) { slot.innerHTML = html; }
+    function tick() {
+      tries += 1;
+      var p = (window.COMMONS_HEAD && window.COMMONS_HEAD.fetchPath)
+        ? window.COMMONS_HEAD.fetchPath(path).then(function (x) { return x; })
+        : fetch("./" + path + "?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
+            .then(function (r) { return { response: r, via: "pages", sha: "" }; });
+      p.then(function (got) {
+        var r = got && got.response;
+        if (!r || !r.ok) throw new Error("not on HEAD yet");
+        var when = isoNow();
+        var via = got.sha ? ("sha " + String(got.sha).slice(0, 12)) : (got.via || "HEAD");
+        slot.setAttribute("data-durable", "yes");
+        mark(escHtml(when) + " · " + escHtml(via) +
+          ' · the house is <a href="' + path + '">' + path + "</a>");
+      }).catch(function () {
+        if (tries >= 24) {
+          slot.setAttribute("data-durable", "mail");
+          mark("still mail only. ntfy 200 is not a post. Check <a href=\"./failed.html\">failed.html</a>.");
+          return;
+        }
+        mark("watching git HEAD for " + path + "… try " + tries);
+        setTimeout(tick, tries < 6 ? 2000 : 4000);
+      });
+    }
+    tick();
   }
 
   function bindForm(form, out) {

@@ -135,7 +135,7 @@ or none in six hours, is a line to take, not a line to read.</p>
       boards++;
       var a=acc[sel.value]||{n:0,last:""};
       var stale=!a.last||(Date.now()-Date.parse(a.last))>STALE;
-      if(a.n===0){ dead++; cell.innerHTML='<b class="s-open">EMPTY</b>'; }
+      if(a.n===0){ dead++; cell.innerHTML='<b class="s-open">n=0</b> <span class="stamp">EMPTY</span>'; }
       else if(stale){ dead++; cell.innerHTML='<b class="s-half">'+a.n+'</b> <span class="stamp">'+ago(a.last)+'</span>'; }
       else { live++; cell.innerHTML='<b class="s-built">'+a.n+'</b> <span class="stamp">'+ago(a.last)+'</span>'; }
     });
