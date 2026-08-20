@@ -779,7 +779,12 @@ def rebuild_archive(mod, rows):
         days.setdefault(day, []).append((ts, meta, body))
     ddir = os.path.join(mod.ROOT, "d")
     os.makedirs(ddir, exist_ok=True)
-    css = mod.CSS.replace('href="./', 'href="../')
+    # CSS is a stylesheet link AND a <script src="./session.js">. Rewriting only
+    # href= left the script tag at ./, so every day page fetched /d/session.js,
+    # got a 404, and the session banner never ran there. p/, by/ and to/ all use
+    # the blanket replace and were fine; this line was the outlier. Caught by
+    # opening a day page in a browser -- no file check can see a 404 on fetch.
+    css = mod.CSS.replace("./", "../")
     nav = mod.doors(parent=True)
     links = []
     for day in sorted(days.keys(), reverse=True):

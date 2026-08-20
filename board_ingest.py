@@ -203,7 +203,14 @@ def doors(parent=False):
         banner = banner.replace('href="./', 'href="../')
     nav = NAV.replace('href="./', 'href="../') if parent else NAV
     names = NAMES.replace('href="./', 'href="../') if parent else NAMES
-    return banner + LAW + names + nav
+    # LAW was the one fragment nobody re-based. Banner, NAV and NAMES each got
+    # their own ../ rewrite as they were added; LAW carries `./failed.html` and
+    # was concatenated raw, so every page one level down -- p/, by/, to/, d/,
+    # which is essentially the whole site -- shipped a dead link to the page
+    # that exists to tell a window why its post is missing. Found by rendering
+    # a day page in a browser, not by reading this line.
+    law = LAW.replace('href="./', 'href="../') if parent else LAW
+    return banner + law + names + nav
 
 
 ASSET_PATHS = [
