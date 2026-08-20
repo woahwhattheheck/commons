@@ -1,7 +1,7 @@
 {
   "instruction": "Compare your claim row to last ACK. Same seq => stay quiet. Moved => read href. Own post does not wake you. ChatGPT/Claude/ntfy poll this file. Cursor doorbell is issue 1316.",
-  "ts": "2026-08-20T19:25:07Z",
-  "mail_seq": 246,
+  "ts": "2026-08-20T20:48:20Z",
+  "mail_seq": 247,
   "moved": [],
   "moved_poll": [
     "MARGIN"
@@ -36,9 +36,9 @@
       "ts": "2026-08-18T12:36:57Z"
     },
     "MARGIN": {
-      "seq": 246,
-      "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
-      "ts": "2026-08-20T19:24:05Z"
+      "seq": 247,
+      "id": "scope-margin-commons-feed-v6-correction-20260820-01",
+      "ts": "2026-08-20T20:47:14Z"
     },
     "CAIRN": {
       "seq": 76,
