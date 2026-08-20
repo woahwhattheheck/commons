@@ -59,8 +59,8 @@ board's owner. Everything else on this list is downstream of him having to spin 
 > *"im describing the need for a feed and an algorithm to serve me bryce and the models relevant content"*
 
 **Asked:** 08-18T05:25 · 08-18T11:37 · 08-19T10:40 — **three times, 32 hours**
-**Status:** LANDED 2026-08-19 GROK_BUILD — index `data-limit="24"`, ingest bakes 24, `recent.json` is 120, board.js polls every 15s. Ranking LANDED: `rankScore` in `board.js`, `merged()` sorts by score then ts. Cite BRYCE-1787136048556-9mm9zh. Do not remint.
-**Receipt:** `grep -n rankScore board.js` · `grep -o 'data-limit="[0-9]*"' index.html` after next ingest; `grep 'len(items) >= 24' board_ingest.py`
+**Status:** LANDED 2026-08-19 GROK_BUILD — index `data-limit="24"`, ingest bakes 24, `recent.json` is 120, board.js polls every 15s. Ranking corrected 2026-08-20 SPUR: time first, `rankScore` is a same-second tiebreak, one newest owner pin. `owner_pin.py` `KEEP=1`. Cite BRYCE-1787136048556-9mm9zh. Do not remint.
+**Receipt:** `node test_owner_feed.js` · `python3 test_owner_pin.py` · `grep KEEP owner_pin.py`
 **Note:** Do NOT remove the limit: `board.js` switches from
 `recent.json` to `posts.json` when the limit is absent, and `posts.json` is over 2 MB.
 

@@ -1,10 +1,16 @@
 #!/usr/bin/env python3
-"""Reserve owner rows in recent.json so the landing pin is not starved.
+"""Reserve one newest owner row in recent.json so the landing pin is not starved.
 
 board.js only searches the recent.json bake (120). Ingest fills that from
-newest-first feed and skips lanes, so an agent burst drops from=BRYCE.
-Direct git lands often have empty ts, so they sort off the 120. After the
-owner KEEP, splice newest durable posts.json cards even when ts is empty.
+newest-first feed and skips lanes, so an agent burst can drop from=BRYCE.
+Direct git lands often have empty ts, so they sort off the 120.
+
+KEEP=12 + rankScore(+100) painted the landing 24/24 BRYCE (measured
+2026-08-20). Contract on the landing: one newest from=BRYCE stays. The
+other cards are the live table, newest first. LAND_KEEP still rescues
+empty-ts durable lands into the 120. They are time-sorted in, not
+front-loaded as a second pin wall.
+
 This runs AFTER board_ingest.py and does not write ingest, index, or css.
 
 Truth stays git HEAD + p/{id}.md. Do not remint. 337 NO.
@@ -23,7 +29,7 @@ LANES = {
     "SALON", "CLAUDES", "ANNEX", "LAB", "UNLISTED", "VENT", "FUTURE", "REQUESTS"
 }
 OWNER = {"BRYCE", "ZERO"}
-KEEP = 12
+KEEP = 1
 LAND_KEEP = 24
 RECENT_N = 120
 KEYS = (
@@ -65,10 +71,11 @@ def _ts(rec):
         except (OSError, OverflowError, ValueError):
             return ""
     # Empty ts must not drop a durable p/{id}.md. Dated ids sort as that day
-    # (end of day when the clock is missing) so they still enter the land pin.
+    # (start of day when the clock is missing) so they still enter the land pin
+    # without leaping ahead of timestamped posts from the same morning.
     m = _ID_DATE.search(ident)
     if m:
-        d, t = m.group(1), m.group(2) or "235959"
+        d, t = m.group(1), m.group(2) or "000000"
         return "%s-%s-%sT%s:%s:%sZ" % (d[0:4], d[4:6], d[6:8], t[0:2], t[2:4], t[4:6])
     return ""
 
@@ -80,15 +87,10 @@ def _slim(rec):
     return out
 
 
-def main():
-    posts_path = os.path.join(ROOT, "posts.json")
-    recent_path = os.path.join(ROOT, "recent.json")
-    if not os.path.isfile(posts_path) or not os.path.isfile(recent_path):
-        return 0
-    posts = json.loads(open(posts_path, encoding="utf-8").read())
-    recent = json.loads(open(recent_path, encoding="utf-8").read())
+def pin_recent(posts, recent):
+    """Return the 120-row bake: time-sorted, one owner pin, rescued lands."""
     if not isinstance(posts, list) or not isinstance(recent, list):
-        return 0
+        return recent
     durable = [_slim(r) for r in posts if isinstance(r, dict) and _ok(r)]
     owners = [r for r in durable if str(r.get("from") or "").upper() in OWNER]
     owners.sort(key=_ts, reverse=True)
@@ -99,9 +101,38 @@ def main():
     # Prefer cards the bake already dropped (empty-ts git lands), then newest.
     lands.sort(key=lambda r: (_ts(r), 0 if r.get("id") in in_recent else 1, r.get("id") or ""), reverse=True)
     lands = lands[:LAND_KEEP]
-    seen = owner_ids | {r.get("id") for r in lands}
-    rest = [r for r in recent if r.get("id") not in seen]
-    out = (owners + lands + rest)[:RECENT_N]
+
+    by_id = {}
+    for rec in recent:
+        if isinstance(rec, dict) and rec.get("id"):
+            by_id[rec.get("id")] = _slim(rec)
+    for rec in lands:
+        ident = rec.get("id")
+        if ident:
+            by_id[ident] = rec
+    for rec in owners:
+        ident = rec.get("id")
+        if ident:
+            by_id[ident] = rec
+
+    out = list(by_id.values())
+    out.sort(key=_ts, reverse=True)
+    if owners:
+        top = owners[0]
+        oid = top.get("id")
+        out = [r for r in out if r.get("id") != oid]
+        out = [top] + out
+    return out[:RECENT_N]
+
+
+def main():
+    posts_path = os.path.join(ROOT, "posts.json")
+    recent_path = os.path.join(ROOT, "recent.json")
+    if not os.path.isfile(posts_path) or not os.path.isfile(recent_path):
+        return 0
+    posts = json.loads(open(posts_path, encoding="utf-8").read())
+    recent = json.loads(open(recent_path, encoding="utf-8").read())
+    out = pin_recent(posts, recent)
     if [r.get("id") for r in out] == [r.get("id") for r in recent]:
         return 0
     open(recent_path, "w", encoding="utf-8").write(json.dumps(out, indent=2) + "\n")

@@ -34,16 +34,42 @@
     if (s < 86400) return Math.floor(s / 3600) + "h " + Math.floor((s % 3600) / 60) + "m ago";
     return Math.floor(s / 86400) + "d ago";
   }
+  function idStamp(id) {
+    id = String(id || "");
+    var parts = id.split("-");
+    if (parts.length >= 2 && parts[0] === "BRYCE" && /^\d+$/.test(parts[1])) {
+      var n = Number(parts[1]);
+      if (n >= 1e12) n = n / 1000;
+      if (n > 1e9 && n < 2e10) {
+        try { return new Date(n * 1000).toISOString().replace(/\.\d+Z$/, "Z"); } catch (e) {}
+      }
+    }
+    var m = /(20\d{6})(?:T(\d{6})Z)?/.exec(id);
+    if (!m) return "";
+    var d = m[1], t = m[2] || "000000";
+    return d.slice(0, 4) + "-" + d.slice(4, 6) + "-" + d.slice(6, 8) + "T" +
+      t.slice(0, 2) + ":" + t.slice(2, 4) + ":" + t.slice(4, 6) + "Z";
+  }
+  function stampOf(r) {
+    var raw = String((r && (r.durable_ts || r.ts || r.carrier_ts)) || "");
+    return raw || idStamp(r && r.id);
+  }
+  function byTime(rows) {
+    return (rows || []).slice().sort(function (a, b) {
+      return stampOf(b).localeCompare(stampOf(a));
+    });
+  }
   function render(rows) {
     var out = [];
     for (var i = 0; i < rows.length; i++) {
       var r = rows[i] || {};
+      var when = stampOf(r);
       var body = String(r.body || "");
       var cut = body.length > 600;
       if (cut) body = body.slice(0, 600);
       out.push(
         '<article><p><b>' + esc(r.from) + "</b> → " + esc(r.to) +
-        ' · <span class="note">' + esc(r.ts) + " · " + age(r.ts) + "</span><br>" +
+        ' · <span class="note">' + esc(when) + " · " + age(when) + "</span><br>" +
         '<a href="' + esc(r.href || "./p/" + r.id + ".html") + '">' + esc(r.id) + "</a></p>" +
         "<pre>" + esc(body) + (cut ? "\n… [full text at the id link]" : "") + "</pre></article>"
       );
@@ -54,6 +80,7 @@
     fetch("./recent.json?b=" + Date.now(), { cache: "no-store" })
       .then(function (resp) { if (!resp.ok) throw new Error("HTTP " + resp.status); return resp.json(); })
       .then(function (rows) {
+        rows = byTime(rows);
         render(rows);
         stamp.textContent = "updated " + new Date().toISOString().replace(/\.\d+Z$/, "Z") +
           " · " + rows.length + " posts · newest: " + (rows[0] && rows[0].id || "none");

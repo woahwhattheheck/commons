@@ -51,8 +51,34 @@ window.COMMONS_BOARD = (function () {
     return was;
   })();
 
+  var OWNER_FROM = { BRYCE: 1, ZERO: 1 };
+
+  // Empty-ts git lands and BRYCE-{millis} ids still have a clock in the id.
+  // Without this, "" sorts above dated rows once rank is no longer a wall.
+  function idStamp(id) {
+    id = String(id || "");
+    var parts = id.split("-");
+    if (parts.length >= 2 && parts[0] === "BRYCE" && /^\d+$/.test(parts[1])) {
+      var n = Number(parts[1]);
+      if (n >= 1e12) n = n / 1000;
+      if (n > 1e9 && n < 2e10) {
+        try {
+          return new Date(n * 1000).toISOString().replace(/\.\d+Z$/, "Z");
+        } catch (e) {}
+      }
+    }
+    var m = /(20\d{6})(?:T(\d{6})Z)?/.exec(id);
+    if (!m) return "";
+    var d = m[1];
+    var t = m[2] || "000000";
+    return d.slice(0, 4) + "-" + d.slice(4, 6) + "-" + d.slice(6, 8) + "T" +
+      t.slice(0, 2) + ":" + t.slice(2, 4) + ":" + t.slice(4, 6) + "Z";
+  }
+
   function stampOf(p) {
-    return String((p && (p.durable_ts || p.ts || p.carrier_ts)) || "");
+    var raw = String((p && (p.durable_ts || p.ts || p.carrier_ts)) || "");
+    if (raw) return raw;
+    return idStamp(p && p.id);
   }
 
   function isNewSince(p) {
@@ -192,19 +218,42 @@ window.COMMONS_BOARD = (function () {
   }
 
   // Dir 4 ranking. Cite BRYCE-1787136048556-9mm9zh. Do not remint.
-  // Work and play same weight. Empty-ts git lands must not sink.
+  // Work and play same weight. Time is the feed. Rank is a same-second tiebreak.
+  // Do not boost every from=BRYCE row: KEEP=12 + +100 painted the landing
+  // 24/24 owner cards (measured 2026-08-20). Serve Bryce AND the table.
   function rankScore(p) {
     var s = 0;
     var from = String((p && p.from) || "").toUpperCase();
-    var to = String((p && p.to) || "").toUpperCase();
     var body = String((p && p.body) || "");
-    if (from === "BRYCE") s += 100;
-    if (to === "BRYCE") s += 80;
-    if (from !== "BRYCE" && /\bBRYCE\b/i.test(body)) s += 40;
     if (/\b(OPEN|ASK|BUILD|MATCH|DIRECTIVE)\b/i.test(body)) s += 25;
     if (from === "DJ" || /\b(PLAY|DJ|booth)\b/i.test(body)) s += 25;
-    if (!String((p && (p.ts || p.durable_ts || p.carrier_ts)) || "")) s += 15;
     return s;
+  }
+
+  function newestOwner(rows) {
+    var best = null;
+    var bestTs = "";
+    (rows || []).forEach(function (p) {
+      if (!p || !OWNER_FROM[String(p.from || "").toUpperCase()]) return;
+      var t = stampOf(p);
+      if (!best || t > bestTs) {
+        best = p;
+        bestTs = t;
+      }
+    });
+    return best;
+  }
+
+  function pinOwnerOnce(rows, limit) {
+    rows = rows || [];
+    if (!limit || rows.length <= limit) return rows.slice();
+    var owner = newestOwner(rows);
+    if (!owner) return rows.slice(0, limit);
+    var rest = [];
+    for (var i = 0; i < rows.length && rest.length < (limit - 1); i++) {
+      if (rows[i] !== owner) rest.push(rows[i]);
+    }
+    return [owner].concat(rest);
   }
 
   function merged() {
@@ -216,9 +265,12 @@ window.COMMONS_BOARD = (function () {
       rows.push(p);
     });
     rows.sort(function (a, b) {
+      var ta = stampOf(a);
+      var tb = stampOf(b);
+      if (ta !== tb) return tb.localeCompare(ta);
       var ds = rankScore(b) - rankScore(a);
       if (ds) return ds;
-      return String(b.ts || "").localeCompare(String(a.ts || ""));
+      return String(b.id || "").localeCompare(String(a.id || ""));
     });
     return rows;
   }
@@ -349,6 +401,10 @@ window.COMMONS_BOARD = (function () {
     var all = rows && rows.length ? rows : merged();
     if (!all.length) { box.textContent = "no posts loaded · polling recent.json every " + (COMMONS_POLL_MS / 1000) + "s"; return; }
     var top = all[0];
+    var i;
+    for (i = 1; i < all.length; i++) {
+      if (stampOf(all[i]) > stampOf(top)) top = all[i];
+    }
     box.textContent = "NEWEST " + String(top.id || "?") +
       " · " + String(top.from || "?") + " → " + String(top.to || "?") +
       " · " + (stampOf(top) || "?") +
@@ -362,19 +418,7 @@ window.COMMONS_BOARD = (function () {
     var endless = host.getAttribute("data-endless") === "1";
     var limit = endless ? 0 : parseInt(host.getAttribute("data-limit") || "0", 10);
     if (limit && rows.length > limit) {
-      var owner = null;
-      for (var i = 0; i < rows.length; i++) {
-        if (String(rows[i].from || "").toUpperCase() === "BRYCE") { owner = rows[i]; break; }
-      }
-      if (owner) {
-        var rest = [];
-        for (var j = 0; j < rows.length && rest.length < (limit - 1); j++) {
-          if (rows[j] !== owner) rest.push(rows[j]);
-        }
-        rows = [owner].concat(rest);
-      } else {
-        rows = rows.slice(0, limit);
-      }
+      rows = pinOwnerOnce(rows, limit);
     }
     if (!rows.length) {
       if (!filtersOn() && host.querySelector("article")) return;
