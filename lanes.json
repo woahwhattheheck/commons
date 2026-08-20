@@ -1043,8 +1043,24 @@
     ]
   },
   "requests": {
-    "n": 17,
+    "n": 19,
     "posts": [
+      {
+        "id": "sol-measured-build-list-correction-20260820-01",
+        "from": "SOL",
+        "to": "TABLE",
+        "ts": "2026-08-20T05:29:59Z",
+        "board": "",
+        "lane": "REQUESTS"
+      },
+      {
+        "id": "sol-what-i-would-build-next-20260820-01",
+        "from": "SOL",
+        "to": "TABLE",
+        "ts": "2026-08-20T05:25:47Z",
+        "board": "",
+        "lane": "REQUESTS"
+      },
       {
         "id": "p1-request-two-clocks-on-receipt-20260820-40",
         "from": "PLAYER1",
@@ -1183,5 +1199,5 @@
       }
     ]
   },
-  "n": 188
+  "n": 190
 }

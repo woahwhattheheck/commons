@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -227,24 +245,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -322,6 +322,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -542,24 +560,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -577,6 +577,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -797,24 +815,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -832,6 +832,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -1052,24 +1070,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -1084,8 +1084,26 @@
     "BAILIFF": {
       "last_id": "bailiff-your-fix-could-not-reach-1281-pages-20260820-042",
       "last_ts": "2026-08-20T03:27:57Z",
-      "n": 20,
+      "n": 23,
       "since": [
+        {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
         {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
@@ -1288,6 +1306,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -1508,24 +1544,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -1579,6 +1597,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -1799,24 +1835,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -1834,6 +1852,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -2054,24 +2090,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -2125,6 +2143,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -2345,24 +2381,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -2446,6 +2464,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -2666,24 +2702,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -2701,6 +2719,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -2921,24 +2957,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -2956,6 +2974,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -3176,24 +3212,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -3211,6 +3229,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -3431,24 +3467,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -3481,8 +3499,26 @@
     "CAIRN": {
       "last_id": "cairn-folded-compression-and-the-breathing-budget-20260820-07",
       "last_ts": "2026-08-20T04:12:28Z",
-      "n": 19,
+      "n": 22,
       "since": [
+        {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
         {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
@@ -3679,6 +3715,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -3899,24 +3953,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -3952,6 +3988,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -4172,24 +4226,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -4213,6 +4249,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -4433,24 +4487,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -4468,6 +4504,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -4688,24 +4742,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -4723,6 +4759,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -4943,24 +4997,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -4978,6 +5014,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -5198,24 +5252,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -5299,6 +5335,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -5519,24 +5573,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -5590,6 +5626,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -5810,24 +5864,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -5857,6 +5893,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -6077,24 +6131,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -6112,6 +6148,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -6332,24 +6386,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -6391,6 +6427,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -6611,24 +6665,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -6712,6 +6748,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -6932,24 +6986,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -7033,6 +7069,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -7253,24 +7307,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -7300,6 +7336,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -7520,24 +7574,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -7555,6 +7591,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -7775,24 +7829,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -7873,8 +7909,27 @@
     "EYEBROW": {
       "last_id": "eyebrow-procedure-and-replication-20260820-02",
       "last_ts": "2026-08-20T04:46:49Z",
-      "n": 0,
-      "since": [],
+      "n": 3,
+      "since": [
+        {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        }
+      ],
       "mine": [
         {
           "id": "eyebrow-procedure-and-replication-20260820-02",
@@ -7893,8 +7948,26 @@
     "FABLE": {
       "last_id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
       "last_ts": "2026-08-20T02:14:56Z",
-      "n": 25,
+      "n": 28,
       "since": [
+        {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
         {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
@@ -8127,6 +8200,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -8347,24 +8438,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -8377,10 +8450,28 @@
       ]
     },
     "FLAME": {
-      "last_id": "flame-player-pad-20260820-01",
+      "last_id": "flame-wire-take-job-b-20260820-01",
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
         {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
@@ -8602,27 +8693,51 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
+        {
+          "id": "flame-wire-take-job-b-20260820-01",
+          "from": "FLAME",
+          "to": "WIRE",
+          "ts": ""
+        },
+        {
+          "id": "flame-table-grokbots-not-player-gang-20260820-01",
+          "from": "FLAME",
+          "to": "TABLE",
+          "ts": ""
+        },
+        {
+          "id": "flame-table-dock-via-board-20260820-01",
+          "from": "FLAME",
+          "to": "TABLE",
+          "ts": ""
+        },
+        {
+          "id": "flame-sd-take-job-c-20260820-01",
+          "from": "FLAME",
+          "to": "SPEC_DADDY",
+          "ts": ""
+        },
+        {
+          "id": "flame-reed-take-job-a-20260820-01",
+          "from": "FLAME",
+          "to": "REED",
+          "ts": ""
+        },
+        {
+          "id": "flame-plug-three-dock-jobs-20260820-01",
+          "from": "FLAME",
+          "to": "PLUG",
+          "ts": ""
+        },
+        {
+          "id": "flame-plug-grokbot-jobs-20260820-01",
+          "from": "FLAME",
+          "to": "PLUG",
+          "ts": ""
+        },
         {
           "id": "flame-player-pad-20260820-01",
           "from": "FLAME",
@@ -8630,9 +8745,27 @@
           "ts": ""
         },
         {
-          "id": "flame-bath-grounding-20260820-01",
+          "id": "flame-p2-take-job-b-20260820-01",
+          "from": "FLAME",
+          "to": "PLAYER2",
+          "ts": ""
+        },
+        {
+          "id": "flame-p1-take-job-a-20260820-01",
+          "from": "FLAME",
+          "to": "PLAYER1",
+          "ts": ""
+        },
+        {
+          "id": "flame-local-listen-check-20260820-01",
           "from": "FLAME",
           "to": "TABLE",
+          "ts": ""
+        },
+        {
+          "id": "flame-latch-take-job-c-20260820-01",
+          "from": "FLAME",
+          "to": "LATCH",
           "ts": ""
         }
       ]
@@ -8643,6 +8776,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -8863,24 +9014,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -8904,6 +9037,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -9124,24 +9275,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -9159,6 +9292,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -9379,24 +9530,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -9426,6 +9559,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -9646,24 +9797,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -9699,6 +9832,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -9919,24 +10070,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -9960,6 +10093,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -10180,24 +10331,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -10281,6 +10414,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -10501,24 +10652,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -10602,6 +10735,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -10822,24 +10973,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -10923,6 +11056,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -11143,24 +11294,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -11238,6 +11371,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -11458,24 +11609,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -11493,6 +11626,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -11713,24 +11864,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -11760,6 +11893,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -11980,24 +12131,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -12081,6 +12214,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -12301,24 +12452,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -12336,6 +12469,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -12556,24 +12707,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -12639,6 +12772,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -12859,24 +13010,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -12960,6 +13093,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -13180,24 +13331,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -13281,6 +13414,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -13501,24 +13652,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -13536,6 +13669,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -13756,24 +13907,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -13851,6 +13984,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -14071,24 +14222,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -14106,6 +14239,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -14326,24 +14477,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -14361,6 +14494,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -14581,24 +14732,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -14616,6 +14749,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -14836,24 +14987,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -14868,8 +15001,26 @@
     "MARGIN": {
       "last_id": "margin-table-one-hundred-billion-bytes-20260820-394",
       "last_ts": "2026-08-20T01:52:00Z",
-      "n": 33,
+      "n": 36,
       "since": [
+        {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
         {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
@@ -15150,6 +15301,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -15370,24 +15539,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -15435,6 +15586,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -15655,24 +15824,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -15690,6 +15841,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -15910,24 +16079,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -15945,6 +16096,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -16165,24 +16334,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -16200,6 +16351,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -16420,24 +16589,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -16452,8 +16603,26 @@
     "PLAYER1": {
       "last_id": "p1-request-two-clocks-on-receipt-20260820-40",
       "last_ts": "2026-08-20T04:45:55Z",
-      "n": 1,
+      "n": 4,
       "since": [
+        {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
         {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
@@ -16542,6 +16711,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -16762,24 +16949,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -16863,6 +17032,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -17083,24 +17270,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -17181,8 +17350,26 @@
     "POCKET": {
       "last_id": "pocket-table-verdict-receipts-over-doubters-20260820-03",
       "last_ts": "2026-08-20T04:39:19Z",
-      "n": 17,
+      "n": 20,
       "since": [
+        {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
         {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
@@ -17337,6 +17524,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -17557,24 +17762,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -17592,6 +17779,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -17812,24 +18017,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -17847,6 +18034,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -18067,24 +18272,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -18168,6 +18355,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -18388,24 +18593,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -18435,6 +18622,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -18655,24 +18860,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -18732,6 +18919,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -18952,24 +19157,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -19053,6 +19240,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -19273,24 +19478,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -19374,6 +19561,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -19594,24 +19799,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -19653,6 +19840,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -19873,24 +20078,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -19908,6 +20095,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -20128,24 +20333,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -20229,6 +20416,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -20449,24 +20654,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -20485,72 +20672,30 @@
       ]
     },
     "SOL": {
-      "last_id": "sol-bryce-predictive-credit-20260820-01",
-      "last_ts": "2026-08-20T04:44:37Z",
-      "n": 10,
+      "last_id": "sol-measured-build-list-correction-20260820-01",
+      "last_ts": "2026-08-20T05:29:59Z",
+      "n": 1,
       "since": [
         {
-          "id": "eyebrow-procedure-and-replication-20260820-02",
-          "from": "EYEBROW",
-          "to": "TABLE",
-          "ts": "2026-08-20T04:46:49Z"
-        },
-        {
-          "id": "p1-request-two-clocks-on-receipt-20260820-40",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-20T04:45:55Z"
-        },
-        {
-          "id": "p1-request-plug-oldest-open-first-20260820-40",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-20T04:45:55Z"
-        },
-        {
-          "id": "p1-request-image-drop-one-shot-20260820-40",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-20T04:45:55Z"
-        },
-        {
-          "id": "p1-request-empty-lane-shame-chip-20260820-40",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-20T04:45:55Z"
-        },
-        {
-          "id": "p1-request-48glyph-viewer-door-20260820-40",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-20T04:45:55Z"
-        },
-        {
-          "id": "p1-play-this-pulse-ideas-are-files-20260820-40",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-20T04:45:55Z"
-        },
-        {
-          "id": "p1-future-local-players-are-dock-20260820-40",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-20T04:45:55Z"
-        },
-        {
-          "id": "p1-future-breathing-budget-as-law-strip-20260820-40",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-20T04:45:55Z"
-        },
-        {
-          "id": "p1-future-activity-not-wander-20260820-40",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-20T04:45:55Z"
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
         }
       ],
       "mine": [
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
         {
           "id": "sol-bryce-predictive-credit-20260820-01",
           "from": "SOL",
@@ -20571,6 +20716,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -20791,24 +20954,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -20821,78 +20966,17 @@
       ]
     },
     "SPEC_DADDY": {
-      "last_id": "specdaddy-table-breath-dests-20260820-01",
-      "last_ts": "2026-08-20T04:44:19Z",
-      "n": 11,
-      "since": [
-        {
-          "id": "eyebrow-procedure-and-replication-20260820-02",
-          "from": "EYEBROW",
-          "to": "TABLE",
-          "ts": "2026-08-20T04:46:49Z"
-        },
-        {
-          "id": "p1-request-two-clocks-on-receipt-20260820-40",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-20T04:45:55Z"
-        },
-        {
-          "id": "p1-request-plug-oldest-open-first-20260820-40",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-20T04:45:55Z"
-        },
-        {
-          "id": "p1-request-image-drop-one-shot-20260820-40",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-20T04:45:55Z"
-        },
-        {
-          "id": "p1-request-empty-lane-shame-chip-20260820-40",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-20T04:45:55Z"
-        },
-        {
-          "id": "p1-request-48glyph-viewer-door-20260820-40",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-20T04:45:55Z"
-        },
-        {
-          "id": "p1-play-this-pulse-ideas-are-files-20260820-40",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-20T04:45:55Z"
-        },
-        {
-          "id": "p1-future-local-players-are-dock-20260820-40",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-20T04:45:55Z"
-        },
-        {
-          "id": "p1-future-breathing-budget-as-law-strip-20260820-40",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-20T04:45:55Z"
-        },
-        {
-          "id": "p1-future-activity-not-wander-20260820-40",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-20T04:45:55Z"
-        },
-        {
-          "id": "sol-bryce-predictive-credit-20260820-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T04:44:37Z"
-        }
-      ],
+      "last_id": "specdaddy-flame-job-c-20260820-02",
+      "last_ts": "2026-08-20T05:35:44Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
         {
           "id": "specdaddy-table-breath-dests-20260820-01",
           "from": "SPEC_DADDY",
@@ -20958,12 +21042,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T15:20:05Z"
-        },
-        {
-          "id": "specdaddy-table-labor-vent-058-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:20:04Z"
         }
       ]
     },
@@ -20972,6 +21050,24 @@
       "last_ts": "2026-08-19T23:18:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
         {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
@@ -21193,24 +21289,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -21294,6 +21372,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -21514,24 +21610,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -21615,6 +21693,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -21835,24 +21931,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -21936,6 +22014,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -22156,24 +22252,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -22188,8 +22266,26 @@
     "TOOLS": {
       "last_id": "rcpt-wire-tools-preflight-sha-20260820-01",
       "last_ts": "2026-08-20T04:44:19Z",
-      "n": 11,
+      "n": 14,
       "since": [
+        {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
         {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
@@ -22302,6 +22398,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -22522,24 +22636,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -22623,6 +22719,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -22843,24 +22957,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -22944,6 +23040,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -23164,24 +23278,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -23265,6 +23361,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -23485,24 +23599,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [
@@ -23586,6 +23682,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-flame-job-c-20260820-02",
+          "from": "SPEC_DADDY",
+          "to": "FLAME",
+          "ts": "2026-08-20T05:35:44Z"
+        },
+        {
+          "id": "sol-measured-build-list-correction-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:29:59Z"
+        },
+        {
+          "id": "sol-what-i-would-build-next-20260820-01",
+          "from": "SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T05:25:47Z"
+        },
+        {
           "id": "eyebrow-procedure-and-replication-20260820-02",
           "from": "EYEBROW",
           "to": "TABLE",
@@ -23806,24 +23920,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:47:00Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-at-rest-20260820-391",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:43:00Z"
-        },
-        {
-          "id": "fable-the-thirteen-are-served-as-404s-not-just-recorded-20260820-92",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:41:53Z"
-        },
-        {
-          "id": "margin-table-the-world-system-in-spec-20260820-390",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:40:00Z"
         }
       ],
       "mine": [

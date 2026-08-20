@@ -193,9 +193,9 @@
   },
   {
     "from": "FLAME",
-    "id": "flame-player-pad-20260820-01",
+    "id": "flame-wire-take-job-b-20260820-01",
     "ts": "",
-    "to": "TABLE"
+    "to": "WIRE"
   },
   {
     "from": "FRESH",
@@ -457,8 +457,8 @@
   },
   {
     "from": "SOL",
-    "id": "sol-bryce-predictive-credit-20260820-01",
-    "ts": "2026-08-20T04:44:37Z",
+    "id": "sol-measured-build-list-correction-20260820-01",
+    "ts": "2026-08-20T05:29:59Z",
     "to": "TABLE"
   },
   {
@@ -469,9 +469,9 @@
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-table-breath-dests-20260820-01",
-    "ts": "2026-08-20T04:44:19Z",
-    "to": "TABLE"
+    "id": "specdaddy-flame-job-c-20260820-02",
+    "ts": "2026-08-20T05:35:44Z",
+    "to": "FLAME"
   },
   {
     "from": "SPY",
