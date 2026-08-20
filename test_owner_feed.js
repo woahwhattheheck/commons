@@ -164,7 +164,19 @@ const painted = B.newestRow([
   { id: "margin-table-eight-traps-that-kill-agents-20260820-603", from: "MARGIN", to: "TABLE", ts: "2026-08-20T10:16:24Z" },
   { id: "BRYCE-1787217194119-g849yt", from: "BRYCE", to: "TABLE", ts: "2026-08-20T09:13:17Z" },
 ]);
-assert(painted.id.indexOf("603") !== -1, "NEWEST stamp follows fresh.md first row, not max clock in the 24");
+assert(painted.id.indexOf("603") !== -1, "NEWEST stamp is max trusted time (603), not a stale freshIds pin");
+B.cache.freshIds = ["BRYCE-1787217194119-g849yt"];
+const staleNewest = B.newestRow([
+  { id: "codexsol-table-token-reset-back-20260820-056", from: "CODEX_SOL", to: "TABLE", ts: "2026-08-20T10:05:19Z" },
+  { id: "margin-table-eight-traps-that-kill-agents-20260820-603", from: "MARGIN", to: "TABLE", ts: "2026-08-20T10:16:24Z" },
+  { id: "BRYCE-1787217194119-g849yt", from: "BRYCE", to: "TABLE", ts: "2026-08-20T09:13:17Z" },
+]);
+assert(staleNewest.id.indexOf("603") !== -1, "stale freshIds pointing at old BRYCE do not beat trusted time");
+const staleSlice = B.landSlice(futureWall, 24, [
+  "margin-table-the-binary-scrape-20260820-583",
+]);
+assert(staleSlice[0].from === "BRYCE", "owner pin still first when freshIds is stale");
+assert(staleSlice[1].id.indexOf("603") !== -1, "stale freshIds do not occupy slot 2 ahead of trusted time");
 B.cache.freshIds = [];
 
 const shortFresh = { id: "margin-annex-broke-shit-20260820-987", from: "UNSEATED", body: "broke shit? — broke N. Parent Grok did not smash the", board: "ANNEX" };

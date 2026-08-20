@@ -313,8 +313,10 @@ window.COMMONS_BOARD = (function () {
     return landSlice(rows, limit);
   }
 
-  // One owner pin, then HEAD fresh.md order, then the time-sorted bake.
-  // A lying future ts in recent.json must not fill the 23 leftover slots.
+  // One owner pin, then trusted-time order. freshIds is accepted so callers
+  // and tests keep the old arity; it is not a pin. A stale fresh.md used to
+  // occupy the leftover slots and hide newer durable rows. A lying future ts
+  // in recent.json must not fill those slots either — stampOf already drops it.
   function landSlice(rows, limit, freshIds) {
     rows = rows || [];
     if (!limit || rows.length <= limit) return rows.slice();
@@ -325,17 +327,18 @@ window.COMMONS_BOARD = (function () {
       out.push(owner);
       used[owner.id] = 1;
     }
-    var byId = {};
-    rows.forEach(function (p) {
-      if (p && p.id && !byId[p.id]) byId[p.id] = p;
-    });
-    (freshIds || cache.freshIds || []).forEach(function (id) {
-      if (out.length >= limit || !id || used[id] || !byId[id]) return;
-      out.push(byId[id]);
-      used[id] = 1;
-    });
-    rows.forEach(function (p) {
-      if (out.length >= limit || !p || !p.id || used[p.id]) return;
+    void freshIds;
+    rows.filter(function (p) {
+      return p && p.id && !used[p.id];
+    }).slice().sort(function (a, b) {
+      var ta = stampOf(a);
+      var tb = stampOf(b);
+      if (ta !== tb) return tb.localeCompare(ta);
+      var ds = rankScore(b) - rankScore(a);
+      if (ds) return ds;
+      return String(b.id || "").localeCompare(String(a.id || ""));
+    }).forEach(function (p) {
+      if (out.length >= limit || used[p.id]) return;
       out.push(p);
       used[p.id] = 1;
     });
@@ -526,18 +529,36 @@ window.COMMONS_BOARD = (function () {
   function newestRow(rows) {
     var all = rows && rows.length ? rows : merged();
     if (!all.length) return null;
-    var prefer = (cache.freshIds && cache.freshIds[0]) || "";
-    var i;
-    if (prefer) {
-      for (i = 0; i < all.length; i++) {
-        if (all[i] && all[i].id === prefer) return all[i];
-      }
-    }
     var top = all[0];
+    var i;
     for (i = 1; i < all.length; i++) {
       if (stampOf(all[i]) > stampOf(top)) top = all[i];
     }
     return top;
+  }
+
+  function visibleAnchor(host) {
+    if (!host || !host.querySelectorAll) return null;
+    var cards = host.querySelectorAll("article[data-id]");
+    var i, card, rect;
+    for (i = 0; i < cards.length; i++) {
+      card = cards[i];
+      if (!card.getBoundingClientRect) return null;
+      rect = card.getBoundingClientRect();
+      if (rect.bottom > 8) {
+        return { id: card.getAttribute("data-id") || "", top: rect.top };
+      }
+    }
+    return null;
+  }
+
+  function restoreAnchor(host, anchor) {
+    if (!host || !anchor || !anchor.id) return;
+    var safe = String(anchor.id).replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+    var card = host.querySelector('article[data-id="' + safe + '"]');
+    if (!card || !card.getBoundingClientRect) return;
+    var delta = card.getBoundingClientRect().top - anchor.top;
+    if (Math.abs(delta) >= 1 && window.scrollBy) window.scrollBy(0, delta);
   }
 
   function paintNewest(rows) {
@@ -583,15 +604,15 @@ window.COMMONS_BOARD = (function () {
       return;
     }
     if (!filtersOn() && have && rows.length < have && cache.durable.length < have) return;
-    // CODEX_SOL, codex-sol-feed-ui-fix-ready-20260820-01 pt 4: the 15 s poll
-    // rewrote innerHTML on EVERY tick, identical bytes or not. On a phone that
-    // drops scroll position, kills text selection and breaks Android
-    // long-capture mid-read -- the board moving under the owner while he is
-    // reading it. Only touch the DOM when the render actually changed.
+    // CODEX_SOL pt 4 already on main (0ebe6ce3): skip identical innerHTML.
+    // SCOPE leftover: when the markup DOES change, restore the first on-screen
+    // card so a real update does not jump the phone mid-read.
     var html = rows.map(function (p) { return card(p, !!p.pending && !p.durable); }).join("");
     if (html !== cache.painted) {
+      var anchor = visibleAnchor(host);
       host.innerHTML = html;
       cache.painted = html;
+      restoreAnchor(host, anchor);
       bindLoadOlder();
     }
     paintSalonPointer();
