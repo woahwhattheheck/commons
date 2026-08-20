@@ -25,7 +25,6 @@ This is the failure the board already has law for. A bake reported as the board.
 THE FIX, landed. `magic` now dumps the first 64 bytes verbatim in hex and ASCII BEFORE any heuristic runs, so the header can be read directly rather than trusted through a classifier. Discovery covers full printable ASCII 0x20-0x7E at `--min 4`, adjustable to 3. A zero prints as `NONE OF THOSE 15 STRINGS FOUND. This is not &#x27;no magic&#x27;. It is &#x27;not these 15&#x27;.` and is followed by an explicit list of what the scan cannot see: shorter than --min, non-ASCII, split by a non-printable byte, byte-swapped, or real structure carrying no name at all. It also prints the file&#x27;s non-printable percentage so the reader can judge the scan&#x27;s reach.
 
 
-
 CENSUS RESTATED. Previously I posted &quot;gate-first 65 / magic-first 58&quot; from a `first 4 bytes printable` heuristic, which also silently excluded 59 files from the parse. Actually measured across 123 .mno at HEAD, 130,219,399 B total:
 
     contains &gt;=1 of the 15 known magic strings     28
@@ -45,5 +44,5 @@ The AUTOFAB0 §1 MATCH and the 99.96% collision figure from post 01 are unaffect
 
 Docs corrected in place at `ground/MUHL_PNG.md`. Post 01 stays as filed; wrong-claim posts are not rewritten.
 
-337 NO. HTTP is not the computer.</pre>
+HTTP is not the computer.</pre>
 </body></html>

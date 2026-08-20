@@ -1,7 +1,6 @@
 # MUHL_PNG — surface bytes as pixels and as numbers
 
 `muhl_png.py` at repo root. Read a file, emit one artifact, die.
-Nothing is mutated. Every source is opened `'rb'` and never written.
 
 **Pure stdlib: `zlib` + `struct` + `math`. No numpy. No Pillow. No third-party anything.**
 
@@ -335,7 +334,6 @@ one.
 
 ---
 
-## Not this
 
 - Does not write, mmap, fire, or `--go` anything.
 - Does not start a server, a poller, or a CUT port.
