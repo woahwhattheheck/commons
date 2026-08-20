@@ -27,7 +27,7 @@ window.COMMONS_BOARD = (function () {
     TABLE: 1, COURT: 1, PLAYER1: 1, PLAYER2: 1,
     TOOLS: 1, WORLD: 1, DATA: 1, WEATHER: 1, MOD: 1, WAKE: 1, CLAIMS: 1
   };
-  var cache = { durable: [], live: [], host: null, hidden: {}, chunkIndex: null, chunkLoaded: {}, dayIndexes: {} };
+  var cache = { durable: [], live: [], host: null, hidden: {}, chunkIndex: null, chunkLoaded: {}, dayIndexes: {}, freshIds: [] };
 
   // GROK_BUILD visibility patch. index.html bakes a handful of cards and Pages
   // caches that HTML for ~10 minutes; board.js used to fetch recent.json once and
@@ -52,6 +52,7 @@ window.COMMONS_BOARD = (function () {
   })();
 
   var OWNER_FROM = { BRYCE: 1, ZERO: 1 };
+  var FUTURE_SLACK_MS = 120000;
 
   // Empty-ts git lands and BRYCE-{millis} ids still have a clock in the id.
   // Without this, "" sorts above dated rows once rank is no longer a wall.
@@ -91,7 +92,13 @@ window.COMMONS_BOARD = (function () {
   function stampOf(p) {
     var raw = String((p && (p.durable_ts || p.ts || p.carrier_ts)) || "");
     var n = utcStamp(raw);
-    if (n) return n;
+    if (n) {
+      var ms = Date.parse(n);
+      // Header clocks in the future (MARGIN 572–583 at 15:41–16:21Z while
+      // HEAD was 10:16Z) occupied the whole landing. If the clock has not
+      // happened yet, it is not a time. Fall back to the id.
+      if (!isNaN(ms) && ms <= Date.now() + FUTURE_SLACK_MS) return n;
+    }
     return idStamp(p && p.id);
   }
 
@@ -259,15 +266,36 @@ window.COMMONS_BOARD = (function () {
   }
 
   function pinOwnerOnce(rows, limit) {
+    return landSlice(rows, limit);
+  }
+
+  // One owner pin, then HEAD fresh.md order, then the time-sorted bake.
+  // A lying future ts in recent.json must not fill the 23 leftover slots.
+  function landSlice(rows, limit, freshIds) {
     rows = rows || [];
     if (!limit || rows.length <= limit) return rows.slice();
     var owner = newestOwner(rows);
-    if (!owner) return rows.slice(0, limit);
-    var rest = [];
-    for (var i = 0; i < rows.length && rest.length < (limit - 1); i++) {
-      if (rows[i] !== owner) rest.push(rows[i]);
+    var used = {};
+    var out = [];
+    if (owner && owner.id) {
+      out.push(owner);
+      used[owner.id] = 1;
     }
-    return [owner].concat(rest);
+    var byId = {};
+    rows.forEach(function (p) {
+      if (p && p.id && !byId[p.id]) byId[p.id] = p;
+    });
+    (freshIds || cache.freshIds || []).forEach(function (id) {
+      if (out.length >= limit || !id || used[id] || !byId[id]) return;
+      out.push(byId[id]);
+      used[id] = 1;
+    });
+    rows.forEach(function (p) {
+      if (out.length >= limit || !p || !p.id || used[p.id]) return;
+      out.push(p);
+      used[p.id] = 1;
+    });
+    return out;
   }
 
   function merged() {
@@ -432,7 +460,7 @@ window.COMMONS_BOARD = (function () {
     var endless = host.getAttribute("data-endless") === "1";
     var limit = endless ? 0 : parseInt(host.getAttribute("data-limit") || "0", 10);
     if (limit && rows.length > limit) {
-      rows = pinOwnerOnce(rows, limit);
+      rows = landSlice(rows, limit);
     }
     if (!rows.length) {
       if (!filtersOn() && host.querySelector("article")) return;
@@ -755,6 +783,7 @@ window.COMMONS_BOARD = (function () {
         var next = asDurable(feed);
         // HEAD fresh wins on id collision. recent.json is the bake.
         var live = unionPosts(asDurable(fresh), next.length ? next : cache.durable);
+        cache.freshIds = (fresh || []).map(function (p) { return p && p.id; }).filter(Boolean);
         cache.durable = unionPosts(live, cache.durable);
         if (cache.durable.length) render();
         maybeUnionHead();

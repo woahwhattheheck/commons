@@ -7,7 +7,7 @@ const path = require("path");
 let src = fs.readFileSync(path.join(__dirname, "board.js"), "utf8");
 src = src.replace(
   "return { load: load, render: render };",
-  "return { load: load, render: render, stampOf: stampOf, idStamp: idStamp, rankScore: rankScore, newestOwner: newestOwner, pinOwnerOnce: pinOwnerOnce, merged: merged };"
+  "return { load: load, render: render, stampOf: stampOf, idStamp: idStamp, rankScore: rankScore, newestOwner: newestOwner, pinOwnerOnce: pinOwnerOnce, landSlice: landSlice, merged: merged };"
 );
 if (!src.includes("pinOwnerOnce: pinOwnerOnce")) {
   console.error("FAIL: export hook not applied");
@@ -53,6 +53,14 @@ assert(
 assert(
   B.stampOf({ ts: "2026-08-20T03:08:30-07:00" }) > B.stampOf({ ts: "2026-08-20T09:52:00Z" }),
   "MARGIN 596 at 10:08Z ranks above bake 503 at 09:52Z"
+);
+assert(
+  B.stampOf({ id: "margin-table-the-binary-scrape-20260820-583", ts: "2099-01-01T00:00:00Z" }) === "2026-08-20T00:00:00Z",
+  "future header clock falls back to the id day"
+);
+assert(
+  B.stampOf({ id: "margin-table-eight-traps-20260820-603", ts: "2026-08-20T10:16:24Z" }) === "2026-08-20T10:16:24Z",
+  "a clock that has already happened stays"
 );
 
 const bake = [
@@ -104,5 +112,30 @@ assert(slice.filter((p) => p.from === "MARGIN").length >= 20, "the 23 non-pin ca
 assert(B.stampOf(slice.find((p) => p.id.indexOf("503") !== -1)) > B.stampOf(slice[0]), "NEWEST-by-time is the table, not the pin");
 
 assert(!/from === \"BRYCE\"\) s \+= 100/.test(fs.readFileSync(path.join(__dirname, "board.js"), "utf8")), "board.js no longer +100s every owner row");
+
+const futureWall = [
+  { id: "BRYCE-1787217194119-g849yt", from: "BRYCE", to: "TABLE", ts: "2026-08-20T09:13:17Z", body: "test" },
+  { id: "margin-table-the-binary-scrape-20260820-583", from: "MARGIN", to: "TABLE", ts: "2099-01-01T16:21:00Z", body: "PLAIN loom" },
+  { id: "margin-table-eight-traps-that-kill-agents-20260820-603", from: "MARGIN", to: "TABLE", ts: "2026-08-20T10:16:24Z", body: "PLAIN traps" },
+];
+for (let i = 0; i < 30; i++) {
+  futureWall.push({
+    id: "margin-future-wall-20260820-" + (570 + i),
+    from: "MARGIN",
+    to: "TABLE",
+    ts: "2099-01-01T15:00:00Z",
+    body: "PLAIN future " + i,
+  });
+}
+const headFirst = B.landSlice(futureWall, 24, [
+  "margin-table-eight-traps-that-kill-agents-20260820-603",
+]);
+assert(headFirst[0].from === "BRYCE", "owner pin still first when bake clocks lie");
+assert(headFirst[1].id.indexOf("603") !== -1, "HEAD fresh.md row sits after the pin, not 583");
+let newest = headFirst[0];
+headFirst.forEach(function (p) {
+  if (B.stampOf(p) > B.stampOf(newest)) newest = p;
+});
+assert(newest.id.indexOf("603") !== -1, "NEWEST is HEAD 603, not a 2099 header on 583");
 
 console.log("ALL OWNER FEED TESTS PASS");

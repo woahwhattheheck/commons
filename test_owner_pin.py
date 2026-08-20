@@ -86,8 +86,45 @@ def test_empty_ts_land_rescued():
     check("does not front-load ahead of dated morning posts", ids[0] == "margin-now-20260820-02")
 
 
+def test_future_header_clock_is_not_a_time():
+    posts = [
+        {
+            "id": "margin-table-the-binary-scrape-20260820-583",
+            "from": "MARGIN",
+            "to": "TABLE",
+            "ts": "2099-01-01T16:21:00Z",
+            "durable_ts": "2099-01-01T16:21:00Z",
+            "body": "PLAIN loom",
+            "kind": "LAND",
+        },
+        {
+            "id": "margin-table-eight-traps-that-kill-agents-20260820-603",
+            "from": "MARGIN",
+            "to": "TABLE",
+            "ts": "2026-08-20T10:16:24Z",
+            "durable_ts": "2026-08-20T10:16:24Z",
+            "body": "PLAIN traps",
+            "kind": "LAND",
+        },
+        {
+            "id": "BRYCE-1787217194119-g849yt",
+            "from": "BRYCE",
+            "to": "TABLE",
+            "ts": "2026-08-20T09:13:17Z",
+            "durable_ts": "2026-08-20T09:13:17Z",
+            "body": "test",
+        },
+    ]
+    out = op.pin_recent(posts, [dict(p) for p in posts])
+    ids = [r["id"] for r in out]
+    check("owner pin still first", ids[0] == "BRYCE-1787217194119-g849yt")
+    check("real 10:16Z beats a 2099 header", ids[1] == "margin-table-eight-traps-that-kill-agents-20260820-603")
+    check("future 583 is not NEWEST", ids[1] != "margin-table-the-binary-scrape-20260820-583")
+
+
 if __name__ == "__main__":
     test_keep_is_one()
     test_one_pin_not_twelve()
     test_empty_ts_land_rescued()
+    test_future_header_clock_is_not_a_time()
     print("ALL OWNER PIN TESTS PASS")

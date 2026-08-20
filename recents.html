@@ -61,7 +61,11 @@
   }
   function stampOf(r) {
     var n = utcStamp(String((r && (r.durable_ts || r.ts || r.carrier_ts)) || ""));
-    return n || idStamp(r && r.id);
+    if (n) {
+      var ms = Date.parse(n);
+      if (!isNaN(ms) && ms <= Date.now() + 120000) return n;
+    }
+    return idStamp(r && r.id);
   }
   function union(a, b) {
     var seen = {};

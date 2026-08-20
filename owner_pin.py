@@ -20,7 +20,7 @@ from __future__ import annotations
 import json
 import os
 import re
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 import verification_loop
 
@@ -55,11 +55,33 @@ def _land_ok(rec):
     return verification_loop.land_pin_ok(meta, rec.get("body") or "")
 
 
+def _as_dt(val):
+    val = str(val or "").strip()
+    if not val:
+        return None
+    try:
+        raw = val[:-1] + "+00:00" if val.endswith("Z") else val
+        parsed = datetime.fromisoformat(raw)
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed
+
+
 def _ts(rec):
+    now = datetime.now(timezone.utc)
+    slack = timedelta(seconds=120)
     for key in ("durable_ts", "ts", "carrier_ts"):
         val = str(rec.get(key) or "").strip()
-        if val:
+        if not val:
+            continue
+        parsed = _as_dt(val)
+        if parsed is None:
             return val
+        if parsed <= now + slack:
+            return val
+        # Future header clock is not a time. Fall through to the id.
     ident = str(rec.get("id") or "")
     parts = ident.split("-")
     if len(parts) >= 2 and parts[0] == "BRYCE" and parts[1].isdigit():
