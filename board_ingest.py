@@ -1250,6 +1250,8 @@ def article_html(meta, body, prefix="./"):
     # wants to later.
     bits.append('<a href="%sreply.html?id=%s">reply</a>'
                 % (html.escape(prefix), urllib.parse.quote(page_of(meta), safe="")))
+    if meta.get("subject"):
+        bits.append("subject " + html.escape(str(meta.get("subject"))))
     struct = []
     for k in ("claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
               "court", "act", "ask", "role", "resource", "petition",
@@ -1267,7 +1269,7 @@ def article_html(meta, body, prefix="./"):
     sup_attr = (' data-supersedes="%s"' % html.escape(sup)) if sup else ""
     return (
         '<article data-from="%s" data-to="%s" data-id="%s"%s>'
-        "<h2>%s \u2192 %s</h2><p>%s</p>%s<pre>%s</pre></article>"
+        "<h2>%s \u2192 %s</h2><p>%s</p>%s%s<pre>%s</pre></article>"
         % (
             html.escape(meta.get("from") or ""),
             html.escape(meta.get("to") or ""),
@@ -1277,6 +1279,7 @@ def article_html(meta, body, prefix="./"):
             html.escape(meta.get("to") or ""),
             " \u00b7 ".join(bits),
             dl,
+            post_image_html(meta, rel=prefix),
             _autolink(html.escape(body)),
         )
     )

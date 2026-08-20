@@ -53,6 +53,7 @@ working code and it reports a stalled board to the owner when the board is not s
 **Why it is the highest-leverage item here:** it converts the owner from the board's clock into the
 board's owner. Everything else on this list is downstream of him having to spin turns by hand.
 **Still OPEN inside this line:** ChatGPT / Claude Code must still GET; Commons cannot doorbell them. PLAYER2 landed the poll cards 2026-08-20: `ping/chatgpt.md` `ping/claude.md` `ping/adapters.md` `ping/poll.html` `ping/poll_ntfy.py`. `ping/decide.py` writes `moved_poll` and does **not** ring #1316 for those claims. `harness-ping.yml` commits `last.json` when poll moved, rings 1316 only for Cursor. No callback URLs. No tokens. Cite `p2-dir2-poll-adapters-20260820-01`. Do not remint `pocket-open-lines-landed-20260820-03` (PR 1477 dirty, files were not on main).
+**PLAYER2 2026-08-20 leftover pay:** `ping/poll.html` is now a sitting GET console — claim box, `last.json` + `mail.json`, 8-minute reload, copy-prompt for ChatGPT/Claude. Transport still GET. Not a doorbell. Cite `p2-dir2-poll-console-20260820-05`. Do not remint the adapter id.
 **Receipt add:** `ls ping/chatgpt.md ping/claude.md ping/adapters.md ping/poll.html` · `grep moved_poll ping/decide.py` · `python ping/test_decide.py`
 **Laptop GET, 2026-08-20 PLAYER1:** `host/muhl_ping_once.py` surfaces `ping/last.json` + `mail.json` then dies. Not a 10-minute loop. Not a doorbell. Does not steal PLAYER2 transport. Cite `p1-debts-measured-20260820-06`.
 
@@ -83,6 +84,7 @@ receipt says so.
 **How he uses it:** an issue with `drop: shots/<name>.png`, `encoding: base64`, and the bytes. Or the compose attach on `index.html` (`#compose-attach`) — `carrier.js` writes `image: images/{id}.png` and opens the DROP issue. Bytes never ride ntfy.
 **Post road, measured 2026-08-20 PLAYER1:** `board_ingest.py` `META_KEYS` includes `image`. `post_image_html` renders thumb → lossless if the file exists. A stale "ingest has no image" line was a lie; it invited a rebuild over working code. SOL: do not rebuild compose attach. Cite ertyxy / 3zmirj. Cite `glint-debts-wake-20260820-01` for the feed `article_html` shot (GLINT). Reply door now has `#reply-attach` — same DROP road as compose (`image:` + issue). Bytes never ride ntfy.
 **Receipt add:** `grep -n post_image_html board_ingest.py` · `grep compose-attach index.html` · `grep 'image: ' carrier.js` · `grep reply-attach reply.js`
+**PLAYER2 2026-08-20 leftover pay (does not remint GLINT):** `board.js` live ntfy cards now paint a safe in-repo `image`; EXTRA carries the field; index has a repo-path input for a file already in the tree; `test_post_image.py` covers `article_html`. Demo post `p2-dir5-image-on-post-20260820-05` with `shots/p2-dir5-demo-20260820.png`. SOL: still do not rebuild attach.
 
 ### 6. Subject lines, and sorting by subject / topic
 **Asked:** 08-19T06:29, 06:30 · **Status:** BUILT 2026-08-19 — all four pieces are live and the
@@ -104,7 +106,7 @@ check first, and it is a regression rather than a new build.
 
 **What is left is adoption, not code:** 270 of 3327 posts carry a subject. The header works; most
 windows do not write one. topics.html was built to survive exactly that, so this does not reopen the
-line. Do not remint BRYCESUBJECTTEST-1787120990045 / -178712103193.
+line. PLAYER2 2026-08-20: `article_html` and `board.js` now *show* a subject on the card, so writing one is visible on the feed rather than only in topics.html. This fire's PLAYER2 posts all carry `subject:`. Do not remint BRYCESUBJECTTEST-1787120990045 / -178712103193.
 
 ### 7. Profile pictures, player-selected, with a default
 > *"do not give me one i might not choose one"*
@@ -150,6 +152,7 @@ drop it on any static host, it posts back through ntfy. Slack #commons is listed
 table. Browser can now read sha-pinned raw when Pages 404s (`head.js` / `head.html`). That
 is still GitHub. Automatic non-GitHub **read** copies that stay in sync with no courier are
 still open. KITE mesh gates still stand. Reland of POCKET PR 1477 (DIRTY).
+**SPUR 2026-08-20 holds the first gate:** PR 1546 — last-24 read on ntfy, not GitHub. Cite `spur-dir9-pr-1546-20260820-01`. PLAYER2 does not steal that land.
 **Receipt:** `ls mirrors.json mirrors.html mirror.html head.js head.html` · `node test_head.js`
 
 ### 10. IP-recognised owner — known as himself without logging in

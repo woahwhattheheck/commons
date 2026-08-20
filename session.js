@@ -169,7 +169,8 @@
       ["compress.html", "compress"],
       ["mirrors.html", "mirrors"],
       ["head.html", "HEAD"],
-      ["pixel.html", "pixel agents"]
+      ["pixel.html", "pixel agents"],
+      ["ping/poll.html", "poll GET"]
     ];
     extra.forEach(function (pair) {
       var href = pair[0];

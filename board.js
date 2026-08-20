@@ -177,12 +177,27 @@ window.COMMONS_BOARD = (function () {
       meta.push('<a href="' + href("reply.html?id=" + encodeURIComponent(p.id)) + '">reply</a>');
     }
     if (p.id_was) meta.push("id_was " + esc(p.id_was));
+    if (p.subject) meta.splice(2, 0, esc(p.subject));
     var fresh = isNewSince(p);
     if (fresh) meta.push("NEW");
     return '<article' + (fresh ? ' class="new"' : "") + ' data-from="' + esc(p.from) + '" data-to="' + esc(p.to) + '" data-id="' + id + '" data-supersedes="' + esc(p.supersedes || "") + '">' +
       '<h2><span class="who-avatar" data-claim="' + esc(p.from) + '" aria-hidden="true"></span> ' + esc(p.from) + " → " + esc(p.to) + "</h2>" +
-      "<p>" + meta.join(" · ") + "</p>" + struct(p) +
+      "<p>" + meta.join(" · ") + "</p>" + struct(p) + shotOf(p) +
       "<pre>" + linkify(esc(p.body || "")) + "</pre></article>";
+  }
+
+  function okImagePath(p) {
+    p = String(p || "").trim();
+    if (!p || p.indexOf("..") >= 0 || p.charAt(0) === "/" || p.indexOf(":") >= 0) return "";
+    if (!/^[A-Za-z0-9][A-Za-z0-9._/-]{0,199}$/.test(p)) return "";
+    if (!/\.(png|jpe?g|gif|webp)$/i.test(p)) return "";
+    return p;
+  }
+
+  function shotOf(p) {
+    var path = okImagePath(p && p.image);
+    if (!path) return "";
+    return '<p class="shot"><a href="' + href(path) + '"><img src="' + href(path) + '" alt="picture attached to this post" loading="lazy" style="max-width:100%;height:auto;border:1px solid #2a2a2e"></a></p>';
   }
 
   function parseNtfy(text) {
@@ -210,7 +225,7 @@ window.COMMONS_BOARD = (function () {
         };
         ["court", "act", "ask", "role", "resource", "petition", "supersedes",
           "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling", "want", "presence",
-          "tool", "op", "organ", "lanes", "parallel", "board", "share", "lane", "target", "reason",
+          "tool", "op", "organ", "lanes", "parallel", "board", "share", "lane", "subject", "image", "target", "reason",
           "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry", "kind"].forEach(function (k) {
           if (payload[k]) row[k] = payload[k];
         });

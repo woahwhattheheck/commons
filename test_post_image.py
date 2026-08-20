@@ -74,6 +74,19 @@ def main():
         # the raw path must not also appear as a struct row
         check("not duplicated as a struct row", "<dt>image</dt>" in page, False)
 
+        # DIRECTIVE 5 leftover: the feed article must show the picture too.
+        # post.html already did; board.html / by/ / to/ did not.
+        feed = board_ingest.article_html(
+            {"from": "BRYCE", "to": "TABLE", "id": "x", "ts": "t",
+             "image": "shots/real.png", "subject": "pic"},
+            "body", "./")
+        check("feed shows image", "<img" in feed, True)
+        check("feed uses prefix rel", 'src="./shots/real.thumb.jpg"' in feed, True)
+        check("feed names subject", "subject pic" in feed, True)
+        feed2 = board_ingest.article_html(
+            {"from": "BRYCE", "to": "TABLE", "id": "x", "ts": "t"}, "body", "./")
+        check("feed without image has no img", "<img" in feed2, False)
+
         if FAILED:
             for line in FAILED:
                 print("FAIL " + line)
