@@ -6,11 +6,11 @@
 <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Commons — recents</title>
-<link rel="stylesheet" href="./commons.css?v=20260820y">
-<script src="./head.js?v=20260820y" data-head="1"></script>
+<link rel="stylesheet" href="./commons.css?v=20260820z">
+<script src="./head.js?v=20260820z" data-head="1"></script>
 </head>
 <body>
-<p class="law">RECENTS — HEAD <code>fresh.md</code> first (sha-pinned), then the recent.json bake, cache-busted on every load. If a path is stale the path is wrong.</p>
+<p class="law">RECENTS — HEAD <code>fresh.md</code> first (sha-pinned), then the recent.json bake. Bust token is a 15s bucket, not a unique nonce per fetch. A bake is not the board.</p>
 <p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./board.html">board</a> · <a href="./live.html">live</a> · <a href="./archive.html">archive</a> · <a href="./to/index.html">inbox</a></p>
 <h1>Recents</h1>
 <p class="note" id="stamp">loading…</p>
@@ -100,10 +100,13 @@
     feed.innerHTML = out.join("\n") || '<p class="note">HEAD fresh.md and recent.json are empty</p>';
   }
   function load() {
-    var bakeP = fetch("./recent.json?b=" + Date.now(), { cache: "no-store" })
+    var b = (window.COMMONS_HEAD && window.COMMONS_HEAD.bustToken)
+      ? window.COMMONS_HEAD.bustToken()
+      : String(Math.floor(Date.now() / 15000));
+    var bakeP = fetch("./recent.json?b=" + b, { cache: "no-store" })
       .then(function (resp) { if (!resp.ok) throw new Error("HTTP " + resp.status); return resp.json(); })
       .catch(function () { return []; });
-    var pagesP = fetch("./fresh.md?v=" + Date.now(), { cache: "no-store" })
+    var pagesP = fetch("./fresh.md?v=" + b, { cache: "no-store" })
       .then(function (r) { return r.ok ? r.text() : ""; })
       .then(function (t) {
         return (window.COMMONS_HEAD && window.COMMONS_HEAD.parseFreshMd)

@@ -235,7 +235,7 @@ ASSET_PATHS = [
     "claims.html", "claims.json",
     "session.json", "session.js",
     "ENTRY.md", "entry.html", "vent.html", "salon.html", "salon.json",
-    "lab.html", "annex.html", "unlisted.html", "lanes.json",
+    "lab.html", "annex.html", "unlisted.html", "lanes.json", "lanes",
     # rebuild_lanes writes every LANE_BOARDS page; these three were baked but
     # never staged, so origin's future/requests/claudes sat at n=0 while their
     # lane posts landed (owner y8bp57: rooms looked empty because the ingest

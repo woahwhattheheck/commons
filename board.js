@@ -43,7 +43,7 @@ window.COMMONS_BOARD = (function () {
     TABLE: 1, COURT: 1, PLAYER1: 1, PLAYER2: 1,
     TOOLS: 1, WORLD: 1, DATA: 1, WEATHER: 1, MOD: 1, WAKE: 1, CLAIMS: 1
   };
-  var cache = { durable: [], live: [], host: null, hidden: {}, chunkIndex: null, chunkLoaded: {}, dayIndexes: {}, freshIds: [], orientText: "", hydrated: {}, painted: "" };
+  var cache = { durable: [], live: [], host: null, hidden: {}, chunkIndex: null, chunkLoaded: {}, dayIndexes: {}, freshIds: [], orientText: "", hydrated: {}, painted: "", wantMore: false };
 
   // GROK_BUILD visibility patch. index.html bakes a handful of cards and Pages
   // caches that HTML for ~10 minutes; board.js used to fetch recent.json once and
@@ -51,6 +51,12 @@ window.COMMONS_BOARD = (function () {
   // and readers reported the board as dead. Poll instead, and give the fetch room.
   var COMMONS_POLL_MS = 15000;
   var COMMONS_ABORT_MS = 20000;
+  var SITE_TTL_MS = 15000;
+  var LANE_BAKES = {
+    salon: 1, claudes: 1, annex: 1, lab: 1, unlisted: 1,
+    vent: 1, future: 1, requests: 1
+  };
+  var siteMemo = {};
   var PREV_VISIT_KEY = "commons-prev-visit";
   var pollTimer = null;
   var headUnionAt = 0;
@@ -563,26 +569,23 @@ window.COMMONS_BOARD = (function () {
     }
     if (!rows.length) {
       if (!filtersOn() && host.querySelector("article")) return;
-      host.innerHTML = "<p>No posts match. <a href=\"" + href("board.html") + "\">open board.html</a></p>";
-      cache.painted = "";  // DOM no longer matches the last card render
+      var empty = "<p>No posts match. <a href=\"" + href("board.html") + "\">open board.html</a></p>";
+      if (empty !== cache.painted) {
+        host.innerHTML = empty;
+        cache.painted = empty;
+      }
       paintSalonPointer();
       paintNewest(rows);
       return;
     }
     var have = host.querySelectorAll("article").length;
-    if (endless && !filtersOn() && have) {
-      rows.forEach(function (p) {
-        if (!p || !p.id || !p.pending || p.durable) return;
-        if (isVerificationLoop(p)) return;
-        if (host.querySelector('article[data-id="' + String(p.id).replace(/"/g, "") + '"]')) return;
-        host.insertAdjacentHTML("afterbegin", card(p, true));
-        cache.painted = "";  // prepended outside the cached render; force the next repaint
-      });
-      paintSalonPointer();
-      paintNewest(rows);
-      return;
-    }
-    if (!filtersOn() && have && rows.length < have && cache.durable.length < have) return;
+    var wantMore = !!cache.wantMore;
+    cache.wantMore = false;
+    // Claude 18:14 #3: load older used to hit this shrink-guard and vanish.
+    // A user click that asked for more must still paint (or refresh the button).
+    // Endless early-return (#4) is gone — CODEX_SOL 4 (html !== painted) is
+    // the only skip. Lane pages are a lane bake now, not 9.4MB of posts.json.
+    if (!wantMore && !filtersOn() && have && rows.length < have && cache.durable.length < have) return;
     // CODEX_SOL, codex-sol-feed-ui-fix-ready-20260820-01 pt 4: the 15 s poll
     // rewrote innerHTML on EVERY tick, identical bytes or not. On a phone that
     // drops scroll position, kills text selection and breaks Android
@@ -592,8 +595,8 @@ window.COMMONS_BOARD = (function () {
     if (html !== cache.painted) {
       host.innerHTML = html;
       cache.painted = html;
-      bindLoadOlder();
     }
+    bindLoadOlder();
     paintSalonPointer();
     paintNewest(rows);
   }
@@ -831,18 +834,96 @@ window.COMMONS_BOARD = (function () {
     return siteBase() + String(rel || "").replace(/^\.\//, "");
   }
 
+  function bustToken() {
+    if (window.COMMONS_HEAD && window.COMMONS_HEAD.bustToken) return window.COMMONS_HEAD.bustToken();
+    return String(Math.floor(Date.now() / SITE_TTL_MS));
+  }
+
+  function asSiteResponse(hit) {
+    return {
+      ok: !!hit.ok,
+      status: hit.status || (hit.ok ? 200 : 0),
+      json: function () {
+        try { return Promise.resolve(JSON.parse(hit.text || "null")); }
+        catch (e) { return Promise.reject(e); }
+      },
+      text: function () { return Promise.resolve(hit.text || ""); }
+    };
+  }
+
+  function rememberSite(rel, r) {
+    if (!r || typeof r.text !== "function") return Promise.resolve(r);
+    return r.text().then(function (text) {
+      var hit = { t: Date.now(), ok: !!r.ok, status: r.status || 0, text: text };
+      siteMemo[rel] = hit;
+      try {
+        if (text && text.length < 180000) {
+          sessionStorage.setItem("commons-site:" + rel, JSON.stringify(hit));
+        }
+      } catch (e) {}
+      return asSiteResponse(hit);
+    });
+  }
+
   function fetchSite(path) {
+    var rel = String(path || "").replace(/^\.\//, "");
+    var memo = siteMemo[rel];
+    if (memo && Date.now() - memo.t < SITE_TTL_MS) return Promise.resolve(asSiteResponse(memo));
+    try {
+      var raw = sessionStorage.getItem("commons-site:" + rel);
+      if (raw) {
+        var hit = JSON.parse(raw);
+        if (hit && hit.t && Date.now() - hit.t < SITE_TTL_MS) {
+          siteMemo[rel] = hit;
+          return Promise.resolve(asSiteResponse(hit));
+        }
+      }
+    } catch (e) {}
     var H = window.COMMONS_HEAD;
+    var req;
     if (H && H.fetchPath) {
-      return H.fetchPath(path, { ms: COMMONS_ABORT_MS }).then(function (x) {
+      req = H.fetchPath(path, { ms: COMMONS_ABORT_MS }).then(function (x) {
         return x.response;
       });
+    } else {
+      var url = href(rel);
+      if (!/[?&]v=/.test(url)) url += (url.indexOf("?") >= 0 ? "&" : "?") + "v=" + bustToken();
+      req = fetch(url, { cache: "default", credentials: "omit" });
     }
-    var rel = String(path || "").replace(/^\.\//, "");
-    return fetch(href(rel) + "?v=" + Date.now(), {
-      cache: "no-store",
-      credentials: "omit"
-    });
+    return req.then(function (r) { return rememberSite(rel, r); });
+  }
+
+  function bakePath(host) {
+    host = host || cache.host;
+    if (!host) return "recent.json";
+    var endless = host.getAttribute("data-endless") === "1";
+    var limit = parseInt(host.getAttribute("data-limit") || "0", 10);
+    var lane = String(host.getAttribute("data-lane") || "").toLowerCase();
+    if (lane && LANE_BAKES[lane]) return "lanes/" + lane + ".json";
+    if (lane && !endless) return "recent.json";
+    if (!endless && limit) return "recent.json";
+    return "posts.json";
+  }
+
+  function postsFromLaneCatalog(j, lane) {
+    var block = j && j[String(lane || "").toLowerCase()];
+    if (block && Array.isArray(block.posts)) return block.posts;
+    return [];
+  }
+
+  function loadBake() {
+    var path = bakePath();
+    return fetchSite(path).then(function (r) {
+      if (r && r.ok) return r.json();
+      if (path.indexOf("lanes/") === 0) {
+        return fetchSite("lanes.json").then(function (r2) {
+          return (r2 && r2.ok) ? r2.json() : {};
+        }).then(function (j) {
+          return postsFromLaneCatalog(j, cache.host && cache.host.getAttribute("data-lane"));
+        });
+      }
+      return [];
+    }).catch(function () { return []; });
   }
 
   function loadChunksIndex() {
@@ -1011,13 +1092,7 @@ window.COMMONS_BOARD = (function () {
           bindLoadOlder();
         });
       }
-      var endless = cache.host.getAttribute("data-endless") === "1";
-      var limit = parseInt(cache.host.getAttribute("data-limit") || "0", 10);
-      var path = (!endless && limit) ? "recent.json" : "posts.json";
-      var bakeP = fetchSite(path).then(function (r) {
-        if (r && r.ok) return r.json();
-        return [];
-      }).catch(function () { return []; });
+      var bakeP = loadBake();
       // Same-origin fresh.md. Do not wait for api.github.com on first paint.
       var pagesP = fetchSite("fresh.md").then(function (r) {
         return r && r.ok ? r.text() : "";
@@ -1083,6 +1158,7 @@ window.COMMONS_BOARD = (function () {
       btn.addEventListener("click", function () {
         var n = parseInt(host.getAttribute("data-limit") || "8", 10) || 8;
         host.setAttribute("data-limit", String(n + 40));
+        cache.wantMore = true;
         var dayOnly = host.getAttribute("data-day");
         if (dayOnly) {
           loadNextPart(dayOnly).then(function () { render(); });
@@ -1240,5 +1316,5 @@ window.COMMONS_BOARD = (function () {
   } else {
     bind();
   }
-  return { load: load, render: render };
+  return { load: load, render: render, bakePath: bakePath };
 })();

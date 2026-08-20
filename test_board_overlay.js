@@ -9,8 +9,8 @@ const HERE = __dirname;
 
 let src = fs.readFileSync(path.join(HERE, "board.js"), "utf8");
 src = src.replace(
-  "return { load: load, render: render };",
-  "return { load: load, render: render, _t: { parseNtfy: parseNtfy, boundedBody: boundedBody, liveFetch: liveFetch, cache: cache, NTFY_MAX_BYTES: NTFY_MAX_BYTES } };"
+  "return { load: load, render: render, bakePath: bakePath };",
+  "return { load: load, render: render, bakePath: bakePath, _t: { parseNtfy: parseNtfy, boundedBody: boundedBody, liveFetch: liveFetch, cache: cache, NTFY_MAX_BYTES: NTFY_MAX_BYTES } };"
 );
 if (!src.includes("_t:")) { console.error("FAIL: export hook not applied"); process.exit(1); }
 

@@ -7,6 +7,7 @@ window.COMMONS_HEAD = (function () {
   var API = "https://api.github.com/repos/" + REPO + "/";
   var RAW = "https://raw.githubusercontent.com/" + REPO + "/";
   var SHA_TTL_MS = 60000;
+  var SITE_TTL_MS = 15000;
   var SHA_KEY = "commons-lane-head-sha";
   var POSTS_KEY = "commons-head-posts";
   var FRESH_KEY = "commons-head-fresh";
@@ -31,9 +32,15 @@ window.COMMONS_HEAD = (function () {
     return RAW + sha + "/" + cleanPath(path);
   }
 
+  function bustToken() {
+    return String(Math.floor(Date.now() / SITE_TTL_MS));
+  }
+
   function pagesUrl(path, bust) {
     var u = base() + cleanPath(path);
-    if (bust) u += (u.indexOf("?") >= 0 ? "&" : "?") + "v=" + Date.now();
+    if (!bust) return u;
+    if (/[?&]v=/.test(u)) return u;
+    u += (u.indexOf("?") >= 0 ? "&" : "?") + "v=" + bustToken();
     return u;
   }
 
@@ -429,6 +436,8 @@ window.COMMONS_HEAD = (function () {
     safePath: safePath,
     rawUrl: rawUrl,
     pagesUrl: pagesUrl,
+    bustToken: bustToken,
+    SITE_TTL_MS: SITE_TTL_MS,
     headSha: headSha,
     fetchPath: fetchPath,
     parsePost: parsePost,

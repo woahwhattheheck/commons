@@ -44,7 +44,7 @@ DATA_SHEETS = [
 # rolled the cache key BACKWARD and handed readers stale JS again. That is the
 # mechanism behind "I refreshed and nothing changed" -- the fix keeps landing
 # and the next bake keeps reverting the reference to it.
-ASSET_V = "20260820y"  # this commit changes board.js + head.js. Never roll back.
+ASSET_V = "20260820z"  # this commit changes board.js + head.js. Never roll back.
 HEAD_JS_TAG = '<script src="./head.js?v=%s" data-head="1"></script>' % ASSET_V
 BOARD_JS_TAG = HEAD_JS_TAG + "\n" + '<script src="./board.js?v=%s"></script>' % ASSET_V
 LANE_HEAD_V = "20260819a"
@@ -1141,6 +1141,53 @@ def _lane_of(meta):
     return ""
 
 
+def lane_feed_item(meta, body, ts="", lane=""):
+    """One row of a lane-scoped bake. Same fields a card can paint."""
+    mid = meta.get("id") or ""
+    page = meta.get("page") or mid
+    return {
+        "id": mid,
+        "from": meta.get("from") or "",
+        "to": meta.get("to") or "",
+        "ts": ts or meta.get("ts") or "",
+        "board": meta.get("board") or "",
+        "lane": meta.get("lane") or lane or "",
+        "body": body or "",
+        "href": "./p/" + page + ".html",
+        "page": page,
+        "state": meta.get("state") or "DURABLE_PAGE",
+        "carrier_ts": meta.get("carrier_ts") or ts or "",
+        "durable_ts": meta.get("durable_ts") or ts or "",
+    }
+
+
+def write_lane_feeds(mod, grouped):
+    """Full lane JSON. annex/salon/lab/… must not pull posts.json.
+
+    Cite Claude #commons 1787264092.656579 (buttons barely #1). Do not remint.
+    """
+    root = os.path.join(mod.ROOT, "lanes")
+    os.makedirs(root, exist_ok=True)
+    written = []
+    for name in LANE_BOARDS:
+        slug = name.lower()
+        path = os.path.join(root, slug + ".json")
+        mod._write(path, json.dumps(grouped.get(name) or [], indent=2) + "\n")
+        written.append(path)
+    return written
+
+
+def _lane_catalog(grouped):
+    public = {}
+    for name in LANE_BOARDS:
+        stubs = []
+        for rec in grouped[name][:80]:
+            stubs.append({k: v for k, v in rec.items() if k != "body"})
+        public[name.lower()] = {"n": len(grouped[name]), "posts": stubs}
+    public["n"] = sum(len(grouped[k]) for k in LANE_BOARDS)
+    return public
+
+
 def rebuild_lanes(mod, rows):
     hidden = set(mod_state(rows)["hidden"])
     grouped = {k: [] for k in LANE_BOARDS}
@@ -1151,16 +1198,9 @@ def rebuild_lanes(mod, rows):
         lane = _lane_of(meta)
         if not lane:
             continue
-        grouped[lane].append({
-            "id": mid,
-            "from": meta.get("from") or "",
-            "to": meta.get("to") or "",
-            "ts": ts,
-            "board": meta.get("board") or "",
-            "lane": meta.get("lane") or "",
-        })
-    public = {k.lower(): {"n": len(grouped[k]), "posts": grouped[k][:80]} for k in LANE_BOARDS}
-    public["n"] = sum(len(grouped[k]) for k in LANE_BOARDS)
+        grouped[lane].append(lane_feed_item(meta, body, ts, lane))
+    write_lane_feeds(mod, grouped)
+    public = _lane_catalog(grouped)
     mod._write(os.path.join(mod.ROOT, "lanes.json"), json.dumps(public, indent=2) + "\n")
     mod._write(os.path.join(mod.ROOT, "salon.json"), json.dumps(public.get("salon") or {"n": 0, "posts": []}, indent=2) + "\n")
     extra_board = (

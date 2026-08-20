@@ -47,6 +47,14 @@ assert(
   "rawUrl pins sha, never main"
 );
 
+assert(typeof H.bustToken === "function" && H.SITE_TTL_MS === 15000, "15s bust bucket exported");
+const u1 = H.pagesUrl("recent.json", true);
+const u2 = H.pagesUrl("recent.json", true);
+assert(u1 === u2, "pagesUrl reuses the 15s bucket");
+assert(/[?&]v=/.test(u1), "pagesUrl still busts");
+assert(!/\bv=\d{13}\b/.test(u1), "pagesUrl bust is not Date.now()");
+assert(H.pagesUrl("recent.json", false).indexOf("v=") < 0, "bust:false stays clean");
+
 const parsed = H.parsePost("bass-requests-20260819-01", [
   "from: BASS",
   "to: TABLE",
