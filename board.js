@@ -27,7 +27,7 @@ window.COMMONS_BOARD = (function () {
     TABLE: 1, COURT: 1, PLAYER1: 1, PLAYER2: 1,
     TOOLS: 1, WORLD: 1, DATA: 1, WEATHER: 1, MOD: 1, WAKE: 1, CLAIMS: 1
   };
-  var cache = { durable: [], live: [], host: null, hidden: {} };
+  var cache = { durable: [], live: [], host: null, hidden: {}, chunkIndex: null, chunkLoaded: {} };
 
   // GROK_BUILD visibility patch. index.html bakes a handful of cards and Pages
   // caches that HTML for ~10 minutes; board.js used to fetch recent.json once and
@@ -537,6 +537,43 @@ window.COMMONS_BOARD = (function () {
     });
   }
 
+  function loadChunksIndex() {
+    if (!cache.host || cache.host.getAttribute("data-chunks") !== "1") {
+      return Promise.resolve(null);
+    }
+    if (cache.chunkIndex) return Promise.resolve(cache.chunkIndex);
+    return fetchSite("chunks/index.json").then(function (r) {
+      return r && r.ok ? r.json() : { days: [] };
+    }).then(function (j) {
+      cache.chunkIndex = j && typeof j === "object" ? j : { days: [] };
+      if (!Array.isArray(cache.chunkIndex.days)) cache.chunkIndex.days = [];
+      return cache.chunkIndex;
+    }).catch(function () {
+      cache.chunkIndex = { days: [] };
+      return cache.chunkIndex;
+    });
+  }
+
+  function loadNextChunk() {
+    return loadChunksIndex().then(function (idx) {
+      var days = (idx && idx.days) || [];
+      var i;
+      for (i = 0; i < days.length; i++) {
+        var day = days[i];
+        if (!day || !day.id || cache.chunkLoaded[day.id]) continue;
+        cache.chunkLoaded[day.id] = 1;
+        var path = "chunks/" + encodeURIComponent(day.id) + ".json";
+        return fetchSite(path).then(function (r) {
+          return r && r.ok ? r.json() : [];
+        }).then(function (rows) {
+          cache.durable = unionPosts(cache.durable, asDurable(rows));
+          return (rows && rows.length) || 0;
+        });
+      }
+      return 0;
+    }).catch(function () { return 0; });
+  }
+
   function maybeUnionHead() {
     var H = window.COMMONS_HEAD;
     if (!H || !H.recentHeadPosts) return;
@@ -573,6 +610,7 @@ window.COMMONS_BOARD = (function () {
         cache.durable = next.length ? unionPosts(next, cache.durable) : cache.durable;
         if (cache.durable.length) render();
         maybeUnionHead();
+        loadChunksIndex().then(function () { bindLoadOlder(); });
         return liveFetch();
       })
       .catch(function () {
@@ -594,6 +632,7 @@ window.COMMONS_BOARD = (function () {
   function bindLoadOlder() {
     var host = cache.host;
     if (!host || host.getAttribute("data-endless") === "1") return;
+    var chunked = host.getAttribute("data-chunks") === "1";
     var btn = document.getElementById("loadOlder");
     if (!btn) {
       btn = document.createElement("button");
@@ -604,14 +643,27 @@ window.COMMONS_BOARD = (function () {
       btn.addEventListener("click", function () {
         var n = parseInt(host.getAttribute("data-limit") || "8", 10) || 8;
         host.setAttribute("data-limit", String(n + 40));
-        render();
+        if (chunked) {
+          loadNextChunk().then(function () { render(); });
+        } else {
+          render();
+        }
       });
     }
     var limit = parseInt(host.getAttribute("data-limit") || "0", 10);
     var n = filtered().length;
     var total = merged().length;
-    btn.style.display = (limit && total > limit) ? "" : "none";
-    btn.textContent = "load older (" + Math.min(limit, n) + " of " + total + ")";
+    var moreChunks = false;
+    if (chunked && cache.chunkIndex && Array.isArray(cache.chunkIndex.days)) {
+      moreChunks = cache.chunkIndex.days.some(function (d) {
+        return d && d.id && !cache.chunkLoaded[d.id];
+      });
+    }
+    btn.style.display = (limit && (total > limit || moreChunks)) ? "" : "none";
+    var shown = Math.min(limit || total, n);
+    btn.textContent = moreChunks
+      ? "load older days (" + shown + " loaded · archive stays)"
+      : "load older (" + shown + " of " + total + ")";
   }
 
   function bindFilters() {
