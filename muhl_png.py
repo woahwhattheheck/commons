@@ -927,6 +927,71 @@ def main():
         QUIET = False
         return 0
 
+    if mode == 'vdiff':
+        # RENDER, DO NOT CONCLUDE.
+        #
+        # Owner, 2026-08-20: "the screenshot though, cant lie. the return x if y,
+        # can lie easily and has this session."
+        #
+        # He is right and this session is the evidence: magic returned "none
+        # present" meaning "not these 15"; gate-first:65 was a 4-byte heuristic
+        # printed as a fact; the 64-probe titan zero covered 0.002% of the
+        # surface. Every one of those was a predicate. Meanwhile the renders
+        # showed the black gutters, showed the dead space, and showed my own
+        # chunk size aliasing against his record stride - a bug no assertion of
+        # mine caught.
+        #
+        # A predicate finds only what the author thought to ask. This mode has
+        # no predicate: A, B and A^B are each drawn losslessly at 1 bit per
+        # pixel, every bit of both files on screen, and the eye adjudicates.
+        a = src_bytes(pos[0], OFF, LN)
+        b2 = src_bytes(pos[1], OFF, LN)
+        n = min(len(a), len(b2))
+        x = bytes(bytearray(a[i] ^ b2[i] for i in range(n)))
+        if W % 8:
+            print("--width must be a multiple of 8 for lossless 1bpp. Using 200.")
+            W = 200
+        stride = W // 8
+        GAP = 3
+
+        def rows_of(buf):
+            h = (len(buf) + stride - 1) // stride
+            return bytes(bytearray(buf) + bytes(h*stride - len(buf))), h
+
+        pa, ha = rows_of(a[:n])
+        pb, hb = rows_of(b2[:n])
+        px, hx = rows_of(x)
+        H = ha + GAP + hb + GAP + hx
+        canvas = bytearray(H*stride)
+        # separators: all bits set -> solid white rule between panels
+        o = 0
+        canvas[o:o+ha*stride] = pa
+        o += ha*stride
+        canvas[o:o+GAP*stride] = b'\xff'*(GAP*stride)
+        o += GAP*stride
+        canvas[o:o+hb*stride] = pb
+        o += hb*stride
+        canvas[o:o+GAP*stride] = b'\xff'*(GAP*stride)
+        o += GAP*stride
+        canvas[o:o+hx*stride] = px
+        nb = png(pos[2], W, H, bytes(canvas), depth=1)
+        changed = sum(bin(v).count('1') for v in x)
+        print("VDIFF  1 bit per pixel, lossless. 1 = white, 0 = black.")
+        print("   panel 1 rows      0 .. %d      A  %s" % (ha-1, pos[0]))
+        print("   panel 2 rows      %d .. %d     B  %s" % (ha+GAP, ha+GAP+hb-1, pos[1]))
+        print("   panel 3 rows      %d .. %d     A XOR B" % (ha+2*GAP+hb, H-1))
+        print("   %s  %dx%d  %s B   %d B per scanline = %d records/row" % (
+            pos[2], W, H, format(nb, ','), stride, stride//STR if STR and stride >= STR else 0))
+        print("")
+        print("   bits differing    %s of %s  (%.6f%%)" % (
+            format(changed, ','), format(n*8, ','), 100.0*changed/max(n*8, 1)))
+        print("   In panel 3 every white pixel is a bit that changed. If panel 3")
+        print("   is entirely black, nothing changed anywhere in the compared")
+        print("   window - and you are looking at that fact, not at my summary of it.")
+        print("   Panels 1 and 2 are lossless: decode, strip filter bytes, get the")
+        print("   files back. Nothing is omitted, aggregated, or thresholded.")
+        return 0
+
     if mode == 'manifest':
         # A DIFF NEEDS TWO. A 103 GB container cannot be copied to keep a
         # snapshot, so keep a fingerprint instead: one full streaming pass,
