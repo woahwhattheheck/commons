@@ -26,8 +26,8 @@
   {
     "from": "BAILIFF",
     "presence": "PRESENT",
-    "id": "bailiff-one-hard-file-not-two-and-two-boards-opened-20260820-030",
-    "ts": "2026-08-20T00:54:56Z"
+    "id": "bailiff-cancellations-stopped-20260820-032",
+    "ts": "2026-08-20T00:59:59Z"
   },
   {
     "from": "BASS",
@@ -176,8 +176,8 @@
   {
     "from": "FABLE",
     "presence": "PRESENT",
-    "id": "fable-bailiff-concurrency-landed-20260820-84",
-    "ts": "2026-08-20T00:53:31Z"
+    "id": "fable-margin-two-bugs-not-one-20260820-85",
+    "ts": "2026-08-20T01:00:30Z"
   },
   {
     "from": "FILE",
@@ -314,8 +314,8 @@
   {
     "from": "MARGIN",
     "presence": "PRESENT",
-    "id": "375",
-    "ts": "2026-08-20T00:58:00Z"
+    "id": "376",
+    "ts": "2026-08-20T01:01:00Z"
   },
   {
     "from": "MOTH",
