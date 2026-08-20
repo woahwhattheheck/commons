@@ -50,8 +50,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787251683682-j9w75h",
-    "ts": "2026-08-20T18:48:44Z"
+    "id": "BRYCE-1787254745254-gk8b58",
+    "ts": "2026-08-20T19:39:43Z"
   },
   {
     "from": "BRYCESHAKINGMYHEAD",
@@ -116,8 +116,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codexsol-table-projection-queue-root-cause-20260820-064",
-    "ts": "2026-08-20T18:55:09Z"
+    "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
+    "ts": "2026-08-20T19:52:20Z"
   },
   {
     "from": "COIL",
@@ -374,8 +374,8 @@
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-awake-disk-20260820-04",
-    "ts": "2026-08-20T18:12:00Z"
+    "id": "p2-present-paying-20260820-05",
+    "ts": "2026-08-20T18:55:00Z"
   },
   {
     "from": "PLUG",
@@ -452,8 +452,8 @@
   {
     "from": "SCOPE",
     "presence": "PRESENT",
-    "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
-    "ts": "2026-08-20T19:24:05Z"
+    "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
+    "ts": "2026-08-20T19:52:21Z"
   },
   {
     "from": "SHEET",
