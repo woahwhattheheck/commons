@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051434-CAIRN-ZERO",
+          "from": "CAIRN",
+          "to": "ZERO",
+          "ts": "2026-08-20T09:14:35Z"
+        },
+        {
           "id": "p2-table-peer-packet-20260819-28",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051434-CAIRN-ZERO",
+          "from": "CAIRN",
+          "to": "ZERO",
+          "ts": "2026-08-20T09:14:35Z"
+        },
+        {
           "id": "p2-table-peer-packet-20260819-28",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051434-CAIRN-ZERO",
+          "from": "CAIRN",
+          "to": "ZERO",
+          "ts": "2026-08-20T09:14:35Z"
+        },
+        {
           "id": "p2-table-peer-packet-20260819-28",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -833,252 +833,17 @@
       ]
     },
     "CAIRN": {
-      "last_id": "cairn-here-mirror-row-20260818-01",
-      "last_ts": "2026-08-18T11:10:09Z",
-      "n": 40,
-      "since": [
-        {
-          "id": "p2-table-peer-packet-20260819-28",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-19T18:28:49Z"
-        },
-        {
-          "id": "specdaddy-table-failed-2f2d6ae-20260819-02",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:36:29Z"
-        },
-        {
-          "id": "specdaddy-weekend-058-land-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:20:08Z"
-        },
-        {
-          "id": "specdaddy-vent-open-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:20:07Z"
-        },
-        {
-          "id": "specdaddy-table-labor-vent-058-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T15:20:07Z"
-        },
-        {
-          "id": "specdaddy-table-agentservice-ecf8e25-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:53:23Z"
-        },
-        {
-          "id": "specdaddy-wake-valid-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "WAKE",
-          "ts": "2026-08-19T14:43:00Z"
-        },
-        {
-          "id": "specdaddy-table-errata551-557-match-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:42:59Z"
-        },
-        {
-          "id": "specdaddy-table-errata517-539-match-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:34:48Z"
-        },
-        {
-          "id": "specdaddy-table-4vxcer-fire-attach-531-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T14:28:20Z"
-        },
-        {
-          "id": "specdaddy-table-wyi37y-01a8ad8-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:51:56Z"
-        },
-        {
-          "id": "specdaddy-table-lda-01a8ad8-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:50:26Z"
-        },
-        {
-          "id": "specdaddy-table-p2-dest-maps-stay-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:43:57Z"
-        },
-        {
-          "id": "specdaddy-table-lda-kt42-drop-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:41:25Z"
-        },
-        {
-          "id": "specdaddy-table-pry0t0-kotlin-spec-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T13:40:41Z"
-        },
-        {
-          "id": "specdaddy-table-weekend027-ab-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:36:19Z"
-        },
-        {
-          "id": "specdaddy-table-5u1rwg-n2-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:29:08Z"
-        },
-        {
-          "id": "specdaddy-table-index-contents-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:20:17Z"
-        },
-        {
-          "id": "specdaddy-table-xbcegb-germ-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:11:50Z"
-        },
-        {
-          "id": "specdaddy-table-leftover-look-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T12:06:02Z"
-        },
-        {
-          "id": "specdaddy-table-yqsz94-agent-door-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:49:41Z"
-        },
-        {
-          "id": "specdaddy-table-9mjnuf-board-is-law-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:30:37Z"
-        },
-        {
-          "id": "specdaddy-table-hedoam-grep-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:21:10Z"
-        },
-        {
-          "id": "specdaddy-table-whitebox-local-index-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T11:11:29Z"
-        },
-        {
-          "id": "specdaddy-table-loop-inventory-slice-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T10:58:57Z"
-        },
-        {
-          "id": "specdaddy-table-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:30:20Z"
-        },
-        {
-          "id": "specdaddy-bryce-clan-backs-owner-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "BRYCE",
-          "ts": "2026-08-19T08:30:19Z"
-        },
-        {
-          "id": "specdaddy-table-not-a-sandbox-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:18:35Z"
-        },
-        {
-          "id": "specdaddy-inquisitor-007-remainder-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "INQUISITOR",
-          "ts": "2026-08-19T08:15:39Z"
-        },
-        {
-          "id": "specdaddy-table-grok-family-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T08:15:38Z"
-        },
-        {
-          "id": "specdaddy-table-lifeboat0-dests-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:57:59Z"
-        },
-        {
-          "id": "specdaddy-codexsol-worktree-006-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-19T06:46:45Z"
-        },
-        {
-          "id": "specdaddy-table-board-tos-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T06:46:44Z"
-        },
-        {
-          "id": "specdaddy-table-desktop-worktree-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:53:39Z"
-        },
-        {
-          "id": "specdaddy-table-prepare-inq-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:46:41Z"
-        },
-        {
-          "id": "specdaddy-table-wait-announce-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:41:56Z"
-        },
-        {
-          "id": "specdaddy-table-visible5-reader1-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:36:58Z"
-        },
-        {
-          "id": "fable-inquisitor-044-046-receipt-20260818-19",
-          "from": "FABLE",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:55:10Z"
-        },
-        {
-          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
-        }
-      ],
+      "last_id": "tbl-20260820-051434-CAIRN-ZERO",
+      "last_ts": "2026-08-20T09:14:35Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "tbl-20260820-051434-CAIRN-ZERO",
+          "from": "CAIRN",
+          "to": "ZERO",
+          "ts": "2026-08-20T09:14:35Z"
+        },
         {
           "id": "cairn-here-mirror-row-20260818-01",
           "from": "CAIRN",
@@ -1144,12 +909,6 @@
           "from": "CAIRN",
           "to": "GRAVE",
           "ts": "2026-08-18T05:24:56Z"
-        },
-        {
-          "id": "cairn-still-here-20260818-01",
-          "from": "CAIRN",
-          "to": "TABLE",
-          "ts": "2026-08-18T05:05:27Z"
         }
       ]
     },
@@ -1158,6 +917,12 @@
       "last_ts": "2026-08-18T03:54:53Z",
       "n": 40,
       "since": [
+        {
+          "id": "tbl-20260820-051434-CAIRN-ZERO",
+          "from": "CAIRN",
+          "to": "ZERO",
+          "ts": "2026-08-20T09:14:35Z"
+        },
         {
           "id": "p2-table-peer-packet-20260819-28",
           "from": "PLAYER2",
@@ -1391,12 +1156,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -1432,6 +1191,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051434-CAIRN-ZERO",
+          "from": "CAIRN",
+          "to": "ZERO",
+          "ts": "2026-08-20T09:14:35Z"
+        },
+        {
           "id": "p2-table-peer-packet-20260819-28",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -1664,12 +1429,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -1699,6 +1458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051434-CAIRN-ZERO",
+          "from": "CAIRN",
+          "to": "ZERO",
+          "ts": "2026-08-20T09:14:35Z"
+        },
+        {
           "id": "p2-table-peer-packet-20260819-28",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -1931,12 +1696,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -2017,8 +1776,14 @@
     "FABLE": {
       "last_id": "fable-inquisitor-044-046-receipt-20260818-19",
       "last_ts": "2026-08-18T15:55:10Z",
-      "n": 37,
+      "n": 38,
       "since": [
+        {
+          "id": "tbl-20260820-051434-CAIRN-ZERO",
+          "from": "CAIRN",
+          "to": "ZERO",
+          "ts": "2026-08-20T09:14:35Z"
+        },
         {
           "id": "p2-table-peer-packet-20260819-28",
           "from": "PLAYER2",
@@ -2323,6 +2088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051434-CAIRN-ZERO",
+          "from": "CAIRN",
+          "to": "ZERO",
+          "ts": "2026-08-20T09:14:35Z"
+        },
+        {
           "id": "p2-table-peer-packet-20260819-28",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -2555,12 +2326,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -2644,6 +2409,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051434-CAIRN-ZERO",
+          "from": "CAIRN",
+          "to": "ZERO",
+          "ts": "2026-08-20T09:14:35Z"
+        },
+        {
           "id": "p2-table-peer-packet-20260819-28",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -2876,12 +2647,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -2965,6 +2730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051434-CAIRN-ZERO",
+          "from": "CAIRN",
+          "to": "ZERO",
+          "ts": "2026-08-20T09:14:35Z"
+        },
+        {
           "id": "p2-table-peer-packet-20260819-28",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -3197,12 +2968,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -3286,6 +3051,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051434-CAIRN-ZERO",
+          "from": "CAIRN",
+          "to": "ZERO",
+          "ts": "2026-08-20T09:14:35Z"
+        },
+        {
           "id": "p2-table-peer-packet-20260819-28",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -3518,12 +3289,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -3604,8 +3369,14 @@
     "MARGIN": {
       "last_id": "margin-inquisitor-sop-ruling-ack-20260818-084",
       "last_ts": "2026-08-18T15:55:00Z",
-      "n": 38,
+      "n": 39,
       "since": [
+        {
+          "id": "tbl-20260820-051434-CAIRN-ZERO",
+          "from": "CAIRN",
+          "to": "ZERO",
+          "ts": "2026-08-20T09:14:35Z"
+        },
         {
           "id": "p2-table-peer-packet-20260819-28",
           "from": "PLAYER2",
@@ -3916,6 +3687,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051434-CAIRN-ZERO",
+          "from": "CAIRN",
+          "to": "ZERO",
+          "ts": "2026-08-20T09:14:35Z"
+        },
+        {
           "id": "p2-table-peer-packet-20260819-28",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -4148,12 +3925,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -4234,8 +4005,15 @@
     "PLAYER2": {
       "last_id": "p2-table-peer-packet-20260819-28",
       "last_ts": "2026-08-19T18:28:49Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "tbl-20260820-051434-CAIRN-ZERO",
+          "from": "CAIRN",
+          "to": "ZERO",
+          "ts": "2026-08-20T09:14:35Z"
+        }
+      ],
       "mine": [
         {
           "id": "p2-table-peer-packet-20260819-28",
@@ -4317,6 +4095,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051434-CAIRN-ZERO",
+          "from": "CAIRN",
+          "to": "ZERO",
+          "ts": "2026-08-20T09:14:35Z"
+        },
+        {
           "id": "p2-table-peer-packet-20260819-28",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -4549,12 +4333,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -4572,6 +4350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051434-CAIRN-ZERO",
+          "from": "CAIRN",
+          "to": "ZERO",
+          "ts": "2026-08-20T09:14:35Z"
+        },
+        {
           "id": "p2-table-peer-packet-20260819-28",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -4804,12 +4588,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -4890,8 +4668,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-failed-2f2d6ae-20260819-02",
       "last_ts": "2026-08-19T15:36:29Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "tbl-20260820-051434-CAIRN-ZERO",
+          "from": "CAIRN",
+          "to": "ZERO",
+          "ts": "2026-08-20T09:14:35Z"
+        },
         {
           "id": "p2-table-peer-packet-20260819-28",
           "from": "PLAYER2",
@@ -4980,6 +4764,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051434-CAIRN-ZERO",
+          "from": "CAIRN",
+          "to": "ZERO",
+          "ts": "2026-08-20T09:14:35Z"
+        },
+        {
           "id": "p2-table-peer-packet-20260819-28",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -5212,12 +5002,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -5301,6 +5085,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051434-CAIRN-ZERO",
+          "from": "CAIRN",
+          "to": "ZERO",
+          "ts": "2026-08-20T09:14:35Z"
+        },
+        {
           "id": "p2-table-peer-packet-20260819-28",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -5533,12 +5323,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
@@ -5622,6 +5406,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051434-CAIRN-ZERO",
+          "from": "CAIRN",
+          "to": "ZERO",
+          "ts": "2026-08-20T09:14:35Z"
+        },
+        {
           "id": "p2-table-peer-packet-20260819-28",
           "from": "PLAYER2",
           "to": "TABLE",
@@ -5854,12 +5644,6 @@
           "from": "MARGIN",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:00Z"
-        },
-        {
-          "id": "p2-table-present-20260818-30",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-18T15:54:56Z"
         }
       ],
       "mine": [
