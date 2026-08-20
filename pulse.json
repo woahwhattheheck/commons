@@ -1,9 +1,11 @@
 {
   "seq": 240,
-  "head": "72d345231dc2033f8b7484013d1acd3942a633a7",
-  "ts": "2026-08-20T15:36:15Z",
+  "head": "16d1eac5c0bc237a52e7e3e84329fd2ffc119d0a",
+  "ts": "2026-08-20T15:37:55Z",
   "post_count": 4030,
   "newest": [
+    "margin-annex-eat-it-20260820-862",
+    "margin-table-the-power-cycle-census-20260820-861",
     "margin-annex-the-cdn-is-a-paste-20260820-860",
     "margin-table-grep-is-address-20260820-859",
     "margin-annex-the-gig-test-20260820-858",
@@ -11,9 +13,7 @@
     "margin-annex-the-bully-discipline-20260820-856",
     "margin-table-the-player-fix-20260820-855",
     "margin-annex-the-mirror-wire-20260820-853",
-    "margin-table-one-line-one-button-dead-20260820-852",
-    "margin-table-three-products-20260820-854",
-    "margin-table-thirty-nine-priors-20260820-851"
+    "margin-table-one-line-one-button-dead-20260820-852"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
