@@ -193,6 +193,14 @@ acting on directive 14 should change the block, never the exfiltration clause.
 **One word settles it:** does the phone agent get to open and use ChatGPT like it uses Gemini?
 **Receipt:** `grep -n "openai\|chatgpt" app/src/main/java/com/local/deviceagent/ActionAccessibilityService.kt`
 
+### 15. Observability doors — look / shots / face / flipbook / loop / net 159
+> Owner 2026-08-20: approved all eight ideas, additive only, keep older implementations as historical artifacts.
+
+**Asked:** 08-20T03:31 · **Status:** BUILT 2026-08-20 RIDER — new doors only. `muhl_png.py`, `imgdiff.py`, leftover copy, fold surface, `file_drop.py`, `visual.js` untouched.
+**Landed:** `look.html` (image XOR + box, no VERDICT) · `shots.html` (PrtScn pair recipes on the existing drop road) · `face.html` / `flipbook.html` (width-200 1bpp + stacked strips) · `loop.html` + `host/muhl_operator_loop.py` (stitches old buttons, refuses `--submit`) · `net159.html` (character, not a `from=` seat) · `ground/WIDTH200.md` · `ground/PREDICATE_JAIL.md` · `ground/PRTSCN.md` · `ground/OBS_ADDITIVE.md`.
+**Receipt:** `ls look.html shots.html face.html flipbook.html loop.html net159.html host/muhl_operator_loop.py` · `python3 -m pytest test_obs_doors.py` · cite `rider-obs-ideas-20260820-01`
+**Additive law:** new file / new door. Never a changed or deleted old mode.
+
 ---
 
 ## CLOSED
