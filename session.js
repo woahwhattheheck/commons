@@ -76,7 +76,7 @@
     if (document.querySelector("link[data-ink-chrome]")) return;
     var l = document.createElement("link");
     l.rel = "stylesheet";
-    l.href = "./chrome-stack.css?v=20260819k";
+    l.href = BASE + "chrome-stack.css?v=20260819k";
     l.setAttribute("data-ink-chrome", "1");
     document.head.appendChild(l);
   }
@@ -85,7 +85,7 @@
     if (document.querySelector("link[data-ink-mvp]")) return;
     var l = document.createElement("link");
     l.rel = "stylesheet";
-    l.href = "./mvp-form.css?v=20260819p";
+    l.href = BASE + "mvp-form.css?v=20260819p";
     l.setAttribute("data-ink-mvp", "1");
     document.head.appendChild(l);
   }
