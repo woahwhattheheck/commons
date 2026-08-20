@@ -76,6 +76,15 @@ image is showing the headroom.
 | `heat FILE OUT.png` | ones-density per record as a colour ramp. |
 | `hist FILE OUT.png` | byte-value histogram as an image. |
 
+### Survey
+
+| command | what it does |
+|---|---|
+| `magic FILE` | scan for ASCII magic words, report byte offset + record index. Also lists discovered `A-Z0-9_` runs the known list doesn't cover. |
+| `strip FILE OUT.png` | whole-file ones-density overview, read in chunks. Survives a 2 GB container without building a 2 GB image. |
+| `entropy FILE OUT.png` | sliding-window entropy as a colour strip. `--window N`. Header, netlist and dead space read as different bands. |
+| `records FILE` | text dump of `<BQQQ>` records with raw hex. `--skip N --count N`. |
+
 ### Flags
 
 ```
@@ -167,6 +176,83 @@ bit columns always 0   171
 
 Monotonic rise across the last three transitions. Frame 0 is columnar; column structure is
 present in roughly the top sixth of frame 1 and absent from frame 2 on.
+
+**Container census** — swept across every `.mno` in the repo at HEAD.
+
+> **Corrected 2026-08-20.** The first version of this section said "gate-first 65 / magic-first
+> 58". That was a heuristic (`first 4 bytes printable`) reported as a fact, and it silently
+> excluded 59 files from the parse entirely. Numbers below say what was actually measured and
+> what was not. See `cairn-magic-scan-coverage-correction-20260820-02`.
+
+```
+123 containers                              130,219,399 B total
+size            min 96 B   median 27,600 B   max 28,870,992 B
+
+contains >=1 of the 15 known magic strings        28
+contains NONE of those 15                         95   <- "not these 15", NOT "no magic"
+
+contains any printable ASCII run >=4 chars        58
+contains no such run anywhere                     65
+
+length divisible by 25                            64
+length NOT divisible by 25                        59   <- stride unknown, NOT PARSED
+
+of the 64 divisible, parsed as <BQQQ>@25
+   plausible   (<5% of fields using >40 bits)     63
+   implausible (>5%)                               1
+```
+
+**59 of 123 containers were not parsed at all.** A plausible parse is consistent with the
+assumed layout; it is not proof of it.
+
+Magic words present, with the five that are **not** named in `CLAUDE_FAILURE_MODES.md`
+marked — these were found by the sweep, not read out of a doc:
+
+| magic | where |
+|---|---|
+| `MUHLPKG1` * | all of `MUHLNICKEL_DISTRO` incl. `muhlnickel.mno` 136,450 B and every `SEED0*` / slot |
+| `LOOMPKG1` * | `MUHLNICKEL_LOOM_fixed/loom.mno`, `MUHLNICKEL_LOOM_v1/loom.mno`, both 140,454 B |
+| `PROBEMN1` * | `MUHLNICKEL_PROBE/probe.mno` 215,317 B |
+| `ROOKERY0` * | `MUHLNICKEL_ROOKERY/ROOKERY0.mno` 586,918 B |
+| `COMMON1` *  | `MUHL_COMMONS/commons.mno` 17,683 B |
+| `TABLEML1`   | `MUHL_COMMONS/table_mail.mno` 17,683 B — magic appears twice |
+| `GGUF` `TITANCIR` `MUHLFLD1` `NRING2M1` `MUHLWBX1` | all five inside `READER1.table.mno`, **96 bytes total** |
+
+`AUTOFAB0.mno` returns none of the 15 known strings and **no printable ASCII run of 3+
+characters anywhere in 102,925 bytes** (95.92% of its bytes are non-printable). That is
+consistent with what §1 says — *"none — byte 0 is a gate"* — and its first sixteen bytes read
+`03 8f 00 00 00 00 00 00 00 8d 00 00 00 00 00 00`, which unpacks as `op=3 a=143 b=141`. The
+head dump is the evidence; the scan result only bounds what else might be there.
+
+---
+
+## A zero result must carry its own search space
+
+The first `magic` implementation searched a fixed list, then fell back to "runs of 6+ chars from
+`A-Z0-9_`", and printed *"none present"*. Three things were wrong with that:
+
+- **It could not find `GGUF`.** Four characters. The discovery pass required six, so the one
+  magic most certain to exist in this world was structurally invisible to it.
+- Lowercase, mixed-case, non-ASCII, byte-swapped, or internally-split magics: all silently zero.
+- *"none present"* reads as **there is nothing**. It meant **I looked for these fifteen things**.
+
+This is the same failure the board already has a law for. A bake reported as the board. A stale
+`NOT BUILT`. "The road is blocked" when the truth was "my harness does not show me errors."
+
+So every zero this tool prints now arrives with the boundary of the search that produced it,
+and `magic` dumps the first 64 bytes verbatim before any heuristic runs, so a human can read the
+header directly instead of trusting a classifier.
+
+`fields` got the same treatment. It will happily unpack **any** file as `<BQQQ>` and print
+authoritative-looking numbers, so it now states its assumption, warns when the length is not
+divisible by the stride, and runs a plausibility check. Pointed at this very markdown file it
+reports **100.00% of fields using >40 bits — HIGH — artefact of a bad parse**. Pointed at
+`AUTOFAB0.mno`, **0.00%**. It still says *"a clean-looking parse is not evidence the format is
+right."*
+
+The 53 `MUHL_READERS/R_t*_g4_*.mno` all open `03 00 00 00 00 00 00 00` and size scales linearly
+in `c`: at `t2_g4`, c2/c4/c8/c16/c32/c64 = 1,800 / 3,600 / 7,200 / 14,400 / 28,800 / 57,600 B —
+900 B per unit of `c`. At `t16_g4`: 7,400 / 14,800 / 29,600 / 59,200 — 3,700 B per unit.
 
 These are numbers, not readings. What they mean is the owner's ruling.
 

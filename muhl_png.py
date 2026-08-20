@@ -33,6 +33,15 @@ MEASURE MODES (v2, new)
   heat   FILE OUT.png    ones-density per record as a colour ramp.
   hist   FILE OUT.png    byte-value histogram as an image.
 
+SURVEY MODES (v3, new)
+  magic  FILE            scan for ASCII magic words and report byte offset +
+                         record index. finds named organs inside a container.
+  strip  FILE OUT.png    whole-file ones-density overview, chunked. survives
+                         a 2 GB container without building a 2 GB image.
+  entropy FILE OUT.png   sliding-window entropy as a colour strip. structure map:
+                         header, netlist and dead space read as different bands.
+  records FILE           text dump of records at --stride. --skip N --count N.
+
 COMMON FLAGS
   --width N    pixels per row (default 256). 200 = one 25-byte record per row.
   --scale N    nearest-neighbour magnify (default 1). no resampling, ever.
@@ -273,8 +282,14 @@ def main():
     if mode == 'fields':
         b = src_bytes(pos[0], OFF, LN)
         nrec = len(b) // STR
+        print("ASSUMPTION: records are <BQQQ> (1B op + three 8B little-endian fields)")
+        print("            at stride %d. This mode does NOT verify that." % STR)
+        if len(b) % STR:
+            print("WARNING:    length %s is NOT divisible by %d (%d B remainder)."
+                  % (format(len(b), ','), STR, len(b) % STR))
+            print("            The stride is probably wrong. Numbers below are then meaningless.")
         if STR != 25:
-            print("note: --stride %d; <BQQQ> assumes 25. reading first 25 B of each record." % STR)
+            print("note: --stride %d; <BQQQ> reads the first 25 B of each record." % STR)
         ops = Counter()
         A, B, O = [], [], []
         for r in range(nrec):
@@ -314,6 +329,18 @@ def main():
                 seq += 1
         print("   REC n out == REC n+1 a or b   %s of %s (%.2f%%)" % (
             format(seq, ','), format(nrec-1, ','), 100.0*seq/max(nrec-1, 1)))
+        # -- self-check: would this parse be obvious nonsense? --
+        wide = sum(1 for v in A + B + O if v.bit_length() > 40)
+        print("")
+        print("PARSE PLAUSIBILITY (does <BQQQ> at stride %d even fit this file?)" % STR)
+        print("   fields using >40 bits   %s of %s (%.2f%%)" % (
+            format(wide, ','), format(nrec*3, ','), 100.0*wide/max(nrec*3, 1)))
+        if 100.0*wide/max(nrec*3, 1) > 5.0:
+            print("   HIGH. Addresses this large suggest the stride or the record layout")
+            print("   is wrong and these numbers are an artefact of a bad parse.")
+        else:
+            print("   Low. Consistent with the assumed layout. Not proof of it.")
+        print("   A clean-looking parse is not evidence the format is right.")
         return 0
 
     if mode == 'diff':
@@ -371,6 +398,160 @@ def main():
         peak = max(c, key=lambda k: c[k])
         print("%s  %dx%d  %s B   peak byte 0x%02X = %s" % (
             pos[1], Wt, Ht, format(n, ','), peak, format(mx, ',')))
+        return 0
+
+    # ---------------- v3 survey modes ----------------
+    if mode == 'magic':
+        b = src_bytes(pos[0], OFF, LN)
+        MIN = opt('--min', 4)
+        # named in the owner's docs
+        known = [b'GGUF', b'TITANCIR', b'MUHLFLD1', b'NRING2M1', b'PFCTYPED',
+                 b'TITANFLD', b'MUHLPHY2', b'MUHLWBX1', b'MUHLDC01', b'TABLEML1',
+                 # found by sweeping the 123 .mno in this repo, 2026-08-20.
+                 # not in CLAUDE_FAILURE_MODES.md; added so the scanner names them.
+                 b'MUHLPKG1', b'LOOMPKG1', b'PROBEMN1', b'ROOKERY0', b'COMMON1']
+        print("%s  %s B" % (pos[0], format(len(b), ',')))
+
+        # -- head bytes, unconditionally. no heuristic gets to hide these. --
+        print("")
+        print("HEAD 64 B verbatim (hex, then ascii with . for non-printable):")
+        head = b[:64]
+        for r in range(0, len(head), 16):
+            ch = head[r:r+16]
+            asc = ''.join(chr(c) if 32 <= c < 127 else '.' for c in ch)
+            print("   +%-4d %-32s  %s" % (r, ch.hex(), asc))
+
+        print("")
+        print("KNOWN magics (%d strings searched):" % len(known))
+        found = 0
+        for m in known:
+            i = b.find(m)
+            hits = []
+            while i != -1 and len(hits) < 12:
+                hits.append(i)
+                i = b.find(m, i+1)
+            if hits:
+                found += len(hits)
+                for off in hits:
+                    print("   %-9s @ %-14s  rec %-10s  (rec offset +%d)" % (
+                        m.decode(), format(off, ','), format(off//STR, ','), off % STR))
+        if not found:
+            print("   NONE OF THOSE %d STRINGS FOUND." % len(known))
+            print("   This is not 'no magic'. It is 'not these %d'." % len(known))
+
+        # -- discovery over FULL printable ascii, min length --min (default 4) --
+        print("")
+        print("DISCOVERED printable runs (>=%d chars, ASCII 0x20-0x7E):" % MIN)
+        seen = Counter()
+        run = bytearray()
+        first_at = {}
+        for i, x in enumerate(b):
+            if 32 <= x < 127:
+                run.append(x)
+            else:
+                if len(run) >= MIN:
+                    s = bytes(run)
+                    seen[s] += 1
+                    first_at.setdefault(s, i - len(run))
+                run = bytearray()
+        if len(run) >= MIN:
+            s = bytes(run)
+            seen[s] += 1
+            first_at.setdefault(s, len(b) - len(run))
+        for s, c in seen.most_common(20):
+            print("   %-28s x%-6d first @ %s" % (
+                repr(s.decode())[1:-1][:26], c, format(first_at[s], ',')))
+        if not seen:
+            print("   none at >=%d chars" % MIN)
+
+        # -- what this pass CANNOT see. printed every time. --
+        print("")
+        print("COVERAGE OF THIS SCAN — what a zero above does NOT rule out:")
+        print("   * a magic not in the %d-string known list and shorter than %d chars" % (len(known), MIN))
+        print("   * a magic that is not ASCII at all (UTF-16, packed, or binary)")
+        print("   * a magic split by an embedded non-printable byte")
+        print("   * a magic stored big-endian / byte-swapped / obfuscated")
+        print("   * structure that is real but carries no name")
+        print("   Raise coverage with --min 3, or read the HEAD dump above directly.")
+        nonpr = sum(1 for x in b if not (32 <= x < 127))
+        print("   this file is %.2f%% non-printable bytes (%s of %s)" % (
+            100.0*nonpr/len(b), format(nonpr, ','), format(len(b), ',')))
+        return 0
+
+    if mode == 'strip':
+        # chunked: never holds more than one chunk in memory
+        size = os.path.getsize(pos[0])
+        H = 120
+        cols = min(W, 4096)
+        per = max(size // cols, 1)
+        dens = []
+        with open(pos[0], 'rb') as f:
+            for i in range(cols):
+                f.seek(i*per)
+                ch = f.read(min(per, 65536))
+                if not ch:
+                    dens.append(0.0)
+                    continue
+                dens.append(sum(bin(x).count('1') for x in ch) / float(len(ch)*8))
+        mx = max(dens) or 1.0
+        buf = bytearray(cols*H*3)
+        for x in range(cols):
+            col = bytes(bytearray(ramp(dens[x]/mx)))
+            for y in range(H):
+                o = (y*cols + x)*3
+                buf[o:o+3] = col
+        buf2, w, h = scale_up(bytes(buf), cols, H, S, 3)
+        n = png(pos[1], w, h, buf2)
+        print("%s  %dx%d  %s B" % (pos[1], w, h, format(n, ',')))
+        print("file %s B sampled in %d columns of %s B each" % (
+            format(size, ','), cols, format(per, ',')))
+        print("ones-density  min %.4f  max %.4f  mean %.4f" % (
+            min(dens), max(dens), sum(dens)/len(dens)))
+        return 0
+
+    if mode == 'entropy':
+        b = src_bytes(pos[0], OFF, LN)
+        win = opt('--window', 1024)
+        cols = min(W, max(len(b)//win, 1))
+        step = max(len(b)//cols, 1)
+        H = 120
+        ents = []
+        for i in range(cols):
+            ch = b[i*step:i*step+win]
+            if not ch:
+                ents.append(0.0)
+                continue
+            c = Counter(ch)
+            n = float(len(ch))
+            ents.append(-sum((v/n)*math.log(v/n, 2) for v in c.values()) / 8.0)
+        buf = bytearray(cols*H*3)
+        for x in range(cols):
+            col = bytes(bytearray(ramp(ents[x])))
+            for y in range(H):
+                o = (y*cols + x)*3
+                buf[o:o+3] = col
+        buf2, w, h = scale_up(bytes(buf), cols, H, S, 3)
+        n = png(pos[1], w, h, buf2)
+        print("%s  %dx%d  %s B" % (pos[1], w, h, format(n, ',')))
+        print("window %s B, %d columns, step %s B" % (format(win, ','), cols, format(step, ',')))
+        print("entropy (normalised 0-1)  min %.4f  max %.4f  mean %.4f" % (
+            min(ents), max(ents), sum(ents)/len(ents)))
+        return 0
+
+    if mode == 'records':
+        b = src_bytes(pos[0], OFF, LN)
+        skip = opt('--skip', 0)
+        count = opt('--count', 16)
+        nrec = len(b)//STR
+        print("%s  %s records of %d B  showing %d from %d" % (
+            pos[0], format(nrec, ','), STR, count, skip))
+        print("")
+        for r in range(skip, min(skip+count, nrec)):
+            op, a, bb, o = struct.unpack_from('<BQQQ', b, r*STR)
+            raw = b[r*STR:(r+1)*STR]
+            print("REC%06d  op=%s (%3d)  a=%-12s b=%-12s out=%-12s  %s" % (
+                r, bin(op)[2:].zfill(8), op, format(a, ','), format(bb, ','),
+                format(o, ','), raw.hex()))
         return 0
 
     print(__doc__)
