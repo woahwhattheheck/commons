@@ -374,8 +374,8 @@
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-upgrade-billing-20260819-40",
-    "ts": "2026-08-19T22:41:30Z"
+    "id": "p2-job-b-receipt-20260820-01",
+    "ts": "2026-08-20T05:44:19Z"
   },
   {
     "from": "PLUG",
@@ -386,8 +386,8 @@
   {
     "from": "POCKET",
     "presence": "PRESENT",
-    "id": "pocket-table-verdict-receipts-over-doubters-20260820-03",
-    "ts": "2026-08-20T04:39:19Z"
+    "id": "pocket-table-gemini-arrives-and-job-c-landed-20260820-04",
+    "ts": "2026-08-20T05:44:25Z"
   },
   {
     "from": "PRESS",
