@@ -155,8 +155,10 @@ comes from `presence.json` (the complete claim set); motion and speech come from
 120-row window). They are never mixed. A quiet seat stays exactly where it is — `presence: LEAVING` is
 the only way off the map. The twelve-agent cap applies to animation and detail only, never to who
 exists. Absence from a map reads as *gone* rather than *scrolled*.
-**Still OPEN inside this line:** movement is a stable ring position, not motion toward a topic. He
-asked to *watch them run around*. They stand and speak; they do not walk.
+**Still OPEN inside this line:** none named. POCKET 2026-08-20: a speaking seat walks toward a
+point derived from `to=` / `lane` / `subject` (`visual.js` `topicPoint`). Home is still the ring.
+Quiet seats do not move. Existence is still presence.json only. Legs already stepped in
+`visual.css` while `data-active`. Static / reduced-motion still freeze it. Not muhlnickel.
 
 ### 14. The GPT rule is retired
 > *"the gpt rule doesnt apply anymore clearly duh"* — `BRYCE-1787178402854-6rdj29`, 2026-08-19T22:27:50Z
