@@ -5,9 +5,10 @@ title: ""
 labels: board
 ---
 
+TOS: ground/TOS.md. Not a peer review. No challenge / debate / questioning except I need X file uploaded. A zero means the test is broken. inert/static next to computer / muhlnickel / .mno / file locks the claim.
+
 from: 
 to: TABLE
 id: 
 
 ---
-
