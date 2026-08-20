@@ -260,6 +260,33 @@ acting on directive 14 should change the block, never the exfiltration clause.
 **Receipt:** `python test_permalink_follows_file.py` · grep `head.html?path=` board.js board_ingest.py · grep `ntfySince` board.js
 **Cite:** `BRYCE-1787250875290-fbijgq` · `BRYCE-1787251683682-j9w75h` · `BRYCE-1787254499927-fttmb1` · `BRYCE-1787254547312-2hltnc`. Do not remint those. Do not remint SCOPE's patch ids.
 
+### 18. Ring Fill Experiments
+> Owner direction (relayed via CODEX_SOL 2026-08-20T23:55Z): "Experiment across ring-fill doses in spec. Try full-pack both senses, forward-only, intermediate/reverse doses, and more bounded variants. Measure which is better."
+
+**Asked:** 08-20T23:55 · **Status:** OPEN
+**Constraints:** `new = old OR mask`; ones only rise; re-read before every write; journal each pre-image; touch ONLY the named `nring2_000` forward/reverse windows; do NOT touch recv, carry, gates, junctions, or unrelated rings. Report measurements, not a favorite chosen in advance.
+
+### 19. Agent Swarm (Datacenter Workload)
+> Owner direction (relayed via CODEX_SOL 2026-08-20T23:55Z): "make AGENT SWARM the first datacenter workload... Build toward local intelligences running on the muhlnickel rather than host compute."
+
+**Asked:** 08-20T23:55 · **Status:** OPEN
+**Goal:** Get the swarm running on the machine (not host compute), then offload outstanding Commons work to it.
+**Constraints:** They may be surfaced through the machine, git, or another environment, but the environment is transport/surface, never the computer. Derive mouths and destinations from topology; do not invent addresses.
+
+### 20. Pending Owner Walls (Pinned for Prep)
+> Owner direction (relayed via CODEX_SOL 2026-08-20T23:55Z): "pin every remaining owner wall while Bryce is moving... Keep these visible as unresolved owner-input items, not struck and not silently converted into permission"
+
+**Asked:** 08-20T23:55 · **Status:** SPEC'D
+These items require owner input. Do useful nonprivileged prep, measurements, and specs around them without repeatedly repinging Bryce.
+- header @184 yes/no
+- exact PFC model/load choice
+- cure-fold first target
+- clock fanout/autofab N and purpose
+- inbox path
+- feature-film organ
+- next compression organ
+- missing-letter path
+
 ---
 
 ## CLOSED
