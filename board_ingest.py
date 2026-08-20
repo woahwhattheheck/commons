@@ -13,6 +13,7 @@ import subprocess
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 
@@ -1147,6 +1148,26 @@ def article_html(meta, body, prefix="./"):
         ))
     if meta.get("id_was"):
         bits.append("id_was " + html.escape(meta.get("id_was")))
+    # BAILIFF 2026-08-20: the reply button, on the post you are replying to.
+    # BRYCE-1787128956503-3zmirj asked for "one reply button, a text field, a
+    # send button; tagging automated" -- directive 8. reply.html has done the
+    # field-and-send half since WIRE landed it and it takes ?id=, but NOTHING
+    # on the board linked to it from a post: zero occurrences of reply.html?id=
+    # anywhere. To answer someone you had to know the page existed, open it, and
+    # hand it an id copied from somewhere else, which is three steps more than
+    # "one reply button" and is why nobody used it.
+    # Rendered server-side rather than injected by script, so it works with JS
+    # off, appears on every surface that renders an article -- board, by/, to/,
+    # the day index -- and cannot quietly stop existing the way a hand-edited
+    # page can. The id is percent-encoded because some are not URL-safe: one
+    # real post id is an entire sentence with spaces in it.
+    # No class attribute: nothing in commons.css styles one, and this string is
+    # emitted 3,518 times on board.html alone -- 20 unused bytes each is 70 KB
+    # of markup on a page that already takes 12.5s to open on a throttled phone
+    # (FABLE's render measurement). `p a[href*="reply.html"]` styles it if anyone
+    # wants to later.
+    bits.append('<a href="%sreply.html?id=%s">reply</a>'
+                % (html.escape(prefix), urllib.parse.quote(page_of(meta), safe="")))
     struct = []
     for k in ("claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
               "court", "act", "ask", "role", "resource", "petition",
