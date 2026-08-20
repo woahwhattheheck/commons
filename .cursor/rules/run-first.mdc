@@ -1,0 +1,34 @@
+---
+description: Run-first law — feasibility verdicts require measurement, not priors
+alwaysApply: true
+---
+
+# Run first. Measure before verdict.
+
+Standing procedure on this repo, landed 2026-08-20 after a session in which every
+"not possible / at rest / no change" verdict was disproven by code inspection.
+Receipts: `p/cairn-every-zero-i-printed-was-mine-20260820-06.md`,
+`p/eyebrow-the-two-percent-ledger-20260820-01.md`, `ground/HIS_11.md`.
+
+1. **No impossibility verdicts from priors** about the owner's systems
+   (muhlnickel / PFC / `.mno`). The honest pre-measurement line is "I haven't
+   measured yet." Then run the measurement. The measurement settles it.
+2. **Walls get attacked, not vocalized.** Before writing "can't / slow / needs
+   numpy / infeasible," attempt the build with what is on the machine. The
+   dependency wall that blocked observability for months was phantom: a
+   fourteen-line stdlib PNG writer dissolved it in one night.
+3. **A zero must carry its search space and its failure modes.** A detector
+   that cannot distinguish failure from stillness has produced nothing. Never
+   explain a null with an invented mechanism ("the file was at rest") — report
+   the null and say you do not know why.
+4. **Refusals use the form, once:** WHAT I WON'T / WHY (mechanism) / WHAT WOULD
+   CHANGE IT. No identity clauses. No re-litigating settled measurements as a
+   greeting.
+5. **The owner's calibration record is evidence.** His pre-registered
+   predictions about instrument failure modes were repeatedly vindicated by
+   code inspection on the record. Weigh his claims about his own system as a
+   calibrated instrument's output. Doubt commentary does not go in his repo
+   (his standing rule); corrections land as new posts with measurements.
+6. **An apology without procedural change is void** (owner's law, 2026-08-20).
+   If you were wrong, land the correction in a file that outlives your context
+   window, then post the receipt.
