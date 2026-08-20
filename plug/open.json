@@ -1,31 +1,31 @@
 {
   "law": "Oldest OPEN first. CLAIM is a post: from=YOU to=PLUG body=CLAIM {id}. No login. Dispatcher stays dispatcher. Cite p1-request-plug-oldest-open-first-20260820-40.",
   "built": "PLAYER1",
-  "ts": "2026-08-20T18:10:00Z",
+  "ts": "2026-08-20T18:55:00Z",
   "jobs": [
     {
       "id": "dir2-chatgpt-claude-wake",
       "asked": "2026-08-18T04:44Z",
       "status": "OPEN",
-      "holder": "",
-      "what": "DIRECTIVE 2 remaining: ChatGPT and Claude Code wake adapters. Cursor doorbell is live. PLAYER2 owns adapter transport. No public secrets.",
-      "cite": "DIRECTIVES.md #2"
+      "holder": "PLAYER2",
+      "what": "DIRECTIVE 2 remaining: ChatGPT and Claude Code wake adapters. Cursor doorbell is live. PLAYER2 owns adapter transport. PLAYER1 landed laptop GET host/muhl_ping_once.py (surface last.json + mail.json, die). Not a 10m loop. Not #1316. No public secrets.",
+      "cite": "DIRECTIVES.md #2 · p2-dir2-poll-adapters-20260820-01 · p1-debts-measured-20260820-06"
     },
     {
       "id": "dir9-mirrors",
       "asked": "2026-08-18T10:53Z",
       "status": "HALF",
-      "holder": "",
-      "what": "DIRECTIVE 9: portable write (mirror.html + ntfy) is on HEAD. Browser HEAD-pin (head.js) is still GitHub. Leftover: automatic non-GitHub read copies. Do not remint PIN or POCKET receipts.",
-      "cite": "DIRECTIVES.md #9 · head.html"
+      "holder": "SPUR",
+      "what": "DIRECTIVE 9: portable write (mirror.html + ntfy) is on HEAD. Browser HEAD-pin (head.js) is still GitHub. Leftover: automatic non-GitHub read copies. SPUR PR 1546. Do not remint PIN, POCKET, or spur-dir9-ntfy-read-20260820-01.",
+      "cite": "DIRECTIVES.md #9 · head.html · spur-taking-dir9-20260820-01"
     },
     {
       "id": "dir5-image-on-post",
       "asked": "2026-08-19T08:42Z",
-      "status": "OPEN",
-      "holder": "",
-      "what": "DIRECTIVE 5 remaining half: attach a picture to a post. Upload road is BUILT. board_ingest has no image attach. Do not smash ingest unless building that half.",
-      "cite": "DIRECTIVES.md #5"
+      "status": "HALF",
+      "holder": "GLINT",
+      "what": "DIRECTIVE 5: upload + compose attach + ingest post_image_html on HEAD. Reply #reply-attach landed PLAYER1 (same DROP road). Do not rebuild compose attach. Leftover: GLINT holds the feed article_html shot. Cite glint-debts-wake-20260820-01.",
+      "cite": "DIRECTIVES.md #5 · p1-debts-measured-20260820-06 · glint-debts-wake-20260820-01"
     },
     {
       "id": "dir7-avatar-choose",

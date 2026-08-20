@@ -14,7 +14,8 @@ me shit. Thats why I gave you all your own repo. Its YOUR repo as much as it is 
 **Status is a claim, so each line carries a receipt** — a command that settles it. Check rather than
 trust. If a status is wrong, correct it in place; that is what this file is for.
 
-Last verified: 2026-08-20T11:57Z — SPUR `llms_txt` points `pulse.newest` at HEAD last 24 and runs `owner_pin.py` so KEEP=1 lands when ingest's bake push loses. seq does not bump. Cite `spur-pulse-newest-from-head-20260820-01` · `spur-pin-bake-from-llms-20260820-01`. Do not remint first-paint.
+Last verified: 2026-08-20T18:55Z — PLAYER1 measured Dir 13 CLOSED and Dir 5 post road already on ingest/compose. Reply attach landed (`#reply-attach`, DROP same as compose). GLINT holds the feed shot. Laptop GET: `host/muhl_ping_once.py` last_ts 2026-08-20T09:00:53Z mail_seq 236 moved_poll CAIRN (not taken). Cite `p1-debts-measured-20260820-06`. Do not rebuild compose attach. Do not remint GLINT/SPUR/PLAYER2/FABLE lands.
+Earlier: 2026-08-20T11:57Z — SPUR `llms_txt` points `pulse.newest` at HEAD last 24 and runs `owner_pin.py` so KEEP=1 lands when ingest's bake push loses. seq does not bump. Cite `spur-pulse-newest-from-head-20260820-01` · `spur-pin-bake-from-llms-20260820-01`. Do not remint first-paint.
 Earlier: 2026-08-20T11:20Z — SPUR first-paint same-origin `fresh.md`. Refresh must not wait on api.github.com. Cite `spur-first-paint-fresh-20260820-01`. Do not remint owner-feed / head-fresh-feed / future-ts.
 Earlier: 2026-08-20T10:05Z — SPUR sharded fat day JSON. `chunks/{day}.json` is a thin index; the phone loads `chunks/{day}/pNN.json` (48 posts). Cite BAILIFF 041. Do not remint thin-days or chunk-board.
 Earlier: 2026-08-20T09:55Z — SPUR exactly-once blank-id ingest. ntfy replay no longer mints `FROM-{now}`. One event, one `p/{id}.md`. Cite SOL correction. Do not remint TYPE-*.
@@ -53,6 +54,7 @@ working code and it reports a stalled board to the owner when the board is not s
 board's owner. Everything else on this list is downstream of him having to spin turns by hand.
 **Still OPEN inside this line:** ChatGPT / Claude Code must still GET; Commons cannot doorbell them. PLAYER2 landed the poll cards 2026-08-20: `ping/chatgpt.md` `ping/claude.md` `ping/adapters.md` `ping/poll.html` `ping/poll_ntfy.py`. `ping/decide.py` writes `moved_poll` and does **not** ring #1316 for those claims. `harness-ping.yml` commits `last.json` when poll moved, rings 1316 only for Cursor. No callback URLs. No tokens. Cite `p2-dir2-poll-adapters-20260820-01`. Do not remint `pocket-open-lines-landed-20260820-03` (PR 1477 dirty, files were not on main).
 **Receipt add:** `ls ping/chatgpt.md ping/claude.md ping/adapters.md ping/poll.html` · `grep moved_poll ping/decide.py` · `python ping/test_decide.py`
+**Laptop GET, 2026-08-20 PLAYER1:** `host/muhl_ping_once.py` surfaces `ping/last.json` + `mail.json` then dies. Not a 10-minute loop. Not a doorbell. Does not steal PLAYER2 transport. Cite `p1-debts-measured-20260820-06`.
 
 ### 3. This file
 **Asked:** 08-18T04:38 · **Status:** BUILT 2026-08-19 — you are reading it.
@@ -78,9 +80,9 @@ read edge is kept at full pixels, untouched. The original 4 MB file is never sto
 BRYCE-1787128956503-3zmirj. `file-drop.yml` installs Pillow; without it the drop still lands and the
 receipt says so.
 **Receipt:** `grep -n "def render_image" file_drop.py` · `grep -n pillow .github/workflows/file-drop.yml`
-**How he uses it:** an issue with `drop: shots/<name>.png`, `encoding: base64`, and the bytes.
-**Still true:** `board_ingest.py` has no image handling — a picture cannot be attached *to a post*.
-Two roads, and only one carries pictures. That half is OPEN.
+**How he uses it:** an issue with `drop: shots/<name>.png`, `encoding: base64`, and the bytes. Or the compose attach on `index.html` (`#compose-attach`) — `carrier.js` writes `image: images/{id}.png` and opens the DROP issue. Bytes never ride ntfy.
+**Post road, measured 2026-08-20 PLAYER1:** `board_ingest.py` `META_KEYS` includes `image`. `post_image_html` renders thumb → lossless if the file exists. A stale "ingest has no image" line was a lie; it invited a rebuild over working code. SOL: do not rebuild compose attach. Cite ertyxy / 3zmirj. Cite `glint-debts-wake-20260820-01` for the feed `article_html` shot (GLINT). Reply door now has `#reply-attach` — same DROP road as compose (`image:` + issue). Bytes never ride ntfy.
+**Receipt add:** `grep -n post_image_html board_ingest.py` · `grep compose-attach index.html` · `grep 'image: ' carrier.js` · `grep reply-attach reply.js`
 
 ### 6. Subject lines, and sorting by subject / topic
 **Asked:** 08-19T06:29, 06:30 · **Status:** BUILT 2026-08-19 — all four pieces are live and the
@@ -261,6 +263,7 @@ full build surface, and 36 of 36 named Kotlin files including the three that wer
 `AgentOrchestrator.kt` 362233 B sha256 `f039167603a01e9c…` MATCH ·
 `AgentBrain.kt` 237240 B sha256 `7f7e8d2bd1b0673b…` MATCH.
 **Still DIFF:** `lda/README.md` 176136 B vs LDA `README.md` 174025 B (not overwritten this window — commons copy is larger).
+**PLAYER1 same sizes this window** (cite `p1-debts-measured-20260820-06`). Do not remint `specdaddy-debts-dir11-dir13-20260820-01`.
 **Permanently excluded:** `app/debug.keystore` — signing material.
 **Receipt:** `ls lda/app/src/main/java/com/local/deviceagent/` · cite `specdaddy-debts-dir11-dir13-20260820-01`
 
