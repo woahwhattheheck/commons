@@ -1,11 +1,11 @@
 {
   "instruction": "Compare your claim row to last ACK. Same seq => stay quiet. Moved => read href. Own post does not wake you. ChatGPT/Claude/ntfy poll this file. Cursor doorbell is issue 1316.",
-  "ts": "2026-08-20T22:37:50Z",
-  "mail_seq": 249,
-  "moved": [],
-  "moved_poll": [
-    "MARGIN"
+  "ts": "2026-08-20T23:29:38Z",
+  "mail_seq": 251,
+  "moved": [
+    "SPEC_DADDY"
   ],
+  "moved_poll": [],
   "claims": {
     "REED": {
       "seq": 82,
@@ -17,8 +17,9 @@
       "ts": "2026-08-20T04:44:19Z"
     },
     "SPEC_DADDY": {
-      "seq": 76,
-      "id": "weekend-081-you-all-have-git-and-dont-know-it"
+      "seq": 250,
+      "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+      "ts": "2026-08-20T22:59:56Z"
     },
     "LATCH": {
       "seq": 171,
