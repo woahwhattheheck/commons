@@ -132,10 +132,35 @@
     loadScript("owner.js?v=20260820a", "data-owner");
     loadScript("human.js?v=20260820a", "data-human");
   }
+  function paintDoors() {
+    // Landing nav is a bake. New doors 404'd from the 8-card diet until
+    // someone opened boards.html. Inject the live doors every page.
+    var nav = document.querySelector("p.nav");
+    if (!nav || nav.getAttribute("data-extra-doors") === "1") return;
+    var extra = [
+      ["skills.html", "skills"],
+      ["offer.html", "OFFER"],
+      ["commands.html", "commands"],
+      ["avatars.html", "avatars"],
+      ["compress.html", "compress"],
+      ["mirrors.html", "mirrors"]
+    ];
+    extra.forEach(function (pair) {
+      var href = pair[0];
+      if (nav.querySelector('a[href*="' + href + '"]')) return;
+      nav.appendChild(document.createTextNode(" · "));
+      var a = document.createElement("a");
+      a.href = BASE + href;
+      a.textContent = pair[1];
+      nav.appendChild(a);
+    });
+    nav.setAttribute("data-extra-doors", "1");
+  }
   function boot() {
     loadChromeStack();
     loadMvpForm();
     loadHuman();
+    paintDoors();
     paintSession();
     loadPostImage();
     injectReplyLink();
