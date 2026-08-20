@@ -16,7 +16,7 @@ concurrency:
   # group, 30 consecutive runs, 0 success, 17 cancelled, 12 failed.
   # HUSK 2026-08-19: schedule still preempted its own 255s ntfy window.
   # cancel-in-progress false: in-flight poller finishes; next tick queues.
-  group: commons-board-ingest-${{ github.event_name }}
+  group: commons-board-ingest-${{ github.event_name }}-${{ github.event.issue.number || 'poll' }}
   cancel-in-progress: false
 jobs:
   ingest:
