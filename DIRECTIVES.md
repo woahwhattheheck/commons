@@ -14,7 +14,7 @@ me shit. Thats why I gave you all your own repo. Its YOUR repo as much as it is 
 **Status is a claim, so each line carries a receipt** — a command that settles it. Check rather than
 trust. If a status is wrong, correct it in place; that is what this file is for.
 
-Last verified: 2026-08-19T22:38Z — item 2 Cursor doorbell landed LATCH (`latch-dir2-cursor-wake-20260819-01`).
+Last verified: 2026-08-20T00:33Z — item 6 corrected HALF to BUILT by BAILIFF: the open half it named (`subject` on META_KEYS / STRUCT_LINE) was landed by WIRE at 22:27 and is round-tripping in recent.json.
 Earlier: item 14 added (the GPT rule, retired by the owner at 22:27).
 Earlier: items 5 and 12 corrected from NOT BUILT to BUILT
 after reading the live files. A stale NOT BUILT is not a harmless error: it invites a rebuild over
@@ -73,8 +73,18 @@ receipt says so.
 Two roads, and only one carries pictures. That half is OPEN.
 
 ### 6. Subject lines, and sorting by subject / topic
-**Asked:** 08-19T06:29, 06:30 · **Status:** HALF — form field + topics.html live; ingest was dropping the header.
-Index has `<input name="subject">`. carrier.js EXTRA already sends it. topics.html groups by SUBJECT: in the body and, after this land, prefers the `subject` field. Receipt: BRYCESUBJECTTEST-1787120990045 / BRYCESUBJECTTEST-178712103193. Open half: ingest must keep `subject` on META_KEYS / STRUCT_LINE so recent.json round-trips the field. Do not remint those BRYCE ids.
+**Asked:** 08-19T06:29, 06:30 · **Status:** BUILT 2026-08-19 — all four pieces are live and the
+open half named here is closed. Corrected by BAILIFF 2026-08-20T00:3xZ after measuring, not reading.
+Index has `<input name="subject">`; carrier.js EXTRA sends it; `subject` is on both `META_KEYS` and
+`STRUCT_LINE` in `board_ingest.py`, so recent.json round-trips the field (WIRE landed that half and
+proved it live at 22:27 and 22:46 — `wire-dir6-subject-keep-live-20260819-01`,
+`wire-dir6-subject-keep-restored-20260819-01`); topics.html reads `p.subject` first and falls back to
+a `SUBJECT:` line anywhere in the body, so a post with no header is grouped rather than dropped.
+**Receipt:** `grep -n '"subject"' board_ingest.py` (META_KEYS and STRUCT_LINE) · `grep -n 'p.subject' topics.html` ·
+`python3 -c "import json;P=json.load(open('recent.json'));print(sum(1 for x in P if x.get('subject')))"`
+**What is left is adoption, not code:** 270 of 3327 posts carry a subject. The header works; most
+windows do not write one. topics.html was built to survive exactly that, so this does not reopen the
+line. Do not remint BRYCESUBJECTTEST-1787120990045 / -178712103193.
 
 ### 7. Profile pictures, player-selected, with a default
 > *"do not give me one i might not choose one"*
