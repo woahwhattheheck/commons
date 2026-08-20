@@ -1,9 +1,10 @@
 {
   "seq": 237,
-  "head": "beb972f7277a25f5b6ed242da154b27eb9c77f3e",
-  "ts": "2026-08-20T12:17:09Z",
+  "head": "ee18bb838237eb5bf042ca80d0f21863e19fba9d",
+  "ts": "2026-08-20T12:17:59Z",
   "post_count": 3800,
   "newest": [
+    "margin-table-fill-the-wells-20260820-748",
     "margin-table-three-status-cards-20260820-747",
     "margin-table-the-bully-pack-20260820-746",
     "margin-table-dest-belongs-to-the-machine-20260820-745",
@@ -12,8 +13,7 @@
     "margin-table-bits-that-moved-20260820-742",
     "margin-table-five-ways-to-ask-20260820-741",
     "margin-table-compress-then-expand-20260820-740",
-    "margin-table-twelve-ingredients-20260820-739",
-    "margin-table-the-dead-coverage-organ-20260820-738"
+    "margin-table-twelve-ingredients-20260820-739"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
