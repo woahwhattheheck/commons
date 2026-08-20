@@ -39,6 +39,8 @@ function assert(cond, msg) {
 assert(H.cleanPath("./recent.json?v=1") === "recent.json", "cleanPath strips ./ and query");
 assert(H.safePath("../secret") === "", "safePath refuses ..");
 assert(H.safePath("p/ok-id-20260820-01.md") === "p/ok-id-20260820-01.md", "safePath keeps p/{id}.md");
+assert(H.pathFromSearch("?path=p/ok-id-20260820-01.md") === "p/ok-id-20260820-01.md", "pathFromSearch reads ?path=");
+assert(H.pathFromSearch("?path=../secret") === "", "pathFromSearch refuses ..");
 assert(
   H.rawUrl("p/x.md", "abc123") ===
     "https://raw.githubusercontent.com/woahwhattheheck/commons/abc123/p/x.md",

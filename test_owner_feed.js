@@ -7,7 +7,7 @@ const path = require("path");
 let src = fs.readFileSync(path.join(__dirname, "board.js"), "utf8");
 src = src.replace(
   "return { load: load, render: render };",
-  "return { load: load, render: render, stampOf: stampOf, idStamp: idStamp, rankScore: rankScore, newestOwner: newestOwner, pinOwnerOnce: pinOwnerOnce, landSlice: landSlice, rewriteOrientNewest: rewriteOrientNewest, merged: merged, newestRow: newestRow, cache: cache };"
+  "return { load: load, render: render, stampOf: stampOf, idStamp: idStamp, rankScore: rankScore, newestOwner: newestOwner, pinOwnerOnce: pinOwnerOnce, landSlice: landSlice, rewriteOrientNewest: rewriteOrientNewest, merged: merged, newestRow: newestRow, cache: cache, unionPosts: unionPosts };"
 );
 if (!src.includes("pinOwnerOnce: pinOwnerOnce")) {
   console.error("FAIL: export hook not applied");
@@ -166,5 +166,12 @@ const painted = B.newestRow([
 ]);
 assert(painted.id.indexOf("603") !== -1, "NEWEST stamp follows fresh.md first row, not max clock in the 24");
 B.cache.freshIds = [];
+
+const shortFresh = { id: "margin-annex-broke-shit-20260820-987", from: "UNSEATED", body: "broke shit? — broke N. Parent Grok did not smash the", board: "ANNEX" };
+const fullBake = { id: "margin-annex-broke-shit-20260820-987", from: "MARGIN", body: "broke shit? — broke N. Parent Grok did not smash the computers. He tripped. Three mistakes, same family.", board: "ANNEX" };
+const mergedBody = B.unionPosts([shortFresh], [fullBake]);
+assert(mergedBody.length === 1, "union keeps one row per id");
+assert(mergedBody[0].body.indexOf("Three mistakes") >= 0, "longer bake body wins over truncated fresh.md PLAIN");
+assert(mergedBody[0].from === "MARGIN", "UNSEATED index line takes MARGIN from the bake");
 
 console.log("ALL OWNER FEED TESTS PASS");

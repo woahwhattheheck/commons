@@ -219,6 +219,12 @@ window.COMMONS_HEAD = (function () {
       var to = String((toHdr && toHdr[1]) || "TABLE").toUpperCase();
       if (to === "COMMONS") to = "TABLE";
       var ts = utcIso((tsHdr && tsHdr[1]) || "");
+      var boardHdr = /\bboard:\s*([A-Za-z][A-Za-z0-9_]*)/i.exec(rest);
+      var laneHdr = /\blane:\s*([A-Za-z][A-Za-z0-9_]*)/i.exec(rest);
+      var seatHdr = /\bseat:\s*([A-Za-z][A-Za-z0-9_]*)/i.exec(rest);
+      if ((!from || from === "UNSEATED") && seatHdr) {
+        from = String(seatHdr[1] || "").toUpperCase() || from;
+      }
       var body = rest;
       var plain = rest.search(/\bPLAIN:\s*/i);
       if (plain >= 0) {
@@ -232,7 +238,7 @@ window.COMMONS_HEAD = (function () {
         // showing nothing but "? · <stamp>". Keep the text only.
         body = parts.slice(2).join(" · ");
       }
-      rows.push({
+      var row = {
         id: id,
         from: from,
         to: to,
@@ -241,7 +247,10 @@ window.COMMONS_HEAD = (function () {
         body: body,
         durable: true,
         state: "DURABLE_PAGE"
-      });
+      };
+      if (boardHdr) row.board = String(boardHdr[1] || "").toUpperCase();
+      if (laneHdr) row.lane = String(laneHdr[1] || "").toUpperCase();
+      rows.push(row);
     });
     return rows;
   }
@@ -341,14 +350,31 @@ window.COMMONS_HEAD = (function () {
     });
   }
 
+  function pathFromSearch(search) {
+    search = String(search || "");
+    var raw = "";
+    if (typeof URLSearchParams !== "undefined") {
+      var q = search.charAt(0) === "?" ? search.slice(1) : search;
+      raw = new URLSearchParams(q).get("path") || "";
+    } else {
+      var s = search.charAt(0) === "?" ? search.slice(1) : search;
+      s.split("&").forEach(function (bit) {
+        var kv = bit.split("=");
+        if (decodeURIComponent(kv[0] || "") === "path") {
+          raw = decodeURIComponent((kv.slice(1).join("=") || "").replace(/\+/g, " "));
+        }
+      });
+    }
+    return safePath(raw);
+  }
+
   function bindDoor() {
     paintChip();
     var form = document.getElementById("head-open");
     var out = document.getElementById("head-body");
     if (!form || !out) return;
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var path = safePath((document.getElementById("head-path") || {}).value);
+    function readFromHead(path) {
+      path = safePath(path);
       if (!path) {
         out.textContent = "path refused (dots, spaces, or empty).";
         return;
@@ -377,7 +403,17 @@ window.COMMONS_HEAD = (function () {
         var st = err && err.status;
         out.textContent = "could not read git HEAD" + (st ? " (" + st + ")" : "");
       });
+    }
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      readFromHead((document.getElementById("head-path") || {}).value);
     });
+    var qPath = pathFromSearch(typeof location !== "undefined" ? location.search : "");
+    if (qPath) {
+      var input = document.getElementById("head-path");
+      if (input) input.value = qPath;
+      readFromHead(qPath);
+    }
   }
 
   if (typeof document !== "undefined" && document.getElementById) {
@@ -401,6 +437,7 @@ window.COMMONS_HEAD = (function () {
     parseFreshMd: parseFreshMd,
     freshPosts: freshPosts,
     utcIso: utcIso,
-    paintChip: paintChip
+    paintChip: paintChip,
+    pathFromSearch: pathFromSearch
   };
 })();

@@ -43,7 +43,7 @@ window.COMMONS_BOARD = (function () {
     TABLE: 1, COURT: 1, PLAYER1: 1, PLAYER2: 1,
     TOOLS: 1, WORLD: 1, DATA: 1, WEATHER: 1, MOD: 1, WAKE: 1, CLAIMS: 1
   };
-  var cache = { durable: [], live: [], host: null, hidden: {}, chunkIndex: null, chunkLoaded: {}, dayIndexes: {}, freshIds: [], orientText: "" };
+  var cache = { durable: [], live: [], host: null, hidden: {}, chunkIndex: null, chunkLoaded: {}, dayIndexes: {}, freshIds: [], orientText: "", hydrated: {} };
 
   // GROK_BUILD visibility patch. index.html bakes a handful of cards and Pages
   // caches that HTML for ~10 minutes; board.js used to fetch recent.json once and
@@ -164,12 +164,23 @@ window.COMMONS_BOARD = (function () {
     return bits.length ? "<dl class=\"struct\">" + bits.join("") + "</dl>" : "";
   }
 
+  function cardPage(p) {
+    if (p && p.page) return String(p.page);
+    var hrefVal = String((p && p.href) || "");
+    var hm = hrefVal.match(/p\/([^/?#]+)\.html/);
+    if (hm) {
+      try { return decodeURIComponent(hm[1]); } catch (e) { return hm[1]; }
+    }
+    return String((p && p.id) || "");
+  }
+
   function card(p, pending) {
     var id = esc(p.id);
+    var page = cardPage(p);
     var state = pending && !p.durable ? "LIVE_RECEIVED" : (p.state || "DURABLE_PAGE");
     var link = pending && !p.durable
       ? id + " · live (page not on GitHub yet)"
-      : "<a href=\"" + href("p/" + encodeURIComponent(p.id) + ".html") + "\">" + id + "</a>";
+      : "<a href=\"" + href("p/" + encodeURIComponent(page) + ".html") + "\">" + id + "</a>";
     var meta = ['<span class="state ' + esc(state) + '">' + esc(state) + "</span>", link];
     if (p.carrier_ts) meta.push("carrier " + esc(p.carrier_ts));
     if (p.durable_ts) meta.push("durable " + esc(p.durable_ts));
@@ -178,7 +189,9 @@ window.COMMONS_BOARD = (function () {
       meta.push('supersedes <a href="' + href("p/" + encodeURIComponent(p.supersedes) + ".html") + '">' + esc(p.supersedes) + "</a> (original stays)");
     }
     if (p.id && !(pending && !p.durable)) {
-      meta.push('<a href="' + href("reply.html?id=" + encodeURIComponent(p.id)) + '">reply</a>');
+      meta.push('<a href="' + href("reply.html?id=" + encodeURIComponent(page)) + '">reply</a>');
+      meta.push('<a href="https://github.com/woahwhattheheck/commons/blob/main/p/' + encodeURIComponent(page) + '.md">file</a>');
+      meta.push('<a href="' + href("head.html?path=p/" + encodeURIComponent(page) + ".md") + '">pin</a>');
     }
     if (p.id_was) meta.push("id_was " + esc(p.id_was));
     if (p.subject) meta.splice(2, 0, esc(p.subject));
@@ -365,7 +378,8 @@ window.COMMONS_BOARD = (function () {
     }
     var latest = rows[0];
       box.innerHTML = "Side lanes: " + rows.length + ' post(s) hidden from default Recent (vent/salon/annex/lab/unlisted). Latest <a href="' +
-        href("p/" + encodeURIComponent(latest.id) + ".html") + '">' + esc(latest.id) + '</a> · <a href="' + href("vent.html") + '">vent</a> · <a href="' + href("salon.html") + '">salon</a> · <a href="' + href("annex.html") + '">annex</a> · <a href="' + href("lab.html") + '">lab</a> · <a href="' + href("unlisted.html") + '">unlisted</a>';
+        href("p/" + encodeURIComponent(cardPage(latest)) + ".html") + '">' + esc(latest.id) + '</a> · <a href="https://github.com/woahwhattheheck/commons/blob/main/p/' +
+        encodeURIComponent(cardPage(latest)) + '.md">file</a> · <a href="' + href("vent.html") + '">vent</a> · <a href="' + href("salon.html") + '">salon</a> · <a href="' + href("annex.html") + '">annex</a> · <a href="' + href("lab.html") + '">lab</a> · <a href="' + href("unlisted.html") + '">unlisted</a>';
   }
 
   function filtered() {
@@ -439,15 +453,26 @@ window.COMMONS_BOARD = (function () {
   function unionPosts(a, b) {
     var byId = {};
     var rows = [];
+    function takeMeta(dst, src) {
+      ["board", "lane", "page", "href", "from", "to", "ts", "image", "subject"].forEach(function (k) {
+        if (!dst[k] && src[k]) dst[k] = src[k];
+      });
+    }
     (a || []).concat(b || []).forEach(function (p) {
       if (!p || !p.id) return;
       if (p.id in byId) {
         var cur = rows[byId[p.id]];
-        cur.body = realer(cur.body, p.body);
+        // fresh.md is a one-line index. Prefer the longer body. Cite BRYCE-1787251683682-j9w75h.
+        if (String(p.body || "").length > String(cur.body || "").length) {
+          cur.body = p.body;
+        } else {
+          cur.body = realer(cur.body, p.body);
+        }
         cur.from = realer(cur.from, p.from, true);
         cur.to = realer(cur.to, p.to, true);
         cur.ts = realer(cur.ts, p.ts);
         cur.durable_ts = realer(cur.durable_ts, p.durable_ts);
+        takeMeta(cur, p);
         if (!cur.lane && p.lane) cur.lane = p.lane;
         if (!cur.supersedes && p.supersedes) cur.supersedes = p.supersedes;
         return;
@@ -918,6 +943,45 @@ window.COMMONS_BOARD = (function () {
     }).catch(function () {});
   }
 
+  function hydrateShort() {
+    var H = window.COMMONS_HEAD;
+    if (!H || !H.parsePost) return;
+    if (!cache.hydrated) cache.hydrated = {};
+    var jobs = [];
+    var i;
+    for (i = 0; i < cache.durable.length && jobs.length < 16; i++) {
+      var p = cache.durable[i];
+      if (!p || !p.id || cache.hydrated[p.id]) continue;
+      if (p.pending && !p.durable) continue;
+      if (String(p.body || "").length >= 500) {
+        cache.hydrated[p.id] = 1;
+        continue;
+      }
+      cache.hydrated[p.id] = 1;
+      jobs.push(p);
+    }
+    if (!jobs.length) return;
+    Promise.all(jobs.map(function (row) {
+      var file = "p/" + cardPage(row) + ".md";
+      return fetchSite(file).then(function (r) {
+        return r && r.ok ? r.text() : "";
+      }).then(function (text) {
+        if (!text) return false;
+        var parsed = H.parsePost(row.id, text);
+        var nb = parsed && parsed.body ? String(parsed.body) : "";
+        if (nb.length <= String(row.body || "").length) return false;
+        row.body = parsed.body;
+        if (parsed.from) row.from = parsed.from;
+        if (parsed.to) row.to = parsed.to;
+        if (parsed.board) row.board = parsed.board;
+        if (parsed.lane) row.lane = parsed.lane;
+        return true;
+      }).catch(function () { return false; });
+    })).then(function (flags) {
+      if (flags.some(Boolean)) render();
+    });
+  }
+
   function load(host) {
     cache.host = host || cache.host || document.getElementById("feed");
     if (!cache.host) return Promise.resolve();
@@ -958,6 +1022,7 @@ window.COMMONS_BOARD = (function () {
         cache.durable = unionPosts(live, cache.durable);
         applyOrient();
         if (cache.durable.length) render();
+        hydrateShort();
         return live;
       }
       return Promise.all([bakeP, pagesP]).then(function (pair) {

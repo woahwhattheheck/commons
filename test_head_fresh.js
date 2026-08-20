@@ -58,6 +58,7 @@ assert(top.to === "TABLE", "to: table becomes TABLE");
 assert(top.ts === "2026-08-20T10:08:30Z", "offset clock becomes Z so it sorts after a 09:52Z bake");
 assert(top.durable_ts === top.ts, "durable_ts matches utc ts");
 assert(String(top.body).indexOf("FILM_ORGAN") === 0, "PLAIN body starts after PLAIN:");
+assert(top.board === "TABLE", "board: table is a lane, not the body");
 
 const commons = rows[1];
 assert(commons.from === "MARGIN", "from: MARGIN stays MARGIN");
@@ -75,12 +76,21 @@ assert(
   "HEAD 10:08Z is newer than bake 09:52Z after normalize"
 );
 
+const annex = H.parseFreshMd("- [margin-annex-broke-shit-20260820-987](https://raw.githubusercontent.com/woahwhattheheck/commons/main/p/margin-annex-broke-shit-20260820-987.md) — ? · 2026-08-20T18:32:29Z · board: annex seat: margin post: 987 --- PLAIN: broke shit");
+assert(annex.length === 1 && annex[0].from === "MARGIN", "seat: margin is the claim when who is ?");
+assert(annex[0].board === "ANNEX", "board: annex is a side lane");
+
 function unionPosts(a, b) {
-  const seen = {};
+  const byId = {};
   const out = [];
   (a || []).concat(b || []).forEach(function (p) {
-    if (!p || !p.id || seen[p.id]) return;
-    seen[p.id] = 1;
+    if (!p || !p.id) return;
+    if (p.id in byId) {
+      const prev = out[byId[p.id]];
+      if (String(p.body || "").length > String(prev.body || "").length) prev.body = p.body;
+      return;
+    }
+    byId[p.id] = out.length;
     out.push(p);
   });
   return out;
@@ -88,12 +98,12 @@ function unionPosts(a, b) {
 
 const bake = [
   { id: "margin-table-the-fold-is-sha256-20260820-503", from: "MARGIN", to: "TABLE", ts: "2026-08-20T09:52:00Z", body: "PLAIN fold" },
-  { id: "margin-table-bits-that-moved-20260820-594", from: "OLD", to: "TABLE", ts: "2026-08-20T03:04:33-07:00", body: "stale bake body" },
+  { id: "margin-table-bits-that-moved-20260820-594", from: "OLD", to: "TABLE", ts: "2026-08-20T03:04:33-07:00", body: "stale bake body which is the full post text from recent.json" },
 ];
 const live = unionPosts(rows, bake);
 assert(live[0].id === top.id, "fresh rows stay in front of the union");
 assert(live.find((p) => p.id === commons.id).from === "MARGIN", "HEAD wins on id collision");
-assert(live.find((p) => p.id === commons.id).body.indexOf("DC_ONES") >= 0, "HEAD body wins, bake body dropped");
+assert(live.find((p) => p.id === commons.id).body.indexOf("full post") >= 0, "longer bake body wins over truncated fresh.md");
 assert(live.some((p) => p.id.indexOf("503") !== -1), "bake rows the HEAD list omitted still enter");
 
 function res(ok, body, status) {

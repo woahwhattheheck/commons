@@ -1197,6 +1197,7 @@ def feed_item(meta, body):
         "to": meta.get("to") or "",
         "ts": meta.get("ts") or "",
         "href": "./p/" + page_of(meta) + ".html",
+        "page": page_of(meta),
         "body": body,
         "state": meta.get("state") or "DURABLE_PAGE",
         "carrier_ts": meta.get("carrier_ts") or meta.get("ts") or "",
@@ -1250,6 +1251,14 @@ def article_html(meta, body, prefix="./"):
     # wants to later.
     bits.append('<a href="%sreply.html?id=%s">reply</a>'
                 % (html.escape(prefix), urllib.parse.quote(page_of(meta), safe="")))
+    # Owner phone: Pages p/{id}.html 404s until ingest. The .md is the post.
+    # GitHub blob and head.html?path= do not 404 if the file exists on HEAD.
+    # Cite BRYCE-1787250875290-fbijgq · BRYCE-1787251683682-j9w75h.
+    page = page_of(meta)
+    bits.append('<a href="https://github.com/woahwhattheheck/commons/blob/main/p/%s.md">file</a>'
+                % html.escape(page))
+    bits.append('<a href="%shead.html?path=p/%s.md">pin</a>'
+                % (html.escape(prefix), html.escape(page)))
     if meta.get("subject"):
         bits.append("subject " + html.escape(str(meta.get("subject"))))
     struct = []
