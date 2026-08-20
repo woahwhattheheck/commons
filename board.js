@@ -8,25 +8,29 @@ window.COMMONS_BOARD = (function () {
     "https://ntfy.tedomum.net",
     "https://ntfy.hostux.net"
   ];
-  var NTFY_MAX_WINDOW_S = 1800;
-  var NTFY_OVERLAP_S = 300;
   var NTFY_MAX_EVENTS = 120;
   var NTFY_MAX_BYTES = 262144;
+  // A post is not a commit. ntfy holds every post for 72 h whether or not the
+  // Actions runner ever woke up to commit it, so that layer -- not git HEAD --
+  // is the earliest place a post exists. The old window was
+  // max(now-30m, newestDurable-5m): capped at 30 minutes, and CLAMPED TO FIVE
+  // when the bake was fresh, because the clamp assumed anything older was
+  // already durable. An uncommitted post older than that was unreachable from
+  // the page while sitting in plain sight on the ntfy road.
+  // Widened, but INQUISITOR order 009 still holds: an over-cap body is
+  // discarded whole rather than rendered oldest-first as if it were current.
+  // So walk widest-first and fall back a step on discard -- a burst degrades to
+  // the old 30 min instead of taking the overlay down. Never narrower than
+  // before, usually much wider.
+  var NTFY_WINDOWS_S = [21600, 7200, 1800];
 
-  function ntfySince() {
-    var now = Math.floor(Date.now() / 1000);
-    var since = now - NTFY_MAX_WINDOW_S;
-    var newest = 0;
-    (cache.durable || []).forEach(function (p) {
-      var t = Date.parse((p && (p.durable_ts || p.carrier_ts || p.ts)) || "");
-      if (!isNaN(t) && t / 1000 > newest) newest = t / 1000;
-    });
-    if (newest) since = Math.max(since, Math.floor(newest) - NTFY_OVERLAP_S);
-    return since;
+  function ntfySince(windowS) {
+    return Math.floor(Date.now() / 1000) - (windowS || NTFY_WINDOWS_S[0]);
   }
 
-  function ntfyUrl(host) {
-    return (host || NTFY_HOSTS[0]) + "/" + NTFY_TOPIC + "/json?poll=1&since=" + ntfySince();
+  function ntfyUrl(host, windowS) {
+    return (host || NTFY_HOSTS[0]) + "/" + NTFY_TOPIC +
+      "/json?poll=1&since=" + ntfySince(windowS);
   }
   var FROM_OK = {
     ZERO: 1, GROK: 1, KITE: 1, CAIRN: 1, SPALL: 1,
@@ -701,7 +705,7 @@ window.COMMONS_BOARD = (function () {
     return pump();
   }
 
-  function fetchOneHost(host) {
+  function fetchOneHost(host, windowS) {
     if (typeof AbortController === "undefined") return Promise.resolve([]);
     var ctrl = new AbortController();
     var hold = { reader: null, timedOut: false };
@@ -713,10 +717,13 @@ window.COMMONS_BOARD = (function () {
     var cleared = false;
     function clearT() { if (!cleared) { cleared = true; clearTimeout(t); } }
     var opts = { cache: "no-store", credentials: "omit", signal: ctrl.signal };
-    return fetch(ntfyUrl(host), opts).then(function (r) {
+    return fetch(ntfyUrl(host, windowS), opts).then(function (r) {
       return boundedBody(r, ctrl, clearT, hold);
     }).then(function (text) {
-      if (text === null) return [];
+      // null is order 009's over-cap discard, distinct from a host that simply
+      // had nothing. The caller steps down to a narrower window on a discard,
+      // so the two must not collapse into the same empty array here.
+      if (text === null) return null;
       return parseNtfy(text);
     }).catch(function () { clearT(); return []; });
   }
@@ -728,22 +735,42 @@ window.COMMONS_BOARD = (function () {
       render();
       return Promise.resolve();
     }
-    var promises = NTFY_HOSTS.map(function (host) { return fetchOneHost(host); });
-    return Promise.all(promises).then(function (results) {
-      var seen = {};
-      var merged = [];
-      results.forEach(function (rows) {
-        (rows || []).forEach(function (p) {
-          if (!p || !p.id || seen[p.id]) return;
-          seen[p.id] = 1;
-          merged.push(p);
+    // Widest window first. If EVERY host that answered came back as an order
+    // 009 over-cap discard, the window itself is too wide for this burst --
+    // step down and try again rather than dropping the overlay entirely.
+    function attempt(i) {
+      var windowS = NTFY_WINDOWS_S[i];
+      return Promise.all(NTFY_HOSTS.map(function (host) {
+        return fetchOneHost(host, windowS);
+      })).then(function (results) {
+        var over = 0, answered = 0;
+        var seen = {};
+        var merged = [];
+        results.forEach(function (rows) {
+          if (rows === null) { over++; answered++; return; }
+          if (rows && rows.length) answered++;
+          (rows || []).forEach(function (p) {
+            if (!p || !p.id || seen[p.id]) return;
+            seen[p.id] = 1;
+            merged.push(p);
+          });
         });
+        if (over && over === answered && i + 1 < NTFY_WINDOWS_S.length) {
+          return attempt(i + 1);
+        }
+        if (merged.length > NTFY_MAX_EVENTS) merged = merged.slice(-NTFY_MAX_EVENTS);
+        if (over && !merged.length) {
+          cache.live = [];
+          overlayWarn(true);
+          render();
+          return;
+        }
+        overlayWarn(false);
+        cache.live = merged;
+        render();
       });
-      if (merged.length > NTFY_MAX_EVENTS) merged = merged.slice(-NTFY_MAX_EVENTS);
-      overlayWarn(false);
-      cache.live = merged;
-      render();
-    }).catch(function () {
+    }
+    return attempt(0).catch(function () {
       cache.live = [];
       overlayWarn(true, "live overlay unavailable (timeout or read failure) — showing durable posts only");
       render();
