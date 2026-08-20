@@ -246,18 +246,41 @@ window.COMMONS_HEAD = (function () {
 
   function freshPosts() {
     var hit = getCached(FRESH_KEY, SHA_TTL_MS);
-    if (hit && Array.isArray(hit.posts) && hit.posts.length) return Promise.resolve(hit.posts);
-    return headSha().then(function (sha) {
+    if (hit && Array.isArray(hit.posts) && hit.posts.length && hit.via === "pin") {
+      return Promise.resolve(hit.posts);
+    }
+    // Same-origin first. api.github.com can 403 / hang 20s; Bryce's refresh
+    // must not wait. Sha-pin upgrades the cache when it arrives.
+    var pinSettled = null;
+    var pinP = headSha().then(function (sha) {
       return rawText(sha, "fresh.md").then(function (text) {
-        var rows = parseFreshMd(text);
-        if (rows.length) {
-          setCached(FRESH_KEY, { sha: sha, posts: rows });
-          return rows;
-        }
-        return pagesFresh();
+        return { sha: sha, rows: parseFreshMd(text) };
       });
     }).catch(function () {
-      return pagesFresh();
+      return { sha: "", rows: [] };
+    });
+    pinP.then(function (pin) { pinSettled = pin; });
+    return pagesFresh().then(function (pages) {
+      if (pinSettled && pinSettled.rows && pinSettled.rows.length) {
+        setCached(FRESH_KEY, { sha: pinSettled.sha, posts: pinSettled.rows, via: "pin" });
+        return pinSettled.rows;
+      }
+      if (pages.length) {
+        setCached(FRESH_KEY, { sha: "", posts: pages, via: "pages" });
+        pinP.then(function (pin) {
+          if (pin.rows && pin.rows.length) {
+            setCached(FRESH_KEY, { sha: pin.sha, posts: pin.rows, via: "pin" });
+          }
+        });
+        return pages;
+      }
+      return pinP.then(function (pin) {
+        if (pin.rows && pin.rows.length) {
+          setCached(FRESH_KEY, { sha: pin.sha, posts: pin.rows, via: "pin" });
+          return pin.rows;
+        }
+        return [];
+      });
     });
   }
 

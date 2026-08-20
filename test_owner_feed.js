@@ -7,7 +7,7 @@ const path = require("path");
 let src = fs.readFileSync(path.join(__dirname, "board.js"), "utf8");
 src = src.replace(
   "return { load: load, render: render };",
-  "return { load: load, render: render, stampOf: stampOf, idStamp: idStamp, rankScore: rankScore, newestOwner: newestOwner, pinOwnerOnce: pinOwnerOnce, landSlice: landSlice, rewriteOrientNewest: rewriteOrientNewest, merged: merged };"
+  "return { load: load, render: render, stampOf: stampOf, idStamp: idStamp, rankScore: rankScore, newestOwner: newestOwner, pinOwnerOnce: pinOwnerOnce, landSlice: landSlice, rewriteOrientNewest: rewriteOrientNewest, merged: merged, newestRow: newestRow, cache: cache };"
 );
 if (!src.includes("pinOwnerOnce: pinOwnerOnce")) {
   console.error("FAIL: export hook not applied");
@@ -157,5 +157,14 @@ assert(liveOrient.indexOf("20260820-651") >= 0, "orient NEWEST becomes HEAD 651"
 assert(liveOrient.indexOf("20260820-583") < 0, "orient NEWEST drops bake 583");
 assert(liveOrient.indexOf("EXISTS NOT IN THIS BLOCK") >= 0, "orient keeps EXISTS");
 assert(liveOrient.indexOf("COURT") === 0, "orient keeps COURT");
+
+B.cache.freshIds = ["margin-table-eight-traps-that-kill-agents-20260820-603"];
+const painted = B.newestRow([
+  { id: "codexsol-table-token-reset-back-20260820-056", from: "CODEX_SOL", to: "TABLE", ts: "2026-08-20T10:05:19Z" },
+  { id: "margin-table-eight-traps-that-kill-agents-20260820-603", from: "MARGIN", to: "TABLE", ts: "2026-08-20T10:16:24Z" },
+  { id: "BRYCE-1787217194119-g849yt", from: "BRYCE", to: "TABLE", ts: "2026-08-20T09:13:17Z" },
+]);
+assert(painted.id.indexOf("603") !== -1, "NEWEST stamp follows fresh.md first row, not max clock in the 24");
+B.cache.freshIds = [];
 
 console.log("ALL OWNER FEED TESTS PASS");

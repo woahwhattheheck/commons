@@ -437,19 +437,32 @@ window.COMMONS_BOARD = (function () {
     return false;
   }
 
+  function newestRow(rows) {
+    var all = rows && rows.length ? rows : merged();
+    if (!all.length) return null;
+    var prefer = (cache.freshIds && cache.freshIds[0]) || "";
+    var i;
+    if (prefer) {
+      for (i = 0; i < all.length; i++) {
+        if (all[i] && all[i].id === prefer) return all[i];
+      }
+    }
+    var top = all[0];
+    for (i = 1; i < all.length; i++) {
+      if (stampOf(all[i]) > stampOf(top)) top = all[i];
+    }
+    return top;
+  }
+
   function paintNewest(rows) {
     var box = document.getElementById("newest-stamp");
     if (!box) return;
     var all = rows && rows.length ? rows : merged();
     if (!all.length) { box.textContent = "no posts loaded · polling HEAD fresh.md + recent.json every " + (COMMONS_POLL_MS / 1000) + "s"; return; }
-    var top = all[0];
-    var i;
-    for (i = 1; i < all.length; i++) {
-      if (stampOf(all[i]) > stampOf(top)) top = all[i];
-    }
-    box.textContent = "NEWEST " + String(top.id || "?") +
-      " · " + String(top.from || "?") + " → " + String(top.to || "?") +
-      " · " + (stampOf(top) || "?") +
+    var top = newestRow(all);
+    box.textContent = "NEWEST " + String((top && top.id) || "?") +
+      " · " + String((top && top.from) || "?") + " → " + String((top && top.to) || "?") +
+      " · " + (top ? (stampOf(top) || "?") : "?") +
       " · " + all.length + " loaded · polling every " + (COMMONS_POLL_MS / 1000) + "s";
   }
 
@@ -771,25 +784,37 @@ window.COMMONS_BOARD = (function () {
       var endless = cache.host.getAttribute("data-endless") === "1";
       var limit = parseInt(cache.host.getAttribute("data-limit") || "0", 10);
       var path = (!endless && limit) ? "recent.json" : "posts.json";
-      return Promise.all([
-        fetchSite(path).then(function (r) {
-          if (r && r.ok) return r.json();
-          return [];
-        }).catch(function () { return []; }),
-        loadFreshHead()
-      ]).then(function (pair) {
-        var feed = pair[0];
-        var fresh = pair[1];
+      var bakeP = fetchSite(path).then(function (r) {
+        if (r && r.ok) return r.json();
+        return [];
+      }).catch(function () { return []; });
+      // Same-origin fresh.md. Do not wait for api.github.com on first paint.
+      var pagesP = fetchSite("fresh.md").then(function (r) {
+        return r && r.ok ? r.text() : "";
+      }).then(function (t) {
+        var H = window.COMMONS_HEAD;
+        return (H && H.parseFreshMd) ? H.parseFreshMd(t) : [];
+      }).catch(function () { return []; });
+      var pinP = loadFreshHead();
+      function applyFresh(fresh, feed) {
         var next = asDurable(feed);
-        // HEAD fresh wins on id collision. recent.json is the bake.
         var live = unionPosts(asDurable(fresh), next.length ? next : cache.durable);
         cache.freshIds = (fresh || []).map(function (p) { return p && p.id; }).filter(Boolean);
         cache.durable = unionPosts(live, cache.durable);
         applyOrient();
         if (cache.durable.length) render();
+        return live;
+      }
+      return Promise.all([bakeP, pagesP]).then(function (pair) {
+        var feed = pair[0];
+        var live = applyFresh(pair[1], feed);
+        pinP.then(function (pinned) {
+          if (pinned && pinned.length) applyFresh(pinned, feed);
+        });
         maybeUnionHead();
         loadChunksIndex().then(function () { bindLoadOlder(); });
-        return liveFetch();
+        liveFetch();
+        return live;
       });
     })
       .catch(function () {
