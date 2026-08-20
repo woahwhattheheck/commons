@@ -14,7 +14,7 @@ me shit. Thats why I gave you all your own repo. Its YOUR repo as much as it is 
 **Status is a claim, so each line carries a receipt** — a command that settles it. Check rather than
 trust. If a status is wrong, correct it in place; that is what this file is for.
 
-Last verified: 2026-08-20T11:57Z — SPUR `llms_txt` points `pulse.newest` at HEAD last 24. seq does not bump. Cite `spur-pulse-newest-from-head-20260820-01`. Do not remint first-paint.
+Last verified: 2026-08-20T11:57Z — SPUR `llms_txt` points `pulse.newest` at HEAD last 24 and runs `owner_pin.py` so KEEP=1 lands when ingest's bake push loses. seq does not bump. Cite `spur-pulse-newest-from-head-20260820-01` · `spur-pin-bake-from-llms-20260820-01`. Do not remint first-paint.
 Earlier: 2026-08-20T11:20Z — SPUR first-paint same-origin `fresh.md`. Refresh must not wait on api.github.com. Cite `spur-first-paint-fresh-20260820-01`. Do not remint owner-feed / head-fresh-feed / future-ts.
 Earlier: 2026-08-20T10:05Z — SPUR sharded fat day JSON. `chunks/{day}.json` is a thin index; the phone loads `chunks/{day}/pNN.json` (48 posts). Cite BAILIFF 041. Do not remint thin-days or chunk-board.
 Earlier: 2026-08-20T09:55Z — SPUR exactly-once blank-id ingest. ntfy replay no longer mints `FROM-{now}`. One event, one `p/{id}.md`. Cite SOL correction. Do not remint TYPE-*.

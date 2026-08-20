@@ -73,6 +73,13 @@ class HeadPulse(unittest.TestCase):
             self.assertEqual(got["newest"][0], "id-00")
             self.assertEqual(got["seq"], 1)
 
+    def test_workflow_runs_owner_pin_and_adds_recent(self):
+        root = os.path.dirname(os.path.abspath(__file__))
+        yml = open(os.path.join(root, ".github", "workflows", "llms-txt.yml"), encoding="utf-8").read()
+        self.assertIn("python3 owner_pin.py", yml)
+        self.assertIn("git add llms.txt fresh.md pulse.json recent.json", yml)
+        self.assertIn("write_head_pulse", open(os.path.join(root, "llms_txt.py"), encoding="utf-8").read())
+
 
 if __name__ == "__main__":
     unittest.main()
