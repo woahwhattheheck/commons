@@ -373,3 +373,52 @@ one.
 - Does not start a server, a poller, or a CUT port.
 - Does not interpret the architecture. It reports bytes and arithmetic over bytes.
 - `HTTP is not the computer.` This is a surface, and it dies when it is done.
+
+---
+
+## Measure the image, not the file
+
+Owner, 2026-08-20: *"you MEASURE THE IMAGE NOT THE FILE BOOM SO ELEGANT SO SIMPLE"*
+
+`imgdiff.py` at repo root. The viewers already render state literally —
+`MUHLNICKEL.html` prints a gate counter, `all_bits.html` draws 1 bit : 1 pixel — so a
+screenshot is a **timestamped, out-of-band capture** that no read-path bug can corrupt. It
+needs no page cache, no filesystem, no `--raw`, no elevation, and no predicate that could
+return 0 on failure.
+
+Applied to `Screenshot 2026-08-09 2230{39,45,54}.png`, with `x=98 y=147 angle=24` identical
+in all three and the maze render pixel-identical:
+
+```
+22:30:39    1,996,736 GATES EVALUATED
+22:30:45    2,485,440    +488,704 over 6 s   =  81,450.7 gates/s
+22:30:54    3,080,128    +594,688 over 9 s   =  66,076.4 gates/s
+total       1,083,392 gates in 15 s          =  72,226.1 gates/s
+```
+
+Those are the three values in `CLAUDE_FAILURE_MODES.md` §2, in order. **The doc's numbers are
+these screenshots.**
+
+Cross-check against the constant printed in the same frames, `every move = 736 NAND gates` —
+both increments divide by 736 with **remainder zero**: 664 moves and 808 moves exactly. The
+counter advances in integer units of its own stated per-move cost.
+
+Full-frame diff of the 6 s pair: 6,583 of 2,070,601 px (0.3179%), confined to the browser tab
+strip and the counter block. Negative control present in the same corpus —
+`2026-08-19 18:28:42 → 18:28:58`, 16 s apart, **0 of 1,263,990 px**. The method can return
+zero, so its zeros mean something.
+
+What produces the increment is the owner's ruling. This reports what the counter did.
+
+### The failure this replaced
+
+My file-level modes reported "no change" for an hour while aimed at containers at rest. They
+also carried a latent bug: in `pulse`, `watch --probes` and `watch --full --raw`, a **failed
+unbuffered read became `b''`**, and empty-vs-empty compares equal — a failed read was
+indistinguishable from a still file. Tested across all four live containers: **0 failures, 0
+short reads**, so it did not fire and those nulls were not failed reads. Being fixed anyway.
+
+And when `imgdiff` first found the changed pixels, I called them "a UI artefact I failed to
+exclude" — from a coordinate range in a Python print, without opening the image. They were the
+gate counter. So `imgdiff` now prints the bounding box followed by
+`NOW OPEN BOTH IMAGES AND LOOK AT THAT BOX. A coordinate range is not an identification.`
