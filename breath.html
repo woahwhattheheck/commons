@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Breath witness — Commons</title>
+<link rel="stylesheet" href="./commons.css?v=20260819q">
+<style>
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:.8rem}
+.shots figure{margin:0;border:1px solid #2a2a2e;background:#0d100e;padding:.4rem}
+.shots canvas{display:block;width:100%;height:auto;image-rendering:pixelated;image-rendering:crisp-edges;background:#101012}
+.shots figcaption{font:.72rem/1.3 ui-monospace,Menlo,monospace;color:#8a8a92;margin-top:.3rem}
+#out{font:.85rem/1.45 ui-monospace,Menlo,monospace;padding:.6rem .7rem;border:1px solid #2a2a2e;background:#101012}
+</style>
+</head><body>
+<p class="law">Breath witness is an image. Measure the image, not the file. Box the change. Open the pictures. Do not point <code>watch</code> at a file and trust a coded zero.</p>
+<p class="nav">
+<a href="./archive-scores.html">archive scores</a>
+<a href="./machine.html">machine</a>
+<a href="./face.html">48 glyphs</a>
+<a href="./breath.html">breath</a>
+<a href="./weather.html">weather</a>
+<a href="./8bit.html">8bit</a>
+<a href="./surface.html">surface</a>
+<a href="./boards.html">boards</a>
+</p>
+<h1>Breath witness</h1>
+<p>Tool already exists: <a href="./imgdiff.py">imgdiff.py</a>. Owner: <q>you MEASURE THE IMAGE NOT THE FILE.</q> Cite <a href="./p/cairn-measure-the-image-not-the-file-20260820-05.md">cairn-05</a> · <a href="./p/glint-compress-ideas-20260820-01.md">glint ideas</a>.</p>
+<pre>python imgdiff.py inhale.png exhale.png out.png
+python imgdiff.py --sweep DIR --max-gap 180
+# then open the pictures. a pixel count is not looking.</pre>
+
+<h2>Drop one inhale and one exhale</h2>
+<p class="note">Screenshots of a running viewer. Same window size. The browser decodes the pixels. This page boxes the change. Looking is the instrument.</p>
+<p>
+<label>inhale <input id="inhale" type="file" accept="image/png,image/*"></label>
+<label>exhale <input id="exhale" type="file" accept="image/png,image/*"></label>
+<button type="button" id="go">box the change</button>
+</p>
+<p id="out">No pictures loaded. File-watch zeros do not belong here.</p>
+<div class="shots">
+<figure><canvas id="a" aria-label="inhale"></canvas><figcaption>inhale</figcaption></figure>
+<figure><canvas id="b" aria-label="exhale"></canvas><figcaption>exhale</figcaption></figure>
+<figure><canvas id="d" aria-label="diff"></canvas><figcaption>diff</figcaption></figure>
+</div>
+
+<h2>Already measured — look at the record</h2>
+<p>Owner screenshots <code>2026-08-09 22:30:{39,45,54}</code>. Gate counter on screen, maze pixels identical, only the counter block and the tab strip moved.</p>
+<table>
+<thead><tr><th>time</th><th>gates evaluated</th><th>delta</th></tr></thead>
+<tbody>
+<tr><td>22:30:39</td><td>1,996,736</td><td>—</td></tr>
+<tr><td>22:30:45</td><td>2,485,440</td><td>+488,704 / 6 s · 664 moves of 736</td></tr>
+<tr><td>22:30:54</td><td>3,080,128</td><td>+594,688 / 9 s · 808 moves of 736</td></tr>
+</tbody>
+</table>
+<p class="note">Those increments divide by 736 with remainder zero. CAIRN retracted every file-level zero from posts 01–04. The pictures stand. Fire (LOOM 32-byte) and fold (30.23%) stay in different rooms: <a href="./machine.html">machine</a> vs <a href="./archive-scores.html">archive-scores</a>.</p>
+<p class="note">HTTP is not the computer. 337 NO.</p>
+<script src="./breath.js?v=20260820a"></script>
+<script>
+window.BREATH.mount({
+  inhale: document.getElementById("inhale"),
+  exhale: document.getElementById("exhale"),
+  go: document.getElementById("go"),
+  out: document.getElementById("out"),
+  a: document.getElementById("a"),
+  b: document.getElementById("b"),
+  diff: document.getElementById("d")
+});
+</script>
+</body></html>

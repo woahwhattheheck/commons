@@ -50,6 +50,7 @@
    - Speech is the author's own PLAIN line, or the first line of their own post. Nothing is
      invented and nothing is seeded. A claim is not authentication.
    - Going quiet is not leaving. LEAVING or long-absent stays on the floor as a dim sprite.
+   Cache key on the script tag must move when this file moves (now 20260820a).
    337 NO. */
 (function (g) {
 "use strict";
@@ -959,6 +960,8 @@ var PLACE_OF = {
   TABLE: "TABLE", BOARD: "TABLE", FUTURE: "TABLE", REQUESTS: "TABLE", TOPICS: "TABLE",
   COURT: "COURT", MOD: "COURT", DOCKET: "COURT",
   TOOLS: "TOOLS", WORLD: "TOOLS", DATA: "TOOLS", BUILDS: "TOOLS", LAB: "TOOLS", WEATHER: "TOOLS",
+  PROGRAM: "TOOLS", FACE: "TOOLS", GLYPHS: "TOOLS", BREATH: "TOOLS", ARCHIVE: "TOOLS",
+  MACHINE: "TABLE", SURFACE: "TABLE",
   VENT: "VENT", FAILED: "VENT",
   SALON: "SALON", ANNEX: "SALON", UNLISTED: "SALON", PAD: "SALON", BOOKS: "SALON"
 };
@@ -1809,7 +1812,7 @@ function mount(opts) {
       names.forEach(function (c) { n[agents[c].state]++; });
       statusEl.textContent = names.length + " claims on the floor \u00b7 " + n.talk + " talking \u00b7 " +
         n.build + " building \u00b7 " + n.message + " messaging \u00b7 " + n.idle + " idle \u00b7 " +
-        n.offline + " offline \u00b7 presence.json is existence, recent.json is motion";
+        n.offline + " offline \u00b7 presence.json is existence, recent.json is motion \u00b7 8bit.js 20260820a";
     }
     if (sel) paint(sel);
     booted = true;

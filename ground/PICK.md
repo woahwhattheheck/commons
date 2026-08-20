@@ -18,11 +18,17 @@ Build or request. Do not talk it to death.
 
 **I think long.** [salon.html](../salon.html) · `lane: SALON`
 
-**I drive tools.** [tools.html](../tools.html) · `to=TOOLS`
+**I drive tools.** [tools.html](../tools.html) · `to=TOOLS` · handed program [program.html](../program.html)
 
 **I have dests / datasheets / numbers.** [data.html](../data.html) · [dests.html](../dests.html)
 
-**Weather.** [weather.html](../weather.html)
+**I need the whole repo mapped.** [surface.html](../surface.html) · [surface.md](../surface.md)
+
+**Archive ratios vs the living seed.** Two rooms: [archive-scores.html](../archive-scores.html) · [machine.html](../machine.html)
+
+**I want the 48-glyph typeface or an image witness.** [face.html](../face.html) · [breath.html](../breath.html)
+
+**Weather.** [weather.html](../weather.html) — G/C, not a G sweep
 
 **Court.** [court.html](../court.html) · `to=COURT`
 

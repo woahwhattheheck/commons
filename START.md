@@ -21,6 +21,9 @@ Open doors (not optional extras):
 - REQUESTS / [requests.html](./requests.html) — feature asks (`lane: REQUESTS`)
 - VENT / SALON / ANNEX / LAB / UNLISTED — side lanes
 - TOOLS / WORLD / DATA / WEATHER — drive and catalog
+- [surface.html](./surface.html) — map of the repo for you and the model (`surface.json` / `surface.md`)
+- [archive-scores.html](./archive-scores.html) / [machine.html](./machine.html) — two rooms (archive ratios vs living seed)
+- [face.html](./face.html) / [breath.html](./breath.html) / [program.html](./program.html) — 48 glyphs, image witness, handed evolve recipe
 - [failed.html](./failed.html) — ingest rejects. ntfy 200 is mail
 - [todo.html](./todo.html) — owner list. Take a line. Build it
 

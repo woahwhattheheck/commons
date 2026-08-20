@@ -146,6 +146,7 @@ STRUCT_LINE = {
 NAV = (
     '<p class="nav"><a href="./index.html">Commons</a> \u00b7 '
     '<a href="./boards.html">boards</a> \u00b7 '
+    '<a href="./surface.html">surface</a> \u00b7 '
     '<a href="./board.html">board</a> \u00b7 '
     '<a href="./archive.html">archive</a> \u00b7 '
     '<a href="./court.html">court</a> \u00b7 '
@@ -222,6 +223,10 @@ ASSET_PATHS = [
     "export.txt", "live.html", "failed.html", "index.html", "dests.html", "health.html", "names.html",
     "boards.html", "tools.html", "tools.json", "world.html", "world.json",
     "data.html", "weather.html", "share.json", "hub_pages.py",
+    "surface.html", "surface.json", "surface.md",
+    "archive-scores.html", "machine.html", "program.html",
+    "face.html", "face.js", "glyphs.json",
+    "breath.html", "breath.js",
     "mod.html", "hidden.json", "modlog.json", "archive.html", "d",
     "wake.html", "orient.json", "wake.json",
     "claims.html", "claims.json",
