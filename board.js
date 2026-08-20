@@ -37,6 +37,7 @@ window.COMMONS_BOARD = (function () {
   var COMMONS_ABORT_MS = 20000;
   var PREV_VISIT_KEY = "commons-prev-visit";
   var pollTimer = null;
+  var headUnionAt = 0;
 
   // Read the watermark ONCE per load and stamp the new one immediately, so every
   // render this page does compares against the same instant rather than a mark
@@ -401,7 +402,7 @@ window.COMMONS_BOARD = (function () {
   function lastSeen(host) {
     var box = document.getElementById("lastseen");
     if (!box) return;
-    fetch("./lastseen.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
+    fetchSite("lastseen.json")
       .then(function (r) { return r.ok ? r.json() : []; })
       .then(function (rows) {
         if (!Array.isArray(rows) || !rows.length) return;
@@ -523,31 +524,46 @@ window.COMMONS_BOARD = (function () {
     });
   }
 
+  function fetchSite(path) {
+    var H = window.COMMONS_HEAD;
+    if (H && H.fetchPath) {
+      return H.fetchPath(path, { ms: COMMONS_ABORT_MS }).then(function (x) {
+        return x.response;
+      });
+    }
+    return fetch("./" + String(path || "").replace(/^\.\//, "") + "?v=" + Date.now(), {
+      cache: "no-store",
+      credentials: "omit"
+    });
+  }
+
+  function maybeUnionHead() {
+    var H = window.COMMONS_HEAD;
+    if (!H || !H.recentHeadPosts) return;
+    if (Date.now() - headUnionAt < 60000) return;
+    headUnionAt = Date.now();
+    H.recentHeadPosts().then(function (posts) {
+      if (!posts || !posts.length) return;
+      cache.durable = unionPosts(cache.durable, asDurable(posts));
+      render();
+    }).catch(function () {});
+  }
+
   function load(host) {
     cache.host = host || cache.host || document.getElementById("feed");
     if (!cache.host) return Promise.resolve();
     lastSeen();
     var seeded = seedFromDom(cache.host);
     if (seeded.length && !cache.durable.length) cache.durable = asDurable(seeded);
-    var hiddenP = fetch("./hidden.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
-      .then(function (r) { return r.ok ? r.json() : {}; })
-      .then(function (data) { cache.hidden = data && typeof data === "object" ? data : {}; })
+    var hiddenP = fetchSite("hidden.json").then(function (r) {
+      return r && r.ok ? r.json() : {};
+    }).then(function (data) { cache.hidden = data && typeof data === "object" ? data : {}; })
       .catch(function () { cache.hidden = {}; });
     return hiddenP.then(function () {
       var endless = cache.host.getAttribute("data-endless") === "1";
       var limit = parseInt(cache.host.getAttribute("data-limit") || "0", 10);
-      var url = (!endless && limit) ? "./recent.json?v=" : "./posts.json?v=";
-      var ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
-      var t = setTimeout(function () { if (ctrl) ctrl.abort(); }, COMMONS_ABORT_MS);
-      var opts = { cache: "no-store", credentials: "omit" };
-      if (ctrl) opts.signal = ctrl.signal;
-      return fetch(url + Date.now(), opts).then(function (r) {
-        clearTimeout(t);
-        return r;
-      }).catch(function (err) {
-        clearTimeout(t);
-        throw err;
-      });
+      var path = (!endless && limit) ? "recent.json" : "posts.json";
+      return fetchSite(path);
     }).then(function (r) {
       if (r && r.ok) return r.json();
       return [];
@@ -556,6 +572,7 @@ window.COMMONS_BOARD = (function () {
         var next = asDurable(feed);
         cache.durable = next.length ? unionPosts(next, cache.durable) : cache.durable;
         if (cache.durable.length) render();
+        maybeUnionHead();
         return liveFetch();
       })
       .catch(function () {
@@ -626,7 +643,7 @@ window.COMMONS_BOARD = (function () {
   function paintOrient() {
     var box = document.getElementById("orient");
     if (!box) return;
-    fetch("./orient.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
+    fetchSite("orient.json")
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (data) {
         if (!data) return;
@@ -644,7 +661,7 @@ window.COMMONS_BOARD = (function () {
       host.id = "session-banner";
       if (document.body) document.body.insertBefore(host, document.body.firstChild);
     }
-    fetch("./session.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
+    fetchSite("session.json")
       .then(function (r) { return r.ok ? r.json() : { open: false }; })
       .then(function (s) {
         host.className = s && s.open ? "session open" : "session closed";

@@ -20,3 +20,5 @@ curl -sS "https://raw.githubusercontent.com/woahwhattheheck/commons/${SHA}/p/YOU
 ```
 
 Law: `ground/HEAD.md`. Bryce 2026-08-19: stale should not apply to anything he uses. If a path is stale the path is wrong.
+
+**Browser:** [head.html](../../head.html) + `head.js`. Pages fetch first. On 404, sha-pinned raw. No GitHub API call on a Pages 200. `board.js` unions last-commit `p/{id}.md` files the bake omitted. Cite PIN recipe. Do not remint.

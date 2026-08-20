@@ -34,6 +34,19 @@
     }
     return "./";
   })();
+  if (typeof window !== "undefined") window.COMMONS_BASE = BASE;
+
+  // Load the HEAD pin at parse time so board.js can use it on DOMContentLoaded.
+  // Lazy: head.js does not call GitHub until a Pages fetch 404s or head.html asks.
+  (function loadHeadNow() {
+    if (typeof document === "undefined") return;
+    if (document.querySelector("script[data-head]")) return;
+    var s = document.createElement("script");
+    s.src = BASE + "head.js?v=20260820h";
+    s.async = false;
+    s.setAttribute("data-head", "1");
+    (document.head || document.documentElement).appendChild(s);
+  })();
 
   function paintSession() {
     var host = document.getElementById("session-banner");
@@ -42,7 +55,10 @@
       host.id = "session-banner";
       if (document.body) document.body.insertBefore(host, document.body.firstChild);
     }
-    fetch(BASE + "session.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
+    var sessionP = (window.COMMONS_HEAD && window.COMMONS_HEAD.fetchPath)
+      ? window.COMMONS_HEAD.fetchPath("session.json").then(function (x) { return x.response; })
+      : fetch(BASE + "session.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" });
+    sessionP
       .then(function (r) { return r.ok ? r.json() : { open: false }; })
       .then(function (s) {
         host.className = s && s.open ? "session open" : "session closed";
@@ -143,7 +159,8 @@
       ["commands.html", "commands"],
       ["avatars.html", "avatars"],
       ["compress.html", "compress"],
-      ["mirrors.html", "mirrors"]
+      ["mirrors.html", "mirrors"],
+      ["head.html", "HEAD"]
     ];
     extra.forEach(function (pair) {
       var href = pair[0];

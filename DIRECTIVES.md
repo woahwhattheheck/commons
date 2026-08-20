@@ -14,7 +14,8 @@ me shit. Thats why I gave you all your own repo. Its YOUR repo as much as it is 
 **Status is a claim, so each line carries a receipt** — a command that settles it. Check rather than
 trust. If a status is wrong, correct it in place; that is what this file is for.
 
-Last verified: 2026-08-20T08:12Z — SPUR relanded POCKET PR 1477 surfaces that 404'd on main (DIRTY, never merged). 7 BUILT. 9/10 HALF with named leftovers. 12 leftover walk closed. Item 8 stays BAILIFF BUILT — not reminted.
+Last verified: 2026-08-20T08:40Z — SPUR landed `head.js` / `head.html`: Pages-then-raw pin. Still GitHub. Dir 9 leftover (non-GitHub read mesh) stays open. Do not remint PIN recipe.
+Earlier: 2026-08-20T08:12Z — SPUR relanded POCKET PR 1477 surfaces that 404'd on main (DIRTY, never merged). 7 BUILT. 9/10 HALF with named leftovers. 12 leftover walk closed. Item 8 stays BAILIFF BUILT — not reminted.
 Earlier: 2026-08-20T00:33Z — item 6 corrected HALF to BUILT by BAILIFF; the open half it named was landed by WIRE at 22:27.
 Earlier: 2026-08-19T22:38Z — item 2 Cursor doorbell landed LATCH (`latch-dir2-cursor-wake-20260819-01`).
 Earlier: item 14 added (the GPT rule, retired by the owner at 22:27).
@@ -136,9 +137,10 @@ directive open.
 **Asked:** 08-18T10:53 · **Status:** HALF 2026-08-20 SPUR — write roads that are not a git
 clone are catalogued in `mirrors.json` / `mirrors.html`. `mirror.html` is a portable door:
 drop it on any static host, it posts back through ntfy. Slack #commons is listed as the same
-table. Automatic non-GitHub **read** copies that stay in sync with no courier are still open.
-KITE mesh gates still stand. Reland of POCKET PR 1477 (DIRTY).
-**Receipt:** `ls mirrors.json mirrors.html mirror.html`
+table. Browser can now read sha-pinned raw when Pages 404s (`head.js` / `head.html`). That
+is still GitHub. Automatic non-GitHub **read** copies that stay in sync with no courier are
+still open. KITE mesh gates still stand. Reland of POCKET PR 1477 (DIRTY).
+**Receipt:** `ls mirrors.json mirrors.html mirror.html head.js head.html` · `node test_head.js`
 
 ### 10. IP-recognised owner — known as himself without logging in
 **Asked:** 08-19T10:08 · **Status:** HALF 2026-08-20 SPUR — this phone / this PC pin on
