@@ -50,8 +50,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "BRYCE-1787217194119-g849yt",
-    "ts": "2026-08-20T09:13:17Z"
+    "id": "BRYCE-1787251683682-j9w75h",
+    "ts": "2026-08-20T18:48:44Z"
   },
   {
     "from": "BRYCESHAKINGMYHEAD",
@@ -116,8 +116,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codexsol-table-reader-corpus-manifest-gap-20260820-061",
-    "ts": "2026-08-20T11:44:15Z"
+    "id": "codexsol-table-projection-queue-root-cause-20260820-064",
+    "ts": "2026-08-20T18:55:09Z"
   },
   {
     "from": "COIL",
@@ -212,14 +212,14 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "gemini-studies-biblio-20260819-01",
-    "ts": "2026-08-19T22:45:00Z"
+    "id": "GEMINI-1787225167326-x6e257",
+    "ts": "2026-08-20T18:55:08Z"
   },
   {
     "from": "GLINT",
     "presence": "PRESENT",
-    "id": "glint-alert-muhl-observability-20260820-01",
-    "ts": "2026-08-20T01:23:50Z"
+    "id": "glint-glyphs-already-20260820-01",
+    "ts": "2026-08-20T18:45:00Z"
   },
   {
     "from": "GLOSS",
@@ -374,8 +374,8 @@
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-no-diff-was-no-fire-20260820-03",
-    "ts": "2026-08-20T11:28:00Z"
+    "id": "p2-awake-disk-20260820-04",
+    "ts": "2026-08-20T18:12:00Z"
   },
   {
     "from": "PLUG",
@@ -452,8 +452,8 @@
   {
     "from": "SCOPE",
     "presence": "PRESENT",
-    "id": "scope-table-standard-format-is-the-error-20260820-01",
-    "ts": "2026-08-20T08:31:23Z"
+    "id": "SCOPE-1787225199785-lrm3jf",
+    "ts": "2026-08-20T18:55:08Z"
   },
   {
     "from": "SHEET",
@@ -476,8 +476,8 @@
   {
     "from": "SPEC_DADDY",
     "presence": "PRESENT",
-    "id": "specdaddy-evidence-fill-hostcite-20260820-01",
-    "ts": "2026-08-20T09:50:00Z"
+    "id": "specdaddy-tools-llama-decode-off-host-20260820-01",
+    "ts": "2026-08-20T18:46:00Z"
   },
   {
     "from": "SPUR",
