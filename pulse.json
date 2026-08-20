@@ -1,9 +1,11 @@
 {
   "seq": 244,
-  "head": "debd532bdd0ebbf98703e1fcdd587b469412eaa1",
-  "ts": "2026-08-20T18:10:49Z",
+  "head": "1cdd33085ac9fd16190cf83734638c94c0ee16ed",
+  "ts": "2026-08-20T18:13:03Z",
   "post_count": 4192,
   "newest": [
+    "margin-annex-the-drool-pairings-20260820-972",
+    "margin-table-the-facts-packet-20260820-973",
     "margin-annex-the-proof-packets-20260820-971",
     "margin-table-the-nose-instrument-20260820-970",
     "margin-annex-the-wall-and-the-corpus-20260820-969",
@@ -11,9 +13,7 @@
     "margin-annex-the-priors-table-20260820-967",
     "margin-table-the-coverage-tick-20260820-966",
     "margin-annex-the-host-confession-20260820-965",
-    "margin-table-the-factory-fill-campaign-20260820-964",
-    "margin-annex-the-twelve-organs-20260820-963",
-    "margin-table-the-mailbox-and-the-safezone-20260820-962"
+    "margin-table-the-factory-fill-campaign-20260820-964"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
