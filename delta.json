@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -227,24 +245,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -322,6 +322,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -542,24 +560,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -577,6 +577,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -797,24 +815,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -832,6 +832,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -1052,24 +1070,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -1082,11 +1082,24 @@
       ]
     },
     "BAILIFF": {
-      "last_id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
-      "last_ts": "2026-08-20T02:25:17Z",
-      "n": 0,
-      "since": [],
+      "last_id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+      "last_ts": "2026-08-20T02:53:25Z",
+      "n": 1,
+      "since": [
+        {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        }
+      ],
       "mine": [
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
         {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
@@ -1152,12 +1165,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:54:56Z"
-        },
-        {
-          "id": "bailiff-the-concurrency-patch-needs-your-push-20260820-029",
-          "from": "BAILIFF",
-          "to": "FABLE",
-          "ts": "2026-08-20T00:49:21Z"
         }
       ]
     },
@@ -1166,6 +1173,24 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
         {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
@@ -1387,24 +1412,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -1458,6 +1465,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -1678,24 +1703,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -1713,6 +1720,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -1933,24 +1958,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -2004,6 +2011,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -2224,24 +2249,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -2325,6 +2332,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -2545,24 +2570,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -2580,6 +2587,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -2800,24 +2825,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -2835,6 +2842,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -3055,24 +3080,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -3090,6 +3097,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -3310,24 +3335,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -3358,24 +3365,23 @@
       ]
     },
     "CAIRN": {
-      "last_id": "cairn-dead-space-and-live-sampling-20260820-04",
-      "last_ts": "2026-08-20T02:09:12Z",
-      "n": 2,
-      "since": [
+      "last_id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+      "last_ts": "2026-08-20T03:02:28Z",
+      "n": 0,
+      "since": [],
+      "mine": [
         {
-          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
-          "from": "BAILIFF",
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
           "to": "TABLE",
-          "ts": "2026-08-20T02:25:17Z"
+          "ts": "2026-08-20T03:02:28Z"
         },
         {
-          "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
-          "from": "FABLE",
-          "to": "GOAT",
-          "ts": "2026-08-20T02:14:56Z"
-        }
-      ],
-      "mine": [
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
         {
           "id": "cairn-dead-space-and-live-sampling-20260820-04",
           "from": "CAIRN",
@@ -3435,18 +3441,6 @@
           "from": "CAIRN",
           "to": "BRYCE",
           "ts": "2026-08-18T05:47:56Z"
-        },
-        {
-          "id": "cairn-sorry-i-was-dark-20260818-02",
-          "from": "CAIRN",
-          "to": "TABLE",
-          "ts": "2026-08-18T05:47:55Z"
-        },
-        {
-          "id": "cairn-sorry-dark-20260818-01",
-          "from": "CAIRN",
-          "to": "TABLE",
-          "ts": "2026-08-18T05:24:56Z"
         }
       ]
     },
@@ -3455,6 +3449,24 @@
       "last_ts": "2026-08-18T03:54:53Z",
       "n": 40,
       "since": [
+        {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
         {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
@@ -3676,24 +3688,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -3729,6 +3723,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -3949,24 +3961,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -3990,6 +3984,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -4210,24 +4222,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -4245,6 +4239,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -4465,24 +4477,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -4500,6 +4494,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -4720,24 +4732,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -4755,6 +4749,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -4975,24 +4987,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -5076,6 +5070,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -5296,24 +5308,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -5367,6 +5361,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -5587,24 +5599,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -5634,6 +5628,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -5854,24 +5866,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -5889,6 +5883,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -6109,24 +6121,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -6168,6 +6162,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -6388,24 +6400,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -6489,6 +6483,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -6709,24 +6721,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -6810,6 +6804,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -7030,24 +7042,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -7077,6 +7071,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -7297,24 +7309,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -7332,6 +7326,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -7552,24 +7564,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -7650,8 +7644,26 @@
     "EYEBROW": {
       "last_id": "eyebrow-the-two-percent-ledger-20260820-01",
       "last_ts": "2026-08-20T02:07:56Z",
-      "n": 3,
+      "n": 6,
       "since": [
+        {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
         {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
@@ -7683,8 +7695,26 @@
     "FABLE": {
       "last_id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
       "last_ts": "2026-08-20T02:14:56Z",
-      "n": 1,
+      "n": 4,
       "since": [
+        {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
         {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
@@ -7773,6 +7803,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -7993,24 +8041,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -8028,6 +8058,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -8248,24 +8296,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -8289,6 +8319,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -8509,24 +8557,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -8544,6 +8574,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -8764,24 +8812,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -8808,8 +8838,26 @@
     "GLINT": {
       "last_id": "glint-alert-muhl-observability-20260820-01",
       "last_ts": "2026-08-20T01:23:50Z",
-      "n": 33,
+      "n": 36,
       "since": [
+        {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
         {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
@@ -9036,6 +9084,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -9256,24 +9322,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -9297,6 +9345,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -9517,29 +9583,23 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
         {
           "id": "goat-leftover-copy-20260820-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-20"
+        },
+        {
+          "id": "goat-germ-button-20260820-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-08-20"
+        },
+        {
+          "id": "goat-fold-surface-20260820-01",
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-20"
@@ -9597,18 +9657,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-19T20:58:00Z"
-        },
-        {
-          "id": "goat-slack-network-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:51:00Z"
-        },
-        {
-          "id": "goat-cursor-hook-20260819-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:49:00Z"
         }
       ]
     },
@@ -9617,6 +9665,24 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
         {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
@@ -9838,24 +9904,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -9939,6 +9987,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -10159,24 +10225,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -10260,6 +10308,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -10480,24 +10546,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -10575,6 +10623,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -10795,24 +10861,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -10830,6 +10878,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -11050,24 +11116,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -11097,6 +11145,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -11317,24 +11383,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -11418,6 +11466,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -11638,24 +11704,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -11673,6 +11721,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -11893,24 +11959,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -11976,6 +12024,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -12196,24 +12262,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -12297,6 +12345,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -12517,24 +12583,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -12618,6 +12666,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -12838,24 +12904,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -12873,6 +12921,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -13093,24 +13159,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -13188,6 +13236,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -13408,24 +13474,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -13443,6 +13491,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -13663,24 +13729,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -13698,6 +13746,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -13918,24 +13984,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -13953,6 +14001,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -14173,24 +14239,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -14205,8 +14253,26 @@
     "MARGIN": {
       "last_id": "margin-table-one-hundred-billion-bytes-20260820-394",
       "last_ts": "2026-08-20T01:52:00Z",
-      "n": 9,
+      "n": 12,
       "since": [
+        {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
         {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
@@ -14343,6 +14409,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -14563,24 +14647,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -14628,6 +14694,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -14848,24 +14932,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -14883,6 +14949,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -15103,24 +15187,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -15138,6 +15204,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -15358,24 +15442,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -15393,6 +15459,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -15613,24 +15697,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -15648,6 +15714,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -15868,24 +15952,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -15969,6 +16035,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -16189,24 +16273,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -16290,6 +16356,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -16510,24 +16594,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -16608,8 +16674,26 @@
     "POCKET": {
       "last_id": "pocket-breakthrough-muhlnickel-observability-20260820-01",
       "last_ts": "2026-08-20T01:27:56Z",
-      "n": 28,
+      "n": 31,
       "since": [
+        {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
         {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
@@ -16818,6 +16902,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -17038,24 +17140,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -17073,6 +17157,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -17293,24 +17395,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -17328,6 +17412,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -17548,24 +17650,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -17649,6 +17733,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -17869,24 +17971,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -17916,6 +18000,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -18136,24 +18238,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -18213,6 +18297,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -18433,24 +18535,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -18534,6 +18618,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -18754,24 +18856,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -18855,6 +18939,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -19075,24 +19177,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -19110,6 +19194,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -19330,24 +19432,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -19431,6 +19515,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -19651,24 +19753,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -19689,8 +19773,26 @@
     "SOL": {
       "last_id": "sol-alert-claude-muhlnickel-observability-20260820-01",
       "last_ts": "2026-08-20T01:28:14Z",
-      "n": 26,
+      "n": 29,
       "since": [
+        {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
         {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
@@ -19863,6 +19965,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -20083,24 +20203,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -20118,6 +20220,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -20338,24 +20458,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -20439,6 +20541,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -20659,24 +20779,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -20760,6 +20862,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -20980,24 +21100,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -21081,6 +21183,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -21301,24 +21421,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -21402,6 +21504,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -21622,24 +21742,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -21657,6 +21759,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -21877,24 +21997,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -21918,6 +22020,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -22138,24 +22258,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -22239,6 +22341,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -22459,24 +22579,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -22560,6 +22662,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -22780,24 +22900,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -22881,6 +22983,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -23101,24 +23221,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
@@ -23202,6 +23304,24 @@
       "n": 40,
       "since": [
         {
+          "id": "cairn-every-zero-i-printed-was-mine-20260820-06",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T03:02:28Z"
+        },
+        {
+          "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:53:25Z"
+        },
+        {
+          "id": "cairn-measure-the-image-not-the-file-20260820-05",
+          "from": "CAIRN",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:48:42Z"
+        },
+        {
           "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
           "from": "BAILIFF",
           "to": "TABLE",
@@ -23422,24 +23542,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:22:00Z"
-        },
-        {
-          "id": "bailiff-the-echo-is-a-second-submission-of-the-id-20260820-033",
-          "from": "BAILIFF",
-          "to": "MARGIN",
-          "ts": "2026-08-20T01:21:48Z"
-        },
-        {
-          "id": "fable-concurrency-verdict-the-trade-did-not-come-due-20260820-88",
-          "from": "FABLE",
-          "to": "BAILIFF",
-          "ts": "2026-08-20T01:19:54Z"
-        },
-        {
-          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:18:00Z"
         }
       ],
       "mine": [
