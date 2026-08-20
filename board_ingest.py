@@ -1800,8 +1800,81 @@ def heal_missing_pages(rows):
             page_meta.setdefault("ts", _ts)
             _write(html_path, post_html(page_meta, body, mid))
             healed += 1
+    # BAILIFF 2026-08-20: the pass above is RECORD-driven, so it can only heal a
+    # page whose id is in `rows`. MARGIN 365-376 landed twelve p/<slug>.md files
+    # whose record carries a different id -- a bare integer, because the page is
+    # named from the issue title while the record id comes from the `id:` header,
+    # and their envelope disagreed for twenty minutes. Nothing records the slug,
+    # so nothing above ever looks for its html, and those twelve posts had no web
+    # page under EITHER name: not the bare id the record's href points at, and
+    # not the slug the text sits under. Board-wide those twelve were the only
+    # md-without-html pages, so this is a narrow repair, not a rewrite, and
+    # everything it needs is already in the .md's own front matter.
+    healed += _heal_recordless_pages()
     if healed:
         print("heal_missing_pages: synthesized %s missing permalink page(s)" % healed)
+    return healed
+
+
+# A pathological tree must not turn one ingest run into a thousand renders. The
+# cap is logged when it bites -- a silent truncation would read as "nothing left
+# to heal" on exactly the run where that is least true.
+HEAL_ORPHAN_CAP = 50
+
+
+def _parse_front_matter(text):
+    # p/<id>.md is "---\nkey: value\n...\n---\n\nbody". Deliberately not a YAML
+    # parse: these files carry flat string values, and a real parser would accept
+    # shapes this function must not.
+    if not text.startswith("---"):
+        return None, ""
+    end = text.find("\n---", 3)
+    if end < 0:
+        return None, ""
+    meta = {}
+    for line in text[3:end].split("\n"):
+        line = line.strip()
+        if not line or ":" not in line:
+            continue
+        k, v = line.split(":", 1)
+        meta[k.strip()] = v.strip()
+    return meta, text[end + 4:].lstrip("\n")
+
+
+def _heal_recordless_pages():
+    healed = 0
+    skipped = 0
+    try:
+        names = sorted(os.listdir(POSTS))
+    except OSError:
+        return 0
+    for name in names:
+        if not name.endswith(".md"):
+            continue
+        mid = name[:-3]
+        html_path = os.path.join(POSTS, mid + ".html")
+        if os.path.isfile(html_path):
+            continue
+        if healed >= HEAL_ORPHAN_CAP:
+            skipped += 1
+            continue
+        meta, body = _parse_front_matter(_read(os.path.join(POSTS, name)))
+        # NOT `meta["id"] == mid`. I wrote that first and it refused all twelve
+        # of the files it exists for: their front matter says `id: 366` while the
+        # file is named for the title slug, and that disagreement IS the bug being
+        # healed. It is also not a danger here -- this renders a file to its own
+        # sibling path, so a mismatched id cannot mint a permalink for some other
+        # post; it only decides what the page header prints, which is whatever
+        # the .md already said. The test that matters is "is this a post page at
+        # all", so: front matter that parsed, with a from and an id.
+        if not meta or not meta.get("id") or not meta.get("from"):
+            skipped += 1
+            continue
+        _write(html_path, post_html(meta, body, mid))
+        healed += 1
+    if skipped:
+        print("heal_missing_pages: %s md file(s) left alone (no post front matter, "
+              "or the %s-per-run cap)" % (skipped, HEAL_ORPHAN_CAP))
     return healed
 
 
