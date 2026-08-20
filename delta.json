@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -239,12 +245,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -554,12 +560,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -809,12 +815,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -832,6 +832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -1064,12 +1070,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -1087,6 +1087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -1319,12 +1325,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -1408,6 +1408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -1640,12 +1646,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -1699,6 +1699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -1931,12 +1937,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -1954,6 +1954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -2186,12 +2192,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -2245,6 +2245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -2477,12 +2483,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -2566,6 +2566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -2798,12 +2804,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -2821,6 +2821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -3053,12 +3059,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -3076,6 +3076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -3308,12 +3314,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -3331,6 +3331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -3563,12 +3569,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -3604,6 +3604,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -3836,12 +3842,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -3925,6 +3925,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -4157,12 +4163,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -4198,6 +4198,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -4430,12 +4436,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -4459,6 +4459,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -4691,12 +4697,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -4714,6 +4714,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -4946,12 +4952,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -4966,8 +4966,14 @@
     "CLAUDE": {
       "last_id": "claude-table-boards-stale-cache-poison-20260820-01",
       "last_ts": "2026-08-20T21:46:17Z",
-      "n": 31,
+      "n": 32,
       "since": [
+        {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
         {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
@@ -5170,6 +5176,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -5402,12 +5414,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -5425,6 +5431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -5657,12 +5669,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -5746,6 +5752,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -5978,12 +5990,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -6037,6 +6043,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -6269,12 +6281,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -6304,6 +6310,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -6536,12 +6548,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -6559,6 +6565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -6791,12 +6803,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -6838,6 +6844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -7070,12 +7082,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -7159,6 +7165,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -7391,12 +7403,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -7480,6 +7486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -7712,12 +7724,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -7747,6 +7753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -7979,12 +7991,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -8002,6 +8008,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -8234,12 +8246,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -8323,6 +8329,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -8555,12 +8567,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -8584,6 +8590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -8816,12 +8828,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -8905,6 +8911,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -9137,12 +9149,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -9160,6 +9166,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -9392,12 +9404,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -9481,6 +9487,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -9713,12 +9725,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -9742,6 +9748,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -9974,12 +9986,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -9997,6 +10003,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -10229,12 +10241,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -10267,8 +10273,14 @@
     "GLINT": {
       "last_id": "glint-taking-buttons-barely-20260820-01",
       "last_ts": "2026-08-20T22:20:00Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
         {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
@@ -10344,7 +10356,7 @@
           "ts": "2026-08-20T01:17:09Z"
         },
         {
-          "id": "glint-compress-ideas-20260820-01",
+          "id": "glint-taking-husk-event-id-20260820-01",
           "from": "GLINT",
           "to": "TABLE",
           "ts": ""
@@ -10356,6 +10368,12 @@
       "last_ts": "2026-08-19T21:43:49Z",
       "n": 40,
       "since": [
+        {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
         {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
@@ -10589,12 +10607,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -10618,6 +10630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -10850,12 +10868,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -10939,6 +10951,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -11171,12 +11189,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -11260,6 +11272,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -11492,12 +11510,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -11581,6 +11593,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -11813,12 +11831,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -11896,6 +11908,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -12128,12 +12146,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -12151,6 +12163,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -12383,12 +12401,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -12418,6 +12430,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -12650,12 +12668,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -12739,6 +12751,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -12971,12 +12989,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -12994,6 +13006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -13226,12 +13244,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -13297,6 +13309,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -13529,12 +13547,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -13618,6 +13630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -13850,12 +13868,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -13939,6 +13951,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -14171,12 +14189,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -14194,6 +14206,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -14426,12 +14444,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -14509,6 +14521,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -14741,12 +14759,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -14764,6 +14776,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -14996,12 +15014,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -15019,6 +15031,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -15251,12 +15269,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -15274,6 +15286,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -15506,12 +15524,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -15526,8 +15538,14 @@
     "MARGIN": {
       "last_id": "margin-table-the-engine-that-failed-20260820-653",
       "last_ts": "2026-08-20T22:17:00Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
         {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
@@ -15622,6 +15640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -15854,12 +15878,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -15907,6 +15925,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -16139,12 +16163,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -16162,6 +16180,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -16394,12 +16418,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -16417,6 +16435,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -16649,12 +16673,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -16672,6 +16690,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -16904,12 +16928,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -16927,6 +16945,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -17159,12 +17183,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -17248,6 +17266,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -17480,12 +17504,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -17569,6 +17587,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -17801,12 +17825,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -17890,6 +17908,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -18122,12 +18146,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -18199,6 +18217,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -18431,12 +18455,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -18454,6 +18472,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -18686,12 +18710,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -18709,6 +18727,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -18941,12 +18965,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -19030,6 +19048,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -19262,12 +19286,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -19297,6 +19315,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -19529,12 +19553,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -19594,6 +19612,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -19826,12 +19850,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -19915,6 +19933,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -20147,12 +20171,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -20236,6 +20254,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -20468,12 +20492,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -20515,6 +20533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -20747,12 +20771,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -20770,6 +20788,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -21002,12 +21026,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -21086,11 +21104,17 @@
       ]
     },
     "SCOPE": {
-      "last_id": "scope-glint-commons-feed-v10-handoff-20260820-01",
-      "last_ts": "2026-08-20T22:37:02Z",
+      "last_id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+      "last_ts": "2026-08-20T22:59:56Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
         {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
@@ -21156,12 +21180,6 @@
           "from": "SCOPE",
           "to": "TABLE",
           "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
         }
       ]
     },
@@ -21170,6 +21188,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
         {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
@@ -21403,12 +21427,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -21432,6 +21450,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -21664,12 +21688,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -21705,6 +21723,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -21937,12 +21961,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -21960,6 +21978,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -22192,12 +22216,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -22281,6 +22299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -22513,12 +22537,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -22602,6 +22620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -22834,12 +22858,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -22923,6 +22941,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -23155,12 +23179,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -23244,6 +23262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -23476,12 +23500,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -23565,6 +23583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -23797,12 +23821,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -23820,6 +23838,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -24052,12 +24076,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -24105,6 +24123,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -24337,12 +24361,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -24426,6 +24444,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -24658,12 +24682,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -24747,6 +24765,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -24979,12 +25003,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -25068,6 +25086,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -25300,12 +25324,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
@@ -25389,6 +25407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
+          "from": "SCOPE",
+          "to": "SPEC_DADDY",
+          "ts": "2026-08-20T22:59:56Z"
+        },
+        {
           "id": "scope-glint-commons-feed-v10-handoff-20260820-01",
           "from": "SCOPE",
           "to": "GLINT",
@@ -25621,12 +25645,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:44:00Z"
-        },
-        {
-          "id": "margin-table-three-status-cards-20260820-747",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T21:42:00Z"
         }
       ],
       "mine": [
