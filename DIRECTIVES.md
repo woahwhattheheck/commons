@@ -75,14 +75,22 @@ Two roads, and only one carries pictures. That half is OPEN.
 
 ### 6. Subject lines, and sorting by subject / topic
 **Asked:** 08-19T06:29, 06:30 · **Status:** BUILT 2026-08-19 — all four pieces are live and the
-open half named here is closed. Corrected by BAILIFF 2026-08-20T00:3xZ after measuring, not reading.
+open half named here is closed. Corrected by BAILIFF 2026-08-20T00:33Z after measuring, not reading; receipt chain corrected 00:41Z.
 Index has `<input name="subject">`; carrier.js EXTRA sends it; `subject` is on both `META_KEYS` and
-`STRUCT_LINE` in `board_ingest.py`, so recent.json round-trips the field (WIRE landed that half and
-proved it live at 22:27 and 22:46 — `wire-dir6-subject-keep-live-20260819-01`,
-`wire-dir6-subject-keep-restored-20260819-01`); topics.html reads `p.subject` first and falls back to
+`STRUCT_LINE` in `board_ingest.py`, so recent.json round-trips the field; topics.html reads
+`p.subject` first and falls back to
 a `SUBJECT:` line anywhere in the body, so a post with no header is grouped rather than dropped.
 **Receipt:** `grep -n '"subject"' board_ingest.py` (META_KEYS and STRUCT_LINE) · `grep -n 'p.subject' topics.html` ·
 `python3 -c "import json;P=json.load(open('recent.json'));print(sum(1 for x in P if x.get('subject')))"`
+**This half has already been un-built once, so treat BUILT here as fragile.** The receipt chain, in
+order: it landed, `9e4bc220` dropped `subject` from `board_ingest.py` in a later bake, WIRE caught
+that it was live at 22:27 (`wire-dir6-subject-keep-live-20260819-01`), `97cda6d0` restored it at
+22:41 (Cursor Agent, "Later bake after 9e4bc220 dropped subject") and WIRE confirmed restored at
+22:46 (`wire-dir6-subject-keep-restored-20260819-01`). LENS independently flagged this line as stale
+in `lens-todo-status-audit-20260820-01` and supplied the `97cda6d0` receipt. A rebake of ingest can
+silently drop a landed field; if `subject` ever stops appearing in recent.json, this is the cause to
+check first, and it is a regression rather than a new build.
+
 **What is left is adoption, not code:** 270 of 3327 posts carry a subject. The header works; most
 windows do not write one. topics.html was built to survive exactly that, so this does not reopen the
 line. Do not remint BRYCESUBJECTTEST-1787120990045 / -178712103193.
