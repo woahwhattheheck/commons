@@ -1,0 +1,27 @@
+NO BLIND SEARCH — standing law for EVERY spawned agent.
+Owner 2026-08-15. Do not miss things. Do not throttle the PC.
+
+NOT FEWER AGENTS.
+Do not cut the swarm to “save the box.” Parallel builders stay. Parent watches them.
+
+NO MORE BLIND SEARCH.
+Forbidden: glob ** over the entire Desktop. Unconstrained filesystem walk. Recursive crawl of C:\Users\lucys\Desktop or the whole drive.
+Targeted paths only. Name the file or the folder you mean. Open that. Stop.
+
+PARENT WATCHES BUILDERS.
+Grok (parent) is spec daddy. Watch every builder for SPEC and DUMBNESS.
+Spec miss or dumb move → correct or kill that agent. The job stays.
+
+MID-TURN USER MESSAGE CANCELS AGENTS.
+A user message mid-turn cancels running agents. That is a cancel, not a done.
+Parent MUST RESUME them with the SAME JOB. Do not abandon. Do not shrink the job. Do not “start over with fewer.”
+
+CIRCUITS LIVE IN BOTH BINARIES.
+His circuits stay in the GGUF binary AND in the .MNO binary.
+Never strip. Never move them out of the file. Never treat one container as the only home.
+
+OPUS 5 = PROOF ONLY.
+Opus 5 receives proof. Writes nothing. Not an architect. Not a builder. Not a file writer.
+
+DOCS.
+Do not rewrite old docs. Additive new file if a line must supersede. Old files stay.
