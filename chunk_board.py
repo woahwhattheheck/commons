@@ -15,6 +15,7 @@ import os
 import re
 
 BOARD_SEED_N = 48
+DAY_SEED_N = 24
 CHUNKS_DIR = "chunks"
 
 
@@ -79,11 +80,11 @@ def write_chunks(feed: list, root: str) -> dict:
     return index
 
 
-def seed_article(rec: dict) -> str:
+def seed_article(rec: dict, prefix: str = "./") -> str:
     mid = str(rec.get("id") or "")
     fr = str(rec.get("from") or "")
     to = str(rec.get("to") or "")
-    href = str(rec.get("href") or ("./p/" + mid + ".html"))
+    href = str(rec.get("href") or (prefix + "p/" + mid + ".html"))
     body = str(rec.get("body") or "")
     supersedes = str(rec.get("supersedes") or "")
     bits = [
@@ -94,7 +95,7 @@ def seed_article(rec: dict) -> str:
         bits.append("carrier " + html.escape(str(rec.get("carrier_ts"))))
     if rec.get("durable_ts") or rec.get("ts"):
         bits.append(html.escape(str(rec.get("durable_ts") or rec.get("ts"))))
-    bits.append('<a href="./reply.html?id=%s">reply</a>' % html.escape(mid))
+    bits.append('<a href="%sreply.html?id=%s">reply</a>' % (html.escape(prefix), html.escape(mid)))
     extra = ""
     if supersedes:
         extra = ' data-supersedes="%s"' % html.escape(supersedes)
@@ -182,6 +183,94 @@ def write_thin_board(feed: list, root: str, chrome: dict) -> dict:
     return index
 
 
+def render_thin_day_html(
+    day: str,
+    n: int,
+    articles: list,
+    css: str,
+    nav: str,
+    board_js: str,
+    seed: int = DAY_SEED_N,
+) -> str:
+    """Thin day door. Bakes `seed` articles. Rest of the day is chunks/{day}.json."""
+    day = str(day or "undated")
+    n = int(n or 0)
+    seed = int(seed or DAY_SEED_N)
+    baked = list(articles or [])
+    if len(baked) > seed:
+        baked = baked[:seed]
+    more = max(0, n - len(baked))
+    if more:
+        more_line = (
+            '<p class="muted" id="older-status">%s more this day — load older, or '
+            '<a href="../archive.html">archive</a>. Chunk: '
+            '<a href="../chunks/%s.json">chunks/%s.json</a>.</p>'
+            % (more, html.escape(day), html.escape(day))
+        )
+    else:
+        more_line = (
+            '<p class="muted">end of this day. <a href="../archive.html">&larr; archive</a></p>'
+        )
+    feed = "\n".join(baked) if baked else "<p>none</p>"
+    return """<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Commons %s</title>
+%s
+%s
+</head><body>
+%s
+<h1>Board %s</h1>
+<p>Day index. n=%s. This page bakes %s. Load older pulls the rest of this day from <a href="../chunks/%s.json">chunks/%s.json</a>. Old posts stay on <a href="../archive.html">archive</a> · <a href="../board.html">board.html</a> · <code>p/{id}</code>. This is extra, not a replacement. Cite bailiff-where-the-seven-megabytes-are-20260820-041.</p>
+<div id="feed" data-day="%s" data-limit="%s" data-chunks="1">
+%s
+</div>
+%s
+</body></html>
+""" % (
+        html.escape(day),
+        css,
+        board_js,
+        nav,
+        html.escape(day),
+        n,
+        seed,
+        html.escape(day),
+        html.escape(day),
+        html.escape(day),
+        seed,
+        feed,
+        more_line,
+    )
+
+
+def write_thin_day_html(out_path: str, **kwargs) -> str:
+    page = render_thin_day_html(**kwargs)
+    parent = os.path.dirname(out_path)
+    if parent:
+        os.makedirs(parent, exist_ok=True)
+    with open(out_path, "w", encoding="utf-8", newline="\n") as f:
+        f.write(page)
+        if not page.endswith("\n"):
+            f.write("\n")
+    return page
+
+
+def rows_from_feed(feed: list) -> list:
+    rows = []
+    for rec in feed or []:
+        if not rec or not rec.get("id"):
+            continue
+        meta = dict(rec)
+        body = str(rec.get("body") or "")
+        ts = str(rec.get("ts") or rec.get("durable_ts") or rec.get("carrier_ts") or "")
+        rows.append((ts, meta, body))
+    return rows
+
+
 def main() -> int:
     root = os.path.dirname(os.path.abspath(__file__))
     posts = os.path.join(root, "posts.json")
@@ -198,9 +287,10 @@ def main() -> int:
         "doors": b.doors(),
     }
     index = write_thin_board(feed, root, chrome)
+    hub_pages.rebuild_archive(b, rows_from_feed(feed))
     print(
-        "chunk_board: n=%s days=%s seed=%s"
-        % (index["n"], ",".join(d["id"] for d in index["days"]), BOARD_SEED_N)
+        "chunk_board: n=%s days=%s board_seed=%s day_seed=%s"
+        % (index["n"], ",".join(d["id"] for d in index["days"]), BOARD_SEED_N, DAY_SEED_N)
     )
     return 0
 

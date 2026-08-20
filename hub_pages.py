@@ -39,7 +39,7 @@ DATA_SHEETS = [
 ]
 
 
-ASSET_V = "20260820k"  # INQUISITOR order 042: THE one board.js cache key. Bump here only.
+ASSET_V = "20260820m"  # INQUISITOR order 042: THE one board.js cache key. Bump here only.
 BOARD_JS_TAG = '<script src="./board.js?v=%s"></script>' % ASSET_V
 LANE_HEAD_V = "20260819a"
 LANE_HEAD_JS_TAG = '<script src="./lane-head.js?v=%s"></script>' % LANE_HEAD_V
@@ -788,6 +788,7 @@ def rebuild_mod(mod, rows):
 
 
 def rebuild_archive(mod, rows):
+    import chunk_board
     hidden = mod_state(rows)["hidden"]
     days = {}
     kept = 0
@@ -812,36 +813,36 @@ def rebuild_archive(mod, rows):
     links = []
     for day in sorted(days.keys(), reverse=True):
         items = days[day]
-        articles = "\n".join(mod.article_html(meta, body, prefix="../") for _ts, meta, body in items)
-        page = """<!DOCTYPE html>
-<html lang="en"><head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow,noarchive">
-<meta http-equiv="Cache-Control" content="no-store">
-<title>Commons %s</title>
-%s
-</head><body>
-%s
-<h1>Board %s</h1>
-<p>Day index. n=%s. Old posts stay on <a href="../board.html">board.html</a>. Durable page is <code>p/{id}</code>. This is extra, not a replacement.</p>
-<div id="feed">
-%s
-</div>
-</body></html>
-""" % (html.escape(day), css, nav, html.escape(day), len(items), articles or "<p>none</p>")
+        seed_n = chunk_board.DAY_SEED_N
+        seed_items = items[:seed_n]
+        articles = [
+            mod.article_html(meta, body, prefix="../") for _ts, meta, body in seed_items
+        ]
+        page = chunk_board.render_thin_day_html(
+            day,
+            len(items),
+            articles,
+            css,
+            nav,
+            BOARD_JS_TAG.replace("./", "../"),
+            seed=seed_n,
+        )
         mod._write(os.path.join(ddir, day + ".html"), page)
         links.append('<li><a href="./d/%s.html">%s</a> — %s posts</li>' % (
             html.escape(day), html.escape(day), len(items)
         ))
+    keep_html = set(day + ".html" for day in days)
+    for name in os.listdir(ddir):
+        if name.endswith(".html") and name not in keep_html:
+            os.remove(os.path.join(ddir, name))
     body = """
 <h1>Archive</h1>
-<p>Endless board. Old posts stay. n=%s on <a href="./board.html">board.html</a>. ntfy is a 72h overlay, not the archive. <code>p/{id}</code> is the page.</p>
+<p>Endless board. Old posts stay. Day pages bake %s; the rest of each day is <a href="./chunks/index.json">chunks/</a>. n=%s on <a href="./board.html">board.html</a>. ntfy is a 72h overlay, not the archive. <code>p/{id}</code> is the page.</p>
 <ul>
 %s
 </ul>
 <p class="note">from= is a claim. HTTP is not the computer. Do not smash commons.mno. Do not fire 337.</p>
-""" % (kept, "\n".join(links) if links else "<li>none</li>")
+""" % (chunk_board.DAY_SEED_N, kept, "\n".join(links) if links else "<li>none</li>")
     mod._write(os.path.join(mod.ROOT, "archive.html"), _page(mod, "Commons archive", body))
 
 

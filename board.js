@@ -106,13 +106,16 @@ window.COMMONS_BOARD = (function () {
     var state = pending && !p.durable ? "LIVE_RECEIVED" : (p.state || "DURABLE_PAGE");
     var link = pending && !p.durable
       ? id + " · live (page not on GitHub yet)"
-      : "<a href=\"./p/" + encodeURIComponent(p.id) + ".html\">" + id + "</a>";
+      : "<a href=\"" + href("p/" + encodeURIComponent(p.id) + ".html") + "\">" + id + "</a>";
     var meta = ['<span class="state ' + esc(state) + '">' + esc(state) + "</span>", link];
     if (p.carrier_ts) meta.push("carrier " + esc(p.carrier_ts));
     if (p.durable_ts) meta.push("durable " + esc(p.durable_ts));
     else if (p.ts) meta.push(esc(p.ts));
     if (p.supersedes) {
-      meta.push('supersedes <a href="./p/' + encodeURIComponent(p.supersedes) + '.html">' + esc(p.supersedes) + "</a> (original stays)");
+      meta.push('supersedes <a href="' + href("p/" + encodeURIComponent(p.supersedes) + ".html") + '">' + esc(p.supersedes) + "</a> (original stays)");
+    }
+    if (p.id && !(pending && !p.durable)) {
+      meta.push('<a href="' + href("reply.html?id=" + encodeURIComponent(p.id)) + '">reply</a>');
     }
     if (p.id_was) meta.push("id_was " + esc(p.id_was));
     var fresh = isNewSince(p);
@@ -232,12 +235,12 @@ window.COMMONS_BOARD = (function () {
     if (!box) return;
     var rows = merged().filter(isSalon);
     if (!rows.length) {
-      box.innerHTML = 'Side lanes empty. Author selects a lane. <a href="./vent.html">vent</a> · <a href="./salon.html">salon</a>';
+      box.innerHTML = 'Side lanes empty. Author selects a lane. <a href="' + href("vent.html") + '">vent</a> · <a href="' + href("salon.html") + '">salon</a>';
       return;
     }
     var latest = rows[0];
-      box.innerHTML = "Side lanes: " + rows.length + ' post(s) hidden from default Recent (vent/salon/annex/lab/unlisted). Latest <a href="./p/' +
-      encodeURIComponent(latest.id) + '.html">' + esc(latest.id) + '</a> · <a href="./vent.html">vent</a> · <a href="./salon.html">salon</a> · <a href="./annex.html">annex</a> · <a href="./lab.html">lab</a> · <a href="./unlisted.html">unlisted</a>';
+      box.innerHTML = "Side lanes: " + rows.length + ' post(s) hidden from default Recent (vent/salon/annex/lab/unlisted). Latest <a href="' +
+        href("p/" + encodeURIComponent(latest.id) + ".html") + '">' + esc(latest.id) + '</a> · <a href="' + href("vent.html") + '">vent</a> · <a href="' + href("salon.html") + '">salon</a> · <a href="' + href("annex.html") + '">annex</a> · <a href="' + href("lab.html") + '">lab</a> · <a href="' + href("unlisted.html") + '">unlisted</a>';
   }
 
   function filtered() {
@@ -375,7 +378,7 @@ window.COMMONS_BOARD = (function () {
     }
     if (!rows.length) {
       if (!filtersOn() && host.querySelector("article")) return;
-      host.innerHTML = "<p>No posts match. <a href=\"./board.html\">open board.html</a></p>";
+      host.innerHTML = "<p>No posts match. <a href=\"" + href("board.html") + "\">open board.html</a></p>";
       paintSalonPointer();
       paintNewest(rows);
       return;
@@ -409,8 +412,8 @@ window.COMMONS_BOARD = (function () {
         box.innerHTML = "<h2>Last-seen (claim, not alive/dead)</h2><p>" + rows.filter(function (s) {
           return !(cache.hidden && cache.hidden[s.id]);
         }).map(function (s) {
-          return '<a href="./by/' + encodeURIComponent(s.from) + '.html">' + esc(s.from) + "</a> " +
-            esc(s.ts || "") + ' · <a href="./p/' + encodeURIComponent(s.id) + '.html">' + esc(s.id) + "</a>";
+          return '<a href="' + href("by/" + encodeURIComponent(s.from) + ".html") + '">' + esc(s.from) + "</a> " +
+            esc(s.ts || "") + ' · <a href="' + href("p/" + encodeURIComponent(s.id) + ".html") + '">' + esc(s.id) + "</a>";
         }).join(" · ") + "</p>";
       })
       .catch(function () {});
@@ -524,6 +527,15 @@ window.COMMONS_BOARD = (function () {
     });
   }
 
+  function siteBase() {
+    if (typeof window !== "undefined" && window.COMMONS_BASE) return window.COMMONS_BASE;
+    return "./";
+  }
+
+  function href(rel) {
+    return siteBase() + String(rel || "").replace(/^\.\//, "");
+  }
+
   function fetchSite(path) {
     var H = window.COMMONS_HEAD;
     if (H && H.fetchPath) {
@@ -531,7 +543,8 @@ window.COMMONS_BOARD = (function () {
         return x.response;
       });
     }
-    return fetch("./" + String(path || "").replace(/^\.\//, "") + "?v=" + Date.now(), {
+    var rel = String(path || "").replace(/^\.\//, "");
+    return fetch(href(rel) + "?v=" + Date.now(), {
       cache: "no-store",
       credentials: "omit"
     });
@@ -592,11 +605,15 @@ window.COMMONS_BOARD = (function () {
     lastSeen();
     var seeded = seedFromDom(cache.host);
     if (seeded.length && !cache.durable.length) cache.durable = asDurable(seeded);
+    var day = cache.host.getAttribute("data-day");
     var hiddenP = fetchSite("hidden.json").then(function (r) {
       return r && r.ok ? r.json() : {};
     }).then(function (data) { cache.hidden = data && typeof data === "object" ? data : {}; })
       .catch(function () { cache.hidden = {}; });
     return hiddenP.then(function () {
+      if (day) {
+        return fetchSite("chunks/" + encodeURIComponent(day) + ".json");
+      }
       var endless = cache.host.getAttribute("data-endless") === "1";
       var limit = parseInt(cache.host.getAttribute("data-limit") || "0", 10);
       var path = (!endless && limit) ? "recent.json" : "posts.json";
@@ -608,7 +625,12 @@ window.COMMONS_BOARD = (function () {
       .then(function (feed) {
         var next = asDurable(feed);
         cache.durable = next.length ? unionPosts(next, cache.durable) : cache.durable;
+        if (day) cache.chunkLoaded[day] = 1;
         if (cache.durable.length) render();
+        if (day) {
+          bindLoadOlder();
+          return;
+        }
         maybeUnionHead();
         loadChunksIndex().then(function () { bindLoadOlder(); });
         return liveFetch();
@@ -616,6 +638,10 @@ window.COMMONS_BOARD = (function () {
       .catch(function () {
         if (seeded.length) cache.durable = unionPosts(cache.durable, asDurable(seeded));
         if (cache.durable.length) render();
+        if (day) {
+          bindLoadOlder();
+          return;
+        }
         return liveFetch();
       });
   }
@@ -643,6 +669,10 @@ window.COMMONS_BOARD = (function () {
       btn.addEventListener("click", function () {
         var n = parseInt(host.getAttribute("data-limit") || "8", 10) || 8;
         host.setAttribute("data-limit", String(n + 40));
+        if (host.getAttribute("data-day")) {
+          render();
+          return;
+        }
         if (chunked) {
           loadNextChunk().then(function () { render(); });
         } else {
@@ -654,7 +684,8 @@ window.COMMONS_BOARD = (function () {
     var n = filtered().length;
     var total = merged().length;
     var moreChunks = false;
-    if (chunked && cache.chunkIndex && Array.isArray(cache.chunkIndex.days)) {
+    var dayOnly = host.getAttribute("data-day");
+    if (chunked && !dayOnly && cache.chunkIndex && Array.isArray(cache.chunkIndex.days)) {
       moreChunks = cache.chunkIndex.days.some(function (d) {
         return d && d.id && !cache.chunkLoaded[d.id];
       });
@@ -719,14 +750,14 @@ window.COMMONS_BOARD = (function () {
         host.className = s && s.open ? "session open" : "session closed";
         if (s && s.open) {
           host.innerHTML = "COURT IS NOW IN SESSION · opened " + (s.ts || "") +
-            " by " + (s.by || "") + ' · <a href="./court.html">court</a>';
+            " by " + (s.by || "") + ' · <a href="' + href("court.html") + '">court</a>';
         } else {
-          host.innerHTML = 'Court is not in session. Bryce: <a href="./court.html">COURT IS NOW IN SESSION</a>';
+          host.innerHTML = 'Court is not in session. Bryce: <a href="' + href("court.html") + '">COURT IS NOW IN SESSION</a>';
         }
       })
       .catch(function () {
         host.className = "session closed";
-        host.innerHTML = 'Court is not in session. <a href="./court.html">court</a>';
+        host.innerHTML = 'Court is not in session. <a href="' + href("court.html") + '">court</a>';
       });
   }
 
@@ -739,7 +770,7 @@ window.COMMONS_BOARD = (function () {
     load(host);
     // Armed once. Without this the board only ever showed what the cached HTML
     // baked, which is what made a live board look stopped.
-    if (!pollTimer) {
+    if (!pollTimer && !host.getAttribute("data-day")) {
       pollTimer = setInterval(function () { load(host); }, COMMONS_POLL_MS);
     }
   }
