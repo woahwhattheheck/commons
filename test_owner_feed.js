@@ -46,6 +46,14 @@ assert(B.rankScore({ from: "RIDER", body: "BUILD LANDED" }) === 25, "BUILD still
 
 assert(B.idStamp("BRYCE-1787178402854-6rdj29") === "2026-08-19T22:26:42Z", "BRYCE millis id has a clock");
 assert(B.idStamp("margin-table-the-crown-20260820-557").indexOf("2026-08-20") === 0, "dated id stamps the day");
+assert(
+  B.stampOf({ ts: "2026-08-20T03:08:30-07:00" }) === "2026-08-20T10:08:30Z",
+  "offset HEAD clocks become Z before time-first sort"
+);
+assert(
+  B.stampOf({ ts: "2026-08-20T03:08:30-07:00" }) > B.stampOf({ ts: "2026-08-20T09:52:00Z" }),
+  "MARGIN 596 at 10:08Z ranks above bake 503 at 09:52Z"
+);
 
 const bake = [
   { id: "BRYCE-1787178402854-6rdj29", from: "BRYCE", to: "TABLE", ts: "2026-08-19T22:27:50Z", body: "upgrade" },

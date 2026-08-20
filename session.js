@@ -37,12 +37,13 @@
   if (typeof window !== "undefined") window.COMMONS_BASE = BASE;
 
   // Load the HEAD pin at parse time so board.js can use it on DOMContentLoaded.
-  // Lazy: head.js does not call GitHub until a Pages fetch 404s or head.html asks.
+  // fetchPath stays lazy (Pages 200 does not call GitHub). freshPosts asks for
+  // the HEAD sha so the landing can pin fresh.md — Pages recent.json is a bake.
   (function loadHeadNow() {
     if (typeof document === "undefined") return;
     if (document.querySelector("script[data-head]")) return;
     var s = document.createElement("script");
-    s.src = BASE + "head.js?v=20260820h";
+    s.src = BASE + "head.js?v=20260820i";
     s.async = false;
     s.setAttribute("data-head", "1");
     (document.head || document.documentElement).appendChild(s);

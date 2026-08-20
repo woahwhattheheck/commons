@@ -9,6 +9,7 @@ window.COMMONS_HEAD = (function () {
   var SHA_TTL_MS = 60000;
   var SHA_KEY = "commons-lane-head-sha";
   var POSTS_KEY = "commons-head-posts";
+  var FRESH_KEY = "commons-head-fresh";
   var POOL = 4;
   var LAST_N = 12;
 
@@ -185,6 +186,81 @@ window.COMMONS_HEAD = (function () {
     return Promise.all(workers).then(function () { return out; });
   }
 
+  // Last 24 p/{id}.md as baked by llms_txt.py from git HEAD, not recent.json.
+  // Cite latch-fresh-20260819-01. Do not remint. Pages fresh.md can lag; pin to sha.
+  // Offset clocks (…T03:08:30-07:00) must become Z or time-first string sort
+  // puts HEAD behind a 09:52Z bake.
+  function utcIso(raw) {
+    raw = String(raw || "").trim();
+    if (!raw) return "";
+    var t = Date.parse(raw);
+    if (isNaN(t)) return raw;
+    try {
+      return new Date(t).toISOString().replace(/\.\d+Z$/, "Z");
+    } catch (e) {
+      return raw;
+    }
+  }
+
+  function parseFreshMd(text) {
+    var rows = [];
+    String(text || "").split(/\n/).forEach(function (line) {
+      var m = line.match(/^- \[([^\]]+)\]\(([^)]+)\) — (.+)$/);
+      if (!m) return;
+      var id = m[1];
+      var rest = m[3];
+      var fromHdr = /\bfrom:\s*([A-Za-z][A-Za-z0-9_]*)/i.exec(rest);
+      var toHdr = /\bto:\s*([A-Za-z][A-Za-z0-9_]*)/i.exec(rest);
+      var tsHdr = /(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2}))/.exec(rest);
+      var parts = rest.split(" · ");
+      var who = String(parts[0] || "").trim();
+      if (who === "?") who = "";
+      var from = String((fromHdr && fromHdr[1]) || who || "UNSEATED").toUpperCase();
+      var to = String((toHdr && toHdr[1]) || "TABLE").toUpperCase();
+      if (to === "COMMONS") to = "TABLE";
+      var ts = utcIso((tsHdr && tsHdr[1]) || "");
+      var body = rest;
+      var plain = rest.search(/\bPLAIN:\s*/i);
+      if (plain >= 0) body = rest.slice(plain).replace(/^\s*PLAIN:\s*/i, "");
+      rows.push({
+        id: id,
+        from: from,
+        to: to,
+        ts: ts,
+        durable_ts: ts,
+        body: body,
+        durable: true,
+        state: "DURABLE_PAGE"
+      });
+    });
+    return rows;
+  }
+
+  function pagesFresh() {
+    return fetchOk(pagesUrl("fresh.md", true), 15000).then(function (r) {
+      return r && r.ok ? r.text() : "";
+    }).then(function (fallback) {
+      return parseFreshMd(fallback);
+    }).catch(function () { return []; });
+  }
+
+  function freshPosts() {
+    var hit = getCached(FRESH_KEY, SHA_TTL_MS);
+    if (hit && Array.isArray(hit.posts) && hit.posts.length) return Promise.resolve(hit.posts);
+    return headSha().then(function (sha) {
+      return rawText(sha, "fresh.md").then(function (text) {
+        var rows = parseFreshMd(text);
+        if (rows.length) {
+          setCached(FRESH_KEY, { sha: sha, posts: rows });
+          return rows;
+        }
+        return pagesFresh();
+      });
+    }).catch(function () {
+      return pagesFresh();
+    });
+  }
+
   function recentHeadPosts() {
     var hit = getCached(POSTS_KEY, SHA_TTL_MS);
     if (hit && Array.isArray(hit.posts)) return Promise.resolve(hit.posts);
@@ -289,6 +365,9 @@ window.COMMONS_HEAD = (function () {
     parsePost: parsePost,
     idsFromCommits: idsFromCommits,
     recentHeadPosts: recentHeadPosts,
+    parseFreshMd: parseFreshMd,
+    freshPosts: freshPosts,
+    utcIso: utcIso,
     paintChip: paintChip
   };
 })();

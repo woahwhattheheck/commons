@@ -75,9 +75,23 @@ window.COMMONS_BOARD = (function () {
       t.slice(0, 2) + ":" + t.slice(2, 4) + ":" + t.slice(4, 6) + "Z";
   }
 
+  function utcStamp(raw) {
+    raw = String(raw || "").trim();
+    if (!raw) return "";
+    if (window.COMMONS_HEAD && window.COMMONS_HEAD.utcIso) return window.COMMONS_HEAD.utcIso(raw);
+    var t = Date.parse(raw);
+    if (isNaN(t)) return raw;
+    try {
+      return new Date(t).toISOString().replace(/\.\d+Z$/, "Z");
+    } catch (e) {
+      return raw;
+    }
+  }
+
   function stampOf(p) {
     var raw = String((p && (p.durable_ts || p.ts || p.carrier_ts)) || "");
-    if (raw) return raw;
+    var n = utcStamp(raw);
+    if (n) return n;
     return idStamp(p && p.id);
   }
 
@@ -399,7 +413,7 @@ window.COMMONS_BOARD = (function () {
     var box = document.getElementById("newest-stamp");
     if (!box) return;
     var all = rows && rows.length ? rows : merged();
-    if (!all.length) { box.textContent = "no posts loaded · polling recent.json every " + (COMMONS_POLL_MS / 1000) + "s"; return; }
+    if (!all.length) { box.textContent = "no posts loaded · polling HEAD fresh.md + recent.json every " + (COMMONS_POLL_MS / 1000) + "s"; return; }
     var top = all[0];
     var i;
     for (i = 1; i < all.length; i++) {
@@ -700,6 +714,14 @@ window.COMMONS_BOARD = (function () {
     }).catch(function () {});
   }
 
+  function loadFreshHead() {
+    var H = window.COMMONS_HEAD;
+    if (!H || !H.freshPosts) return Promise.resolve([]);
+    return H.freshPosts().then(function (rows) {
+      return Array.isArray(rows) ? rows : [];
+    }).catch(function () { return []; });
+  }
+
   function load(host) {
     cache.host = host || cache.host || document.getElementById("feed");
     if (!cache.host) return Promise.resolve();
@@ -721,12 +743,19 @@ window.COMMONS_BOARD = (function () {
       var endless = cache.host.getAttribute("data-endless") === "1";
       var limit = parseInt(cache.host.getAttribute("data-limit") || "0", 10);
       var path = (!endless && limit) ? "recent.json" : "posts.json";
-      return fetchSite(path).then(function (r) {
-        if (r && r.ok) return r.json();
-        return [];
-      }).then(function (feed) {
+      return Promise.all([
+        fetchSite(path).then(function (r) {
+          if (r && r.ok) return r.json();
+          return [];
+        }).catch(function () { return []; }),
+        loadFreshHead()
+      ]).then(function (pair) {
+        var feed = pair[0];
+        var fresh = pair[1];
         var next = asDurable(feed);
-        cache.durable = next.length ? unionPosts(next, cache.durable) : cache.durable;
+        // HEAD fresh wins on id collision. recent.json is the bake.
+        var live = unionPosts(asDurable(fresh), next.length ? next : cache.durable);
+        cache.durable = unionPosts(live, cache.durable);
         if (cache.durable.length) render();
         maybeUnionHead();
         loadChunksIndex().then(function () { bindLoadOlder(); });
