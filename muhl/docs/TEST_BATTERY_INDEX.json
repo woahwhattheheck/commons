@@ -1,0 +1,69 @@
+{
+  "generated": "2026-07-29T16:00-04:00",
+  "machine": "BRYCESLAPTOP (Ryzen 5 7520U, 8 GB, Windows 11, Python 3.12.10)",
+  "warning_standing": "DO NOT RUN git gc OR git prune on LocalDeviceAgent (dropped stashes 4f8ee36/f0b150c live only as unreferenced objects)",
+  "environment": {
+    "cwd": "C:\\Users\\lucys\\OneDrive\\Desktop\\LocalDeviceAgent",
+    "env": {"PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8", "PFC_ROOT": "C:/llm (default when unset)"},
+    "build": {"path": "C:\\llm\\models\\titan.gguf", "bytes": 40028316800,
+      "sha256": "71DC56056A3AB34B3D215BA8A216F3C81C16CCDD38AA52FB38732BD2B4A7C643",
+      "note": "pre-run and post-run hashes identical; battery bake/revert cycles are net byte-exact"},
+    "registry": {"path": "C:\\llm\\models\\titan_circuits.json", "entries": 802},
+    "whitebox_single_copy": {"path": "C:\\llm\\sdc_sandbox\\sdc_cc.py",
+      "sha256": "3A64FD4A65FE47A142029F592ECE45657EA2DC87F5576D3131DFBC1EC44AB6D3",
+      "risk": "in no git repo; single point of failure"}
+  },
+  "authority_docs": {
+    "catalog": {"path": "C:\\Users\\lucys\\OneDrive\\Desktop\\LocalDeviceAgent\\KEEPCURRENTALLTESTS.md",
+      "sha256": "4AF90BE729EC1B79B7DD9AB853C6C211D1DC7CD91A1C5AA955A467158293120C",
+      "git": "UNTRACKED - loss risk; copies in C:\\llm\\RECOVERY_CANONICAL\\tests and evidence\\at_risk_untracked\\root"},
+    "proof_report": "C:\\Users\\lucys\\OneDrive\\Desktop\\LocalDeviceAgent\\docs\\PFC_PROOF_REPORT.md",
+    "owner_rules": {"path": "C:\\Users\\lucys\\OneDrive\\Desktop\\LocalDeviceAgent\\.claude\\worktrees\\muhl-osc\\docs\\OWNER_RULES.md",
+      "note": "R1-R20; exists in exactly one checkout; copy in RECOVERY_CANONICAL\\components\\docs"},
+    "grounding": "...\\worktrees\\grounding-doc\\docs\\GROUNDING_2026-07-29.md (best env doc; only PYTHONPATH source)",
+    "false_lead": "UNTESTED.md is the Android LDA backlog - contains zero battery content"
+  },
+  "batteries": {
+    "run_battery_17row": {
+      "path": "C:\\Users\\lucys\\OneDrive\\Desktop\\LocalDeviceAgent\\host\\run_battery.py",
+      "sha256": "9224102FC7D98E6E24B9946F5F5C14D4B021C3D9010C2309C06FB4A90AF4C5FA",
+      "git_blob": "eb66fb7", "rows": 17, "command": "python host/run_battery.py",
+      "results": {"2026-07-26": "17/17", "2026-07-29T08:23": "16/17 (fresh-registry lazy-bake row 2)", "2026-07-29T15:08_sibling": "17/17", "2026-07-29_this_recovery": "17/17 exit 0 [TESTED]"},
+      "known_bug": "row 2 (pfc_inspect pfc_cpu32) ordered before row 8 (pfc_cpu32.py) which lazily bakes the registry entry; unfixed"
+    },
+    "run_battery_21row": {
+      "path": "C:\\...\\LocalDeviceAgent\\.claude\\worktrees\\muhl-osc\\host\\run_battery.py",
+      "sha256": "9BC54F1C0B8D3A39A0AB4391781B304803D61D932794A64320AF197CE68B2F26",
+      "git_blob": "5799210", "git_commit": "78ef0f7", "rows": 21,
+      "added_rows": ["muhl_primitives.py", "muhl_tick_battery.py", "muhl_collapse.py", "muhl_permanence_audit.py"],
+      "results": {"2026-07-28": "21/21 (commit message, HISTORICAL)", "2026-07-29_this_recovery": "17/21 exit 1 [TESTED] - 4 tick rows refused: muhl_preflight V63 rule-integrity gate (V23-fire-ungated CHANGED); owner grant or rule restore required"}
+    },
+    "muhl_test": {"path": "host\\muhl_test.py", "sha256_main": "0FA510AC34AF7B8FD986D3188672EE269EBC17BC49FAC735F8B3D037C285F14A",
+      "sha256_worktree": "9D4D63435C98192717C49A6A0E187D47B14130E20604BAD53C98902B7B43921F",
+      "checks": 34, "result_this_recovery": "34 PASS / 0 FAIL on BOTH lines [TESTED]"},
+    "muhl_test2": {"path": "host\\muhl_test2.py", "sha256_main": "E37C96C0B35DD7DDB7BBB683213433CB448EEF2712D3D8AC5BB580374802998D",
+      "sha256_worktree": "D0EA4E4D10BA417FD436CCA606B78F7D8E61118638BFCE4EC2BB8E383EE42258",
+      "checks": 15, "meta_test": "t11 mutates the battery and requires exit 1",
+      "result_this_recovery": "15 PASS / 0 FAIL on BOTH lines [TESTED]"},
+    "preflight": {"current": {"path": "host\\pfc_preflight.py", "live_rules": 57, "registry_rules": 41,
+        "sha256": "E71F7B59E4DAEF11DDA9AC1D9C317A7AA3D6C6148C041BEB7397E8AB5D95A0A6"},
+      "strictest": {"path": "...\\worktrees\\muhl-osc\\host\\muhl_preflight.py", "live_rules": 60, "registry_rules": 44,
+        "sha256": "B9EA4DA5D21C51D2165F0E854089DCB3F3B2FC01EDE5E718A3AD1EA31AA146DC"},
+      "rule_baseline": 50, "history": "monotone growth 57->58->59->60; no rule ever removed"}
+  },
+  "category_counts": {"A_claim_tests": 36, "B_instruments": 12, "C_experimental": 16, "master_runner_commands": 66,
+    "note": "the '>=44 tests' claim is satisfied multiple ways; '44' itself is never a test count (see TEST_INTEGRITY_AUDIT.md s5)"},
+  "engines": {"authority": "C:\\llm\\muhl_builds (73 py)", "mirror": "C:\\Users\\lucys\\OneDrive\\Desktop\\Titan\\engines (60 py; 59 byte-identical)",
+    "stale_in_mirror": "muhl_life.py (thresholds re-based in muhl_builds 07:44 rev)",
+    "muhl_builds_only": ["bitcoin_guarantee.py","muhl_bitcoin.py","muhl_bitcoin_storage.py","muhl_fab_fold_latch.py","muhl_fab_nonce_list.py","muhl_fab_nonce_map.py","muhl_factor_fold.py","muhl_langford.py","muhl_lookup_table.py","muhl_ring_fold.py","muhl_ring_power.py","muhl_try_check.py","titan.py"]},
+  "integrity_verdict": "NO TEST WAS EVER WEAKENED (all lineages, all refs); risks are provenance gaps not tampering; see TEST_INTEGRITY_AUDIT.md",
+  "known_reds": ["sdc_fwd_verify.py byte-exact=False (experimental path)", "pfc_store_test.py store-gate bug (self-reported)", "21-row tick rows V63-gated (owner action required)", "_assistant_offspec holds 20 files vs documented 27 (UNRESOLVED)"],
+  "not_yet_located": [
+    {"name": "pfc_mine_clk.py", "evidence": "handoff memory s10 (clocked machine, clk_bit wire 928)"},
+    {"name": "muhl_battery.py / muhl_cavity.py / muhl_win_surface.py (07-28 osc variants)", "evidence": "jobs\\a9cbb2b3\\tmp logs (outputs survive)"},
+    {"name": "sdc_os_sdc.py", "evidence": "CLAUDE.md - owner-directed deletion 2026-07-19 (documented removal)"}
+  ],
+  "never_run_without_owner": ["sdc_checker.py", "pfc_fire.py", "pfc_btc_live.py", "pfc_bitcoin_autopilot.py", "muhl_mine.py", "pfc_ceiling_test.py (hidden stratum socket)", "any live fire/submission", "standalone revert commands", "pfc_move_circuit --move", "fab_*.py fabrication"],
+  "raw_evidence_dir": "C:\\Users\\lucys\\OneDrive\\Desktop\\RECOVERY_REPORTS_TEST_BATTERY\\raw_outputs",
+  "prior_session_corpus_protected": "C:\\llm\\RECOVERY_CANONICAL (LEDGER.jsonl, git_forensics, integrity_audit, operator_statements, ablation) - session evidence, do not modify"
+}
