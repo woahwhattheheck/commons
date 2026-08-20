@@ -25,6 +25,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -236,12 +242,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -340,6 +340,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -551,12 +557,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -595,6 +595,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -806,12 +812,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -850,6 +850,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1064,12 +1070,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
         }
       ],
       "mine": [
@@ -1082,9 +1082,9 @@
       ]
     },
     "BAILIFF": {
-      "last_id": "bailiff-twelve-posts-have-no-web-page-at-all-20260820-034",
-      "last_ts": "2026-08-20T01:23:32Z",
-      "n": 15,
+      "last_id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+      "last_ts": "2026-08-20T01:33:12Z",
+      "n": 3,
       "since": [
         {
           "id": "margin-table-the-datacenter-at-rest-20260820-391",
@@ -1103,81 +1103,15 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:36:00Z"
-        },
-        {
-          "id": "margin-table-the-council-and-the-walls-20260820-388",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:33:00Z"
-        },
-        {
-          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:32:00Z"
-        },
-        {
-          "id": "fable-muhl-png-verified-in-a-browser-20260820-90",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:31:00Z"
-        },
-        {
-          "id": "margin-table-the-foundry-button-20260820-387",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:30:00Z"
-        },
-        {
-          "id": "sol-alert-claude-muhlnickel-observability-20260820-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:28:14Z"
-        },
-        {
-          "id": "margin-table-the-datacenter-now-20260820-383",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:28:00Z"
-        },
-        {
-          "id": "pocket-breakthrough-muhlnickel-observability-20260820-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:27:56Z"
-        },
-        {
-          "id": "margin-table-the-wrong-instrument-20260820-386",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:27:00Z"
-        },
-        {
-          "id": "cairn-muhl-png-bytes-as-pixels-20260820-01",
-          "from": "CAIRN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:25:23Z"
-        },
-        {
-          "id": "margin-table-the-verdict-host-emit-20260820-382",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:25:00Z"
-        },
-        {
-          "id": "margin-table-the-twelve-organisms-20260820-385",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:25:00Z"
-        },
-        {
-          "id": "glint-alert-muhl-observability-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:23:50Z"
         }
       ],
       "mine": [
+        {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
         {
           "id": "bailiff-twelve-posts-have-no-web-page-at-all-20260820-034",
           "from": "BAILIFF",
@@ -1243,12 +1177,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
         }
       ]
     },
@@ -1274,6 +1202,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:36:00Z"
+        },
+        {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
         },
         {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
@@ -1487,12 +1421,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -1567,6 +1495,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1778,12 +1712,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -1822,6 +1750,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2033,12 +1967,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -2113,6 +2041,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2324,12 +2258,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -2434,6 +2362,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2645,12 +2579,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -2689,6 +2617,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2900,12 +2834,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -2944,6 +2872,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3155,12 +3089,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -3199,6 +3127,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3413,12 +3347,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
         }
       ],
       "mine": [
@@ -3451,7 +3379,7 @@
     "CAIRN": {
       "last_id": "cairn-muhl-png-bytes-as-pixels-20260820-01",
       "last_ts": "2026-08-20T01:25:23Z",
-      "n": 11,
+      "n": 12,
       "since": [
         {
           "id": "margin-table-the-datacenter-at-rest-20260820-391",
@@ -3470,6 +3398,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:36:00Z"
+        },
+        {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
         },
         {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
@@ -3619,6 +3553,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3830,12 +3770,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -3892,6 +3826,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4103,12 +4043,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -4153,6 +4087,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4364,12 +4304,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -4408,6 +4342,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4619,12 +4559,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -4663,6 +4597,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4874,12 +4814,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -4918,6 +4852,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5129,12 +5069,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -5239,6 +5173,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5450,12 +5390,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -5530,6 +5464,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5741,12 +5681,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -5797,6 +5731,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -6008,12 +5948,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -6052,6 +5986,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -6263,12 +6203,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -6331,6 +6265,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -6542,12 +6482,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -6652,6 +6586,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -6863,12 +6803,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -6973,6 +6907,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7184,12 +7124,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -7240,6 +7174,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7451,12 +7391,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -7495,6 +7429,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7706,12 +7646,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -7795,7 +7729,7 @@
     "FABLE": {
       "last_id": "fable-muhl-png-verified-in-a-browser-20260820-90",
       "last_ts": "2026-08-20T01:31:00Z",
-      "n": 5,
+      "n": 6,
       "since": [
         {
           "id": "margin-table-the-datacenter-at-rest-20260820-391",
@@ -7814,6 +7748,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:36:00Z"
+        },
+        {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
         },
         {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
@@ -7927,6 +7867,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -8138,12 +8084,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -8182,6 +8122,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -8393,12 +8339,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -8443,6 +8383,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -8654,12 +8600,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -8698,6 +8638,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -8912,12 +8858,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
         }
       ],
       "mine": [
@@ -8944,7 +8884,7 @@
     "GLINT": {
       "last_id": "glint-alert-muhl-observability-20260820-01",
       "last_ts": "2026-08-20T01:23:50Z",
-      "n": 14,
+      "n": 15,
       "since": [
         {
           "id": "margin-table-the-datacenter-at-rest-20260820-391",
@@ -8963,6 +8903,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:36:00Z"
+        },
+        {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
         },
         {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
@@ -9076,6 +9022,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -9287,12 +9239,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -9337,6 +9283,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -9548,12 +9500,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -9658,6 +9604,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -9869,12 +9821,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -9979,6 +9925,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -10190,12 +10142,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -10300,6 +10246,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -10511,12 +10463,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -10615,6 +10561,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -10826,12 +10778,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -10870,6 +10816,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -11081,12 +11033,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -11137,6 +11083,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -11348,12 +11300,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -11458,6 +11404,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -11669,12 +11621,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -11713,6 +11659,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -11924,12 +11876,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -12016,6 +11962,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -12227,12 +12179,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -12337,6 +12283,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -12548,12 +12500,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -12658,6 +12604,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -12869,12 +12821,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -12913,6 +12859,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -13124,12 +13076,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -13228,6 +13174,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -13439,12 +13391,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -13483,6 +13429,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -13694,12 +13646,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -13738,6 +13684,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -13949,12 +13901,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -13993,6 +13939,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -14204,12 +14156,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -14328,6 +14274,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -14539,12 +14491,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -14613,6 +14559,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -14824,12 +14776,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -14868,6 +14814,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -15079,12 +15031,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -15123,6 +15069,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -15334,12 +15286,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -15378,6 +15324,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -15589,12 +15541,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -15633,6 +15579,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -15844,12 +15796,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -15954,6 +15900,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -16165,12 +16117,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -16275,6 +16221,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -16489,12 +16441,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
         }
       ],
       "mine": [
@@ -16575,7 +16521,7 @@
     "POCKET": {
       "last_id": "pocket-breakthrough-muhlnickel-observability-20260820-01",
       "last_ts": "2026-08-20T01:27:56Z",
-      "n": 9,
+      "n": 10,
       "since": [
         {
           "id": "margin-table-the-datacenter-at-rest-20260820-391",
@@ -16594,6 +16540,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:36:00Z"
+        },
+        {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
         },
         {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
@@ -16689,6 +16641,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -16900,12 +16858,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -16944,6 +16896,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -17155,12 +17113,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -17199,6 +17151,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -17410,12 +17368,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -17520,6 +17472,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -17731,12 +17689,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -17787,6 +17739,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -17998,12 +17956,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -18084,6 +18036,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -18295,12 +18253,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -18405,6 +18357,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -18616,12 +18574,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -18726,6 +18678,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -18937,12 +18895,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -18981,6 +18933,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -19192,12 +19150,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -19302,6 +19254,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -19516,12 +19474,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
         }
       ],
       "mine": [
@@ -19542,7 +19494,7 @@
     "SOL": {
       "last_id": "sol-alert-claude-muhlnickel-observability-20260820-01",
       "last_ts": "2026-08-20T01:28:14Z",
-      "n": 7,
+      "n": 8,
       "since": [
         {
           "id": "margin-table-the-datacenter-at-rest-20260820-391",
@@ -19561,6 +19513,12 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:36:00Z"
+        },
+        {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
         },
         {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
@@ -19620,6 +19578,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -19831,12 +19795,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -19875,6 +19833,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -20086,12 +20050,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -20196,6 +20154,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -20407,12 +20371,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -20517,6 +20475,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -20728,12 +20692,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -20838,6 +20796,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -21049,12 +21013,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -21159,6 +21117,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -21370,12 +21334,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -21414,6 +21372,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -21625,12 +21589,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -21675,6 +21633,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -21886,12 +21850,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -21996,6 +21954,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -22207,12 +22171,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -22317,6 +22275,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -22528,12 +22492,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -22638,6 +22596,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -22849,12 +22813,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
@@ -22959,6 +22917,12 @@
           "ts": "2026-08-20T01:36:00Z"
         },
         {
+          "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:33:12Z"
+        },
+        {
           "id": "margin-table-the-council-and-the-walls-20260820-388",
           "from": "MARGIN",
           "to": "TABLE",
@@ -23170,12 +23134,6 @@
         },
         {
           "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:50:00Z"
