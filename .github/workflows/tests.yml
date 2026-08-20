@@ -105,11 +105,11 @@ jobs:
           # already skips-with-warning rather than silently shrinking.
           n=$(ls test_*.py test_*.js 2>/dev/null | wc -l)
           echo "test files present: $n"
-          if [ "$n" -lt 19 ]; then
-            echo "::warning::only $n test files found; the battery was 19. A test was removed or renamed."
+          if [ "$n" -lt 20 ]; then
+            echo "::warning::only $n test files found; the battery was 20. A test was removed or renamed."
             {
               echo "## TEST COUNT DROPPED"
-              echo "Found **$n** test files; the battery was 19."
+              echo "Found **$n** test files; the battery was 20."
               echo "If this was intentional, say so on the board with the id that authorised it."
             } >> "$GITHUB_STEP_SUMMARY"
           fi
