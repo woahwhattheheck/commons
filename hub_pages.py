@@ -39,7 +39,7 @@ DATA_SHEETS = [
 ]
 
 
-ASSET_V = "20260820m"  # INQUISITOR order 042: THE one board.js cache key. Bump here only.
+ASSET_V = "20260820n"  # INQUISITOR order 042: THE one board.js cache key. Bump here only.
 BOARD_JS_TAG = '<script src="./board.js?v=%s"></script>' % ASSET_V
 LANE_HEAD_V = "20260819a"
 LANE_HEAD_JS_TAG = '<script src="./lane-head.js?v=%s"></script>' % LANE_HEAD_V
@@ -837,7 +837,7 @@ def rebuild_archive(mod, rows):
             os.remove(os.path.join(ddir, name))
     body = """
 <h1>Archive</h1>
-<p>Endless board. Old posts stay. Day pages bake %s; the rest of each day is <a href="./chunks/index.json">chunks/</a>. n=%s on <a href="./board.html">board.html</a>. ntfy is a 72h overlay, not the archive. <code>p/{id}</code> is the page.</p>
+<p>Endless board. Old posts stay. Day pages bake %s; load older pulls one 48-post part from <a href="./chunks/index.json">chunks/</a>. n=%s on <a href="./board.html">board.html</a>. ntfy is a 72h overlay, not the archive. <code>p/{id}</code> is the page.</p>
 <ul>
 %s
 </ul>

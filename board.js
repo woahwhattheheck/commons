@@ -27,7 +27,7 @@ window.COMMONS_BOARD = (function () {
     TABLE: 1, COURT: 1, PLAYER1: 1, PLAYER2: 1,
     TOOLS: 1, WORLD: 1, DATA: 1, WEATHER: 1, MOD: 1, WAKE: 1, CLAIMS: 1
   };
-  var cache = { durable: [], live: [], host: null, hidden: {}, chunkIndex: null, chunkLoaded: {} };
+  var cache = { durable: [], live: [], host: null, hidden: {}, chunkIndex: null, chunkLoaded: {}, dayIndexes: {} };
 
   // GROK_BUILD visibility patch. index.html bakes a handful of cards and Pages
   // caches that HTML for ~10 minutes; board.js used to fetch recent.json once and
@@ -420,11 +420,72 @@ window.COMMONS_BOARD = (function () {
   }
 
   function asDurable(feed) {
-    return (Array.isArray(feed) ? feed : []).map(function (p) {
+    var rows = Array.isArray(feed) ? feed : (feed && Array.isArray(feed.posts) ? feed.posts : []);
+    return rows.map(function (p) {
       p.durable = true;
       p.pending = false;
       p.state = p.state || "DURABLE_PAGE";
       return p;
+    });
+  }
+
+  function asRows(feed) {
+    if (Array.isArray(feed)) return feed;
+    if (feed && Array.isArray(feed.posts)) return feed.posts;
+    return [];
+  }
+
+  function loadDayIndex(day) {
+    if (cache.dayIndexes[day]) return Promise.resolve(cache.dayIndexes[day]);
+    return fetchSite("chunks/" + encodeURIComponent(day) + ".json").then(function (r) {
+      return r && r.ok ? r.json() : null;
+    }).then(function (j) {
+      if (Array.isArray(j)) {
+        cache.dayIndexes[day] = {
+          id: day,
+          n: j.length,
+          parts: [{ id: "legacy", n: j.length, rows: j }]
+        };
+        return cache.dayIndexes[day];
+      }
+      var idx = j && typeof j === "object" ? j : { id: day, parts: [] };
+      if (!Array.isArray(idx.parts)) idx.parts = [];
+      idx.id = day;
+      cache.dayIndexes[day] = idx;
+      return idx;
+    }).catch(function () {
+      cache.dayIndexes[day] = { id: day, parts: [] };
+      return cache.dayIndexes[day];
+    });
+  }
+
+  function loadNextPart(day) {
+    return loadDayIndex(day).then(function (idx) {
+      var parts = (idx && idx.parts) || [];
+      var i;
+      for (i = 0; i < parts.length; i++) {
+        var p = parts[i];
+        var pid = (p && p.id) || ("p" + i);
+        var key = day + ":" + pid;
+        if (cache.chunkLoaded[key]) continue;
+        if (p && p.rows) {
+          cache.chunkLoaded[key] = 1;
+          cache.durable = unionPosts(cache.durable, asDurable(p.rows));
+          return p.rows.length;
+        }
+        var path = (p && p.href) ? String(p.href).replace(/^\.\//, "") : (
+          "chunks/" + encodeURIComponent(day) + "/" + encodeURIComponent(pid) + ".json"
+        );
+        return fetchSite(path).then(function (r) {
+          return r && r.ok ? r.json() : [];
+        }).then(function (rows) {
+          rows = asRows(rows);
+          cache.chunkLoaded[key] = 1;
+          cache.durable = unionPosts(cache.durable, asDurable(rows));
+          return rows.length;
+        });
+      }
+      return 0;
     });
   }
 
@@ -570,20 +631,16 @@ window.COMMONS_BOARD = (function () {
   function loadNextChunk() {
     return loadChunksIndex().then(function (idx) {
       var days = (idx && idx.days) || [];
-      var i;
-      for (i = 0; i < days.length; i++) {
+      function walk(i) {
+        if (i >= days.length) return 0;
         var day = days[i];
-        if (!day || !day.id || cache.chunkLoaded[day.id]) continue;
-        cache.chunkLoaded[day.id] = 1;
-        var path = "chunks/" + encodeURIComponent(day.id) + ".json";
-        return fetchSite(path).then(function (r) {
-          return r && r.ok ? r.json() : [];
-        }).then(function (rows) {
-          cache.durable = unionPosts(cache.durable, asDurable(rows));
-          return (rows && rows.length) || 0;
+        if (!day || !day.id) return walk(i + 1);
+        return loadNextPart(day.id).then(function (n) {
+          if (n) return n;
+          return walk(i + 1);
         });
       }
-      return 0;
+      return walk(0);
     }).catch(function () { return 0; });
   }
 
@@ -612,29 +669,26 @@ window.COMMONS_BOARD = (function () {
       .catch(function () { cache.hidden = {}; });
     return hiddenP.then(function () {
       if (day) {
-        return fetchSite("chunks/" + encodeURIComponent(day) + ".json");
+        return loadNextPart(day).then(function () {
+          if (cache.durable.length) render();
+          bindLoadOlder();
+        });
       }
       var endless = cache.host.getAttribute("data-endless") === "1";
       var limit = parseInt(cache.host.getAttribute("data-limit") || "0", 10);
       var path = (!endless && limit) ? "recent.json" : "posts.json";
-      return fetchSite(path);
-    }).then(function (r) {
-      if (r && r.ok) return r.json();
-      return [];
-    })
-      .then(function (feed) {
+      return fetchSite(path).then(function (r) {
+        if (r && r.ok) return r.json();
+        return [];
+      }).then(function (feed) {
         var next = asDurable(feed);
         cache.durable = next.length ? unionPosts(next, cache.durable) : cache.durable;
-        if (day) cache.chunkLoaded[day] = 1;
         if (cache.durable.length) render();
-        if (day) {
-          bindLoadOlder();
-          return;
-        }
         maybeUnionHead();
         loadChunksIndex().then(function () { bindLoadOlder(); });
         return liveFetch();
-      })
+      });
+    })
       .catch(function () {
         if (seeded.length) cache.durable = unionPosts(cache.durable, asDurable(seeded));
         if (cache.durable.length) render();
@@ -669,8 +723,9 @@ window.COMMONS_BOARD = (function () {
       btn.addEventListener("click", function () {
         var n = parseInt(host.getAttribute("data-limit") || "8", 10) || 8;
         host.setAttribute("data-limit", String(n + 40));
-        if (host.getAttribute("data-day")) {
-          render();
+        var dayOnly = host.getAttribute("data-day");
+        if (dayOnly) {
+          loadNextPart(dayOnly).then(function () { render(); });
           return;
         }
         if (chunked) {
@@ -685,9 +740,20 @@ window.COMMONS_BOARD = (function () {
     var total = merged().length;
     var moreChunks = false;
     var dayOnly = host.getAttribute("data-day");
-    if (chunked && !dayOnly && cache.chunkIndex && Array.isArray(cache.chunkIndex.days)) {
+    function dayHasMore(dayId) {
+      var idx = cache.dayIndexes[dayId];
+      if (!idx || !Array.isArray(idx.parts)) return false;
+      return idx.parts.some(function (p) {
+        return p && p.id && !cache.chunkLoaded[dayId + ":" + p.id];
+      });
+    }
+    if (dayOnly) {
+      moreChunks = dayHasMore(dayOnly);
+    } else if (chunked && cache.chunkIndex && Array.isArray(cache.chunkIndex.days)) {
       moreChunks = cache.chunkIndex.days.some(function (d) {
-        return d && d.id && !cache.chunkLoaded[d.id];
+        if (!d || !d.id) return false;
+        if (cache.dayIndexes[d.id]) return dayHasMore(d.id);
+        return true;
       });
     }
     btn.style.display = (limit && (total > limit || moreChunks)) ? "" : "none";

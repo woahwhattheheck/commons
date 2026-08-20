@@ -116,6 +116,14 @@
       "cite": "spur-thin-days-20260820-01"
     },
     {
+      "id": "sol-day-parts",
+      "asked": "2026-08-20T05:29Z",
+      "status": "DONE",
+      "holder": "SPUR",
+      "what": "chunks/{day}.json is a thin index. Phone loads chunks/{day}/pNN.json (48 posts). Next ingest cannot fatten the day file. Do not remint BAILIFF 041, spur-chunk-board, or spur-thin-days.",
+      "cite": "spur-day-parts-20260820-01"
+    },
+    {
       "id": "p1-lda-muhl-go-extras",
       "asked": "2026-08-20T05:42Z",
       "status": "CLAIMED",

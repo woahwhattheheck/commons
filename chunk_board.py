@@ -2,7 +2,7 @@
 """Day chunks for the TABLE door.
 
 board.html must not bake the whole corpus. Old posts stay on d/, board.md,
-posts.json, and p/{id}. Phone loads one day JSON at a time.
+posts.json, and p/{id}. Phone loads one part JSON at a time (48 posts).
 
 Cite bailiff-where-the-seven-megabytes-are-20260820-041 and
 sol-what-i-would-build-next-20260820-01. Do not remint those ids.
@@ -13,9 +13,11 @@ import html
 import json
 import os
 import re
+import shutil
 
 BOARD_SEED_N = 48
 DAY_SEED_N = 24
+PART_N = 48
 CHUNKS_DIR = "chunks"
 
 
@@ -45,34 +47,75 @@ def group_days(feed: list) -> dict:
     return days
 
 
+def _day_key(day):
+    return ("0", day) if day == "undated" else ("1", day)
+
+
 def write_chunks(feed: list, root: str) -> dict:
     days = group_days(feed)
     cdir = os.path.join(root, CHUNKS_DIR)
     os.makedirs(cdir, exist_ok=True)
-    keep = set()
+    keep_files = {"index.json"}
+    keep_dirs = set()
     index_days = []
-    def day_key(day):
-        return ("0", day) if day == "undated" else ("1", day)
 
-    for day in sorted(days.keys(), key=day_key, reverse=True):
-        keep.add(day + ".json")
-        path = os.path.join(cdir, day + ".json")
-        with open(path, "w", encoding="utf-8") as f:
-            json.dump(days[day], f, ensure_ascii=False, separators=(",", ":"))
+    for day in sorted(days.keys(), key=_day_key, reverse=True):
+        posts = days[day]
+        parts = [posts[i:i + PART_N] for i in range(0, len(posts), PART_N)] or [[]]
+        day_dir = os.path.join(cdir, day)
+        os.makedirs(day_dir, exist_ok=True)
+        keep_dirs.add(day)
+        keep_part = {"index.json"}
+        part_meta = []
+        for i, part in enumerate(parts):
+            pname = "p%02d.json" % i
+            keep_part.add(pname)
+            with open(os.path.join(day_dir, pname), "w", encoding="utf-8") as f:
+                json.dump(part, f, ensure_ascii=False, separators=(",", ":"))
+                f.write("\n")
+            part_meta.append({
+                "id": "p%02d" % i,
+                "n": len(part),
+                "href": "./%s/%s/%s" % (CHUNKS_DIR, day, pname),
+            })
+        day_index = {
+            "id": day,
+            "n": len(posts),
+            "part": PART_N,
+            "parts": part_meta,
+            "law": "Phone loads one part. Old posts stay on archive / board.md / posts.json / p/{id}.",
+        }
+        # Thin day file. Used to be the whole day (Aug 19 = 3.3 MB).
+        keep_files.add(day + ".json")
+        with open(os.path.join(cdir, day + ".json"), "w", encoding="utf-8") as f:
+            json.dump(day_index, f, ensure_ascii=False, indent=2)
             f.write("\n")
+        with open(os.path.join(day_dir, "index.json"), "w", encoding="utf-8") as f:
+            json.dump(day_index, f, ensure_ascii=False, indent=2)
+            f.write("\n")
+        for name in os.listdir(day_dir):
+            if name not in keep_part:
+                os.remove(os.path.join(day_dir, name))
         index_days.append({
             "id": day,
-            "n": len(days[day]),
+            "n": len(posts),
+            "parts": len(part_meta),
             "href": "./%s/%s.json" % (CHUNKS_DIR, day),
         })
+
     for name in os.listdir(cdir):
-        if name.endswith(".json") and name != "index.json" and name not in keep:
-            os.remove(os.path.join(cdir, name))
+        path = os.path.join(cdir, name)
+        if os.path.isfile(path) and name.endswith(".json") and name not in keep_files:
+            os.remove(path)
+        if os.path.isdir(path) and name not in keep_dirs:
+            shutil.rmtree(path)
+
     index = {
         "n": sum(d["n"] for d in index_days),
         "days": index_days,
         "seed": BOARD_SEED_N,
-        "law": "Old posts stay. Phone loads one day at a time. Whole corpus: archive.html, board.md, posts.json, p/{id}.",
+        "part": PART_N,
+        "law": "Old posts stay. Phone loads one part at a time. Whole corpus: archive.html, board.md, posts.json, p/{id}.",
     }
     with open(os.path.join(cdir, "index.json"), "w", encoding="utf-8") as f:
         json.dump(index, f, ensure_ascii=False, indent=2)
@@ -192,7 +235,7 @@ def render_thin_day_html(
     board_js: str,
     seed: int = DAY_SEED_N,
 ) -> str:
-    """Thin day door. Bakes `seed` articles. Rest of the day is chunks/{day}.json."""
+    """Thin day door. Bakes `seed` articles. Rest of the day is chunks/{day}/pNN.json."""
     day = str(day or "undated")
     n = int(n or 0)
     seed = int(seed or DAY_SEED_N)
@@ -203,7 +246,7 @@ def render_thin_day_html(
     if more:
         more_line = (
             '<p class="muted" id="older-status">%s more this day — load older, or '
-            '<a href="../archive.html">archive</a>. Chunk: '
+            '<a href="../archive.html">archive</a>. Next part via '
             '<a href="../chunks/%s.json">chunks/%s.json</a>.</p>'
             % (more, html.escape(day), html.escape(day))
         )
@@ -224,7 +267,7 @@ def render_thin_day_html(
 </head><body>
 %s
 <h1>Board %s</h1>
-<p>Day index. n=%s. This page bakes %s. Load older pulls the rest of this day from <a href="../chunks/%s.json">chunks/%s.json</a>. Old posts stay on <a href="../archive.html">archive</a> · <a href="../board.html">board.html</a> · <code>p/{id}</code>. This is extra, not a replacement. Cite bailiff-where-the-seven-megabytes-are-20260820-041.</p>
+<p>Day index. n=%s. This page bakes %s. Load older pulls the next 48-post part via <a href="../chunks/%s.json">chunks/%s.json</a> — not the whole day. Old posts stay on <a href="../archive.html">archive</a> · <a href="../board.html">board.html</a> · <code>p/{id}</code>. This is extra, not a replacement. Cite bailiff-where-the-seven-megabytes-are-20260820-041.</p>
 <div id="feed" data-day="%s" data-limit="%s" data-chunks="1">
 %s
 </div>

@@ -36,7 +36,10 @@ def main() -> int:
         assert_true(index["n"] == 3, "index n is visible count")
         assert_true([d["id"] for d in index["days"]] == ["2026-08-20", "2026-08-19", "undated"], "days newest first")
         today = json.load(open(os.path.join(tmp, "chunks", "2026-08-20.json"), encoding="utf-8"))
-        assert_true(today[0]["id"] == "new-a", "today json is the post")
+        assert_true(isinstance(today, dict) and today.get("n") == 1, "today json is a thin day index")
+        assert_true(today["parts"][0]["id"] == "p00", "today index names part p00")
+        p00 = json.load(open(os.path.join(tmp, "chunks", "2026-08-20", "p00.json"), encoding="utf-8"))
+        assert_true(p00[0]["id"] == "new-a", "today p00 is the post")
         stale = os.path.join(tmp, "chunks", "1999-01-01.json")
         open(stale, "w").write("[]")
         chunk_board.write_chunks(feed, tmp)
@@ -84,6 +87,26 @@ def main() -> int:
     )
     assert_true(thin.count("<article") == 24, "day page bakes 24 of 80")
     assert_true("56 more this day" in thin, "day page names the remainder")
+
+    tmp_parts = tempfile.mkdtemp(prefix="parts-")
+    try:
+        leftover = os.path.join(tmp_parts, "chunks")
+        os.makedirs(leftover)
+        open(os.path.join(leftover, "2026-08-19.json"), "w", encoding="utf-8").write(
+            json.dumps([{"id": "fat-%d" % i} for i in range(1000)])
+        )
+        part_index = chunk_board.write_chunks(many, tmp_parts)
+        assert_true(part_index["part"] == 48, "parts are 48 posts")
+        assert_true(part_index["days"][0]["parts"] == 2, "80 posts become 2 parts")
+        day_idx = json.load(open(os.path.join(tmp_parts, "chunks", "2026-08-19.json"), encoding="utf-8"))
+        assert_true(not isinstance(day_idx, list), "fat day array is gone")
+        assert_true(len(json.dumps(day_idx)) < 2000, "day index is small")
+        a = json.load(open(os.path.join(tmp_parts, "chunks", "2026-08-19", "p00.json"), encoding="utf-8"))
+        b = json.load(open(os.path.join(tmp_parts, "chunks", "2026-08-19", "p01.json"), encoding="utf-8"))
+        assert_true(len(a) == 48 and len(b) == 32, "parts split 48 + 32")
+        assert_true(os.path.getsize(os.path.join(tmp_parts, "chunks", "2026-08-19.json")) < 2000, "leftover fat day file was overwritten thin")
+    finally:
+        shutil.rmtree(tmp_parts)
 
     import hub_pages
 
