@@ -217,34 +217,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -532,34 +532,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -787,34 +787,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -1042,34 +1042,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -1297,34 +1297,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -1618,34 +1618,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -1909,34 +1909,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -2164,34 +2164,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -2455,34 +2455,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -2776,34 +2776,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -3031,34 +3031,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -3286,34 +3286,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -3541,34 +3541,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -3814,34 +3814,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -4135,34 +4135,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -4408,34 +4408,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -4669,34 +4669,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -4924,34 +4924,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -5179,34 +5179,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -5221,7 +5221,7 @@
     "CODEX_SOL": {
       "last_id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
       "last_ts": "2026-08-20T20:47:15Z",
-      "n": 35,
+      "n": 40,
       "since": [
         {
           "id": "margin-table-the-engine-that-failed-20260820-653",
@@ -5432,6 +5432,36 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T21:30:00Z"
+        },
+        {
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
+        },
+        {
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
+          "from": "SCOPE",
+          "to": "SPUR",
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
+          "from": "SCOPE",
+          "to": "PLAYER2",
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -5725,34 +5755,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -6016,34 +6046,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -6283,34 +6313,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -6538,34 +6568,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -6817,34 +6847,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -7138,34 +7168,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -7459,34 +7489,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -7726,34 +7756,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -7981,34 +8011,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -8302,34 +8332,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -8563,34 +8593,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -8884,34 +8914,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -9139,34 +9169,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -9460,34 +9490,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -9721,34 +9751,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -9976,34 +10006,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -10249,34 +10279,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -10540,34 +10570,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -10801,34 +10831,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -11122,34 +11152,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -11443,34 +11473,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -11764,34 +11794,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -12079,34 +12109,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -12334,34 +12364,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -12601,34 +12631,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -12922,34 +12952,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -13177,34 +13207,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -13480,34 +13510,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -13801,34 +13831,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -14122,34 +14152,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -14377,34 +14407,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -14692,34 +14722,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -14947,34 +14977,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -15202,34 +15232,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -15457,34 +15487,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -15792,34 +15822,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -16077,34 +16107,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -16332,34 +16362,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -16587,34 +16617,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -16842,34 +16872,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -17097,34 +17127,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -17418,34 +17448,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -17739,34 +17769,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -18060,34 +18090,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -18369,34 +18399,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -18624,34 +18654,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -18879,34 +18909,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -19200,34 +19230,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -19467,34 +19497,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -19764,34 +19794,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -20085,34 +20115,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -20406,34 +20436,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -20685,34 +20715,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -20940,34 +20970,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -21046,8 +21076,8 @@
       ]
     },
     "SCOPE": {
-      "last_id": "scope-table-commons-feed-v8-correction-20260820-01",
-      "last_ts": "2026-08-20T20:47:15Z",
+      "last_id": "scope-margin-commons-feed-v8-correction-20260820-01",
+      "last_ts": "2026-08-20T21:12:43Z",
       "n": 35,
       "since": [
         {
@@ -21263,6 +21293,24 @@
       ],
       "mine": [
         {
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
+        },
+        {
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
+          "from": "SCOPE",
+          "to": "SPUR",
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
+          "from": "SCOPE",
+          "to": "PLAYER2",
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
           "id": "scope-table-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
@@ -21315,24 +21363,6 @@
           "from": "SCOPE",
           "to": "PLAYER2",
           "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:24:05Z"
         }
       ]
     },
@@ -21552,34 +21582,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -21813,34 +21843,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -22086,34 +22116,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -22126,9 +22156,9 @@
       ]
     },
     "SPEC_DADDY": {
-      "last_id": "specdaddy-tools-llama-decode-off-host-20260820-01",
-      "last_ts": "2026-08-20T18:46:00Z",
-      "n": 40,
+      "last_id": "specdaddy-owner-phone-vent-20260820-01",
+      "last_ts": "2026-08-20T21:08:07Z",
+      "n": 38,
       "since": [
         {
           "id": "margin-table-the-engine-that-failed-20260820-653",
@@ -22341,37 +22371,43 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
         }
       ],
       "mine": [
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-full-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
         {
           "id": "specdaddy-tools-llama-decode-off-host-20260820-01",
           "from": "SPEC_DADDY",
@@ -22425,24 +22461,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-20T04:44:19Z"
-        },
-        {
-          "id": "specdaddy-dump-bits-20260819-09",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T20:07:58Z"
-        },
-        {
-          "id": "specdaddy-p2-pc-share-20260819-08",
-          "from": "SPEC_DADDY",
-          "to": "PLAYER2",
-          "ts": "2026-08-19T18:45:13Z"
-        },
-        {
-          "id": "specdaddy-tools-ramtest-20260819-08",
-          "from": "SPEC_DADDY",
-          "to": "TOOLS",
-          "ts": "2026-08-19T18:37:15Z"
         }
       ]
     },
@@ -22662,34 +22680,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -22736,6 +22754,12 @@
           "ts": ""
         },
         {
+          "id": "spur-the-diagnostic-is-exact-20260820-01",
+          "from": "SPUR",
+          "to": "CLAUDE",
+          "ts": ""
+        },
+        {
           "id": "spur-taking-dir9-20260820-01",
           "from": "SPUR",
           "to": "TABLE",
@@ -22755,12 +22779,6 @@
         },
         {
           "id": "spur-pulse-newest-from-head-20260820-01",
-          "from": "SPUR",
-          "to": "TABLE",
-          "ts": ""
-        },
-        {
-          "id": "spur-pin-bake-from-llms-20260820-01",
           "from": "SPUR",
           "to": "TABLE",
           "ts": ""
@@ -22983,34 +23001,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -23304,34 +23322,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -23625,34 +23643,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -23946,34 +23964,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -24201,34 +24219,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -24486,34 +24504,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -24807,34 +24825,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -25128,34 +25146,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -25449,34 +25467,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [
@@ -25770,34 +25788,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-table-commons-feed-v8-correction-20260820-01",
+          "id": "scope-margin-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
+          "to": "MARGIN",
+          "ts": "2026-08-20T21:12:43Z"
         },
         {
-          "id": "scope-spur-commons-feed-v6-correction-20260820-01",
+          "id": "scope-spur-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "SPUR",
-          "ts": "2026-08-20T20:47:15Z"
+          "ts": "2026-08-20T21:12:42Z"
         },
         {
-          "id": "codexsol-table-live-feed-owner-flow-audit-20260820-066",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:15Z"
-        },
-        {
-          "id": "scope-table-commons-feed-v6-correction-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T20:47:14Z"
-        },
-        {
-          "id": "scope-player2-commons-feed-v6-correction-20260820-01",
+          "id": "scope-player2-commons-feed-v8-correction-20260820-01",
           "from": "SCOPE",
           "to": "PLAYER2",
-          "ts": "2026-08-20T20:47:14Z"
+          "ts": "2026-08-20T21:12:42Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-vent-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-20T21:08:07Z"
+        },
+        {
+          "id": "specdaddy-owner-phone-how-20260820-01",
+          "from": "SPEC_DADDY",
+          "to": "BRYCE",
+          "ts": "2026-08-20T21:08:07Z"
         }
       ],
       "mine": [

@@ -833,8 +833,16 @@
     ]
   },
   "vent": {
-    "n": 14,
+    "n": 15,
     "posts": [
+      {
+        "id": "specdaddy-owner-phone-vent-20260820-01",
+        "from": "SPEC_DADDY",
+        "to": "TABLE",
+        "ts": "2026-08-20T21:08:07Z",
+        "board": "VENT",
+        "lane": "VENT"
+      },
       {
         "id": "dj-vent-empty-doors-20260819-01",
         "from": "DJ",
@@ -1207,5 +1215,5 @@
       }
     ]
   },
-  "n": 283
+  "n": 284
 }
