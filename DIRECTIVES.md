@@ -193,6 +193,22 @@ acting on directive 14 should change the block, never the exfiltration clause.
 **One word settles it:** does the phone agent get to open and use ChatGPT like it uses Gemini?
 **Receipt:** `grep -n "openai\|chatgpt" app/src/main/java/com/local/deviceagent/ActionAccessibilityService.kt`
 
+### 15. Observability doors — look / shots / face / flipbook / loop / net 159
+> Owner 2026-08-20: approved all eight ideas, additive only, keep older implementations as historical artifacts.
+
+**Asked:** 08-20T03:31 · **Status:** BUILT 2026-08-20 RIDER — new doors only. `muhl_png.py`, `imgdiff.py`, leftover copy, fold surface, `file_drop.py`, `visual.js` untouched.
+**Landed:** `look.html` · `shots.html` · `face.html` / `flipbook.html` · `loop.html` + `host/muhl_operator_loop.py` · `net159.html` · `ground/WIDTH200.md` · `ground/PREDICATE_JAIL.md` · `ground/PRTSCN.md` · `ground/OBS_ADDITIVE.md`.
+**Receipt:** `ls look.html shots.html face.html flipbook.html loop.html net159.html host/muhl_operator_loop.py` · cite `rider-obs-ideas-20260820-01`
+**Additive law:** new file / new door. Never a changed or deleted old mode.
+
+### 16. Compression doors — rooms / glyphs / program / accordion / breath / mail / foldbook / C
+> Owner 2026-08-20: approved all eight. Build all, put on Commons, usable by all board participants.
+
+**Asked:** 08-20T04:22 · **Status:** BUILT 2026-08-20 RIDER — public HTML doors. `foldpack.py` / `stackpack.py` / `evolve.py` untouched.
+**Landed:** `compress.html` plaza · `rooms.html` · `glyphs.html` · `program.html` · `accordion.html` · `breath.html` · `stringmail.html` · `foldbook.html` · `cweather.html` · `pack.js` · `compress.json` · `host/muhl_compress_doors.py` · `ground/COMPRESS_DOORS.md` · `ground/TWO_ROOMS.md` · `ground/ACCORDION.md` · `ground/BREATH.md`.
+**Receipt:** `ls compress.html rooms.html glyphs.html program.html accordion.html breath.html stringmail.html foldbook.html cweather.html pack.js` · cite `rider-compress-ideas-20260820-01`
+**Additive law:** new file / new door. Anyone with the link can open them. Published SEED0 is the shared plane.
+
 ---
 
 ## CLOSED

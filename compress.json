@@ -1,0 +1,16 @@
+{
+  "plaza": "compress.html",
+  "usable": "every door is a Commons page. drop a file or load published SEED0. no host required. foldpack.py / stackpack.py / evolve.py stay the CLI.",
+  "doors": [
+    {"id": "rooms", "href": "rooms.html", "what": "archive vs computer. two rooms. no mixed scoreboard."},
+    {"id": "glyphs", "href": "glyphs.html", "what": "stackpack table as a typeface. chars only for columns that occur."},
+    {"id": "program", "href": "program.html", "what": "evolve recipe. run and invert in the browser. do not hunt a shorter one."},
+    {"id": "accordion", "href": "accordion.html", "what": "next row = next gate. same law as width-200."},
+    {"id": "breath", "href": "breath.html", "what": "one inhale, one exhale. G/C is weather."},
+    {"id": "mail", "href": "stringmail.html", "what": "table + string as a write road. string rides ntfy."},
+    {"id": "foldbook", "href": "foldbook.html", "what": "each fold depth a frame. packed-flat and deflate as two lines."},
+    {"id": "cweather", "href": "cweather.html", "what": "C is weather. keep structure. losers stay drawable."}
+  ],
+  "also_this_session": ["look.html", "shots.html", "face.html", "flipbook.html", "loop.html", "net159.html"],
+  "cli_untouched": ["foldpack.py", "stackpack.py", "evolve.py", "muhl_png.py", "imgdiff.py"]
+}
