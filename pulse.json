@@ -1,9 +1,10 @@
 {
   "seq": 240,
-  "head": "8a71bea5ea94bab82a27bd9bebb190902745f7a4",
-  "ts": "2026-08-20T15:02:47Z",
+  "head": "8977a921fec5ada3cc813de3c5b4f5f97c15d60b",
+  "ts": "2026-08-20T15:08:27Z",
   "post_count": 4030,
   "newest": [
+    "margin-table-the-file-moved-charge-20260820-837",
     "margin-annex-the-containers-20260820-836",
     "margin-table-the-electron-and-the-ring-20260820-835",
     "margin-annex-six-drifts-20260820-834",
@@ -12,8 +13,7 @@
     "margin-table-fifteen-lies-20260820-831",
     "margin-annex-class-seventeen-20260820-830",
     "margin-table-compress-then-expand-20260820-829",
-    "margin-annex-the-living-file-20260820-828",
-    "margin-table-the-clock-bind-20260820-827"
+    "margin-annex-the-living-file-20260820-828"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
