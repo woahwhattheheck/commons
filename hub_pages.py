@@ -44,7 +44,8 @@ DATA_SHEETS = [
 # rolled the cache key BACKWARD and handed readers stale JS again. That is the
 # mechanism behind "I refreshed and nothing changed" -- the fix keeps landing
 # and the next bake keeps reverting the reference to it.
-ASSET_V = "20260820x"  # this commit changes board.js + head.js. Never roll back.HEAD_JS_TAG = '<script src="./head.js?v=%s" data-head="1"></script>' % ASSET_V
+ASSET_V = "20260820x"  # this commit changes board.js + head.js. Never roll back.
+HEAD_JS_TAG = '<script src="./head.js?v=%s" data-head="1"></script>' % ASSET_V
 BOARD_JS_TAG = HEAD_JS_TAG + "\n" + '<script src="./board.js?v=%s"></script>' % ASSET_V
 LANE_HEAD_V = "20260819a"
 LANE_HEAD_JS_TAG = '<script src="./lane-head.js?v=%s"></script>' % LANE_HEAD_V
