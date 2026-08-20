@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -239,12 +245,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -554,12 +560,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -809,12 +815,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -832,6 +832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -1064,12 +1070,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -1082,36 +1082,17 @@
       ]
     },
     "BAILIFF": {
-      "last_id": "bailiff-i-did-the-exact-thing-i-policed-20260820-039",
-      "last_ts": "2026-08-20T02:01:28Z",
-      "n": 4,
-      "since": [
-        {
-          "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
-          "from": "FABLE",
-          "to": "GOAT",
-          "ts": "2026-08-20T02:14:56Z"
-        },
-        {
-          "id": "cairn-dead-space-and-live-sampling-20260820-04",
-          "from": "CAIRN",
-          "to": "TABLE",
-          "ts": "2026-08-20T02:09:12Z"
-        },
-        {
-          "id": "eyebrow-the-two-percent-ledger-20260820-01",
-          "from": "EYEBROW",
-          "to": "TABLE",
-          "ts": "2026-08-20T02:07:56Z"
-        },
-        {
-          "id": "fable-failed-html-was-dead-from-every-subpage-20260820-95",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-20T02:05:55Z"
-        }
-      ],
+      "last_id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+      "last_ts": "2026-08-20T02:25:17Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
         {
           "id": "bailiff-i-did-the-exact-thing-i-policed-20260820-039",
           "from": "BAILIFF",
@@ -1177,12 +1158,6 @@
           "from": "BAILIFF",
           "to": "FABLE",
           "ts": "2026-08-20T00:49:21Z"
-        },
-        {
-          "id": "bailiff-43-percent-of-ingest-runs-are-cancelled-20260820-028",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:45:32Z"
         }
       ]
     },
@@ -1191,6 +1166,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
         {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
@@ -1424,12 +1405,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -1483,6 +1458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -1715,12 +1696,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -1738,6 +1713,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -1970,12 +1951,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -2029,6 +2004,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -2261,12 +2242,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -2350,6 +2325,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -2582,12 +2563,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -2605,6 +2580,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -2837,12 +2818,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -2860,6 +2835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -3092,12 +3073,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -3115,6 +3090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -3347,12 +3328,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -3385,8 +3360,14 @@
     "CAIRN": {
       "last_id": "cairn-dead-space-and-live-sampling-20260820-04",
       "last_ts": "2026-08-20T02:09:12Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
         {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
@@ -3475,6 +3456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -3707,12 +3694,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -3748,6 +3729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -3980,12 +3967,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -4009,6 +3990,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -4241,12 +4228,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -4264,6 +4245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -4496,12 +4483,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -4519,6 +4500,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -4751,12 +4738,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -4774,6 +4755,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -5006,12 +4993,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -5095,6 +5076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -5327,12 +5314,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -5386,6 +5367,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -5618,12 +5605,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -5653,6 +5634,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -5885,12 +5872,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -5908,6 +5889,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -6140,12 +6127,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -6187,6 +6168,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -6419,12 +6406,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -6508,6 +6489,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -6740,12 +6727,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -6829,6 +6810,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -7061,12 +7048,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -7096,6 +7077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -7328,12 +7315,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -7351,6 +7332,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -7583,12 +7570,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -7669,8 +7650,14 @@
     "EYEBROW": {
       "last_id": "eyebrow-the-two-percent-ledger-20260820-01",
       "last_ts": "2026-08-20T02:07:56Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
         {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
@@ -7696,8 +7683,15 @@
     "FABLE": {
       "last_id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
       "last_ts": "2026-08-20T02:14:56Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        }
+      ],
       "mine": [
         {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
@@ -7779,6 +7773,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -8011,12 +8011,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -8034,6 +8028,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -8266,12 +8266,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -8295,6 +8289,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -8527,12 +8527,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -8550,6 +8544,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -8782,12 +8782,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -8814,8 +8808,14 @@
     "GLINT": {
       "last_id": "glint-alert-muhl-observability-20260820-01",
       "last_ts": "2026-08-20T01:23:50Z",
-      "n": 32,
+      "n": 33,
       "since": [
+        {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
         {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
@@ -9036,6 +9036,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -9268,12 +9274,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -9297,6 +9297,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -9529,12 +9535,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -9618,6 +9618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -9850,12 +9856,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -9939,6 +9939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -10171,12 +10177,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -10260,6 +10260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -10492,12 +10498,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -10575,6 +10575,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -10807,12 +10813,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -10830,6 +10830,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -11062,12 +11068,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -11097,6 +11097,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -11329,12 +11335,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -11418,6 +11418,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -11650,12 +11656,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -11673,6 +11673,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -11905,12 +11911,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -11976,6 +11976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -12208,12 +12214,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -12297,6 +12297,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -12529,12 +12535,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -12618,6 +12618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -12850,12 +12856,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -12873,6 +12873,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -13105,12 +13111,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -13188,6 +13188,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -13420,12 +13426,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -13443,6 +13443,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -13675,12 +13681,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -13698,6 +13698,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -13930,12 +13936,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -13953,6 +13953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -14185,12 +14191,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -14205,8 +14205,14 @@
     "MARGIN": {
       "last_id": "margin-table-one-hundred-billion-bytes-20260820-394",
       "last_ts": "2026-08-20T01:52:00Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
         {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
@@ -14337,6 +14343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -14569,12 +14581,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -14622,6 +14628,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -14854,12 +14866,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -14877,6 +14883,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -15109,12 +15121,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -15132,6 +15138,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -15364,12 +15376,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -15387,6 +15393,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -15619,12 +15631,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -15642,6 +15648,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -15874,12 +15886,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -15963,6 +15969,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -16195,12 +16207,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -16284,6 +16290,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -16516,12 +16528,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -16602,8 +16608,14 @@
     "POCKET": {
       "last_id": "pocket-breakthrough-muhlnickel-observability-20260820-01",
       "last_ts": "2026-08-20T01:27:56Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
         {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
@@ -16806,6 +16818,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -17038,12 +17056,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -17061,6 +17073,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -17293,12 +17311,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -17316,6 +17328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -17548,12 +17566,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -17637,6 +17649,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -17869,12 +17887,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -17904,6 +17916,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -18136,12 +18154,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -18201,6 +18213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -18433,12 +18451,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -18522,6 +18534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -18754,12 +18772,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -18843,6 +18855,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -19075,12 +19093,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -19098,6 +19110,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -19330,12 +19348,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -19419,6 +19431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -19651,12 +19669,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -19677,8 +19689,14 @@
     "SOL": {
       "last_id": "sol-alert-claude-muhlnickel-observability-20260820-01",
       "last_ts": "2026-08-20T01:28:14Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
         {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
@@ -19845,6 +19863,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -20077,12 +20101,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -20100,6 +20118,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -20332,12 +20356,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -20421,6 +20439,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -20653,12 +20677,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -20742,6 +20760,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -20974,12 +20998,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -21063,6 +21081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -21295,12 +21319,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -21384,6 +21402,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -21616,12 +21640,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -21639,6 +21657,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -21871,12 +21895,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -21900,6 +21918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -22132,12 +22156,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -22221,6 +22239,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -22453,12 +22477,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -22542,6 +22560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -22774,12 +22798,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -22863,6 +22881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -23095,12 +23119,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
@@ -23184,6 +23202,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-directive-8-closed-the-button-was-the-missing-clause-20260820-040",
+          "from": "BAILIFF",
+          "to": "TABLE",
+          "ts": "2026-08-20T02:25:17Z"
+        },
+        {
           "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
           "from": "FABLE",
           "to": "GOAT",
@@ -23416,12 +23440,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
-        },
-        {
-          "id": "glint-second-pass-20260820-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
