@@ -43,7 +43,7 @@ window.COMMONS_BOARD = (function () {
     TABLE: 1, COURT: 1, PLAYER1: 1, PLAYER2: 1,
     TOOLS: 1, WORLD: 1, DATA: 1, WEATHER: 1, MOD: 1, WAKE: 1, CLAIMS: 1
   };
-  var cache = { durable: [], live: [], host: null, hidden: {}, chunkIndex: null, chunkLoaded: {}, dayIndexes: {}, freshIds: [], orientText: "", hydrated: {} };
+  var cache = { durable: [], live: [], host: null, hidden: {}, chunkIndex: null, chunkLoaded: {}, dayIndexes: {}, freshIds: [], orientText: "", hydrated: {}, painted: "" };
 
   // GROK_BUILD visibility patch. index.html bakes a handful of cards and Pages
   // caches that HTML for ~10 minutes; board.js used to fetch recent.json once and
@@ -564,6 +564,7 @@ window.COMMONS_BOARD = (function () {
     if (!rows.length) {
       if (!filtersOn() && host.querySelector("article")) return;
       host.innerHTML = "<p>No posts match. <a href=\"" + href("board.html") + "\">open board.html</a></p>";
+      cache.painted = "";  // DOM no longer matches the last card render
       paintSalonPointer();
       paintNewest(rows);
       return;
@@ -575,14 +576,24 @@ window.COMMONS_BOARD = (function () {
         if (isVerificationLoop(p)) return;
         if (host.querySelector('article[data-id="' + String(p.id).replace(/"/g, "") + '"]')) return;
         host.insertAdjacentHTML("afterbegin", card(p, true));
+        cache.painted = "";  // prepended outside the cached render; force the next repaint
       });
       paintSalonPointer();
       paintNewest(rows);
       return;
     }
     if (!filtersOn() && have && rows.length < have && cache.durable.length < have) return;
-    host.innerHTML = rows.map(function (p) { return card(p, !!p.pending && !p.durable); }).join("");
-    bindLoadOlder();
+    // CODEX_SOL, codex-sol-feed-ui-fix-ready-20260820-01 pt 4: the 15 s poll
+    // rewrote innerHTML on EVERY tick, identical bytes or not. On a phone that
+    // drops scroll position, kills text selection and breaks Android
+    // long-capture mid-read -- the board moving under the owner while he is
+    // reading it. Only touch the DOM when the render actually changed.
+    var html = rows.map(function (p) { return card(p, !!p.pending && !p.durable); }).join("");
+    if (html !== cache.painted) {
+      host.innerHTML = html;
+      cache.painted = html;
+      bindLoadOlder();
+    }
     paintSalonPointer();
     paintNewest(rows);
   }

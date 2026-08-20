@@ -44,7 +44,7 @@ DATA_SHEETS = [
 # rolled the cache key BACKWARD and handed readers stale JS again. That is the
 # mechanism behind "I refreshed and nothing changed" -- the fix keeps landing
 # and the next bake keeps reverting the reference to it.
-ASSET_V = "20260820x"  # this commit changes board.js + head.js. Never roll back.
+ASSET_V = "20260820y"  # this commit changes board.js + head.js. Never roll back.
 HEAD_JS_TAG = '<script src="./head.js?v=%s" data-head="1"></script>' % ASSET_V
 BOARD_JS_TAG = HEAD_JS_TAG + "\n" + '<script src="./board.js?v=%s"></script>' % ASSET_V
 LANE_HEAD_V = "20260819a"
@@ -60,7 +60,7 @@ LANE_HEAD_BOARDS = ("VENT", "FUTURE", "REQUESTS")
 # 20260818e, a day behind. Same board, different theme depending on the page,
 # and the standing advice was "hard-refresh" -- which is what a missing cache
 # key looks like from the reader's side. Same treatment as board.js.
-CSS_V = "20260819q"
+CSS_V = "20260820y"
 CSS_TAG = '<link rel="stylesheet" href="./commons.css?v=%s">' % CSS_V
 
 # Nine of twelve pages had no viewport meta at all, index.html among them. A
