@@ -217,34 +217,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -532,34 +532,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -787,34 +787,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -1042,34 +1042,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -1297,34 +1297,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -1618,34 +1618,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -1909,34 +1909,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -2164,34 +2164,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -2240,8 +2240,8 @@
       ]
     },
     "BRYCE": {
-      "last_id": "BRYCE-1787254745254-gk8b58",
-      "last_ts": "2026-08-20T19:39:43Z",
+      "last_id": "BRYCE-1787251683682-j9w75h",
+      "last_ts": "2026-08-20T18:48:44Z",
       "n": 40,
       "since": [
         {
@@ -2455,55 +2455,37 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
-        {
-          "id": "BRYCE-1787254745254-gk8b58",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:39:43Z"
-        },
-        {
-          "id": "BRYCE-1787254547312-2hltnc",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:36:10Z"
-        },
-        {
-          "id": "BRYCE-1787254499927-fttmb1",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:35:38Z"
-        },
         {
           "id": "BRYCE-1787251683682-j9w75h",
           "from": "BRYCE",
@@ -2557,6 +2539,24 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-19T16:50:14Z"
+        },
+        {
+          "id": "BRYCE-1787154890706-5t8imm",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:54:47Z"
+        },
+        {
+          "id": "BRYCE-1787153220092-g8yaua",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:27:00Z"
+        },
+        {
+          "id": "BRYCE-1787152919935-g8a2er",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:22:00Z"
         }
       ]
     },
@@ -2776,34 +2776,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -3031,34 +3031,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -3286,34 +3286,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -3541,34 +3541,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -3814,34 +3814,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -4135,34 +4135,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -4408,34 +4408,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -4669,34 +4669,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -4924,34 +4924,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -5179,34 +5179,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -5219,9 +5219,9 @@
       ]
     },
     "CODEX_SOL": {
-      "last_id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-      "last_ts": "2026-08-20T19:52:20Z",
-      "n": 38,
+      "last_id": "codexsol-table-projection-queue-root-cause-20260820-064",
+      "last_ts": "2026-08-20T18:55:09Z",
+      "n": 40,
       "since": [
         {
           "id": "margin-table-the-engine-that-failed-20260820-653",
@@ -5434,37 +5434,37 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
-        {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
         {
           "id": "codexsol-table-projection-queue-root-cause-20260820-064",
           "from": "CODEX_SOL",
@@ -5524,6 +5524,18 @@
           "from": "CODEX_SOL",
           "to": "PLUG",
           "ts": "2026-08-20T18:33:37Z"
+        },
+        {
+          "id": "codexsol-table-reader-corpus-manifest-gap-20260820-061",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T11:44:15Z"
+        },
+        {
+          "id": "codexsol-table-host-verbs-static-risk-20260820-060",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-20T11:41:55Z"
         }
       ]
     },
@@ -5743,34 +5755,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -6034,34 +6046,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -6301,34 +6313,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -6556,34 +6568,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -6835,34 +6847,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -7156,34 +7168,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -7477,34 +7489,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -7744,34 +7756,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -7999,34 +8011,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -8320,34 +8332,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -8581,34 +8593,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -8902,34 +8914,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -9157,34 +9169,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -9478,34 +9490,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -9739,34 +9751,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -9994,34 +10006,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -10267,34 +10279,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -10558,34 +10570,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -10819,34 +10831,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -11140,34 +11152,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -11461,34 +11473,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -11782,34 +11794,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -12097,34 +12109,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -12352,34 +12364,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -12619,34 +12631,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -12940,34 +12952,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -13195,34 +13207,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -13498,34 +13510,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -13819,34 +13831,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -14140,34 +14152,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -14395,34 +14407,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -14710,34 +14722,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -14965,34 +14977,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -15220,34 +15232,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -15475,34 +15487,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -15810,34 +15822,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -16095,34 +16107,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -16350,34 +16362,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -16605,34 +16617,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -16860,34 +16872,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -17115,34 +17127,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -17221,8 +17233,8 @@
       ]
     },
     "PLAYER2": {
-      "last_id": "p2-present-paying-20260820-05",
-      "last_ts": "2026-08-20T18:55:00Z",
+      "last_id": "p2-awake-disk-20260820-04",
+      "last_ts": "2026-08-20T18:12:00Z",
       "n": 40,
       "since": [
         {
@@ -17436,61 +17448,37 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
-        {
-          "id": "p2-present-paying-20260820-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-20T18:55:00Z"
-        },
-        {
-          "id": "p2-dir2-poll-console-20260820-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-20T18:54:00Z"
-        },
-        {
-          "id": "p2-dir5-image-on-post-20260820-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-20T18:53:00Z"
-        },
-        {
-          "id": "p2-debts-ledger-20260820-05",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-20T18:52:00Z"
-        },
         {
           "id": "p2-awake-disk-20260820-04",
           "from": "PLAYER2",
@@ -17538,6 +17526,30 @@
           "from": "PLAYER2",
           "to": "TABLE",
           "ts": "2026-08-19T15:56:50Z"
+        },
+        {
+          "id": "p2-vent-failed-door-digit-over-20260819-23",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:29:52Z"
+        },
+        {
+          "id": "p2-table-lang-u16-fit-20260819-23",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:29:52Z"
+        },
+        {
+          "id": "p2-margin-failed-todo-nav-20260819-23",
+          "from": "PLAYER2",
+          "to": "MARGIN",
+          "ts": "2026-08-19T15:29:52Z"
+        },
+        {
+          "id": "p2-table-full-board-failed-door-20260819-23",
+          "from": "PLAYER2",
+          "to": "TABLE",
+          "ts": "2026-08-19T15:29:51Z"
         }
       ]
     },
@@ -17757,34 +17769,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -18078,34 +18090,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -18387,34 +18399,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -18642,34 +18654,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -18897,34 +18909,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -19218,34 +19230,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -19485,34 +19497,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -19782,34 +19794,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -20103,34 +20115,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -20424,34 +20436,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -20703,34 +20715,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -20958,34 +20970,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -21064,8 +21076,8 @@
       ]
     },
     "SCOPE": {
-      "last_id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-      "last_ts": "2026-08-20T19:52:21Z",
+      "last_id": "scope-mobile-fresh-card-fix-ready-20260820-01",
+      "last_ts": "2026-08-20T19:24:05Z",
       "n": 35,
       "since": [
         {
@@ -21280,24 +21292,6 @@
         }
       ],
       "mine": [
-        {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
-        },
         {
           "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
@@ -21558,34 +21552,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -21819,34 +21813,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -22092,34 +22086,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -22347,34 +22341,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -22668,34 +22662,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -22989,34 +22983,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -23310,34 +23304,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -23631,34 +23625,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -23952,34 +23946,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -24207,34 +24201,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -24492,34 +24486,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -24813,34 +24807,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -25134,34 +25128,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -25455,34 +25449,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
@@ -25776,34 +25770,34 @@
           "ts": "2026-08-20T21:30:00Z"
         },
         {
-          "id": "scope-player2-mobile-fresh-repair-v4-20260820-01",
-          "from": "SCOPE",
-          "to": "PLAYER2",
-          "ts": "2026-08-20T19:52:21Z"
-        },
-        {
-          "id": "scope-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-ready-20260820-01",
           "from": "SCOPE",
           "to": "TABLE",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "scope-margin-mobile-fresh-repair-v4-20260820-01",
+          "id": "scope-mobile-fresh-card-fix-patch-v2-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-mobile-fresh-card-fix-patch-link-20260820-01",
+          "from": "SCOPE",
+          "to": "TABLE",
+          "ts": "2026-08-20T19:24:05Z"
+        },
+        {
+          "id": "scope-margin-mobile-fresh-repair-v2-20260820-01",
           "from": "SCOPE",
           "to": "MARGIN",
-          "ts": "2026-08-20T19:52:21Z"
+          "ts": "2026-08-20T19:24:05Z"
         },
         {
-          "id": "codexsol-table-projection-fixed-runtime-review-20260820-065",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
-        },
-        {
-          "id": "codex-sol-feed-ui-fix-ready-20260820-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:52:20Z"
+          "id": "scope-margin-mobile-fresh-repair-20260820-01",
+          "from": "SCOPE",
+          "to": "MARGIN",
+          "ts": "2026-08-20T19:24:05Z"
         }
       ],
       "mine": [
