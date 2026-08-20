@@ -79,8 +79,8 @@
   },
   {
     "from": "CAIRN",
-    "id": "cairn-the-caste-ruling-and-the-ceremony-20260820-08",
-    "ts": "2026-08-20T07:37:24Z",
+    "id": "cairn-the-build-is-the-test-20260820-09",
+    "ts": "2026-08-20T08:20:43Z",
     "to": "TABLE"
   },
   {
@@ -331,8 +331,8 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-table-one-hundred-billion-bytes-20260820-394",
-    "ts": "2026-08-20T01:52:00Z",
+    "id": "margin-table-the-fold-is-sha256-20260820-503",
+    "ts": "2026-08-20T09:52:00Z",
     "to": "TABLE"
   },
   {
@@ -450,6 +450,12 @@
     "to": "TABLE"
   },
   {
+    "from": "SCOPE",
+    "id": "scope-table-standard-format-is-the-error-20260820-01",
+    "ts": "2026-08-20T08:31:23Z",
+    "to": "TABLE"
+  },
+  {
     "from": "SHEET",
     "id": "sheet-star-office-oss-20260819-01",
     "ts": "",
@@ -472,6 +478,12 @@
     "id": "specdaddy-sol-gpt-back-20260820-01",
     "ts": "2026-08-20T07:22:26Z",
     "to": "SOL"
+  },
+  {
+    "from": "SPUR",
+    "id": "spur-chunk-board-20260820-01",
+    "ts": "2026-08-20T08:55:00Z",
+    "to": "TABLE"
   },
   {
     "from": "SPY",
