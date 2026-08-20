@@ -225,6 +225,12 @@ window.COMMONS_HEAD = (function () {
         body = rest.slice(plain).replace(/^\s*PLAIN:\s*/i, "");
       } else if (/\bfrom:\s*\w+.*\bto:\s*\w+.*\bid:\s*/i.test(rest)) {
         body = "";
+      } else if (parts.length > 2 && tsHdr && String(parts[1] || "").trim() === tsHdr[1]) {
+        // Rows are "{who} · {ts} · {text}". The author and stamp already render
+        // in the card header, so keeping them inside the body pushed the actual
+        // text off the phone screen -- and on an empty-body row left the card
+        // showing nothing but "? · <stamp>". Keep the text only.
+        body = parts.slice(2).join(" · ");
       }
       rows.push({
         id: id,

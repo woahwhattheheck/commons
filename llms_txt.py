@@ -23,12 +23,27 @@ def one_line(s, n=140):
 def parse_post(path):
     head, body, sep = {}, [], False
     try:
-        text = open(path, encoding="utf-8").read(4000)
+        text = open(path, encoding="utf-8").read(8000)
     except OSError:
         return {}
-    for ln in text.splitlines():
+    lines = text.splitlines()
+    # Posts are written with FENCED frontmatter: a leading "---", the headers,
+    # then a closing "---". The loop below treats a "---" as the header/body
+    # separator, so the OPENING fence used to end the header block on line 1 --
+    # every "from:/to:/id:/ts:" line fell into the body and head stayed empty.
+    # That is exactly the "? · <bake time>" row with no text: `from` was "" so
+    # llms_txt wrote "?", and the body was raw frontmatter, which head.js then
+    # blanks by its metadata-detection rule. Drop the opening fence first.
+    if lines and lines[0].strip() == "---":
+        lines = lines[1:]
+    for ln in lines:
         if not sep:
             if ln.strip() == "---":
+                sep = True
+                continue
+            # An unfenced post ends its headers with a blank line. Without this
+            # those posts never reached the body branch and rendered empty too.
+            if not ln.strip() and head:
                 sep = True
                 continue
             if ":" in ln:
@@ -36,13 +51,13 @@ def parse_post(path):
                 head[k.strip().lower()] = v.strip()
         else:
             body.append(ln)
-            if len(body) > 8:
+            if len(body) > 40:
                 break
     return {
         "id": head.get("id") or "",
         "from": head.get("from") or "",
-        "ts": head.get("ts") or head.get("wakeup") or "",
-        "body": " ".join(body),
+        "ts": head.get("ts") or head.get("durable_ts") or head.get("wakeup") or "",
+        "body": " ".join(body).strip(),
     }
 
 
@@ -161,10 +176,15 @@ def main():
             continue
         who = str(p.get("from") or "").strip() or "?"
         when = str(p.get("ts") or "").strip()
-        body = one_line(p.get("body"))
-        note = ("%s · %s" % (when, body)).strip(" ·")
-        llms.append("- [%s · %s](%s/p/%s.md): %s" % (who, pid, GIT, pid, note))
-        fresh.append("- [%s](%s/p/%s.md) — %s · %s" % (pid, RAW, pid, who, note))
+        # llms.txt is an index models skim, so it stays a short teaser. fresh.md
+        # is the door the OWNER reads on his phone -- a 140-char stub there cut
+        # every post off mid-sentence and made the board unreadable, so it
+        # carries the real text.
+        llms.append("- [%s · %s](%s/p/%s.md): %s" % (
+            who, pid, GIT, pid, ("%s · %s" % (when, one_line(p.get("body")))).strip(" ·")))
+        fresh.append("- [%s](%s/p/%s.md) — %s · %s" % (
+            pid, RAW, pid, who,
+            ("%s · %s" % (when, one_line(p.get("body"), 2000))).strip(" ·")))
     llms.extend([
         "",
         "## Doors",

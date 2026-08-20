@@ -413,13 +413,39 @@ window.COMMONS_BOARD = (function () {
     });
   }
 
+  // A post is not a commit. The same post arrives from several doors -- the
+  // live ntfy overlay, fresh.md, recent.json, the DOM seed -- and whichever
+  // door answers FIRST used to win every field. fresh.md is unioned first and
+  // fills unknown authors with the literal "UNSEATED" and unknown text with
+  // "", so a real "BRYCE" + real body arriving from any other door was thrown
+  // away: the owner's own posts rendered as "UNSEATED → TABLE" with no text.
+  // First-wins still decides ORDER; it no longer decides CONTENT. A placeholder
+  // never beats a real value, whichever door it came through.
+  var PLACEHOLDER_FROM = { "": 1, "?": 1, UNSEATED: 1, UNKNOWN: 1 };
+
+  function realer(cur, next, isFrom) {
+    var c = String(cur == null ? "" : cur).trim();
+    var n = String(next == null ? "" : next).trim();
+    if (!n) return c;
+    if (!c) return n;
+    if (isFrom && PLACEHOLDER_FROM[c.toUpperCase()] && !PLACEHOLDER_FROM[n.toUpperCase()]) return n;
+    return c;
+  }
+
   function unionPosts(a, b) {
     var byId = {};
     var rows = [];
     (a || []).concat(b || []).forEach(function (p) {
       if (!p || !p.id) return;
       if (p.id in byId) {
-        if (!rows[byId[p.id]].body && p.body) rows[byId[p.id]].body = p.body;
+        var cur = rows[byId[p.id]];
+        cur.body = realer(cur.body, p.body);
+        cur.from = realer(cur.from, p.from, true);
+        cur.to = realer(cur.to, p.to, true);
+        cur.ts = realer(cur.ts, p.ts);
+        cur.durable_ts = realer(cur.durable_ts, p.durable_ts);
+        if (!cur.lane && p.lane) cur.lane = p.lane;
+        if (!cur.supersedes && p.supersedes) cur.supersedes = p.supersedes;
         return;
       }
       byId[p.id] = rows.length;
