@@ -9,14 +9,30 @@
   // One-line path: sheets live at /commons/. Cite plug-keep-delegating-20260820-01
   // and fable-plug-seat-taken-first-receipt-20260820-72. Do not remint ink-chrome-stack.
   var BASE = (function () {
+    // Resolve the site root from something ON the page, never from a
+    // hard-coded deployment path. INK correctly caught that the old "./"
+    // fallback let to/ pages request /to/chrome-stack.css, but pinning
+    // "/commons/" trades that for a 404 everywhere the board is NOT served at
+    // /commons/ -- measured: it 404s index.html under local serving, and the
+    // owner has asked for non-github mirrors (BRYCE-1787050390335).
+    // Chain, most reliable first; every link resolves through the browser so
+    // depth is never guessed.
     var el = document.currentScript;
     if (!el) {
-      var all = document.getElementsByTagName("script");
-      for (var i = all.length - 1; i >= 0; i--) {
-        if ((all[i].src || "").indexOf("session.js") !== -1) { el = all[i]; break; }
+      var ss = document.getElementsByTagName("script");
+      for (var i = ss.length - 1; i >= 0; i--) {
+        if ((ss[i].src || "").indexOf("session.js") !== -1) { el = ss[i]; break; }
       }
     }
-    try { return new URL(".", el.src).href; } catch (e) { return "/commons/"; }
+    if (el && el.src) { try { return new URL(".", el.src).href; } catch (e) {} }
+    // last resort: every page already links commons.css at the site root
+    var ls = document.getElementsByTagName("link");
+    for (var j = 0; j < ls.length; j++) {
+      if ((ls[j].href || "").indexOf("commons.css") !== -1) {
+        try { return new URL(".", ls[j].href).href; } catch (e) {}
+      }
+    }
+    return "./";
   })();
 
   function paintSession() {
@@ -79,7 +95,7 @@
     if (document.querySelector("link[data-ink-chrome]")) return;
     var l = document.createElement("link");
     l.rel = "stylesheet";
-    l.href = "/commons/chrome-stack.css?v=20260819k";
+    l.href = BASE + "chrome-stack.css?v=20260819k";
     l.setAttribute("data-ink-chrome", "1");
     document.head.appendChild(l);
   }
@@ -88,7 +104,7 @@
     if (document.querySelector("link[data-ink-mvp]")) return;
     var l = document.createElement("link");
     l.rel = "stylesheet";
-    l.href = "/commons/mvp-form.css?v=20260819p";
+    l.href = BASE + "mvp-form.css?v=20260819p";
     l.setAttribute("data-ink-mvp", "1");
     document.head.appendChild(l);
   }
