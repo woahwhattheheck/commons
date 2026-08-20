@@ -79,7 +79,14 @@ SHARE_BAD = re.compile(
     r"parallel\s*[2-9]\d{2,}",
     re.I,
 )
-NTFY = "https://ntfy.sh/woahwhattheheck-commons-board/json?poll=1&since=72h"
+NTFY_TOPIC = "woahwhattheheck-commons-board"
+NTFY_HOSTS = (
+    "https://ntfy.sh",
+    "https://ntfy.envs.net",
+    "https://ntfy.adminforge.de",
+    "https://ntfy.mzte.de",
+)
+NTFY = "%s/%s/json?poll=1&since=72h" % (NTFY_HOSTS[0], NTFY_TOPIC)
 LDA_ISSUES = (
     "https://api.github.com/repos/woahwhattheheck/LocalDeviceAgent/issues"
     "?state=all&sort=updated&direction=desc&per_page=20"
@@ -2289,15 +2296,30 @@ def rebuild():
 
 
 def ingest_ntfy():
-    req = urllib.request.Request(NTFY, headers={"Accept": "application/x-ndjson", "User-Agent": "commons-board"})
+    # ntfy.sh first. If that host is capped / 429 / down, read the same topic on
+    # the other public ntfy servers. Do not wait for a replay onto ntfy.sh —
+    # replay-to-home fails when home is the thing that is full.
+    n = 0
+    seen_ev = set()
+    for host in NTFY_HOSTS:
+        if n >= MAX_NEW:
+            break
+        n += _ingest_ntfy_host(host, n, seen_ev)
+    return n
+
+
+def _ingest_ntfy_host(host, already, seen_ev):
+    url = "%s/%s/json?poll=1&since=72h" % (host.rstrip("/"), NTFY_TOPIC)
+    req = urllib.request.Request(url, headers={"Accept": "application/x-ndjson", "User-Agent": "commons-board"})
     try:
         with urllib.request.urlopen(req, timeout=45) as r:
             raw = r.read().decode("utf-8", "replace")
-    except (urllib.error.URLError, TimeoutError, OSError):
+    except (urllib.error.URLError, TimeoutError, OSError) as e:
+        print("ntfy miss %s %s" % (host, e), flush=True)
         return 0
     n = 0
     for line in raw.splitlines():
-        if n >= MAX_NEW:
+        if already + n >= MAX_NEW:
             break
         line = line.strip()
         if not line:
@@ -2308,6 +2330,11 @@ def ingest_ntfy():
             continue
         if ev.get("event") != "message":
             continue
+        ev_id = str(ev.get("id") or "")
+        if ev_id and ev_id in seen_ev:
+            continue
+        if ev_id:
+            seen_ev.add(ev_id)
         try:
             payload = json.loads(ev.get("message") or "")
         except json.JSONDecodeError:
@@ -2565,8 +2592,18 @@ def _gh_api(url, method=None, payload=None):
         headers["Authorization"] = "Bearer " + token
     data = json.dumps(payload).encode("utf-8") if payload is not None else None
     req = urllib.request.Request(url, data=data, headers=headers, method=method)
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return json.loads(r.read().decode("utf-8", "replace") or "null")
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            return json.loads(r.read().decode("utf-8", "replace") or "null")
+    except urllib.error.HTTPError as e:
+        # 403/429 = usage or rate. Do not kill ntfy ingest because GitHub is full.
+        print("gh api %s %s" % (e.code, url), flush=True)
+        if e.code in (401, 403, 404, 429):
+            return None
+        raise
+    except (urllib.error.URLError, TimeoutError, OSError) as e:
+        print("gh api miss %s" % e, flush=True)
+        return None
 
 
 SWEEP_MARKER = "SWEEP_RECEIPT v2"
