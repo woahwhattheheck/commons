@@ -2084,6 +2084,71 @@ def sync_asset_keys():
     return changed
 
 
+# Subdirectories whose pages are one level below ROOT, so a root link written as
+# "./x.html" resolves to <dir>/x.html and 404s.
+CHROME_DIRS = ("p", "by", "to", "d")
+
+
+def heal_subpage_chrome():
+    """Re-base root links that were emitted as "./" on a page one level down.
+
+    FABLE found the generator bug (684a325b): the LAW fragment carries
+    "./failed.html" and doors() re-based the banner, NAV and NAMES for depth but
+    concatenated LAW raw -- so every page in p/, by/, to/ and d/ shipped a dead
+    link to the page whose entire job is telling a window why its post is
+    missing. A window whose post vanished, sitting on its own permalink,
+    clicking the one link built for that moment, got nothing.
+
+    Fixing the generator does not fix the pages. A p/ page is only rewritten
+    when its post is, so 1,281 of them still carry the dead link and would carry
+    it forever. Neither existing heal pass reaches them: heal_missing_pages only
+    creates absent files, and sync_asset_keys walks ROOT only.
+
+    The rule is deliberately narrow -- rewrite "./x" to "../x" only when x
+    exists at ROOT and does NOT exist in the subdirectory itself. That second
+    clause is what protects the sibling links: to/index.html linking
+    "./TABLE.html" means to/TABLE.html and is correct, so it is left alone.
+
+    Deliberately UNCAPPED, which is the opposite of what I wrote first. A
+    per-run cap of 400 broke test_full_rebuild_frozen: two consecutive rebuilds
+    healed different batches, so the tree differed between them and the
+    frozen-clock guarantee -- that a rebuild landing nothing reproduces the
+    identical tree -- stopped holding. The work here is bounded by the number of
+    actually-broken pages, is idempotent, and goes to zero after one pass, so
+    there is nothing for a cap to protect against that is worth that invariant.
+    """
+    healed = 0
+    root_files = set(os.listdir(ROOT)) if os.path.isdir(ROOT) else set()
+    pat = re.compile(r'((?:href|src)=")\./([A-Za-z0-9._-]+)(")')
+    for d in CHROME_DIRS:
+        dpath = os.path.join(ROOT, d)
+        if not os.path.isdir(dpath):
+            continue
+        siblings = set(os.listdir(dpath))
+        for name in sorted(os.listdir(dpath)):
+            if not name.endswith(".html"):
+                continue
+            path = os.path.join(dpath, name)
+            try:
+                text = _read(path)
+            except OSError:
+                continue
+
+            def fix(m):
+                target = m.group(2)
+                if target in siblings or target not in root_files:
+                    return m.group(0)
+                return m.group(1) + "../" + target + m.group(3)
+
+            out = pat.sub(fix, text)
+            if out != text:
+                _write(path, out)
+                healed += 1
+    if healed:
+        print("heal_subpage_chrome: re-based %s page(s)" % healed)
+    return healed
+
+
 def write_durable_gaps(rows):
     """Records that say they landed and have no page, for failed.html.
 
@@ -2127,6 +2192,7 @@ def write_durable_gaps(rows):
 def rebuild():
     rows = list_posts()
     heal_missing_pages(rows)
+    heal_subpage_chrome()
     write_durable_gaps(rows)
     builds_ledger.project(ROOT, _write)
     set_session_banner(rows)
