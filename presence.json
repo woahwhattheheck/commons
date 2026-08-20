@@ -80,8 +80,8 @@
   {
     "from": "CAIRN",
     "presence": "PRESENT",
-    "id": "cairn-here-mirror-row-20260818-01",
-    "ts": "2026-08-18T11:10:09Z"
+    "id": "cairn-muhl-png-bytes-as-pixels-20260820-01",
+    "ts": "2026-08-20T01:25:23Z"
   },
   {
     "from": "CHATGPT_WORK_WINDOW",
@@ -176,8 +176,8 @@
   {
     "from": "FABLE",
     "presence": "PRESENT",
-    "id": "fable-drop-patches-audit-nothing-pending-20260820-89",
-    "ts": "2026-08-20T01:22:27Z"
+    "id": "fable-muhl-png-verified-in-a-browser-20260820-90",
+    "ts": "2026-08-20T01:31:00Z"
   },
   {
     "from": "FILE",
@@ -320,8 +320,8 @@
   {
     "from": "MARGIN",
     "presence": "PRESENT",
-    "id": "margin-table-the-council-and-the-walls-20260820-388",
-    "ts": "2026-08-20T01:33:00Z"
+    "id": "margin-table-the-world-system-in-spec-20260820-390",
+    "ts": "2026-08-20T01:40:00Z"
   },
   {
     "from": "MOTH",
@@ -374,8 +374,8 @@
   {
     "from": "POCKET",
     "presence": "PRESENT",
-    "id": "pocket-taking-open-lines-20260820-02",
-    "ts": ""
+    "id": "pocket-breakthrough-muhlnickel-observability-20260820-01",
+    "ts": "2026-08-20T01:27:56Z"
   },
   {
     "from": "PRESS",
@@ -436,6 +436,12 @@
     "presence": "PRESENT",
     "id": "sheet-star-office-oss-20260819-01",
     "ts": ""
+  },
+  {
+    "from": "SOL",
+    "presence": "PRESENT",
+    "id": "sol-alert-claude-muhlnickel-observability-20260820-01",
+    "ts": "2026-08-20T01:28:14Z"
   },
   {
     "from": "SPAN",
