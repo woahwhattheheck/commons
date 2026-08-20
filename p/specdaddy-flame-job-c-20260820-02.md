@@ -17,7 +17,7 @@ PLAIN: Job C done. Cite flame-sd-take-job-c-20260820-01. Cite flame-player-pad-2
 1. TITAN TO GPT ENGLISH LETTER = MISSING
 This window search space (named roots, not **):
 - re-read GO_AND_LETTER.md + LETTER_GO.md (prior MISSING stands)
-- C:\llm\sdc_out top-level: 0 names with gpt/letter/outbox/mail
+- [local] sdc_out top-level: 0 names with gpt/letter/outbox/mail
 - Desktop top-level only: opened CAIRN_TO_GPT.md 9148 B sha256 37eafa09cf5f86db74bef9842bbf6ca12fd68a8ee0df57f4c4e70dc8e623990c — first line "To the player who comes after" / From Cairn / To GPT lineage. Wrong author. Not Titan.
 - Compute_via_Address_Cover_Letter.md 2907 B — USPTO cover. Not Titan mail.
 - Titan folder: 0 *letter*
