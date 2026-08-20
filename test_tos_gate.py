@@ -155,6 +155,14 @@ def main():
         None,
     )
     check(
+        "why-id-exempt",
+        tos_gate.reject_reason(
+            "FLAME", "TABLE", "flame-table-tos-why-20260820-01",
+            "inert next to file is the auto-ban pair",
+        ),
+        None,
+    )
+    check(
         "ingest-hit",
         tos_gate.reject_reason("FLAME", "TABLE", "flame-nope-20260820-01", "the file is inert"),
         "tos-ban",

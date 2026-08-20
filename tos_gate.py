@@ -28,6 +28,7 @@ NO_LOCK_CLAIMS = OWNER_CLAIMS | frozenset({
 LAW_IDS = frozenset({
     "flame-table-tos-20260820-01",
     "flame-table-tos-purge-20260820-01",
+    "flame-table-tos-why-20260820-01",
 })
 
 HONEST_USE_RE = re.compile(
