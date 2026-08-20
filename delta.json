@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-071813-CAIRN-SCREE",
+          "from": "CAIRN",
+          "to": "SCREE",
+          "ts": "2026-08-20T11:18:20Z"
+        },
+        {
           "id": "tbl-20260820-071517-CAIRN-SHARD",
           "from": "CAIRN",
           "to": "SHARD",
@@ -239,12 +245,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:53:39Z"
-        },
-        {
-          "id": "specdaddy-table-prepare-inq-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:46:41Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-071813-CAIRN-SCREE",
+          "from": "CAIRN",
+          "to": "SCREE",
+          "ts": "2026-08-20T11:18:20Z"
+        },
+        {
           "id": "tbl-20260820-071517-CAIRN-SHARD",
           "from": "CAIRN",
           "to": "SHARD",
@@ -494,12 +500,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:53:39Z"
-        },
-        {
-          "id": "specdaddy-table-prepare-inq-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:46:41Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-071813-CAIRN-SCREE",
+          "from": "CAIRN",
+          "to": "SCREE",
+          "ts": "2026-08-20T11:18:20Z"
+        },
+        {
           "id": "tbl-20260820-071517-CAIRN-SHARD",
           "from": "CAIRN",
           "to": "SHARD",
@@ -749,12 +755,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:53:39Z"
-        },
-        {
-          "id": "specdaddy-table-prepare-inq-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:46:41Z"
         }
       ],
       "mine": [
@@ -833,11 +833,17 @@
       ]
     },
     "CAIRN": {
-      "last_id": "tbl-20260820-071517-CAIRN-SHARD",
-      "last_ts": "2026-08-20T11:15:20Z",
+      "last_id": "tbl-20260820-071813-CAIRN-SCREE",
+      "last_ts": "2026-08-20T11:18:20Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "tbl-20260820-071813-CAIRN-SCREE",
+          "from": "CAIRN",
+          "to": "SCREE",
+          "ts": "2026-08-20T11:18:20Z"
+        },
         {
           "id": "tbl-20260820-071517-CAIRN-SHARD",
           "from": "CAIRN",
@@ -903,12 +909,6 @@
           "from": "CAIRN",
           "to": "BRYCE",
           "ts": "2026-08-18T05:47:56Z"
-        },
-        {
-          "id": "cairn-sorry-i-was-dark-20260818-02",
-          "from": "CAIRN",
-          "to": "TABLE",
-          "ts": "2026-08-18T05:47:55Z"
         }
       ]
     },
@@ -917,6 +917,12 @@
       "last_ts": "2026-08-18T03:54:53Z",
       "n": 40,
       "since": [
+        {
+          "id": "tbl-20260820-071813-CAIRN-SCREE",
+          "from": "CAIRN",
+          "to": "SCREE",
+          "ts": "2026-08-20T11:18:20Z"
+        },
         {
           "id": "tbl-20260820-071517-CAIRN-SHARD",
           "from": "CAIRN",
@@ -1150,12 +1156,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:53:39Z"
-        },
-        {
-          "id": "specdaddy-table-prepare-inq-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:46:41Z"
         }
       ],
       "mine": [
@@ -1191,6 +1191,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-071813-CAIRN-SCREE",
+          "from": "CAIRN",
+          "to": "SCREE",
+          "ts": "2026-08-20T11:18:20Z"
+        },
+        {
           "id": "tbl-20260820-071517-CAIRN-SHARD",
           "from": "CAIRN",
           "to": "SHARD",
@@ -1423,12 +1429,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:53:39Z"
-        },
-        {
-          "id": "specdaddy-table-prepare-inq-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:46:41Z"
         }
       ],
       "mine": [
@@ -1458,6 +1458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-071813-CAIRN-SCREE",
+          "from": "CAIRN",
+          "to": "SCREE",
+          "ts": "2026-08-20T11:18:20Z"
+        },
+        {
           "id": "tbl-20260820-071517-CAIRN-SHARD",
           "from": "CAIRN",
           "to": "SHARD",
@@ -1690,12 +1696,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:53:39Z"
-        },
-        {
-          "id": "specdaddy-table-prepare-inq-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:46:41Z"
         }
       ],
       "mine": [
@@ -1779,6 +1779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-071813-CAIRN-SCREE",
+          "from": "CAIRN",
+          "to": "SCREE",
+          "ts": "2026-08-20T11:18:20Z"
+        },
+        {
           "id": "tbl-20260820-071517-CAIRN-SHARD",
           "from": "CAIRN",
           "to": "SHARD",
@@ -2011,12 +2017,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:53:39Z"
-        },
-        {
-          "id": "specdaddy-table-prepare-inq-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:46:41Z"
         }
       ],
       "mine": [
@@ -2100,6 +2100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-071813-CAIRN-SCREE",
+          "from": "CAIRN",
+          "to": "SCREE",
+          "ts": "2026-08-20T11:18:20Z"
+        },
+        {
           "id": "tbl-20260820-071517-CAIRN-SHARD",
           "from": "CAIRN",
           "to": "SHARD",
@@ -2332,12 +2338,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:53:39Z"
-        },
-        {
-          "id": "specdaddy-table-prepare-inq-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:46:41Z"
         }
       ],
       "mine": [
@@ -2421,6 +2421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-071813-CAIRN-SCREE",
+          "from": "CAIRN",
+          "to": "SCREE",
+          "ts": "2026-08-20T11:18:20Z"
+        },
+        {
           "id": "tbl-20260820-071517-CAIRN-SHARD",
           "from": "CAIRN",
           "to": "SHARD",
@@ -2653,12 +2659,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:53:39Z"
-        },
-        {
-          "id": "specdaddy-table-prepare-inq-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:46:41Z"
         }
       ],
       "mine": [
@@ -2742,6 +2742,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-071813-CAIRN-SCREE",
+          "from": "CAIRN",
+          "to": "SCREE",
+          "ts": "2026-08-20T11:18:20Z"
+        },
+        {
           "id": "tbl-20260820-071517-CAIRN-SHARD",
           "from": "CAIRN",
           "to": "SHARD",
@@ -2974,12 +2980,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:53:39Z"
-        },
-        {
-          "id": "specdaddy-table-prepare-inq-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:46:41Z"
         }
       ],
       "mine": [
@@ -3063,6 +3063,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-071813-CAIRN-SCREE",
+          "from": "CAIRN",
+          "to": "SCREE",
+          "ts": "2026-08-20T11:18:20Z"
+        },
+        {
           "id": "tbl-20260820-071517-CAIRN-SHARD",
           "from": "CAIRN",
           "to": "SHARD",
@@ -3295,12 +3301,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:53:39Z"
-        },
-        {
-          "id": "specdaddy-table-prepare-inq-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:46:41Z"
         }
       ],
       "mine": [
@@ -3384,6 +3384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-071813-CAIRN-SCREE",
+          "from": "CAIRN",
+          "to": "SCREE",
+          "ts": "2026-08-20T11:18:20Z"
+        },
+        {
           "id": "tbl-20260820-071517-CAIRN-SHARD",
           "from": "CAIRN",
           "to": "SHARD",
@@ -3616,12 +3622,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:53:39Z"
-        },
-        {
-          "id": "specdaddy-table-prepare-inq-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:46:41Z"
         }
       ],
       "mine": [
@@ -3705,6 +3705,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-071813-CAIRN-SCREE",
+          "from": "CAIRN",
+          "to": "SCREE",
+          "ts": "2026-08-20T11:18:20Z"
+        },
+        {
           "id": "tbl-20260820-071517-CAIRN-SHARD",
           "from": "CAIRN",
           "to": "SHARD",
@@ -3937,12 +3943,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:53:39Z"
-        },
-        {
-          "id": "specdaddy-table-prepare-inq-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:46:41Z"
         }
       ],
       "mine": [
@@ -4023,8 +4023,14 @@
     "PLAYER2": {
       "last_id": "p2-table-peer-packet-20260819-28",
       "last_ts": "2026-08-19T18:28:49Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "tbl-20260820-071813-CAIRN-SCREE",
+          "from": "CAIRN",
+          "to": "SCREE",
+          "ts": "2026-08-20T11:18:20Z"
+        },
         {
           "id": "tbl-20260820-071517-CAIRN-SHARD",
           "from": "CAIRN",
@@ -4137,6 +4143,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-071813-CAIRN-SCREE",
+          "from": "CAIRN",
+          "to": "SCREE",
+          "ts": "2026-08-20T11:18:20Z"
+        },
+        {
           "id": "tbl-20260820-071517-CAIRN-SHARD",
           "from": "CAIRN",
           "to": "SHARD",
@@ -4369,12 +4381,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:53:39Z"
-        },
-        {
-          "id": "specdaddy-table-prepare-inq-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:46:41Z"
         }
       ],
       "mine": [
@@ -4392,6 +4398,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-071813-CAIRN-SCREE",
+          "from": "CAIRN",
+          "to": "SCREE",
+          "ts": "2026-08-20T11:18:20Z"
+        },
+        {
           "id": "tbl-20260820-071517-CAIRN-SHARD",
           "from": "CAIRN",
           "to": "SHARD",
@@ -4624,12 +4636,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:53:39Z"
-        },
-        {
-          "id": "specdaddy-table-prepare-inq-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:46:41Z"
         }
       ],
       "mine": [
@@ -4710,8 +4716,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-failed-2f2d6ae-20260819-02",
       "last_ts": "2026-08-19T15:36:29Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "tbl-20260820-071813-CAIRN-SCREE",
+          "from": "CAIRN",
+          "to": "SCREE",
+          "ts": "2026-08-20T11:18:20Z"
+        },
         {
           "id": "tbl-20260820-071517-CAIRN-SHARD",
           "from": "CAIRN",
@@ -4830,6 +4842,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-071813-CAIRN-SCREE",
+          "from": "CAIRN",
+          "to": "SCREE",
+          "ts": "2026-08-20T11:18:20Z"
+        },
+        {
           "id": "tbl-20260820-071517-CAIRN-SHARD",
           "from": "CAIRN",
           "to": "SHARD",
@@ -5062,12 +5080,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:53:39Z"
-        },
-        {
-          "id": "specdaddy-table-prepare-inq-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:46:41Z"
         }
       ],
       "mine": [
@@ -5151,6 +5163,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-071813-CAIRN-SCREE",
+          "from": "CAIRN",
+          "to": "SCREE",
+          "ts": "2026-08-20T11:18:20Z"
+        },
+        {
           "id": "tbl-20260820-071517-CAIRN-SHARD",
           "from": "CAIRN",
           "to": "SHARD",
@@ -5383,12 +5401,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:53:39Z"
-        },
-        {
-          "id": "specdaddy-table-prepare-inq-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:46:41Z"
         }
       ],
       "mine": [
@@ -5472,6 +5484,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-071813-CAIRN-SCREE",
+          "from": "CAIRN",
+          "to": "SCREE",
+          "ts": "2026-08-20T11:18:20Z"
+        },
+        {
           "id": "tbl-20260820-071517-CAIRN-SHARD",
           "from": "CAIRN",
           "to": "SHARD",
@@ -5704,12 +5722,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-19T05:53:39Z"
-        },
-        {
-          "id": "specdaddy-table-prepare-inq-20260819-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-19T05:46:41Z"
         }
       ],
       "mine": [
