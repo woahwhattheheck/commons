@@ -15,7 +15,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 import hub_pages
 import builds_ledger
@@ -249,8 +249,36 @@ ASSET_PATHS = [
 ]
 
 
+FUTURE_SLACK_S = 120
+
+
 def now_ts():
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def clamp_ts(raw, now=None):
+    """A clock that has not happened yet is not a time.
+
+    Cite claude-table-boards-stale-cache-poison-20260820-01. Do not remint.
+    Same 120s slack as board.js FUTURE_SLACK_MS. Future stamps poisoned
+    boards.html localStorage; they keep landing unless ingest clamps them.
+    """
+    now = now or now_ts()
+    raw = str(raw or "").strip()
+    if not raw:
+        return ""
+    try:
+        t = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+        n = datetime.fromisoformat(str(now).replace("Z", "+00:00"))
+    except ValueError:
+        return raw
+    if t.tzinfo is None:
+        t = t.replace(tzinfo=timezone.utc)
+    if n.tzinfo is None:
+        n = n.replace(tzinfo=timezone.utc)
+    if t > n + timedelta(seconds=FUTURE_SLACK_S):
+        return now
+    return raw
 
 
 def as_claim(name: str) -> str:
@@ -641,9 +669,10 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
     if extra.get("ask"):
         extra["ask"] = str(extra["ask"]).strip().upper()
         extra.setdefault("court", extra.get("court") or "petition")
-    carrier_ts = extra.get("carrier_ts") or ts or ""
-    durable_ts = extra.get("durable_ts") or now_ts()
-    ts = ts or carrier_ts or durable_ts
+    now = now_ts()
+    carrier_ts = clamp_ts(extra.get("carrier_ts") or ts or "", now)
+    durable_ts = extra.get("durable_ts") or now
+    ts = clamp_ts(ts or carrier_ts or durable_ts, now)
     extra["carrier_ts"] = carrier_ts or ts
     extra["durable_ts"] = durable_ts
     extra["state"] = "DURABLE_PAGE"
@@ -1193,8 +1222,8 @@ def feed_item(meta, body):
     mid = meta.get("id") or ""
     item = {
         "id": mid,
-        "from": meta.get("from") or "",
-        "to": meta.get("to") or "",
+        "from": as_claim(meta.get("from") or "") or (meta.get("from") or ""),
+        "to": as_claim(meta.get("to") or "") or (meta.get("to") or ""),
         "ts": meta.get("ts") or "",
         "href": "./p/" + page_of(meta) + ".html",
         "page": page_of(meta),
