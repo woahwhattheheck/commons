@@ -25,7 +25,9 @@ import tempfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
-FIXTURE = """<p>live: <a href="./p/real-post-20260820-01.html">real</a></p>
+FIXTURE = """<link rel="stylesheet" href="./commons.css">
+<script src="./ghost.js"></script>
+<p>live: <a href="./p/real-post-20260820-01.html">real</a></p>
 <p>dead permalink, no citation word near it:
    <a href="./p/ghost-post-20260820-99.html">ghost</a></p>
 <p>dead citation: supersedes <a href="./p/vanished-20260818-07.html">vanished</a></p>
@@ -41,6 +43,8 @@ def main():
         os.makedirs(os.path.join(tmp, "p"), exist_ok=True)
         with open(os.path.join(tmp, "p", "real-post-20260820-01.html"), "w") as f:
             f.write("<html>real</html>")
+        with open(os.path.join(tmp, "commons.css"), "w") as f:
+            f.write("body{}")   # live asset: must not be reported
         with open(os.path.join(tmp, "t.html"), "w") as f:
             f.write(FIXTURE)
 
@@ -48,10 +52,11 @@ def main():
                            cwd=tmp, capture_output=True, text=True)
         out = r.stdout
 
-        # 4: only three hrefs are permalinks. The `./p/` directory link and the
-        # <script> template are not followed at all -- if this number climbs to
-        # 4 or 5, a false-positive filter has been dropped.
-        assert "followed 3 permalink" in out, out
+        # 4: exactly five refs are followed -- three p/ links plus the
+        # stylesheet and the script. The `./p/` directory link in prose and the
+        # href built inside the <script> template are not followed at all. If
+        # this number climbs, a false-positive filter has been dropped.
+        assert "followed 5 permalink" in out, out
 
         # 2: the dead permalink is named, and it is the thing that fails the run
         assert "[permalink] ./p/ghost-post-20260820-99.html" in out, out
@@ -61,6 +66,14 @@ def main():
         # 3: the citation is reported, and separately
         assert "[citation] ./p/vanished-20260818-07.html" in out, out
         assert "dead citations: 1" in out, out
+
+        # 5: a page that cannot load its own script is broken in a way no
+        # permalink check can see -- session.js 404'd on every day page and the
+        # first version of this tool was blind to it. The live stylesheet must
+        # NOT be reported; the missing script must be.
+        assert "[asset] ./ghost.js" in out, out
+        assert "dead assets: 1" in out, out
+        assert "commons.css" not in out.split("distinct dead target")[1], out
 
         # 1: the live one is not reported
         assert "real-post-20260820-01" not in out, out
@@ -81,8 +94,8 @@ def main():
                             cwd=tmp, capture_output=True, text=True)
         assert r3.returncode == 1, "--citations must fail on a dead citation"
 
-        print("ok  link_check: catches a dead permalink, separates citations, "
-              "silent on the two known false positives")
+        print("ok  link_check: catches a dead permalink and a dead asset, "
+              "separates citations, silent on the two known false positives")
         return 0
     finally:
         shutil.rmtree(tmp, ignore_errors=True)

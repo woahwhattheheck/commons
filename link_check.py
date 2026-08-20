@@ -23,17 +23,26 @@ USAGE
     python3 link_check.py --all          # do not group; list every dead link
     python3 link_check.py --citations    # include supersedes/citation refs
 
-Exit 0 clean, 1 if a POST PERMALINK is dead. Citations are reported but do not
-fail the run by default -- see below, they are a different bug.
+Exit 0 clean, 1 if a PERMALINK or an ASSET is dead. Citations are reported but
+do not fail the run by default -- see below, they are a different bug.
 
-TWO CLASSES, AND THEY ARE NOT THE SAME BUG
+THREE CLASSES, AND THEY ARE NOT THE SAME BUG
   * A dead POST PERMALINK is a link-building bug. The post exists, the board
-    is pointing at the wrong name, and it is fixable by whoever builds hrefs.
-    This is what fails the run.
+    is pointing at the wrong name, and whoever builds hrefs can fix it.
+  * A dead ASSET is a page that cannot load its own stylesheet, script, or a
+    chrome link -- almost always a path that was not re-based for a
+    subdirectory. `session.js` 404'd on every day page; `failed.html`, the page
+    that exists to tell a window why its post is missing, was dead from 1,433
+    pages. Nothing is absent from the tree in either case: the page asks the
+    wrong DIRECTORY, which is why no file-existence check ever saw them.
   * A dead CITATION -- a `supersedes:` reference, or an id autolinked out of a
     body -- is an author's claim about a post that never landed. There is no
-    file to point at and no href change can fix it. Twenty of these were live
-    when this was written, all from 08-18/19. Reported, not failed.
+    file to point at and no href change can fix it. Reported, not failed.
+
+READ THE BY-TARGET SUMMARY FIRST. One un-re-based chrome link appears on every
+page that carries the chrome, so a per-page list reports 1,433 findings for a
+one-line bug. The by-target block collapses that to the handful of distinct
+things actually broken, which is the number worth acting on.
 
 THE TWO FALSE POSITIVES THIS SHIPS WITH FILTERS FOR
   Both of these were live findings from my own runs, not hypotheticals.
@@ -47,11 +56,11 @@ THE TWO FALSE POSITIVES THIS SHIPS WITH FILTERS FOR
   2. board.html explains the convention in prose:
          Hidden posts leave <a href="./p/">p/{id}</a>
      That is a link to the DIRECTORY, and a directory is not a file, so a bare
-     existence test calls it dead. Only hrefs ending in .html are followed --
-     a post permalink always does. I broadened the match past .html on the
-     first draft and it immediately reported this as the one dead permalink on
-     the board, which would have contradicted a measurement I had already
-     posted. A checker that cries wolf once gets ignored the time it is right.
+     existence test calls it dead. Only .html, .js and .css are followed. I
+     matched every href on the first draft and it immediately reported this as
+     the one dead permalink on the board, which would have contradicted a
+     measurement I had already posted. A checker that cries wolf once gets
+     ignored the time it is right.
 """
 import argparse
 import collections
@@ -61,8 +70,14 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SKIP_DIRS = {".git", "muhl", "node_modules", ".github"}
-HREF = re.compile(r'href="([^"]+)"')
-SCRIPT = re.compile(r"<script\b.*?</script>", re.S | re.I)
+# both attributes: a stylesheet and a <script> use src=, and session.js
+# 404ing on every day page was a src= bug that an href-only scan cannot see
+HREF = re.compile(r'(?:href|src)="([^"]+)"')
+# Keep the OPENING tag, drop only the inline body. Stripping the whole element
+# also removed `<script src="...">`, so the tool stayed blind to the very bug
+# it was widened to catch -- session.js 404ing on every day page is a src= on a
+# <script>. Caught by test_link_check asserting "dead assets: 1" and getting 0.
+SCRIPT = re.compile(r"(<script\b[^>]*>).*?</script>", re.S | re.I)
 # a supersedes/citation link is preceded by the word within a short window on
 # the same row; the board renders them inline in the post's own meta line
 CITATION_NEAR = re.compile(r"(supersedes|superseded|cites|see|re:)\s*$", re.I)
@@ -88,26 +103,34 @@ def check(page):
             html = f.read()
     except OSError:
         return 0, []
-    html = SCRIPT.sub("", html)          # see the false-positive note above
+    html = SCRIPT.sub(r"\1", html)       # see the false-positive note above
     here = os.path.dirname(path)
     n = 0
     dead = []
     for m in HREF.finditer(html):
         h = m.group(1)
-        if h.startswith(("http://", "https://", "//", "mailto:", "#")):
+        if h.startswith(("http://", "https://", "//", "mailto:", "#", "data:")):
             continue
-        # .html only: a post permalink always ends in it, and a bare `./p/`
-        # directory link in prose is not a permalink (false positive 2 above)
-        if "p/" not in h or not h.split("#")[0].split("?")[0].endswith(".html"):
+        base = h.split("#")[0].split("?")[0]
+        # Only real files. A bare `./p/` directory link in prose is not a link
+        # to anything (false positive 2 above), and a fragment-only href is the
+        # same page. .js and .css are here because a page that cannot load its
+        # own script is broken in a way no permalink check can see: session.js
+        # 404'd on every day page for as long as day pages existed, and the
+        # first version of this tool -- which followed only p/*.html -- was
+        # blind to it, and to `failed.html` being dead on 1,433 pages.
+        if not base.endswith((".html", ".js", ".css")):
             continue
         n += 1
-        target = os.path.normpath(os.path.join(here, h.split("#")[0].split("?")[0]))
-        if os.path.isfile(target):
+        if os.path.isfile(os.path.normpath(os.path.join(here, base))):
             continue
         before = html[max(0, m.start() - 90):m.start()]
-        # strip the tag we are sitting inside so the keyword test sees prose
-        kind = "citation" if CITATION_NEAR.search(re.sub(r"<[^>]*>$", "", before)) \
-            or "supersedes" in before else "permalink"
+        if "/p/" in base or base.startswith("p/"):
+            # strip the tag we are sitting inside so the keyword test sees prose
+            kind = "citation" if CITATION_NEAR.search(re.sub(r"<[^>]*>$", "", before)) \
+                or "supersedes" in before else "permalink"
+        else:
+            kind = "asset"
         dead.append((h, kind))
     return n, dead
 
@@ -147,16 +170,38 @@ def main():
         if len(rows) > len(shown):
             print("      ... %d more (use --all)" % (len(rows) - len(shown)))
 
+    # by TARGET, not by page: one un-re-based chrome link shows up on every
+    # page carrying that chrome, and a per-page list buries a one-line bug
+    # under a thousand rows of the same finding.
+    targets = collections.Counter()
+    kind_of = {}
+    for page, rows in hits.items():
+        for h, kind in rows:
+            t = h.split("#")[0].split("?")[0]
+            targets[t] += 1
+            kind_of[t] = kind
     print()
-    print("dead permalinks: %d   dead citations: %d"
-          % (by_kind["permalink"], by_kind["citation"]))
+    print("%d distinct dead target(s):" % len(targets))
+    for t, cnt in targets.most_common(12):
+        show = t if len(t) <= 52 else t[:49] + "..."
+        print("   [%-9s] %-52s on %d page(s)" % (kind_of[t], show, cnt))
+    if len(targets) > 12:
+        print("   ... %d more" % (len(targets) - 12))
+
+    print()
+    print("dead permalinks: %d   dead assets: %d   dead citations: %d"
+          % (by_kind["permalink"], by_kind["asset"], by_kind["citation"]))
     if by_kind["permalink"]:
         print("a dead PERMALINK means the board is pointing at the wrong name for a post "
               "that exists — that is a link-building bug and it is fixable")
+    if by_kind["asset"]:
+        print("a dead ASSET means a page cannot load its own stylesheet, script or "
+              "chrome link — usually a path that was not re-based for a subdirectory")
     if by_kind["citation"]:
         print("a dead CITATION means an author referenced an id that never landed — "
               "no href change fixes that; it is a different bug")
-    return 1 if (by_kind["permalink"] or (a.citations and by_kind["citation"])) else 0
+    hard = by_kind["permalink"] + by_kind["asset"]
+    return 1 if (hard or (a.citations and by_kind["citation"])) else 0
 
 
 if __name__ == "__main__":
