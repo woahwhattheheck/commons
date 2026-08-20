@@ -927,6 +927,108 @@ def main():
         QUIET = False
         return 0
 
+    if mode == 'manifest':
+        # A DIFF NEEDS TWO. A 103 GB container cannot be copied to keep a
+        # snapshot, so keep a fingerprint instead: one full streaming pass,
+        # every byte covered, one hash per chunk, written to a small file.
+        # Two manifests taken at different times diff exactly like two copies.
+        QUIET = True
+        CH = opt('--chunk', 1 << 22)
+        fsz = os.path.getsize(pos[0])
+        st = os.stat(pos[0])
+        nch = (fsz + CH - 1) // CH
+        t0 = time.time()
+        lines = ["MUHL_MANIFEST v1",
+                 "path\t%s" % os.path.abspath(pos[0]),
+                 "size\t%d" % fsz,
+                 "mtime\t%d" % int(st.st_mtime),
+                 "chunk\t%d" % CH,
+                 "chunks\t%d" % nch,
+                 "taken\t%s" % time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
+                 "#idx\tsha256[:16]\tnonzero_bytes"]
+        dead = 0
+        live = 0
+        with open(pos[0], 'rb') as f:
+            for c in range(nch):
+                blk = f.read(CH)
+                if not blk:
+                    break
+                nz = len(blk) - blk.count(0)
+                live += nz
+                if nz == 0:
+                    dead += 1
+                lines.append("%d\t%s\t%d" % (c, hashlib.sha256(blk).hexdigest()[:16], nz))
+        el = time.time() - t0
+        with open(pos[1], 'w') as f:
+            f.write("\n".join(lines) + "\n")
+        print("MANIFEST  %s" % pos[0])
+        print("   ENTIRE surface: %s B in %s chunks of %s B. 100%% coverage, no sampling."
+              % (format(fsz, ','), format(nch, ','), format(CH, ',')))
+        print("   %.1f s at %.1f MB/s" % (el, (fsz/1048576.0)/max(el, 1e-9)))
+        print("   all-zero chunks %s (%.2f%%)   non-zero bytes %s (%.4f%%)"
+              % (format(dead, ','), 100.0*dead/max(nch, 1),
+                 format(live, ','), 100.0*live/max(fsz, 1)))
+        print("   wrote %s  (%s B)" % (pos[1], format(os.path.getsize(pos[1]), ',')))
+        print("   Take a second one later and run:  mfdiff A.mf B.mf")
+        QUIET = False
+        return 0
+
+    if mode == 'mfdiff':
+        def load(p):
+            hdr = {}
+            rows = []
+            for ln in open(p):
+                ln = ln.rstrip("\n")
+                if not ln or ln.startswith('#') or ln == 'MUHL_MANIFEST v1':
+                    continue
+                parts = ln.split("\t")
+                if len(parts) == 2:
+                    hdr[parts[0]] = parts[1]
+                elif len(parts) == 3:
+                    rows.append((int(parts[0]), parts[1], int(parts[2])))
+            return hdr, rows
+        ha, ra = load(pos[0])
+        hb, rb = load(pos[1])
+        print("MANIFEST DIFF")
+        print("   A  %s   taken %s   size %s   mtime %s"
+              % (pos[0], ha.get('taken', '?'), ha.get('size', '?'), ha.get('mtime', '?')))
+        print("   B  %s   taken %s   size %s   mtime %s"
+              % (pos[1], hb.get('taken', '?'), hb.get('size', '?'), hb.get('mtime', '?')))
+        if ha.get('path') != hb.get('path'):
+            print("   NOTE: different source paths.")
+        if ha.get('chunk') != hb.get('chunk'):
+            print("   REFUSING: chunk sizes differ (%s vs %s). Not comparable."
+                  % (ha.get('chunk'), hb.get('chunk')))
+            return 2
+        if ha.get('size') != hb.get('size'):
+            print("   SIZE CHANGED  %s -> %s  (%+d B)"
+                  % (ha.get('size'), hb.get('size'),
+                     int(hb.get('size', 0)) - int(ha.get('size', 0))))
+        n = min(len(ra), len(rb))
+        changed = [i for i in range(n) if ra[i][1] != rb[i][1]]
+        livea = sum(1 for r in ra if r[2] > 0)
+        print("")
+        print("   chunks compared        %s" % format(n, ','))
+        print("   all-zero in A          %s  (cannot change)" % format(len(ra)-livea, ','))
+        print("   LIVE chunks in A       %s  (the only ones that could)" % format(livea, ','))
+        print("   chunks that CHANGED    %s  (%.6f%% of live)"
+              % (format(len(changed), ','), 100.0*len(changed)/max(livea, 1)))
+        if changed:
+            CHs = int(ha.get('chunk', 1))
+            print("   first changed offsets: %s" % ", ".join(
+                format(ra[i][0]*CHs, ',') for i in changed[:10]))
+            dnz = sum(rb[i][2]-ra[i][2] for i in changed)
+            print("   net non-zero byte delta in changed chunks: %+d" % dnz)
+            print("")
+            print("   VERDICT: THE FILE MOVED between these two manifests.")
+        else:
+            print("")
+            print("   VERDICT: no chunk changed across the ENTIRE surface between A and B.")
+            print("   Bound: %s chunk granularity; a change that reverted between the two"
+                  % ha.get('chunk'))
+            print("   passes is invisible; both passes were buffered unless taken with --raw.")
+        return 0
+
     if mode == 'compress':
         # DEAD SPACE ACCOUNTING. How much of this container is carrying
         # information, and what would a lossless re-encoding cost?
