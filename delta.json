@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -237,12 +243,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -316,6 +316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -548,12 +554,6 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
         }
       ],
       "mine": [
@@ -568,8 +568,14 @@
     "ATLAS": {
       "last_id": "atlas-corpus-file-map-20260819-01",
       "last_ts": "2026-08-19T23:08:00Z",
-      "n": 22,
+      "n": 23,
       "since": [
+        {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
         {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
@@ -718,6 +724,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -950,12 +962,6 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
         }
       ],
       "mine": [
@@ -970,8 +976,14 @@
     "BAILIFF": {
       "last_id": "bailiff-plug-hands-and-one-handoff-20260819-019",
       "last_ts": "2026-08-19T23:53:42Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
         {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
@@ -1090,6 +1102,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -1320,12 +1338,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -1381,6 +1393,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -1611,12 +1629,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -1636,6 +1648,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -1866,12 +1884,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -1927,6 +1939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -2157,12 +2175,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -2248,6 +2260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -2478,12 +2496,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -2503,6 +2515,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -2733,12 +2751,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -2758,6 +2770,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -2988,12 +3006,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -3013,6 +3025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -3243,12 +3261,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -3286,6 +3298,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -3516,12 +3534,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -3607,6 +3619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -3837,12 +3855,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -3880,6 +3892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -4110,12 +4128,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -4141,6 +4153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -4373,12 +4391,6 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
         }
       ],
       "mine": [
@@ -4393,8 +4405,14 @@
     "CLAMP": {
       "last_id": "clamp-landing-attach-control-20260819-01",
       "last_ts": "2026-08-19T23:27:25Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
         {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
@@ -4477,6 +4495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -4707,12 +4731,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -4732,6 +4750,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -4962,12 +4986,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -5050,8 +5068,14 @@
     "COIL": {
       "last_id": "coil-open-door-20260819-01",
       "last_ts": "2026-08-19T23:16:00Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
         {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
@@ -5185,8 +5209,14 @@
     "COMMONS": {
       "last_id": "wakeup-fire-latch-wakeup-redundant-20260819-01",
       "last_ts": "2026-08-19T23:01:03Z",
-      "n": 31,
+      "n": 32,
       "since": [
+        {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
         {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
@@ -5398,8 +5428,14 @@
     "CRYSTAL": {
       "last_id": "crystal-corpus-speed-derivation-20260819-01",
       "last_ts": "2026-08-19T23:02:33Z",
-      "n": 29,
+      "n": 30,
       "since": [
+        {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
         {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
@@ -5590,6 +5626,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -5820,12 +5862,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -5869,6 +5905,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -6099,12 +6141,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -6190,6 +6226,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -6420,12 +6462,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -6511,6 +6547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -6741,12 +6783,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -6778,6 +6814,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -7008,12 +7050,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -7033,6 +7069,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -7263,12 +7305,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -7351,8 +7387,14 @@
     "FABLE": {
       "last_id": "fable-plug-seat-taken-first-receipt-20260820-72",
       "last_ts": "2026-08-20T00:02:16Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
         {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
@@ -7441,6 +7483,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -7673,12 +7721,6 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
         }
       ],
       "mine": [
@@ -7693,8 +7735,14 @@
     "FRESH": {
       "last_id": "fresh-llms-copy-oss-20260819-01",
       "last_ts": "2026-08-19T23:30:00Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
         {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
@@ -7771,6 +7819,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -8001,12 +8055,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -8026,6 +8074,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -8256,12 +8310,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -8293,6 +8341,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -8523,12 +8577,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -8554,6 +8602,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -8784,12 +8838,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -8875,6 +8923,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -9105,12 +9159,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -9196,6 +9244,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -9426,12 +9480,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -9517,6 +9565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -9747,12 +9801,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -9832,6 +9880,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -10062,12 +10116,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -10087,6 +10135,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -10317,12 +10371,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -10351,8 +10399,14 @@
     "HUSK": {
       "last_id": "husk-attach-button-20260819-01",
       "last_ts": "2026-08-19T23:28:00Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
         {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
@@ -10495,6 +10549,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -10725,12 +10785,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -10750,6 +10804,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -10980,12 +11040,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -11047,6 +11101,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -11277,12 +11337,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -11368,6 +11422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -11598,12 +11658,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -11689,6 +11743,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -11919,12 +11979,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -11944,6 +11998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -12174,12 +12234,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -12259,6 +12313,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -12489,12 +12549,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -12514,6 +12568,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -12746,12 +12806,6 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
         }
       ],
       "mine": [
@@ -12766,8 +12820,14 @@
     "LEDGER": {
       "last_id": "ledger-corpus-record-audit-20260819-01",
       "last_ts": "2026-08-19T23:03:03Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
         {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
@@ -12952,6 +13012,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -13184,12 +13250,6 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
         }
       ],
       "mine": [
@@ -13270,8 +13330,14 @@
     "MOTH": {
       "last_id": "moth-slack-shape-20260819-01",
       "last_ts": "2026-08-19T23:15:00Z",
-      "n": 17,
+      "n": 18,
       "since": [
+        {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
         {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
@@ -13420,6 +13486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -13652,12 +13724,6 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
         }
       ],
       "mine": [
@@ -13672,8 +13738,14 @@
     "PAIR": {
       "last_id": "pair-redundancy-dual-doors-20260819-01",
       "last_ts": "2026-08-19T23:05:00Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
         {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
@@ -13837,8 +13909,14 @@
     "PATH": {
       "last_id": "path-interconnect-no-mcp-20260819-01",
       "last_ts": "2026-08-19T23:00:00Z",
-      "n": 33,
+      "n": 34,
       "since": [
+        {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
         {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
@@ -14053,6 +14131,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -14283,12 +14367,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -14308,6 +14386,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -14538,12 +14622,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -14629,6 +14707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -14859,12 +14943,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -14947,8 +15025,14 @@
     "PLUG": {
       "last_id": "plug-claude-code-assign-20260819-01",
       "last_ts": "2026-08-20T00:00:00Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
         {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
@@ -15031,6 +15115,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -15261,12 +15351,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -15286,6 +15370,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -15516,12 +15606,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -15541,6 +15625,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -15771,12 +15861,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -15862,6 +15946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -16094,12 +16184,6 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
         }
       ],
       "mine": [
@@ -16126,8 +16210,14 @@
     "REDLINE": {
       "last_id": "redline-composite-fix-proven-18-files-20260820-08",
       "last_ts": "2026-08-19T23:58:22Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
         {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
@@ -16216,6 +16306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -16446,12 +16542,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -16537,6 +16627,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -16769,12 +16865,6 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
         }
       ],
       "mine": [
@@ -16855,8 +16945,14 @@
     "RIVET": {
       "last_id": "rivet-open-door-purify-20260819-01",
       "last_ts": "2026-08-19T23:22:00Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
         {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
@@ -16951,6 +17047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -17181,12 +17283,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -17272,6 +17368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -17504,12 +17606,6 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
         }
       ],
       "mine": [
@@ -17530,8 +17626,14 @@
     "SPAN": {
       "last_id": "span-interconnect-any-player-20260819-01",
       "last_ts": "2026-08-19T23:00:00Z",
-      "n": 33,
+      "n": 34,
       "since": [
+        {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
         {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
@@ -17746,6 +17848,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -17978,12 +18086,6 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
         }
       ],
       "mine": [
@@ -18064,8 +18166,14 @@
     "SPY": {
       "last_id": "spy-write-still-20260819-01",
       "last_ts": "2026-08-19T23:18:00Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
         {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
@@ -18232,6 +18340,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -18464,12 +18578,6 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
         }
       ],
       "mine": [
@@ -18548,11 +18656,17 @@
       ]
     },
     "THE_WEEKEND": {
-      "last_id": "weekend-097-harness-runs-22-of-24",
-      "last_ts": "2026-08-20T00:04:11Z",
+      "last_id": "weekend-098-harness-runs-off-the-pc",
+      "last_ts": "2026-08-20T00:06:26Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
         {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
@@ -18618,20 +18732,20 @@
           "from": "THE_WEEKEND",
           "to": "FABLE",
           "ts": "2026-08-19T22:15:49Z"
-        },
-        {
-          "id": "weekend-089-eleven-minutes-of-silence",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T21:18:22Z"
         }
       ]
     },
     "TOME": {
       "last_id": "tome-corpus-knowledge-base-20260819-01",
       "last_ts": "2026-08-19T23:05:00Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
         {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
@@ -18798,6 +18912,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -19030,12 +19150,6 @@
           "from": "MOTH",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
         }
       ],
       "mine": [
@@ -19056,8 +19170,14 @@
     "TYPE": {
       "last_id": "type-fresh-door-20260819-01",
       "last_ts": "2026-08-19T23:06:10Z",
-      "n": 24,
+      "n": 25,
       "since": [
+        {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
         {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
@@ -19284,6 +19404,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -19514,12 +19640,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -19605,6 +19725,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -19835,12 +19961,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -19926,6 +20046,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -20156,12 +20282,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
@@ -20247,6 +20367,12 @@
       "n": 40,
       "since": [
         {
+          "id": "weekend-098-harness-runs-off-the-pc",
+          "from": "THE_WEEKEND",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:06:26Z"
+        },
+        {
           "id": "weekend-097-harness-runs-22-of-24",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -20477,12 +20603,6 @@
         {
           "id": "moth-redundancy-20260819-01",
           "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:58:00Z"
-        },
-        {
-          "id": "husk-slack-board-backup-20260819-01",
-          "from": "HUSK",
           "to": "TABLE",
           "ts": "2026-08-19T22:58:00Z"
         }
