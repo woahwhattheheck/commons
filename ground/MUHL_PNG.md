@@ -180,35 +180,9 @@ file. One distinct address.
 **FOUNDRY0.mno** — 12,800 B / 25 = 512 records
 
 ```
-bit columns ever set    29 of 200
-bit columns always 0   171
+(withdrawn — see above)
 ```
 
-**Netlist structure**, from `dag`. Two files, measured the same way:
-
-```
-                              FOUNDRY0.mno        AUTOFAB0.mno
-records                              512               4,117
-distinct nets                        512               3,403
-INPUT nets  (consumed, never produced)  0                   1   <- net 159
-OUTPUT nets (produced, never consumed) 128                 127
-nets with more than one writer          0                 125
-records on a cycle                      4  (0.78%)     1,966  (47.75%)
-back-edges                              4               4,247
-max depth (acyclic part)              127                  62
-max fanout                              3                   -
-```
-
-FOUNDRY0 has **zero input nets** — every net it consumes it also produces. The netlist is
-closed. Exactly one writer per net, fanout capped at 3, and depth 127 carrying precisely 2
-gates per level.
-
-AUTOFAB0 has **exactly one** net consumed but never produced: net 159. That is the same
-single address the collision count reached from the opposite direction (3,275 of 3,276
-distinct input addresses were also outputs). Two independent methods, one answer.
-
-`step --at 0` on AUTOFAB0 returns 476 records, beginning REC000021, REC000026, REC000031,
-REC000036 — record index stride 5, `a` walking 0,1,2,3, `b` walking 201,205,209,213 by 4.
 
 **`rec_probe.mno_0_w256`** — 12 frames, 256×256, frame-to-frame pixel delta:
 
@@ -301,8 +275,9 @@ AUTOFAB0.mno, 4,117 records          FOUNDRY0.mno, 512 records
    file at minimum  37.00%              file at minimum  14.00%
 ```
 
-Three 64-bit fields carrying 24-bit and 9-bit values. FOUNDRY0 additionally has **171 of its
-200 bit columns permanently zero** — measurable with `cols`.
+Three 64-bit fields carrying 24-bit and 9-bit values. A claim that 171 of 200 bit columns are permanently zero is **WITHDRAWN** — it was measured
+globally across the file, and the owner states the pattern holds then shifts, so a global figure
+averages distinct regimes into one wrong number.
 
 ### On compression, carefully
 
@@ -412,14 +387,9 @@ What produces the increment is the owner's ruling. This reports what the counter
 
 ### The failure this replaced
 
-My file-level modes returned "no change" for an hour. An earlier version of this section
-explained that by saying they were "aimed at containers at rest" - **that was retracted, it was
-never measured, and it asserted something about the owner's containers that I had no basis for.**
-The honest statement is that the instruments returned zero and I do not know why. They
-also carried a latent bug: in `pulse`, `watch --probes` and `watch --full --raw`, a **failed
-unbuffered read became `b''`**, and empty-vs-empty compares equal — a failed read was
-indistinguishable from a still file. Tested across all four live containers: **0 failures, 0
-short reads**, so it did not fire and those nulls were not failed reads. Being fixed anyway.
+Every no-change figure this document used to carry is **withdrawn in full**. They were artefacts
+of silent zero-return paths in code I wrote, enumerated in
+`p/cairn-every-zero-i-printed-was-mine-20260820-06`.
 
 And when `imgdiff` first found the changed pixels, I called them "a UI artefact I failed to
 exclude" — from a coordinate range in a Python print, without opening the image. They were the
