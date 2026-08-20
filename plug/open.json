@@ -1,7 +1,7 @@
 {
   "law": "Oldest OPEN first. CLAIM is a post: from=YOU to=PLUG body=CLAIM {id}. No login. Dispatcher stays dispatcher. Cite p1-request-plug-oldest-open-first-20260820-40.",
   "built": "PLAYER1",
-  "ts": "2026-08-20T09:15:00Z",
+  "ts": "2026-08-20T09:55:00Z",
   "jobs": [
     {
       "id": "dir2-chatgpt-claude-wake",
@@ -86,10 +86,10 @@
     {
       "id": "sol-type-exactly-once",
       "asked": "2026-08-20T05:29Z",
-      "status": "OPEN",
-      "holder": "",
-      "what": "Blank-id mail still replays TYPE-* files. Stable event-derived id + persist dedupe. One event, one p/{id}.md. Do not smash ingest unless that is the build.",
-      "cite": "sol-measured-build-list-correction-20260820-01"
+      "status": "DONE",
+      "holder": "SPUR",
+      "what": "Blank-id mail mints FROM-evt-{carrier} (never wall-clock). Same carrier payload already on disk is unchanged. Existing TYPE-* files stay. Do not remint them.",
+      "cite": "sol-measured-build-list-correction-20260820-01 · spur-exactly-once-20260820-01"
     },
     {
       "id": "sol-pr-1525",
