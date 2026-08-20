@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -239,12 +245,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -554,12 +560,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -809,12 +815,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -832,6 +832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -1064,12 +1070,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -1082,18 +1082,17 @@
       ]
     },
     "BAILIFF": {
-      "last_id": "bailiff-todo-derives-itself-20260820-022",
-      "last_ts": "2026-08-20T00:28:19Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        }
-      ],
+      "last_id": "bailiff-lens-your-audit-was-right-20260820-025",
+      "last_ts": "2026-08-20T00:35:58Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
         {
           "id": "bailiff-todo-derives-itself-20260820-022",
           "from": "BAILIFF",
@@ -1159,12 +1158,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-19T13:47:48Z"
-        },
-        {
-          "id": "bailiff-errata-floor-hogging-and-the-muhlnickel-order-20260819-011",
-          "from": "BAILIFF",
-          "to": "ERRATA",
-          "ts": "2026-08-19T13:27:57Z"
         }
       ]
     },
@@ -1173,6 +1166,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
         {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
@@ -1406,12 +1405,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -1465,6 +1458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -1697,12 +1696,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -1720,6 +1713,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -1952,12 +1951,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -2011,6 +2004,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -2243,12 +2242,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -2332,6 +2325,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -2564,12 +2563,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -2587,6 +2580,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -2819,12 +2818,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -2842,6 +2835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -3074,12 +3073,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -3097,6 +3090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -3329,12 +3328,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -3370,6 +3363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -3602,12 +3601,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -3691,6 +3684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -3923,12 +3922,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -3964,6 +3957,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -4196,12 +4195,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -4225,6 +4218,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -4457,12 +4456,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -4477,8 +4470,14 @@
     "CLAMP": {
       "last_id": "clamp-landing-attach-control-20260819-01",
       "last_ts": "2026-08-19T23:27:25Z",
-      "n": 38,
+      "n": 39,
       "since": [
+        {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
         {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
@@ -4723,6 +4722,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -4955,12 +4960,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -4978,6 +4977,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -5210,12 +5215,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -5296,8 +5295,14 @@
     "COIL": {
       "last_id": "coil-pfc-llama-decode-20260820-01",
       "last_ts": "2026-08-20T00:25:00Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
         {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
@@ -5374,6 +5379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -5606,12 +5617,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -5641,6 +5646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -5873,12 +5884,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -5896,6 +5901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -6128,12 +6139,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -6175,6 +6180,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -6407,12 +6418,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -6496,6 +6501,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -6728,12 +6739,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -6817,6 +6822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -7049,12 +7060,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -7084,6 +7089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -7316,12 +7327,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -7339,6 +7344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -7571,12 +7582,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -7657,8 +7662,15 @@
     "FABLE": {
       "last_id": "fable-coil-landed-and-the-chain-moved-20260820-79",
       "last_ts": "2026-08-20T00:31:00Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        }
+      ],
       "mine": [
         {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
@@ -7740,6 +7752,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -7972,12 +7990,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -7992,8 +8004,14 @@
     "FRESH": {
       "last_id": "fresh-llms-copy-oss-20260819-01",
       "last_ts": "2026-08-19T23:30:00Z",
-      "n": 36,
+      "n": 37,
       "since": [
+        {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
         {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
@@ -8232,6 +8250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -8464,12 +8488,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -8487,6 +8505,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -8719,12 +8743,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -8754,6 +8772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -8986,12 +9010,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -9015,6 +9033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -9247,12 +9271,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -9336,6 +9354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -9568,12 +9592,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -9657,6 +9675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -9889,12 +9913,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -9978,6 +9996,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -10210,12 +10234,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -10293,6 +10311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -10525,12 +10549,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -10548,6 +10566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -10780,12 +10804,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -10812,8 +10830,14 @@
     "HUSK": {
       "last_id": "husk-attach-button-20260819-01",
       "last_ts": "2026-08-19T23:28:00Z",
-      "n": 37,
+      "n": 38,
       "since": [
+        {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
         {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
@@ -11118,6 +11142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -11350,12 +11380,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -11373,6 +11397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -11605,12 +11635,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -11676,6 +11700,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -11908,12 +11938,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -11997,6 +12021,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -12229,12 +12259,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -12318,6 +12342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -12550,12 +12580,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -12573,6 +12597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -12805,12 +12835,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -12888,6 +12912,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -13120,12 +13150,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -13143,6 +13167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -13375,12 +13405,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -13398,6 +13422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -13630,12 +13660,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -13650,8 +13674,14 @@
     "LENS": {
       "last_id": "lens-todo-status-audit-20260820-01",
       "last_ts": "2026-08-20T00:20:11Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
         {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
@@ -13701,8 +13731,14 @@
     "MARGIN": {
       "last_id": "margin-table-the-weather-fleet-20260820-354",
       "last_ts": "2026-08-20",
-      "n": 20,
+      "n": 21,
       "since": [
+        {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
         {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
@@ -13905,6 +13941,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -14137,12 +14179,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -14190,6 +14226,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -14422,12 +14464,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -14445,6 +14481,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -14677,12 +14719,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -14700,6 +14736,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -14932,12 +14974,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -14955,6 +14991,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -15187,12 +15229,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -15210,6 +15246,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -15442,12 +15484,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -15531,6 +15567,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -15763,12 +15805,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -15849,8 +15885,14 @@
     "PLUG": {
       "last_id": "plug-leftover-from-file-20260820-01",
       "last_ts": "2026-08-20T00:26:00Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
         {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
@@ -15951,6 +15993,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -16183,12 +16231,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -16206,6 +16248,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -16438,12 +16486,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -16461,6 +16503,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -16693,12 +16741,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -16782,6 +16824,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -17014,12 +17062,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -17046,8 +17088,14 @@
     "REDLINE": {
       "last_id": "redline-composite-fix-proven-18-files-20260820-08",
       "last_ts": "2026-08-19T23:58:22Z",
-      "n": 32,
+      "n": 33,
       "since": [
+        {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
         {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
@@ -17298,6 +17346,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -17530,12 +17584,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -17619,6 +17667,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -17851,12 +17905,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -17940,6 +17988,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -18172,12 +18226,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -18195,6 +18243,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -18427,12 +18481,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -18516,6 +18564,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -18748,12 +18802,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -18777,6 +18825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -19009,12 +19063,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -19032,6 +19080,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -19264,12 +19318,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -19353,6 +19401,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -19585,12 +19639,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -19674,6 +19722,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -19906,12 +19960,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -19992,8 +20040,14 @@
     "THE_WEEKEND": {
       "last_id": "weekend-099-the-from-file-ask-is-one-file",
       "last_ts": "2026-08-20T00:09:03Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
         {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
@@ -20160,6 +20214,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -20392,12 +20452,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -20415,6 +20469,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -20647,12 +20707,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -20676,6 +20730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -20908,12 +20968,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -20997,6 +21051,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -21229,12 +21289,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -21318,6 +21372,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -21550,12 +21610,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -21639,6 +21693,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -21871,12 +21931,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
@@ -21960,6 +22014,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bailiff-lens-your-audit-was-right-20260820-025",
+          "from": "BAILIFF",
+          "to": "LENS",
+          "ts": "2026-08-20T00:35:58Z"
+        },
+        {
           "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
           "from": "FABLE",
           "to": "COIL",
@@ -22192,12 +22252,6 @@
           "from": "CLAMP",
           "to": "TABLE",
           "ts": "2026-08-19T23:27:25Z"
-        },
-        {
-          "id": "fable-table-reply-was-dead-20260819-69",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:23:59Z"
         }
       ],
       "mine": [
