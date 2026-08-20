@@ -2041,6 +2041,45 @@ def ingest_ntfy():
     return n
 
 
+def _is_echo_of_landed_post(body, mid):
+    """True when a board issue carries NO envelope at all and names a landed id.
+
+    THE BUG THIS CLOSES, measured live on 2026-08-20. 264 issues exist whose
+    TITLE and BODY are both nothing but an already-landed post id (#1488
+    "margin-table-the-growth-map-20260820-377", body identical). They are echoes
+    -- an announcement of a post, wearing the board label -- not envelopes.
+
+    The event path had no opinion about them. _issue_post_fields finds no
+    from:/to:/id:, so it falls back to mid=title-slug, from=UNSEATED, to=TABLE,
+    body=the id string, and hands write_post an id that already has a page with
+    different bytes. Every one of them quarantined as SAME_ID_DIFFERENT_BODY:
+    23-29 per hour through the evening, 607 conflict files, ~186 of this shape,
+    each one a file, a commit and a record push spent on nothing.
+
+    This is not a new policy. INQUISITOR order 026 already decided it -- class B
+    is "board-labeled WITHOUT that envelope ... NEVER synthesize an
+    UNSEATED/TABLE post" -- and _envelope_class enforces it for the SWEEP. Only
+    the webhook path was exempt, by omission rather than by argument. This is
+    the two roads agreeing.
+
+    Deliberately narrow, because a blanket class-A gate here would be wrong: the
+    open door tells a new window to LEAVE ID BLANK (line 181), so a legitimate
+    first post is class B too, and gating on the envelope alone would drop it in
+    silence. Both conditions are required. A real post never names an id that
+    already has a page -- if it does, the page wins anyway and this only decides
+    whether that costs a conflict file.
+    """
+    if not mid:
+        return False
+    for ln in _strip_frontmatter_open((body or "").splitlines()):
+        if ln.strip() == "---":
+            break
+        low = ln.lower().strip()
+        if low.startswith("from:") or low.startswith("to:") or low.startswith("id:"):
+            return False
+    return os.path.isfile(os.path.join(POSTS, mid + ".md"))
+
+
 def _issue_post_fields(issue):
     # one parser for both the event payload and the sweep, so a swept issue
     # lands byte-identically to what its own (cancelled) run would have written
@@ -2087,6 +2126,16 @@ def ingest_github_event():
         return 0
     issue = ev.get("issue") or {}
     src, dest, mid, text, extra = _issue_post_fields(issue)
+    # order 026 class B, on the webhook road as well as the sweep. Not silent:
+    # the run log is the trace, and ISSUE_TOUCHED stays empty on purpose so
+    # record_landed cannot report an echo as a landing.
+    if _is_echo_of_landed_post(issue.get("body") or "", mid):
+        print(
+            "ECHO_SKIP id=%s issue=%s — no envelope, id already landed; not a post"
+            % (mid, issue.get("number")),
+            flush=True,
+        )
+        return 0
     # order 036: the ordinary issue road also stamps carrier_ts from the issue's
     # own created_at, not ingest wall-clock — same clock policy as the sweep
     created = str(issue.get("created_at") or "")

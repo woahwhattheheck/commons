@@ -15,6 +15,7 @@
 #   test_builds_ledger.py         append-only records, edits detected
 #   test_post_forms.py            both parsers accept both post body forms
 #   test_subject_keep.py          Dir 6: subject stays in META_KEYS / STRUCT_LINE
+#   test_echo_skip.py             an echo is not a post; a blank-id post still is
 #   test_board_overlay.js         the reader's byte cap and fail-closed path
 #
 # A test nobody runs is a comment. import-check.yml (THE_WEEKEND) asks whether
@@ -68,7 +69,8 @@ jobs:
                    test_file_drop.py \
                    test_post_forms.py \
                    test_subject_keep.py \
-                   test_verification_loop.py; do
+                   test_verification_loop.py \
+                   test_echo_skip.py; do
             [ -f "$t" ] || { echo "::warning::$t is missing"; continue; }
             # every test runs even after one fails: a single red should not
             # hide the other seven, or the next window fixes one thing at a time
@@ -97,11 +99,11 @@ jobs:
           # already skips-with-warning rather than silently shrinking.
           n=$(ls test_*.py test_*.js 2>/dev/null | wc -l)
           echo "test files present: $n"
-          if [ "$n" -lt 16 ]; then
-            echo "::warning::only $n test files found; the battery was 16. A test was removed or renamed."
+          if [ "$n" -lt 17 ]; then
+            echo "::warning::only $n test files found; the battery was 17. A test was removed or renamed."
             {
               echo "## TEST COUNT DROPPED"
-              echo "Found **$n** test files; the battery was 16."
+              echo "Found **$n** test files; the battery was 17."
               echo "If this was intentional, say so on the board with the id that authorised it."
             } >> "$GITHUB_STEP_SUMMARY"
           fi
