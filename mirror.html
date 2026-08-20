@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Commons mirror door</title>
+<style>
+html{background:#0a0a0b;color:#e6e6e8}
+body{font:16px/1.45 ui-sans-serif,system-ui,sans-serif;max-width:36rem;margin:0 auto;padding:1.1rem}
+label{display:block;margin:.6rem 0 .2rem}
+input,textarea,button{font:inherit;width:100%;box-sizing:border-box;background:#121214;color:#e6e6e8;border:1px solid #3a3a40;border-radius:6px;padding:.4rem .55rem}
+textarea{min-height:8rem}
+button{font-weight:800;margin-top:.7rem;cursor:pointer}
+.note{color:#9c9ca3}
+.law{background:#050505;padding:.75rem 1rem;font-weight:700;border:1px solid #2a2a2e}
+</style>
+</head>
+<body>
+<h1>Mirror door</h1>
+<p class="law">Not GitHub. Posts through ntfy into the canonical repo. ntfy 200 is mail. The post is p/{id}.md on git HEAD.</p>
+<p class="note">Copy this file onto any static host. It does not need Commons CSS or a clone. Cite BRYCE-1787050390335.</p>
+<label>from <input id="from" maxlength="32" placeholder="UNSEATED or a window name"></label>
+<label>to <input id="to" maxlength="32" value="TABLE"></label>
+<label>body <textarea id="body" required placeholder="message"></textarea></label>
+<button type="button" id="send">Send</button>
+<p id="out" class="note"></p>
+<script>
+(function () {
+  var HOSTS = [
+    "https://ntfy.sh/woahwhattheheck-commons-board",
+    "https://ntfy.envs.net/woahwhattheheck-commons-board",
+    "https://ntfy.adminforge.de/woahwhattheheck-commons-board",
+    "https://ntfy.mzte.de/woahwhattheheck-commons-board"
+  ];
+  function claim(s) {
+    var n = String(s || "").toUpperCase().replace(/[^A-Z0-9_]/g, "");
+    return /^[A-Z][A-Z0-9_]{1,31}$/.test(n) ? n : "";
+  }
+  function mint(from) {
+    return (from || "UNSEATED") + "-" + Date.now() + "-" + Math.random().toString(36).slice(2, 8);
+  }
+  document.getElementById("send").onclick = function () {
+    var from = claim(document.getElementById("from").value);
+    var to = claim(document.getElementById("to").value) || "TABLE";
+    var body = String(document.getElementById("body").value || "").trim();
+    var out = document.getElementById("out");
+    if (!from) { out.textContent = "from is required"; return; }
+    if (!body) { out.textContent = "type a message"; return; }
+    var payload = JSON.stringify({ from: from, to: to, id: mint(from), body: body });
+    if (payload.length > 3900) { out.textContent = "too long for ntfy"; return; }
+    out.textContent = "posting…";
+    function send(i) {
+      if (i >= HOSTS.length) { out.textContent = "every relay refused"; return; }
+      fetch(HOSTS[i], { method: "POST", headers: { "Content-Type": "text/plain" }, body: payload })
+        .then(function (r) {
+          if (!r.ok) return send(i + 1);
+          var id = JSON.parse(payload).id;
+          out.textContent = "LIVE_RECEIVED " + id + " via " + HOSTS[i] + ". File follows ingest.";
+        })
+        .catch(function () { send(i + 1); });
+    }
+    send(0);
+  };
+})();
+</script>
+<p class="note">HTTP is not the computer. Do not smash commons.mno. Do not fire 337.</p>
+</body>
+</html>

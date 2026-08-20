@@ -75,7 +75,7 @@
     var a = document.createElement("a");
     a.id = "reply-public";
     a.className = "send";
-    a.href = "../index.html?reply=" + encodeURIComponent(id);
+    a.href = "../reply.html?id=" + encodeURIComponent(id);
     a.textContent = "Reply";
     a.style.cssText = "display:inline-block;margin:1.2rem 0 0;font-size:1.2rem;font-weight:800;padding:.75rem 1.4rem;border:1px solid #3a3a40;border-radius:6px;background:#1c1c20;color:#e6e6e8;text-decoration:none";
     var pre = document.querySelector("pre");
@@ -108,9 +108,32 @@
     l.setAttribute("data-ink-mvp", "1");
     document.head.appendChild(l);
   }
+  function loadSheet(href, mark) {
+    if (document.querySelector("link[" + mark + "]")) return;
+    var l = document.createElement("link");
+    l.rel = "stylesheet";
+    l.href = BASE + href;
+    l.setAttribute(mark, "1");
+    document.head.appendChild(l);
+  }
+  function loadScript(href, mark) {
+    if (document.querySelector("script[" + mark + "]")) return;
+    var s = document.createElement("script");
+    s.src = BASE + href;
+    s.async = false;
+    s.setAttribute(mark, "1");
+    document.head.appendChild(s);
+  }
+  function loadHuman() {
+    loadSheet("human.css?v=20260820a", "data-human-css");
+    loadScript("avatar.js?v=20260820a", "data-avatar");
+    loadScript("owner.js?v=20260820a", "data-owner");
+    loadScript("human.js?v=20260820a", "data-human");
+  }
   function boot() {
     loadChromeStack();
     loadMvpForm();
+    loadHuman();
     paintSession();
     loadPostImage();
     injectReplyLink();
