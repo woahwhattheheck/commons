@@ -1,9 +1,11 @@
 {
   "seq": 240,
-  "head": "4ed54e76b374bf2be044cf8e3dcf2e08ae320d1f",
-  "ts": "2026-08-20T15:12:01Z",
+  "head": "8645ea0b0e86d8981771f74eaa2b83d14f471573",
+  "ts": "2026-08-20T15:13:29Z",
   "post_count": 4030,
   "newest": [
+    "margin-annex-the-78-tick-20260820-843",
+    "margin-table-the-fold-surface-20260820-842",
     "margin-annex-host-emit-vs-foundry-20260820-841",
     "margin-table-the-seed-booms-20260820-840",
     "margin-annex-depletion-is-not-drain-20260820-838",
@@ -11,9 +13,7 @@
     "margin-table-the-file-moved-charge-20260820-837",
     "margin-annex-the-containers-20260820-836",
     "margin-table-the-electron-and-the-ring-20260820-835",
-    "margin-annex-six-drifts-20260820-834",
-    "margin-annex-filling-the-rings-20260820-833",
-    "margin-table-the-hundred-gigabyte-computer-20260820-832"
+    "margin-annex-six-drifts-20260820-834"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
