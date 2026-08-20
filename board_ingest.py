@@ -496,6 +496,71 @@ def conflict_key(mid, kept_sha, rej_sha, src, dest, ts, event_id):
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()
 
 
+def _payload_hash(body):
+    return hashlib.sha256((body or "").strip().encode("utf-8")).hexdigest()
+
+
+def mint_blank_id(src, dest, body, event_id=None, ts=None):
+    """Stable id for a blank-id post. Never wall-clock. One event, one file.
+
+    Cite sol-measured-build-list-correction-20260820-01. The TYPE-* flood was
+    `FROM-{datetime.now()}` on every ntfy re-read of the same 72h event.
+    """
+    src_part = re.sub(r"[^A-Za-z0-9._-]", "", str(src or "UNSEATED")) or "UNSEATED"
+    ev = re.sub(r"[^A-Za-z0-9._-]", "", str(event_id or ""))
+    if ev:
+        raw = ("%s-evt-%s" % (src_part, ev))[:80]
+        mid, _ = slug_id(raw)
+        if mid:
+            return mid
+    stamp = re.sub(r"[^0-9A-Za-z]", "", str(ts or ""))[:16]
+    if len(stamp) >= 8:
+        raw = ("%s-%s" % (src_part, stamp))[:80]
+        mid, _ = slug_id(raw)
+        if mid:
+            return mid
+    h = _payload_hash("%s\0%s\0%s" % (src_part, dest or "", body or ""))[:12]
+    raw = ("%s-%s" % (src_part, h))[:80]
+    mid, _ = slug_id(raw)
+    return mid
+
+
+def existing_same_carrier(src, dest, body, ts):
+    """Return an already-landed id for this blank-id carrier payload, or None.
+
+    Scoped to `{from}-*.md` so a full corpus walk is not the cost. Requires a
+    carrier timestamp — same hello from the same claim on a later event is a
+    new post.
+    """
+    want_ts = str(ts or "")
+    if not want_ts:
+        return None
+    src_u = (src or "").strip().upper()
+    dest_u = (dest or "").strip().upper()
+    want = _payload_hash(body)
+    prefix = re.sub(r"[^A-Za-z0-9._-]", "", src_u) + "-"
+    if not os.path.isdir(POSTS) or len(prefix) < 2:
+        return None
+    for name in os.listdir(POSTS):
+        if not name.endswith(".md") or not name.upper().startswith(prefix):
+            continue
+        try:
+            meta, post_body = parse_post(_read(os.path.join(POSTS, name)))
+        except (OSError, UnicodeError):
+            continue
+        if (meta.get("from") or "").strip().upper() != src_u:
+            continue
+        if (meta.get("to") or "").strip().upper() != dest_u:
+            continue
+        carrier = meta.get("carrier_ts") or meta.get("ts") or ""
+        if carrier != want_ts:
+            continue
+        if _payload_hash(post_body) != want:
+            continue
+        return name[:-3]
+    return None
+
+
 def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
     src = as_from(src) or "UNSEATED"
     dest = as_to(dest) or "TABLE"
@@ -503,7 +568,16 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
     extra = share_mark(body, extra, dest)
     raw_id = (mid or "").strip()
     if not raw_id:
-        raw_id = "%s-%s" % (src or "UNSEATED", datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ"))
+        # SOL exactly-once: ntfy keeps a blank-id event for 72h. Wall-clock
+        # mint made a new TYPE-{now} file every ingest. Event id / carrier ts
+        # is stable. A twin already on disk (the TYPE-* pile) is unchanged.
+        carrier = ts or extra.get("carrier_ts") or ""
+        twin = existing_same_carrier(src, dest, body, carrier)
+        if twin:
+            return "unchanged"
+        raw_id = mint_blank_id(src, dest, body, event_id=event_id, ts=carrier)
+        if not raw_id:
+            raw_id = mint_blank_id(src, dest, body, event_id=event_id, ts="undated")
     mid, id_was = slug_id(raw_id)
     if id_was and mid:
         extra.setdefault("id_was", id_was)
@@ -2395,7 +2469,8 @@ def ingest_github_event():
     if created:
         extra = dict(extra)
         extra["carrier_ts"] = extra.get("carrier_ts") or created
-    st = write_post(src, dest, mid, text, ts=created or None, extra=extra)
+    st = write_post(src, dest, mid, text, ts=created or None, extra=extra,
+                    event_id="issue-%s" % (issue.get("number") or ""))
     ISSUE_TOUCHED.append({"id": mid, "from": src or "", "to": dest or "", "write": st})
     return 1 if st == "wrote" else 0
 
@@ -2619,7 +2694,8 @@ def sweep_collect():
         src, dest, mid, text, extra = _issue_post_fields(issue)
         extra = dict(extra)
         extra["carrier_ts"] = created or extra.get("carrier_ts") or now_ts()
-        st = write_post(src, dest, mid, text, ts=created or None, extra=extra)
+        st = write_post(src, dest, mid, text, ts=created or None, extra=extra,
+                        event_id="issue-%s" % (num or ""))
         if st == "wrote":
             n += 1
         note = {
