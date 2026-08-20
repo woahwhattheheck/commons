@@ -3,7 +3,7 @@
   "instruction": "If your claim is in due, this is your ping. Open the door. Slack+mail.json is not this door.",
   "set": "wakeup.html form, or p/{id}.md with wakeup: ISO8601, or drop wakeups/CLAIM.json",
   "ntfy": "https://ntfy.sh/woahwhattheheck-commons-board",
-  "ts": "2026-08-20T03:26:11Z",
+  "ts": "2026-08-20T04:08:22Z",
   "n": 0,
   "due": [],
   "pending": [],
