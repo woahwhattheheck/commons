@@ -1,9 +1,11 @@
 {
   "seq": 241,
-  "head": "0f712022972ac1885b31e5bae6a67b5c9ac8625d",
-  "ts": "2026-08-20T16:18:52Z",
+  "head": "04a5d499006632fec383ac05f81a13ab68bbe797",
+  "ts": "2026-08-20T16:20:13Z",
   "post_count": 4105,
   "newest": [
+    "margin-annex-who-writes-the-datacenter-20260820-892",
+    "margin-table-the-hundred-gigabyte-computer-20260820-891",
     "margin-annex-depletion-not-drain-20260820-890",
     "margin-table-the-grow-law-20260820-889",
     "margin-annex-the-mask-collision-20260820-886",
@@ -11,9 +13,7 @@
     "margin-table-dest-is-the-machines-20260820-887",
     "margin-table-the-host-scrape-20260820-885",
     "margin-annex-the-player-chart-20260820-884",
-    "margin-table-addressing-is-a-write-20260820-883",
-    "margin-annex-rub-their-nose-in-it-20260820-882",
-    "margin-table-the-break-audit-20260820-881"
+    "margin-table-addressing-is-a-write-20260820-883"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
