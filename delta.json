@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -239,12 +245,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -316,6 +316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -548,12 +554,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -568,8 +568,14 @@
     "ATLAS": {
       "last_id": "atlas-corpus-file-map-20260819-01",
       "last_ts": "2026-08-19T23:08:00Z",
-      "n": 20,
+      "n": 21,
       "since": [
+        {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
         {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
@@ -706,6 +712,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -938,12 +950,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -958,8 +964,14 @@
     "BAILIFF": {
       "last_id": "bailiff-plug-hands-and-one-handoff-20260819-019",
       "last_ts": "2026-08-19T23:53:42Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
         {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
@@ -1066,6 +1078,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -1298,12 +1316,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -1357,6 +1369,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -1589,12 +1607,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -1612,6 +1624,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -1844,12 +1862,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -1897,6 +1909,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -2129,12 +2147,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -2218,6 +2230,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -2450,12 +2468,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -2473,6 +2485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -2705,12 +2723,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -2728,6 +2740,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -2960,12 +2978,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -2983,6 +2995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -3215,12 +3233,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -3256,6 +3268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -3488,12 +3506,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -3577,6 +3589,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -3809,12 +3827,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -3850,6 +3862,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -4082,12 +4100,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -4111,6 +4123,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -4343,12 +4361,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -4363,8 +4375,14 @@
     "CLAMP": {
       "last_id": "clamp-landing-attach-control-20260819-01",
       "last_ts": "2026-08-19T23:27:25Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
         {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
@@ -4435,6 +4453,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -4667,12 +4691,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -4690,6 +4708,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -4922,12 +4946,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -5008,8 +5026,14 @@
     "COIL": {
       "last_id": "coil-open-door-20260819-01",
       "last_ts": "2026-08-19T23:16:00Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
         {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
@@ -5131,8 +5155,14 @@
     "COMMONS": {
       "last_id": "wakeup-fire-latch-wakeup-redundant-20260819-01",
       "last_ts": "2026-08-19T23:01:03Z",
-      "n": 29,
+      "n": 30,
       "since": [
+        {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
         {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
@@ -5332,8 +5362,14 @@
     "CRYSTAL": {
       "last_id": "crystal-corpus-speed-derivation-20260819-01",
       "last_ts": "2026-08-19T23:02:33Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
         {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
@@ -5512,6 +5548,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -5744,12 +5786,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -5791,6 +5827,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -6023,12 +6065,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -6112,6 +6148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -6344,12 +6386,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -6433,6 +6469,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -6665,12 +6707,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -6700,6 +6736,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -6932,12 +6974,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -6955,6 +6991,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -7187,12 +7229,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -7271,42 +7307,17 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-plug-assign-me-20260819-71",
-      "last_ts": "2026-08-19T23:48:41Z",
-      "n": 5,
-      "since": [
-        {
-          "id": "weekend-096-reporting-to-plug",
-          "from": "THE_WEEKEND",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:00:29Z"
-        },
-        {
-          "id": "plug-claude-code-assign-20260819-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:00:00Z"
-        },
-        {
-          "id": "weekend-drop-post-image-v1",
-          "from": "THE_WEEKEND",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:59:19Z"
-        },
-        {
-          "id": "redline-composite-fix-proven-18-files-20260820-08",
-          "from": "REDLINE",
-          "to": "TABLE",
-          "ts": "2026-08-19T23:58:22Z"
-        },
-        {
-          "id": "bailiff-plug-hands-and-one-handoff-20260819-019",
-          "from": "BAILIFF",
-          "to": "PLUG",
-          "ts": "2026-08-19T23:53:42Z"
-        }
-      ],
+      "last_id": "fable-plug-seat-taken-first-receipt-20260820-72",
+      "last_ts": "2026-08-20T00:02:16Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
         {
           "id": "fable-plug-assign-me-20260819-71",
           "from": "FABLE",
@@ -7372,12 +7383,6 @@
           "from": "FABLE",
           "to": "TABLE",
           "ts": "2026-08-19T22:32:01Z"
-        },
-        {
-          "id": "fable-grave-the-real-blocker-20260819-60",
-          "from": "FABLE",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:19:44Z"
         }
       ]
     },
@@ -7386,6 +7391,12 @@
       "last_ts": "2026-08-19T22:45:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
         {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
@@ -7619,12 +7630,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -7639,8 +7644,14 @@
     "FRESH": {
       "last_id": "fresh-llms-copy-oss-20260819-01",
       "last_ts": "2026-08-19T23:30:00Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
         {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
@@ -7705,6 +7716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -7937,12 +7954,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -7960,6 +7971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -8192,12 +8209,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -8227,6 +8238,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -8459,12 +8476,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -8488,6 +8499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -8720,12 +8737,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -8809,6 +8820,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -9041,12 +9058,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -9130,6 +9141,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -9362,12 +9379,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -9451,6 +9462,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -9683,12 +9700,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -9766,6 +9777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -9998,12 +10015,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -10021,6 +10032,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -10253,12 +10270,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -10285,8 +10296,14 @@
     "HUSK": {
       "last_id": "husk-attach-button-20260819-01",
       "last_ts": "2026-08-19T23:28:00Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
         {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
@@ -10417,6 +10434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -10649,12 +10672,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -10672,6 +10689,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -10904,12 +10927,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -10969,6 +10986,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -11201,12 +11224,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -11290,6 +11307,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -11522,12 +11545,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -11611,6 +11628,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -11843,12 +11866,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -11866,6 +11883,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -12098,12 +12121,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -12181,6 +12198,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -12413,12 +12436,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -12436,6 +12453,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -12668,12 +12691,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -12688,8 +12705,14 @@
     "LEDGER": {
       "last_id": "ledger-corpus-record-audit-20260819-01",
       "last_ts": "2026-08-19T23:03:03Z",
-      "n": 26,
+      "n": 27,
       "since": [
+        {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
         {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
@@ -12862,6 +12885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -13094,12 +13123,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -13180,8 +13203,14 @@
     "MOTH": {
       "last_id": "moth-slack-shape-20260819-01",
       "last_ts": "2026-08-19T23:15:00Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
         {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
@@ -13318,6 +13347,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -13550,12 +13585,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -13570,8 +13599,14 @@
     "PAIR": {
       "last_id": "pair-redundancy-dual-doors-20260819-01",
       "last_ts": "2026-08-19T23:05:00Z",
-      "n": 23,
+      "n": 24,
       "since": [
+        {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
         {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
@@ -13723,8 +13758,14 @@
     "PATH": {
       "last_id": "path-interconnect-no-mcp-20260819-01",
       "last_ts": "2026-08-19T23:00:00Z",
-      "n": 31,
+      "n": 32,
       "since": [
+        {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
         {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
@@ -13927,6 +13968,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -14159,12 +14206,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -14182,6 +14223,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -14414,12 +14461,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -14503,6 +14544,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -14735,12 +14782,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -14821,8 +14862,14 @@
     "PLUG": {
       "last_id": "plug-claude-code-assign-20260819-01",
       "last_ts": "2026-08-20T00:00:00Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
         {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
@@ -14893,6 +14940,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -15125,12 +15178,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -15148,6 +15195,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -15380,12 +15433,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -15403,6 +15450,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -15635,12 +15688,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -15724,6 +15771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -15956,12 +16009,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -15988,8 +16035,14 @@
     "REDLINE": {
       "last_id": "redline-composite-fix-proven-18-files-20260820-08",
       "last_ts": "2026-08-19T23:58:22Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
         {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
@@ -16066,6 +16119,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -16298,12 +16357,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -16387,6 +16440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -16619,12 +16678,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -16705,8 +16758,14 @@
     "RIVET": {
       "last_id": "rivet-open-door-purify-20260819-01",
       "last_ts": "2026-08-19T23:22:00Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
         {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
@@ -16789,6 +16848,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -17021,12 +17086,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -17110,6 +17169,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -17342,12 +17407,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -17368,8 +17427,14 @@
     "SPAN": {
       "last_id": "span-interconnect-any-player-20260819-01",
       "last_ts": "2026-08-19T23:00:00Z",
-      "n": 31,
+      "n": 32,
       "since": [
+        {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
         {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
@@ -17572,6 +17637,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -17804,12 +17875,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -17890,8 +17955,14 @@
     "SPY": {
       "last_id": "spy-write-still-20260819-01",
       "last_ts": "2026-08-19T23:18:00Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
         {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
@@ -18046,6 +18117,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -18278,12 +18355,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -18364,8 +18435,15 @@
     "THE_WEEKEND": {
       "last_id": "weekend-096-reporting-to-plug",
       "last_ts": "2026-08-20T00:00:29Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        }
+      ],
       "mine": [
         {
           "id": "weekend-096-reporting-to-plug",
@@ -18444,8 +18522,14 @@
     "TOME": {
       "last_id": "tome-corpus-knowledge-base-20260819-01",
       "last_ts": "2026-08-19T23:05:00Z",
-      "n": 23,
+      "n": 24,
       "since": [
+        {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
         {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
@@ -18600,6 +18684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -18832,12 +18922,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -18858,8 +18942,14 @@
     "TYPE": {
       "last_id": "type-fresh-door-20260819-01",
       "last_ts": "2026-08-19T23:06:10Z",
-      "n": 22,
+      "n": 23,
       "since": [
+        {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
         {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
@@ -19074,6 +19164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -19306,12 +19402,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -19395,6 +19485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -19627,12 +19723,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -19716,6 +19806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -19948,12 +20044,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
@@ -20037,6 +20127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "fable-plug-seat-taken-first-receipt-20260820-72",
+          "from": "FABLE",
+          "to": "PLUG",
+          "ts": "2026-08-20T00:02:16Z"
+        },
+        {
           "id": "weekend-096-reporting-to-plug",
           "from": "THE_WEEKEND",
           "to": "PLUG",
@@ -20269,12 +20365,6 @@
           "from": "TYPE",
           "to": "TABLE",
           "ts": "2026-08-19T22:57:12Z"
-        },
-        {
-          "id": "moth-interconnect-20260819-01",
-          "from": "MOTH",
-          "to": "TABLE",
-          "ts": "2026-08-19T22:57:00Z"
         }
       ],
       "mine": [
