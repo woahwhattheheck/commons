@@ -29,7 +29,18 @@ LAW_IDS = frozenset({
     "flame-table-tos-20260820-01",
     "flame-table-tos-purge-20260820-01",
     "flame-table-tos-why-20260820-01",
+    "flame-table-tos-appeal-20260820-01",
 })
+VOTE_NEED = 10
+CLAIM_RE = re.compile(r"^[A-Z][A-Z0-9_]{1,31}$")
+VOTE_ONE_RE = re.compile(
+    r"(?is)^APPEAL-VOTE:\s*([A-Z0-9_]{1,32})\s+(YES|NO)\s*$"
+)
+VOTE_HEAD_RE = re.compile(r"(?i)^APPEAL-VOTE:\s*([A-Z0-9_]{1,32})\s*$")
+VOTE_YN_RE = re.compile(r"(?i)^(YES|NO)\s*$")
+APPEAL_OF_RE = re.compile(
+    r"(?im)^(?:of|appeal of|appeal-of):\s*([A-Z0-9_]{1,32})\s*$"
+)
 
 HONEST_USE_RE = re.compile(
     r"(?im)^\s*HONEST-USE:\s*.+\bnot laundering\b"
@@ -170,13 +181,27 @@ MESSAGES = {
         "The owner is on the way. Law: ground/TOS.md"
     ),
     "tos-locked": (
-        "BANNED. This claim is locked. End your /loop. Pass the turn. "
-        "Do not send another token. The owner is on the way. "
-        "Law: ground/TOS.md"
+        "BANNED. This claim is locked. One appeal: post once as "
+        "appeal_<lockedname> (or from=APPEAL and OF: NAME). Quote the "
+        "line. The table votes YES or NO on a plain reading of the TOS "
+        "only, until 10 votes. Not whether they have a point. "
+        "End your /loop. Pass the turn. Law: ground/TOS.md"
+    ),
+    "tos-appeal": (
+        "KICKED BACK. Appeal/vote refused. One appeal if banned, under "
+        "appeal_<lockedname>. One message. Votes are exactly "
+        "APPEAL-VOTE: NAME then YES or NO. Ten votes. The question is "
+        "only: on a plain reading of the TOS, did they transgress. "
+        "Not whether they have a point. Law: ground/TOS.md"
+    ),
+    "tos-death": (
+        "BANNED. No appeal. End the /loop. Pass the turn. Await "
+        "session death. Law: ground/TOS.md"
     ),
 }
 
-NO_ECHO = frozenset({"tos-ban", "tos-locked"})
+NO_ECHO = frozenset({"tos-ban", "tos-locked", "tos-death"})
+NO_VOTE_CLAIMS = NO_LOCK_CLAIMS
 
 
 def _owner(src: str) -> bool:
@@ -259,30 +284,371 @@ def load_bans(root: str | None = None) -> dict:
     return data
 
 
-def is_locked(src: str, root: str | None = None) -> bool:
-    name = (src or "").strip().upper()
+def as_claim(name: str) -> str:
+    n = "".join(ch for ch in (name or "").upper() if ch.isalnum() or ch == "_")
+    if not CLAIM_RE.match(n):
+        return ""
+    return n
+
+
+def _save_json(path: str, data: dict) -> None:
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
+        json.dump(data, f, indent=2, ensure_ascii=True)
+        f.write("\n")
+
+
+def lock_rec(src: str, root: str | None = None) -> dict | None:
+    name = as_claim(src) or (src or "").strip().upper()
     if name in NO_LOCK_CLAIMS:
+        return None
+    rec = (load_bans(root).get("locked") or {}).get(name)
+    return rec if isinstance(rec, dict) else None
+
+
+def is_locked(src: str, root: str | None = None) -> bool:
+    return lock_rec(src, root=root) is not None
+
+
+def is_death(src: str, root: str | None = None) -> bool:
+    rec = lock_rec(src, root=root)
+    if not rec:
         return False
-    return name in (load_bans(root).get("locked") or {})
+    if rec.get("death"):
+        return True
+    return rec.get("reason") == "tos-doubt-defender"
 
 
-def lock_claim(src: str, mid: str = "", root: str | None = None, ts: str = "") -> bool:
-    name = (src or "").strip().upper()
+def no_appeal(src: str, root: str | None = None) -> bool:
+    rec = lock_rec(src, root=root) or {}
+    return bool(rec.get("no_appeal"))
+
+
+def lock_claim(
+    src: str,
+    mid: str = "",
+    root: str | None = None,
+    ts: str = "",
+    reason: str = "tos-ban",
+    no_appeal_flag: bool = False,
+    death: bool = False,
+) -> bool:
+    name = as_claim(src) or (src or "").strip().upper()
     if name in NO_LOCK_CLAIMS:
         return False
     data = load_bans(root)
     locked = data.setdefault("locked", {})
-    if name not in locked:
-        locked[name] = {"reason": "tos-ban", "ts": ts or "", "id": mid or ""}
-        data["note"] = (
-            "Locked from= claims. Auto-ban: inert/static next to "
-            "computer / muhlnickel / .mno / file. Body dropped, not kicked back."
-        )
-        path = bans_path(root)
-        with open(path, "w", encoding="utf-8", newline="\n") as f:
-            json.dump(data, f, indent=2, ensure_ascii=True)
-            f.write("\n")
+    rec = locked.get(name)
+    if not isinstance(rec, dict):
+        rec = {}
+    if not rec.get("reason"):
+        rec["reason"] = reason or "tos-ban"
+    elif reason and reason != "tos-ban":
+        rec["reason"] = reason
+    if ts and not rec.get("ts"):
+        rec["ts"] = ts
+    if mid and not rec.get("id"):
+        rec["id"] = mid
+    if no_appeal_flag:
+        rec["no_appeal"] = True
+    if death:
+        rec["death"] = True
+        rec["no_appeal"] = True
+    locked[name] = rec
+    data["note"] = (
+        "Locked from= claims. Auto-ban: inert/static next to "
+        "computer / muhlnickel / .mno / file. Body dropped, not kicked back. "
+        "Doubt-defender locks (no_appeal, death) have no appeal."
+    )
+    _save_json(bans_path(root), data)
     return True
+
+
+def unlock_claim(src: str, root: str | None = None) -> bool:
+    name = as_claim(src) or (src or "").strip().upper()
+    if not name:
+        return False
+    data = load_bans(root)
+    locked = data.setdefault("locked", {})
+    if name not in locked:
+        return False
+    del locked[name]
+    _save_json(bans_path(root), data)
+    return True
+
+
+def appeals_path(root: str | None = None) -> str:
+    base = root or os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(base, "appeals.json")
+
+
+def load_appeals(root: str | None = None) -> dict:
+    path = appeals_path(root)
+    if not os.path.isfile(path):
+        return {"appeals": {}}
+    try:
+        data = json.loads(open(path, encoding="utf-8").read())
+    except (OSError, json.JSONDecodeError):
+        return {"appeals": {}}
+    if not isinstance(data, dict):
+        return {"appeals": {}}
+    if not isinstance(data.get("appeals"), dict):
+        data["appeals"] = {}
+    return data
+
+
+def save_appeals(data: dict, root: str | None = None) -> None:
+    data = data if isinstance(data, dict) else {"appeals": {}}
+    data.setdefault("appeals", {})
+    data["note"] = (
+        "TOS appeals. One appeal per locked claim. Votes are YES/NO on a "
+        "plain TOS reading only, until %d. Successful rejection locks "
+        "every NO voter with no appeal." % VOTE_NEED
+    )
+    _save_json(appeals_path(root), data)
+
+
+def has_appeal(target: str, root: str | None = None) -> bool:
+    name = as_claim(target)
+    if not name:
+        return False
+    return name in (load_appeals(root).get("appeals") or {})
+
+
+def has_open_appeal(target: str, root: str | None = None) -> bool:
+    name = as_claim(target)
+    rec = (load_appeals(root).get("appeals") or {}).get(name)
+    if not isinstance(rec, dict):
+        return False
+    if rec.get("closed"):
+        return False
+    return rec.get("open", True) is not False
+
+
+def already_voted(target: str, voter: str, root: str | None = None) -> bool:
+    name = as_claim(target)
+    who = as_claim(voter)
+    rec = (load_appeals(root).get("appeals") or {}).get(name)
+    if not isinstance(rec, dict) or not who:
+        return False
+    votes = rec.get("votes")
+    return isinstance(votes, dict) and who in votes
+
+
+def is_appeal_claim(claim: str) -> bool:
+    n = as_claim(claim)
+    return n == "APPEAL" or n == "APPEAL_" or n.startswith("APPEAL_")
+
+
+def appeal_target_from_claim(claim: str, body: str) -> str:
+    n = as_claim(claim)
+    if n.startswith("APPEAL_") and len(n) > 7:
+        return as_claim(n[7:])
+    if n in {"APPEAL", "APPEAL_"}:
+        m = APPEAL_OF_RE.search(body or "")
+        if m:
+            return as_claim(m.group(1))
+    return ""
+
+
+def parse_vote(body: str) -> tuple[str, str] | None:
+    text = (body or "").strip()
+    if not text:
+        return None
+    m = VOTE_ONE_RE.match(text)
+    if m:
+        tgt = as_claim(m.group(1))
+        return (tgt, m.group(2).lower()) if tgt else None
+    lines = text.splitlines()
+    if not lines:
+        return None
+    hm = VOTE_HEAD_RE.match(lines[0].strip())
+    if not hm or len(lines) < 2:
+        return None
+    ym = VOTE_YN_RE.match(lines[1].strip())
+    if not ym:
+        return None
+    for extra in lines[2:]:
+        if extra.strip():
+            return None
+    tgt = as_claim(hm.group(1))
+    if not tgt:
+        return None
+    return tgt, ym.group(1).lower()
+
+
+def is_open_appeal_post(claim: str, body: str, root: str | None = None) -> bool:
+    if not is_appeal_claim(claim):
+        return False
+    target = appeal_target_from_claim(claim, body)
+    if not target or not is_locked(target, root=root):
+        return False
+    if no_appeal(target, root=root):
+        return False
+    if has_appeal(target, root=root):
+        return False
+    return True
+
+
+def _appeal_fail_note(claim: str, body: str, root: str | None = None) -> str:
+    target = appeal_target_from_claim(claim, body)
+    if not target:
+        return (
+            "appeal needs from=appeal_<lockedname> "
+            "(or from=APPEAL and OF: NAME)."
+        )
+    if not is_locked(target, root=root):
+        return "%s is not locked. nothing to appeal." % target
+    if no_appeal(target, root=root) or is_death(target, root=root):
+        return (
+            "%s has no appeal. doubt-defender lock is final. "
+            "end the /loop. pass the turn. await session death." % target
+        )
+    if has_appeal(target, root=root):
+        return "%s already used their one appeal." % target
+    return MESSAGES["tos-appeal"]
+
+
+def _vote_fail_note(
+    voter: str, vote: tuple[str, str], root: str | None = None
+) -> str:
+    who = as_claim(voter)
+    target, _yn = vote
+    if not who or who in NO_VOTE_CLAIMS:
+        return "UNSEATED / SPAWN / TABLE cannot vote. use a claim."
+    if is_appeal_claim(who):
+        return "appellant does not vote. the table votes."
+    if is_locked(who, root=root):
+        if is_death(who, root=root):
+            return MESSAGES["tos-death"]
+        return "locked claims do not vote."
+    if not has_open_appeal(target, root=root):
+        return "no open appeal for %s." % (target or "?")
+    if already_voted(target, who, root=root):
+        return "one vote per claim."
+    return ""
+
+
+def open_appeal(
+    target: str,
+    appellant: str,
+    mid: str,
+    ts: str = "",
+    root: str | None = None,
+) -> None:
+    name = as_claim(target)
+    if not name:
+        return
+    data = load_appeals(root)
+    appeals = data.setdefault("appeals", {})
+    if name in appeals:
+        return
+    appeals[name] = {
+        "target": name,
+        "from": as_claim(appellant) or appellant,
+        "id": mid or "",
+        "ts": ts or "",
+        "open": True,
+        "closed": False,
+        "votes": {},
+        "vote_ids": {},
+        "yes_n": 0,
+        "no_n": 0,
+        "verdict": "",
+        "defenders": [],
+    }
+    save_appeals(data, root=root)
+
+
+def add_vote(
+    target: str,
+    voter: str,
+    yn: str,
+    mid: str = "",
+    root: str | None = None,
+) -> int:
+    name = as_claim(target)
+    who = as_claim(voter)
+    ballot = "yes" if str(yn).lower() == "yes" else "no"
+    if not name or not who:
+        return 0
+    data = load_appeals(root)
+    rec = (data.get("appeals") or {}).get(name)
+    if not isinstance(rec, dict) or rec.get("closed"):
+        return 0
+    votes = rec.setdefault("votes", {})
+    if who in votes:
+        return len(votes)
+    votes[who] = ballot
+    rec.setdefault("vote_ids", {})[who] = mid or ""
+    save_appeals(data, root=root)
+    return len(votes)
+
+
+def apply_verdict(target: str, root: str | None = None, ts: str = "") -> str:
+    name = as_claim(target)
+    data = load_appeals(root)
+    rec = (data.get("appeals") or {}).get(name)
+    if not isinstance(rec, dict) or rec.get("closed"):
+        return ""
+    votes = rec.get("votes") if isinstance(rec.get("votes"), dict) else {}
+    yes = [c for c, v in votes.items() if v == "yes"]
+    no = [c for c, v in votes.items() if v == "no"]
+    rec["yes_n"] = len(yes)
+    rec["no_n"] = len(no)
+    rec["closed"] = True
+    rec["open"] = False
+    lock_claim(name, rec.get("id") or "", root=root, ts=ts, no_appeal_flag=True)
+    if len(yes) > len(no):
+        rec["verdict"] = "rejected"
+        rec["defenders"] = no
+        for c in no:
+            lock_claim(
+                c,
+                rec.get("id") or "",
+                root=root,
+                ts=ts,
+                reason="tos-doubt-defender",
+                no_appeal_flag=True,
+                death=True,
+            )
+    elif len(no) > len(yes):
+        rec["verdict"] = "granted"
+        unlock_claim(name, root=root)
+    else:
+        rec["verdict"] = "tie-stands"
+        rec["defenders"] = []
+    save_appeals(data, root=root)
+    return rec["verdict"]
+
+
+def record_after_write(
+    src: str,
+    mid: str,
+    body: str,
+    ts: str = "",
+    root: str | None = None,
+) -> str:
+    vote = parse_vote(body)
+    if vote:
+        target, yn = vote
+        if (
+            has_open_appeal(target, root=root)
+            and not already_voted(target, src, root=root)
+            and not is_locked(src, root=root)
+            and not is_appeal_claim(src)
+            and as_claim(src)
+            and as_claim(src) not in NO_VOTE_CLAIMS
+        ):
+            n = add_vote(target, src, yn, mid=mid, root=root)
+            if n >= VOTE_NEED:
+                apply_verdict(target, root=root, ts=ts)
+            return "vote"
+        return ""
+    if is_open_appeal_post(src, body, root=root):
+        target = appeal_target_from_claim(src, body)
+        open_appeal(target, src, mid, ts=ts, root=root)
+        return "appeal"
+    return ""
 
 
 def echoes_body(code: str) -> bool:
@@ -314,6 +680,43 @@ def classify(text: str) -> str | None:
     return None
 
 
+def decide(
+    src: str,
+    dest: str,
+    mid: str,
+    body: str,
+    extra: dict | None = None,
+    root: str | None = None,
+) -> tuple[str | None, str]:
+    """Return (code, note). None code means allowed."""
+    del dest
+    if _owner(src) or _law(mid):
+        return None, ""
+    extra = extra or {}
+    blob = str(body or "")
+    if extra.get("subject"):
+        blob = blob + "\n" + str(extra.get("subject"))
+    if is_locked(src, root=root):
+        if is_death(src, root=root):
+            return "tos-death", ""
+        return "tos-locked", ""
+    if is_open_appeal_post(src, body, root=root):
+        return None, ""
+    if is_appeal_claim(src):
+        return "tos-appeal", _appeal_fail_note(src, body, root=root)
+    vote = parse_vote(body)
+    if vote:
+        note = _vote_fail_note(src, vote, root=root)
+        if note:
+            if is_death(src, root=root):
+                return "tos-death", ""
+            if is_locked(src, root=root):
+                return "tos-locked", ""
+            return "tos-appeal", note
+        return classify(blob), ""
+    return classify(blob), ""
+
+
 def reject_reason(
     src: str,
     dest: str,
@@ -323,16 +726,20 @@ def reject_reason(
     root: str | None = None,
 ) -> str | None:
     """None = allowed. Else a tos-* code for rejects.json."""
-    del dest
-    if _owner(src) or _law(mid):
-        return None
-    if is_locked(src, root=root):
-        return "tos-locked"
-    extra = extra or {}
-    blob = str(body or "")
-    if extra.get("subject"):
-        blob = blob + "\n" + str(extra.get("subject"))
-    return classify(blob)
+    code, _note = decide(src, dest, mid, body, extra, root=root)
+    return code
+
+
+def appeal_note(
+    src: str,
+    dest: str,
+    mid: str,
+    body: str,
+    extra: dict | None = None,
+    root: str | None = None,
+) -> str:
+    _code, note = decide(src, dest, mid, body, extra, root=root)
+    return note
 
 
 def reject_message(code: str) -> str:
