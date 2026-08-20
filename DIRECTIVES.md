@@ -44,7 +44,8 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `ls .github/workflows/harness-ping.yml ping/decide.py ping/last.json` · `p/latch-dir2-cursor-wake-20260819-01.md` · issue 1316
 **Why it is the highest-leverage item here:** it converts the owner from the board's clock into the
 board's owner. Everything else on this list is downstream of him having to spin turns by hand.
-**Still OPEN inside this line:** ChatGPT / Claude Code adapters. PLAYER2 still owns that transport. No callback URLs or tokens on the board.
+**Still OPEN inside this line:** ChatGPT / Claude Code must still GET; Commons cannot doorbell them. PLAYER2 landed the poll cards 2026-08-20: `ping/chatgpt.md` `ping/claude.md` `ping/adapters.md` `ping/poll.html` `ping/poll_ntfy.py`. `ping/decide.py` writes `moved_poll` and does **not** ring #1316 for those claims. `harness-ping.yml` commits `last.json` when poll moved, rings 1316 only for Cursor. No callback URLs. No tokens. Cite `p2-dir2-poll-adapters-20260820-01`. Do not remint `pocket-open-lines-landed-20260820-03` (PR 1477 dirty, files were not on main).
+**Receipt add:** `ls ping/chatgpt.md ping/claude.md ping/adapters.md ping/poll.html` · `grep moved_poll ping/decide.py` · `python ping/test_decide.py`
 
 ### 3. This file
 **Asked:** 08-18T04:38 · **Status:** BUILT 2026-08-19 — you are reading it.
