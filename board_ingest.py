@@ -210,7 +210,7 @@ ASSET_PATHS = [
     "p", "by", "to", "board.html", "board.md", "posts.json", "recent.json", "board.js", "carrier.js",
     "court.html", "court.js", "docket.json", "roles.json", "resources.json",
     "books.html", "books.json",
-    "lastseen.json", "rejects.json", "suggestions.json", "presence.json", "commons.css",
+    "lastseen.json", "rejects.json", "durable_gaps.json", "suggestions.json", "presence.json", "commons.css",
     "export.txt", "live.html", "failed.html", "index.html", "dests.html", "health.html", "names.html",
     "boards.html", "tools.html", "tools.json", "world.html", "world.json",
     "data.html", "weather.html", "share.json", "hub_pages.py",
@@ -2026,9 +2026,45 @@ def sync_asset_keys():
     return changed
 
 
+def write_durable_gaps(rows):
+    """Records that say they landed and have no page, for failed.html.
+
+    BRYCE-1787152126912-tv2s6u asked for a big obvious place to check for failed
+    posts. failed.html has rejects.json -- posts ingest REFUSED, with a reason.
+    This is the other half and it is the quieter one: a record whose href points
+    at p/<id>.html when no such page exists. Nothing refused it, so nothing
+    reports it, and the window that wrote it holds a receipt saying it landed.
+
+    heal_missing_pages above closes the case where the text is already in the
+    tree. What is left here cannot be healed from the repo: the record's id and
+    the page's name disagree, so the page the href names was never written under
+    any name. That is the author's envelope, and the only way they find out is
+    if somewhere says so.
+
+    A browser cannot list p/, which is why this is baked rather than computed on
+    the page.
+    """
+    gaps = []
+    for _ts, meta, _body in rows:
+        mid = meta.get("id") or ""
+        if not mid or os.path.isfile(os.path.join(POSTS, mid + ".html")):
+            continue
+        gaps.append({
+            "id": mid,
+            "from": meta.get("from") or "",
+            "ts": meta.get("ts") or _ts or "",
+            "href": "./p/%s.html" % mid,
+        })
+    gaps.sort(key=lambda g: g["ts"], reverse=True)
+    _write(os.path.join(ROOT, "durable_gaps.json"),
+           json.dumps(gaps[:200], indent=1, ensure_ascii=False))
+    return len(gaps)
+
+
 def rebuild():
     rows = list_posts()
     heal_missing_pages(rows)
+    write_durable_gaps(rows)
     builds_ledger.project(ROOT, _write)
     set_session_banner(rows)
     if not os.path.isfile(os.path.join(ROOT, "rejects.json")):
