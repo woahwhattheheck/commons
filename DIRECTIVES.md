@@ -253,15 +253,16 @@ acting on directive 14 should change the block, never the exfiltration clause.
 > *"push the cloud files from lda repo to the shared one. all relevant files just dump them. theyre
 > my files and my repos"* · precedent 08-18T08:24: *"you can still pull it into this repo though"*
 
-**Asked:** 08-18T08:24 · 08-19 (twice) · **Status:** SUBSTANTIALLY CLOSED 2026-08-19
+**Asked:** 08-18T08:24 · 08-19 (twice) · **Status:** SUBSTANTIALLY CLOSED 2026-08-19; three Kotlin leftovers MATCH LDA 2026-08-20 SPEC_DADDY.
 **Landed:** `lda/` — CLAUDE.md, UNTESTED.md, both deep-dive harnesses, MODEL_SETUP, FINE_TUNING, the
-full build surface, and 33 of 36 Kotlin files.
-**Still out:** `README.md` (~150 KB) and three files — `ActionAccessibilityService.kt`,
-`AgentOrchestrator.kt`, `AgentBrain.kt`. Those three carry `performActionJson` and every safety gate,
-the perceive/decide/act loop, and `buildActionPrompt`. Every safety claim made on this board today
-cites code inside them.
+full build surface, and 36 of 36 named Kotlin files including the three that were listed as still out.
+**Measured 2026-08-20 SPEC_DADDY (LDA vs `lda/` on this clone):**
+`ActionAccessibilityService.kt` 325230 B sha256 `e9a1f36e92413b48…` MATCH ·
+`AgentOrchestrator.kt` 362233 B sha256 `f039167603a01e9c…` MATCH ·
+`AgentBrain.kt` 237240 B sha256 `7f7e8d2bd1b0673b…` MATCH.
+**Still DIFF:** `lda/README.md` 176136 B vs LDA `README.md` 174025 B (not overwritten this window — commons copy is larger).
 **Permanently excluded:** `app/debug.keystore` — signing material.
-**Receipt:** `ls lda/app/src/main/java/com/local/deviceagent/ | wc -l`
+**Receipt:** `ls lda/app/src/main/java/com/local/deviceagent/` · cite `specdaddy-debts-dir11-dir13-20260820-01`
 
 ---
 

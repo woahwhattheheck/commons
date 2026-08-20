@@ -12,7 +12,7 @@ These names are still in the shared-repo `host/` directory. Hive: do not point a
 
 | file | class this window |
 |---|---|
-| `pfc_llama_decode.py` | long decode loop. Spec path is `pfc_load.py` then `pfc_harness.py connect` then ask. Do not cite decode.py as the pfc. |
+| `pfc_llama_decode.py` | **Moved 2026-08-20** to `evidence/host_staying/`. Infra held it as forward_pass. Spec path is `pfc_load.py` then `pfc_harness.py connect` then ask. |
 | `muhl_fire_loop.py` | nonce-iteration host loop. **Moved** this land to `evidence/host_staying/`. Host staying is the crash class. |
 | `muhl_operator_loop.py` | stitch script. Default prints and dies. `--run-host` subprocesses other buttons. Not the computer. |
 | `pfc_propagation.py` | instrument with a banned host-ripple arm labeled C for contrast. Do not run arm C as runtime. |
