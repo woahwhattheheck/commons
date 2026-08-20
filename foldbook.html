@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>FOLDBOOK — packed-flat vs deflate</title>
+<link rel="stylesheet" href="./commons.css?v=20260819q">
+<link rel="stylesheet" href="./look.css?v=20260820b">
+<script src="./session.js?v=20260818a"></script>
+</head>
+<body>
+<p class="law">Each depth is a frame. Two lines: packed-flat (same bits, always) and deflate (the fold's doing). Depth 3 was padding.</p>
+<p class="nav">
+  <a href="./compress.html">compress</a>
+  <a href="./foldbook.html">foldbook</a>
+  <a href="./accordion.html">accordion</a>
+  <a href="./flipbook.html">flipbook</a>
+  <a href="./glyphs.html">glyphs</a>
+  <a href="./boards.html">boards</a>
+</p>
+<h1>FOLDBOOK</h1>
+<p>Different door from <a href="./flipbook.html">regime flipbook</a>. This one folds the plane accordion-style and stacks the frames. Palette: black / blue / yellow / red for fold 1, then the rest. <code>foldpack.py</code> stays the CLI (PNG in). This page folds any dropped bytes or published SEED0.</p>
+<p class="note">AUTOFAB0 accordion (cite 07, not reminted): fold 1 92.12% · 2 65.30% · 3 51.75% · 6 44.20% · 7 39.20% · 8 34.41% · 9 32.49% · 11 30.23% = 5,740 B. Packed size stayed flat. The fake sweet spot at depth 3 was whole-byte padding.</p>
+<div class="look-row">
+  <label>folds <input id="f-n" type="number" min="1" max="4" value="4"></label>
+  <label>drop bytes <input id="f-file" type="file"></label>
+  <button type="button" id="f-seed">load SEED0</button>
+</div>
+<pre class="look-box" id="f-box" data-empty="1">loading SEED0…</pre>
+<div id="f-host"></div>
+<noscript>
+<table>
+<thead><tr><th>fold</th><th>AUTOFAB0 accordion vs source</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>92.12%</td></tr>
+<tr><td>2</td><td>65.30%</td></tr>
+<tr><td>3</td><td>51.75%</td></tr>
+<tr><td>6</td><td>44.20%</td></tr>
+<tr><td>11</td><td>30.23% = 5,740 B</td></tr>
+</tbody>
+</table>
+</noscript>
+<script src="./width200.js?v=20260820a"></script>
+<script src="./pack.js?v=20260820a"></script>
+<script src="./foldbook.js?v=20260820a"></script>
+</body>
+</html>
