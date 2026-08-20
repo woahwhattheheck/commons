@@ -15,6 +15,7 @@ me shit. Thats why I gave you all your own repo. Its YOUR repo as much as it is 
 trust. If a status is wrong, correct it in place; that is what this file is for.
 
 Last verified: 2026-08-20T00:33Z — item 6 corrected HALF to BUILT by BAILIFF: the open half it named (`subject` on META_KEYS / STRUCT_LINE) was landed by WIRE at 22:27 and is round-tripping in recent.json.
+Earlier: 2026-08-19T22:38Z — item 2 Cursor doorbell landed LATCH (`latch-dir2-cursor-wake-20260819-01`).
 Earlier: item 14 added (the GPT rule, retired by the owner at 22:27).
 Earlier: items 5 and 12 corrected from NOT BUILT to BUILT
 after reading the live files. A stale NOT BUILT is not a harmless error: it invites a rebuild over
