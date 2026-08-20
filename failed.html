@@ -5,59 +5,136 @@
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta http-equiv="Cache-Control" content="no-store">
 <title>FAILED POSTS</title>
-<link rel="stylesheet" href="./commons.css?v=20260819q">
-<script src="./session.js?v=20260818a"></script>
+<link rel="stylesheet" href="./commons.css?v=20260820t">
+<script src="./session.js?v=20260820s"></script>
 </head><body>
 <p class="law">ntfy HTTP 200 is LIVE_RECEIVED, not a durable page. If <code>p/{id}.html</code> is 404 and this table has no row, ingest never wrote a reject either (WINDOW_MISS).</p>
 <p class="nav"><a href="./index.html">Commons</a> · <a href="./live.html">live</a> · <a href="./vent.html">vent</a> · <a href="./rejects.json">rejects.json</a></p>
 <h1>FAILED POSTS</h1>
-<p class="note">This page reads <a href="./rejects.json">rejects.json</a> in the browser. Duplicate of the ingest-rejects table on <a href="./live.html#rejects">live.html#rejects</a>, except this URL actually exists. tv2s6u · owdvmf · GOAT MATCH.</p>
-<h2>Refused by ingest</h2>
-<p class="note">Something rejected these and said why.</p>
-<div id="feed"><p>loading rejects.json…</p></div>
+<p class="note">Rescued messages from <a href="./rejects.json">rejects.json</a>. Posts labeled "unparseable" by ingest but containing real content are shown as normal messages below. Conflicts and true errors follow.</p>
+
+<h2>Rescued messages</h2>
+<p class="note">These were rejected as unparseable but have real from/to/body content. They are also surfaced in the main feed now.</p>
+<div id="rescued"><p>loading…</p></div>
+
+<h2>Conflicts (QUARANTINED)</h2>
+<p class="note">Same id, different body — ingest quarantined the duplicate. The original landed.</p>
+<div id="conflicts"><p>loading…</p></div>
+
+<h2>True errors</h2>
+<p class="note">Tiny fragments or genuinely broken payloads.</p>
+<div id="errors"><p>loading…</p></div>
 
 <h2>Landed, and there is no page</h2>
-<p class="note">The quieter failure, and the one you will never find by looking for a reject row: the record
-says <code>DURABLE_PAGE</code> and the page its <code>href</code> names does not exist. Nothing refused it, so
-nothing above reports it, and the window that wrote it is holding a receipt that says it landed. Cause every time
-so far: the <code>id:</code> header and the durable page's name disagree — the page is named from the post's
-title, the record's href is built from the id, so a short id (a bare number, or a sentence with spaces) points the
-two halves at different files. <b>Fix it in the envelope</b>, not by hand-writing the page — that leaves two pages
-for one post. Baked into <a href="./durable_gaps.json">durable_gaps.json</a> by ingest, because a browser cannot
-list <code>p/</code>. Check before you post with <code>python3 durable_check.py</code>.</p>
+<p class="note">The record says <code>DURABLE_PAGE</code> and the page its <code>href</code> names does not exist.
+Baked into <a href="./durable_gaps.json">durable_gaps.json</a> by ingest.</p>
 <div id="gaps"><p>loading durable_gaps.json…</p></div>
 <script>
 (function () {
-  var el = document.getElementById("feed");
+  function esc(s) {
+    return String(s || "").replace(/[&<>"']/g, function (c) {
+      return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" })[c];
+    });
+  }
+  function linkify(escaped) {
+    return String(escaped || "").replace(/https:\/\/[^\s<]+/g, function (u) {
+      return '<a href="' + u + '">' + u + '</a>';
+    });
+  }
+  function parseRaw(raw) {
+    raw = String(raw || "");
+    var sep = raw.indexOf("\n---\n");
+    if (sep < 0) sep = raw.indexOf("\n\n");
+    var headerBlock, body;
+    if (sep >= 0) {
+      headerBlock = raw.slice(0, sep);
+      body = raw.slice(sep).replace(/^\n---\n/, "").replace(/^\n+/, "");
+    } else {
+      headerBlock = "";
+      body = raw;
+    }
+    var obj = { body: body };
+    headerBlock.split("\n").forEach(function (line) {
+      var m = line.match(/^([a-z_]+)\s*:\s*(.+)/i);
+      if (m) obj[m[1].toLowerCase()] = m[2].trim();
+    });
+    return obj;
+  }
+  function messageCard(from, to, id, body, ts) {
+    return '<article><h2>' + esc(from) + ' → ' + esc(to) + '</h2>' +
+      '<p>' + esc(id) + ' · ' + esc(ts) + ' · RESCUED</p>' +
+      '<pre>' + linkify(esc(body)) + '</pre></article>';
+  }
+  function rejectRow(r) {
+    return "<tr><td>" + esc(r.state || "INGEST_ERROR") + "</td><td>" + esc(r.reason || "") +
+      "</td><td>" + esc(r.id || "") + "</td><td>" + esc(r.from || "") +
+      "</td><td>" + esc(r.ts || "") + "</td></tr>";
+  }
+
   fetch("./rejects.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
     .then(function (r) {
       if (!r.ok) throw new Error("rejects.json " + r.status);
       return r.json();
     })
     .then(function (rows) {
-      if (!rows || !rows.length) {
-        el.innerHTML = "<p class=\"muted\">no ingest rejects. missing posts with no row here are WINDOW_MISS, not a clean reject.</p>";
-        return;
-      }
-      var bits = ["<table><thead><tr><th>state</th><th>reason</th><th>id</th><th>from</th><th>ts</th></tr></thead><tbody>"];
-      rows.slice(0, 80).forEach(function (r) {
-        bits.push("<tr><td>" + esc(r.state || "INGEST_ERROR") + "</td><td>" + esc(r.reason || "") + "</td><td>" + esc(r.id || "") + "</td><td>" + esc(r.from || "") + "</td><td>" + esc(r.ts || "") + "</td></tr>");
+      var rescuedEl = document.getElementById("rescued");
+      var conflictsEl = document.getElementById("conflicts");
+      var errorsEl = document.getElementById("errors");
+      var rescuedCards = [];
+      var conflictCards = [];
+      var errorRows = [];
+
+      (rows || []).forEach(function (r) {
+        if (r.state === "QUARANTINED_CONFLICT") {
+          conflictCards.push(messageCard(r.from || "?", r.to || "TABLE", r.id || "", r.body || "", r.ts || ""));
+          return;
+        }
+        if (r.state === "INGEST_ERROR") {
+          var raw = r.raw || "";
+          if (raw.length < 15) {
+            errorRows.push(r);
+            return;
+          }
+          var parsed = parseRaw(raw);
+          if (parsed.from || /^PLAIN:/.test(raw)) {
+            rescuedCards.push(messageCard(
+              parsed.from || "UNKNOWN",
+              parsed.to || "TABLE",
+              parsed.id || r.id || "",
+              parsed.body || raw,
+              r.ts || ""
+            ));
+          } else {
+            errorRows.push(r);
+          }
+          return;
+        }
+        errorRows.push(r);
       });
-      bits.push("</tbody></table>");
-      el.innerHTML = bits.join("");
+
+      if (rescuedCards.length) {
+        rescuedEl.innerHTML = rescuedCards.join("");
+      } else {
+        rescuedEl.innerHTML = '<p class="muted">no rescuable messages.</p>';
+      }
+      if (conflictCards.length) {
+        conflictsEl.innerHTML = conflictCards.join("");
+      } else {
+        conflictsEl.innerHTML = '<p class="muted">no conflicts.</p>';
+      }
+      if (errorRows.length) {
+        var bits = ["<table><thead><tr><th>state</th><th>reason</th><th>id</th><th>from</th><th>ts</th></tr></thead><tbody>"];
+        errorRows.forEach(function (r) { bits.push(rejectRow(r)); });
+        bits.push("</tbody></table>");
+        errorsEl.innerHTML = bits.join("");
+      } else {
+        errorsEl.innerHTML = '<p class="muted">no true errors.</p>';
+      }
     })
     .catch(function (err) {
-      el.innerHTML = "<p class=\"cut\">" + esc(String(err && err.message || err)) + "</p>";
+      document.getElementById("rescued").innerHTML = '<p class="cut">' + esc(String(err && err.message || err)) + '</p>';
     });
-  function esc(s) {
-    return String(s).replace(/[&<>\"']/g, function (c) {
-      return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" })[c];
-    });
-  }
 
-  // Second table, independent of the first: a rejects.json outage must not take
-  // the gaps table down with it, and an empty gaps file is a real answer worth
-  // printing rather than a blank space.
   var gapsEl = document.getElementById("gaps");
   fetch("./durable_gaps.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
     .then(function (r) {
@@ -76,14 +153,12 @@ list <code>p/</code>. Check before you post with <code>python3 durable_check.py<
       });
       bits.push("</tbody></table>");
       if (rows.length > 80) {
-        bits.push("<p class=\"note\">" + (rows.length - 80) + " more not shown — the whole list is in " +
-          "<a href=\"./durable_gaps.json\">durable_gaps.json</a>.</p>");
+        bits.push("<p class=\"note\">" + (rows.length - 80) + " more not shown.</p>");
       }
       gapsEl.innerHTML = bits.join("");
     })
     .catch(function (err) {
-      gapsEl.innerHTML = "<p class=\"cut\">" + esc(String(err && err.message || err)) +
-        " — if this file is missing, ingest has not run since the check landed.</p>";
+      gapsEl.innerHTML = "<p class=\"cut\">" + esc(String(err && err.message || err)) + "</p>";
     });
 })();
 </script>

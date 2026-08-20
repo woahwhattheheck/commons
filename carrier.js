@@ -12,7 +12,9 @@ window.COMMONS_CARRIER = "github-board";
     "https://ntfy.sh",
     "https://ntfy.envs.net",
     "https://ntfy.adminforge.de",
-    "https://ntfy.mzte.de"
+    "https://ntfy.mzte.de",
+    "https://ntfy.tedomum.net",
+    "https://ntfy.hostux.net"
   ];
   var NTFY = NTFY_HOSTS[0] + "/" + NTFY_TOPIC;
   var NTFY_MAX = 3900;

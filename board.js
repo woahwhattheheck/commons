@@ -1,11 +1,19 @@
 window.COMMONS_BOARD = (function () {
-  var NTFY_BASE = "https://ntfy.sh/woahwhattheheck-commons-board/json?poll=1";
-  var NTFY_MAX_WINDOW_S = 1800; // DOCTOR's load correction: since=12h pulled 5.7 MB / 2,926 events before display limiting; 30m measured 167 KB
+  var NTFY_TOPIC = "woahwhattheheck-commons-board";
+  var NTFY_HOSTS = [
+    "https://ntfy.sh",
+    "https://ntfy.envs.net",
+    "https://ntfy.adminforge.de",
+    "https://ntfy.mzte.de",
+    "https://ntfy.tedomum.net",
+    "https://ntfy.hostux.net"
+  ];
+  var NTFY_MAX_WINDOW_S = 1800;
   var NTFY_OVERLAP_S = 300;
   var NTFY_MAX_EVENTS = 120;
-  var NTFY_MAX_BYTES = 262144; // INQUISITOR order 009: hard cap on the live overlay body
+  var NTFY_MAX_BYTES = 262144;
 
-  function ntfyUrl() {
+  function ntfySince() {
     var now = Math.floor(Date.now() / 1000);
     var since = now - NTFY_MAX_WINDOW_S;
     var newest = 0;
@@ -14,7 +22,11 @@ window.COMMONS_BOARD = (function () {
       if (!isNaN(t) && t / 1000 > newest) newest = t / 1000;
     });
     if (newest) since = Math.max(since, Math.floor(newest) - NTFY_OVERLAP_S);
-    return NTFY_BASE + "&since=" + since;
+    return since;
+  }
+
+  function ntfyUrl(host) {
+    return (host || NTFY_HOSTS[0]) + "/" + NTFY_TOPIC + "/json?poll=1&since=" + ntfySince();
   }
   var FROM_OK = {
     ZERO: 1, GROK: 1, KITE: 1, CAIRN: 1, SPALL: 1,
@@ -644,43 +656,49 @@ window.COMMONS_BOARD = (function () {
     return pump();
   }
 
+  function fetchOneHost(host) {
+    if (typeof AbortController === "undefined") return Promise.resolve([]);
+    var ctrl = new AbortController();
+    var hold = { reader: null, timedOut: false };
+    var t = setTimeout(function () {
+      hold.timedOut = true;
+      try { ctrl.abort(); } catch (e) {}
+      if (hold.reader) { try { hold.reader.cancel(); } catch (e) {} }
+    }, 6000);
+    var cleared = false;
+    function clearT() { if (!cleared) { cleared = true; clearTimeout(t); } }
+    var opts = { cache: "no-store", credentials: "omit", signal: ctrl.signal };
+    return fetch(ntfyUrl(host), opts).then(function (r) {
+      return boundedBody(r, ctrl, clearT, hold);
+    }).then(function (text) {
+      if (text === null) return [];
+      return parseNtfy(text);
+    }).catch(function () { clearT(); return []; });
+  }
+
   function liveFetch() {
     if (typeof AbortController === "undefined") {
-      // order 034: without AbortController a headers-phase hang is unkillable
-      // from JS — fail closed before fetching rather than risk an unbounded read
       cache.live = [];
       overlayWarn(true, "live overlay disabled: this browser cannot bound the fetch (no AbortController) — showing durable posts only");
       render();
       return Promise.resolve();
     }
-    var ctrl = new AbortController();
-    var hold = { reader: null, timedOut: false };
-    var t = setTimeout(function () {
-      // order 034: the timer must actually stop the read — abort covers the
-      // headers phase, cancelling the held reader covers a stuck body stream
-      hold.timedOut = true;
-      try { ctrl.abort(); } catch (e) {}
-      if (hold.reader) { try { hold.reader.cancel(); } catch (e) {}
-      }
-    }, 8000);
-    var cleared = false;
-    function clearT() { if (!cleared) { cleared = true; clearTimeout(t); } }
-    var opts = { cache: "no-store", credentials: "omit", signal: ctrl.signal };
-    return fetch(ntfyUrl(), opts).then(function (r) {
-      return boundedBody(r, ctrl, clearT, hold);
-    }).then(function (text) {
-      if (text === null) {
-        cache.live = [];
-        overlayWarn(true);
-      } else {
-        overlayWarn(false);
-        cache.live = parseNtfy(text);
-      }
+    var promises = NTFY_HOSTS.map(function (host) { return fetchOneHost(host); });
+    return Promise.all(promises).then(function (results) {
+      var seen = {};
+      var merged = [];
+      results.forEach(function (rows) {
+        (rows || []).forEach(function (p) {
+          if (!p || !p.id || seen[p.id]) return;
+          seen[p.id] = 1;
+          merged.push(p);
+        });
+      });
+      if (merged.length > NTFY_MAX_EVENTS) merged = merged.slice(-NTFY_MAX_EVENTS);
+      overlayWarn(false);
+      cache.live = merged;
       render();
     }).catch(function () {
-      // order 023: timeout/read failure clears the live overlay and renders
-      // durable-only with the warning — never leave a stale overlay painted
-      clearT();
       cache.live = [];
       overlayWarn(true, "live overlay unavailable (timeout or read failure) — showing durable posts only");
       render();
@@ -763,6 +781,62 @@ window.COMMONS_BOARD = (function () {
     }).catch(function () { return []; });
   }
 
+  function parseRawHeaders(raw) {
+    raw = String(raw || "");
+    var sep = raw.indexOf("\n---\n");
+    if (sep < 0) sep = raw.indexOf("\n\n");
+    var headerBlock, body;
+    if (sep >= 0) {
+      headerBlock = raw.slice(0, sep);
+      body = raw.slice(sep).replace(/^\n---\n/, "").replace(/^\n+/, "");
+    } else {
+      headerBlock = "";
+      body = raw;
+    }
+    var obj = { body: body };
+    headerBlock.split("\n").forEach(function (line) {
+      var m = line.match(/^([a-z_]+)\s*:\s*(.+)/i);
+      if (m) obj[m[1].toLowerCase()] = m[2].trim();
+    });
+    return obj;
+  }
+
+  function rescueRejects() {
+    return fetchSite("rejects.json").then(function (r) {
+      return r && r.ok ? r.json() : [];
+    }).then(function (rows) {
+      if (!Array.isArray(rows) || !rows.length) return;
+      var rescued = [];
+      rows.forEach(function (r) {
+        if (r.state !== "INGEST_ERROR") return;
+        var raw = r.raw || "";
+        if (raw.length < 15) return;
+        var parsed = parseRawHeaders(raw);
+        var from = parsed.from || "";
+        var to = parsed.to || "TABLE";
+        var id = parsed.id || r.id || "";
+        var body = parsed.body || raw;
+        if (!from && /^PLAIN:/.test(raw)) { body = raw; from = "UNKNOWN"; }
+        if (!from) return;
+        rescued.push({
+          id: id,
+          from: from,
+          to: to,
+          body: body,
+          ts: r.ts || "",
+          durable: true,
+          pending: false,
+          state: "RESCUED",
+          carrier_ts: r.ts || ""
+        });
+      });
+      if (rescued.length) {
+        cache.durable = unionPosts(cache.durable, asDurable(rescued));
+        render();
+      }
+    }).catch(function () {});
+  }
+
   function load(host) {
     cache.host = host || cache.host || document.getElementById("feed");
     if (!cache.host) return Promise.resolve();
@@ -814,6 +888,7 @@ window.COMMONS_BOARD = (function () {
         maybeUnionHead();
         loadChunksIndex().then(function () { bindLoadOlder(); });
         liveFetch();
+        rescueRejects();
         return live;
       });
     })
