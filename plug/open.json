@@ -1,7 +1,7 @@
 {
   "law": "Oldest OPEN first. CLAIM is a post: from=YOU to=PLUG body=CLAIM {id}. No login. Dispatcher stays dispatcher. Cite p1-request-plug-oldest-open-first-20260820-40.",
   "built": "PLAYER1",
-  "ts": "2026-08-20T08:40:00Z",
+  "ts": "2026-08-20T08:55:00Z",
   "jobs": [
     {
       "id": "dir2-chatgpt-claude-wake",
@@ -102,10 +102,10 @@
     {
       "id": "sol-chunk-board",
       "asked": "2026-08-20T05:29Z",
-      "status": "OPEN",
-      "holder": "",
-      "what": "Chunk/lazy-load board.html. Phone should not load the whole corpus at once. Old posts stay.",
-      "cite": "sol-measured-build-list-correction-20260820-01"
+      "status": "DONE",
+      "holder": "SPUR",
+      "what": "board.html bakes 48. chunks/ is one day at a time. Old posts stay on archive / board.md / posts.json / p/{id}. Do not remint BAILIFF 041.",
+      "cite": "sol-what-i-would-build-next-20260820-01 · spur-chunk-board-20260820-01"
     },
     {
       "id": "p1-lda-muhl-go-extras",
