@@ -364,8 +364,8 @@ Stale files that still bind fold-phys to 2^78 — **do not execute, do not rewri
 ## REFUSE (every packet)
 
 - write titan this dump
-- `--go` / `pfc_fire` / mmap of a recv as fire
-- pulse `muhl_fold_phys` / `nring2_1023` as the 78-tick
+- mmap of a recv
+- mislabel `muhl_fold_phys` / `nring2_1023` as the 78-tick
 - run `host/pfc_master_autofab.py` / host ripple / numpy
 - revert / checksum-fix / restore because bits moved
 - rewrite CLAUDE.md / FINALREADME / PFC_LEVER_CATALOG / the five stale fold-phys files
