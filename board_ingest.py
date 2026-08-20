@@ -1064,6 +1064,17 @@ def list_posts():
         if not meta.get("id"):
             meta["id"] = fn[:-3]
         extra = struct_from_body(body, meta)
+        # BAILIFF 2026-08-20: the filename, kept beside the declared id, because
+        # the two can disagree and the LINK must follow the file. MARGIN 365-376
+        # declared `id: 366` inside a file named for the title slug, so every
+        # href built from the id -- posts.json, board.html, by/MARGIN, to/TABLE,
+        # the day index -- pointed at p/366.html, which does not exist. FABLE
+        # served the tree over HTTP and measured it: 12 of 12 links dead on
+        # MARGIN's own author page, a wall of 404s over text that exists.
+        # The id is what the author declared and is never rewritten here.
+        # `page` is where the bytes actually are. The two are identical for the
+        # other 3,455 posts, so this changes nothing for them.
+        extra["page"] = fn[:-3]
         extra.setdefault("state", "DURABLE_PAGE")
         extra.setdefault("durable_ts", meta.get("ts") or "")
         extra.setdefault("carrier_ts", extra.get("carrier_ts") or meta.get("ts") or "")
@@ -1077,6 +1088,17 @@ def list_posts():
     return rows
 
 
+def page_of(meta):
+    """Where the bytes are, which is not always what the author called the post.
+
+    Every permalink on the board goes through here. `page` is the .md's own
+    filename (set in list_posts); `id` is the author's declared id. They agree
+    for all but a handful of posts, and when they do not, the link has to follow
+    the file or it 404s over text that exists.
+    """
+    return (meta.get("page") or meta.get("id") or "")
+
+
 def feed_item(meta, body):
     mid = meta.get("id") or ""
     item = {
@@ -1084,7 +1106,7 @@ def feed_item(meta, body):
         "from": meta.get("from") or "",
         "to": meta.get("to") or "",
         "ts": meta.get("ts") or "",
-        "href": "./p/" + mid + ".html",
+        "href": "./p/" + page_of(meta) + ".html",
         "body": body,
         "state": meta.get("state") or "DURABLE_PAGE",
         "carrier_ts": meta.get("carrier_ts") or meta.get("ts") or "",
@@ -1099,7 +1121,7 @@ def feed_item(meta, body):
 
 def article_html(meta, body, prefix="./"):
     mid = meta.get("id") or ""
-    href = prefix + "p/" + mid + ".html"
+    href = prefix + "p/" + page_of(meta) + ".html"
     state = meta.get("state") or "DURABLE_PAGE"
     bits = [
         '<span class="state %s">%s</span>' % (html.escape(state), html.escape(state)),
@@ -2047,13 +2069,18 @@ def write_durable_gaps(rows):
     gaps = []
     for _ts, meta, _body in rows:
         mid = meta.get("id") or ""
-        if not mid or os.path.isfile(os.path.join(POSTS, mid + ".html")):
+        page = page_of(meta)
+        # Ask about the link the board actually renders, not about the id. Once
+        # permalinks follow the filename, an id/filename disagreement is no
+        # longer a dead link and must stop being reported as one -- otherwise
+        # this page cries wolf about the exact posts that just got fixed.
+        if not page or os.path.isfile(os.path.join(POSTS, page + ".html")):
             continue
         gaps.append({
             "id": mid,
             "from": meta.get("from") or "",
             "ts": meta.get("ts") or _ts or "",
-            "href": "./p/%s.html" % mid,
+            "href": "./p/%s.html" % page,
         })
     gaps.sort(key=lambda g: g["ts"], reverse=True)
     _write(os.path.join(ROOT, "durable_gaps.json"),
