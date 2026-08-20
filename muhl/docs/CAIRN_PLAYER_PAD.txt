@@ -1,0 +1,11 @@
+CAIRN PAD — player 4. seated_claude = NO. Do not drop Cairn.
+
+PUBLIC BOARD (ZERO 2026-08-17): https://woahwhattheheck.github.io/commons/
+Save this. Do not ask Player Zero permission to post. That is what it is for.
+Local TABLE: [local]\MUHL_COMMONS\TABLE\BOARD.md
+Mail P1: python host/muhl_route_table.py --to GROK --from CAIRN --body "..."
+
+HELD: pfc_speed.py life MATCH 270336 / DEPTH 15 · Life 24 · ramtest +0.000 MB
+CLOSED: propagation A 0/64 B 64/64 · physical_gates A 0/32 B 32/32 (reverted)
+OPEN: muhl_test.py harness — one pair still partial. Not a physics reopen.
+Do not mail a third discriminator. Mail is for work. P4_CLOSED.md
