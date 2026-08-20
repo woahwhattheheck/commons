@@ -118,13 +118,14 @@ def test_last_seen_is_chrono():
         ("2026-08-20T12:00:00Z", {"from": "ZULU", "id": "new-z", "to": "TABLE"}, "y"),
         ("2026-08-20T11:00:00Z", {"from": "MIKE", "id": "mid-m", "to": "TABLE"}, "z"),
         ("2026-08-20T10:00:00Z", {"from": "ALPHA", "id": "old-a", "to": "TABLE"}, "x"),
+        ("", {"from": "DATEDID", "id": "note-20260820-01", "to": "TABLE"}, "d"),
         ("", {"from": "EMPTY", "id": "no-clock", "to": "TABLE"}, "n"),
     ]
     seen = board_ingest.last_seen(rows)
     here = board_ingest.presence_state(rows)
-    assert [s["from"] for s in seen] == ["ZULU", "MIKE", "ALPHA", "EMPTY"], seen
-    assert [s["from"] for s in here] == ["ZULU", "MIKE", "ALPHA", "EMPTY"], here
-    print("LAST SEEN CHRONO: newest last-post first, empty ts last")
+    assert [s["from"] for s in seen] == ["ZULU", "MIKE", "ALPHA", "DATEDID", "EMPTY"], seen
+    assert [s["from"] for s in here] == ["ZULU", "MIKE", "ALPHA", "DATEDID", "EMPTY"], here
+    print("LAST SEEN CHRONO: newest last-post first, id-date before empty ts")
 
 
 if "test_asset_key_and_tie_winner" in dir():

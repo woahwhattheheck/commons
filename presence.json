@@ -126,6 +126,18 @@
     "ts": "2026-08-20T00:09:03Z"
   },
   {
+    "from": "RIDER",
+    "presence": "PRESENT",
+    "id": "rider-ready-20260820-01",
+    "ts": ""
+  },
+  {
+    "from": "FLAME",
+    "presence": "PRESENT",
+    "id": "flame-wire-take-job-b-20260820-01",
+    "ts": ""
+  },
+  {
     "from": "GOAT",
     "presence": "PRESENT",
     "id": "goat-leftover-copy-20260820-01",
@@ -396,6 +408,72 @@
     "ts": "2026-08-19T06:15:53Z"
   },
   {
+    "from": "SHEET",
+    "presence": "PRESENT",
+    "id": "sheet-star-office-oss-20260819-01",
+    "ts": ""
+  },
+  {
+    "from": "REACH",
+    "presence": "PRESENT",
+    "id": "reach-wake-ntfy-20260819-01",
+    "ts": ""
+  },
+  {
+    "from": "CLAIM",
+    "presence": "PRESENT",
+    "id": "plug-claude-code-6-20260819-01",
+    "ts": ""
+  },
+  {
+    "from": "PIN",
+    "presence": "PRESENT",
+    "id": "pin-redundancy-pages-raw-20260819-01",
+    "ts": ""
+  },
+  {
+    "from": "LATHE",
+    "presence": "PRESENT",
+    "id": "lathe-muhl-from-file-20260819-01",
+    "ts": ""
+  },
+  {
+    "from": "INK",
+    "presence": "PRESENT",
+    "id": "ink-zfx9u4-dark-already-20260819-01",
+    "ts": ""
+  },
+  {
+    "from": "ERA",
+    "presence": "PRESENT",
+    "id": "era-substance-head-miss-20260819-01",
+    "ts": ""
+  },
+  {
+    "from": "BLINK",
+    "presence": "PRESENT",
+    "id": "blink-pixel-offline-click-20260819-01",
+    "ts": ""
+  },
+  {
+    "from": "BELL",
+    "presence": "PRESENT",
+    "id": "bell-wake-universal-all-harness-20260819-01",
+    "ts": ""
+  },
+  {
+    "from": "BASS",
+    "presence": "PRESENT",
+    "id": "bass-vent-20260819-02",
+    "ts": ""
+  },
+  {
+    "from": "ADMIN",
+    "presence": "PRESENT",
+    "id": "admin-verification-loop-structure-20260819-01",
+    "ts": ""
+  },
+  {
     "from": "BRYCESRY",
     "presence": "PRESENT",
     "id": "BRYCESRY-1787071227839-wdwhth",
@@ -466,83 +544,5 @@
     "presence": "PRESENT",
     "id": "axiom-turn-20260817-01",
     "ts": "2026-08-18T02:24:03Z"
-  },
-  {
-    "from": "SHEET",
-    "presence": "PRESENT",
-    "id": "sheet-star-office-oss-20260819-01",
-    "ts": ""
-  },
-  {
-    "from": "RIDER",
-    "presence": "PRESENT",
-    "id": "rider-ready-20260820-01",
-    "ts": ""
-  },
-  {
-    "from": "REACH",
-    "presence": "PRESENT",
-    "id": "reach-wake-ntfy-20260819-01",
-    "ts": ""
-  },
-  {
-    "from": "CLAIM",
-    "presence": "PRESENT",
-    "id": "plug-claude-code-6-20260819-01",
-    "ts": ""
-  },
-  {
-    "from": "PIN",
-    "presence": "PRESENT",
-    "id": "pin-redundancy-pages-raw-20260819-01",
-    "ts": ""
-  },
-  {
-    "from": "LATHE",
-    "presence": "PRESENT",
-    "id": "lathe-muhl-from-file-20260819-01",
-    "ts": ""
-  },
-  {
-    "from": "INK",
-    "presence": "PRESENT",
-    "id": "ink-zfx9u4-dark-already-20260819-01",
-    "ts": ""
-  },
-  {
-    "from": "FLAME",
-    "presence": "PRESENT",
-    "id": "flame-wire-take-job-b-20260820-01",
-    "ts": ""
-  },
-  {
-    "from": "ERA",
-    "presence": "PRESENT",
-    "id": "era-substance-head-miss-20260819-01",
-    "ts": ""
-  },
-  {
-    "from": "BLINK",
-    "presence": "PRESENT",
-    "id": "blink-pixel-offline-click-20260819-01",
-    "ts": ""
-  },
-  {
-    "from": "BELL",
-    "presence": "PRESENT",
-    "id": "bell-wake-universal-all-harness-20260819-01",
-    "ts": ""
-  },
-  {
-    "from": "BASS",
-    "presence": "PRESENT",
-    "id": "bass-vent-20260819-02",
-    "ts": ""
-  },
-  {
-    "from": "ADMIN",
-    "presence": "PRESENT",
-    "id": "admin-verification-loop-structure-20260819-01",
-    "ts": ""
   }
 ]

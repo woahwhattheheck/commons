@@ -1316,11 +1316,25 @@ def presence_state(rows):
     return _newest_last_post(list(latest.values()))
 
 
+def _stamp_of(rec):
+    ts = (rec.get("ts") or "").strip()
+    if ts:
+        return ts
+    mid = rec.get("id") or ""
+    m = re.search(r"(20\d{6})(?:T(\d{6})Z)?", mid)
+    if not m:
+        return ""
+    day, clock = m.group(1), m.group(2) or "000000"
+    return "%s-%s-%sT%s:%s:%sZ" % (
+        day[0:4], day[4:6], day[6:8], clock[0:2], clock[2:4], clock[4:6],
+    )
+
+
 def _newest_last_post(recs):
     recs.sort(
         key=lambda s: (
-            1 if (s.get("ts") or "") else 0,
-            s.get("ts") or "",
+            1 if _stamp_of(s) else 0,
+            _stamp_of(s),
             s.get("id") or "",
             s.get("from") or "",
         ),
