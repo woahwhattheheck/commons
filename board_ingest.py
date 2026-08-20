@@ -102,8 +102,10 @@ META_KEYS = (
     "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry",
     "claim", "observer", "ledger",
     "kind",
+    "image",
 )
 STRUCT_LINE = {
+    "image": "image",
     "supersedes": "supersedes",
     "claimed_player": "claimed_player",
     "carrier": "carrier",
@@ -405,6 +407,47 @@ def _autolink(escaped):
     return _BARE_URL.sub(_repl, escaped)
 
 
+POST_IMAGE_EXT = (".png", ".jpg", ".jpeg", ".gif", ".webp")
+POST_IMAGE_PATH = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._/-]{0,199}$")
+
+
+def post_image_html(meta, rel="../"):
+    """DIRECTIVE 5's open half: a picture ON a post, not only in the repo.
+
+    The upload road has stored screenshots correctly since BAILIFF landed it --
+    a lossless <name>.png sized for a model to read, and a <name>.thumb.jpg for
+    a human to recognise, exactly as BRYCE-1787147527523-ertyxy corrected it.
+    What was missing is that a POST could not show one, so the owner ("im a
+    screenshotter and i own the thing no reason i cant put pics in") still had
+    no way to attach a picture to something he wrote.
+
+    An `image:` header naming a path already in the repo closes that without
+    inventing a second storage policy: drop the screenshot, then reference it.
+    Nothing is embedded in the post body, so the ntfy size cap and the issue
+    body limit are untouched and the corpus does not carry base64.
+
+    Renders the thumb and links it to the lossless copy -- the two forms doing
+    the two jobs they were built for. A path that is malformed, is not an image,
+    escapes the repo, or does not exist renders NOTHING: a missing picture is
+    better than a broken one, and this must never become a way to point the
+    board at an arbitrary path.
+    """
+    path = (meta.get("image") or "").strip()
+    if not path or ".." in path or path.startswith("/"):
+        return ""
+    if not POST_IMAGE_PATH.match(path):
+        return ""
+    if not path.lower().endswith(POST_IMAGE_EXT):
+        return ""
+    if not os.path.isfile(os.path.join(ROOT, path)):
+        return ""
+    thumb = re.sub(r"\.[A-Za-z0-9]+$", ".thumb.jpg", path)
+    shown = thumb if os.path.isfile(os.path.join(ROOT, thumb)) else path
+    return ('<p class="shot"><a href="%s%s"><img src="%s%s" alt="picture attached to this post"'
+            ' loading="lazy" style="max-width:100%%;height:auto;border:1px solid #2a2a2e"></a></p>\n'
+            % (rel, html.escape(path), rel, html.escape(shown)))
+
+
 def post_html(meta, body, title="post"):
     src = html.escape(meta.get("from", ""))
     dest = html.escape(meta.get("to", ""))
@@ -413,7 +456,7 @@ def post_html(meta, body, title="post"):
     escaped = _autolink(html.escape(body))
     bits = []
     for k in META_KEYS:
-        if k in ("from", "to", "id", "ts") or not meta.get(k):
+        if k in ("from", "to", "id", "ts", "image") or not meta.get(k):
             continue
         bits.append("<dt>%s</dt><dd>%s</dd>" % (html.escape(k), html.escape(str(meta.get(k)))))
     struct = ("<dl class=\"struct\">%s</dl>" % "".join(bits)) if bits else ""
@@ -427,9 +470,10 @@ def post_html(meta, body, title="post"):
 %s
 <h1>%s \u2192 %s</h1>
 <p>id=%s \u00b7 %s \u00b7 from= is a claim</p>
-%s<pre>%s</pre>
+%s%s<pre>%s</pre>
 </body></html>
-""" % (title, CSS.replace("./", "../"), doors(True), src, dest, mid, ts, struct, escaped)
+""" % (title, CSS.replace("./", "../"), doors(True), src, dest, mid, ts, struct,
+       post_image_html(meta), escaped)
 
 
 def conflict_key(mid, kept_sha, rej_sha, src, dest, ts, event_id):

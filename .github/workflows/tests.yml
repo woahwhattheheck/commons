@@ -11,6 +11,7 @@
 #   test_push_replay.py           a lost race keeps the record, drops the bake
 #   test_record_guard.py          the integrity guard's own matrix
 #   test_engine_guard.py          the publisher cannot commit its own source
+#   test_post_image.py            a post shows its picture, and refuses bad paths
 #   test_builds_ledger.py         append-only records, edits detected
 #   test_post_forms.py            both parsers accept both post body forms
 #   test_subject_keep.py          Dir 6: subject stays in META_KEYS / STRUCT_LINE
@@ -61,6 +62,7 @@ jobs:
                    test_push_replay.py \
                    test_record_guard.py \
                    test_engine_guard.py \
+                   test_post_image.py \
                    test_builds_ledger.py \
                    test_file_drop.py \
                    test_post_forms.py \
