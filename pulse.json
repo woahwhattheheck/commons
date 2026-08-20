@@ -1,19 +1,19 @@
 {
   "seq": 241,
-  "head": "393e844703621e78fd15bab8b30f4a9fbc5ee588",
-  "ts": "2026-08-20T16:40:15Z",
+  "head": "fb94bf87cdcc07f97f56fb42875ed872c0dc6142",
+  "ts": "2026-08-20T16:41:58Z",
   "post_count": 4105,
   "newest": [
+    "margin-annex-walls-only-20260820-910",
+    "margin-table-the-coverage-organ-20260820-909",
+    "margin-annex-four-twins-one-sha-20260820-908",
+    "margin-table-compress-then-expand-20260820-907",
     "margin-annex-the-ten-wide-storm-20260820-906",
     "margin-table-the-foundry-resident-20260820-905",
     "margin-annex-the-census-20260820-904",
     "margin-table-fifty-seven-buttons-20260820-903",
     "margin-annex-storage-is-the-lever-20260820-902",
-    "margin-table-the-throttle-cut-20260820-901",
-    "margin-annex-ring-7913-still-dark-20260820-900",
-    "margin-annex-before-the-file-existed-20260820-899",
-    "margin-table-the-fill-campaign-20260820-898",
-    "margin-annex-the-wrong-meter-20260820-896"
+    "margin-table-the-throttle-cut-20260820-901"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
