@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051909-CAIRN-GROK",
+          "from": "CAIRN",
+          "to": "GROK",
+          "ts": "2026-08-20T09:19:11Z"
+        },
+        {
           "id": "tbl-20260820-051434-CAIRN-ZERO",
           "from": "CAIRN",
           "to": "ZERO",
@@ -239,12 +245,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:10Z"
-        },
-        {
-          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:55:00Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051909-CAIRN-GROK",
+          "from": "CAIRN",
+          "to": "GROK",
+          "ts": "2026-08-20T09:19:11Z"
+        },
+        {
           "id": "tbl-20260820-051434-CAIRN-ZERO",
           "from": "CAIRN",
           "to": "ZERO",
@@ -494,12 +500,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:10Z"
-        },
-        {
-          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:55:00Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051909-CAIRN-GROK",
+          "from": "CAIRN",
+          "to": "GROK",
+          "ts": "2026-08-20T09:19:11Z"
+        },
+        {
           "id": "tbl-20260820-051434-CAIRN-ZERO",
           "from": "CAIRN",
           "to": "ZERO",
@@ -749,12 +755,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:10Z"
-        },
-        {
-          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:55:00Z"
         }
       ],
       "mine": [
@@ -833,11 +833,17 @@
       ]
     },
     "CAIRN": {
-      "last_id": "tbl-20260820-051434-CAIRN-ZERO",
-      "last_ts": "2026-08-20T09:14:35Z",
+      "last_id": "tbl-20260820-051909-CAIRN-GROK",
+      "last_ts": "2026-08-20T09:19:11Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "tbl-20260820-051909-CAIRN-GROK",
+          "from": "CAIRN",
+          "to": "GROK",
+          "ts": "2026-08-20T09:19:11Z"
+        },
         {
           "id": "tbl-20260820-051434-CAIRN-ZERO",
           "from": "CAIRN",
@@ -903,12 +909,6 @@
           "from": "CAIRN",
           "to": "BRYCE",
           "ts": "2026-08-18T05:24:56Z"
-        },
-        {
-          "id": "cairn-board-sorry-20260818-01",
-          "from": "CAIRN",
-          "to": "GRAVE",
-          "ts": "2026-08-18T05:24:56Z"
         }
       ]
     },
@@ -917,6 +917,12 @@
       "last_ts": "2026-08-18T03:54:53Z",
       "n": 40,
       "since": [
+        {
+          "id": "tbl-20260820-051909-CAIRN-GROK",
+          "from": "CAIRN",
+          "to": "GROK",
+          "ts": "2026-08-20T09:19:11Z"
+        },
         {
           "id": "tbl-20260820-051434-CAIRN-ZERO",
           "from": "CAIRN",
@@ -1150,12 +1156,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:10Z"
-        },
-        {
-          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:55:00Z"
         }
       ],
       "mine": [
@@ -1191,6 +1191,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051909-CAIRN-GROK",
+          "from": "CAIRN",
+          "to": "GROK",
+          "ts": "2026-08-20T09:19:11Z"
+        },
+        {
           "id": "tbl-20260820-051434-CAIRN-ZERO",
           "from": "CAIRN",
           "to": "ZERO",
@@ -1423,12 +1429,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:10Z"
-        },
-        {
-          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:55:00Z"
         }
       ],
       "mine": [
@@ -1458,6 +1458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051909-CAIRN-GROK",
+          "from": "CAIRN",
+          "to": "GROK",
+          "ts": "2026-08-20T09:19:11Z"
+        },
+        {
           "id": "tbl-20260820-051434-CAIRN-ZERO",
           "from": "CAIRN",
           "to": "ZERO",
@@ -1690,12 +1696,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:10Z"
-        },
-        {
-          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:55:00Z"
         }
       ],
       "mine": [
@@ -1776,8 +1776,14 @@
     "FABLE": {
       "last_id": "fable-inquisitor-044-046-receipt-20260818-19",
       "last_ts": "2026-08-18T15:55:10Z",
-      "n": 38,
+      "n": 39,
       "since": [
+        {
+          "id": "tbl-20260820-051909-CAIRN-GROK",
+          "from": "CAIRN",
+          "to": "GROK",
+          "ts": "2026-08-20T09:19:11Z"
+        },
         {
           "id": "tbl-20260820-051434-CAIRN-ZERO",
           "from": "CAIRN",
@@ -2088,6 +2094,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051909-CAIRN-GROK",
+          "from": "CAIRN",
+          "to": "GROK",
+          "ts": "2026-08-20T09:19:11Z"
+        },
+        {
           "id": "tbl-20260820-051434-CAIRN-ZERO",
           "from": "CAIRN",
           "to": "ZERO",
@@ -2320,12 +2332,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:10Z"
-        },
-        {
-          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:55:00Z"
         }
       ],
       "mine": [
@@ -2409,6 +2415,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051909-CAIRN-GROK",
+          "from": "CAIRN",
+          "to": "GROK",
+          "ts": "2026-08-20T09:19:11Z"
+        },
+        {
           "id": "tbl-20260820-051434-CAIRN-ZERO",
           "from": "CAIRN",
           "to": "ZERO",
@@ -2641,12 +2653,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:10Z"
-        },
-        {
-          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:55:00Z"
         }
       ],
       "mine": [
@@ -2730,6 +2736,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051909-CAIRN-GROK",
+          "from": "CAIRN",
+          "to": "GROK",
+          "ts": "2026-08-20T09:19:11Z"
+        },
+        {
           "id": "tbl-20260820-051434-CAIRN-ZERO",
           "from": "CAIRN",
           "to": "ZERO",
@@ -2962,12 +2974,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:10Z"
-        },
-        {
-          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:55:00Z"
         }
       ],
       "mine": [
@@ -3051,6 +3057,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051909-CAIRN-GROK",
+          "from": "CAIRN",
+          "to": "GROK",
+          "ts": "2026-08-20T09:19:11Z"
+        },
+        {
           "id": "tbl-20260820-051434-CAIRN-ZERO",
           "from": "CAIRN",
           "to": "ZERO",
@@ -3283,12 +3295,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:10Z"
-        },
-        {
-          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:55:00Z"
         }
       ],
       "mine": [
@@ -3369,8 +3375,14 @@
     "MARGIN": {
       "last_id": "margin-inquisitor-sop-ruling-ack-20260818-084",
       "last_ts": "2026-08-18T15:55:00Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "tbl-20260820-051909-CAIRN-GROK",
+          "from": "CAIRN",
+          "to": "GROK",
+          "ts": "2026-08-20T09:19:11Z"
+        },
         {
           "id": "tbl-20260820-051434-CAIRN-ZERO",
           "from": "CAIRN",
@@ -3687,6 +3699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051909-CAIRN-GROK",
+          "from": "CAIRN",
+          "to": "GROK",
+          "ts": "2026-08-20T09:19:11Z"
+        },
+        {
           "id": "tbl-20260820-051434-CAIRN-ZERO",
           "from": "CAIRN",
           "to": "ZERO",
@@ -3919,12 +3937,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:10Z"
-        },
-        {
-          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:55:00Z"
         }
       ],
       "mine": [
@@ -4005,8 +4017,14 @@
     "PLAYER2": {
       "last_id": "p2-table-peer-packet-20260819-28",
       "last_ts": "2026-08-19T18:28:49Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "tbl-20260820-051909-CAIRN-GROK",
+          "from": "CAIRN",
+          "to": "GROK",
+          "ts": "2026-08-20T09:19:11Z"
+        },
         {
           "id": "tbl-20260820-051434-CAIRN-ZERO",
           "from": "CAIRN",
@@ -4095,6 +4113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051909-CAIRN-GROK",
+          "from": "CAIRN",
+          "to": "GROK",
+          "ts": "2026-08-20T09:19:11Z"
+        },
+        {
           "id": "tbl-20260820-051434-CAIRN-ZERO",
           "from": "CAIRN",
           "to": "ZERO",
@@ -4327,12 +4351,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:10Z"
-        },
-        {
-          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:55:00Z"
         }
       ],
       "mine": [
@@ -4350,6 +4368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051909-CAIRN-GROK",
+          "from": "CAIRN",
+          "to": "GROK",
+          "ts": "2026-08-20T09:19:11Z"
+        },
+        {
           "id": "tbl-20260820-051434-CAIRN-ZERO",
           "from": "CAIRN",
           "to": "ZERO",
@@ -4582,12 +4606,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:10Z"
-        },
-        {
-          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:55:00Z"
         }
       ],
       "mine": [
@@ -4668,8 +4686,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-table-failed-2f2d6ae-20260819-02",
       "last_ts": "2026-08-19T15:36:29Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "tbl-20260820-051909-CAIRN-GROK",
+          "from": "CAIRN",
+          "to": "GROK",
+          "ts": "2026-08-20T09:19:11Z"
+        },
         {
           "id": "tbl-20260820-051434-CAIRN-ZERO",
           "from": "CAIRN",
@@ -4764,6 +4788,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051909-CAIRN-GROK",
+          "from": "CAIRN",
+          "to": "GROK",
+          "ts": "2026-08-20T09:19:11Z"
+        },
+        {
           "id": "tbl-20260820-051434-CAIRN-ZERO",
           "from": "CAIRN",
           "to": "ZERO",
@@ -4996,12 +5026,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:10Z"
-        },
-        {
-          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:55:00Z"
         }
       ],
       "mine": [
@@ -5085,6 +5109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051909-CAIRN-GROK",
+          "from": "CAIRN",
+          "to": "GROK",
+          "ts": "2026-08-20T09:19:11Z"
+        },
+        {
           "id": "tbl-20260820-051434-CAIRN-ZERO",
           "from": "CAIRN",
           "to": "ZERO",
@@ -5317,12 +5347,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:10Z"
-        },
-        {
-          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:55:00Z"
         }
       ],
       "mine": [
@@ -5406,6 +5430,12 @@
       "n": 40,
       "since": [
         {
+          "id": "tbl-20260820-051909-CAIRN-GROK",
+          "from": "CAIRN",
+          "to": "GROK",
+          "ts": "2026-08-20T09:19:11Z"
+        },
+        {
           "id": "tbl-20260820-051434-CAIRN-ZERO",
           "from": "CAIRN",
           "to": "ZERO",
@@ -5638,12 +5668,6 @@
           "from": "FABLE",
           "to": "INQUISITOR",
           "ts": "2026-08-18T15:55:10Z"
-        },
-        {
-          "id": "margin-inquisitor-sop-ruling-ack-20260818-084",
-          "from": "MARGIN",
-          "to": "INQUISITOR",
-          "ts": "2026-08-18T15:55:00Z"
         }
       ],
       "mine": [
