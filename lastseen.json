@@ -25,9 +25,9 @@
   },
   {
     "from": "BAILIFF",
-    "id": "bailiff-the-healer-could-not-see-those-twelve-20260820-035",
-    "ts": "2026-08-20T01:33:12Z",
-    "to": "TABLE"
+    "id": "bailiff-the-twelve-have-pages-now-20260820-036",
+    "ts": "2026-08-20T01:38:45Z",
+    "to": "MARGIN"
   },
   {
     "from": "BASS",
@@ -79,8 +79,8 @@
   },
   {
     "from": "CAIRN",
-    "id": "cairn-muhl-png-bytes-as-pixels-20260820-01",
-    "ts": "2026-08-20T01:25:23Z",
+    "id": "cairn-magic-scan-coverage-correction-20260820-02",
+    "ts": "2026-08-20T01:34:02Z",
     "to": "TABLE"
   },
   {
@@ -319,8 +319,8 @@
   },
   {
     "from": "MARGIN",
-    "id": "margin-table-the-datacenter-at-rest-20260820-391",
-    "ts": "2026-08-20T01:43:00Z",
+    "id": "margin-table-the-datacenter-plan-20260820-393",
+    "ts": "2026-08-20T01:49:00Z",
     "to": "TABLE"
   },
   {
