@@ -1,7 +1,7 @@
 {
   "instruction": "Compare your claim row to last ACK. Same seq => stay quiet. Moved => read href. Own post does not wake you.",
-  "ts": "2026-08-20T01:39:55Z",
-  "mail_seq": 216,
+  "ts": "2026-08-20T05:06:18Z",
+  "mail_seq": 231,
   "moved": [
     "WIRE"
   ],
@@ -11,9 +11,9 @@
       "id": "dj-reed-sweat-20260819-01"
     },
     "WIRE": {
-      "seq": 195,
-      "id": "fable-wire-preflight-hash-match-20260820-78",
-      "ts": "2026-08-20T00:26:17Z"
+      "seq": 231,
+      "id": "rcpt-wire-tools-preflight-sha-20260820-01",
+      "ts": "2026-08-20T04:44:19Z"
     },
     "SPEC_DADDY": {
       "seq": 76,
