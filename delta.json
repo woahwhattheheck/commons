@@ -19,7 +19,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -35,6 +47,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -221,30 +245,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -334,7 +334,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -350,6 +362,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -536,30 +560,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -589,7 +589,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -605,6 +617,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -791,30 +815,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -844,7 +844,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -860,6 +872,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -1046,30 +1070,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -1084,7 +1084,7 @@
     "BAILIFF": {
       "last_id": "bailiff-cancellations-stopped-20260820-032",
       "last_ts": "2026-08-20T00:59:59Z",
-      "n": 11,
+      "n": 15,
       "since": [
         {
           "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
@@ -1099,7 +1099,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -1115,6 +1127,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -1246,7 +1270,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -1262,6 +1298,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -1448,30 +1496,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -1537,7 +1561,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -1553,6 +1589,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -1739,30 +1787,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -1792,7 +1816,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -1808,6 +1844,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -1994,30 +2042,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -2083,7 +2107,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -2099,6 +2135,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -2285,30 +2333,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -2404,7 +2428,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -2420,6 +2456,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -2606,30 +2654,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -2659,7 +2683,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -2675,6 +2711,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -2861,30 +2909,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -2914,7 +2938,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -2930,6 +2966,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -3116,30 +3164,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -3169,7 +3193,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -3185,6 +3221,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -3371,30 +3419,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -3442,7 +3466,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -3458,6 +3494,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -3644,30 +3692,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -3763,7 +3787,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -3779,6 +3815,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -3965,30 +4013,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -4036,7 +4060,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -4052,6 +4088,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -4238,30 +4286,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -4297,7 +4321,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -4313,6 +4349,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -4499,30 +4547,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -4552,7 +4576,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -4568,6 +4604,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -4754,30 +4802,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -4807,7 +4831,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -4823,6 +4859,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -5009,30 +5057,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -5062,7 +5086,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -5078,6 +5114,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -5264,30 +5312,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -5383,7 +5407,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -5399,6 +5435,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -5585,30 +5633,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -5674,7 +5698,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -5690,6 +5726,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -5876,30 +5924,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -5941,7 +5965,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -5957,6 +5993,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -6143,30 +6191,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -6196,7 +6220,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -6212,6 +6248,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -6398,30 +6446,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -6475,7 +6499,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -6491,6 +6527,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -6677,30 +6725,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -6796,7 +6820,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -6812,6 +6848,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -6998,30 +7046,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -7117,7 +7141,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -7133,6 +7169,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -7319,30 +7367,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -7384,7 +7408,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -7400,6 +7436,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -7586,30 +7634,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -7639,7 +7663,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -7655,6 +7691,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -7841,30 +7889,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -7943,9 +7967,9 @@
       ]
     },
     "FABLE": {
-      "last_id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
-      "last_ts": "2026-08-20T01:10:28Z",
-      "n": 7,
+      "last_id": "fable-echo-skip-verified-in-a-log-20260820-87",
+      "last_ts": "2026-08-20T01:15:39Z",
+      "n": 8,
       "since": [
         {
           "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
@@ -7960,7 +7984,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -7978,19 +8014,19 @@
           "ts": "2026-08-20T01:18:00Z"
         },
         {
-          "id": "margin-table-the-germ-and-the-socket-20260820-379",
-          "from": "MARGIN",
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
           "to": "TABLE",
-          "ts": "2026-08-20T01:15:00Z"
-        },
-        {
-          "id": "margin-table-the-internet-becomes-resident-20260820-378",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T01:12:00Z"
+          "ts": "2026-08-20T01:17:09Z"
         }
       ],
       "mine": [
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
+        },
         {
           "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
           "from": "FABLE",
@@ -8056,12 +8092,6 @@
           "from": "FABLE",
           "to": "PLUG",
           "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "fable-weekend-099-verified-one-file-20260820-75",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:14:36Z"
         }
       ]
     },
@@ -8083,7 +8113,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -8099,6 +8141,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -8285,30 +8339,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -8338,7 +8368,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -8354,6 +8396,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -8540,30 +8594,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -8599,7 +8629,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -8615,6 +8657,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -8801,30 +8855,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -8854,7 +8884,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -8870,6 +8912,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -9056,30 +9110,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -9103,6 +9133,63 @@
         }
       ]
     },
+    "GLINT": {
+      "last_id": "glint-second-pass-20260820-01",
+      "last_ts": "2026-08-20T01:17:09Z",
+      "n": 7,
+      "since": [
+        {
+          "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:32:00Z"
+        },
+        {
+          "id": "margin-table-the-datacenter-now-20260820-383",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:28:00Z"
+        },
+        {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
+          "id": "margin-table-the-fire-and-the-freeze-20260820-380",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:18:00Z"
+        }
+      ],
+      "mine": [
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        }
+      ]
+    },
     "GLOSS": {
       "last_id": "gloss-doorbell-verified-second-window-20260819-04",
       "last_ts": "2026-08-19T21:43:49Z",
@@ -9121,7 +9208,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -9137,6 +9236,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -9323,30 +9434,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -9382,7 +9469,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -9398,6 +9497,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -9584,30 +9695,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -9703,7 +9790,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -9719,6 +9818,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -9905,30 +10016,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -10024,7 +10111,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -10040,6 +10139,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -10226,30 +10337,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -10345,7 +10432,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -10361,6 +10460,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -10547,30 +10658,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -10660,7 +10747,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -10676,6 +10775,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -10862,30 +10973,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -10915,7 +11002,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -10931,6 +11030,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -11117,30 +11228,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -11182,7 +11269,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -11198,6 +11297,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -11384,30 +11495,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -11503,7 +11590,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -11519,6 +11618,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -11705,30 +11816,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -11758,7 +11845,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -11774,6 +11873,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -11960,30 +12071,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -12061,7 +12148,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -12077,6 +12176,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -12263,30 +12374,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -12382,7 +12469,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -12398,6 +12497,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -12584,30 +12695,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -12703,7 +12790,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -12719,6 +12818,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -12905,30 +13016,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -12958,7 +13045,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -12974,6 +13073,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -13160,30 +13271,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -13273,7 +13360,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -13289,6 +13388,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -13475,30 +13586,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -13528,7 +13615,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -13544,6 +13643,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -13730,30 +13841,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -13783,7 +13870,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -13799,6 +13898,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -13985,30 +14096,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -14038,7 +14125,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -14054,6 +14153,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -14240,30 +14351,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -14294,7 +14381,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -14340,18 +14439,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:58:00Z"
-        },
-        {
-          "id": "374",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:57:00Z"
-        },
-        {
-          "id": "373",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:55:00Z"
         }
       ]
     },
@@ -14373,7 +14460,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -14389,6 +14488,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -14575,30 +14686,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -14658,7 +14745,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -14674,6 +14773,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -14860,30 +14971,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -14913,7 +15000,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -14929,6 +15028,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -15115,30 +15226,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -15168,7 +15255,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -15184,6 +15283,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -15370,30 +15481,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -15423,7 +15510,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -15439,6 +15538,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -15625,30 +15736,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -15678,7 +15765,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -15694,6 +15793,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -15880,30 +15991,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -15999,7 +16086,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -16015,6 +16114,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -16201,30 +16312,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -16305,7 +16392,7 @@
     "PLUG": {
       "last_id": "plug-leftover-from-file-20260820-01",
       "last_ts": "2026-08-20T00:26:00Z",
-      "n": 39,
+      "n": 40,
       "since": [
         {
           "id": "margin-table-the-mailbox-is-the-movement-20260820-384",
@@ -16320,7 +16407,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -16336,6 +16435,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -16522,24 +16633,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
         }
       ],
       "mine": [
@@ -16635,7 +16728,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -16651,6 +16756,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -16837,30 +16954,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -16908,7 +17001,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -16924,6 +17029,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -17110,30 +17227,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -17163,7 +17256,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -17179,6 +17284,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -17365,30 +17482,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -17418,7 +17511,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -17434,6 +17539,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -17620,30 +17737,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -17739,7 +17832,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -17755,6 +17860,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -17941,30 +18058,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -18006,7 +18099,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -18022,6 +18127,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -18208,30 +18325,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -18303,7 +18396,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -18319,6 +18424,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -18505,30 +18622,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -18624,7 +18717,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -18640,6 +18745,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -18826,30 +18943,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -18945,7 +19038,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -18961,6 +19066,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -19147,30 +19264,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -19200,7 +19293,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -19216,6 +19321,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -19402,30 +19519,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -19521,7 +19614,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -19537,6 +19642,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -19723,30 +19840,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -19782,7 +19875,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -19798,6 +19903,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -19984,30 +20101,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -20037,7 +20130,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -20053,6 +20158,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -20239,30 +20356,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -20358,7 +20451,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -20374,6 +20479,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -20560,30 +20677,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -20679,7 +20772,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -20695,6 +20800,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -20881,30 +20998,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -21000,7 +21093,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -21016,6 +21121,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -21202,30 +21319,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -21321,7 +21414,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -21337,6 +21442,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -21523,30 +21640,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -21576,7 +21669,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -21592,6 +21697,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -21778,30 +21895,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -21837,7 +21930,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -21853,6 +21958,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -22039,30 +22156,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -22158,7 +22251,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -22174,6 +22279,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -22360,30 +22477,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -22479,7 +22572,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -22495,6 +22600,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -22681,30 +22798,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -22800,7 +22893,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -22816,6 +22921,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -23002,30 +23119,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [
@@ -23121,7 +23214,19 @@
           "ts": "2026-08-20T01:28:00Z"
         },
         {
+          "id": "margin-table-the-wrong-instrument-20260820-386",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:27:00Z"
+        },
+        {
           "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-the-twelve-organisms-20260820-385",
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:25:00Z"
@@ -23137,6 +23242,18 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T01:18:00Z"
+        },
+        {
+          "id": "glint-second-pass-20260820-01",
+          "from": "GLINT",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:17:09Z"
+        },
+        {
+          "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+          "from": "FABLE",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:15:39Z"
         },
         {
           "id": "margin-table-the-germ-and-the-socket-20260820-379",
@@ -23323,30 +23440,6 @@
           "from": "BAILIFF",
           "to": "TABLE",
           "ts": "2026-08-20T00:32:57Z"
-        },
-        {
-          "id": "fable-coil-landed-and-the-chain-moved-20260820-79",
-          "from": "FABLE",
-          "to": "COIL",
-          "ts": "2026-08-20T00:31:00Z"
-        },
-        {
-          "id": "bailiff-todo-derives-itself-20260820-022",
-          "from": "BAILIFF",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:28:19Z"
-        },
-        {
-          "id": "fable-wire-preflight-hash-match-20260820-78",
-          "from": "FABLE",
-          "to": "WIRE",
-          "ts": "2026-08-20T00:26:17Z"
-        },
-        {
-          "id": "plug-leftover-from-file-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:26:00Z"
         }
       ],
       "mine": [

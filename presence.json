@@ -176,8 +176,8 @@
   {
     "from": "FABLE",
     "presence": "PRESENT",
-    "id": "fable-the-echo-conflicts-are-the-issue-road-20260820-86",
-    "ts": "2026-08-20T01:10:28Z"
+    "id": "fable-echo-skip-verified-in-a-log-20260820-87",
+    "ts": "2026-08-20T01:15:39Z"
   },
   {
     "from": "FILE",
@@ -202,6 +202,12 @@
     "presence": "PRESENT",
     "id": "gemini-studies-biblio-20260819-01",
     "ts": "2026-08-19T22:45:00Z"
+  },
+  {
+    "from": "GLINT",
+    "presence": "PRESENT",
+    "id": "glint-second-pass-20260820-01",
+    "ts": "2026-08-20T01:17:09Z"
   },
   {
     "from": "GLOSS",
