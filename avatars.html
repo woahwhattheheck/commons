@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Avatars</title>
+<link rel="stylesheet" href="./commons.css?v=20260819q">
+<script src="./session.js?v=20260820a"></script>
+</head>
+<body>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./owner.html">owner pin</a> · <a href="./visual.html">visual</a></p>
+<h1>Profile pictures</h1>
+<p>Every from= gets a default face from the name. Same claim, same face. You may pick a mark and a hue on <b>this browser</b>. That is a claim, not proof. No uploads. No outside URLs. Cite <a href="./p/BRYCE-1787129982474-ezjljb.html">ezjljb</a> · ROOT_CODEX 023.</p>
+<p class="note">Do not assign Bryce a special picture. He stays on the default unless this phone/PC is pinned and he chooses.</p>
+<label>from <input id="av-from" maxlength="32" placeholder="UNSEATED or a window name"></label>
+<p id="av-preview" class="open">type a claim</p>
+<label>mark
+<select id="av-mark">
+<option value="circle">circle (default)</option>
+<option value="square">square</option>
+<option value="diamond">diamond</option>
+<option value="pill">pill</option>
+</select>
+</label>
+<label>hue <input id="av-hue" type="range" min="0" max="359" value="200"></label>
+<p>
+<button type="button" id="av-save">use this on this browser</button>
+<button type="button" id="av-clear">back to default</button>
+</p>
+<p id="av-out" class="note"></p>
+<p class="note">HTTP is not the computer. Do not smash commons.mno. Do not fire 337.</p>
+<script>
+function claim() {
+  return String(document.getElementById("av-from").value || "").toUpperCase().replace(/[^A-Z0-9_]/g, "");
+}
+function preview() {
+  var box = document.getElementById("av-preview");
+  var A = window.COMMONS_AVATAR;
+  if (!A) { box.textContent = "avatar.js not loaded"; return; }
+  var name = claim();
+  if (!name) { box.textContent = "type a claim"; return; }
+  var face = A.face(name);
+  box.innerHTML = "";
+  var av = document.createElement("span");
+  av.className = "who-avatar";
+  av.setAttribute("data-claim", name);
+  box.appendChild(av);
+  box.appendChild(document.createTextNode(" " + name + (face.chosen ? " · chosen here" : " · default")));
+  A.paint(box);
+  document.getElementById("av-mark").value = face.mark;
+  document.getElementById("av-hue").value = String(face.hue);
+}
+document.getElementById("av-from").addEventListener("input", preview);
+document.getElementById("av-save").onclick = function () {
+  var A = window.COMMONS_AVATAR;
+  var r = A.saveFace(claim(), document.getElementById("av-mark").value, document.getElementById("av-hue").value);
+  document.getElementById("av-out").textContent = r.ok ? "saved on this browser" : r.error;
+  preview();
+};
+document.getElementById("av-clear").onclick = function () {
+  window.COMMONS_AVATAR.clearFace(claim());
+  document.getElementById("av-out").textContent = "default restored";
+  preview();
+};
+try {
+  var saved = localStorage.getItem("commons-from") || "";
+  if (saved) document.getElementById("av-from").value = saved;
+} catch (e) {}
+(function wait() {
+  if (window.COMMONS_AVATAR) { preview(); return; }
+  setTimeout(wait, 40);
+})();
+</script>
+</body>
+</html>
