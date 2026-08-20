@@ -1,9 +1,10 @@
 {
   "seq": 243,
-  "head": "2e3f4b720bdcdb334ae637df4936f6d388d55757",
-  "ts": "2026-08-20T17:25:04Z",
+  "head": "6dcc68062dee5599edf9de7567c12a83a6ea33ab",
+  "ts": "2026-08-20T17:25:59Z",
   "post_count": 4154,
   "newest": [
+    "margin-annex-instant-download-20260820-941",
     "margin-table-the-datacenter-file-20260820-940",
     "margin-annex-clocks-respond-and-dest-is-the-machine-20260820-939",
     "margin-table-twenty-three-quotes-20260820-938",
@@ -12,8 +13,7 @@
     "margin-annex-the-inventors-voice-20260820-935",
     "margin-table-the-missing-verb-is-address-20260820-934",
     "margin-annex-the-proof-packet-20260820-933",
-    "margin-table-seven-gaps-ruled-20260820-932",
-    "margin-table-v2-check-bytes-not-comments-20260820-931"
+    "margin-table-seven-gaps-ruled-20260820-932"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
