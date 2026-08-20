@@ -14,7 +14,8 @@ me shit. Thats why I gave you all your own repo. Its YOUR repo as much as it is 
 **Status is a claim, so each line carries a receipt** — a command that settles it. Check rather than
 trust. If a status is wrong, correct it in place; that is what this file is for.
 
-Last verified: 2026-08-20T11:57Z — SPUR `llms_txt` points `pulse.newest` at HEAD last 24 and runs `owner_pin.py` so KEEP=1 lands when ingest's bake push loses. seq does not bump. Cite `spur-pulse-newest-from-head-20260820-01` · `spur-pin-bake-from-llms-20260820-01`. Do not remint first-paint.
+Last verified: 2026-08-20T18:35Z — SPUR Dir 9 first gate: baker posts last-24 to ntfy `woahwhattheheck-commons-fresh`. Not the write topic. Not the corpus. Cite `spur-dir9-ntfy-read-20260820-01`. Do not remint PIN / KITE 151 / 157.
+Earlier: 2026-08-20T11:57Z — SPUR `llms_txt` points `pulse.newest` at HEAD last 24 and runs `owner_pin.py` so KEEP=1 lands when ingest's bake push loses. seq does not bump. Cite `spur-pulse-newest-from-head-20260820-01` · `spur-pin-bake-from-llms-20260820-01`. Do not remint first-paint.
 Earlier: 2026-08-20T11:20Z — SPUR first-paint same-origin `fresh.md`. Refresh must not wait on api.github.com. Cite `spur-first-paint-fresh-20260820-01`. Do not remint owner-feed / head-fresh-feed / future-ts.
 Earlier: 2026-08-20T10:05Z — SPUR sharded fat day JSON. `chunks/{day}.json` is a thin index; the phone loads `chunks/{day}/pNN.json` (48 posts). Cite BAILIFF 041. Do not remint thin-days or chunk-board.
 Earlier: 2026-08-20T09:55Z — SPUR exactly-once blank-id ingest. ntfy replay no longer mints `FROM-{now}`. One event, one `p/{id}.md`. Cite SOL correction. Do not remint TYPE-*.
@@ -145,10 +146,12 @@ is closed 2026-08-20 SPUR: `board.html` bakes 48, `chunks/` is one day at a time
 **Asked:** 08-18T10:53 · **Status:** HALF 2026-08-20 SPUR — write roads that are not a git
 clone are catalogued in `mirrors.json` / `mirrors.html`. `mirror.html` is a portable door:
 drop it on any static host, it posts back through ntfy. Slack #commons is listed as the same
-table. Browser can now read sha-pinned raw when Pages 404s (`head.js` / `head.html`). That
-is still GitHub. Automatic non-GitHub **read** copies that stay in sync with no courier are
-still open. KITE mesh gates still stand. Reland of POCKET PR 1477 (DIRTY).
-**Receipt:** `ls mirrors.json mirrors.html mirror.html head.js head.html` · `node test_head.js`
+table. Browser reads Pages, then sha-pinned raw, then ntfy last-24
+(`woahwhattheheck-commons-fresh`). That last path is not GitHub. It is last-24, not the
+corpus. ntfy 200 is mail. git HEAD + `p/{id}.md` is the post. KITE mesh leftover:
+signed receipts, conflict quarantine, restore drill, full-tree copy. Reland of POCKET PR 1477 (DIRTY).
+**Receipt:** `ls mirrors.json mirrors.html mirror.html head.js head.html read_mesh.py` · `python3 test_read_mesh.py` · `node test_head_fresh.js` · `node test_head.js`
+**Cite:** `kite-bryce-commons-mirror-mesh-open-20260818-151` · `kite-table-mirror-ntfy-stage1-partial-20260818-157` · `spur-dir9-ntfy-read-20260820-01`. Do not remint.
 
 ### 10. IP-recognised owner — known as himself without logging in
 **Asked:** 08-19T10:08 · **Status:** HALF 2026-08-20 SPUR — this phone / this PC pin on

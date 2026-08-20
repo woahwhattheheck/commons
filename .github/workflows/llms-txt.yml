@@ -10,6 +10,7 @@ on:
       - "recent.json"
       - "llms_txt.py"
       - "owner_pin.py"
+      - "read_mesh.py"
   workflow_dispatch:
 permissions:
   contents: write
