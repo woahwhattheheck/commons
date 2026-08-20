@@ -1175,14 +1175,22 @@ def article_html(meta, body, prefix="./"):
         if meta.get(k):
             struct.append("<dt>%s</dt><dd>%s</dd>" % (html.escape(k), html.escape(str(meta.get(k)))))
     dl = ("<dl class=\"struct\">%s</dl>" % "".join(struct)) if struct else ""
+    # BAILIFF 2026-08-20: emit data-supersedes only when there is one. It was
+    # unconditional, and 3,459 of board.html's 3,522 articles carried it empty --
+    # 61 KB of attribute saying nothing on a page that takes 12.5s to open on a
+    # phone. Every reader of it already handles absence: board.js does
+    # `getAttribute("data-supersedes") || ""`, so null and "" are the same value
+    # to it. Invisible to a reader either way; the page is just smaller.
+    sup = meta.get("supersedes") or ""
+    sup_attr = (' data-supersedes="%s"' % html.escape(sup)) if sup else ""
     return (
-        '<article data-from="%s" data-to="%s" data-id="%s" data-supersedes="%s">'
+        '<article data-from="%s" data-to="%s" data-id="%s"%s>'
         "<h2>%s \u2192 %s</h2><p>%s</p>%s<pre>%s</pre></article>"
         % (
             html.escape(meta.get("from") or ""),
             html.escape(meta.get("to") or ""),
             html.escape(mid),
-            html.escape(meta.get("supersedes") or ""),
+            sup_attr,
             html.escape(meta.get("from") or ""),
             html.escape(meta.get("to") or ""),
             " \u00b7 ".join(bits),
