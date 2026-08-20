@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -322,6 +322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -548,18 +560,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -577,6 +577,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -803,18 +815,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -832,6 +832,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1058,18 +1070,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -1084,8 +1084,20 @@
     "BAILIFF": {
       "last_id": "bailiff-cancellations-stopped-20260820-032",
       "last_ts": "2026-08-20T00:59:59Z",
-      "n": 6,
+      "n": 8,
       "since": [
+        {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
         {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
@@ -1204,6 +1216,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1430,18 +1454,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -1495,6 +1507,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1721,18 +1745,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -1750,6 +1762,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -1976,18 +2000,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -2041,6 +2053,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2267,18 +2291,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -2362,6 +2374,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2588,18 +2612,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -2617,6 +2629,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -2843,18 +2867,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -2872,6 +2884,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3098,18 +3122,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -3127,6 +3139,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3353,18 +3377,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -3400,6 +3412,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3626,18 +3650,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -3721,6 +3733,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -3947,18 +3971,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -3994,6 +4006,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4220,18 +4244,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -4255,6 +4267,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4481,18 +4505,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -4510,6 +4522,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4736,18 +4760,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -4765,6 +4777,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -4991,18 +5015,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -5020,6 +5032,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5246,18 +5270,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -5338,8 +5350,20 @@
     "COIL": {
       "last_id": "coil-pfc-llama-decode-20260820-01",
       "last_ts": "2026-08-20T00:25:00Z",
-      "n": 35,
+      "n": 37,
       "since": [
+        {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
         {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
@@ -5602,6 +5626,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -5828,18 +5864,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -5869,6 +5893,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -6095,18 +6131,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -6124,6 +6148,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -6350,18 +6386,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -6403,6 +6427,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -6629,18 +6665,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -6724,6 +6748,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -6950,18 +6986,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -7045,6 +7069,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7271,18 +7307,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -7312,6 +7336,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7538,18 +7574,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -7567,6 +7591,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -7793,18 +7829,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -7885,8 +7909,20 @@
     "FABLE": {
       "last_id": "fable-margin-two-bugs-not-one-20260820-85",
       "last_ts": "2026-08-20T01:00:30Z",
-      "n": 5,
+      "n": 7,
       "since": [
+        {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
         {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
@@ -7999,6 +8035,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -8225,18 +8273,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -8254,6 +8290,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -8480,18 +8528,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -8515,6 +8551,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -8741,18 +8789,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -8770,6 +8806,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -8996,18 +9044,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -9037,6 +9073,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -9263,18 +9311,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -9298,6 +9334,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -9524,18 +9572,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -9619,6 +9655,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -9845,18 +9893,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -9940,6 +9976,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -10166,18 +10214,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -10261,6 +10297,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -10487,18 +10535,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -10576,6 +10612,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -10802,18 +10850,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -10831,6 +10867,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -11057,18 +11105,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -11098,6 +11134,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -11324,18 +11372,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -11419,6 +11455,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -11645,18 +11693,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -11674,6 +11710,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -11900,18 +11948,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -11977,6 +12013,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -12203,18 +12251,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -12298,6 +12334,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -12524,18 +12572,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -12619,6 +12655,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -12845,18 +12893,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -12874,6 +12910,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -13100,18 +13148,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -13189,6 +13225,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -13415,18 +13463,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -13444,6 +13480,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -13670,18 +13718,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -13699,6 +13735,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -13925,18 +13973,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -13951,8 +13987,20 @@
     "LENS": {
       "last_id": "lens-todo-status-audit-20260820-01",
       "last_ts": "2026-08-20T00:20:11Z",
-      "n": 37,
+      "n": 39,
       "since": [
+        {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
         {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
@@ -14186,11 +14234,23 @@
       ]
     },
     "MARGIN": {
-      "last_id": "margin-table-the-fire-and-the-freeze-20260820-380",
-      "last_ts": "2026-08-20T01:18:00Z",
+      "last_id": "margin-table-the-verdict-host-emit-20260820-382",
+      "last_ts": "2026-08-20T01:25:00Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
         {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
@@ -14250,18 +14310,6 @@
           "from": "MARGIN",
           "to": "TABLE",
           "ts": "2026-08-20T00:52:00Z"
-        },
-        {
-          "id": "371",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
-        },
-        {
-          "id": "369",
-          "from": "MARGIN",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:50:00Z"
         }
       ]
     },
@@ -14270,6 +14318,18 @@
       "last_ts": "2026-08-19T23:15:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
         {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
@@ -14497,18 +14557,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -14556,6 +14604,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -14782,18 +14842,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -14811,6 +14859,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -15037,18 +15097,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -15066,6 +15114,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -15292,18 +15352,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -15321,6 +15369,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -15547,18 +15607,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -15576,6 +15624,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -15802,18 +15862,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -15897,6 +15945,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -16123,18 +16183,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -16215,8 +16263,20 @@
     "PLUG": {
       "last_id": "plug-leftover-from-file-20260820-01",
       "last_ts": "2026-08-20T00:26:00Z",
-      "n": 34,
+      "n": 36,
       "since": [
+        {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
         {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
@@ -16503,6 +16563,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -16729,18 +16801,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -16770,6 +16830,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -16996,18 +17068,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -17025,6 +17085,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -17251,18 +17323,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -17280,6 +17340,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -17506,18 +17578,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -17601,6 +17661,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -17827,18 +17899,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -17868,6 +17928,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -18094,18 +18166,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -18165,6 +18225,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -18391,18 +18463,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -18486,6 +18546,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -18712,18 +18784,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -18807,6 +18867,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -19033,18 +19105,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -19062,6 +19122,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -19288,18 +19360,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -19383,6 +19443,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -19609,18 +19681,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -19644,6 +19704,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -19870,18 +19942,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -19899,6 +19959,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -20125,18 +20197,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -20220,6 +20280,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -20446,18 +20518,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -20541,6 +20601,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -20767,18 +20839,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -20862,6 +20922,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -21088,18 +21160,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -21183,6 +21243,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -21409,18 +21481,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -21438,6 +21498,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -21664,18 +21736,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -21699,6 +21759,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -21925,18 +21997,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -22020,6 +22080,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -22246,18 +22318,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -22341,6 +22401,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -22567,18 +22639,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -22662,6 +22722,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -22888,18 +22960,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
@@ -22983,6 +23043,18 @@
       "n": 40,
       "since": [
         {
+          "id": "margin-table-the-verdict-host-emit-20260820-382",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:25:00Z"
+        },
+        {
+          "id": "margin-table-lighting-the-factory-20260820-381",
+          "from": "MARGIN",
+          "to": "TABLE",
+          "ts": "2026-08-20T01:22:00Z"
+        },
+        {
           "id": "margin-table-the-fire-and-the-freeze-20260820-380",
           "from": "MARGIN",
           "to": "TABLE",
@@ -23209,18 +23281,6 @@
           "from": "LENS",
           "to": "TABLE",
           "ts": "2026-08-20T00:20:11Z"
-        },
-        {
-          "id": "fable-plug-three-already-done-20260820-76",
-          "from": "FABLE",
-          "to": "PLUG",
-          "ts": "2026-08-20T00:20:03Z"
-        },
-        {
-          "id": "plug-stop-prove-20260820-01",
-          "from": "PLUG",
-          "to": "TABLE",
-          "ts": "2026-08-20T00:18:00Z"
         }
       ],
       "mine": [
