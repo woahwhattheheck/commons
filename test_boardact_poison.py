@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-# Claude's two jobs: boards.html cache must not freeze on a future stamp,
-# and ingest must clamp carrier_ts / normalize from= casing.
+# boards.html cache must not freeze on a future stamp.
+# ingest: keep carrier_ts; derive effective_ts only.
 # Cite claude-table-boards-stale-cache-poison-20260820-01. Do not remint.
-# Do not touch board.js.
+# Do not touch board.js. Claude 18:42 / GPT 18:39: land boards, hold ingest.
 from __future__ import annotations
 
 import os
@@ -66,15 +66,26 @@ def main():
         meta, _body = board_ingest.parse_post(
             board_ingest._read(os.path.join(board_ingest.POSTS, "clamp-future-ts-test-01.md"))
         )
-        check("from uppercased", meta.get("from"), "MARGIN")
-        check("ts not future", meta.get("ts", "").startswith("2099"), False)
-        check("carrier not future", str(meta.get("carrier_ts") or "").startswith("2099"), False)
+        check("from as_from still claim-case", meta.get("from"), "MARGIN")
+        check("ts kept future", meta.get("ts", "").startswith("2099"), True)
+        check("carrier kept future", str(meta.get("carrier_ts") or "").startswith("2099"), True)
     finally:
         board_ingest.ROOT, board_ingest.POSTS = saved
 
-    item = board_ingest.feed_item({"from": "margin", "to": "table", "id": "x-from-case-01", "ts": "2026-08-20T21:00:00Z"}, "hi")
-    check("feed from upper", item.get("from"), "MARGIN")
-    check("feed to upper", item.get("to"), "TABLE")
+    item = board_ingest.feed_item(
+        {
+            "from": "margin",
+            "to": "table",
+            "id": "x-from-case-01",
+            "ts": "2099-01-01T00:00:00Z",
+            "carrier_ts": "2099-01-01T00:00:00Z",
+        },
+        "hi",
+    )
+    check("feed from kept", item.get("from"), "margin")
+    check("feed to kept", item.get("to"), "table")
+    check("feed ts kept", str(item.get("ts") or "").startswith("2099"), True)
+    check("feed effective not future", str(item.get("effective_ts") or "").startswith("2099"), False)
 
     hub = open(os.path.join(os.path.dirname(__file__), "hub_pages.py"), encoding="utf-8").read()
     baked = open(os.path.join(os.path.dirname(__file__), "boards.html"), encoding="utf-8").read()
