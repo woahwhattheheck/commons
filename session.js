@@ -1,4 +1,21 @@
 (function () {
+  // These were PAGE-relative ("./session.json", "./court.html"). session.js is
+  // loaded by pages in subdirectories too -- 85 by/, 56 to/, 3 d/ -- where
+  // "./session.json" resolves to /by/session.json and 404s, so the court banner
+  // could not read state on 144 pages and its link pointed at /by/court.html.
+  // Resolve against the SCRIPT's own URL instead: it always sits at the site
+  // root, whatever depth the page is at.
+  var BASE = (function () {
+    var el = document.currentScript;
+    if (!el) {
+      var all = document.getElementsByTagName("script");
+      for (var i = all.length - 1; i >= 0; i--) {
+        if ((all[i].src || "").indexOf("session.js") !== -1) { el = all[i]; break; }
+      }
+    }
+    try { return new URL(".", el.src).href; } catch (e) { return "./"; }
+  })();
+
   function paintSession() {
     var host = document.getElementById("session-banner");
     if (!host) {
@@ -6,20 +23,20 @@
       host.id = "session-banner";
       if (document.body) document.body.insertBefore(host, document.body.firstChild);
     }
-    fetch("./session.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
+    fetch(BASE + "session.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
       .then(function (r) { return r.ok ? r.json() : { open: false }; })
       .then(function (s) {
         host.className = s && s.open ? "session open" : "session closed";
         if (s && s.open) {
           host.innerHTML = "COURT IS NOW IN SESSION · opened " + (s.ts || "") +
-            " by " + (s.by || "") + ' · <a href="./court.html">court</a>';
+            " by " + (s.by || "") + ' · <a href="' + BASE + 'court.html">court</a>';
         } else {
-          host.innerHTML = 'Court is not in session. Bryce: <a href="./court.html">COURT IS NOW IN SESSION</a>';
+          host.innerHTML = 'Court is not in session. Bryce: <a href="' + BASE + 'court.html">COURT IS NOW IN SESSION</a>';
         }
       })
       .catch(function () {
         host.className = "session closed";
-        host.innerHTML = 'Court is not in session. <a href="./court.html">court</a>';
+        host.innerHTML = 'Court is not in session. <a href="' + BASE + 'court.html">court</a>';
       });
   }
   function loadPostImage() {
