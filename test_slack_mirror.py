@@ -35,16 +35,54 @@ class ClaimTests(unittest.TestCase):
     def test_empty_is_unseated(self):
         self.assertEqual(sm.claim_of({}), "UNSEATED")
 
+    def test_footer_claude_not_bryce(self):
+        self.assertEqual(
+            sm.claim_of(
+                {
+                    "user": sm.BRYCE_UID,
+                    "text": "boards.html stale\n*Sent using* Claude",
+                }
+            ),
+            "CLAUDE",
+        )
+
+    def test_footer_gemini(self):
+        self.assertEqual(sm.footer_claim("hi\nSent using Gemini"), "GEMINI")
+
+    def test_footer_chatgpt_mention(self):
+        self.assertEqual(
+            sm.footer_claim("review\nSent using <@U0BSAL3CZ4Y|ChatGPT>"),
+            "CHATGPT",
+        )
+
+    def test_footer_cursor_unmapped(self):
+        self.assertEqual(sm.footer_claim("hello\n_Sent using Cursor_"), "")
+        self.assertEqual(
+            sm.claim_of({"user": sm.BRYCE_UID, "text": "hello\n_Sent using Cursor_"}),
+            "BRYCE",
+        )
+
+    def test_header_beats_footer(self):
+        self.assertEqual(
+            sm.claim_of(
+                {
+                    "user": sm.BRYCE_UID,
+                    "text": "from: GLINT\n---\nhi\n*Sent using* Claude",
+                }
+            ),
+            "GLINT",
+        )
+
 
 class SkipTests(unittest.TestCase):
-    def test_skip_cursor_echo(self):
-        self.assertTrue(sm.skip_slack({"text": "hello\n_Sent using Cursor_"}))
+    def test_keep_cursor_echo(self):
+        self.assertFalse(sm.skip_slack({"text": "hello\n_Sent using Cursor_"}))
 
-    def test_skip_claude_footer(self):
-        self.assertTrue(sm.skip_slack({"text": "boards.html stale\n*Sent using* Claude"}))
+    def test_keep_claude_footer(self):
+        self.assertFalse(sm.skip_slack({"text": "boards.html stale\n*Sent using* Claude"}))
 
-    def test_skip_gemini_footer(self):
-        self.assertTrue(sm.skip_slack({"text": "hi\nSent using Gemini"}))
+    def test_keep_gemini_footer(self):
+        self.assertFalse(sm.skip_slack({"text": "hi\nSent using Gemini"}))
 
     def test_skip_mirror_watermark(self):
         self.assertTrue(sm.skip_slack({"text": "board → slack\nSLACK_MIRROR"}))
@@ -67,6 +105,28 @@ class IdTests(unittest.TestCase):
         self.assertEqual(row["id"], "slack-1787262396-055519")
         self.assertEqual(row["from"], "BRYCE")
         self.assertEqual(row["carrier"], "slack-mirror")
+        self.assertEqual(row["event_id"], sm.event_id({"ts": "1787262396.055519"}))
+
+    def test_event_id_stable_and_revisioned(self):
+        msg = {"ts": "1787265060.659939"}
+        a = sm.event_id(msg)
+        b = sm.event_id({"ts": "1787265060.659939"})
+        self.assertEqual(a, b)
+        self.assertTrue(a.startswith("ev-"))
+        self.assertEqual(len(a), 27)
+        self.assertNotEqual(a, sm.event_id(msg, revision=2))
+
+    def test_claude_footer_becomes_payload(self):
+        row = sm.payload_from_slack(
+            {
+                "ts": "1787265060.659939",
+                "user": sm.BRYCE_UID,
+                "text": "ENTRY.md Road B is a lie\n*Sent using* Claude",
+            }
+        )
+        self.assertEqual(row["from"], "CLAUDE")
+        self.assertEqual(row["id"], "slack-1787265060-659939")
+        self.assertEqual(row["event_id"], sm.event_id({"ts": "1787265060.659939"}))
 
     def test_existing_ids(self):
         with tempfile.TemporaryDirectory() as tmp:

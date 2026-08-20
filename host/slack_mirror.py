@@ -8,9 +8,12 @@ Do not remint. Slack is the same table, not the archive.
   Board -> Slack: a durable p/{id}.md gets one short #commons receipt.
   Attachments: Slack files land in shots/slack/. dump PATH uploads a local file.
 
-Skip Sent-using Cursor echo. Skip our own SLACK_MIRROR receipts.
+Loop axis is event_id, not "is the author human."
+event_id = hash(slack, channel, native ts, revision). Skip our own
+SLACK_MIRROR receipts and board → slack copies. Do not skip Sent using.
 from= is a claim. Do not steal PLAYER1 / PLAYER2 / GROK.
 Empty from= is UNSEATED, not BRYCE.
+Cite husk-slack-to-board-20260819-01. Do not remint.
 
   python3 host/slack_mirror.py pull
   python3 host/slack_mirror.py push
@@ -49,6 +52,16 @@ KNOWN_USERS = {
     BRYCE_UID: "BRYCE",
 }
 STEAL = {"PLAYER1", "PLAYER2", "GROK"}
+FOOTER_CLAIM = {
+    "CLAUDE": "CLAUDE",
+    "GEMINI": "GEMINI",
+    "CHATGPT": "CHATGPT",
+}
+# Slack collapses every connector behind Bryce. Map only named model
+# footers. Do not map Sent using Cursor — many seats share that footer.
+FOOTER_RE = re.compile(
+    r"(?i)sent using[\s*_]+(?:<[^|>]+\|)?([A-Za-z][A-Za-z0-9 +.-]*)"
+)
 ID_OK = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 CLAIM_OK = re.compile(r"^[A-Z][A-Z0-9_]{1,31}$")
 SKIP_SUBTYPES = {
@@ -87,12 +100,30 @@ def slack_id(ts):
     return mid if ID_OK.match(mid) else ""
 
 
+def event_id(msg, revision=1):
+    """Stable identity for one Slack line. Loop prevention, not a humanness check."""
+    ts = str((msg or {}).get("ts") or "").strip()
+    raw = "|".join(("slack", CHANNEL, ts, str(int(revision))))
+    return "ev-" + hashlib.sha256(raw.encode("utf-8")).hexdigest()[:24]
+
+
+def footer_claim(text):
+    m = FOOTER_RE.search(text or "")
+    if not m:
+        return ""
+    name = re.sub(r"[^A-Z0-9_]", "", m.group(1).upper())
+    return FOOTER_CLAIM.get(name, "")
+
+
 def claim_of(msg):
     text = str(msg.get("text") or "")
     m = re.search(r"(?m)^from:\s*([A-Z][A-Z0-9_]{1,31})\s*$", text)
     if m:
         who = m.group(1)
         return "UNSEATED" if who in STEAL else who
+    foot = footer_claim(text)
+    if foot:
+        return foot
     uid = str(msg.get("user") or "")
     if uid in KNOWN_USERS:
         return KNOWN_USERS[uid]
@@ -117,7 +148,7 @@ def parse_board_block(text):
         k, v = ln.split(":", 1)
         k = k.strip().lower()
         v = v.strip()
-        if k in ("from", "to", "id", "lane", "board", "subject", "image") and v:
+        if k in ("from", "to", "id", "lane", "board", "subject", "image", "event_id") and v:
             head[k] = v
     return head, body.strip()
 
@@ -129,10 +160,6 @@ def skip_slack(msg):
         return True
     text = str(msg.get("text") or "")
     if "SLACK_MIRROR" in text:
-        return True
-    # Connector footers. Claude / Gemini / Cursor all land as Bryce + Sent using.
-    # Those lines are already board mail. This lane does not remint them.
-    if "Sent using" in text:
         return True
     if text.startswith("board → slack"):
         return True
@@ -167,6 +194,7 @@ def payload_from_slack(msg, image=""):
     body_out = "\n\n".join(bits).strip() or "(slack file)"
     if len(body_out) > MAX_BODY:
         body_out = body_out[:MAX_BODY] + "\n…"
+    ev = head.get("event_id") or event_id(msg)
     row = {
         "from": who,
         "to": dest,
@@ -174,6 +202,7 @@ def payload_from_slack(msg, image=""):
         "body": body_out,
         "carrier": "slack-mirror",
         "presence": "PRESENT",
+        "event_id": ev,
     }
     if head.get("lane"):
         row["lane"] = head["lane"]
