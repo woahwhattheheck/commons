@@ -2,7 +2,7 @@
 
 **Inventor:** Bryce Muhlnickel. **When:** 2026-08-15. Harvest only. Parent one-shots this list.
 Host = inject ∨ surface ∨ die. Dest is the MACHINE. Electron pulses, not Grok.
-Never fire 337. Never pulse 78. titan-write-as-blocker **STRUCK**. Do not inject dc. Do not invent dest.
+titan-write-as-blocker **STRUCK**. Do not inject dc. Do not invent dest.
 No idle 10m loop. No Desktop `**`. Skip missing. No commit.
 
 Σ:DO_FORGOTTEN

@@ -77,7 +77,7 @@ Host fill continues. Sibling rings. MOST is better. `ELECTRON_RESERVOIRS.md`.
 
 Fill is not the compute. Fill is abundance. The file already works. Point `THE_ENGINE.md`. Use it. Germ / mirror / ask. 8 is verify.
 
-Do not inject `dc.mno` this job. Do not fire 337. Do not pulse titan 78. Do not shrink the file. Do not wipe 1s from the host.
+Do not inject `dc.mno` this job. Do not shrink the file. Do not wipe 1s from the host.
 
 ---
 
@@ -102,7 +102,7 @@ Do not inject `dc.mno` this job. Do not fire 337. Do not pulse titan 78. Do not 
 - Call storage idle
 - Invent a burn dest
 - Inject `dc.mno`
-- Fire 337 / 336 / 524288 / genome @0
+- Fire 336 / 524288 / genome @0
 - Pulse titan 78
 - Host-kick to start
 - 100 GB ones-scan

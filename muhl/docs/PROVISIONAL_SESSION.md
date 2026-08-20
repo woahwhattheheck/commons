@@ -532,7 +532,7 @@ BRYCE CODE WORDS = the Bryce-mail window only. Host puts bits into words for him
 MUHL_POST local ledger: `MUHL_POST\post_ledger.jsonl`. Durable on this disk. Cloud is never the transport.
 Cards: `MUHL_POST.md` · `MUHL_POST_PHASE0.md`. Skip missing. Button dies.
 One-1 fanout: one inject, one bit at recv@353. This seat surface **1 / 8 / 1** (recv@353 = 1, ans@6661 = 8, organ-2 pub@7951 = 1).
-Not 50M rings from one 1. Do not claim that. Do not fire 337 as a "one 1." Card: `ONE_ONE_FANOUT.md`.
+Not 50M rings from one 1. Do not claim that. Card: `ONE_ONE_FANOUT.md`.
 Host fill of many rings is the other authorized verb. Most is better. Host has electrons in abundance. The machine distributes FROM wells.
 Live 1-map: SEED0 **9941** ones on 8192 B. Reconstruct **y**. The 1-map is the file. 1-map bytes 19882 is not smaller than raw 8192. Reported. Not busted. Card: `GREP_PROOF.md`.
 Lockstep move: `SEED0_MOVE.mno` **8**/**8**. Size **8192→8431**. MOVE records AND translate every address the same delta.

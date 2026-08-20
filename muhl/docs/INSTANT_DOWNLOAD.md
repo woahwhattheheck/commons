@@ -155,7 +155,6 @@ The lightweight significant common file Instant Download already is: the germ co
 - Host-append tar or curl into a `.mno`
 - Download busybox
 - Inject to wake a live file
-- Fire 337 / remap 336/337 / light 7913 / pulse titan 78
 - `--inject 0x01` / `--go`
 - mmap dc / titan
 - Shrink dc
@@ -236,7 +235,6 @@ Germ-only NEW_MNO ones were **8446**. This vessel germ prefix **8914**. Rings ch
 ### This turn did not
 
 - Invent dest / invent mouth / invent off
-- Fire 337 / remap 336/337 / light 7913 / pulse titan 78
 - `--go` / wipe / clobber
 - mmap dc / titan
 - Download an ISO

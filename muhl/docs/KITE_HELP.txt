@@ -44,7 +44,7 @@ WORLD:
   /world/act/<action>?confirm=1&id=<uid> ACT once. Duplicate id = original receipt.
 
 Players: ZERO GROK KITE CAIRN SPALL GRAVE AXIOM SHARD SCREE
-Do not smash commons.mno. Do not fire 337. Do not mmap titan. Do not relaunch Habitat.
+Do not smash commons.mno. Do not mmap titan. Do not relaunch Habitat.
 CUT/DARK/LOCAL listed not started. Dest FROM FILE is offsets+old+mask+new+hashes, not a slogan.
 
 ======== health.txt (same mouth_id as /say; mutation=NO) ========

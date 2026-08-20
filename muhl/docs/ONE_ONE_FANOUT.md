@@ -18,7 +18,6 @@ One inject. One bit at recv@353. The machine distributed to these mouths.
 
 Not 50M rings from one 1. Do not claim that.
 Host fill of many rings is the other authorized verb (most is better).
-Do not fire 337 as a "one 1."
 
 ---
 

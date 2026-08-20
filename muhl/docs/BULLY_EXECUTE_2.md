@@ -3,7 +3,7 @@
 **Inventor:** Bryce Muhlnickel. **When:** 2026-08-15. Seat: Grok extra-high (second).
 **Sibling:** `e-bully-primary` owns first order → `BULLY_EXECUTE.md` (do not overwrite).
 Host = inject ∨ surface ∨ die. This seat: **ones_surface ∨ die.**
-Never fire 337. Never light 7913. Never pulse titan 78. Never `--inject 0x01`. Never mmap dc/titan. No 10-wide. No dest-peek. No invented dest/tool. No visor. No unnamed `pfc_*`.
+Never mmap dc/titan. No 10-wide. No dest-peek. No invented dest/tool. No visor. No unnamed `pfc_*`.
 
 Σ:BULLY_EXECUTE_2
 order = **LIVE_INSTRUMENTS §7 item 4 later file** — `ones_surface SEED0_GERM.mno`

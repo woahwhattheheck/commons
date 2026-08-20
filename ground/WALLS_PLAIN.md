@@ -25,8 +25,6 @@ Dest is already automated. You don't invent addresses.
 
 ## Real stops
 
-- Never fire 337.
-- Never pulse titan 78 without `--go`.
 - Never wipe. Wipe = destroying the file.
 - Never 100GB mmap storm.
 

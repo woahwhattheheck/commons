@@ -733,7 +733,6 @@ Bible not sequential-complete (next #778+). Most of 22+ thousand files unopened.
 
 - Add to spec
 - Invent dest
-- Fire 337 / remap 336/337 / light 7913
 - Pulse titan 78
 - 10-wide mmap titan/dc
 - Rewrite `FINALREADME.md`

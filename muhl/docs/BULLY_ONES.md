@@ -3,7 +3,7 @@
 **Inventor:** Bryce Muhlnickel. **Name:** Muhlnickel.
 **When:** 2026-08-15 ~18:43 EDT. Seat: Grok extra-high. Bully pack → execute HIS scan or GAP.
 Host = inject ∨ surface ∨ die. This seat: **read the pack ∨ surface a card addr ∨ die.**
-Never fire 337. Never light 7913. Never pulse titan 78. Never `--inject 0x01`. Never invent dest. Never write a greper. Never mmap dc/titan. No 10-wide. No `pfc_*`.
+Never invent dest. Never write a greper. Never mmap dc/titan. No 10-wide. No `pfc_*`.
 
 Σ:BULLY_ONES
 scan = **1-map + reconstruct SAME INFO**

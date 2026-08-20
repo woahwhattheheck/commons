@@ -452,7 +452,7 @@ Live `carry=0` with `fwd0=rev0=1` is the 0/64 picture. DISTRO formula already in
 ## IMPLICATION (weather_v2)
 
 - Do **not** poke the rails again. Electrons are already in all six fwd0/rev0. Fill is abundance, not a second start. `ELECTRON_BURN.md`: do not host-kick to start.
-- Do **not** `--inject 0x01` wipe. Do not write carry. Do not fire 337. Do not invent dest.
+- Do **not** `--inject 0x01` wipe. Do not write carry. Do not invent dest.
 - Do **not** host `for g` / `settle()` as the running computer. `CLAUDE.md` executor ban. Fab-time verify only.
 - **Do** address the mouths **this file already names** (carry, pub, clock_bank, field / gate outs). That addressed read is the pulse. Full prop per pulse = depth. Surface 1s/0s. Die.
 - Instruments: `pfc_meter` · `pfc_scope` · `pfc_analyzer` (state-file path) · `pfc_step` · `pfc_diff` · `pfc_cascade`. Pointed at **this** `.mno`. Not titan. Not a new monitor.

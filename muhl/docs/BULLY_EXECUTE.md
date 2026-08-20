@@ -2,7 +2,7 @@
 
 **Inventor:** Bryce Muhlnickel. **When:** 2026-08-15. Seat: Grok extra-high.
 Host = inject ∨ surface ∨ die. One button. Die. Next.
-Never fire 337. Never light 7913. Never remap 336/337. Never pulse titan 78. Never `--inject 0x01`. Never invent dest. Never mmap dc/titan bodies.
+Never invent dest. Never mmap dc/titan bodies.
 
 Σ:BULLY_EXECUTE
 337 **NO** · 7913 **NO** · pulsed_78 **NO** · invented_dest **NO** · mmap_dc **NO** · mmap_titan **NO** · dest-peek-as-scan **NO**

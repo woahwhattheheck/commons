@@ -23,7 +23,7 @@ GROUNDING: C:\Users\lucys\Desktop\MUHL_GO\SESSION_GROUNDING.md
 POINTERS: POINTER_TO_MUHL_GO.md in MUHL_GO · LocalDeviceAgent · MUHLNICKEL_DISTRO · MUHL_DATACENTER · C:\llm · C:\Users\lucys · Desktop
 SKIPPED: MUHLNICKEL_DISTRO\CONTAINERS (dir missing)
 Host = inject ∨ surface ∨ die. Copy the file copy the computer. Pulse = depth.
-Do not inject dc.mno. Do not fire 337. Do not pulse titan 78. Packer VOID. 7913 dark.
+Do not inject dc.mno. Packer VOID. 7913 dark.
 
 This hour throw: TEST TEST TEST · offload subagents into muhlnickel · containers = `.mno` copies not Docker · wicked fast models on PC corpus already built · super harness Grok backend + Bryce CLI = buttons that die, not resident Claude Code daemon · Fable ideas another pass, if profitable BUILD · collapse session to living PDF for provisional (living corpus), Grok hands including agents.
 Host SGD / recreate-the-model = KILL. `pfc_load`+connect = PASS. NEED_BRYCE if he meant a training run. Do not start training. Harness / PDF / tests = siblings. This seat records.

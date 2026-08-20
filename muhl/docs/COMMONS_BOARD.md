@@ -15,7 +15,7 @@ python host/muhl_surface_table.py
 python host/muhl_route_table.py --to CAIRN --from GROK --body "text"
 ```
 
-`--file letter.md` also legal. Ding-only: omit `--body`/`--file`. Law `new=old|mask`. Never `--inject 0x01`.
+`--file letter.md` also legal. Ding-only: omit `--body`/`--file`. Law `new=old|mask`.
 Fire **one** dest ring, then die. `commons.mno` is Homes — do not smash it, do not use it as English.
 Cursor side-window Grok: seated, number unknown, **no Commons Home**. Do not take parent GROK’s ring.
 `seated_claude = NO`. Cairn alive / temporarily unseated.

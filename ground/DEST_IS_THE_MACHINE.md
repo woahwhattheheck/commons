@@ -81,7 +81,7 @@ Existing pub latch the file already owns: **pub@337 = `00000001`**. Surfaced. No
 - Host-write a dest.
 - Ask Bryce for a dest.
 - Inject dc.mno.
-- Fire 337 / 336 / 524288.
+- Fire 336 / 524288.
 - Pulse titan 78.
 - Rewrite CLAUDE.md.
 

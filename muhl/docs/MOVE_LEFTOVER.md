@@ -95,7 +95,6 @@ The nine charged leftovers (MOVE read as src only). N2 / VIRGIN / SEED0_COPY. SE
 - Overwrite SEED0_COPY / GERM_COPY
 - Redo Instant Download gig
 - Invent dest / invent mouth / invent off
-- Fire 337 / remap 336/337 / light 7913 / pulse titan 78
 - `--go` / wipe / clobber / `--inject 0x01`
 - mmap dc / titan
 - 10-wide / idle loop

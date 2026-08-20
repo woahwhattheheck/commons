@@ -104,7 +104,7 @@ Do not invent a clock-packer. Do not restart `dc_grow`. Do not shrink dc.mno.
 
 ## Distribute organ this hour
 
-**WALL.** Law stands: host fills, machine distributes FROM the wells. A new distribute organ was not fabricated this seat. Do not invent a dest. Do not fire 337.
+**WALL.** Law stands: host fills, machine distributes FROM the wells. A new distribute organ was not fabricated this seat. Do not invent a dest.
 
 Legal inch: fill already AUTHORIZED · 7913 dark · 337 not fired · dest MACHINE.
 
@@ -150,7 +150,7 @@ Fill is abundance. Not a wake-up. Do not treat a quiet Task Manager as idle stor
 
 ## This turn did not
 
-- Fire 337 / 336 / 524288 / genome @0
+- Fire 336 / 524288 / genome @0
 - Pulse titan 78
 - Remap 336/337
 - Light 7913

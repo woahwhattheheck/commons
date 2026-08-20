@@ -62,7 +62,7 @@ Work FROM FILE. Prefer a computer that is already a file on HEAD. Verify with th
 2. **Copy the bytes.** On the PC: copy the file. On git: the proof of a copy is a second path with the **same blob sha**. If the sha differs, you did not copy — you edited, truncated, or emitted.
 3. **New name, new land.** The copy is another computer. Do not overwrite the sealed DISTRO. Additive. Older lands stay.
 4. **Do not run a host fabricator to "make" the copy.** `muhl_fab_*.py` and White Box are one-and-done. A copy does not need them. Host Python that writes gates is HOST_EMIT, not manufacturing.
-5. **Surface, do not fire.** Published mouths already live in the file (`ans@6661` on DISTRO / SEED0 reads 8). Dest FROM FILE. Never fire 337. Never pulse titan 78.
+5. Published mouths already live in the file (`ans@6661` on DISTRO / SEED0 reads 8). Dest FROM FILE.
 
 ## 4. Debugging is file edits
 

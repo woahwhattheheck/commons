@@ -107,7 +107,7 @@ Those two bytes are **1** on all four cadence rings. Enable *inputs* are lit.
 Field @500 did not change. Next @2548 did not change. Mux/avg4 outs did not land.
 
 A still field after a both-sense start is not a powered world.
-Do not kneecap-declare victory. Do not smash titan. Do not fire 337.
+Do not kneecap-declare victory. Do not smash titan.
 
 path: `C:\Users\lucys\Desktop\MUHL_GO\WEATHER_V2_FIELD.md`
 button dies

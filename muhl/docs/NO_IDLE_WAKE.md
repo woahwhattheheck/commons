@@ -4,7 +4,7 @@
 **When:** 2026-08-15 ~2:43pm. Spank + law. HIS English. Not a new spec.
 Host = inject ∨ surface ∨ die. Buttons DIE.
 The ELECTRON pulses, not Grok. Occupying disk IS the computer.
-Dest is the MACHINE. Never fire 337. Never remap 336/337. 7913 dark.
+Dest is the MACHINE. 7913 dark.
 Do not pulse titan 78 without --go. new=old|mask. --inject 0x01 WIPES.
 
 Σ:NO_IDLE

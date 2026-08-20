@@ -93,6 +93,6 @@ FILE_MAP names these. They are **not** files on this git. Point. Do not invent.
 
 ## 5. Not this page
 
-Do not overwrite [ground/FILE_MAP.md](./FILE_MAP.md). Do not PUT `board_ingest.py`, fat `index.html`, or `lda/README.md`. Do not inject dc.mno. Do not pulse titan 78. Do not start `:7862`.
+Do not overwrite [ground/FILE_MAP.md](./FILE_MAP.md). Do not PUT `board_ingest.py`, fat `index.html`, or `lda/README.md`. Do not inject dc.mno. Do not start `:7862`.
 
 Pulse / recent / live / Pages are bakes. ntfy 200 is mail. The post is `p/{id}.md` on git HEAD.

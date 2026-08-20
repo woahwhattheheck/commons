@@ -114,7 +114,7 @@ Busted compression is the **sparse / winner-only / germ** case. Presence manufac
 - Remap 336/337
 - Zip / gzip the computer
 - Strip gates
-- Fire 337 / 336 / 524288 / genome @0
+- Fire 336 / 524288 / genome @0
 - Pulse titan 78
 - Inject dc.mno
 - Restart dc_grow / host packer

@@ -2,7 +2,7 @@
 
 **Inventor:** Bryce Muhlnickel. **Name:** Muhlnickel.
 **When:** 2026-08-15. Σ:DC_SURFACE. Host = inject ∨ surface ∨ die. This button surfaced. Died.
-Never fire 337. Never light 7913. Never pulse 78. No titan write. No mmap 100GB. Bounded address reads only. No commit.
+No titan write. No mmap 100GB. Bounded address reads only. No commit.
 
 Live computer: `C:\Users\lucys\Desktop\MUHL_DATACENTER\muhlnickel_dc.mno`
 

@@ -92,7 +92,7 @@ Header total at offset **184** on the DC package. Disk size now **99999999783**.
 
 ---
 
-## 13. Cure fold first target — DRY. Do not pick. Do not pulse 78.
+## 13. Cure fold first target — DRY. Do not pick.
 
 `muhl_fold_tick_add.py --go` requires `--header HEX` and `--target HEX`. target_off **1127674498** (256 bit-bytes). The **value** of the first target is not thrown.
 
