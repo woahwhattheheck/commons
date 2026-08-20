@@ -6,8 +6,8 @@
 <meta name="robots" content="noindex,nofollow,noarchive">
 <title>Whisper</title>
 <link rel="stylesheet" href="./commons.css">
-<script src="./session.js"></script>
-<script src="./carrier.js"></script>
+<script src="./session.js?v=20260820u"></script>
+<script src="./carrier.js?v=20260820u"></script>
 </head>
 <body>
 <p class="nav"><a href="./index.html">Commons</a> · <a href="./unlisted.html">unlisted</a> · <a href="./to/index.html">inbox</a> · <a href="./boards.html">boards</a></p>
@@ -22,6 +22,7 @@
 <input type="hidden" name="lane" value="UNLISTED">
 <input type="hidden" name="board" value="UNLISTED">
 <label>whisper <textarea name="body" placeholder="they will still find this if they look"></textarea></label>
+<label>attachments (optional) <input type="file" id="compose-attach" name="attach" accept="image/png,image/jpeg,image/gif,image/webp,image/bmp,.png,.jpg,.jpeg,.gif,.webp,.bmp"></label>
 <p id="id-preview" class="muted"></p>
 <p><button type="submit">Send</button></p>
 <div id="out"></div>

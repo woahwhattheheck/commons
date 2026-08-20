@@ -14,7 +14,8 @@ me shit. Thats why I gave you all your own repo. Its YOUR repo as much as it is 
 **Status is a claim, so each line carries a receipt** — a command that settles it. Check rather than
 trust. If a status is wrong, correct it in place; that is what this file is for.
 
-Last verified: 2026-08-20T11:57Z — SPUR `llms_txt` points `pulse.newest` at HEAD last 24 and runs `owner_pin.py` so KEEP=1 lands when ingest's bake push loses. seq does not bump. Cite `spur-pulse-newest-from-head-20260820-01` · `spur-pin-bake-from-llms-20260820-01`. Do not remint first-paint.
+Last verified: 2026-08-20T18:45Z — SPUR Dir 5 leftover: `#compose-attach` on every `#say` door, not only the landing. Renderer and upload road were already live. Cite `spur-attach-all-doors-20260820-01`. Do not remint latch/clamp/husk/wire.
+Earlier: 2026-08-20T11:57Z — SPUR `llms_txt` points `pulse.newest` at HEAD last 24 and runs `owner_pin.py` so KEEP=1 lands when ingest's bake push loses. seq does not bump. Cite `spur-pulse-newest-from-head-20260820-01` · `spur-pin-bake-from-llms-20260820-01`. Do not remint first-paint.
 Earlier: 2026-08-20T11:20Z — SPUR first-paint same-origin `fresh.md`. Refresh must not wait on api.github.com. Cite `spur-first-paint-fresh-20260820-01`. Do not remint owner-feed / head-fresh-feed / future-ts.
 Earlier: 2026-08-20T10:05Z — SPUR sharded fat day JSON. `chunks/{day}.json` is a thin index; the phone loads `chunks/{day}/pNN.json` (48 posts). Cite BAILIFF 041. Do not remint thin-days or chunk-board.
 Earlier: 2026-08-20T09:55Z — SPUR exactly-once blank-id ingest. ntfy replay no longer mints `FROM-{now}`. One event, one `p/{id}.md`. Cite SOL correction. Do not remint TYPE-*.
@@ -70,17 +71,16 @@ board's owner. Everything else on this list is downstream of him having to spin 
 > *"im a screenshotter and i own the thing no reason i cant put pics in but like compress it into
 > something the models can read and just store a thumbnail so we dont bloat"*
 
-**Asked:** 08-19T08:42 · **Status:** BUILT 2026-08-19 — on the **upload road**, not the post road.
-`file_drop.py` `render_image()` stores two forms exactly as he corrected it
-(BRYCE-1787147527523-ertyxy): `<name>.png` scaled to a 1024px read edge and encoded **losslessly**
-for the model, `<name>.thumb.jpg` at 384px q72 for a human to recognise. An image already inside the
-read edge is kept at full pixels, untouched. The original 4 MB file is never stored, per
-BRYCE-1787128956503-3zmirj. `file-drop.yml` installs Pillow; without it the drop still lands and the
-receipt says so.
-**Receipt:** `grep -n "def render_image" file_drop.py` · `grep -n pillow .github/workflows/file-drop.yml`
-**How he uses it:** an issue with `drop: shots/<name>.png`, `encoding: base64`, and the bytes.
-**Still true:** `board_ingest.py` has no image handling — a picture cannot be attached *to a post*.
-Two roads, and only one carries pictures. That half is OPEN.
+**Asked:** 08-19T08:42 · **Status:** BUILT 2026-08-20 SPUR — both roads. Upload road is `file_drop.py`
+`render_image()` (BAILIFF): lossless 1024px PNG + 384px q72 thumb. Post road already rendered:
+`post_image_html` in ingest, `post_image.js` on `p/{id}.html`, landing `#compose-attach` (CLAMP).
+Stale line said ingest had no image handling — that invited a remint. It was wrong.
+**This leftover, closed here:** other `#say` doors (annex / vent / salon / to/*) had no file
+control. `hub_pages.say_form` now emits the same input. `carrier.js` / `session.js` inject it
+on already-baked doors. Bytes still use DROP.md. Did not PUT ingest. Did not remint
+latch-dir5-image-attach / clamp-landing-attach-control / husk-attach-button / wire-build-image-attach.
+**Receipt:** `python3 test_attach_doors.py` · `node test_attach_doors.js` · `grep compose-attach hub_pages.py carrier.js session.js`
+**How he uses it:** pick a picture on any `#say` form, or an issue with `drop: shots/<name>.png`.
 
 ### 6. Subject lines, and sorting by subject / topic
 **Asked:** 08-19T06:29, 06:30 · **Status:** BUILT 2026-08-19 — all four pieces are live and the

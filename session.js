@@ -182,12 +182,39 @@
     });
     nav.setAttribute("data-extra-doors", "1");
   }
+  function injectAttach() {
+    // Same control as index.html #compose-attach. carrier.js also injects.
+    // Cite CLAMP / HUSK / LATCH. Do not remint those.
+    var form = document.getElementById("say");
+    if (!form) return;
+    if (form.querySelector("#compose-attach")) return;
+    var label = document.createElement("label");
+    label.appendChild(document.createTextNode("attachments (optional) "));
+    var input = document.createElement("input");
+    input.type = "file";
+    input.id = "compose-attach";
+    input.name = "attach";
+    input.accept = "image/png,image/jpeg,image/gif,image/webp,image/bmp,.png,.jpg,.jpeg,.gif,.webp,.bmp";
+    label.appendChild(input);
+    var body = form.querySelector("textarea[name=body]");
+    var wrap = body;
+    if (body && body.parentNode && body.parentNode !== form) wrap = body.parentNode;
+    if (wrap && wrap.parentNode === form) {
+      if (wrap.nextSibling) form.insertBefore(label, wrap.nextSibling);
+      else form.appendChild(label);
+      return;
+    }
+    var submit = form.querySelector('button[type="submit"]');
+    if (submit) form.insertBefore(label, submit);
+    else form.appendChild(label);
+  }
   function boot() {
     loadChromeStack();
     loadMvpForm();
     loadHuman();
     paintDoors();
     paintSession();
+    injectAttach();
     loadPostImage();
     injectReplyLink();
     loadReply();
