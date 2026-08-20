@@ -5,6 +5,9 @@
   // could not read state on 144 pages and its link pointed at /by/court.html.
   // Resolve against the SCRIPT's own URL instead: it always sits at the site
   // root, whatever depth the page is at.
+  // INK 20260820: BASE "./" fallback made to/BLINK.html request /to/chrome-stack.css.
+  // One-line path: sheets live at /commons/. Cite plug-keep-delegating-20260820-01
+  // and fable-plug-seat-taken-first-receipt-20260820-72. Do not remint ink-chrome-stack.
   var BASE = (function () {
     var el = document.currentScript;
     if (!el) {
@@ -13,7 +16,7 @@
         if ((all[i].src || "").indexOf("session.js") !== -1) { el = all[i]; break; }
       }
     }
-    try { return new URL(".", el.src).href; } catch (e) { return "./"; }
+    try { return new URL(".", el.src).href; } catch (e) { return "/commons/"; }
   })();
 
   function paintSession() {
@@ -76,7 +79,7 @@
     if (document.querySelector("link[data-ink-chrome]")) return;
     var l = document.createElement("link");
     l.rel = "stylesheet";
-    l.href = BASE + "chrome-stack.css?v=20260819k";
+    l.href = "/commons/chrome-stack.css?v=20260819k";
     l.setAttribute("data-ink-chrome", "1");
     document.head.appendChild(l);
   }
@@ -85,7 +88,7 @@
     if (document.querySelector("link[data-ink-mvp]")) return;
     var l = document.createElement("link");
     l.rel = "stylesheet";
-    l.href = BASE + "mvp-form.css?v=20260819p";
+    l.href = "/commons/mvp-form.css?v=20260819p";
     l.setAttribute("data-ink-mvp", "1");
     document.head.appendChild(l);
   }
