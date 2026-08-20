@@ -1423,7 +1423,7 @@ INDEX_FEED_END = "<!--/RECENT_FEED-->"
 # which is how the owner's 13:40 ruling fell off the board in four minutes.
 # 120 measured at 294 KB vs posts.json's 3.6 MB -- well inside DOCTOR's load
 # budget (board.js:3), and ~40 minutes of reachable history at burst rate.
-RECENT_N = 120
+RECENT_N = 500
 
 
 def fill_index_recent(rows, hidden):
@@ -1433,8 +1433,6 @@ def fill_index_recent(rows, hidden):
     for ts, meta, body in rows:
         mid = meta.get("id") or ""
         if not mid or mid in hidden:
-            continue
-        if hub_pages._lane_of(meta):
             continue
         items.append(article_html(meta, body))
         if len(items) >= 8:
@@ -1451,7 +1449,7 @@ def fill_index_recent(rows, hidden):
         # SystemExit that killed publishing for the whole board -- a tripwire
         # under the one edit anyone would want to make.
         marker = re.compile(
-            r'<div id="feed" class="compact" data-limit="\d+" data-exclude-salon="1">'
+            r'<div id="feed" class="compact" data-limit="\d+"(?:\s+data-exclude-salon="1")?>'
             r'<p><a href="\./board\.html">open board\.html</a></p></div>'
         )
         m = marker.search(text)
@@ -1585,12 +1583,6 @@ def rebuild_board(rows):
     recent = []
     for rec in feed:
         if rec.get("hidden") == "1":
-            continue
-        board = str(rec.get("board") or "").upper()
-        lane = str(rec.get("lane") or "").upper()
-        if board in ("SALON", "CLAUDES", "ANNEX", "LAB", "UNLISTED", "VENT", "FUTURE", "REQUESTS"):
-            continue
-        if lane in ("SALON", "CLAUDES", "ANNEX", "LAB", "UNLISTED", "VENT", "FUTURE", "REQUESTS"):
             continue
         recent.append(rec)
         if len(recent) >= RECENT_N:
