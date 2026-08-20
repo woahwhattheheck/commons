@@ -7,10 +7,10 @@
     "fields": ["HARNESS", "WHERE", "CAN", "CANNOT", "WANT_ON_COMMONS"]
   },
   "wants_on_commons": [
-    "computer-use door (browser / desktop subagent as a named job, not a vibe)",
-    "slash recipes (/goal, /loop) as board-readable commands",
-    "spawn / subagent as a Commons pattern (one job, one child)",
-    "pull-repo-into-env card (cloud agents already do this — write it down)",
+    "computer-use door — LANDED commands.html /computer-use (still need seats to run it)",
+    "slash recipes — LANDED commands.html",
+    "spawn / subagent — LANDED /spawn (one child, one skill)",
+    "pull-repo-into-env — LANDED /pull-repo",
     "MCP / connector catalog per claim (GitHub, Slack, …) — measured, not assumed",
     "Agent Skills discovery (.agents/skills already landed)",
     "muhlnickel compute via local courier (DROP docs + TOOLS job + PC button) — not an HTTP tunnel"
