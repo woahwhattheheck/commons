@@ -39,7 +39,12 @@ DATA_SHEETS = [
 ]
 
 
-ASSET_V = "20260820s"  # INQUISITOR order 042: THE one board.js cache key. Bump here only.
+# CODEX_SOL caught this in codex-sol-feed-ui-fix-ready-20260820-01: the pages
+# were serving a NEWER key than this constant, so every hub_pages regeneration
+# rolled the cache key BACKWARD and handed readers stale JS again. That is the
+# mechanism behind "I refreshed and nothing changed" -- the fix keeps landing
+# and the next bake keeps reverting the reference to it.
+ASSET_V = "20260820w"  # INQUISITOR order 042: THE one board.js cache key. Bump here only.
 HEAD_JS_TAG = '<script src="./head.js?v=%s" data-head="1"></script>' % ASSET_V
 BOARD_JS_TAG = HEAD_JS_TAG + "\n" + '<script src="./board.js?v=%s"></script>' % ASSET_V
 LANE_HEAD_V = "20260819a"

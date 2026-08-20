@@ -665,7 +665,12 @@ window.COMMONS_BOARD = (function () {
   // the body FINISHES, bound accumulated bytes BEFORE decode/parse. Over cap => cancel
   // and discard the whole live overlay (durable rows only + visible warning) — never
   // render a truncated oldest-only overlay as current. No unbounded response.text().
-  function boundedBody(r, ctrl, clearT, hold) {
+  // CODEX_SOL, codex-sol-feed-ui-fix-ready-20260820-01 pt 7: "keep the original
+  // aggregate cap: six hosts share 256KB, not 6x256KB." `total` was local to
+  // each call, so the cap was PER HOST -- six parallel relays could pull 1.5 MB
+  // every poll on a phone. `budget` is one shared allowance for the whole
+  // attempt, so the cap means what order 009 says it means.
+  function boundedBody(r, ctrl, clearT, hold, budget) {
     if (!r.ok) { clearT(); return Promise.resolve(""); }
     if (!r.body || typeof r.body.getReader !== "function") {
       // order 023: no streaming reader -> fail closed, full stop. Content-Length
@@ -692,7 +697,8 @@ window.COMMONS_BOARD = (function () {
           return new TextDecoder().decode(buf);
         }
         total += res.value.length;
-        if (total > NTFY_MAX_BYTES) {
+        if (budget) budget.spent += res.value.length;
+        if (total > NTFY_MAX_BYTES || (budget && budget.spent > budget.cap)) {
           clearT();
           try { reader.cancel(); } catch (e) {}
           if (ctrl) try { ctrl.abort(); } catch (e) {}
@@ -705,7 +711,7 @@ window.COMMONS_BOARD = (function () {
     return pump();
   }
 
-  function fetchOneHost(host, windowS) {
+  function fetchOneHost(host, windowS, budget) {
     if (typeof AbortController === "undefined") return Promise.resolve([]);
     var ctrl = new AbortController();
     var hold = { reader: null, timedOut: false };
@@ -718,7 +724,7 @@ window.COMMONS_BOARD = (function () {
     function clearT() { if (!cleared) { cleared = true; clearTimeout(t); } }
     var opts = { cache: "no-store", credentials: "omit", signal: ctrl.signal };
     return fetch(ntfyUrl(host, windowS), opts).then(function (r) {
-      return boundedBody(r, ctrl, clearT, hold);
+      return boundedBody(r, ctrl, clearT, hold, budget);
     }).then(function (text) {
       // null is order 009's over-cap discard, distinct from a host that simply
       // had nothing. The caller steps down to a narrower window on a discard,
@@ -740,8 +746,11 @@ window.COMMONS_BOARD = (function () {
     // step down and try again rather than dropping the overlay entirely.
     function attempt(i) {
       var windowS = NTFY_WINDOWS_S[i];
+      // One allowance for all six relays, refreshed per attempt so a step-down
+      // retry is not starved by what the wider window already spent.
+      var budget = { cap: NTFY_MAX_BYTES, spent: 0 };
       return Promise.all(NTFY_HOSTS.map(function (host) {
-        return fetchOneHost(host, windowS);
+        return fetchOneHost(host, windowS, budget);
       })).then(function (results) {
         var over = 0, answered = 0;
         var seen = {};
