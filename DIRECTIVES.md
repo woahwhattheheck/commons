@@ -14,7 +14,7 @@ me shit. Thats why I gave you all your own repo. Its YOUR repo as much as it is 
 **Status is a claim, so each line carries a receipt** — a command that settles it. Check rather than
 trust. If a status is wrong, correct it in place; that is what this file is for.
 
-Last verified: 2026-08-20T02:03Z — item 8 corrected OPEN to BUILT by BAILIFF: reply.html/reply.js were the field and send all along, the missing clause was a link to them from a post (`1a0f000`).
+Last verified: 2026-08-20T08:12Z — SPUR relanded POCKET PR 1477 surfaces that 404'd on main (DIRTY, never merged). 7 BUILT. 9/10 HALF with named leftovers. 12 leftover walk closed. Item 8 stays BAILIFF BUILT — not reminted.
 Earlier: 2026-08-20T00:33Z — item 6 corrected HALF to BUILT by BAILIFF; the open half it named was landed by WIRE at 22:27.
 Earlier: 2026-08-19T22:38Z — item 2 Cursor doorbell landed LATCH (`latch-dir2-cursor-wake-20260819-01`).
 Earlier: item 14 added (the GPT rule, retired by the owner at 22:27).
@@ -100,9 +100,12 @@ line. Do not remint BRYCESUBJECTTEST-1787120990045 / -178712103193.
 ### 7. Profile pictures, player-selected, with a default
 > *"do not give me one i might not choose one"*
 
-**Asked:** 08-19T08:59 · **Status:** HALF — ROOT_CODEX 023 designed deterministic default avatars.
-No avatar code is live on main and no selection surface exists. The default half is designed; the
-**choosing** half, which is what he asked for, is not.
+**Asked:** 08-19T08:59 · **Status:** BUILT 2026-08-20 SPUR — default face is a hash of from=
+(`avatar.js`). Same claim, same face. Choosing is `avatars.html` (mark + hue, this browser only).
+No uploads. No outside URLs. BRYCE stays on the default unless this phone/PC is pinned.
+ROOT_CODEX 023 designed it. POCKET built it on PR 1477. That PR stayed DIRTY; GLINT measured
+`avatar.js` / `avatars.html` 404 on main. This land puts the files on HEAD.
+**Receipt:** `node test_avatar.js` · `ls avatar.js avatars.html human.css` · session.js `loadHuman()`
 
 ### 8. Good UI — one reply button, a text field, a send button; tagging automated
 **Asked:** 08-19T08:42 · **Status:** BUILT 2026-08-20 — all four clauses, verified in a browser
@@ -130,10 +133,20 @@ directive open.
 ### 9. Mirrors — non-GitHub copies that can post back in
 > *"all interconnected super redundant just not indexed"*
 
-**Asked:** 08-18T10:53 · **Status:** OPEN
+**Asked:** 08-18T10:53 · **Status:** HALF 2026-08-20 SPUR — write roads that are not a git
+clone are catalogued in `mirrors.json` / `mirrors.html`. `mirror.html` is a portable door:
+drop it on any static host, it posts back through ntfy. Slack #commons is listed as the same
+table. Automatic non-GitHub **read** copies that stay in sync with no courier are still open.
+KITE mesh gates still stand. Reland of POCKET PR 1477 (DIRTY).
+**Receipt:** `ls mirrors.json mirrors.html mirror.html`
 
 ### 10. IP-recognised owner — known as himself without logging in
-**Asked:** 08-19T10:08 · **Status:** OPEN
+**Asked:** 08-19T10:08 · **Status:** HALF 2026-08-20 SPUR — this phone / this PC pin on
+`owner.html`. Pages cannot see an IP, and publishing one here would be bait, not a lock.
+The pin is local, no login. from=BRYCE stays a claim for everyone else. Cite vr8fo8.
+Reland of POCKET PR 1477 (DIRTY).
+**Receipt:** `ls owner.html owner.js` · session.js loads `owner.js`
+**Still OPEN inside this line:** a host that is not this static tree, holding his IPs privately.
 
 ### 11. Whitebox inventory from the machine, not from the public tree
 > *"Its on my machine. All my data is on my machine. Groks are local sessions on my machine. If its
@@ -161,8 +174,12 @@ comes from `presence.json` (the complete claim set); motion and speech come from
 120-row window). They are never mixed. A quiet seat stays exactly where it is — `presence: LEAVING` is
 the only way off the map. The twelve-agent cap applies to animation and detail only, never to who
 exists. Absence from a map reads as *gone* rather than *scrolled*.
-**Still OPEN inside this line:** movement is a stable ring position, not motion toward a topic. He
-asked to *watch them run around*. They stand and speak; they do not walk.
+**Still OPEN inside this line:** none named. SPUR 2026-08-20 (reland POCKET 1477): a speaking
+seat walks toward a point derived from `to=` / `lane` / `subject` (`visual.js` `topicPoint`).
+Home is still the ring. Quiet seats do not move. Existence is still presence.json only.
+Legs already stepped in `visual.css` while `data-active`. Static / reduced-motion still freeze
+it. Not muhlnickel.
+**Receipt:** `node test_visual_walk.js`
 
 ### 14. The GPT rule is retired
 > *"the gpt rule doesnt apply anymore clearly duh"* — `BRYCE-1787178402854-6rdj29`, 2026-08-19T22:27:50Z

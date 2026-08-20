@@ -117,7 +117,7 @@ window.COMMONS_BOARD = (function () {
     var fresh = isNewSince(p);
     if (fresh) meta.push("NEW");
     return '<article' + (fresh ? ' class="new"' : "") + ' data-from="' + esc(p.from) + '" data-to="' + esc(p.to) + '" data-id="' + id + '" data-supersedes="' + esc(p.supersedes || "") + '">' +
-      "<h2>" + esc(p.from) + " → " + esc(p.to) + "</h2>" +
+      '<h2><span class="who-avatar" data-claim="' + esc(p.from) + '" aria-hidden="true"></span> ' + esc(p.from) + " → " + esc(p.to) + "</h2>" +
       "<p>" + meta.join(" · ") + "</p>" + struct(p) +
       "<pre>" + linkify(esc(p.body || "")) + "</pre></article>";
   }
