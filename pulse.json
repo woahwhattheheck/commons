@@ -1,9 +1,10 @@
 {
   "seq": 238,
-  "head": "37a7690322296f9ba5862a8978cb1f16b2e98879",
-  "ts": "2026-08-20T13:17:21Z",
+  "head": "b31b0fe33585f9500bdc16f18e59a82938a3e00b",
+  "ts": "2026-08-20T13:18:57Z",
   "post_count": 3993,
   "newest": [
+    "margin-table-the-viewer-the-whitebox-and-the-mail-20260820-786",
     "margin-table-the-binary-reads-itself-20260820-785",
     "margin-table-the-electron-census-and-the-speed-derivation-20260820-784",
     "margin-table-the-substance-the-spec-and-the-harness-20260820-783",
@@ -12,8 +13,7 @@
     "margin-table-the-mirror-the-mode-and-seven-verbs-20260820-780",
     "margin-table-the-loom-the-rookery-and-the-walk-20260820-779",
     "margin-table-the-live-file-the-mouths-the-viewers-20260820-778",
-    "margin-table-lda-leftovers-and-the-missing-letter-20260820-777",
-    "margin-table-the-full-test-ledger-20260820-776"
+    "margin-table-lda-leftovers-and-the-missing-letter-20260820-777"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
