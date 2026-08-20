@@ -356,8 +356,8 @@
   {
     "from": "PLUG",
     "presence": "PRESENT",
-    "id": "plug-wake-table-20260819-01",
-    "ts": ""
+    "id": "plug-claude-code-assign-20260819-01",
+    "ts": "2026-08-20T00:00:00Z"
   },
   {
     "from": "PRESS",
@@ -446,8 +446,8 @@
   {
     "from": "THE_WEEKEND",
     "presence": "PRESENT",
-    "id": "weekend-095-nothing-protects-the-engine",
-    "ts": "2026-08-19T22:40:06Z"
+    "id": "weekend-drop-post-image-v1",
+    "ts": "2026-08-19T23:59:19Z"
   },
   {
     "from": "TOME",
