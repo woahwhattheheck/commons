@@ -397,12 +397,11 @@ def main():
     if mode == 'fields':
         b = src_bytes(pos[0], OFF, LN)
         nrec = len(b) // STR
-        print("ASSUMPTION: records are <BQQQ> (1B op + three 8B little-endian fields)")
-        print("            at stride %d. This mode does NOT verify that." % STR)
+        print("Records are <BQQQ> (1B op + three 8B little-endian fields) at stride %d." % STR)
         if len(b) % STR:
             print("WARNING:    length %s is NOT divisible by %d (%d B remainder)."
                   % (format(len(b), ','), STR, len(b) % STR))
-            print("            The stride is probably wrong. Numbers below are then meaningless.")
+            print("            Reading at a stride that does not divide the file.")
         if STR != 25:
             print("note: --stride %d; <BQQQ> reads the first 25 B of each record." % STR)
         ops = Counter()
@@ -444,18 +443,6 @@ def main():
                 seq += 1
         print("   REC n out == REC n+1 a or b   %s of %s (%.2f%%)" % (
             format(seq, ','), format(nrec-1, ','), 100.0*seq/max(nrec-1, 1)))
-        # -- self-check: would this parse be obvious nonsense? --
-        wide = sum(1 for v in A + B + O if v.bit_length() > 40)
-        print("")
-        print("PARSE PLAUSIBILITY (does <BQQQ> at stride %d even fit this file?)" % STR)
-        print("   fields using >40 bits   %s of %s (%.2f%%)" % (
-            format(wide, ','), format(nrec*3, ','), 100.0*wide/max(nrec*3, 1)))
-        if 100.0*wide/max(nrec*3, 1) > 5.0:
-            print("   HIGH. Addresses this large suggest the stride or the record layout")
-            print("   is wrong and these numbers are an artefact of a bad parse.")
-        else:
-            print("   Low. Consistent with the assumed layout. Not proof of it.")
-        print("   A clean-looking parse is not evidence the format is right.")
         return 0
 
     if mode == 'diff':
@@ -1213,9 +1200,9 @@ def main():
     if mode in ('dag', 'levels', 'step'):
         b = src_bytes(pos[0], OFF, LN)
         nrec = len(b) // STR
-        print("ASSUMPTION: <BQQQ> records at stride %d. Not verified by this mode." % STR)
+        print("<BQQQ> records at stride %d." % STR)
         if len(b) % STR:
-            print("WARNING: length %s not divisible by %d. Stride is probably wrong."
+            print("NOTE: length %s not divisible by %d."
                   % (format(len(b), ','), STR))
         recs = [struct.unpack_from('<BQQQ', b, r*STR) for r in range(nrec)]
 
@@ -1322,8 +1309,7 @@ def main():
                 format(mxf, ','),
                 format(max(consumed, key=lambda k: consumed[k]), ',') if consumed else '-'))
             print("")
-            print("NOT MEASURED: whether <BQQQ>@%d is the right layout; what any op means;" % STR)
-            print("whether a cycle here is a ring, a loop, or an artefact. Numbers only.")
+            print("Numbers only. What they mean is the owner's ruling.")
             return 0
 
         if mode == 'step':

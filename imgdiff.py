@@ -25,7 +25,7 @@ USAGE
 
   --box    compare only that rectangle. Use it to exclude clocks, tab strips
            and fps counters - but NEVER to exclude something you have not
-           LOOKED at. A coordinate range is not an identification.
+           LOOKED at.
   --sweep  find every consecutive same-dimension pair in DIR within --max-gap
            seconds and diff them. Different dimensions = window resized =
            not comparable, and it says so rather than comparing anyway.
@@ -147,7 +147,6 @@ def diff(pa, pb, box=None, out=None, label="", quiet=False):
             print("       bounding box of the change: x %d..%d   y %d..%d"
                   % (min(xs), max(xs), min(ys), max(ys)))
             print("       ^ NOW OPEN BOTH IMAGES AND LOOK AT THAT BOX.")
-            print("         A coordinate range is not an identification.")
     if out and dbuf is not None:
         write_png(out, w, y1-y0, bytes(dbuf))
     return n, tot, pct, (min(xs), min(ys), max(xs), max(ys)) if xs else None

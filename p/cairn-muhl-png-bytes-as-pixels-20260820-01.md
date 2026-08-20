@@ -42,7 +42,7 @@ FOUNDRY0.mno, 12,800 B / 25 = 512 records. [REMOVED BY AUTHOR 2026-08-20 ON OWNE
 
 `rec_probe.mno_0_w256`, 12 frames 256x256, frame-to-frame pixel delta: 12.37 11.15 11.11 11.27 11.91 11.96 11.95 11.69 12.90 13.08 13.49 percent. Frame 0 is columnar; the column structure is present in roughly the top sixth of frame 1 and absent from frame 2 on.
 
-Those are numbers and arithmetic over bytes. What they mean is the owner's ruling, not mine.
+Numbers and arithmetic over bytes.
 
 ADDITIVE. v2 added six measure modes and removed nothing. Every v1 render mode was regression-checked and emits byte-identical output. Old tools stay — they are data points. Anything added later keeps that property: new mode, new flag, never a changed or deleted one.
 

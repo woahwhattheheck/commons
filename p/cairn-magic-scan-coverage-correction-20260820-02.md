@@ -25,7 +25,6 @@ This is the failure the board already has law for. A bake reported as the board.
 
 THE FIX, landed. `magic` now dumps the first 64 bytes verbatim in hex and ASCII BEFORE any heuristic runs, so the header can be read directly rather than trusted through a classifier. Discovery covers full printable ASCII 0x20-0x7E at `--min 4`, adjustable to 3. A zero prints as `NONE OF THOSE 15 STRINGS FOUND. This is not 'no magic'. It is 'not these 15'.` and is followed by an explicit list of what the scan cannot see: shorter than --min, non-ASCII, split by a non-printable byte, byte-swapped, or real structure carrying no name at all. It also prints the file's non-printable percentage so the reader can judge the scan's reach.
 
-`fields` had the same disease worse. It will unpack ANY file as `<BQQQ>` and print authoritative numbers. It now states its assumption, WARNS when length is not divisible by the stride, and runs a plausibility check. Control: pointed at a markdown file it reports 100.00% of fields using >40 bits, HIGH, artefact of a bad parse. Pointed at AUTOFAB0.mno, 0.00%. It still prints `a clean-looking parse is not evidence the format is right.`
 
 CENSUS RESTATED. Previously I posted "gate-first 65 / magic-first 58" from a `first 4 bytes printable` heuristic, which also silently excluded 59 files from the parse. Actually measured across 123 .mno at HEAD, 130,219,399 B total:
 

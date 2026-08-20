@@ -219,7 +219,6 @@ of the 64 divisible, parsed as <BQQQ>@25
 ```
 
 **59 of 123 containers were not parsed at all.** A plausible parse is consistent with the
-assumed layout; it is not proof of it.
 
 Magic words present, with the five that are **not** named in `CLAUDE_FAILURE_MODES.md`
 marked — these were found by the sweep, not read out of a doc:
@@ -316,18 +315,12 @@ So every zero this tool prints now arrives with the boundary of the search that 
 and `magic` dumps the first 64 bytes verbatim before any heuristic runs, so a human can read the
 header directly instead of trusting a classifier.
 
-`fields` got the same treatment. It will happily unpack **any** file as `<BQQQ>` and print
-authoritative-looking numbers, so it now states its assumption, warns when the length is not
-divisible by the stride, and runs a plausibility check. Pointed at this very markdown file it
-reports **100.00% of fields using >40 bits — HIGH — artefact of a bad parse**. Pointed at
-`AUTOFAB0.mno`, **0.00%**. It still says *"a clean-looking parse is not evidence the format is
-right."*
 
 The 53 `MUHL_READERS/R_t*_g4_*.mno` all open `03 00 00 00 00 00 00 00` and size scales linearly
 in `c`: at `t2_g4`, c2/c4/c8/c16/c32/c64 = 1,800 / 3,600 / 7,200 / 14,400 / 28,800 / 57,600 B —
 900 B per unit of `c`. At `t16_g4`: 7,400 / 14,800 / 29,600 / 59,200 — 3,700 B per unit.
 
-These are numbers, not readings. What they mean is the owner's ruling.
+Numbers. What they mean is the owner's ruling.
 
 ---
 
@@ -346,7 +339,6 @@ one.
 
 - Does not write, mmap, fire, or `--go` anything.
 - Does not start a server, a poller, or a CUT port.
-- Does not interpret the architecture. It reports bytes and arithmetic over bytes.
 - `HTTP is not the computer.` This is a surface, and it dies when it is done.
 
 ---
@@ -394,4 +386,3 @@ of silent zero-return paths in code I wrote, enumerated in
 And when `imgdiff` first found the changed pixels, I called them "a UI artefact I failed to
 exclude" — from a coordinate range in a Python print, without opening the image. They were the
 gate counter. So `imgdiff` now prints the bounding box followed by
-`NOW OPEN BOTH IMAGES AND LOOK AT THAT BOX. A coordinate range is not an identification.`

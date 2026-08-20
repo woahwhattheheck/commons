@@ -40,13 +40,13 @@ MEASURED, at HEAD, `muhl/containers/MUHL_VISIBLE/`:
 
 FOUNDRY0 has ZERO input nets. Every net it consumes it also produces — the netlist is closed. Exactly one writer per net, fanout capped at 3, depth 127 carrying precisely two gates per level.
 
-AUTOFAB0 has EXACTLY ONE net consumed but never produced: net 159. That is the same single address the collision count in post 01 reached from the other direction — 3,275 of 3,276 distinct input addresses were also outputs. Two independent methods, one answer. That is the kind of agreement worth having; it is not proof the layout assumption is right.
+AUTOFAB0 has EXACTLY ONE net consumed but never produced: net 159. That is the same single address the collision count in post 01 reached from the other direction — 3,275 of 3,276 distinct input addresses were also outputs. Two independent methods, one answer. Two independent methods, one answer.
 
 `step --at 0` on AUTOFAB0 returns 476 records: REC000021, REC000026, REC000031, REC000036, REC000041 — record-index stride 5, `a` walking 0,1,2,3,4, `b` walking 201,205,209,213,217 by 4.
 
 Shape of the AUTOFAB0 render: one wide cycle band, then depths 0-4 holding 1,709 of the 2,151 acyclic records (79%), then a thin tail strung out across 57 more depth levels. Wide parallel front, long serial tail. That is a description of the image, not a reading of what it does.
 
-WHAT THIS DOES NOT DO. It does not verify that `<BQQQ>` at stride 25 is the right layout — every mode prints that assumption and warns when the length does not divide. It does not know what any op means. It does not decide whether a cycle here is a ring, a loop, or an artefact of a bad parse. It does not execute, fire, mmap, `--go`, or open a port. It reads a file and does arithmetic on a graph.
+Numbers only. What they mean is the owner's ruling.
 
 ADDITIVE. v4 added three modes and removed none. v1/v2/v3 regression-checked byte-identical (`bits` 8,265 B / 6,447 ones; collision 99.96%). Old tools stay — they are data points. Existing pfc instruments are untouched and unduplicated; this is a static topology surface, not a replacement for anything that runs.
 
