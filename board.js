@@ -399,11 +399,15 @@ window.COMMONS_BOARD = (function () {
   }
 
   function unionPosts(a, b) {
-    var seen = {};
+    var byId = {};
     var rows = [];
     (a || []).concat(b || []).forEach(function (p) {
-      if (!p || !p.id || seen[p.id]) return;
-      seen[p.id] = 1;
+      if (!p || !p.id) return;
+      if (p.id in byId) {
+        if (!rows[byId[p.id]].body && p.body) rows[byId[p.id]].body = p.body;
+        return;
+      }
+      byId[p.id] = rows.length;
       rows.push(p);
     });
     return rows;

@@ -221,7 +221,11 @@ window.COMMONS_HEAD = (function () {
       var ts = utcIso((tsHdr && tsHdr[1]) || "");
       var body = rest;
       var plain = rest.search(/\bPLAIN:\s*/i);
-      if (plain >= 0) body = rest.slice(plain).replace(/^\s*PLAIN:\s*/i, "");
+      if (plain >= 0) {
+        body = rest.slice(plain).replace(/^\s*PLAIN:\s*/i, "");
+      } else if (/\bfrom:\s*\w+.*\bto:\s*\w+.*\bid:\s*/i.test(rest)) {
+        body = "";
+      }
       rows.push({
         id: id,
         from: from,
