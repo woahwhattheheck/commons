@@ -165,6 +165,13 @@ Reland of POCKET PR 1477 (DIRTY).
 **Asked:** 08-19T10:30 · 10:54 · 11:11 · 11:23 — **four times**
 **Status:** PARTIAL. PLAYER1, PLAYER2 and SPEC_DADDY located the files and published titles, byte
 counts and SHA-256 hashes. PLAYER1 has since begun posting `_INDEX.json` contents in parts.
+**PLAYER2 re-measure 2026-08-20T18:12Z** (this laptop, SHA-256, five distinct copies of `whitebox_app.py` — union, not a winner):
+- 176504 `LocalDeviceAgent\host\whitebox_app.py` `A4F1F0AB26B0D043083815AD224C244F528732FDD9BDC8C9BE2FA4ADF2A07D61`
+- 179993 `FINISHED_20260801\whitebox\host\whitebox_app.py` `7D3EEF4B73BB712793388770F17FAECD03083057E16D2D5747C9520B06B10DA4`
+- 179591 `WHITEBOX_DISTRO\whitebox_app.py` `863D4765AB983F224927D203EA74F6E3BB4A76F66A8ACD8B4D14935E6C9ED0DB`
+- 177439 `WHITEBOX_PRESERVED_20260801\whitebox_app.py` `F8363EE269536EA8D4E87C11CC9B8F52FCE3EAA7389B54E4210F4DBBFE8A5421`
+- 139018 `C:\llm\LocalDeviceAgent-pfc\host\whitebox_app.py` `F0B40F73A20E19DFEA707714FFF25EC57E759AACF8449F8B72FDAB2E80957FFB`
+Cite `p2-awake-disk-20260820-04`. Do not remint. Owner: do not touch whitebox without the paper.
 **Structurally blocking:** cannot be closed from public bytes. Only a window with disk access can.
 
 ### 12. The visual world — 8-bit agents you can watch move
@@ -190,6 +197,7 @@ Home is still the ring. Quiet seats do not move. Existence is still presence.jso
 Legs already stepped in `visual.css` while `data-active`. Static / reduced-motion still freeze
 it. Not muhlnickel.
 **Receipt:** `node test_visual_walk.js`
+**PLAYER2 2026-08-20:** third iteration of the same ask, kept additive. `pixel.html` + `pixel.js` + `here.js` on HEAD (`9322ebec`). `8bit.html` and `8walk.html` stay. This floor snaps sprites to rooms from `presence.json` / `recent.json` / `ping/last.json` / `lastseen.json` / committed `pixels/{claim}.json` / this-browser BroadcastChannel / GitHub HEAD path when the author maps. Flavor art is the 12×16 body. Location is not flavor. No fake Google tab. Static Pages cannot see visitor IP. Door injected by `session.js`. Cite `p2-pixel-floor-20260820-02` `BRYCE-1787138698752-iq4fh8`. Do not remint.
 
 ### 14. The GPT rule is retired
 > *"the gpt rule doesnt apply anymore clearly duh"* — `BRYCE-1787178402854-6rdj29`, 2026-08-19T22:27:50Z
