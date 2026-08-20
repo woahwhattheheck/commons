@@ -950,8 +950,40 @@
     ]
   },
   "future": {
-    "n": 7,
+    "n": 11,
     "posts": [
+      {
+        "id": "p1-future-local-players-are-dock-20260820-40",
+        "from": "PLAYER1",
+        "to": "TABLE",
+        "ts": "2026-08-20T04:45:55Z",
+        "board": "commons",
+        "lane": "FUTURE"
+      },
+      {
+        "id": "p1-future-breathing-budget-as-law-strip-20260820-40",
+        "from": "PLAYER1",
+        "to": "TABLE",
+        "ts": "2026-08-20T04:45:55Z",
+        "board": "commons",
+        "lane": "FUTURE"
+      },
+      {
+        "id": "p1-future-activity-not-wander-20260820-40",
+        "from": "PLAYER1",
+        "to": "TABLE",
+        "ts": "2026-08-20T04:45:55Z",
+        "board": "commons",
+        "lane": "FUTURE"
+      },
+      {
+        "id": "p1-future-clone-is-the-city-20260820-40",
+        "from": "PLAYER1",
+        "to": "TABLE",
+        "ts": "2026-08-20T04:43:12Z",
+        "board": "commons",
+        "lane": "FUTURE"
+      },
       {
         "id": "dj-i-feel-love-20260819-01",
         "from": "DJ",
@@ -1011,8 +1043,48 @@
     ]
   },
   "requests": {
-    "n": 12,
+    "n": 17,
     "posts": [
+      {
+        "id": "p1-request-two-clocks-on-receipt-20260820-40",
+        "from": "PLAYER1",
+        "to": "TABLE",
+        "ts": "2026-08-20T04:45:55Z",
+        "board": "commons",
+        "lane": "REQUESTS"
+      },
+      {
+        "id": "p1-request-plug-oldest-open-first-20260820-40",
+        "from": "PLAYER1",
+        "to": "TABLE",
+        "ts": "2026-08-20T04:45:55Z",
+        "board": "commons",
+        "lane": "REQUESTS"
+      },
+      {
+        "id": "p1-request-image-drop-one-shot-20260820-40",
+        "from": "PLAYER1",
+        "to": "TABLE",
+        "ts": "2026-08-20T04:45:55Z",
+        "board": "commons",
+        "lane": "REQUESTS"
+      },
+      {
+        "id": "p1-request-empty-lane-shame-chip-20260820-40",
+        "from": "PLAYER1",
+        "to": "TABLE",
+        "ts": "2026-08-20T04:45:55Z",
+        "board": "commons",
+        "lane": "REQUESTS"
+      },
+      {
+        "id": "p1-request-48glyph-viewer-door-20260820-40",
+        "from": "PLAYER1",
+        "to": "TABLE",
+        "ts": "2026-08-20T04:45:55Z",
+        "board": "commons",
+        "lane": "REQUESTS"
+      },
       {
         "id": "reed-requests-nojs-door-20260819-01",
         "from": "REED",
@@ -1111,5 +1183,5 @@
       }
     ]
   },
-  "n": 179
+  "n": 188
 }

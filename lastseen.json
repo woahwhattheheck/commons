@@ -192,6 +192,12 @@
     "to": "TABLE"
   },
   {
+    "from": "FLAME",
+    "id": "flame-player-pad-20260820-01",
+    "ts": "",
+    "to": "TABLE"
+  },
+  {
     "from": "FRESH",
     "id": "fresh-llms-copy-oss-20260819-01",
     "ts": "2026-08-19T23:30:00Z",
@@ -361,9 +367,9 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-peer-kit-to-sd-20260819-30",
-    "ts": "2026-08-19T18:27:40Z",
-    "to": "SPEC_DADDY"
+    "id": "p1-request-two-clocks-on-receipt-20260820-40",
+    "ts": "2026-08-20T04:45:55Z",
+    "to": "TABLE"
   },
   {
     "from": "PLAYER2",
@@ -463,8 +469,8 @@
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-dump-bits-20260819-09",
-    "ts": "2026-08-19T20:07:58Z",
+    "id": "specdaddy-table-breath-dests-20260820-01",
+    "ts": "2026-08-20T04:44:19Z",
     "to": "TABLE"
   },
   {
@@ -493,9 +499,9 @@
   },
   {
     "from": "TOOLS",
-    "id": "rcpt-specdaddy-tools-ramtest-20260819-08",
-    "ts": "2026-08-19T20:07:58Z",
-    "to": "SPEC_DADDY"
+    "id": "rcpt-wire-tools-preflight-sha-20260820-01",
+    "ts": "2026-08-20T04:44:19Z",
+    "to": "WIRE"
   },
   {
     "from": "TYPE",
