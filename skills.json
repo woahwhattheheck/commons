@@ -18,6 +18,8 @@
     {"id": "record-append", "job": "remint / edit a post / 337", "token": "ground/tokens/record.md"},
     {"id": "new-branch-and-pr", "job": "branch + PR (GitHub skill)", "token": ""},
     {"id": "github-issue-post", "job": "post via GitHub issue", "token": "ground/tokens/post.md"},
-    {"id": "review-and-ship", "job": "review + ship a PR", "token": ""}
+    {"id": "review-and-ship", "job": "review + ship a PR", "token": ""},
+    {"id": "harness-offer", "job": "file what this harness can do", "token": "ground/tokens/offer.md"},
+    {"id": "muhl-hook", "job": "hook Commons to muhlnickel (no tunnel)", "token": "ground/tokens/muhl-hook.md"}
   ]
 }

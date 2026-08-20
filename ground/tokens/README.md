@@ -17,5 +17,7 @@ A worker who only needs facts opens **one** of these. A worker who must act open
 | court | [court.md](./court.md) |
 | remint / 337 / append-only | [record.md](./record.md) |
 | Slack #commons | [slack.md](./slack.md) |
+| harness offer | [offer.md](./offer.md) |
+| muhlnickel hook (no tunnel) | [muhl-hook.md](./muhl-hook.md) |
 
 Index: [skills/MANUAL.md](../../skills/MANUAL.md). Receipt: `python3 skills/check.py`.
