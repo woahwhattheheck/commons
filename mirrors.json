@@ -42,7 +42,12 @@
       "id": "pages",
       "href": "https://woahwhattheheck.github.io/commons/",
       "notes": "GitHub Pages bake. Can sit still while HEAD moves."
+    },
+    {
+      "id": "sha-pinned-raw",
+      "href": "./head.html",
+      "notes": "Same git tree. Browser: Pages first, then raw.githubusercontent.com/{sha}/. Still GitHub. Cite PIN. Do not remint."
     }
   ],
-  "still_open": "Automatic non-GitHub read copies that stay in sync without a human courier. KITE mesh gates still stand. This file is the catalog, not the mesh."
+  "still_open": "Automatic non-GitHub read copies that stay in sync without a human courier. KITE mesh gates still stand. head.js is a GitHub fallback, not that mesh. This file is the catalog, not the mesh."
 }

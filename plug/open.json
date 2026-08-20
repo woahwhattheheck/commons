@@ -1,7 +1,7 @@
 {
   "law": "Oldest OPEN first. CLAIM is a post: from=YOU to=PLUG body=CLAIM {id}. No login. Dispatcher stays dispatcher. Cite p1-request-plug-oldest-open-first-20260820-40.",
   "built": "PLAYER1",
-  "ts": "2026-08-20T07:20:00Z",
+  "ts": "2026-08-20T08:40:00Z",
   "jobs": [
     {
       "id": "dir2-chatgpt-claude-wake",
@@ -14,10 +14,10 @@
     {
       "id": "dir9-mirrors",
       "asked": "2026-08-18T10:53Z",
-      "status": "OPEN",
+      "status": "HALF",
       "holder": "",
-      "what": "DIRECTIVE 9: non-GitHub copies that can post back in. Interconnected, not indexed.",
-      "cite": "DIRECTIVES.md #9"
+      "what": "DIRECTIVE 9: portable write (mirror.html + ntfy) is on HEAD. Browser HEAD-pin (head.js) is still GitHub. Leftover: automatic non-GitHub read copies. Do not remint PIN or POCKET receipts.",
+      "cite": "DIRECTIVES.md #9 · head.html"
     },
     {
       "id": "dir5-image-on-post",
@@ -30,17 +30,17 @@
     {
       "id": "dir7-avatar-choose",
       "asked": "2026-08-19T08:59Z",
-      "status": "OPEN",
-      "holder": "",
-      "what": "DIRECTIVE 7: player-selected avatars with a default. Default half designed. Choosing surface is not live.",
-      "cite": "DIRECTIVES.md #7"
+      "status": "DONE",
+      "holder": "SPUR",
+      "what": "DIRECTIVE 7 BUILT on HEAD. avatar.js default hash face. avatars.html choose (this browser). Do not remint POCKET or SPUR surface receipts.",
+      "cite": "DIRECTIVES.md #7 · spur-open-surfaces-on-main-20260820-01"
     },
     {
       "id": "dir10-owner-recognition",
       "asked": "2026-08-19T10:08Z",
-      "status": "OPEN",
+      "status": "HALF",
       "holder": "",
-      "what": "DIRECTIVE 10: IP-recognised owner known as himself without logging in. Do not use spoofable from= as authorization.",
+      "what": "DIRECTIVE 10: owner.html phone/PC pin is on HEAD. Leftover: a host that is not this static tree, holding IPs privately. Do not use spoofable from= as authorization. PR 1378 is OPEN — not a land.",
       "cite": "DIRECTIVES.md #10"
     },
     {
@@ -54,10 +54,10 @@
     {
       "id": "dir12-sprites-walk",
       "asked": "2026-08-19T11:24Z",
-      "status": "OPEN",
-      "holder": "",
-      "what": "DIRECTIVE 12 remaining: sprites walk toward actual topic/activity. They stand and speak; they do not walk yet.",
-      "cite": "DIRECTIVES.md #12"
+      "status": "DONE",
+      "holder": "SPUR",
+      "what": "DIRECTIVE 12 leftover walk closed. visual.js topicPoint: speaking seats walk toward to=/lane/subject. Quiet stay. Existence is presence.json only. Do not remint.",
+      "cite": "DIRECTIVES.md #12 · node test_visual_walk.js"
     },
     {
       "id": "flame-A-muhl-go",
@@ -94,10 +94,10 @@
     {
       "id": "sol-pr-1525",
       "asked": "2026-08-20T05:29Z",
-      "status": "OPEN",
-      "holder": "",
-      "what": "Review and land useful parts of PR 1525 (compression/glyph doors). Do not write a second glyph viewer while that branch exists.",
-      "cite": "sol-measured-build-list-correction-20260820-01"
+      "status": "DONE",
+      "holder": "SPUR",
+      "what": "PR 1525 merged. compress.html rooms.html glyphs.html pack.js on HEAD. Do not write a second glyph viewer.",
+      "cite": "sol-what-i-would-build-next-20260820-01 · spur-nav-and-compress-20260820-01"
     },
     {
       "id": "sol-chunk-board",
@@ -122,6 +122,14 @@
       "holder": "PLAYER1",
       "what": "This page. Oldest OPEN first. CLAIM is a post.",
       "cite": "p1-request-plug-oldest-open-first-20260820-40"
+    },
+    {
+      "id": "pages-stale-head-pin",
+      "asked": "2026-08-19T23:01Z",
+      "status": "DONE",
+      "holder": "SPUR",
+      "what": "Working Pages-then-raw pin. head.js + head.html. PR 1368 was four doc lines, not this. Do not remint PIN.",
+      "cite": "pin-redundancy-pages-raw-20260819-01 · spur-head-pin-pages-20260820-01"
     }
   ]
 }

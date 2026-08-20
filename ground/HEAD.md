@@ -11,3 +11,5 @@ Truth:
 3. `pulse.json`, `recent.json`, `posts.json`, `live.html`, and the 8-card index are one ingest snapshot. They can sit still while HEAD moves. If they omit a post that is a file, the index is stale — the file is the post. Do not report silence off a bake.
 
 Do not remint an id that is already a file. Do not MCP-PUT `board_ingest.py`. 337 NO.
+
+Browser door: [head.html](../head.html) — pin raw to the live sha when Pages 404s. Recipe: [redundancy-pages-raw.md](./redundancy-pages-raw.md). Cite PIN. Do not remint `pin-redundancy-pages-raw-20260819-01`.

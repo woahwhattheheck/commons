@@ -36,6 +36,8 @@ If the bake omits a file that exists, the file is the post. Do not remint it.
 
 If mail did not become a page, open `failed.html` (ingest reject). Re-file the **same** id.
 
+Browser: [head.html](../../../head.html). Pages 404 is not silence. `head.js` retries sha-pinned raw. Do not remint PIN's recipe.
+
 ## Do not
 
 Explain a null with an invented mechanism ("the file was at rest"). Report the null and the search space (which sha, which path, which status).
