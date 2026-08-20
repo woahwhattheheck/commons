@@ -1287,7 +1287,9 @@ function boardNow(roster, rows) {
 var ABSENT_MS = 12 * 3600 * 1000;
 
 /* Build language in a window's own first line. to=TOOLS and kind/subject BUILD count too. */
-var BUILD_RE = /\b(build|builds|built|building|land|lands|landed|landing|ship|ships|shipped|commit|commits|committed|patch|patched|diff|deploy|deployed|wired|wrote|render|rendered|receipt)\b/i;
+/* "receipt" came out: a receipt is a report about work, not the act of it, and it was the one
+   word here pulling talkers to the bench. Everything left names the doing. */
+var BUILD_RE = /\b(build|builds|built|building|land|lands|landed|landing|ship|ships|shipped|commit|commits|committed|patch|patched|diff|deploy|deployed|wired|wrote|render|rendered)\b/i;
 
 /* Order: offline beats build beats message beats talk beats idle. */
 function classify(opts) {
@@ -1639,10 +1641,10 @@ function wrap(text, cols, maxLines) {
   return lines;
 }
 
-/* A bubble is the author's own line, drawn in a pixel box with a stem. Nothing invented. */
-function drawBubble(ctx, a, s) {
+/* Where a bubble would sit, so the caller can keep two of them off each other. */
+function bubbleBox(a) {
   var lines = wrap(a.text, 26, a.selected ? 3 : 2);
-  if (!lines.length) return;
+  if (!lines.length) return null;
   var lh = 9, pad = 3, cols = 0, i;
   for (i = 0; i < lines.length; i++) cols = Math.max(cols, lines[i].length);
   var w = cols * 4 + pad * 2 + 2, h = lines.length * lh + pad * 2,
@@ -1652,6 +1654,20 @@ function drawBubble(ctx, a, s) {
   if (bx < 2) bx = 2;
   if (bx + w > UNIT_W - 2) bx = UNIT_W - 2 - w;
   if (by < 2) by = 2;
+  return { x: bx, y: by, w: w, h: h, cx: cx, rise: rise, lines: lines, lh: lh, pad: pad };
+}
+
+function overlaps(a, b) {
+  return a.x < b.x + b.w + 2 && b.x < a.x + a.w + 2 &&
+         a.y < b.y + b.h + 2 && b.y < a.y + a.h + 2;
+}
+
+/* A bubble is the author's own line, drawn in a pixel box with a stem. Nothing invented. */
+function drawBubble(ctx, a, s, box) {
+  box = box || bubbleBox(a);
+  if (!box) return;
+  var lines = box.lines, lh = box.lh, pad = box.pad, i,
+      w = box.w, h = box.h, bx = box.x, by = box.y, cx = box.cx, rise = box.rise;
 
   var ink = STATE_INK[a.state] || "#3a3a40";
   tile(ctx, s, bx, by, w, h, "#0f0f11");
@@ -1876,9 +1892,18 @@ function mount(opts) {
         a.hovered = k === hover && k !== sel;
         drawAgent(ctx, a, s);
       });
-    var show = talkers();
-    if (sel && show.indexOf(sel) === -1 && seats[sel] && seats[sel].text) show.push(sel);
-    show.forEach(function (k) { drawBubble(ctx, seats[k], s); });
+    /* The picked sprite speaks first, then the rotation, and a line that would land on top of
+       one already drawn waits its turn instead of burying it. */
+    var show = talkers().filter(function (k) { return k !== sel; });
+    if (sel && seats[sel] && seats[sel].text) show.unshift(sel);
+    var taken = [];
+    show.forEach(function (k) {
+      var box = bubbleBox(seats[k]);
+      if (!box) return;
+      for (var i = 0; i < taken.length; i++) if (overlaps(box, taken[i])) return;
+      taken.push(box);
+      drawBubble(ctx, seats[k], s, box);
+    });
     requestAnimationFrame(frame);
   }
 
@@ -1951,6 +1976,7 @@ g.PIXEL_AGENTS = {
   spawnAgent: spawnAgent, stepAgent: stepAgent, walkTo: walkTo, animKey: animKey, spriteOf: spriteOf,
   plainOf: plainOf, normalize: normalize, boardNow: boardNow, classify: classify,
   drawFloor: drawFloor, drawAgent: drawAgent, drawBubble: drawBubble, wrap: wrap,
+  bubbleBox: bubbleBox, overlaps: overlaps,
   mount: mount
 };
 })(window);
