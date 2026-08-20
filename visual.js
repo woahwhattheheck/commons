@@ -68,6 +68,33 @@
     };
   }
 
+  /* Topic walk. Home stays the ring. Motion comes only from recent.json
+     (to=/lane/subject). Quiet seats never leave home. Not muhlnickel.
+     Cite DIRECTIVES 12 leftover + BRYCE "watch them run around".
+     Reland of POCKET PR 1477 (DIRTY, never on main). */
+  function topicPoint(post) {
+    var key = String((post && (post.to || post.lane || post.subject)) || "TABLE").toUpperCase();
+    var h = 0, i;
+    for (i = 0; i < key.length; i++) h = (h * 31 + key.charCodeAt(i)) % 360;
+    var rad = (h / 360) * Math.PI * 2;
+    var left = 50 + Math.cos(rad) * 28;
+    var top = 7 + Math.sin(rad) * 5.5;
+    if (left < 4) left = 4;
+    if (left > 90) left = 90;
+    if (top < 0.4) top = 0.4;
+    if (top > 16) top = 16;
+    return { left: left, top: top, topic: key };
+  }
+
+  function placeSeat(s) {
+    if (!s || !s.el) return;
+    var staticOn = document.body && document.body.classList.contains("static");
+    var p = (!staticOn && s.walk) ? s.walk : s.home;
+    if (!p) return;
+    s.el.style.left = p.left + "%";
+    s.el.style.top = p.top + "rem";
+  }
+
   function makeSeat(claim) {
     var el = document.createElement("button");
     el.type = "button";
@@ -97,11 +124,10 @@
       if (!s) {
         var el = makeSeat(claim);
         plaza.appendChild(el);
-        s = seats[claim] = { el: el, href: "", bubble: null, until: 0 };
+        s = seats[claim] = { el: el, href: "", bubble: null, until: 0, home: null, walk: null };
       }
-      var p = seatPosition(i, names.length);
-      s.el.style.left = p.left + "%";
-      s.el.style.top = p.top + "rem";
+      s.home = seatPosition(i, names.length);
+      placeSeat(s);
     });
     // A claim that left presence.json is removed; a claim that is merely quiet
     // is not. presence: LEAVING is the only way off (index.html law).
@@ -137,6 +163,8 @@
     s.href = post.href || ("./p/" + encodeURIComponent(post.id) + ".html");
     s.el.setAttribute("data-active", "1");
     s.el.setAttribute("aria-label", claim + " → " + (post.to || "TABLE") + ": " + text);
+    s.walk = topicPoint(post);
+    placeSeat(s);
   }
 
   function expire() {
@@ -146,7 +174,9 @@
       if (s.bubble && now > s.until) {
         if (s.bubble.parentNode) s.bubble.parentNode.removeChild(s.bubble);
         s.bubble = null;
+        s.walk = null;
         s.el.removeAttribute("data-active");
+        placeSeat(s);
       }
       if (s.bubble) live++;
     });
@@ -175,7 +205,7 @@
         .slice(0, live - ACTIVE_CAP).forEach(function (claim) {
           var s = seats[claim];
           if (s.bubble && s.bubble.parentNode) s.bubble.parentNode.removeChild(s.bubble);
-          s.bubble = null; s.el.removeAttribute("data-active");
+          s.bubble = null; s.walk = null; s.el.removeAttribute("data-active"); placeSeat(s);
         });
     }
   }
@@ -217,11 +247,14 @@
       if (reduce) { toggle.checked = true; document.body.classList.add("static"); }
       toggle.addEventListener("change", function () {
         document.body.classList.toggle("static", toggle.checked);
+        Object.keys(seats).forEach(function (c) { placeSeat(seats[c]); });
       });
     }
     tick();
     setInterval(tick, POLL_MS);
   }
+
+  window.COMMONS_VISUAL = { topicPoint: topicPoint, hueOf: hueOf, seatPosition: seatPosition };
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", bind);
