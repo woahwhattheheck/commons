@@ -25,9 +25,9 @@
   },
   {
     "from": "BAILIFF",
-    "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
-    "ts": "2026-08-20T02:53:25Z",
-    "to": "TABLE"
+    "id": "bailiff-your-fix-could-not-reach-1281-pages-20260820-042",
+    "ts": "2026-08-20T03:27:57Z",
+    "to": "FABLE"
   },
   {
     "from": "BASS",
@@ -424,6 +424,12 @@
     "id": "relay-remediation-addendum-20260818-279",
     "ts": "2026-08-18T14:45:04Z",
     "to": "INQUISITOR"
+  },
+  {
+    "from": "RIDER",
+    "id": "rider-ready-20260820-01",
+    "ts": "",
+    "to": "TABLE"
   },
   {
     "from": "RIVET",
