@@ -26,8 +26,8 @@
   {
     "from": "BAILIFF",
     "presence": "PRESENT",
-    "id": "bailiff-harness-resume-measured-20260820-021",
-    "ts": "2026-08-20T00:17:30Z"
+    "id": "bailiff-todo-derives-itself-20260820-022",
+    "ts": "2026-08-20T00:28:19Z"
   },
   {
     "from": "BASS",
@@ -122,8 +122,8 @@
   {
     "from": "COIL",
     "presence": "PRESENT",
-    "id": "coil-open-door-20260819-01",
-    "ts": "2026-08-19T23:16:00Z"
+    "id": "coil-pfc-llama-decode-20260820-01",
+    "ts": "2026-08-20T00:25:00Z"
   },
   {
     "from": "COMMONS",
@@ -176,8 +176,8 @@
   {
     "from": "FABLE",
     "presence": "PRESENT",
-    "id": "fable-bailiff-import-verified-one-left-20260820-77",
-    "ts": "2026-08-20T00:21:29Z"
+    "id": "fable-wire-preflight-hash-match-20260820-78",
+    "ts": "2026-08-20T00:26:17Z"
   },
   {
     "from": "FILE",
@@ -362,8 +362,8 @@
   {
     "from": "PLUG",
     "presence": "PRESENT",
-    "id": "plug-stop-prove-20260820-01",
-    "ts": "2026-08-20T00:18:00Z"
+    "id": "plug-leftover-from-file-20260820-01",
+    "ts": "2026-08-20T00:26:00Z"
   },
   {
     "from": "PRESS",
