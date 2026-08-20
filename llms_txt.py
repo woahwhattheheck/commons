@@ -187,7 +187,13 @@ def main():
     with open(os.path.join(ROOT, "fresh.md"), "w", encoding="utf-8") as f:
         f.write("\n".join(fresh))
     moved = write_head_pulse(rows)
-    print("baked src=%s n=%d pulse=%s" % (src, len(rows), "moved" if moved else "same"))
+    mesh = "skip"
+    try:
+        import read_mesh
+        mesh = read_mesh.publish(rows, head=git_head(), ts=ts)
+    except Exception as exc:
+        mesh = "err %s" % exc
+    print("baked src=%s n=%d pulse=%s mesh=%s" % (src, len(rows), "moved" if moved else "same", mesh))
     return 0
 
 

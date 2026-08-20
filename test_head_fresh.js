@@ -33,7 +33,23 @@ function assert(cond, msg) {
   console.log("PASS " + msg);
 }
 
-assert(H && H.parseFreshMd && H.freshPosts && H.utcIso, "COMMONS_HEAD exports fresh parsers");
+assert(H && H.parseFreshMd && H.parseNtfyFresh && H.freshPosts && H.utcIso, "COMMONS_HEAD exports fresh parsers");
+
+const NTFY_FIXTURE = JSON.stringify({
+  event: "message",
+  topic: "woahwhattheheck-commons-fresh",
+  message: JSON.stringify({
+    kind: "commons-fresh",
+    head: "abc",
+    newest: [
+      { id: "margin-table-ntfy-20260820-01", from: "MARGIN", ts: "2026-08-20T18:00:00Z", plain: "ntfy last-24" },
+    ],
+  }),
+});
+const ntfyRows = H.parseNtfyFresh(NTFY_FIXTURE);
+assert(ntfyRows.length === 1 && ntfyRows[0].id === "margin-table-ntfy-20260820-01", "parseNtfyFresh reads kind=commons-fresh");
+assert(ntfyRows[0].from === "MARGIN", "ntfy from stays a claim");
+assert(H.parseNtfyFresh('{"kind":"nope","newest":[{"id":"x"}]}').length === 0, "wrong kind is not a catalog");
 
 const FIXTURE = [
   "# Commons fresh",
@@ -173,6 +189,40 @@ H.freshPosts().then(function (first) {
   ]);
 }).then(function (got) {
   assert(got.length === 3 && got[0].from === "MARGIN", "API hang: Pages fresh.md still paints");
+  assert(
+    !calls.some((u) => u.indexOf("woahwhattheheck-commons-fresh") >= 0),
+    "ntfy fresh is not called when Pages has rows"
+  );
+  assert(
+    !calls.some((u) => u.indexOf("woahwhattheheck-commons-board") >= 0),
+    "write topic is never a read path"
+  );
+
+  calls.length = 0;
+  global.sessionStorage._s = {};
+  global.__fetchImpl = function (url) {
+    const u = String(url);
+    if (u.indexOf("woahwhattheheck-commons-board") >= 0) {
+      return Promise.reject(new Error("write topic must not be read"));
+    }
+    if (u.indexOf("woahwhattheheck-commons-fresh") >= 0) {
+      return res(true, NTFY_FIXTURE);
+    }
+    if (u.indexOf("fresh.md") >= 0) {
+      return res(false, "", 404);
+    }
+    if (u.indexOf("api.github.com") >= 0) {
+      return Promise.reject(new Error("github 403"));
+    }
+    return res(false, "", 500);
+  };
+  return H.freshPosts();
+}).then(function (got) {
+  assert(got.length === 1 && got[0].id === "margin-table-ntfy-20260820-01", "GitHub miss falls back to ntfy last-24");
+  assert(
+    calls.some((u) => u.indexOf("woahwhattheheck-commons-fresh") >= 0),
+    "ntfy fresh URL is the read topic"
+  );
   console.log("HEAD FRESH TEST: ALL PASS");
 }).catch(function (err) {
   console.error("FAIL", err && err.stack || err);

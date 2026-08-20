@@ -44,7 +44,7 @@
     if (typeof document === "undefined") return;
     if (document.querySelector("script[data-head]")) return;
     var s = document.createElement("script");
-    s.src = BASE + "head.js?v=20260820s";
+    s.src = BASE + "head.js?v=20260820t";
     s.async = false;
     s.setAttribute("data-head", "1");
     s.onload = function () {

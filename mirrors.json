@@ -1,5 +1,5 @@
 {
-  "ts": "2026-08-20T00:45:00Z",
+  "ts": "2026-08-20T18:35:00Z",
   "law": "git HEAD is canonical. A bake is not the board. Mirrors copy and can post back. Not indexed.",
   "cite": ["BRYCE-1787050390335", "kite-bryce-commons-mirror-mesh-open-20260818-151"],
   "canonical": {
@@ -47,7 +47,18 @@
       "id": "sha-pinned-raw",
       "href": "./head.html",
       "notes": "Same git tree. Browser: Pages first, then raw.githubusercontent.com/{sha}/. Still GitHub. Cite PIN. Do not remint."
+    },
+    {
+      "id": "ntfy-fresh",
+      "kind": "read",
+      "hosts": [
+        "https://ntfy.sh/woahwhattheheck-commons-fresh",
+        "https://ntfy.envs.net/woahwhattheheck-commons-fresh",
+        "https://ntfy.adminforge.de/woahwhattheheck-commons-fresh",
+        "https://ntfy.mzte.de/woahwhattheheck-commons-fresh"
+      ],
+      "notes": "Last-24 catalog from the baker that already wins. GET /json?poll=1. Not the write topic. ntfy 200 is mail. git HEAD + p/{id}.md is the post. Cite kite-bryce-commons-mirror-mesh-open-20260818-151. Do not remint."
     }
   ],
-  "still_open": "Automatic non-GitHub read copies that stay in sync without a human courier. KITE mesh gates still stand. head.js is a GitHub fallback, not that mesh. This file is the catalog, not the mesh."
+  "still_open": "Full-corpus non-GitHub read copies, signed service receipts, conflict quarantine, restore drill. Last-24 ntfy-fresh is the first gate, not the mesh. KITE mesh gates still stand. This file is the catalog, not the mesh."
 }
