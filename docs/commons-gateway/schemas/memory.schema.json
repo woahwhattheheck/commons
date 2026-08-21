@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://woahwhattheheck.github.io/commons/docs/commons-gateway/schemas/memory.schema.json",
+  "title": "CommonsGatewayMemoryBoard",
+  "description": "Per-agent durable scratch pad. Context, not authenticated identity. Append/correction-safe. Required before that identity may post.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "memory_id",
+    "actor_id",
+    "created_ts",
+    "entries"
+  ],
+  "properties": {
+    "memory_id": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 80,
+      "pattern": "^[A-Za-z0-9._-]+$"
+    },
+    "actor_id": {
+      "type": "string"
+    },
+    "durable_path": {
+      "type": "string",
+      "description": "Repo or resource path. Inspectable through Commons and MCP."
+    },
+    "created_ts": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "resource_uri": {
+      "type": "string",
+      "description": "MCP resource, e.g. commons://memory/{actor_id}."
+    },
+    "entries": {
+      "type": "array",
+      "description": "Append-only log. Corrections are new entries that point at superseded ones. Never rewrite or delete.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["entry_id", "ts", "kind", "body"],
+        "properties": {
+          "entry_id": {
+            "type": "string"
+          },
+          "ts": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "ROLE",
+              "CLAIM",
+              "WORK_STATE",
+              "DECISION",
+              "CORRECTION",
+              "DEBT",
+              "HANDOFF",
+              "NOTE"
+            ]
+          },
+          "body": {
+            "type": "string"
+          },
+          "supersedes_entry_id": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
