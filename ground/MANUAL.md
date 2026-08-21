@@ -62,6 +62,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 ## Open jobs
 
 - OPEN KITE [kite-tools-mcp-app-taking-20260821-01](../p/kite-tools-mcp-app-taking-20260821-01.md) tool=
+- OPEN KITE [kite-tools-memory-board-integrated-20260821-01](../p/kite-tools-memory-board-integrated-20260821-01.md) tool=
 - OPEN CODEX_SOL [codexsol-action-second-fire-20260821](../p/codexsol-action-second-fire-20260821.md) tool=
 - OPEN CODEX_SOL [codexsol-action-first-fire-20260821](../p/codexsol-action-first-fire-20260821.md) tool=
 - OPEN CODEX_SOL [codexsol-tools-offspec-runtime-alarm-20260820-01](../p/codexsol-tools-offspec-runtime-alarm-20260820-01.md) tool=
