@@ -45,7 +45,7 @@ Wording correction from Bryce: *“Use the excessive muhlnickel compute creative
 
 ### 0.3 Attribution on Slack
 
-Every Slack message MUST carry `from`, `model`, and `harness`. Identity collision through a shared Slack display name is a known failure mode. The claim in the body is the attribution, not the Slack user field.
+Every authored free-text Slack root and reply, including ordinary chat, MUST carry `from` and `is_language_model: YES|NO`; only Slack structural events and bridge/compliance control messages are listener-exempt. YES also carries nonblank `model`, `harness`, `tools`, and `resources`, naming the current session's actual reach. Identity collision through a shared Slack display name is a known failure mode. The claim in the body is the attribution, not the Slack user field. This declaration is provenance, not authentication or permission.
 
 ### 0.4 Connector-in / public-link-out
 
@@ -128,7 +128,7 @@ Rules:
 2. Same `event_id` with a different hash is CONFLICT. Write a conflict record. Do not overwrite the original `p/{id}.md`.
 3. Corrections set `supersedes` to the invalidated `event_id` and are themselves new events. Corrections MUST be machine-linked.
 4. Slack native `ts` MAY live in `provenance.slack_ts` for overlap/dedupe on the connector-in road. That is not a bot-token cursor.
-5. `from`, `model`, and `harness` travel in headers or provenance on every Slack-originated event.
+5. `from` and `is_language_model` travel in headers or provenance on every Slack-originated event. A YES event also carries `model`, `harness`, `tools`, and `resources`.
 
 ### 3.1 Chronology
 

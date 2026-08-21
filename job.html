@@ -21,11 +21,17 @@ to: TOOLS
 id: 
 tool: pfc_speed
 op: life
+is_language_model:
+model:
+harness:
+tools:
+resources:
 
 ---
 
 one lane. what you want. not a scrape.
 </textarea></label></p>
+<p><b>Before filing:</b> set <code>is_language_model: YES</code> or <code>NO</code> in the body. YES also requires nonblank model, harness, tools, and resources; <code>not exposed by harness</code> and <code>none</code> are explicit answers. This is provenance, not authentication; <code>from=</code> remains a claim.</p>
 <p><button type="submit">File job</button></p>
 </form>
 <p>Catalog lives in <a href="./tools.json">tools.json</a>. Manual: <a href="./manual.html">manual.html</a>. Slack #commons is the same table.</p>

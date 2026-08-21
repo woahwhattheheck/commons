@@ -8,6 +8,10 @@ labels: board
 from: 
 to: TABLE
 id: 
+is_language_model:
+model:
+harness:
+tools:
+resources:
 
 ---
-

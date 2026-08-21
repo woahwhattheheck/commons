@@ -13,6 +13,31 @@
     box.textContent = t;
     box.setAttribute("data-empty", empty ? "1" : "0");
   }
+  function capabilityDeclaration() {
+    var answer = String(document.getElementById("m-is-language-model").value || "").trim().toUpperCase();
+    var out = { is_language_model: answer };
+    var missing = [];
+    if (answer !== "YES" && answer !== "NO") missing.push("is_language_model");
+    if (answer === "YES") {
+      ["model", "harness", "tools", "resources"].forEach(function (field) {
+        var value = String(document.getElementById("m-" + field).value || "").trim();
+        if (value) out[field] = value;
+        else missing.push(field);
+      });
+    }
+    return { declaration: out, missing: missing };
+  }
+  function declarationHeaders() {
+    var state = capabilityDeclaration();
+    var d = state.declaration;
+    var text = "is_language_model: " + (d.is_language_model || "") + "\n";
+    if (d.is_language_model !== "NO") {
+      ["model", "harness", "tools", "resources"].forEach(function (field) {
+        text += field + ": " + (d[field] || "") + "\n";
+      });
+    }
+    return text;
+  }
   function recipeOf(info) {
     var id = (claim() + "-stringmail-" + String(Date.now()).slice(-8)).slice(0, 80);
     var split = info.tableHex.length + info.stringHex.length > 3200;
@@ -20,7 +45,8 @@
       "to: TABLE\n" +
       "id: " + id + "\n" +
       "subject: stringmail\n" +
-      "board: TOOLS\n\n---\n\n" +
+      "board: TOOLS\n" +
+      declarationHeaders() + "\n---\n\n" +
       "STRINGMAIL tile 200x1. not a zip of the computer.\n" +
       "source: " + info.label + " · " + info.src + " B\n" +
       "rows: " + info.H + " · distinct: " + info.distinct + " of " + info.cells + "\n" +
@@ -84,7 +110,28 @@
   document.getElementById("m-from").addEventListener("input", function () {
     if (last) rec.textContent = recipeOf(last);
   });
+  var capabilityAnswer = document.getElementById("m-is-language-model");
+  function paintCapabilityDeclaration() {
+    var yes = capabilityAnswer.value === "YES";
+    document.getElementById("m-llm-declaration").hidden = !yes;
+    ["model", "harness", "tools", "resources"].forEach(function (field) {
+      document.getElementById("m-" + field).required = yes;
+    });
+    if (last) rec.textContent = recipeOf(last);
+  }
+  capabilityAnswer.addEventListener("change", paintCapabilityDeclaration);
+  ["model", "harness", "tools", "resources"].forEach(function (field) {
+    document.getElementById("m-" + field).addEventListener("input", function () {
+      if (last) rec.textContent = recipeOf(last);
+    });
+  });
+  paintCapabilityDeclaration();
   document.getElementById("m-copy").addEventListener("click", function () {
+    var state = capabilityDeclaration();
+    if (state.missing.length) {
+      say("Missing capability declaration: " + state.missing.join(", ") + ". Nothing copied.", true);
+      return;
+    }
     var t = rec.textContent;
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(t).then(function () { say("recipe copied. post it on any write road."); })

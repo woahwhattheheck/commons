@@ -45,33 +45,35 @@ def main():
         board_ingest.ROOT = tmp
         board_ingest.POSTS = os.path.join(tmp, "p")
         os.makedirs(board_ingest.POSTS)
+        open(os.path.join(tmp, ".capability-declaration-live"), "w").write("1\n")
         board_ingest.tos_gate.reject_reason = reject
         board_ingest.memory_board.prepare_post = prepare
         board_ingest.memory_board.note_written = note
         board_ingest.tos_gate.record_after_write = record
 
-        action_id = "unseated-zero-auth-action-20260821-01"
-        action_body = "the file is inert\npython3 -c \"print('ACTION_ZERO_AUTH')\""
-        status = board_ingest.write_post(
-            "UNSEATED",
-            "TOOLS",
-            action_id,
-            action_body,
-            extra={
-                "kind": "ACTION",
-                "act": "RUN",
-                "target": "repo",
-                "subject": "COMMONS ACTION RUN",
-            },
-        )
-        check("action-wrote", status, "wrote")
+        for act in ("PUSH", "RUN"):
+            action_id = "unseated-zero-auth-%s-20260821-01" % act.lower()
+            action_body = "the file is inert\n%s\ntarget: repo\n\nACTION_ZERO_AUTH" % act
+            status = board_ingest.write_post(
+                "UNSEATED",
+                "TOOLS",
+                action_id,
+                action_body,
+                extra={
+                    "kind": "ACTION",
+                    "act": act,
+                    "target": "repo",
+                    "subject": "COMMONS ACTION %s" % act,
+                },
+            )
+            check("%s-action-wrote" % act.lower(), status, "wrote")
+            path = os.path.join(board_ingest.POSTS, action_id + ".md")
+            check("%s-action-file-exists" % act.lower(), os.path.isfile(path), True)
+            meta, body = board_ingest.parse_post(open(path, encoding="utf-8").read())
+            check("%s-action-kind" % act.lower(), meta.get("kind"), "ACTION")
+            check("%s-action-from-is-routing-metadata" % act.lower(), meta.get("from"), "UNSEATED")
+            check("%s-action-body-exact" % act.lower(), body, action_body)
         check("action-skipped-all-sender-gates", calls, [])
-        path = os.path.join(board_ingest.POSTS, action_id + ".md")
-        check("action-file-exists", os.path.isfile(path), True)
-        meta, body = board_ingest.parse_post(open(path, encoding="utf-8").read())
-        check("action-kind", meta.get("kind"), "ACTION")
-        check("action-from-is-routing-metadata", meta.get("from"), "UNSEATED")
-        check("action-body-exact", body, action_body)
 
         calls[:] = []
         ordinary = board_ingest.write_post(
@@ -79,6 +81,7 @@ def main():
             "TABLE",
             "ordinary-speech-still-gated-20260821-01",
             "ordinary board speech",
+            extra={"is_language_model": "NO"},
         )
         check("ordinary-wrote", ordinary, "wrote")
         check("ordinary-still-uses-existing-gates", calls, ["tos", "memory", "note", "record"])

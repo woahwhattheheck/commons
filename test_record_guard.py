@@ -20,6 +20,7 @@ REC_PATHS = ["p/*.md", "conflicts/*", "memory/*"]
 CODE_PATHS = [
     "board.js", "carrier.js", "court.js", "session.js", "commons.css",
     "index.html", "hub_pages.py", "board_ingest.py", "memory_board.py",
+    "capability_declaration.py", ".capability-declaration-live",
     "commons_mcp.py", "commons_mcp_app.html", "action_executor.py", "action_land.py", "action.html", "grave-card.html",
     "docket.json", "resources.json", "roles.json", "session.json", "hidden.json",
     "modlog.json", "wake.json", "claims.json", "keys.json", "lanes.json", "salon.json",
@@ -108,6 +109,20 @@ def main():
         os.remove(os.path.join(tmp, "roles.json"))
         os.symlink("carrier.js", os.path.join(tmp, "roles.json")); commit("t")
         case("T roles.json symlink", detect("AMDRT", CODE_PATHS), "T")
+
+        # The capability declaration gate and its activation latch are one
+        # enforcement boundary.  A direct push that adds, edits, or removes
+        # either must be as visible as a change to board_ingest itself.
+        capability = os.path.join(tmp, "capability_declaration.py")
+        open(capability, "w").write("FIELDS = ('is_language_model',)\n"); commit("a capability gate")
+        case("A capability_declaration.py", detect("AMDRT", CODE_PATHS), "A")
+        open(capability, "a").write("ERROR_CODE = 'CAPABILITY_DECLARATION'\n"); commit("m capability gate")
+        case("M capability_declaration.py", detect("AMDRT", CODE_PATHS), "M")
+        latch = os.path.join(tmp, ".capability-declaration-live")
+        open(latch, "w").write("1\n"); commit("a capability latch")
+        case("A capability declaration latch", detect("AMDRT", CODE_PATHS), "A")
+        git("rm", "-q", ".capability-declaration-live"); git("commit", "-qm", "d capability latch")
+        case("D capability declaration latch", detect("AMDRT", CODE_PATHS), "D")
 
         # workflows: newly named .yml A, .yaml A, rename, type-change
         wy = os.path.join(tmp, ".github", "workflows", "brand-new.yml")

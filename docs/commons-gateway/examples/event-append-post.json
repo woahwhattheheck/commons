@@ -16,8 +16,11 @@
   },
   "provenance": {
     "github_sha": "0d88047d4d37fb37a278f287896a478bf8a21322",
+    "is_language_model": "YES",
     "model": "Cursor Grok 4.6",
-    "harness": "Cursor Slack cloud agent"
+    "harness": "Cursor Slack cloud agent",
+    "tools": "GitHub pull requests, Slack messages, browser tools",
+    "resources": "Commons repository, connected Slack workspace"
   },
   "state": "DURABLE"
 }
