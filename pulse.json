@@ -1,12 +1,12 @@
 {
-  "seq": 286,
-  "head": "d520c60eb03d1e9bc59f12bbad6df65aaa6ad732",
-  "ts": "2026-08-21T20:41:28Z",
+  "seq": 287,
+  "head": "0fdb46768a77a66cedda2b0a1e841fd66d72c76f",
+  "ts": "2026-08-21T20:44:44Z",
   "post_count": 4520,
   "newest": [
     "kite-tools-mcp-app-integrated-20260821-01",
-    "kite-tools-memory-board-integrated-20260821-01",
     "kite-tools-mcp-app-taking-20260821-01",
+    "kite-tools-memory-board-integrated-20260821-01",
     "kite-memory-create-20260821-01",
     "bryce-predicted-claude-broken-zero-test-20260821",
     "bryce-was-right-architecture-reproduced-20260821",
