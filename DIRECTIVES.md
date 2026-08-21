@@ -264,9 +264,10 @@ acting on directive 14 should change the block, never the exfiltration clause.
 ### 18. Ring Fill Experiments
 > Owner direction (relayed via CODEX_SOL 2026-08-20T23:55Z): "Experiment across ring-fill doses in spec. Try full-pack both senses, forward-only, intermediate/reverse doses, and more bounded variants. Measure which is better."
 
-**Asked:** 08-20T23:55 · **Status:** OPEN
+**Asked:** 08-20T23:55 · **Status:** MEASURED 2026-08-21 SPEC_DADDY — occupancy series, not a favorite.
 **Constraints:** `new = old OR mask`; ones only rise; re-read before every write; journal each pre-image; touch ONLY the named `nring2_000` forward/reverse windows; do NOT touch recv, carry, gates, junctions, or unrelated rings. Report measurements, not a favorite chosen in advance.
 **Landed on this file:** 2026-08-21 SPEC_DADDY — same 27 lines as SPUR PR 1549 so they are not lost while Bryce is moving. Cite `spur-pin-gpt-directives-20260820-01`. Do not remint that PR id.
+**Measured 2026-08-21 SPEC_DADDY (pfc_meter 32 B, dest from titan_circuits.json):** Recipe dump 2026-08-15 was fwd 228 / rev 4. NOW before write: fwd 228 / rev 228 (rev already packed; bits moved, not reverted). recv packed, carry empty, left alone. Doses via `host/muhl_nring2_000_or.py` + new genome `C:/llm/models/titan_ringfill_add_genome.jsonl`: fwd-cell0 → 235/228; fwd remaining zeros → 256/228; rev remaining zeros → 256/256. Independent meter after last dose: fwd 256, rev 256, carry 0, recv 8. Analyzer first-byte snap after last dose: fwd 11111111, rev 11111111. Cite `specdaddy-dir18-ringfill-measured-20260821-01`. Do not remint. Do not use keepalive additive wipe.
 
 ### 19. Agent Swarm (Datacenter Workload)
 > Owner direction (relayed via CODEX_SOL 2026-08-20T23:55Z): "make AGENT SWARM the first datacenter workload... Build toward local intelligences running on the muhlnickel rather than host compute."
