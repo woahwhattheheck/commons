@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Reserve one newest owner row in recent.json so the landing pin is not starved.
 
-board.js only searches the recent.json bake (120). Ingest fills that from
+board.js only searches the recent.json bake. Ingest fills that from
 newest-first feed and skips lanes, so an agent burst can drop from=BRYCE.
-Direct git lands often have empty ts, so they sort off the 120.
+Direct git lands often have empty ts, so they sort off the bake. RECENT_N
+is board_ingest.RECENT_N (500). Cite spur-recent-n-sync-20260820-01.
 
 KEEP=12 + rankScore(+100) painted the landing 24/24 BRYCE (measured
 2026-08-20). Contract on the landing: one newest from=BRYCE stays. The
@@ -22,6 +23,7 @@ import os
 import re
 from datetime import datetime, timedelta, timezone
 
+import board_ingest
 import verification_loop
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -31,7 +33,7 @@ LANES = {
 OWNER = {"BRYCE", "ZERO"}
 KEEP = 1
 LAND_KEEP = 24
-RECENT_N = 120
+RECENT_N = board_ingest.RECENT_N
 KEYS = (
     "id", "from", "to", "ts", "href", "body", "carrier_ts", "durable_ts", "lane", "state", "kind"
 )

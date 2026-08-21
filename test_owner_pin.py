@@ -14,6 +14,8 @@ def check(name, cond):
 def test_keep_is_one():
     check("KEEP is 1", op.KEEP == 1)
     check("LAND_KEEP still 24", op.LAND_KEEP == 24)
+    check("RECENT_N follows ingest", op.RECENT_N == __import__("board_ingest").RECENT_N)
+    check("RECENT_N is 500", op.RECENT_N == 500)
 
 
 def test_one_pin_not_twelve():

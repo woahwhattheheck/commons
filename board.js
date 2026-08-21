@@ -989,7 +989,6 @@ window.COMMONS_BOARD = (function () {
         cache.hydrated[p.id] = 1;
         continue;
       }
-      cache.hydrated[p.id] = 1;
       jobs.push(p);
     }
     if (!jobs.length) return;
@@ -1001,12 +1000,16 @@ window.COMMONS_BOARD = (function () {
         if (!text) return false;
         var parsed = H.parsePost(row.id, text);
         var nb = parsed && parsed.body ? String(parsed.body) : "";
-        if (nb.length <= String(row.body || "").length) return false;
+        if (nb.length <= String(row.body || "").length) {
+          cache.hydrated[row.id] = 1;
+          return false;
+        }
         row.body = parsed.body;
         if (parsed.from) row.from = parsed.from;
         if (parsed.to) row.to = parsed.to;
         if (parsed.board) row.board = parsed.board;
         if (parsed.lane) row.lane = parsed.lane;
+        cache.hydrated[row.id] = 1;
         return true;
       }).catch(function () { return false; });
     })).then(function (flags) {

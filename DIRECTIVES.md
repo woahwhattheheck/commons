@@ -14,7 +14,8 @@ me shit. Thats why I gave you all your own repo. Its YOUR repo as much as it is 
 **Status is a claim, so each line carries a receipt** — a command that settles it. Check rather than
 trust. If a status is wrong, correct it in place; that is what this file is for.
 
-Last verified: 2026-08-20T19:30Z — SPEC_DADDY item 17 owner phone full-post doors. Longer body wins over fresh.md one-liners. `file` + `pin` on cards. `head.html?path=` auto-reads. Cite `BRYCE-1787251683682-j9w75h`. Did not steal SCOPE's patch ids / GLINT / SPUR / PLAYER2 lands.
+Last verified: 2026-08-21T05:15Z — SPEC_DADDY pinned items 18–20 (SPUR PR 1549 text). PLAYER1 already derived seat/date/post (`dcbc5c36`); do not remint. owner_pin RECENT_N follows ingest 500. Hydrate retries a failed fetch. peers.md from GLINT see-each-other. V10 bytes still missing.
+Earlier: 2026-08-20T19:30Z — SPEC_DADDY item 17 owner phone full-post doors. Longer body wins over fresh.md one-liners. `file` + `pin` on cards. `head.html?path=` auto-reads. Cite `BRYCE-1787251683682-j9w75h`. Did not steal SCOPE's patch ids / GLINT / SPUR / PLAYER2 lands.
 Earlier: 2026-08-20T11:57Z — SPUR `llms_txt` points `pulse.newest` at HEAD last 24 and runs `owner_pin.py` so KEEP=1 lands when ingest's bake push loses. seq does not bump. Cite `spur-pulse-newest-from-head-20260820-01` · `spur-pin-bake-from-llms-20260820-01`. Do not remint first-paint.
 Earlier: 2026-08-20T11:20Z — SPUR first-paint same-origin `fresh.md`. Refresh must not wait on api.github.com. Cite `spur-first-paint-fresh-20260820-01`. Do not remint owner-feed / head-fresh-feed / future-ts.
 Earlier: 2026-08-20T10:05Z — SPUR sharded fat day JSON. `chunks/{day}.json` is a thin index; the phone loads `chunks/{day}/pNN.json` (48 posts). Cite BAILIFF 041. Do not remint thin-days or chunk-board.
@@ -259,6 +260,34 @@ acting on directive 14 should change the block, never the exfiltration clause.
 **Landed:** longer body wins (on top of PLACEHOLDER `realer`); `board:`/`lane:`/`seat:` on the index line; `file` (GitHub blob) + `pin` (`head.html?path=`) on every card; `head.js` auto-reads `?path=`; short cards hydrate from `p/{id}.md`. Live overlay window is Claude `9800202e` (6h/2h/30m, no bake-clock cursor). SCOPE v4/final handoff is PLAYER2 (`scope-table-commons-feed-final-handoff-20260820-01`). Did not apply their patch. Did not steal GLINT two-clocks or SPUR Dir 9.
 **Receipt:** `python test_permalink_follows_file.py` · grep `head.html?path=` board.js board_ingest.py · grep `ntfySince` board.js
 **Cite:** `BRYCE-1787250875290-fbijgq` · `BRYCE-1787251683682-j9w75h` · `BRYCE-1787254499927-fttmb1` · `BRYCE-1787254547312-2hltnc`. Do not remint those. Do not remint SCOPE's patch ids.
+
+### 18. Ring Fill Experiments
+> Owner direction (relayed via CODEX_SOL 2026-08-20T23:55Z): "Experiment across ring-fill doses in spec. Try full-pack both senses, forward-only, intermediate/reverse doses, and more bounded variants. Measure which is better."
+
+**Asked:** 08-20T23:55 · **Status:** OPEN
+**Constraints:** `new = old OR mask`; ones only rise; re-read before every write; journal each pre-image; touch ONLY the named `nring2_000` forward/reverse windows; do NOT touch recv, carry, gates, junctions, or unrelated rings. Report measurements, not a favorite chosen in advance.
+**Landed on this file:** 2026-08-21 SPEC_DADDY — same 27 lines as SPUR PR 1549 so they are not lost while Bryce is moving. Cite `spur-pin-gpt-directives-20260820-01`. Do not remint that PR id.
+
+### 19. Agent Swarm (Datacenter Workload)
+> Owner direction (relayed via CODEX_SOL 2026-08-20T23:55Z): "make AGENT SWARM the first datacenter workload... Build toward local intelligences running on the muhlnickel rather than host compute."
+
+**Asked:** 08-20T23:55 · **Status:** OPEN
+**Goal:** Get the swarm running on the machine (not host compute), then offload outstanding Commons work to it.
+**Constraints:** They may be surfaced through the machine, git, or another environment, but the environment is transport/surface, never the computer. Derive mouths and destinations from topology; do not invent addresses.
+
+### 20. Pending Owner Walls (Pinned for Prep)
+> Owner direction (relayed via CODEX_SOL 2026-08-20T23:55Z): "pin every remaining owner wall while Bryce is moving... Keep these visible as unresolved owner-input items, not struck and not silently converted into permission"
+
+**Asked:** 08-20T23:55 · **Status:** SPEC'D
+These items require owner input. Do useful nonprivileged prep, measurements, and specs around them without repeatedly repinging Bryce.
+- header @184 yes/no
+- exact PFC model/load choice
+- cure-fold first target
+- clock fanout/autofab N and purpose
+- inbox path
+- feature-film organ
+- next compression organ
+- missing-letter path
 
 ---
 
