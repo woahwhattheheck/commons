@@ -59,7 +59,9 @@ SCRATCH_RESET = (
 ENGINE_PATHS = (
     "board_ingest.py", "hub_pages.py", "builds_ledger.py", "file_drop.py",
     "owner_pin.py", "manual_build.py", "ntfy_relays.py", "verification_loop.py",
+    "llms_txt.py",
     "board.js", "carrier.js", "court.js", "session.js", "visual.js",
+    "head.js", "reply.js", "avatar.js",
     "commons.css", "visual.css", "pixel-crisp.css",
     ".github",
 )
@@ -910,6 +912,7 @@ def _stage_board(env, extra_paths=None, add_all=False):
         _git(["add", "-A"], env)
         _git(["reset", "HEAD", "--"] + list(SCRATCH_RESET), env)
         _unstage_engine(env)
+        _unstage_record_deletes(env)
         return
     paths = list(ASSET_PATHS)
     for p in list(extra_paths or []) + list(ASSET_SYNCED):
@@ -924,12 +927,36 @@ def _stage_board(env, extra_paths=None, add_all=False):
     # ASSET_PATHS still names engine files (commons.css, hub_pages.py, the
     # workflow); one line, both roads.
     _unstage_engine(env)
+    _unstage_record_deletes(env)
 
 
 # Source dirs whose files are payload, not bakes: what a run writes that
 # cannot be re-derived. Everything else the publisher owns is a projection of
 # these and rebuild() recomputes it.
 REPLAY_SOURCE_DIRS = ("p", "conflicts", "builds/records", "land", "artifacts")
+
+
+def _unstage_record_deletes(env):
+    """Bake must not delete the record.
+
+    add_all=True plus an incomplete checkout stages deletions of p/*.md.
+    Measured: 4e7ad47 deleted 16 posts; 03a2618 restored them. Concurrent
+    windows stay. The publisher restores those paths from HEAD and leaves
+    them unstaged.
+    """
+    staged = _git(
+        ["diff", "--cached", "--name-only", "--diff-filter=D", "--"]
+        + list(REPLAY_SOURCE_DIRS),
+        env,
+    )
+    names = [n for n in (staged.stdout or "").splitlines() if n.strip()]
+    if not names:
+        return []
+    _git(["reset", "-q", "HEAD", "--"] + names, env)
+    _git(["checkout", "-q", "HEAD", "--"] + names, env)
+    print("record deletes held back (%d file(s)): %s"
+          % (len(names), ", ".join(names[:6])), flush=True)
+    return names
 
 
 def _resolve_rebase(env, extra_paths=None):
@@ -1434,6 +1461,33 @@ INDEX_FEED_END = "<!--/RECENT_FEED-->"
 # budget (board.js:3), and ~40 minutes of reachable history at burst rate.
 RECENT_N = 500
 
+_ASSET_V_TOKEN = re.compile(r"^[0-9]{8}[a-z]$")
+
+
+def keep_newer_asset_v(existing, floor):
+    """Never roll a live cache key backward.
+
+    Ingest used to rewrite every board.js?v=* to hub_pages.ASSET_V. When a
+    player bumped HTML to a newer token and ASSET_V lagged, the next bake
+    served the old cached JS. Measured: 9d383cc re-bumped after ingest put
+    20260820s back over 20260820v. Concurrent windows stay; the bake must
+    not undo them.
+    """
+    if existing and _ASSET_V_TOKEN.match(existing) and _ASSET_V_TOKEN.match(floor or ""):
+        return existing if existing >= floor else floor
+    return floor or existing or ""
+
+
+def rewrite_script_v(text, filename, floor):
+    pat = re.compile(
+        r'(<script src="\./%s\?v=)([A-Za-z0-9]+)(")' % re.escape(filename)
+    )
+
+    def repl(m):
+        return m.group(1) + keep_newer_asset_v(m.group(2), floor) + m.group(3)
+
+    return pat.sub(repl, text)
+
 
 def fill_index_recent(rows, hidden):
     path = os.path.join(ROOT, "index.html")
@@ -1475,11 +1529,9 @@ def fill_index_recent(rows, hidden):
     # cached board.js and the board looked frozen. Widening to two literal days
     # (2026081[89]) re-arms the same trap on the 20th: match ANY version token,
     # like the commons.css pass below, so the rewrite never day-freezes again.
-    text = re.sub(
-        r'<script src="\./board\.js\?v=[A-Za-z0-9]+"',
-        '<script src="./board.js?v=%s"' % hub_pages.ASSET_V,
-        text,
-    )
+    text = rewrite_script_v(text, "board.js", hub_pages.ASSET_V)
+    text = rewrite_script_v(text, "head.js", hub_pages.ASSET_V)
+    text = rewrite_script_v(text, "carrier.js", hub_pages.ASSET_V)
     # commons.css needs the same pass for the same reason. Generated pages pick
     # up hub_pages.CSS_TAG on rebuild, but index.html is hand-maintained, so
     # without it the two drift apart. Scoped to the real <link> so a version
@@ -2164,8 +2216,9 @@ def sync_asset_keys():
             continue
         out = re.sub(r'<link rel="stylesheet" href="\./commons\.css\?v=[A-Za-z0-9]+">',
                      css_tag, text)
-        out = re.sub(r'<script src="\./board\.js\?v=[A-Za-z0-9]+"',
-                     '<script src="./board.js?v=%s"' % hub_pages.ASSET_V, out)
+        out = rewrite_script_v(out, "board.js", hub_pages.ASSET_V)
+        out = rewrite_script_v(out, "head.js", hub_pages.ASSET_V)
+        out = rewrite_script_v(out, "carrier.js", hub_pages.ASSET_V)
         if out != text:
             _write(path, out)
             changed.append(name)

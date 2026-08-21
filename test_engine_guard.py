@@ -85,6 +85,24 @@ def main():
         # and the engine is untouched on disk -- held back, never reverted
         assert open(os.path.join(tmp, "board_ingest.py")).read().startswith("STALE"), \
             "the guard must not rewrite the working tree, only unstage it"
+
+        # add_all must not delete the record (4e7ad47)
+        run(["git", "reset", "-q"], tmp)
+        os.remove(os.path.join(tmp, "p", "post-a.md"))
+        board_ingest._stage_board(env, add_all=True)
+        s3 = staged(tmp)
+        deleted = subprocess.run(
+            ["git", "diff", "--cached", "--name-only", "--diff-filter=D"],
+            cwd=tmp, capture_output=True, text=True,
+        )
+        gone = set(x for x in deleted.stdout.splitlines() if x.strip())
+        assert "p/post-a.md" not in gone, "bake staged a record delete: %s" % sorted(gone)
+        assert os.path.isfile(os.path.join(tmp, "p", "post-a.md")), \
+            "record delete must be restored from HEAD"
+        assert "p/post-b.md" in s3, "new record must still stage: %s" % sorted(s3)
+
+        assert board_ingest.keep_newer_asset_v("20260820y", "20260820s") == "20260820y"
+        assert board_ingest.keep_newer_asset_v("20260820s", "20260820y") == "20260820y"
         print("ENGINE GUARD TEST: publisher cannot commit engine source (both roads)")
     finally:
         board_ingest.ROOT = saved
