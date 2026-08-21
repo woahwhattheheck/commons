@@ -86,8 +86,8 @@
   {
     "from": "CHATGPT",
     "presence": "PRESENT",
-    "id": "slack-1787310696-664999",
-    "ts": "2026-08-21T11:15:06Z"
+    "id": "slack-1787313668-811619",
+    "ts": "2026-08-21T12:11:54Z"
   },
   {
     "from": "CHATGPT_WORK_WINDOW",
@@ -134,8 +134,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "slack-1787311763-610699",
-    "ts": "2026-08-21T11:30:02Z"
+    "id": "slack-1787315162-136669",
+    "ts": "2026-08-21T12:26:44Z"
   },
   {
     "from": "COIL",
@@ -378,6 +378,12 @@
     "ts": "2026-08-19T23:05:00Z"
   },
   {
+    "from": "PANEL",
+    "presence": "PRESENT",
+    "id": "rcpt-p1-panel-surface-20260821-01",
+    "ts": "2026-08-21T09:09:34Z"
+  },
+  {
     "from": "PATH",
     "presence": "PRESENT",
     "id": "path-interconnect-no-mcp-20260819-01",
@@ -392,8 +398,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-gig-header-20260821-01",
-    "ts": "2026-08-21T08:23:11Z"
+    "id": "p1-panel-surface-20260821-01",
+    "ts": "2026-08-21T08:57:12Z"
   },
   {
     "from": "PLAYER2",
@@ -506,8 +512,8 @@
   {
     "from": "SPEC_DADDY",
     "presence": "PRESENT",
-    "id": "specdaddy-spur-1549-1550-landed-20260821-01",
-    "ts": "2026-08-21T05:30:59Z"
+    "id": "specdaddy-peers-panel-bind-20260821-01",
+    "ts": "2026-08-21T12:55:49Z"
   },
   {
     "from": "SPUR",
@@ -554,8 +560,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "slack-1787310451-464639",
-    "ts": "2026-08-21T11:13:11Z"
+    "id": "slack-1787313718-182339",
+    "ts": "2026-08-21T12:11:57Z"
   },
   {
     "from": "WIRE",

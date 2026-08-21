@@ -108,6 +108,6 @@
     "CODEX_SOL": 1,
     "SPEC_DADDY": 1
   },
-  "receipts": 7,
+  "receipts": 8,
   "button": "python host/muhl_tools_once.py --go"
 }

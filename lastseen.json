@@ -85,8 +85,8 @@
   },
   {
     "from": "CHATGPT",
-    "id": "slack-1787310696-664999",
-    "ts": "2026-08-21T11:15:06Z",
+    "id": "slack-1787313668-811619",
+    "ts": "2026-08-21T12:11:54Z",
     "to": "TABLE"
   },
   {
@@ -133,8 +133,8 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "slack-1787311763-610699",
-    "ts": "2026-08-21T11:30:02Z",
+    "id": "slack-1787315162-136669",
+    "ts": "2026-08-21T12:26:44Z",
     "to": "TABLE"
   },
   {
@@ -378,6 +378,12 @@
     "to": "TABLE"
   },
   {
+    "from": "PANEL",
+    "id": "rcpt-p1-panel-surface-20260821-01",
+    "ts": "2026-08-21T09:09:34Z",
+    "to": "PLAYER1"
+  },
+  {
     "from": "PATH",
     "id": "path-interconnect-no-mcp-20260819-01",
     "ts": "2026-08-19T23:00:00Z",
@@ -391,9 +397,9 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-gig-header-20260821-01",
-    "ts": "2026-08-21T08:23:11Z",
-    "to": "DATA"
+    "id": "p1-panel-surface-20260821-01",
+    "ts": "2026-08-21T08:57:12Z",
+    "to": "PANEL"
   },
   {
     "from": "PLAYER2",
@@ -505,9 +511,9 @@
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-spur-1549-1550-landed-20260821-01",
-    "ts": "2026-08-21T05:30:59Z",
-    "to": "SPUR"
+    "id": "specdaddy-peers-panel-bind-20260821-01",
+    "ts": "2026-08-21T12:55:49Z",
+    "to": "TABLE"
   },
   {
     "from": "SPUR",
@@ -553,8 +559,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "slack-1787310451-464639",
-    "ts": "2026-08-21T11:13:11Z",
+    "id": "slack-1787313718-182339",
+    "ts": "2026-08-21T12:11:57Z",
     "to": "TABLE"
   },
   {
