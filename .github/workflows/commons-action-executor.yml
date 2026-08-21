@@ -1,0 +1,37 @@
+name: commons-action-executor
+on:
+  workflow_run:
+    workflows: ["commons-board"]
+    types: [completed]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: commons-action-executor
+  cancel-in-progress: false
+jobs:
+  execute:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: fire GitHub verbs
+        id: fire
+        run: python3 action_executor.py --scope github > .action_changed.json
+      - name: land outputs and receipts
+        run: |
+          set -e
+          mapfile -t paths < <(python3 -c 'import json; print("\n".join(json.load(open(".action_changed.json"))["changed"]))')
+          [ "${#paths[@]}" -gt 0 ] || exit 0
+          git add -- "${paths[@]}"
+          git diff --cached --quiet && exit 0
+          git -c user.name="commons-action" -c user.email="commons-action@users.noreply.github.com" commit -m "fire addressed Commons actions"
+          for i in 1 2 3 4 5; do
+            git push origin HEAD:main && exit 0
+            git fetch origin main
+            git rebase origin/main || { git rebase --abort; exit 1; }
+            sleep $((i * 3))
+          done
+          exit 1
