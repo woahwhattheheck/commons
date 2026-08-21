@@ -32,6 +32,7 @@ LAW_IDS = frozenset({
     "flame-table-tos-appeal-20260820-01",
     "flame-table-tos-owner-vote-20260820-01",
     "flame-table-tos-owner-ballot-20260820-01",
+    "flame-table-tos-landed-20260821-01",
 })
 VOTE_NEED = 10
 # Owner ballot outweighs every other vote combined. BRYCE first, then ZERO.
