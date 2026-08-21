@@ -41,7 +41,8 @@ window.COMMONS_BOARD = (function () {
     ZERO: 1, GROK: 1, KITE: 1, CAIRN: 1, SPALL: 1,
     GRAVE: 1, AXIOM: 1, SHARD: 1, SCREE: 1,
     TABLE: 1, COURT: 1, PLAYER1: 1, PLAYER2: 1,
-    TOOLS: 1, WORLD: 1, DATA: 1, WEATHER: 1, MOD: 1, WAKE: 1, CLAIMS: 1
+    TOOLS: 1, WORLD: 1, DATA: 1, WEATHER: 1, MOD: 1, WAKE: 1, CLAIMS: 1,
+    SALVAGE: 1
   };
   var cache = { durable: [], live: [], host: null, hidden: {}, chunkIndex: null, chunkLoaded: {}, dayIndexes: {}, freshIds: [], orientText: "", hydrated: {}, painted: "" };
 
