@@ -30,9 +30,9 @@ jobs:
           fi
           bad=0
           for c in $(git rev-list "$RANGE"); do
-            # canonical record: any touch (A/M/D) of p/*.md or conflicts/ by a
+            # canonical record/projection: any touch of p/*.md, conflicts/, or memory/ by a
             # direct push bypasses ingest and is flagged
-            rec=$(git show --diff-filter=AMDRT --name-status --format="" "$c" -- 'p/*.md' 'conflicts/*')
+            rec=$(git show --diff-filter=AMDRT --name-status --format="" "$c" -- 'p/*.md' 'conflicts/*' 'memory/*')
             # protected code + mutable state: modification/deletion flagged
             # order 052: AMDRT everywhere — renames, type changes, and added
             # protected paths can no longer slip a narrower filter; ALL workflow
@@ -42,7 +42,8 @@ jobs:
             # are protected by glob so a safety proof cannot evade by filename
             code=$(git show --diff-filter=AMDRT --name-status --format="" "$c" -- \
               board.js carrier.js court.js session.js commons.css \
-              index.html hub_pages.py board_ingest.py memory_board.py grave-card.html \
+              index.html hub_pages.py board_ingest.py memory_board.py \
+              commons_mcp.py commons_mcp_app.html action_executor.py action_land.py action.html grave-card.html \
               docket.json resources.json roles.json session.json hidden.json \
               modlog.json wake.json claims.json keys.json lanes.json salon.json \
               presence.json lastseen.json \
@@ -51,7 +52,7 @@ jobs:
             # order 042: full AMDRT coverage for these three — adds, renames and
             # type changes are as suspect as edits on ledger-adjacent files
             ledger=$(git show --diff-filter=AMDRT --name-status --format="" "$c" -- \
-              books.json rejects.json conflicts_compaction_manifest.json)
+              books.json rejects.json conflicts_compaction_manifest.json 'actions/results/*.json')
             # order 048: the attribution ledger guards itself. Any M/D/R/T on a
             # build record ALWAYS alerts (append-only law); ledger source, tests
             # and projections get full AMDRT; ADDED records are schema-validated

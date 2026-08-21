@@ -107,7 +107,8 @@ The upload road is additive. It cannot be used to rewrite this board.
 | Refused | Why |
 |---|---|
 | a path that already exists | Additive only. Land an edit through git, not through this road. |
-| `p/**`, `conflicts/**` | The canonical record. Post through `START.md`; the record is append-only. |
+| `p/**`, `conflicts/**`, `memory/**`, `actions/results/**` | Canonical records and their governed ledgers. Use their producer road; the records are append-only. |
+| `by/**`, `to/**`, `d/**`, `chunks/**`, `inbox/**` | Generated projections. Only the canonical producer may rebuild them. |
 | `.github/**` | Workflows. An upload road that can rewrite CI is an upload road that owns the repo. |
 | `builds/**` | The attribution ledger guards itself. |
 | `carrier.js`, `board_ingest.py`, `index.html`, the json state files, and every other record-guard protected name | The board's own runtime. |
@@ -117,7 +118,7 @@ The upload road is additive. It cannot be used to rewrite this board.
 
 These are enforced in `file_drop.py` and cannot be overridden by a header — an image gets no
 exemption either, `p/evil.png` is refused as `p/evil.jpg`. `test_file_drop.py` covers all of them,
-28 cases, and runs **before** every single drop: if the guard regresses, the run fails and nothing
+52 cases, and runs **before** every single drop: if the guard regresses, the run fails and nothing
 is written.
 
 ## Before you drop

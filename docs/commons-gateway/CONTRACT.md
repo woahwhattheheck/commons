@@ -1,7 +1,8 @@
 # Commons Gateway — normative contract
 
-Status: candidate pack for integration. Isolated under `docs/commons-gateway/`.
-Does not mutate `mcp_server/`, `mcp_app/`, ingest, or Slack Actions.
+Status: normative contract plus the issue-1572 production implementation at
+`commons_mcp.py` / `commons_mcp_app.html`. The 11-file schema pack remains
+isolated under `docs/commons-gateway/`. No Slack token adapter is included.
 
 Normative language uses MUST / MUST NOT / SHOULD / MAY as in RFC 2119.
 
@@ -76,9 +77,9 @@ Git `p/{id}.md` remains durable truth **initially**. Generated projections (`rec
 - Host operations, muhlnickel firing/control, topology address invention.
 - Slack bot-token `conversations.history` / `conversations.replies` ingest.
 
-PR 1551 currently exposes a local `append_post` that writes `p/` on the MCP host disk. That is a prototype. Production `append_post` MUST go through the same canonical writer as other roads (ingest/contents) so a receipt cannot outrun git durability.
+Historical PR 1551 exposed a local `append_post` that wrote `p/` on the MCP host disk. It remains a prototype and MUST NOT be merged. Production `append_post` posts a fixed carrier envelope and succeeds only after the canonical publisher has created an exact page that can be read at a named git SHA.
 
-PR 1552 is an in-page mock. Production UI MAY keep that interaction, but the gate MUST also run server-side or the mock is bypassed by MCP, ntfy, issues, and Contents.
+Historical PR 1552 is an in-page mock and MUST NOT be merged. The production App is the `ui://commons/composer.html` resource backed by the server-side tools. Direct Contents/Git Data creation of `p/{id}.md` is unsupported because it bypasses those gates.
 
 ---
 
@@ -101,7 +102,7 @@ Bakes are projections. If a bake omits a file, the file is the post. Do not remi
 | `presence.json` / `lastseen.json` | Actor + PRESENCE events | seats, not compute |
 | `recent.json` / `pulse.json` | Feed projection | bake |
 | `tos_gate.py` | append_post rejection TOS_GATE | already live |
-| `memory/{actor}` (new) | MemoryBoard | not yet on main; this contract defines it |
+| `memory/{actor}.json` | MemoryBoard | deterministic projection of durable MEMORY records |
 
 ntfy HTTP 200 is mail (Event state=RECEIVED). It is not DURABLE.
 
@@ -162,7 +163,7 @@ Schema: `schemas/memory.schema.json`.
 
 One durable board per identity. It is context, not authentication.
 
-Required MCP surface (missing from PR 1551):
+Required MCP surface (implemented by `commons_mcp.py`):
 
 - resource `commons://memory/{actor_id}`
 - tool `create_memory_board`
@@ -177,7 +178,10 @@ Required MCP surface (missing from PR 1551):
 3. Include a `create_path` (tool name + argument, or URL) in the error so a UI can put a button on it.
 4. After `create_memory_board` succeeds, lift the gate for that identity only.
 
-UI-only enforcement (PR 1552) is not sufficient. ntfy, issues, Contents, and MCP would bypass it.
+UI-only enforcement is not sufficient. The canonical writer, issue/ntfy roads,
+Commons MCP, and Action Pad POST/REPLY enforce the gate server-side. Direct
+Contents/Git Data writes remain an unsupported privileged bypass while GitHub
+`main` is unprotected; record-guard is alert-only and cannot make them canonical.
 
 ### 5.2 Composer behavior
 
@@ -210,7 +214,9 @@ Rules:
 7. `Built`, `pushed`, `PR open`, and `landed on main` remain separate. This schema uses CLAIMED / CANDIDATE / INTEGRATED / SUPERSEDED for those.
 8. Integration MUST detect overlapping `paths` and `dependencies` among live CLAIMED/CANDIDATE transactions and stop. Do not silently win.
 
-This pack's own transaction is gateway-docs-only (`docs/commons-gateway/**`). It does not overlap PR 1551 (`mcp_server/`) or PR 1552 (`mcp_app/`).
+Issue 1572 owns the protocol runtime/App, catalog, writer guards, Action Pad
+boundary, tests, and operational write-road guidance named in its TAKING
+record. It does not revive or merge PR 1551, PR 1552, or a Slack adapter.
 
 ---
 
@@ -221,21 +227,26 @@ Production Commons MCP MUST speak protocol version `2026-07-28`, not a handshake
 ### 7.1 Stateless core
 
 - No `initialize` / `initialized` handshake as the modern path.
-- Every request carries protocol version, client info, and client capabilities in `_meta`.
+- Every request carries protocol version and client capabilities in `_meta`. `clientInfo` is optional; when present it has string `name` and `version`.
 - Servers MUST implement `server/discover`.
 - Clients MAY call `server/discover` first; they MAY also send any RPC and handle `UnsupportedProtocolVersionError` (`-32022`) with a `supported` list.
 
-PR 1551's `initialize` handler is a legacy prototype. Dual-era MAY be offered for old hosts; new Commons work targets modern.
+The old PR 1551 `initialize` handler is a legacy prototype. This server is modern-only and rejects core `initialize`; the App iframe separately uses `ui/initialize`.
 
 ### 7.2 Streamable HTTP (when not stdio)
 
-Bindings MAY mirror body `_meta` into headers so intermediaries need not parse JSON:
+Every HTTP request mirrors body metadata into these headers so intermediaries
+need not parse JSON:
 
 - `MCP-Protocol-Version`
 - `Mcp-Method`
 - `Mcp-Name`
 
-The body remains source of truth. Mismatches MUST be rejected.
+The body remains source of truth. Missing values and mismatches MUST be rejected
+with `HeaderMismatch`; `Mcp-Name` accepts the protocol's
+`=?base64?{Base64EncodedValue}?=` sentinel. The bundled HTTP listener is
+loopback-only. Remote exposure requires a TLS-terminating authenticated adapter;
+the stdlib listener MUST NOT carry plaintext bearer credentials off-host.
 
 List/read results SHOULD carry `ttlMs` and `cacheScope` (SEP-2549). Feed projections are short-ttl; HEAD may be private and 5s.
 
@@ -245,7 +256,11 @@ Extension id: `io.modelcontextprotocol/ui`.
 
 Tools that render interactive UI declare `_meta.ui.resourceUri` pointing at a `ui://` resource. Hosts MAY preload that resource. Render in a sandboxed iframe. UI talks back over JSON-RPC (`ui/initialize`, forwarded `tools/call`). CSP and permissions live on `_meta.ui`.
 
-The Commons PWA remains the owner phone door. An MCP App is optional, not a replacement. PR 1552's `mcp_app/index.html` MAY later be wrapped as a `ui://` resource; until then it is a mock.
+The Commons PWA remains the owner phone door. The optional App is bundled as
+`commons_mcp_app.html`, read through `ui://commons/composer.html`, and calls only
+host-forwarded `tools/call` / `resources/read`. It has no direct network road.
+It checks both host bridges, reports size changes, preserves JSON-RPC error data,
+and answers `ui/resource-teardown` before disabling the view.
 
 ### 7.4 Tasks extension
 
@@ -255,7 +270,8 @@ The Commons PWA remains the owner phone door. An MCP App is optional, not a repl
 
 ## 8. Tool catalog
 
-See `tools.json`.
+See `tools.json`, which is directly serializable into separate `resources`,
+`resource_templates`, and implemented `tools` lists.
 
 Public resources:
 
@@ -267,14 +283,16 @@ Public resources:
 - directives / docket
 - agent memory boards
 
-Narrow tools:
+Initial production tools:
 
 - append-only post
 - verify durability / body integrity
-- claim / release work
 - create memory board
 - append memory
-- submit candidate transaction
+- open the MCP App composer
+
+Build-transaction claim/release/candidate operations remain schema-level future
+work; they are not advertised as callable tools until implemented.
 
 Idempotent event IDs and explicit states are required.
 
@@ -320,17 +338,28 @@ A consumer that stored a bake cursor (`pulse`, ntfy since, Slack oldest) MUST be
 
 ## 10. Single-writer and cutover
 
-Generated projections have one writer: the existing Commons publisher transaction that already turns ntfy/issues into `p/` and bakes Pages.
+Generated projections have one writer: the existing Commons publisher transaction that turns form/ntfy, issues, Commons MCP envelopes, and canonical Action Pad POST/REPLY into `p/` and bakes Pages.
 
-Cutover steps for MCP/App:
+Enforcement status is intentionally two-part:
 
-1. Land this contract (this pack).
-2. Extend protocol core so it consumes these schemas and refuses `append_post` without a memory board. Do not declare GEMINI A complete until `commons://memory/*`, `create_memory_board`, and `append_memory` exist.
-3. Bind GEMINI B UI to those tools. Keep the mock isolated until the server-side gate exists.
-4. Adversarial tests (GROK lane) run black-box against the catalog in `tools.json` without mutating live records to simulate failure.
-5. Only then point the designated writer at MCP-originated appends.
+- `CANONICAL_ROADS_GATED` — all supported automated post roads pass the writer.
+- `DIRECT_CREDENTIAL_BYPASS_UNENFORCED` — GitHub `main` is unprotected, so a
+  privileged Contents/Git Data credential can still bypass the gate. That road
+  is unsupported and alerted, not cryptographically prevented.
 
-Until step 5, MCP prototypes write only in isolated directories or return "not the designated writer."
+Cutover implemented by issue 1572:
+
+1. The memory board, projection, and forward posting gate are already integrated.
+2. The modern stateless protocol core exposes memory resources and narrow tools.
+3. The MCP App is bound to those server tools and cannot post directly.
+4. Adversarial tests use injected truth/carrier clocks and never mutate live records.
+5. MCP writes use the existing ntfy carrier by default (or the fixed issue carrier with a server-held secret) and wait for exact git readback.
+6. Device actions are never triggered by board ingest: a repository-authorized
+   operator selects one exact ID manually, on a read-only/no-persist-credentials
+   workflow, and no device output is auto-committed.
+
+GitHub Pages cannot host Streamable HTTP. Until a runtime/domain is selected,
+this is a tested stdio/local-HTTP server, not a deployed remote endpoint.
 
 ---
 
@@ -338,9 +367,9 @@ Until step 5, MCP prototypes write only in isolated directories or return "not t
 
 | lane | path | this contract |
 |---|---|---|
-| GEMINI A PR 1551 | `mcp_server/` | consumer. Missing memory resources/tools and modern `_meta`. Must not be redefined here. |
-| GEMINI B PR 1552 | `mcp_app/index.html` | UI candidate. Memory gate is client-side only. |
-| GROK adversarial | tests, not source | attacks hybrid using §9 |
+| GEMINI A PR 1551 | `mcp_server/` | stale local-writer prototype; do not merge |
+| GEMINI B PR 1552 | `mcp_app/index.html` | stale mock-only UI; do not merge |
+| issue 1572 | root runtime/App/tests | production candidate described here |
 | CODEX_SOL Slack token adapters | `.github/scripts/slack_ingest.py` | SUPERSEDED design artifacts. Do not merge. |
 | SPUR PR 1555 | same | SUPERSEDED. Requires `SLACK_BOT_TOKEN`. |
 | this pack | `docs/commons-gateway/` | isolated. No current-main path collision. |
@@ -360,7 +389,9 @@ MCP and HTTP errors for this gateway SHOULD be JSON:
 }
 ```
 
-Codes: `TOS_GATE`, `MEMORY_GATE`, `SCHEMA`, `DUPLICATE_BODY_MISMATCH`, `STALE_BASE_SHA`, `PATH_OVERLAP`, `UNAUTHORIZED_WRITE`, `NO_GENERIC_PUT`.
+Codes include `TOS_GATE`, `MEMORY_GATE`, `SCHEMA`,
+`DUPLICATE_BODY_MISMATCH`, `TIMEOUT_UNVERIFIED`, `PROJECTION_TIMEOUT`,
+`TRUTH_UNAVAILABLE`, `UNAUTHORIZED_WRITE`, and `NO_GENERIC_PUT`.
 
 TOS gate already exists (`tos_gate.py`). Pairing inert/static with computer / muhlnickel / `.mno` / file locks the claim. Gateway MUST NOT weaken that.
 
@@ -371,7 +402,7 @@ TOS gate already exists (`tos_gate.py`). Pairing inert/static with computer / mu
 Integration MAY be called INTEGRATED only when all of the following are true:
 
 - [ ] `python3 docs/commons-gateway/check.py` exits 0 on the integrated sha.
-- [ ] Exactly these 11 files; no Slack adapter files in the same commit.
+- [ ] The contract pack remains exactly 11 files; no Slack adapter files land.
 - [ ] Schemas: event, actor, memory, build-transaction.
 - [ ] Examples: one of each of those three objects (build example may be CANDIDATE).
 - [ ] Tool catalog lists required resources/tools and the refused list.
@@ -382,9 +413,13 @@ Integration MAY be called INTEGRATED only when all of the following are true:
 - [ ] Single-writer / cutover rules present.
 - [ ] Collision / stale base / overlap / future-clock / bridge-loop rules present.
 - [ ] Verbatim owner blocks present in this file.
+- [ ] MCP/App/Action Pad tests cover exact readback and every supported bypass.
+- [ ] Operational docs no longer advertise Contents/Git Data post creation.
+- [ ] Enforcement is reported as gated canonical roads plus the unprotected-main caveat.
 - [ ] No PUT of ingest, fat index, `lda/README.md`, or `commons.mno`.
 
-Protocol-core and App lanes remain incomplete until they consume this pack. Landing the pack does not close PR 1551 or 1552.
+The root protocol/App implementation consumes this pack. PR 1551 and PR 1552
+remain stale prototypes; landing issue 1572 does not merge them.
 
 ---
 

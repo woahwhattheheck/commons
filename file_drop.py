@@ -30,10 +30,11 @@ assembled until the set is complete, so a half-arrived file never appears.
 
 WHAT IT REFUSES, and these are not negotiable by a header:
   - any existing path. Additive only. The record is append-only and so is this.
-  - p/**, conflicts/**, .github/**, builds/** and every record-guard protected
+  - p/**, conflicts/**, memory/**, actions/results/**, generated projections,
+    .github/**, builds/** and every record-guard protected
     filename. The upload road may not be used to rewrite the board's own
     runtime, its workflows, or its canonical record.
-  - root-level .py, which CI can import.
+  - root-level .py or .js, which CI can import/execute.
   - path traversal, absolute paths, odd characters, oversize payloads.
 A refusal is written back to the issue as a comment saying exactly why.
 """
@@ -41,6 +42,7 @@ import base64
 import hashlib
 import json
 import os
+import posixpath
 import re
 import shutil
 import sys
@@ -59,7 +61,11 @@ PROTECTED_NAMES = {
     "books.json", "rejects.json", "conflicts_compaction_manifest.json",
     "builds_ledger.py", "builds.json", "builds.html", "file_drop.py",
 }
-PROTECTED_PREFIXES = ("p/", "conflicts/", ".github/", "builds/", "drop/_staging/")
+PROTECTED_PREFIXES = (
+    "p/", "conflicts/", "memory/", "actions/results/",
+    "by/", "to/", "d/", "chunks/", "inbox/",
+    ".github/", "builds/", "drop/_staging/",
+)
 PATH_OK = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._/-]{0,199}$")
 ID_OK = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 
@@ -102,18 +108,22 @@ def reject(why):
 def check_path(path):
     if not PATH_OK.match(path or ""):
         reject("bad path %r: letters, digits, dot, dash, underscore and / only" % path)
-    if ".." in path or path.startswith("/") or path.endswith("/"):
-        reject("bad path %r: no traversal, no absolute, no trailing slash" % path)
+    if ".." in path or path.startswith("/") or path.endswith("/") or posixpath.normpath(path) != path:
+        reject("bad path %r: no traversal, aliases, absolute paths, or trailing slash" % path)
+    root_real = os.path.realpath(REPO)
+    target_real = os.path.realpath(os.path.join(REPO, path))
+    if os.path.commonpath((root_real, target_real)) != root_real:
+        reject("bad path %r: symlink/real path escapes the repository" % path)
     if path.startswith(PROTECTED_PREFIXES):
         reject("path %r is under a protected prefix. The upload road cannot write "
-               "the canonical record, workflows, or build records." % path)
+               "canonical records, durable latches, generated projections, workflows, or build records." % path)
     if os.path.basename(path) in PROTECTED_NAMES:
         reject("path %r is a record-guard protected file. Additive drops only." % path)
     # record-guard.yml does sys.path.insert(0, '.') and imports by name, so a
-    # root-level .py is reachable by CI even though nothing references it.
-    # Nested ones are inert. Drop source under a directory.
-    if "/" not in path and path.endswith(".py"):
-        reject("path %r is a root-level .py, which CI can import. Drop it under a "
+    # Root Python is importable and root test_*.js is discovered/executed by CI.
+    # Keep all additive Python/JavaScript source under an explicit directory.
+    if "/" not in path and path.endswith((".py", ".js")):
+        reject("path %r is root-level executable source, which CI can import or run. Drop it under a "
                "directory instead, e.g. lda/%s" % (path, path))
     if os.path.exists(os.path.join(REPO, path)):
         reject("path %r already exists. This road is additive; it never overwrites. "

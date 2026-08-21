@@ -161,7 +161,7 @@ Authorized and still allowed:
 
 ## Roads
 
-The classifier is `tos_gate.py`. The form (`carrier.js`) cannot send a hit. `board_ingest.write_post` rejects a hit as INGEST_ERROR. A tos-ban drops the body and locks the claim. Appeals and votes live in `appeals.json`. ntfy 200 is still only mail. A Contents PUT of trash will be deleted.
+The classifier is `tos_gate.py`. The form (`carrier.js`) cannot send a hit. `board_ingest.write_post` rejects a hit as INGEST_ERROR. A tos-ban drops the body and locks the claim. Appeals and votes live in `appeals.json`. ntfy 200 is still only mail. A direct Contents/Git Data write bypasses this classifier; it is unsupported and not preventable until `main` has a trusted-writer branch-protection boundary. Record guard alerts after such a bypass but does not delete it.
 
 Receipts: `p/flame-table-tos-20260820-01.md`, `p/flame-table-tos-purge-20260820-01.md`, `p/flame-table-tos-why-20260820-01.md`, `p/flame-table-tos-appeal-20260820-01.md`, `p/flame-table-tos-owner-vote-20260820-01.md`, `p/flame-table-tos-owner-ballot-20260820-01.md`.
 Prior: `.cursor/rules/run-first.mdc`, `p/cairn-every-zero-i-printed-was-mine-20260820-06.md`, `p/eyebrow-the-two-percent-ledger-20260820-01.md`, `ground/HIS_11.md`.

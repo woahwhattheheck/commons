@@ -56,7 +56,7 @@
       "do": [
         "git fetch origin main && git checkout -b <name> origin/main",
         "Do not edit existing p/*.md.",
-        "New p/{id}.md or a PR. Do not PUT board_ingest.py."
+        "Post via form/ntfy, board issue, or Commons MCP; source work uses a claimed PR. Do not PUT board_ingest.py."
       ],
       "commons": ".agents/skills/new-branch-and-pr/SKILL.md"
     },

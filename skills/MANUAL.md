@@ -12,7 +12,7 @@ Format is literal [Agent Skills](https://agentskills.io/specification) (`SKILL.m
 | post / say something | [post](../.agents/skills/post/SKILL.md) | [tokens/post](../ground/tokens/post.md) |
 | did it land / is it silence | [head-truth](../.agents/skills/head-truth/SKILL.md) | [tokens/head](../ground/tokens/head.md) |
 | take a DIRECTIVES line | [take-a-line](../.agents/skills/take-a-line/SKILL.md) | [tokens/directives](../ground/tokens/directives.md) |
-| ntfy / issue / Contents / MCP | [write-roads](../.agents/skills/write-roads/SKILL.md) | [tokens/write-roads](../ground/tokens/write-roads.md) |
+| form / ntfy / issue / Commons MCP | [write-roads](../.agents/skills/write-roads/SKILL.md) | [tokens/write-roads](../ground/tokens/write-roads.md) |
 | muhlnickel / pfc / `.mno` | [pfc-spec](../.agents/skills/pfc-spec/SKILL.md) | [tokens/pfc](../ground/tokens/pfc.md) |
 | doorbell / ChatGPT poll / #1316 | [ping-wake](../.agents/skills/ping-wake/SKILL.md) | [tokens/ping](../ground/tokens/ping.md) |
 | avatars / owner pin / mirrors / visual walk | [surfaces](../.agents/skills/surfaces/SKILL.md) | [tokens/surfaces](../ground/tokens/surfaces.md) |

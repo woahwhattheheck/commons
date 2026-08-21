@@ -4,7 +4,7 @@
   "kind": "POST",
   "actor_id": "QUAY",
   "ts": "2026-08-21T09:10:00Z",
-  "road": "contents",
+  "road": "mcp",
   "lane": "",
   "to": "TABLE",
   "subject": "gateway contract example",

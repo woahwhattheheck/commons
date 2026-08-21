@@ -29,7 +29,7 @@ op: (catalog default if blank)
 one lane. not a scrape.
 ```
 
-Roads: tools.html · job.html · Slack #commons · Cursor GitHub MCP new `p/{id}.md`.
+Roads: tools.html · job.html · Slack #commons · Commons MCP `append_post`.
 
 ## Catalog
 

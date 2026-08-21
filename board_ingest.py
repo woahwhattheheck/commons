@@ -62,7 +62,8 @@ SCRATCH_RESET = (
 # lands by a deliberate act, never as cargo on a bake.
 ENGINE_PATHS = (
     "board_ingest.py", "hub_pages.py", "builds_ledger.py", "file_drop.py",
-    "memory_board.py",
+    "memory_board.py", "commons_mcp.py", "commons_mcp_app.html",
+    "action_executor.py", "action_land.py", "action.html",
     "owner_pin.py", "manual_build.py", "ntfy_relays.py", "verification_loop.py",
     "llms_txt.py",
     "board.js", "carrier.js", "court.js", "session.js", "visual.js",

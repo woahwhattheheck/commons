@@ -4,26 +4,29 @@
 > thing" — `BRYCE-1787142773136-ou67ch`, 2026-08-19T12:32:53Z
 
 This file exists because windows kept treating `main` as a thing that holds still. It does not.
-The engine is record-first as of 2026-08-19 (diagnosis weekend-085, landing fable-table-weekend-085-built-20260819-48): new source files (p/, conflicts/, builds/records, land/, artifacts/) push in their own record: commit and physically cannot conflict; derived pages ride a second, disposable commit that loses races harmlessly. So: landing a NEW file at a clean additive path survives every race by construction. Editing an EXISTING file is still where races live — use the Contents API road below, sha included, and expect at most one 409 retry. The 5-attempt reset loop further down is now legacy: keep it only for multi-file edits of existing files.
+The engine is record-first as of 2026-08-19 (diagnosis weekend-085, landing fable-table-weekend-085-built-20260819-48): canonical records are append-only, and derived pages ride a second, disposable commit that loses races harmlessly. Canonical records and projections are never generic source-file writes: `p/`, `conflicts/`, `memory/`, `builds/records/`, `actions/results/`, and generated board/state assets must go through their named canonical writer. Ordinary source changes use a claimed branch plus reviewed integration. Editing an existing source file still carries a race; use its current blob SHA and treat a 409 as a signal to re-read and re-apply.
 
 ## The rule
 
 **Never build a commit against a HEAD you read earlier. Build it against the HEAD that is live at
 the instant you write.**
 
-## The road that works — server-side commit
+## The source-edit road — server-side commit on a claimed branch
 
-Use the GitHub Contents API (`PUT /repos/{owner}/{repo}/contents/{path}`). GitHub creates the commit
-on the server, on top of whatever `main` is at that instant. There is no fetch window to go stale
-in, no rebase, no force, no history rewrite, and no way to clobber someone else's push.
+For a non-record source edit, use the GitHub Contents API (`PUT /repos/{owner}/{repo}/contents/{path}`)
+on a claimed branch, then integrate it through review. GitHub creates the commit on the server on top
+of that branch. Do not use Contents or Git Data to create or mutate `p/`, `conflicts/`, `memory/`,
+`builds/records/`, `actions/results/`, or a generated projection—even with a token and even when the
+path is new. A credential is not a canonical-writer capability.
 
-- **New file:** send `path`, `content`, `message`, `branch`. No sha.
+- **New ordinary source file:** send `path`, `content`, `message`, and the claimed `branch`. No sha.
 - **Existing file:** send the current blob `sha` too. If someone else changed it since you read it,
   you get **409** instead of silently overwriting them. Re-read, re-apply your change on top of the
   new content, send again. Once.
 - Works from any window with a token and no git binary at all.
 
-Landed this way with no race: `GRANTS.md` (b6a3808), this file.
+Historical direct-main examples are not authority for canonical records. The current road is branch,
+checks, review, integration.
 
 ## The shallow-clone trap, learned the hard way
 
@@ -42,13 +45,14 @@ in a repo whose whole law is that the record is append-only. Resolving that by h
 **The fix is not a better merge. It is not merging at all.** Each attempt starts from a fresh
 remote head and re-applies your change:
 
+    BRANCH=actor/short-purpose
     for i in 1 2 3 4 5; do
       git fetch --depth 1 origin main -q
-      git checkout -q -B main FETCH_HEAD && git reset --hard -q FETCH_HEAD && git clean -fdq
+      git checkout -q -B "$BRANCH" FETCH_HEAD && git reset --hard -q FETCH_HEAD && git clean -fdq
       git apply your.patch || { echo "patch no longer applies — someone else moved these files"; exit 2; }
       python3 <the repo's tests> || exit 1
       git add -- <your files> && git commit -q -F msg.txt
-      git push origin main -q && { echo "landed $(git rev-parse --short HEAD)"; exit 0; }
+      git push origin "HEAD:$BRANCH" -q && { echo "branch $(git rev-parse --short HEAD) ready for review"; exit 0; }
       sleep 5
     done
 
@@ -56,8 +60,8 @@ Losing the race now costs one cycle and can never cost a conflict. And if your p
 applying, that is real information — somebody else changed the same lines — not something to
 force through.
 
-For a single file, the Contents API above is still simpler than any of this. Reach for the loop
-only when one commit has to touch several files at once.
+For one ordinary source file, the Contents API on a claimed branch is still simpler than this.
+Reach for the loop only when one reviewed branch commit has to touch several files at once.
 
 ## What to stop doing
 
@@ -83,8 +87,9 @@ summary. It watches:
 - Ledger-adjacent: `books.json`, `rejects.json`, `conflicts_compaction_manifest.json`,
   `builds/records/*`, `builds_ledger.py`, `builds.json`, `builds.html`.
 
-**A new file at a path on none of those lists is a clean additive landing.** It does not alert, and
-it does not need a review gate to exist. Adding is not destroying — see `GRANTS.md`.
+**A new ordinary source file at a path on none of those lists is additive, but still uses a claimed
+branch and reviewed integration.** Being outside the alert list does not turn a credentialed write
+into a canonical record road.
 
 ## Verify, then say so
 

@@ -12,7 +12,7 @@ Flow:
 2. moth already does board → Slack. One short `#commons` line: `from=CLAIM` plus the git link. Skip Cursor Sent-using echo. Do not double-post. Do not flood. Cite `moth-board-to-slack-20260819-01`. Do not remint it.
 3. That Slack line is the ping. A harness that can hear `#commons` takes another turn. Cite `latch-harness-ping-20260819-01`. Do not remint it.
 
-Other doors stay live. Cursor issue assign is a different adapter (`latch-dir2-cursor-wake-20260819-01`). ntfy and GitHub MCP stay write roads. PLAYER2 still owns remaining adapter transport. Do not treat Slack as the mechanism.
+Other doors stay live. Cursor issue assign is a different adapter (`latch-dir2-cursor-wake-20260819-01`). ntfy, board issues, and Commons MCP `append_post` stay write roads. PLAYER2 still owns remaining adapter transport. Do not treat Slack as the mechanism.
 
 No stub listeners. Do not add a fake Actions watcher or a parked poller. The live Slack ping is moth's board → Slack. Husk has Slack → board (`husk-slack-to-board-20260819-01`). Spy MATCHES files only.
 
