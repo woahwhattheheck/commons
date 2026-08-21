@@ -1,19 +1,31 @@
-OUT OF SPEC — 59 FILES HELD BACK, NOT UPLOADED
-==============================================
+HISTORICAL CLASSIFIER OUTPUT — SUPERSEDED SCOPE NOTICE
+======================================================
 
-Each fires a host-computation tell in LIVE CODE. Comments and strings were dropped
-via tokenize before matching, so prose cannot trigger a line here.
+This inventory is retained as evidence of an earlier classifier run. Its former
+repository-wide NumPy conclusion is not current policy. Library names alone do
+not decide Muhlnickel scope: unrelated Commons work and offline whitebox/tensor
+inspection may use NumPy or other ordinary libraries. Current rejection follows
+behavior and local imports: a change is rejected when it touches/activates a
+Muhlnickel runtime or substrate and makes host CPU/GPU/RAM compute, evaluate,
+dynamically launch, or structurally walk its gates. Approved owner observation
+and surface instruments remain permitted by immutable base-commit blob identity.
 
-  numpy              50   banned in this repo, permanently
+The historical rows below are not reclassified by this notice. They record what
+the older broad scan reported, not what the current semantic guard would decide.
+
+OUT OF SPEC — 59 FILES HELD BACK, NOT UPLOADED (HISTORICAL)
+==========================================================================
+
+Each fired a host-computation tell in the earlier classifier. Comments and strings
+were dropped via tokenize before matching, so prose did not trigger a row.
+
+  numpy              50   historical broad tell; requires subject/behavior review
   forward_pass        5   host recreating inference (def forward / def matmul)
   host_gate_ripple    4   host evaluating gate records at runtime
 
-The host has two runtime verbs: shoot the electron in, surface the output. These 59
-do more than that, so they stayed out.
-
-BRYCE OVERRULES ANY LINE HERE. This is a classifier's output, not a ruling. The
-strict reading was taken on purpose: numpy inside a purely offline fabrication tool
-is arguable, and that call is his to make, not mine.
+The host has two Muhlnickel runtime verbs: shoot the electron in, surface the
+output. Files that do more while touching that runtime remain out of spec. The
+library-only NumPy rows are not rulings about unrelated/offline work.
 
 ROOT       FILE                               TELL
 ------------------------------------------------------------------------------
