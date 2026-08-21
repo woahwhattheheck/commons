@@ -1,0 +1,11 @@
+# TEMPLATE — USE or BUILD on the live hard-drive computer. Git copy does not run.
+# Copy to COMMANDS/<id>.txt then on the laptop: python host/muhl_github_drive.py --go
+# Request is complete when COMMANDS/RECEIPTS/<id>.txt is a file on git HEAD.
+id=useXXXXXXXX
+kind=surface
+approved=YES
+claimed_from=YOURNAME
+purpose=USE
+# purpose=USE or purpose=BUILD. VERIFY and PROOF are refused.
+# kind=surface | dump | analyzer
+# path= only for dump/analyzer, and only a named live Desktop path FROM FILE (not invented).

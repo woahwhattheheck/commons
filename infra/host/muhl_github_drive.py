@@ -7,7 +7,7 @@
 
 from __future__ import annotations
 
-import json, os, re, sys, time, urllib.error, urllib.request
+import json, os, re, subprocess, sys, time, urllib.error, urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 if HERE not in sys.path:
@@ -35,6 +35,20 @@ SKIP_NAMES = {
     "template_say.txt", "template_surface.txt",
 }
 PLAYERS = mstore.PLAYERS
+REFUSE_PURPOSE = frozenset({"VERIFY", "PROOF", "TEST", "BATTERY", "PROVE"})
+LIVE_PATHS = {
+    os.path.normcase(os.path.abspath(p)): p
+    for p in (
+        r"C:\Users\lucys\Desktop\MUHL_COMMONS\commons.mno",
+        r"C:\Users\lucys\Desktop\MUHL_COMMONS\table_mail.mno",
+        r"C:\Users\lucys\Desktop\MUHL_GRAVE\grave_cenotaph_v1.mno",
+        r"C:\Users\lucys\Desktop\MUHL_TENANCY\muhl_tenancy.mno",
+        r"C:\Users\lucys\Desktop\MUHL_FOUNDRY\foundry_acre.mno",
+        r"C:\Users\lucys\Desktop\WEATHER\axiom_probe_pop.mno",
+        r"C:\Users\lucys\Desktop\WEATHER\weather_v2_denoms.mno",
+    )
+}
+LDA_HOST = r"C:\Users\lucys\Desktop\LocalDeviceAgent\host"
 
 
 def _write(path, text):
@@ -193,6 +207,99 @@ def write_receipt(mid, text):
     _write(pub_path, text)
 
 
+def purpose_refused(mid, cmd):
+    purpose = (cmd.get("purpose") or "USE").strip().upper()
+    if purpose not in REFUSE_PURPOSE:
+        return None
+    rec = (
+        "REFUSE id=%s purpose=%s. Verification is not a panel verb. "
+        "USE or BUILD only. MATCH is held.\n" % (mid, purpose)
+    )
+    write_receipt(mid, rec)
+    return rec
+
+
+def resolve_live(cmd):
+    raw = (cmd.get("path") or "").strip()
+    if not raw:
+        return None
+    return LIVE_PATHS.get(os.path.normcase(os.path.abspath(raw)))
+
+
+def _host_script(name):
+    here = os.path.join(HERE, name)
+    if os.path.isfile(here):
+        return here
+    alt = os.path.join(LDA_HOST, name)
+    if os.path.isfile(alt):
+        return alt
+    return here
+
+
+def act_dump(mid, cmd):
+    prev = load_receipt(mid)
+    if prev:
+        return "replay", prev
+    path = resolve_live(cmd)
+    if not path:
+        rec = "REFUSE id=%s dump NEED named live path FROM FILE\n" % mid
+        write_receipt(mid, rec)
+        return "refuse", rec
+    script = _host_script("muhl_dump_bits.py")
+    proc = subprocess.run(
+        [sys.executable, script, path],
+        capture_output=True,
+        text=True,
+        timeout=60,
+    )
+    rec = "\n".join([
+        "RECEIPT",
+        "operation=dump",
+        "id=%s" % mid,
+        "purpose=USE",
+        "path=%s" % path,
+        "fire_occurred=NO",
+        "github_computes=NO",
+        "",
+        proc.stdout or proc.stderr,
+        "",
+    ])
+    write_receipt(mid, rec)
+    return "fresh", rec
+
+
+def act_analyzer(mid, cmd):
+    prev = load_receipt(mid)
+    if prev:
+        return "replay", prev
+    path = resolve_live(cmd)
+    if not path:
+        rec = "REFUSE id=%s analyzer NEED named live path FROM FILE\n" % mid
+        write_receipt(mid, rec)
+        return "refuse", rec
+    script = _host_script("pfc_analyzer.py")
+    proc = subprocess.run(
+        [sys.executable, script, "snap", path],
+        capture_output=True,
+        text=True,
+        timeout=60,
+    )
+    rec = "\n".join([
+        "RECEIPT",
+        "operation=analyzer",
+        "id=%s" % mid,
+        "purpose=USE",
+        "path=%s" % path,
+        "fire_occurred=NO",
+        "github_computes=NO",
+        "",
+        proc.stdout or proc.stderr,
+        "",
+    ])
+    write_receipt(mid, rec)
+    return "fresh", rec
+
+
 def format_surface_receipt(mid, cmd):
     homes = mstore.HOMES
     pkg = mstore.PKG
@@ -275,7 +382,7 @@ def inbox_text(cmds, results):
         "GitHub is the board + command tickets. GitHub does not compute.",
         "claimed_from is a CLAIM. authenticated_player=UNKNOWN.",
         "Cloud GET cannot push a command. Bryce or Grok writes the ticket, then --go pulls.",
-        "kind=surface surfaces dests FROM FILE. kind=say address+fire+die once per id.",
+        "kind=surface surfaces dests FROM FILE. kind=dump/analyzer surface bits. kind=say address+fire+die once per id.",
         "Duplicate id = original receipt. Never smash commons.mno. Never --inject 0x01.",
         "",
         "n=%d" % len(cmds),
@@ -349,6 +456,11 @@ def main():
     results = {}
     acted = 0
     for mid, cmd in sorted(cmds.items()):
+        refused = purpose_refused(mid, cmd)
+        if refused:
+            results[mid] = ("refuse", refused)
+            print("DRIVE refuse purpose", mid)
+            continue
         kind = (cmd.get("kind") or "").strip().lower()
         if kind == "surface":
             st, rec = act_surface(mid, cmd)
@@ -356,6 +468,18 @@ def main():
             if st == "fresh":
                 acted += 1
             print("DRIVE", st, "surface", mid)
+        elif kind == "dump":
+            st, rec = act_dump(mid, cmd)
+            results[mid] = (st, rec)
+            if st == "fresh":
+                acted += 1
+            print("DRIVE", st, "dump", mid)
+        elif kind == "analyzer":
+            st, rec = act_analyzer(mid, cmd)
+            results[mid] = (st, rec)
+            if st == "fresh":
+                acted += 1
+            print("DRIVE", st, "analyzer", mid)
         elif kind == "say":
             st, rec = act_say(mid, cmd)
             results[mid] = (st, rec)
@@ -363,7 +487,7 @@ def main():
                 acted += 1
             print("DRIVE", st, "say", mid)
         else:
-            rec = "REFUSE id=%s NEED kind=say|surface\n" % mid
+            rec = "REFUSE id=%s NEED kind=say|surface|dump|analyzer\n" % mid
             write_receipt(mid, rec)
             results[mid] = ("refuse", rec)
             print("DRIVE refuse", mid)
