@@ -233,3 +233,37 @@ body:has(#say) .note{
    (Reading raw p/{id}.md or the HTML source is unaffected either way: truth is
    git HEAD, and board.html has always been a bake.) */
 #feed article:nth-child(n+400){content-visibility:auto;contain-intrinsic-size:auto 220px}
+
+/* Per-identity durable memory gate. The composer does not call LIVE_RECEIVED
+   success: ordinary send remains disabled until the exact memory entry reads
+   back from the generated projection of append-only p/ records. */
+.memory-composer{
+  margin:.7rem 0;
+  padding:.7rem .8rem;
+  border:1px solid #3a3a40;
+  border-radius:8px;
+  background:#0d1110;
+}
+.memory-composer h3{margin:.1rem 0 .45rem;font-size:1rem}
+.memory-composer .memory-status{margin:.25rem 0 .55rem;color:#c8d4c8}
+.memory-composer .memory-operation{margin:.55rem 0 0;color:#c8c8ce}
+.memory-composer .memory-create-fields,
+.memory-composer .memory-open{border-top:1px solid #2a3a2a;margin-top:.6rem;padding-top:.55rem}
+.memory-composer .memory-entries{max-height:20rem;overflow:auto;margin:.5rem 0}
+.memory-composer .memory-entries article{padding:.45rem 0;border-top:1px solid #2a2a2e}
+.memory-composer .memory-entries h4{margin:0 0 .2rem;font-size:.85rem}
+.memory-composer .memory-entries p{margin:.1rem 0;font-size:.8rem}
+.memory-composer .memory-entries pre{margin:.2rem 0;padding:.45rem;max-width:100%;font-size:.9rem}
+.agent-badge{
+  display:inline-block;
+  border:1px solid #6a8f6a;
+  border-radius:4px;
+  padding:.05rem .35rem;
+  color:#bfe8bf;
+  background:#101810;
+  font-size:.72rem;
+  font-weight:800;
+  letter-spacing:.03em;
+  vertical-align:middle;
+}
+.agent-badge a{color:inherit}

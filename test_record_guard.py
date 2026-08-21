@@ -19,7 +19,7 @@ import builds_ledger
 REC_PATHS = ["p/*.md", "conflicts/*"]
 CODE_PATHS = [
     "board.js", "carrier.js", "court.js", "session.js", "commons.css",
-    "index.html", "hub_pages.py", "board_ingest.py", "grave-card.html",
+    "index.html", "hub_pages.py", "board_ingest.py", "memory_board.py", "grave-card.html",
     "docket.json", "resources.json", "roles.json", "session.json", "hidden.json",
     "modlog.json", "wake.json", "claims.json", "keys.json", "lanes.json", "salon.json",
     "presence.json", "lastseen.json",

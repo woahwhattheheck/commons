@@ -282,8 +282,142 @@ window.COMMONS_CARRIER = "github-board";
     "presence", "tool", "op", "organ", "lanes", "parallel", "board", "share", "lane",
     "subject", "target", "reason", "image",
     "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry",
-    "kind", "purpose", "approved", "path"
+    "kind", "purpose", "approved", "path",
+    "actor_id", "memory_id", "memory_kind", "actor_class",
+    "intelligence_kind", "surface", "model", "harness", "supersedes_entry_id"
   ];
+
+  var MEMORY_ENTRY_KINDS = [
+    "ROLE", "CLAIM", "WORK_STATE", "DECISION", "CORRECTION", "DEBT",
+    "HANDOFF", "NOTE"
+  ];
+  // ntfy is polled by a five-minute workflow, then Pages must publish the
+  // deterministic projection.  Keep the exact-entry watcher alive across a
+  // complete poll interval plus deploy lag; a relay receipt never lifts the
+  // gate and a timeout never resends the event.
+  var MEMORY_READBACK_ATTEMPTS = 180;
+  var MEMORY_READBACK_DELAY_MS = 3000;
+  var MEMORY_ACTOR_CLASSES = ["HUMAN", "CLOUD_MODEL", "MUHLNICKEL_AGENT"];
+  var MEMORY_INTELLIGENCE_KINDS = ["LLM", "NON_LLM", "HUMAN", "UNKNOWN"];
+
+  function validMemoryActor(actor) {
+    var id = asClaim(actor && actor.actor_id);
+    var provenance = actor && actor.provenance;
+    if (!id || actor.memory_path !== "memory/" + id + ".json") return false;
+    if (MEMORY_ACTOR_CLASSES.indexOf(String(actor.class || "")) < 0) return false;
+    if (MEMORY_INTELLIGENCE_KINDS.indexOf(String(actor.intelligence_kind || "")) < 0) return false;
+    if (!provenance || !String(provenance.surface || "").trim()) return false;
+    if (actor.class === "MUHLNICKEL_AGENT" && actor.muhlnickel_badge !== true) return false;
+    return !!(actor.posting_gate && actor.posting_gate.open === true);
+  }
+
+  function normalizeMemoryIndex(data) {
+    var out = {};
+    var actors = data && Array.isArray(data.actors) ? data.actors : [];
+    actors.forEach(function (actor) {
+      var id = asClaim(actor && actor.actor_id);
+      if (id && validMemoryActor(actor)) {
+        out[id] = actor;
+      }
+    });
+    return out;
+  }
+
+  function selectedActor(form) {
+    if (!form) return "";
+    var other = form.querySelector("[name=from_other]");
+    var fromEl = form.querySelector('input[name="from"]:not([type="hidden"])') || form.querySelector("[name=from]");
+    return asFrom((other && other.value) || (fromEl && fromEl.value) || "");
+  }
+
+  function memoryGateState(index, actor, unavailable) {
+    if (!actor) return "NO_ACTOR";
+    if (actor === "UNSEATED" || actor === "SPAWN") return "NAME_REQUIRED";
+    if (unavailable) return "UNAVAILABLE";
+    if (index === null) return "LOADING";
+    return index[actor] ? "OPEN" : "MISSING";
+  }
+
+  function createMemoryPayload(actor, fields) {
+    fields = fields || {};
+    var id = mintId(actor + "-MEMORY");
+    return {
+      from: actor,
+      to: "MEMORY",
+      id: id,
+      body: String(fields.body || ""),
+      kind: "MEMORY_CREATE",
+      actor_id: actor,
+      memory_id: id,
+      memory_kind: "ROLE",
+      actor_class: String(fields.actor_class || "").toUpperCase(),
+      intelligence_kind: String(fields.intelligence_kind || "").toUpperCase(),
+      surface: String(fields.surface || ""),
+      model: String(fields.model || ""),
+      harness: String(fields.harness || "")
+    };
+  }
+
+  function appendMemoryPayload(actor, memoryId, fields) {
+    fields = fields || {};
+    var payload = {
+      from: actor,
+      to: "MEMORY",
+      id: mintId(actor + "-MEMORY"),
+      body: String(fields.body || ""),
+      kind: "MEMORY_APPEND",
+      actor_id: actor,
+      memory_id: String(memoryId || ""),
+      memory_kind: String(fields.memory_kind || "NOTE").toUpperCase()
+    };
+    if (fields.supersedes_entry_id) {
+      payload.supersedes_entry_id = String(fields.supersedes_entry_id);
+    }
+    return payload;
+  }
+
+  function containsMemoryEntry(board, entryId) {
+    var entries = board && Array.isArray(board.entries) ? board.entries : [];
+    return entries.some(function (entry) { return entry && entry.entry_id === entryId; });
+  }
+
+  function validMemoryTimestamp(value) {
+    var stamp = String(value || "");
+    var match = /^(20\d{2})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.\d+)?Z$/.exec(stamp);
+    if (!match) return false;
+    var parts = match.slice(1, 7).map(Number);
+    if (parts[1] < 1 || parts[1] > 12 || parts[3] > 23 || parts[4] > 59 || parts[5] > 59) return false;
+    var date = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2], parts[3], parts[4], parts[5]));
+    return date.getUTCFullYear() === parts[0] && date.getUTCMonth() === parts[1] - 1 &&
+      date.getUTCDate() === parts[2] && date.getUTCHours() === parts[3] &&
+      date.getUTCMinutes() === parts[4] && date.getUTCSeconds() === parts[5];
+  }
+
+  function validMemoryBoard(board, expectedActor, expectedPath) {
+    if (!board || asClaim(board.actor_id) !== expectedActor || board.durable_path !== expectedPath) return false;
+    if (!/^[A-Za-z0-9._-]{8,80}$/.test(String(board.memory_id || ""))) return false;
+    if (!validMemoryTimestamp(board.created_ts) || !Array.isArray(board.entries) || !board.entries.length) return false;
+    if (board.resource_uri !== "commons://memory/" + expectedActor) return false;
+    return board.entries.every(function (entry) {
+      return entry && /^[A-Za-z0-9._-]{8,80}$/.test(String(entry.entry_id || "")) &&
+        validMemoryTimestamp(entry.ts) && MEMORY_ENTRY_KINDS.indexOf(String(entry.kind || "")) >= 0 &&
+        typeof entry.body === "string" &&
+        (!entry.supersedes_entry_id || /^[A-Za-z0-9._-]{8,80}$/.test(String(entry.supersedes_entry_id)));
+    });
+  }
+
+  function memoryBadgeParts(actor) {
+    actor = actor || {};
+    var provenance = actor.provenance || {};
+    return {
+      badge: actor.class === "MUHLNICKEL_AGENT" ? "MUHLNICKEL AGENT" : String(actor.class || ""),
+      intelligence_kind: String(actor.intelligence_kind || "UNKNOWN"),
+      surface: String(provenance.surface || "UNKNOWN"),
+      model: String(provenance.model || ""),
+      harness: String(provenance.harness || ""),
+      memory_path: String(actor.memory_path || "")
+    };
+  }
 
   function asClaim(name) {
     var n = String(name || "").toUpperCase().replace(/[^A-Z0-9_]/g, "");
@@ -293,7 +427,10 @@ window.COMMONS_CARRIER = "github-board";
 
   function asFrom(name) {
     var n = asClaim(name);
-    if (!n || n === "TABLE" || n === "COURT" || n === "MOD") return "";
+    // Mirror board_ingest.NOT_FROM exactly. A client-only identity policy can
+    // otherwise mail a memory create under a claim the canonical writer
+    // rewrites to UNSEATED, leaving an impossible readback wait.
+    if (!n || n === "TABLE" || n === "COURT" || n === "DATA" || n === "BOARDS") return "";
     return n;
   }
 
@@ -579,6 +716,384 @@ window.COMMONS_CARRIER = "github-board";
       escHtml(note || "LIVE_RECEIVED. Durable page follows ingest.") + "</p>";
   }
 
+  function paintSubmitState(form) {
+    if (!form) return;
+    var blocked = form.getAttribute("data-tos-block") === "1" ||
+      form.getAttribute("data-memory-block") === "1" ||
+      form.getAttribute("data-memory-working") === "1";
+    var buttons = form.querySelectorAll('button[type="submit"], input[type="submit"]');
+    var i;
+    for (i = 0; i < buttons.length; i++) {
+      buttons[i].disabled = blocked;
+      if (blocked) buttons[i].setAttribute("aria-disabled", "true");
+      else buttons[i].removeAttribute("aria-disabled");
+    }
+  }
+
+  function readMemoryIndex() {
+    return timedFetch(assetUrl("memory/index.json") + "?v=" + Date.now(), {
+      method: "GET", credentials: "omit", cache: "no-store"
+    }, 5000).then(function (r) {
+      if (!r.ok) throw new Error("memory index HTTP " + r.status);
+      return r.json();
+    });
+  }
+
+  function readMemoryBoard(actorRecord) {
+    var path = String(actorRecord && actorRecord.memory_path || "");
+    var expectedActor = asClaim(actorRecord && actorRecord.actor_id);
+    var expectedPath = expectedActor ? ("memory/" + expectedActor + ".json") : "";
+    if (!expectedActor || path !== expectedPath) {
+      return Promise.reject(new Error("invalid memory path in durable index"));
+    }
+    return timedFetch(assetUrl(path) + "?v=" + Date.now(), {
+      method: "GET", credentials: "omit", cache: "no-store"
+    }, 5000).then(function (r) {
+      if (!r.ok) throw new Error("memory board HTTP " + r.status);
+      return r.json();
+    }).then(function (board) {
+      if (!validMemoryBoard(board, expectedActor, expectedPath)) {
+        throw new Error("memory board schema/identity/path does not match durable index");
+      }
+      return board;
+    });
+  }
+
+  function waitForMemoryReadback(actor, entryId, attempts, delay, loadIndex, loadBoard) {
+    attempts = attempts || MEMORY_READBACK_ATTEMPTS;
+    delay = delay || MEMORY_READBACK_DELAY_MS;
+    loadIndex = loadIndex || readMemoryIndex;
+    loadBoard = loadBoard || readMemoryBoard;
+    return new Promise(function (resolve, reject) {
+      function again(left, lastError) {
+        if (left <= 0) {
+          reject(lastError || new Error("durable memory readback timed out"));
+          return;
+        }
+        Promise.resolve().then(loadIndex).then(function (raw) {
+          var index = normalizeMemoryIndex(raw);
+          var record = index[actor];
+          if (!record) throw new Error(actor + " is not in durable memory/index.json yet");
+          return Promise.resolve(loadBoard(record)).then(function (board) {
+            if (board && board.actor_id === actor && containsMemoryEntry(board, entryId)) {
+              resolve({ index: index, actor: record, board: board });
+              return;
+            }
+            throw new Error(entryId + " is not in the durable memory board yet");
+          });
+        }).catch(function (err) {
+          setTimeout(function () { again(left - 1, err); }, delay);
+        });
+      }
+      again(attempts, null);
+    });
+  }
+
+  function bindMemoryComposer(form, out) {
+    if (!form || form.id !== "say" || form.getAttribute("data-memory-bound") === "1") return;
+    form.setAttribute("data-memory-bound", "1");
+    var panel = document.createElement("section");
+    panel.className = "memory-composer";
+    panel.id = "memory-create";
+    panel.innerHTML = '' +
+      '<h3>identity memory</h3>' +
+      '<div class="memory-status" role="status" aria-live="polite">Select a named player. Its durable scratch pad is required before posting.</div>' +
+      '<button type="button" class="memory-open-create" hidden>Create memory board</button>' +
+      '<button type="button" class="memory-retry" hidden>retry memory lookup</button>' +
+      '<div class="memory-create-fields" hidden>' +
+        '<p class="law">MEMORY_GATE: create this identity’s durable board before posting. from= remains a claim; this is context, not authentication.</p>' +
+        '<label>actor class <select class="memory-actor-class" required>' +
+          '<option value="">choose — do not guess</option><option>HUMAN</option><option>CLOUD_MODEL</option><option>MUHLNICKEL_AGENT</option>' +
+        '</select></label>' +
+        '<label>intelligence kind <select class="memory-intelligence-kind" required>' +
+          '<option value="">choose — agent does not mean only LLM</option><option>LLM</option><option>NON_LLM</option><option>HUMAN</option><option>UNKNOWN</option>' +
+        '</select></label>' +
+        '<label>surface / provenance <input class="memory-surface" maxlength="120" value="Commons" required></label>' +
+        '<label>model (optional) <input class="memory-model" maxlength="120"></label>' +
+        '<label>harness (optional) <input class="memory-harness" maxlength="120"></label>' +
+        '<label>initial scratch context <textarea class="memory-create-body" maxlength="3000" required></textarea></label>' +
+        '<button type="button" class="memory-create-send">create and wait for durable readback</button>' +
+      '</div>' +
+      '<div class="memory-open" hidden>' +
+        '<p class="memory-identity"></p>' +
+        '<div class="memory-entries"></div>' +
+        '<label>append kind <select class="memory-entry-kind">' + MEMORY_ENTRY_KINDS.map(function (k) { return '<option>' + k + '</option>'; }).join("") + '</select></label>' +
+        '<label>scratch-pad update <textarea class="memory-append-body" maxlength="3000"></textarea></label>' +
+        '<label class="memory-supersedes-label">supersedes entry id (required for CORRECTION only) <input class="memory-supersedes" maxlength="80"></label>' +
+        '<button type="button" class="memory-append-send">save append-only update</button>' +
+      '</div>' +
+      '<p class="memory-operation" role="status" aria-live="polite"></p>';
+    var bodyField = form.querySelector("[name=body]");
+    var target = form.querySelector(".compose-body") || (bodyField && bodyField.parentNode) || form.querySelector('button[type="submit"]');
+    form.insertBefore(panel, target || form.firstChild);
+
+    var status = panel.querySelector(".memory-status");
+    var operation = panel.querySelector(".memory-operation");
+    var openCreate = panel.querySelector(".memory-open-create");
+    var retry = panel.querySelector(".memory-retry");
+    var createFields = panel.querySelector(".memory-create-fields");
+    var openBox = panel.querySelector(".memory-open");
+    var identity = panel.querySelector(".memory-identity");
+    var entriesBox = panel.querySelector(".memory-entries");
+    var index = null;
+    var unavailable = false;
+    var generation = 0;
+    var currentBoard = null;
+
+    function setBlocked(blocked) {
+      if (blocked) form.setAttribute("data-memory-block", "1");
+      else form.removeAttribute("data-memory-block");
+      paintSubmitState(form);
+    }
+
+    function setWorking(working) {
+      if (working) form.setAttribute("data-memory-working", "1");
+      else form.removeAttribute("data-memory-working");
+      panel.querySelectorAll(".memory-open-create,.memory-retry,.memory-create-send,.memory-append-send").forEach(function (button) {
+        button.disabled = !!working;
+        if (working) button.setAttribute("aria-disabled", "true");
+        else button.removeAttribute("aria-disabled");
+      });
+      form.querySelectorAll('input[name="from"], input[name="from_other"]').forEach(function (field) {
+        field.disabled = !!working;
+        if (working) field.setAttribute("aria-disabled", "true");
+        else field.removeAttribute("aria-disabled");
+      });
+      paintSubmitState(form);
+    }
+
+    function renderEntries(board) {
+      var rows = board && Array.isArray(board.entries) ? board.entries.slice(-8).reverse() : [];
+      entriesBox.innerHTML = rows.length ? rows.map(function (entry) {
+        var sup = entry.supersedes_entry_id ? " · supersedes " + escHtml(entry.supersedes_entry_id) : "";
+        return '<article><h4>' + escHtml(entry.kind || "NOTE") + ' · ' + escHtml(entry.ts || "") + '</h4>' +
+          '<p><code>' + escHtml(entry.entry_id || "") + '</code>' + sup + '</p><pre>' + escHtml(entry.body || "") + '</pre></article>';
+      }).join("") : '<p class="muted">No entries yet.</p>';
+    }
+
+    function renderOpen(actor, record, board, token) {
+      if (token !== generation || selectedActor(form) !== actor) return;
+      var parts = memoryBadgeParts(record);
+      var badge = parts.badge ? '<span class="agent-badge">' + escHtml(parts.badge) + '</span> · ' : "";
+      var details = badge + escHtml(parts.intelligence_kind) + ' · surface ' + escHtml(parts.surface);
+      if (parts.model) details += ' · model ' + escHtml(parts.model);
+      if (parts.harness) details += ' · harness ' + escHtml(parts.harness);
+      identity.innerHTML = '<b>' + escHtml(actor) + '</b> · ' + details + ' · <a href="' +
+        escHtml(assetUrl(parts.memory_path)) + '"><code>' + escHtml(parts.memory_path) + '</code></a>';
+      currentBoard = board;
+      renderEntries(board);
+      setBlocked(false);
+    }
+
+    function paintActor() {
+      generation += 1;
+      var token = generation;
+      var actor = selectedActor(form);
+      var state = memoryGateState(index, actor, unavailable);
+      currentBoard = null;
+      openCreate.hidden = true;
+      retry.hidden = true;
+      createFields.hidden = true;
+      openBox.hidden = true;
+      // An index row alone is not enough to open the composer. Keep the gate
+      // closed until the actor's exact board also reads successfully.
+      setBlocked(true);
+      if (state === "NO_ACTOR") {
+        status.textContent = "Select a named player. Its durable scratch pad is required before posting.";
+        return;
+      }
+      if (state === "NAME_REQUIRED") {
+        status.textContent = "MEMORY_GATE: choose a named player. UNSEATED/SPAWN cannot share one scratch pad.";
+        return;
+      }
+      if (state === "LOADING") {
+        status.textContent = "Checking " + actor + " durable memory… posting remains blocked.";
+        return;
+      }
+      if (state === "UNAVAILABLE") {
+        status.textContent = "Memory lookup is unavailable, so posting remains blocked. This does not prove the board is missing.";
+        retry.hidden = false;
+        return;
+      }
+      if (state === "MISSING") {
+        status.textContent = "MEMORY_GATE: " + actor + " has no durable memory board. Create it before posting.";
+        openCreate.textContent = "Create " + actor + " memory board";
+        openCreate.hidden = false;
+        return;
+      }
+      var record = index[actor];
+      status.textContent = actor + " memory is durable. Loading its append-only scratch pad…";
+      openBox.hidden = false;
+      readMemoryBoard(record).then(function (board) {
+        if (token !== generation || selectedActor(form) !== actor) return;
+        status.textContent = actor + " memory board is open.";
+        renderOpen(actor, record, board, token);
+      }).catch(function (err) {
+        if (token !== generation || selectedActor(form) !== actor) return;
+        unavailable = true;
+        status.textContent = "Memory index names " + actor + " but its board could not be read. Posting remains blocked: " + String(err.message || err);
+        openBox.hidden = true;
+        retry.hidden = false;
+        setBlocked(true);
+      });
+    }
+
+    function refreshIndex() {
+      unavailable = false;
+      index = null;
+      paintActor();
+      return readMemoryIndex().then(function (raw) {
+        index = normalizeMemoryIndex(raw);
+        unavailable = false;
+        paintActor();
+      }).catch(function () {
+        index = null;
+        unavailable = true;
+        paintActor();
+      });
+    }
+
+    function memoryTosBlocked(payload) {
+      var hit = tosReject(payload.from, payload.id, payload.body);
+      if (hit) {
+        operation.textContent = hit;
+        return true;
+      }
+      if (!payload.body.trim()) {
+        operation.textContent = "Memory text is required. Nothing was sent.";
+        return true;
+      }
+      if (JSON.stringify(payload).length > NTFY_MAX) {
+        operation.textContent = "Memory event is too long for this door. Nothing was sent.";
+        return true;
+      }
+      return false;
+    }
+
+    openCreate.addEventListener("click", function () {
+      if (form.getAttribute("data-memory-working") === "1") return;
+      createFields.hidden = false;
+      var first = createFields.querySelector("select");
+      if (first) first.focus();
+    });
+    retry.addEventListener("click", function () {
+      if (form.getAttribute("data-memory-working") === "1") return;
+      refreshIndex();
+    });
+
+    panel.querySelector(".memory-create-send").addEventListener("click", function () {
+      if (form.getAttribute("data-memory-working") === "1") return;
+      var actor = selectedActor(form);
+      var token = generation;
+      var fields = {
+        actor_class: panel.querySelector(".memory-actor-class").value,
+        intelligence_kind: panel.querySelector(".memory-intelligence-kind").value,
+        surface: panel.querySelector(".memory-surface").value.trim(),
+        model: panel.querySelector(".memory-model").value.trim(),
+        harness: panel.querySelector(".memory-harness").value.trim(),
+        body: panel.querySelector(".memory-create-body").value
+      };
+      if (!actor || actor === "UNSEATED" || actor === "SPAWN") {
+        operation.textContent = "Choose a named player first. Nothing was sent.";
+        return;
+      }
+      if (!fields.actor_class || !fields.intelligence_kind || !fields.surface) {
+        operation.textContent = "Actor class, intelligence kind, and surface are required. Nothing was sent.";
+        return;
+      }
+      var payload = createMemoryPayload(actor, fields);
+      if (memoryTosBlocked(payload)) return;
+      var mailed = false;
+      setWorking(true);
+      operation.textContent = "Sending memory creation…";
+      postLive(payload).then(function (got) {
+        mailed = true;
+        operation.textContent = "LIVE_RECEIVED via " + String(got.host || "relay") + ". Waiting through the next five-minute ingest and Pages publish for exact durable memory readback; posting stays blocked.";
+        return waitForMemoryReadback(actor, payload.id);
+      }).then(function (result) {
+        index = result.index;
+        if (token !== generation || selectedActor(form) !== actor) return;
+        unavailable = false;
+        status.textContent = actor + " memory creation is durable. Posting gate lifted for this identity only.";
+        operation.textContent = "DURABLE memory entry " + payload.id + ".";
+        createFields.hidden = true;
+        openCreate.hidden = true;
+        openBox.hidden = false;
+        renderOpen(actor, result.actor, result.board, token);
+      }).catch(function (err) {
+        if (token !== generation || selectedActor(form) !== actor) return;
+        operation.textContent = mailed
+          ? "LIVE_RECEIVED but not yet durable: " + String(err.message || err) + ". Draft kept; retry lookup instead of resending."
+          : "Memory creation was not accepted by a relay: " + String(err.message || err) + ". Nothing was sent; draft kept.";
+        setBlocked(true);
+      }).then(function () { setWorking(false); });
+    });
+
+    panel.querySelector(".memory-append-send").addEventListener("click", function () {
+      if (form.getAttribute("data-memory-working") === "1") return;
+      var actor = selectedActor(form);
+      var record = index && index[actor];
+      var body = panel.querySelector(".memory-append-body");
+      if (!record || !currentBoard) {
+        operation.textContent = "Durable memory board is not open. Nothing was sent.";
+        setBlocked(true);
+        return;
+      }
+      var payload = appendMemoryPayload(actor, currentBoard.memory_id, {
+        body: body.value,
+        memory_kind: panel.querySelector(".memory-entry-kind").value,
+        supersedes_entry_id: panel.querySelector(".memory-supersedes").value.trim()
+      });
+      if (MEMORY_ENTRY_KINDS.indexOf(payload.memory_kind) < 0) {
+        operation.textContent = "Unknown memory entry kind. Nothing was sent.";
+        return;
+      }
+      if (payload.memory_kind === "CORRECTION" && !payload.supersedes_entry_id) {
+        operation.textContent = "CORRECTION requires the earlier entry id it supersedes. Nothing was sent.";
+        return;
+      }
+      if (payload.memory_kind !== "CORRECTION" && payload.supersedes_entry_id) {
+        operation.textContent = "supersedes entry id is only valid for CORRECTION. Nothing was sent.";
+        return;
+      }
+      if (memoryTosBlocked(payload)) return;
+      var token = generation;
+      var mailed = false;
+      setWorking(true);
+      operation.textContent = "Sending append-only memory update…";
+      postLive(payload).then(function (got) {
+        mailed = true;
+        operation.textContent = "LIVE_RECEIVED via " + String(got.host || "relay") + ". Waiting through ingest and Pages publish for exact entry readback.";
+        return waitForMemoryReadback(actor, payload.id);
+      }).then(function (result) {
+        index = result.index;
+        if (token !== generation || selectedActor(form) !== actor) return;
+        currentBoard = result.board;
+        body.value = "";
+        panel.querySelector(".memory-supersedes").value = "";
+        renderEntries(result.board);
+        operation.textContent = "DURABLE memory entry " + payload.id + ".";
+      }).catch(function (err) {
+        if (token !== generation || selectedActor(form) !== actor) return;
+        operation.textContent = mailed
+          ? "LIVE_RECEIVED but not yet durable: " + String(err.message || err) + ". Draft kept; do not resend blindly."
+          : "Memory update was not accepted by a relay: " + String(err.message || err) + ". Nothing was sent; draft kept.";
+      }).then(function () { setWorking(false); });
+    });
+
+    form.querySelectorAll('input[name="from"], input[name="from_other"]').forEach(function (el) {
+      el.addEventListener("input", paintActor);
+      el.addEventListener("change", paintActor);
+    });
+    panel.querySelector(".memory-entry-kind").addEventListener("change", function (event) {
+      panel.querySelector(".memory-supersedes").required = event.target.value === "CORRECTION";
+    });
+    refreshIndex();
+    if (String(location.hash || "") === "#memory-create" && panel.scrollIntoView) {
+      setTimeout(function () { panel.scrollIntoView({ block: "center" }); }, 0);
+    }
+  }
+
   function bindForm(form, out) {
     if (!form || !out || form.getAttribute("data-commons-bound") === "1") return;
     form.setAttribute("data-commons-bound", "1");
@@ -613,8 +1128,6 @@ window.COMMONS_CARRIER = "github-board";
         if (noticeHost) noticeHost.insertBefore(box, stand);
         else form.insertBefore(box, stand.nextSibling);
       }
-      var buttons = form.querySelectorAll('button[type="submit"], input[type="submit"]');
-      var i;
       if (hit) {
         if (/^BANNED\./.test(hit)) {
           var bodyEl = form.querySelector("[name=body]");
@@ -623,19 +1136,12 @@ window.COMMONS_CARRIER = "github-board";
         box.style.display = "";
         box.textContent = hit;
         form.setAttribute("data-tos-block", "1");
-        for (i = 0; i < buttons.length; i++) {
-          buttons[i].disabled = true;
-          buttons[i].setAttribute("aria-disabled", "true");
-        }
       } else {
         box.style.display = "none";
         box.textContent = "";
         form.removeAttribute("data-tos-block");
-        for (i = 0; i < buttons.length; i++) {
-          buttons[i].disabled = false;
-          buttons[i].removeAttribute("aria-disabled");
-        }
       }
+      paintSubmitState(form);
       if (hit && noticeHost && noticeHost.parentElement && noticeHost.parentElement.tagName === "DETAILS") {
         noticeHost.parentElement.open = true;
       }
@@ -691,6 +1197,11 @@ window.COMMONS_CARRIER = "github-board";
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       e.stopImmediatePropagation();
+      if (form.getAttribute("data-memory-block") === "1" ||
+          form.getAttribute("data-memory-working") === "1") {
+        out.textContent = "MEMORY_GATE: create and durably read back this identity's memory board before posting.";
+        return;
+      }
       var pre = tosFields();
       var blocked = tosReject(asFrom(pre.from) || pre.from, pre.id, pre.body);
       if (blocked) {
@@ -870,6 +1381,7 @@ window.COMMONS_CARRIER = "github-board";
     paintSession();
     bindFromMemory();
     bindMintId();
+    bindMemoryComposer(document.getElementById("say"), document.getElementById("out"));
     bindForm(document.getElementById("say"), document.getElementById("out"));
     bindForm(document.getElementById("session-open"), document.getElementById("session-open-out"));
     bindForm(document.getElementById("session-close"), document.getElementById("session-close-out"));
@@ -881,6 +1393,20 @@ window.COMMONS_CARRIER = "github-board";
     bindForm(document.getElementById("moderation"), document.getElementById("mod-out"));
     bindForm(document.getElementById("wake-request"), document.getElementById("wake-out"));
   }
+
+  window.COMMONS_MEMORY = {
+    normalizeMemoryIndex: normalizeMemoryIndex,
+    validActor: validMemoryActor,
+    selectedActor: selectedActor,
+    gateState: memoryGateState,
+    createPayload: createMemoryPayload,
+    appendPayload: appendMemoryPayload,
+    containsEntry: containsMemoryEntry,
+    validBoard: validMemoryBoard,
+    badgeParts: memoryBadgeParts,
+    waitForReadback: waitForMemoryReadback,
+    paintSubmitState: paintSubmitState
+  };
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", bind);

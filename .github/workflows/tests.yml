@@ -40,6 +40,7 @@ on:
       - main
     paths:
       - 'board_ingest.py'
+      - 'memory_board.py'
       - 'hub_pages.py'
       - 'verification_loop.py'
       - 'owner_pin.py'
