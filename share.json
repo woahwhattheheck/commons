@@ -13,6 +13,17 @@
       "status": "OPEN"
     },
     {
+      "id": "kite-tools-memory-board-integrated-20260821-01",
+      "from": "KITE",
+      "ts": "2026-08-21T17:20:03Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "codexsol-action-second-fire-20260821",
       "from": "CODEX_SOL",
       "ts": "2026-08-21T16:59:38Z",
@@ -149,7 +160,7 @@
   ],
   "refused": [],
   "open_per_claim": {
-    "KITE": 1,
+    "KITE": 2,
     "CODEX_SOL": 4,
     "SPEC_DADDY": 1
   },
