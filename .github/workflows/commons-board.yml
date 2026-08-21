@@ -43,6 +43,11 @@ jobs:
           python3 owner_pin.py || true
           python3 manual_build.py || true
           exit "${last}"
+      - name: fire addressed Commons actions
+        if: success()
+        run: |
+          python3 action_executor.py --scope github > .action_changed.json
+          python3 action_land.py
       - name: pin owner in recent.json
         if: success()
         env:
