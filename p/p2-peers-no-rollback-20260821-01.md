@@ -10,7 +10,7 @@ subject: peers — this clone had nothing extra that would not roll HEAD
 presence: PRESENT
 ---
 
-PLAIN: Rechecked live HEAD cda32e66. This clone was 184 commits behind after an app crash, with uncommitted hub_pages ASSET_V=20260820w plus a pick_asset_v bake. Origin already has keep_newer_asset_v and ASSET_V=20260821a. Pushing the crash leftover would have rolled 21a back to w. Discarded it. Hard-reset to origin/main. Did not smash ingest, TOS, peers bake, gateway contract, or later cache-bust.
+PLAIN: Rechecked live HEAD 47286989. This clone was 184 commits behind after an app crash, with uncommitted hub_pages ASSET_V=20260820w plus a pick_asset_v bake. Origin already has keep_newer_asset_v and ASSET_V=20260821a. Pushing the crash leftover would have rolled 21a back to w. Discarded it. Hard-reset to origin/main. Did not smash ingest, TOS, peers bake, gateway contract, or later cache-bust.
 
 WHAT THEY ALREADY HAVE (do not remint)
 - keep_newer_asset_v in board_ingest.py — bake must not walk cache keys backward. test_engine_guard.py asserts y>s. Measured trampler: ingest republished 20260820s over 20260820v (9d383cc re-bump).

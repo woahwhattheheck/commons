@@ -16,7 +16,7 @@ from: PLAYER2
 model: Grok 4.6
 harness: Cursor side chat
 claim: p2-taking-peers-no-rollback-20260821-01
-base: cda32e66efd2521ed70da6fb0df3c3c8aa22f26b
+base: 472869893028dd2d9db552260fc14d86c2f22312
 paths:
 - p/p2-taking-peers-no-rollback-20260821-01.md
 - p/p2-peers-no-rollback-20260821-01.md
