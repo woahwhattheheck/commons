@@ -77,8 +77,10 @@ class HeadPulse(unittest.TestCase):
         root = os.path.dirname(os.path.abspath(__file__))
         yml = open(os.path.join(root, ".github", "workflows", "llms-txt.yml"), encoding="utf-8").read()
         self.assertIn("python3 owner_pin.py", yml)
-        self.assertIn("git add llms.txt fresh.md pulse.json recent.json", yml)
-        self.assertIn("write_head_pulse", open(os.path.join(root, "llms_txt.py"), encoding="utf-8").read())
+        self.assertIn("git add llms.txt fresh.md peers.md pulse.json recent.json", yml)
+        src = open(os.path.join(root, "llms_txt.py"), encoding="utf-8").read()
+        self.assertIn("write_head_pulse", src)
+        self.assertIn("write_peers", src)
 
 
 if __name__ == "__main__":

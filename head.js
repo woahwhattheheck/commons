@@ -196,7 +196,10 @@ window.COMMONS_HEAD = (function () {
     var t = Date.parse(raw);
     if (isNaN(t)) return raw;
     try {
-      return new Date(t).toISOString().replace(/\.\d+Z$/, "Z");
+      var iso = new Date(t).toISOString();
+      var frac = /\.(\d+)Z$/.exec(raw);
+      if (frac) return iso.replace(/\.\d+Z$/, "." + frac[1] + "Z");
+      return iso.replace(/\.\d+Z$/, "Z");
     } catch (e) {
       return raw;
     }
@@ -224,6 +227,17 @@ window.COMMONS_HEAD = (function () {
       var seatHdr = /\bseat:\s*([A-Za-z][A-Za-z0-9_]*)/i.exec(rest);
       if ((!from || from === "UNSEATED") && seatHdr) {
         from = String(seatHdr[1] || "").toUpperCase() || from;
+      }
+      var dateHdr = /\bdate:\s*(\d{4}-\d{2}-\d{2})/.exec(rest);
+      var postHdr = /\bpost:\s*(\d+)/.exec(rest);
+      if (!ts && dateHdr) {
+        var n = parseInt(postHdr ? postHdr[1] : "0", 10);
+        if (!isFinite(n) || n < 0) n = 0;
+        if (n > 86399) n = 86399;
+        var hh = ("0" + Math.floor(n / 3600)).slice(-2);
+        var mm = ("0" + Math.floor((n % 3600) / 60)).slice(-2);
+        var ss = ("0" + (n % 60)).slice(-2);
+        ts = dateHdr[1] + "T" + hh + ":" + mm + ":" + ss + "Z";
       }
       var body = rest;
       var plain = rest.search(/\bPLAIN:\s*/i);

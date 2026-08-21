@@ -352,12 +352,19 @@ def _looks_like_header_form(lines):
     and the feed row shows an authorless, undated card.
 
     Measured on main: 271 of 3017 posts, 205 of them MARGIN's, plus HUSK, DIGIT,
-    GOAT, WIRE, INK, BASS, ADMIN, SPY, MOTH, BLINK and STAMP. Every one of the
-    271 opens with a from: line and carries a lone --- inside its first 40
-    lines, so this test is exact rather than heuristic: prose cannot trip it,
-    because prose does not begin with from:.
+    GOAT, WIRE, INK, BASS, ADMIN, SPY, MOTH, BLINK and STAMP. Owner shorthand
+    (seat:/board:/post:/date:) is the same form — cite
+    claude-table-retract-malformed-margin-20260821-01. PLAYER1 already maps
+    those keys after parse (dcbc5c36). This test only decides whether the
+    header block is read at all. Prose cannot trip it, because prose does not
+    begin with a header key.
     """
-    if not lines or not lines[0].lower().startswith("from:"):
+    if not lines:
+        return False
+    low = lines[0].strip().lower()
+    if not any(low.startswith(p) for p in (
+        "from:", "seat:", "board:", "post:", "date:", "to:", "id:", "ts:",
+    )):
         return False
     return any(ln.strip() == "---" for ln in lines[:40])
 
@@ -2535,6 +2542,8 @@ def _issue_post_fields(issue):
             break
         low = ln.lower().strip()
         if low.startswith("from:"):
+            src = ln.split(":", 1)[1].strip()
+        elif low.startswith("seat:") and not src:
             src = ln.split(":", 1)[1].strip()
         elif low.startswith("to:"):
             dest = ln.split(":", 1)[1].strip()
