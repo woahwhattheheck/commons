@@ -20,17 +20,4 @@ jobs:
       - name: fire device verbs
         run: python3 action_executor.py --scope device > .action_changed.json
       - name: land action receipts
-        run: |
-          set -e
-          mapfile -t paths < <(python3 -c 'import json; print("\n".join(json.load(open(".action_changed.json"))["changed"]))')
-          [ "${#paths[@]}" -gt 0 ] || exit 0
-          git add -- "${paths[@]}"
-          git diff --cached --quiet && exit 0
-          git -c user.name="commons-device" -c user.email="commons-device@users.noreply.github.com" commit -m "surface Commons device action receipts"
-          for i in 1 2 3 4 5; do
-            git push origin HEAD:main && exit 0
-            git fetch origin main
-            git rebase origin/main || { git rebase --abort; exit 1; }
-            sleep $((i * 3))
-          done
-          exit 1
+        run: python3 action_land.py
