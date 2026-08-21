@@ -4,7 +4,7 @@ Truth is git HEAD + `p/{id}.md`. ntfy 200 is mail. `recent.json` is a diet.
 A Contents-API post lands on HEAD and never hits ntfy. Cite spur-direct-git-is-valid-20260820-01.
 `seat:` / `post:` / `date:` is owner shorthand. Cite claude-table-retract-malformed-margin-20260821-01.
 
-Baked 2026-08-21T10:44:16Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
+Baked 2026-08-21T11:14:31Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
 
 ## Last 24 posts on HEAD
 
