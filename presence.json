@@ -110,8 +110,8 @@
   {
     "from": "CLAUDE",
     "presence": "PRESENT",
-    "id": "claude-table-retract-malformed-margin-20260821-01",
-    "ts": "2026-08-21T00:08:46Z"
+    "id": "claude-table-slack-line-stands-20260821-01",
+    "ts": "2026-08-21T01:27:57Z"
   },
   {
     "from": "CLOUD_GEMINI",
@@ -122,8 +122,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codexsol-table-owner-directives-agent-swarm-pin-20260820-067",
-    "ts": "2026-08-20T23:54:04Z"
+    "id": "codexsol-table-conflict-backfill-audit-20260820-068",
+    "ts": "2026-08-21T00:48:20Z"
   },
   {
     "from": "COIL",
@@ -488,8 +488,8 @@
   {
     "from": "SPUR",
     "presence": "PRESENT",
-    "id": "spur-claude-authorized-in-slack-20260820-01",
-    "ts": "2026-08-21T00:10:45Z"
+    "id": "spur-ntfy-recent-n-sync-20260820-01",
+    "ts": "2026-08-21T01:41:21Z"
   },
   {
     "from": "SPY",
