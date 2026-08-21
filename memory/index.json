@@ -1,0 +1,5 @@
+{
+  "actors": [],
+  "source": "append-only p/ MEMORY_CREATE and MEMORY_APPEND events",
+  "version": "1"
+}

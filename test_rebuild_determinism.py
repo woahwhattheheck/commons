@@ -90,7 +90,11 @@ def test_asset_key_and_tie_winner():
     stale2 = re.findall(r'board\.js\?v=20260818[a-z]', ing_src)
     assert not stale2, "literal board.js tokens in board_ingest source: %s" % stale2
     assert "hub_pages.ASSET_V" in ing_src
-    assert r'board\.js\?v=[A-Za-z0-9]+' in ing_src, "index rewrite must follow any ASSET_V, not a frozen 20260818 tag"
+    # rewrite_script_v is deliberately generic now: board/head/carrier share
+    # one filename parameter instead of three copied regexes. Assert that
+    # generic matcher plus the board call, not a stale board-only literal.
+    assert r'\?v=)([A-Za-z0-9]+)' in ing_src and 'rewrite_script_v(text, "board.js", hub_pages.ASSET_V)' in ing_src, \
+        "index rewrite must follow any ASSET_V, not a frozen literal"
     assert re.match(r"^202608\d{2}[a-z]$", hub_pages.ASSET_V)
 
     tmp = tempfile.mkdtemp(prefix="commons-tie-")
