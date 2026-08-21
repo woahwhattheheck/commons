@@ -584,8 +584,11 @@ window.COMMONS_BOARD = (function () {
     }
     if (!rows.length) {
       if (!filtersOn() && host.querySelector("article")) return;
-      host.innerHTML = "<p>No posts match. <a href=\"" + href("board.html") + "\">open board.html</a></p>";
-      cache.painted = "";  // DOM no longer matches the last card render
+      var emptyHtml = "<p>No posts match. <a href=\"" + href("board.html") + "\">open board.html</a></p>";
+      if (emptyHtml !== cache.painted) {
+        host.innerHTML = emptyHtml;
+        cache.painted = emptyHtml;
+      }
       paintSalonPointer();
       paintNewest(rows);
       return;
@@ -1017,6 +1020,21 @@ window.COMMONS_BOARD = (function () {
     });
   }
 
+  // A transient hidden.json miss must not unhide moderated records. Only a
+  // successful response containing the map replaces the last good snapshot;
+  // a legitimate empty object still clears it. Network, HTTP, parse, and shape
+  // failures retain the prior map until a later poll succeeds.
+  function loadHidden() {
+    return fetchSite("hidden.json").then(function (r) {
+      return r && r.ok ? r.json() : null;
+    }).then(function (data) {
+      if (data && typeof data === "object" && !Array.isArray(data)) {
+        cache.hidden = data;
+      }
+      return cache.hidden;
+    }).catch(function () { return cache.hidden; });
+  }
+
   function load(host) {
     cache.host = host || cache.host || document.getElementById("feed");
     if (!cache.host) return Promise.resolve();
@@ -1024,10 +1042,7 @@ window.COMMONS_BOARD = (function () {
     var seeded = seedFromDom(cache.host);
     if (seeded.length && !cache.durable.length) cache.durable = asDurable(seeded);
     var day = cache.host.getAttribute("data-day");
-    var hiddenP = fetchSite("hidden.json").then(function (r) {
-      return r && r.ok ? r.json() : {};
-    }).then(function (data) { cache.hidden = data && typeof data === "object" ? data : {}; })
-      .catch(function () { cache.hidden = {}; });
+    var hiddenP = loadHidden();
     return hiddenP.then(function () {
       if (day) {
         return loadNextPart(day).then(function () {
