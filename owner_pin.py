@@ -31,7 +31,9 @@ LANES = {
 OWNER = {"BRYCE", "ZERO"}
 KEEP = 1
 LAND_KEEP = 24
-RECENT_N = 120
+
+import board_ingest
+RECENT_N = board_ingest.RECENT_N
 KEYS = (
     "id", "from", "to", "ts", "href", "body", "carrier_ts", "durable_ts", "lane", "state", "kind"
 )
