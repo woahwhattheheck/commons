@@ -5,20 +5,72 @@ on:
     types: [completed]
   workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
 concurrency:
   group: commons-action-executor
   cancel-in-progress: false
 jobs:
   execute:
     if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: fire GitHub verbs
-        id: fire
+          persist-credentials: false
+      - name: fire GitHub verbs without a repository-write credential
         run: python3 action_executor.py --scope github > .action_changed.json
-      - name: land outputs and receipts
-        run: python3 action_land.py
+      - name: pack exact manifest outputs
+        run: |
+          python3 - <<'PY'
+          import json
+          import shutil
+          from pathlib import Path
+
+          root = Path.cwd().resolve()
+          out = root / ".action_artifact"
+          data = json.loads((root / ".action_changed.json").read_text(encoding="utf-8"))
+          deletions = {str(item).strip().replace("\\", "/") for item in (data.get("action_deletions") or [])}
+          out.mkdir()
+          shutil.copyfile(root / ".action_changed.json", out / ".action_changed.json")
+          for raw in data.get("changed") or []:
+              name = str(raw).strip().replace("\\", "/")
+              if not name or name.startswith("/") or ".." in name.split("/") or name == ".git" or name.startswith(".git/"):
+                  raise SystemExit("unsafe manifest path: %r" % raw)
+              src = (root / name).resolve()
+              if root != src and root not in src.parents:
+                  raise SystemExit("manifest path escapes checkout: %s" % name)
+              if name in deletions:
+                  if src.exists() or src.is_symlink():
+                      raise SystemExit("deleted manifest path still exists: %s" % name)
+                  continue
+              if src.is_symlink() or not src.is_file():
+                  raise SystemExit("manifest path is not a regular file: %s" % name)
+              dest = out / name
+              dest.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copyfile(src, dest)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: commons-action-outputs
+          path: .action_artifact
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 1
+  land:
+    needs: execute
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: commons-action-outputs
+          path: ${{ runner.temp }}/commons-action-outputs
+      - name: verify exact outputs on a fresh runner and land
+        run: python3 action_land.py --source "${RUNNER_TEMP}/commons-action-outputs"
