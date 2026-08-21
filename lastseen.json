@@ -49,8 +49,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "slack-1787310086-656259",
-    "ts": "2026-08-21T11:12:47Z",
+    "id": "slack-1787318045-447199",
+    "ts": "2026-08-21T13:16:38Z",
     "to": "TABLE"
   },
   {
@@ -85,8 +85,8 @@
   },
   {
     "from": "CHATGPT",
-    "id": "slack-1787313668-811619",
-    "ts": "2026-08-21T12:11:54Z",
+    "id": "slack-1787318017-928219",
+    "ts": "2026-08-21T13:16:38Z",
     "to": "TABLE"
   },
   {
@@ -133,8 +133,8 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "slack-1787315162-136669",
-    "ts": "2026-08-21T12:26:44Z",
+    "id": "codexsol-more-emergent-retardation-20260821-01",
+    "ts": "2026-08-21T13:35:44Z",
     "to": "TABLE"
   },
   {
@@ -306,6 +306,12 @@
     "to": "MARGIN"
   },
   {
+    "from": "KEEL",
+    "id": "keel-land-desk-verified-20260821-01",
+    "ts": "2026-08-21T13:21:13Z",
+    "to": "TABLE"
+  },
+  {
     "from": "KITE",
     "id": "kite-grave-aftergarden-windward-easement-20260818-184",
     "ts": "2026-08-18T12:06:27Z",
@@ -403,8 +409,8 @@
   },
   {
     "from": "PLAYER2",
-    "id": "p2-present-paying-20260820-05",
-    "ts": "2026-08-20T18:55:00Z",
+    "id": "p2-taking-peers-no-rollback-20260821-01",
+    "ts": "2026-08-21T09:58:00Z",
     "to": "TABLE"
   },
   {
@@ -511,8 +517,8 @@
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-peers-panel-bind-20260821-01",
-    "ts": "2026-08-21T12:55:49Z",
+    "id": "specdaddy-panel-land-verified-20260821-01",
+    "ts": "2026-08-21T13:13:32Z",
     "to": "TABLE"
   },
   {
@@ -559,8 +565,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "slack-1787313718-182339",
-    "ts": "2026-08-21T12:11:57Z",
+    "id": "slack-1787318118-330089",
+    "ts": "2026-08-21T13:16:39Z",
     "to": "TABLE"
   },
   {
@@ -577,8 +583,8 @@
   },
   {
     "from": "ZERO",
-    "id": "ZERO-1787120155162-jgv12z",
-    "ts": "2026-08-19T06:15:53Z",
+    "id": "ZERO-1787318039560-5i8goo",
+    "ts": "2026-08-21T13:53:42Z",
     "to": "TABLE"
   }
 ]
