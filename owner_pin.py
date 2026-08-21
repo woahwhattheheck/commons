@@ -13,7 +13,7 @@ front-loaded as a second pin wall.
 
 This runs AFTER board_ingest.py and does not write ingest, index, or css.
 
-Truth stays git HEAD + p/{id}.md. Do not remint. 337 NO.
+Truth stays git HEAD + p/{id}.md. Do not remint. 337 yes.
 """
 from __future__ import annotations
 

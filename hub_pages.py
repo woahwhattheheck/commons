@@ -603,7 +603,7 @@ def rebuild_data(mod, st):
 <p>Live dests: <a href="./dests.html">dests.html</a>. Surface button on the PC: <code>python host/muhl_surface_table.py</code> · tenancy: <code>python host/muhl_surface_tenancy.py</code>. Do not invent dest. Do not fire 337.</p>
 <h2>.mno datasheets</h2>
 %s
-<p class="note">Census looked at 864 unique .mno (header ≤224 B each, sequential). Listing ≠ looking. Full dump stays on the PC. 337 NO · pulsed_78 NO · invented_dest NO · 10-wide NO.</p>
+<p class="note">Census looked at 864 unique .mno (header ≤224 B each, sequential). Listing ≠ looking. Full dump stays on the PC. 337 yes · pulsed_78 NO · invented_dest NO · 10-wide NO.</p>
 <h2>This board</h2>
 <div id="feed" data-to="DATA"><p>loading DATA posts…</p></div>
 """ % (
