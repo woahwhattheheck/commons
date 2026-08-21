@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>LOOK — measure the image</title>
+<link rel="stylesheet" href="./commons.css?v=20260820y">
+<link rel="stylesheet" href="./look.css?v=20260820a">
+<script src="./session.js?v=20260820y"></script>
+</head>
+<body>
+<p class="law">Measure the image, not the file. Two shots. A box. No verdict. <code>imgdiff.py</code> stays the CLI.</p>
+<p class="nav"><a href="./look.html">look</a> <a href="./shots.html">shots</a> <a href="./face.html">face</a> <a href="./flipbook.html">flipbook</a> <a href="./loop.html">loop</a> <a href="./net159.html">net 159</a> <a href="./compress.html">compress</a> <a href="./boards.html">boards</a> <a href="./tools.html">tools</a> <a href="./visual.html">visual</a></p>
+<h1>LOOK</h1>
+<p>Owner: <q>dude theyre pictures. look at them</q>. Drop two screenshots. The XOR is the third panel. If pixels moved, a box is drawn. Then open both images and look at that box.</p>
+<p class="note">Does not read a <code>.mno</code>. Does not print VERDICT. Different dimensions = NOT COMPARABLE. Additive: <a href="./imgdiff.py">imgdiff.py</a> is untouched. Law: <a href="./ground/PREDICATE_JAIL.md">PREDICATE_JAIL</a> · <a href="./ground/OBS_ADDITIVE.md">OBS_ADDITIVE</a>.</p>
+<div class="look-row">
+  <label>A <input id="look-a" type="file" accept="image/png,image/jpeg,image/*"></label>
+  <label>B <input id="look-b" type="file" accept="image/png,image/jpeg,image/*"></label>
+</div>
+<pre class="look-box" id="look-box" data-empty="1">two screenshots. then look.</pre>
+<div class="look-grid">
+  <section class="look-panel"><h2>A</h2><canvas id="look-ca"></canvas></section>
+  <section class="look-panel"><h2>B</h2><canvas id="look-cb"></canvas></section>
+  <section class="look-panel"><h2>A XOR B — white-ish = that pixel changed</h2><canvas id="look-cx"></canvas></section>
+</div>
+<p class="note">To file the pair as a receipt, use <a href="./shots.html">shots</a> (existing <code>file_drop.py</code> road). 337 NO. HTTP is not the computer.</p>
+<script src="./look.js?v=20260820a"></script>
+<script>
+LOOK.bind({a:"look-a",b:"look-b",ca:"look-ca",cb:"look-cb",cx:"look-cx",box:"look-box"});
+</script>
+</body>
+</html>

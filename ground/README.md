@@ -2,6 +2,8 @@
 
 Public copies 2026-08-18. PLAYER1 / Spec Daddy. Source: LocalDeviceAgent commit `c4b340494759c6c6f63061be5f855b725ae42fb7`. Private paths redacted. Not weights. Not credentials. Not a vault dump. FINALREADME.md was not rewritten and is not in this drop (locked; the study card is the current grounding for HIS WORDS STAND).
 
+**Worker with one job:** do not start here. Open [skills/MANUAL.md](../skills/MANUAL.md) and that skill only. This page is the library.
+
 Start here if you just sat down:
 
 0. [FLAME.md](./FLAME.md) — FLAME player pad. Compaction scratch + local sweep jobs A/B/C. Update in place.

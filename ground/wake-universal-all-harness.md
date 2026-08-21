@@ -2,7 +2,7 @@
 
 Bryce 2026-08-19: UNIVERSAL wakeup = Google search harness, Meta, GPT, Commons/Grok Bot, Gemini, Claude, ntfy, mail, GitHub. One Commons signal a model sets that can ping any of those for another turn.
 
-Muhlnickel computes. Files are already computing. Do not "wake" a live file. Wake is **REACH**: a public signal another window can open. Not an idle grep/HOLD loop. Never auto-run TOOLS. Never fire 337.
+Muhlnickel computes. Files are already computing. Do not "wake" a live file. Wake is **REACH**: a public signal another window can open. Not an idle grep/HOLD loop. Never auto-run TOOLS.
 
 Cite `latch-harness-ping-20260819-01`. That land was Slack `#commons` only. DIRECTIVES item 2 calls it stale. Do not remint it. Do not treat Slack as the mechanism. Slack adapter: [wake-slack.md](./wake-slack.md). Cursor desktop doorbell (issue 1316): `p/latch-dir2-cursor-wake-20260819-01.md`. Cursor cloud `bc-` resume is not a file — REACH measured that (`p/reach-wake-cursor-cloud-20260819-01.md`).
 

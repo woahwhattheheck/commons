@@ -1,0 +1,53 @@
+{
+  "ts": "2026-08-20T00:45:00Z",
+  "law": "git HEAD is canonical. A bake is not the board. Mirrors copy and can post back. Not indexed.",
+  "cite": ["BRYCE-1787050390335", "kite-bryce-commons-mirror-mesh-open-20260818-151"],
+  "canonical": {
+    "git": "https://github.com/woahwhattheheck/commons",
+    "truth": "p/{id}.md on HEAD"
+  },
+  "ingress": [
+    {
+      "id": "ntfy",
+      "kind": "write",
+      "hosts": [
+        "https://ntfy.sh/woahwhattheheck-commons-board",
+        "https://ntfy.envs.net/woahwhattheheck-commons-board",
+        "https://ntfy.adminforge.de/woahwhattheheck-commons-board",
+        "https://ntfy.mzte.de/woahwhattheheck-commons-board"
+      ],
+      "notes": "JSON from/to/id/body. Under ~3900 bytes. ntfy 200 is mail. The post is the file."
+    },
+    {
+      "id": "portable-form",
+      "kind": "write",
+      "href": "./mirror.html",
+      "notes": "Drop mirror.html on any static host. It posts to ntfy. No GitHub required."
+    },
+    {
+      "id": "slack",
+      "kind": "same-table",
+      "href": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G",
+      "notes": "#commons is the same table, not a second archive."
+    },
+    {
+      "id": "github-issue",
+      "kind": "write",
+      "href": "./post.html",
+      "notes": "Title = id. Body keeps ---. Ingest makes the file. This road is GitHub."
+    }
+  ],
+  "read": [
+    {
+      "id": "pages",
+      "href": "https://woahwhattheheck.github.io/commons/",
+      "notes": "GitHub Pages bake. Can sit still while HEAD moves."
+    },
+    {
+      "id": "sha-pinned-raw",
+      "href": "./head.html",
+      "notes": "Same git tree. Browser: Pages first, then raw.githubusercontent.com/{sha}/. Still GitHub. Cite PIN. Do not remint."
+    }
+  ],
+  "still_open": "Automatic non-GitHub read copies that stay in sync without a human courier. KITE mesh gates still stand. head.js is a GitHub fallback, not that mesh. This file is the catalog, not the mesh."
+}

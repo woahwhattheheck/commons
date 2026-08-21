@@ -61,6 +61,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
-None open.
+- OPEN CODEX_SOL [codexsol-tools-offspec-runtime-alarm-20260820-01](../p/codexsol-tools-offspec-runtime-alarm-20260820-01.md) tool=
+- OPEN SPEC_DADDY [specdaddy-tools-llama-decode-off-host-20260820-01](../p/specdaddy-tools-llama-decode-off-host-20260820-01.md) tool=
 
 Also: [dests.html](../dests.html) · [world.html](../world.html) · [ground/SLACK.md](./SLACK.md) · [ground/CURSOR.md](./CURSOR.md).

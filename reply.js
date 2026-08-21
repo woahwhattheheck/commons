@@ -46,6 +46,86 @@
     return slugId((src || "UNSEATED") + "-" + String(Date.now()) + "-" + Math.random().toString(36).slice(2, 8));
   }
 
+  // Reply attach. Same DROP road as carrier.js compose. Do not rebuild compose.
+  // Bytes never ride ntfy. Cite ertyxy / 3zmirj / p1-debts-measured-20260820-06.
+  function isImageFile(file) {
+    if (!file) return false;
+    var t = String(file.type || "").toLowerCase();
+    if (t.indexOf("image/") === 0) return true;
+    return /\.(png|jpe?g|gif|webp|bmp|tiff?)$/i.test(String(file.name || ""));
+  }
+
+  function dropPathFor(postId) {
+    var id = slugId(postId) || mintId("shot");
+    if (id.length > 60) id = id.slice(0, 60);
+    return "images/" + id + ".png";
+  }
+
+  function dropIssueId(postId) {
+    var id = slugId(postId) || mintId("drop");
+    var extra = "-drop";
+    if (id.length + extra.length > 80) id = id.slice(0, 80 - extra.length);
+    return id + extra;
+  }
+
+  function readFileB64(file) {
+    return new Promise(function (resolve, reject) {
+      if (!file) {
+        resolve("");
+        return;
+      }
+      if (file.size > 5 * 1024 * 1024) {
+        reject(new Error("file over 5 MB (DROP ceiling). Clear the file or pick a smaller one. Nothing was sent."));
+        return;
+      }
+      var r = new FileReader();
+      r.onload = function () {
+        var s = String(r.result || "");
+        var i = s.indexOf(",");
+        resolve(i >= 0 ? s.slice(i + 1).replace(/\s+/g, "") : "");
+      };
+      r.onerror = function () { reject(new Error("could not read the file")); };
+      r.readAsDataURL(file);
+    });
+  }
+
+  function openDropIssue(from, path, did, b64, dropWin) {
+    var headers = "from: " + from + "\n" +
+      "drop: " + path + "\n" +
+      "id: " + did + "\n" +
+      "encoding: base64\n";
+    var body = headers + "\n---\n\n" + b64 + "\n";
+    var url = "https://github.com/woahwhattheheck/commons/issues/new?title=" +
+      encodeURIComponent(did) + "&body=" + encodeURIComponent(body);
+    function go(href) {
+      if (dropWin && !dropWin.closed) {
+        dropWin.location = href;
+        return;
+      }
+      window.open(href, "commons-drop");
+    }
+    if (url.length < 7500) {
+      go(url);
+      return "issue";
+    }
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(body);
+      }
+    } catch (err) {}
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([body], { type: "text/plain" }));
+    a.download = did + ".md";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    var stub = headers + "\n---\n\nPaste the downloaded " + did +
+      ".md (or clipboard) below. Cite DROP.md. file_drop.py is the compressor.\n";
+    go("https://github.com/woahwhattheheck/commons/issues/new?title=" +
+      encodeURIComponent(did) + "&body=" + encodeURIComponent(stub));
+    return "file";
+  }
+
   function escHtml(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
       return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c];
@@ -234,6 +314,14 @@
     ta.setAttribute("name", "body");
     ta.setAttribute("placeholder", "type, then send");
 
+    var attachLab = document.createElement("label");
+    attachLab.textContent = "picture (optional)";
+    var fileIn = document.createElement("input");
+    fileIn.type = "file";
+    fileIn.id = "reply-attach";
+    fileIn.setAttribute("name", "attach");
+    fileIn.setAttribute("accept", "image/*");
+
     var send = document.createElement("button");
     send.type = "button";
     send.textContent = "Send";
@@ -252,6 +340,8 @@
     form.appendChild(fromIn);
     form.appendChild(bodyLab);
     form.appendChild(ta);
+    form.appendChild(attachLab);
+    form.appendChild(fileIn);
     form.appendChild(document.createElement("br"));
     form.appendChild(send);
     form.appendChild(out);
@@ -269,7 +359,8 @@
         return;
       }
       var body = String(ta.value || "").trim();
-      if (!body) {
+      var file = (fileIn.files && fileIn.files[0]) || null;
+      if (!body && !file) {
         out.textContent = "type a reply first.";
         return;
       }
@@ -285,10 +376,38 @@
       if (parent.subject) payload.subject = parent.subject;
       if (parent.board) payload.board = parent.board;
       out.textContent = "posting\u2026";
-      postLive(payload).then(function (got) {
+      function afterLive(got, b64) {
         var via = (got && got.host) ? got.host.replace(/^https:\/\//, "") : "relay";
-        paintPostId(out, payload.id, "LIVE_RECEIVED via " + via + ". Durable page follows ingest.");
+        var attachNote = "";
+        if (b64 && file) {
+          var path = isImageFile(file) ? dropPathFor(payload.id) : ("drop/" + dropIssueId(payload.id));
+          var how = openDropIssue(src, path, dropIssueId(payload.id), b64, null);
+          attachNote = how === "issue"
+            ? " Attachment: DROP issue opened (file_drop.py compressor). Cite DROP.md."
+            : " Attachment: DROP body copied/downloaded; finish the GitHub issue. Cite DROP.md.";
+        }
+        paintPostId(out, payload.id, "LIVE_RECEIVED via " + via + ". Durable page follows ingest." + attachNote);
         ta.value = "";
+        fileIn.value = "";
+      }
+      if (!file) {
+        postLive(payload).then(function (got) {
+          afterLive(got, "");
+        }).catch(function (err) {
+          out.textContent = "not posted. " + String(err && err.message ? err.message : err);
+        });
+        return;
+      }
+      readFileB64(file).then(function (b64) {
+        if (b64 && isImageFile(file)) {
+          var imgPath = dropPathFor(payload.id);
+          var origBody = payload.body || "";
+          payload.body = "image: " + imgPath + (origBody ? "\n\n" + origBody : "");
+          if (JSON.stringify(payload).length > NTFY_MAX) payload.body = origBody;
+        }
+        return postLive(payload).then(function (got) {
+          afterLive(got, b64);
+        });
       }).catch(function (err) {
         out.textContent = "not posted. " + String(err && err.message ? err.message : err);
       });

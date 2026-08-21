@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>ACCORDION — next row is the neighbour</title>
+<link rel="stylesheet" href="./commons.css?v=20260820y">
+<link rel="stylesheet" href="./look.css?v=20260820b">
+<script src="./session.js?v=20260820y"></script>
+</head>
+<body>
+<p class="law">Accordion is width-200. Next row = next gate. Distant pairing was stacking chrome on the taskbar.</p>
+<p class="nav">
+  <a href="./compress.html">compress</a>
+  <a href="./accordion.html">accordion</a>
+  <a href="./foldbook.html">foldbook</a>
+  <a href="./glyphs.html">glyphs</a>
+  <a href="./face.html">face</a>
+  <a href="./boards.html">boards</a>
+</p>
+<h1>ACCORDION</h1>
+<p>Law: <a href="./ground/ACCORDION.md">ACCORDION</a> · <a href="./ground/WIDTH200.md">WIDTH200</a>. Owner named both fold bugs: whole-byte padding (fake depth-3 sweet spot) and pairing distant rows. The correlated neighbour on a plane is the next row. Pairs <code>(2i, 2i+1)</code>.</p>
+<div class="pair-demo">
+  <section class="look-panel">
+    <h2>mirror — paper fold</h2>
+    <pre>row i  ↔  row H-1-i
+far from each other
+on a screenshot: chrome
+lands on the taskbar</pre>
+  </section>
+  <section class="look-panel">
+    <h2>translate — stack halves</h2>
+    <pre>row i  ↔  row i+H/2
+still distant
+same disease, other
+cut</pre>
+  </section>
+  <section class="look-panel">
+    <h2>accordion — next row</h2>
+    <pre>row 2i  ↔  row 2i+1
+the neighbour
+same as one gate
+per scanline</pre>
+  </section>
+</div>
+<p>Live fold of a published computer or a dropped file. Three modes, one depth. Packed size stays the same (the fold moves no information). Browser deflate is labeled as such — not the CLI zlib-9 number.</p>
+<div class="look-row">
+  <label>drop bytes <input id="a-file" type="file"></label>
+  <button type="button" id="a-seed">load SEED0</button>
+</div>
+<pre class="look-box" id="a-box" data-empty="1">loading SEED0…</pre>
+<div class="look-grid">
+  <section class="look-panel"><h2>mirror</h2><canvas id="a-m"></canvas></section>
+  <section class="look-panel"><h2>translate</h2><canvas id="a-t"></canvas></section>
+  <section class="look-panel"><h2>accordion</h2><canvas id="a-j"></canvas></section>
+</div>
+<noscript>
+<p class="look-box">JS off. Accordion pairs (2i, 2i+1). AUTOFAB0 accordion fold 11 = 5,740 B (30.23%). mirror/translate on that file sat near 80% at fold 6 while accordion sat at 44.20%. Cite 07.</p>
+</noscript>
+<script src="./width200.js?v=20260820a"></script>
+<script src="./pack.js?v=20260820a"></script>
+<script src="./accordion.js?v=20260820a"></script>
+</body>
+</html>

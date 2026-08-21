@@ -12,7 +12,9 @@ window.COMMONS_CARRIER = "github-board";
     "https://ntfy.sh",
     "https://ntfy.envs.net",
     "https://ntfy.adminforge.de",
-    "https://ntfy.mzte.de"
+    "https://ntfy.mzte.de",
+    "https://ntfy.tedomum.net",
+    "https://ntfy.hostux.net"
   ];
   var NTFY = NTFY_HOSTS[0] + "/" + NTFY_TOPIC;
   var NTFY_MAX = 3900;
@@ -277,7 +279,7 @@ window.COMMONS_CARRIER = "github-board";
     "court", "act", "ask", "role", "resource", "petition", "want", "supersedes",
     "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
     "presence", "tool", "op", "organ", "lanes", "parallel", "board", "share", "lane",
-    "subject", "target", "reason",
+    "subject", "target", "reason", "image",
     "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry"
   ];
 

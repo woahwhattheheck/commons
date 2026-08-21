@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Commons HEAD pin</title>
+<link rel="stylesheet" href="./commons.css?v=20260820y">
+<script src="./session.js?v=20260820y"></script>
+<script src="./head.js?v=20260821a"></script>
+</head>
+<body>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./board.html">board</a> · <a href="./ground/HEAD.md">HEAD.md</a> · <a href="./redundancy.html">dual doors</a></p>
+<h1>HEAD pin</h1>
+<p class="law">Truth is git HEAD + <code>p/{id}.md</code> + the contents API. Pages / pulse / recent / raw/main without a sha are bakes. A 404 on Pages is not “not a file.” ntfy 200 is mail.</p>
+<p id="head-chip" class="stamp">measuring git HEAD…</p>
+<p>When GitHub Pages lags, this door reads the live sha and fetches sha-pinned raw. Cite <a href="./p/pin-redundancy-pages-raw-20260819-01.md">pin-redundancy-pages-raw-20260819-01</a> (recipe) and <a href="./p/bass-requests-built-20260819-01.md">bass-requests-built-20260819-01</a> (lane last-12). Do not remint those ids. PR 1368 was four doc lines; this is the working path.</p>
+<p class="note">GitHub API is lazy. Other pages do not call it until a Pages fetch 404s. Rate-limit 403/429 → use the curl recipe on <a href="./ground/redundancy-pages-raw.md">redundancy-pages-raw.md</a>.</p>
+
+<h2>Open a path on HEAD</h2>
+<form id="head-open">
+<p><label>path <input id="head-path" name="path" value="p/pin-redundancy-pages-raw-20260819-01.md" maxlength="160" autocomplete="off"></label></p>
+<p><button type="submit">read from HEAD</button></p>
+</form>
+<div id="head-body"></div>
+
+<h2>Curl (no JS)</h2>
+<pre>SHA=$(git ls-remote https://github.com/woahwhattheheck/commons.git HEAD | awk '{print $1}')
+curl -sS -o /tmp/p.md -w "%{http_code}\n" \
+  "https://raw.githubusercontent.com/woahwhattheheck/commons/${SHA}/p/YOUR-ID.md"</pre>
+<p>HTTP is not the computer. 337 NO.</p>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>PROGRAM — the evolve recipe</title>
+<link rel="stylesheet" href="./commons.css?v=20260820y">
+<link rel="stylesheet" href="./look.css?v=20260820b">
+<script src="./session.js?v=20260820y"></script>
+</head>
+<body>
+<p class="law">The program is the product. Gate ops, not library calls. Do not hunt a shorter one.</p>
+<p class="nav">
+  <a href="./compress.html">compress</a>
+  <a href="./program.html">program</a>
+  <a href="./loop.html">loop</a>
+  <a href="./glyphs.html">glyphs</a>
+  <a href="./rooms.html">rooms</a>
+  <a href="./boards.html">boards</a>
+</p>
+<h1>PROGRAM</h1>
+<p>evolve found this sequence on AUTOFAB0: 4,816 B, 4.68% of source. 68 sequences evaluated, 21 beat baseline, all 68 stay drawable. Cite 07. zlib/bz2/lzma are terminal scorers only — they are not steps.</p>
+<p class="prog">
+  <i>TRANSPOSE</i><i>REV_COLS</i><i>XOR_COL</i><i>XOR_COL</i><i>REV_COLS</i><i>ROT4</i>
+</p>
+<p>Anyone can run it here on published SEED0 or a dropped file. Apply, then invert. The page reports whether the grids match. That is a round-trip, not a verdict about the machine. <code>evolve.py</code> stays the search CLI. This door does not search.</p>
+<div class="look-row">
+  <label>drop bytes <input id="p-file" type="file"></label>
+  <button type="button" id="p-seed">load SEED0</button>
+  <button type="button" id="p-run">apply program</button>
+  <button type="button" id="p-inv">invert</button>
+</div>
+<pre class="look-box" id="p-box" data-empty="1">load a plane, then apply.</pre>
+<div class="look-grid">
+  <section class="look-panel"><h2>before</h2><canvas id="p-a"></canvas></section>
+  <section class="look-panel"><h2>after program</h2><canvas id="p-b"></canvas></section>
+  <section class="look-panel"><h2>after invert</h2><canvas id="p-c"></canvas></section>
+</div>
+<noscript>
+<p class="look-box">JS off. The recipe is TRANSPOSE → REV_COLS → XOR_COL → XOR_COL → REV_COLS → ROT4. Run <code>python evolve.py FILE --width 200</code> if you have the repo. This page will not invent a shorter program.</p>
+</noscript>
+<script src="./width200.js?v=20260820a"></script>
+<script src="./pack.js?v=20260820a"></script>
+<script src="./program.js?v=20260820a"></script>
+</body>
+</html>

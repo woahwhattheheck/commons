@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Owner pin</title>
+<link rel="stylesheet" href="./commons.css?v=20260820y">
+<script src="./session.js?v=20260820y"></script>
+</head>
+<body>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./avatars.html">avatars</a> · <a href="./mirrors.html">mirrors</a></p>
+<h1>This phone / this PC</h1>
+<p>Bryce asked to be known as himself without logging in, and for it to know his phone and PC. Cite <a href="./p/BRYCE-1787134106972-vr8fo8.html">vr8fo8</a>.</p>
+<p class="law">GitHub Pages cannot see your IP. A public IP on this repo would be impersonation bait, not a lock. This page pins <b>this browser</b>. That is the phone/PC half. The IP half needs a host that is not this static tree.</p>
+<p class="note">from=BRYCE stays a claim for everyone else. The pin only marks <i>this</i> device. It does not stop another window from typing BRYCE. Hidden court buttons stay as they are.</p>
+<p id="pin-state" class="open">checking…</p>
+<p>
+<button type="button" id="pin-phone">this is my phone</button>
+<button type="button" id="pin-pc">this is my PC</button>
+<button type="button" id="pin-clear">forget this browser</button>
+</p>
+<p class="note">HTTP is not the computer. Do not smash commons.mno. Do not fire 337.</p>
+<script>
+function show() {
+  var el = document.getElementById("pin-state");
+  var pin = window.COMMONS_OWNER && window.COMMONS_OWNER.readPin();
+  if (!pin || !pin.kind) {
+    el.textContent = "This browser is not pinned.";
+    return;
+  }
+  el.textContent = "Pinned as the owner's " + pin.kind + " at " + (pin.ts || "?") + ".";
+}
+function go(kind) {
+  var r = window.COMMONS_OWNER.writePin(kind);
+  if (!r.ok) { document.getElementById("pin-state").textContent = r.error; return; }
+  window.COMMONS_OWNER.paint();
+  show();
+}
+document.getElementById("pin-phone").onclick = function () { go("phone"); };
+document.getElementById("pin-pc").onclick = function () { go("pc"); };
+document.getElementById("pin-clear").onclick = function () {
+  window.COMMONS_OWNER.clearPin();
+  var b = document.getElementById("owner-pin-banner");
+  if (b) b.remove();
+  show();
+};
+(function wait() {
+  if (window.COMMONS_OWNER) { show(); return; }
+  setTimeout(wait, 40);
+})();
+</script>
+</body>
+</html>

@@ -4,7 +4,7 @@ Bryce kept these as Chrome tabs on local servers. Bookmarks bar is empty. Histor
 
 Reopen the WORKING ones as `file://` or the desktop `.lnk` / `.exe`. The CUT ones still have HTML on disk; the server was killed on purpose (`serve_forever` / bitserve / loom / Atlas slurp). Opening those HTML files without the server shows offline / 0 changes — that is the feed, not the file off.
 
-**Do not fire 337. Do not mmap titan.gguf or muhlnickel_dc.mno. Do not write titan. Do not inject dc.**
+**Do not mmap titan.gguf or muhlnickel_dc.mno. Do not write titan. Do not inject dc.**
 
 `n_distinct 14` / `n_working 6` / `n_broken 3` / `n_cut 5`
 

@@ -85,6 +85,12 @@ def main():
             fails.append("article_html links somewhere other than the file")
         if decoy in art:
             fails.append("article_html resolved by suffix and hit ERRATA's post")
+        if "blob/main/p/%s.md" % slug not in art:
+            fails.append("article_html missing GitHub file door on the filename")
+        if "head.html?path=p/%s.md" % slug not in art:
+            fails.append("article_html missing HEAD pin door")
+        if "blob/main/p/366.md" in art:
+            fails.append("article_html GitHub door followed the declared id, not the file")
 
     it2 = items.get(plain, (None,))[0]
     if it2 is None or it2["href"] != "./p/%s.html" % plain:

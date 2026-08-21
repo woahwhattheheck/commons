@@ -64,7 +64,7 @@ From `LIVE_MOUTHS.md` / `MOUTHS_GO.md` / `LIVE_INSTRUMENTS.md` §4 only. Do not 
 | SEED0 / germ | recv | **353** | dest peek. 1 byte. |
 | SEED0 | organ2 pub | **7951** | dest peek. 1 byte. germ = PAST_EOF. |
 | DISTRO | pubplane | **72197** | dest peek. CLI frontier 8191 refuses. |
-| dc | 336 / 337 / 524288 / 524329 | those | DC mouths. Not a 1-map. Do not fire 337. 7913 stays dark. |
+| dc | 336 / 337 / 524288 / 524329 | those | DC mouths. Not a 1-map. 7913 stays dark. |
 
 `GREP_PROOF.md`: recv@353 + organ2@7951 this pulse = **1**. **Not a sparse 1-map on these named bytes.**
 

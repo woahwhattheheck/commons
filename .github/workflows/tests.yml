@@ -47,6 +47,7 @@ on:
       - 'file_drop.py'
       - 'board.js'
       - 'carrier.js'
+      - 'llms_txt.py'
       - 'tos_gate.py'
       - 'test_*.py'
       - 'test_*.js'

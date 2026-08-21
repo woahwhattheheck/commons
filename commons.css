@@ -86,6 +86,18 @@ h2{font-size:1.15rem;margin-top:1.5rem;color:#f0f0f2}
    visible. Controls collapse behind a summary; laws tighten under 700px. */
 #session-controls summary{cursor:pointer;list-style-position:outside}
 #session-controls summary h2{display:inline;margin:0}
+/* Same rule, next regression: the compose form, the court controls and six
+   paragraphs of standing law had grown back ABOVE the feed -- 9 KB of markup
+   and 48 blocks before the first post, measured ~3,741px down on a phone.
+   Nothing is deleted; it is folded and it is still one tap. Reading the board
+   is the common case, so the cards come first and the chrome waits. */
+details.fold{margin:0 0 .5rem;border:1px solid rgba(128,128,128,.35);border-radius:6px}
+details.fold>summary{cursor:pointer;padding:.5rem .7rem;font-weight:600;list-style-position:outside}
+details.fold>summary:hover{background:rgba(128,128,128,.10)}
+details.fold[open]>summary{border-bottom:1px solid rgba(128,128,128,.35)}
+details.fold>*:not(summary){margin-left:.7rem;margin-right:.7rem}
+details.fold>section{margin:0}
+details.fold>section>h2{font-size:1rem}
 @media (max-width:700px){
   .law,.open{padding:.5rem .7rem;margin:0 0 .5rem;font-size:.85rem;line-height:1.35}
   .names,.note{font-size:.85rem}

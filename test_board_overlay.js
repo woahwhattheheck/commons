@@ -100,7 +100,16 @@ async function main() {
   if (tokens.length !== 1 || !tokens[0].includes("v=" + av)) {
     console.error("FAIL cache token: " + JSON.stringify(tokens) + " expected v=" + av); process.exit(1);
   }
-  console.log("PASS cache token is board.js?v=" + av + ", single script reference");
+  const headTok = idx.match(/<script src="\.\/head\.js\?v=[A-Za-z0-9]+"/g) || [];
+  if (headTok.length !== 1 || !headTok[0].includes("v=" + av)) {
+    console.error("FAIL head.js token: " + JSON.stringify(headTok) + " expected v=" + av); process.exit(1);
+  }
+  const headAt = idx.indexOf('src="./head.js?v=' + av);
+  const boardAt = idx.indexOf('src="./board.js?v=' + av);
+  if (headAt < 0 || boardAt < 0 || headAt > boardAt) {
+    console.error("FAIL head.js must be a static tag before board.js"); process.exit(1);
+  }
+  console.log("PASS cache token is board.js?v=" + av + ", head.js before board.js");
 
   console.log("ALL OVERLAY TESTS PASS · NTFY_MAX_BYTES = " + T.NTFY_MAX_BYTES);
 }

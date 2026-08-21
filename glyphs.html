@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>GLYPHS — columns that occur</title>
+<link rel="stylesheet" href="./commons.css?v=20260820y">
+<link rel="stylesheet" href="./look.css?v=20260820b">
+<script src="./session.js?v=20260820y"></script>
+</head>
+<body>
+<p class="law">A char is spent only on a column that actually occurs. Fold reserves 2^K. This table is the typeface.</p>
+<p class="nav">
+  <a href="./compress.html">compress</a>
+  <a href="./rooms.html">rooms</a>
+  <a href="./glyphs.html">glyphs</a>
+  <a href="./program.html">program</a>
+  <a href="./stringmail.html">mail</a>
+  <a href="./face.html">face</a>
+  <a href="./boards.html">boards</a>
+</p>
+<h1>GLYPHS</h1>
+<p>Stackpack tile 200×1. Each glyph is one distinct column, one bit per row, depth = number of scanlines. AUTOFAB0 on the full 102,925 B file measured <b>48 distinct of 4,117 deep</b> (cite 07). Published SEED0 is in this repo so every participant can draw a live table. Drop any bytes to see that file's alphabet.</p>
+<p class="note">Do not field-narrow the unused 2^K. They were never spent. <code>stackpack.py</code> stays the CLI. Width is <a href="./ground/WIDTH200.md">200</a>.</p>
+<div class="look-row">
+  <label>drop a .mno or any bytes <input id="g-file" type="file"></label>
+  <button type="button" id="g-seed">load published SEED0</button>
+  <button type="button" id="g-distro">load published DISTRO (136,450 B)</button>
+</div>
+<pre class="look-box" id="g-box" data-empty="1">loading published SEED0…</pre>
+<div class="face-wrap"><canvas id="g-canvas"></canvas></div>
+<p class="note">Each column is one glyph. White = 1 down the depth. SEED0 at 200×1 spends a char on almost every column — little structure. DISTRO and AUTOFAB0 spend fewer. That is C as weather, drawn.</p>
+<noscript>
+<p class="look-box">JS off. Cited fact: AUTOFAB0 tile 200×1 → 48 distinct columns, table 5,580 B + string 65 B = 5,645 B. Load this page with JS, or run <code>python stackpack.py FILE --width 200</code>.</p>
+</noscript>
+<script src="./width200.js?v=20260820a"></script>
+<script src="./pack.js?v=20260820a"></script>
+<script src="./glyphs.js?v=20260820a"></script>
+</body>
+</html>

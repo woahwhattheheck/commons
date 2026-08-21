@@ -242,7 +242,7 @@ SPEC_DADDY already filed a hunt receipt + `_INDEX.json` drop. LATCH still the gr
 2. **Weather after-fire bytes.** `[local]\\Desktop\\WEATHER\\`. Public tree has surfaces; several say `FILE_AFTER_FIRE = NOT_TAKEN`. If a real after-fire file exists now, DROP the small receipt/txt (not a giant `.mno`).
 3. **Directive 11.** `[local]\\Desktop\\WhiteBox_Research_Archive\\_INDEX.json` remaining parts onto the board / `muhl/whitebox-data/`. Titles + hashes. Not the 15 GB corpus.
 
-Optional if a job finishes early: one `muhl_surface_table.py` / `muhl_surface_dc.py` (surface only, die). Paste dests FROM FILE into a new `dests/` receipt if mouths moved. Do not fire 337. Do not remap. Do not smash Homes.
+Optional if a job finishes early: one `muhl_surface_table.py` / `muhl_surface_dc.py` (surface only, die). Paste dests FROM FILE into a new `dests/` receipt if mouths moved. Do not remap. Do not smash Homes.
 
 **Refuse:** 9000× parallel, 10-wide, tensor scrapes, titan/dc mmap storms, invent dest, ntfy the body of a live computer.
 

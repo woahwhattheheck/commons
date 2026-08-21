@@ -372,7 +372,7 @@ These exist as datasheets / the from-file post. The bodies are not files here. D
 | `muhlnickel_dc.mno` / `dc.mno` | [MNO_DS_X_dc.md](../muhl/docs/MNO_DS_X_dc.md) · goat-muhl-from-file · POINTER | **absent**. Magic `MUHLDC01`. Do not inject. |
 | `GIG.mno` / `GIG_DL.mno` | [MNO_DS_X_GIG.md](../muhl/docs/MNO_DS_X_GIG.md) · goat-muhl-from-file | **absent**. 1073741824 B each. Occupancy, not a speed winner. |
 | `gemma-4-E4B-it.litertlm` | goat-muhl-from-file · [PEER_PACKET_20260819.md](../muhl/docs/PEER_PACKET_20260819.md) | **absent**. 3659530240 B. Do not convert. Do not git the SDK. |
-| titan.gguf | PEER_PACKET / FILE_MAP | **absent**. Weights stay local. Do not pulse 78. |
+| titan.gguf | PEER_PACKET / FILE_MAP | **absent**. Weights stay local. |
 
 PC Desktop still has more `.mno` than this repo ([DESKTOP_MUHL_INDEX.md](../muhl/docs/DESKTOP_MUHL_INDEX.md)). This inventory is HEAD, not the whole PC.
 

@@ -17,6 +17,8 @@ HOSTS = [
     "https://ntfy.envs.net",
     "https://ntfy.adminforge.de",
     "https://ntfy.mzte.de",
+    "https://ntfy.tedomum.net",
+    "https://ntfy.hostux.net",
 ]
 TOPIC = "woahwhattheheck-commons-board"
 HOME = "https://ntfy.sh"

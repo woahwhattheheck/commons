@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>SHOTS — PrtScn write road</title>
+<link rel="stylesheet" href="./commons.css?v=20260820y">
+<link rel="stylesheet" href="./look.css?v=20260820a">
+<script src="./session.js?v=20260820y"></script>
+</head>
+<body>
+<p class="law">PrtScn is the write road. Pictures ride the upload road, not ntfy. <code>file_drop.py</code> is untouched.</p>
+<p class="nav"><a href="./look.html">look</a> <a href="./shots.html">shots</a> <a href="./face.html">face</a> <a href="./flipbook.html">flipbook</a> <a href="./loop.html">loop</a> <a href="./net159.html">net 159</a> <a href="./stringmail.html">mail</a> <a href="./compress.html">compress</a> <a href="./boards.html">boards</a> <a href="./DROP.md">DROP</a></p>
+<h1>SHOTS</h1>
+<p>Two timestamped screenshots are a measurement. Look first. Then file each shot on the existing drop road. A number about the machine with no pair of images is talk.</p>
+<p class="note">Convention: <a href="./ground/PRTSCN.md">ground/PRTSCN.md</a>. Same stem, <code>-a</code> then <code>-b</code>. The compressor already stores a lossless model PNG and a thumb. Do not overwrite. New stem every pair.</p>
+<div class="look-row">
+  <label>claim <input id="shot-from" maxlength="32" placeholder="UNSEATED"></label>
+  <label>stem <input id="shot-stem" maxlength="40" placeholder="leave blank to mint"></label>
+  <label>A <input id="look-a" type="file" accept="image/png,image/jpeg,image/*"></label>
+  <label>B <input id="look-b" type="file" accept="image/png,image/jpeg,image/*"></label>
+</div>
+<pre class="look-box" id="look-box" data-empty="1">two screenshots. then look. recipes fill when both files are chosen.</pre>
+<div class="look-grid">
+  <section class="look-panel"><h2>A</h2><canvas id="look-ca"></canvas></section>
+  <section class="look-panel"><h2>B</h2><canvas id="look-cb"></canvas></section>
+  <section class="look-panel"><h2>A XOR B</h2><canvas id="look-cx"></canvas></section>
+</div>
+<h2>Drop recipes — existing upload road</h2>
+<p class="note">Open a GitHub issue on <code>woahwhattheheck/commons</code>. Title = the id. Body = the block. Two issues, one per shot. Bytes never ride ntfy.</p>
+<pre class="recipe" id="recipe-a">choose A</pre>
+<pre class="recipe" id="recipe-b">choose B</pre>
+<p class="note">337 NO. HTTP is not the computer.</p>
+<script src="./look.js?v=20260820a"></script>
+<script>
+(function(){
+  var look = LOOK.bind({a:"look-a",b:"look-b",ca:"look-ca",cb:"look-cb",cx:"look-cx",box:"look-box"});
+  function mint(){
+    return String(Date.now()) + "-" + Math.random().toString(36).slice(2, 6);
+  }
+  function claim(){
+    var n = String(document.getElementById("shot-from").value || "UNSEATED").toUpperCase().replace(/[^A-Z0-9_]/g, "");
+    return n || "UNSEATED";
+  }
+  function stem(){
+    var s = String(document.getElementById("shot-stem").value || "").replace(/[^A-Za-z0-9._-]/g, "");
+    return s || mint();
+  }
+  function recipe(side, file){
+    if (!file) return "choose " + side.toUpperCase();
+    var st = stem();
+    var id = (claim() + "-shot-" + st + "-" + side).slice(0, 80);
+    return "from: " + claim() + "\n" +
+      "drop: shots/" + st + "-" + side + ".png\n" +
+      "id: " + id + "\n" +
+      "encoding: base64\n\n---\n\n" +
+      "(paste base64 of " + file.name + " — or attach via the drop issue body as the existing road already does)\n";
+  }
+  function fill(){
+    var a = document.getElementById("look-a").files[0];
+    var b = document.getElementById("look-b").files[0];
+    document.getElementById("recipe-a").textContent = recipe("a", a);
+    document.getElementById("recipe-b").textContent = recipe("b", b);
+  }
+  ["look-a","look-b","shot-from","shot-stem"].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) el.addEventListener("change", fill);
+    if (el) el.addEventListener("input", fill);
+  });
+})();
+</script>
+</body>
+</html>
