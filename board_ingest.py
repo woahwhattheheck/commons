@@ -65,6 +65,7 @@ ENGINE_PATHS = (
     "board.js", "carrier.js", "court.js", "session.js", "visual.js",
     "head.js", "reply.js", "avatar.js",
     "commons.css", "visual.css", "pixel-crisp.css",
+    "salvage.html", "salvage.js", "salvage.css", "players/CODEX_SOL.html",
     "tos_gate.py",
     "panel.py",
     ".github",
