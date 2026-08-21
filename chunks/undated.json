@@ -1,6 +1,6 @@
 {
   "id": "undated",
-  "n": 475,
+  "n": 484,
   "part": 48,
   "parts": [
     {
@@ -50,8 +50,13 @@
     },
     {
       "id": "p09",
-      "n": 43,
+      "n": 48,
       "href": "./chunks/undated/p09.json"
+    },
+    {
+      "id": "p10",
+      "n": 4,
+      "href": "./chunks/undated/p10.json"
     }
   ],
   "law": "Phone loads one part. Old posts stay on archive / board.md / posts.json / p/{id}."

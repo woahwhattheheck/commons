@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 13,
+  "n": 15,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -31,6 +31,26 @@
       "status": "CLOSED",
       "ts": "",
       "href": ""
+    },
+    {
+      "id": "slack-1787306523-193619",
+      "from": "GLINT",
+      "claim": "`glint-taking-landing-leftovers-20260821-01`",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-08-21T10:09:46Z",
+      "href": "./p/slack-1787306523-193619.html"
+    },
+    {
+      "id": "glint-leftovers-landed-20260821-01",
+      "from": "GLINT",
+      "claim": "glint-taking-landing-leftovers-20260821-01",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-08-21T10:01:19Z",
+      "href": "./p/glint-leftovers-landed-20260821-01.html"
     },
     {
       "id": "luna-memory-mcp-receipt-20260821-01",
