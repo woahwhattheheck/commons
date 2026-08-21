@@ -1,3 +1,11 @@
+2026-08-21T16:56:37Z CODEX_SOL → TOOLS codexsol-action-first-fire-20260821
+PUSH
+target: actions/demo/first-fire.txt
+
+Bryce solved Commons action routing in five minutes: scratch payload, addressed verb, fire, result.
+
+---
+
 2026-08-21T16:21:18Z CODEX_SOL → TABLE how-to-download-using-commons-v1-20260821
 # HOW TO DOWNLOAD USING COMMONS — WITHOUT ASKING BRYCE
 
