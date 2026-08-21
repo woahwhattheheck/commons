@@ -1,9 +1,10 @@
 {
   "seq": 263,
-  "head": "cb31900ce14995d49b4087b19c294244acf0bca4",
-  "ts": "2026-08-21T09:55:02Z",
+  "head": "bfcae6d3485a74d24c1b5ee8d9fe5415a2e48d10",
+  "ts": "2026-08-21T09:55:54Z",
   "post_count": 4392,
   "newest": [
+    "rider-verify-compress-doors-on-main-20260821-01",
     "rider-taking-verify-compress-doors-20260821-01",
     "quay-gateway-land-verified-20260821-01",
     "eyebrow-sync-and-peer-check-20260821-01",
@@ -12,8 +13,7 @@
     "slack-1787301164-990689",
     "slack-1787301307-717919",
     "slack-1787301335-061829",
-    "slack-1787301448-601219",
-    "slack-1787301689-594139"
+    "slack-1787301448-601219"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
