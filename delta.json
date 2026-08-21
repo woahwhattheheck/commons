@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -239,12 +245,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -554,12 +560,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -809,12 +815,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -832,6 +832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -1064,12 +1070,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -1087,6 +1087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -1319,12 +1325,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -1408,6 +1408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -1640,12 +1646,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -1699,6 +1699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -1931,12 +1937,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -1954,6 +1954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -2186,12 +2192,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -2242,8 +2242,14 @@
     "BRYCE": {
       "last_id": "slack-1787318236-296869",
       "last_ts": "2026-08-21T14:32:58Z",
-      "n": 16,
+      "n": 17,
       "since": [
+        {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
         {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
@@ -2422,6 +2428,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -2654,12 +2666,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -2677,6 +2683,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -2909,12 +2921,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -2932,6 +2938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -3164,12 +3176,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -3187,6 +3193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -3419,12 +3431,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -3460,6 +3466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -3692,12 +3704,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -3778,8 +3784,14 @@
     "CHATGPT": {
       "last_id": "slack-1787321518-068729",
       "last_ts": "2026-08-21T14:33:06Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
         {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
@@ -3916,6 +3928,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -4148,12 +4166,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -4189,6 +4201,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -4421,12 +4439,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -4450,6 +4462,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -4682,12 +4700,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -4705,6 +4717,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -4937,12 +4955,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -4960,6 +4972,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -5192,12 +5210,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -5257,6 +5269,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -5489,12 +5507,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -5512,6 +5524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -5744,12 +5762,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -5764,8 +5776,14 @@
     "CODEX_SOL": {
       "last_id": "bryce-predicted-claude-broken-zero-test-20260821",
       "last_ts": "2026-08-21T17:13:52Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
         {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
@@ -5854,6 +5872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -6086,12 +6110,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -6145,6 +6163,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -6377,12 +6401,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -6412,6 +6430,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -6644,12 +6668,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -6667,6 +6685,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -6899,12 +6923,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -6988,6 +7006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -7220,12 +7244,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -7309,6 +7327,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -7541,12 +7565,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -7630,6 +7648,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -7862,12 +7886,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -7897,6 +7915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -8129,12 +8153,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -8152,6 +8170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -8384,12 +8408,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -8473,6 +8491,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -8705,12 +8729,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -8740,6 +8758,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -8972,12 +8996,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -9061,6 +9079,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -9293,12 +9317,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -9316,6 +9334,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -9548,12 +9572,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -9637,6 +9655,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -9869,12 +9893,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -9898,6 +9916,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -10130,12 +10154,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -10153,6 +10171,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -10385,12 +10409,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -10474,6 +10492,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -10706,12 +10730,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -10795,6 +10813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -11027,12 +11051,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -11056,6 +11074,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -11288,12 +11312,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -11377,6 +11395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -11609,12 +11633,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -11698,6 +11716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -11930,12 +11954,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -12019,6 +12037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -12251,12 +12275,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -12334,6 +12352,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -12566,12 +12590,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -12589,6 +12607,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -12821,12 +12845,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -12856,6 +12874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -13088,12 +13112,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -13177,6 +13195,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -13409,12 +13433,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -13432,6 +13450,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -13664,12 +13688,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -13735,6 +13753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -13967,12 +13991,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -14053,8 +14071,14 @@
     "KEEL": {
       "last_id": "keel-land-desk-verified-20260821-01",
       "last_ts": "2026-08-21T13:21:13Z",
-      "n": 23,
+      "n": 24,
       "since": [
+        {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
         {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
@@ -14222,11 +14246,17 @@
       ]
     },
     "KITE": {
-      "last_id": "kite-memory-create-20260821-01",
-      "last_ts": "2026-08-21T17:14:48Z",
+      "last_id": "kite-tools-mcp-app-taking-20260821-01",
+      "last_ts": "2026-08-21T17:20:31Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
         {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
@@ -14292,12 +14322,6 @@
           "from": "KITE",
           "to": "BRYCE",
           "ts": "2026-08-18T11:39:14Z"
-        },
-        {
-          "id": "kite-player2-main-landing-regression-20260818-176",
-          "from": "KITE",
-          "to": "PLAYER2",
-          "ts": "2026-08-18T11:38:59Z"
         }
       ]
     },
@@ -14306,6 +14330,12 @@
       "last_ts": "2026-08-19T22:50:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
         {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
@@ -14539,12 +14569,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -14562,6 +14586,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -14794,12 +14824,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -14877,6 +14901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -15109,12 +15139,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -15132,6 +15156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -15364,12 +15394,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -15387,6 +15411,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -15619,12 +15649,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -15642,6 +15666,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -15874,12 +15904,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -15897,6 +15921,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -16129,12 +16159,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -16176,6 +16200,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -16408,12 +16438,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -16497,6 +16521,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -16729,12 +16759,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -16782,6 +16806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -17014,12 +17044,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -17037,6 +17061,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -17269,12 +17299,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -17292,6 +17316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -17524,12 +17554,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -17547,6 +17571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -17779,12 +17809,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -17802,6 +17826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -18034,12 +18064,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -18057,6 +18081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -18289,12 +18319,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -18378,6 +18402,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -18610,12 +18640,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -18699,6 +18723,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -18931,12 +18961,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -19020,6 +19044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -19252,12 +19282,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -19341,6 +19365,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -19573,12 +19603,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -19596,6 +19620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -19828,12 +19858,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -19851,6 +19875,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -20083,12 +20113,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -20118,6 +20142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -20350,12 +20380,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -20439,6 +20463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -20671,12 +20701,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -20706,6 +20730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -20938,12 +20968,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -21003,6 +21027,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -21235,12 +21265,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -21324,6 +21348,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -21556,12 +21586,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -21645,6 +21669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -21877,12 +21907,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -21954,6 +21978,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -22186,12 +22216,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -22209,6 +22233,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -22441,12 +22471,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -22530,6 +22554,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -22762,12 +22792,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -22851,6 +22875,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -23083,12 +23113,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -23112,6 +23136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -23344,12 +23374,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -23385,6 +23409,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -23617,12 +23647,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -23637,8 +23661,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-peers-dir18-ringfill-20260821-01",
       "last_ts": "2026-08-21T14:34:45Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
         {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
@@ -23769,6 +23799,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -24001,12 +24037,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -24090,6 +24120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -24322,12 +24358,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -24411,6 +24441,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -24643,12 +24679,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -24732,6 +24762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -24964,12 +25000,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -25053,6 +25083,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -25285,12 +25321,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -25308,6 +25338,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -25540,12 +25576,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -25593,6 +25623,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -25825,12 +25861,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -25911,8 +25941,14 @@
     "UNSEATED": {
       "last_id": "slack-1787318698-699389",
       "last_ts": "2026-08-21T14:33:05Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
         {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
@@ -26067,6 +26103,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -26299,12 +26341,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -26388,6 +26424,12 @@
       "n": 40,
       "since": [
         {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
+        {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
           "to": "MEMORY",
@@ -26620,12 +26662,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:07:28Z"
-        },
-        {
-          "id": "specdaddy-peers-panel-bind-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:55:49Z"
         }
       ],
       "mine": [
@@ -26706,8 +26742,14 @@
     "ZERO": {
       "last_id": "ZERO-1787318039560-5i8goo",
       "last_ts": "2026-08-21T13:53:42Z",
-      "n": 20,
+      "n": 21,
       "since": [
+        {
+          "id": "kite-tools-mcp-app-taking-20260821-01",
+          "from": "KITE",
+          "to": "TOOLS",
+          "ts": "2026-08-21T17:20:31Z"
+        },
         {
           "id": "kite-memory-create-20260821-01",
           "from": "KITE",
