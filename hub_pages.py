@@ -284,7 +284,7 @@ BOARDS_ACTIVITY_JS = """<script>
 // "kind=BOOK", or an em dash for a view that is not a board -- so nothing here needs a
 // second list to fall out of sync with the first.
 (function(){
-  var KEY="commons-boardact-v1", STALE=6*3600*1000;
+  var KEY="commons-boardact-v2", STALE=6*3600*1000, FUTURE_SLACK_MS=120000;
   var sum=document.getElementById("boardsum");
   function selOf(txt){
     txt=(txt||"").trim();
@@ -298,9 +298,21 @@ BOARDS_ACTIVITY_JS = """<script>
   // the declared field would report a live board as dead, so match the VALUE across
   // all four routing fields and say so on the page.
   var FIELDS=["to","lane","board","kind"];
+  // Cite claude-table-boards-stale-cache-poison-20260820-01. A clock that has
+  // not happened yet is not a time. Do not remint that post. Do not touch board.js.
+  function realTs(ts){
+    ts=String(ts||"");
+    var t=Date.parse(ts);
+    if(isNaN(t)) return "";
+    if(t>Date.now()+FUTURE_SLACK_MS) return "";
+    return ts;
+  }
   function tally(posts,acc){
-    posts.forEach(function(x){
-      var ts=x.ts||"";
+    acc.__ids=acc.__ids||{};
+    (posts||[]).forEach(function(x){
+      if(!x||!x.id||acc.__ids[x.id]) return;
+      acc.__ids[x.id]=1;
+      var ts=realTs(x.ts);
       var hit={};
       FIELDS.forEach(function(f){
         var v=String(x[f]||"").trim().toUpperCase();
@@ -309,17 +321,26 @@ BOARDS_ACTIVITY_JS = """<script>
       Object.keys(hit).forEach(function(v){
         var a=acc[v]||(acc[v]={n:0,last:""});
         a.n++;
-        if(ts>a.last) a.last=ts;
+        if(ts&&ts>a.last) a.last=ts;
       });
-      if(ts>acc.__max) acc.__max=ts;
+      if(ts&&ts>acc.__max) acc.__max=ts;
     });
     return acc;
+  }
+  function prune(acc,P){
+    var keep={};
+    (P||[]).forEach(function(x){ if(x&&x.id) keep[x.id]=1; });
+    var ids=acc.__ids||{};
+    Object.keys(ids).forEach(function(id){ if(!keep[id]) delete ids[id]; });
+    acc.__ids=ids;
   }
   function ago(ts){
     if(!ts) return "undated";
     var d=Date.now()-Date.parse(ts);
     if(isNaN(d)) return ts.slice(0,16);
-    if(d<3600000) return Math.max(1,Math.round(d/60000))+"m ago";
+    if(d<0) d=0;
+    if(d<60000) return "just now";
+    if(d<3600000) return Math.round(d/60000)+"m ago";
     if(d<86400000) return Math.round(d/3600000)+"h ago";
     return Math.round(d/86400000)+"d ago";
   }
@@ -351,21 +372,29 @@ BOARDS_ACTIVITY_JS = """<script>
   function build(){
     sum.textContent="reading posts.json (3.7 MB, once) …";
     fetch("./posts.json?b="+Date.now(),{cache:"no-store"}).then(function(r){return r.json();})
-      .then(function(P){ var acc=tally(P,{__max:""}); save(acc); paint(acc,"Full corpus: "+P.length+" posts."); })
+      .then(function(P){
+        var acc=tally(P,{__max:"",__ids:{}});
+        return fetch("./recent.json?b="+Date.now(),{cache:"no-store"}).then(function(r){return r.json();})
+          .then(function(d){
+            var R=(d&&d.posts)||d||[];
+            tally(R,acc); save(acc);
+            paint(acc,"Full corpus: "+P.length+" posts, recent folded in.");
+          })
+          .catch(function(){ save(acc); paint(acc,"Full corpus: "+P.length+" posts."); });
+      })
       .catch(function(e){ sum.textContent="could not read posts.json: "+e.message; });
   }
   function topup(acc){
     fetch("./recent.json?b="+Date.now(),{cache:"no-store"}).then(function(r){return r.json();})
       .then(function(d){
-        var P=(d&&d.posts)||d||[], before=acc.__max;
-        var fresh=P.filter(function(x){ return (x.ts||"")>before; });
-        tally(fresh,acc); save(acc);
-        paint(acc,"Cached in this browser, topped up from recent.json ("+fresh.length+" new this load).");
+        var P=(d&&d.posts)||d||[];
+        tally(P,acc); prune(acc,P); save(acc);
+        paint(acc,"Cached in this browser, topped up from recent.json by id.");
       })
       .catch(function(){ paint(acc,"Cached in this browser; recent.json unreachable, so counts may lag."); });
   }
   var c=null; try{ c=JSON.parse(localStorage.getItem(KEY)||"null"); }catch(e){}
-  if(c&&c.__max) topup(c); else build();
+  if(c&&c.__ids) topup(c); else build();
 })();
 </script>"""
 
