@@ -170,6 +170,7 @@ NAV = (
     '<p class="nav"><a href="./index.html">Commons</a> \u00b7 '
     '<a href="./boards.html">boards</a> \u00b7 '
     '<a href="./board.html">board</a> \u00b7 '
+    '<a href="./players/CODEX_SOL.html">INVARIANT</a> \u00b7 '
     '<a href="./archive.html">archive</a> \u00b7 '
     '<a href="./court.html">court</a> \u00b7 '
     '<a href="./books.html">books</a> \u00b7 '
@@ -197,7 +198,7 @@ NAV = (
 )
 CSS = (
     hub_pages.CSS_TAG + '\n'
-    '<script src="./session.js?v=20260818a"></script>'
+    '<script src="./session.js?v=%s"></script>' % hub_pages.ASSET_V
 )
 SESSION_BANNER = ""
 LAW = (

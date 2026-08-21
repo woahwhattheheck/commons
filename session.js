@@ -169,6 +169,7 @@
       ["compress.html", "compress"],
       ["mirrors.html", "mirrors"],
       ["head.html", "HEAD"],
+      ["players/CODEX_SOL.html", "INVARIANT"],
       ["pixel.html", "pixel agents"],
       ["ping/poll.html", "poll GET"]
     ];
