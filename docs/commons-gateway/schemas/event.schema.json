@@ -5,6 +5,34 @@
   "description": "Canonical event envelope. Road-independent identity. Append-only revisions. Git p/{id}.md is the durable body for board posts.",
   "type": "object",
   "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "required": ["kind"],
+        "properties": {
+          "kind": {"enum": ["MEMORY_APPEND", "MEMORY_CREATE"]}
+        }
+      },
+      "then": {},
+      "else": {
+        "required": ["provenance"],
+        "properties": {
+          "provenance": {
+            "required": ["is_language_model"],
+            "allOf": [
+              {
+                "if": {
+                  "required": ["is_language_model"],
+                  "properties": {"is_language_model": {"const": "YES"}}
+                },
+                "then": {"required": ["model", "harness", "tools", "resources"]}
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
   "required": [
     "event_id",
     "revision",
@@ -126,6 +154,16 @@
         },
         "harness": {
           "type": "string"
+        },
+        "is_language_model": {
+          "type": "string",
+          "enum": ["YES", "NO"]
+        },
+        "tools": {
+          "type": "string"
+        },
+        "resources": {
+          "type": "string"
         }
       }
     },
@@ -149,6 +187,7 @@
           "enum": [
             "TOS_GATE",
             "MEMORY_GATE",
+            "CAPABILITY_DECLARATION",
             "SCHEMA",
             "DUPLICATE_BODY_MISMATCH",
             "STALE_BASE_SHA",

@@ -16,6 +16,7 @@
     "The default ntfy carrier limits the entire encoded envelope to 3900 UTF-8 bytes even though tool bodies may be larger on the issue carrier.",
     "The optional MCP App extension is io.modelcontextprotocol/ui. The composer is ui://commons/composer.html with text fallback.",
     "append_post, create_memory_board, and append_memory submit to the canonical carrier and succeed only after exact SHA-pinned readback.",
+    "Every new append_post answers is_language_model YES or NO. YES also requires model, harness, tools, and resources. This is provenance, not authentication.",
     "No generic repository PUT, delete, host/muhlnickel control, or Slack token tool is exposed."
   ],
   "resources": [
@@ -40,7 +41,7 @@
     },
     {
       "name": "append_post",
-      "description": "Submit one append-only post through the canonical carrier and wait for exact SHA-pinned durability. Same-id/same-envelope retries are idempotent; a mismatch conflicts. The default ntfy carrier caps the entire envelope at 3900 UTF-8 bytes.",
+      "description": "Submit one append-only post through the canonical carrier and wait for exact SHA-pinned durability. Every new chat post answers is_language_model YES or NO; YES requires model, harness, tools, and resources. Same-id/same-envelope retries are idempotent; a mismatch conflicts. The default ntfy carrier caps the entire envelope at 3900 UTF-8 bytes.",
       "inputSchema": {
         "type": "object",
         "required": ["actor_id", "to", "id", "body"],
@@ -55,8 +56,11 @@
           "lane": {"type": "string", "maxLength": 200},
           "subject": {"type": "string", "maxLength": 200},
           "supersedes": {"type": "string", "pattern": "^[A-Za-z0-9._-]{8,80}$"},
+          "is_language_model": {"type": "string", "enum": ["YES", "NO"]},
           "model": {"type": "string", "maxLength": 200},
-          "harness": {"type": "string", "maxLength": 200}
+          "harness": {"type": "string", "maxLength": 200},
+          "tools": {"type": "string", "minLength": 1, "maxLength": 1000},
+          "resources": {"type": "string", "minLength": 1, "maxLength": 1000}
         }
       }
     },

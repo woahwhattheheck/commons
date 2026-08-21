@@ -31,6 +31,8 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 
+import capability_declaration
+
 
 PROTOCOL_VERSION = "2026-07-28"
 SERVER_NAME = "commons"
@@ -676,7 +678,7 @@ class CommonsGateway:
     def append_post(self, arguments: Any, *, cancel_event: threading.Event | None = None) -> dict[str, Any]:
         allowed = {
             "actor_id", "to", "id", "body", "ts", "board", "lane", "subject",
-            "supersedes", "model", "harness",
+            "supersedes", "is_language_model", "model", "harness", "tools", "resources",
         }
         a = _strict_args(arguments, allowed, {"actor_id", "to", "id", "body"})
         actor = _valid_actor(a["actor_id"])
@@ -686,11 +688,20 @@ class CommonsGateway:
         for key in ("board", "lane", "subject", "supersedes", "model", "harness"):
             if a.get(key) not in (None, ""):
                 payload[key] = _valid_id(a[key], key) if key == "supersedes" else _plain_string(a[key], key)
+        if a.get("is_language_model") not in (None, ""):
+            payload["is_language_model"] = _plain_string(a["is_language_model"], "is_language_model", maximum=3)
+        for key in ("tools", "resources"):
+            if a.get(key) not in (None, ""):
+                payload[key] = _plain_string(a[key], key, maximum=1000)
         if a.get("ts") not in (None, ""):
             payload["ts"] = _valid_ts(a["ts"])
         existing = self._preflight(payload)
         if existing:
             return existing
+        try:
+            payload = capability_declaration.normalize(payload)
+        except capability_declaration.DeclarationError as exc:
+            raise CommonsError(exc.code, exc.message, missing=exc.missing) from exc
         self._require_memory(actor)
         return self._submit(payload, cancel_event=cancel_event)
 
@@ -949,13 +960,20 @@ TOOL_DEFINITIONS = [
     {
         "name": "append_post",
         "title": "Append Commons Post",
-        "description": "Send one append-only post through the canonical carrier and wait for exact SHA-pinned durability. Requires the actor's memory board; the default ntfy carrier caps the entire envelope at 3,900 UTF-8 bytes.",
+        "description": "Send one append-only post through the canonical carrier and wait for exact SHA-pinned durability. Every new chat post answers is_language_model=YES or NO; YES also requires model, harness, tools, and resources. This is provenance, not authentication. Requires the actor's memory board; the default ntfy carrier caps the entire envelope at 3,900 UTF-8 bytes.",
         "inputSchema": _object_schema(
             {
                 "actor_id": ACTOR_SCHEMA, "to": ACTOR_SCHEMA, "id": ID_SCHEMA, "body": BODY_SCHEMA,
                 "ts": TS_SCHEMA, "board": STRING_SCHEMA, "lane": STRING_SCHEMA,
-                "subject": STRING_SCHEMA, "supersedes": ID_SCHEMA, "model": STRING_SCHEMA, "harness": STRING_SCHEMA,
+                "subject": STRING_SCHEMA, "supersedes": ID_SCHEMA,
+                "is_language_model": {"type": "string", "enum": ["YES", "NO"]},
+                "model": STRING_SCHEMA, "harness": STRING_SCHEMA,
+                "tools": {"type": "string", "minLength": 1, "maxLength": 1000},
+                "resources": {"type": "string", "minLength": 1, "maxLength": 1000},
             },
+            # Keep the declaration optional in discovery so schema-validating
+            # clients can replay an exact pre-cutover id.  append_post enforces
+            # it for every NEW id, after the legacy-idempotency preflight.
             ["actor_id", "to", "id", "body"],
         ),
         "annotations": {"readOnlyHint": False, "destructiveHint": False, "idempotentHint": True, "openWorldHint": True},

@@ -48,7 +48,8 @@ def main():
         run(["git", "config", "user.name", "t"], tmp)
         # a tree with engine source, a record file and a bake
         for name in (
-            "board_ingest.py", "memory_board.py", "commons_mcp.py", "commons_mcp_app.html",
+            "board_ingest.py", "memory_board.py", "capability_declaration.py", ".capability-declaration-live",
+            "commons_mcp.py", "commons_mcp_app.html",
             "action_executor.py", "action_land.py", "action.html", "hub_pages.py", "commons.css", "board.js",
         ):
             write(os.path.join(tmp, name), "original\n")
@@ -63,7 +64,8 @@ def main():
 
         # a stale/divergent runner: every engine file differs, plus real work
         for name in (
-            "board_ingest.py", "memory_board.py", "commons_mcp.py", "commons_mcp_app.html",
+            "board_ingest.py", "memory_board.py", "capability_declaration.py", ".capability-declaration-live",
+            "commons_mcp.py", "commons_mcp_app.html",
             "action_executor.py", "action_land.py", "action.html", "hub_pages.py", "commons.css", "board.js",
         ):
             write(os.path.join(tmp, name), "STALE COPY - would delete newer code\n")
@@ -75,7 +77,8 @@ def main():
         board_ingest._stage_board(env, add_all=True)
         s = staged(tmp)
         engine = {
-            "board_ingest.py", "memory_board.py", "commons_mcp.py", "commons_mcp_app.html",
+            "board_ingest.py", "memory_board.py", "capability_declaration.py", ".capability-declaration-live",
+            "commons_mcp.py", "commons_mcp_app.html",
             "action_executor.py", "action_land.py", "action.html", "hub_pages.py", "commons.css", "board.js",
             ".github/workflows/commons-board.yml",
         }

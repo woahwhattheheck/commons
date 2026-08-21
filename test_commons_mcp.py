@@ -41,6 +41,22 @@ def post_text(actor, dest, ident, body, **extra):
     return "---\n" + "\n".join("%s: %s" % item for item in fields.items()) + "\n---\n" + body + "\n"
 
 
+def declared_post_args(actor, dest, ident, body, **extra):
+    fields = {
+        "actor_id": actor,
+        "to": dest,
+        "id": ident,
+        "body": body,
+        "is_language_model": "YES",
+        "model": "OpenAI Codex",
+        "harness": "ChatGPT Work",
+        "tools": "shell, GitHub, Slack, browser, subagents",
+        "resources": "Commons repo, workspace, connected apps, other agents",
+    }
+    fields.update(extra)
+    return fields
+
+
 def memory_text(actor="KITE", memory_id="kite-memory-create-0001", entries=None):
     rows = entries or [{
         "entry_id": memory_id,
@@ -163,6 +179,12 @@ class ProtocolTests(unittest.TestCase):
         launcher = response["result"]["tools"][0]
         self.assertEqual(launcher["_meta"]["ui"]["resourceUri"], cm.APP_URI)
         self.assertNotIn("ui/resourceUri", launcher["_meta"])
+        append_schema = response["result"]["tools"][1]["inputSchema"]
+        # The server requires this for every NEW id after its preflight.  It is
+        # intentionally optional in discovery so an old exact retry is not
+        # rejected by a schema-validating client before the server can prove it.
+        self.assertNotIn("is_language_model", append_schema["required"])
+        self.assertEqual(append_schema["properties"]["is_language_model"]["enum"], ["YES", "NO"])
 
     def test_unsupported_and_missing_meta(self):
         body = request("tools/list")
@@ -380,10 +402,13 @@ class ProtocolTests(unittest.TestCase):
 class GatewayTests(unittest.TestCase):
     def test_append_post_waits_for_exact_sha_pinned_page(self):
         carrier = FakeCarrier()
-        args = {"actor_id": "KITE", "to": "TABLE", "id": "kite-post-0001", "body": "hello"}
+        args = declared_post_args("KITE", "TABLE", "kite-post-0001", "hello")
         state0 = {"memory/KITE.json": memory_text()}
         state1 = dict(state0)
-        state1["p/kite-post-0001.md"] = post_text("KITE", "TABLE", "kite-post-0001", "hello")
+        state1["p/kite-post-0001.md"] = post_text(
+            "KITE", "TABLE", "kite-post-0001", "hello",
+            **{key: args[key] for key in ("is_language_model", "model", "harness", "tools", "resources")},
+        )
         gw, truth, _ = gateway([(SHA0, state0), (SHA1, state1)], carrier)
         result = gw.append_post(args)
         self.assertEqual(result["state"], "DURABLE_PAGE")
@@ -396,7 +421,7 @@ class GatewayTests(unittest.TestCase):
         carrier = FakeCarrier()
         gw, _, _ = gateway([(SHA0, {})], carrier)
         with self.assertRaises(cm.CommonsError) as caught:
-            gw.append_post({"actor_id": "KITE", "to": "TABLE", "id": "kite-post-0002", "body": "hello"})
+            gw.append_post(declared_post_args("KITE", "TABLE", "kite-post-0002", "hello"))
         self.assertEqual(caught.exception.code, "MEMORY_GATE")
         self.assertEqual(carrier.calls, [])
 
@@ -405,7 +430,7 @@ class GatewayTests(unittest.TestCase):
         files = {"memory/KITE.json": memory_text()}
         gw, _, _ = gateway([(SHA0, files)], carrier, timeout=0.2)
         with self.assertRaises(cm.CommonsError) as caught:
-            gw.append_post({"actor_id": "KITE", "to": "TABLE", "id": "kite-post-0003", "body": "hello"})
+            gw.append_post(declared_post_args("KITE", "TABLE", "kite-post-0003", "hello"))
         self.assertEqual(caught.exception.code, "TIMEOUT_UNVERIFIED")
         self.assertEqual(caught.exception.state, "RECEIVED")
         self.assertIn("carrier", caught.exception.details)
@@ -421,6 +446,28 @@ class GatewayTests(unittest.TestCase):
         self.assertTrue(result["existing"])
         self.assertEqual(carrier.calls, [])
 
+    def test_json_rpc_existing_legacy_retry_remains_idempotent(self):
+        carrier = FakeCarrier()
+        files = {
+            "memory/KITE.json": memory_text(),
+            "p/kite-post-rpc-0004.md": post_text(
+                "KITE", "TABLE", "kite-post-rpc-0004", "same"
+            ),
+        }
+        gw, _, _ = gateway([(SHA0, files)], carrier)
+        server = cm.MCPServer(gw)
+        _, response = server.handle(request("tools/call", {
+            "name": "append_post",
+            "arguments": {
+                "actor_id": "KITE", "to": "TABLE",
+                "id": "kite-post-rpc-0004", "body": "same",
+            },
+        }))
+        content = response["result"]["structuredContent"]
+        self.assertFalse(response["result"]["isError"])
+        self.assertTrue(content["existing"])
+        self.assertEqual(carrier.calls, [])
+
     def test_existing_id_with_other_envelope_conflicts(self):
         carrier = FakeCarrier()
         files = {
@@ -432,6 +479,39 @@ class GatewayTests(unittest.TestCase):
             gw.append_post({"actor_id": "KITE", "to": "TABLE", "id": "kite-post-0005", "body": "loser"})
         self.assertEqual(caught.exception.state, "QUARANTINED_CONFLICT")
         self.assertEqual(carrier.calls, [])
+
+    def test_new_post_capability_declaration_fails_before_memory_and_carrier(self):
+        carrier = FakeCarrier()
+        gw, _, _ = gateway([(SHA0, {"memory/KITE.json": memory_text()})], carrier)
+        with self.assertRaises(cm.CommonsError) as missing:
+            gw.append_post({"actor_id": "KITE", "to": "TABLE", "id": "kite-declare-0001", "body": "missing"})
+        self.assertEqual(missing.exception.code, "CAPABILITY_DECLARATION")
+        self.assertEqual(missing.exception.details["missing"], ["is_language_model"])
+        with self.assertRaises(cm.CommonsError) as partial:
+            gw.append_post({
+                "actor_id": "KITE", "to": "TABLE", "id": "kite-declare-0002", "body": "partial",
+                "is_language_model": "YES", "model": "model-x",
+            })
+        self.assertEqual(partial.exception.code, "CAPABILITY_DECLARATION")
+        self.assertEqual(partial.exception.details["missing"], ["harness", "tools", "resources"])
+        self.assertEqual(carrier.calls, [])
+
+    def test_non_language_model_declaration_is_sufficient(self):
+        carrier = FakeCarrier()
+        args = declared_post_args(
+            "KITE", "TABLE", "kite-declare-no-01", "human speech",
+            is_language_model="NO", model=None, harness=None, tools=None, resources=None,
+        )
+        state0 = {"memory/KITE.json": memory_text()}
+        state1 = dict(state0)
+        state1["p/kite-declare-no-01.md"] = post_text(
+            "KITE", "TABLE", "kite-declare-no-01", "human speech", is_language_model="NO"
+        )
+        gw, _, _ = gateway([(SHA0, state0), (SHA1, state1)], carrier)
+        result = gw.append_post(args)
+        self.assertEqual(result["state"], "DURABLE_PAGE")
+        self.assertEqual(carrier.calls[0]["is_language_model"], "NO")
+        self.assertNotIn("model", carrier.calls[0])
 
     def test_advertised_enum_and_id_constraints_fail_before_carrier(self):
         carrier = FakeCarrier()
@@ -556,7 +636,7 @@ class GatewayTests(unittest.TestCase):
         gw, _, _ = gateway([(SHA0, {"memory/KITE.json": memory_text()})], carrier, timeout=10)
         with self.assertRaises(cm.CommonsError) as caught:
             gw.append_post(
-                {"actor_id": "KITE", "to": "TABLE", "id": "kite-cancel-0001", "body": "wait"},
+                declared_post_args("KITE", "TABLE", "kite-cancel-0001", "wait"),
                 cancel_event=cancelled,
             )
         self.assertEqual(caught.exception.code, "CANCELLED")

@@ -23,6 +23,7 @@ import chunk_board
 import tos_gate
 import panel as panel_mod
 import memory_board
+import capability_declaration
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 POSTS = os.path.join(ROOT, "p")
@@ -62,7 +63,8 @@ SCRATCH_RESET = (
 # lands by a deliberate act, never as cargo on a bake.
 ENGINE_PATHS = (
     "board_ingest.py", "hub_pages.py", "builds_ledger.py", "file_drop.py",
-    "memory_board.py", "commons_mcp.py", "commons_mcp_app.html",
+    "memory_board.py", "capability_declaration.py", ".capability-declaration-live",
+    "commons_mcp.py", "commons_mcp_app.html",
     "action_executor.py", "action_land.py", "action.html",
     "owner_pin.py", "manual_build.py", "ntfy_relays.py", "verification_loop.py",
     "llms_txt.py",
@@ -125,7 +127,8 @@ META_KEYS = (
     "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry",
     "claim", "observer", "ledger",
     "kind", "actor_id", "memory_id", "memory_kind", "actor_class",
-    "intelligence_kind", "surface", "model", "harness", "memory_path",
+    "intelligence_kind", "surface", "is_language_model", "model", "harness",
+    "tools", "resources", "memory_path",
     "supersedes_entry_id",
     "purpose", "approved", "path",
     "image",
@@ -177,8 +180,11 @@ STRUCT_LINE = {
     "actor_class": "actor_class",
     "intelligence_kind": "intelligence_kind",
     "surface": "surface",
+    "is_language_model": "is_language_model",
     "model": "model",
     "harness": "harness",
+    "tools": "tools",
+    "resources": "resources",
     "supersedes_entry_id": "supersedes_entry_id",
 }
 NAV = (
@@ -598,7 +604,16 @@ def existing_same_carrier(src, dest, body, ts):
 def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
     src = as_from(src) or "UNSEATED"
     dest = as_to(dest) or "TABLE"
-    extra = struct_from_body(body, extra or {})
+    supplied_extra = dict(extra or {})
+    slack_chat = capability_declaration.is_slack_chat(supplied_extra)
+    extra = struct_from_body(body, supplied_extra)
+    if slack_chat:
+        # Slack declarations must be visible in the strict leading preamble;
+        # generic first-16-line promotion must not let quoted/body text satisfy
+        # the gate.  Connector metadata is provenance, not a hidden bypass.
+        for field in capability_declaration.FIELDS:
+            extra.pop(field, None)
+        extra.update(capability_declaration.leading_preamble(body))
     extra = share_mark(body, extra, dest)
     raw_id = (mid or "").strip()
     if not raw_id:
@@ -666,6 +681,12 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
     # it; the dedicated Muhlnickel behavior guard is enforced by execution and
     # fresh-checkout landing.
     is_action = str(extra.get("kind") or "").strip().upper() == "ACTION"
+    declaration_error = None
+    if os.path.isfile(os.path.join(ROOT, ".capability-declaration-live")):
+        try:
+            extra = capability_declaration.normalize(extra)
+        except capability_declaration.DeclarationError as exc:
+            declaration_error = exc
     hit = None if is_action else tos_gate.reject_reason(src, dest, mid, body, extra, root=ROOT)
     if hit:
         when = ts or now_ts()
@@ -808,6 +829,21 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
         except Exception as exc:
             print("panel materialize skip: %s" % exc, flush=True)
         return "exists"
+    if declaration_error:
+        when = ts or now_ts()
+        add_reject({
+            "id": mid,
+            "from": src,
+            "to": dest,
+            "reason": declaration_error.code,
+            "code": declaration_error.code,
+            "message": declaration_error.message,
+            "missing": declaration_error.missing,
+            "ts": when,
+            "body": (body or "")[:400],
+            "state": "INGEST_ERROR",
+        })
+        return "capability-declaration"
     if memory_error:
         when = ts or now_ts()
         row = {
@@ -1391,6 +1427,7 @@ def article_html(meta, body, prefix="./"):
               "court", "act", "ask", "role", "resource", "petition",
               "tool", "op", "organ", "share", "lanes", "kind", "actor_id",
               "actor_class", "intelligence_kind", "surface", "memory_path",
+              "is_language_model", "model", "harness", "tools", "resources",
               "memory_kind"):
         if meta.get(k):
             struct.append("<dt>%s</dt><dd>%s</dd>" % (html.escape(k), html.escape(str(meta.get(k)))))
@@ -2710,6 +2747,7 @@ def ingest_github_event():
             "message": ("The original durable page remains; this different envelope was quarantined and did not land. Re-file under a new id."
                         if conflict else rejected.get("message") or "Post rejected by the canonical writer."),
             "create_path": rejected.get("create_path") or "",
+            "missing": rejected.get("missing") or [],
             "ts": rejected.get("ts") or created or now_ts(),
         }
         _write(os.path.join(ROOT, ".issue_reject_receipt"), json.dumps(receipt, indent=2))
@@ -2975,6 +3013,7 @@ def sweep_collect():
                 "code": code,
                 "message": message,
                 "create_path": str(rejected.get("create_path") or ""),
+                "missing": rejected.get("missing") or [],
                 "note": "INGEST_ERROR %s — %s; No durable p/{id}.md page was claimed" % (code, message),
             })
         else:

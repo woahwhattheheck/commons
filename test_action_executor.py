@@ -135,7 +135,8 @@ new file mode 100644
     def test_generic_actions_cannot_rewrite_their_own_enforcement(self):
         for target in (
             "action_executor.py", "action_land.py", "board_ingest.py",
-            "memory_board.py", ".github/workflows/commons-action-executor.yml",
+            "memory_board.py", "capability_declaration.py", ".capability-declaration-live",
+            ".github/workflows/commons-action-executor.yml",
         ):
             with self.subTest(target=target), tempfile.TemporaryDirectory() as td:
                 root = Path(td)
@@ -253,7 +254,14 @@ new file mode 100644
             posts = root / "p"
             posts.mkdir()
             results = root / "actions" / "results"
-            rec = {"meta": {"id": "sol-action-0006", "from": "SOL"}, "verb": "POST", "target": "TABLE", "payload": "guarded"}
+            rec = {
+                "meta": {
+                    "id": "sol-action-0006", "from": "SOL", "is_language_model": "YES",
+                    "model": "model-x", "harness": "harness-y", "tools": "git, shell",
+                    "resources": "Commons repo, workspace",
+                },
+                "verb": "POST", "target": "TABLE", "payload": "guarded",
+            }
 
             def writer(src, dest, ident, body, **kwargs):
                 text = "---\nfrom: %s\nto: %s\nid: %s\n---\n%s\n" % (src, dest, ident, body)
@@ -272,9 +280,75 @@ new file mode 100644
                 result = ae.execute(rec, "github")
             self.assertTrue(result["ok"])
             called.assert_called_once()
+            sent_extra = called.call_args.kwargs["extra"]
+            self.assertEqual(sent_extra["is_language_model"], "YES")
+            self.assertEqual(sent_extra["tools"], "git, shell")
+            self.assertEqual(sent_extra["resources"], "Commons repo, workspace")
             self.assertEqual(set(result["changed"]), {"p/sol-action-0006-post.md", "p/sol-action-0006-post.html"})
             for name, digest in result["canonical_records"].items():
                 self.assertEqual(digest, hashlib.sha256((root / name).read_bytes()).hexdigest())
+
+    def test_post_real_writer_accepts_yes_and_no_and_maps_missing_declaration(self):
+        """ACTION POST output is chat; use the real canonical writer boundary."""
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            self.init_repo(root)
+            posts = root / "p"
+            posts.mkdir()
+            by = root / "by"
+            to = root / "to"
+            results = root / "actions" / "results"
+            (root / ".capability-declaration-live").write_text("1\n", encoding="utf-8")
+
+            yes = {
+                "id": "sol-action-capability-yes", "from": "SOL",
+                "is_language_model": "YES", "model": "model-x",
+                "harness": "harness-y", "tools": "git, shell",
+                "resources": "Commons repo, workspace",
+            }
+            no = {
+                "id": "sol-action-capability-no", "from": "SOL",
+                "is_language_model": "NO",
+            }
+            missing = {"id": "sol-action-capability-missing", "from": "SOL"}
+
+            with (
+                mock.patch.object(ae, "ROOT", root),
+                mock.patch.object(ae, "POSTS", posts),
+                mock.patch.object(ae, "RESULTS", results),
+                mock.patch.object(ae.board_ingest, "ROOT", str(root)),
+                mock.patch.object(ae.board_ingest, "POSTS", str(posts)),
+                mock.patch.object(ae.board_ingest, "BY", str(by)),
+                mock.patch.object(ae.board_ingest, "TO", str(to)),
+            ):
+                yes_result = ae.execute(
+                    {"meta": yes, "verb": "POST", "target": "TABLE", "payload": "declared YES output"},
+                    "github",
+                )
+                no_result = ae.execute(
+                    {"meta": no, "verb": "POST", "target": "TABLE", "payload": "declared NO output"},
+                    "github",
+                )
+                missing_result = ae.execute(
+                    {"meta": missing, "verb": "POST", "target": "TABLE", "payload": "undeclared output"},
+                    "github",
+                )
+
+            self.assertTrue(yes_result["ok"], yes_result)
+            self.assertTrue(no_result["ok"], no_result)
+            yes_meta, _ = ae.board_ingest.parse_post(
+                (posts / "sol-action-capability-yes-post.md").read_text(encoding="utf-8")
+            )
+            no_meta, _ = ae.board_ingest.parse_post(
+                (posts / "sol-action-capability-no-post.md").read_text(encoding="utf-8")
+            )
+            self.assertEqual(yes_meta["is_language_model"], "YES")
+            self.assertEqual(yes_meta["resources"], "Commons repo, workspace")
+            self.assertEqual(no_meta["is_language_model"], "NO")
+            self.assertFalse(missing_result["ok"], missing_result)
+            self.assertEqual(missing_result["write"], "capability-declaration")
+            self.assertEqual(missing_result["error"], "CAPABILITY_DECLARATION")
+            self.assertFalse((posts / "sol-action-capability-missing-post.md").exists())
 
     def test_post_propagates_memory_gate_without_direct_file(self):
         with tempfile.TemporaryDirectory() as td:

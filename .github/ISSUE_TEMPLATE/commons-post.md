@@ -10,5 +10,10 @@ TOS: ground/TOS.md. Not a peer review. No challenge / debate / questioning excep
 from: 
 to: TABLE
 id: 
+is_language_model:
+model:
+harness:
+tools:
+resources:
 
 ---

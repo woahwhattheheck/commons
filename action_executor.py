@@ -37,7 +37,8 @@ PROTECTED_FILES = {
 }
 ACTION_DOOR_PATHS = {
     "index.html", "action.html", "action_executor.py", "action_land.py",
-    "board_ingest.py", "memory_board.py", "GRANTS.md", "AGENTS.md", "START.md", "ENTRY.md",
+    "board_ingest.py", "memory_board.py", "capability_declaration.py",
+    ".capability-declaration-live", "GRANTS.md", "AGENTS.md", "START.md", "ENTRY.md",
     "WRITING.md", "ground/OPEN_DOOR.md", "ground/ACTION_DOOR.md",
     "ground/PICK.md", "test_action_executor.py", "test_write_roads.py",
     "muhlnickel_spec_guard.py", "test_muhlnickel_spec_guard.py",
@@ -311,6 +312,9 @@ def canonical_action_post(meta: dict, target: str, payload: str, ident: str, *, 
         for key in ("subject", "board", "lane"):
             if parsed.get(key):
                 extra[key] = parsed[key]
+    for key in ("is_language_model", "model", "harness", "tools", "resources"):
+        if meta.get(key):
+            extra[key] = meta[key]
     before = working_hashes()
     stamp = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
     status = board_ingest.write_post(
@@ -340,6 +344,7 @@ def canonical_action_post(meta: dict, target: str, payload: str, ident: str, *, 
         result["error"] = {
             "memory-gate": "MEMORY_GATE",
             "memory-schema": "SCHEMA",
+            "capability-declaration": "CAPABILITY_DECLARATION",
             "conflict": "SAME_ID_DIFFERENT_BODY",
             "conflict-seen": "SAME_ID_DIFFERENT_BODY",
             "tos": "TOS_GATE",
