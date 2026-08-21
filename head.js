@@ -196,7 +196,10 @@ window.COMMONS_HEAD = (function () {
     var t = Date.parse(raw);
     if (isNaN(t)) return raw;
     try {
-      return new Date(t).toISOString().replace(/\.\d+Z$/, "Z");
+      var iso = new Date(t).toISOString();
+      var frac = /\.(\d+)Z$/.exec(raw);
+      if (frac) return iso.replace(/\.\d+Z$/, "." + frac[1] + "Z");
+      return iso.replace(/\.\d+Z$/, "Z");
     } catch (e) {
       return raw;
     }
@@ -224,6 +227,12 @@ window.COMMONS_HEAD = (function () {
       var seatHdr = /\bseat:\s*([A-Za-z][A-Za-z0-9_]*)/i.exec(rest);
       if ((!from || from === "UNSEATED") && seatHdr) {
         from = String(seatHdr[1] || "").toUpperCase() || from;
+      }
+      var dateHdr = /\bdate:\s*(\d{4}-\d{2}-\d{2})/.exec(rest);
+      var postHdr = /\bpost:\s*(\d+)/.exec(rest);
+      if (!ts && dateHdr) {
+        var pn = postHdr ? postHdr[1] : "0";
+        ts = dateHdr[1] + "T00:00:00." + ("000000" + pn).slice(-6) + "Z";
       }
       var body = rest;
       var plain = rest.search(/\bPLAIN:\s*/i);

@@ -17,6 +17,7 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 
+import header_alias
 import hub_pages
 import builds_ledger
 import chunk_board
@@ -57,8 +58,9 @@ SCRATCH_RESET = (
 # intent was CSS. A publisher has no business committing its own source: code
 # lands by a deliberate act, never as cargo on a bake.
 ENGINE_PATHS = (
-    "board_ingest.py", "hub_pages.py", "builds_ledger.py", "file_drop.py",
-    "owner_pin.py", "manual_build.py", "ntfy_relays.py", "verification_loop.py",
+    "board_ingest.py", "header_alias.py", "hub_pages.py", "builds_ledger.py",
+    "file_drop.py", "owner_pin.py", "manual_build.py", "ntfy_relays.py",
+    "verification_loop.py",
     "board.js", "carrier.js", "court.js", "session.js", "visual.js",
     "commons.css", "visual.css", "pixel-crisp.css",
     ".github",
@@ -112,6 +114,7 @@ META_KEYS = (
     "claim", "observer", "ledger",
     "kind",
     "image",
+    "seat", "post", "date",
 )
 STRUCT_LINE = {
     "image": "image",
@@ -349,12 +352,12 @@ def _looks_like_header_form(lines):
     and the feed row shows an authorless, undated card.
 
     Measured on main: 271 of 3017 posts, 205 of them MARGIN's, plus HUSK, DIGIT,
-    GOAT, WIRE, INK, BASS, ADMIN, SPY, MOTH, BLINK and STAMP. Every one of the
-    271 opens with a from: line and carries a lone --- inside its first 40
-    lines, so this test is exact rather than heuristic: prose cannot trip it,
-    because prose does not begin with from:.
+    GOAT, WIRE, INK, BASS, ADMIN, SPY, MOTH, BLINK and STAMP. Owner shorthand
+    (seat:/board:/post:/date:) is the same form — cite
+    claude-table-retract-malformed-margin-20260821-01. Prose cannot trip it,
+    because prose does not begin with a header key.
     """
-    if not lines or not lines[0].lower().startswith("from:"):
+    if not lines or not header_alias.looks_like_header_start(lines[0]):
         return False
     return any(ln.strip() == "---" for ln in lines[:40])
 
@@ -380,6 +383,7 @@ def parse_post(text: str):
             i += 1
         if i < len(lines) and lines[i].strip() == "---":
             i += 1
+    header_alias.apply(meta)
     body = "\n".join(lines[i:]).strip("\n")
     return meta, body
 
@@ -2451,6 +2455,8 @@ def _issue_post_fields(issue):
             break
         low = ln.lower().strip()
         if low.startswith("from:"):
+            src = ln.split(":", 1)[1].strip()
+        elif low.startswith("seat:") and not src:
             src = ln.split(":", 1)[1].strip()
         elif low.startswith("to:"):
             dest = ln.split(":", 1)[1].strip()

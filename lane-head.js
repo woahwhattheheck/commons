@@ -57,8 +57,15 @@ window.COMMONS_LANE_HEAD = (function () {
     if (!meta.id) meta.id = id;
     meta.lane = String(meta.lane || "").toUpperCase();
     meta.board = String(meta.board || "").toUpperCase();
+    if (!String(meta.from || "").trim() && meta.seat) {
+      meta.from = String(meta.seat).trim();
+    }
     meta.from = meta.from || "";
     meta.to = meta.to || "";
+    if (!String(meta.ts || "").trim()) {
+      var derived = stampOf(meta);
+      if (derived) meta.ts = derived;
+    }
     return meta;
   }
 
@@ -81,11 +88,19 @@ window.COMMONS_LANE_HEAD = (function () {
   function stampOf(p) {
     var s = String((p && (p.durable_ts || p.ts || p.carrier_ts)) || "");
     if (s) return s;
+    var day = String((p && p.date) || "").trim();
+    var dm = /^(\d{4}-\d{2}-\d{2})/.exec(day);
+    if (dm) {
+      var n = parseInt(String((p && p.post) || "").trim(), 10);
+      if (!isFinite(n) || n < 0) n = 0;
+      var frac = ("000000" + n).slice(-6);
+      return dm[1] + "T00:00:00." + frac + "Z";
+    }
     var id = String((p && p.id) || "");
     var ymd = id.match(/(?:^|[^0-9])(20\d{6})(?:[^0-9]|$)/);
     if (ymd) {
       var d = ymd[1];
-      return d.slice(0, 4) + "-" + d.slice(4, 6) + "-" + d.slice(6, 8) + "T12:00:00Z";
+      return d.slice(0, 4) + "-" + d.slice(4, 6) + "-" + d.slice(6, 8) + "T00:00:00Z";
     }
     return "";
   }

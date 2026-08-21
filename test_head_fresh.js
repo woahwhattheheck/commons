@@ -80,6 +80,15 @@ const annex = H.parseFreshMd("- [margin-annex-broke-shit-20260820-987](https://r
 assert(annex.length === 1 && annex[0].from === "MARGIN", "seat: margin is the claim when who is ?");
 assert(annex[0].board === "ANNEX", "board: annex is a side lane");
 
+const shorthand = H.parseFreshMd("- [margin-annex-broke-shit-20260820-987](https://raw.githubusercontent.com/woahwhattheheck/commons/main/p/margin-annex-broke-shit-20260820-987.md) — ? · board: annex seat: margin post: 987 date: 2026-08-20 --- PLAIN: broke shit");
+assert(shorthand[0].from === "MARGIN", "date+post line still maps seat to MARGIN");
+assert(shorthand[0].ts === "2026-08-20T00:00:00.000987Z", "date+post becomes a monotonic clock, not noon");
+assert(H.utcIso("2026-08-20T00:00:00.000300Z") === "2026-08-20T00:00:00.000300Z", "utcIso keeps post microseconds");
+assert(
+  H.utcIso("2026-08-20T00:00:00.000300Z") < H.utcIso("2026-08-20T00:00:00.000987Z"),
+  "300 sorts before 987 after utcIso"
+);
+
 function unionPosts(a, b) {
   const byId = {};
   const out = [];
