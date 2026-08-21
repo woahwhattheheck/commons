@@ -183,6 +183,23 @@ body:has(#say){
 }
 #say textarea{min-height:7rem}
 #say button{margin:.35rem .4rem .35rem 0}
+#compose{margin:.8rem 0 1rem}
+#compose>h2{margin:.35rem 0 .4rem}
+#compose #say{margin:0;padding:.75rem .9rem .9rem}
+#say .compose-route{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:.65rem;
+}
+#say .compose-route label{margin:0}
+#say .compose-body{margin:.55rem 0 .25rem}
+#say .compose-body textarea{min-height:6rem;resize:vertical}
+#say .compose-send{width:100%;margin:.45rem 0 .35rem;font-weight:700}
+#say .compose-more{margin-top:.25rem;border-top:1px solid #2a2a2e;padding-top:.45rem}
+#say .compose-more>summary{cursor:pointer;color:#c8c8ce}
+#say .compose-rules{margin-top:.3rem}
+#say .compose-rules>summary{cursor:pointer;color:#9c9ca3;font-size:.9rem}
+#say .compose-notices{margin-top:.6rem}
 #out.receipt{
   border:1px solid #2a2a2e;
   background:#121214;
@@ -196,6 +213,10 @@ body:has(#say) .names,
 body:has(#say) .note{
   overflow:visible;
   overflow-wrap:break-word;
+}
+@media (max-width:560px){
+  #say .compose-route{grid-template-columns:1fr}
+  #compose #say{padding:.65rem .7rem .75rem}
 }
 
 /* board.html took 12.5 SECONDS to load on a phone. Measured, throttled 4x, at

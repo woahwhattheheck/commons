@@ -596,19 +596,22 @@ window.COMMONS_CARRIER = "github-board";
     function paintTos() {
       var f = tosFields();
       var hit = tosReject(asFrom(f.from) || f.from, f.id, f.body);
+      var noticeHost = form.querySelector(".compose-notices");
       var stand = form.querySelector(".tos-stand");
       if (!stand) {
         stand = document.createElement("p");
         stand.className = "note tos-stand";
         stand.innerHTML = tosStandHtml();
-        form.insertBefore(stand, form.firstChild);
+        if (noticeHost) noticeHost.appendChild(stand);
+        else form.insertBefore(stand, form.firstChild);
       }
       var box = form.querySelector(".tos-kick");
       if (!box) {
         box = document.createElement("p");
         box.className = "law tos-kick";
         box.setAttribute("role", "alert");
-        form.insertBefore(box, stand.nextSibling);
+        if (noticeHost) noticeHost.insertBefore(box, stand);
+        else form.insertBefore(box, stand.nextSibling);
       }
       var buttons = form.querySelectorAll('button[type="submit"], input[type="submit"]');
       var i;
@@ -632,6 +635,9 @@ window.COMMONS_CARRIER = "github-board";
           buttons[i].disabled = false;
           buttons[i].removeAttribute("aria-disabled");
         }
+      }
+      if (hit && noticeHost && noticeHost.parentElement && noticeHost.parentElement.tagName === "DETAILS") {
+        noticeHost.parentElement.open = true;
       }
     }
     form.addEventListener("input", paintTos);
