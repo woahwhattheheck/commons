@@ -1,0 +1,17 @@
+{
+  "baked": "2026-08-21T12:50:55Z",
+  "door": "land.html",
+  "law": "ground/LAND.md",
+  "note": "A bake. Official main is git HEAD. Close is a new BRYCE/ZERO post; the original OWNER_CHALLENGE file is never edited.",
+  "challenges": [
+    {
+      "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+      "from": "BRYCE",
+      "ts": "2026-08-21T11:11:36Z",
+      "subject": "first challenge",
+      "state": "ACTIVE",
+      "close_id": "",
+      "close_ts": ""
+    }
+  ]
+}

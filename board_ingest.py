@@ -68,6 +68,7 @@ ENGINE_PATHS = (
     "salvage.html", "salvage.js", "salvage.css",
     "solarium.js", "solarium.css",
     "players/CODEX_SOL.html", "players/CODEX_SOL-amber-hour.html",
+    "land.html", "land.js", "land.css",
     "tos_gate.py",
     "panel.py",
     ".github",

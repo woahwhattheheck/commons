@@ -80,6 +80,9 @@ def parse_post(path):
         "date": head.get("date") or "",
         "post": head.get("post") or "",
         "seat": head.get("seat") or "",
+        "kind": head.get("kind") or "",
+        "supersedes": head.get("supersedes") or "",
+        "subject": head.get("subject") or "",
         "body": " ".join(body).strip(),
     }
 
@@ -235,6 +238,97 @@ def write_peers(rows, src, ts):
     return len(tips)
 
 
+OWNER_CLOSE = ("BRYCE", "ZERO")
+CLOSE_KIND = ("CHALLENGE_CLOSE", "CHALLENGE_QUARANTINE")
+
+
+def _challenge_files(root):
+    git_dir = os.path.join(root, ".git")
+    if os.path.isdir(git_dir) or os.path.isfile(git_dir):
+        try:
+            out = subprocess.check_output(
+                [
+                    "git", "grep", "-l", "-i",
+                    "-e", "^kind: OWNER_CHALLENGE",
+                    "-e", "^kind: CHALLENGE_CLOSE",
+                    "-e", "^kind: CHALLENGE_QUARANTINE",
+                    "--", "p",
+                ],
+                cwd=root, text=True, timeout=20, errors="replace",
+            )
+        except subprocess.CalledProcessError as e:
+            if getattr(e, "returncode", 1) == 1:
+                return []
+            out = ""
+        except (OSError, subprocess.TimeoutExpired):
+            out = ""
+        else:
+            files = []
+            for line in out.splitlines():
+                rel = line.strip().replace("/", os.sep)
+                if rel.endswith(".md"):
+                    files.append(os.path.join(root, rel))
+            return files
+    pdir = os.path.join(root, "p")
+    if not os.path.isdir(pdir):
+        return []
+    return [os.path.join(pdir, name) for name in os.listdir(pdir) if name.endswith(".md")]
+
+
+def challenge_rows_from_tree(root=None):
+    """OWNER_CHALLENGE rows plus BRYCE/ZERO closes. Original files stay."""
+    root = root or ROOT
+    records = []
+    for path in _challenge_files(root):
+        rec = parse_post(path)
+        rec["id"] = rec.get("id") or os.path.splitext(os.path.basename(path))[0]
+        records.append(rec)
+    challenges = [r for r in records if str(r.get("kind") or "").strip().upper() == "OWNER_CHALLENGE"]
+    closes = [
+        r for r in records
+        if str(r.get("kind") or "").strip().upper() in CLOSE_KIND
+        and str(r.get("from") or "").strip().upper() in OWNER_CLOSE
+    ]
+    rows = []
+    for ch in challenges:
+        cid = str(ch.get("id") or "").strip()
+        close = None
+        for c in closes:
+            target = str(c.get("supersedes") or "").strip()
+            body = str(c.get("body") or "")
+            if target == cid or (cid and cid in body):
+                if not close or str(c.get("ts") or "") > str(close.get("ts") or ""):
+                    close = c
+        rows.append({
+            "id": cid,
+            "from": ch.get("from") or "",
+            "ts": ch.get("ts") or "",
+            "subject": ch.get("subject") or "",
+            "state": "QUARANTINED" if close else "ACTIVE",
+            "close_id": (close.get("id") if close else "") or "",
+            "close_ts": (close.get("ts") if close else "") or "",
+        })
+    rows.sort(key=lambda r: r.get("ts") or "", reverse=True)
+    return rows
+
+
+def write_challenge(path=None, root=None):
+    root = root or ROOT
+    path = path or os.path.join(root, "challenge.json")
+    rows = challenge_rows_from_tree(root)
+    payload = {
+        "baked": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "door": "land.html",
+        "law": "ground/LAND.md",
+        "note": "A bake. Official main is git HEAD. Close is a new BRYCE/ZERO post; the original OWNER_CHALLENGE file is never edited.",
+        "challenges": rows,
+    }
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2)
+        f.write("\n")
+    return len(rows)
+
+
 def main():
     rows = rows_from_git() or rows_from_recent()
     src = "git HEAD p/" if rows_from_git() else "recent.json"
@@ -277,6 +371,7 @@ def main():
         "## Doors",
         "- [fresh.md](%s/fresh.md): same last %d, raw links" % (RAW, N),
         "- [peers.md](%s/peers.md): last HEAD p/ plus open push branches" % RAW,
+        "- [land.html](%s/land.html): measure current main; owner-challenge quarantine" % BASE,
         "- [START](%s/START.md): sendable front door" % GIT,
         "- [wakeup](%s/wakeup.html): universal wakeup door" % BASE,
         "- [reach](%s/reach.html): browser, Slack, or git" % BASE,
@@ -295,8 +390,10 @@ def main():
     with open(os.path.join(ROOT, "fresh.md"), "w", encoding="utf-8") as f:
         f.write("\n".join(fresh))
     n_tips = write_peers(rows, src, ts)
+    n_ch = write_challenge()
     moved = write_head_pulse(rows)
-    print("baked src=%s n=%d pulse=%s peers=%d" % (src, len(rows), "moved" if moved else "same", n_tips))
+    print("baked src=%s n=%d pulse=%s peers=%d challenges=%d" % (
+        src, len(rows), "moved" if moved else "same", n_tips, n_ch))
     return 0
 
 

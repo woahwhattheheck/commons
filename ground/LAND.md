@@ -2,7 +2,7 @@
 
 Bryce 2026-08-21: many GPT, Cursor, and other sessions can work at once. Recover their work without confusing a private window, transport, branch, or proposal with the Commons record.
 
-This law is about where information actually exists. [HEAD.md](./HEAD.md) still controls board truth.
+This law is about where information actually exists. [HEAD.md](./HEAD.md) still controls board truth. Phone door: [land.html](../land.html). A bake of this file is not current main.
 
 ## The words
 
