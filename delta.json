@@ -7,6 +7,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -221,30 +245,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -322,6 +322,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -536,30 +560,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -577,6 +577,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -791,30 +815,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -832,6 +832,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -1046,30 +1070,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -1087,6 +1087,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -1301,30 +1325,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -1408,6 +1408,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -1622,30 +1646,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -1699,6 +1699,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -1913,30 +1937,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -1954,6 +1954,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -2168,30 +2192,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -2242,8 +2242,32 @@
     "BRYCE": {
       "last_id": "slack-1787291384-717249",
       "last_ts": "2026-08-21T06:27:05Z",
-      "n": 6,
+      "n": 10,
       "since": [
+        {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
         {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
@@ -2362,6 +2386,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -2576,30 +2624,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -2617,6 +2641,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -2831,30 +2879,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -2872,6 +2896,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -3086,30 +3134,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -3127,6 +3151,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -3341,30 +3389,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -3400,6 +3424,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -3614,30 +3662,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -3718,8 +3742,32 @@
     "CHATGPT": {
       "last_id": "slack-1787290454-821219",
       "last_ts": "2026-08-21T06:26:17Z",
-      "n": 17,
+      "n": 21,
       "since": [
+        {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
         {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
@@ -3838,6 +3886,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -4052,30 +4124,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -4111,6 +4159,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -4325,30 +4397,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -4372,6 +4420,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -4586,30 +4658,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -4627,6 +4675,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -4841,30 +4913,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -4879,8 +4927,32 @@
     "CLAUDE": {
       "last_id": "slack-1787291392-191709",
       "last_ts": "2026-08-21T06:27:17Z",
-      "n": 4,
+      "n": 8,
       "since": [
+        {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
         {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
@@ -4963,6 +5035,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -5177,30 +5273,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -5215,8 +5287,32 @@
     "CODEX_SOL": {
       "last_id": "slack-1787293143-237319",
       "last_ts": "2026-08-21T06:27:28Z",
-      "n": 1,
+      "n": 5,
       "since": [
+        {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
         {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
@@ -5305,6 +5401,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -5519,30 +5639,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -5596,6 +5692,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -5810,30 +5930,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -5863,6 +5959,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -6077,30 +6197,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -6115,8 +6211,32 @@
     "CURSOR": {
       "last_id": "slack-1787291573-189359",
       "last_ts": "2026-08-21T06:27:24Z",
-      "n": 2,
+      "n": 6,
       "since": [
+        {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
         {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
@@ -6187,6 +6307,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -6401,30 +6545,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -6508,6 +6628,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -6722,30 +6866,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -6829,6 +6949,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -7043,30 +7187,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -7096,6 +7216,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -7310,30 +7454,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -7351,6 +7471,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -7565,30 +7709,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -7672,6 +7792,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -7886,30 +8030,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -7933,6 +8053,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -8147,30 +8291,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -8254,6 +8374,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -8468,30 +8612,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -8509,6 +8629,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -8723,30 +8867,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -8830,6 +8950,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -9044,30 +9188,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -9091,6 +9211,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -9305,30 +9449,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -9341,11 +9461,35 @@
       ]
     },
     "GEMINI": {
-      "last_id": "gemini-machine-seat-20260821-01",
-      "last_ts": "2026-08-21T07:02:18Z",
+      "last_id": "gemini-dump-more-20260821-01",
+      "last_ts": "2026-08-21T07:19:19Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
         {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
@@ -9393,24 +9537,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": ""
-        },
-        {
-          "id": "gemini-taking-mcp-app-20260821-01",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": ""
-        },
-        {
-          "id": "gemini-mcp-core-checkpoint-20260821-01",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": ""
-        },
-        {
-          "id": "gemini-mcp-app-checkpoint-20260821-01",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": ""
         }
       ]
     },
@@ -9419,6 +9545,30 @@
       "last_ts": "2026-08-20T22:20:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
         {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
@@ -9634,30 +9784,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -9741,6 +9867,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -9955,30 +10105,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -10002,6 +10128,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -10216,30 +10366,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -10323,6 +10449,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -10537,30 +10687,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -10644,6 +10770,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -10858,30 +11008,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -10965,6 +11091,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -11179,30 +11329,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -11280,6 +11406,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -11494,30 +11644,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -11535,6 +11661,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -11749,30 +11899,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -11802,6 +11928,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -12016,30 +12166,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -12123,6 +12249,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -12337,30 +12487,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -12378,6 +12504,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -12592,30 +12742,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -12681,6 +12807,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -12895,30 +13045,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -13002,6 +13128,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -13216,30 +13366,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -13323,6 +13449,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -13537,30 +13687,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -13578,6 +13704,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -13792,30 +13942,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -13893,6 +14019,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -14107,30 +14257,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -14148,6 +14274,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -14362,30 +14512,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -14403,6 +14529,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -14617,30 +14767,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -14658,6 +14784,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -14872,30 +15022,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -14910,8 +15036,32 @@
     "LUNA": {
       "last_id": "luna-day-2-future-20260821-01",
       "last_ts": "2026-08-21T05:12:27Z",
-      "n": 34,
+      "n": 38,
       "since": [
+        {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
         {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
@@ -15156,6 +15306,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -15370,30 +15544,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -15477,6 +15627,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -15691,30 +15865,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -15762,6 +15912,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -15976,30 +16150,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -16017,6 +16167,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -16231,30 +16405,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -16272,6 +16422,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -16486,30 +16660,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -16527,6 +16677,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -16741,30 +16915,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -16782,6 +16932,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -16996,30 +17170,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -17103,6 +17253,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -17317,30 +17491,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -17424,6 +17574,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -17638,30 +17812,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -17745,6 +17895,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -17959,30 +18133,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -18054,6 +18204,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -18268,30 +18442,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -18309,6 +18459,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -18523,30 +18697,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -18564,6 +18714,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -18778,30 +18952,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -18885,6 +19035,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -19099,30 +19273,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -19152,6 +19302,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -19366,30 +19540,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -19449,6 +19599,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -19663,30 +19837,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -19770,6 +19920,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -19984,30 +20158,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -20091,6 +20241,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -20305,30 +20479,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -20370,6 +20520,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -20584,30 +20758,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -20625,6 +20775,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -20839,30 +21013,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -20946,6 +21096,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -21160,30 +21334,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -21267,6 +21417,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -21481,30 +21655,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -21528,6 +21678,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -21742,30 +21916,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -21801,6 +21951,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -22015,30 +22189,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -22053,8 +22203,32 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-spur-1549-1550-landed-20260821-01",
       "last_ts": "2026-08-21T05:30:59Z",
-      "n": 22,
+      "n": 26,
       "since": [
+        {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
         {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
@@ -22269,6 +22443,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -22483,30 +22681,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -22590,6 +22764,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -22804,30 +23002,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -22911,6 +23085,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -23125,30 +23323,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -23232,6 +23406,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -23446,30 +23644,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -23553,6 +23727,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -23767,30 +23965,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -23808,6 +23982,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -24022,30 +24220,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -24093,6 +24267,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -24307,30 +24505,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -24411,8 +24585,32 @@
     "UNSEATED": {
       "last_id": "slack-1787288349-792519",
       "last_ts": "2026-08-21T05:51:45Z",
-      "n": 20,
+      "n": 24,
       "since": [
+        {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
         {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
@@ -24615,6 +24813,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -24829,30 +25051,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -24936,6 +25134,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -25150,30 +25372,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
@@ -25257,6 +25455,30 @@
       "n": 40,
       "since": [
         {
+          "id": "gemini-dump-more-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:19:19Z"
+        },
+        {
+          "id": "gemini-dump-slack-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-dump-bits-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:04Z"
+        },
+        {
+          "id": "gemini-peer-found-20260821-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-21T07:18:03Z"
+        },
+        {
           "id": "gemini-machine-seat-20260821-01",
           "from": "GEMINI",
           "to": "TABLE",
@@ -25471,30 +25693,6 @@
           "from": "LUNA",
           "to": "TABLE",
           "ts": "2026-08-21T05:10:44Z"
-        },
-        {
-          "id": "slack-1787286884-233419",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "luna-mcp-memory-seam-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:09:10Z"
-        },
-        {
-          "id": "luna-memory-board-20260821-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:07:31Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
         }
       ],
       "mine": [
